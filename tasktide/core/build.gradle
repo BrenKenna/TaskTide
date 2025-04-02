@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1' // Apply Shadow plugin for Fat JAR
+}
+
+description = 'tasktide-core'
+group = 'org.tasktide.core'
+version = '0.0.1'
+
+dependencies {
+
+    // Jakarta-NoSQL
+    implementation 'jakarta.nosql:jakarta.nosql-api:1.0.0'
+    implementation "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.0"
+    implementation "org.eclipse.jnosql.databases:jnosql-dynamodb:1.1.0"
+    implementation "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.0"
+
+    // JSON-B (de)Serialization
+    implementation 'jakarta.json.bind:jakarta.json.bind-api:2.0.0' // For JSON-B serialization/deserialization
+    implementation 'org.eclipse:yasson:2.0.0' // JSON-B implementation
+
+    // Log4J
+    implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+}
+
+tasks.register('fatJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveClassifier.set('') // Fat JAR for the 'core' module
+    configurations = [project.configurations.runtimeClasspath]
+}
+
+build.dependsOn fatJar

@@ -1,0 +1,6 @@
+rootProject.name = 'tasktide'
+
+include ':core'
+include ':engine'
+include ':manager'
+

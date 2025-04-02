@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+description = 'JavaEE Workflow Engine'
+
+allprojects {
+
+    group = 'org.tasktide'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+}
+
+project(":core") {}
+project(":manager") {}
+
+task buildAll {
+    dependsOn ':core:build', ':manager:build', 'engine:build'
+}
+
+build.dependsOn buildAll
