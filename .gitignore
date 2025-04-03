@@ -1,5 +1,11 @@
 .gradle/
+tasktide/gradle
 tasktide/gradlew.bat
 tasktide/gradlew
 tasktide/build/tmp/
 tasktide/*/build/tmp/
+tasktide/*/bin/
+tasktide/*/build/classes/
+tasktide/*/build/reports/
+tasktide/*/build/test-results/
+.gitignore

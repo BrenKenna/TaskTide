@@ -1,0 +1,24 @@
+2025-04-03 17:19:40 INFO  [ Test worker -> org.tasktide.core.model.tasklogging.TaskLoggingTest.setUpClass ]: 
+
+---------------- Initiating TaskLogging Tests ----------------
+
+2025-04-03 17:19:40 INFO  [ Test worker -> org.tasktide.core.model.tasklogging.TaskLoggingTest.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-03 17:19:40 INFO  [ Test worker -> org.tasktide.core.model.tasklogging.TaskLoggingTest.processLogTest ]: 
+
+================ Process Log Test ================
+
+2025-04-03 17:19:40 INFO  [ Test worker -> org.tasktide.core.model.tasklogging.TaskLoggingTest.processLogTest ]: 
+
+================ Process Log Test ================
+
+2025-04-03 17:19:40 INFO  [ Test worker -> org.tasktide.core.model.tasklogging.TaskLoggingTest.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-03 17:19:40 INFO  [ Test worker -> org.tasktide.core.model.tasklogging.TaskLoggingTest.tearDownClass ]: 
+
+---------------- Terminating TaskLogging Tests ----------------
+
