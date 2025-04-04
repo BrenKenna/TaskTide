@@ -1,0 +1,360 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package org.tasktide.core.model.workitem;
+
+import jakarta.enterprise.context.Dependent;
+
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
+import jakarta.json.bind.annotation.JsonbCreator;
+import jakarta.json.bind.annotation.JsonbProperty;
+
+import jakarta.nosql.Column;
+import jakarta.nosql.Entity;
+import jakarta.nosql.Id;
+
+
+/**
+ *
+ * Model class for Work Items
+ * 
+ * @author bkenna
+ */
+@Entity
+@Dependent
+public class WorkItem {
+    
+    @Id
+    @JsonbProperty("Id")
+    private String id;
+    
+    @Column
+    @JsonbProperty("Item Name")
+    private String itemName;
+    
+    @Column
+    @JsonbProperty("Item Type")
+    private ItemType itemType;
+    
+    @Column
+    @JsonbProperty("Item State")
+    private ItemState itemState;
+    
+    @Column
+    @JsonbProperty("Lock Id")
+    private String lockId;
+    
+    @Column
+    @JsonbProperty("Lock Date")
+    private long lockDate;
+    
+    @Column
+    @JsonbProperty("Done Date")
+    private long doneDate;
+    
+    @Column
+    @JsonbProperty("Task Count")
+    private int taskCount;
+    
+    @Column
+    @JsonbProperty("Task Done")
+    private int taskDone;
+    
+    @Column
+    @JsonbProperty("Workload")
+    private Workload workload;
+    
+    
+    /**
+     * Null constructor
+     */
+    public WorkItem(){}
+    
+    
+    /**
+     * Constructor for JSON Deserialization
+     * 
+     * @param id
+     * @param itemName
+     * @param itemType
+     * @param itemState
+     * @param lockId
+     * @param longDate
+     * @param doneDate
+     * @param taskCount
+     * @param taskDone
+     * @param workload 
+     */
+    @JsonbCreator
+    public WorkItem(
+        @JsonbProperty("Id") String id,
+        @JsonbProperty("Item Name") String itemName,
+        @JsonbProperty("Item Type") ItemType itemType,
+        @JsonbProperty("Item State") ItemState itemState,
+        @JsonbProperty("Lock Id") String lockId,
+        @JsonbProperty("Lock Date") long longDate,
+        @JsonbProperty("Done Date") long doneDate,
+        @JsonbProperty("Task Count") int taskCount,
+        @JsonbProperty("Task Done") int taskDone,
+        @JsonbProperty("Workload") Workload workload
+    ) {
+        this.id = id;
+        this.itemName = itemName;
+        this.itemType = itemType;
+        this.itemState = itemState;
+        this.lockId = lockId;
+        this.lockDate = lockDate;
+        this.doneDate = doneDate;
+        this.taskCount = taskCount;
+        this.taskDone = taskDone;
+        this.workload = workload;
+    }
+
+    
+    /**
+     * Get work item Id
+     * 
+     * @return String
+     */
+    public String getId() {
+        return id;
+    }
+
+    
+    /**
+     * Set work item id
+     * 
+     * @param id 
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
+    /**
+     * Get item name
+     * 
+     * @return String
+     */
+    public String getItemName() {
+        return itemName;
+    }
+
+    
+    /**
+     * Set item name
+     * 
+     * @param itemName 
+     */
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    
+    /**
+     * Get item type
+     * 
+     * @return ItemType
+     */
+    public ItemType getItemType() {
+        return itemType;
+    }
+
+    
+    /**
+     * Set item type
+     * 
+     * @param itemType 
+     */
+    public void setItemType(ItemType itemType) {
+        this.itemType = itemType;
+    }
+
+    
+    /**
+     * Get item state
+     * 
+     * @return ItemState
+     */
+    public ItemState getItemState() {
+        return itemState;
+    }
+
+    
+    /**
+     * Set item state
+     * 
+     * @param itemState 
+     */
+    public void setItemState(ItemState itemState) {
+        this.itemState = itemState;
+    }
+
+    
+    /**
+     * Get lock Id
+     * 
+     * @return String
+     */
+    public String getLockId() {
+        return lockId;
+    }
+
+    
+    /**
+     * Set lock Id
+     * 
+     * @param lockId 
+     */
+    public void setLockId(String lockId) {
+        this.lockId = lockId;
+    }
+
+    
+    /**
+     * Get lock date
+     * 
+     * @return long
+     */
+    public long getLockDate() {
+        return lockDate;
+    }
+
+    
+    /**
+     * Set lock date
+     * 
+     * @param lockDate 
+     */
+    public void setLockDate(long lockDate) {
+        this.lockDate = lockDate;
+    }
+
+    
+    /**
+     * Get done date
+     * 
+     * @return long
+     */
+    public long getDoneDate() {
+        return doneDate;
+    }
+
+    
+    /**
+     * Set done date
+     * 
+     * @param doneDate 
+     */
+    public void setDoneDate(long doneDate) {
+        this.doneDate = doneDate;
+    }
+
+    
+    /**
+     * Get total task count
+     * 
+     * @return int
+     */
+    public int getTaskCount() {
+        return taskCount;
+    }
+
+    
+    /**
+     * Set total task count
+     * 
+     * @param taskCount 
+     */
+    public void setTaskCount(int taskCount) {
+        this.taskCount = taskCount;
+    }
+
+    
+    /**
+     * Get task done count
+     * 
+     * @return int
+     */
+    public int getTaskDone() {
+        return taskDone;
+    }
+
+    
+    /**
+     * Set task done count
+     * 
+     * @param taskDone 
+     */
+    public void setTaskDone(int taskDone) {
+        this.taskDone = taskDone;
+    }
+
+    
+    /**
+     * Get workload
+     * 
+     * @return Workload
+     */
+    public Workload getWorkload() {
+        return workload;
+    }
+
+    
+    /**
+     * Set workload
+     * 
+     * @param workload 
+     */
+    public void setWorkload(Workload workload) {
+        this.workload = workload;
+    }
+
+    
+    /**
+     * Represent work item as string
+     * 
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return "WorkItem{" +
+           "id=" + id +
+           ", itemName=" + itemName +
+           ", itemType=" + itemType +
+           ", itemState=" + itemState +
+           ", lockId=" + lockId +
+           ", lockDate=" + lockDate +
+           ", doneDate=" + doneDate +
+           ", taskCount=" + taskCount +
+           ", taskDone=" + taskDone +
+           ", workload=" + workload +
+        '}';
+    }
+    
+    
+    /**
+     * Serialize to JSON string
+     * 
+     * @return String
+     */
+    public String toJsonString() {
+        Jsonb json = JsonbBuilder.create();
+        return json.toJson(this);
+    }
+    
+    
+    /**
+     * Serialize to a human readable formatted JSON string
+     * 
+     * @return String
+     */
+    public String toJsonDoc() {
+        JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
+        Jsonb json = JsonbBuilder.create(conf);
+        return json.toJson(this);
+    }
+}

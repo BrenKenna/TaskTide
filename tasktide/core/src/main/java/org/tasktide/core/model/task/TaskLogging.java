@@ -2,11 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.core.model.tasklogging;
+package org.tasktide.core.model.task;
 
 import jakarta.enterprise.context.Dependent;
+
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
@@ -19,7 +21,8 @@ import java.time.Duration;
 
 
 /**
- * Task logging object
+ * 
+ * Model class to hold the data from task processing
  * 
  * @author bkenna
  */
@@ -32,16 +35,20 @@ public class TaskLogging {
     private String id;
     
     @Column
+    @JsonbProperty("Process Id")
+    private long procId;
+    
+    @Column
     @JsonbProperty("Process Log")
     private ProcessLog procLog;
     
     @Column
     @JsonbProperty("Start Time")
-    private String startTime;
+    private long startTime;
     
     @Column
     @JsonbProperty("End Time")
-    private String endTime;
+    private long endTime;
     
     @Column
     @JsonbProperty("Thread Name")
@@ -55,13 +62,35 @@ public class TaskLogging {
     /**
      * Null constructor
      */
-    public TaskLogging() {}
+    public TaskLogging() {
+        this.procLog = new ProcessLog();
+    }
 
     
     /**
-     * Deserialize from json
+     * Construct with all data for builder
+     * 
+     * @param procId
+     * @param procLog
+     * @param startTime
+     * @param endTime
+     * @param threadName
+     * @param cpuDuration 
+     */
+    public TaskLogging(long procId, ProcessLog procLog, long startTime, long endTime, String threadName, long cpuDuration) {
+        this.procId = procId;
+        this.procLog = procLog;
+        this.startTime = endTime;
+        this.threadName = threadName;
+        this.cpuDuration = cpuDuration;
+    }
+    
+    
+    /**
+     * Constructor for JSON Deserialization
      * 
      * @param id
+     * @param procId
      * @param procLog
      * @param startTime
      * @param endTime
@@ -71,79 +100,166 @@ public class TaskLogging {
     @JsonbCreator
     public TaskLogging(
         @JsonbProperty("Id") String id,
+        @JsonbProperty("Process Id") long procId,
         @JsonbProperty("Process Log") ProcessLog procLog,
-        @JsonbProperty("Start Time") String startTime,
-        @JsonbProperty("End Time") String endTime,
+        @JsonbProperty("Start Time") long startTime,
+        @JsonbProperty("End Time") long endTime,
         @JsonbProperty("Thread Name") String threadName,
         @JsonbProperty("CPU Duration") long cpuDuration
     ) {
         this.id = id;
+        this.procId = procId;
         this.procLog = procLog;
         this.startTime = startTime;
         this.endTime = endTime;
         this.threadName = threadName;
         this.cpuDuration = cpuDuration;
     }
-
     
+    
+    /**
+     * Get Id
+     * 
+     * @return String
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Set Id
+     * 
+     * @param id 
+     */
     public void setId(String id) {
         this.id = id;
     }
+    
+    /**
+     * Get process Id
+     * 
+     * @return long
+     */
+    public long getProcId() {
+        return procId;
+    }
 
+    /**
+     * Set process Id
+     * 
+     * @param procId
+     */
+    public void procId(long procId) {
+        this.procId = procId;
+    }
+
+    
+    /**
+     * Get process log
+     * 
+     * @return Process Log
+     */
     public ProcessLog getProcLog() {
         return procLog;
     }
 
+    
+    /**
+     * Set process log
+     * 
+     * @param procLog 
+     */
     public void setProcLog(ProcessLog procLog) {
         this.procLog = procLog;
     }
 
-    public String getStartTime() {
+    
+    /**
+     * Get start time
+     * 
+     * @return long
+     */
+    public long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    
+    /**
+     * Set start time
+     * 
+     * @param startTime 
+     */
+    public void setStartTime(long startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    
+    /**
+     * Get end time
+     * 
+     * @return long
+     */
+    public long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    
+    /**
+     * Set end time
+     * 
+     * @param endTime 
+     */
+    public void setEndTime(long endTime) {
         this.endTime = endTime;
     }
 
+    
+    /**
+     * Get thread name
+     * 
+     * @return String
+     */
     public String getThreadName() {
         return threadName;
     }
 
+    
+    /**
+     * Set thread name
+     * 
+     * @param threadName 
+     */
     public void setThreadName(String threadName) {
         this.threadName = threadName;
     }
 
+    
+    /**
+     * Get CPU duration
+     * 
+     * @return 
+     */
     public long getCpuDuration() {
         return cpuDuration;
     }
 
-    public void setCpuDuration(Optional<Duration> cpuDuration) {
-        this.cpuDuration = cpuDuration.get().getSeconds();
-    }
-    
     
     /**
-     * Return ProcessLog from Json string
+     * Set CPU duration
      * 
-     * @param log
-     * @return ProcessLog
-    */
-    private ProcessLog getProcLog(String log) {
-        Jsonb json = JsonbBuilder.create();
-        return json.fromJson(log, ProcessLog.class);
+     * @param cpuDuration 
+     */
+    public void setCpuDuration(long cpuDuration) {
+        this.cpuDuration = cpuDuration;
+    }
+    
+    /**
+     * Set CPU duration
+     * 
+     * @param cpuDuration 
+     */
+    public void setCpuDuration(Optional<Duration> cpuDuration) {
+        this.cpuDuration = cpuDuration.get().getSeconds();
     }
 
     
@@ -156,7 +272,8 @@ public class TaskLogging {
     public String toString() {
         return "TaskLogging{" +
             "id=" + id +
-            ", procLog=" + procLog.toJson() +
+            ", procId=" + procId +
+            ", procLog=" + procLog.toString() +
             ", startTime=" + startTime +
             ", endTime=" + endTime +
             ", threadName=" + threadName +
@@ -177,12 +294,13 @@ public class TaskLogging {
     
     
     /**
-     * Represent as JSON object
+     * Serialize to a human readable formatted JSON string
      * 
-     * @return Jsonb
+     * @return String
      */
-    public Jsonb toJson() {
-        Jsonb json = JsonbBuilder.create();
-        return json;
+    public String toJsonDoc() {
+        JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
+        Jsonb json = JsonbBuilder.create(conf);
+        return json.toJson(this);
     }
 }

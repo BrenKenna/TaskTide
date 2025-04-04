@@ -1,0 +1,282 @@
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
+
+---------------- Initiating Model Tests ----------------
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+================ Task Logging Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+Displaying TaskLogging json:
+{
+    "CPU Duration": -1,
+    "End Time": 0,
+    "Process Id": -4,
+    "Process Log": {
+        "Stderr": [
+            "pears",
+            "pineapples"
+        ],
+        "Stdout": [
+            "apples",
+            "oragnes"
+        ]
+    },
+    "Start Time": -3,
+    "Thread Name": "thread"
+}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+Attempting to construct TaskLogging from JSON string
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+Displaying results
+{
+    "CPU Duration": -1,
+    "End Time": 0,
+    "Process Id": -4,
+    "Process Log": {
+        "Stderr": [
+            "pears",
+            "pineapples"
+        ],
+        "Stdout": [
+            "apples",
+            "oragnes"
+        ]
+    },
+    "Start Time": -3,
+    "Thread Name": "thread"
+}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+================ Task Logging Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+================ Process Log Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+Displaying ProcessLog string:
+ProcessLog{id=null, stdout=[Ljava.lang.String;@6b410923, stderr=[Ljava.lang.String;@57bd2029}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+Displaying ProcessLog json:
+{
+    "Stderr": [
+        "pears",
+        "pineapples"
+    ],
+    "Stdout": [
+        "apples",
+        "oragnes"
+    ]
+}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+Attempting to construct ProcessLog from JSON string
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+Displaying results
+{
+    "Stderr": [
+        "pears",
+        "pineapples"
+    ],
+    "Stdout": [
+        "apples",
+        "oragnes"
+    ]
+}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+================ Process Log Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+================ Task Log Builder Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Attempting to build Process Log
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Displaying Built ProcessLog string:
+ProcessLog{id=alpha, stdout=[Ljava.lang.String;@6fe46b62, stderr=[Ljava.lang.String;@591fd34d}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Displaying Built ProcessLog json:
+{
+    "Id": "alpha",
+    "Stderr": [
+        "pears",
+        "pineapples"
+    ],
+    "Stdout": [
+        "apples",
+        "oragnes"
+    ]
+}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Attempting to build Task Log
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Displaying Built Task Log string:
+TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@6fe46b62, stderr=[Ljava.lang.String;@591fd34d}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Displaying Built Task Log json:
+{
+    "CPU Duration": -1,
+    "End Time": -3,
+    "Id": "beta",
+    "Process Id": -4,
+    "Process Log": {
+        "Id": "alpha",
+        "Stderr": [
+            "pears",
+            "pineapples"
+        ],
+        "Stdout": [
+            "apples",
+            "oragnes"
+        ]
+    },
+    "Start Time": -2,
+    "Thread Name": "myThread"
+}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+================ Task Log Builder Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+================ Item Task Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Attempting to build Item Task
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Displaying Built Item Task string:
+ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@6ad5923a, stderr=[Ljava.lang.String;@4463d9d3}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Displaying Built Item Task json:
+{
+    "Id": "gamma",
+    "Task": "My Task",
+    "Task Log": {
+        "CPU Duration": -1,
+        "End Time": -3,
+        "Id": "beta",
+        "Process Id": -4,
+        "Process Log": {
+            "Id": "alpha",
+            "Stderr": [
+                "pears",
+                "pineapples"
+            ],
+            "Stdout": [
+                "apples",
+                "oragnes"
+            ]
+        },
+        "Start Time": -2,
+        "Thread Name": "myThread"
+    },
+    "Task Name": "My Task Name",
+    "Task State": "COMPLETE"
+}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Attempting to construct Item Task from JSON string
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Displaying results
+{
+    "Id": "gamma",
+    "Task": "My Task",
+    "Task Log": {
+        "CPU Duration": -1,
+        "End Time": -3,
+        "Id": "beta",
+        "Process Id": -4,
+        "Process Log": {
+            "Id": "alpha",
+            "Stderr": [
+                "pears",
+                "pineapples"
+            ],
+            "Stdout": [
+                "apples",
+                "oragnes"
+            ]
+        },
+        "Start Time": -2,
+        "Thread Name": "myThread"
+    },
+    "Task Name": "My Task Name",
+    "Task State": "COMPLETE"
+}
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+================ Item Task Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
+
+---------------- Terminating Model Tests ----------------
+

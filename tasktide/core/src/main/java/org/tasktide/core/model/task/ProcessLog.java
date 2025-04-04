@@ -2,12 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.core.model.tasklogging;
+package org.tasktide.core.model.task;
 
 import jakarta.enterprise.context.Dependent;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
@@ -17,6 +18,7 @@ import jakarta.nosql.Id;
 
 
 /**
+ * 
  * Model class to hold standard error and out logs
  * 
  * @author bkenna
@@ -42,6 +44,18 @@ public class ProcessLog {
      * Null constructor
      */
     public ProcessLog() {}
+    
+    
+    /**
+     * Construct with all data for builder
+     * 
+     * @param stdout
+     * @param stderr 
+     */
+    public ProcessLog(String[] stdout, String[] stderr) {
+        this.stdout = stdout;
+        this.stderr = stderr;
+    }
     
     
     /**
@@ -150,12 +164,13 @@ public class ProcessLog {
     
     
     /**
-     * Represent as JSON object
+     * Serialize to a human readable formatted JSON string
      * 
-     * @return Jsonb
+     * @return String
      */
-    public Jsonb toJson() {
-        Jsonb json = JsonbBuilder.create();
-        return json;
+    public String toJsonDoc() {
+        JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
+        Jsonb json = JsonbBuilder.create(conf);
+        return json.toJson(this);
     }
 }
