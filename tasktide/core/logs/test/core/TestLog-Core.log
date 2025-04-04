@@ -1,16 +1,16 @@
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
 
 ---------------- Initiating Model Tests ----------------
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 ================ Task Logging Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Displaying TaskLogging json:
 {
@@ -18,6 +18,7 @@ Displaying TaskLogging json:
     "End Time": 0,
     "Process Id": -4,
     "Process Log": {
+        "Id": "alpha",
         "Stderr": [
             "pears",
             "pineapples"
@@ -31,11 +32,11 @@ Displaying TaskLogging json:
     "Thread Name": "thread"
 }
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Attempting to construct TaskLogging from JSON string
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Displaying results
 {
@@ -43,6 +44,7 @@ Displaying results
     "End Time": 0,
     "Process Id": -4,
     "Process Log": {
+        "Id": "alpha",
         "Stderr": [
             "pears",
             "pineapples"
@@ -56,28 +58,28 @@ Displaying results
     "Thread Name": "thread"
 }
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 ================ Task Logging Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 ================ Process Log Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying ProcessLog string:
-ProcessLog{id=null, stdout=[Ljava.lang.String;@6b410923, stderr=[Ljava.lang.String;@57bd2029}
+ProcessLog{id=null, stdout=[Ljava.lang.String;@3aefae67, stderr=[Ljava.lang.String;@2e1792e7}
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying ProcessLog json:
 {
@@ -91,11 +93,11 @@ Displaying ProcessLog json:
     ]
 }
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Attempting to construct ProcessLog from JSON string
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying results
 {
@@ -109,56 +111,32 @@ Displaying results
     ]
 }
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 ================ Process Log Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 ================ Task Log Builder Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
-
-Attempting to build Process Log
-
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
-
-Displaying Built ProcessLog string:
-ProcessLog{id=alpha, stdout=[Ljava.lang.String;@6fe46b62, stderr=[Ljava.lang.String;@591fd34d}
-
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
-
-Displaying Built ProcessLog json:
-{
-    "Id": "alpha",
-    "Stderr": [
-        "pears",
-        "pineapples"
-    ],
-    "Stdout": [
-        "apples",
-        "oragnes"
-    ]
-}
-
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Attempting to build Task Log
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Displaying Built Task Log string:
-TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@6fe46b62, stderr=[Ljava.lang.String;@591fd34d}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}
+TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@516ebdf8, stderr=[Ljava.lang.String;@4d8539de}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Displaying Built Task Log json:
 {
@@ -181,32 +159,348 @@ Displaying Built Task Log json:
     "Thread Name": "myThread"
 }
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 ================ Task Log Builder Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+================ Work Item Test ================
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Attempting to build Work Item
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Displaying Built Work Item string:
+WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{id=My Workload, workload=[ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@1c12f3ee, stderr=[Ljava.lang.String;@6d467c87}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}, ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@29182679, stderr=[Ljava.lang.String;@57bd802b}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}], workloadState=null, workloadType=null}}
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Displaying Built Work Item json:
+{
+    "Done Date": 0,
+    "Id": "My WorkItem",
+    "Item Name": "My WorkItem Name",
+    "Lock Date": 0,
+    "Lock Id": "Some random hexadecimal string",
+    "Task Count": 2,
+    "Task Done": 0,
+    "Workload": {
+        "Id": "My Workload",
+        "Workload": [
+            {
+                "Id": "gamma",
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Id": "beta",
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Id": "alpha",
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ]
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE"
+            },
+            {
+                "Id": "gamma",
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Id": "beta",
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Id": "alpha",
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ]
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE"
+            }
+        ]
+    }
+}
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Attempting to construct Work Item from JSON string
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Displaying results
+{
+    "Done Date": 0,
+    "Id": "My WorkItem",
+    "Item Name": "My WorkItem Name",
+    "Lock Date": 0,
+    "Lock Id": "Some random hexadecimal string",
+    "Task Count": 2,
+    "Task Done": 0,
+    "Workload": {
+        "Id": "My Workload",
+        "Workload": [
+            {
+                "Id": "gamma",
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Id": "beta",
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Id": "alpha",
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ]
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE"
+            },
+            {
+                "Id": "gamma",
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Id": "beta",
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Id": "alpha",
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ]
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE"
+            }
+        ]
+    }
+}
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+================ Work Item Test ================
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+================ Workload Test ================
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Attempting to build ItemTasks
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Attempting to build Workload
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Displaying Built Workload string:
+Workload{id=MyWorklaod, workload=[ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@4690f583, stderr=[Ljava.lang.String;@59712875}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}, ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@47b2e9e1, stderr=[Ljava.lang.String;@59942b48}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}], workloadState=null, workloadType=null}
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Displaying Built Workload json:
+{
+    "Id": "MyWorklaod",
+    "Workload": [
+        {
+            "Id": "gamma",
+            "Task": "My Task",
+            "Task Log": {
+                "CPU Duration": -1,
+                "End Time": -3,
+                "Id": "beta",
+                "Process Id": -4,
+                "Process Log": {
+                    "Id": "alpha",
+                    "Stderr": [
+                        "pears",
+                        "pineapples"
+                    ],
+                    "Stdout": [
+                        "apples",
+                        "oragnes"
+                    ]
+                },
+                "Start Time": -2,
+                "Thread Name": "myThread"
+            },
+            "Task Name": "My Task Name",
+            "Task State": "COMPLETE"
+        },
+        {
+            "Id": "gamma",
+            "Task": "My Task",
+            "Task Log": {
+                "CPU Duration": -1,
+                "End Time": -3,
+                "Id": "beta",
+                "Process Id": -4,
+                "Process Log": {
+                    "Id": "alpha",
+                    "Stderr": [
+                        "pears",
+                        "pineapples"
+                    ],
+                    "Stdout": [
+                        "apples",
+                        "oragnes"
+                    ]
+                },
+                "Start Time": -2,
+                "Thread Name": "myThread"
+            },
+            "Task Name": "My Task Name",
+            "Task State": "COMPLETE"
+        }
+    ]
+}
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Attempting to construct Workload from JSON string
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Displaying results
+{
+    "Id": "MyWorklaod",
+    "Workload": [
+        {
+            "Id": "gamma",
+            "Task": "My Task",
+            "Task Log": {
+                "CPU Duration": -1,
+                "End Time": -3,
+                "Id": "beta",
+                "Process Id": -4,
+                "Process Log": {
+                    "Id": "alpha",
+                    "Stderr": [
+                        "pears",
+                        "pineapples"
+                    ],
+                    "Stdout": [
+                        "apples",
+                        "oragnes"
+                    ]
+                },
+                "Start Time": -2,
+                "Thread Name": "myThread"
+            },
+            "Task Name": "My Task Name",
+            "Task State": "COMPLETE"
+        },
+        {
+            "Id": "gamma",
+            "Task": "My Task",
+            "Task Log": {
+                "CPU Duration": -1,
+                "End Time": -3,
+                "Id": "beta",
+                "Process Id": -4,
+                "Process Log": {
+                    "Id": "alpha",
+                    "Stderr": [
+                        "pears",
+                        "pineapples"
+                    ],
+                    "Stdout": [
+                        "apples",
+                        "oragnes"
+                    ]
+                },
+                "Start Time": -2,
+                "Thread Name": "myThread"
+            },
+            "Task Name": "My Task Name",
+            "Task State": "COMPLETE"
+        }
+    ]
+}
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+================ Workload Test ================
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 ================ Item Task Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Attempting to build Item Task
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying Built Item Task string:
-ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@6ad5923a, stderr=[Ljava.lang.String;@4463d9d3}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}
+ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@1ded7b14, stderr=[Ljava.lang.String;@29be7749}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying Built Item Task json:
 {
@@ -235,11 +529,11 @@ Displaying Built Item Task json:
     "Task State": "COMPLETE"
 }
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Attempting to construct Item Task from JSON string
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying results
 {
@@ -268,15 +562,15 @@ Displaying results
     "Task State": "COMPLETE"
 }
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 ================ Item Task Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-04 17:43:23 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
+2025-04-04 18:25:55 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
 
 ---------------- Terminating Model Tests ----------------
 

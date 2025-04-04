@@ -4,7 +4,10 @@
  */
 package org.tasktide.core.model;
 
+import org.tasktide.TestUtils;
 import jakarta.json.bind.JsonbBuilder;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,14 +18,18 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.tasktide.core.model.builders.ItemTaskBuilder;
 
-import org.tasktide.core.model.builders.ProcessLogBuilder;
-import org.tasktide.core.model.builders.TaskLoggingBuilder;
+
+import org.tasktide.core.model.builders.ItemTaskBuilder;
+import org.tasktide.core.model.builders.WorkItemBuilder;
+import org.tasktide.core.model.builders.WorkloadBuilder;
+
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.workitem.Workload;
 
 
 /**
@@ -104,9 +111,7 @@ public class ModelTests {
         logger.info("\n\n================ Task Logging Test ================\n");
         
         // Construct process log
-        String[] stdout = {"apples", "oragnes"};
-        String[] stderr = {"pears", "pineapples"};
-        ProcessLog procLog = new ProcessLog(stdout, stderr);
+        ProcessLog procLog = TestUtils.makeTestProcessLog();
         
         // Construct task log
         TaskLogging taskLog = new TaskLogging(-4L, procLog, -2L, -3L, "thread", -1L);
@@ -135,34 +140,11 @@ public class ModelTests {
         boolean assertionState = true;
         logger.info("\n\n================ Task Log Builder Test ================\n");
         
-        
-        // Construct process log
-        logger.info("\n\nAttempting to build Process Log" + "\n");
-        String[] stdout = {"apples", "oragnes"};
-        String[] stderr = {"pears", "pineapples"};
-        ProcessLog procLog = new ProcessLogBuilder()
-                                 .id("alpha")
-                                 .stdout(stdout)
-                                 .stderr(stderr)
-                                 .build();
-        logger.info("\n\nDisplaying Built ProcessLog string:\n" + procLog.toString() + "\n");
-        logger.info("\n\nDisplaying Built ProcessLog json:\n" + procLog.toJsonDoc() + "\n");
-        
-        
         // Construct process log
         logger.info("\n\nAttempting to build Task Log" + "\n");
-        TaskLogging taskLog = new TaskLoggingBuilder()
-                                 .id("beta")
-                                 .processLog(procLog)
-                                 .threadName("myThread")
-                                 .cpuDuration(-1L)
-                                 .startTime(-2L)
-                                 .endTime(-3L)
-                                 .procId(-4L)
-                                 .build();
+        TaskLogging taskLog = TestUtils.makeTestTaskLog();
         logger.info("\n\nDisplaying Built Task Log string:\n" + taskLog.toString() + "\n");
         logger.info("\n\nDisplaying Built Task Log json:\n" + taskLog.toJsonDoc() + "\n");
-        
         
         // End test
         logger.info("\n\n================ Task Log Builder Test ================\n");
@@ -181,26 +163,10 @@ public class ModelTests {
         boolean assertionState = true;
         logger.info("\n\n================ Item Task Test ================\n");
         
-        
         // Build dependant objects
         logger.info("\n\nAttempting to build Item Task" + "\n");
-        String[] stdout = {"apples", "oragnes"};
-        String[] stderr = {"pears", "pineapples"};
-        ProcessLog procLog = new ProcessLogBuilder()
-                                 .id("alpha")
-                                 .stdout(stdout)
-                                 .stderr(stderr)
-                                 .build();
-        TaskLogging taskLog = new TaskLoggingBuilder()
-                                 .id("beta")
-                                 .processLog(procLog)
-                                 .threadName("myThread")
-                                 .cpuDuration(-1L)
-                                 .startTime(-2L)
-                                 .endTime(-3L)
-                                 .procId(-4L)
-                                 .build();
-        
+        ProcessLog procLog = TestUtils.makeTestProcessLog();
+        TaskLogging taskLog = TestUtils.makeTestTaskLog();
         
         // Build item task
         ItemTask itemTask = new ItemTaskBuilder()
@@ -211,11 +177,9 @@ public class ModelTests {
                                 .taskLog(taskLog)
                                 .build();
         
-        
         // Display item task
         logger.info("\n\nDisplaying Built Item Task string:\n" + itemTask.toString() + "\n");
         logger.info("\n\nDisplaying Built Item Task json:\n" + itemTask.toJsonDoc() + "\n");
-        
         
         
         // Re-construct from json string
@@ -227,6 +191,88 @@ public class ModelTests {
         
         // End test
         logger.info("\n\n================ Item Task Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test Workload
+     */
+    @Test
+    @Order(5)
+    public void testWorkload() {
+    
+        // Initialize test
+        boolean assertionState = true;
+        logger.info("\n\n================ Workload Test ================\n");
+        
+        // Build dependant objects
+        logger.info("\n\nAttempting to build ItemTasks" + "\n");
+        ItemTask itemTask = TestUtils.makeTestItemTask();
+        ItemTask itemTaskB = TestUtils.makeTestItemTask();
+        List<ItemTask> itemTasks = new ArrayList<>();
+        itemTasks.add(itemTask); itemTasks.add(itemTaskB);
+        
+        // Build workload
+        logger.info("\n\nAttempting to build Workload" + "\n");
+        Workload workload = new WorkloadBuilder()
+                                .id("MyWorklaod")
+                                .workload(itemTasks)
+                                .build();
+        
+        // Display item task
+        logger.info("\n\nDisplaying Built Workload string:\n" + workload.toString() + "\n");
+        logger.info("\n\nDisplaying Built Workload json:\n" + workload.toJsonDoc() + "\n");
+        
+        // Re-construct from json string
+        logger.info("\n\nAttempting to construct Workload from JSON string\n");
+        String json = workload.toJsonString();
+        Workload workloadB = JsonbBuilder.create().fromJson(json, Workload.class);
+        logger.info("\n\nDisplaying results\n" + workloadB.toJsonDoc() + "\n");
+        
+        // End test
+        logger.info("\n\n================ Workload Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test WorkItem
+     */
+    @Test
+    @Order(6)
+    public void testWorkItem() {
+    
+        // Initialize test
+        boolean assertionState = true;
+        logger.info("\n\n================ Work Item Test ================\n");
+        
+        
+        // Build workload
+        logger.info("\n\nAttempting to build Work Item" + "\n");
+        WorkItem workItem = new WorkItemBuilder()
+                                .id("My WorkItem")
+                                .itemName("My WorkItem Name")
+                                .workload(TestUtils.makeTestWorkload())
+                                .lockId("Some random hexadecimal string")
+                                .lockDate(0L)
+                                .doneDate(0L)
+                                .taskCount(2)
+                                .taskDone(0)
+                                .build();
+        
+        // Display item task
+        logger.info("\n\nDisplaying Built Work Item string:\n" + workItem.toString() + "\n");
+        logger.info("\n\nDisplaying Built Work Item json:\n" + workItem.toJsonDoc() + "\n");
+        
+        // Re-construct from json string
+        logger.info("\n\nAttempting to construct Work Item from JSON string\n");
+        String json = workItem.toJsonString();
+        WorkItem workItemB = JsonbBuilder.create().fromJson(json, WorkItem.class);
+        logger.info("\n\nDisplaying results\n" + workItemB.toJsonDoc() + "\n");
+        
+        // End test
+        logger.info("\n\n================ Work Item Test ================\n");
         assertTrue(assertionState);
     }
 }
