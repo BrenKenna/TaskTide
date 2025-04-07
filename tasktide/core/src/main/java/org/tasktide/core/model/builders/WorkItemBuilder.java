@@ -19,7 +19,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 public class WorkItemBuilder extends ModelBuilder {
     
     // Attributes
-    private String id, itemName, lockId;
+    private String id, itemName, lockId, stepName;
     private ItemType itemType;
     private ItemState itemState;
     private long lockDate, doneDate;
@@ -153,6 +153,18 @@ public class WorkItemBuilder extends ModelBuilder {
     
     
     /**
+     * Add step name field
+     * 
+     * @param stepName
+     * @return WorkItemBuilder
+     */
+    public WorkItemBuilder stepName(String stepName) {
+        this.stepName = stepName;
+        return this;
+    }
+    
+    
+    /**
      * Build work item from provided fields
      * 
      * @return WorkItem
@@ -162,7 +174,7 @@ public class WorkItemBuilder extends ModelBuilder {
         return new WorkItem(
             id, itemName, itemType, itemState,
             lockId, lockDate, doneDate, taskCount,
-            taskDone, workload
+            taskDone, workload, stepName
         );
     }
 }

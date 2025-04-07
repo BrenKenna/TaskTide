@@ -67,6 +67,10 @@ public class WorkItem {
     @JsonbProperty("Workload")
     private Workload workload;
     
+    @Column
+    @JsonbProperty("Step Name")
+    private String stepName;
+    
     
     /**
      * Null constructor
@@ -87,6 +91,7 @@ public class WorkItem {
      * @param taskCount
      * @param taskDone
      * @param workload 
+     * @param stepName
      */
     @JsonbCreator
     public WorkItem(
@@ -99,7 +104,8 @@ public class WorkItem {
         @JsonbProperty("Done Date") long doneDate,
         @JsonbProperty("Task Count") int taskCount,
         @JsonbProperty("Task Done") int taskDone,
-        @JsonbProperty("Workload") Workload workload
+        @JsonbProperty("Workload") Workload workload,
+        @JsonbProperty("Step Name") String stepName
     ) {
         this.id = id;
         this.itemName = itemName;
@@ -111,6 +117,7 @@ public class WorkItem {
         this.taskCount = taskCount;
         this.taskDone = taskDone;
         this.workload = workload;
+        this.stepName = stepName;
     }
 
     
@@ -315,6 +322,26 @@ public class WorkItem {
 
     
     /**
+     * Get step name
+     * 
+     * @return String 
+     */
+    public String getStepName() {
+        return stepName;
+    }
+
+    
+    /**
+     * Set step name
+     * 
+     * @param stepName 
+     */
+    public void setStepName(String stepName) {
+        this.stepName = stepName;
+    }
+
+    
+    /**
      * Represent work item as string
      * 
      * @return 
@@ -332,6 +359,7 @@ public class WorkItem {
            ", taskCount=" + taskCount +
            ", taskDone=" + taskDone +
            ", workload=" + workload +
+           ", stepName=" + stepName +
         '}';
     }
     

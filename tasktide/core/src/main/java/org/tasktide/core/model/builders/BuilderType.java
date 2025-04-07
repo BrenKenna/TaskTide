@@ -121,6 +121,50 @@ public enum BuilderType {
         public ModelBuilder makeBuilder() {
             return new WorkloadBuilder();
         }
+    },
+    
+    STEP {
+        @Override
+        public String toString() {
+            return "Step";
+        }
+
+        @Override
+        public boolean isType(String query) {
+            return "step".equals(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isType(BuilderType builderType) {
+            return STEP == builderType;
+        }
+
+        @Override
+        public ModelBuilder makeBuilder() {
+            return null;
+        }
+    },
+    
+    WORKFLOW {
+        @Override
+        public String toString() {
+            return "Workflow";
+        }
+
+        @Override
+        public boolean isType(String query) {
+            return "workflow".equals(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isType(BuilderType builderType) {
+            return WORKFLOW == builderType;
+        }
+
+        @Override
+        public ModelBuilder makeBuilder() {
+            return null;
+        }
     };
     
     
