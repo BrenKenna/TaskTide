@@ -1,7 +1,4 @@
 .gradle/
-tasktide/gradle
-tasktide/gradlew.bat
-tasktide/gradlew
 tasktide/build/tmp/
 tasktide/*/build/tmp/
 tasktide/*/bin/
