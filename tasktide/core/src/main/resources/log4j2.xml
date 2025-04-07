@@ -16,13 +16,11 @@
         <!-- Logger for specific package/class -->
         <Logger name="org.tasktide" level="INFO" additivity="false">
             <AppenderRef ref="STDOUT"/>
-            <AppenderRef ref="LOGFILE"/>
         </Logger>
 
         <!-- Root Logger -->
         <Root level="INFO">
             <AppenderRef ref="STDOUT"/>
-            <AppenderRef ref="LOGFILE"/>
         </Root>
     </Loggers>
 </Configuration>
