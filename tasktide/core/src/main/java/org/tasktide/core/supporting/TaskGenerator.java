@@ -5,12 +5,16 @@
 package org.tasktide.core.supporting;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  *
+ * Class to support generating random tasks
+ * 
  * @author bkenna
  */
 public class TaskGenerator {
