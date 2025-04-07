@@ -15,6 +15,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
 import jakarta.nosql.Id;
+import org.tasktide.core.model.task.ItemTask;
 
 
 /**
@@ -120,6 +121,44 @@ public class WorkItem {
         this.stepName = stepName;
     }
 
+    
+    /**
+     * Add task
+     * 
+     * @param task
+     * @return boolean
+     */
+    public boolean addTask(ItemTask task) {
+        boolean output;
+        if ( workload.addTask(task) ) {
+            taskCount++;
+            output = true;
+        }
+        else {
+            output = false;
+        }
+        return output;
+    }
+    
+    
+    /**
+     * Drop task
+     * 
+     * @param task
+     * @return boolean
+     */
+    public boolean dropTask(ItemTask task) {
+        boolean output;
+        if ( workload.dropTask(task) ) {
+            taskCount--;
+            output = true;
+        }
+        else {
+            output = false;
+        }
+        return output;
+    }
+    
     
     /**
      * Get work item Id

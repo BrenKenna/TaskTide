@@ -40,15 +40,6 @@ jobs:
       run: chmod +x gradlew && ./gradlew build
       working-directory: tasktide
 
-    - name: Upload Release Artifact
-      uses: softprops/action-gh-release@v1
-      with:
-        name: Release ${{ github.ref_name }}
-        tag_name: ${{ github.ref_name }}
-        files: tasktide/build/libs/*.jar
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_PAT_TT }}
-
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
     #

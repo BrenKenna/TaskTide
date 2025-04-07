@@ -17,7 +17,8 @@ import jakarta.nosql.Entity;
 import jakarta.nosql.Id;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -42,14 +43,14 @@ public class Workflow {
     
     @Column
     @JsonbProperty("Workflow Steps")
-    private List<Step> workflowSteps;
+    private Map<String, Step> workflowSteps;
     
     
     /**
      * Null constructor
      */
     public Workflow() {
-        this.workflowSteps = new ArrayList<>();
+        this.workflowSteps = new HashMap<>();
     }
     
     
@@ -64,7 +65,7 @@ public class Workflow {
     public Workflow(
         @JsonbProperty("Workflow Id") String workflowId,
         @JsonbProperty("Workflow Name") String workflowName,
-        @JsonbProperty("Workflow Steps") List<Step> workflowSteps
+        @JsonbProperty("Workflow Steps") Map<String, Step> workflowSteps
     ) {
         this.workflowId = workflowId;
         this.workflowName = workflowName;
@@ -116,7 +117,7 @@ public class Workflow {
      * 
      * @return List-Step
      */
-    public List<Step> getWorkflowSteps() {
+    public Map<String, Step> getWorkflowSteps() {
         return workflowSteps;
     }
 
@@ -126,8 +127,20 @@ public class Workflow {
      * 
      * @param workflowSteps 
      */
-    public void setWorkflowSteps(List<Step> workflowSteps) {
+    public void setWorkflowSteps(Map<String, Step> workflowSteps) {
         this.workflowSteps = workflowSteps;
+    }
+    
+    
+    /**
+     * Set workflow steps
+     * 
+     * @param workflowSteps 
+     */
+    public void setWorkflowSteps(List<Step> steps) {
+        for(Step step : steps) {
+            this.workflowSteps.put(step.getStepName(), step);
+        }
     }
 
     

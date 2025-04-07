@@ -16,8 +16,8 @@ import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
 import jakarta.nosql.Id;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.tasktide.core.model.task.ItemTask;
 
@@ -37,7 +37,7 @@ public class Workload {
     
     @Column
     @JsonbProperty("Workload")
-    private List<ItemTask> workload;
+    private Map<String, ItemTask> workload;
     
     @Column
     @JsonbProperty("Workload State")
@@ -52,7 +52,7 @@ public class Workload {
      * Null constructor
      */
     public Workload() {
-        this.workload = new ArrayList<>();
+        this.workload = new HashMap<>();
         this.workloadType = ItemType.SINGLE;
         this.workloadState = ItemState.TODO;
     }
@@ -69,7 +69,7 @@ public class Workload {
     @JsonbCreator
     public Workload(
         @JsonbProperty("Id") String id,
-        @JsonbProperty("Workload") List<ItemTask> workload,
+        @JsonbProperty("Workload") Map<String, ItemTask> workload,
         @JsonbProperty("Workload State") ItemState workloadState,
         @JsonbProperty("Workload Type") ItemType workloadType
     ) {
@@ -81,62 +81,50 @@ public class Workload {
 
     
     /**
-     * Fetch index of work item from workload
-     * 
-     * @param query
-     * @return int
-     */
-    public int indexOf(ItemTask query) {
-        return this.workload.indexOf(query);
-    }
-    
-    
-    /**
-     * Fetch index query
-     * 
-     * @param query
-     * @return int
-     */
-    public int indexOf(String query) {
-        
-        // Initialize vars
-        int workIndex = -1;
-        int counter = 0;
-        boolean found = false;
-        
-        // Search until found
-        while ( !found && counter < this.workload.size() ) {
-            ItemTask task = this.workload.get(counter);
-            if ( task.isTask(query) ) {
-                found = true;
-                workIndex = counter;
-            }
-            else {
-                counter++;
-            }
-        }
-        
-        // Return result
-        return workIndex;
-    }
-    
-    
-    /**
      * Add a new work item to workload
      * 
      * @param work
      * @return boolean
      */
-    public boolean addTask(ItemTask work) {
+    public boolean addTask(String taskName, ItemTask work) {
         
         // Handle whether to add task
-        int workInd = indexOf(work);
-        if ( workInd > -1 ) {
+        if ( workload.containsKey(taskName) ) {
             return false;
         }
         
         // Otherwise add task
-        this.workload.add(work);
+        this.workload.put(taskName, work);
+        if ( this.workload.size() >= 2 ) {
+            this.workloadType = ItemType.NESTED;
+        }
+        else {
+            this.workloadType = ItemType.SINGLE;
+        }
+        
+        // Set workload state
+        this.workloadState = ItemState.TODO;
+        
+        // Return flag
+        return true;
+    }
+    
+    
+    /**
+     * Add provided task if not present
+     * 
+     * @param task
+     * @return boolean
+     */
+    public boolean addTask(ItemTask task) {
+        
+        // Handle whether to add task
+        if ( workload.containsKey(task.getTaskName()) ) {
+            return false;
+        }
+        
+        // Otherwise add task
+        this.workload.put(task.getTaskName(), task);
         if ( this.workload.size() >= 2 ) {
             this.workloadType = ItemType.NESTED;
         }
@@ -155,17 +143,11 @@ public class Workload {
     /**
      * Fetch task if present
      * 
-     * @param task
+     * @param taskName
      * @return ItemTask
      */
-    public ItemTask getTask(String task) {
-        int index = this.indexOf(task);
-        if ( index > -1 ) {
-            return this.workload.get(index);
-        }
-        else {
-            return null;
-        }
+    public ItemTask getTask(String taskName) {
+        return workload.get(taskName);
     }
     
     
@@ -175,16 +157,15 @@ public class Workload {
      * @param task
      * @return boolean
      */
-    public boolean dropTask(String task) {
+    public boolean dropTask(String taskName) {
     
         // Handle whether to add task
-        int workIndex = indexOf(task);
-        if ( workIndex < 0) {
+        if ( !this.workload.containsKey(taskName) ) {
             return false;
         }
         
         // Add task
-        this.workload.remove(workIndex);
+        this.workload.remove(taskName);
         if ( this.workload.size() >= 2 ) {
             this.workloadType = ItemType.NESTED;
         }
@@ -206,13 +187,12 @@ public class Workload {
     public boolean dropTask(ItemTask task) {
         
         // Handle whether to drop task
-        int taskInd = this.workload.indexOf(task);
-        if ( taskInd < 0 ) {
+        if ( !this.workload.containsKey(task.getTaskName()) ) {
             return false;
         }
         
         // Drop task
-        this.workload.remove(taskInd);
+        this.workload.remove(task.getTaskName());
         
         // Handle task type
         if ( this.workload.size() >= 2 ) {
@@ -250,9 +230,9 @@ public class Workload {
     /**
      * Get workload
      * 
-     * @return List-ItemTask
+     * @return Map-TaskName, ItemTask
      */
-    public List<ItemTask> getWorkload() {
+    public Map<String, ItemTask> getWorkload() {
         return workload;
     }
 
@@ -262,7 +242,7 @@ public class Workload {
      * 
      * @param workload 
      */
-    public void setWorkload(List<ItemTask> workload) {
+    public void setWorkload(Map<String, ItemTask> workload) {
         this.workload = workload;
         this.workloadState = ItemState.TODO;
         if( this.workload.size() >= 2 ) {

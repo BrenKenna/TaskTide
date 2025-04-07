@@ -4,7 +4,9 @@
  */
 package org.tasktide.core.model.builders;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
@@ -20,7 +22,7 @@ public class WorkflowBuilder extends ModelBuilder {
     
     // Attributes
     private String workflowId, workflowName;
-    private List<Step> steps;
+    private Map<String, Step> steps;
     
     
     /**
@@ -53,8 +55,22 @@ public class WorkflowBuilder extends ModelBuilder {
      * @param steps
      * @return List-Step
      */
-    public WorkflowBuilder steps(List<Step> steps) {
+    public WorkflowBuilder steps(Map<String, Step> steps) {
         this.steps = steps;
+        return this;
+    }
+    
+    /**
+     * Add workflow steps field
+     * 
+     * @param steps
+     * @return List-Step
+     */
+    public WorkflowBuilder steps(List<Step> stepList) {
+        this.steps = new HashMap<>();
+        for (Step step : stepList) {
+            this.steps.put(step.getStepName(), step);
+        }
         return this;
     }
     

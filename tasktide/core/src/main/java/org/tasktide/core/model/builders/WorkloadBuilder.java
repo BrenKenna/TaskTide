@@ -4,7 +4,9 @@
  */
 package org.tasktide.core.model.builders;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
@@ -22,7 +24,7 @@ public class WorkloadBuilder extends ModelBuilder {
     
     // Attributes
     private String id;
-    private List<ItemTask> workload;
+    private Map<String, ItemTask> workload;
     private ItemState workloadState;
     private ItemType workloadType;
     
@@ -50,8 +52,23 @@ public class WorkloadBuilder extends ModelBuilder {
      * @param workload
      * @return WorkloadBuilder
      */
-    public WorkloadBuilder workload(List<ItemTask> workload) {
+    public WorkloadBuilder workload(Map<String, ItemTask> workload) {
         this.workload = workload;
+        return this;
+    }
+    
+    
+    /**
+     * Add workload field from list of tasks
+     * 
+     * @param tasks
+     * @return WorkloadBuilder
+     */
+    public WorkloadBuilder workload(List<ItemTask> tasks) {
+        this.workload = new HashMap<>();
+        for ( ItemTask task : tasks ) {
+            this.workload.put(task.getTaskName(), task);
+        }
         return this;
     }
     

@@ -2,11 +2,15 @@ https://www.eclipse.org/lists/nosql-dev/pdfP3zrGf35VK.pdf
 
 https://openliberty.io/blog/2024/05/10/simplifying-nosql-database-integration-with-jakarta-nosql.html
 
+https://blogs.oracle.com/nosql/post/getting-started-accessing-oracle-nosql-database-using-jakarta-nosql
+
 https://repo1.maven.org/maven2/jakarta/nosql/jakarta.nosql-api/1.0.0/
 
 https://repo1.maven.org/maven2/jakarta/nosql/
 
 http://www.jnosql.org/docs/document.html
+
+https://platform.sh/blog/what-is-new-with-jakarta-nosql/
 
 
 <dependency>
@@ -17,6 +21,8 @@ http://www.jnosql.org/docs/document.html
 
 
 https://github.com/OpenLiberty/sample-jakartaNoSQL-game/blob/main/database-switching-challenge/src/main/java/org/jakartaee/sample/model/GameMatch.java
+
+
 
 
 

@@ -13,7 +13,6 @@ dependencies {
     implementation 'jakarta.nosql:jakarta.nosql-api:1.0.0'
     implementation "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.0"
     implementation "org.eclipse.jnosql.databases:jnosql-dynamodb:1.1.0"
-    implementation "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.0"
 
     // Jakarta CDI
     implementation 'jakarta.enterprise:jakarta.enterprise.cdi-api:4.0.1'
