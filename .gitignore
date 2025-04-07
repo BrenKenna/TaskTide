@@ -6,3 +6,4 @@ tasktide/*/build/classes/
 tasktide/*/build/reports/
 tasktide/*/build/test-results/
 .gitignore
+.secret/
