@@ -12,6 +12,8 @@ http://www.jnosql.org/docs/document.html
 
 https://platform.sh/blog/what-is-new-with-jakarta-nosql/
 
+<a href="https://www.flaticon.com/free-icons/database" title="database icons">Database icons created by Freepik - Flaticon</a>
+
 
 <dependency>
         	<groupId>org.eclipse.jnosql.diana</groupId>
