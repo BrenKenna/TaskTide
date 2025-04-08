@@ -17,6 +17,9 @@ dependencies {
     // Jakarta CDI
     implementation 'jakarta.enterprise:jakarta.enterprise.cdi-api:4.0.1'
 
+    // Config
+    implementation 'org.eclipse.microprofile.config:microprofile-config-api:2.0'
+
     // JSON-B (de)Serialization
     implementation 'jakarta.json.bind:jakarta.json.bind-api:2.0.0' // For JSON-B serialization/deserialization
     implementation 'org.eclipse:yasson:3.0.3' // JSON-B implementation
