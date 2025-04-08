@@ -7,7 +7,7 @@
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)  
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue)  
 
-**TaskTide** is a modular, extensible **Pilot Job System** designed for modern **HPC**, **Grid**, and **Edge Computing** workloads. It enables execution of **ETL-style workflows** using dynamic tasks and supports **SQL**, **NoSQL**, and **Key-Value** database backends.
+**TaskTide** is a modular, **Pilot Job System** designed for modern **HPC**, **Grid**, and **Edge Computing** workloads. It enables execution of **ETL-style workflows** using dynamic tasks and supports **SQL**, **NoSQL**, and **Key-Value** database backends.
 
 ---
 
