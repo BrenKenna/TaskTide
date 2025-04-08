@@ -16,10 +16,13 @@ import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
 import jakarta.nosql.Id;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskState;
 
 
 /**
@@ -204,6 +207,68 @@ public class Workload {
         
         // Return flag
         return true;
+    }
+    
+    
+    /**
+     * Summarize ItemTasks by count of their TaskSate
+     * 
+     * @return Map-TaskState, Integer
+     */
+    public Map<TaskState, Integer> summarizeWorkload() {
+        
+        // Initialize results
+        Map<TaskState, Integer> results = new HashMap<>();
+        
+        // Fetch count of tasks for state
+        for( TaskState taskState : TaskState.values() ) {
+            int count = 0;
+            for ( ItemTask task : this.workload.values() ) {
+                if ( task.getTaskState().equals(taskState) ) {
+                    count++;
+                }
+            }
+            results.put(taskState, count);
+        }
+        
+        // Return results
+        return results;
+    }
+    
+    
+    /**
+     * Fetch tasks by their state
+     * 
+     * @return Map-TaskState, List-ItemTask
+     */
+    public Map<TaskState, List<ItemTask>> fetchByState() {
+    
+        // Initialize results
+        Map<TaskState, List<ItemTask>> results = new HashMap<>();
+        
+        // Fetch tasks by their state
+        for( TaskState taskState : TaskState.values() ) {
+            List<ItemTask> tasks = new ArrayList<>();
+            for ( ItemTask task : this.workload.values() ) {
+                if ( task.getTaskState().equals(taskState) ) {
+                    tasks.add(task);
+                }
+            }
+            results.put(taskState, tasks);
+        }
+        
+        // Return results
+        return results;
+    }
+    
+    
+    /**
+     * Get workload size
+     * 
+     * @return int
+     */
+    public int getWorkloadSize() {
+        return this.workload.size();
     }
     
     

@@ -4,6 +4,8 @@
  */
 package org.tasktide.core.model.task;
 
+import org.tasktide.core.model.workitem.ItemState;
+
 
 /**
  *
@@ -28,7 +30,11 @@ public enum TaskState {
         public boolean isState(TaskState taskState) {
             return PENDING == taskState;
         }
-    
+        
+        @Override
+        public ItemState mapToItemState() {
+            return ItemState.TODO;
+        }
     },
     
     ACTIVE {
@@ -46,7 +52,11 @@ public enum TaskState {
         public boolean isState(TaskState taskState) {
             return ACTIVE == taskState;
         }
-    
+        
+        @Override
+        public ItemState mapToItemState() {
+            return ItemState.LOCKED;
+        }
     },
     
     ERROR {
@@ -65,6 +75,10 @@ public enum TaskState {
             return ERROR == taskState;
         }
     
+        @Override
+        public ItemState mapToItemState() {
+            return ItemState.ERROR;
+        }
     },
     
     COMPLETE {
@@ -81,6 +95,11 @@ public enum TaskState {
         @Override
         public boolean isState(TaskState taskState) {
             return COMPLETE == taskState;
+        }
+        
+        @Override
+        public ItemState mapToItemState() {
+            return ItemState.ERROR;
         }
     };
     
@@ -110,6 +129,14 @@ public enum TaskState {
      * @return boolean
      */
     public abstract boolean isState(TaskState taskState);
+    
+    
+    /**
+     * Map TaskState to an ItemState
+     * 
+     * @return ItemState
+     */
+    public abstract ItemState mapToItemState();
     
     
     /**

@@ -15,7 +15,14 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
 import jakarta.nosql.Id;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskState;
 
 
 /**
@@ -157,6 +164,68 @@ public class WorkItem {
             output = false;
         }
         return output;
+    }
+    
+    
+    /**
+     * Get workload size
+     * 
+     * @return int
+     */
+    public int getWorkloadSize() {
+        return this.getWorkload().getWorkloadSize();
+    }
+    
+    
+    /**
+     * Summarize ItemTask by ItemState
+     * 
+     * @return Map-ItemState, Integer
+     */
+    public Map<ItemState, Integer> summarizeByState() {
+    
+        // Initialize vars
+        Map<ItemState, Integer> results = new HashMap<>();
+        Map<TaskState, Integer> counts = this.workload.summarizeWorkload();
+        
+        // Map to results
+        for ( Entry<TaskState, Integer> elm : counts.entrySet() ) {
+            results.put(elm.getKey().mapToItemState(), elm.getValue());
+        }
+        
+        // Return results
+        return results;
+    }
+    
+    
+    /**
+     * Fetch ItemTasks by their ItemState
+     * 
+     * @return Map-ItemState, List-ItemTask
+     */
+    public Map<ItemState, List<ItemTask>> fetchByStates() {
+    
+        // Initialize vars
+        Map<ItemState, List<ItemTask>> results = new HashMap<>();
+        Map<TaskState, List<ItemTask>> data = this.workload.fetchByState();
+        
+        // Map to results
+        for ( Entry<TaskState, List<ItemTask>> elm : data.entrySet() ) {
+            results.put(elm.getKey().mapToItemState(), elm.getValue());
+        }
+        
+        // Return results
+        return results;
+    }
+    
+    
+    /**
+     * Set task count fields
+     * 
+     */
+    public void setTaskCounts() {
+        this.setTaskCount();
+        this.setTaskDone();;
     }
     
     
@@ -321,6 +390,15 @@ public class WorkItem {
 
     
     /**
+     * Set task count from workload size
+     * 
+     */
+    public void setTaskCount() {
+        this.taskCount = this.getWorkloadSize();
+    }
+    
+    
+    /**
      * Get task done count
      * 
      * @return int
@@ -339,6 +417,16 @@ public class WorkItem {
         this.taskDone = taskDone;
     }
 
+    
+    /**
+     * Set task done count from summary
+     * 
+     */
+    public void setTaskDone() {
+        Map<ItemState, Integer> data = this.summarizeByState();
+        this.taskDone = data.get(ItemState.DONE);
+    }
+    
     
     /**
      * Get workload

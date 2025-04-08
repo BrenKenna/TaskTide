@@ -4,6 +4,8 @@
  */
 package org.tasktide.core.model.workitem;
 
+import org.tasktide.core.model.task.TaskState;
+
 /**
  * 
  * Enumeration of valid item states of ToDo, Locked, Done, Error
@@ -27,7 +29,11 @@ public enum ItemState {
         public String toString() {
             return "ToDo";
         }
-    
+
+        @Override
+        public TaskState mapToTaskState() {
+            return TaskState.PENDING;
+        }
     },
     
     LOCKED {
@@ -46,6 +52,10 @@ public enum ItemState {
             return "Locked";
         }
         
+        @Override
+        public TaskState mapToTaskState() {
+            return TaskState.ACTIVE;
+        }
     },
     
     DONE {
@@ -64,6 +74,10 @@ public enum ItemState {
             return "Done";
         }
     
+        @Override
+        public TaskState mapToTaskState() {
+            return TaskState.COMPLETE;
+        }
     },
     
     ERROR {
@@ -80,6 +94,11 @@ public enum ItemState {
         @Override
         public String toString() {
             return "Error";
+        }
+        
+        @Override
+        public TaskState mapToTaskState() {
+            return TaskState.ERROR;
         }
     };
     
@@ -100,6 +119,15 @@ public enum ItemState {
      * @return boolean
      */
     public abstract boolean isState(ItemState query);
+    
+    
+    /**
+     * Map ItemState to a TaskState
+     * 
+     * @param task
+     * @return TaskState
+     */
+    public abstract TaskState mapToTaskState();
     
     
     /**

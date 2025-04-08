@@ -17,6 +17,9 @@ import java.util.Date;
 import java.util.Random;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -297,6 +300,40 @@ public class Utils {
         return rand.nextInt(limit);
     }
 
+    
+    /**
+     * Wait random amount of seconds up to limit
+     * 
+     * @param amount
+     * @return boolean
+     */
+    public boolean waitSeconds(int amount) {
+        amount = this.getRandInt(amount) + 1;
+        try {
+            TimeUnit.SECONDS.sleep(amount);
+            return true;
+        } catch (InterruptedException ex) {
+            return false;
+        }
+    }
+    
+    
+    /**
+     * Wait random amount of milliseconds up to limit
+     * 
+     * @param amount
+     * @return boolean
+     */
+    public boolean waitMilliSeconds(int amount) {
+        amount = this.getRandInt(amount) + 1;
+        try {
+            TimeUnit.MILLISECONDS.sleep(amount);
+            return true;
+        } catch (InterruptedException ex) {
+            return false;
+        }
+    }
+    
     
     /**
      * Fetch this random instance

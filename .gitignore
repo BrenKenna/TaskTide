@@ -7,3 +7,4 @@ tasktide/*/build/reports/
 tasktide/*/build/test-results/
 .gitignore
 .secret/
+TaskTide.zip
