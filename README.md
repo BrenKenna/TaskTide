@@ -27,12 +27,12 @@
 
 ## 🧱 Architecture
 
-```text
-
 - **Core Model** – Defines the stateful task and workflow data structure.
 - **Engine** – The CLI-based executor that processes and tracks WorkItems and their tasks.
 - **Manager** – Provides access and services for workflows and persistence.
 - **REST API & gRPC** – Interfaces for external control and integration.
+
+```text
 
 +------------------+     +-------------------+     +--------------------+
 |   REST / gRPC    | <-- |      Manager      | <-- |      Database      |
