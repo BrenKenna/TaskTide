@@ -32,7 +32,7 @@ public interface RepositoryInterface<T> {
      * @param model
      * @return T
      */
-    public Object insertModel(T model);
+    public T insertModel(T model);
     
     
     /**
@@ -41,7 +41,7 @@ public interface RepositoryInterface<T> {
      * @param model
      * @return T
      */
-    public Object updateModel(T model);
+    public T updateModel(T model);
     
     
     /**
@@ -60,7 +60,7 @@ public interface RepositoryInterface<T> {
      * @param value
      * @return List-T
      */
-    public List<T> findByField(String field, T value);
+    public List<T> findByField(String field, Object value);
     
     
     /**
@@ -68,5 +68,5 @@ public interface RepositoryInterface<T> {
      * 
      * @return List-T
      */
-    public List<T> finAll();
+    public List<T> findAll();
 }

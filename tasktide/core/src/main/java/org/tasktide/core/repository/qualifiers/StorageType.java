@@ -4,10 +4,43 @@
  */
 package org.tasktide.core.repository.qualifiers;
 
+import jakarta.nosql.document.DocumentTemplate;
+
+
 /**
  *
+ * Enum to hold valid StorageTypes
+ * 
  * @author bkenna
  */
 public enum StorageType {
-    NOSQL, SQL, INMEM
+    
+    MONGODB {
+        @Override
+        public DocumentTemplate createTemplate() {
+            return null;
+        }
+    },
+    
+    DYNAMODB {
+        @Override
+        public DocumentTemplate createTemplate() {
+            return null;
+        }
+    },
+    
+    COUCHDB {
+        @Override
+        public DocumentTemplate createTemplate() {
+            return null;
+        }
+    };
+    
+    
+    /**
+     * Create DocumentTemplate based on enum value
+     * 
+     * @return DocumentTemplate
+     */
+    public abstract DocumentTemplate createTemplate();
 }

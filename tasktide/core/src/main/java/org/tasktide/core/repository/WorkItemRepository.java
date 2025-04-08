@@ -7,69 +7,42 @@ package org.tasktide.core.repository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
-import jakarta.nosql.document.DocumentTemplate;
 import java.util.List;
 
-import java.util.Optional;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
-
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.supporting.Utils;
 
 
 /**
  *
+ * WorkItem repository
  * 
  * @author bkenna
  */
 @ApplicationScoped
-public class WorkItemRepository {
-    
-    @Inject
-    private DocumentTemplate template;
-    private final Class<WorkItem> COLLECTION_CLASS = WorkItem.class;
-    private final String COLLECTION = "WorkItem";
-    
-    private final Utils utils = new Utils();
-    private final int LOCKING_WAIT_TIME = 4;
+public class WorkItemRepository extends ModelRepository<WorkItem> {
     
     
     /**
-     * Fetch WorkItem by its Id
-     * 
-     * @param id
-     * @return WorkItem
+     * Construct with class & collection fields, injecting DocumentTemaplte
      */
-    public Optional<WorkItem> findById(String id) {
-        return template.find(COLLECTION_CLASS, id);
+    @Inject
+    public WorkItemRepository() {
+        super(WorkItem.class, "WorkItem");
     }
     
     
     /**
      * Find WorkItems by state
      * 
-     * @param state
+     * @param itemState
      * @return List-WorkItem
      */
-    public List<WorkItem> findByState(ItemState state) {
-        return template.select(COLLECTION_CLASS)
-                .where("itemName")
-                .eq(state)
-                .result();
+    public List<WorkItem> findByState(ItemState itemState) {
+        return findByField("itemSate", itemState);
     }
-    
-    
-    /**
-     * Insert WorkItem
-     * 
-     * @param workItem
-     * @return WorkItem
-     */
-    public WorkItem insertItem(WorkItem workItem) {
-        return template.insert(workItem);
-    }
-    
+
     
     /**
      * Add task to a WorkItem
@@ -84,30 +57,7 @@ public class WorkItemRepository {
         if ( !workItem.addTask(task) ) {
             return null;
         }
-        return template.update(workItem);
-    }
-    
-    
-    /**
-     * Update a WorkItem
-     * 
-     * @param workItem
-     * @return 
-     */
-    public WorkItem updateWorkItem(WorkItem workItem) {
-        return template.update(workItem);
-    }
-    
-    
-    /**
-     * Delete WorkItem with Id
-     * 
-     * @param id
-     * @return 
-     */
-    public boolean deleteWorkItem(String id) {
-        template.delete(COLLECTION_CLASS, id);
-        return findById(id).isPresent();
+        return updateModel(workItem);
     }
     
     
@@ -118,25 +68,7 @@ public class WorkItemRepository {
      * @return List-WorkItem
      */
     public List<WorkItem> findByName(String itemName) {
-        return template.select(COLLECTION_CLASS)
-                .where("itemName")
-                .eq(itemName)
-                .result();
-    }
-    
-    
-    /**
-     * Generic method to find list of WorkItems by field equally value
-     * 
-     * @param field
-     * @param value
-     * @return List-WorkItem
-     */
-    public List<WorkItem> findByField(String field, Object value) {
-        return template.select(COLLECTION_CLASS)
-                .where(field)
-                .eq(value)
-                .result();
+        return findByField("itemName", itemName);
     }
     
     
@@ -152,7 +84,7 @@ public class WorkItemRepository {
         String lockId = utils.generateToken();
         workItem.setLockId(lockId);
         workItem.setLockDate(utils.getDateLong());
-        return template.update(workItem);
+        return updateModel(workItem);
     }
     
     
@@ -167,6 +99,6 @@ public class WorkItemRepository {
         // Set done fields
         workItem.setDoneDate(utils.getDateLong());
         workItem.setTaskCounts();
-        return template.update(workItem);
+        return updateModel(workItem);
     }
 }
