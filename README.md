@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo1.png" alt="TaskTide Logo" width="300"/>
+  <img src="tasktide/docs/assets/logo1.png" alt="TaskTide Logo" width="300"/>
 </p>
 
 # TaskTide
@@ -15,7 +15,7 @@
 
 - 🛠️ **Pilot Job Execution Model** – Tasks are dynamically scheduled and executed inside long-running jobs.
 - 🔄 **ETL-Friendly**: Tasks are treated as extraction, transformation, or loading scripts/programs.
-- <img src="docs/assets/database.png" alt="Database Icon from 'https://www.flaticon.com/free-icons/database'" width="18"/> **Backend Agnostic** – Works with Document (e.g. MongoDB), Relational (e.g. PostgreSQL), and Key-Value (e.g. Redis) stores.
+- <img src="tasktide/docs/assets/database.png" alt="Database Icon from 'https://www.flaticon.com/free-icons/database'" width="18"/> **Backend Agnostic** – Works with Document (e.g. MongoDB), Relational (e.g. PostgreSQL), and Key-Value (e.g. Redis) stores.
 - 💻 **Native Task Execution** – Runs any local or system executable/script.
 - 🔀 **Nested Workflow Modeling** – Compose tasks into hierarchical workflows using a flexible domain model.
 - 🌐 **REST & gRPC Interfaces** – Remote control and orchestration through pluggable APIs.
