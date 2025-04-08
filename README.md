@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="tasktide/docs/assets/logo1.png" alt="TaskTide Logo" width="300"/>
+  <img src="tasktide/docs/assets/logo1.jpg" alt="TaskTide Logo" width="300"/>
 </p>
 
 # TaskTide
