@@ -90,7 +90,7 @@ public class TaskGenerator {
     public List< Map<String, String> > getRandSeqs(int num) {
         List< Map<String, String> > output = new ArrayList<>();
         for (int i = 0; i <= num; i++ ) {
-            Map<String, String> task = getSeqCmd(130);
+            Map<String, String> task = getSeqCmd(utils.getRandInt(100));
             Map<String, String> insert = new HashMap<>();
             insert.put(task.keySet().toArray()[0] + "-" + num, (String) task.values().toArray()[0]);
             output.add(insert);
