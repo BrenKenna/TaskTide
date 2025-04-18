@@ -4,10 +4,10 @@
  */
 package org.tasktide.core.repository;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
+import jakarta.nosql.Template;
 
-import jakarta.nosql.document.DocumentTemplate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,20 +16,17 @@ import org.tasktide.core.supporting.Utils;
 
 /**
  * 
- * DocumentTemplate Model Repository adding utility and collection info
+ * Template Model Repository adding utility and collection info
  * 
  * @author bkenna
  */
-@ApplicationScoped
+@Dependent
 public abstract class ModelRepository<T> implements RepositoryInterface<T> {
     
-    @Inject
-    protected DocumentTemplate template;
+    // Attributes
+    protected final Template template;
     protected final Class<T> COLLECTION_CLASS;
     protected final String collectionName;
-    
-    protected final Utils utils = new Utils();
-    protected final int LOCKING_WAIT_TIME = 4;
     
     
     /**
@@ -38,7 +35,8 @@ public abstract class ModelRepository<T> implements RepositoryInterface<T> {
      * @param modelClass
      * @param collectionName 
      */
-    public ModelRepository(Class<T> modelClass, String collectionName) {
+    public ModelRepository(Template template, Class<T> modelClass, String collectionName) {
+        this.template = template;
         this.COLLECTION_CLASS = modelClass;
         this.collectionName = collectionName;
     }
@@ -117,7 +115,4 @@ public abstract class ModelRepository<T> implements RepositoryInterface<T> {
     public List<T> findAll() {
         return template.select(COLLECTION_CLASS).result();
     }
-    
-    
-    
 }

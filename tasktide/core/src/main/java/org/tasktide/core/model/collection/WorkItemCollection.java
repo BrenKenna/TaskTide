@@ -25,11 +25,12 @@ import org.tasktide.core.model.workitem.WorkItem;
 /**
  *
  * Model class for storing a collection of work items
+ *      => This could be an internal class?
  * 
  * @author bkenna
  */
-@Dependent
 @Entity
+@Dependent
 public class WorkItemCollection {
     
     @Id

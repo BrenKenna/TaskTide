@@ -9,3 +9,5 @@ tasktide/*/build/test-results/
 .secret/
 TaskTide.zip
 Notes.txt
+tasktide/core/src/main/java/org/tasktide/core/repository/qualifiers/
+tasktide/core/src/main/java/org/tasktide/core/repository/producers/

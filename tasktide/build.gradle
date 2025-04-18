@@ -10,7 +10,6 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven { url 'https://repo.eclipse.org/content/repositories/ee4j-releases/' }
     }
 }
 

@@ -12,9 +12,7 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
+import jakarta.nosql.Embeddable;
 
 
 /**
@@ -23,19 +21,16 @@ import jakarta.nosql.Id;
  * 
  * @author bkenna
  */
-@Entity
+@Embeddable
 @Dependent
 public class ProcessLog {
     
-    @Id
     @JsonbProperty("Id")
     private String id;
     
-    @Column
     @JsonbProperty("Stdout")
     private String[] stdout;
     
-    @Column
     @JsonbProperty("Stderr")
     private String[] stderr;
     

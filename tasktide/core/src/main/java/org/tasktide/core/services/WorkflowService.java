@@ -4,15 +4,12 @@
  */
 package org.tasktide.core.services;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
-import jakarta.nosql.document.DocumentTemplate;
-
 import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.repository.ModelRepository;
+import org.tasktide.core.supporting.Utils;
 
 
 /**
@@ -21,13 +18,27 @@ import org.tasktide.core.model.collection.Workflow;
  * 
  * @author bkenna
  */
-@ApplicationScoped
+@Dependent
 public class WorkflowService {
     
     // Attributes
+    private final ModelRepository<Workflow> repo;
+    private final Utils utils;
+    
+    
+    /**
+     * Construct with repo for testing
+     * 
+     * @param repo 
+     */
     @Inject
-    private DocumentTemplate template;
-    private final String COLLECTION = "Workflow";
-    private final Class COLLECTION_CLASS = Workflow.class;
-    private static final Logger logger = LogManager.getLogger(WorkflowService.class);
+    public WorkflowService(ModelRepository<Workflow> repo) {
+        this.repo = repo;
+        this.utils = new Utils();
+    }
+
+    
+    public ModelRepository<Workflow> getRepo() {
+        return repo;
+    }
 }

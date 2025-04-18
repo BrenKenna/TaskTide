@@ -12,9 +12,7 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
+import jakarta.nosql.Embeddable;
 
 import org.tasktide.core.model.task.TaskState;
 
@@ -25,31 +23,25 @@ import org.tasktide.core.model.task.TaskState;
  * 
  * @author bkenna
  */
-@Entity
+@Embeddable
 @Dependent
 public class Step {
     
-    @Id
     @JsonbProperty("Step Id")
     private String stepId;
     
-    @Column
     @JsonbProperty("Step Name")
     private String stepName;
     
-    @Column
     @JsonbProperty("Step State")
     private TaskState stepState;
     
-    @Column
     @JsonbProperty("Step Count")
     private int stepCount;
     
-    @Column
     @JsonbProperty("Steps Locked")
     private int stepsLocked;
     
-    @Column
     @JsonbProperty("Steps Done")
     private int stepsDone;
     

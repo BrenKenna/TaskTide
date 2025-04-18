@@ -27,8 +27,8 @@ import java.util.Map;
  * 
  * @author bkenna
  */
-@Dependent
 @Entity
+@Dependent
 public class Workflow {
     
     @Id

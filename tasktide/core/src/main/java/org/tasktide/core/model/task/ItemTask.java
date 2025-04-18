@@ -12,9 +12,7 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
+import jakarta.nosql.Embeddable;
 
 
 /**
@@ -23,27 +21,22 @@ import jakarta.nosql.Id;
  * 
  * @author bkenna
  */
-@Entity
+@Embeddable
 @Dependent
 public class ItemTask {
     
-    @Id
     @JsonbProperty("Id")
     private String id;
     
-    @Column
     @JsonbProperty("Task Name")
     private String taskName;
     
-    @Column
     @JsonbProperty("Task")
     private String task;
     
-    @Column
     @JsonbProperty("Task State")
     private TaskState taskState;
     
-    @Column
     @JsonbProperty("Task Log")
     private TaskLogging taskLog;
 

@@ -12,9 +12,7 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
+import jakarta.nosql.Embeddable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,23 +28,19 @@ import org.tasktide.core.model.task.TaskState;
  * 
  * @author bkenna
  */
-@Entity
+@Embeddable
 @Dependent
 public class Workload {
     
-    @Id
     @JsonbProperty("Id")
     private String id;
     
-    @Column
     @JsonbProperty("Workload")
     private Map<String, ItemTask> workload;
     
-    @Column
     @JsonbProperty("Workload State")
     private ItemState workloadState;
     
-    @Column
     @JsonbProperty("Workload Type")
     private ItemType workloadType;
     

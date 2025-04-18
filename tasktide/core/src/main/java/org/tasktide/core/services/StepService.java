@@ -4,15 +4,12 @@
  */
 package org.tasktide.core.services;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
-import jakarta.nosql.document.DocumentTemplate;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.repository.ModelRepository;
+import org.tasktide.core.supporting.Utils;
 
 
 /**
@@ -21,13 +18,26 @@ import org.tasktide.core.model.collection.Step;
  * 
  * @author bkenna
  */
-@ApplicationScoped
+@Dependent
 public class StepService {
     
     // Attributes
+    private final ModelRepository<Step> repo;
+    private final Utils utils;
+    
+    /**
+     * Construct with repo for testing
+     * 
+     * @param repo 
+     */
     @Inject
-    private DocumentTemplate template;
-    private final String COLLECTION = "Step";
-    private final Class COLLECTION_CLASS = Step.class;
-    private static final Logger logger = LogManager.getLogger(StepService.class);
+    public StepService(ModelRepository<Step> repo) {
+        this.repo = repo;
+        this.utils = new Utils();
+    }
+
+    
+    public ModelRepository<Step> getRepo() {
+        return repo;
+    }
 }

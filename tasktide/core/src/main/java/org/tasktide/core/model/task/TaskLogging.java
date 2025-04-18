@@ -12,9 +12,7 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
+import jakarta.nosql.Embeddable;
 
 import java.util.Optional;
 import java.time.Duration;
@@ -26,35 +24,28 @@ import java.time.Duration;
  * 
  * @author bkenna
  */
-@Entity
+@Embeddable
 @Dependent
 public class TaskLogging {
     
-    @Id
     @JsonbProperty("Id")
     private String id;
     
-    @Column
     @JsonbProperty("Process Id")
     private long procId;
     
-    @Column
     @JsonbProperty("Process Log")
     private ProcessLog procLog;
     
-    @Column
     @JsonbProperty("Start Time")
     private long startTime;
     
-    @Column
     @JsonbProperty("End Time")
     private long endTime;
     
-    @Column
     @JsonbProperty("Thread Name")
     private String threadName;
     
-    @Column
     @JsonbProperty("CPU Duration")
     private long cpuDuration;
 
