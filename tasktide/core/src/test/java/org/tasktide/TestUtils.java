@@ -20,9 +20,10 @@ import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
-import org.tasktide.supplemental.TaskGenerator.Task;
-import org.tasktide.supplemental.TaskGenerator.TaskGenerator;
-import org.tasktide.supplemental.TaskGenerator.TaskType;
+
+import org.tasktide.core.supporting.generator.TaskGenerator;
+import org.tasktide.core.supporting.generator.TaskType;
+
 
 
 /**
