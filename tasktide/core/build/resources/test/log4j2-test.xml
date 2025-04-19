@@ -18,6 +18,8 @@
             <AppenderRef ref="STDOUT"/>
             <AppenderRef ref="LOGFILE"/>
         </Logger>
+        
+        <logger name="org.eclipse.jnosql.databases.mongodb" level="DEBUG"/>
 
         <!-- Root Logger -->
         <Root level="INFO">

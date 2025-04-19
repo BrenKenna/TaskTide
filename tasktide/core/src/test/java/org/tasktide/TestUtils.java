@@ -25,7 +25,6 @@ import org.tasktide.core.supporting.generator.TaskGenerator;
 import org.tasktide.core.supporting.generator.TaskType;
 
 
-
 /**
  *
  * Utility to help testing model classes

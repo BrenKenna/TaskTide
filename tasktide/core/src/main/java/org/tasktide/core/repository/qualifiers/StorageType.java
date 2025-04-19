@@ -12,12 +12,12 @@ import org.eclipse.jnosql.communication.Settings;
 import org.eclipse.jnosql.databases.mongodb.communication.MongoDBDocumentConfiguration;
 import org.eclipse.jnosql.databases.mongodb.communication.MongoDBDocumentManagerFactory;
 import org.eclipse.jnosql.databases.mongodb.communication.MongoDBDocumentManager;
-import org.eclipse.jnosql.databases.mongodb.mapping.MongoDBTemplate;
-
-import org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentConfiguration;
-import org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentManager;
-import org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentManagerFactory;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
+
+//import org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentConfiguration;
+//import org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentManager;
+//import org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentManagerFactory;
+//import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
@@ -33,11 +33,7 @@ public enum StorageType {
     MONGODB {
         @Override
         public DocumentTemplate createTemplate(String database) {
-            MongoDBDocumentConfiguration config = new MongoDBDocumentConfiguration();
-            MongoDBDocumentManagerFactory fact = config.apply( this.makeSettings() );
-            MongoDBDocumentManager manager = fact.apply(database);
-            DocumentTemplate template = null;
-            return template;
+            return null;
         }
 
         @Override
@@ -107,9 +103,9 @@ public enum StorageType {
     COUCHDB {
         @Override
         public DocumentTemplate createTemplate(String database) {
-            CouchDBDocumentConfiguration config = new CouchDBDocumentConfiguration();
-            CouchDBDocumentManagerFactory fact = config.apply(null);
-            CouchDBDocumentManager manager = fact.apply(database);
+            //CouchDBDocumentConfiguration config = new CouchDBDocumentConfiguration();
+            //CouchDBDocumentManagerFactory fact = config.apply(null);
+            //CouchDBDocumentManager manager = fact.apply(database);
             return null;
         }
         

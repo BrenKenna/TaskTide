@@ -4,9 +4,10 @@
  */
 package org.tasktide.core.supporting.generator;
 
-import com.arangodb.shaded.vertx.core.impl.Utils;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.tasktide.core.supporting.Utils;
 
 
 /**

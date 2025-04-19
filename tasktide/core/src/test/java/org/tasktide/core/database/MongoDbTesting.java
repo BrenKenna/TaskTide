@@ -57,7 +57,7 @@ public class MongoDbTesting {
     private SeContainer container;
     
     @Inject
-    private Template template;
+    private MongoDBTemplate template;
     
     public MongoDbTesting() {
     }
@@ -72,6 +72,7 @@ public class MongoDbTesting {
         container = SeContainerInitializer.newInstance().initialize();
         logger.info(container.isRunning());
         template = container.select(MongoDBTemplate.class).get();
+        logger.info("MongoDB template state" + template == null);
     }
     
     @AfterAll
@@ -99,7 +100,6 @@ public class MongoDbTesting {
     @Test
     @Order(0)
     void shouldInjectMongoDBTemplate() {
-        MongoDBTemplate  tmp = (MongoDBTemplate) template;
         Assertions.assertNotNull(template);
     }
     
@@ -109,16 +109,16 @@ public class MongoDbTesting {
      */
     @Test
     @Order(2)
-    public void connectionTest() {
+    public void shouldInsertRecord() {
     
         // Fetch document template
         logger.info("\n\n================ Injected Connection Test ================\n");
         boolean assertionState = true;
-        logger.info("\n\nCreated template:\n" + template.toString());
-        
+        logger.info("\n\nCreated template:\n" + template);
         
         // Make a music record
         Tunes song = new Tunes();
+        song.setId("Id");
         song.setName("Imagine");
         song.setArtist("John Lennon");
         logger.info("\n\nDisplaying record for import:\n" + song);

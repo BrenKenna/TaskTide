@@ -6,7 +6,7 @@ package org.tasktide.core.database;
 
 import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
+// import jakarta.nosql.Id;
 
 // import jakarta.nosql.Convert;
 // import org.eclipse.jnosql.databases.mongodb.mapping.ObjectIdConverter;
@@ -19,8 +19,6 @@ import jakarta.nosql.Id;
 @Entity("Tunes")
 public class Tunes {
     
-    @Id
-    //@Convert(ObjectIdConverter.class)
     private String id;
     
     @Column
