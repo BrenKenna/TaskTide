@@ -11,6 +11,7 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.nosql.Column;
 
 import jakarta.nosql.Embeddable;
 
@@ -28,24 +29,37 @@ import java.time.Duration;
 @Dependent
 public class TaskLogging {
     
+    @Column
     @JsonbProperty("Id")
-    private String id;
+    private String taskLogId;
     
+    
+    @Column
     @JsonbProperty("Process Id")
     private long procId;
     
+    
+    @Column
     @JsonbProperty("Process Log")
     private ProcessLog procLog;
     
+    
+    @Column
     @JsonbProperty("Start Time")
     private long startTime;
     
+    
+    @Column
     @JsonbProperty("End Time")
     private long endTime;
     
+    
+    @Column
     @JsonbProperty("Thread Name")
     private String threadName;
     
+    
+    @Column
     @JsonbProperty("CPU Duration")
     private long cpuDuration;
 
@@ -80,7 +94,7 @@ public class TaskLogging {
     /**
      * Constructor for JSON Deserialization
      * 
-     * @param id
+     * @param taskLogId
      * @param procId
      * @param procLog
      * @param startTime
@@ -90,7 +104,7 @@ public class TaskLogging {
      */
     @JsonbCreator
     public TaskLogging(
-        @JsonbProperty("Id") String id,
+        @JsonbProperty("Id") String taskLogId,
         @JsonbProperty("Process Id") long procId,
         @JsonbProperty("Process Log") ProcessLog procLog,
         @JsonbProperty("Start Time") long startTime,
@@ -98,7 +112,7 @@ public class TaskLogging {
         @JsonbProperty("Thread Name") String threadName,
         @JsonbProperty("CPU Duration") long cpuDuration
     ) {
-        this.id = id;
+        this.taskLogId = taskLogId;
         this.procId = procId;
         this.procLog = procLog;
         this.startTime = startTime;
@@ -114,17 +128,19 @@ public class TaskLogging {
      * @return String
      */
     public String getId() {
-        return id;
+        return taskLogId;
     }
 
+    
     /**
      * Set Id
      * 
      * @param id 
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String taskLogId) {
+        this.taskLogId = taskLogId;
     }
+    
     
     /**
      * Get process Id
@@ -135,6 +151,7 @@ public class TaskLogging {
         return procId;
     }
 
+    
     /**
      * Set process Id
      * 
@@ -244,6 +261,7 @@ public class TaskLogging {
         this.cpuDuration = cpuDuration;
     }
     
+    
     /**
      * Set CPU duration
      * 
@@ -262,7 +280,7 @@ public class TaskLogging {
     @Override
     public String toString() {
         return "TaskLogging{" +
-            "id=" + id +
+            "taskLogId=" + taskLogId +
             ", procId=" + procId +
             ", procLog=" + procLog.toString() +
             ", startTime=" + startTime +

@@ -36,9 +36,4 @@ public class WorkflowService {
         this.repo = repo;
         this.utils = new Utils();
     }
-
-    
-    public ModelRepository<Workflow> getRepo() {
-        return repo;
-    }
 }

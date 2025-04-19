@@ -33,6 +33,7 @@ public class WorkItemService {
     private final Utils utils;
     private final int LOCKING_WAIT_TIME;
     
+    
     /**
      * Construct with configurable wait time
      * 
@@ -119,14 +120,12 @@ public class WorkItemService {
         return repo.findByField("itemName", itemName);
     }
 
-    public ModelRepository<WorkItem> getRepo() {
-        return repo;
-    }
-
-    public Utils getUtils() {
-        return utils;
-    }
-
+    
+    /**
+     * Get lock wait time
+     * 
+     * @return int 
+     */
     public int getLockWaitTime() {
         return LOCKING_WAIT_TIME;
     }

@@ -94,7 +94,7 @@ public class WorkItem {
      * @param itemType
      * @param itemState
      * @param lockId
-     * @param longDate
+     * @param lockDate
      * @param doneDate
      * @param taskCount
      * @param taskDone
@@ -108,7 +108,7 @@ public class WorkItem {
         @JsonbProperty("Item Type") ItemType itemType,
         @JsonbProperty("Item State") ItemState itemState,
         @JsonbProperty("Lock Id") String lockId,
-        @JsonbProperty("Lock Date") long longDate,
+        @JsonbProperty("Lock Date") long lockDate,
         @JsonbProperty("Done Date") long doneDate,
         @JsonbProperty("Task Count") int taskCount,
         @JsonbProperty("Task Done") int taskDone,
@@ -225,7 +225,7 @@ public class WorkItem {
      */
     public void setTaskCounts() {
         this.setTaskCount();
-        this.setTaskDone();;
+        this.setTaskDone();
     }
     
     
@@ -469,29 +469,6 @@ public class WorkItem {
 
     
     /**
-     * Represent work item as string
-     * 
-     * @return 
-     */
-    @Override
-    public String toString() {
-        return "WorkItem{" +
-           "id=" + id +
-           ", itemName=" + itemName +
-           ", itemType=" + itemType +
-           ", itemState=" + itemState +
-           ", lockId=" + lockId +
-           ", lockDate=" + lockDate +
-           ", doneDate=" + doneDate +
-           ", taskCount=" + taskCount +
-           ", taskDone=" + taskDone +
-           ", workload=" + workload +
-           ", stepName=" + stepName +
-        '}';
-    }
-    
-    
-    /**
      * Serialize to JSON string
      * 
      * @return String
@@ -511,5 +488,28 @@ public class WorkItem {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);
+    }
+    
+    
+    /**
+     * Represent work item as string
+     * 
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return "WorkItem{" +
+           "id=" + id +
+           ", itemName=" + itemName +
+           ", itemType=" + itemType +
+           ", itemState=" + itemState +
+           ", lockId=" + lockId +
+           ", lockDate=" + lockDate +
+           ", doneDate=" + doneDate +
+           ", taskCount=" + taskCount +
+           ", taskDone=" + taskDone +
+           ", workload=" + workload +
+           ", stepName=" + stepName +
+        '}';
     }
 }

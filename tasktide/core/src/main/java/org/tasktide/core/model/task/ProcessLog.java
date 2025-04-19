@@ -11,6 +11,7 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.nosql.Column;
 
 import jakarta.nosql.Embeddable;
 
@@ -25,12 +26,16 @@ import jakarta.nosql.Embeddable;
 @Dependent
 public class ProcessLog {
     
+    @Column
     @JsonbProperty("Id")
-    private String id;
+    private String procLogId;
     
+    
+    @Column
     @JsonbProperty("Stdout")
     private String[] stdout;
     
+    @Column
     @JsonbProperty("Stderr")
     private String[] stderr;
     
@@ -56,17 +61,17 @@ public class ProcessLog {
     /**
      * Constructor for JSON Deserialization
      * 
-     * @param id
+     * @param procLogId
      * @param stdout
      * @param stderr 
      */
     @JsonbCreator
     public ProcessLog(
-        @JsonbProperty("Id") String id,
+        @JsonbProperty("Id") String procLogId,
         @JsonbProperty("Stdout") String[] stdout,
         @JsonbProperty("Stderr") String[] stderr
     ) {
-        this.id = id;
+        this.procLogId = procLogId;
         this.stdout = stdout;
         this.stderr = stderr;
     }
@@ -78,7 +83,7 @@ public class ProcessLog {
      * @return String 
      */
     public String getId() {
-        return id;
+        return procLogId;
     }
 
     
@@ -87,8 +92,8 @@ public class ProcessLog {
      * 
      * @param id 
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String procLogId) {
+        this.procLogId = procLogId;
     }
     
     
@@ -140,7 +145,7 @@ public class ProcessLog {
     @Override
     public String toString() {
         return "ProcessLog{" +
-            "id=" + id +
+            "procLogId=" + procLogId +
             ", stdout=" + stdout +
             ", stderr=" + stderr +
         '}';

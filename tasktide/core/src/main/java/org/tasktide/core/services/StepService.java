@@ -25,6 +25,7 @@ public class StepService {
     private final ModelRepository<Step> repo;
     private final Utils utils;
     
+    
     /**
      * Construct with repo for testing
      * 
@@ -34,10 +35,5 @@ public class StepService {
     public StepService(ModelRepository<Step> repo) {
         this.repo = repo;
         this.utils = new Utils();
-    }
-
-    
-    public ModelRepository<Step> getRepo() {
-        return repo;
     }
 }

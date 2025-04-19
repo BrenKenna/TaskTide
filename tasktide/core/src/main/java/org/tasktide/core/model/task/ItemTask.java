@@ -11,6 +11,7 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.nosql.Column;
 
 import jakarta.nosql.Embeddable;
 
@@ -25,18 +26,27 @@ import jakarta.nosql.Embeddable;
 @Dependent
 public class ItemTask {
     
+    @Column
     @JsonbProperty("Id")
-    private String id;
+    private String itemTaskId;
     
+    
+    @Column
     @JsonbProperty("Task Name")
     private String taskName;
     
+    
+    @Column
     @JsonbProperty("Task")
     private String task;
     
+    
+    @Column
     @JsonbProperty("Task State")
     private TaskState taskState;
     
+    
+    @Column
     @JsonbProperty("Task Log")
     private TaskLogging taskLog;
 
@@ -69,21 +79,21 @@ public class ItemTask {
     /**
      * Constructor for JSON Deserialization
      * 
-     * @param id
+     * @param itemTaskId
      * @param taskName
      * @param task 
      * @param taskState
-     * @param TaskLogging
+     * @param taskLog
      */
     @JsonbCreator
     public ItemTask(
-        @JsonbProperty("Id") String id,
+        @JsonbProperty("Id") String itemTaskId,
         @JsonbProperty("Task Name") String taskName,
         @JsonbProperty("Task") String task,
         @JsonbProperty("Task State") TaskState taskState,
         @JsonbProperty("Task Log") TaskLogging taskLog
     ) {
-        this.id = id;
+        this.itemTaskId = itemTaskId;
         this.taskName = taskName;
         this.task = task;
         this.taskState = taskState;
@@ -108,7 +118,7 @@ public class ItemTask {
      * @return String 
      */
     public String getId() {
-        return id;
+        return itemTaskId;
     }
 
     
@@ -117,8 +127,8 @@ public class ItemTask {
      * 
      * @param id 
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String itemTaskId) {
+        this.itemTaskId = itemTaskId;
     }
 
     
@@ -210,7 +220,7 @@ public class ItemTask {
     @Override
     public String toString() {
         return "ItemTask{" + 
-            "id=" + id +
+            "itemTaskId=" + itemTaskId +
             ", taskName=" + taskName +
             ", taskState=" + taskState +
             ", taskLog=" + taskLog +

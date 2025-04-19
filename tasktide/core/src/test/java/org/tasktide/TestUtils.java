@@ -1,9 +1,8 @@
-package org.tasktide;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package org.tasktide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,8 @@ import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+import org.tasktide.supplemental.TaskGenerator.Task;
+import org.tasktide.supplemental.TaskGenerator.TaskType;
 
 
 /**
@@ -119,4 +120,32 @@ public class TestUtils {
                 .build();
     }
    
+    
+    /**
+     * Fetch seq task
+     * 
+     */
+    public Task getSeqTask() {
+        return TaskType.SEQ.createTask();
+    }
+    
+    
+    /**
+     * Fetch seq task
+     * 
+     */
+    public Task getPingTask() {
+        return TaskType.PING.createTask();
+    }
+    
+    
+    /**
+     * Fetch required task
+     * 
+     * @param taskType
+     * @return Task
+     */
+    public Task getTask(TaskType taskType) {
+        return taskType.createTask();
+    }
 }

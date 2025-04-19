@@ -11,6 +11,7 @@ import jakarta.json.bind.JsonbConfig;
 
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.nosql.Column;
 
 import jakarta.nosql.Embeddable;
 
@@ -32,15 +33,22 @@ import org.tasktide.core.model.task.TaskState;
 @Dependent
 public class Workload {
     
+    @Column
     @JsonbProperty("Id")
-    private String id;
+    private String workloadId;
     
+    
+    @Column
     @JsonbProperty("Workload")
     private Map<String, ItemTask> workload;
     
+    
+    @Column
     @JsonbProperty("Workload State")
     private ItemState workloadState;
     
+    
+    @Column
     @JsonbProperty("Workload Type")
     private ItemType workloadType;
     
@@ -58,19 +66,19 @@ public class Workload {
     /**
      * Constructor for JSON Deserialization
      * 
-     * @param id
+     * @param workloadId
      * @param workload
      * @param workloadState
      * @param workloadType 
      */
     @JsonbCreator
     public Workload(
-        @JsonbProperty("Id") String id,
+        @JsonbProperty("Id") String workloadId,
         @JsonbProperty("Workload") Map<String, ItemTask> workload,
         @JsonbProperty("Workload State") ItemState workloadState,
         @JsonbProperty("Workload Type") ItemType workloadType
     ) {
-        this.id = id;
+        this.workloadId = workloadId;
         this.workload = workload;
         this.workloadState = workloadState;
         this.workloadType = workloadType;
@@ -81,6 +89,7 @@ public class Workload {
      * Add a new work item to workload
      * 
      * @param work
+     * @param taskName
      * @return boolean
      */
     public boolean addTask(String taskName, ItemTask work) {
@@ -151,7 +160,7 @@ public class Workload {
     /**
      * Drop named task if present in workload
      * 
-     * @param task
+     * @param taskName
      * @return boolean
      */
     public boolean dropTask(String taskName) {
@@ -272,17 +281,17 @@ public class Workload {
      * @return String
      */
     public String getId() {
-        return id;
+        return this.workloadId;
     }
 
     
     /**
      * Set workload Id
      * 
-     * @param id 
+     * @param workloadId 
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String workloadId) {
+        this.workloadId = workloadId;
     }
 
     
@@ -361,7 +370,7 @@ public class Workload {
     @Override
     public String toString() {
         return "Workload{" +
-            "id=" + id +
+            "workloadId=" + workloadId +
             ", workload=" + workload +
             ", workloadState=" + workloadState +
             ", workloadType=" + workloadType +
