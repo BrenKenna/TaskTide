@@ -67,6 +67,16 @@ public class WorkItemCollection {
     
     
     /**
+     * Construct with data
+     * 
+     * @param workItems 
+     */
+    public WorkItemCollection(List<WorkItem> workItems) {
+        this.workItems = workItems;
+    }
+    
+    
+    /**
      * Constructor for JSON deserialization
      * 
      * @param stepId

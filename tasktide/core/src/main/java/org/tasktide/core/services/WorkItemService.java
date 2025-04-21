@@ -14,9 +14,8 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.core.repository.ModelRepository;
-
 import org.tasktide.core.supporting.Utils;
+import org.tasktide.core.repository.TaskTideModelRepository;
 
 
 /**
@@ -29,7 +28,7 @@ import org.tasktide.core.supporting.Utils;
 public class WorkItemService {
     
     // Attributes
-    private final ModelRepository<WorkItem> repo;
+    private final TaskTideModelRepository<WorkItem> repo;
     private final Utils utils;
     private final int LOCKING_WAIT_TIME;
     
@@ -42,7 +41,7 @@ public class WorkItemService {
      */
     @Inject
     public WorkItemService(
-        ModelRepository<WorkItem> repo,
+        TaskTideModelRepository<WorkItem> repo,
         @ConfigProperty(name = "workitem.locking.wait.time", defaultValue = "4") int lockingWaitTime
     ) {
         this.repo = repo;

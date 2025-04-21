@@ -8,8 +8,9 @@ import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
 import org.tasktide.core.model.collection.Workflow;
-import org.tasktide.core.repository.ModelRepository;
+
 import org.tasktide.core.supporting.Utils;
+import org.tasktide.core.repository.TaskTideModelRepository;
 
 
 /**
@@ -22,7 +23,7 @@ import org.tasktide.core.supporting.Utils;
 public class WorkflowService {
     
     // Attributes
-    private final ModelRepository<Workflow> repo;
+    private final TaskTideModelRepository<Workflow> repo;
     private final Utils utils;
     
     
@@ -32,7 +33,7 @@ public class WorkflowService {
      * @param repo 
      */
     @Inject
-    public WorkflowService(ModelRepository<Workflow> repo) {
+    public WorkflowService(TaskTideModelRepository<Workflow> repo) {
         this.repo = repo;
         this.utils = new Utils();
     }

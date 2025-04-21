@@ -11,6 +11,7 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import java.lang.reflect.Field;
 
 import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
@@ -23,17 +24,18 @@ import java.util.Map.Entry;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.repository.TaskTideModel;
 
 
 /**
  *
- * Model class for Work Items
+ * TaskTideModel class for Work Items
  * 
  * @author bkenna
  */
 @Entity
 @Dependent
-public class WorkItem {
+public class WorkItem implements TaskTideModel {
     
     @Id
     @JsonbProperty("Id")
@@ -234,6 +236,7 @@ public class WorkItem {
      * 
      * @return String
      */
+    @Override
     public String getId() {
         return id;
     }
@@ -511,5 +514,70 @@ public class WorkItem {
            ", workload=" + workload +
            ", stepName=" + stepName +
         '}';
+    }
+
+    
+    /**
+     * Represent as JSON doc
+     * 
+     * @return String
+     */
+    @Override
+    public String toJson() {
+        return this.toJsonDoc();
+    }
+
+    
+    /**
+     * Return value of field. Must match toString() names
+     * 
+     * @param field
+     * @param value
+     * @return Object
+     */
+    @Override
+    public Object getValueByField(String field, Object value) {
+        try {
+            // Use reflection to get the declared field from this class
+            Field declaredField = this.getClass().getDeclaredField(field);
+            declaredField.setAccessible(true); // In case the field is private
+            Object fieldValue = declaredField.get(this);
+
+            // If 'value' was passed in, check equality
+            if (value != null) {
+                return value.equals(fieldValue) ? fieldValue : null;
+            }
+
+            return fieldValue;
+
+        }
+        catch (Exception ex) {
+            // Optional: Log or rethrow if needed
+            return null;
+        }
+    }
+    
+    
+    /**
+     * Return value of field. Must match toString() names
+     * 
+     * @param field
+     * @return Object
+     */
+    @Override
+    public Object getValueFromField(String field) {
+        try {
+            // Use reflection to get the declared field from this class
+            Field declaredField = this.getClass().getDeclaredField(field);
+            declaredField.setAccessible(true); // In case the field is private
+            Object fieldValue = declaredField.get(this);
+
+            return fieldValue;
+
+        }
+        catch (Exception ex) {
+            // Optional: Log or rethrow if needed
+            return null;
+        }
     }
 }

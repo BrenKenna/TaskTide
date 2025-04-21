@@ -25,8 +25,8 @@ dependencies {
     implementation 'org.eclipse.microprofile.config:microprofile-config-api:2.0'
 
     // JSON-B (de)Serialization
-    implementation 'jakarta.json.bind:jakarta.json.bind-api:2.0.0' // For JSON-B serialization/deserialization
-    implementation 'org.eclipse:yasson:3.0.3' // JSON-B implementation
+    implementation 'jakarta.json.bind:jakarta.json.bind-api:2.0.0'
+    implementation 'org.eclipse:yasson:3.0.3'
 
     // Log4J
     implementation 'org.apache.logging.log4j:log4j-api:2.20.0'

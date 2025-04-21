@@ -8,8 +8,9 @@ import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
 import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.repository.ModelRepository;
+
 import org.tasktide.core.supporting.Utils;
+import org.tasktide.core.repository.TaskTideModelRepository;
 
 
 /**
@@ -22,7 +23,7 @@ import org.tasktide.core.supporting.Utils;
 public class StepService {
     
     // Attributes
-    private final ModelRepository<Step> repo;
+    private final TaskTideModelRepository<Step> repo;
     private final Utils utils;
     
     
@@ -32,7 +33,7 @@ public class StepService {
      * @param repo 
      */
     @Inject
-    public StepService(ModelRepository<Step> repo) {
+    public StepService(TaskTideModelRepository<Step> repo) {
         this.repo = repo;
         this.utils = new Utils();
     }

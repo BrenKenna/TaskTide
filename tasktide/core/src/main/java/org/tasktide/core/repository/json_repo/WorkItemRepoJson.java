@@ -1,0 +1,80 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package org.tasktide.core.repository.json_repo;
+
+import jakarta.inject.Inject;
+import jakarta.json.bind.JsonbBuilder;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import java.util.List;
+
+import org.tasktide.core.model.collection.WorkItemCollection;
+import org.tasktide.core.model.workitem.WorkItem;
+
+
+/**
+ * Json File I/O repo for WorkItems
+ * 
+ * @author bkenna
+ */
+public class WorkItemRepoJson extends JsonRepository<WorkItem> {
+
+        
+    /**
+     * Construct WorkItemRepository with injectable template and configurable collection name
+     * 
+     * @param modelCollection
+     * @param collectionName workitem.repo-name
+     */
+    @Inject
+    public WorkItemRepoJson(
+        List<WorkItem> modelCollection,
+        @ConfigProperty(name = "workitem.repo-name", defaultValue = "WorkItem") String collectionName
+    ) {
+        super(modelCollection, WorkItem.class, collectionName);
+    }
+    
+    
+    /**
+     * Save to file
+     * 
+     * @return int
+     */
+    @Override
+    public int save() {
+        
+        // Initialize output
+        int result = modelCollection.size();
+        WorkItemCollection output = new WorkItemCollection(modelCollection);
+        
+        // Save to file
+        if ( compUtil.compressToFile(collectionName, output.toJsonDoc()) ) {
+            return result;
+        }
+        
+        // Return size
+        return -1;
+    }
+
+    
+    /**
+     * Save to file
+     * 
+     * @return int
+     */
+    @Override
+    public List<WorkItem> load() {
+        
+        // Return dataset if loaded
+        String json = compUtil.decompressFromFile(collectionName);
+        if ( json != null ) {
+            WorkItemCollection data = JsonbBuilder.create().fromJson(json, WorkItemCollection.class);
+            return data.getWorkItems();
+        }
+
+        // Otherwise return null
+        return null;
+    }
+}
