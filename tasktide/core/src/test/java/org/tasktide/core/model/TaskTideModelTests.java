@@ -102,4 +102,34 @@ public class TaskTideModelTests {
         logger.info("\n\n================ Casting Model Test ================\n");
         assertTrue(assertionState);
     }
+    
+    
+    /**
+     * Test that value for specified field is retrievable
+     */
+    @Test
+    @Order(1)
+    public void canFetchValueByField() {
+    
+        // Construct work item
+        logger.info("\n\n================ Fetch Value for Field Model Test ================\n");
+        boolean assertionState;
+        TaskTideModel model;
+        
+        // Get model and check
+        logger.info("Comparing reference to retrieved value");
+        model = TestUtils.makeTestWorkItem();
+        String modelId = model.getId();
+        assertionState = modelId.equals( model.getValueFromField("id") );
+        
+        // Handle state
+        if ( assertionState ) {
+            logger.info("Fetch value for field test successful, state:\t" + assertionState + "\n");
+        }
+        else {
+            logger.error("Fetch value for field test unsuccessful, state:\t" + assertionState + "\n");
+        }
+        assertTrue(assertionState);
+        logger.info("\n\n================ Fetch Value for Field Model Test ================\n");
+    }
 }

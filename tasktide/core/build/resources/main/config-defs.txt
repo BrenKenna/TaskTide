@@ -10,6 +10,9 @@ task-tide.repository.json.collection.step.name=""
 task-tide.repository.nosql.collection.workflow.name=""
 task-tide.repository.json.collection.workflow.name=""
 
+# WorkItem locking wait time
+task-tide.model.workitem.locking-wait-time=4
+
 
 # Support.Utils
 task-tide.date-format="dd/MM/yy HH:mm:ss"

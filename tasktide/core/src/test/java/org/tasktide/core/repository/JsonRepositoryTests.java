@@ -4,8 +4,6 @@
  */
 package org.tasktide.core.repository;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,11 +15,15 @@ import org.junit.jupiter.api.BeforeAll;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
-import org.tasktide.TestUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.json_repo.JsonRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
+
+import org.tasktide.TestUtils;
 
 
 /**
@@ -180,6 +182,257 @@ public class JsonRepositoryTests {
         
         // Log test state
         logger.info("\n\n================ Read JSON Repository Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test the find all and find by id methods
+     */
+    @Test
+    @Order(3)
+    public void canQuery() {
+        
+        // Initialize data
+        logger.info("\n\n================ Query JSON Repository Test ================\n");
+        boolean assertionState;
+        TaskTideRepository<WorkItem> repo;
+        List<WorkItem> data = new ArrayList<>();
+    
+        // Generate data
+        logger.info("\n\nGenerating data for testing\n");
+        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestUtils.makeTestWorkItem());
+        
+        // Construct repo
+        logger.info("Creating repoisotry");
+        repo = new JsonWorkItemRepository(data, "myData");
+        
+        // Represent repo as string
+        logger.info("Verifying simple repository queries from interface level");
+        if ( repo.findAll().size() == 2 ) {
+            logger.info("Data size matches expexted");
+            if ( repo.findById("My WorkItem").isPresent() ) {
+                logger.info("Repository findById successful");
+                assertionState = true;
+            }
+            else {
+                logger.warn("Repository failed to retrieve by Id");
+                assertionState = false;
+            }
+        }
+        else {
+            logger.warn("Repository findAll count did not match expected");
+            assertionState = false;
+        }
+        
+        // Handle test state
+        if (assertionState) {
+            logger.info("Can query test sucessful, test state:\t" + assertionState + "\n\n");
+        }
+        else {
+            logger.error("Can query test unsucessful, test state:\t" + assertionState + "\n\n");
+        }
+        
+        // Log test state
+        logger.info("\n\n================ Query JSON Repository Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test the find by field having value on Repository interface level 
+     */
+    @Test
+    @Order(4)
+    public void canFindValueByField() {
+    
+        // Initialize data
+        logger.info("\n\n================ Find by Field JSON Repository Test ================\n");
+        boolean assertionState;
+        TaskTideRepository<WorkItem> repo;
+        List<WorkItem> data = new ArrayList<>();
+    
+        // Generate data
+        logger.info("\n\nGenerating data for testing\n");
+        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestUtils.makeTestWorkItem());
+        
+        // Construct repo
+        logger.info("Creating repoisotry of 2 of the same WorkItems");
+        repo = new JsonWorkItemRepository(data, "myData");
+        String reference = data.get(0).getItemName();
+        logger.info("Fetching count of records where itemName = '" + reference + "'\n");
+        int matching = repo.findByField("itemName", reference).size();
+        
+        // Represent repo as string
+        logger.info("Verifying findByField results are 2 WorkItems");
+        if ( matching == 2 ) {
+            logger.info("Data size matches expexted");
+            assertionState = true;
+        }
+        else {
+            logger.warn("Repository findByField count did not match expected");
+            assertionState = false;
+        }
+        
+        // Handle test state
+        if (assertionState) {
+            logger.info("Find by Field test sucessful, test state:\t" + assertionState + "\n\n");
+        }
+        else {
+            logger.error("Find by Field test unsucessful, test state:\t" + assertionState + "\n\n");
+        }
+        
+        // Log test state
+        logger.info("\n\n================ Find By Field JSON Repository Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test models can be inserted
+     */
+    @Test
+    @Order(5)
+    public void canInsert() {
+    
+        // Initialize data
+        logger.info("\n\n================ Insert Model to JSON Repository Test ================\n");
+        boolean assertionState;
+        TaskTideRepository<WorkItem> repo;
+        List<WorkItem> data = new ArrayList<>();
+    
+        // Generate data
+        logger.info("\n\nGenerating data for testing\n");
+        data.add(TestUtils.makeTestWorkItem());
+        
+        // Construct repo
+        logger.info("Creating repoisotry of 2 of the same WorkItems");
+        repo = new JsonWorkItemRepository(data, "myData");
+        TaskTideModel rec = repo.insertModel(TestUtils.makeTestWorkItem());
+        
+        // Represent repo as string
+        logger.info("Verifying second model inserted, and matches first Id");
+        if ( repo.findAll().size() == 2 && rec.getId().equals(data.get(0).getId())) {
+            logger.info("Data size matches expexted");
+            assertionState = true;
+        }
+        else {
+            logger.warn("Repository inserted count Ids did not match expected\n");
+            logger.warn("\n\nInserted record:\n" + rec.getId() + "\n\nReferenced record:\n" + data.get(0).getId() + "\n\n");
+            assertionState = false;
+        }
+        
+        // Handle test state
+        if (assertionState) {
+            logger.info("Insert model test sucessful, test state:\t" + assertionState + "\n\n");
+        }
+        else {
+            logger.error("Insert model test unsucessful, test state:\t" + assertionState + "\n\n");
+        }
+        
+        // Log test state
+        logger.info("\n\n================ Insert Model to JSON Repository Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test models can be deleted
+     */
+    @Test
+    @Order(5)
+    public void canDelete() {
+    
+        // Initialize data
+        logger.info("\n\n================ Delete Model from JSON Repository Test ================\n");
+        boolean assertionState;
+        TaskTideRepository<WorkItem> repo;
+        List<WorkItem> data = new ArrayList<>();
+    
+        // Generate data
+        logger.info("\n\nGenerating data for testing\n");
+        data.add(TestUtils.makeTestWorkItem());
+        
+        // Construct repo
+        logger.info("Creating repoisotry of 2 of the same WorkItems");
+        repo = new JsonWorkItemRepository(data, "myData");
+        TaskTideModel tmp = data.get(0);
+        
+        // Represent repo as string
+        logger.info("Verifying second model inserted, and matches first Id");
+        if ( repo.deleteModel(tmp.getId()) ) {
+            logger.info("Datapoint deleted");
+            assertionState = true;
+        }
+        else {
+            logger.warn("Datapoint not deleted\n");
+            assertionState = false;
+        }
+        
+        // Handle test state
+        if (assertionState) {
+            logger.info("Delete model test sucessful, test state:\t" + assertionState + "\n\n");
+        }
+        else {
+            logger.error("Delete test unsucessful, test state:\t" + assertionState + "\n\n");
+        }
+        
+        // Log test state
+        logger.info("\n\n================ Delete Model from JSON Repository Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test that models can be updated
+     */
+    @Test
+    @Order(6)
+    public void canUpdate() {
+    
+        // Initialize data
+        logger.info("\n\n================ Update Model from JSON Repository Test ================\n");
+        boolean assertionState;
+        TaskTideModel ref, query;
+        TaskTideRepository<WorkItem> repo;
+        List<WorkItem> data = new ArrayList<>();
+    
+        // Generate data
+        logger.info("\n\nGenerating data for testing\n");
+        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestUtils.makeTestWorkItem());
+        ref = data.get(0);
+        ((WorkItem) ref).setItemName("New Item Name");
+        
+        // Construct repo
+        logger.info("Creating repoisotry of 3 of the same WorkItems");
+        repo = new JsonWorkItemRepository(data, "myData");
+        query = repo.updateModel( (WorkItem) ref );
+        
+        // Represent repo as string
+        logger.info("Verifying model can be updated");
+        if ( query != null ) {
+            logger.info("Datapoint updated\n\nNew data point:\n" + query.toJson());
+            assertionState = true;
+        }
+        else {
+            logger.warn("Datapoint not updated\n");
+            assertionState = false;
+        }
+        
+        // Handle test state
+        if (assertionState) {
+            logger.info("Update model test sucessful, test state:\t" + assertionState + "\n\n");
+        }
+        else {
+            logger.error("Update test unsucessful, test state:\t" + assertionState + "\n\n");
+        }
+        
+        // Log test state
+        logger.info("\n\n================ Update Model from JSON Repository Test ================\n");
         assertTrue(assertionState);
     }
 }

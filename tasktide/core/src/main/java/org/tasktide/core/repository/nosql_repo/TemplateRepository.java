@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.repository.TaskTideModelRepository;
+import org.tasktide.core.repository.TaskTideRepository;
 
 
 /**
@@ -22,7 +22,7 @@ import org.tasktide.core.repository.TaskTideModelRepository;
  * @param <T> of ModelClass-WorkItem,Step,Workflow
  */
 @Dependent
-public abstract class TemplateRepository<T> implements TaskTideModelRepository<T> {
+public abstract class TemplateRepository<T> implements TaskTideRepository<T> {
     
     // Attributes
     protected final Template template;

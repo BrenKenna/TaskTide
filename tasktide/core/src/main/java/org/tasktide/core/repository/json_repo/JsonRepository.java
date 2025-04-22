@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.TaskTideModel;
-import org.tasktide.core.repository.TaskTideModelRepository;
+import org.tasktide.core.repository.TaskTideRepository;
 
 
 /**
@@ -26,7 +26,7 @@ import org.tasktide.core.repository.TaskTideModelRepository;
  * @param <T> of ModelClass-WorkItem,Step,Workflow
  */
 @Dependent
-public abstract class JsonRepository<T extends TaskTideModel> implements TaskTideModelRepository<T> {
+public abstract class JsonRepository<T extends TaskTideModel> implements TaskTideRepository<T> {
     
     // Attributes
     protected final List<T> modelCollection;
@@ -63,7 +63,7 @@ public abstract class JsonRepository<T extends TaskTideModel> implements TaskTid
      * @return int
      */
     private int indexOf(String id) {
-        int counter = -1;
+        int counter = 0;
         while (counter < modelCollection.size()) {
             T current = modelCollection.get(counter);
             if ( current.getId().equals(id) ) {
@@ -141,7 +141,7 @@ public abstract class JsonRepository<T extends TaskTideModel> implements TaskTid
     @Override
     public T updateModel(T model) {
         int index = indexOf(model.getId());
-        if ( index > 0 ) {
+        if ( index >= 0 ) {
             modelCollection.remove(index);
             modelCollection.add(model);
             return modelCollection.get(modelCollection.size() - 1);
