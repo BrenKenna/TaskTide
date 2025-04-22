@@ -1,1653 +1,16 @@
-2025-04-18 17:38:19 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-18 17:38:19 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-18 17:38:20 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-Apr 18, 2025 5:38:20 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
-INFO: Found the type DOCUMENT to metadata DOCUMENT@
-Apr 18, 2025 5:38:25 P.M. org.eclipse.jnosql.mapping.reflection.ClassGraphClassScanner <init>
-INFO: The following repositories are not supported: []
-Apr 18, 2025 5:38:25 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
-INFO: Processing Document extension: 1 databases crud 0 found, custom repositories: 0
-Apr 18, 2025 5:38:25 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
-INFO: Processing repositories as a Document implementation: []
-2025-04-18 17:38:25 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 916ad7b3-3996-4ffc-9342-ba2c35a6da58 initialized
-2025-04-18 17:38:25 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-18 17:38:25 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-18 17:38:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
-INFO: Found the type DOCUMENT to metadata DOCUMENT@
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
-INFO: Starting the onAfterBeanDiscovery with elements number: 0
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
-INFO: Finished the onAfterBeanDiscovery
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
-INFO: Processing Key-Value extension: 0 databases crud 0 found
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
-INFO: Processing repositories as a Key-Value implementation: []
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
-INFO: Ignoring custom repositories as a Key-Value implementation: []
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
-INFO: Processing Document extension: 1 databases crud 0 found, custom repositories: 0
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
-INFO: Processing repositories as a Document implementation: []
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
-INFO: Starting the onAfterBeanDiscovery with elements number: 0
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
-INFO: Finished the onAfterBeanDiscovery
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
-INFO: Starting the onAfterBeanDiscovery with elements number: 0
-Apr 18, 2025 5:38:26 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
-INFO: Finished the onAfterBeanDiscovery
-2025-04-18 17:38:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 7d555766-6ba2-4bf7-b0b3-4070a8a2f8e5 initialized
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.connectionTest ]: 
-
-================ Injected Connection Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.connectionTest ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@37348491
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.connectionTest ]: 
-
-Displaying record for import:
-Music{id=null, name=Imagine, artist=John Lennon}
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 7d555766-6ba2-4bf7-b0b3-4070a8a2f8e5 shut down
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-18 17:38:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 916ad7b3-3996-4ffc-9342-ba2c35a6da58 shut down
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
 
 ---------------- Initiating Model Tests ----------------
 
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 ================ Task Logging Test ================
 
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
-
-Displaying TaskLogging json:
-{
-    "CPU Duration": -1,
-    "End Time": 0,
-    "Process Id": -4,
-    "Process Log": {
-        "Id": "alpha",
-        "Stderr": [
-            "pears",
-            "pineapples"
-        ],
-        "Stdout": [
-            "apples",
-            "oragnes"
-        ]
-    },
-    "Start Time": -3,
-    "Thread Name": "thread"
-}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
-
-Attempting to construct TaskLogging from JSON string
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
-
-Displaying results
-{
-    "CPU Duration": -1,
-    "End Time": 0,
-    "Process Id": -4,
-    "Process Log": {
-        "Id": "alpha",
-        "Stderr": [
-            "pears",
-            "pineapples"
-        ],
-        "Stdout": [
-            "apples",
-            "oragnes"
-        ]
-    },
-    "Start Time": -3,
-    "Thread Name": "thread"
-}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
-
-================ Task Logging Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
-
-================ Process Log Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
-
-Displaying ProcessLog string:
-ProcessLog{id=null, stdout=[Ljava.lang.String;@4bf80c29, stderr=[Ljava.lang.String;@2d7637e6}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
-
-Displaying ProcessLog json:
-{
-    "Stderr": [
-        "pears",
-        "pineapples"
-    ],
-    "Stdout": [
-        "apples",
-        "oragnes"
-    ]
-}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
-
-Attempting to construct ProcessLog from JSON string
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
-
-Displaying results
-{
-    "Stderr": [
-        "pears",
-        "pineapples"
-    ],
-    "Stdout": [
-        "apples",
-        "oragnes"
-    ]
-}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
-
-================ Process Log Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
-
-================ Task Log Builder Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
-
-Attempting to build Task Log
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
-
-Displaying Built Task Log string:
-TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@53aa2fc9, stderr=[Ljava.lang.String;@4792f119}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
-
-Displaying Built Task Log json:
-{
-    "CPU Duration": -1,
-    "End Time": -3,
-    "Id": "beta",
-    "Process Id": -4,
-    "Process Log": {
-        "Id": "alpha",
-        "Stderr": [
-            "pears",
-            "pineapples"
-        ],
-        "Stdout": [
-            "apples",
-            "oragnes"
-        ]
-    },
-    "Start Time": -2,
-    "Thread Name": "myThread"
-}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
-
-================ Task Log Builder Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
-
-================ Work Item Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
-
-Attempting to build Work Item
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
-
-Displaying Built Work Item string:
-WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{id=My Workload, workload={My Task Name=ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@52bd9a27, stderr=[Ljava.lang.String;@611e5819}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}, stepName=null}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
-
-Displaying Built Work Item json:
-{
-    "Done Date": 0,
-    "Id": "My WorkItem",
-    "Item Name": "My WorkItem Name",
-    "Lock Date": 0,
-    "Lock Id": "Some random hexadecimal string",
-    "Task Count": 2,
-    "Task Done": 0,
-    "Workload": {
-        "Id": "My Workload",
-        "Workload": {
-            "My Task Name": {
-                "Id": "gamma",
-                "Task": "My Task",
-                "Task Log": {
-                    "CPU Duration": -1,
-                    "End Time": -3,
-                    "Id": "beta",
-                    "Process Id": -4,
-                    "Process Log": {
-                        "Id": "alpha",
-                        "Stderr": [
-                            "pears",
-                            "pineapples"
-                        ],
-                        "Stdout": [
-                            "apples",
-                            "oragnes"
-                        ]
-                    },
-                    "Start Time": -2,
-                    "Thread Name": "myThread"
-                },
-                "Task Name": "My Task Name",
-                "Task State": "COMPLETE"
-            }
-        },
-        "workloadSize": 1
-    },
-    "workloadSize": 1
-}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
-
-Attempting to construct Work Item from JSON string
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
-
-Displaying results
-{
-    "Done Date": 0,
-    "Id": "My WorkItem",
-    "Item Name": "My WorkItem Name",
-    "Lock Date": 0,
-    "Lock Id": "Some random hexadecimal string",
-    "Task Count": 2,
-    "Task Done": 0,
-    "Workload": {
-        "Id": "My Workload",
-        "Workload": {
-            "My Task Name": {
-                "Id": "gamma",
-                "Task": "My Task",
-                "Task Log": {
-                    "CPU Duration": -1,
-                    "End Time": -3,
-                    "Id": "beta",
-                    "Process Id": -4,
-                    "Process Log": {
-                        "Id": "alpha",
-                        "Stderr": [
-                            "pears",
-                            "pineapples"
-                        ],
-                        "Stdout": [
-                            "apples",
-                            "oragnes"
-                        ]
-                    },
-                    "Start Time": -2,
-                    "Thread Name": "myThread"
-                },
-                "Task Name": "My Task Name",
-                "Task State": "COMPLETE"
-            }
-        },
-        "workloadSize": 1
-    },
-    "workloadSize": 1
-}
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
-
-================ Work Item Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
-
-================ Workload Test ================
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
-
-Attempting to build ItemTasks
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
-
-Attempting to build Workload
-
-2025-04-18 17:38:26 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
-
-Displaying Built Workload string:
-Workload{id=MyWorklaod, workload={My Task Name=ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@741741d0, stderr=[Ljava.lang.String;@5f9f3e58}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
-
-Displaying Built Workload json:
-{
-    "Id": "MyWorklaod",
-    "Workload": {
-        "My Task Name": {
-            "Id": "gamma",
-            "Task": "My Task",
-            "Task Log": {
-                "CPU Duration": -1,
-                "End Time": -3,
-                "Id": "beta",
-                "Process Id": -4,
-                "Process Log": {
-                    "Id": "alpha",
-                    "Stderr": [
-                        "pears",
-                        "pineapples"
-                    ],
-                    "Stdout": [
-                        "apples",
-                        "oragnes"
-                    ]
-                },
-                "Start Time": -2,
-                "Thread Name": "myThread"
-            },
-            "Task Name": "My Task Name",
-            "Task State": "COMPLETE"
-        }
-    },
-    "workloadSize": 1
-}
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
-
-Attempting to construct Workload from JSON string
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
-
-Displaying results
-{
-    "Id": "MyWorklaod",
-    "Workload": {
-        "My Task Name": {
-            "Id": "gamma",
-            "Task": "My Task",
-            "Task Log": {
-                "CPU Duration": -1,
-                "End Time": -3,
-                "Id": "beta",
-                "Process Id": -4,
-                "Process Log": {
-                    "Id": "alpha",
-                    "Stderr": [
-                        "pears",
-                        "pineapples"
-                    ],
-                    "Stdout": [
-                        "apples",
-                        "oragnes"
-                    ]
-                },
-                "Start Time": -2,
-                "Thread Name": "myThread"
-            },
-            "Task Name": "My Task Name",
-            "Task State": "COMPLETE"
-        }
-    },
-    "workloadSize": 1
-}
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
-
-================ Workload Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
-
-================ Item Task Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
-
-Attempting to build Item Task
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
-
-Displaying Built Item Task string:
-ItemTask{id=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{id=beta, procId=-4, procLog=ProcessLog{id=alpha, stdout=[Ljava.lang.String;@261de205, stderr=[Ljava.lang.String;@7f3fc42f}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
-
-Displaying Built Item Task json:
-{
-    "Id": "gamma",
-    "Task": "My Task",
-    "Task Log": {
-        "CPU Duration": -1,
-        "End Time": -3,
-        "Id": "beta",
-        "Process Id": -4,
-        "Process Log": {
-            "Id": "alpha",
-            "Stderr": [
-                "pears",
-                "pineapples"
-            ],
-            "Stdout": [
-                "apples",
-                "oragnes"
-            ]
-        },
-        "Start Time": -2,
-        "Thread Name": "myThread"
-    },
-    "Task Name": "My Task Name",
-    "Task State": "COMPLETE"
-}
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
-
-Attempting to construct Item Task from JSON string
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
-
-Displaying results
-{
-    "Id": "gamma",
-    "Task": "My Task",
-    "Task Log": {
-        "CPU Duration": -1,
-        "End Time": -3,
-        "Id": "beta",
-        "Process Id": -4,
-        "Process Log": {
-            "Id": "alpha",
-            "Stderr": [
-                "pears",
-                "pineapples"
-            ],
-            "Stdout": [
-                "apples",
-                "oragnes"
-            ]
-        },
-        "Start Time": -2,
-        "Thread Name": "myThread"
-    },
-    "Task Name": "My Task Name",
-    "Task State": "COMPLETE"
-}
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
-
-================ Item Task Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
-
----------------- Terminating Model Tests ----------------
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUpClass ]: 
-
----------------- Initiating Supplemental Tests ----------------
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
-
-================ Print Splash Test ================
-
-
-
-
-  _____         _      _____ _     _      
- |_   _|_ _ ___| | __ |_   _(_) __| | ___ 
-   | |/ _` / __| |/ /   | | | |/ _` |/ _ \
-   | | (_| \__ \   <    | | | | (_| |  __/
-   |_|\__,_|___/_|\_\   |_| |_|\__,_|\___|
-
-TaskTide Core v0.0.1
-_________________________________________________
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
-
-================ Print Splash Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-18 17:38:27 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDownClass ]: 
-
----------------- Terminating Supplemental Tests ----------------2025-04-19 16:10:28 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:10:28 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:10:28 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:10:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1ee52369-a42c-4a79-ab4b-39ce7ee7f886 initialized
-2025-04-19 16:10:32 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:10:33 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:10:33 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:10:33 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b9751c08-175a-47e5-aa72-8eececed6e43 initialized
-2025-04-19 16:10:33 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:10:33 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:10:33 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:10:33 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:10:33 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b9751c08-175a-47e5-aa72-8eececed6e43 shut down
-2025-04-19 16:10:33 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:10:33 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1ee52369-a42c-4a79-ab4b-39ce7ee7f886 shut down
-2025-04-19 16:14:09 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:14:09 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:14:09 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:14:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9699983f-a76a-4391-b9ed-3ed9e049892c initialized
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:14:13 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:14:13 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:14:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 7a8e7348-c2e8-4ee4-9503-6d4bf2dfa74d initialized
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@4337afd
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=null, name=Imagine, artist=John Lennon}
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:14:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 7a8e7348-c2e8-4ee4-9503-6d4bf2dfa74d shut down
-2025-04-19 16:14:13 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:14:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9699983f-a76a-4391-b9ed-3ed9e049892c shut down
-2025-04-19 16:14:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:14:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:14:35 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:14:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 47219005-14ed-4302-8208-b5c6aa55fb25 initialized
-2025-04-19 16:14:38 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:14:38 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:14:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:14:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container fefe5abf-9e30-4baf-8aac-237e5c2cb468 initialized
-2025-04-19 16:14:38 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:14:38 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:14:38 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:14:38 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:14:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container fefe5abf-9e30-4baf-8aac-237e5c2cb468 shut down
-2025-04-19 16:14:38 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:14:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 47219005-14ed-4302-8208-b5c6aa55fb25 shut down
-2025-04-19 16:15:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:15:43 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:15:43 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:15:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 84cfc9ad-93af-43dd-b014-2c255bed2d10 initialized
-2025-04-19 16:15:45 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:15:45 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:15:45 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:15:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a5a5a9a5-1bcf-4631-9915-7d06ba10a6ed initialized
-2025-04-19 16:15:45 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:15:45 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:15:45 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:15:45 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:15:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a5a5a9a5-1bcf-4631-9915-7d06ba10a6ed shut down
-2025-04-19 16:15:45 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:15:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 84cfc9ad-93af-43dd-b014-2c255bed2d10 shut down
-2025-04-19 16:15:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:15:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:15:58 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:16:00 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container d4173d13-1f0b-40d8-a184-6276f7a1c3cc initialized
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:16:00 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:16:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:16:00 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 020cd506-eff6-42c0-811d-46129929defd initialized
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@67b355c8
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=null, name=Imagine, artist=John Lennon}
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:16:00 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 020cd506-eff6-42c0-811d-46129929defd shut down
-2025-04-19 16:16:00 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:16:00 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container d4173d13-1f0b-40d8-a184-6276f7a1c3cc shut down
-2025-04-19 16:30:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:30:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:30:32 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:30:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4b7af183-7584-48a5-8230-c525598ca0e4 initialized
-2025-04-19 16:30:35 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:30:35 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:30:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:30:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 3d7db3f4-486f-4707-8892-476c43a1f032 initialized
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@55f4887d
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=null, name=Imagine, artist=John Lennon}
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:30:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 3d7db3f4-486f-4707-8892-476c43a1f032 shut down
-2025-04-19 16:30:36 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:30:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4b7af183-7584-48a5-8230-c525598ca0e4 shut down
-2025-04-19 16:30:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:30:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:30:55 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:30:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f76c9cab-f348-4040-8563-08804e7157af initialized
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:30:57 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:30:57 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:30:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 019376cb-d3bc-4842-b95a-49ea1bdb1916 initialized
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@6a5e167a
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=null, name=Imagine, artist=John Lennon}
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:30:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 019376cb-d3bc-4842-b95a-49ea1bdb1916 shut down
-2025-04-19 16:30:57 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:30:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container f76c9cab-f348-4040-8563-08804e7157af shut down
-2025-04-19 16:39:21 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:39:21 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:39:21 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:39:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b39b90a6-170b-47bc-b34c-d0c490d20586 initialized
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:39:23 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:39:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:39:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 90d25c05-4e46-407d-8cc0-c6e8e9f4c5b0 initialized
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@2c413ffc
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=null, name=Imagine, artist=John Lennon}
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:39:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 90d25c05-4e46-407d-8cc0-c6e8e9f4c5b0 shut down
-2025-04-19 16:39:23 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:39:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b39b90a6-170b-47bc-b34c-d0c490d20586 shut down
-2025-04-19 16:45:13 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:45:13 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:45:13 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:45:14 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 15ff4c09-c1d2-4451-94e8-cdeb04638e69 initialized
-2025-04-19 16:45:14 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:45:15 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:45:15 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:45:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 42ecb3e6-6ca4-4674-90a1-5b79850c599b initialized
-2025-04-19 16:45:15 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:45:15 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:45:15 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:45:15 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@6d2a2560
-2025-04-19 16:45:15 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=null, name=Imagine, artist=John Lennon}
-2025-04-19 16:45:15 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:45:15 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:45:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 42ecb3e6-6ca4-4674-90a1-5b79850c599b shut down
-2025-04-19 16:45:15 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:45:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 15ff4c09-c1d2-4451-94e8-cdeb04638e69 shut down
-2025-04-19 16:48:33 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:48:33 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:48:33 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:48:34 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4ece117c-a464-4ebc-8b20-a0317bb9d50e initialized
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:48:34 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:48:34 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:48:34 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9d046e8d-a1ff-4b29-b415-2d70aa6eb189 initialized
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@5d7399f9
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=null, name=Imagine, artist=John Lennon}
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:48:34 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9d046e8d-a1ff-4b29-b415-2d70aa6eb189 shut down
-2025-04-19 16:48:34 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:48:34 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4ece117c-a464-4ebc-8b20-a0317bb9d50e shut down
-2025-04-19 16:49:04 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:49:04 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:49:04 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:49:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container d3ec22cc-5761-4c62-8c95-212ca0e6ca31 initialized
-2025-04-19 16:49:05 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:49:06 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:49:06 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:49:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 374bd4ba-614e-4998-8cc0-5c329e98844d initialized
-2025-04-19 16:49:06 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:49:06 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:49:06 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:49:06 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@53c1179a
-2025-04-19 16:49:06 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=Id, name=Imagine, artist=John Lennon}
-2025-04-19 16:49:06 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:49:06 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:49:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 374bd4ba-614e-4998-8cc0-5c329e98844d shut down
-2025-04-19 16:49:06 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:49:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container d3ec22cc-5761-4c62-8c95-212ca0e6ca31 shut down
-2025-04-19 16:49:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:49:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:49:55 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:49:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 593cdbef-e91a-43a2-8f17-0f2e97bfc04b initialized
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:49:58 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:49:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:49:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container eb197063-c953-4522-bde4-c69dcbbb5100 initialized
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@55f4887d
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=Id, name=Imagine, artist=John Lennon}
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:49:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container eb197063-c953-4522-bde4-c69dcbbb5100 shut down
-2025-04-19 16:49:58 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:49:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 593cdbef-e91a-43a2-8f17-0f2e97bfc04b shut down
-2025-04-19 16:52:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:52:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:52:53 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:52:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9b270c4f-e9a9-4264-88ff-5427e88d6219 initialized
-2025-04-19 16:52:55 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:52:55 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:52:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:52:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e4b45638-4feb-4011-9e05-6887c49ba208 initialized
-2025-04-19 16:52:55 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:52:55 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:52:55 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:52:55 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@d4df0e
-2025-04-19 16:52:55 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=Id, name=Imagine, artist=John Lennon}
-2025-04-19 16:52:56 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:52:56 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:52:56 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e4b45638-4feb-4011-9e05-6887c49ba208 shut down
-2025-04-19 16:52:56 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:52:56 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9b270c4f-e9a9-4264-88ff-5427e88d6219 shut down
-2025-04-19 16:54:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:54:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:54:23 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:54:25 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e981e673-736d-4648-948b-c5bf0602478b initialized
-2025-04-19 16:54:25 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:54:25 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:54:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:54:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 07a7e802-0f82-4b27-8cd1-3a143175410f initialized
-2025-04-19 16:54:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:54:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:54:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:54:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:54:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:54:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 07a7e802-0f82-4b27-8cd1-3a143175410f shut down
-2025-04-19 16:54:26 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:54:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e981e673-736d-4648-948b-c5bf0602478b shut down
-2025-04-19 16:55:40 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:55:40 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:55:40 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:55:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9c5620b2-5295-4006-b9a6-bbdfb80ad037 initialized
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:55:43 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:55:43 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:55:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 0a6a93cf-7efc-4e01-9f53-d9c56895e32c initialized
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@6e31d989
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=Id, name=Imagine, artist=John Lennon}
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:55:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 0a6a93cf-7efc-4e01-9f53-d9c56895e32c shut down
-2025-04-19 16:55:43 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:55:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9c5620b2-5295-4006-b9a6-bbdfb80ad037 shut down
-2025-04-19 16:59:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-19 16:59:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:59:25 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-19 16:59:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container ba17b859-0397-4150-9671-b6769bff7834 initialized
-2025-04-19 16:59:28 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:59:28 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-19 16:59:28 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-19 16:59:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e1d8c7d3-d646-4c8a-bf35-36e3f5687b6a initialized
-2025-04-19 16:59:28 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: true
-2025-04-19 16:59:28 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUpClass ]: false
-2025-04-19 16:59:28 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-19 16:59:28 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-19 16:59:28 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-19 16:59:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e1d8c7d3-d646-4c8a-bf35-36e3f5687b6a shut down
-2025-04-19 16:59:28 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-19 16:59:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container ba17b859-0397-4150-9671-b6769bff7834 shut down
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
-
----------------- Initiating TaskTide Model Interface Tests ----------------
-
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
-
-================ Casting Model Test ================
-
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
-Displaying WorkItem:
-WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{workloadId=My Workload, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@4e9658b5, stderr=[Ljava.lang.String;@2a7b6f69}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}, stepName=null}
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
-Displaying casted JSON doc:
-{
-    "Done Date": 0,
-    "Id": "My WorkItem",
-    "Item Name": "My WorkItem Name",
-    "Lock Date": 0,
-    "Lock Id": "Some random hexadecimal string",
-    "Task Count": 2,
-    "Task Done": 0,
-    "Workload": {
-        "Workload": {
-            "My Task Name": {
-                "Task": "My Task",
-                "Task Log": {
-                    "CPU Duration": -1,
-                    "End Time": -3,
-                    "Process Id": -4,
-                    "Process Log": {
-                        "Stderr": [
-                            "pears",
-                            "pineapples"
-                        ],
-                        "Stdout": [
-                            "apples",
-                            "oragnes"
-                        ],
-                        "id": "alpha"
-                    },
-                    "Start Time": -2,
-                    "Thread Name": "myThread",
-                    "id": "beta"
-                },
-                "Task Name": "My Task Name",
-                "Task State": "COMPLETE",
-                "id": "gamma"
-            }
-        },
-        "id": "My Workload",
-        "workloadSize": 1
-    },
-    "workloadSize": 1
-}
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
-Test successful with state:	true
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
-
-================ Casting Model Test ================
-
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
-
----------------- Terminating TaskTide Model Interface Tests ----------------
-
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-================ Construct JSON Repository Test ================
-
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-Generating data for testing
-
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-Creating repoisotry
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-Displaying Repository as String:
-JsonRepository{COLLECTION_CLASS=class org.tasktide.core.model.workitem.WorkItem, collectionName=myData, repoType=JSON}
-
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-================ Construct JSON Repository Test ================
-
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-================ Construct JSON Repository Test ================
-
-2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-Generating data for testing
-
-2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: Creating repoisotry
-2025-04-22 13:23:21 ERROR [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-Error displaying repository:
-null
-2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-================ Construct JSON Repository Test ================
-
-2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-================ Construct JSON Repository Test ================
-
-2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-Generating data for testing
-
-2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: Creating repoisotry
-2025-04-22 13:24:02 ERROR [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-Error displaying repository:
-null
-
-2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-================ Construct JSON Repository Test ================
-
-2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
-
-================ Writing JSON Repository Test ================
-
-2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
-
-Generating data for testing
-
-2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: Creating repoisotry
-2025-04-22 13:56:30 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
-
-Displaying Repository as String:
-2
-
-2025-04-22 13:56:30 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
-
-================ Writing JSON Repository Test ================
-
-2025-04-22 13:56:30 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 13:56:30 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
-
-================ Writing JSON Repository Test ================
-
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
-
-Generating data for testing
-
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: Creating repoisotry
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
-
-Number of records writen >=0:	2
-
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
-
-================ Writing JSON Repository Test ================
-
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
-
-================ Reading JSON Repository Test ================
-
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
-
-Generating data for testing
-
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: Creating repoisotry
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
-
-Data read from myData.json.gz:	[{
-    "Done Date": 0,
-    "Id": "My WorkItem",
-    "Item Name": "My WorkItem Name",
-    "Lock Date": 0,
-    "Lock Id": "Some random hexadecimal string",
-    "Task Count": 2,
-    "Task Done": 0,
-    "Workload": {
-        "Workload": {
-            "My Task Name": {
-                "Task": "My Task",
-                "Task Log": {
-                    "CPU Duration": -1,
-                    "End Time": -3,
-                    "Process Id": -4,
-                    "Process Log": {
-                        "Stderr": [
-                            "pears",
-                            "pineapples"
-                        ],
-                        "Stdout": [
-                            "apples",
-                            "oragnes"
-                        ],
-                        "id": "alpha"
-                    },
-                    "Start Time": -2,
-                    "Thread Name": "myThread",
-                    "id": "beta"
-                },
-                "Task Name": "My Task Name",
-                "Task State": "COMPLETE",
-                "id": "gamma"
-            }
-        },
-        "id": "My Workload",
-        "workloadSize": 1
-    },
-    "workloadSize": 1
-},{
-    "Done Date": 0,
-    "Id": "My WorkItem",
-    "Item Name": "My WorkItem Name",
-    "Lock Date": 0,
-    "Lock Id": "Some random hexadecimal string",
-    "Task Count": 2,
-    "Task Done": 0,
-    "Workload": {
-        "Workload": {
-            "My Task Name": {
-                "Task": "My Task",
-                "Task Log": {
-                    "CPU Duration": -1,
-                    "End Time": -3,
-                    "Process Id": -4,
-                    "Process Log": {
-                        "Stderr": [
-                            "pears",
-                            "pineapples"
-                        ],
-                        "Stdout": [
-                            "apples",
-                            "oragnes"
-                        ],
-                        "id": "alpha"
-                    },
-                    "Start Time": -2,
-                    "Thread Name": "myThread",
-                    "id": "beta"
-                },
-                "Task Name": "My Task Name",
-                "Task State": "COMPLETE",
-                "id": "gamma"
-            }
-        },
-        "id": "My Workload",
-        "workloadSize": 1
-    },
-    "workloadSize": 1
-}]
-
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
-
-================ Read JSON Repository Test ================
-
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-================ Query JSON Repository Test ================
-
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-Generating data for testing
-
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Creating repoisotry
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Verifying simple repository queries from interface level
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Data size matches expexted
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Repository findById successful
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-Can query test sucessful, test state:	true
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-================ Query JSON Repository Test ================
-
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:28:12 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-================ Query JSON Repository Test ================
-
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-Generating data for testing
-
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Creating repoisotry
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Verifying simple repository queries from interface level
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Data size matches expexted
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Repository findById successful
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Can query test sucessful, test state:	true
-
-
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-================ Query JSON Repository Test ================
-
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:29:09 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 15:37:27 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
-
----------------- Initiating TaskTide Model Interface Tests ----------------
-
-2025-04-22 15:37:27 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:37:27 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
-
-================ Fetch Value for Field Model Test ================
-
-2025-04-22 15:37:27 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Comparing reference to retrieved value
-2025-04-22 15:37:27 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Fetch value for field test successful, state:	true
-
-2025-04-22 15:37:27 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
-
-================ Fetch Value for Field Model Test ================
-
-2025-04-22 15:37:27 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:37:27 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
-
----------------- Terminating TaskTide Model Interface Tests ----------------
-
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
-
----------------- Initiating Model Tests ----------------
-
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
-
-================ Task Logging Test ================
-
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Displaying TaskLogging json:
 {
@@ -1669,11 +32,11 @@ Displaying TaskLogging json:
     "Thread Name": "thread"
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Attempting to construct TaskLogging from JSON string
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Displaying results
 {
@@ -1695,28 +58,28 @@ Displaying results
     "Thread Name": "thread"
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 ================ Task Logging Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 ================ Process Log Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying ProcessLog string:
-ProcessLog{procLogId=null, stdout=[Ljava.lang.String;@53dfacba, stderr=[Ljava.lang.String;@79767781}
+ProcessLog{procLogId=null, stdout=[Ljava.lang.String;@1e63d216, stderr=[Ljava.lang.String;@62ddd21b}
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying ProcessLog json:
 {
@@ -1730,11 +93,11 @@ Displaying ProcessLog json:
     ]
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Attempting to construct ProcessLog from JSON string
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying results
 {
@@ -1748,32 +111,32 @@ Displaying results
     ]
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 ================ Process Log Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 ================ Task Log Builder Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Attempting to build Task Log
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Displaying Built Task Log string:
-TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@4c9e38, stderr=[Ljava.lang.String;@5d1e09bc}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}
+TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@5dc3fcb7, stderr=[Ljava.lang.String;@c4c0b41}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Displaying Built Task Log json:
 {
@@ -1796,32 +159,32 @@ Displaying Built Task Log json:
     "id": "beta"
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 ================ Task Log Builder Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 ================ Work Item Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Attempting to build Work Item
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Displaying Built Work Item string:
-WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{workloadId=My Workload, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@48c4245d, stderr=[Ljava.lang.String;@3df978b9}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}, stepName=null}
+WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{workloadId=My Workload, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@5c92166b, stderr=[Ljava.lang.String;@659925f4}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}, stepName=null}
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Displaying Built Work Item json:
 {
@@ -1866,11 +229,11 @@ Displaying Built Work Item json:
     "workloadSize": 1
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Attempting to construct Work Item from JSON string
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Displaying results
 {
@@ -1915,36 +278,36 @@ Displaying results
     "workloadSize": 1
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 ================ Work Item Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 ================ Workload Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Attempting to build ItemTasks
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Attempting to build Workload
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Displaying Built Workload string:
-Workload{workloadId=MyWorklaod, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@393881f0, stderr=[Ljava.lang.String;@4af46df3}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}
+Workload{workloadId=MyWorklaod, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@1965539b, stderr=[Ljava.lang.String;@2fc07784}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Displaying Built Workload json:
 {
@@ -1979,11 +342,11 @@ Displaying Built Workload json:
     "workloadSize": 1
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Attempting to construct Workload from JSON string
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Displaying results
 {
@@ -2018,32 +381,32 @@ Displaying results
     "workloadSize": 1
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 ================ Workload Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 ================ Item Task Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Attempting to build Item Task
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying Built Item Task string:
-ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@4e628b52, stderr=[Ljava.lang.String;@51ec2df1}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}
+ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@a64e035, stderr=[Ljava.lang.String;@4d74c3ba}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying Built Item Task json:
 {
@@ -2072,11 +435,11 @@ Displaying Built Item Task json:
     "id": "gamma"
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Attempting to construct Item Task from JSON string
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying results
 {
@@ -2105,31 +468,31 @@ Displaying results
     "id": "gamma"
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 ================ Item Task Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
 
 ---------------- Terminating Model Tests ----------------
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
 
 ---------------- Initiating TaskTide Model Interface Tests ----------------
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 
 ================ Casting Model Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 Displaying WorkItem:
 {
     "Done Date": 0,
@@ -2173,7 +536,7 @@ Displaying WorkItem:
     "workloadSize": 1
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 Displaying casted JSON doc:
 {
     "Done Date": 0,
@@ -2217,90 +580,110 @@ Displaying casted JSON doc:
     "workloadSize": 1
 }
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 Test successful with state:	true
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 
 ================ Casting Model Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
 
 ================ Fetch Value for Field Model Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Comparing reference to retrieved value
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Fetch value for field test successful, state:	true
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Comparing reference to retrieved value
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Fetch value for field test successful, state:	true
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
 
 ================ Fetch Value for Field Model Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
 
 ---------------- Terminating TaskTide Model Interface Tests ----------------
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
 
 ---------------- Initiating JSON Repository Tests ----------------
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
 
 ================ Writing JSON Repository Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
 
 Generating data for testing
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: Creating repoisotry
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: Creating repoisotry
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
 
 Number of records writen >=0:	2
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
 
 ================ Writing JSON Repository Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
 
-================ Terminating Test ================
+================ Find by Field JSON Repository Test ================
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
-
-================ Reading JSON Repository Test ================
-
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
 
 Generating data for testing
 
-2025-04-22 15:37:54 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: Creating repoisotry
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Creating repoisotry of 2 of the same WorkItems
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Fetching count of records where itemName = 'My WorkItem Name'
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Verifying findByField results are 2 WorkItems
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Data size matches expexted
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Find by Field test sucessful, test state:	true
+
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
+
+================ Find By Field JSON Repository Test ================
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+
+================ Reading JSON Repository Test ================
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+
+Generating data for testing
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: Creating repoisotry
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
 
 Data read from myData.json.gz:	[{
     "Done Date": 0,
@@ -2384,416 +767,108 @@ Data read from myData.json.gz:	[{
     "workloadSize": 1
 }]
 
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
 
 ================ Read JSON Repository Test ================
 
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-================ Query JSON Repository Test ================
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-Generating data for testing
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Creating repoisotry
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Verifying simple repository queries from interface level
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Data size matches expexted
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Repository findById successful
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Can query test sucessful, test state:	true
-
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
-
-================ Query JSON Repository Test ================
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-================ Construct JSON Repository Test ================
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-Generating data for testing
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: Creating repoisotry
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-Displaying Repository as String:
-JsonRepository{COLLECTION_CLASS=class org.tasktide.core.model.workitem.WorkItem, collectionName=myData, repoType=JSON}
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
-
-================ Construct JSON Repository Test ================
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 15:37:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-22 15:37:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-22 15:37:55 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-2025-04-22 15:37:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b5186677-f92c-4dbd-a1ab-95fe7833dcfd initialized
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: 
-
----------------- Initiating JNoSQL-MongoDB Tests ----------------
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-22 15:37:57 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-22 15:37:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 8b0b61a8-1230-4000-98f9-70d3ca0ee80a initialized
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: true
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: false
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
-
-================ Injected Connection Test ================
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
-
-Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@3c9ef6e9
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
-
-Displaying record for import:
-Music{id=Id, name=Imagine, artist=John Lennon}
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDownClass ]: 
-
----------------- Terminating JNoSQL-MongoDB Tests ----------------
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 8b0b61a8-1230-4000-98f9-70d3ca0ee80a shut down
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-22 15:37:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b5186677-f92c-4dbd-a1ab-95fe7833dcfd shut down
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUpClass ]: 
-
----------------- Initiating Supplemental Tests ----------------
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
-
-================ Print Splash Test ================
-
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
-
-================ Print Splash Test ================
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:37:57 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDownClass ]: 
-
----------------- Terminating Supplemental Tests ----------------
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
-
-================ Find by Field Repository Test ================
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
-
-Generating data for testing
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Creating repoisotry of 2 of the same WorkItems
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Fetching count of records where itemName = 'My WorkItem Name'
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Verifying findByField results are 2 WorkItems
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Data size matches expexted
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Find by Field test sucessful, test state:	true
-
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
-
-================ Find By Field JSON Repository Test ================
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:45:03 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
-
-================ Insert Model to JSON Repository Test ================
-
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
-
-Generating data for testing
-
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Creating repoisotry of 2 of the same WorkItems
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Verifying second model inserted, and matches first Id
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Data size matches expexted
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Insert model test sucessful, test state:	true
-
-
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
-
-================ Insert Model to JSON Repository Test ================
-
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 15:54:32 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 15:57:44 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 15:57:44 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 15:57:44 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
 
 ================ Delete Model from JSON Repository Test ================
 
-2025-04-22 15:57:44 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
 
 Generating data for testing
 
-2025-04-22 15:57:44 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Creating repoisotry of 2 of the same WorkItems
-2025-04-22 15:57:44 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Verifying second model inserted, and matches first Id
-2025-04-22 15:57:44 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Creating repoisotry of 2 of the same WorkItems
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Verifying second model inserted, and matches first Id
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Datapoint deleted
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Delete model test sucessful, test state:	true
 
-================ Terminating Test ================
 
-2025-04-22 15:57:44 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 16:00:06 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 16:00:06 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 16:00:06 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
 
 ================ Delete Model from JSON Repository Test ================
 
-2025-04-22 16:00:06 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
-
-Generating data for testing
-
-2025-04-22 16:00:06 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Creating repoisotry of 2 of the same WorkItems
-2025-04-22 16:00:06 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Verifying second model inserted, and matches first Id
-2025-04-22 16:00:06 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 16:00:06 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 16:01:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
-
----------------- Initiating TaskTide Model Interface Tests ----------------
-
-2025-04-22 16:01:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 16:01:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
 
-================ Fetch Value for Field Model Test ================
+================ Insert Model to JSON Repository Test ================
 
-2025-04-22 16:01:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Comparing reference to retrieved value
-2025-04-22 16:01:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Fetch value for field test successful, state:	true
-
-2025-04-22 16:01:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
-
-================ Fetch Value for Field Model Test ================
-
-2025-04-22 16:01:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 16:01:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
-
----------------- Terminating TaskTide Model Interface Tests ----------------
-
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
-
-================ Update Model from JSON Repository Test ================
-
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
 
 Generating data for testing
 
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Creating repoisotry of 3 of the same WorkItems
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Verifying model can be updated
-2025-04-22 16:08:21 WARN  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Datapoint not updated
-
-2025-04-22 16:08:21 ERROR [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Update test unsucessful, test state:	false
-
-
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
-
-================ Update Model from JSON Repository Test ================
-
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-04-22 16:08:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
-
-================ Update Model from JSON Repository Test ================
-
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
-
-Generating data for testing
-
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Creating repoisotry of 3 of the same WorkItems
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Verifying model can be updated
-2025-04-22 16:12:01 WARN  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Datapoint not updated
-
-2025-04-22 16:12:01 ERROR [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Update test unsucessful, test state:	false
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Creating repoisotry of 2 of the same WorkItems
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Verifying second model inserted, and matches first Id
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Data size matches expexted
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Insert model test sucessful, test state:	true
 
 
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
 
-================ Update Model from JSON Repository Test ================
+================ Insert Model to JSON Repository Test ================
 
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 16:12:01 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
 
-================ Update Model from JSON Repository Test ================
+================ Query JSON Repository Test ================
 
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
 
 Generating data for testing
 
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Creating repoisotry of 3 of the same WorkItems
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Verifying model can be updated
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Datapoint updated
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Update model test sucessful, test state:	true
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Creating repoisotry
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Verifying simple repository queries from interface level
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Data size matches expexted
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Repository findById successful
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Can query test sucessful, test state:	true
 
 
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
 
-================ Update Model from JSON Repository Test ================
+================ Query JSON Repository Test ================
 
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 16:12:56 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
-
----------------- Terminating JSON Repository Tests ----------------
-
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
-
----------------- Initiating JSON Repository Tests ----------------
-
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
 
 ================ Update Model from JSON Repository Test ================
 
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
 
 Generating data for testing
 
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Creating repoisotry of 3 of the same WorkItems
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Verifying model can be updated
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Datapoint updated
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Creating repoisotry of 3 of the same WorkItems
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Verifying model can be updated
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Datapoint updated
 
 New data point:
 {
@@ -2837,18 +912,159 @@ New data point:
     },
     "workloadSize": 1
 }
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Update model test sucessful, test state:	true
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Update model test sucessful, test state:	true
 
 
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
 
 ================ Update Model from JSON Repository Test ================
 
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-22 16:13:27 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+================ Construct JSON Repository Test ================
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+Generating data for testing
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: Creating repoisotry
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+Displaying Repository as String:
+JsonRepository{COLLECTION_CLASS=class org.tasktide.core.model.workitem.WorkItem, collectionName=myData, repoType=JSON}
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+================ Construct JSON Repository Test ================
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 16:15:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
 
 ---------------- Terminating JSON Repository Tests ----------------
 
+2025-04-22 16:15:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-04-22 16:15:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-04-22 16:15:41 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+Apr 22, 2025 4:15:41 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+INFO: Found the type DOCUMENT to metadata DOCUMENT@
+Apr 22, 2025 4:15:43 P.M. org.eclipse.jnosql.mapping.reflection.ClassGraphClassScanner <init>
+INFO: The following repositories are not supported: []
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+INFO: Processing Document extension: 1 databases crud 0 found, custom repositories: 0
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+INFO: Processing repositories as a Document implementation: []
+2025-04-22 16:15:44 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 8359bcc9-a6c1-4335-9cc6-c7b209f351a8 initialized
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: 
+
+---------------- Initiating JNoSQL-MongoDB Tests ----------------
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-04-22 16:15:44 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+INFO: Found the type DOCUMENT to metadata DOCUMENT@
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
+INFO: Starting the onAfterBeanDiscovery with elements number: 0
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
+INFO: Finished the onAfterBeanDiscovery
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+INFO: Processing Document extension: 1 databases crud 0 found, custom repositories: 0
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+INFO: Processing repositories as a Document implementation: []
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
+INFO: Starting the onAfterBeanDiscovery with elements number: 0
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
+INFO: Finished the onAfterBeanDiscovery
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
+INFO: Starting the onAfterBeanDiscovery with elements number: 0
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
+INFO: Finished the onAfterBeanDiscovery
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+INFO: Processing Key-Value extension: 0 databases crud 0 found
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+INFO: Processing repositories as a Key-Value implementation: []
+Apr 22, 2025 4:15:44 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+INFO: Ignoring custom repositories as a Key-Value implementation: []
+2025-04-22 16:15:44 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container aefe1a18-2c29-4541-89fb-74fa0672ba76 initialized
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: true
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: false
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
+
+================ Injected Connection Test ================
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
+
+Created template:
+org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@5a566922
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
+
+Displaying record for import:
+Music{id=Id, name=Imagine, artist=John Lennon}
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDownClass ]: 
+
+---------------- Terminating JNoSQL-MongoDB Tests ----------------
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container aefe1a18-2c29-4541-89fb-74fa0672ba76 shut down
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDownClass ]: CDI container shut down.
+2025-04-22 16:15:44 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 8359bcc9-a6c1-4335-9cc6-c7b209f351a8 shut down
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUpClass ]: 
+
+---------------- Initiating Supplemental Tests ----------------
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
+
+================ Print Splash Test ================
+
+
+
+
+  _____         _      _____ _     _      
+ |_   _|_ _ ___| | __ |_   _(_) __| | ___ 
+   | |/ _` / __| |/ /   | | | |/ _` |/ _ \
+   | | (_| \__ \   <    | | | | (_| |  __/
+   |_|\__,_|___/_|\_\   |_| |_|\__,_|\___|
+
+TaskTide Core v0.0.1
+_________________________________________________
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
+
+================ Print Splash Test ================
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 16:15:44 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDownClass ]: 
+
+---------------- Terminating Supplemental Tests ----------------
