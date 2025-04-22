@@ -5,10 +5,10 @@
 package org.tasktide.core.model.collection;
 
 import jakarta.enterprise.context.Dependent;
+
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
-
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
@@ -16,10 +16,12 @@ import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
 import jakarta.nosql.Id;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.TaskTideModel;
 
 
 /**
@@ -31,7 +33,7 @@ import org.tasktide.core.model.workitem.WorkItem;
  */
 @Entity
 @Dependent
-public class WorkItemCollection {
+public class WorkItemCollection implements TaskTideModel {
     
     @Id
     @JsonbProperty("Step Id")
@@ -307,5 +309,40 @@ public class WorkItemCollection {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);
+    }
+    
+    
+    /**
+     * Represent as JSON doc
+     * 
+     * @return String
+     */
+    @Override
+    public String toJson() {
+        return this.toJsonDoc();
+    }
+    
+    
+    /**
+     * Return value of field. Must match toString() names
+     * 
+     * @param field
+     * @return Object
+     */
+    @Override
+    public Object getValueFromField(String field) {
+        try {
+            // Use reflection to get the declared field from this class
+            Field declaredField = this.getClass().getDeclaredField(field);
+            declaredField.setAccessible(true); // In case the field is private
+            Object fieldValue = declaredField.get(this);
+
+            return fieldValue;
+
+        }
+        catch (Exception ex) {
+            // Optional: Log or rethrow if needed
+            return null;
+        }
     }
 }

@@ -1,0 +1,16 @@
+# NoSQL_Repo.WorkItem Repo
+task-tide.repository.type=""
+
+task-tide.repository.nosql.collection.workitem.name=""
+task-tide.repository.json.collection.workitem.name=""
+
+task-tide.repository.nosql.collection.step.name=""
+task-tide.repository.json.collection.step.name=""
+
+task-tide.repository.nosql.collection.workflow.name=""
+task-tide.repository.json.collection.workflow.name=""
+
+
+# Support.Utils
+task-tide.date-format="dd/MM/yy HH:mm:ss"
+task-tide.expiration=2

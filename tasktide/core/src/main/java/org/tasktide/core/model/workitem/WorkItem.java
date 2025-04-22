@@ -526,36 +526,6 @@ public class WorkItem implements TaskTideModel {
     public String toJson() {
         return this.toJsonDoc();
     }
-
-    
-    /**
-     * Return value of field. Must match toString() names
-     * 
-     * @param field
-     * @param value
-     * @return Object
-     */
-    @Override
-    public Object getValueByField(String field, Object value) {
-        try {
-            // Use reflection to get the declared field from this class
-            Field declaredField = this.getClass().getDeclaredField(field);
-            declaredField.setAccessible(true); // In case the field is private
-            Object fieldValue = declaredField.get(this);
-
-            // If 'value' was passed in, check equality
-            if (value != null) {
-                return value.equals(fieldValue) ? fieldValue : null;
-            }
-
-            return fieldValue;
-
-        }
-        catch (Exception ex) {
-            // Optional: Log or rethrow if needed
-            return null;
-        }
-    }
     
     
     /**

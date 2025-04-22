@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide.core.database;
+package org.tasktide.core.repository.nosql_repo;
 
 
 import org.apache.logging.log4j.LogManager;
@@ -35,6 +35,7 @@ import org.jboss.weld.junit5.auto.EnableAutoWeld;
 import org.junit.jupiter.api.Assertions;
 
 import org.junit.jupiter.api.TestInstance;
+import org.tasktide.core.repository.Tunes;
 
 
 

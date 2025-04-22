@@ -15,11 +15,11 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
- * Json File I/O repo for WorkItems
+ * JSON File I/O repository for WorkItems
  * 
  * @author bkenna
  */
-public class WorkItemRepoJson extends JsonRepository<WorkItem> {
+public class JsonWorkItemRepository extends JsonRepository<WorkItem> {
 
         
     /**
@@ -29,9 +29,9 @@ public class WorkItemRepoJson extends JsonRepository<WorkItem> {
      * @param collectionName workitem.repo-name
      */
     @Inject
-    public WorkItemRepoJson(
+    public JsonWorkItemRepository(
         List<WorkItem> modelCollection,
-        @ConfigProperty(name = "workitem.repo-name", defaultValue = "WorkItem") String collectionName
+        @ConfigProperty(name = "task-tide.repository.json.collection.workitem.name", defaultValue = "WorkItem-Data") String collectionName
     ) {
         super(modelCollection, WorkItem.class, collectionName);
     }

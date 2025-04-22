@@ -1186,3 +1186,355 @@ Music{id=Id, name=Imagine, artist=John Lennon}
 2025-04-19 16:59:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e1d8c7d3-d646-4c8a-bf35-36e3f5687b6a shut down
 2025-04-19 16:59:28 INFO  [ Test worker -> org.tasktide.core.database.MongoDbTesting.tearDownClass ]: CDI container shut down.
 2025-04-19 16:59:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container ba17b859-0397-4150-9671-b6769bff7834 shut down
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Model Interface Tests ----------------
+
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+
+================ Casting Model Test ================
+
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+Displaying WorkItem:
+WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{workloadId=My Workload, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@4e9658b5, stderr=[Ljava.lang.String;@2a7b6f69}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}, stepName=null}
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+Displaying casted JSON doc:
+{
+    "Done Date": 0,
+    "Id": "My WorkItem",
+    "Item Name": "My WorkItem Name",
+    "Lock Date": 0,
+    "Lock Id": "Some random hexadecimal string",
+    "Task Count": 2,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "alpha"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "beta"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "gamma"
+            }
+        },
+        "id": "My Workload",
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+Test successful with state:	true
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+
+================ Casting Model Test ================
+
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 13:07:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Model Interface Tests ----------------
+
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JSON Repository Tests ----------------
+
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+================ Construct JSON Repository Test ================
+
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+Generating data for testing
+
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+Creating repoisotry
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+Displaying Repository as String:
+JsonRepository{COLLECTION_CLASS=class org.tasktide.core.model.workitem.WorkItem, collectionName=myData, repoType=JSON}
+
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+================ Construct JSON Repository Test ================
+
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 13:22:41 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JSON Repository Tests ----------------
+
+2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JSON Repository Tests ----------------
+
+2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+================ Construct JSON Repository Test ================
+
+2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+Generating data for testing
+
+2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: Creating repoisotry
+2025-04-22 13:23:21 ERROR [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+Error displaying repository:
+null
+2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+================ Construct JSON Repository Test ================
+
+2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 13:23:21 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JSON Repository Tests ----------------
+
+2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JSON Repository Tests ----------------
+
+2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+================ Construct JSON Repository Test ================
+
+2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+Generating data for testing
+
+2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: Creating repoisotry
+2025-04-22 13:24:02 ERROR [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+Error displaying repository:
+null
+
+2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+
+================ Construct JSON Repository Test ================
+
+2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 13:24:02 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JSON Repository Tests ----------------
+
+2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JSON Repository Tests ----------------
+
+2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+
+================ Writing JSON Repository Test ================
+
+2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+
+Generating data for testing
+
+2025-04-22 13:56:29 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: Creating repoisotry
+2025-04-22 13:56:30 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+
+Displaying Repository as String:
+2
+
+2025-04-22 13:56:30 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+
+================ Writing JSON Repository Test ================
+
+2025-04-22 13:56:30 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 13:56:30 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JSON Repository Tests ----------------
+
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JSON Repository Tests ----------------
+
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+
+================ Writing JSON Repository Test ================
+
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+
+Generating data for testing
+
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: Creating repoisotry
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+
+Number of records writen >=0:	2
+
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+
+================ Writing JSON Repository Test ================
+
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 13:57:17 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JSON Repository Tests ----------------
+
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JSON Repository Tests ----------------
+
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+
+================ Reading JSON Repository Test ================
+
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+
+Generating data for testing
+
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: Creating repoisotry
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+
+Data read from myData.json.gz:	[{
+    "Done Date": 0,
+    "Id": "My WorkItem",
+    "Item Name": "My WorkItem Name",
+    "Lock Date": 0,
+    "Lock Id": "Some random hexadecimal string",
+    "Task Count": 2,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "alpha"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "beta"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "gamma"
+            }
+        },
+        "id": "My Workload",
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+},{
+    "Done Date": 0,
+    "Id": "My WorkItem",
+    "Item Name": "My WorkItem Name",
+    "Lock Date": 0,
+    "Lock Id": "Some random hexadecimal string",
+    "Task Count": 2,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "alpha"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "beta"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "gamma"
+            }
+        },
+        "id": "My Workload",
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}]
+
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+
+================ Read JSON Repository Test ================
+
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-22 14:02:42 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JSON Repository Tests ----------------
+

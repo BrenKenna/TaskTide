@@ -9,6 +9,8 @@ import jakarta.nosql.Template;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.TaskTideModelRepository;
 
 
@@ -26,6 +28,7 @@ public abstract class TemplateRepository<T> implements TaskTideModelRepository<T
     protected final Template template;
     protected final Class<T> COLLECTION_CLASS;
     protected final String collectionName;
+    protected final RepositoryType repoType;
     
     
     /**
@@ -39,6 +42,7 @@ public abstract class TemplateRepository<T> implements TaskTideModelRepository<T
         this.template = template;
         this.COLLECTION_CLASS = modelClass;
         this.collectionName = collectionName;
+        this.repoType = RepositoryType.NOSQL;
     }
     
     
@@ -137,5 +141,35 @@ public abstract class TemplateRepository<T> implements TaskTideModelRepository<T
     @Override
     public List<T> load() {
         return null;
+    }
+
+    
+    /**
+     * Get class of repository
+     * 
+     * @return Class-T
+     */
+    public Class<T> getCollectionClass() {
+        return COLLECTION_CLASS;
+    }
+
+    
+    /**
+     * Get collection name
+     * 
+     * @return String
+     */
+    public String getCollectionName() {
+        return collectionName;
+    }
+
+    
+    /**
+     * Get repository type
+     * 
+     * @return RepositoryType
+     */
+    public RepositoryType getRepoType() {
+        return repoType;
     }
 }

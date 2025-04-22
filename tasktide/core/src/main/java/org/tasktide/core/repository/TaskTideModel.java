@@ -27,17 +27,7 @@ public interface TaskTideModel {
      * @return String
      */
     public String getId();
-    
-    
-    /**
-     * Get the value for model field
-     * 
-     * @param field
-     * @param value
-     * @return Object
-     */
-    public Object getValueByField(String field, Object value);
-    
+
     
     /**
      * Get the value of field

@@ -13,8 +13,10 @@ import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
 import jakarta.nosql.Embeddable;
+import java.lang.reflect.Field;
 
 import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.repository.TaskTideModel;
 
 
 /**
@@ -25,7 +27,7 @@ import org.tasktide.core.model.task.TaskState;
  */
 @Embeddable
 @Dependent
-public class Step {
+public class Step implements TaskTideModel {
     
     @JsonbProperty("Step Id")
     private String stepId;
@@ -239,5 +241,51 @@ public class Step {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);
+    }
+
+    
+    /**
+     * TaskTideModel interface method to represent as JsonDoc
+     * 
+     * @return String
+     */
+    @Override
+    public String toJson() {
+        return this.toJsonDoc();
+    }
+
+    
+    /**
+     * TaskTideModel interface method to return Id
+     * 
+     * @return String
+     */
+    @Override
+    public String getId() {
+        return getId();
+    }
+
+    
+    /**
+     * TaskTideModel interface get the value from the required field
+     * 
+     * @param field
+     * @return Object
+     */
+    @Override
+    public Object getValueFromField(String field) {
+        try {
+            // Use reflection to get the declared field from this class
+            Field declaredField = this.getClass().getDeclaredField(field);
+            declaredField.setAccessible(true); // In case the field is private
+            Object fieldValue = declaredField.get(this);
+
+            return fieldValue;
+
+        }
+        catch (Exception ex) {
+            // Optional: Log or rethrow if needed
+            return null;
+        }
     }
 }

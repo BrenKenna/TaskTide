@@ -10,27 +10,27 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.nosql.Template;
 
-import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 
 
 /**
- * Step repository
+ * Workflow repository
  * 
  * @author bkenna
  */
 @ApplicationScoped
-public class StepRepository extends TemplateRepository<Step> {
+public class TemplateWorkflowRepository extends TemplateRepository<Workflow> {
     
     /**
-     * Construct StepRepository with injectable template and configurable collection name
+     * Construct WorkflowRepository with injectable template and configurable collection name
      * 
      * @param template
-     * @param collectionName step.repo-name
+     * @param collectionName workflow.repo-name
      */
     @Inject
-    public StepRepository(Template template,
-       @ConfigProperty(name = "step.repo-name", defaultValue = "Step") String collectionName
+    public TemplateWorkflowRepository(Template template,
+        @ConfigProperty(name = "task-tide.repository.nosql.collection.workflow.name", defaultValue = "Workflow") String collectionName
     ) {
-        super(template, Step.class, collectionName);
+        super(template, Workflow.class, collectionName);
     }
 }

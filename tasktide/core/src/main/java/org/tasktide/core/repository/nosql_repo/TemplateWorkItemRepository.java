@@ -20,7 +20,7 @@ import org.tasktide.core.model.workitem.WorkItem;
  * @author bkenna
  */
 @ApplicationScoped
-public class WorkItemRepository extends TemplateRepository<WorkItem> {
+public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
     
     /**
      * Construct WorkItemRepository with injectable template and configurable collection name
@@ -29,9 +29,9 @@ public class WorkItemRepository extends TemplateRepository<WorkItem> {
      * @param collectionName workitem.repo-name
      */
     @Inject
-    public WorkItemRepository(
+    public TemplateWorkItemRepository(
         Template template,
-        @ConfigProperty(name = "workitem.repo-name", defaultValue = "WorkItem") String collectionName
+        @ConfigProperty(name = "task-tide.repository.nosql.collection.workitem.name", defaultValue = "WorkItem") String collectionName
     ) {
         super(template, WorkItem.class, collectionName);
     }

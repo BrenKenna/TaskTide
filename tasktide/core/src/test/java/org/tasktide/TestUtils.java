@@ -7,6 +7,7 @@ package org.tasktide;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.ModelBuilderProvider;
 import org.tasktide.core.model.builders.ProcessLogBuilder;
@@ -35,6 +36,7 @@ public class TestUtils {
     
     // Model builder
     public static ModelBuilderProvider modelBuidler = new ModelBuilderProvider();
+    public static TaskGenerator taskGenerator = new TaskGenerator();
     
     
     /**
@@ -129,7 +131,7 @@ public class TestUtils {
      * @return Map-String, String
      */
     public static Map<String, String> getSeqTask() {
-        return TaskGenerator.generateSeqTask();
+        return taskGenerator.generateSeqTask();
     }
     
     
@@ -139,7 +141,7 @@ public class TestUtils {
      * @return Map-String, String
      */
     public static Map<String, String> getPingTask() {
-        return TaskGenerator.generatePingTask();
+        return taskGenerator.generatePingTask();
     }
     
     
@@ -150,7 +152,7 @@ public class TestUtils {
      * @return List-Map-String, String
      */
     public static List<Map<String, String>> getPingTasks(int nTasks) {
-        return TaskGenerator.generateTasks(TaskType.PING, nTasks);
+        return taskGenerator.generateTasks(TaskType.PING, nTasks);
     }
     
     
@@ -161,6 +163,6 @@ public class TestUtils {
      * @return List-Map-String, String
      */
     public static List<Map<String, String>> getSeqTasks(int nTasks) {
-        return TaskGenerator.generateTasks(TaskType.SEQ, nTasks);
+        return taskGenerator.generateTasks(TaskType.SEQ, nTasks);
     }
 }

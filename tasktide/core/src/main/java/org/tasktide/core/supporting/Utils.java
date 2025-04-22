@@ -4,6 +4,8 @@
  */
 package org.tasktide.core.supporting;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -14,10 +16,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
+import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+
+import org.tasktide.core.supporting.generator.TaskGenerator;
 
 
 /**
@@ -29,29 +33,43 @@ import java.util.concurrent.TimeUnit;
 public class Utils {
     
     // Attributes
-    private static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-    private final int EXPIRATION_DAYS = 2;
+    private final DateFormat DATE_FORMAT;
+    private final int EXPIRATION_DAYS;
     private final Charset charSet;
-    private static final Random rand = new Random();
+    private final Random rand;
+    private final TaskGenerator taskGen;
     
     
     /**
      * Constructing because it holds various methods
-     */
-    public Utils() {
-        this.charSet = StandardCharsets.UTF_8;
-    }
-    
-    
-    /**
-     * Construct utility with desired charset
      * 
-     * @param charset 
+     * @param dateFormat
+     * @param expiration
      */
-    public Utils(Charset charset) {
-        this.charSet = charset;
+    public Utils(
+       @ConfigProperty(name = "task-tide.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
+       @ConfigProperty(name = "task-tide.expiration", defaultValue = "2") int expiration
+    ) {
+        this.DATE_FORMAT = new SimpleDateFormat(dateFormat);
+        this.EXPIRATION_DAYS = expiration;
+        this.charSet = StandardCharsets.UTF_8;
+        this.rand = new Random();
+        this.taskGen = new TaskGenerator();
     }
 
+    
+    /**
+     * Construct default utility
+     */
+    public Utils() {
+        this.DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        this.EXPIRATION_DAYS = 2;
+        this.charSet = StandardCharsets.UTF_8;
+        this.rand = new Random();
+        this.taskGen = new TaskGenerator();
+    }
+    
+    
     /**
      * Get date current time
      * 
@@ -342,11 +360,11 @@ public class Utils {
         return this.getRand();
     }
     
-    public static DateFormat getDATE_FORMAT() {
+    public DateFormat getDateFormat() {
         return DATE_FORMAT;
     }
 
-    public int getEXPIRATION_DAYS() {
+    public int getExpirationDays() {
         return EXPIRATION_DAYS;
     }
 

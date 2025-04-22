@@ -4,12 +4,13 @@
  */
 package org.tasktide.core.model;
 
-import org.tasktide.TestUtils;
 import jakarta.json.bind.JsonbBuilder;
-import java.util.ArrayList;
-import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,6 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.WorkItemBuilder;
@@ -30,6 +30,8 @@ import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+
+import org.tasktide.TestUtils;
 
 
 /**
@@ -73,7 +75,7 @@ public class ModelTests {
      * Test out instantiating ProcessLog
      */
     @Test
-    @Order(1)
+    @Order(0)
     public void processLogTest() {
         
         // Initialize test
@@ -103,7 +105,7 @@ public class ModelTests {
      * Test out instantiating TaskLogging
      */
     @Test
-    @Order(2)
+    @Order(1)
     public void taskLogTest() {
     
         // Initialize test
@@ -133,7 +135,7 @@ public class ModelTests {
      * Test out task log builders
      */
     @Test
-    @Order(3)
+    @Order(2)
     public void taskLogBuilderTest() {
     
         // Initialize test
@@ -156,7 +158,7 @@ public class ModelTests {
      * Test ItemTask
      */
     @Test
-    @Order(4)
+    @Order(3)
     public void testItemTask() {
         
         // Initialize test
@@ -199,7 +201,7 @@ public class ModelTests {
      * Test Workload
      */
     @Test
-    @Order(5)
+    @Order(4)
     public void testWorkload() {
     
         // Initialize test
@@ -240,7 +242,7 @@ public class ModelTests {
      * Test WorkItem
      */
     @Test
-    @Order(6)
+    @Order(5)
     public void testWorkItem() {
     
         // Initialize test

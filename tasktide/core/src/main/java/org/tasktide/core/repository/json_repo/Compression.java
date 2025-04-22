@@ -189,7 +189,7 @@ public class Compression {
      * @throws IOException 
      */
     public void writeByteArrToFile(byte[] byteArr, String path) throws IOException {
-        try (FileOutputStream out = new FileOutputStream(path)) {
+        try (FileOutputStream out = new FileOutputStream(path + ".json.gz")) {
             out.write(byteArr);
             out.flush();
         }
@@ -222,7 +222,7 @@ public class Compression {
      * @throws IOException 
      */
     public byte[] readByteArrFromFile(String path) throws IOException {
-        try ( FileInputStream in = new FileInputStream(path) ) {
+        try ( FileInputStream in = new FileInputStream(path + ".json.gz") ) {
             return in.readAllBytes();
         }
     }
