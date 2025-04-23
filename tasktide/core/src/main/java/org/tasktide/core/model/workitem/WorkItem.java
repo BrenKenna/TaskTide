@@ -423,11 +423,10 @@ public class WorkItem implements TaskTideModel {
     
     /**
      * Set task done count from summary
-     * 
      */
     public void setTaskDone() {
         Map<ItemState, Integer> data = this.summarizeByState();
-        this.taskDone = data.get(ItemState.DONE);
+        this.taskDone = (int) data.get(ItemState.DONE);
     }
     
     

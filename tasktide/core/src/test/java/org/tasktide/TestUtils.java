@@ -7,6 +7,7 @@ package org.tasktide;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.ModelBuilderProvider;
@@ -19,8 +20,13 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.workitem.ItemType;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+
+import org.tasktide.core.repository.TaskTideRepository;
+import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 
 import org.tasktide.core.supporting.generator.TaskGenerator;
 import org.tasktide.core.supporting.generator.TaskType;
@@ -119,8 +125,10 @@ public class TestUtils {
                 .lockId("Some random hexadecimal string")
                 .lockDate(0L)
                 .doneDate(0L)
-                .taskCount(2)
+                .taskCount(1)
                 .taskDone(0)
+                .itemState(ItemState.TODO)
+                .itemType(ItemType.SINGLE)
                 .build();
     }
    
@@ -164,5 +172,23 @@ public class TestUtils {
      */
     public static List<Map<String, String>> getSeqTasks(int nTasks) {
         return taskGenerator.generateTasks(TaskType.SEQ, nTasks);
+    }
+    
+    
+    /**
+     * Create testing workitem json repository
+     * 
+     * @return 
+     */
+    public static TaskTideRepository createWorkItemJsonRepo() {
+    
+        // Generate data
+        List<WorkItem> data = new ArrayList<>();
+        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestUtils.makeTestWorkItem());
+        
+        // Return results
+        return new JsonWorkItemRepository(data, "myData");
     }
 }

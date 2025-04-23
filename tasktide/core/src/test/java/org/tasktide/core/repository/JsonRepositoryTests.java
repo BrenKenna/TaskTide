@@ -33,7 +33,6 @@ import org.tasktide.TestUtils;
  */
 public class JsonRepositoryTests {
     
-    
     private static final Logger logger = LogManager.getLogger(JsonRepositoryTests.class);
     
     public JsonRepositoryTests() {}

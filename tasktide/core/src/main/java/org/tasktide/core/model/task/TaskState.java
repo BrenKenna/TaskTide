@@ -99,7 +99,7 @@ public enum TaskState {
         
         @Override
         public ItemState mapToItemState() {
-            return ItemState.ERROR;
+            return ItemState.DONE;
         }
     };
     
