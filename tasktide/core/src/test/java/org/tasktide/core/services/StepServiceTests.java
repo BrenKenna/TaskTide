@@ -242,11 +242,12 @@ public class StepServiceTests {
         data.add(TestUtils.makeTestWorkItem("myFirstStep"));
         data.add(TestUtils.makeTestWorkItem("myFirstStep"));
         TaskTideRepository<WorkItem> workRepo = new JsonWorkItemRepository(data, "myData");
+        TaskTideService<WorkItem> workServ = new WorkItemService(workRepo, 4);
         
         // Map step to workItem
         logger.info("Mapping 'myFirstStep' to WorkItems");
         Step step = serv.viewByField("stepName", "myFirstStep").get(0);
-        List<WorkItem> output = serv.getThroughLink(workRepo, step);
+        List<WorkItem> output = serv.getThroughLink(workServ, step);
         assertionState = output.size() == data.size();
         
         // Evaluate test

@@ -190,13 +190,13 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     /**
      * Map queried {@link Step Step} to {@link WorkItem WorkItem} collection
      * 
-     * @param mappingRepo
+     * @param mappingServ
      * @param model
      * @return List-{@link WorkItem WorkItem}
      */
     @Override
-    public List<WorkItem> getThroughLink(TaskTideRepository<WorkItem> mappingRepo, Step model) {
-        return mappingRepo.findByField("stepName", model.getStepName());
+    public List<WorkItem> getThroughLink(TaskTideService<WorkItem> mappingServ, Step model) {
+        return mappingServ.viewByField("stepName", model.getStepName());
     }
     
     

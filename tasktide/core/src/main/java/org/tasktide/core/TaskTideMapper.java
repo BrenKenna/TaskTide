@@ -26,11 +26,11 @@ public interface TaskTideMapper<T extends TaskTideModel, U extends TaskTideModel
     
     
     /**
-     * Map {@link TaskTideModel} to its lower class via the {@link TaskTideRepository TaskTideRepository}
+     * Map {@link TaskTideModel} to its lower class via the {@link TaskTideService TaskTideService}
      * 
-     * @param mappingRepo 
+     * @param mappingServ 
      * @param model
      * @return List-{@link Step Step} from {@link Workflow Workflow}, {@link WorkItem WorkItem} from {@link Step Step}
      */
-    List<U> getThroughLink(TaskTideRepository<U> mappingRepo, T model);
+    List<U> getThroughLink(TaskTideService<U> mappingServ, T model);
 }
