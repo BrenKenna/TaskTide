@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.core.repository.nosql_repo;
+package org.tasktide.core.repository;
 
 import jakarta.enterprise.context.Dependent;
 import jakarta.nosql.Template;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.repository.TaskTideRepository;
+import org.tasktide.core.TaskTideRepository;
 
 
 /**

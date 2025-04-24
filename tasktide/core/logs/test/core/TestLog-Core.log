@@ -1,16 +1,16 @@
-2025-04-23 17:19:33 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
+2025-04-24 12:29:07 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
 
 ---------------- Initiating Model Tests ----------------
 
-2025-04-23 17:19:33 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-24 12:29:07 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:33 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-24 12:29:07 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 ================ Task Logging Test ================
 
-2025-04-23 17:19:33 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Displaying TaskLogging json:
 {
@@ -32,11 +32,11 @@ Displaying TaskLogging json:
     "Thread Name": "thread"
 }
 
-2025-04-23 17:19:33 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Attempting to construct TaskLogging from JSON string
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 Displaying results
 {
@@ -58,28 +58,28 @@ Displaying results
     "Thread Name": "thread"
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
 
 ================ Task Logging Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 ================ Process Log Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying ProcessLog string:
 ProcessLog{procLogId=null, stdout=[Ljava.lang.String;@1280851e, stderr=[Ljava.lang.String;@5e840abf}
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying ProcessLog json:
 {
@@ -93,11 +93,11 @@ Displaying ProcessLog json:
     ]
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Attempting to construct ProcessLog from JSON string
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 Displaying results
 {
@@ -111,32 +111,32 @@ Displaying results
     ]
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
 
 ================ Process Log Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 ================ Task Log Builder Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Attempting to build Task Log
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Displaying Built Task Log string:
 TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@57b9e423, stderr=[Ljava.lang.String;@304a3655}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 Displaying Built Task Log json:
 {
@@ -159,32 +159,32 @@ Displaying Built Task Log json:
     "id": "beta"
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
 
 ================ Task Log Builder Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 ================ Work Item Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Attempting to build Work Item
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Displaying Built Work Item string:
-WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{workloadId=My Workload, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@4b2a30d, stderr=[Ljava.lang.String;@322803db}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}, stepName=null}
+WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{workloadId=My Workload, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@322803db, stderr=[Ljava.lang.String;@56ba8773}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}, stepName=null}
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Displaying Built Work Item json:
 {
@@ -229,11 +229,11 @@ Displaying Built Work Item json:
     "workloadSize": 1
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Attempting to construct Work Item from JSON string
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 Displaying results
 {
@@ -278,36 +278,36 @@ Displaying results
     "workloadSize": 1
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
 
 ================ Work Item Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 ================ Workload Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Attempting to build ItemTasks
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Attempting to build Workload
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Displaying Built Workload string:
-Workload{workloadId=MyWorklaod, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@7aad3f7d, stderr=[Ljava.lang.String;@6f667ad1}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}
+Workload{workloadId=MyWorklaod, workload={My Task Name=ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@6f667ad1, stderr=[Ljava.lang.String;@566d0c69}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}}, workloadState=null, workloadType=null}
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Displaying Built Workload json:
 {
@@ -342,11 +342,11 @@ Displaying Built Workload json:
     "workloadSize": 1
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Attempting to construct Workload from JSON string
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 Displaying results
 {
@@ -381,32 +381,32 @@ Displaying results
     "workloadSize": 1
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
 
 ================ Workload Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 ================ Item Task Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Attempting to build Item Task
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying Built Item Task string:
-ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@28d79cba, stderr=[Ljava.lang.String;@782168b7}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}
+ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=beta, procId=-4, procLog=ProcessLog{procLogId=alpha, stdout=[Ljava.lang.String;@782168b7, stderr=[Ljava.lang.String;@29f0c4f2}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task}
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying Built Item Task json:
 {
@@ -435,11 +435,11 @@ Displaying Built Item Task json:
     "id": "gamma"
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Attempting to construct Item Task from JSON string
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 Displaying results
 {
@@ -468,31 +468,31 @@ Displaying results
     "id": "gamma"
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
 
 ================ Item Task Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
 
 ---------------- Terminating Model Tests ----------------
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
 
 ---------------- Initiating TaskTide Model Interface Tests ----------------
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 
 ================ Casting Model Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 Displaying WorkItem:
 {
     "Done Date": 0,
@@ -536,7 +536,7 @@ Displaying WorkItem:
     "workloadSize": 1
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 Displaying casted JSON doc:
 {
     "Done Date": 0,
@@ -580,110 +580,110 @@ Displaying casted JSON doc:
     "workloadSize": 1
 }
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 Test successful with state:	true
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
 
 ================ Casting Model Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
 
 ================ Fetch Value for Field Model Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Comparing reference to retrieved value
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Fetch value for field test successful, state:	true
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Comparing reference to retrieved value
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Fetch value for field test successful, state:	true
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
 
 ================ Fetch Value for Field Model Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
 
 ---------------- Terminating TaskTide Model Interface Tests ----------------
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUpClass ]: 
 
 ---------------- Initiating JSON Repository Tests ----------------
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
 
 ================ Writing JSON Repository Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
 
 Generating data for testing
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: Creating repoisotry
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: Creating repoisotry
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
 
 Number of records writen >=0:	2
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canWriteRepository ]: 
 
 ================ Writing JSON Repository Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
 
 ================ Find by Field JSON Repository Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
 
 Generating data for testing
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Creating repoisotry of 2 of the same WorkItems
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Fetching count of records where itemName = 'My WorkItem Name'
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Creating repoisotry of 2 of the same WorkItems
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Fetching count of records where itemName = 'My WorkItem Name'
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Verifying findByField results are 2 WorkItems
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Data size matches expexted
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Find by Field test sucessful, test state:	true
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Verifying findByField results are 2 WorkItems
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Data size matches expexted
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: Find by Field test sucessful, test state:	true
 
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canFindValueByField ]: 
 
 ================ Find By Field JSON Repository Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
 
 ================ Reading JSON Repository Test ================
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
 
 Generating data for testing
 
-2025-04-23 17:19:34 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: Creating repoisotry
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: Creating repoisotry
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
 
 Data read from myData.json.gz:	[{
     "Done Date": 0,
@@ -771,108 +771,108 @@ Data read from myData.json.gz:	[{
     "workloadSize": 1
 }]
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canReadRepository ]: 
 
 ================ Read JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
 
 ================ Delete Model from JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
 
 Generating data for testing
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Creating repoisotry of 2 of the same WorkItems
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Verifying second model inserted, and matches first Id
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Datapoint deleted
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Delete model test sucessful, test state:	true
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Creating repoisotry of 2 of the same WorkItems
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Verifying second model inserted, and matches first Id
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Datapoint deleted
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: Delete model test sucessful, test state:	true
 
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canDelete ]: 
 
 ================ Delete Model from JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
 
 ================ Insert Model to JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
 
 Generating data for testing
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Creating repoisotry of 2 of the same WorkItems
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Verifying second model inserted, and matches first Id
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Data size matches expexted
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Insert model test sucessful, test state:	true
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Creating repoisotry of 2 of the same WorkItems
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Verifying second model inserted, and matches first Id
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Data size matches expexted
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: Insert model test sucessful, test state:	true
 
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canInsert ]: 
 
 ================ Insert Model to JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
 
 ================ Query JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
 
 Generating data for testing
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Creating repoisotry
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Verifying simple repository queries from interface level
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Data size matches expexted
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Repository findById successful
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Can query test sucessful, test state:	true
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Creating repoisotry
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Verifying simple repository queries from interface level
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Data size matches expexted
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Repository findById successful
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: Can query test sucessful, test state:	true
 
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canQuery ]: 
 
 ================ Query JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
 
 ================ Update Model from JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
 
 Generating data for testing
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Creating repoisotry of 3 of the same WorkItems
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Verifying model can be updated
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Datapoint updated
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Creating repoisotry of 3 of the same WorkItems
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Verifying model can be updated
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Datapoint updated
 
 New data point:
 {
@@ -918,148 +918,148 @@ New data point:
     },
     "workloadSize": 1
 }
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Update model test sucessful, test state:	true
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: Update model test sucessful, test state:	true
 
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.canUpdate ]: 
 
 ================ Update Model from JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
 
 ================ Construct JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
 
 Generating data for testing
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: Creating repoisotry
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: Creating repoisotry
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
 
 Displaying Repository as String:
 JsonRepository{COLLECTION_CLASS=class org.tasktide.core.model.workitem.WorkItem, collectionName=myData, repoType=JSON}
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.repoNotNull ]: 
 
 ================ Construct JSON Repository Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
+2025-04-24 12:29:08 INFO  [ Test worker -> org.tasktide.core.repository.JsonRepositoryTests.tearDownClass ]: 
 
 ---------------- Terminating JSON Repository Tests ----------------
 
-2025-04-23 17:19:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-04-23 17:19:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-04-23 17:19:36 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
-Apr 23, 2025 5:19:36 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+2025-04-24 12:29:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-04-24 12:29:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-04-24 12:29:08 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+Apr 24, 2025 12:29:08 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
 INFO: Found the type DOCUMENT to metadata DOCUMENT@
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.reflection.ClassGraphClassScanner <init>
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.reflection.ClassGraphClassScanner <init>
 INFO: The following repositories are not supported: []
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
 INFO: Processing Document extension: 1 databases crud 0 found, custom repositories: 0
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
 INFO: Processing repositories as a Document implementation: []
-2025-04-23 17:19:42 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2924f1eb-0e44-4a4c-ba3f-cf4dc0c83dde initialized
-2025-04-23 17:19:42 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: 
+2025-04-24 12:29:10 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 393dfb4a-bb01-42ec-84d1-1f07e1d647cc initialized
+2025-04-24 12:29:10 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: 
 
 ---------------- Initiating JNoSQL-MongoDB Tests ----------------
 
-2025-04-23 17:19:42 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
-2025-04-23 17:19:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+2025-04-24 12:29:10 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-04-24 12:29:10 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
 INFO: Found the type DOCUMENT to metadata DOCUMENT@
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
 INFO: Processing Key-Value extension: 0 databases crud 0 found
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
 INFO: Processing repositories as a Key-Value implementation: []
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
 INFO: Ignoring custom repositories as a Key-Value implementation: []
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
-INFO: Starting the onAfterBeanDiscovery with elements number: 0
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
-INFO: Finished the onAfterBeanDiscovery
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
 INFO: Processing Document extension: 1 databases crud 0 found, custom repositories: 0
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
 INFO: Processing repositories as a Document implementation: []
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
 INFO: Starting the onAfterBeanDiscovery with elements number: 0
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
 INFO: Finished the onAfterBeanDiscovery
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
 INFO: Starting the onAfterBeanDiscovery with elements number: 0
-Apr 23, 2025 5:19:42 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
 INFO: Finished the onAfterBeanDiscovery
-2025-04-23 17:19:42 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f1ead14c-0ced-43c2-892f-e40c032f2bc8 initialized
-2025-04-23 17:19:42 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: true
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: false
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUp ]: 
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
+INFO: Starting the onAfterBeanDiscovery with elements number: 0
+Apr 24, 2025 12:29:10 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
+INFO: Finished the onAfterBeanDiscovery
+2025-04-24 12:29:10 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 16f867c6-d3d0-4721-a54e-502be0c9fad8 initialized
+2025-04-24 12:29:10 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: true
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUpClass ]: false
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
 
 ================ Injected Connection Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
 
 Created template:
-org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@5e0c4f21
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
+org.eclipse.jnosql.databases.mongodb.mapping.DefaultMongoDBTemplate@5c931134
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.shouldInsertRecord ]: 
 
 Displaying record for import:
 Music{id=Id, name=Imagine, artist=John Lennon}
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUp ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDownClass ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDownClass ]: 
 
 ---------------- Terminating JNoSQL-MongoDB Tests ----------------
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container f1ead14c-0ced-43c2-892f-e40c032f2bc8 shut down
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDownClass ]: CDI container shut down.
-2025-04-23 17:19:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 2924f1eb-0e44-4a4c-ba3f-cf4dc0c83dde shut down
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUpClass ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 16f867c6-d3d0-4721-a54e-502be0c9fad8 shut down
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.MongoDbTesting.tearDownClass ]: CDI container shut down.
+2025-04-24 12:29:11 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 393dfb4a-bb01-42ec-84d1-1f07e1d647cc shut down
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUpClass ]: 
 
 ---------------- Initiating Workflow Service Tests ----------------
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canMarkAsDone ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canMarkAsDone ]: 
 
 ================ Marking as Done Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canMarkAsDone ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canMarkAsDone ]: 
 
 Completing first WorkItem
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canMarkAsDone ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canMarkAsDone ]: 
 
 Displaying completed item:
 {
-    "Done Date": 1745425183290,
+    "Done Date": 1745494151048,
     "Id": "My WorkItem",
     "Item Name": "My WorkItem Name",
     "Item State": "TODO",
@@ -1102,45 +1102,45 @@ Displaying completed item:
     "workloadSize": 1
 }
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canMarkAsDone ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canMarkAsDone ]: 
 
 ================ Marking as Done Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canConstructWorkItemService ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canConstructWorkItemService ]: 
 
 ================ Service Setup Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canConstructWorkItemService ]: Generating data for testing
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canConstructWorkItemService ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canConstructWorkItemService ]: Generating data for testing
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canConstructWorkItemService ]: 
 
 Displaying WorkItemService as String:
 WorkItemService{LOCKING_WAIT_TIME=4,ServiceType=WorkItem}
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canConstructWorkItemService ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canConstructWorkItemService ]: 
 
 ================ Service Setup Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canFindByField ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canFindByField ]: 
 
 ================ View by Field Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canFindByField ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canFindByField ]: 
 
 Displaying first queried item:
 {
@@ -1187,99 +1187,99 @@ Displaying first queried item:
     "workloadSize": 1
 }
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canFindByField ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canFindByField ]: 
 
 ================ View by Field Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.cannotAddDuplicateTask ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.cannotAddDuplicateTask ]: 
 
 ================ Duplicate WorkItem Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.cannotAddDuplicateTask ]: Test successful cannot add duplicate task
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.cannotAddDuplicateTask ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.cannotAddDuplicateTask ]: Test successful cannot add duplicate task
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.cannotAddDuplicateTask ]: 
 
 ================ Duplicate WorkItem Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canSummarizeByState ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canSummarizeByState ]: 
 
 ================ Summarize By State Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canSummarizeByState ]: Fetching summary count of item states
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canSummarizeByState ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canSummarizeByState ]: Fetching summary count of item states
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canSummarizeByState ]: 
 
 Test successful displaying retreived StateSummary:
 
 {
     "State Summary": {
+        "ERROR": 0,
         "TODO": 3,
         "LOCKED": 0,
-        "DONE": 0,
-        "ERROR": 0
+        "DONE": 0
     }
 }
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canSummarizeByState ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canSummarizeByState ]: 
 
 ================ Summarize By State Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canLockItem ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canLockItem ]: 
 
 ================ Locking WorkItem Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canLockItem ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canLockItem ]: 
 
 Locking first WorkItem
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canLockItem ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canLockItem ]: 
 
 Displaying locked item:
-32332f30342f32352031373a31393a34332d39363562613637352d336237652d343963372d613833382d353562373034613661393839
+32342f30342f32352031323a32393a31312d61303630653831392d313761642d346237632d393737352d306164356537333565643731
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canLockItem ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.canLockItem ]: 
 
 ================ Locking WorkItem Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDownClass ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTest.tearDownClass ]: 
 
 ---------------- Terminating Workflow Service Tests ----------------
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUpClass ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUpClass ]: 
 
 ---------------- Initiating Supplemental Tests ----------------
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUp ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
 
 ================ Print Splash Test ================
 
@@ -1295,14 +1295,14 @@ Displaying locked item:
 TaskTide Core v0.0.1
 _________________________________________________
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.testSplash ]: 
 
 ================ Print Splash Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDown ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-23 17:19:43 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDownClass ]: 
+2025-04-24 12:29:11 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDownClass ]: 
 
 ---------------- Terminating Supplemental Tests ----------------

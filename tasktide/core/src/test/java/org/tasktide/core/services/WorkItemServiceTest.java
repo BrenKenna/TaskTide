@@ -4,7 +4,7 @@
  */
 package org.tasktide.core.services;
 
-import org.tasktide.core.model.workitem.state_summary.StateSummary;
+import org.tasktide.core.model.state_summary.StateSummary;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,8 +27,9 @@ import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.core.repository.TaskTideRepository;
-import org.tasktide.core.repository.json_repo.JsonRepository;
+import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.TaskTideService;
+import org.tasktide.core.repository.JsonRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 
 
@@ -93,7 +94,7 @@ public class WorkItemServiceTest {
         repo = new JsonWorkItemRepository(data, "myData");
         
         // Construct work item service
-        WorkItemService serv = new WorkItemService(repo, 4);
+        TaskTideService<WorkItem> serv = new WorkItemService(repo, 4);
         assertionState = serv.toString() != null;
         
         // Handle test state

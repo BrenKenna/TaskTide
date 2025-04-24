@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.repository.nosql_repo;
 
+import org.tasktide.core.repository.TemplateRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package org.tasktide.core.repository;
+package org.tasktide.core;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +12,7 @@ import java.util.Optional;
  *
  * Interface for TaskTideRepository
  * 
- * @param <T> of ModelClass-WorkItem,Step,Workflow
+ * @param <T> of ModelClass-{@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
  * @author bkenna
  */
 public interface TaskTideRepository<T> {

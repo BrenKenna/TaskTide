@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.repository.json_repo;
 
+import org.tasktide.core.repository.JsonRepository;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 

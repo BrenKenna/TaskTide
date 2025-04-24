@@ -4,7 +4,7 @@
  */
 package org.tasktide.core.services;
 
-import org.tasktide.core.model.workitem.state_summary.StateSummary;
+import org.tasktide.core.model.state_summary.StateSummary;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
@@ -13,12 +13,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
+import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.TaskTideService;
+import org.tasktide.core.TaskTideMapper;
+
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.collection.Step;
 
 import org.tasktide.core.supporting.Utils;
-import org.tasktide.core.repository.TaskTideRepository;
 
 
 /**
@@ -28,7 +32,7 @@ import org.tasktide.core.repository.TaskTideRepository;
  * @author bkenna
  */
 @Dependent
-public class WorkItemService {
+public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTideService {
     
     // Attributes
     private final TaskTideRepository<WorkItem> repo;
@@ -210,5 +214,18 @@ public class WorkItemService {
             "LOCKING_WAIT_TIME=" + LOCKING_WAIT_TIME +
             ",ServiceType=WorkItem" +
         '}';
+    }
+
+    
+    /**
+     * Fetches {@link Step Step} for queried {@link WorkItem WorkItem}
+     * 
+     * @param mappingRepo
+     * @param model
+     * @return List-{@link Step Step}
+     */
+    @Override
+    public List<Step> getThroughLink(TaskTideRepository<Step> mappingRepo, WorkItem model) {
+        return mappingRepo.findByField("stepName", model.getStepName());
     }
 }

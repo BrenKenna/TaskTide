@@ -4,6 +4,8 @@
  */
 package org.tasktide.core.repository;
 
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.repository.json_repo.JsonRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 
 import org.tasktide.TestUtils;

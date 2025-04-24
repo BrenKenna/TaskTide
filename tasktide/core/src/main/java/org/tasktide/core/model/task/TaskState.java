@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.model.task;
 
+import org.tasktide.core.model.state_summary.StateSummaryType;
 import org.tasktide.core.model.workitem.ItemState;
 
 
@@ -13,7 +14,7 @@ import org.tasktide.core.model.workitem.ItemState;
  * 
  * @author bkenna
  */
-public enum TaskState {
+public enum TaskState implements StateSummaryType {
     
     PENDING {
         @Override

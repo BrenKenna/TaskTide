@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.repository.TaskTideModel;
+import org.tasktide.core.TaskTideModel;
 
 
 /**

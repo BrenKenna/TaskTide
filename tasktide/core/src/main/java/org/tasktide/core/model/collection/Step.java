@@ -11,12 +11,19 @@ import jakarta.json.bind.JsonbConfig;
 
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.nosql.Column;
 
-import jakarta.nosql.Embeddable;
+import jakarta.nosql.Entity;
+
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.tasktide.core.model.state_summary.StateSummary;
 
 import org.tasktide.core.model.task.TaskState;
-import org.tasktide.core.repository.TaskTideModel;
+import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.TaskTideModel;
 
 
 /**
@@ -25,27 +32,41 @@ import org.tasktide.core.repository.TaskTideModel;
  * 
  * @author bkenna
  */
-@Embeddable
+@Entity
 @Dependent
 public class Step implements TaskTideModel {
     
+    @Column
     @JsonbProperty("Step Id")
     private String stepId;
     
+    @Column
     @JsonbProperty("Step Name")
     private String stepName;
     
+    @Column
     @JsonbProperty("Step State")
     private TaskState stepState;
     
+    @Column
     @JsonbProperty("Step Count")
     private int stepCount;
     
+    @Column
     @JsonbProperty("Steps Locked")
     private int stepsLocked;
     
+    @Column
     @JsonbProperty("Steps Done")
     private int stepsDone;
+    
+    @Column
+    @JsonbProperty("Steps Error")
+    private int stepsError;
+    
+    @Column
+    @JsonbProperty("Steps ToDo")
+    private int stepsToDo;
     
     
     /**
@@ -64,6 +85,8 @@ public class Step implements TaskTideModel {
      * @param stepCount
      * @param stepsLocked
      * @param stepsDone 
+     * @param stepsToDo
+     * @param stepsError
      */
     @JsonbCreator
     public Step(
@@ -71,8 +94,10 @@ public class Step implements TaskTideModel {
         @JsonbProperty("Step Name") String stepName,
         @JsonbProperty("Step State") TaskState stepState,
         @JsonbProperty("Step Count") int stepCount,
-        @JsonbProperty("Steps Active") int stepsLocked,
-        @JsonbProperty("Steps Done") int stepsDone
+        @JsonbProperty("Steps Locked") int stepsLocked,
+        @JsonbProperty("Steps Done") int stepsDone,
+        @JsonbProperty("Steps ToDo") int stepsToDo,
+        @JsonbProperty("Steps Error") int stepsError
     ) {
         this.stepId = stepId;
         this.stepName = stepName;
@@ -80,6 +105,8 @@ public class Step implements TaskTideModel {
         this.stepCount = stepCount;
         this.stepsLocked = stepsLocked;
         this.stepsDone = stepsDone;
+        this.stepsError = stepsError;
+        this.stepsToDo = stepsToDo;
     }
 
     
@@ -204,6 +231,47 @@ public class Step implements TaskTideModel {
 
     
     /**
+     * Get count of steps in error
+     * 
+     * @return int
+     */
+    public int getStepsError() {
+        return stepsError;
+    }
+
+    
+    /**
+     * Set count of steps in error
+     * 
+     * @param stepsError 
+     */
+    public void setStepsError(int stepsError) {
+        this.stepsError = stepsError;
+    }
+
+    
+    /**
+     * Get count of steps in to do
+     * 
+     * @return int
+     */
+    public int getStepsToDo() {
+        return stepsToDo;
+    }
+
+    
+    /**
+     * Set count of steps in to do
+     * 
+     * @param stepsToDo 
+     */
+    public void setStepsToDo(int stepsToDo) {
+        this.stepsToDo = stepsToDo;
+    }
+
+    
+    
+    /**
      * Represent as string
      * 
      * @return String
@@ -265,6 +333,44 @@ public class Step implements TaskTideModel {
         return getId();
     }
 
+    
+    /**
+     * Summarize step by ItemState
+     * 
+     * @return StateSumary-ItemState
+     */
+    public StateSummary<ItemState> summarizeByState() {
+    
+        // Initialize vars
+        Map<ItemState, Integer> results = new HashMap<>();
+        
+        // Map to results
+        results.put(ItemState.LOCKED, stepsLocked);
+        results.put(ItemState.DONE, stepsDone);
+        results.put(ItemState.TODO, stepsToDo);
+        results.put(ItemState.ERROR, this.stepsError);
+        
+        // Return results
+        return new StateSummary(results);
+    }
+    
+    
+    /**
+     * Set new state counts
+     * 
+     * @param counts 
+     */
+    public void setStateCounts(StateSummary<ItemState> counts) {
+        setStepsLocked( counts.getCount(ItemState.LOCKED) );
+        setStepsDone(counts.getCount(ItemState.DONE));
+        setStepsToDo(counts.getCount(ItemState.TODO));
+        setStepsError(counts.getCount(ItemState.ERROR));
+        stepsDone = counts.getCounts().values()
+                        .stream()
+                        .mapToInt(Integer::intValue)
+                        .sum();   
+    }
+    
     
     /**
      * TaskTideModel interface get the value from the required field

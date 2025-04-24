@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.core.model.workitem.state_summary;
+package org.tasktide.core.model.state_summary;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -14,12 +14,15 @@ import java.util.Map;
 
 
 /**
- * Class to (de)serialize work item state summary as JSON
- * 
+ * Class to (de)serialize work item state summary as JSON.
+ * <br><br>
+ * Currently constrained to {@link WorkItem WorkItem} and {@link TaskState TaskState}
+ * implement the {@link StateSummaryType} interface.
+ *
  * @author bkenna
- * @param <T> of ItemState, TaskState
+ * @param <T> of {@link StateSummaryType}
  */
-public class StateSummary<T> {
+public class StateSummary<T extends StateSummaryType> {
     
     // Attributes
     @JsonbProperty("State Summary")
@@ -42,10 +45,21 @@ public class StateSummary<T> {
     /**
      * Get item state counts
      * 
-     * @return Map-ItemState, int
+     * @return Map-State, int
      */
     public Map<T, Integer> getCounts() {
         return counts;
+    }
+    
+    
+    /**
+     * Get count for provided state
+     * 
+     * @param state
+     * @return int
+     */
+    public int getCount(T state) {
+        return (int) counts.get(state);
     }
 
     

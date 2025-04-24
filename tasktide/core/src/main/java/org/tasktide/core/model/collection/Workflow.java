@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.lang.reflect.Field;
 
-import org.tasktide.core.repository.TaskTideModel;
+import org.tasktide.core.TaskTideModel;
 
 
 /**

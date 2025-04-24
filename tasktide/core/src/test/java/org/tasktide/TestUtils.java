@@ -25,7 +25,7 @@ import org.tasktide.core.model.workitem.ItemType;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 
-import org.tasktide.core.repository.TaskTideRepository;
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 
 import org.tasktide.core.supporting.generator.TaskGenerator;

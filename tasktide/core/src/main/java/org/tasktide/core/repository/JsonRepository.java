@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.core.repository.json_repo;
+package org.tasktide.core.repository;
 
 import jakarta.enterprise.context.Dependent;
 import jakarta.json.bind.Jsonb;
@@ -15,15 +15,16 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.repository.TaskTideModel;
-import org.tasktide.core.repository.TaskTideRepository;
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.repository.json_repo.Compression;
 
 
 /**
  * Class to support file backend in compressed json format. All linear operations
  *
  * @author bkenna
- * @param <T> of ModelClass-WorkItem,Step,Workflow
+ * @param <T> of {@link TaskTideModel TaskTideModel}-{@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
  */
 @Dependent
 public abstract class JsonRepository<T extends TaskTideModel> implements TaskTideRepository<T> {

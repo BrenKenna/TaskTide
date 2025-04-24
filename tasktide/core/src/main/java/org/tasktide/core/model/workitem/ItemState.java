@@ -4,7 +4,9 @@
  */
 package org.tasktide.core.model.workitem;
 
+import org.tasktide.core.model.state_summary.StateSummaryType;
 import org.tasktide.core.model.task.TaskState;
+
 
 /**
  * 
@@ -12,7 +14,7 @@ import org.tasktide.core.model.task.TaskState;
  * 
  * @author bkenna
  */
-public enum ItemState {
+public enum ItemState implements StateSummaryType {
     
     TODO {
         @Override

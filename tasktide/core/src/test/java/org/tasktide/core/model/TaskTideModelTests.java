@@ -19,7 +19,7 @@ import org.junit.jupiter.api.Order;
 import org.tasktide.TestUtils;
 import org.tasktide.core.model.builders.WorkItemBuilder;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.repository.TaskTideModel;
+import org.tasktide.core.TaskTideModel;
 
 
 /**

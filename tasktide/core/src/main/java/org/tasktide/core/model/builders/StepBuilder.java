@@ -19,7 +19,7 @@ public class StepBuilder extends ModelBuilder {
     // Attributes
     private String stepId, stepName;
     private TaskState stepState;
-    private int stepCount, stepsLocked, stepsDone;
+    private int stepCount, stepsLocked, stepsDone, stepsToDo, stepsError;
     
     
     /**
@@ -103,12 +103,36 @@ public class StepBuilder extends ModelBuilder {
     
     
     /**
+     * Add count of the steps to do
+     * 
+     * @param stepsToDo
+     * @return StepBuilder
+     */
+    public StepBuilder stepsToDo(int stepsToDo) {
+        this.stepsToDo = stepsToDo;
+        return this;
+    }
+    
+    
+    /**
+     * Add count of steps in error state
+     * 
+     * @param stepsError
+     * @return StepBuilder
+     */
+    public StepBuilder stepsError(int stepsError) {
+        this.stepsError = stepsError;
+        return this;
+    }
+    
+    
+    /**
      * Construct Step from provided fields
      * 
      * @return Step
      */
     @Override
     public Object build() {
-        return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone);
+        return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone, stepsToDo, stepsError);
     }
 }
