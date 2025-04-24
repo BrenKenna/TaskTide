@@ -185,7 +185,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
     @Override
     public String toString() {
         return "WorkflowService{" + 
-            ",WorkflowType=Workflow" +
+            "WorkflowType=Workflow" +
             ",ServiceLink=Step" +
         '}';
     }

@@ -208,7 +208,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     @Override
     public String toString() {
         return "StepService{" + 
-            ",ServiceType=Step" +
+            "ServiceType=Step" +
             ",ServiceLink=WorkItem" +
         '}';
     }

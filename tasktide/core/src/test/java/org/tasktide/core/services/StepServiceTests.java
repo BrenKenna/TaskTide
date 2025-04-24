@@ -116,7 +116,7 @@ public class StepServiceTests {
         TaskTideService<Step> serv = new StepService(repo);
         
         // Fetch 
-        List<Step> results = serv.viewByField("stepState", "myFirstStep");
+        List<Step> results = serv.viewByField("stepName", "myFirstStep");
         if ( results != null ) {
             assertionState = true;
             logger.info("\n\nDisplaying first queried item:\n" + TestUtils.stepsToJsonString(results) + "\n");
@@ -179,11 +179,11 @@ public class StepServiceTests {
         int nRecords = serv.save();
         if ( nRecords > 1 ) {
             assertionState = true;
-            logger.info("Saved Step Service with new records. Displaying total saved:\n" + nRecords + "\n");
+            logger.info("Saved Step Service with new records. Displaying total saved:\t" + nRecords + "\n");
         }
         else {
             assertionState = false;
-            logger.warn("Unable save Step Service, none saved:\n" + nRecords + "\n");
+            logger.warn("Unable save Step Service, none saved:\t" + nRecords + "\n");
         }
         
         // Log test status
