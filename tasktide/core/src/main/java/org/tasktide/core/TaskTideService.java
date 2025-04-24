@@ -6,7 +6,7 @@ package org.tasktide.core;
 
 
 /**
- * Marker interface for TaskTideService
+ * Marker interface for TaskTideService, want to restrict eventually
  * 
  * @author bkenna
  * @param <T> of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
