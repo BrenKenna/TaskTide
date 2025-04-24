@@ -12,7 +12,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 /**
  *
- * Allow WorkItem objects to be built where all fields are optional
+ * Allow {@link WorkItem WorkItem} objects to be built where all fields are optional
  * 
  * @author bkenna
  */
@@ -165,9 +165,9 @@ public class WorkItemBuilder extends ModelBuilder {
     
     
     /**
-     * Build work item from provided fields
+     * Build {@link WorkItem WorkItem} from provided fields
      * 
-     * @return WorkItem
+     * @return {@link WorkItem WorkItem}
      */
     @Override
     public WorkItem build() {

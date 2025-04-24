@@ -14,7 +14,7 @@ import org.tasktide.core.model.collection.Workflow;
 
 /**
  *
- * Allow Workflow objects to be built where all fields are optional
+ * Allow {@link Workflow Workflow} objects to be built where all fields are optional
  * 
  * @author bkenna
  */
@@ -26,7 +26,7 @@ public class WorkflowBuilder extends ModelBuilder {
     
     
     /**
-     * Add workflow Id field
+     * Add {@link Workflow Workflow} Id field
      * 
      * @param workflowId
      * @return WorkflowBuilder
@@ -38,7 +38,7 @@ public class WorkflowBuilder extends ModelBuilder {
     
     
     /**
-     * Add workflow name field
+     * Add {@link Workflow Workflow} name field
      * 
      * @param workflowName
      * @return String
@@ -50,10 +50,10 @@ public class WorkflowBuilder extends ModelBuilder {
     
     
     /**
-     * Add workflow steps field
+     * Add {@link Workflow Workflow} steps field
      * 
      * @param steps
-     * @return List-Step
+     * @return WorkflowBuilder
      */
     public WorkflowBuilder steps(Map<String, Step> steps) {
         this.steps = steps;
@@ -61,10 +61,10 @@ public class WorkflowBuilder extends ModelBuilder {
     }
     
     /**
-     * Add workflow steps field
+     * Add {@link Workflow Workflow} steps field
      * 
-     * @param steps
-     * @return List-Step
+     * @param stepList
+     * @return WorkflowBuilder
      */
     public WorkflowBuilder steps(List<Step> stepList) {
         this.steps = new HashMap<>();
@@ -76,12 +76,12 @@ public class WorkflowBuilder extends ModelBuilder {
     
     
     /**
-     * Construct Workflow with the provided fields
+     * Construct {@link Workflow Workflow} with the provided fields
      * 
-     * @return Workflow
+     * @return {@link Workflow Workflow}
      */
     @Override
-    public Object build() {
+    public Workflow build() {
         return new Workflow(workflowId, workflowName, steps);
     }
 }

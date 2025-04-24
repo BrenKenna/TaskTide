@@ -4,10 +4,13 @@
  */
 package org.tasktide;
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.ModelBuilderProvider;
@@ -15,6 +18,7 @@ import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.TaskLoggingBuilder;
 import org.tasktide.core.model.builders.WorkItemBuilder;
 import org.tasktide.core.model.builders.WorkloadBuilder;
+import org.tasktide.core.model.builders.StepBuilder;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.ProcessLog;
@@ -24,8 +28,13 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+import org.tasktide.core.model.collection.Step;
 
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.model.builders.WorkflowBuilder;
+import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 
 import org.tasktide.core.supporting.generator.TaskGenerator;
@@ -46,9 +55,9 @@ public class TestUtils {
     
     
     /**
-     * Make ProcessLog for testing
+     * Make {@link ProcessLog ProcessLog} for testing
      * 
-     * @return ProcessLog
+     * @return {@link ProcessLog ProcessLog}
      */
     public static ProcessLog makeTestProcessLog() {
         String[] stdout = {"apples", "oragnes"};
@@ -62,9 +71,9 @@ public class TestUtils {
     
     
     /**
-     * Make TaskLogging for testing
+     * Make {@link TaskLogging TaskLogging} for testing
      * 
-     * @return TaskLog
+     * @return {@link TaskLogging TaskLogging}
      */
     public static TaskLogging makeTestTaskLog() {
         return new TaskLoggingBuilder()
@@ -80,9 +89,9 @@ public class TestUtils {
     
     
     /**
-     * Make ItemTask for testing
+     * Make {@link ItemTask ItemTask} for testing
      * 
-     * @return ItemTask
+     * @return {@link ItemTask ItemTask}
      */
     public static ItemTask makeTestItemTask() {
         return new ItemTaskBuilder()
@@ -96,9 +105,9 @@ public class TestUtils {
     
     
     /**
-     * Make Workload for testing
+     * Make {@link Workload Workload} for testing
      * 
-     * @return Workload
+     * @return {@link Workload Workload}
      */
     public static Workload makeTestWorkload() {
         List<ItemTask> itemTasks = new ArrayList<>();
@@ -113,9 +122,9 @@ public class TestUtils {
     
     
     /**
-     * Make ItemTask for testing
+     * Make {@link ItemTask ItemTask} for testing
      * 
-     * @return WorkItem
+     * @return {@link WorkItem WorkItem}
      */
     public static WorkItem makeTestWorkItem() {
         return new WorkItemBuilder()
@@ -132,6 +141,96 @@ public class TestUtils {
                 .build();
     }
    
+    
+    /**
+     * Make {@link ItemTask ItemTask} for testing
+     * 
+     * @param stepName
+     * @return {@link WorkItem WorkItem}
+     */
+    public static WorkItem makeTestWorkItem(String stepName) {
+        return new WorkItemBuilder()
+                .id("My WorkItem")
+                .itemName("My WorkItem Name")
+                .workload(makeTestWorkload())
+                .lockId("Some random hexadecimal string")
+                .lockDate(0L)
+                .doneDate(0L)
+                .taskCount(1)
+                .taskDone(0)
+                .itemState(ItemState.TODO)
+                .itemType(ItemType.SINGLE)
+                .stepName(stepName)
+                .build();
+    }
+    
+    
+    /**
+     * Make a test {@link Step Step}
+     * 
+     * @return {@link Step Step}
+     */
+    public static Step makeTestStep() {
+        return new StepBuilder()
+                .stepId("My Step Id")
+                .stepName("My step name")
+                .stepState(TaskState.PENDING)
+                .stepCount(10)
+                .stepsToDo(5)
+                .stepsLocked(2)
+                .stepsDone(2)
+                .stepsError(1)
+                .build();
+    }
+    
+    
+    /**
+     * Make a test {@link Step Step}
+     * 
+     * @param stepId
+     * @param stepName
+     * @return {@link Step Step}
+     */
+    public static Step makeTestStep(String stepId, String stepName) {
+        return new StepBuilder()
+                .stepId(stepId)
+                .stepName(stepName)
+                .stepState(TaskState.PENDING)
+                .stepCount(10)
+                .stepsToDo(5)
+                .stepsLocked(2)
+                .stepsDone(2)
+                .stepsError(1)
+                .build();
+    }
+    
+    
+    /**
+     * Make test List-{@link Step Step}
+     * 
+     * @return List-{@link Step Step}
+     */
+    public static List<Step> makeTestStepList() {
+        List<Step> output = new ArrayList<>();
+        output.add( makeTestStep("step1", "myFirstStep") );
+        output.add( makeTestStep("step2", "mySecondStep") );
+        return output;
+    }
+    
+    
+    /**
+     * Make a test {@link Workflow Workflow}
+     * 
+     * @return {@link Workflow Workflow}
+     */
+    public static Workflow makeTestWorkflow() {
+        return new WorkflowBuilder()
+                .workflowId("My Workflow Id")
+                .workflowName("My Workflow Name")
+                .steps( makeTestStepList() )
+                .build();
+    }
+    
     
     /**
      * Fetch seq task
@@ -178,7 +277,7 @@ public class TestUtils {
     /**
      * Create testing workitem json repository
      * 
-     * @return 
+     * @return {@link TaskTideRepository TaskTideRepository}
      */
     public static TaskTideRepository createWorkItemJsonRepo() {
     
@@ -190,5 +289,53 @@ public class TestUtils {
         
         // Return results
         return new JsonWorkItemRepository(data, "myData");
+    }
+    
+    
+    /**
+     * Create testing workitem json repository
+     * 
+     * @return {@link TaskTideRepository TaskTideRepository}
+     */
+    public static TaskTideRepository createStepJsonRepo() {
+        return new JsonStepRepository(TestUtils.makeTestStepList(), "myData");
+    }
+    
+    
+    /**
+     * Represent {@link StateSummary StateSummary} as json string
+     * 
+     * @param map
+     * @return String Json
+     */
+    public static String mapToJsonString(Map<String, StateSummary<ItemState>> map) {
+        Jsonb jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
+        return jsonb.toJson(map);
+    }
+    
+    
+    /**
+     * Represent step list as json doc
+     * 
+     * @param steps
+     * @return String
+     */
+    public static String stepsToJsonString(List<Step> steps) {
+        return steps.stream()
+                .map(Step::toJsonDoc)
+                .collect(Collectors.joining(",\n", "{\n", "\n]"));
+    }
+    
+    
+    /**
+     * Represent step list as json doc
+     * 
+     * @param workItems
+     * @return String
+     */
+    public static String workItemsToJsonString(List<WorkItem> workItems) {
+        return workItems.stream()
+                .map(WorkItem::toJsonDoc)
+                .collect(Collectors.joining(",\n", "{\n", "\n]"));
     }
 }

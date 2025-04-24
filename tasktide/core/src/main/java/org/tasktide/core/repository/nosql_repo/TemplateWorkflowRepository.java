@@ -10,6 +10,7 @@ import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.nosql.Template;
+import java.util.List;
 
 import org.tasktide.core.model.collection.Workflow;
 
@@ -33,5 +34,10 @@ public class TemplateWorkflowRepository extends TemplateRepository<Workflow> {
         @ConfigProperty(name = "task-tide.repository.nosql.collection.workflow.name", defaultValue = "Workflow") String collectionName
     ) {
         super(template, Workflow.class, collectionName);
+    }
+
+    @Override
+    public boolean extendModel(List<Workflow> toAdd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

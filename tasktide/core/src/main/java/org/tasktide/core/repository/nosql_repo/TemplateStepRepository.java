@@ -10,6 +10,7 @@ import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.nosql.Template;
+import java.util.List;
 
 import org.tasktide.core.model.collection.Step;
 
@@ -33,5 +34,10 @@ public class TemplateStepRepository extends TemplateRepository<Step> {
        @ConfigProperty(name = "task-tide.repository.nosql.collection.step.name", defaultValue = "Step") String collectionName
     ) {
         super(template, Step.class, collectionName);
+    }
+
+    @Override
+    public boolean extendModel(List<Step> toAdd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

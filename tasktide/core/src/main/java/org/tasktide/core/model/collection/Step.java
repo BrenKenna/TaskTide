@@ -12,8 +12,7 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.nosql.Column;
-
-import jakarta.nosql.Entity;
+import jakarta.nosql.Embeddable;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -32,9 +31,9 @@ import org.tasktide.core.TaskTideModel;
  * 
  * @author bkenna
  */
-@Entity
+@Embeddable
 @Dependent
-public class Step implements TaskTideModel {
+public class Step implements TaskTideModel<Step> {
     
     @Column
     @JsonbProperty("Step Id")
@@ -330,7 +329,7 @@ public class Step implements TaskTideModel {
      */
     @Override
     public String getId() {
-        return getId();
+        return getStepId();
     }
 
     

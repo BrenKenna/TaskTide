@@ -10,7 +10,7 @@ import org.tasktide.core.model.task.TaskState;
 
 /**
  *
- * Allow Step objects to be built where all fields are optional
+ * Allow {@link Step Step} objects to be built where all fields are optional
  * 
  * @author bkenna
  */
@@ -127,12 +127,12 @@ public class StepBuilder extends ModelBuilder {
     
     
     /**
-     * Construct Step from provided fields
+     * Construct {@link Step Step} from provided fields
      * 
-     * @return Step
+     * @return {@link Step Step}
      */
     @Override
-    public Object build() {
+    public Step build() {
         return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone, stepsToDo, stepsError);
     }
 }

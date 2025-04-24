@@ -86,4 +86,13 @@ public interface TaskTideRepository<T> {
      * @return List-T
      */
     public List<T> load(); 
+    
+    
+    /**
+     * Extend repository with input list
+     * 
+     * @param toAdd
+     * @return List-T
+     */
+    public boolean extendModel(List<T> toAdd);
 }

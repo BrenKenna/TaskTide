@@ -103,6 +103,22 @@ public abstract class JsonRepository<T extends TaskTideModel> implements TaskTid
     }
     
     
+    
+    /**
+     * Import provided model list, measuring imported count against expected
+     * 
+     * @param toAdd
+     * @return boolean
+     */
+    @Override
+    public boolean extendModel(List<T> toAdd) {
+        List<T> imported = toAdd.stream()
+             .map(elm -> insertModel(elm))
+             .toList();
+        return imported.size() == toAdd.size();
+    }
+    
+    
     /**
      * Delete model by provided id
      * 
@@ -178,7 +194,7 @@ public abstract class JsonRepository<T extends TaskTideModel> implements TaskTid
     public List<T> load() {
         
         // Return dataset if loaded
-        String json = compUtil.decompressFromFile(collectionName);
+        String json = compUtil.decompressFromFile(collectionName + "-" + COLLECTION_CLASS.getSimpleName());
         if ( json != null ) {
             Jsonb jsonb = JsonbBuilder.create();
             T[] array = jsonb.fromJson(json, (Class<T[]>) Array.newInstance(COLLECTION_CLASS, 0).getClass());
@@ -213,7 +229,7 @@ public abstract class JsonRepository<T extends TaskTideModel> implements TaskTid
     @Override
     public int save() {
         String output = listToJson(modelCollection);
-        if ( compUtil.compressToFile(collectionName, output) ) {
+        if ( compUtil.compressToFile(collectionName + "-" + COLLECTION_CLASS.getSimpleName(), output) ) {
             return modelCollection.size();
         }
         return -1;

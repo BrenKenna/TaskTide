@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.tasktide.core.TaskTideMapper;
+import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 
@@ -31,10 +32,11 @@ import org.tasktide.core.model.state_summary.StateSummary;
  * Service methods include providing Step, list of them. Getting list of WorkItems be useful, means composing repo though.
  * <br><br>
  * Implementing the {@link TaskTideMapper} allows mapping of {@link Step Step} to {@link WorkItem WorkItem}
+ * 
  * @author bkenna
  */
 @Dependent
-public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideService {
+public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideService<Step> {
     
     // Attributes
     private final TaskTideRepository<Step> repo;
@@ -52,27 +54,65 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     
     
     /**
-     * View all steps
+     * Add step to backend
      * 
-     * @return List-{@link Step Step}
+     * @param model
+     * @return {@link TaskTideModel TaskTideModel} of {@link Step Step}
      */
-    public List<Step> viewSteps() {
-        return repo.findAll();
+    @Override
+    public Step appendModel(Step model) {
+        return repo.insertModel(model);
+    }
+
+    
+    /**
+     * Import step list to backend, measuring imported count against expected
+     * 
+     * @param toAdd
+     * @return boolean
+     */
+    @Override
+    public boolean extendModel(List<Step> toAdd) {
+        return repo.extendModel(toAdd);
     }
     
     
     /**
-     * Fetch steps with field matching value
+     * View steps by field
      * 
      * @param field
      * @param value
-     * @return List-{@link Step Step}
+     * @return List-{@link TaskTideModel TaskTideModel} of {@link Step Step}
      */
-    public List<Step> viewStepsByField(String field, Object value) {
+    @Override
+    public List<Step> viewByField(String field, Object value) {
         return repo.findByField(field, value);
     }
     
     
+    /**
+     * Fetch step by id
+     * 
+     * @param id
+     * @return {@link TaskTideModel TaskTideModel} of {@link Step Step}
+     */
+    @Override
+    public Step fetchById(String id) {
+        return repo.findById(id).get();
+    }
+    
+    
+    /**
+     * View all steps
+     * 
+     * @return List-{@link Step Step}
+     */
+    @Override
+    public List<Step> viewAll() {
+        return repo.findAll();
+    }
+
+        
     /**
      * Fetch steps having name
      * 
@@ -85,34 +125,13 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     
     
     /**
-     * Fetch step by Id
-     * 
-     * @param stepId
-     * @return {@link Step Step}
-     */
-    public Step fetchStep(String stepId) {
-        return repo.findById(stepId).get();
-    }
-    
-    
-    /**
-     * Append provided step
-     * 
-     * @param step
-     * @return {@link Step Step}
-     */
-    public Step appendStep(Step step) {
-        return repo.insertModel(step);
-    }
-    
-    
-    /**
      * Drop step matching Id
      * 
      * @param id
      * @return boolean
      */
-    public boolean dropStep(String id) {
+    @Override
+    public boolean dropById(String id) {
         return repo.deleteModel(id);
     }
     
@@ -120,11 +139,12 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     /**
      * Update step
      * 
-     * @param step
+     * @param model
      * @return {@link Step Step}
      */
-    public Step updateStep(Step step) {
-        return repo.updateModel(step);
+    @Override
+    public Step updateModel(Step model) {
+        return repo.updateModel(model);
     }
     
     
@@ -177,5 +197,30 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     @Override
     public List<WorkItem> getThroughLink(TaskTideRepository<WorkItem> mappingRepo, Step model) {
         return mappingRepo.findByField("stepName", model.getStepName());
+    }
+    
+    
+    /**
+     * Represent service as string
+     * 
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "StepService{" + 
+            ",ServiceType=Step" +
+            ",ServiceLink=WorkItem" +
+        '}';
+    }
+
+    
+    /**
+     * Save data to backend
+     * 
+     * @return int
+     */
+    @Override
+    public int save() {
+        return repo.save();
     }
 }

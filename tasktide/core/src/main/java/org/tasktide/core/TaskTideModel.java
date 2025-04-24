@@ -8,9 +8,10 @@ package org.tasktide.core;
 /**
  * Interface to support methods around model classes
  * 
+ * @param <T> of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
  * @author bkenna
  */
-public interface TaskTideModel {
+public interface TaskTideModel<T> {
     
     
     /**

@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.services;
 
-import org.tasktide.core.model.state_summary.StateSummary;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
@@ -18,21 +17,22 @@ import org.tasktide.core.TaskTideService;
 import org.tasktide.core.TaskTideMapper;
 
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.StateSummary;
 
 import org.tasktide.core.supporting.Utils;
 
 
 /**
  *
- * Service to provide WorkItem interactions to backend DB
+ * Service to provide {@link WorkItemWorkItem} interactions to backend DB
  * 
  * @author bkenna
  */
 @Dependent
-public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTideService {
+public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTideService<WorkItem> {
     
     // Attributes
     private final TaskTideRepository<WorkItem> repo;
@@ -60,11 +60,12 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     /**
      * Insert work item
      * 
-     * @param workItem
-     * @return WorkItem
+     * @param model
+     * @return {@link WorkItem WorkItem}
      */
-    public WorkItem appendWorkItem(WorkItem workItem) {
-        return repo.insertModel(workItem);
+    @Override
+    public WorkItem appendModel(WorkItem model) {
+        return repo.insertModel(model);
     }
     
     
@@ -75,27 +76,88 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param value
      * @return List-WorkItem
      */
-    public List<WorkItem> viewItemsByField(String field, Object value) {
+    @Override
+    public List<WorkItem> viewByField(String field, Object value) {
         return repo.findByField(field, value);
+    }
+    
+    
+    /**
+     * Find {@link WorkItem WorkItem} by Id
+     * 
+     * @param id
+     * @return {@link WorkItem WorkItem}
+     */
+    @Override
+    public WorkItem fetchById(String id) {
+        return repo.findById(id).get();
     }
     
     
     /**
      * Find all work items
      * 
-     * @return List-WorkItem
+     * @return List-{@link WorkItem WorkItem}
      */
-    public List<WorkItem> viewItems() {
+    @Override
+    public List<WorkItem> viewAll() {
         return repo.findAll();
     }
-            
+    
+    
+    /**
+     * Drop {@link WorkItem WorkItem} by Id
+     * 
+     * @param id
+     * @return boolean
+     */
+    @Override
+    public boolean dropById(String id) {
+        return repo.deleteModel(id);
+    }
+
+    
+    /**
+     * Update {@link WorkItem WorkItem}
+     * 
+     * @param model
+     * @return {@link WorkItem WorkItem}
+     */
+    @Override
+    public WorkItem updateModel(WorkItem model) {
+        return repo.updateModel(model);
+    }
+
+    
+    /**
+     * Import {@link WorkItem WorkItem} list matching imported count against expected
+     * 
+     * @param toAdd
+     * @return boolean
+     */
+    @Override
+    public boolean extendModel(List<WorkItem> toAdd) {
+        return repo.extendModel(toAdd);
+    }
+    
+    
+    /**
+     * Save data to backend
+     * 
+     * @return int
+     */
+    @Override
+    public int save() {
+        return repo.save();
+    }
+    
     
     /**
      * Add task to a WorkItem
      * 
      * @param workItem
      * @param task
-     * @return WorkItem
+     * @return {@link WorkItem WorkItem}
      */
     public WorkItem appendTask(WorkItem workItem, ItemTask task) {
     
@@ -105,7 +167,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
         }
         return repo.updateModel(workItem);
     }
-
+    
     
     /**
      * Lock provided WorkItem
@@ -213,6 +275,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
         return "WorkItemService{" + 
             "LOCKING_WAIT_TIME=" + LOCKING_WAIT_TIME +
             ",ServiceType=WorkItem" +
+            ",ServiceLink=Step" +
         '}';
     }
 

@@ -7,12 +7,10 @@ package org.tasktide.core.repository.json_repo;
 import org.tasktide.core.repository.JsonRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.json.bind.JsonbBuilder;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import java.util.List;
 
-import org.tasktide.core.model.collection.WorkItemCollection;
 import org.tasktide.core.model.workitem.WorkItem;
 
 
