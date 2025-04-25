@@ -22,7 +22,7 @@ public class TaskGenerator {
      * Generate random task of required type
      * 
      * @param taskType
-     * @return Map-String of Task Name, String of task
+     * @return Map-String of TaskTideTask Name, String of task
      */
     public Map<String, String> generateTask(TaskType taskType) {
         return taskType.createTask().generateCmd();
@@ -32,7 +32,7 @@ public class TaskGenerator {
     /**
      * Generate random ping task
      * 
-     * @return Map-String of Task Name, String of task
+     * @return Map-String of TaskTideTask Name, String of task
      */
     public Map<String, String> generatePingTask() {
         return TaskType.PING.createTask().generateCmd();
@@ -42,7 +42,7 @@ public class TaskGenerator {
     /**
      * Generate random seq task
      * 
-     * @return Map-String of Task Name, String of task
+     * @return Map-String of TaskTideTask Name, String of task
      */
     public Map<String, String> generateSeqTask() {
         return TaskType.SEQ.createTask().generateCmd();
@@ -54,7 +54,7 @@ public class TaskGenerator {
      * 
      * @param taskType
      * @param nTasks
-     * @return List-Map-String of Task Name, String of task
+     * @return List-Map-String of TaskTideTask Name, String of task
      */
     public List<Map<String, String>> generateTasks(TaskType taskType, int nTasks) {
         List<Map<String, String>> output = new ArrayList<>();

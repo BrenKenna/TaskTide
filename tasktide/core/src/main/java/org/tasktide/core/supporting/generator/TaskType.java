@@ -15,14 +15,14 @@ public enum TaskType {
     
     PING {
         @Override
-        public Task createTask() {
+        public TaskTideTask createTask() {
             return new MockPingTask();
         }
     },
     
     SEQ {
         @Override
-        public Task createTask() {
+        public TaskTideTask createTask() {
             return new MockSeqTask();
         }
     };
@@ -31,7 +31,7 @@ public enum TaskType {
     /**
      * Abstract method to generate a task
      * 
-     * @return Task
+     * @return TaskTideTask
      */
-    public abstract Task createTask();
+    public abstract TaskTideTask createTask();
 }

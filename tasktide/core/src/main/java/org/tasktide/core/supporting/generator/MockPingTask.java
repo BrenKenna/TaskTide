@@ -16,7 +16,7 @@ import org.tasktide.core.supporting.Utils;
  * 
  * @author bkenna
  */
-public class MockPingTask implements Task {
+public class MockPingTask implements TaskTideTask {
 
     private final Utils utils;
 
