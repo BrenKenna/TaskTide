@@ -66,7 +66,6 @@ public class SupplementalTests {
     void printSplash() throws IOException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("splash.txt");
              BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-
             String line;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
@@ -87,7 +86,7 @@ public class SupplementalTests {
     
         // Initialize test
         boolean assertionState;
-        logger.info("\n\n================ Print Splash Test ================\n\n");
+        logger.info("\n\n================ Print Splash Test ================");
         
         
         // Try pring splash

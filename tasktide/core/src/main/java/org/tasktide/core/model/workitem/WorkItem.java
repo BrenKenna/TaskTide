@@ -35,7 +35,7 @@ import org.tasktide.core.TaskTideModel;
  */
 @Entity
 @Dependent
-public class WorkItem implements TaskTideModel {
+public class WorkItem implements TaskTideModel<WorkItem> {
     
     @Id
     @JsonbProperty("Id")

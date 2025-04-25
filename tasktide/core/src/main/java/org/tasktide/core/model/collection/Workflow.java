@@ -19,8 +19,11 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.lang.reflect.Field;
+import java.util.Map.Entry;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.model.workitem.ItemState;
 
 
 /**
@@ -31,7 +34,7 @@ import org.tasktide.core.TaskTideModel;
  */
 @Entity
 @Dependent
-public class Workflow implements TaskTideModel {
+public class Workflow implements TaskTideModel<Workflow> {
     
     @Id
     @JsonbProperty("Workflow Id")
@@ -137,7 +140,7 @@ public class Workflow implements TaskTideModel {
     /**
      * Set workflow steps
      * 
-     * @param workflowSteps 
+     * @param steps 
      */
     public void setWorkflowSteps(List<Step> steps) {
         for(Step step : steps) {
@@ -185,6 +188,20 @@ public class Workflow implements TaskTideModel {
     
     
     /**
+     * Summarize {@link Workflow Workflow} {@link Step Step} collection
+     * 
+     * @return Map-String,{@link StateSummary StateSummary}-{@link ItemState ItemState}
+     */
+    public Map<String, StateSummary<ItemState>> summarizeStepStates() {
+        Map<String, StateSummary<ItemState>> results = new HashMap();
+        for ( Entry<String, Step> elm : workflowSteps.entrySet() ) {
+               results.put( elm.getKey(), elm.getValue().summarizeByState() );
+        }
+        return results;
+    }
+            
+    
+    /**
      * TaskTideModel interface method to represent as JsonDoc
      * 
      * @return String
@@ -202,7 +219,7 @@ public class Workflow implements TaskTideModel {
      */
     @Override
     public String getId() {
-        return getId();
+        return workflowId;
     }
 
     

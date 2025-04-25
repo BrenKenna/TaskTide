@@ -15,7 +15,7 @@ import java.util.List;
  * @param <T> of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
  * @author bkenna
  */
-public interface TaskTideService<T> {
+public interface TaskTideService<T extends TaskTideModel> {
     
     
     /**

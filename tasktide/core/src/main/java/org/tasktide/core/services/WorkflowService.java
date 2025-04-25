@@ -8,7 +8,9 @@ import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
@@ -16,6 +18,8 @@ import org.tasktide.core.TaskTideMapper;
 
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.core.supporting.Utils;
 
@@ -51,10 +55,11 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
      * 
      * @param workflow
      * @param step
-     * @return {@link Step Step}
+     * @return {@link Workflow Workflow}
      */
-    public Step addStepToWorkflow(Workflow workflow, Step step) {
-        return workflow.getWorkflowSteps().put(step.getId(), step);
+    public Workflow addStepToWorkflow(Workflow workflow, Step step) {
+        workflow.getWorkflowSteps().put(step.getId(), step);
+        return repo.updateModel(workflow);
     }
     
     
@@ -63,10 +68,32 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
      * 
      * @param workflow
      * @param step
-     * @return {@link Step Step}
+     * @return boolean
      */
-    public Step dropStepFromWorkflow(Workflow workflow, Step step) {
-        return workflow.getWorkflowSteps().remove(step.getId());
+    public boolean dropStepFromWorkflow(Workflow workflow, Step step) {
+        workflow.getWorkflowSteps().remove(step.getId());
+        return repo.deleteModel(workflow.getWorkflowId());
+    }
+    
+    
+    /**
+     * Summarize {@link Step Step} across all {@link Workflow Workflow}
+     * 
+     * @return WorkflowId, StepId,{@link StateSummary StateSummary}-{@link ItemState ItemState}
+     */
+    public Map<String, Map<String, StateSummary<ItemState>>> summarizeWorkflow() {
+    
+        // Intialize vars
+        Map<String, Map<String, StateSummary<ItemState>>> results = new HashMap<>();
+        
+        // Fetch step summaries for each step
+        for ( Workflow elm : this.viewAll() ) {
+            Map<String, StateSummary<ItemState>> stepData = elm.summarizeStepStates();
+            results.put(elm.getWorkflowId(), stepData);
+        }
+        
+        // Return results
+        return results;
     }
     
     
@@ -75,7 +102,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
      * 
      * @param mappingServ
      * @param model
-     * @return 
+     * @return {@link List List}-{@link Step Step}
      */
     @Override
     public List<Step> getThroughLink(TaskTideService<Step> mappingServ, Workflow model) {

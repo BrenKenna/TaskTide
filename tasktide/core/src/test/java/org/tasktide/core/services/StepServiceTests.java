@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.services;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,23 +13,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.tasktide.TestUtils;
-import org.tasktide.core.TaskTideRepository;
+
 import org.tasktide.core.TaskTideService;
-
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.JsonRepository;
-
-import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.state_summary.StateSummary;
-import org.tasktide.core.model.workitem.ItemState;
-import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
+
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.state_summary.StateSummary;
+
+import org.tasktide.TestUtils;
 
 
 /**
@@ -75,10 +75,9 @@ public class StepServiceTests {
     public void canConstruct() {
     
         // Setup repository
-        logger.info("\n\n================ Service Setup Test ================\n");
+        logger.info("\n\n================ StepService Setup Test ================\n");
         boolean assertionState;
         JsonRepository<Step> repo;
-        List<WorkItem> data = new ArrayList<>();
         
         // Generate test data
         logger.info("Generating data for testing");
@@ -97,7 +96,7 @@ public class StepServiceTests {
         }
         
         // Log test state
-        logger.info("\n\n================ Service Setup Test ================\n");
+        logger.info("\n\n================ StepService Setup Test ================\n");
         assertTrue(assertionState);
     }
     
@@ -110,7 +109,7 @@ public class StepServiceTests {
     public void canFindByField() {
     
         // Fetch service
-        logger.info("\n\n================ View by Field Test ================\n");
+        logger.info("\n\n================ StepService View by Field Test ================\n");
         boolean assertionState;
         TaskTideRepository<Step> repo = TestUtils.createStepJsonRepo();
         TaskTideService<Step> serv = new StepService(repo);
@@ -119,16 +118,16 @@ public class StepServiceTests {
         List<Step> results = serv.viewByField("stepName", "myFirstStep");
         if ( results != null ) {
             assertionState = true;
-            logger.info("\n\nDisplaying first queried item:\n" + TestUtils.stepsToJsonString(results) + "\n");
+            logger.info("\n\nDisplaying first queried item:\n" + TestUtils.modelToJsonString(results) + "\n");
         }
         else {
             assertionState = false;
-            logger.warn("\n\nUnable query via service:\n" + TestUtils.stepsToJsonString(results) + "\n");
+            logger.warn("\n\nUnable query via service:\n" + TestUtils.modelToJsonString(results) + "\n");
         }
         
         // Log test status
         assertTrue(assertionState);
-        logger.info("\n\n================ View by Field Test ================\n");
+        logger.info("\n\n================ StepService View by Field Test ================\n");
     }
     
     
@@ -140,7 +139,7 @@ public class StepServiceTests {
     public void canSummarize() {
     
         // Fetch service
-        logger.info("\n\n================ Summarize Progress Across Steps Test ================\n");
+        logger.info("\n\n================ StepService Summarize Progress Across Steps Test ================\n");
         boolean assertionState;
         TaskTideRepository<Step> repo = TestUtils.createStepJsonRepo();
         StepService serv = new StepService(repo);
@@ -158,7 +157,7 @@ public class StepServiceTests {
         
         // Log test status
         assertTrue(assertionState);
-        logger.info("\n\n================ Summarize Progress Across Steps Test ================\n");
+        logger.info("\n\n================ StepService Summarize Progress Across Steps Test ================\n");
     }
     
     
@@ -253,11 +252,11 @@ public class StepServiceTests {
         // Evaluate test
         if ( assertionState ) {
             assertionState = true;
-            logger.info("\n\nDisplaying mapped data:\n" + TestUtils.workItemsToJsonString(output) + "\n");
+            logger.info("\n\nDisplaying mapped data:\n" + TestUtils.modelToJsonString(output) + "\n");
         }
         else {
             assertionState = false;
-            logger.warn("\n\nUnable to map data:\n" + TestUtils.workItemsToJsonString(output) + "\n");
+            logger.warn("\n\nUnable to map data:\n" + TestUtils.modelToJsonString(output) + "\n");
         }
         
         // Log test status

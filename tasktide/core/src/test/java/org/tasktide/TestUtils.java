@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.ModelBuilderProvider;
@@ -36,6 +37,7 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.state_summary.StateSummary;
 import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
+import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 
 import org.tasktide.core.supporting.generator.TaskGenerator;
 import org.tasktide.core.supporting.generator.TaskType;
@@ -233,6 +235,51 @@ public class TestUtils {
     
     
     /**
+     * Make a test {@link Workflow Workflow}
+     * 
+     * @param steps
+     * @param workflowId
+     * @param workflowName
+     * @return {@link Workflow Workflow}
+     */
+    public static Workflow makeTestWorkflow(List<Step> steps, String workflowId, String workflowName) {
+        return new WorkflowBuilder()
+                .workflowId(workflowId)
+                .workflowName(workflowName)
+                .steps( steps )
+                .build();
+    }
+    
+    
+    /**
+     * Make {@link Workflow Workflow} collection
+     * 
+     * @return List-{@link Workflow Workflow}
+     */
+    public static List<Workflow> makeTestWorkflows() {
+        
+        // Initialize vars
+        List<Workflow> output = new ArrayList();
+        List<Step> stepA;
+        List<Step> stepB = new ArrayList();
+        List<Step> stepC = new ArrayList();
+        
+        // Create step lists
+        stepA = makeTestStepList();
+        stepB.add(makeTestStep("step3", "myThirdStep"));
+        stepC.add(makeTestStep("step4", "myFourthStep"));
+        
+        // Append workflows
+        output.add(makeTestWorkflow(stepA, "workflow1", "myFirstWorkflow"));
+        output.add(makeTestWorkflow(stepB, "workflow2", "mySecondWorkflow"));
+        output.add(makeTestWorkflow(stepC, "workflow3", "myThirdWorkflow") );
+        
+        // Return results
+        return output;
+    }
+    
+    
+    /**
      * Fetch seq task
      * 
      * @return Map-String, String
@@ -275,9 +322,9 @@ public class TestUtils {
     
     
     /**
-     * Create testing workitem json repository
+     * Create testing {@link JsonWorkItemRepository JsonWorkflowRepository}
      * 
-     * @return {@link TaskTideRepository TaskTideRepository}
+     * @return {@link TaskTideRepository-{@link WorkItem WorkItem} TaskTideRepository}
      */
     public static TaskTideRepository createWorkItemJsonRepo() {
     
@@ -293,9 +340,9 @@ public class TestUtils {
     
     
     /**
-     * Create testing workitem json repository
+     * Create testing {@link JsonStepRepository JsonStepRepository}
      * 
-     * @return {@link TaskTideRepository TaskTideRepository}
+     * @return {@link TaskTideRepository-{@link Step Step} TaskTideRepository}
      */
     public static TaskTideRepository createStepJsonRepo() {
         return new JsonStepRepository(TestUtils.makeTestStepList(), "myData");
@@ -303,39 +350,48 @@ public class TestUtils {
     
     
     /**
-     * Represent {@link StateSummary StateSummary} as json string
+     * Create testing {@link JsonWorkflowRepository JsonWorkflowRepository}
+     * 
+     * @return {@link TaskTideRepository-{@link Workflow Workflow} TaskTideRepository}
+     */
+    public static TaskTideRepository createWorkflowJsonRepo() {
+        return new JsonWorkflowRepository(TestUtils.makeTestWorkflows(), "myData");
+    }
+    
+    
+    /**
+     * Represent map as json string
      * 
      * @param map
      * @return String Json
      */
-    public static String mapToJsonString(Map<String, StateSummary<ItemState>> map) {
+    public static String mapToJsonString(Map map) {
         Jsonb jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
         return jsonb.toJson(map);
     }
-    
+
     
     /**
-     * Represent step list as json doc
+     * Represent list as json string
      * 
-     * @param steps
-     * @return String
+     * @param list
+     * @return String Json
      */
-    public static String stepsToJsonString(List<Step> steps) {
-        return steps.stream()
-                .map(Step::toJsonDoc)
-                .collect(Collectors.joining(",\n", "{\n", "\n]"));
+    public static String mapToJsonString(List list) {
+        Jsonb jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
+        return jsonb.toJson(list);
     }
     
     
     /**
-     * Represent step list as json doc
+     * Represent {@link TaskTideModel TaskTideModel} list as json doc
      * 
-     * @param workItems
+     * @param models
      * @return String
      */
-    public static String workItemsToJsonString(List<WorkItem> workItems) {
-        return workItems.stream()
-                .map(WorkItem::toJsonDoc)
+    public static String modelToJsonString(List<? extends TaskTideModel<?>> models) {
+        return models.stream()
+                .map(TaskTideModel::toJson)
                 .collect(Collectors.joining(",\n", "{\n", "\n]"));
     }
 }
