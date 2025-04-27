@@ -6,6 +6,10 @@ package org.tasktide.core.model.builders;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.tasktide.core.TaskTideModelType;
+import static org.tasktide.core.TaskTideModelType.STEP;
+import static org.tasktide.core.TaskTideModelType.WORKFLOW;
+import static org.tasktide.core.TaskTideModelType.WORKITEM;
 
 
 /**
@@ -36,9 +40,36 @@ public class ModelBuilderProvider {
      * Get required builder
      * 
      * @param builderType
-     * @return ModelBuilder
+     * @return {@link ModelBuilder ModelBuilder}
      */
     public ModelBuilder getBuilder(BuilderType builderType) {
         return builderMap.get(builderType);
+    }
+    
+    
+    /**
+     * Get builder for {@link TaskTideModel TaskTideModel}
+     * 
+     * @param modelType
+     * @return {@linke ModelBuilder ModelBuilder}
+     */
+    public ModelBuilder getBuilder(TaskTideModelType modelType) {
+        return getBuilder(mapToModel(modelType));
+    }
+    
+    
+    /**
+     * Map {@link TaskTideModelType TaskTideModelType} to {@link BuilderType BuilderType}
+     * 
+     * @param modelType
+     * @return {@link BuilderType BuilderType}
+     */
+    public BuilderType mapToModel(TaskTideModelType modelType) {
+        return switch (modelType) {
+            case WORKITEM -> BuilderType.WORK_ITEM;
+            case STEP -> BuilderType.STEP;
+            case WORKFLOW -> BuilderType.WORKFLOW;
+            
+        };      
     }
 }

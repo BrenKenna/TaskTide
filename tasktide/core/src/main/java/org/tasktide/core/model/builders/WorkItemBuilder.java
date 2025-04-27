@@ -4,6 +4,9 @@
  */
 package org.tasktide.core.model.builders;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
 import org.tasktide.core.model.workitem.Workload;
@@ -148,6 +151,19 @@ public class WorkItemBuilder extends ModelBuilder {
      */
     public WorkItemBuilder workload(Workload workload) {
         this.workload = workload;
+        return this;
+    }
+    
+    
+    /**
+     * Add workload field with single {@link ItemTask ItemTask}
+     * 
+     * @param itemTask
+     * @return WorkItemBuilder
+     */
+    public WorkItemBuilder workload(ItemTask itemTask) {
+        WorkloadBuilder builder = new WorkloadBuilder();
+        this.workload = builder.workload(itemTask).build();
         return this;
     }
     

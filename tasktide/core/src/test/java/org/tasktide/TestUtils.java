@@ -7,19 +7,20 @@ package org.tasktide;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.ModelBuilderProvider;
 import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.TaskLoggingBuilder;
-import org.tasktide.core.model.builders.WorkItemBuilder;
 import org.tasktide.core.model.builders.WorkloadBuilder;
+import org.tasktide.core.model.builders.WorkItemBuilder;
 import org.tasktide.core.model.builders.StepBuilder;
+import org.tasktide.core.model.builders.WorkflowBuilder;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.ProcessLog;
@@ -29,18 +30,20 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
-import org.tasktide.core.model.collection.Step;
 
-import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.model.builders.WorkflowBuilder;
+import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
-import org.tasktide.core.model.state_summary.StateSummary;
-import org.tasktide.core.repository.json_repo.JsonStepRepository;
+
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideRepository;
+
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
+import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 
 import org.tasktide.core.supporting.generator.TaskGenerator;
-import org.tasktide.core.supporting.generator.TaskType;
+import org.tasktide.core.supporting.generator.ManagerTask;
+import org.tasktide.core.supporting.generator.ExampleGenerators;
 
 
 /**
@@ -282,9 +285,9 @@ public class TestUtils {
     /**
      * Fetch seq task
      * 
-     * @return Map-String, String
+     * @return {@link ManagerTask ManagerTask}
      */
-    public static Map<String, String> getSeqTask() {
+    public static ManagerTask getSeqTask() {
         return taskGenerator.generateSeqTask();
     }
     
@@ -292,9 +295,9 @@ public class TestUtils {
     /**
      * Fetch ping task
      * 
-     * @return Map-String, String
+     * @return {@link ManagerTask ManagerTask}
      */
-    public static Map<String, String> getPingTask() {
+    public static ManagerTask getPingTask() {
         return taskGenerator.generatePingTask();
     }
     
@@ -303,10 +306,10 @@ public class TestUtils {
      * Generate list of random ping tasks
      * 
      * @param nTasks
-     * @return List-Map-String, String
+     * @return List-{@link ManagerTask ManagerTask}
      */
-    public static List<Map<String, String>> getPingTasks(int nTasks) {
-        return taskGenerator.generateTasks(TaskType.PING, nTasks);
+    public static List<ManagerTask> getPingTasks(int nTasks) {
+        return taskGenerator.generateTasks(ExampleGenerators.PING, nTasks);
     }
     
     
@@ -314,17 +317,17 @@ public class TestUtils {
      * Generate list of random seq tasks
      * 
      * @param nTasks
-     * @return List-Map-String, String
+     * @return List-{@link ManagerTask ManagerTask}
      */
-    public static List<Map<String, String>> getSeqTasks(int nTasks) {
-        return taskGenerator.generateTasks(TaskType.SEQ, nTasks);
+    public static List<ManagerTask> getSeqTasks(int nTasks) {
+        return taskGenerator.generateTasks(ExampleGenerators.SEQ, nTasks);
     }
     
     
     /**
      * Create testing {@link JsonWorkItemRepository JsonWorkflowRepository}
      * 
-     * @return {@link TaskTideRepository-{@link WorkItem WorkItem} TaskTideRepository}
+     * @return {@link TaskTideRepository TaskTideRepository-{@link WorkItem WorkItem}}
      */
     public static TaskTideRepository createWorkItemJsonRepo() {
     
@@ -342,7 +345,7 @@ public class TestUtils {
     /**
      * Create testing {@link JsonStepRepository JsonStepRepository}
      * 
-     * @return {@link TaskTideRepository-{@link Step Step} TaskTideRepository}
+     * @return {@link TaskTideRepository TaskTideRepository-{@link Step Step}}
      */
     public static TaskTideRepository createStepJsonRepo() {
         return new JsonStepRepository(TestUtils.makeTestStepList(), "myData");
@@ -352,7 +355,7 @@ public class TestUtils {
     /**
      * Create testing {@link JsonWorkflowRepository JsonWorkflowRepository}
      * 
-     * @return {@link TaskTideRepository-{@link Workflow Workflow} TaskTideRepository}
+     * @return {@link TaskTideRepository TaskTideRepository-{@link Workflow Workflow}}
      */
     public static TaskTideRepository createWorkflowJsonRepo() {
         return new JsonWorkflowRepository(TestUtils.makeTestWorkflows(), "myData");

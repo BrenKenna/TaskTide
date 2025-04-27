@@ -11,8 +11,6 @@ dependencies {
 
     // Jakarta-NoSQL
     implementation 'jakarta.nosql:jakarta.nosql-api:1.0.0'
-    implementation "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.0"
-    implementation "org.eclipse.jnosql.databases:jnosql-dynamodb:1.1.0"
 
     // Jakarta CDI
     implementation 'jakarta.enterprise:jakarta.enterprise.cdi-api:4.0.1'
@@ -25,7 +23,7 @@ dependencies {
     implementation 'org.eclipse:yasson:3.0.3' // JSON-B implementation
 
     // Project core lib
-    //implementation project(':core')
+    implementation project(':core')
 
     // Log4J
     implementation 'org.apache.logging.log4j:log4j-api:2.20.0'

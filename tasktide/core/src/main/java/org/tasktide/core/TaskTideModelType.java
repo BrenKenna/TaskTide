@@ -10,7 +10,7 @@ package org.tasktide.core;
  * 
  * @author bkenna
  */
-public enum ModelType {
+public enum TaskTideModelType {
     
     WORKITEM {
         @Override
@@ -19,7 +19,7 @@ public enum ModelType {
         }
 
         @Override
-        public boolean isModel(ModelType query) {
+        public boolean isModel(TaskTideModelType query) {
             return WORKITEM == query;
         }
 
@@ -36,7 +36,7 @@ public enum ModelType {
         }
 
         @Override
-        public boolean isModel(ModelType query) {
+        public boolean isModel(TaskTideModelType query) {
             return STEP == query;
         }
 
@@ -53,7 +53,7 @@ public enum ModelType {
         }
 
         @Override
-        public boolean isModel(ModelType query) {
+        public boolean isModel(TaskTideModelType query) {
             return WORKFLOW == query;
         }
 
@@ -79,7 +79,7 @@ public enum ModelType {
      * @param query
      * @return boolean
      */
-    public abstract boolean isModel(ModelType query);
+    public abstract boolean isModel(TaskTideModelType query);
 
     
     
@@ -102,12 +102,12 @@ public enum ModelType {
         
         // Initialize values
         int modelInd = -1;
-        int limit = ModelType.values().length;
+        int limit = TaskTideModelType.values().length;
         int counter = 0;
         
         // Search until found
         while ( counter <= limit && modelInd < 0 ) {
-            ModelType modelType = ModelType.values()[counter];
+            TaskTideModelType modelType = TaskTideModelType.values()[counter];
             if ( modelType.isModel(query) ) {
                 modelInd = counter;
             }

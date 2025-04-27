@@ -8,30 +8,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.tasktide.core.supporting.Utils;
+import org.tasktide.core.supporting.Utils;
 
 
 /**
  *
- * Generating ping tasks
+ * Generating seq tasks
  * 
  * @author bkenna
  */
-public class MockPingTask implements TaskTideTask {
-
+public class SeqGenerator {
+    
     private final Utils utils;
-
-    public MockPingTask() {
-        this.utils = new Utils();
+    
+    public SeqGenerator() {
+        utils = new Utils();
     }
 
-    @Override
     public Map<String, String> generateCmd() {
         Map<String, String> output = new HashMap<>();
-        String cmd = "ping " + HostList.getRandomHost();
-        output.put("Task", cmd);
-        output.put("Task Name", "Ping " + cmd);
+        int limit = utils.getRandInt(100);
+        String cmd = "seq " + limit;
+        output.put("Task Name", "Seq " + limit);
+        output.put("Task Script", cmd);
         return output;
     }
-    
-    
 }

@@ -2,34 +2,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.core.supporting.generator;
+package org.tasktide.manager.model.manager_task.generator;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.tasktide.core.supporting.Utils;
 
 
 /**
  *
- * Generating seq tasks
+ * Generating ping tasks
  * 
  * @author bkenna
  */
-public class MockSeqTask implements TaskTideTask {
-    
-    private final Utils utils;
-    
-    public MockSeqTask() {
-        utils = new Utils();
-    }
+public class PingGenerator {
 
-    @Override
+    public PingGenerator() {}
+
     public Map<String, String> generateCmd() {
         Map<String, String> output = new HashMap<>();
-        int limit = utils.getRandInt(100);
-        String cmd = "seq " + limit;
-        output.put("Task", cmd);
-        output.put("Task Name", cmd);
+        String host = HostList.getRandomHost();
+        String cmd = "ping " + host;
+        output.put("Task Name", "Ping " + host);
+        output.put("Task Script", cmd);
         return output;
     }
 }

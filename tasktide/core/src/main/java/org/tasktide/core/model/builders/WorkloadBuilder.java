@@ -74,6 +74,19 @@ public class WorkloadBuilder extends ModelBuilder {
     
     
     /**
+     * Builder {@link Workload Workload} from single {@link ItemTask ItemTask}
+     * 
+     * @param task
+     * @return {@link WorkloadBuilder WorkloadBuilder}
+     */
+    public WorkloadBuilder workload(ItemTask task) {
+        this.workload = new HashMap<>();
+        this.workload.put(task.getTaskName(), task);
+        return this;
+    }
+    
+    
+    /**
      * Add workload state field
      * 
      * @param workloadState
