@@ -42,7 +42,7 @@ import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 
 import org.tasktide.core.supporting.generator.TaskGenerator;
-import org.tasktide.core.supporting.generator.ManagerTask;
+import org.tasktide.core.supporting.ManagerTask;
 import org.tasktide.core.supporting.generator.ExampleGenerators;
 
 
@@ -57,6 +57,36 @@ public class TestUtils {
     // Model builder
     public static ModelBuilderProvider modelBuidler = new ModelBuilderProvider();
     public static TaskGenerator taskGenerator = new TaskGenerator();
+    
+    
+    /**
+     * Make {@link Workload Workload} from {@link ItemTask ItemTask}
+     * 
+     * @param itemTask
+     * @return {@link Workload Workload}
+     */
+    public static Workload Workload(ItemTask itemTask) {
+        return new WorkloadBuilder()
+                    .workload(itemTask)
+                    .workloadState(ItemState.TODO)
+                    .workloadType(ItemType.SINGLE)
+                    .build();
+    }
+    
+    
+    /**
+     * Make {@link ItemType ItemType.NESTED} {@link Workload Workload} from {@link ItemTask ItemTask} list
+     * 
+     * @param tasks
+     * @return {@link Workload Workload}
+     */
+    public static Workload workload(List<ItemTask> tasks) {
+        return new WorkloadBuilder()
+                    .workload(tasks)
+                    .workloadState(ItemState.TODO)
+                    .workloadType(ItemType.NESTED)
+                    .build();
+    }
     
     
     /**
@@ -123,6 +153,26 @@ public class TestUtils {
                     .id("My Workload")
                     .workload(itemTasks)
                     .build();
+    }
+    
+    
+    /**
+     * Make {@link WorkItem} from {@link Workload Workload}
+     * 
+     * @param itemName
+     * @param workload
+     * @param stepName
+     * @return {@link WorkItem WorkItem}
+     */
+    public static WorkItem makeWorkItem(String itemName, Workload workload, String stepName) {
+        return new WorkItemBuilder()
+                .itemName(itemName)
+                .workload(workload)
+                .itemState(ItemState.TODO)
+                .taskCount(workload.getWorkloadSize())
+                .itemType(workload.getWorkloadType())
+                .stepName(stepName)
+                .build();
     }
     
     

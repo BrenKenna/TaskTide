@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskState;
 
 
 /**
@@ -30,6 +31,7 @@ public class ManagerTask {
     private String taskScript;
     
     private final ItemTaskBuilder itemTaskBuilder;
+    
     
     /**
      * Null constructor
@@ -77,9 +79,11 @@ public class ManagerTask {
         return itemTaskBuilder
             .taskName(taskName)
             .task(taskScript)
+            .taskState(TaskState.PENDING)
             .build();
     }
-
+    
+    
     
     public String getTaskName() {
         return taskName;
@@ -97,7 +101,6 @@ public class ManagerTask {
         return taskScript;
     }
 
-    
     
     public void setTaskScript(String taskScript) {
         this.taskScript = taskScript;

@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.supporting.generator;
 
+import org.tasktide.core.supporting.ManagerTask;
 import java.util.Map;
 
 

@@ -2021,3 +2021,508 @@ _________________________________________________
 
 ---------------- Terminating Workflow Service Tests ----------------
 
+2025-04-27 16:58:52 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 16:58:52 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 16:58:52 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 16:58:52 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying requested task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version"
+}
+2025-04-27 16:58:52 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 16:58:52 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 16:58:52 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:00:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:00:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:00:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:00:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying requested task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version"
+}
+2025-04-27 17:00:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:00:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:00:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:03:13 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:03:13 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:03:13 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:03:14 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying converted task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version"
+}
+2025-04-27 17:03:14 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:03:14 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:03:14 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:04:42 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:04:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:04:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:04:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying converted task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version"
+}
+2025-04-27 17:04:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:04:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:04:43 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:05:36 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:05:36 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:05:36 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:05:36 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying converted task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version"
+}
+2025-04-27 17:05:36 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+ItemTask state:	'null'
+2025-04-27 17:05:36 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:05:36 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:05:36 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:07:04 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:07:04 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:07:04 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:07:05 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying converted task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version"
+}
+2025-04-27 17:07:05 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+ItemTask state:	'ItemTask{itemTaskId=null, taskName=Python Version, taskState=null, taskLog=null, task=python --version}'
+2025-04-27 17:07:05 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:07:05 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:07:05 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:08:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:08:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:08:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:08:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying converted task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version"
+}
+2025-04-27 17:08:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+ItemTask state:	'ItemTask{itemTaskId=null, taskName=Python Version, taskState=null, taskLog=null, task=python --version}'
+2025-04-27 17:08:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:08:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:08:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:10:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:10:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:10:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:10:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying converted task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version",
+    "Task State": "PENDING"
+}
+2025-04-27 17:10:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+ItemTask state:	'ItemTask{itemTaskId=null, taskName=Python Version, taskState=Pending, taskLog=null, task=python --version}'
+2025-04-27 17:10:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:10:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:10:24 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:11:25 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:11:25 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:11:25 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:11:25 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying converted task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version",
+    "Task State": "PENDING"
+}
+2025-04-27 17:11:25 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-27 17:11:25 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:11:25 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:24:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:24:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:24:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkload ]: 
+
+================ ManagerTask to Workload Test ================
+
+2025-04-27 17:24:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkload ]: 
+
+Displaying converted Workload:
+
+{
+    "Workload": {
+        "Python Version": {
+            "Task": "python --version",
+            "Task Name": "Python Version",
+            "Task State": "PENDING"
+        }
+    },
+    "Workload State": "TODO",
+    "Workload Type": "SINGLE",
+    "workloadSize": 1
+}
+2025-04-27 17:24:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkload ]: 
+
+================ ManagerTask to Workload Test ================
+
+2025-04-27 17:24:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:24:23 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:31:34 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:31:35 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:31:35 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+================ ManagerTask to WorkItem Test ================
+
+2025-04-27 17:31:35 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+Displaying converted WorkItem:
+
+{
+    "Done Date": 0,
+    "Item Name": "Python Check",
+    "Item State": "TODO",
+    "Item Type": "SINGLE",
+    "Lock Date": 0,
+    "Step Name": "Simple Tests",
+    "Task Count": 1,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "Python Version": {
+                "Task": "python --version",
+                "Task Name": "Python Version",
+                "Task State": "PENDING"
+            }
+        },
+        "Workload State": "TODO",
+        "Workload Type": "SINGLE",
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+2025-04-27 17:31:35 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+================ ManagerTask to WorkItem Test ================
+
+2025-04-27 17:31:35 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:31:35 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:32:18 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:32:18 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:32:18 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+================ ManagerTask to WorkItem Test ================
+
+2025-04-27 17:32:18 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+Displaying converted WorkItem:
+
+{
+    "Done Date": 0,
+    "Item Name": "Version Checks",
+    "Item State": "TODO",
+    "Item Type": "SINGLE",
+    "Lock Date": 0,
+    "Step Name": "Simple Tests",
+    "Task Count": 1,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "Python Version": {
+                "Task": "python --version",
+                "Task Name": "Python Version",
+                "Task State": "PENDING"
+            }
+        },
+        "Workload State": "TODO",
+        "Workload Type": "SINGLE",
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+2025-04-27 17:32:18 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+================ ManagerTask to WorkItem Test ================
+
+2025-04-27 17:32:18 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:32:18 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
+2025-04-27 17:39:09 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-27 17:39:09 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-27 17:39:09 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.makeNestedWorkItem ]: 
+
+================ ManagerTasks Nested WorkItem Test ================
+
+2025-04-27 17:39:10 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.makeNestedWorkItem ]: 
+
+Displaying converted WorkItem:
+
+{
+    "Done Date": 0,
+    "Item Name": "Version Checks",
+    "Item State": "TODO",
+    "Item Type": "NESTED",
+    "Lock Date": 0,
+    "Step Name": "Simple Tests",
+    "Task Count": 3,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "Python Version": {
+                "Task": "python --version",
+                "Task Name": "Python Version",
+                "Task State": "PENDING"
+            },
+            "Maven Version": {
+                "Task": "mvn -version",
+                "Task Name": "Maven Version",
+                "Task State": "PENDING"
+            },
+            "Java Version": {
+                "Task": "java -version",
+                "Task Name": "Java Version",
+                "Task State": "PENDING"
+            }
+        },
+        "Workload State": "TODO",
+        "Workload Type": "NESTED",
+        "workloadSize": 3
+    },
+    "workloadSize": 3
+}
+2025-04-27 17:39:10 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.makeNestedWorkItem ]: 
+
+================ ManagerTask to WorkItem Test ================
+
+2025-04-27 17:39:10 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-27 17:39:10 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
