@@ -204,7 +204,8 @@ public class TaskTideManagerTests {
     
         // Construct work item
         logger.info("\n\n================ Import Manager Tasks Test ================\n");
-        boolean assertionState = true;
+        int importCount = 0;
+        int expectedImport = 2;
         
         // Import pipe delimiter
         try {
@@ -213,11 +214,10 @@ public class TaskTideManagerTests {
             
             // Display
             logger.info("\n\nDisplaying 'singleTaskImports.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
-            assertionState = true;
+            if (data.size() == 4) { importCount++; }
             
         } catch (Exception ex) {
             logger.error("\n\nError reading 'singleTaskImports.txt' into WorkItem:\n" + ex);
-            assertionState = false;
         } 
         
         // Import csv delimiter
@@ -227,16 +227,15 @@ public class TaskTideManagerTests {
             
             // Display
             logger.info("\n\nDisplaying 'singleTaskImports-Delim2.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
-            assertionState = true;
+            if (data.size() == 4) { importCount++; }
             
         } catch (Exception ex) {
             logger.error("\n\nError reading 'singleTaskImports-Delim2.txt' into WorkItem:\n" + ex);
-            assertionState = false;
         } 
         
         // Log state
         logger.info("\n\n================ Import Manager Tasks Test ================\n");
-        assertTrue(assertionState);
+        assertTrue(importCount == expectedImport);
     }
     
     
@@ -249,7 +248,8 @@ public class TaskTideManagerTests {
     
         // Construct work item
         logger.info("\n\n================ Import Nested WorkItem Test ================\n");
-        boolean assertionState = true;
+        int countsMatching = 0;
+        int expectedMatch = 2;
         
         // Import nested, and un-nested tasks
         try {
@@ -257,15 +257,15 @@ public class TaskTideManagerTests {
             // Display work itemsL TestUtils.workload not taking in full list?
             List<WorkItem> data = TaskTideManagerUtility.importTasks("TestData", "nestedTaskImports.txt", "|", ",");
             logger.info("\n\nDisplaying 'nestedTaskImports.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
-            assertionState = true;
+            if (data.get(0).getItemType() == ItemType.SINGLE) {countsMatching++;}
+            if (data.get(1).getItemType() == ItemType.NESTED) {countsMatching++;}
         }
         catch (Exception ex) {
             logger.error("\n\nError reading 'nestedTaskImports.txt' into WorkItem:\n" + ex);
-            assertionState = false;
         }
         
         // Log state
         logger.info("\n\n================ Import Nested WorkItem Test ================\n");
-        assertTrue(assertionState);
+        assertTrue(countsMatching == expectedMatch);
     }
 }

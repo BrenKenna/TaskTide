@@ -92,7 +92,6 @@ public class TaskTideManagerUtility {
     public static List<WorkItem> importTasks(String stepName, String resourcePath, String delim, String nestedDelim) throws IOException, IllegalArgumentException {
         
         // Intialize results
-        List<WorkItem> results = new ArrayList<>();
         delim = handleDelim(delim);
         
         // Try read test resource
