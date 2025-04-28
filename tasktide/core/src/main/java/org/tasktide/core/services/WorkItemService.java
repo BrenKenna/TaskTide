@@ -53,7 +53,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     ) {
         this.repo = repo;
         this.LOCKING_WAIT_TIME = lockingWaitTime;
-        this.utils = new Utils();
+        this.utils = new Utils("dd/MM/yy HH:mm:ss", lockingWaitTime);
     }
    
     
@@ -181,7 +181,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
         // Lock the provided Item
         String lockId = utils.generateToken();
         workItem.setLockId(lockId);
-        workItem.setLockDate(utils.getDateLong());
+        workItem.setLockDate(utils.getDateUtility().getDateLong());
         return repo.updateModel(workItem);
     }
     
@@ -195,7 +195,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     public WorkItem markAsDone(WorkItem workItem) {
     
         // Set done fields
-        workItem.setDoneDate(utils.getDateLong());
+        workItem.setDoneDate(utils.getDateUtility().getDateLong());
         workItem.setTaskCounts();
         return repo.updateModel(workItem);
     }

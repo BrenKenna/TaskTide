@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.tasktide.core.supporting.Utils;
-import org.tasktide.core.supporting.Utils;
 
 
 /**
@@ -22,7 +21,7 @@ public class SeqGenerator {
     private final Utils utils;
     
     public SeqGenerator() {
-        utils = new Utils();
+        utils = new Utils("dd/MM/yy HH:mm:ss", 4);
     }
 
     public Map<String, String> generateCmd() {

@@ -35,7 +35,6 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
     
     // Attributes
     private final TaskTideRepository<Workflow> repo;
-    private final Utils utils;
 
     
     /**
@@ -46,7 +45,6 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
     @Inject
     public WorkflowService(TaskTideRepository<Workflow> repo) {
         this.repo = repo;
-        this.utils = new Utils();
     }
 
     

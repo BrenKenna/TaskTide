@@ -25,7 +25,6 @@ import org.tasktide.core.supporting.generator.TaskGenerator;
 
 
 /**
- *
  * Class to support various actions
  * 
  * @author bkenna
@@ -33,15 +32,14 @@ import org.tasktide.core.supporting.generator.TaskGenerator;
 public class Utils {
     
     // Attributes
-    private final DateFormat DATE_FORMAT;
-    private final int EXPIRATION_DAYS;
-    private final Charset charSet;
     private final Random rand;
     private final TaskGenerator taskGen;
+    private final Charset charSet;
+    private final DateUtility dateUtils;
     
     
     /**
-     * Constructing because it holds various methods
+     * Construct with a task generator and random
      * 
      * @param dateFormat
      * @param expiration
@@ -50,143 +48,10 @@ public class Utils {
        @ConfigProperty(name = "task-tide.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
        @ConfigProperty(name = "task-tide.expiration", defaultValue = "2") int expiration
     ) {
-        this.DATE_FORMAT = new SimpleDateFormat(dateFormat);
-        this.EXPIRATION_DAYS = expiration;
-        this.charSet = StandardCharsets.UTF_8;
         this.rand = new Random();
         this.taskGen = new TaskGenerator();
-    }
-
-    
-    /**
-     * Construct default utility
-     */
-    public Utils() {
-        this.DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        this.EXPIRATION_DAYS = 2;
+        this.dateUtils = new DateUtility(dateFormat, expiration);
         this.charSet = StandardCharsets.UTF_8;
-        this.rand = new Random();
-        this.taskGen = new TaskGenerator();
-    }
-    
-    
-    /**
-     * Get date current time
-     * 
-     * @return long
-     */
-    public long getDateLong() {
-        return new Date().getTime();
-    }
-    
-    
-    /**
-     * Get date from current time
-     * 
-     * @return Date
-     */
-    public Date getDate() {
-        return new Date( getDateLong() );
-    }
-    
-    
-    /**
-     * Get date from provided time
-     * 
-     * @param time
-     * @return Date
-     */
-    public Date getDateFromTime(long time) {
-        return new Date(time);
-    }
-    
-    
-    /**
-     * Format provided date to string constant
-     * 
-     * @param date
-     * @return String
-     */
-    public String formatDate(Date date) {
-        return DATE_FORMAT.format(date);
-    }
-    
-    /**
-     * Get current date as a string
-     * 
-     * @return String
-     */
-    public String getNowString() {
-        return formatDate( getDate() );
-    }
-    
-    
-    /**
-     * Get provided date as a string
-     * 
-     * @return String
-     */
-    public String getDateString(Date date) {
-        return formatDate( date );
-    }
-    
-    
-    /**
-     * Parse provided date string to Date
-     * 
-     * @param date
-     * @return Date
-     */
-    public Date parseDate(String date) {
-		
-        // Try format input date string
-        Date output = null;
-        try {
-            return DATE_FORMAT.parse(date);
-        } catch (ParseException e) {
-            return null;
-        }
-    }
-    
-    
-    /**
-     * Get an expirary date for input
-     * 
-     * @param input
-     * @return Date
-     */
-    public Date getExpireDate(Date input) {
-        
-        // Set calendar to input
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(input); 
-        
-        // Add the expiration time
-        calendar.add(Calendar.DAY_OF_YEAR, EXPIRATION_DAYS);
-        return calendar.getTime();
-    }
-    
-    
-    /**
-     * Check if provided is before
-     * 
-     * @param inputDate
-     * @return 
-     */
-    public boolean hasExceeded(Date inputDate) {
-	return getExpireDate(inputDate).getTime() > inputDate.getTime();
-    }
-    
-    
-    /**
-     * Get time taken
-     * 
-     * @param startDate
-     * @param endDate
-     * @return long
-     */
-    public long getTimeTaken(Date startDate, Date endDate) {
-        return endDate.getTime() - startDate.getTime();
     }
     
     
@@ -244,7 +109,7 @@ public class Utils {
         String nowDate, salt, token;
         
         // Create token string
-        nowDate = getNowString();
+        nowDate = dateUtils.getNowString();
         salt = generateSalt();
         token = nowDate + "-" + salt;
         
@@ -354,21 +219,29 @@ public class Utils {
     /**
      * Fetch this random instance
      * 
-     * @return Random
+     * @return {@link Random Random}
      */
     public Random getRand() {
-        return this.getRand();
+        return this.rand;
     }
+
     
-    public DateFormat getDateFormat() {
-        return DATE_FORMAT;
-    }
-
-    public int getExpirationDays() {
-        return EXPIRATION_DAYS;
-    }
-
+    /**
+     * Get char set
+     * 
+     * @return {@link CharSet CharSet}
+     */
     public Charset getCharSet() {
         return charSet;
+    }
+    
+    
+    /**
+     * Get the date utility
+     * 
+     * @return {@link DateUtility DateUtility}
+     */
+    public DateUtility getDateUtility() {
+        return this.dateUtils;
     }
 }
