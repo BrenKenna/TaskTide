@@ -222,7 +222,7 @@ public class TestCaseBuilderUtility {
      */
     public static Workflow makeTestWorkflow(List<Step> steps, String workflowId, String workflowName) {
         return new WorkflowBuilder()
-            .workflowId(workflowId)
+            .id(workflowId)
             .workflowName(workflowName)
             .steps( steps )
         .build();

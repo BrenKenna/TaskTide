@@ -108,7 +108,7 @@ public class TaskTideManagerTests {
         
         // Fetch workload
         myTask = new ManagerTask("Python Version", "python --version");
-        workload = BuilderUtility.makeWorkload(myTask.asItemTask());
+        workload = BuilderUtility.buildWorkload(myTask.asItemTask());
         if ( workload.getWorkloadType() == ItemType.SINGLE ) {
             logger.info("\n\nDisplaying converted Workload:\n\n" + workload.toJsonDoc());
             assertionState = true;
@@ -140,8 +140,8 @@ public class TaskTideManagerTests {
         
         // Fetch workload
         myTask = new ManagerTask("Python Version", "python --version");
-        workload = BuilderUtility.makeWorkload(myTask.asItemTask());
-        work = BuilderUtility.makeWorkItem("Version Checks", workload, "Simple Tests");
+        workload = BuilderUtility.buildWorkload(myTask.asItemTask());
+        work = BuilderUtility.buildWorkItem("Version Checks", workload, "Simple Tests");
         
         if ( work.getItemType() == ItemType.SINGLE ) {
             logger.info("\n\nDisplaying converted WorkItem:\n\n" + work.toJsonDoc());
@@ -176,8 +176,8 @@ public class TaskTideManagerTests {
         myTasks.add(new ManagerTask("Python Version", "python --version").asItemTask());
         myTasks.add(new ManagerTask("Java Version", "java -version").asItemTask());
         myTasks.add(new ManagerTask("Maven Version", "mvn -version").asItemTask());
-        workload = BuilderUtility.makeWorkload(myTasks);
-        work = BuilderUtility.makeWorkItem("Version Checks", workload, "Simple Tests");
+        workload = BuilderUtility.buildWorkload(myTasks);
+        work = BuilderUtility.buildWorkItem("Version Checks", workload, "Simple Tests");
         
         // Evaluate work item
         if ( work.getItemType() == ItemType.NESTED ) {

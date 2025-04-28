@@ -31,7 +31,7 @@ public class WorkflowBuilder extends ModelBuilder {
      * @param workflowId
      * @return WorkflowBuilder
      */
-    public WorkflowBuilder workflowId(String workflowId) {
+    public WorkflowBuilder id(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }

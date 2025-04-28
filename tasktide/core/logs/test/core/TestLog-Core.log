@@ -2746,4 +2746,611 @@ _________________________________________________
 
 2025-04-28 16:54:38 INFO  [ Test worker -> org.tasktide.supplemental.SupplementalTests.tearDownClass ]: 
 
----------------- Terminating Supplemental Tests ----------------
+---------------- Terminating Supplemental Tests ----------------2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Manger Tests ----------------
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.canImportDelimitedTasks ]: 
+
+================ Import Manager Tasks Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.canImportDelimitedTasks ]: 
+
+Displaying 'singleTaskImports.txt' WorkItems:
+
+[
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-42de6d55-8d98-4be0-9245-9d7da7582410",
+        "Item Name": "Seq_Test_1",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_1": {
+                    "Task": "seq 10",
+                    "Task Name": "Seq_Test_1",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-87ea9036-0ef7-45ca-8cef-9f46e074267e"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-a27173c8-7a0d-4362-9361-984cc4fa2c00",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-cb9cd9f6-541e-4cd8-b4b6-5a65c396fa3d",
+        "Item Name": "Seq_Test_2",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_2": {
+                    "Task": "seq 12",
+                    "Task Name": "Seq_Test_2",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-dc4c878f-fae5-47b6-85fa-d426c699e4da"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-156c55fb-c37b-48c4-96af-0a9aeb2370d7",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-9aa17f93-d3ad-4c9d-889d-27e03f7f1ae4",
+        "Item Name": "Seq_Test_3",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_3": {
+                    "Task": "seq 4",
+                    "Task Name": "Seq_Test_3",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-becb28f9-aa02-4b80-b98e-5f4cc3375a25"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-b668e63c-ac08-48f1-9ed5-805c4ff9ef18",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-94ebe5c8-0eab-45ea-ac73-ed8e627e9e2b",
+        "Item Name": "Seq_Test_4",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_4": {
+                    "Task": "seq 8",
+                    "Task Name": "Seq_Test_4",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-34287fc0-9310-4ef0-aa6d-b3275369de4f"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-18363285-08fb-41cb-bb58-cf5fdbd929b8",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    }
+]
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.canImportDelimitedTasks ]: 
+
+Displaying 'singleTaskImports-Delim2.txt' WorkItems:
+
+[
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-903a65f7-7f32-4637-ae0b-e5a9ee771697",
+        "Item Name": "Seq_Test_1",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_1": {
+                    "Task": "seq 10",
+                    "Task Name": "Seq_Test_1",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-f8d7fc28-484d-4add-a903-88deca3ad328"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-0211cb2d-a859-4ca3-ab0b-d3c0122b4394",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-0ad7da8e-50ad-40bf-884f-617e168f7e97",
+        "Item Name": "Seq_Test_2",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_2": {
+                    "Task": "seq 12",
+                    "Task Name": "Seq_Test_2",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-d38cfb98-703d-460e-9cff-b9b4d8f58cc9"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-eec29021-06c1-464d-80b6-2c79f8401f4e",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-8929c479-007d-484e-bfa1-a193868464ff",
+        "Item Name": "Seq_Test_3",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_3": {
+                    "Task": "seq 4",
+                    "Task Name": "Seq_Test_3",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-522d8ec0-3814-470d-bb66-77a79f502f9e"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-62d3c711-e80c-4aad-86b9-7eda12ec5135",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-f44ad949-42f6-44ae-8544-78bb93a77c9d",
+        "Item Name": "Seq_Test_4",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_4": {
+                    "Task": "seq 8",
+                    "Task Name": "Seq_Test_4",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-b8571c0d-d934-49a7-bd15-e45897866222"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-405661b8-af92-416d-8f5d-b1efce0d1b28",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    }
+]
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.canImportDelimitedTasks ]: 
+
+================ Import Manager Tasks Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+Displaying converted task:
+
+{
+    "Task": "python --version",
+    "Task Name": "Python Version",
+    "Task State": "PENDING",
+    "id": "ItemTask-3c1625ae-eec5-4955-ad26-8a6d2d3c7230"
+}
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.testManagerTasktoItemTask ]: 
+
+================ ManagerTask to ItemTask Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.canImportNestedTasks ]: 
+
+================ Import Nested WorkItem Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.canImportNestedTasks ]: 
+
+Displaying 'nestedTaskImports.txt' WorkItems:
+
+[
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-6c627da7-0c91-42c8-87c8-417c772fa639",
+        "Item Name": "Seq_Test_1",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_1": {
+                    "Task": "seq 3",
+                    "Task Name": "Seq_Test_1",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-61f6e173-8ed5-4bc5-aa93-9678245d03b6"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-73499b44-d4d5-46c3-9ae2-a13aafb88c9c",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-fb72beb3-6872-42dc-82c7-4d706f39fb61",
+        "Item Name": "Seq_Test_2",
+        "Item State": "TODO",
+        "Item Type": "NESTED",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 2,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_2-1": {
+                    "Task": "seq 7",
+                    "Task Name": "Seq_Test_2-1",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-f8c37d2b-ec1c-4c4a-a3f5-a0c787620366"
+                },
+                "Seq_Test_2-0": {
+                    "Task": "seq 8",
+                    "Task Name": "Seq_Test_2-0",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-41f8c61f-5fde-4a0d-a35e-8bd194eeac3b"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "NESTED",
+            "id": "Workload-4f38a3a4-d3b8-4943-b25a-39fdcf00db6e",
+            "workloadSize": 2
+        },
+        "workloadSize": 2
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-dbaf245f-df98-493e-a433-0e627e9d41c9",
+        "Item Name": "Seq_Test_3",
+        "Item State": "TODO",
+        "Item Type": "NESTED",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 4,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_3-3": {
+                    "Task": "seq 3",
+                    "Task Name": "Seq_Test_3-3",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-3e827c43-9692-42c1-a8c4-05bcf263b066"
+                },
+                "Seq_Test_3-2": {
+                    "Task": "seq 17",
+                    "Task Name": "Seq_Test_3-2",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-d4b5b696-80c5-4f42-997e-5e373927e3bf"
+                },
+                "Seq_Test_3-1": {
+                    "Task": "seq 16",
+                    "Task Name": "Seq_Test_3-1",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-9975f687-03e0-4f23-9157-ed6d776097c8"
+                },
+                "Seq_Test_3-0": {
+                    "Task": "seq 15",
+                    "Task Name": "Seq_Test_3-0",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-5c140838-f931-4720-962d-e3e535323ab0"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "NESTED",
+            "id": "Workload-0b02a2b5-70a6-4f2b-a5f4-1d2d8009976f",
+            "workloadSize": 4
+        },
+        "workloadSize": 4
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-1cc7e52d-cd33-42c3-bd1b-ac265e6fee1a",
+        "Item Name": "Seq_Test_4",
+        "Item State": "TODO",
+        "Item Type": "NESTED",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 5,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_4-4": {
+                    "Task": "seq 5",
+                    "Task Name": "Seq_Test_4-4",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-cbc0e957-87b0-4a62-8292-3019575e81fa"
+                },
+                "Seq_Test_4-3": {
+                    "Task": "seq 6",
+                    "Task Name": "Seq_Test_4-3",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-3cea8e97-a808-485b-aa01-da35778d9863"
+                },
+                "Seq_Test_4-2": {
+                    "Task": "seq 4",
+                    "Task Name": "Seq_Test_4-2",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-85f052d7-8582-488b-9021-f18149bc6226"
+                },
+                "Seq_Test_4-1": {
+                    "Task": "seq 2",
+                    "Task Name": "Seq_Test_4-1",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-80ffba7d-dacb-4868-a905-723a793de51c"
+                },
+                "Seq_Test_4-0": {
+                    "Task": "seq 3",
+                    "Task Name": "Seq_Test_4-0",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-daaa8f66-d333-4406-85e6-b7a929ba4732"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "NESTED",
+            "id": "Workload-7ed8ce63-2037-43ff-8757-57aeedb92da1",
+            "workloadSize": 5
+        },
+        "workloadSize": 5
+    },
+    {
+        "Done Date": 0,
+        "Id": "WorkItem-d578a425-ee38-4e89-8014-43564380cf6a",
+        "Item Name": "Seq_Test_5",
+        "Item State": "TODO",
+        "Item Type": "SINGLE",
+        "Lock Date": 0,
+        "Step Name": "TestData",
+        "Task Count": 1,
+        "Task Done": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_5": {
+                    "Task": "seq 100",
+                    "Task Name": "Seq_Test_5",
+                    "Task State": "PENDING",
+                    "id": "ItemTask-d4fa955c-c514-4abd-87d9-6e3145aa4a19"
+                }
+            },
+            "Workload State": "TODO",
+            "Workload Type": "SINGLE",
+            "id": "Workload-4c6950b9-a93f-4a83-8b86-48ad554f3306",
+            "workloadSize": 1
+        },
+        "workloadSize": 1
+    }
+]
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.canImportNestedTasks ]: 
+
+================ Import Nested WorkItem Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+================ ManagerTask to WorkItem Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+Displaying converted WorkItem:
+
+{
+    "Done Date": 0,
+    "Id": "WorkItem-acc28a5a-08e3-478c-be39-2d35a234ba08",
+    "Item Name": "Version Checks",
+    "Item State": "TODO",
+    "Item Type": "SINGLE",
+    "Lock Date": 0,
+    "Step Name": "Simple Tests",
+    "Task Count": 1,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "Python Version": {
+                "Task": "python --version",
+                "Task Name": "Python Version",
+                "Task State": "PENDING",
+                "id": "ItemTask-c7d71059-776a-4254-94a2-d88f40bf8ad5"
+            }
+        },
+        "Workload State": "TODO",
+        "Workload Type": "SINGLE",
+        "id": "Workload-4316c4bb-17d9-47fb-93d7-decd062c1456",
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkItem ]: 
+
+================ ManagerTask to WorkItem Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkload ]: 
+
+================ ManagerTask to Workload Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkload ]: 
+
+Displaying converted Workload:
+
+{
+    "Workload": {
+        "Python Version": {
+            "Task": "python --version",
+            "Task Name": "Python Version",
+            "Task State": "PENDING",
+            "id": "ItemTask-8aae3f44-be4e-499a-aed0-f48c6c4ed55b"
+        }
+    },
+    "Workload State": "TODO",
+    "Workload Type": "SINGLE",
+    "id": "Workload-85c2ce41-f4b4-47ea-ab68-9fc18dff2ad9",
+    "workloadSize": 1
+}
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.mapToWorkload ]: 
+
+================ ManagerTask to Workload Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.makeNestedWorkItem ]: 
+
+================ ManagerTasks Nested WorkItem Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.makeNestedWorkItem ]: 
+
+Displaying converted WorkItem:
+
+{
+    "Done Date": 0,
+    "Id": "WorkItem-da836abe-1fcc-438e-8010-40f4044fb066",
+    "Item Name": "Version Checks",
+    "Item State": "TODO",
+    "Item Type": "NESTED",
+    "Lock Date": 0,
+    "Step Name": "Simple Tests",
+    "Task Count": 3,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "Python Version": {
+                "Task": "python --version",
+                "Task Name": "Python Version",
+                "Task State": "PENDING",
+                "id": "ItemTask-27f541a8-726b-4f29-a801-08c152008347"
+            },
+            "Maven Version": {
+                "Task": "mvn -version",
+                "Task Name": "Maven Version",
+                "Task State": "PENDING",
+                "id": "ItemTask-0024ae6d-ab04-45e0-8b6f-45644f0f7034"
+            },
+            "Java Version": {
+                "Task": "java -version",
+                "Task Name": "Java Version",
+                "Task State": "PENDING",
+                "id": "ItemTask-6bdd7f2c-5e71-4618-9f4c-eaa94c337211"
+            }
+        },
+        "Workload State": "TODO",
+        "Workload Type": "NESTED",
+        "id": "Workload-9c2655be-0eb8-4c88-b265-746ace17a627",
+        "workloadSize": 3
+    },
+    "workloadSize": 3
+}
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.makeNestedWorkItem ]: 
+
+================ ManagerTask to WorkItem Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-28 17:23:31 INFO  [ Test worker -> org.tasktide.core.supporting.TaskTideManagerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Manager Tests ----------------
+
