@@ -6,37 +6,37 @@ package org.tasktide;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.model.builders.ModelBuilderProvider;
 import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.TaskLoggingBuilder;
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.WorkloadBuilder;
-
 import org.tasktide.core.model.builders.WorkItemBuilder;
 import org.tasktide.core.model.builders.StepBuilder;
 import org.tasktide.core.model.builders.WorkflowBuilder;
 
-import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.collection.Workflow;
-
+import org.tasktide.core.supporting.ManagerTask;
 import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
+
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 
-import org.tasktide.core.supporting.ManagerTask;
-import org.tasktide.core.supporting.generator.ExampleGenerators;
 import org.tasktide.core.supporting.generator.TaskGenerator;
+import org.tasktide.core.supporting.generator.ExampleGenerators;
 
 
 /**
@@ -46,10 +46,8 @@ import org.tasktide.core.supporting.generator.TaskGenerator;
  */
 public class TestCaseBuilderUtility {
     
-    // Model builder
-    public static ModelBuilderProvider modelBuidler = new ModelBuilderProvider();
+    // Task Generator
     public static TaskGenerator taskGenerator = new TaskGenerator();
-    
     
     /**
      * Make {@link ProcessLog ProcessLog} for testing
@@ -60,10 +58,10 @@ public class TestCaseBuilderUtility {
         String[] stdout = {"apples", "oragnes"};
         String[] stderr = {"pears", "pineapples"};
         return new ProcessLogBuilder()
-                    .id("alpha")
-                    .stdout(stdout)
-                    .stderr(stderr)
-                    .build();
+            .id("alpha")
+            .stdout(stdout)
+            .stderr(stderr)
+        .build();
     }
     
     
@@ -74,14 +72,14 @@ public class TestCaseBuilderUtility {
      */
     public static TaskLogging makeTestTaskLog() {
         return new TaskLoggingBuilder()
-                   .id("beta")
-                   .processLog(makeTestProcessLog())
-                   .threadName("myThread")
-                   .cpuDuration(-1L)
-                   .startTime(-2L)
-                   .endTime(-3L)
-                   .procId(-4L)
-                   .build();
+            .id("beta")
+            .processLog(makeTestProcessLog())
+            .threadName("myThread")
+            .cpuDuration(-1L)
+            .startTime(-2L)
+            .endTime(-3L)
+            .procId(-4L)
+        .build();
     }
     
     
@@ -92,12 +90,12 @@ public class TestCaseBuilderUtility {
      */
     public static ItemTask makeTestItemTask() {
         return new ItemTaskBuilder()
-                    .id("gamma")
-                    .taskName("My Task Name")
-                    .task("My Task")
-                    .taskState(TaskState.COMPLETE)
-                    .taskLog(makeTestTaskLog())
-                    .build();
+            .id("gamma")
+            .taskName("My Task Name")
+            .task("My Task")
+            .taskState(TaskState.COMPLETE)
+            .taskLog(makeTestTaskLog())
+        .build();
     }
     
     
@@ -112,9 +110,9 @@ public class TestCaseBuilderUtility {
         itemTasks.add(makeTestItemTask());
         
         return new WorkloadBuilder()
-                    .id("My Workload")
-                    .workload(itemTasks)
-                    .build();
+            .id("My Workload")
+            .workload(itemTasks)
+        .build();
     }
     
     
@@ -125,17 +123,17 @@ public class TestCaseBuilderUtility {
      */
     public static WorkItem makeTestWorkItem() {
         return new WorkItemBuilder()
-                .id("My WorkItem")
-                .itemName("My WorkItem Name")
-                .workload(makeTestWorkload())
-                .lockId("Some random hexadecimal string")
-                .lockDate(0L)
-                .doneDate(0L)
-                .taskCount(1)
-                .taskDone(0)
-                .itemState(ItemState.TODO)
-                .itemType(ItemType.SINGLE)
-                .build();
+            .id("My WorkItem")
+            .itemName("My WorkItem Name")
+            .workload(makeTestWorkload())
+            .lockId("Some random hexadecimal string")
+            .lockDate(0L)
+            .doneDate(0L)
+            .taskCount(1)
+            .taskDone(0)
+            .itemState(ItemState.TODO)
+            .itemType(ItemType.SINGLE)
+        .build();
     }
     
     
@@ -147,18 +145,18 @@ public class TestCaseBuilderUtility {
      */
     public static WorkItem makeTestWorkItem(String stepName) {
         return new WorkItemBuilder()
-                .id("My WorkItem")
-                .itemName("My WorkItem Name")
-                .workload(makeTestWorkload())
-                .lockId("Some random hexadecimal string")
-                .lockDate(0L)
-                .doneDate(0L)
-                .taskCount(1)
-                .taskDone(0)
-                .itemState(ItemState.TODO)
-                .itemType(ItemType.SINGLE)
-                .stepName(stepName)
-                .build();
+            .id("My WorkItem")
+            .itemName("My WorkItem Name")
+            .workload(makeTestWorkload())
+            .lockId("Some random hexadecimal string")
+            .lockDate(0L)
+            .doneDate(0L)
+            .taskCount(1)
+            .taskDone(0)
+            .itemState(ItemState.TODO)
+            .itemType(ItemType.SINGLE)
+            .stepName(stepName)
+        .build();
     }
     
     
@@ -169,15 +167,15 @@ public class TestCaseBuilderUtility {
      */
     public static Step makeTestStep() {
         return new StepBuilder()
-                .stepId("My Step Id")
-                .stepName("My step name")
-                .stepState(TaskState.PENDING)
-                .stepCount(10)
-                .stepsToDo(5)
-                .stepsLocked(2)
-                .stepsDone(2)
-                .stepsError(1)
-                .build();
+            .stepId("My Step Id")
+            .stepName("My step name")
+            .stepState(TaskState.PENDING)
+            .stepCount(10)
+            .stepsToDo(5)
+            .stepsLocked(2)
+            .stepsDone(2)
+            .stepsError(1)
+        .build();
     }
     
     
@@ -190,15 +188,15 @@ public class TestCaseBuilderUtility {
      */
     public static Step makeTestStep(String stepId, String stepName) {
         return new StepBuilder()
-                .stepId(stepId)
-                .stepName(stepName)
-                .stepState(TaskState.PENDING)
-                .stepCount(10)
-                .stepsToDo(5)
-                .stepsLocked(2)
-                .stepsDone(2)
-                .stepsError(1)
-                .build();
+            .stepId(stepId)
+            .stepName(stepName)
+            .stepState(TaskState.PENDING)
+            .stepCount(10)
+            .stepsToDo(5)
+            .stepsLocked(2)
+            .stepsDone(2)
+            .stepsError(1)
+        .build();
     }
     
     
@@ -225,10 +223,10 @@ public class TestCaseBuilderUtility {
      */
     public static Workflow makeTestWorkflow(List<Step> steps, String workflowId, String workflowName) {
         return new WorkflowBuilder()
-                .workflowId(workflowId)
-                .workflowName(workflowName)
-                .steps( steps )
-                .build();
+            .workflowId(workflowId)
+            .workflowName(workflowName)
+            .steps( steps )
+        .build();
     }
     
     

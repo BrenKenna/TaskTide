@@ -4,39 +4,32 @@
  */
 package org.tasktide;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
-import org.tasktide.core.model.builders.ModelBuilderProvider;
 import org.tasktide.core.model.builders.WorkloadBuilder;
-
 import org.tasktide.core.model.builders.WorkItemBuilder;
 
+import org.tasktide.core.supporting.ManagerTask;
+import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 
-import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
 
-import org.tasktide.core.supporting.ManagerTask;
-import org.tasktide.core.supporting.generator.ExampleGenerators;
 import org.tasktide.core.supporting.generator.TaskGenerator;
+import org.tasktide.core.supporting.generator.ExampleGenerators;
 
 
 /**
- * Various static methods to make {@link TaskTideModel TaskTideModel } objects
+ * Various static methods to make {@link TaskTideModel TaskTideModel} objects
  * 
  * @author bkenna
  */
 public class BuilderUtility {
     
-    // Model builder
-    public static ModelBuilderProvider modelBuidler = new ModelBuilderProvider();
+    // Task Generator
     public static TaskGenerator taskGenerator = new TaskGenerator();
-    
     
     /**
      * Make {@link Workload Workload} from {@link ItemTask ItemTask}
@@ -46,10 +39,10 @@ public class BuilderUtility {
      */
     public static Workload makeWorkload(ItemTask itemTask) {
         return new WorkloadBuilder()
-                    .workload(itemTask)
-                    .workloadState(ItemState.TODO)
-                    .workloadType(ItemType.SINGLE)
-                    .build();
+            .workload(itemTask)
+            .workloadState(ItemState.TODO)
+            .workloadType(ItemType.SINGLE)
+        .build();
     }
     
     
@@ -61,10 +54,10 @@ public class BuilderUtility {
      */
     public static Workload makeWorkload(List<ItemTask> tasks) {
         return new WorkloadBuilder()
-                    .workload(tasks)
-                    .workloadState(ItemState.TODO)
-                    .workloadType(ItemType.NESTED)
-                    .build();
+            .workload(tasks)
+            .workloadState(ItemState.TODO)
+            .workloadType(ItemType.NESTED)
+        .build();
     }
     
     
@@ -78,13 +71,13 @@ public class BuilderUtility {
      */
     public static WorkItem makeWorkItem(String itemName, Workload workload, String stepName) {
         return new WorkItemBuilder()
-                .itemName(itemName)
-                .workload(workload)
-                .itemState(ItemState.TODO)
-                .taskCount(workload.getWorkloadSize())
-                .itemType(workload.getWorkloadType())
-                .stepName(stepName)
-                .build();
+            .itemName(itemName)
+            .workload(workload)
+            .itemState(ItemState.TODO)
+            .taskCount(workload.getWorkloadSize())
+            .itemType(workload.getWorkloadType())
+            .stepName(stepName)
+        .build();
     }
     
     

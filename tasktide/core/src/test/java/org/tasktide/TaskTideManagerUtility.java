@@ -62,8 +62,7 @@ public class TaskTideManagerUtility {
      */
     public static List<WorkItem> importTasks(String stepName, String resourcePath, String delim) throws IOException, IllegalArgumentException {
         
-        // Intialize results
-        List<WorkItem> results = new ArrayList<>();
+        // Handle delimiter
         delim = handleDelim(delim);
         
         // Try read test resource
@@ -126,8 +125,8 @@ public class TaskTideManagerUtility {
             return BuilderUtility.makeWorkItem(parts[0], workload, stepName);
         }
         throw new IllegalArgumentException(
-                        "Invalid format: Expected 2 fields but got " + parts.length
-                );
+            "Invalid format: Expected 2 fields but got " + parts.length
+        );
     }
     
     
@@ -165,7 +164,6 @@ public class TaskTideManagerUtility {
         
         // Handle single task
         else if ( parts[2].split(nestedDelim).length == 1 ) {
-            //System.out.println("Analysing unnested task");
             String[] newParts = Arrays.copyOfRange(parts, 0, parts.length - 2);
             newParts = Arrays.copyOf(newParts, newParts.length + 1);
             newParts[newParts.length - 1] = parts[parts.length - 2] + " " + parts[parts.length - 1];
@@ -227,7 +225,7 @@ public class TaskTideManagerUtility {
             // Throw error if null output
             if (data == null) {
                 throw new IllegalArgumentException(
-                        "Invalid format at line " + lineNumber + ": Expected 3 fields but got " + parts.length
+                    "Invalid format at line " + lineNumber + ": Expected 3 fields but got " + parts.length
                 );
             }
 
@@ -269,7 +267,7 @@ public class TaskTideManagerUtility {
             // Throw error if null output
             if (data == null) {
                 throw new IllegalArgumentException(
-                        "Invalid format at line " + lineNumber + ": Expected 4 fields but got " + parts.length
+                    "Invalid format at line " + lineNumber + ": Expected 4 fields but got " + parts.length
                 );
             }
 
