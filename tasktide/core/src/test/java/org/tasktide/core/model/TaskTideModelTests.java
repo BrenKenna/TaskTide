@@ -16,10 +16,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
 
-import org.tasktide.TestUtils;
 import org.tasktide.core.model.builders.WorkItemBuilder;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.TaskTideModel;
+
+import org.tasktide.TestCaseBuilderUtility;
 
 
 /**
@@ -73,7 +74,7 @@ public class TaskTideModelTests {
         workItem = new WorkItemBuilder()
                                 .id("My WorkItem")
                                 .itemName("My WorkItem Name")
-                                .workload(TestUtils.makeTestWorkload())
+                                .workload(TestCaseBuilderUtility.makeTestWorkload())
                                 .lockId("Some random hexadecimal string")
                                 .lockDate(0L)
                                 .doneDate(0L)
@@ -118,7 +119,7 @@ public class TaskTideModelTests {
         
         // Get model and check
         logger.info("Comparing reference to retrieved value");
-        model = TestUtils.makeTestWorkItem();
+        model = TestCaseBuilderUtility.makeTestWorkItem();
         String modelId = model.getId();
         assertionState = modelId.equals( model.getValueFromField("id") );
         

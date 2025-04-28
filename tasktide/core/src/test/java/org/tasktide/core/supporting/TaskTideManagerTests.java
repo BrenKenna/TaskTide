@@ -4,28 +4,33 @@
  */
 package org.tasktide.core.supporting;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
-import org.tasktide.TestUtils;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemType;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 
+import org.tasktide.TestUtils;
+import org.tasktide.BuilderUtility;
+import org.tasktide.TaskTideManagerUtility;
+
 
 /**
- *
+ * Test module for {@link TaskTideManger TaskTideManger}
+ * 
  * @author bkenna
  */
 public class TaskTideManagerTests {
@@ -88,7 +93,6 @@ public class TaskTideManagerTests {
     }
     
     
-    
     /**
      * Should convert to single task workload
      */
@@ -104,7 +108,7 @@ public class TaskTideManagerTests {
         
         // Fetch workload
         myTask = new ManagerTask("Python Version", "python --version");
-        workload = TestUtils.Workload(myTask.asItemTask());
+        workload = BuilderUtility.makeWorkload(myTask.asItemTask());
         if ( workload.getWorkloadType() == ItemType.SINGLE ) {
             logger.info("\n\nDisplaying converted Workload:\n\n" + workload.toJsonDoc());
             assertionState = true;
@@ -136,8 +140,8 @@ public class TaskTideManagerTests {
         
         // Fetch workload
         myTask = new ManagerTask("Python Version", "python --version");
-        workload = TestUtils.Workload(myTask.asItemTask());
-        work = TestUtils.makeWorkItem("Version Checks", workload, "Simple Tests");
+        workload = BuilderUtility.makeWorkload(myTask.asItemTask());
+        work = BuilderUtility.makeWorkItem("Version Checks", workload, "Simple Tests");
         
         if ( work.getItemType() == ItemType.SINGLE ) {
             logger.info("\n\nDisplaying converted WorkItem:\n\n" + work.toJsonDoc());
@@ -172,8 +176,8 @@ public class TaskTideManagerTests {
         myTasks.add(new ManagerTask("Python Version", "python --version").asItemTask());
         myTasks.add(new ManagerTask("Java Version", "java -version").asItemTask());
         myTasks.add(new ManagerTask("Maven Version", "mvn -version").asItemTask());
-        workload = TestUtils.workload(myTasks);
-        work = TestUtils.makeWorkItem("Version Checks", workload, "Simple Tests");
+        workload = BuilderUtility.makeWorkload(myTasks);
+        work = BuilderUtility.makeWorkItem("Version Checks", workload, "Simple Tests");
         
         // Evaluate work item
         if ( work.getItemType() == ItemType.NESTED ) {
@@ -187,6 +191,81 @@ public class TaskTideManagerTests {
         
         // Log state
         logger.info("\n\n================ ManagerTask to WorkItem Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test importing tasks to {@link WorkItem WorkItem}
+     */
+    @Test
+    @Order(4)
+    public void canImportDelimitedTasks() {
+    
+        // Construct work item
+        logger.info("\n\n================ Import Manager Tasks Test ================\n");
+        boolean assertionState = true;
+        
+        // Import pipe delimiter
+        try {
+            // Import tasks
+            List<WorkItem> data = TaskTideManagerUtility.importTasks("TestData", "singleTaskImports.txt", "|");
+            
+            // Display
+            logger.info("\n\nDisplaying 'singleTaskImports.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
+            assertionState = true;
+            
+        } catch (Exception ex) {
+            logger.error("\n\nError reading 'singleTaskImports.txt' into WorkItem:\n" + ex);
+            assertionState = false;
+        } 
+        
+        // Import csv delimiter
+        try {
+            // Import tasks
+            List<WorkItem> data = TaskTideManagerUtility.importTasks("TestData", "singleTaskImports-Delim2.txt", ",");
+            
+            // Display
+            logger.info("\n\nDisplaying 'singleTaskImports-Delim2.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
+            assertionState = true;
+            
+        } catch (Exception ex) {
+            logger.error("\n\nError reading 'singleTaskImports-Delim2.txt' into WorkItem:\n" + ex);
+            assertionState = false;
+        } 
+        
+        // Log state
+        logger.info("\n\n================ Import Manager Tasks Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Test importing nested work items
+     */
+    @Order(5)
+    @Test
+    public void canImportNestedTasks() {
+    
+        // Construct work item
+        logger.info("\n\n================ Import Nested WorkItem Test ================\n");
+        boolean assertionState = true;
+        
+        // Import nested, and un-nested tasks
+        try {
+            
+            // Display work itemsL TestUtils.workload not taking in full list?
+            List<WorkItem> data = TaskTideManagerUtility.importTasks("TestData", "nestedTaskImports.txt", "|", ",");
+            logger.info("\n\nDisplaying 'nestedTaskImports.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
+            assertionState = true;
+        }
+        catch (Exception ex) {
+            logger.error("\n\nError reading 'nestedTaskImports.txt' into WorkItem:\n" + ex);
+            assertionState = false;
+        }
+        
+        // Log state
+        logger.info("\n\n================ Import Nested WorkItem Test ================\n");
         assertTrue(assertionState);
     }
 }

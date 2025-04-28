@@ -31,6 +31,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.state_summary.StateSummary;
 
 import org.tasktide.TestUtils;
+import org.tasktide.TestCaseBuilderUtility;
 
 
 /**
@@ -81,7 +82,7 @@ public class StepServiceTests {
         
         // Generate test data
         logger.info("Generating data for testing");
-        repo = new JsonStepRepository(TestUtils.makeTestStepList(), "myData");
+        repo = new JsonStepRepository(TestCaseBuilderUtility.makeTestStepList(), "myData");
         
         // Construct step service
         TaskTideService<Step> serv = new StepService(repo);
@@ -111,7 +112,7 @@ public class StepServiceTests {
         // Fetch service
         logger.info("\n\n================ StepService View by Field Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Step> repo = TestUtils.createStepJsonRepo();
+        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
         TaskTideService<Step> serv = new StepService(repo);
         
         // Fetch 
@@ -141,7 +142,7 @@ public class StepServiceTests {
         // Fetch service
         logger.info("\n\n================ StepService Summarize Progress Across Steps Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Step> repo = TestUtils.createStepJsonRepo();
+        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
         StepService serv = new StepService(repo);
         
         // Fetch 
@@ -171,7 +172,7 @@ public class StepServiceTests {
         // Fetch service
         logger.info("\n\n================ Save Steps Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Step> repo = TestUtils.createStepJsonRepo();
+        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
         StepService serv = new StepService(repo);
         
         // Fetch 
@@ -201,7 +202,7 @@ public class StepServiceTests {
         // Fetch service
         logger.info("\n\n================ View All Steps Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Step> repo = TestUtils.createStepJsonRepo();
+        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
         StepService serv = new StepService(repo);
         
         // View all
@@ -231,15 +232,15 @@ public class StepServiceTests {
         // Fetch service
         logger.info("\n\n================ Map Step to WorkItem Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Step> repo = TestUtils.createStepJsonRepo();
+        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
         StepService serv = new StepService(repo);
         
         // Make work item repo
         logger.info("Making JsonWorkItemRepository");
         List<WorkItem> data = new ArrayList<>();
-        data.add(TestUtils.makeTestWorkItem("myFirstStep"));
-        data.add(TestUtils.makeTestWorkItem("myFirstStep"));
-        data.add(TestUtils.makeTestWorkItem("myFirstStep"));
+        data.add(TestCaseBuilderUtility.makeTestWorkItem("myFirstStep"));
+        data.add(TestCaseBuilderUtility.makeTestWorkItem("myFirstStep"));
+        data.add(TestCaseBuilderUtility.makeTestWorkItem("myFirstStep"));
         TaskTideRepository<WorkItem> workRepo = new JsonWorkItemRepository(data, "myData");
         TaskTideService<WorkItem> workServ = new WorkItemService(workRepo, 4);
         

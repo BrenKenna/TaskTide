@@ -29,6 +29,7 @@ import org.tasktide.core.model.state_summary.StateSummary;
 import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.TestUtils;
+import org.tasktide.TestCaseBuilderUtility;
 
 
 /**
@@ -80,7 +81,7 @@ public class WorkflowServiceTests {
         
         // 
         logger.info("Generating data for testing");
-        repo = new JsonWorkflowRepository(TestUtils.makeTestWorkflows(), "myData");
+        repo = new JsonWorkflowRepository(TestCaseBuilderUtility.makeTestWorkflows(), "myData");
         serv = new WorkflowService(repo);
         assertionState = serv.toString() != null;
         
@@ -109,7 +110,7 @@ public class WorkflowServiceTests {
         // Fetch service
         logger.info("\n\n================ View All Workflows Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Workflow> repo = TestUtils.createWorkflowJsonRepo();
+        TaskTideRepository<Workflow> repo = TestCaseBuilderUtility.createWorkflowJsonRepo();
         WorkflowService serv = new WorkflowService(repo);
         
         // View all
@@ -139,7 +140,7 @@ public class WorkflowServiceTests {
         // Fetch service
         logger.info("\n\n================ StepService View by Field Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Workflow> repo = TestUtils.createWorkflowJsonRepo();
+        TaskTideRepository<Workflow> repo = TestCaseBuilderUtility.createWorkflowJsonRepo();
         TaskTideService<Workflow> serv = new WorkflowService(repo);
         
         // Fetch 
@@ -171,7 +172,7 @@ public class WorkflowServiceTests {
         logger.info("\n\n================ WorkflowService Summarize Progress Across Steps Test ================\n");
         boolean assertionState;
         Map<String, Map<String, StateSummary<ItemState>>> summary;
-        TaskTideRepository<Workflow> repo = TestUtils.createWorkflowJsonRepo();
+        TaskTideRepository<Workflow> repo = TestCaseBuilderUtility.createWorkflowJsonRepo();
         TaskTideService<Workflow> serv = new WorkflowService(repo);
         
         // Fetch 
@@ -202,14 +203,14 @@ public class WorkflowServiceTests {
         logger.info("\n\n================ Map Workflow to Step Test ================\n");
         boolean assertionState;
         List<Step> steps;
-        TaskTideRepository<Workflow> repo = TestUtils.createWorkflowJsonRepo();
+        TaskTideRepository<Workflow> repo = TestCaseBuilderUtility.createWorkflowJsonRepo();
         WorkflowService serv = new WorkflowService(repo);
         TaskTideRepository<Step> stepRepo;
         TaskTideService<Step> stepServ;
         
         // Make work item repo
         logger.info("Making JsonStepRepository");
-        stepRepo = TestUtils.createStepJsonRepo();
+        stepRepo = TestCaseBuilderUtility.createStepJsonRepo();
         stepServ = new StepService(stepRepo);
         
         // Map workflow to step
@@ -244,12 +245,12 @@ public class WorkflowServiceTests {
         // Fetch service
         logger.info("\n\n================ Add Workflow Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Workflow> repo = TestUtils.createWorkflowJsonRepo();
+        TaskTideRepository<Workflow> repo = TestCaseBuilderUtility.createWorkflowJsonRepo();
         TaskTideService<Workflow> serv = new WorkflowService(repo);
         
         // Add a workflow to collection
         logger.info("Creating new workflow for insertion");
-        Workflow myWorkflow = TestUtils.makeTestWorkflow(TestUtils.makeTestStepList(), "workflow4", "myFourthWorkflow");
+        Workflow myWorkflow = TestCaseBuilderUtility.makeTestWorkflow(TestCaseBuilderUtility.makeTestStepList(), "workflow4", "myFourthWorkflow");
         Workflow updated = serv.appendModel(myWorkflow);
         if ( updated != null ) {
             assertionState = true;
@@ -276,12 +277,12 @@ public class WorkflowServiceTests {
         // Fetch service
         logger.info("\n\n================ Add Step to Workflow Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Workflow> repo = TestUtils.createWorkflowJsonRepo();
+        TaskTideRepository<Workflow> repo = TestCaseBuilderUtility.createWorkflowJsonRepo();
         TaskTideService<Workflow> serv = new WorkflowService(repo);
         
         // Add a workflow to collection
         logger.info("Creating new Step to append to Workflow");
-        Step step = TestUtils.makeTestStep("newStep", "My Super Cool New Step");
+        Step step = TestCaseBuilderUtility.makeTestStep("newStep", "My Super Cool New Step");
         Workflow workflow = serv.viewAll().get(0);
         Workflow updated = ((WorkflowService) serv).addStepToWorkflow(workflow, step);
         if ( updated != null ) {
@@ -309,7 +310,7 @@ public class WorkflowServiceTests {
         // Fetch service
         logger.info("\n\n================ Save Workflows Test ================\n");
         boolean assertionState;
-        TaskTideRepository<Workflow> repo = TestUtils.createWorkflowJsonRepo();
+        TaskTideRepository<Workflow> repo = TestCaseBuilderUtility.createWorkflowJsonRepo();
         WorkflowService serv = new WorkflowService(repo);
         
         // View all

@@ -18,7 +18,9 @@ import org.tasktide.core.model.task.TaskState;
 
 
 /**
- * Supporting class to support creation of custom tasks
+ * Simple converter class for converting user input into {@link ItemTask ItemTask}.
+ * <br><br>
+ * Using to get the lay of the land of this in {@linl TaskTideManagerTests TaskTideManagerTests}.
  * 
  * @author bkenna
  */
@@ -84,24 +86,41 @@ public class ManagerTask {
     }
     
     
-    
+    /**
+     * Get task name
+     * 
+     * @return String
+     */
     public String getTaskName() {
         return taskName;
     }
 
     
-    
+    /**
+     * Set task name
+     * 
+     * @param taskName 
+     */
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
 
     
-    
+    /**
+     * Get task script
+     * 
+     * @return String
+     */
     public String getTaskScript() {
         return taskScript;
     }
 
     
+    /**
+     * Set task script
+     * 
+     * @param taskScript 
+     */
     public void setTaskScript(String taskScript) {
         this.taskScript = taskScript;
     }
@@ -127,5 +146,20 @@ public class ManagerTask {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);
+    }
+
+    
+    /**
+     * Represent as String
+     * 
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "ManagerTask{" +
+            "taskName=" + taskName +
+            ", taskScript=" + taskScript +
+            ", itemTaskBuilder=" + itemTaskBuilder + 
+        '}';
     }
 }

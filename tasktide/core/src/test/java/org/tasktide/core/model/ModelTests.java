@@ -31,8 +31,7 @@ import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 
-import org.tasktide.TestUtils;
-
+import org.tasktide.TestCaseBuilderUtility;
 
 /**
  * 
@@ -113,7 +112,7 @@ public class ModelTests {
         logger.info("\n\n================ Task Logging Test ================\n");
         
         // Construct process log
-        ProcessLog procLog = TestUtils.makeTestProcessLog();
+        ProcessLog procLog = TestCaseBuilderUtility.makeTestProcessLog();
         
         // Construct task log
         TaskLogging taskLog = new TaskLogging(-4L, procLog, -2L, -3L, "thread", -1L);
@@ -144,7 +143,7 @@ public class ModelTests {
         
         // Construct process log
         logger.info("\n\nAttempting to build Task Log" + "\n");
-        TaskLogging taskLog = TestUtils.makeTestTaskLog();
+        TaskLogging taskLog = TestCaseBuilderUtility.makeTestTaskLog();
         logger.info("\n\nDisplaying Built Task Log string:\n" + taskLog.toString() + "\n");
         logger.info("\n\nDisplaying Built Task Log json:\n" + taskLog.toJsonDoc() + "\n");
         
@@ -167,8 +166,8 @@ public class ModelTests {
         
         // Build dependant objects
         logger.info("\n\nAttempting to build Item Task" + "\n");
-        ProcessLog procLog = TestUtils.makeTestProcessLog();
-        TaskLogging taskLog = TestUtils.makeTestTaskLog();
+        ProcessLog procLog = TestCaseBuilderUtility.makeTestProcessLog();
+        TaskLogging taskLog = TestCaseBuilderUtility.makeTestTaskLog();
         
         // Build item task
         ItemTask itemTask = new ItemTaskBuilder()
@@ -210,8 +209,8 @@ public class ModelTests {
         
         // Build dependant objects
         logger.info("\n\nAttempting to build ItemTasks" + "\n");
-        ItemTask itemTask = TestUtils.makeTestItemTask();
-        ItemTask itemTaskB = TestUtils.makeTestItemTask();
+        ItemTask itemTask = TestCaseBuilderUtility.makeTestItemTask();
+        ItemTask itemTaskB = TestCaseBuilderUtility.makeTestItemTask();
         List<ItemTask> itemTasks = new ArrayList<>();
         itemTasks.add(itemTask); itemTasks.add(itemTaskB);
         
@@ -255,7 +254,7 @@ public class ModelTests {
         WorkItem workItem = new WorkItemBuilder()
                                 .id("My WorkItem")
                                 .itemName("My WorkItem Name")
-                                .workload(TestUtils.makeTestWorkload())
+                                .workload(TestCaseBuilderUtility.makeTestWorkload())
                                 .lockId("Some random hexadecimal string")
                                 .lockDate(0L)
                                 .doneDate(0L)

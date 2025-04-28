@@ -11,7 +11,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
@@ -30,8 +29,9 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+;
+import org.tasktide.TestCaseBuilderUtility;
 
-import org.tasktide.TestUtils;
 
 /**
  * Test module for {@link WorkItemService WorkItemService}. Focuses on the {@link JsonRepository JsonRepository}
@@ -88,9 +88,9 @@ public class WorkItemServiceTests {
         
         // Generate data
         logger.info("Generating data for testing");
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         repo = new JsonWorkItemRepository(data, "myData");
         
         // Construct work item service
@@ -121,11 +121,11 @@ public class WorkItemServiceTests {
         // Fetch service
         logger.info("\n\n================ Duplicate WorkItem Test ================\n");
         boolean assertionState = true;
-        TaskTideRepository<WorkItem> repo = TestUtils.createWorkItemJsonRepo();
+        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
         WorkItemService serv = new WorkItemService(repo, 4);
         
         // Append task to a work item
-        ItemTask task = TestUtils.makeTestItemTask();
+        ItemTask task = TestCaseBuilderUtility.makeTestItemTask();
         WorkItem item = serv.appendTask(serv.viewAll().get(0), task);
         
         // Check data
@@ -154,7 +154,7 @@ public class WorkItemServiceTests {
         // Fetch service
         logger.info("\n\n================ Locking WorkItem Test ================\n");
         boolean assertionState;
-        TaskTideRepository<WorkItem> repo = TestUtils.createWorkItemJsonRepo();
+        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
         WorkItemService serv = new WorkItemService(repo, 4);
         
         // Lock work Item
@@ -188,7 +188,7 @@ public class WorkItemServiceTests {
         // Fetch service
         logger.info("\n\n================ Marking as Done Test ================\n");
         boolean assertionState;
-        TaskTideRepository<WorkItem> repo = TestUtils.createWorkItemJsonRepo();
+        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
         WorkItemService serv = new WorkItemService(repo, 4);
         
         // Lock work Item
@@ -224,7 +224,7 @@ public class WorkItemServiceTests {
         // Fetch service
         logger.info("\n\n================ View by Field Test ================\n");
         boolean assertionState;
-        TaskTideRepository<WorkItem> repo = TestUtils.createWorkItemJsonRepo();
+        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
         WorkItemService serv = new WorkItemService(repo, 4);
         
         // Fetch 
@@ -254,7 +254,7 @@ public class WorkItemServiceTests {
         // Fetch service
         logger.info("\n\n================ Summarize By State Test ================\n");
         boolean assertionState;
-        TaskTideRepository<WorkItem> repo = TestUtils.createWorkItemJsonRepo();
+        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
         WorkItemService serv = new WorkItemService(repo, 4);
     
         // Fetch

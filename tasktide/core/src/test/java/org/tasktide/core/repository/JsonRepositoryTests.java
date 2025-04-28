@@ -4,27 +4,27 @@
  */
 package org.tasktide.core.repository;
 
-import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.TaskTideRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 
-import org.tasktide.TestUtils;
+import org.tasktide.TestCaseBuilderUtility;
 
 
 /**
@@ -78,8 +78,8 @@ public class JsonRepositoryTests {
     
         // Generate data
         logger.info("\n\nGenerating data for testing\n");
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         
         // Construct repo
         logger.info("Creating repoisotry");
@@ -119,8 +119,8 @@ public class JsonRepositoryTests {
     
         // Generate data
         logger.info("\n\nGenerating data for testing\n");
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         
         // Construct repo
         logger.info("Creating repoisotry");
@@ -160,8 +160,8 @@ public class JsonRepositoryTests {
     
         // Generate data
         logger.info("\n\nGenerating data for testing\n");
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         
         // Construct repo
         logger.info("Creating repoisotry");
@@ -201,8 +201,8 @@ public class JsonRepositoryTests {
     
         // Generate data
         logger.info("\n\nGenerating data for testing\n");
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         
         // Construct repo
         logger.info("Creating repoisotry");
@@ -255,8 +255,8 @@ public class JsonRepositoryTests {
     
         // Generate data
         logger.info("\n\nGenerating data for testing\n");
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         
         // Construct repo
         logger.info("Creating repoisotry of 2 of the same WorkItems");
@@ -305,12 +305,12 @@ public class JsonRepositoryTests {
     
         // Generate data
         logger.info("\n\nGenerating data for testing\n");
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         
         // Construct repo
         logger.info("Creating repoisotry of 2 of the same WorkItems");
         repo = new JsonWorkItemRepository(data, "myData");
-        TaskTideModel rec = repo.insertModel(TestUtils.makeTestWorkItem());
+        TaskTideModel rec = repo.insertModel(TestCaseBuilderUtility.makeTestWorkItem());
         
         // Represent repo as string
         logger.info("Verifying second model inserted, and matches first Id");
@@ -353,7 +353,7 @@ public class JsonRepositoryTests {
     
         // Generate data
         logger.info("\n\nGenerating data for testing\n");
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         
         // Construct repo
         logger.info("Creating repoisotry of 2 of the same WorkItems");
@@ -401,9 +401,9 @@ public class JsonRepositoryTests {
     
         // Generate data
         logger.info("\n\nGenerating data for testing\n");
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
-        data.add(TestUtils.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
+        data.add(TestCaseBuilderUtility.makeTestWorkItem());
         ref = data.get(0);
         ((WorkItem) ref).setItemName("New Item Name");
         
