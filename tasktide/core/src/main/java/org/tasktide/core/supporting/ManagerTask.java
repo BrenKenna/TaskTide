@@ -33,13 +33,14 @@ public class ManagerTask {
     private String taskScript;
     
     private final ItemTaskBuilder itemTaskBuilder;
-    
+    private final Utils utils;
     
     /**
      * Null constructor
      */
     public ManagerTask() {
         this.itemTaskBuilder = new ItemTaskBuilder();
+        this.utils = new Utils("dd/MM/yy HH:mm:ss", 4);
     }
     
     
@@ -56,6 +57,7 @@ public class ManagerTask {
         this.taskName = taskName;
         this.taskScript = taskScript;
         this.itemTaskBuilder = new ItemTaskBuilder();
+        this.utils = new Utils("dd/MM/yy HH:mm:ss", 4);
     }
     
     
@@ -79,6 +81,7 @@ public class ManagerTask {
      */
     public ItemTask asItemTask() {
         return itemTaskBuilder
+            .id( "ItemTask-" + utils.generateSalt() )
             .taskName(taskName)
             .task(taskScript)
             .taskState(TaskState.PENDING)

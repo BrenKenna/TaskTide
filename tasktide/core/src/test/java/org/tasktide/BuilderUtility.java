@@ -17,6 +17,7 @@ import org.tasktide.core.model.workitem.Workload;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
 
+import org.tasktide.core.supporting.Utils;
 import org.tasktide.core.supporting.generator.TaskGenerator;
 import org.tasktide.core.supporting.generator.ExampleGenerators;
 
@@ -29,7 +30,8 @@ import org.tasktide.core.supporting.generator.ExampleGenerators;
 public class BuilderUtility {
     
     // Task Generator
-    public static TaskGenerator taskGenerator = new TaskGenerator();
+    private static final TaskGenerator taskGenerator = new TaskGenerator();
+    private static final Utils utils = new Utils("dd/MM/yy HH:mm:ss", 4);
     
     /**
      * Make {@link Workload Workload} from {@link ItemTask ItemTask}
@@ -39,6 +41,7 @@ public class BuilderUtility {
      */
     public static Workload makeWorkload(ItemTask itemTask) {
         return new WorkloadBuilder()
+            .id( "Workload-" + utils.generateSalt() )
             .workload(itemTask)
             .workloadState(ItemState.TODO)
             .workloadType(ItemType.SINGLE)
@@ -54,6 +57,7 @@ public class BuilderUtility {
      */
     public static Workload makeWorkload(List<ItemTask> tasks) {
         return new WorkloadBuilder()
+            .id( "Workload-" + utils.generateSalt() )
             .workload(tasks)
             .workloadState(ItemState.TODO)
             .workloadType(ItemType.NESTED)
@@ -71,6 +75,7 @@ public class BuilderUtility {
      */
     public static WorkItem makeWorkItem(String itemName, Workload workload, String stepName) {
         return new WorkItemBuilder()
+            .id( "WorkItem-" + utils.generateSalt() )
             .itemName(itemName)
             .workload(workload)
             .itemState(ItemState.TODO)

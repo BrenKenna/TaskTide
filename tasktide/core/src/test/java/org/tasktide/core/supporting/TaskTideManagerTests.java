@@ -205,7 +205,7 @@ public class TaskTideManagerTests {
         // Construct work item
         logger.info("\n\n================ Import Manager Tasks Test ================\n");
         int importCount = 0;
-        int expectedImport = 2;
+        final int expectedImport = 2;
         
         // Import pipe delimiter
         try {
@@ -249,7 +249,7 @@ public class TaskTideManagerTests {
         // Construct work item
         logger.info("\n\n================ Import Nested WorkItem Test ================\n");
         int countsMatching = 0;
-        int expectedMatch = 2;
+        final int expectedMatch = 2;
         
         // Import nested, and un-nested tasks
         try {

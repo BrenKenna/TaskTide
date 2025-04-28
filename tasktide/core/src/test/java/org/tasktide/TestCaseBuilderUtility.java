@@ -7,7 +7,6 @@ package org.tasktide;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.tasktide.core.model.builders.ModelBuilderProvider;
 import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.TaskLoggingBuilder;
 import org.tasktide.core.model.builders.ItemTaskBuilder;

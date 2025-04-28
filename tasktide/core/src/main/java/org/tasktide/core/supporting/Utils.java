@@ -11,17 +11,9 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
-
-import org.tasktide.core.supporting.generator.TaskGenerator;
 
 
 /**
@@ -33,10 +25,8 @@ public class Utils {
     
     // Attributes
     private final Random rand;
-    private final TaskGenerator taskGen;
     private final Charset charSet;
     private final DateUtility dateUtils;
-    
     
     /**
      * Construct with a task generator and random
@@ -46,10 +36,9 @@ public class Utils {
      */
     public Utils(
        @ConfigProperty(name = "task-tide.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
-       @ConfigProperty(name = "task-tide.expiration", defaultValue = "2") int expiration
+       @ConfigProperty(name = "task-tide.expiration", defaultValue = "4") int expiration
     ) {
         this.rand = new Random();
-        this.taskGen = new TaskGenerator();
         this.dateUtils = new DateUtility(dateFormat, expiration);
         this.charSet = StandardCharsets.UTF_8;
     }
@@ -147,7 +136,7 @@ public class Utils {
     public String generateSHA_Hash(String input, String salt) {
 		
         // Try generate hash from password
-        String output = null;
+        String output;
         try {
 
             // Generate digest for salted password
@@ -159,15 +148,12 @@ public class Utils {
             byte[] digest = messageDigest.digest();
             output = getHexString(digest);
             messageDigest.reset();
+            return output;
             
-        } // Catch exception
-        catch (NoSuchAlgorithmException ex) {
-            ex.printStackTrace();
         }
-
-        // Return results
-        // Null string & proper output should be handled appropriately
-        return output;
+        catch (NoSuchAlgorithmException ex) {
+            return null;
+        }
     }
     
     
