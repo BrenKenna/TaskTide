@@ -15,7 +15,7 @@ import org.tasktide.core.model.builders.WorkItemBuilder;
 import org.tasktide.core.model.builders.StepBuilder;
 import org.tasktide.core.model.builders.WorkflowBuilder;
 
-import org.tasktide.core.supporting.ManagerTask;
+import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.ItemTask;
@@ -34,8 +34,8 @@ import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 
-import org.tasktide.core.supporting.generator.TaskGenerator;
-import org.tasktide.core.supporting.generator.ExampleGenerators;
+import org.tasktide.core.manager.generator.TaskGenerator;
+import org.tasktide.core.manager.generator.ExampleGenerators;
 
 
 /**

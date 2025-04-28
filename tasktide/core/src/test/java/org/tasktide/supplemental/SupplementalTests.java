@@ -63,7 +63,7 @@ public class SupplementalTests {
      * 
      * @throws IOException 
      */
-    void printSplash() throws IOException {
+    public void printSplash() throws IOException {
         try (InputStream is = getClass().getClassLoader().getResourceAsStream("splash.txt");
              BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
             String line;
@@ -78,20 +78,41 @@ public class SupplementalTests {
     
     
     /**
-     * Test printing splash resource
+     * Fetches splash string
+     * 
+     * @return String
+     * @throws IOException 
+     */
+    public String fetchSplashString() throws IOException {
+        String output = "";
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("splash.txt");
+             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output += "\n" + line;
+            }
+            return output;
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+    
+    
+    /**
+     * Test printing the splash resource
      */
     @Order(0)
     @Test
-    void testSplash() {
+    public void testSplash() {
     
         // Initialize test
         boolean assertionState;
-        logger.info("\n\n================ Print Splash Test ================");
+        logger.info("\n\n================ Print Splash Test ================\n");
         
         
         // Try pring splash
         try {
-            printSplash();
+            logger.info("\n\nDisplaying splash string:" + fetchSplashString() + "\n\n");
             assertionState = true;
         } catch (IOException ex) {
             assertionState = false;

@@ -130,4 +130,21 @@ public enum TaskTideModelType {
     public static boolean hasType(String query) {
         return indexOf(query) >= 0;
     }
+    
+    
+    /**
+     * Return the TaskTide model type for query or null
+     * 
+     * @param query
+     * @return TaskTideModelType
+     */
+    public static TaskTideModelType getQuery(String query) {
+        int index = indexOf(query);
+        if ( index >= 0) {
+            return TaskTideModelType.values()[index];
+        }
+        else {
+            return null;
+        }
+    }
 }

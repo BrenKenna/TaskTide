@@ -24,8 +24,7 @@ dependencies {
     implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
 
     // Project Core, and Manager Libs
-    //implementation project(':core')
-    //implementation project(':manager')
+    implementation project(':core')
 
     // Log4J
     implementation 'org.apache.logging.log4j:log4j-api:2.20.0'

@@ -16,13 +16,32 @@ allprojects {
 subprojects {
     apply plugin: 'java'
 
+    dependencies {
+        compileOnly 'org.osgi:org.osgi.annotation.bundle:1.0.0'
+    }
+
+    tasks.withType(Test).configureEach {
+        useJUnitPlatform()
+
+        reports {
+            junitXml.required = true
+            html.required = true
+        }
+
+        afterSuite { desc, result ->
+            if (!desc.parent) {
+                println "Test results: file://${buildDir}/reports/tests/test/index.html"
+            }
+        }
+    }
 }
 
 project(":core") {}
-project(":manager") {}
+project(":engine") {}
+project(":tasktide") {}
 
 task buildAll {
-    dependsOn ':core:build', ':manager:build', 'engine:build'
+    dependsOn ':core:build', 'engine:build', 'tasktide:build'
 }
 
 build.dependsOn buildAll
