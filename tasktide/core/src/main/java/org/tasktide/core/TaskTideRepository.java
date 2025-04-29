@@ -12,7 +12,7 @@ import java.util.Optional;
  *
  * Interface for TaskTideRepository
  * 
- * @param <T> of ModelClass-{@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
+ * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link Step},{@link Workflow}
  * @author bkenna
  */
 public interface TaskTideRepository<T> {

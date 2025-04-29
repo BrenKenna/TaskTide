@@ -1,0 +1,1314 @@
+2025-04-29 19:08:10 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.setUpClass ]: 
+
+---------------- Initiating Concurrency Tests ----------------
+
+2025-04-29 19:08:10 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-04-29 19:08:10 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+================ Process Tasks Test ================
+
+2025-04-29 19:08:10 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Creating 4 test ping tasks
+2025-04-29 19:08:11 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying first element of workload:
+
+{
+    "Task": "ping netflix.com",
+    "Task Name": "Ping netflix.com",
+    "Task State": "PENDING",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+
+
+2025-04-29 19:08:11 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Configuring the ParallelItemTaskExecutor
+2025-04-29 19:08:11 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Processing workload
+2025-04-29 19:08:11 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload left on thread:	Test worker
+2025-04-29 19:08:11 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on left:	Test worker
+2025-04-29 19:08:11 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload right on thread:	Test worker
+2025-04-29 19:08:11 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on right:	Test worker
+2025-04-29 19:08:11 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload left on thread:	Test worker
+2025-04-29 19:08:11 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload right on thread:	Test worker
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload left on thread:	pool-2-thread-1
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on left:	pool-2-thread-1
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload right on thread:	pool-2-thread-1
+2025-04-29 19:08:11 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Waiting until tasks are done
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on right:	pool-2-thread-1
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload left on thread:	pool-2-thread-1
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload left on thread:	pool-2-thread-2
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on left:	pool-2-thread-2
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload right on thread:	pool-2-thread-1
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload right on thread:	pool-2-thread-2
+2025-04-29 19:08:11 INFO  [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Processing tasks of workload thread:	pool-2-thread-3
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on right:	pool-2-thread-2
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload left on thread:	pool-2-thread-2
+2025-04-29 19:08:11 INFO  [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Processing tasks of workload thread:	pool-2-thread-4
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload right on thread:	pool-2-thread-2
+2025-04-29 19:08:11 INFO  [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Processing tasks of workload thread:	pool-2-thread-1
+2025-04-29 19:08:11 INFO  [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Processing tasks of workload thread:	pool-2-thread-2
+2025-04-29 19:08:11 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'0'. Task done count:	'0'
+2025-04-29 19:08:11 INFO  [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Executing task on thread 'pool-2-thread-1':ping facebook.com
+2025-04-29 19:08:11 INFO  [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Executing task on thread 'pool-2-thread-2':ping bbc.com
+2025-04-29 19:08:11 INFO  [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Executing task on thread 'pool-2-thread-3':ping netflix.com
+2025-04-29 19:08:11 INFO  [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Executing task on thread 'pool-2-thread-4':ping instagram.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Beginging execution of task:	ping bbc.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Beginging execution of task:	ping facebook.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Beginging execution of task:	ping instagram.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Beginging execution of task:	ping netflix.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Execution complete for task:	ping instagram.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Building ProcessLog for task:	ping instagram.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Execution complete for task:	ping bbc.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Building ProcessLog for task:	ping bbc.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Execution complete for task:	ping facebook.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Building ProcessLog for task:	ping facebook.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Execution complete for task:	ping netflix.com
+2025-04-29 19:08:11 DEBUG [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Building ProcessLog for task:	ping netflix.com
+2025-04-29 19:08:14 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-04-29 19:08:14 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-04-29 19:08:14 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Name": "Ping netflix.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+2025-04-29 19:08:14 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Name": "Ping instagram.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+2025-04-29 19:08:14 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping facebook.com",
+    "Task Name": "Ping facebook.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+2025-04-29 19:08:14 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping bbc.com",
+    "Task Name": "Ping bbc.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+2025-04-29 19:08:14 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'1'. Task done count:	'0'
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+        "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+        "",
+        "Ping statistics for 31.13.73.174:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+    ],
+    "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+}
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+        "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+        "",
+        "Ping statistics for 31.13.73.174:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+    ],
+    "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+}
+2025-04-29 19:08:14 INFO  [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Successful execution of task:	ping instagram.com
+2025-04-29 19:08:14 INFO  [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Completed task 'Ping instagram.com', global count: 1
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task after execution:
+{
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091075,
+        "Exit Code": 0,
+        "Process Id": 14944,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+            ],
+            "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-4",
+        "id": "TaskLogging-2ee3c51c-2768-4863-98a6-1e31861a51de"
+    },
+    "Task Name": "Ping instagram.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+
+
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+        "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+        "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+        "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+        "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+        "",
+        "Ping statistics for 31.13.73.35:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+    ],
+    "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+}
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+        "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+        "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+        "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+        "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+        "",
+        "Ping statistics for 31.13.73.35:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+    ],
+    "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+}
+2025-04-29 19:08:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Successful execution of task:	ping facebook.com
+2025-04-29 19:08:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Completed task 'Ping facebook.com', global count: 2
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+        "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+        "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+        "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+        "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+        "",
+        "Ping statistics for 151.101.128.81:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+    ],
+    "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+}
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+        "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+        "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+        "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+        "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+        "",
+        "Ping statistics for 151.101.128.81:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+    ],
+    "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+}
+2025-04-29 19:08:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Successful execution of task:	ping bbc.com
+2025-04-29 19:08:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Completed task 'Ping bbc.com', global count: 3
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task after execution:
+{
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091103,
+        "Exit Code": 0,
+        "Process Id": 45076,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+                "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.35:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+            ],
+            "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-1",
+        "id": "TaskLogging-51049e95-87b6-4e7e-bf6f-4f10f27267e7"
+    },
+    "Task Name": "Ping facebook.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+
+
+2025-04-29 19:08:14 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task after execution:
+{
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091082,
+        "Exit Code": 0,
+        "Process Id": 544,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+                "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+                "",
+                "Ping statistics for 151.101.128.81:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+            ],
+            "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-2",
+        "id": "TaskLogging-9e87b58a-e093-49f6-b3f9-9413445f73fe"
+    },
+    "Task Name": "Ping bbc.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+
+
+2025-04-29 19:08:17 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-04-29 19:08:17 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-04-29 19:08:17 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Name": "Ping netflix.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+2025-04-29 19:08:17 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091075,
+        "Exit Code": 0,
+        "Process Id": 14944,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+            ],
+            "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-4",
+        "id": "TaskLogging-2ee3c51c-2768-4863-98a6-1e31861a51de"
+    },
+    "Task Name": "Ping instagram.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+2025-04-29 19:08:17 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091103,
+        "Exit Code": 0,
+        "Process Id": 45076,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+                "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.35:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+            ],
+            "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-1",
+        "id": "TaskLogging-51049e95-87b6-4e7e-bf6f-4f10f27267e7"
+    },
+    "Task Name": "Ping facebook.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+2025-04-29 19:08:17 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091082,
+        "Exit Code": 0,
+        "Process Id": 544,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+                "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+                "",
+                "Ping statistics for 151.101.128.81:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+            ],
+            "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-2",
+        "id": "TaskLogging-9e87b58a-e093-49f6-b3f9-9413445f73fe"
+    },
+    "Task Name": "Ping bbc.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+2025-04-29 19:08:17 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'2'. Task done count:	'3'
+2025-04-29 19:08:20 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-04-29 19:08:20 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-04-29 19:08:20 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Name": "Ping netflix.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+2025-04-29 19:08:20 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091075,
+        "Exit Code": 0,
+        "Process Id": 14944,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+            ],
+            "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-4",
+        "id": "TaskLogging-2ee3c51c-2768-4863-98a6-1e31861a51de"
+    },
+    "Task Name": "Ping instagram.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+2025-04-29 19:08:20 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091103,
+        "Exit Code": 0,
+        "Process Id": 45076,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+                "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.35:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+            ],
+            "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-1",
+        "id": "TaskLogging-51049e95-87b6-4e7e-bf6f-4f10f27267e7"
+    },
+    "Task Name": "Ping facebook.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+2025-04-29 19:08:20 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091082,
+        "Exit Code": 0,
+        "Process Id": 544,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+                "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+                "",
+                "Ping statistics for 151.101.128.81:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+            ],
+            "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-2",
+        "id": "TaskLogging-9e87b58a-e093-49f6-b3f9-9413445f73fe"
+    },
+    "Task Name": "Ping bbc.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+2025-04-29 19:08:20 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'3'. Task done count:	'3'
+2025-04-29 19:08:23 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-04-29 19:08:23 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-04-29 19:08:23 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Name": "Ping netflix.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+2025-04-29 19:08:23 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091075,
+        "Exit Code": 0,
+        "Process Id": 14944,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+            ],
+            "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-4",
+        "id": "TaskLogging-2ee3c51c-2768-4863-98a6-1e31861a51de"
+    },
+    "Task Name": "Ping instagram.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+2025-04-29 19:08:23 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091103,
+        "Exit Code": 0,
+        "Process Id": 45076,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+                "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.35:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+            ],
+            "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-1",
+        "id": "TaskLogging-51049e95-87b6-4e7e-bf6f-4f10f27267e7"
+    },
+    "Task Name": "Ping facebook.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+2025-04-29 19:08:23 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091082,
+        "Exit Code": 0,
+        "Process Id": 544,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+                "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+                "",
+                "Ping statistics for 151.101.128.81:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+            ],
+            "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-2",
+        "id": "TaskLogging-9e87b58a-e093-49f6-b3f9-9413445f73fe"
+    },
+    "Task Name": "Ping bbc.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+2025-04-29 19:08:23 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'4'. Task done count:	'3'
+2025-04-29 19:08:26 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-04-29 19:08:26 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-04-29 19:08:26 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Name": "Ping netflix.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+2025-04-29 19:08:26 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091075,
+        "Exit Code": 0,
+        "Process Id": 14944,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+            ],
+            "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-4",
+        "id": "TaskLogging-2ee3c51c-2768-4863-98a6-1e31861a51de"
+    },
+    "Task Name": "Ping instagram.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+2025-04-29 19:08:26 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091103,
+        "Exit Code": 0,
+        "Process Id": 45076,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+                "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.35:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+            ],
+            "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-1",
+        "id": "TaskLogging-51049e95-87b6-4e7e-bf6f-4f10f27267e7"
+    },
+    "Task Name": "Ping facebook.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+2025-04-29 19:08:26 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091082,
+        "Exit Code": 0,
+        "Process Id": 544,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+                "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+                "",
+                "Ping statistics for 151.101.128.81:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+            ],
+            "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-2",
+        "id": "TaskLogging-9e87b58a-e093-49f6-b3f9-9413445f73fe"
+    },
+    "Task Name": "Ping bbc.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+2025-04-29 19:08:26 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'5'. Task done count:	'3'
+2025-04-29 19:08:29 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-04-29 19:08:29 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-04-29 19:08:29 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Name": "Ping netflix.com",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+2025-04-29 19:08:29 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091075,
+        "Exit Code": 0,
+        "Process Id": 14944,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+            ],
+            "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-4",
+        "id": "TaskLogging-2ee3c51c-2768-4863-98a6-1e31861a51de"
+    },
+    "Task Name": "Ping instagram.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+2025-04-29 19:08:29 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091103,
+        "Exit Code": 0,
+        "Process Id": 45076,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+                "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.35:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+            ],
+            "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-1",
+        "id": "TaskLogging-51049e95-87b6-4e7e-bf6f-4f10f27267e7"
+    },
+    "Task Name": "Ping facebook.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+2025-04-29 19:08:29 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091082,
+        "Exit Code": 0,
+        "Process Id": 544,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+                "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+                "",
+                "Ping statistics for 151.101.128.81:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+            ],
+            "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-2",
+        "id": "TaskLogging-9e87b58a-e093-49f6-b3f9-9413445f73fe"
+    },
+    "Task Name": "Ping bbc.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+2025-04-29 19:08:29 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'6'. Task done count:	'3'
+2025-04-29 19:08:29 DEBUG [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging netflix.com [54.155.246.232] with 32 bytes of data:",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "",
+        "Ping statistics for 54.155.246.232:",
+        "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+    ],
+    "id": "ProcessLog-0f5bdd90-6991-4a60-8e17-871c3f154cb4"
+}
+2025-04-29 19:08:29 DEBUG [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging netflix.com [54.155.246.232] with 32 bytes of data:",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "",
+        "Ping statistics for 54.155.246.232:",
+        "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+    ],
+    "id": "ProcessLog-0f5bdd90-6991-4a60-8e17-871c3f154cb4"
+}
+2025-04-29 19:08:29 ERROR [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Error executing of task:	ping netflix.com
+2025-04-29 19:08:29 ERROR [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1745950091138,
+    "Exit Code": 1,
+    "Process Id": 5040,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging netflix.com [54.155.246.232] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 54.155.246.232:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-0f5bdd90-6991-4a60-8e17-871c3f154cb4"
+    },
+    "Start Time": 1745950091063,
+    "Thread Name": "pool-2-thread-3",
+    "id": "TaskLogging-160cd38a-db4b-43cc-8f5b-39713afebe23"
+}
+2025-04-29 19:08:29 ERROR [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task 'Ping netflix.com' failed on thread 'pool-2-thread-3' with exit code 1
+
+2025-04-29 19:08:29 DEBUG [ pool-2-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task after execution:
+{
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091138,
+        "Exit Code": 1,
+        "Process Id": 5040,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging netflix.com [54.155.246.232] with 32 bytes of data:",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "",
+                "Ping statistics for 54.155.246.232:",
+                "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+            ],
+            "id": "ProcessLog-0f5bdd90-6991-4a60-8e17-871c3f154cb4"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-3",
+        "id": "TaskLogging-160cd38a-db4b-43cc-8f5b-39713afebe23"
+    },
+    "Task Name": "Ping netflix.com",
+    "Task State": "ERROR",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+
+
+2025-04-29 19:08:32 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 4 ===============
+
+
+2025-04-29 19:08:32 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-04-29 19:08:32 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091138,
+        "Exit Code": 1,
+        "Process Id": 5040,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging netflix.com [54.155.246.232] with 32 bytes of data:",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "",
+                "Ping statistics for 54.155.246.232:",
+                "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+            ],
+            "id": "ProcessLog-0f5bdd90-6991-4a60-8e17-871c3f154cb4"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-3",
+        "id": "TaskLogging-160cd38a-db4b-43cc-8f5b-39713afebe23"
+    },
+    "Task Name": "Ping netflix.com",
+    "Task State": "ERROR",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+2025-04-29 19:08:32 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091075,
+        "Exit Code": 0,
+        "Process Id": 14944,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+            ],
+            "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-4",
+        "id": "TaskLogging-2ee3c51c-2768-4863-98a6-1e31861a51de"
+    },
+    "Task Name": "Ping instagram.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+2025-04-29 19:08:32 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091103,
+        "Exit Code": 0,
+        "Process Id": 45076,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+                "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.35:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+            ],
+            "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-1",
+        "id": "TaskLogging-51049e95-87b6-4e7e-bf6f-4f10f27267e7"
+    },
+    "Task Name": "Ping facebook.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+2025-04-29 19:08:32 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091082,
+        "Exit Code": 0,
+        "Process Id": 544,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+                "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+                "",
+                "Ping statistics for 151.101.128.81:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+            ],
+            "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-2",
+        "id": "TaskLogging-9e87b58a-e093-49f6-b3f9-9413445f73fe"
+    },
+    "Task Name": "Ping bbc.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Workload processing completed
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Workload complete, evaluating if all tasks were successfully completed
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying processed task '1' of '4':
+
+{
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091138,
+        "Exit Code": 1,
+        "Process Id": 5040,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging netflix.com [54.155.246.232] with 32 bytes of data:",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "",
+                "Ping statistics for 54.155.246.232:",
+                "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+            ],
+            "id": "ProcessLog-0f5bdd90-6991-4a60-8e17-871c3f154cb4"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-3",
+        "id": "TaskLogging-160cd38a-db4b-43cc-8f5b-39713afebe23"
+    },
+    "Task Name": "Ping netflix.com",
+    "Task State": "ERROR",
+    "id": "ItemTask-ab8820af-127f-4811-a83f-c84abeb585fe"
+}
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying processed task '2' of '4':
+
+{
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091075,
+        "Exit Code": 0,
+        "Process Id": 14944,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=26ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=24ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=16ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=25ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 16ms, Maximum = 26ms, Average = 22ms"
+            ],
+            "id": "ProcessLog-186a7a4d-b0cc-4a67-980e-9a41d822ccd6"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-4",
+        "id": "TaskLogging-2ee3c51c-2768-4863-98a6-1e31861a51de"
+    },
+    "Task Name": "Ping instagram.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-961ffcd7-ecc2-4ce5-83f8-c5990debb5e3"
+}
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying processed task '3' of '4':
+
+{
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091103,
+        "Exit Code": 0,
+        "Process Id": 45076,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging facebook.com [31.13.73.35] with 32 bytes of data:",
+                "Reply from 31.13.73.35: bytes=32 time=21ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=28ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=17ms TTL=55",
+                "Reply from 31.13.73.35: bytes=32 time=30ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.35:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 30ms, Average = 24ms"
+            ],
+            "id": "ProcessLog-f6a651ef-aa94-4fa7-b0eb-53a9dd4b7587"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-1",
+        "id": "TaskLogging-51049e95-87b6-4e7e-bf6f-4f10f27267e7"
+    },
+    "Task Name": "Ping facebook.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-548b39ed-92bd-4715-af96-25ade1f64c6b"
+}
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying processed task '4' of '4':
+
+{
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1745950091082,
+        "Exit Code": 0,
+        "Process Id": 544,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging bbc.com [151.101.128.81] with 32 bytes of data:",
+                "Reply from 151.101.128.81: bytes=32 time=20ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=28ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=17ms TTL=57",
+                "Reply from 151.101.128.81: bytes=32 time=37ms TTL=57",
+                "",
+                "Ping statistics for 151.101.128.81:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 37ms, Average = 25ms"
+            ],
+            "id": "ProcessLog-f6c6a201-ebdb-4921-8fa7-41953d9dba3e"
+        },
+        "Start Time": 1745950091063,
+        "Thread Name": "pool-2-thread-2",
+        "id": "TaskLogging-9e87b58a-e093-49f6-b3f9-9413445f73fe"
+    },
+    "Task Name": "Ping bbc.com",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-d0626fb9-2186-4563-ab4c-fff42ab0c40e"
+}
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Logging execution times of N successful tasks = 3
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.fetchExecutionTimes ]: 
+
+Task 'Ping netflix.com' started '1745950091063' finished '1745950091138'
+
+
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.fetchExecutionTimes ]: 
+
+Task 'Ping instagram.com' started '1745950091063' finished '1745950091075'
+
+
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.fetchExecutionTimes ]: 
+
+Task 'Ping facebook.com' started '1745950091063' finished '1745950091103'
+
+
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.fetchExecutionTimes ]: 
+
+Task 'Ping bbc.com' started '1745950091063' finished '1745950091082'
+
+
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+================ Process Log Test ================
+
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-04-29 19:08:32 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.tearDownClass ]: 
+
+---------------- Terminating Concurrency Tests ----------------
+

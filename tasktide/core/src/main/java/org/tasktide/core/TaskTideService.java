@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Marker interface for TaskTideService, want to restrict eventually.
  * <br><br>
- * Want to keep the {@link TaskTideRepository TaskTideRepository} away from anywhere except the {@link TaskTideService TaskTideService}
+ * Want to keep the {@link TaskTideRepository} away from anywhere except the {@link TaskTideService}
  * 
- * @param <T> of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
+ * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link Step},{@link Workflow}
  * @author bkenna
  */
 public interface TaskTideService<T extends TaskTideModel> {
@@ -22,7 +22,7 @@ public interface TaskTideService<T extends TaskTideModel> {
      * Append model to backend
      * 
      * @param model
-     * @return {@link TaskTideModel TaskTideModel} of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
+     * @return {@link TaskTideModel} of {@link WorkItem},{@link Step},{@link Workflow}
      */
     public T appendModel(T model);
     
@@ -32,7 +32,7 @@ public interface TaskTideService<T extends TaskTideModel> {
      * 
      * @param field
      * @param value
-     * @return List-{@link TaskTideModel TaskTideModel} of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
+     * @return List-{@link TaskTideModel} of {@link WorkItem},{@link Step},{@link Workflow}
      */
     public List<T> viewByField(String field, Object value);
     
@@ -40,7 +40,7 @@ public interface TaskTideService<T extends TaskTideModel> {
     /**
      * Fetch model collection
      * 
-     * @return List-{@link TaskTideModel TaskTideModel} of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
+     * @return List-{@link TaskTideModel} of {@link WorkItem},{@link Step},{@link Workflow}
      */
     public List<T> viewAll();
     
@@ -49,7 +49,7 @@ public interface TaskTideService<T extends TaskTideModel> {
      * Query backend for models with Id
      * 
      * @param id
-     * @return List-{@link TaskTideModel TaskTideModel} of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
+     * @return List-{@link TaskTideModel} of {@link WorkItem},{@link Step},{@link Workflow}
      */
     public T fetchById(String id);
     
@@ -67,13 +67,13 @@ public interface TaskTideService<T extends TaskTideModel> {
      * Update backend model
      * 
      * @param model
-     * @return List-{@link TaskTideModel TaskTideModel} of {@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
+     * @return List-{@link TaskTideModel} of {@link WorkItem},{@link Step},{@link Workflow}
      */
     public T updateModel(T model);
     
     
     /**
-     * Extend backend with list of {@link TaskTideModel TaskTideModel}, measuring imported count against expected
+     * Extend backend with list of {@link TaskTideModel}, measuring imported count against expected
      * 
      * @param toAdd
      * @return boolean

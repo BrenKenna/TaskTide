@@ -4,9 +4,11 @@
  */
 package org.tasktide.core.manager.generator;
 
-import org.tasktide.core.manager.ManagerTask;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.tasktide.core.manager.ManagerTask;
+import org.tasktide.core.model.task.ItemTask;
 
 
 /**
@@ -22,9 +24,9 @@ public class TaskGenerator {
      * Generate random task of required type
      * 
      * @param taskType
-     * @return Map-String of ManagerTask Name, String of task
+     * @return Map-String of {@link ManagerTask} Name, String of task
      */
-    public ManagerTask generateTask(ExampleGenerators taskType) {
+    public static ManagerTask generateTask(ExampleGenerators taskType) {
         return taskType.createTask();
     }
     
@@ -32,9 +34,9 @@ public class TaskGenerator {
     /**
      * Generate random ping task
      * 
-     * @return Map-String of ManagerTask Name, String of task
+     * @return Map-String of {@link ManagerTask} Name, String of task
      */
-    public ManagerTask generatePingTask() {
+    public static ManagerTask generatePingTask() {
         return ExampleGenerators.PING.createTask();
     }
     
@@ -42,9 +44,9 @@ public class TaskGenerator {
     /**
      * Generate random seq task
      * 
-     * @return Map-String of ManagerTask Name, String of task
+     * @return Map-String of {@link ManagerTask} Name, String of task
      */
-    public ManagerTask generateSeqTask() {
+    public static ManagerTask generateSeqTask() {
         return ExampleGenerators.SEQ.createTask();
     }
     
@@ -54,13 +56,30 @@ public class TaskGenerator {
      * 
      * @param taskType
      * @param nTasks
-     * @return List-Map-String of ManagerTask Name, String of task
+     * @return List-Map-String of {@link ManagerTask} Name, String of task
      */
-    public List<ManagerTask> generateTasks(ExampleGenerators taskType, int nTasks) {
+    public static List<ManagerTask> generateTasks(ExampleGenerators taskType, int nTasks) {
         List<ManagerTask> output = new ArrayList<>();
         for ( int i = 0; i < nTasks; i ++ ) {
             ManagerTask task = generateTask(taskType);
             output.add(task);
+        }
+        return output;
+    }
+    
+    
+    /**
+     * Fetch required number of random tasks for type
+     * 
+     * @param taskType
+     * @param nTasks
+     * @return List-Map-String of {@link ItemTask} Name, String of task
+     */
+    public static List<ItemTask> generateItemTasks(ExampleGenerators taskType, int nTasks) {
+        List<ItemTask> output = new ArrayList<>();
+        for ( int i = 0; i < nTasks; i ++ ) {
+            ManagerTask task = generateTask(taskType);
+            output.add(task.asItemTask());
         }
         return output;
     }

@@ -16,23 +16,30 @@ import org.tasktide.core.model.task.TaskLogging;
 
 
 /**
- *
+ * Test class to support parallely processing of {@link ItemTask}
+ * 
  * @author bkenna
  */
 public class ParallelItemTaskProcessor extends RecursiveAction {
     
+    // Attributes
     private final List<ItemTask> workload;
     private final int threshold;
     private final ProcessRunner runner;
-    private int processCount;
-    private final AtomicInteger sharedCounter;
-    private Random rand;
+    private int processCount; // Means to just log work per thread
+    private final AtomicInteger sharedCounter; // Track work across threads
     
+    
+    /**
+     * Construct parallel item task processor
+     * 
+     * @param workload
+     * @param threshold 
+     */
     public ParallelItemTaskProcessor(List<ItemTask> workload, int threshold) {
         this.workload = workload;
         this.threshold = threshold;
         this.runner = new ProcessRunner();
-        this.rand = new Random();
         this.processCount = 0;
         this.sharedCounter = new AtomicInteger(0);
     }
@@ -105,7 +112,7 @@ public class ParallelItemTaskProcessor extends RecursiveAction {
                 
             }
             catch (IOException | InterruptedException ex) {
-                ex.printStackTrace();
+                ex.printStackTrace(); // Will log
             }
         }
     }

@@ -12,13 +12,13 @@ import java.util.List;
  * Interface to facilitate model class mapping from
  * <br>
  * <ul>
- *  <li>{@link WorkflowService WorkflowSerivce} -> {@link Step Step}</li>
- *  <li>{@link StepService StepService} -> {@link WorkItem WorkItem}</li>
- *  <li>{@link WorkItemService WorkItemService} -> Does not link</li>
+ *  <li>{@link WorkflowService} -> {@link Step}</li>
+ *  <li>{@link StepService} -> {@link WorkItem}</li>
+ *  <li>{@link WorkItemService} -> {@link ItemTask}</li>
  * </ul>
  * 
- * @param <T> of {@link Workflow Workflow},{@link Step Step},{@link WorkItem WorkItem}
- * @param <U> of {@link Step Step},{@link WorkItem WorkItem},{@link Null Null}
+ * @param <T> of {@link Workflow},{@link Step},{@link WorkItem}
+ * @param <U> of {@link Step},{@link WorkItem},{@link ItemTask}
  * 
  * @author bkenna
  */
@@ -26,11 +26,11 @@ public interface TaskTideMapper<T extends TaskTideModel, U extends TaskTideModel
     
     
     /**
-     * Map {@link TaskTideModel} to its lower class via the {@link TaskTideService TaskTideService}
+     * Map {@link TaskTideModel} to its lower class via the {@link TaskTideService}
      * 
      * @param mappingServ 
      * @param model
-     * @return List-{@link Step Step} from {@link Workflow Workflow}, {@link WorkItem WorkItem} from {@link Step Step}
+     * @return List-{@link Step} from {@link Workflow}, {@link WorkItem} from {@link Step}
      */
     List<U> getThroughLink(TaskTideService<U> mappingServ, T model);
 }

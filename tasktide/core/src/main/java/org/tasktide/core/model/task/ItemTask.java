@@ -49,7 +49,6 @@ public class ItemTask {
     @Column
     @JsonbProperty("Task Log")
     private TaskLogging taskLog;
-
     
     /**
      * Empty constructor
