@@ -115,7 +115,7 @@ public class ModelTests {
         ProcessLog procLog = TestCaseBuilderUtility.makeTestProcessLog();
         
         // Construct task log
-        TaskLogging taskLog = new TaskLogging(-4L, procLog, -2L, -3L, "thread", -1L);
+        TaskLogging taskLog = new TaskLogging(-4L, procLog, -2L, -3L, "thread", -1L, 0);
         logger.info("\n\nDisplaying TaskLogging json:\n" + taskLog.toJsonDoc() + "\n");
         
         // Re-construct from json string

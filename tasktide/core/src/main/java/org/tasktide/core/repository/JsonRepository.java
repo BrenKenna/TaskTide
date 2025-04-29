@@ -197,7 +197,9 @@ public abstract class JsonRepository<T extends TaskTideModel> implements TaskTid
         String json = compUtil.decompressFromFile(collectionName + "-" + COLLECTION_CLASS.getSimpleName());
         if ( json != null ) {
             Jsonb jsonb = JsonbBuilder.create();
-            T[] array = jsonb.fromJson(json, (Class<T[]>) Array.newInstance(COLLECTION_CLASS, 0).getClass());
+            
+            @SuppressWarnings("unchecked")
+            T[] array = (T[]) jsonb.fromJson(json, (Class<T[]>) Array.newInstance(COLLECTION_CLASS, 0).getClass());
             return Arrays.asList(array);
         }
 

@@ -104,7 +104,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
      */
     @Override
     public List<Step> getThroughLink(TaskTideService<Step> mappingServ, Workflow model) {
-        return new ArrayList(model.getWorkflowSteps().values());
+        return new ArrayList<Step>(model.getWorkflowSteps().values());
     }
 
     

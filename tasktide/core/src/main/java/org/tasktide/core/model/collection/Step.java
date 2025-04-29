@@ -350,7 +350,7 @@ public class Step implements TaskTideModel<Step> {
         results.put(ItemState.ERROR, this.stepsError);
         
         // Return results
-        return new StateSummary(results);
+        return new StateSummary<ItemState>(results);
     }
     
     

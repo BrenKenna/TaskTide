@@ -166,7 +166,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      */
     public Map<String, StateSummary<ItemState>> viewSummary() {
         
-        Map<String, StateSummary<ItemState>> results = new HashMap();
+        Map<String, StateSummary<ItemState>> results = new HashMap<>();
         for ( Step step : repo.findAll() ) {
             results.put(step.getStepName(), step.summarizeByState());
         }

@@ -64,6 +64,11 @@ public class TaskLogging {
     private long cpuDuration;
 
     
+    @Column
+    @JsonbProperty("Exit Code")
+    private int exitCode;
+    
+    
     /**
      * Null constructor
      */
@@ -80,14 +85,16 @@ public class TaskLogging {
      * @param startTime
      * @param endTime
      * @param threadName
-     * @param cpuDuration 
+     * @param cpuDuration
+     * @param exitCode
      */
-    public TaskLogging(long procId, ProcessLog procLog, long startTime, long endTime, String threadName, long cpuDuration) {
+    public TaskLogging(long procId, ProcessLog procLog, long startTime, long endTime, String threadName, long cpuDuration, int exitCode) {
         this.procId = procId;
         this.procLog = procLog;
         this.startTime = endTime;
         this.threadName = threadName;
         this.cpuDuration = cpuDuration;
+        this.exitCode = exitCode;
     }
     
     
@@ -100,7 +107,8 @@ public class TaskLogging {
      * @param startTime
      * @param endTime
      * @param threadName 
-     * @param cpuDuration 
+     * @param cpuDuration
+     * @param exitCode
      */
     @JsonbCreator
     public TaskLogging(
@@ -110,7 +118,8 @@ public class TaskLogging {
         @JsonbProperty("Start Time") long startTime,
         @JsonbProperty("End Time") long endTime,
         @JsonbProperty("Thread Name") String threadName,
-        @JsonbProperty("CPU Duration") long cpuDuration
+        @JsonbProperty("CPU Duration") long cpuDuration,
+        @JsonbProperty("Exit Code") int exitCode
     ) {
         this.taskLogId = taskLogId;
         this.procId = procId;
@@ -119,6 +128,7 @@ public class TaskLogging {
         this.endTime = endTime;
         this.threadName = threadName;
         this.cpuDuration = cpuDuration;
+        this.exitCode = exitCode;
     }
     
     
@@ -135,7 +145,7 @@ public class TaskLogging {
     /**
      * Set Id
      * 
-     * @param id 
+     * @param taskLogId
      */
     public void setId(String taskLogId) {
         this.taskLogId = taskLogId;
@@ -161,6 +171,26 @@ public class TaskLogging {
         this.procId = procId;
     }
 
+    
+    /**
+     * Get exit code
+     * 
+     * @return int
+     */
+    public int getExitCode() {
+        return this.exitCode;
+    }
+    
+    
+    /**
+     * Set exit code
+     * 
+     * @param exitCode 
+     */
+    public void setExitCode(int exitCode) {
+        this.exitCode = exitCode;
+    }
+    
     
     /**
      * Get process log

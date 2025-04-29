@@ -103,8 +103,8 @@ public enum TaskState implements StateSummaryType {
             return ItemState.DONE;
         }
     };
-    
-    
+
+        
     /**
      * Represent enum as string
      * 

@@ -6,7 +6,6 @@ package org.tasktide.core.manager;
 
 import java.util.List;
 
-
 import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.StepBuilder;
 import org.tasktide.core.model.builders.TaskLoggingBuilder;
@@ -15,7 +14,6 @@ import org.tasktide.core.model.builders.WorkItemBuilder;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.builders.WorkflowBuilder;
-import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
@@ -114,6 +112,24 @@ public class BuilderUtility {
             .id("TaskLogging-" + utils.generateSalt())
             .processLog(procLog)
         .build();
+    }
+    
+    
+    /**
+     * Build {@link TaskLogging TaskLogging} from {@link ProcessLog ProcessLog} and process
+     * 
+     * @param procLog
+     * @param proc
+     * @return {@link TaskLogging TaskLogging}
+     */
+    public static TaskLogging buildTaskLogging(ProcessLog procLog, Process proc) {
+        return new TaskLoggingBuilder()
+             .id("TaskLogging-" + utils.generateSalt())
+             .processLog(procLog)
+             .cpuDuration(0L)
+             .procId(proc.pid())
+        .build();
+             
     }
     
     

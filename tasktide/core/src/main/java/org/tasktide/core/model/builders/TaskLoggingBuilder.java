@@ -19,6 +19,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
     // Attributes
     private String id, threadName = "";
     private ProcessLog procLog = null;
+    private int exitCode;
     private long procId, cpuDuration, startTime, endTime;
     
     
@@ -112,12 +113,24 @@ public class TaskLoggingBuilder extends ModelBuilder {
     
     
     /**
+     * Add Exit Code field
+     * 
+     * @param exitCode
+     * @return TaskLoggingBuilder
+     */
+    public TaskLoggingBuilder exitCode(int exitCode) {
+        this.exitCode = exitCode;
+        return this;
+    }
+    
+    
+    /**
      * Construct TaskLogging object from provided fields
      * 
      * @return TaskLogging
      */
     @Override
     public TaskLogging build() {
-        return new TaskLogging(id, procId, procLog, startTime, endTime, threadName, cpuDuration);
+        return new TaskLogging(id, procId, procLog, startTime, endTime, threadName, cpuDuration, exitCode);
     }
 }

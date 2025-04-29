@@ -239,7 +239,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param traceFirst - Update per item task counts before providing
      * @return StateSummary
      */
-    public StateSummary fetchCountByState(boolean traceFirst) {
+    public StateSummary<ItemState> fetchCountByState(boolean traceFirst) {
         
         // Initialize output
         Map<ItemState, Integer> countMap = new HashMap<>();
@@ -252,7 +252,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
         }
         
         // Return results
-        return new StateSummary(countMap);
+        return new StateSummary<ItemState>(countMap);
     }
     
     

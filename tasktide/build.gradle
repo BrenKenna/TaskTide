@@ -41,6 +41,10 @@ subprojects {
         compileOnly 'org.osgi:org.osgi.annotation.bundle:1.0.0'
     }
 
+    tasks.withType(JavaCompile).configureEach {
+        options.compilerArgs += ['-Xlint:unchecked']
+    }
+
     tasks.withType(Test).configureEach {
         useJUnitPlatform()
 

@@ -193,7 +193,7 @@ public class Workflow implements TaskTideModel<Workflow> {
      * @return Map-String,{@link StateSummary StateSummary}-{@link ItemState ItemState}
      */
     public Map<String, StateSummary<ItemState>> summarizeStepStates() {
-        Map<String, StateSummary<ItemState>> results = new HashMap();
+        Map<String, StateSummary<ItemState>> results = new HashMap<>();
         for ( Entry<String, Step> elm : workflowSteps.entrySet() ) {
                results.put( elm.getKey(), elm.getValue().summarizeByState() );
         }
