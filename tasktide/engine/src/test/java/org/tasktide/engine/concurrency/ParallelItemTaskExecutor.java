@@ -20,7 +20,7 @@ import org.tasktide.core.model.task.TaskLogging;
  *
  * @author bkenna
  */
-public class ParallelExecutor {
+public class ParallelItemTaskExecutor {
     
     // Attributes
     private final List<ItemTask> workload;
@@ -33,17 +33,18 @@ public class ParallelExecutor {
 
     
     /**
+     * Construct parallel executor
      * 
      * @param workload
      * @param threshold
      * @param executor 
      */
     @Inject
-    public ParallelExecutor(List<ItemTask> workload, int threshold, ExecutorService executor) {
+    public ParallelItemTaskExecutor(List<ItemTask> workload, int threshold, ExecutorService executor) {
         this.workload = workload;
         this.threshold = threshold;
         this.runner = new ProcessRunner();
-        this.executor = executor;
+        this.executor = executor; // Executors.newFixedThreadPool(10)
         this.rand = new Random();
         this.processCount = 0;
         this.sharedCounter = new AtomicInteger(0);
@@ -63,8 +64,8 @@ public class ParallelExecutor {
         // Half workload until threshold is reached
         else {
             // Fetch upper & lower list bounds
-            ParallelExecutor left = subTasks(true);
-            ParallelExecutor right = subTasks(false);
+            ParallelItemTaskExecutor left = subTasks(true);
+            ParallelItemTaskExecutor right = subTasks(false);
 
             // Process in parallel
             executor.submit( () -> left.execute());
@@ -79,10 +80,10 @@ public class ParallelExecutor {
      * @param flag
      * @return ParallelItemTaskProcessor
      */
-    public ParallelExecutor subTasks(boolean flag) {
+    public ParallelItemTaskExecutor subTasks(boolean flag) {
         
         // Initialize vars
-        ParallelExecutor results;
+        ParallelItemTaskExecutor results;
         List<ItemTask> subTaskList;
         
         // Handle left of the workload mid-point
@@ -96,7 +97,7 @@ public class ParallelExecutor {
         }
         
         // Return results
-        results = new ParallelExecutor(subTaskList, threshold, executor);
+        results = new ParallelItemTaskExecutor(subTaskList, threshold, executor);
         return results;
     }
 
