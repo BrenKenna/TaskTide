@@ -36,7 +36,6 @@ public class ParallelItemTaskExecutor {
     private final ExecutorService executor;
     private int processCount = 0;
     private static final AtomicInteger sharedCounter = new AtomicInteger(0);
-    private Random rand;
 
     
     /**
@@ -52,7 +51,6 @@ public class ParallelItemTaskExecutor {
         this.threshold = threshold;
         this.runner = new ProcessRunner();
         this.executor = executor; // Executors.newFixedThreadPool(10)
-        this.rand = new Random();
         this.processCount = 0;
     }
     
@@ -122,6 +120,8 @@ public class ParallelItemTaskExecutor {
     public void runTasks() {
         
         // Syncronize task execution across threads
+        int done = 0, failed = 0, skipped = 0;
+        logger.info("Begining workload processing of N = '{}' tasks", workload.size());
         for (ItemTask task : workload) {
             synchronized (task) {
                 
@@ -129,17 +129,26 @@ public class ParallelItemTaskExecutor {
                 if (shouldExecute(task)) {
                     try {
                         executeTask(task);
+                        done++;
                     } catch (IOException | InterruptedException ex) {
                         handleFailure(task, ex);
+                        failed++;
                     }
                 }
                 
                 // Otherwise pass
                 else {
                     logger.info("Skipping already processed task: {}", task.getTaskName());
+                    skipped++;
                 }
             }
         }
+        
+        // Log summary
+        logger.info(
+     "\n\nWorkload processing complete, displaying summary:\nTotal = '{}', Done = '{}', Failed = '{}', Skipped = '{}'",
+        workload.size(), done, failed, skipped
+        );
     }
 
     

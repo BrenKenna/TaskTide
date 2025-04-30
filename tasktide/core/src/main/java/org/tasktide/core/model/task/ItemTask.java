@@ -14,6 +14,8 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.nosql.Column;
 
 import jakarta.nosql.Embeddable;
+import java.lang.reflect.Field;
+import org.tasktide.core.TaskTideModel;
 
 
 /**
@@ -24,7 +26,7 @@ import jakarta.nosql.Embeddable;
  */
 @Embeddable
 @Dependent
-public class ItemTask {
+public class ItemTask implements TaskTideModel<ItemTask> {
     
     @Column
     @JsonbProperty("Id")
@@ -116,6 +118,7 @@ public class ItemTask {
      * 
      * @return String 
      */
+    @Override
     public String getId() {
         return itemTaskId;
     }
@@ -248,5 +251,27 @@ public class ItemTask {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);
+    }
+
+    @Override
+    public String toJson() {
+        return toJsonDoc();
+    }
+
+    @Override
+    public Object getValueFromField(String field) {
+        try {
+            // Use reflection to get the declared field from this class
+            Field declaredField = this.getClass().getDeclaredField(field);
+            declaredField.setAccessible(true); // In case the field is private
+            Object fieldValue = declaredField.get(this);
+
+            return fieldValue;
+
+        }
+        catch (Exception ex) {
+            // Optional: Log or rethrow if needed
+            return null;
+        }
     }
 }

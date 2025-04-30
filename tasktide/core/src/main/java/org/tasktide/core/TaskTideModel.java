@@ -11,7 +11,7 @@ package org.tasktide.core;
  * @param <T> of {@link WorkItem},{@link Step},{@link Workflow}
  * @author bkenna
  */
-public interface TaskTideModel<T> {
+public interface TaskTideModel<T extends TaskTideModel<T>> {
     
     
     /**

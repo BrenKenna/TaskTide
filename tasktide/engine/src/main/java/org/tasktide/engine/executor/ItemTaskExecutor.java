@@ -1,0 +1,98 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package org.tasktide.engine.executor;
+
+import java.io.IOException;
+
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskLogging;
+import org.tasktide.core.model.task.TaskState;
+
+
+/**
+ * Class to handle the execution of {@link ItemTask}
+ * 
+ * @author bkenna
+ */
+public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
+
+    
+    /**
+     * Construct TaskTideExecutor for {@link ItemTask}
+     * 
+     */
+    public ItemTaskExecutor() {
+        super();
+    }
+
+    
+    /**
+     * Execute the work of a {@link ItemTask}
+     * 
+     * @param task
+     * @return boolean
+     * 
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    @Override
+    protected boolean executeTask(ItemTask task) throws IOException, InterruptedException {
+        
+        // Acknowledge task execution
+        logger.info("Executing task on thread '{}':{}", Thread.currentThread().getName(), task.getTask());
+        task.setTaskState(TaskState.ACTIVE);
+        TaskLogging taskLog = processExecutor.execute(task.getTask());
+        task.setTaskLog(taskLog);
+
+        // Handle successful task execution
+        if (taskLog.getExitCode() == 0) {
+            task.setTaskState(TaskState.COMPLETE);
+        }
+        
+        // Otherwise acknowledge error
+        else {
+            task.setTaskState(TaskState.ERROR);
+            logger.error(
+         "Task '{}' failed on thread '{}' with exit code {}\n",
+            task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
+            );
+        }
+
+        // Debugger message
+        logger.debug("Task after execution:\n{}\n\n", task.toJsonDoc());
+        return taskLog.getExitCode() == 0;
+    }
+    
+    
+    /**
+     * Return whether {@link ItemTask} is available for processing
+     * 
+     * @param task
+     * @return boolean
+     */
+    @Override
+    protected boolean shouldExecute(ItemTask task) {
+        return task.getTaskState() == TaskState.PENDING;
+    }
+
+    
+    /**
+     * Set {@link ItemTask} {@link TaskState} to error
+     * 
+     * @param task
+     * @param ex 
+     */
+    @Override
+    protected void handleFailure(ItemTask task, Exception ex) {
+        task.setTaskState(TaskState.ERROR);
+        logger.error(
+            "Exception while executing task '{}' on thread '{}': {}",
+            task.getTaskName(), Thread.currentThread().getName(), ex.getMessage(), ex
+        );
+        if (ex instanceof InterruptedException) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
