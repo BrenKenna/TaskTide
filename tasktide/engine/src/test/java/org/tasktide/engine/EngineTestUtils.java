@@ -33,8 +33,10 @@ public class EngineTestUtils {
     public static void waitByCountedTime(int limit, int waitTime, ParallelItemTaskExecutor itemTaskExecutor, Logger logger) {
         int counter = 0;
         while (counter <= limit || itemTaskExecutor.getTotalExecuted() >= 4) {
-            String template = String.format("Oberserving tasks iteration:\t'%d'. Task done count:\t'%d'", counter, itemTaskExecutor.getTotalExecuted());
-            logger.info(template);
+            logger.info(
+               "Oberserving tasks iteration:\t'{}'. Task done count:\t'{}'",
+            counter, itemTaskExecutor.getTotalExecuted()
+            );
             counter++;
             try {Thread.sleep(waitTime);} catch(Exception ex) {logger.warn("Unable to sleep for iteration:\t" + counter);}
         }
@@ -54,8 +56,10 @@ public class EngineTestUtils {
         while ( nInactive < workload.size() ) {
             
             // Log done
-            String template = String.format("Oberserving tasks iteration:\t'%d'. Task done count:\t'%d'", counter, nInactive);
-            logger.info(template);
+            logger.info(
+          "Oberserving tasks iteration:\t'{}'. Task done count:\t'{}'",
+             counter, nInactive
+            );
             
             // Wait and check
             try {Thread.sleep(waitTime);} catch(Exception ex) {logger.warn("Unable to sleep for iteration:\t" + counter);}
@@ -80,7 +84,11 @@ public class EngineTestUtils {
     public static int countNotActive(List<ItemTask> workload) {
         return (int) workload.stream()
             .parallel()
-            .filter( task -> task.getTaskState() == TaskState.COMPLETE || task.getTaskState() == TaskState.ERROR)
+            .filter(
+                task -> 
+                    task.getTaskState() == TaskState.COMPLETE 
+                        || task.getTaskState() == TaskState.ERROR
+            )
         .count();
     }
     
@@ -94,13 +102,13 @@ public class EngineTestUtils {
      */
     public static void fetchExecutionTimes(List<ItemTask> workload, Logger logger) {
         for (ItemTask task : workload) {
-            String template = String.format(
-           "\n\nTask '%s' started '%d' finished '%d'\n\n",
+            logger.info(
+           "\n\nTask '{}' started '{}' finished '{}' duration '{}'\n\n",
             task.getTaskName(),
             task.getTaskLog().getStartTime(),
-                task.getTaskLog().getEndTime()
+            task.getTaskLog().getEndTime(),
+               task.getTaskLog().getEndTime() - task.getTaskLog().getStartTime()
             );
-            logger.info(template);
         }
     }
 }
