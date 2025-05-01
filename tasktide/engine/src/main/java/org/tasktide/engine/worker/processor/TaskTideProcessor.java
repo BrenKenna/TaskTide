@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.processor;
+package org.tasktide.engine.worker.processor;
 
 import jakarta.inject.Inject;
 
@@ -14,8 +14,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.engine.executor.TaskTideExecutor;
-import org.tasktide.engine.TaskTideEngineUnit;
+import org.tasktide.engine.worker.executor.TaskTideExecutor;
+import org.tasktide.engine.worker.TaskTideWorkerUnit;
 
 
 /**
@@ -24,12 +24,12 @@ import org.tasktide.engine.TaskTideEngineUnit;
  * @author bkenna
  * @param <T> of {@link ItemTask} or {@link WorkItem}
  */
-public abstract class Processor<T extends TaskTideModel<T>> implements TaskTideEngineUnit<T> {
+public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements TaskTideWorkerUnit<T> {
     
     
     // Attributes
     private final List<T> workload;
-    protected final Logger logger = LogManager.getLogger(getClass());
+    protected final Logger logger;
     protected final int threshold;
     protected final ExecutorService executorService;
     
@@ -40,12 +40,14 @@ public abstract class Processor<T extends TaskTideModel<T>> implements TaskTideE
      * @param workload
      * @param threshold
      * @param executorService
+     * @param logger
      */
     @Inject
-    public Processor(List<T> workload, int threshold, ExecutorService executorService) {
+    public TaskTideProcessor(List<T> workload, int threshold, ExecutorService executorService, Logger logger) {
         this.workload = workload;
         this.threshold = threshold;
         this.executorService = executorService;
+        this.logger = logger;
     }
     
     
@@ -92,9 +94,9 @@ public abstract class Processor<T extends TaskTideModel<T>> implements TaskTideE
      * Create sub processor from sublist
      * 
      * @param subList
-     * @return Processor-{@link WorkItem}, {@link ItemTask}
+     * @return TaskTideProcessor-{@link WorkItem}, {@link ItemTask}
      */
-    protected abstract Processor<T> newSubProcessor(List<T> subList);
+    protected abstract TaskTideProcessor<T> newSubProcessor(List<T> subList);
     
     
     /**

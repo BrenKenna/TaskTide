@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.executor;
+package org.tasktide.engine.worker.executor;
 
 import java.io.IOException;
+
+import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskLogging;
@@ -24,7 +26,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
      * 
      */
     public ItemTaskExecutor() {
-        super();
+        super(LogManager.getLogger(ItemTaskExecutor.class));
     }
 
     

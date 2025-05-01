@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.executor;
+package org.tasktide.engine.worker.executor;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.io.IOException;
@@ -13,20 +13,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.engine.TaskTideEngineUnit;
+import org.tasktide.engine.worker.TaskTideWorkerUnit;
 
-
+ 
 /**
  * Abstract class to handle the nuances of workload execution
  * 
  * @author bkenna
  * @param <T> of {@link ItemTask},{@link WorkItem}
  */
-public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements TaskTideEngineUnit<T> {
+public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements TaskTideWorkerUnit<T> {
     
     
     // Attributes 
-    protected static final Logger logger = LogManager.getLogger(TaskTideExecutor.class);
+    protected final Logger logger;
     protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
     protected final ProcessExecutor processExecutor;
     protected int processCount;
@@ -35,8 +35,10 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
     /**
      * Construct worker with workload and process runner
      * 
+     * @param logger
      */
-    public TaskTideExecutor() {
+    public TaskTideExecutor(Logger logger) {
+        this.logger = logger;
         this.processExecutor = new ProcessExecutor();
     }
     

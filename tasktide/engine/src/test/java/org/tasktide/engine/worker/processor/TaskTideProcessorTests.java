@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide.engine.processor;
+package org.tasktide.engine.worker.processor;
 
+import org.tasktide.engine.worker.processor.TaskTideProcessor;
+import org.tasktide.engine.worker.processor.ItemTaskProcessor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -73,7 +75,7 @@ public class TaskTideProcessorTests {
         int nTasks = 4, processed = 0;
         boolean assertionState;
         List<ItemTask> workload;
-        Processor<ItemTask> itemTaskProcessor;
+        TaskTideProcessor<ItemTask> itemTaskProcessor;
         
         // Configuring workload
         logger.info("Creating '{}' tasks for testing", nTasks);

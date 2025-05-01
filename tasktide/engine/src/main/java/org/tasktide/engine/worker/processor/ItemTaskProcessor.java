@@ -2,23 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.processor;
+package org.tasktide.engine.worker.processor;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.model.task.ItemTask;
 
-import org.tasktide.engine.executor.ItemTaskExecutor;
-import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.worker.executor.ItemTaskExecutor;
+import org.tasktide.engine.worker.executor.TaskTideExecutor;
 
 
 /**
- * Concrete {@link ItemTask} {@link Processor}
+ * Concrete {@link ItemTask} {@link TaskTideProcessor}
  * 
  * @author bkenna
  */
-public class ItemTaskProcessor extends Processor<ItemTask> {
+public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
 
     
     // Attributes
@@ -33,7 +34,7 @@ public class ItemTaskProcessor extends Processor<ItemTask> {
      * @param executorService
      */
     public ItemTaskProcessor(List<ItemTask> workload, int threshold, ExecutorService executorService) {
-        super(workload, threshold, executorService);
+        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new ItemTaskExecutor();
     }
 
@@ -42,10 +43,10 @@ public class ItemTaskProcessor extends Processor<ItemTask> {
      * Create a new sub processor from self
      * 
      * @param subList
-     * @return {@link Processor}-{@link ItemTask}
+     * @return {@link TaskTideProcessor}-{@link ItemTask}
      */
     @Override
-    protected Processor<ItemTask> newSubProcessor(List<ItemTask> subList) {
+    protected TaskTideProcessor<ItemTask> newSubProcessor(List<ItemTask> subList) {
         return new ItemTaskProcessor(subList, threshold, executorService);
     }
 
