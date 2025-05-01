@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
@@ -33,10 +32,10 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
     // Attributes
     protected final Logger logger; // Lets lower classes define
     private final long maxTime;
-    private final AtomicLong startTime = new AtomicLong(0);
-    private final AtomicBoolean abort = new AtomicBoolean(false);
+    protected final AtomicLong startTime = new AtomicLong(0);
+    protected final AtomicBoolean abort = new AtomicBoolean(true);
     protected final List<Long> executionTimes;
-    protected double meanDuration;
+    private long meanDuration;
     
     
     /**
@@ -48,7 +47,7 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
     public TimeKeeper(long maxTime, Logger logger) {
         this.logger = logger;
         this.maxTime = maxTime;
-        executionTimes = new ArrayList<>();
+        this.executionTimes = new ArrayList<>();
     }
     
     
@@ -62,26 +61,13 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
     public boolean onTaskStart(T task) {
         
         // Current time in milliseconds
-        logger.debug("TimeKeepr evaluating run time for task '{}'", task.getId());
+        long start = startTime.get();
         long now = System.currentTimeMillis();
+        long elapsed = now - start;
         
-        // Initialize this observers start time
-        logger.debug("Evaluating whether to initiate atomic couter");
-        if ( startTime.get() == 0 ) {
-            logger.info("Atomic TimeKeeper couter set on thread '{}'", Thread.currentThread().getName());
-            startTime.set(now);
-            return abort.getAndSet(true);
-        }
-        
-        // Handle whether task has enough time: Breaching could unlock task
-        logger.debug("Evaluating whether enough time to run task");
-        if ( ( now - startTime.get() ) > maxTime ) {
-            logger.warn("Warning, TimeKeeper max time of '{}' breached by '{}'", maxTime, now - startTime.get());
-            return abort.getAndSet(false);
-        }
-        
-        // Return method state
-        return abort.get();
+        // Evaluate starting task
+        boolean eval = evaluateStart(task, now, start, elapsed);
+        return eval;
     }
     
     
@@ -98,23 +84,12 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
         logger.info("Measuring the elapsed time of task '{}',", task.getId());
         long now = System.currentTimeMillis();
         long duration = now - startTime.get();
-        boolean canNext = measureTime(now, duration);
         
-        // Determine if time is breached
-        if ( duration > maxTime ) {
-            logger.warn("Warning task excution time '{}' breached by '{}'", maxTime, (duration-maxTime));
-            return abort.getAndSet(false);
-        }
-        
-        // Estimate if next task can run
-        if ( !canNext ) {
-            logger.warn("Warning not enough estimated time for next task to run");
-            return abort.getAndSet(false);
-        }
-        
-        // Otherwise log next can run
-        logger.info("Enough time for next task to run");
-        return abort.getAndSet(true);
+        // Evaluate duration
+        logger.info("Task '{}' completed in {}ms", task.getId(), duration);
+        boolean eval = evaluateDuration(task, now, duration);
+        updateAbortFlag(eval);
+        return eval;
     }
     
     
@@ -126,19 +101,112 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
      * @param duration
      * @return boolean
      */
-    public boolean measureTime(long now, long duration) {
+    private boolean measureTime(long now, long duration) {
         
         // Append
         executionTimes.add(duration);
             
         // Compute average time
-        meanDuration = executionTimes.stream()
+        meanDuration = (long) executionTimes.stream()
             .mapToDouble(Long::doubleValue)
             .average()
         .orElse(0.0);
         
         // Return if time may exceed
-        return ( meanDuration > 0 ) && (maxTime - duration) < meanDuration;
+        long expectedNext = meanDuration + now;
+        long maxEnd = startTime.get() + maxTime;
+        logger.debug("Mean duration = '{}ms', Expected Next = '{}ms', Max End '{}ms', Is time = '{}'",
+         meanDuration, expectedNext, maxEnd, (expectedNext < maxEnd)
+        );
+        return ( meanDuration > 0 ) && ( expectedNext < maxEnd );
+    }
+    
+    
+    /**
+     * Update the abort flag
+     * 
+     * @param flag 
+     */
+    private void updateAbortFlag(boolean flag) {
+        abort.set(flag);
+    } 
+    
+    
+    /**
+     * Evaluate starting task {@link WorkItem} or {@link ItemTask}
+     * 
+     * @param task
+     * @param now
+     * @param start
+     * @param elapsed
+     * @return boolean
+     */
+    private boolean evaluateStart(T task, long now, long start, long elapsed) {
+    
+        // Initialize this observers start time
+        logger.info("TimeKeeper evaluating starting of task '{}'", task.getId());
+        if ( start == 0 ) {
+            logger.info("Atomic TimeKeeper for task '{}' set on thread '{}'",
+               task.getId(), Thread.currentThread().getName()
+            );
+            startTime.set(now);
+            return true;
+        }
+        
+        // Evaluating whether previous task flagged an abort
+        if ( !abort.get() ) {
+            logger.warn("TimeKeeper detected previous task flagged an abort, should skip task '{}'", task.getId());
+            return false;
+        }
+        else {
+            updateAbortFlag(true);
+        }
+        
+        // Handle whether task has enough time: Breaching could unlock task
+        logger.info("Evaluating whether enough time to run task '{}'", task.getId());
+        startTime.set(now);
+        logger.debug("Now = '{}ms', Start Time = '{}ms', Elapsed Time = '{}ms'", now, startTime.get(), elapsed);
+        logger.debug("Evaluating elapsed time '{}ms' > '{}'", elapsed, maxTime);
+        if ( elapsed > maxTime ) {
+            logger.warn("Warning, TimeKeeper max time of '{}ms' breached by '{}'ms", maxTime, elapsed - maxTime);
+            return false;
+        }
+        
+        // Otherwise no action needed & all is good
+        logger.info("TimeKeeper evaluated time for successful run of task '{}'", task.getId());
+        return true;
+    }
+    
+    
+    /**
+     * Evaluate task duration
+     * 
+     * @param task
+     * @param now
+     * @param duration
+     * @return boolean
+     */
+    private boolean evaluateDuration(T task, long now, long duration) {
+        
+        // Determine if time is breached
+        if ( duration > maxTime ) {
+            logger.warn("Warning task excution time '{}ms' breached by '{}ms'", maxTime, (duration-maxTime));
+            updateAbortFlag(false);
+            return false;
+        }
+        
+        // Estimate if next task can run
+        boolean canNext = measureTime(now, duration);
+        if ( !canNext ) {
+            logger.warn("Warning not enough estimated time for next task to run");
+            updateAbortFlag(false);
+            return false;
+        }
+        
+        // Otherwise log next can run
+        logger.info("TimeKeeper evaluated enough time left for next task");
+        updateAbortFlag(true);
+        return true;
     }
     
     
@@ -152,13 +220,12 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
         return true;
     }
     
-            
+    
     /**
-     * Abstract method to let concrete time keeper handle logic around
-     *  managing task states. Given a boolean flag to aid this.
+     * Let sub-classes handle logic
      * 
      * @param task - of {@link WorkItem}, {@link ItemTask}
-     * @param flag
+     * @param flag 
      */
     public abstract void handleTaskState(T task, boolean flag);
 }

@@ -4,8 +4,8 @@
  */
 package org.tasktide.engine.observer.worker;
 
-
 import org.apache.logging.log4j.LogManager;
+
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 
@@ -36,7 +36,7 @@ public class ItemTaskTimeKeeper extends TimeKeeper<ItemTask> {
      */
     @Override
     public void handleTaskState(ItemTask task, boolean flag) {
-        if ( !flag ) {
+        if (!flag) {
             task.setTaskState(TaskState.PENDING);
         }
     }

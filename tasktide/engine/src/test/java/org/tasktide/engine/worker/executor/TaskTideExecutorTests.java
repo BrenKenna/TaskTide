@@ -4,8 +4,6 @@
  */
 package org.tasktide.engine.worker.executor;
 
-import org.tasktide.engine.worker.executor.ItemTaskExecutor;
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +18,17 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.tasktide.core.manager.generator.ExampleGenerators;
-import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
+
+import org.tasktide.core.manager.generator.ExampleGenerators;
+import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.engine.EngineTestUtils;
 
 
-
 /**
- *
+ * Test module for the {@link TaskTideExecutor} {@link TaskTideWorkerUnit}
+ * 
  * @author bkenna
  */
 public class TaskTideExecutorTests {

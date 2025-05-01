@@ -4,8 +4,6 @@
  */
 package org.tasktide.engine.worker.processor;
 
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
-import org.tasktide.engine.worker.processor.ItemTaskProcessor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 
@@ -28,7 +27,7 @@ import org.tasktide.engine.EngineTestUtils;
 
 
 /**
- * Suite of tests for the TaskTideProcessor
+ * Test module for the {@link TaskTideProcessor} {@link TaskTideWorkerUnit}
  * 
  * @author bkenna
  */

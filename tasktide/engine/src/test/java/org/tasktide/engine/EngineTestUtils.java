@@ -7,6 +7,7 @@ package org.tasktide.engine;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.logging.Level;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -20,6 +21,22 @@ import org.tasktide.engine.concurrency.ParallelItemTaskExecutor;
  * @author bkenna
  */
 public class EngineTestUtils {
+    
+    
+    /**
+     * Wait required time
+     * 
+     * @param waitTime
+     * @param logger
+     */
+    public static void wait(int waitTime, Logger logger) {
+        try {
+            Thread.sleep(waitTime);
+            logger.info("Waited time '{}'", waitTime);
+        } catch (InterruptedException ex) {
+            logger.warn("Unable to wait time '{}'", waitTime);
+        }
+    }
     
     
     /**

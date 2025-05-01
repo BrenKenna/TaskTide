@@ -9,11 +9,10 @@ import jakarta.inject.Inject;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
-
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.engine.observer.TaskTideWorkerObserver;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.TaskTideWorkerUnit;
 
@@ -32,6 +31,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     protected final Logger logger;
     protected final int threshold;
     protected final ExecutorService executorService;
+    protected final TaskTideWorkerObserver<T> timeKeeper;
     
     
     /**
@@ -40,27 +40,28 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
      * @param workload
      * @param threshold
      * @param executorService
+     * @param timeKeeper
      * @param logger
      */
     @Inject
-    public TaskTideProcessor(List<T> workload, int threshold, ExecutorService executorService, Logger logger) {
+    public TaskTideProcessor(List<T> workload, int threshold, ExecutorService executorService, TaskTideWorkerObserver<T> timeKeeper, Logger logger) {
         this.workload = workload;
         this.threshold = threshold;
         this.executorService = executorService;
+        this.timeKeeper = timeKeeper;
         this.logger = logger;
     }
     
     
     /**
      * Process workload of {@link WorkItem}, {@link ItemTask}
-     * 
      */
     public void execute() {
         
         // Process iteratively
         if ( this.workload.size() < this.threshold ) {
             logger.info("Processing tasks of workload thread:\t" + Thread.currentThread().getName() );
-            getExecutor().runTasks(workload);
+            getExecutor().runTasks(workload); // <- Could start the TimeKeepr here
         }
         
         // Recursively chunk and process
@@ -103,7 +104,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
      * Abstract method to provide worker class to handle nuances 
      *  of workload execution, {@link WorkItem}, {@link ItemTask}
      * 
-     * @return 
+     * @return {@link TaskTideExecutor}-{@link WorkItem}, {@link ItemTask}
      */
     protected abstract TaskTideExecutor<T> getExecutor();
 }

@@ -6,9 +6,6 @@ package org.tasktide.core.supporting;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 

@@ -12,6 +12,8 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.TaskState;
 
+import org.tasktide.engine.observer.worker.ItemTaskTimeKeeper;
+
 
 /**
  * Class to handle the execution of {@link ItemTask}
@@ -22,11 +24,11 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
 
     
     /**
-     * Construct TaskTideExecutor for {@link ItemTask}
+     * Construct {@link TaskTideExecutor} for {@link ItemTask}
      * 
      */
     public ItemTaskExecutor() {
-        super(LogManager.getLogger(ItemTaskExecutor.class));
+        super(new ItemTaskTimeKeeper(100000), LogManager.getLogger(ItemTaskExecutor.class));
     }
 
     

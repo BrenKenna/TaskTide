@@ -9,10 +9,12 @@ import java.io.IOException;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.observer.TaskTideWorkerObserver;
 import org.tasktide.engine.worker.TaskTideWorkerUnit;
 
  
@@ -30,14 +32,17 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
     protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
     protected final ProcessExecutor processExecutor;
     protected int processCount;
+    protected TaskTideWorkerObserver<T> timeKeeper;
     
     
     /**
      * Construct worker with workload and process runner
      * 
+     * @param observer
      * @param logger
      */
-    public TaskTideExecutor(Logger logger) {
+    public TaskTideExecutor(TaskTideWorkerObserver<T> observer, Logger logger) {
+        this.timeKeeper = observer;
         this.logger = logger;
         this.processExecutor = new ProcessExecutor();
     }
@@ -57,7 +62,8 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
             synchronized(task) {
             
                 // Sanity check task is available
-                if ( shouldExecute(task) ) {
+                //  timeKeeper.onTaskStart kind of breaks abstraction direction
+                if ( shouldExecute(task) && timeKeeper.onTaskStart(task) ) {
                     try {
                         
                         // Handle successful task execution
@@ -70,6 +76,9 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
                             // Log progress
                             logger.info("Completed task '{}', global count: {}", task.getId(), sharedCounter.get());
                         }
+                        
+                        // Handle next task
+                        timeKeeper.onTaskEnd(task);
                     }
                     catch ( IOException | InterruptedException ex ) {
                         handleFailure(task, ex);

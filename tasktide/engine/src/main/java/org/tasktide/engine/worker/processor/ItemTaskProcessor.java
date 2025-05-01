@@ -4,14 +4,17 @@
  */
 package org.tasktide.engine.worker.processor;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import org.apache.logging.log4j.LogManager;
+
+import java.util.List;
 
 import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
+
+import org.tasktide.engine.observer.worker.ItemTaskTimeKeeper;
 
 
 /**
@@ -21,7 +24,6 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
  */
 public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
 
-    
     // Attributes
     private final ItemTaskExecutor worker;
     
@@ -34,7 +36,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
      * @param executorService
      */
     public ItemTaskProcessor(List<ItemTask> workload, int threshold, ExecutorService executorService) {
-        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
+        super(workload, threshold, executorService, new ItemTaskTimeKeeper(100000), LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new ItemTaskExecutor();
     }
 

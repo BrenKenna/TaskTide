@@ -5,8 +5,8 @@
 package org.tasktide.engine.observer.worker;
 
 import org.apache.logging.log4j.LogManager;
-
 import org.tasktide.core.model.workitem.ItemState;
+
 import org.tasktide.core.model.workitem.WorkItem;
 
 
@@ -32,9 +32,11 @@ public class WorkItemTimeKeeper extends TimeKeeper<WorkItem> {
      * 
      * @param task
      * @param flag 
-     */
+    */
     @Override
     public void handleTaskState(WorkItem task, boolean flag) {
-        task.setItemState(ItemState.TODO);
+        if (!flag) {
+            task.setItemState(ItemState.TODO);
+        }
     }
 }
