@@ -14,7 +14,7 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 
-import org.tasktide.engine.observer.worker.ItemTaskTimeKeeper;
+import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
 
 
 /**

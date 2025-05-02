@@ -9,8 +9,14 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import java.util.HashMap;
+import java.util.List;
 
 import java.util.Map;
+import java.util.Map.Entry;
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
@@ -43,6 +49,15 @@ public class StateSummary<T extends StateSummaryType> {
     
     
     /**
+     * Null constructor
+     */
+    @JsonbCreator
+    public StateSummary() {
+        this.counts = new HashMap<>();
+    }
+    
+    
+    /**
      * Get item state counts
      * 
      * @return Map-State, int
@@ -70,6 +85,20 @@ public class StateSummary<T extends StateSummaryType> {
      */
     public void setCounts(Map<T, Integer> counts) {
         this.counts = counts;
+    }
+    
+    
+    /**
+     * Set state summary from state map
+     * 
+     * @param <E> - of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
+     * @param stateMap 
+     */
+    public <E extends TaskTideModel<E>> void setFromStateMap(Map<T, List<E>> stateMap) {
+        counts = new HashMap<>();
+        for ( Entry<T, List<E>> elm : stateMap.entrySet() ) {
+            counts.put(elm.getKey(), elm.getValue().size());
+        }
     }
     
     

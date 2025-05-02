@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -262,6 +263,48 @@ public class Workload {
         
         // Return results
         return results;
+    }
+    
+    
+    /**
+     * Fetch last {@link ItemTask} to complete
+     * 
+     * @return long
+     */
+    public long getLatestDone() {
+        long output = 0L;
+        for ( ItemTask task : workload.values() ) {
+            if ( task.getTaskState() == TaskState.COMPLETE ) {
+                if ( task.getTaskLog().getEndTime() > output ) {
+                    output = task.getTaskLog().getEndTime();
+                }
+            }
+        }
+        return output;
+    }
+    
+    
+    /**
+     * Fetch last {@link ItemTask} to complete
+     * 
+     * @return long
+     */
+    public long getEarliestDone() {
+        
+        // Set comparison to max long value
+        long output = Long.MAX_VALUE;
+        
+        // Fetch smallest done time
+        for ( ItemTask task : workload.values() ) {
+            if ( task.getTaskState() == TaskState.COMPLETE ) {
+                if ( task.getTaskLog().getEndTime() < output ) {
+                    output = task.getTaskLog().getEndTime();
+                }
+            }
+        }
+        
+        // Handle no changes to output, or output
+        return output == Long.MAX_VALUE ? -1 : output;
     }
     
     

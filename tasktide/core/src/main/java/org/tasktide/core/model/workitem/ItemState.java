@@ -102,6 +102,29 @@ public enum ItemState implements StateSummaryType {
         public TaskState mapToTaskState() {
             return TaskState.ERROR;
         }
+    },
+    
+    FOR_UNLOCK {
+        @Override
+        public boolean isState(String query) {
+            query = query.toLowerCase().replace(" ", "").replace("_", "");
+            return "forunlock".equals(query);
+        }
+
+        @Override
+        public boolean isState(ItemState query) {
+            return FOR_UNLOCK == query;
+        }
+
+        @Override
+        public TaskState mapToTaskState() {
+            return TaskState.TIME_KEEPER;
+        }
+
+        @Override
+        public String toString() {
+            return "For Unlock";
+        }
     };
     
     

@@ -4,13 +4,14 @@
  */
 package org.tasktide.engine.worker.processor;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import org.apache.logging.log4j.LogManager;
 
+import java.util.List;
+
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.observer.worker.WorkItemTimeKeeper;
+import org.tasktide.engine.observer.worker.timekeeper.WorkItemTimeKeeper;
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 

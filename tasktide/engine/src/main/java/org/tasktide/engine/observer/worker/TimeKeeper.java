@@ -156,6 +156,7 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
         // Evaluating whether previous task flagged an abort
         if ( !abort.get() ) {
             logger.warn("TimeKeeper detected previous task flagged an abort, should skip task '{}'", task.getId());
+            this.handleTaskState(task, false);
             return false;
         }
         else {
@@ -173,7 +174,7 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
         }
         
         // Otherwise no action needed & all is good
-        logger.info("TimeKeeper evaluated time for successful run of task '{}'", task.getId());
+        logger.info("TimeKeeper evaluated sufficient to run task '{}'", task.getId());
         return true;
     }
     
@@ -191,7 +192,7 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
         // Determine if time is breached
         if ( duration > maxTime ) {
             logger.warn("Warning task excution time '{}ms' breached by '{}ms'", maxTime, (duration-maxTime));
-            updateAbortFlag(false);
+            this.updateAbortFlag(false);
             return false;
         }
         
@@ -199,7 +200,7 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
         boolean canNext = measureTime(now, duration);
         if ( !canNext ) {
             logger.warn("Warning not enough estimated time for next task to run");
-            updateAbortFlag(false);
+            this.updateAbortFlag(false);
             return false;
         }
         

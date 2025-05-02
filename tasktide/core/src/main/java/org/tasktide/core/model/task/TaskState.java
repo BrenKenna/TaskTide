@@ -82,6 +82,29 @@ public enum TaskState implements StateSummaryType {
         }
     },
     
+    TIME_KEEPER{
+        @Override
+        public String toString() {
+            return "Time Keeper";
+        }
+
+        @Override
+        public boolean isState(String query) {
+            query = query.toLowerCase().replace(" ", "").replace("_", "");
+            return "timekeeper".equals(query);
+        }
+
+        @Override
+        public boolean isState(TaskState taskState) {
+            return TIME_KEEPER == taskState;
+        }
+
+        @Override
+        public ItemState mapToItemState() {
+            return ItemState.FOR_UNLOCK;
+        }
+    },
+    
     COMPLETE {
         @Override
         public String toString() {
