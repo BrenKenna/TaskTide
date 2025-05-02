@@ -4,13 +4,13 @@
  */
 package org.tasktide.engine.observer.worker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
@@ -27,7 +27,7 @@ import org.tasktide.engine.observer.TaskTideWorkerObserver;
  * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
  * @author bkenna
  */
-public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTideWorkerObserver<T> {
+public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTideWorkerObserver<T>{
     
     // Attributes
     protected final Logger logger; // Lets lower classes define
@@ -87,10 +87,31 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
         
         // Evaluate duration
         logger.info("Task '{}' completed in {}ms", task.getId(), duration);
-        boolean eval = evaluateDuration(task, now, duration);
+        boolean eval = evaluateDuration(now, duration);
         updateAbortFlag(eval);
         return eval;
     }
+    
+    
+    /**
+     * Leaving out for now
+     * 
+     * @param task
+     * @return boolean
+     */
+    @Override
+    public boolean onTaskProcessing(T task) {
+        return true;
+    }
+    
+    
+    /**
+     * Let sub-classes handle logic
+     * 
+     * @param task - of {@link WorkItem}, {@link ItemTask}
+     * @param flag 
+     */
+    public abstract void handleTaskState(T task, boolean flag);
     
     
     /**
@@ -182,12 +203,11 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
     /**
      * Evaluate task duration
      * 
-     * @param task
      * @param now
      * @param duration
      * @return boolean
      */
-    private boolean evaluateDuration(T task, long now, long duration) {
+    private boolean evaluateDuration(long now, long duration) {
         
         // Determine if time is breached
         if ( duration > maxTime ) {
@@ -209,24 +229,4 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
         updateAbortFlag(true);
         return true;
     }
-    
-    
-    /**
-     * 
-     * @param subList
-     * @return 
-     */
-    @Override
-    public boolean onSubTasking(List<T> subList) {
-        return true;
-    }
-    
-    
-    /**
-     * Let sub-classes handle logic
-     * 
-     * @param task - of {@link WorkItem}, {@link ItemTask}
-     * @param flag 
-     */
-    public abstract void handleTaskState(T task, boolean flag);
 }

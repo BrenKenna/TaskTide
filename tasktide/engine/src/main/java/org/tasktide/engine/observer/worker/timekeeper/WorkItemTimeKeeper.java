@@ -5,9 +5,10 @@
 package org.tasktide.engine.observer.worker.timekeeper;
 
 import org.apache.logging.log4j.LogManager;
-import org.tasktide.core.model.workitem.ItemState;
 
+import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.engine.observer.worker.TimeKeeper;
 
 

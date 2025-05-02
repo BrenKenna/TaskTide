@@ -5,21 +5,18 @@
 package org.tasktide.engine.worker.executor;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 import org.apache.logging.log4j.LogManager;
 
-import org.tasktide.core.model.state_summary.StateSummary;
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
+import org.tasktide.engine.observer.worker.ExecutorObserver;
 import org.tasktide.engine.observer.worker.TimeKeeper;
 import org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver;
 import org.tasktide.engine.observer.worker.timekeeper.WorkItemTimeKeeper;
-import org.tasktide.engine.worker.processor.ItemTaskProcessor;
+
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
 
@@ -30,8 +27,8 @@ import org.tasktide.engine.worker.processor.TaskTideProcessor;
  */
 public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
 
-    // Attribures
-    private final WorkItemExecutorObserver workItemObserver;
+    // Attribures: Would be cool to reference as TaskTideWorkerObserver
+    private final ExecutorObserver<WorkItem, ItemTask> workItemObserver;
     
     /**
      * Construct {@link TaskTideExecutor} for {@link WorkItem} 
@@ -71,8 +68,10 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     protected boolean executeTask(WorkItem task) throws IOException, InterruptedException {
         
         // Verify whether work item is processable
-        logger.info("Thread '{}' verifying WorkItem availabilty:\t{}", Thread.currentThread().getName(), task.getItemName());
-        if ( this.workItemObserver.verifyWorkItem(task) ) {
+        logger.info("Thread '{}' verifying {} WorkItem availabilty:\t{}",
+            Thread.currentThread().getName(), task.getItemType(), task.getItemName()
+        );
+        if ( this.workItemObserver.onTaskStart(task) ) {
         
             // Configure ItemTaskProcessor
             logger.info(
@@ -87,10 +86,10 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
             
             // Leave work item observer periodically summarize states until done
             logger.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
-            this.workItemObserver.monitorUnitDone(task);
+            this.workItemObserver.onTaskProcessing(task);
             
             // Handle post execution tasks
-            this.workItemObserver.postProcess(task);
+            this.workItemObserver.onTaskEnd(task);
             return true;
         }
         

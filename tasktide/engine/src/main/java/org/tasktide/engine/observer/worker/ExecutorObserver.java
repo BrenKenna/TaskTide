@@ -4,7 +4,11 @@
  */
 package org.tasktide.engine.observer.worker;
 
+import org.apache.logging.log4j.Logger;
+
 import org.tasktide.core.TaskTideModel;
+
+import org.tasktide.engine.observer.TaskTideWorkerObserver;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
 
@@ -12,27 +16,25 @@ import org.tasktide.engine.worker.processor.TaskTideProcessor;
  * Observer for the full processing life-cycle of an executor
  * 
  * @param <T> of {@link TaskTidModel}-{@link WorkItem},{@link ItemTask}
- * @param <U>
+ * @param <U> subunit {@alink ItemTask} for now
  * @author bkenna
  */
-public interface ExecutorObserver<T extends TaskTideModel<T>, U extends TaskTideModel<U>> {
+public abstract class ExecutorObserver<T extends TaskTideModel<T>, U extends TaskTideModel<U>> implements TaskTideWorkerObserver<T> {
+
     
+    // Attributes
+    protected final Logger logger;
     
+
     /**
-     * Monitor {@link TaskTideModel} processing until completion
+     * Construct embedding logger
      * 
-     * @param task 
+     * @param logger
      */
-    public void monitorUnitDone(T task);
-    
-    
-    /**
-     * Handle the post processing of {@link WorkItem}/{@link ItemTask}
-     * 
-     * @param task 
-     */
-    public void postProcess(T task);
-    
+    public ExecutorObserver(Logger logger) {
+        this.logger = logger;
+    }
+
     
     /**
      * Provide processor for {@link ItemTask}/{@link WorkItem}
@@ -40,5 +42,5 @@ public interface ExecutorObserver<T extends TaskTideModel<T>, U extends TaskTide
      * @param task
      * @return {@link TaskTideProcessor}-{@link ItemTask},{@link WorkItem}
      */
-    public TaskTideProcessor<U>  provideProcessor(T task);
+    public abstract TaskTideProcessor<U> provideProcessor(T task);
 }

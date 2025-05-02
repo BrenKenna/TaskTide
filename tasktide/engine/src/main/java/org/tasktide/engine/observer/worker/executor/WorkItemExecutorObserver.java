@@ -4,17 +4,18 @@
  */
 package org.tasktide.engine.observer.worker.executor;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.tasktide.core.model.state_summary.StateSummary;
+
+import java.util.List;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.state_summary.StateSummary;
 
 import org.tasktide.engine.observer.worker.ExecutorObserver;
 import org.tasktide.engine.worker.processor.ItemTaskProcessor;
@@ -22,20 +23,18 @@ import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
 
 /**
- *
+ * {@link TaskTideWorkerObserver} of {@link ExecutorObserver} to handle tasks around
+ *  execution of {@link WorkItem} {@link Workload}
+ * 
  * @author bkenna
  */
-public class WorkItemExecutorObserver implements ExecutorObserver<WorkItem, ItemTask> {
-
-    // Attributes
-    private final Logger logger;
-    
+public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTask> {
     
     /**
      * Construct embedding logger
      */
     public WorkItemExecutorObserver() {
-        this.logger = LogManager.getLogger(WorkItemExecutorObserver.class);
+        super(LogManager.getLogger(WorkItemExecutorObserver.class));
     }
     
     
@@ -66,8 +65,8 @@ public class WorkItemExecutorObserver implements ExecutorObserver<WorkItem, Item
      * @param task 
      */
     @Override
-    public void monitorUnitDone(WorkItem task) {
-        this.pollUntilDone(task);
+    public boolean onTaskProcessing(WorkItem task) {
+        return this.pollUntilDone(task);
     }
 
     
@@ -77,7 +76,7 @@ public class WorkItemExecutorObserver implements ExecutorObserver<WorkItem, Item
      * @param task 
      */
     @Override
-    public void postProcess(WorkItem task) {
+    public boolean onTaskEnd(WorkItem task) {
         
         // Handle unlocks
         int unlocked = this.handleUnlocks(task);
@@ -85,6 +84,9 @@ public class WorkItemExecutorObserver implements ExecutorObserver<WorkItem, Item
         
         // Handle task counts, and done time if needed
         this.handleTaskCounts(task);
+        
+        // Return whether completed
+        return task.getTaskCount() == task.getTaskDone();
     }
     
     
@@ -92,13 +94,15 @@ public class WorkItemExecutorObserver implements ExecutorObserver<WorkItem, Item
      * Poll a {@link StateSummary} of {@link WorkItem} until done
      * 
      * @param task 
+     * @return boolean
      */
-    public void pollUntilDone(WorkItem task) {
+    public boolean pollUntilDone(WorkItem task) {
         
         // Initialize vars
         boolean done = false;
         int baseDelaySeconds = 1, counter = 0;
         long sleepTime;
+        StateSummary<ItemState> baseState = new StateSummary<>(task.summarizeByState());
         StateSummary<ItemState> stateSummary = new StateSummary<>();
         
         // Wait until done
@@ -121,11 +125,14 @@ public class WorkItemExecutorObserver implements ExecutorObserver<WorkItem, Item
             try {Thread.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
             
             // Fetch summary
-            stateSummary.setFromStateMap(task.fetchByStates());
+            stateSummary = new StateSummary<>(task.summarizeByState());
             logger.info("Displaying Iter-'{}' StateSummary of WorkItem:\t'{}'\n\n{}\n\n", 
                 counter, task.getId(), stateSummary.toJsonDoc()
             );
         }
+        
+        // Return whether any changes in states
+        return baseState.getCount(ItemState.TODO) == stateSummary.getCount(ItemState.TODO);
     }
     
     
@@ -180,7 +187,8 @@ public class WorkItemExecutorObserver implements ExecutorObserver<WorkItem, Item
      * @param task
      * @return boolean
      */
-    public boolean verifyWorkItem(WorkItem task) {
+    @Override
+    public boolean onTaskStart(WorkItem task) {
     
         // Inititalize test params
         boolean isPending, hasOpenTasks, hasLocked;
