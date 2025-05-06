@@ -7,8 +7,13 @@ package org.tasktide.core.manager.generator;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.tasktide.core.manager.BuilderUtility;
+
 import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.model.task.ItemTask;
+
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.workitem.Workload;
 
 
 /**
@@ -77,9 +82,46 @@ public class TaskGenerator {
      */
     public static List<ItemTask> generateItemTasks(ExampleGenerators taskType, int nTasks) {
         List<ItemTask> output = new ArrayList<>();
-        for ( int i = 0; i < nTasks; i ++ ) {
-            ManagerTask task = generateTask(taskType);
-            output.add(task.asItemTask());
+        for ( int i = 0; i < nTasks; i++ ) {
+            ManagerTask elm = generateTask(taskType);
+            ItemTask task = elm.asItemTask();
+            task.setTaskName( task.getTaskName() + "-" + i );
+            output.add(task);
+        }
+        return output;
+    }
+    
+    
+    /**
+     * Build {@link WorkItem} with required number of tasks
+     * 
+     * @param taskType
+     * @param nTasks
+     * 
+     * @return {@link WorkItem} 
+     */
+    public static WorkItem generateExampleWorkItem(ExampleGenerators taskType, int nTasks) {
+        Workload workload = BuilderUtility.buildWorkload(generateItemTasks(taskType, nTasks));
+        System.out.println(workload.toJsonDoc());
+        WorkItem output = BuilderUtility.buildWorkItem(taskType.toString(), workload, taskType.name());
+        output.setLockId("asdfg");
+        return output;
+    }
+    
+    
+    /**
+     * Generate required of {@link WorkItem} for example tasks
+     * 
+     * @param taskType
+     * @param nItems
+     * @param nTasks
+     * 
+     * @return List-{@link WorkItem} 
+     */
+    public static List<WorkItem> generateExampleWorkItem(ExampleGenerators taskType, int nItems, int nTasks) {
+        List<WorkItem> output = new ArrayList<>();
+        for (int i = 0; i < nItems; i++) {
+            output.add( generateExampleWorkItem(taskType, nTasks) );
         }
         return output;
     }

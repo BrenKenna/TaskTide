@@ -100,7 +100,7 @@ public class ItemTaskProcessorTests {
         }
         
         // Log execution times
-        logger.info("Logging execution times of N successful tasks = '{}'" + processed);
+        logger.info("Logging execution times of N successful tasks = '{}'", processed);
         if ( assertionState ) {
             EngineTestUtils.fetchExecutionTimes(workload, logger);
         }

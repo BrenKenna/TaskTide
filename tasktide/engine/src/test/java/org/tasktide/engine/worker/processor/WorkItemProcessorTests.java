@@ -15,9 +15,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import java.util.List;
 
+import org.tasktide.core.manager.generator.ExampleGenerators;
+import org.tasktide.core.manager.generator.TaskGenerator;
+
 import org.tasktide.core.model.workitem.WorkItem;
+
+import org.tasktide.engine.EngineTestUtils;
 
 
 /**
@@ -56,7 +64,7 @@ public class WorkItemProcessorTests {
     
     
     /**
-     * Test that Tasks can be processed
+     * Test that Tasks can be processed. Processing across groups in parallel
      */
     @Test
     @Order(0)
@@ -64,13 +72,39 @@ public class WorkItemProcessorTests {
     
         // Initialize test
         logger.info("\n\n================ Can Process WorkItems Test ================\n");
-        int nTasks = 4, processed = 0;
-        boolean assertionState = true;
+        int nTasks = 16, processed;
+        boolean assertionState;
         List<WorkItem> workload;
         TaskTideProcessor<WorkItem> workItemProcessor;
         
+        // Make test workload
+        logger.info("Configuring workload and WorkItemProcessor");
+        workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4, 4);
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        workItemProcessor = new WorkItemProcessor(workload, 2, executorService);
+        
+        // Process work items
+        logger.info("Processing workload of N Items = '{}'", workload.size());
+        workItemProcessor.execute();
+        EngineTestUtils.waitUntilDoneWorkItem(workload, 10, logger);
+        
+        
+        // Evaluate test status
+        processed = EngineTestUtils.countNonPending(workload);
+        if ( processed == nTasks ) {
+            logger.info("Processed task count '{}', matches expected '{}'", processed, nTasks);
+            assertionState = true;
+        }
+        else {
+            logger.error("Processed task count '{}', does not match expected '{}'", processed, nTasks);
+            assertionState = false;
+        }
         
         // Log test status
+        logger.info("-------- Displaying Processed WorkItems --------");
+        workload.stream().forEach( elm -> logger.info(elm.toJsonDoc()) );
+        logger.info("-------- Displaying Execution Time Summary --------");
+        EngineTestUtils.fetchExecutionTimesWorkItem(workload, logger);
         assertTrue(assertionState, "Not all tasks processed correctly");
         logger.info("\n\n================ Can Process WorkItems Test ================\n");
     }

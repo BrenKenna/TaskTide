@@ -30,6 +30,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     // Attribures: Would be cool to reference as TaskTideWorkerObserver
     private final ExecutorObserver<WorkItem, ItemTask> workItemObserver;
     
+    
     /**
      * Construct {@link TaskTideExecutor} for {@link WorkItem} 
      * 

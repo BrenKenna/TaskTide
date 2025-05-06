@@ -51,7 +51,6 @@ public class StateSummary<T extends StateSummaryType> {
     /**
      * Null constructor
      */
-    @JsonbCreator
     public StateSummary() {
         this.counts = new HashMap<>();
     }

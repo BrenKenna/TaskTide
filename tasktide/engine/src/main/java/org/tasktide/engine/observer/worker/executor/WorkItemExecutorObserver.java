@@ -100,7 +100,7 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
         
         // Initialize vars
         boolean done = false;
-        int baseDelaySeconds = 1, counter = 0;
+        int baseDelaySeconds = 1, counter = 0, expected = task.getTaskCount();
         long sleepTime;
         StateSummary<ItemState> baseState = new StateSummary<>(task.summarizeByState());
         StateSummary<ItemState> stateSummary = new StateSummary<>();
@@ -129,6 +129,11 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
             logger.info("Displaying Iter-'{}' StateSummary of WorkItem:\t'{}'\n\n{}\n\n", 
                 counter, task.getId(), stateSummary.toJsonDoc()
             );
+            
+            // Sum of touched ItemTasks, did any raise TK error, Executor have states?
+            int progress = stateSummary.getCount(ItemState.DONE) + stateSummary.getCount(ItemState.ERROR) ;
+            done = progress == expected;
+            
         }
         
         // Return whether any changes in states
@@ -202,7 +207,7 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
         // Lock item success
         if ( isPending && hasOpenTasks ) {
             String lockId = task.getLockId();
-            hasLocked = !task.getLockId().equals(lockId);
+            hasLocked = task.getLockId().equals(lockId);
         }
         else {
             hasLocked = false;
