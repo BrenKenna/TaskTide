@@ -64,6 +64,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
             
                 // Sanity check task is available
                 //  timeKeeper.onTaskStart kind of breaks abstraction direction
+                //  shouldExecute()  needs to be swapped out for StateObserver 
                 if ( shouldExecute(task) && timeKeeper.onTaskStart(task) ) {
                     try {
                         

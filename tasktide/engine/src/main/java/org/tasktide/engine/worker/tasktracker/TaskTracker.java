@@ -69,6 +69,18 @@ public class TaskTracker {
     
     
     /**
+     * Check if task is running
+     * 
+     * @param taskId
+     * @return boolean
+     */
+    public boolean isRunning(String taskId) {
+        ExecutionState state = taskStates.get(taskId);
+        return state == ExecutionState.RUNNING;
+    }
+    
+    
+    /**
      * Check whether is held in a non completed state
      * 
      * @param taskId
@@ -79,5 +91,26 @@ public class TaskTracker {
         return state == ExecutionState.QUEUED ||
            state == ExecutionState.PREPARE ||
            state == ExecutionState.RUNNING;
+    }
+    
+    
+    /**
+     * Check whether task is present
+     * 
+     * @param taskId
+     * @return boolean
+     */
+    public boolean isPresent(String taskId) {
+        return taskStates.containsKey(taskId);
+    }
+    
+    
+    /**
+     * Fetch count of tasks being tracked
+     * 
+     * @return int
+     */
+    public int taskCount() {
+        return taskStates.size();
     }
 }

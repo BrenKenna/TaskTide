@@ -112,6 +112,23 @@ public enum ExecutionState {
         public String toString() {
             return "Aborted";
         }
+    },
+    
+    SKIPPED {
+        @Override
+        public boolean isState(String query) {
+            return "skipped".equals(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isState(ExecutionState query) {
+            return SKIPPED == query;
+        }
+
+        @Override
+        public String toString() {
+            return "Skipped";
+        }
     };
     
     

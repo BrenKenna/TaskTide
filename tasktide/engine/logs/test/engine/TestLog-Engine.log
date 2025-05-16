@@ -28934,3 +28934,80 @@ Task 'Ping netflix.com-3' started on Thread 'pool-10-thread-2' '1746545846570' f
 
 ---------------- Terminating WorkItemProcessor Tests ----------------
 
+2025-05-16 16:38:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.setUpClass ]: 
+
+---------------- Initiating TaskTracker Tests ----------------
+
+2025-05-16 16:38:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-16 16:38:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.shouldRegisterTasks ]: 
+
+================ Can Register Test ================
+
+2025-05-16 16:38:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.shouldRegisterTasks ]: Registering three tasks in tracker
+2025-05-16 16:38:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.shouldRegisterTasks ]: Tasks registered = '3'
+2025-05-16 16:38:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.shouldRegisterTasks ]: 
+
+================ Can Track Tasks Test ================
+
+2025-05-16 16:38:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-16 16:38:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTracker Tests ----------------
+
+2025-05-16 16:39:26 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.setUpClass ]: 
+
+---------------- Initiating TaskTracker Tests ----------------
+
+2025-05-16 16:39:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-16 16:39:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.shouldTrackTask ]: 
+
+================ Can Track Tasks Test ================
+
+2025-05-16 16:39:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.shouldTrackTask ]: Registering task
+2025-05-16 16:39:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.shouldTrackTask ]: Marking task as 'Running'
+2025-05-16 16:39:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.shouldTrackTask ]: 
+
+================ Can Track Tasks Test ================
+
+2025-05-16 16:39:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-16 16:39:27 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTracker Tests ----------------
+
+2025-05-16 17:03:34 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.setUpClass ]: 
+
+---------------- Initiating TaskTracker Tests ----------------
+
+2025-05-16 17:03:34 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-16 17:03:34 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.stateShouldMatch ]: 
+
+================ Can Check State Test ================
+
+2025-05-16 17:03:34 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.stateShouldMatch ]: Registering task
+2025-05-16 17:03:34 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.stateShouldMatch ]: 
+
+================ Can Check State Test ================
+
+2025-05-16 17:03:34 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-16 17:03:34 INFO  [ Test worker -> org.tasktide.engine.worker.tasktracker.TaskTrackerTests.tearDownClass ]: 
+
+---------------- Terminating TaskTracker Tests ----------------
+

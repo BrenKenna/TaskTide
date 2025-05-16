@@ -9,15 +9,15 @@ import org.apache.logging.log4j.LogManager;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.observer.worker.TimeKeeper;
+import org.tasktide.engine.observer.worker.TimeKeeperObserver;
 
 
 /**
- * {@link WorkItem} specific {@link TimeKeeper}
+ * {@link WorkItem} specific {@link TimeKeeperObserver}
  * 
  * @author bkenna
  */
-public class WorkItemTimeKeeper extends TimeKeeper<WorkItem> {
+public class WorkItemTimeKeeper extends TimeKeeperObserver<WorkItem> {
     
     
     /**
@@ -31,7 +31,7 @@ public class WorkItemTimeKeeper extends TimeKeeper<WorkItem> {
 
     
     /**
-     * Reset {@link WorkItem} based on {@link TimeKeeper} flag
+     * Reset {@link WorkItem} based on {@link TimeKeeperObserver} flag
      * 
      * @param task
      * @param flag 

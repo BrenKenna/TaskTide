@@ -26,7 +26,7 @@ import org.tasktide.engine.observer.TaskTideWorkerObserver;
 
 
 /**
- * Test module for the {@link TimeKeeper} {@link TaskTideWorkerObserver}
+ * Test module for the {@link TimeKeeperObserver} {@link TaskTideWorkerObserver}
  * 
  * @author bkenna
  */
@@ -72,7 +72,7 @@ public class ItemTaskTimeKeeperTests {
         logger.info("\n\n================ Evaluating Start Events Test ================\n");
         int passCount = 0;
         boolean assertionState;
-        TimeKeeper<ItemTask> timeKeeper;
+        TimeKeeperObserver<ItemTask> timeKeeper;
         ItemTask task;
         
         // Configure task and time keeper
@@ -122,7 +122,7 @@ public class ItemTaskTimeKeeperTests {
         ItemTask task = TaskGenerator.generatePingTask().asItemTask();
 
         // Use a concrete subclass with overrideable internals
-        TimeKeeper<ItemTask> timeKeeper = new ItemTaskTimeKeeper(maxAllowedTime) {
+        TimeKeeperObserver<ItemTask> timeKeeper = new ItemTaskTimeKeeper(maxAllowedTime) {
             {
                 // Prepopulate with high durations to inflate meanDuration
                 executionTimes.addAll(List.of(10000L, 10500L, 10200L));

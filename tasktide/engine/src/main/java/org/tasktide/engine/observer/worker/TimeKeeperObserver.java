@@ -27,7 +27,7 @@ import org.tasktide.engine.observer.TaskTideWorkerObserver;
  * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
  * @author bkenna
  */
-public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTideWorkerObserver<T>{
+public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements TaskTideWorkerObserver<T>{
     
     // Attributes
     protected final Logger logger; // Lets lower classes define
@@ -44,7 +44,7 @@ public abstract class TimeKeeper<T extends TaskTideModel<T>> implements TaskTide
      * @param maxTime 
      * @param logger 
      */
-    public TimeKeeper(long maxTime, Logger logger) {
+    public TimeKeeperObserver(long maxTime, Logger logger) {
         this.logger = logger;
         this.maxTime = maxTime;
         this.executionTimes = new ArrayList<>();

@@ -13,7 +13,7 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.worker.ExecutorObserver;
-import org.tasktide.engine.observer.worker.TimeKeeper;
+import org.tasktide.engine.observer.worker.TimeKeeperObserver;
 import org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver;
 import org.tasktide.engine.observer.worker.timekeeper.WorkItemTimeKeeper;
 
@@ -43,7 +43,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     
     /**
      * Determine whether {@link TaskTideExecutor} should execute {@link WorkItem}
-     *   Maybe consults the {@link TimeKeeper}.
+     *   Maybe consults the {@link TimeKeeperObserver}.
      * 
      * @param task
      * @return boolean

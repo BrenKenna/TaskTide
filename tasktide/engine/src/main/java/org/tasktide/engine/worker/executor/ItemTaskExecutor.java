@@ -45,16 +45,16 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
         
         // Acknowledge task execution
         logger.info("Executing task on thread '{}':{}", Thread.currentThread().getName(), task.getTask());
-        task.setTaskState(TaskState.ACTIVE);
+        task.setTaskState(TaskState.ACTIVE); // Can be dropped given ItemTaskStateObserver
         TaskLogging taskLog = processExecutor.execute(task.getTask());
         task.setTaskLog(taskLog);
 
-        // Handle successful task execution
+        // Handle successful task execution   <-- Can drop given ItemTaskStateObserver
         if (taskLog.getExitCode() == 0) {
             task.setTaskState(TaskState.COMPLETE);
         }
         
-        // Otherwise acknowledge error
+        // Otherwise acknowledge error        <-- If observer is false log failed, else successful
         else {
             task.setTaskState(TaskState.ERROR);
             logger.error(
