@@ -4,6 +4,7 @@
  */
 package org.tasktide.engine.observer.worker;
 
+import org.tasktide.engine.observer.WorkerObserver;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -16,7 +17,6 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.observer.TaskTideWorkerObserver;
 
 
 /**
@@ -27,7 +27,7 @@ import org.tasktide.engine.observer.TaskTideWorkerObserver;
  * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
  * @author bkenna
  */
-public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements TaskTideWorkerObserver<T>{
+public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements WorkerObserver<T>{
     
     // Attributes
     protected final Logger logger; // Lets lower classes define
@@ -36,6 +36,7 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
     protected final AtomicBoolean abort = new AtomicBoolean(true);
     protected final List<Long> executionTimes;
     private long meanDuration;
+    private final ObserverType type;
     
     
     /**
@@ -48,9 +49,32 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
         this.logger = logger;
         this.maxTime = maxTime;
         this.executionTimes = new ArrayList<>();
+        this.type = ObserverType.OPTIONAL;
+    }
+
+    
+    /**
+     * Use {@link ObserverType} to check if TimeKeeper is optional
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean isOptional() {
+        return type.isOptional();
+    }
+
+    
+    /**
+     * Return {@link ObserverType}
+     * 
+     * @return {@link ObserverType}
+     */
+    @Override
+    public ObserverType getType() {
+        return this.type;
     }
     
-    
+
     /**
      * Evaluate whether task can run before execution
      * 

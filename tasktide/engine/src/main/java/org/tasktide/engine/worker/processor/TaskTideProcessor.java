@@ -13,7 +13,6 @@ import java.util.List;
 
 import org.tasktide.core.TaskTideModel;
 
-import org.tasktide.engine.observer.TaskTideWorkerObserver;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.TaskTideWorkerUnit;
 
@@ -32,7 +31,6 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     protected final Logger logger;
     protected final int threshold;
     protected final ExecutorService executorService;
-    protected final TaskTideWorkerObserver<T> timeKeeper;
     
     
     /**
@@ -41,15 +39,13 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
      * @param workload
      * @param threshold
      * @param executorService
-     * @param timeKeeper
      * @param logger
      */
     @Inject
-    public TaskTideProcessor(List<T> workload, int threshold, ExecutorService executorService, TaskTideWorkerObserver<T> timeKeeper, Logger logger) {
+    public TaskTideProcessor(List<T> workload, int threshold, ExecutorService executorService, Logger logger) {
         this.workload = workload;
         this.threshold = threshold;
         this.executorService = executorService;
-        this.timeKeeper = timeKeeper;
         this.logger = logger;
     }
     

@@ -5,19 +5,19 @@
 package org.tasktide.engine.worker.executor;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.logging.log4j.LogManager;
 
-import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.task.ItemTask;
 
-import org.tasktide.engine.observer.worker.ExecutorObserver;
-import org.tasktide.engine.observer.worker.TimeKeeperObserver;
-import org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver;
-import org.tasktide.engine.observer.worker.timekeeper.WorkItemTimeKeeper;
-
+import org.tasktide.engine.observer.chain.WorkItemObserver;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
+import org.tasktide.engine.worker.processor.ItemTaskProcessor;
 
 
 /**
@@ -27,32 +27,15 @@ import org.tasktide.engine.worker.processor.TaskTideProcessor;
  */
 public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
 
-    // Attribures: Would be cool to reference as TaskTideWorkerObserver
-    private final ExecutorObserver<WorkItem, ItemTask> workItemObserver;
-    
     
     /**
      * Construct {@link TaskTideExecutor} for {@link WorkItem} 
      * 
      */
     public WorkItemExecutor() {
-        super(new WorkItemTimeKeeper(100000), LogManager.getLogger(ItemTaskExecutor.class));
-        this.workItemObserver = new WorkItemExecutorObserver();
+        super(new WorkItemObserver(), LogManager.getLogger(ItemTaskExecutor.class));
     }
     
-    
-    /**
-     * Determine whether {@link TaskTideExecutor} should execute {@link WorkItem}
-     *   Maybe consults the {@link TimeKeeperObserver}.
-     * 
-     * @param task
-     * @return boolean
-     */
-    @Override
-    protected boolean shouldExecute(WorkItem task) {
-        return task.getItemState() == ItemState.TODO; // Maybe consult Modifier if lock is verified etc?
-    }
-
     
     /**
      * Handle execution of {@link WorkItem}, ex no point paralllizing if one task etc.
@@ -68,55 +51,42 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     @Override
     protected boolean executeTask(WorkItem task) throws IOException, InterruptedException {
         
-        // Verify whether work item is processable
-        logger.info("Thread '{}' verifying {} WorkItem availabilty:\t{}",
-            Thread.currentThread().getName(), task.getItemType(), task.getItemName()
+        // Configure ItemTaskProcessor
+        logger.info(
+      "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
+         task.getTaskCount(), Thread.currentThread().getName(), task.getId()
         );
-        if ( this.workItemObserver.onTaskStart(task) ) {
-        
-            // Configure ItemTaskProcessor
-            logger.info(
-          "Verification successful.Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
-                task.getTaskCount(), Thread.currentThread().getName(), task.getId()
-            );
-            TaskTideProcessor<ItemTask> itemTaskProcessor = this.workItemObserver.provideProcessor(task);
+        TaskTideProcessor<ItemTask> itemTaskProcessor = this.provideProcessor(task);
             
-            // Execute workload of processor
-            logger.info("Processor configured, processing workload for WorkItem:\t'{}'", task.getId());
-            itemTaskProcessor.execute();
+        // Execute workload of processor
+        logger.info("Processor configured, processing workload for WorkItem:\t'{}'", task.getId());
+        itemTaskProcessor.execute();
             
-            // Leave work item observer periodically summarize states until done
-            logger.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
-            this.workItemObserver.onTaskProcessing(task);
+        // Leave work item observer periodically summarize states until done
+        logger.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
+        this.observer.onTaskProcessing(task);
             
-            // Handle post execution tasks
-            this.workItemObserver.onTaskEnd(task);
-            return true;
-        }
-        
-        // Otherwise pass
-        else {
-            logger.warn("Warning failed to verify availability of active WorkItem:\t'{}'",task.getId());
-            return false;
-        }
+        // Handle post execution tasks
+        return this.observer.onTaskEnd(task).isSuccess();
     }
-
+    
     
     /**
-     * Handle failure of {@link WorkItem} execution
+     * Provide sub-processor
      * 
      * @param task
-     * @param ex 
+     * @return {@link TaskTideProcessor}-{@link WorkItem},{@link ItemTask}
      */
-    @Override
-    protected void handleFailure(WorkItem task, Exception ex) {
-        task.setItemState(ItemState.ERROR); // One task enough for error state?
-        logger.error(
-            "Exception while executing task '{}' on thread '{}': {}",
-            task.getItemName(), Thread.currentThread().getName(), ex.getMessage(), ex
-        );
-        if (ex instanceof InterruptedException) {
-            Thread.currentThread().interrupt();
-        }
+    public TaskTideProcessor<ItemTask> provideProcessor(WorkItem task) {
+        
+        // Fetch required components
+        List<ItemTask> toDo = task.fetchByStates().get(ItemState.TODO);
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        
+        // Construct sub processor
+        TaskTideProcessor<ItemTask> itemTaskProcessor = new ItemTaskProcessor(toDo, 2, executorService);
+        
+       // Return processor
+       return itemTaskProcessor;
     }
 }

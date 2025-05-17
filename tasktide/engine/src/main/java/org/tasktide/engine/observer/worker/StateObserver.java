@@ -4,11 +4,11 @@
  */
 package org.tasktide.engine.observer.worker;
 
+import org.tasktide.engine.observer.WorkerObserver;
 import java.util.List;
 
 import org.tasktide.core.TaskTideModel;
 
-import org.tasktide.engine.observer.TaskTideWorkerObserver;
 import org.tasktide.engine.worker.tasktracker.ExecutionState;
 import org.tasktide.engine.worker.tasktracker.TaskTracker;
 
@@ -21,11 +21,12 @@ import org.tasktide.engine.worker.tasktracker.TaskTracker;
  * @author bkenna
  * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
  */
-public abstract class StateObserver<T extends TaskTideModel<T>> implements TaskTideWorkerObserver<T> {
+public abstract class StateObserver<T extends TaskTideModel<T>> implements WorkerObserver<T> {
 
     // Tracker attribute
     protected final TaskTracker stateTracker;
-    
+    private final ObserverType type;
+            
     
     /**
      * Construct with {@link TaskTracker}
@@ -34,6 +35,7 @@ public abstract class StateObserver<T extends TaskTideModel<T>> implements TaskT
      */
     public StateObserver(TaskTracker stateTracker) {
         this.stateTracker = stateTracker;
+        this.type = ObserverType.CRITICAL;
     }
     
     
@@ -44,6 +46,7 @@ public abstract class StateObserver<T extends TaskTideModel<T>> implements TaskT
      * @param workload 
      */
     public StateObserver(TaskTracker stateTracker, List<T> workload) {
+        this.type = ObserverType.CRITICAL;
         this.stateTracker = stateTracker;
         workload
             .stream()
@@ -51,5 +54,27 @@ public abstract class StateObserver<T extends TaskTideModel<T>> implements TaskT
             .forEach(
                 elm -> this.stateTracker.markTask(elm.getId(), ExecutionState.QUEUED)
             );
+    }
+    
+    
+    /**
+     * Use {@link ObserverType} to check if StateObserver is optional
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean isOptional() {
+        return type.isOptional();
+    }
+
+    
+    /**
+     * Return {@link ObserverType}
+     * 
+     * @return {@link ObserverType}
+     */
+    @Override
+    public ObserverType getType() {
+        return this.type;
     }
 }

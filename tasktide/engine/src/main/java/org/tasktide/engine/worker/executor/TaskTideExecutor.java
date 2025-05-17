@@ -15,9 +15,9 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.observer.TaskTideWorkerObserver;
-import org.tasktide.engine.worker.TaskTideWorkerUnit;
+import org.tasktide.engine.observer.TaskTideEngineObserver;
 
+import org.tasktide.engine.worker.TaskTideWorkerUnit;
  
 /**
  * Abstract class to handle the nuances of workload execution
@@ -33,7 +33,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
     protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
     protected final ProcessExecutor processExecutor;
     protected int processCount;
-    protected TaskTideWorkerObserver<T> timeKeeper;
+    protected TaskTideEngineObserver<T> observer;
     
     
     /**
@@ -42,8 +42,8 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
      * @param observer
      * @param logger
      */
-    public TaskTideExecutor(TaskTideWorkerObserver<T> observer, Logger logger) {
-        this.timeKeeper = observer;
+    public TaskTideExecutor(TaskTideEngineObserver<T> observer, Logger logger) {
+        this.observer = observer;
         this.logger = logger;
         this.processExecutor = new ProcessExecutor();
     }
@@ -62,25 +62,25 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
         for (T task : workload) {
             synchronized(task) {
             
-                // Sanity check task is available
-                //  timeKeeper.onTaskStart kind of breaks abstraction direction
-                //  shouldExecute()  needs to be swapped out for StateObserver 
-                if ( shouldExecute(task) && timeKeeper.onTaskStart(task) ) {
+                // Verify task before execution
+                if ( observer.onTaskStart(task).isSuccess() ) {
                     try {
                         
-                        // Handle successful task execution
+                        // Increment counters
                         if ( executeTask(task) ) {
                             
-                            // Increment logging counters
-                            sharedCounter.incrementAndGet();
+                            // Increment local count
                             incrementCount();
                           
                             // Log progress
-                            logger.info("Completed task '{}', global count: {}", task.getId(), sharedCounter.get());
+                            logger.info(
+                          "Completed task '{}', global count: {}",
+                             task.getId(), sharedCounter.incrementAndGet()
+                            );
                         }
                         
                         // Handle next task
-                        timeKeeper.onTaskEnd(task);
+                        observer.onTaskEnd(task);
                     }
                     catch ( IOException | InterruptedException ex ) {
                         handleFailure(task, ex);
@@ -102,16 +102,6 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
          workload.size(), done, getGlobalCount(), failed, skipped
         );
     }
-
-    
-    /**
-     * Abstract method to allow sub-classes to define logic around whether
-     *  a task should be processed, or skipped
-     * 
-     * @param task
-     * @return boolean
-     */
-    protected abstract boolean shouldExecute(T task);
     
     
     /**
@@ -134,7 +124,15 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
      * @param task
      * @param ex 
      */
-    protected abstract void handleFailure(T task, Exception ex);
+    public void handleFailure(T task, Exception ex) {
+        logger.error(
+            "Exception while executing task '{}' on thread '{}': {}",
+            task.getId(), Thread.currentThread().getName(), ex.getMessage(), ex
+        );
+        if (ex instanceof InterruptedException) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
     
     /**

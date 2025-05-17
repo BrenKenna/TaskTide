@@ -4,11 +4,11 @@
  */
 package org.tasktide.engine.observer.worker;
 
+import org.tasktide.engine.observer.WorkerObserver;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 
-import org.tasktide.engine.observer.TaskTideWorkerObserver;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
 
@@ -19,13 +19,13 @@ import org.tasktide.engine.worker.processor.TaskTideProcessor;
  * @param <U> subunit {@alink ItemTask} for now
  * @author bkenna
  */
-public abstract class ExecutorObserver<T extends TaskTideModel<T>, U extends TaskTideModel<U>> implements TaskTideWorkerObserver<T> {
+public abstract class ExecutorObserver<T extends TaskTideModel<T>, U extends TaskTideModel<U>> implements WorkerObserver<T> {
 
-    
     // Attributes
     protected final Logger logger;
-    
+    private ObserverType type;
 
+    
     /**
      * Construct embedding logger
      * 
@@ -33,6 +33,7 @@ public abstract class ExecutorObserver<T extends TaskTideModel<T>, U extends Tas
      */
     public ExecutorObserver(Logger logger) {
         this.logger = logger;
+        this.type = ObserverType.CRITICAL;
     }
 
     
@@ -43,4 +44,26 @@ public abstract class ExecutorObserver<T extends TaskTideModel<T>, U extends Tas
      * @return {@link TaskTideProcessor}-{@link ItemTask},{@link WorkItem}
      */
     public abstract TaskTideProcessor<U> provideProcessor(T task);
+    
+    
+    /**
+     * Use {@link ObserverType} to check if ExecutorObserver is optional
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean isOptional() {
+        return type.isOptional();
+    }
+
+    
+    /**
+     * Return {@link ObserverType}
+     * 
+     * @return {@link ObserverType}
+     */
+    @Override
+    public ObserverType getType() {
+        return this.type;
+    }
 }

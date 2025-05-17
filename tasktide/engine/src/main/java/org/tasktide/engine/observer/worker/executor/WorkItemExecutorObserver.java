@@ -185,7 +185,6 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
     }
     
     
-    
     /**
      * Verify {@link WorkItem} availability before processing
      * 

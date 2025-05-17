@@ -14,7 +14,6 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 
-import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
 
 
 /**
@@ -36,7 +35,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
      * @param executorService
      */
     public ItemTaskProcessor(List<ItemTask> workload, int threshold, ExecutorService executorService) {
-        super(workload, threshold, executorService, new ItemTaskTimeKeeper(100000), LogManager.getLogger(ItemTaskProcessor.class));
+        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new ItemTaskExecutor();
     }
 

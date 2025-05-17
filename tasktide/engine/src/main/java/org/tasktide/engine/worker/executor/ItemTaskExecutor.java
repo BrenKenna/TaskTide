@@ -12,7 +12,7 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.TaskState;
 
-import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
+import org.tasktide.engine.observer.chain.ItemTaskObserver;
 
 
 /**
@@ -27,7 +27,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
      * Construct {@link TaskTideExecutor} for {@link ItemTask}
      */
     public ItemTaskExecutor() {
-        super(new ItemTaskTimeKeeper(100000), LogManager.getLogger(ItemTaskExecutor.class));
+        super(new ItemTaskObserver(), LogManager.getLogger(ItemTaskExecutor.class));
     }
 
     
@@ -45,57 +45,25 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
         
         // Acknowledge task execution
         logger.info("Executing task on thread '{}':{}", Thread.currentThread().getName(), task.getTask());
-        task.setTaskState(TaskState.ACTIVE); // Can be dropped given ItemTaskStateObserver
         TaskLogging taskLog = processExecutor.execute(task.getTask());
         task.setTaskLog(taskLog);
 
-        // Handle successful task execution   <-- Can drop given ItemTaskStateObserver
+        // Handle logging execution state
         if (taskLog.getExitCode() == 0) {
-            task.setTaskState(TaskState.COMPLETE);
+            logger.info(
+          "Task '{}' successful on thread '{}' with exit code {}\n",
+             task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
+            );
         }
-        
-        // Otherwise acknowledge error        <-- If observer is false log failed, else successful
         else {
-            task.setTaskState(TaskState.ERROR);
             logger.error(
-         "Task '{}' failed on thread '{}' with exit code {}\n",
-            task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
+          "Task '{}' failed on thread '{}' with exit code {}\n",
+             task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
             );
         }
 
         // Debugger message
         logger.debug("Task after execution:\n{}\n\n", task.toJsonDoc());
         return taskLog.getExitCode() == 0;
-    }
-    
-    
-    /**
-     * Return whether {@link ItemTask} is available for processing
-     * 
-     * @param task
-     * @return boolean
-     */
-    @Override
-    protected boolean shouldExecute(ItemTask task) {
-        return task.getTaskState() == TaskState.PENDING;
-    }
-
-    
-    /**
-     * Set {@link ItemTask} {@link TaskState} to error
-     * 
-     * @param task
-     * @param ex 
-     */
-    @Override
-    protected void handleFailure(ItemTask task, Exception ex) {
-        task.setTaskState(TaskState.ERROR);
-        logger.error(
-            "Exception while executing task '{}' on thread '{}': {}",
-            task.getTaskName(), Thread.currentThread().getName(), ex.getMessage(), ex
-        );
-        if (ex instanceof InterruptedException) {
-            Thread.currentThread().interrupt();
-        }
     }
 }

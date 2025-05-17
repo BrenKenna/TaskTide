@@ -1,0 +1,56 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package org.tasktide.engine.observer.chain;
+
+import java.util.List;
+
+import org.tasktide.core.model.task.ItemTask;
+
+import org.tasktide.engine.observer.ObserverChain;
+import org.tasktide.engine.observer.WorkerObserver;
+
+import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
+import org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver;
+import org.tasktide.engine.worker.tasktracker.TaskTracker;
+
+
+/**
+ * Coordinates the work across the {@link WorkerObserver}s for the processing of {@link WorkItem}
+ *  through the {@link TaskTideEngineObserver} chain for {@link ItemTask}s
+ * 
+ * @author bkenna
+ */
+public class ItemTaskObserver extends ObserverChain<ItemTask> {
+
+    
+    /**
+     * Default constructor for simple test purposes
+     */
+    public ItemTaskObserver() {
+        super(
+     List.of(
+                new ItemTaskStateObserver( new TaskTracker() ),
+                new ItemTaskTimeKeeper(100000)
+            )
+        );
+    }
+    
+    
+    /**
+     * Construct with required arguments
+     * 
+     * @param tracker
+     * @param workload
+     * @param maxTime
+     */
+    public ItemTaskObserver(TaskTracker tracker, List<ItemTask> workload, int maxTime) {
+        super(
+            List.of(
+                new ItemTaskStateObserver(tracker, workload),
+                new ItemTaskTimeKeeper(maxTime)
+            )
+        );
+    }
+}

@@ -22,7 +22,6 @@ import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.engine.EngineTestUtils;
 
-import org.tasktide.engine.observer.TaskTideWorkerObserver;
 
 
 /**
