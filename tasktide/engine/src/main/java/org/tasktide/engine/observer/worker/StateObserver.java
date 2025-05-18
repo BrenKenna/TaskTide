@@ -6,8 +6,12 @@ package org.tasktide.engine.observer.worker;
 
 import org.tasktide.engine.observer.WorkerObserver;
 import java.util.List;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideService;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.worker.tasktracker.ExecutionState;
 import org.tasktide.engine.worker.tasktracker.TaskTracker;

@@ -10,7 +10,6 @@ import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskLogging;
-import org.tasktide.core.model.task.TaskState;
 
 import org.tasktide.engine.observer.chain.ItemTaskObserver;
 

@@ -4,6 +4,8 @@
  */
 package org.tasktide.engine;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
@@ -103,7 +105,7 @@ public class EngineTestUtils {
      */
     public static void waitUntilDoneWorkItem(List<WorkItem> workload, int waitTime, Logger logger) {
         int counter = 0;
-        int nInactive = countNonPending(workload);
+        int nInactive = countNonActive(workload);
         while ( nInactive < workload.size() ) {
             
             // Log done
@@ -114,7 +116,7 @@ public class EngineTestUtils {
             
             // Wait and check
             try {Thread.sleep(waitTime * 1000L);} catch(Exception ex) {logger.warn("Unable to sleep for iteration:\t" + counter);}
-            nInactive = countNonPending(workload);
+            nInactive = countNonActive(workload);
             logger.debug("\n\n=========== Count of Tasks Done = " + nInactive + " ===============\n\n");
             counter++;
             
@@ -141,6 +143,23 @@ public class EngineTestUtils {
                         || task.getTaskState() == TaskState.ERROR
             )
         .count();
+    }
+    
+    /**
+     * Count non-pending tasks across {@link WorkItem} list
+     * 
+     * @param tasks
+     * @return int
+     */
+    public static int countNonActive(List<WorkItem> tasks) {
+        return (int) tasks
+            .stream()
+            .parallel()
+            .mapToInt( elm -> {
+                    Collection<ItemTask> itemTasks = elm.getWorkload().getWorkload().values();
+                    return EngineTestUtils.countNotActive(new ArrayList<>(itemTasks));
+            })
+            .sum();
     }
     
     

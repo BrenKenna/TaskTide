@@ -117,6 +117,6 @@ public class WorkloadBuilder extends ModelBuilder {
      */
     @Override
     public Workload build() {
-        return new Workload(id, workload, workloadState, workloadType);
+        return new Workload(id, workload, workloadType);
     }
 }

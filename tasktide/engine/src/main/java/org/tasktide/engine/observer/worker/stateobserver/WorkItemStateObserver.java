@@ -98,7 +98,6 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         // Wait a few seconds and check lock is the still the same
         return true;
     }
-    
 
     
     /**
@@ -113,7 +112,6 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         return true;
     }
 
-    
     
     /**
      * Handle assignment of {@link ItemState}.Done to {@link WorkItem}

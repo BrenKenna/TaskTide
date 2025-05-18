@@ -4,9 +4,6 @@
  */
 package org.tasktide.engine.observer.worker.executor;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
@@ -18,8 +15,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.state_summary.StateSummary;
 
 import org.tasktide.engine.observer.worker.ExecutorObserver;
-import org.tasktide.engine.worker.processor.ItemTaskProcessor;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
+
 
 
 /**
@@ -35,27 +31,6 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
      */
     public WorkItemExecutorObserver() {
         super(LogManager.getLogger(WorkItemExecutorObserver.class));
-    }
-    
-    
-    /**
-     * Provide sub-processor
-     * 
-     * @param task
-     * @return {@link TaskTideProcessor}-{@link WorkItem},{@link ItemTask}
-     */
-    @Override
-    public TaskTideProcessor<ItemTask> provideProcessor(WorkItem task) {
-        
-        // Fetch required components
-        List<ItemTask> toDo = task.fetchByStates().get(ItemState.TODO);
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
-        
-        // Construct sub processor
-        TaskTideProcessor<ItemTask> itemTaskProcessor = new ItemTaskProcessor(toDo, 2, executorService);
-        
-       // Return processor
-       return itemTaskProcessor;
     }
     
     
@@ -82,9 +57,6 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
         int unlocked = this.handleUnlocks(task);
         logger.info("Unlocked N = '{}' sub tasks for WorkItem:\t'{}'", unlocked, task.getId());
         
-        // Handle task counts, and done time if needed
-        this.handleTaskCounts(task);
-        
         // Return whether completed
         return task.getTaskCount() == task.getTaskDone();
     }
@@ -100,9 +72,8 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
         
         // Initialize vars
         boolean done = false;
-        int baseDelaySeconds = 1, counter = 0, expected = task.getTaskCount();
+        int baseDelaySeconds = 1, counter = 0, expected = task.getTaskCount(), totalTouched;
         long sleepTime;
-        StateSummary<ItemState> baseState = new StateSummary<>(task.summarizeByState());
         StateSummary<ItemState> stateSummary = new StateSummary<>();
         
         // Wait until done
@@ -137,33 +108,8 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
         }
         
         // Return whether any changes in states
-        return baseState.getCount(ItemState.TODO) == stateSummary.getCount(ItemState.TODO);
-    }
-    
-    
-    /**
-     * Update {@link WorkItem} progress, applying done date if completed
-     * 
-     * @param task 
-     */
-    public void handleTaskCounts(WorkItem task) {
-        
-        // Update task counts
-        task.setTaskCounts();
-        
-        // Set done date if all done
-        if ( task.getTaskCount() == task.getTaskDone() ) {
-            long doneTime = task.getWorkload().getLatestDone();
-            task.setItemState(ItemState.DONE);
-            task.setDoneDate(doneTime);
-        }
-        
-        // Otherwise unlock work item
-        else {
-            task.setItemState(ItemState.TODO);
-            task.setLockDate(0L);
-            task.setLockId("");
-        }
+        totalTouched = stateSummary.getCount(ItemState.DONE) + stateSummary.getCount(ItemState.ERROR);
+        return totalTouched == expected;
     }
     
     
@@ -186,7 +132,7 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
     
     
     /**
-     * Verify {@link WorkItem} availability before processing
+     * Verify {@link WorkItem} has open tasks before processing
      * 
      * @param task
      * @return boolean
@@ -194,26 +140,13 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
     @Override
     public boolean onTaskStart(WorkItem task) {
     
-        // Inititalize test params
-        boolean isPending, hasOpenTasks, hasLocked;
-        
-        // Check that work item is still open
-        isPending = task.getItemState() == ItemState.TODO;
-        
-        // Check work item has open tasks
-        hasOpenTasks = !task.fetchByStates().get(ItemState.TODO).isEmpty();
-        
-        // Lock item success
-        if ( isPending && hasOpenTasks ) {
-            String lockId = task.getLockId();
-            hasLocked = task.getLockId().equals(lockId);
-        }
-        else {
-            hasLocked = false;
-            logger.warn("Detected no open tasks, or other process lock on WorkItem:\t'{}'", task.getId());
+        // Log warning and flag no open tasks
+        if ( task.fetchByStates().get(ItemState.TODO).isEmpty() ) {
+            logger.warn("Warning, no open tasks detected for WorkItem:\t'{}'", task.getId());
+            return false;
         }
 
-        // Check whether there are open ItemTasks
-        return isPending && hasOpenTasks & hasLocked;
+        // Return open tasks flag
+        return true;
     }
 }

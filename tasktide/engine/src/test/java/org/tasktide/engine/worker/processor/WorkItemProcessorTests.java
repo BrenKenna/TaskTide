@@ -90,7 +90,7 @@ public class WorkItemProcessorTests {
         
         
         // Evaluate test status
-        processed = EngineTestUtils.countNonPending(workload);
+        processed = EngineTestUtils.countNonActive(workload);
         if ( processed == nTasks ) {
             logger.info("Processed task count '{}', matches expected '{}'", processed, nTasks);
             assertionState = true;
@@ -105,7 +105,8 @@ public class WorkItemProcessorTests {
         workload.stream().forEach( elm -> logger.info(elm.toJsonDoc()) );
         logger.info("-------- Displaying Execution Time Summary --------");
         EngineTestUtils.fetchExecutionTimesWorkItem(workload, logger);
-        assertTrue(assertionState, "Not all tasks processed correctly");
+        String template = String.format("Notall tasks processed correctl:\tTotal = '%d', Processed = '%d'", nTasks, processed);
+        assertTrue(assertionState, template);
         logger.info("\n\n================ Can Process WorkItems Test ================\n");
     }
 }

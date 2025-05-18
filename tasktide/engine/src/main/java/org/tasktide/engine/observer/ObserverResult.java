@@ -18,6 +18,7 @@ public class ObserverResult {
     private final boolean success;
     private final String failedObserver;
     private final ObserverType type;
+    private final boolean canIgnore;
 
     
     /**
@@ -31,8 +32,25 @@ public class ObserverResult {
         this.success = success;
         this.failedObserver = failedObserver;
         this.type = type;
+        this.canIgnore = false;
     }
 
+    
+    /**
+     * Construct with ignore flag
+     * 
+     * @param success
+     * @param failedObserver
+     * @param type
+     * @param canIgnore 
+     */
+    public ObserverResult(boolean success, String failedObserver, ObserverType type, boolean canIgnore) {
+        this.success = success;
+        this.failedObserver = failedObserver;
+        this.type = type;
+        this.canIgnore = canIgnore;
+    }
+    
     
     /**
      * Check observer state
@@ -82,5 +100,17 @@ public class ObserverResult {
      */
     public static ObserverResult failure(WorkerObserver observer) {
         return new ObserverResult(false, observer.getClass().getSimpleName(), observer.getType());
+    }
+    
+    
+    /**
+     * Create failed observer result, flagging if can ignore
+     * 
+     * @param observer
+     * @param canIgnore
+     * @return ObserverResult
+     */
+    public static ObserverResult failure(WorkerObserver observer, boolean canIgnore) {
+        return new ObserverResult(false, observer.getClass().getSimpleName(), observer.getType(), canIgnore);
     }
 }

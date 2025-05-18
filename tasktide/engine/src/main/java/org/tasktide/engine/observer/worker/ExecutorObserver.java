@@ -4,12 +4,10 @@
  */
 package org.tasktide.engine.observer.worker;
 
-import org.tasktide.engine.observer.WorkerObserver;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
-
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
+import org.tasktide.engine.observer.WorkerObserver;
 
 
 /**
@@ -35,15 +33,6 @@ public abstract class ExecutorObserver<T extends TaskTideModel<T>, U extends Tas
         this.logger = logger;
         this.type = ObserverType.CRITICAL;
     }
-
-    
-    /**
-     * Provide processor for {@link ItemTask}/{@link WorkItem}
-     * 
-     * @param task
-     * @return {@link TaskTideProcessor}-{@link ItemTask},{@link WorkItem}
-     */
-    public abstract TaskTideProcessor<U> provideProcessor(T task);
     
     
     /**

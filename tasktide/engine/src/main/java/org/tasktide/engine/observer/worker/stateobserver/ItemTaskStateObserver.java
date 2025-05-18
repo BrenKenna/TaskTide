@@ -5,6 +5,8 @@
 package org.tasktide.engine.observer.worker.stateobserver;
 
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -22,6 +24,8 @@ import org.tasktide.engine.worker.tasktracker.TaskTracker;
  */
 public class ItemTaskStateObserver extends StateObserver<ItemTask> {
 
+    // Logger
+    private final Logger logger;
     
     /**
      * Construct with state tracker
@@ -30,6 +34,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      */
     public ItemTaskStateObserver(TaskTracker stateTracker) {
         super(stateTracker);
+        this.logger = LogManager.getLogger(ItemTaskStateObserver.class);
     }
 
     
@@ -41,6 +46,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      */
     public ItemTaskStateObserver(TaskTracker stateTracker, List<ItemTask> workload) {
         super(stateTracker, workload);
+        this.logger = LogManager.getLogger(ItemTaskStateObserver.class);
     }
     
     
@@ -58,6 +64,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
         }
         else {
             stateTracker.markTask(task.getId(), ExecutionState.SKIPPED);
+            logger.warn("Skipping non pending ItemTask:\t'{}'", task.getId());
             return false;
         }
     }
@@ -95,6 +102,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
         else {
             task.setTaskState(TaskState.ERROR);
             stateTracker.markTask(task.getId(), ExecutionState.FAILED);
+            logger.warn("Execution failed forItemTask:\t'{}'", task.getId());
             return false;
         }
     }

@@ -14,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.observer.ObserverResult;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 
@@ -63,23 +64,28 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
             synchronized(task) {
             
                 // Verify task before execution
-                if ( observer.onTaskStart(task).isSuccess() ) {
+                ObserverResult result = observer.onTaskStart(task);
+                if ( result.isSuccess() ) {
                     try {
                         
-                        // Increment counters
+                        // Execute work of task, evaluating output
                         if ( executeTask(task) ) {
-                            
-                            // Increment local count
-                            incrementCount();
                           
-                            // Log progress
+                            // Log progress & increment counters
+                            incrementCount();
                             logger.info(
                           "Completed task '{}', global count: {}",
                              task.getId(), sharedCounter.incrementAndGet()
                             );
                         }
+                        else {
+                            logger.warn(
+                          "Warning, execution completed with error for WorkItem:\t'{}'",
+                             task.getId()
+                            );
+                        }
                         
-                        // Handle next task
+                        // Handle task clean-up
                         observer.onTaskEnd(task);
                     }
                     catch ( IOException | InterruptedException ex ) {
@@ -90,7 +96,10 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
                 
                 // Otherwise skip task
                 else {
-                    logger.info("Skipping previously processed task '{}'", task.getId());
+                    logger.warn(
+                  "Warning, skipping task failing '{}' Observer '{}' on WorkItem:\t'{}'", 
+                     result.getType(), result.getFailedObserver(), task.getId()
+                    );
                     skipped++;
                 }
             }

@@ -14,6 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.engine.observer.ObserverResult;
 
 import org.tasktide.engine.observer.chain.WorkItemObserver;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
@@ -52,6 +53,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     protected boolean executeTask(WorkItem task) throws IOException, InterruptedException {
         
         // Configure ItemTaskProcessor
+        ObserverResult result;
         logger.info(
       "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
          task.getTaskCount(), Thread.currentThread().getName(), task.getId()
@@ -64,10 +66,25 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
             
         // Leave work item observer periodically summarize states until done
         logger.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
-        this.observer.onTaskProcessing(task);
+        result = this.observer.onTaskProcessing(task);
             
-        // Handle post execution tasks
-        return this.observer.onTaskEnd(task).isSuccess();
+        // Evaluate task processing
+        if ( result.isSuccess() ) {
+            logger.info(
+          "Task processing complete on WorkItem:\t{}",
+             task.getId()
+            );
+            return true;
+        }
+        
+        // Otherwise log warning
+        else {
+            logger.warn(
+          "Warning, '{}' Observer '{}' onTaskProcessing failed for WorkItem:\t'{}'", 
+             result.getType(), result.getFailedObserver(), task.getId()
+            );
+            return false;
+        }
     }
     
     

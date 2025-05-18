@@ -62,7 +62,9 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
     public ObserverResult onTaskProcessing(T task) {
         for ( WorkerObserver<T> obs : this.observers ) {
             if ( !obs.onTaskProcessing(task) ) {
-                return ObserverResult.failure(obs);
+                if ( !obs.getClass().getSimpleName().equals("WorkItemExecutor")) {
+                    return ObserverResult.failure(obs);
+                }
             }
         }
         return ObserverResult.success();

@@ -43,12 +43,6 @@ public class Workload {
     @JsonbProperty("Workload")
     private Map<String, ItemTask> workload;
     
-    
-    @Column
-    @JsonbProperty("Workload State")
-    private ItemState workloadState;
-    
-    
     @Column
     @JsonbProperty("Workload Type")
     private ItemType workloadType;
@@ -60,7 +54,6 @@ public class Workload {
     public Workload() {
         this.workload = new HashMap<>();
         this.workloadType = ItemType.SINGLE;
-        this.workloadState = ItemState.TODO;
     }
     
     
@@ -69,19 +62,16 @@ public class Workload {
      * 
      * @param workloadId
      * @param workload
-     * @param workloadState
      * @param workloadType 
      */
     @JsonbCreator
     public Workload(
         @JsonbProperty("Id") String workloadId,
         @JsonbProperty("Workload") Map<String, ItemTask> workload,
-        @JsonbProperty("Workload State") ItemState workloadState,
         @JsonbProperty("Workload Type") ItemType workloadType
     ) {
         this.workloadId = workloadId;
         this.workload = workload;
-        this.workloadState = workloadState;
         this.workloadType = workloadType;
     }
 
@@ -109,9 +99,6 @@ public class Workload {
             this.workloadType = ItemType.SINGLE;
         }
         
-        // Set workload state
-        this.workloadState = ItemState.TODO;
-        
         // Return flag
         return true;
     }
@@ -138,9 +125,6 @@ public class Workload {
         else {
             this.workloadType = ItemType.SINGLE;
         }
-        
-        // Set workload state
-        this.workloadState = ItemState.TODO;
         
         // Return flag
         return true;
@@ -355,33 +339,12 @@ public class Workload {
      */
     public void setWorkload(Map<String, ItemTask> workload) {
         this.workload = workload;
-        this.workloadState = ItemState.TODO;
         if( this.workload.size() >= 2 ) {
             this.workloadType = ItemType.NESTED;
         }
         else {
             this.workloadType = ItemType.SINGLE;
         }
-    }
-
-    
-    /**
-     * Get workload state
-     * 
-     * @return 
-     */
-    public ItemState getWorkloadState() {
-        return workloadState;
-    }
-
-    
-    /**
-     * Set workload state
-     * 
-     * @param workloadState 
-     */
-    public void setWorkloadState(ItemState workloadState) {
-        this.workloadState = workloadState;
     }
 
     
@@ -415,7 +378,6 @@ public class Workload {
         return "Workload{" +
             "workloadId=" + workloadId +
             ", workload=" + workload +
-            ", workloadState=" + workloadState +
             ", workloadType=" + workloadType +
         '}';
     }

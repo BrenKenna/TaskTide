@@ -91,6 +91,7 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
         
         // Evaluate starting task
         boolean eval = evaluateStart(task, now, start, elapsed);
+        logger.info("TimeKeeper evaluated time left for processing as '{}' for ItemTask:\t'{}'", eval, task.getId());
         return eval;
     }
     
@@ -113,6 +114,7 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
         logger.info("Task '{}' completed in {}ms", task.getId(), duration);
         boolean eval = evaluateDuration(now, duration);
         updateAbortFlag(eval);
+        logger.info("TimeKeeper evaluated time left next '{}' with ItemTask:\t'{}'", eval, task.getId());
         return eval;
     }
     
