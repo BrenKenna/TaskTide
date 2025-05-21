@@ -3,18 +3,17 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '8.1.1' // Apply Shadow plugin for Fat JAR
 }
 
-description = 'tasktide:tasktide'
-group = 'org.tasktide.tasktide'
+description = 'tasktide:itemstore'
+group = 'org.tasktide.itemstore'
 version = '0.0.1'
 
 dependencies {
 
-    // Project core lib
-    implementation project(':core')
-    implementation project(':engine')
+    // SQLite JDBC driver
+    implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
 
-    // Command-line argument parser
-    implementation 'info.picocli:picocli:4.7.7'
+    // RocksDB JNI (native bindings)
+    implementation 'org.rocksdb:rocksdbjni:10.2.1'
 }
 
 jar {

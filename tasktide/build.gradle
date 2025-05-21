@@ -61,12 +61,13 @@ subprojects {
     }
 }
 
+project(":itemstore") {}
 project(":core") {}
 project(":engine") {}
 project(":tasktide") {}
 
 task buildAll {
-    dependsOn ':core:build', 'engine:build', 'tasktide:build'
+    dependsOn ':itemstore:build', ':core:build', 'engine:build', 'tasktide:build'
 }
 
 build.dependsOn buildAll
