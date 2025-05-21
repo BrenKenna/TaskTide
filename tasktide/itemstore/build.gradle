@@ -14,6 +14,9 @@ dependencies {
 
     // RocksDB JNI (native bindings)
     implementation 'org.rocksdb:rocksdbjni:10.2.1'
+
+    // Marshaller
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
 }
 
 jar {

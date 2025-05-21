@@ -55,6 +55,15 @@ public interface ItemStore {
     
     
     /**
+     * Save {@link Item} list into cached DB
+     * 
+     * @param items
+     * @throws Exception 
+     */
+    void saveItems(List<Item> items) throws Exception;
+    
+    
+    /**
      * Save an {@link Item} into master DB
      * 
      * @param item
@@ -75,9 +84,10 @@ public interface ItemStore {
     /**
      * Get all {@link Item}s
      * 
+     * @param flag for Master/Proto
      * @return List-{@link Item}
      */
-    List<Item> getAll();
+    List<Item> getAll(boolean flag);
     
     
     /**
@@ -162,7 +172,6 @@ public interface ItemStore {
     /**
      * Syncs active cache to master
      * 
-     * @return boolean
      * @throws Exception 
      */
     void syncToMaster() throws Exception;
@@ -183,4 +192,11 @@ public interface ItemStore {
      * @return boolean 
      */
     boolean clearPrototype();
+    
+    
+    /**
+     * Close connections
+     * 
+     */
+    void closeConn();
 }
