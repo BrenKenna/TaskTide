@@ -27,7 +27,7 @@ import org.tasktide.itemstore.stores.DbTarget;
  * @author bkenna
  */
 @Dependent
-public class RocksDbRepository<T extends TaskTideModel> implements TaskTideRepository<T> {
+public abstract class RocksDbRepository<T extends TaskTideModel> implements TaskTideRepository<T> {
 
     // Attributes
     private final Class<T> modelClass;

@@ -28,7 +28,7 @@ import static org.tasktide.itemstore.stores.DbTarget.PROTOTYPE;
  * 
  * @author bkenna
  */
-public abstract class RocksDBStore extends AbstractItemStore {
+public class RocksDBStore extends AbstractItemStore {
     
     // Attributes
     private RocksDB master, proto;
