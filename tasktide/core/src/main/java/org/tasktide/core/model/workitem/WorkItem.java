@@ -516,6 +516,11 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     }
 
     
+    @Override
+    public String getState() {
+        return this.getItemState().toString();
+    }
+    
     /**
      * Represent as JSON doc
      * 

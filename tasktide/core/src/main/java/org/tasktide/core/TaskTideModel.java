@@ -31,6 +31,14 @@ public interface TaskTideModel<T extends TaskTideModel<T>> {
 
     
     /**
+     * Return current of model
+     * 
+     * @return String
+     */
+    public String getState();
+    
+    
+    /**
      * Get the value of field
      * 
      * @param field

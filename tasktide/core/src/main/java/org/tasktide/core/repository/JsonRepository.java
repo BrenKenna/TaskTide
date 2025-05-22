@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.json_repo.Compression;

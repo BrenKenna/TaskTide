@@ -19,6 +19,8 @@ import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
 
 import org.tasktide.itemstore.Item;
+import static org.tasktide.itemstore.stores.DbTarget.MASTER;
+import static org.tasktide.itemstore.stores.DbTarget.PROTOTYPE;
 
 
 /**
@@ -26,10 +28,10 @@ import org.tasktide.itemstore.Item;
  * 
  * @author bkenna
  */
-public class RocksDBStore extends AbstractItemStore {
+public abstract class RocksDBStore extends AbstractItemStore {
     
     // Attributes
-    private final RocksDB master, proto;
+    private RocksDB master, proto;
     private static final ObjectMapper mapper = new ObjectMapper();
     
     
@@ -49,7 +51,7 @@ public class RocksDBStore extends AbstractItemStore {
         this.master = RocksDB.open(options, this.masterDB);
         this.proto = RocksDB.open(options, this.protoDB);
     }
-    
+
     
     /**
      * Fetch active value from {@link RocksIterator} as an {@link Item}
@@ -62,7 +64,6 @@ public class RocksDBStore extends AbstractItemStore {
             byte[] value = iter.value();
             return mapper.readValue(value, Item.class);
         } catch (IOException ex) {
-            ex.printStackTrace();
             return null;
         }
     }
@@ -115,6 +116,7 @@ public class RocksDBStore extends AbstractItemStore {
         this.waitForLock();
         try {
             master.put(item.getId().getBytes(), mapper.writeValueAsBytes(item));
+            proto.put(item.getId().getBytes(), mapper.writeValueAsBytes(item));
         }
         finally {
             this.releaseLock();
@@ -142,6 +144,7 @@ public class RocksDBStore extends AbstractItemStore {
             WriteOptions writeOptions = new WriteOptions();
             writeOptions.setSync(true);
             master.write(writeOptions, batch);
+            proto.write(writeOptions, batch);
         }
         
         finally {
@@ -173,8 +176,15 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public void saveItems(List<Item> items) throws Exception {
-        for ( Item item : items ) {
-            saveItem(item);
+        try (WriteBatch batch = new WriteBatch() ) {
+            for ( Item item : items ) {
+                byte[] key = item.getId().getBytes();
+                byte[] val = mapper.writeValueAsBytes(item);
+                batch.put(key, val);
+            }
+            WriteOptions writeOptions = new WriteOptions();
+            writeOptions.setSync(true);
+            proto.write(writeOptions, batch);
         }
     }
     
@@ -315,23 +325,128 @@ public class RocksDBStore extends AbstractItemStore {
     
     /**
      * Close master & cache connections
+     * 
+     * @param target
+     * @return boolean
      */
     @Override
-    public void closeConn(int flag) {
-        switch (flag) {
-            case 0 -> {
-                this.master.close();
-                this.proto.close();
+    public boolean closeConn(DbTarget target) {
+        switch (target) {
+            case MASTER -> {
+                this.releaseLock();
+                if ( !this.master.isClosed() ) {
+                    this.master.close();
+                }
+                return true;
             }
-            case 1 -> {
-                this.proto.close();
-                //TimeUnit.MILLISECONDS.sleep(500);
+            case PROTOTYPE -> {
+                if ( !this.proto.isClosed() ) {
+                    this.proto.close();
+                }
+                return true;
             }
-            case 2 -> {
-                this.master.close();
-                //TimeUnit.MILLISECONDS.sleep(500);
+            default -> {
+                this.releaseLock();
+                if ( !this.master.isClosed() ) {
+                    this.master.close();
+                }
+                if ( !this.proto.isClosed() ) {
+                    this.proto.close();
+                }
+                return true;
             }
-            default -> {}
+        }
+    }
+    
+    
+    /**
+     * Open connection to target database if closed
+     * 
+     * @param target
+     * @return boolean
+     */
+    @Override
+    public boolean openConn(DbTarget target) {
+        Options options = new Options().setCreateIfMissing(true);
+        switch (target) {
+            case MASTER -> {
+                try {
+                    if (master.isClosed()) {
+                        this.master = RocksDB.open(options, this.masterDB);
+                    }
+                    return true;
+                }
+                catch (RocksDBException ex) {
+                    return false;
+                }
+            }
+            
+            case PROTOTYPE -> {
+                try {
+                    if (proto.isClosed()) {
+                        this.proto = RocksDB.open(options, this.protoDB);
+                    }
+                    return true;
+                }
+                catch (RocksDBException ex) {
+                    return false;
+                }
+            }
+            
+            default -> {
+                try {
+                    if (master.isClosed()) {
+                        this.master = RocksDB.open(options, this.masterDB);
+                    }
+                    if (proto.isClosed()) {
+                        this.proto = RocksDB.open(options, this.protoDB);
+                    }
+                    return true;
+                }
+                
+                catch (RocksDBException ex) {
+                    return false;
+                }
+            }
+        }    
+    }
+
+    
+    /**
+     * Delete {@link Item} from prototype
+     * 
+     * @param item
+     * @return boolean
+     */
+    @Override
+    public boolean delete(Item item) throws Exception {
+        try {
+            this.proto.delete(item.getId().getBytes());
+            return true;
+        }
+        catch ( RocksDBException ex ) {
+            return false;
+        }
+    }
+
+    
+    /**
+     * Delete {@link Item} from store
+     * 
+     * @param item
+     * @return boolean
+     * @throws Exception 
+     */
+    @Override
+    public boolean deleteFromMaster(Item item) throws Exception {
+        this.waitForLock();
+        try {
+            this.delete(item);
+            this.master.delete(item.getId().getBytes());
+            return true;
+        }
+        finally {
+            this.releaseLock();
         }
     }
 }

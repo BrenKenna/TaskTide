@@ -187,6 +187,11 @@ public class Workflow implements TaskTideModel<Workflow> {
     }
     
     
+    @Override
+    public String getState() {
+        return "";
+    }
+    
     /**
      * Summarize {@link Workflow Workflow} {@link Step Step} collection
      * 

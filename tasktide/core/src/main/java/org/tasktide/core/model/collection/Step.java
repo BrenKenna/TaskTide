@@ -269,6 +269,10 @@ public class Step implements TaskTideModel<Step> {
     }
 
     
+    @Override
+    public String getState() {
+        return this.getStepState().toString();
+    }
     
     /**
      * Represent as string

@@ -20,6 +20,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
+import org.tasktide.itemstore.stores.DbTarget;
 import org.tasktide.itemstore.stores.RocksDBStore;
 
 /**
@@ -121,11 +122,11 @@ public class ItemStoreTests {
                     itemStore.saveItem(item);
                     result = itemStore.getById("myId");
                     itemStore.syncToMaster();
-                    itemStore.closeConn(1);
+                    itemStore.closeConn(DbTarget.PROTOTYPE);
                     assertionState = item.getId().equals( result.getId() );
                     logger.info("Displaying original & queried Item:\n\n{}\n{}\n", item, result);
                     logger.info("Prototype deletion state:\t'{}'", itemStore.clearPrototype());
-                    itemStore.closeConn(0);
+                    itemStore.closeConn(DbTarget.BOTH);
                 }
                 catch ( Exception ex ) {
                     assertionState = false;
@@ -167,7 +168,7 @@ public class ItemStoreTests {
                     itemStore.saveItem(item);
                     itemStore.syncToMaster();
                     results = itemStore.getAll(true);
-                    itemStore.closeConn(0);
+                    itemStore.closeConn(DbTarget.BOTH);
                     assertionState = results.size() >= nExpected;
                     logger.info("Displaying original & queried Item:\n\n{}\n{}\n", item, results.toArray());
                     logger.info("Prototype deletion state:\t'{}'", itemStore.clearPrototype());

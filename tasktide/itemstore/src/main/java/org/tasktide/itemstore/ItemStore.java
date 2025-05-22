@@ -5,6 +5,7 @@
 package org.tasktide.itemstore;
 
 import java.util.List;
+import org.tasktide.itemstore.stores.DbTarget;
 
 /**
  * Interface for storing {@link Item}s into RocksDB/Sqlite
@@ -195,9 +196,39 @@ public interface ItemStore {
     
     
     /**
-     * Close connections 0 = both, 1 = prototype, 2 = master
+     * Close connection to target DB
      * 
-     * @param flag
+     * @param target
+     * @return boolean
      */
-    void closeConn(int flag);
+    boolean closeConn(DbTarget target);
+    
+    
+    /**
+     * Open connection to target database if closed
+     * 
+     * @param target
+     * @return boolean
+     */
+    boolean openConn(DbTarget target);
+    
+    
+    /**
+     * Drop {@link Item} from cache
+     * 
+     * @param item
+     * @return boolean
+     * @throws java.lang.Exception
+     */
+    boolean delete(Item item) throws Exception ;
+    
+    
+    /**
+     * Delete {@link Item} from master
+     * 
+     * @param item
+     * @return boolean
+     * @throws java.lang.Exception
+     */
+    boolean deleteFromMaster(Item item) throws Exception ;
 }

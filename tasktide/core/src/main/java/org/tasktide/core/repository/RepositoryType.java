@@ -46,6 +46,25 @@ public enum RepositoryType {
         }
     },
     
+    
+    ITEMSTORE {
+        @Override
+        public boolean isRepository(String query) {
+            String tmp = query.replace(" ", query).toLowerCase();
+            return "itemstore".equals(tmp);
+        }
+
+        @Override
+        public boolean isRepository(RepositoryType query) {
+            return ITEMSTORE == query;
+        }
+
+        @Override
+        public String toString() {
+            return "Item Store";
+        }
+    },
+    
     SQL {
         @Override
         public boolean isRepository(String query) {

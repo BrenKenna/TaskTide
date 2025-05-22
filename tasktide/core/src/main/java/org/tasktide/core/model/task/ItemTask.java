@@ -257,6 +257,11 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     public String toJson() {
         return toJsonDoc();
     }
+    
+    @Override
+    public String getState() {
+        return this.getTask();
+    }
 
     @Override
     public Object getValueFromField(String field) {

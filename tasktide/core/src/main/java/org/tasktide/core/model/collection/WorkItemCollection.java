@@ -300,6 +300,11 @@ public class WorkItemCollection implements TaskTideModel {
     }
     
     
+    public String getState() {
+        return "";
+    }
+    
+    
     /**
      * Serialize to a human readable formatted JSON string
      * 
