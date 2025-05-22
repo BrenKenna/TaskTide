@@ -14,7 +14,7 @@ package org.tasktide.itemstore;
 public class Item<T> {
     
     // Attributes
-    String id, state, payload;
+    private String id, state, payload;
     
     
     /**

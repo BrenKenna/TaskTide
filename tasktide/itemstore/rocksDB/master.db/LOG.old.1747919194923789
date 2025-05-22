@@ -1,0 +1,114 @@
+2025/05/22-14:05:16.364507 fc4 RocksDB version: 10.1.3
+2025/05/22-14:05:16.364575 fc4 Git sha 5823cf08d69e4d9cba6953d51fb7d6996c72df94
+2025/05/22-14:05:16.364627 fc4 Compile date 2025-05-12 17:54:01
+2025/05/22-14:05:16.364712 fc4 DB SUMMARY
+2025/05/22-14:05:16.364736 fc4 Host name (Env):  BKENNA-XPS
+2025/05/22-14:05:16.364754 fc4 DB Session ID:  B2F7U6SPYI9LFM8YA10U
+2025/05/22-14:05:16.365451 fc4 CURRENT file:  CURRENT
+2025/05/22-14:05:16.365477 fc4 IDENTITY file:  IDENTITY
+2025/05/22-14:05:16.365543 fc4 MANIFEST file:  MANIFEST-000015 size: 317 Bytes
+2025/05/22-14:05:16.365561 fc4 SST files in C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB/master.db dir, Total Num: 2, files: 000008.sst 000013.sst 
+2025/05/22-14:05:16.365577 fc4 Write Ahead Log file in C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB/master.db: 000014.log size: 75 ; 
+2025/05/22-14:05:16.365723 fc4                         Options.error_if_exists: 0
+2025/05/22-14:05:16.365737 fc4                       Options.create_if_missing: 1
+2025/05/22-14:05:16.365747 fc4                         Options.paranoid_checks: 1
+2025/05/22-14:05:16.365755 fc4             Options.flush_verify_memtable_count: 1
+2025/05/22-14:05:16.365765 fc4          Options.compaction_verify_record_count: 1
+2025/05/22-14:05:16.365775 fc4                               Options.track_and_verify_wals_in_manifest: 0
+2025/05/22-14:05:16.365782 fc4                               Options.track_and_verify_wals: 0
+2025/05/22-14:05:16.365790 fc4        Options.verify_sst_unique_id_in_manifest: 1
+2025/05/22-14:05:16.365797 fc4                                     Options.env: 00000243E699A0C0
+2025/05/22-14:05:16.365807 fc4                                      Options.fs: WinFS
+2025/05/22-14:05:16.365814 fc4                                Options.info_log: 00000243E66ED850
+2025/05/22-14:05:16.365822 fc4                Options.max_file_opening_threads: 16
+2025/05/22-14:05:16.365829 fc4                              Options.statistics: 0000000000000000
+2025/05/22-14:05:16.365837 fc4                               Options.use_fsync: 0
+2025/05/22-14:05:16.365845 fc4                       Options.max_log_file_size: 0
+2025/05/22-14:05:16.365852 fc4                  Options.max_manifest_file_size: 1073741824
+2025/05/22-14:05:16.365860 fc4                   Options.log_file_time_to_roll: 0
+2025/05/22-14:05:16.365867 fc4                       Options.keep_log_file_num: 1000
+2025/05/22-14:05:16.365875 fc4                    Options.recycle_log_file_num: 0
+2025/05/22-14:05:16.365883 fc4                         Options.allow_fallocate: 1
+2025/05/22-14:05:16.365890 fc4                        Options.allow_mmap_reads: 0
+2025/05/22-14:05:16.365898 fc4                       Options.allow_mmap_writes: 0
+2025/05/22-14:05:16.365905 fc4                        Options.use_direct_reads: 0
+2025/05/22-14:05:16.365912 fc4                        Options.use_direct_io_for_flush_and_compaction: 0
+2025/05/22-14:05:16.365921 fc4          Options.create_missing_column_families: 0
+2025/05/22-14:05:16.365929 fc4                              Options.db_log_dir: 
+2025/05/22-14:05:16.365947 fc4                                 Options.wal_dir: 
+2025/05/22-14:05:16.365954 fc4                Options.table_cache_numshardbits: 6
+2025/05/22-14:05:16.365965 fc4                         Options.WAL_ttl_seconds: 0
+2025/05/22-14:05:16.365973 fc4                       Options.WAL_size_limit_MB: 0
+2025/05/22-14:05:16.365980 fc4                        Options.max_write_batch_group_size_bytes: 1048576
+2025/05/22-14:05:16.365988 fc4             Options.manifest_preallocation_size: 4194304
+2025/05/22-14:05:16.365996 fc4                     Options.is_fd_close_on_exec: 1
+2025/05/22-14:05:16.366003 fc4                   Options.advise_random_on_open: 1
+2025/05/22-14:05:16.366011 fc4                    Options.db_write_buffer_size: 0
+2025/05/22-14:05:16.366018 fc4                    Options.write_buffer_manager: 00000243E699ACF0
+2025/05/22-14:05:16.366026 fc4                      Options.use_adaptive_mutex: 0
+2025/05/22-14:05:16.366034 fc4                            Options.rate_limiter: 0000000000000000
+2025/05/22-14:05:16.366065 fc4     Options.sst_file_manager.rate_bytes_per_sec: 0
+2025/05/22-14:05:16.366074 fc4                       Options.wal_recovery_mode: 2
+2025/05/22-14:05:16.366082 fc4                  Options.enable_thread_tracking: 0
+2025/05/22-14:05:16.366089 fc4                  Options.enable_pipelined_write: 0
+2025/05/22-14:05:16.366096 fc4                  Options.unordered_write: 0
+2025/05/22-14:05:16.366103 fc4         Options.allow_concurrent_memtable_write: 1
+2025/05/22-14:05:16.366110 fc4      Options.enable_write_thread_adaptive_yield: 1
+2025/05/22-14:05:16.366117 fc4             Options.write_thread_max_yield_usec: 100
+2025/05/22-14:05:16.366124 fc4            Options.write_thread_slow_yield_usec: 3
+2025/05/22-14:05:16.366132 fc4                               Options.row_cache: None
+2025/05/22-14:05:16.366139 fc4                              Options.wal_filter: None
+2025/05/22-14:05:16.366146 fc4             Options.avoid_flush_during_recovery: 0
+2025/05/22-14:05:16.366154 fc4             Options.allow_ingest_behind: 0
+2025/05/22-14:05:16.366162 fc4             Options.two_write_queues: 0
+2025/05/22-14:05:16.366169 fc4             Options.manual_wal_flush: 0
+2025/05/22-14:05:16.366176 fc4             Options.wal_compression: 0
+2025/05/22-14:05:16.366183 fc4             Options.background_close_inactive_wals: 0
+2025/05/22-14:05:16.366190 fc4             Options.atomic_flush: 0
+2025/05/22-14:05:16.366197 fc4             Options.avoid_unnecessary_blocking_io: 0
+2025/05/22-14:05:16.366204 fc4             Options.prefix_seek_opt_in_only: 0
+2025/05/22-14:05:16.366212 fc4                 Options.persist_stats_to_disk: 0
+2025/05/22-14:05:16.366219 fc4                 Options.write_dbid_to_manifest: 1
+2025/05/22-14:05:16.366226 fc4                 Options.write_identity_file: 1
+2025/05/22-14:05:16.366233 fc4                 Options.log_readahead_size: 0
+2025/05/22-14:05:16.366241 fc4                 Options.file_checksum_gen_factory: Unknown
+2025/05/22-14:05:16.366248 fc4                 Options.best_efforts_recovery: 0
+2025/05/22-14:05:16.366256 fc4                Options.max_bgerror_resume_count: 2147483647
+2025/05/22-14:05:16.366265 fc4            Options.bgerror_resume_retry_interval: 1000000
+2025/05/22-14:05:16.366272 fc4             Options.allow_data_in_errors: 0
+2025/05/22-14:05:16.366279 fc4             Options.db_host_id: __hostname__
+2025/05/22-14:05:16.366286 fc4             Options.enforce_single_del_contracts: true
+2025/05/22-14:05:16.366294 fc4             Options.metadata_write_temperature: kUnknown
+2025/05/22-14:05:16.366301 fc4             Options.wal_write_temperature: kUnknown
+2025/05/22-14:05:16.366309 fc4             Options.max_background_jobs: 2
+2025/05/22-14:05:16.366316 fc4             Options.max_background_compactions: -1
+2025/05/22-14:05:16.366323 fc4             Options.max_subcompactions: 1
+2025/05/22-14:05:16.366330 fc4             Options.avoid_flush_during_shutdown: 0
+2025/05/22-14:05:16.366337 fc4           Options.writable_file_max_buffer_size: 1048576
+2025/05/22-14:05:16.366345 fc4             Options.delayed_write_rate : 16777216
+2025/05/22-14:05:16.366352 fc4             Options.max_total_wal_size: 0
+2025/05/22-14:05:16.366358 fc4             Options.delete_obsolete_files_period_micros: 21600000000
+2025/05/22-14:05:16.366366 fc4                   Options.stats_dump_period_sec: 600
+2025/05/22-14:05:16.366373 fc4                 Options.stats_persist_period_sec: 600
+2025/05/22-14:05:16.366380 fc4                 Options.stats_history_buffer_size: 1048576
+2025/05/22-14:05:16.366387 fc4                          Options.max_open_files: -1
+2025/05/22-14:05:16.366394 fc4                          Options.bytes_per_sync: 0
+2025/05/22-14:05:16.366401 fc4                      Options.wal_bytes_per_sync: 0
+2025/05/22-14:05:16.366409 fc4                   Options.strict_bytes_per_sync: 0
+2025/05/22-14:05:16.366416 fc4       Options.compaction_readahead_size: 2097152
+2025/05/22-14:05:16.366423 fc4                  Options.max_background_flushes: -1
+2025/05/22-14:05:16.366447 fc4 Options.daily_offpeak_time_utc: 
+2025/05/22-14:05:16.366455 fc4 Compression algorithms supported:
+2025/05/22-14:05:16.366462 fc4 	kZSTD supported: 1
+2025/05/22-14:05:16.366468 fc4 	kSnappyCompression supported: 1
+2025/05/22-14:05:16.366475 fc4 	kBZip2Compression supported: 0
+2025/05/22-14:05:16.366482 fc4 	kZlibCompression supported: 1
+2025/05/22-14:05:16.366489 fc4 	kLZ4Compression supported: 1
+2025/05/22-14:05:16.366496 fc4 	kXpressCompression supported: 0
+2025/05/22-14:05:16.366503 fc4 	kLZ4HCCompression supported: 1
+2025/05/22-14:05:16.366522 fc4 Fast CRC32 supported: Not supported on x86
+2025/05/22-14:05:16.366529 fc4 DMutex implementation: std::mutex
+2025/05/22-14:05:16.366539 fc4 Jemalloc supported: 0
+2025/05/22-14:05:16.367691 fc4 [WARN] [db\db_impl\db_impl_open.cc:2668] DB::Open() failed: IO error: Failed to create lock file: C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB/master.db/LOCK: The process cannot access the file because it is being used by another process.
+2025/05/22-14:05:16.367709 fc4 [db\db_impl\db_impl.cc:498] Shutdown: canceling all background work
+2025/05/22-14:05:16.367738 fc4 [db\db_impl\db_impl.cc:712] Shutdown complete

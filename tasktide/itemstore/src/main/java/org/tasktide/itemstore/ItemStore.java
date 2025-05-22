@@ -195,8 +195,9 @@ public interface ItemStore {
     
     
     /**
-     * Close connections
+     * Close connections 0 = both, 1 = prototype, 2 = master
      * 
+     * @param flag
      */
-    void closeConn();
+    void closeConn(int flag);
 }

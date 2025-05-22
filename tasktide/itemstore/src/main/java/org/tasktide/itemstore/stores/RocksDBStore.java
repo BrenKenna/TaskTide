@@ -15,6 +15,8 @@ import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksIterator;
 import org.rocksdb.RocksDBException;
+import org.rocksdb.WriteBatch;
+import org.rocksdb.WriteOptions;
 
 import org.tasktide.itemstore.Item;
 
@@ -60,7 +62,8 @@ public class RocksDBStore extends AbstractItemStore {
             byte[] value = iter.value();
             return mapper.readValue(value, Item.class);
         } catch (IOException ex) {
-             return null;
+            ex.printStackTrace();
+            return null;
         }
     }
     
@@ -105,13 +108,17 @@ public class RocksDBStore extends AbstractItemStore {
      * @param item
      * @throws JsonProcessingException
      * @throws RocksDBException 
+     * @throws java.lang.InterruptedException 
      */
     @Override
-    public void saveItemToMaster(Item item) throws JsonProcessingException, RocksDBException {
+    public void saveItemToMaster(Item item) throws JsonProcessingException, RocksDBException, InterruptedException, IOException {
+        this.waitForLock();
         try {
             master.put(item.getId().getBytes(), mapper.writeValueAsBytes(item));
         }
-        catch ( JsonProcessingException | RocksDBException ex ) {}
+        finally {
+            this.releaseLock();
+        }
     }
     
     
@@ -121,15 +128,25 @@ public class RocksDBStore extends AbstractItemStore {
      * @param items
      * @throws JsonProcessingException
      * @throws RocksDBException 
+     * @throws java.lang.InterruptedException 
      */
     @Override
-    public void saveItemsToMaster(List<Item> items) throws JsonProcessingException, RocksDBException {
-        try {
+    public void saveItemsToMaster(List<Item> items) throws JsonProcessingException, RocksDBException, InterruptedException, IOException {
+        this.waitForLock();
+        try (WriteBatch batch = new WriteBatch() ) {
             for ( Item item : items ) {
-                master.put(item.getId().getBytes(), mapper.writeValueAsBytes(item));
+                byte[] key = item.getId().getBytes();
+                byte[] val = mapper.writeValueAsBytes(item);
+                batch.put(key, val);
             }
+            WriteOptions writeOptions = new WriteOptions();
+            writeOptions.setSync(true);
+            master.write(writeOptions, batch);
         }
-        catch ( JsonProcessingException | RocksDBException ex ) {} 
+        
+        finally {
+            this.releaseLock();
+        }
     }
 
     
@@ -300,8 +317,21 @@ public class RocksDBStore extends AbstractItemStore {
      * Close master & cache connections
      */
     @Override
-    public void closeConn() {
-        this.master.close();
-        this.proto.close();
+    public void closeConn(int flag) {
+        switch (flag) {
+            case 0 -> {
+                this.master.close();
+                this.proto.close();
+            }
+            case 1 -> {
+                this.proto.close();
+                //TimeUnit.MILLISECONDS.sleep(500);
+            }
+            case 2 -> {
+                this.master.close();
+                //TimeUnit.MILLISECONDS.sleep(500);
+            }
+            default -> {}
+        }
     }
 }

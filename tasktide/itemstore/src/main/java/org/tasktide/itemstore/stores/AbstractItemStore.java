@@ -5,11 +5,15 @@
 package org.tasktide.itemstore.stores;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Comparator;
 
 import java.util.concurrent.TimeUnit;
 import java.util.List;
@@ -33,6 +37,8 @@ public abstract class AbstractItemStore implements ItemStore {
     protected final String masterDB;
     protected final String protoDB;
     protected final Path masterLock;
+    protected FileChannel fileChannel;
+    protected FileLock fileLock;
     
     
     /**
@@ -49,6 +55,8 @@ public abstract class AbstractItemStore implements ItemStore {
         this.masterDB = masterDB;
         this.protoDB = protoDB;
         this.masterLock = Paths.get(this.masterDB + ".lock");
+        this.fileChannel = null;
+        this.fileLock = null;
     }
 
     
@@ -97,22 +105,80 @@ public abstract class AbstractItemStore implements ItemStore {
 
     
     /**
+     * Try process lock masterDB file
+     * 
+     * @return boolean
+     * @throws IOException 
+     */
+    private boolean tryLock() throws IOException {
+        
+        // Create masterDB lock file if non-existent
+        if ( !this.makeMasterLockFile()) {return false;}
+        
+        // Try create a lock
+        try {
+            releaseLock();
+            this.fileChannel = new RandomAccessFile(this.masterLock.toFile(), "rw").getChannel();
+            this.fileLock = fileChannel.tryLock();
+            return fileLock != null;
+        }
+        
+        // Lock creation failed
+        catch (IOException e) { throw e;}
+    }
+
+    
+    /**
+     * Creates masterDB lock file
+     * 
+     * @return boolean
+     */
+    private boolean makeMasterLockFile() {
+        
+        // Create masterDB lock file
+        try {
+            Files.createFile(masterLock);
+            return true;
+        }
+        
+        // Already exists
+        catch (FileAlreadyExistsException e) {
+            return true;
+        }
+        
+        // Creation failed for another reason
+        catch (IOException e) {
+            return false;
+        }
+    }
+    
+    
+    /**
      * Waits until master is locked
      * 
      * @throws InterruptedException 
+     * @throws java.io.IOException 
      */
-    protected void waitForLock() throws InterruptedException {
-        boolean end = false;
-        while (!end) {
-            try {
-                Files.createFile(masterLock);
-                end = true;
-            }
-            catch (FileAlreadyExistsException  ex) {
+    protected void waitForLock() throws InterruptedException, IOException {
+        
+        // Initialize variables
+        boolean locked;
+        
+        // Try locking until locked
+        try {
+            
+            // Fetch file lock
+            locked = this.tryLock();
+            
+            // Enter loop if not locked
+            while ( !locked ) {
+                
+                // Wait and try again
                 TimeUnit.MILLISECONDS.sleep(500);
+                locked = this.tryLock();
             }
-            catch (IOException ex) {}
         }
+        catch (IOException ex) {throw ex;}
     }
     
     
@@ -123,10 +189,19 @@ public abstract class AbstractItemStore implements ItemStore {
      */
     protected boolean releaseLock() {
         try {
-            Files.deleteIfExists(masterLock);
-            return false;
-        } catch (IOException ex) {
+            
+            // Clear lock
+            if ( this.fileLock != null && this.fileLock.isValid() ) {
+                fileLock.release();
+            }
+            
+            // Close file channel
+            if ( this.fileChannel != null && this.fileChannel.isOpen() ) {
+                fileChannel.close();
+            }
             return true;
+        } catch (IOException ex) {
+            return false;
         }
     }
     
@@ -208,10 +283,32 @@ public abstract class AbstractItemStore implements ItemStore {
     @Override
     public boolean clearPrototype() {
         try {
-            Files.deleteIfExists( Paths.get(this.protoDB) );
+            this.deleteRecursively( Paths.get(this.protoDB) );
             return true;
         } catch (IOException ex) {
             return false;
+        }
+    }
+    
+    
+    /**
+     * Recursively delete all contents of folder and it
+     * 
+     * @param path
+     * @throws IOException 
+     */
+    private static void deleteRecursively(Path path) throws IOException {
+        if (Files.exists(path)) {
+            Files.walk(path)
+                .sorted(Comparator.reverseOrder()) // delete children before parents
+                .forEach(p -> {
+                    try {
+                        Files.deleteIfExists(p);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        throw new RuntimeException("Failed to delete: " + p, e);
+                    }
+                });
         }
     }
 }

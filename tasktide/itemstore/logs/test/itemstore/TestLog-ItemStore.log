@@ -1,0 +1,79 @@
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying original & queried Item:
+
+Item{id=myId, state=state, payload=payload}
+Item{id=myId, state=state, payload=payload}
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Prototype deletion state:	'true'
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
+
+Item{id=myId-2, state=state-2, payload=payload-2}
+[Item{id=myId, state=state, payload=payload}, Item{id=myId-2, state=state-2, payload=payload-2}]
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUpClass ]: 
+
+---------------- Initiating Item Tests ----------------
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+
+================ Can make Item Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: Verifying attributes of created Item:
+
+Item{id=myId, state=todo, payload=my cool payload}
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+
+================ Can make Item Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDownClass ]: 
+
+---------------- Terminating Item Tests ----------------
+
