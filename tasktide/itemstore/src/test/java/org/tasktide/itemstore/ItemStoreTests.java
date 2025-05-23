@@ -56,46 +56,6 @@ public class ItemStoreTests {
     public void tearDown() {
         logger.info("\n\n================ Terminating Test ================\n");
     }
-
-    
-    /**
-     * Resolve working directory for RocksDB
-     * 
-     * @return 
-     */
-    private Path setWorkingDirectory() {
-        try {
-            Path cwd = Paths.get( System.getProperty("user.dir") );
-            Path workDir = cwd.resolve("rocksDB");
-            Files.createDirectories(workDir);
-            return workDir;
-        }
-        catch ( IOException ex) {
-            return null;
-        }
-        
-    }
-    
-    
-    /**
-     * Make rocks
-     * 
-     * @param workDir
-     * @return RocksDBStore
-     */
-    private RocksDBStore makeRocksDB(Path workDir) {
-        String storeName = "testing";
-        String dbDirectory = workDir.toString();
-        String masterDB = dbDirectory + "/" + "master.db";
-        String protoDB = dbDirectory + "/" + UUID.randomUUID().toString() + ".db";
-        try {
-            RocksDBStore itemStore = new RocksDBStore(storeName, dbDirectory, masterDB, protoDB);
-            return itemStore;
-        }
-        catch (Exception ex) {
-            return null;
-        }
-    }
     
     
     /**
@@ -113,9 +73,9 @@ public class ItemStoreTests {
         
         // Make itemstore
         // String storeName, String dbDirectory, String masterDB, String protoDB
-        Path workDir = setWorkingDirectory();
+        Path workDir = ItemStoreTestUtils.setWorkingDirectory("testing");
         if ( workDir != null ) {
-            itemStore = makeRocksDB(workDir);
+            itemStore = ItemStoreTestUtils.makeRocksDB("mock", workDir);
             if ( itemStore != null ) {
                 item = new Item<String>("myId", "state", "payload");
                 try {
@@ -159,9 +119,9 @@ public class ItemStoreTests {
         int nExpected = 2;
         
         //
-        Path workDir = setWorkingDirectory();
+        Path workDir = ItemStoreTestUtils.setWorkingDirectory("testing");
         if ( workDir != null ) {
-            itemStore = makeRocksDB(workDir);
+            itemStore = ItemStoreTestUtils.makeRocksDB("mock", workDir);
             if ( itemStore != null ) {
                 item = new Item<String>("myId-2", "state-2", "payload-2");
                 try {

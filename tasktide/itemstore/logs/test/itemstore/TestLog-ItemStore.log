@@ -1,79 +1,205 @@
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUpClass ]: 
 
----------------- Initiating ItemStore Tests ----------------
+---------------- Initiating AbstractItemStore Tests ----------------
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: 
 
-================ Can make ItemStore Test ================
+================ JVMs Can Use AbstractItemStore Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying original & queried Item:
+2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Configuring process builder for cross JVM DB access test
+2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Running processes
+2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Waiting until processes have completed
+2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting proceses to complete
+2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'36288'
+2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709264'
+2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709289'
+2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709289'
+2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748019709722'
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'22848'
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'20428'
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Summarizing processes
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'36288'
+Exit Value:	'0'
+Stdout:
 
-Item{id=myId, state=state, payload=payload}
-Item{id=myId, state=state, payload=payload}
+'2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709264'
+2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748019709722''
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Prototype deletion state:	'true'
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+Stderr:
 
-================ Can make ItemStore Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'22848'
+Exit Value:	'1'
+Stdout:
+
+'2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709289''
+
+Stderr:
+
+
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'20428'
+Exit Value:	'1'
+Stdout:
+
+'2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709289''
+
+Stderr:
+
+
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: 
+
+================ JVMs Can Use AbstractItemStore Test ================
+
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Configuring process builder for cross JVM DB access test
+2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Running processes
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Waiting until processes have completed
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting proceses to complete
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'37360'
+2025-05-23 18:01:50 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019710485'
+2025-05-23 18:01:50 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748019710926'
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Summarizing processes
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'37360'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 18:01:50 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019710485'
+2025-05-23 18:01:50 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748019710926''
+
+Stderr:
+
+
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: 
+
+================ JVMs Can Use AbstractItemStore Test ================
+
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: 
+
+================ Can Summarize AbstractItemStore Test ================
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: Displaying AbstractItemStore properties:
+
+{
+    "Master": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore/master",
+    "Prototype": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore/cd423480-c867-4c36-b16a-c982d3126184",
+    "Store Name": "AbstractItemStore",
+    "DB Directory": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore"
+}
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: 
+
+================ Can Summarize AbstractItemStore Test ================
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating AbstractItemStore Tests ----------------
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying original & queried Item:
+
+Item{id=myId, state=state, payload=payload}
+Item{id=myId, state=state, payload=payload}
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Prototype deletion state:	'true'
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
 
 ================ Can Requery ItemStore Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
 
 Item{id=myId-2, state=state-2, payload=payload-2}
 [Item{id=myId, state=state, payload=payload}, Item{id=myId-2, state=state-2, payload=payload-2}]
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
 
 ================ Can Requery ItemStore Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
 
 ---------------- Terminating ItemStore Tests ----------------
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUpClass ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUpClass ]: 
 
 ---------------- Initiating Item Tests ----------------
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUp ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
 
 ================ Can make Item Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: Verifying attributes of created Item:
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: Verifying attributes of created Item:
 
 Item{id=myId, state=todo, payload=my cool payload}
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
 
 ================ Can make Item Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDown ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-05-22 14:10:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDownClass ]: 
+2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDownClass ]: 
 
 ---------------- Terminating Item Tests ----------------
 

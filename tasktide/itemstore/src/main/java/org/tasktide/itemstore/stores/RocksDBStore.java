@@ -32,7 +32,7 @@ public class RocksDBStore extends AbstractItemStore {
     
     // Attributes
     private RocksDB master, proto;
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper MAPPER = new ObjectMapper();
     
     
     /**
@@ -48,8 +48,8 @@ public class RocksDBStore extends AbstractItemStore {
         super(storeName, dbDirectory, masterDB, protoDB);
         RocksDB.loadLibrary();
         Options options = new Options().setCreateIfMissing(true);
-        this.master = RocksDB.open(options, this.masterDB);
-        this.proto = RocksDB.open(options, this.protoDB);
+        this.master = RocksDB.open(options, masterDB);
+        this.proto = RocksDB.open(options, protoDB);
     }
 
     
@@ -62,7 +62,7 @@ public class RocksDBStore extends AbstractItemStore {
     public Item fetchIteratorValue(RocksIterator iter) {
         try {
             byte[] value = iter.value();
-            return mapper.readValue(value, Item.class);
+            return MAPPER.readValue(value, Item.class);
         } catch (IOException ex) {
             return null;
         }
@@ -115,8 +115,8 @@ public class RocksDBStore extends AbstractItemStore {
     public void saveItemToMaster(Item item) throws JsonProcessingException, RocksDBException, InterruptedException, IOException {
         this.waitForLock();
         try {
-            master.put(item.getId().getBytes(), mapper.writeValueAsBytes(item));
-            proto.put(item.getId().getBytes(), mapper.writeValueAsBytes(item));
+            master.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+            proto.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
         }
         finally {
             this.releaseLock();
@@ -138,7 +138,7 @@ public class RocksDBStore extends AbstractItemStore {
         try (WriteBatch batch = new WriteBatch() ) {
             for ( Item item : items ) {
                 byte[] key = item.getId().getBytes();
-                byte[] val = mapper.writeValueAsBytes(item);
+                byte[] val = MAPPER.writeValueAsBytes(item);
                 batch.put(key, val);
             }
             WriteOptions writeOptions = new WriteOptions();
@@ -162,7 +162,7 @@ public class RocksDBStore extends AbstractItemStore {
     @Override
     public void saveItem(Item item) throws Exception {
         try {
-            proto.put(item.getId().getBytes(), mapper.writeValueAsBytes(item));
+            proto.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
         }
         catch ( JsonProcessingException | RocksDBException ex ) {}
     }
@@ -179,7 +179,7 @@ public class RocksDBStore extends AbstractItemStore {
         try (WriteBatch batch = new WriteBatch() ) {
             for ( Item item : items ) {
                 byte[] key = item.getId().getBytes();
-                byte[] val = mapper.writeValueAsBytes(item);
+                byte[] val = MAPPER.writeValueAsBytes(item);
                 batch.put(key, val);
             }
             WriteOptions writeOptions = new WriteOptions();
@@ -199,7 +199,7 @@ public class RocksDBStore extends AbstractItemStore {
     @Override
     public Item getById(String id) throws Exception {
         byte[] data = proto.get(id.getBytes());
-        return data == null ? null : mapper.readValue(data, Item.class);
+        return data == null ? null : MAPPER.readValue(data, Item.class);
     }
 
     
@@ -213,7 +213,7 @@ public class RocksDBStore extends AbstractItemStore {
     @Override
     public Item getByIdFromMaster(String id) throws Exception {
         byte[] data = master.get(id.getBytes());
-        return data == null ? null : mapper.readValue(data, Item.class);
+        return data == null ? null : MAPPER.readValue(data, Item.class);
     }
 
     
@@ -229,7 +229,7 @@ public class RocksDBStore extends AbstractItemStore {
         List<Item> result = new ArrayList<>();
         try (RocksIterator iter = proto.newIterator()) {
             for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-                Item item = mapper.readValue(iter.value(), Item.class);
+                Item item = MAPPER.readValue(iter.value(), Item.class);
                 if (item.getState().equals(state)) {
                     result.add(item);
                 }
@@ -251,7 +251,7 @@ public class RocksDBStore extends AbstractItemStore {
         List<Item> result = new ArrayList<>();
         try (RocksIterator iter = master.newIterator()) {
             for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-                Item item = mapper.readValue(iter.value(), Item.class);
+                Item item = MAPPER.readValue(iter.value(), Item.class);
                 if (item.getState().equals(state)) {
                     result.add(item);
                 }
@@ -372,7 +372,7 @@ public class RocksDBStore extends AbstractItemStore {
             case MASTER -> {
                 try {
                     if (master.isClosed()) {
-                        this.master = RocksDB.open(options, this.masterDB);
+                        this.master = RocksDB.open(options, this.getMasterFilePath());
                     }
                     return true;
                 }
@@ -384,7 +384,7 @@ public class RocksDBStore extends AbstractItemStore {
             case PROTOTYPE -> {
                 try {
                     if (proto.isClosed()) {
-                        this.proto = RocksDB.open(options, this.protoDB);
+                        this.proto = RocksDB.open(options, this.getFilePath());
                     }
                     return true;
                 }
@@ -396,10 +396,10 @@ public class RocksDBStore extends AbstractItemStore {
             default -> {
                 try {
                     if (master.isClosed()) {
-                        this.master = RocksDB.open(options, this.masterDB);
+                        this.master = RocksDB.open(options, this.getMasterFilePath());
                     }
                     if (proto.isClosed()) {
-                        this.proto = RocksDB.open(options, this.protoDB);
+                        this.proto = RocksDB.open(options, this.getFilePath());
                     }
                     return true;
                 }

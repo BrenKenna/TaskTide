@@ -17,6 +17,8 @@ import java.util.Comparator;
 
 import java.util.concurrent.TimeUnit;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 import org.tasktide.itemstore.Item;
 import org.tasktide.itemstore.ItemStore;
@@ -32,13 +34,14 @@ import org.tasktide.itemstore.ItemStore;
 public abstract class AbstractItemStore implements ItemStore {
     
     // Attributes
-    protected final String storeName;
-    protected final String dbDirectory;
-    protected final String masterDB;
-    protected final String protoDB;
-    protected final Path masterLock;
-    protected FileChannel fileChannel;
-    protected FileLock fileLock;
+    private final String storeName;
+    private final String dbDirectory;
+    private final String masterDB;
+    private final String protoDB;
+    private final Path masterLock;
+    private FileChannel fileChannel;
+    private FileLock fileLock;
+    private final Random RANDOM;
     
     
     /**
@@ -57,6 +60,7 @@ public abstract class AbstractItemStore implements ItemStore {
         this.masterLock = Paths.get(this.masterDB + ".lock");
         this.fileChannel = null;
         this.fileLock = null;
+        this.RANDOM = new Random();
     }
 
     
@@ -174,7 +178,7 @@ public abstract class AbstractItemStore implements ItemStore {
             while ( !locked ) {
                 
                 // Wait and try again
-                TimeUnit.MILLISECONDS.sleep(500);
+                TimeUnit.MILLISECONDS.sleep( this.RANDOM.nextInt(200, 500) );
                 locked = this.tryLock();
             }
         }
@@ -278,7 +282,7 @@ public abstract class AbstractItemStore implements ItemStore {
     /**
      * Remove prototypeDB
      * 
-     * @return 
+     * @return boolean
      */
     @Override
     public boolean clearPrototype() {
@@ -297,7 +301,7 @@ public abstract class AbstractItemStore implements ItemStore {
      * @param path
      * @throws IOException 
      */
-    private static void deleteRecursively(Path path) throws IOException {
+    private void deleteRecursively(Path path) throws IOException {
         if (Files.exists(path)) {
             Files.walk(path)
                 .sorted(Comparator.reverseOrder()) // delete children before parents
@@ -305,7 +309,6 @@ public abstract class AbstractItemStore implements ItemStore {
                     try {
                         Files.deleteIfExists(p);
                     } catch (IOException e) {
-                        e.printStackTrace();
                         throw new RuntimeException("Failed to delete: " + p, e);
                     }
                 });
