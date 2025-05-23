@@ -103,12 +103,12 @@ public class CrossJvmFileLocker {
         
         // Fetch DB and random Item
         String flag = UUID.randomUUID().toString();
-        writeFlag(workDir, "Start");
+        //writeFlag(workDir, "Start");
         logger.info("Configuring Database & RandomItem for JVM at:\t'{}'", System.currentTimeMillis());
         itemStore = provideDB();
-        writeFlag(workDir, "DB-Created");
+        //writeFlag(workDir, "DB-Created");
         randomItem = getRandomItem();
-        writeFlag(workDir, "Make-Item");
+        //writeFlag(workDir, "Make-Item");
         
         // Try insert record
         try {
@@ -125,11 +125,11 @@ public class CrossJvmFileLocker {
         }
         finally {
             itemStore.closeConn(DbTarget.BOTH);
-            writeFlag(workDir, "Connections-Closed");
+            //writeFlag(workDir, "Connections-Closed");
             itemStore.clearPrototype();
-            writeFlag(workDir, "Prototype-Cleared");
+            //writeFlag(workDir, "Prototype-Cleared");
         }
-        writeFlag(workDir, "Done");
+        // writeFlag(workDir, "Done");
         logger.info("Finished Database & RandomItem for JVM at:\t'{}'", System.currentTimeMillis());
     }
     

@@ -1,205 +1,920 @@
-2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUpClass ]: 
-
----------------- Initiating AbstractItemStore Tests ----------------
-
-2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: 
-
-================ JVMs Can Use AbstractItemStore Test ================
-
-2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Configuring process builder for cross JVM DB access test
-2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Running processes
-2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Waiting until processes have completed
-2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting proceses to complete
-2025-05-23 18:01:48 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'36288'
-2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709264'
-2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709289'
-2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709289'
-2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748019709722'
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'22848'
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'20428'
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Summarizing processes
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
-Displaying process data:
-Process ID:	'36288'
-Exit Value:	'0'
-Stdout:
-
-'2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709264'
-2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748019709722''
-
-Stderr:
-
-
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
-Displaying process data:
-Process ID:	'22848'
-Exit Value:	'1'
-Stdout:
-
-'2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709289''
-
-Stderr:
-
-
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
-Displaying process data:
-Process ID:	'20428'
-Exit Value:	'1'
-Stdout:
-
-'2025-05-23 18:01:49 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019709289''
-
-Stderr:
-
-
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: 
-
-================ JVMs Can Use AbstractItemStore Test ================
-
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Configuring process builder for cross JVM DB access test
-2025-05-23 18:01:49 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Running processes
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Waiting until processes have completed
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting proceses to complete
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'37360'
-2025-05-23 18:01:50 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019710485'
-2025-05-23 18:01:50 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748019710926'
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Summarizing processes
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
-Displaying process data:
-Process ID:	'37360'
-Exit Value:	'0'
-Stdout:
-
-'2025-05-23 18:01:50 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748019710485'
-2025-05-23 18:01:50 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748019710926''
-
-Stderr:
-
-
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: 
-
-================ JVMs Can Use AbstractItemStore Test ================
-
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-05-23 18:01:50 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: 
-
-================ Can Summarize AbstractItemStore Test ================
-
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: Displaying AbstractItemStore properties:
-
-{
-    "Master": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore/master",
-    "Prototype": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore/cd423480-c867-4c36-b16a-c982d3126184",
-    "Store Name": "AbstractItemStore",
-    "DB Directory": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore"
-}
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: 
-
-================ Can Summarize AbstractItemStore Test ================
-
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDownClass ]: 
-
----------------- Terminating AbstractItemStore Tests ----------------
-
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
 
 ---------------- Initiating ItemStore Tests ----------------
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
 
 ================ Can make ItemStore Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying original & queried Item:
-
-Item{id=myId, state=state, payload=payload}
-Item{id=myId, state=state, payload=payload}
-
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Prototype deletion state:	'true'
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
-
-================ Can make ItemStore Test ================
-
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
 
 ================ Can Requery ItemStore Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
-
-Item{id=myId-2, state=state-2, payload=payload-2}
-[Item{id=myId, state=state, payload=payload}, Item{id=myId-2, state=state-2, payload=payload-2}]
-
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
-
-================ Can Requery ItemStore Test ================
-
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
 
 ---------------- Terminating ItemStore Tests ----------------
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUpClass ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUpClass ]: 
 
----------------- Initiating Item Tests ----------------
+---------------- Initiating AbstractItemStore Tests ----------------
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUp ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: 
 
-================ Can make Item Test ================
+================ Can Multiple JVMs Concurrently AbstractItemStore Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: Verifying attributes of created Item:
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Configuring process builder for cross JVM DB access test
+2025-05-23 19:29:15 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Running processes
+2025-05-23 19:29:18 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024958842'
+2025-05-23 19:29:19 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Waiting until processes have completed
+2025-05-23 19:29:19 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting proceses to complete
+2025-05-23 19:29:19 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'14744'
+2025-05-23 19:29:19 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024959409'
+2025-05-23 19:29:19 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024959624'
+2025-05-23 19:29:19 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024959967'
+2025-05-23 19:29:20 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024960557'
+2025-05-23 19:29:21 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024961798'
+2025-05-23 19:29:22 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024962849'
+2025-05-23 19:29:22 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024962936'
+2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963042'
+2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963156'
+2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024963338'
+2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963340'
+2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963508'
+2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963950'
+2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963896'
+2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964128'
+2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964347'
+2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964284'
+2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964794'
+2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964869'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965096'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965144'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965210'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024965358'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965337'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965465'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965464'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965495'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965791'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965846'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965884'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965900'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965918'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024966206'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966196'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966376'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966443'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966495'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966507'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966531'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966544'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966552'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966615'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966652'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966940'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966994'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024967090'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967106'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967314'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967342'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967348'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967372'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967486'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967692'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024967882'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968055'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968207'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968428'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968636'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968878'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969269'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969447'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969603'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969743'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969873'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970001'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970145'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970293'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970478'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970635'
+2025-05-23 19:29:30 ERROR [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Error inserting record:
 
-Item{id=myId, state=todo, payload=my cool payload}
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+Database:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\AbstractItemStore-MultiJVM/master'
 
-================ Can make Item Test ================
+Record:	'Item{id=1887a91d-6644-4028-a5b5-3ad7b360d3be, state=b4d7725e-cd6d-4bbc-b06f-4024d9db240c, payload=c75d969d-73a5-4434-a59a-d87a63ef22bf}'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970817'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970956'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971124'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971305'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971519'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971692'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971873'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972088'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972269'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972459'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972663'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972846'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973063'
+2025-05-23 19:29:33 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'4392'
+2025-05-23 19:29:33 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'30492'
+2025-05-23 19:29:33 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'11032'
+2025-05-23 19:29:33 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'26888'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973281'
+2025-05-23 19:29:33 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'28528'
+2025-05-23 19:29:33 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'38448'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973487'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973684'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973867'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974006'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974236'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974462'
+2025-05-23 19:29:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'39872'
+2025-05-23 19:29:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'39508'
+2025-05-23 19:29:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'25788'
+2025-05-23 19:29:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'18428'
+2025-05-23 19:29:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'41408'
+2025-05-23 19:29:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'44280'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974750'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974979'
+2025-05-23 19:29:35 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024975185'
+2025-05-23 19:29:35 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024975417'
+2025-05-23 19:29:35 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024975738'
+2025-05-23 19:29:35 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024975946'
+2025-05-23 19:29:36 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024976255'
+2025-05-23 19:29:36 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024976585'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'28004'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'36400'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'44680'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'31808'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'11292'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'32572'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'13428'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'39716'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'26076'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'37380'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'16580'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'14784'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'2184'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'6104'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'13156'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'5812'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'38604'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'41808'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'36152'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'39436'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'32160'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'38440'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'14440'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'22768'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'8160'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'11144'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'39640'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'11792'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'37116'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'44028'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'38128'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'35756'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'39752'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'23488'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'40036'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'21508'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'3200'
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Summarizing processes
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'14744'
+Exit Value:	'0'
+Stdout:
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDown ]: 
+'2025-05-23 19:29:19 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024959967'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973063''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'4392'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:20 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024960557'
+2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024965358''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'30492'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:18 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024958842'
+2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024963338''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'11032'
+Exit Value:	'1'
+Stdout:
+
+'2025-05-23 19:29:19 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024959409'
+2025-05-23 19:29:30 ERROR [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Error inserting record:
+
+Database:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\AbstractItemStore-MultiJVM/master'
+
+Record:	'Item{id=1887a91d-6644-4028-a5b5-3ad7b360d3be, state=b4d7725e-cd6d-4bbc-b06f-4024d9db240c, payload=c75d969d-73a5-4434-a59a-d87a63ef22bf}''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'26888'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:19 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024959624'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973281''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'28528'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:22 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024962936'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970635''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'38448'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:21 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024961798'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974462''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'39872'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963156'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971124''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'39508'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963042'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969603''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'25788'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963896'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969269''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'18428'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963508'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970145''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'41408'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:22 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024962849'
+2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024966206''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'44280'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963340'
+2025-05-23 19:29:36 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024976585''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'28004'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:23 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024963950'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973487''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'36400'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964347'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974979''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'44680'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964128'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969873''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'31808'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964284'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024967090''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'11292'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965096'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972088''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'32572'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964794'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974750''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'13428'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965465'
+2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024967882''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'39716'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966376'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970293''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'26076'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965210'
+2025-05-23 19:29:35 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024975946''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'37380'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:24 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024964869'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970001''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'16580'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965918'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971692''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'14784'
+Exit Value:	'1'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966196''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'2184'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965464'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970817''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'6104'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965495'
+2025-05-23 19:29:35 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024975185''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'13156'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966544'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973867''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'5812'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965144'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974236''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'38604'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965900'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972663''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'41808'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965884'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972459''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'36152'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966507'
+2025-05-23 19:29:33 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024973684''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'39436'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966552'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968428''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'32160'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966495'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968055''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'38440'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967106'
+2025-05-23 19:29:34 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024974006''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'14440'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965846'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969743''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'22768'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965337'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970478''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'8160'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966652'
+2025-05-23 19:29:30 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024970956''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'11144'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967342'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971873''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'39640'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966531'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968878''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'11792'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:25 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024965791'
+2025-05-23 19:29:36 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024976255''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'37116'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966615'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971305''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'44028'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967314'
+2025-05-23 19:29:35 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024975738''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'38128'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966994'
+2025-05-23 19:29:31 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024971519''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'35756'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966940'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968207''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'39752'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967692'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972846''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'23488'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967348'
+2025-05-23 19:29:28 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024968636''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'40036'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967486'
+2025-05-23 19:29:35 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024975417''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'21508'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:26 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024966443'
+2025-05-23 19:29:32 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024972269''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'3200'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:27 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024967372'
+2025-05-23 19:29:29 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024969447''
+
+Stderr:
+
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.multipleJvmsCanUse ]: Processes completed '48'/50 passed
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-05-23 18:01:51 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDownClass ]: 
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: 
+
+================ Can Multiple JVMs Serially AbstractItemStore Test ================
+
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Configuring process builder for cross JVM DB access test
+2025-05-23 19:29:36 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Running processes
+2025-05-23 19:29:37 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Waiting until processes have completed
+2025-05-23 19:29:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting proceses to complete
+2025-05-23 19:29:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'38316'
+2025-05-23 19:29:37 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024977436'
+2025-05-23 19:29:37 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024977684'
+2025-05-23 19:29:37 ERROR [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Error inserting record:
+
+Database:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\AbstractItemStore-MultiJVM/master'
+
+Record:	'Item{id=49f43fc4-2ac0-4888-ade1-c1dd7ac5fca1, state=78abc7f0-da67-4e6a-bf8c-4849aecb1e7b, payload=aac98cc6-ee77-4333-b468-196de54d4c73}'
+2025-05-23 19:29:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'27196'
+2025-05-23 19:29:38 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024978187'
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Summarizing processes
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'38316'
+Exit Value:	'1'
+Stdout:
+
+'2025-05-23 19:29:37 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024977436'
+2025-05-23 19:29:37 ERROR [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Error inserting record:
+
+Database:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\AbstractItemStore-MultiJVM/master'
+
+Record:	'Item{id=49f43fc4-2ac0-4888-ade1-c1dd7ac5fca1, state=78abc7f0-da67-4e6a-bf8c-4849aecb1e7b, payload=aac98cc6-ee77-4333-b468-196de54d4c73}''
+
+Stderr:
+
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'27196'
+Exit Value:	'0'
+Stdout:
+
+'2025-05-23 19:29:37 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Configuring Database & RandomItem for JVM at:	'1748024977684'
+2025-05-23 19:29:38 INFO  [ main -> org.tasktide.itemstore.stores.CrossJvmFileLocker.main ]: Finished Database & RandomItem for JVM at:	'1748024978187''
+
+Stderr:
+
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: 
+
+================ Can Summarize AbstractItemStore Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: Displaying AbstractItemStore properties:
+
+{
+    "Master": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore/master",
+    "Prototype": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore/627f27a3-dfec-4033-a37b-7ab6a44aa728",
+    "Store Name": "AbstractItemStore",
+    "DB Directory": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore"
+}
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.canSummarize ]: 
+
+================ Can Summarize AbstractItemStore Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.stores.AbstractItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating AbstractItemStore Tests ----------------
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUpClass ]: 
+
+---------------- Initiating Item Tests ----------------
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+
+================ Can make Item Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: Verifying attributes of created Item:
+
+Item{id=myId, state=todo, payload=my cool payload}
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+
+================ Can make Item Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-05-23 19:29:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDownClass ]: 
 
 ---------------- Terminating Item Tests ----------------
 

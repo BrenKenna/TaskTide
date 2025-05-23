@@ -83,7 +83,6 @@ public class AbstractItemStoreTests {
         
         // End test
         assertTrue(!data.isEmpty(), "No attributes retreived from AbstractItemStore");
-        itemStore.closeConn(DbTarget.BOTH);
         itemStore.clearPrototype();
         logger.info("\n\n================ Can Summarize AbstractItemStore Test ================\n");
     }
@@ -97,11 +96,11 @@ public class AbstractItemStoreTests {
     public void crossJvmFileLockFinishes() {
     
         // Initialize test
-        logger.info("\n\n================ JVMs Can Use AbstractItemStore Test ================\n");
+        logger.info("\n\n================ Can Multiple JVMs Serially AbstractItemStore Test ================\n");
         boolean assertionState;
         ProcessBuilder procBuilder;
         List<Process> processes;
-        int nProcesses = 1;
+        int nProcesses = 2, nPassing = 0;
         
         // Fetch & processes from process builder
         logger.info("Configuring process builder for cross JVM DB access test");
@@ -115,12 +114,13 @@ public class AbstractItemStoreTests {
         
         // Summarize processes
         logger.info("Summarizing processes");
-        ItemStoreTestUtils.summarizeProcesses(processes);
+        nPassing = ItemStoreTestUtils.summarizeProcesses(processes);
         
         // End test
-        assertionState = processes.size() == 1;
-        assertTrue(assertionState, "No attributes retreived from AbstractItemStore-MultiJVM");
-        logger.info("\n\n================ JVMs Can Use AbstractItemStore Test ================\n");
+        assertionState = nPassing == nProcesses;
+        String template = String.format("Not all processes completed '%d'/%d passed", nPassing, nProcesses);
+        assertTrue(assertionState, template);
+        logger.info("\n\n================ Can Multiple JVMs Serially AbstractItemStore Test ================\n");
     }
     
     /**
@@ -132,11 +132,11 @@ public class AbstractItemStoreTests {
     public void multipleJvmsCanUse() {
     
         // Initialize test
-        logger.info("\n\n================ JVMs Can Use AbstractItemStore Test ================\n");
+        logger.info("\n\n================ Can Multiple JVMs Concurrently AbstractItemStore Test ================\n");
         boolean assertionState;
         ProcessBuilder procBuilder;
         List<Process> processes;
-        int nProcesses = 3;
+        int nProcesses = 50, nPassing = 0;
         
         // Fetch & processes from process builder
         logger.info("Configuring process builder for cross JVM DB access test");
@@ -150,10 +150,13 @@ public class AbstractItemStoreTests {
         
         // Summarize processes
         logger.info("Summarizing processes");
-        assertionState = ItemStoreTestUtils.summarizeProcesses(processes);
+        nPassing = ItemStoreTestUtils.summarizeProcesses(processes);
         
         // End test
-        assertTrue(assertionState, "No attributes retreived from AbstractItemStore-MultiJVM");
-        logger.info("\n\n================ JVMs Can Use AbstractItemStore Test ================\n");
+        assertionState = nPassing == nProcesses;
+        String template = String.format("Processes completed '%d'/%d passed", nPassing, nProcesses);
+        logger.info(template);
+        assertTrue(assertionState);
+        logger.info("\n\n================ Can Multiple JVMs Concurrently AbstractItemStore Test ================\n");
     }
 }

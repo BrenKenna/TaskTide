@@ -4,12 +4,9 @@
  */
 package org.tasktide.itemstore;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.UUID;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
 import org.tasktide.itemstore.stores.DbTarget;
-import org.tasktide.itemstore.stores.RocksDBStore;
+
 
 /**
  *
@@ -75,7 +72,7 @@ public class ItemStoreTests {
         // String storeName, String dbDirectory, String masterDB, String protoDB
         Path workDir = ItemStoreTestUtils.setWorkingDirectory("testing");
         if ( workDir != null ) {
-            itemStore = ItemStoreTestUtils.makeRocksDB("mock", workDir);
+            itemStore = ItemStoreTestUtils.makeRocksDB("testing", workDir);
             if ( itemStore != null ) {
                 item = new Item<String>("myId", "state", "payload");
                 try {
@@ -121,7 +118,7 @@ public class ItemStoreTests {
         //
         Path workDir = ItemStoreTestUtils.setWorkingDirectory("testing");
         if ( workDir != null ) {
-            itemStore = ItemStoreTestUtils.makeRocksDB("mock", workDir);
+            itemStore = ItemStoreTestUtils.makeRocksDB("testing", workDir);
             if ( itemStore != null ) {
                 item = new Item<String>("myId-2", "state-2", "payload-2");
                 try {

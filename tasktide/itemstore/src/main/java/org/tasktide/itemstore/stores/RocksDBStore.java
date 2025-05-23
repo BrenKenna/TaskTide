@@ -32,6 +32,7 @@ public class RocksDBStore extends AbstractItemStore {
     
     // Attributes
     private RocksDB master, proto;
+    private final Options options;
     private static final ObjectMapper MAPPER = new ObjectMapper();
     
     
@@ -42,16 +43,13 @@ public class RocksDBStore extends AbstractItemStore {
      * @param dbDirectory
      * @param masterDB
      * @param protoDB
-     * @throws RocksDBException 
      */
-    public RocksDBStore(String storeName, String dbDirectory, String masterDB, String protoDB) throws RocksDBException {
+    public RocksDBStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
         super(storeName, dbDirectory, masterDB, protoDB);
         RocksDB.loadLibrary();
-        Options options = new Options().setCreateIfMissing(true);
-        this.master = RocksDB.open(options, masterDB);
-        this.proto = RocksDB.open(options, protoDB);
+        this.options = new Options().setCreateIfMissing(true);
     }
-
+    
     
     /**
      * Fetch active value from {@link RocksIterator} as an {@link Item}
@@ -84,9 +82,11 @@ public class RocksDBStore extends AbstractItemStore {
         
         // Handle which DB to use
         if ( flag ) {
+            this.openConn(DbTarget.BOTH);
             iter = master.newIterator();
         }
         else {
+            this.openConn(DbTarget.PROTOTYPE);
             iter = proto.newIterator();
         }
         
@@ -98,7 +98,9 @@ public class RocksDBStore extends AbstractItemStore {
             }
         }
         
-        // Return output
+        // Close connection and release lock
+        this.closeConn(DbTarget.BOTH);
+        this.releaseLock();
         return output;
     }
     
@@ -113,12 +115,13 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public void saveItemToMaster(Item item) throws JsonProcessingException, RocksDBException, InterruptedException, IOException {
-        this.waitForLock();
+        this.openConn(DbTarget.BOTH);
         try {
             master.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
             proto.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
         }
         finally {
+            this.closeConn(DbTarget.BOTH);
             this.releaseLock();
         }
     }
@@ -134,7 +137,7 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public void saveItemsToMaster(List<Item> items) throws JsonProcessingException, RocksDBException, InterruptedException, IOException {
-        this.waitForLock();
+        this.openConn(DbTarget.BOTH);
         try (WriteBatch batch = new WriteBatch() ) {
             for ( Item item : items ) {
                 byte[] key = item.getId().getBytes();
@@ -148,6 +151,7 @@ public class RocksDBStore extends AbstractItemStore {
         }
         
         finally {
+            this.closeConn(DbTarget.BOTH);
             this.releaseLock();
         }
     }
@@ -176,6 +180,7 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public void saveItems(List<Item> items) throws Exception {
+        this.openConn(DbTarget.PROTOTYPE);
         try (WriteBatch batch = new WriteBatch() ) {
             for ( Item item : items ) {
                 byte[] key = item.getId().getBytes();
@@ -198,6 +203,7 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public Item getById(String id) throws Exception {
+        this.openConn(DbTarget.PROTOTYPE);
         byte[] data = proto.get(id.getBytes());
         return data == null ? null : MAPPER.readValue(data, Item.class);
     }
@@ -212,7 +218,10 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public Item getByIdFromMaster(String id) throws Exception {
+        this.openConn(DbTarget.BOTH);
         byte[] data = master.get(id.getBytes());
+        this.closeConn(DbTarget.BOTH);
+        this.releaseLock();
         return data == null ? null : MAPPER.readValue(data, Item.class);
     }
 
@@ -226,6 +235,7 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public List<Item> getItemsByState(String state) throws Exception {
+        this.openConn(DbTarget.PROTOTYPE);
         List<Item> result = new ArrayList<>();
         try (RocksIterator iter = proto.newIterator()) {
             for (iter.seekToFirst(); iter.isValid(); iter.next()) {
@@ -248,6 +258,7 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public List<Item> getItemsByStateFromMaster(String state) throws Exception {
+        this.openConn(DbTarget.BOTH);
         List<Item> result = new ArrayList<>();
         try (RocksIterator iter = master.newIterator()) {
             for (iter.seekToFirst(); iter.isValid(); iter.next()) {
@@ -257,6 +268,8 @@ public class RocksDBStore extends AbstractItemStore {
                 }
             }
         }
+        this.closeConn(DbTarget.BOTH);
+        this.releaseLock();
         return result;
     }
 
@@ -275,6 +288,7 @@ public class RocksDBStore extends AbstractItemStore {
         Item item;
         
         // Try fetch from cache
+        this.openConn(DbTarget.PROTOTYPE);
         try { 
             item = this.getById(id);
         }
@@ -306,6 +320,7 @@ public class RocksDBStore extends AbstractItemStore {
         Item item;
         
         // Try fetch from cache
+        this.openConn(DbTarget.BOTH);
         try { 
             item = this.getByIdFromMaster(id);
         }
@@ -319,6 +334,8 @@ public class RocksDBStore extends AbstractItemStore {
         }
         
         // Return result
+        this.closeConn(DbTarget.BOTH);
+        this.releaseLock();
         return output;
     }
 
@@ -367,22 +384,30 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public boolean openConn(DbTarget target) {
-        Options options = new Options().setCreateIfMissing(true);
         switch (target) {
             case MASTER -> {
                 try {
+                    this.waitForLock();
+                    if ( this.master == null ) {
+                        this.master = RocksDB.open(this.options, this.getMasterFilePath());
+                        return true;
+                    }
                     if (master.isClosed()) {
-                        this.master = RocksDB.open(options, this.getMasterFilePath());
+                        this.master = RocksDB.open(this.options, this.getMasterFilePath());
                     }
                     return true;
                 }
-                catch (RocksDBException ex) {
+                catch (RocksDBException | InterruptedException | IOException ex) {
                     return false;
                 }
             }
             
             case PROTOTYPE -> {
                 try {
+                    if ( this.proto == null ) {
+                        this.proto = RocksDB.open(this.options, this.getFilePath());
+                        return true;
+                    }
                     if (proto.isClosed()) {
                         this.proto = RocksDB.open(options, this.getFilePath());
                     }
@@ -395,6 +420,18 @@ public class RocksDBStore extends AbstractItemStore {
             
             default -> {
                 try {
+                    this.waitForLock();
+                    
+                    if ( this.master == null || this.proto == null) {
+                        if ( this.master == null ) {
+                            this.master = RocksDB.open(this.options, this.getMasterFilePath());
+                        }
+                        if ( this.proto == null ) {
+                            this.proto = RocksDB.open(this.options, this.getFilePath());
+                        }
+                        return true;
+                    }
+                    
                     if (master.isClosed()) {
                         this.master = RocksDB.open(options, this.getMasterFilePath());
                     }
@@ -404,7 +441,7 @@ public class RocksDBStore extends AbstractItemStore {
                     return true;
                 }
                 
-                catch (RocksDBException ex) {
+                catch (RocksDBException | InterruptedException | IOException ex) {
                     return false;
                 }
             }

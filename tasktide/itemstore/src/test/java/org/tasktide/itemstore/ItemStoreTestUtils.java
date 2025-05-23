@@ -274,10 +274,10 @@ public class ItemStoreTestUtils {
      * Summarize processes through logger. Returning false if any failed
      * 
      * @param processList 
-     * @return boolean
+     * @return int
      */
-    public static boolean summarizeProcesses(List<Process> processList) {
-        boolean flag = true;
+    public static int summarizeProcesses(List<Process> processList) {
+        int nPassing = 0;
         for ( Process proc : processList ) {
             
             // Fetch stdout & stderr 
@@ -291,11 +291,11 @@ public class ItemStoreTestUtils {
             );
             
             // Set flag if failed
-            if ( proc.exitValue() != 0) {
-                flag=false;
+            if ( proc.exitValue() == 0) {
+                nPassing++;
             }
         }
-        return flag;
+        return nPassing;
     }
     
     
