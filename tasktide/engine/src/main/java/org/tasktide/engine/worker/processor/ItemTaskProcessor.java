@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutorService;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
 
@@ -34,7 +35,11 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
      * @param threshold
      * @param executorService
      */
-    public ItemTaskProcessor(List<ItemTask> workload, int threshold, ExecutorService executorService) {
+    public ItemTaskProcessor(
+        List<ItemTask> workload,
+        @ConfigProperty(name = "task-tide.engine.worker.processor.threshold.itemtask", defaultValue = "2") int threshold,
+        ExecutorService executorService
+    ) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new ItemTaskExecutor();
     }

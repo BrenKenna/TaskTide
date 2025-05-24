@@ -44,6 +44,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
         
         // Acknowledge task execution
         logger.info("Executing task on thread '{}':{}", Thread.currentThread().getName(), task.getTask());
+        this.observer.onTaskProcessing(task);
         TaskLogging taskLog = processExecutor.execute(task.getTask());
         task.setTaskLog(taskLog);
 

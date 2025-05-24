@@ -33,7 +33,7 @@ public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
     @Inject
     public TemplateWorkItemRepository(
         Template template,
-        @ConfigProperty(name = "task-tide.repository.nosql.collection.workitem.name", defaultValue = "WorkItem") String collectionName
+        @ConfigProperty(name = "task-tide.core.repository.nosql.collection.workitem.name", defaultValue = "WorkItem") String collectionName
     ) {
         super(template, WorkItem.class, collectionName);
     }

@@ -42,7 +42,12 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
      * @param logger
      */
     @Inject
-    public TaskTideProcessor(List<T> workload, int threshold, ExecutorService executorService, Logger logger) {
+    public TaskTideProcessor(
+        List<T> workload,
+        int threshold,
+        ExecutorService executorService,
+        Logger logger
+    ) {
         this.workload = workload;
         this.threshold = threshold;
         this.executorService = executorService;

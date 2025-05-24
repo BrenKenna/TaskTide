@@ -6,6 +6,7 @@ package org.tasktide.core.repository.rocksdb;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.collection.Step;
 
@@ -27,10 +28,13 @@ public class StepRocksRepository extends RocksDbRepository<Step> {
      * Construct {@link Step} repository with {@link ItemStore}
      * 
      * @param itemStore
-     * @throws Exception 
+     * @param collectionName
      */
     @Inject
-    public StepRocksRepository(ItemStore itemStore) throws Exception {
-        super(itemStore, Step.class);
+    public StepRocksRepository(
+       ItemStore itemStore,
+       @ConfigProperty(name = "task-tide.core.repository.rocksdb.collection.step.name", defaultValue = "Step") String collectionName
+    ) {
+        super(itemStore, Step.class, collectionName);
     }
 }

@@ -18,7 +18,6 @@ import java.util.Comparator;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 import org.tasktide.itemstore.Item;
 import org.tasktide.itemstore.ItemStore;
@@ -35,9 +34,9 @@ public abstract class AbstractItemStore implements ItemStore {
     
     // Attributes
     private final String storeName;
-    private final String dbDirectory;
-    private final String masterDB;
-    private final String protoDB;
+    private final Path dbDirectory;
+    private final Path masterDB;
+    private final Path protoDB;
     private final Path masterLock;
     private FileChannel fileChannel;
     private FileLock fileLock;
@@ -52,12 +51,17 @@ public abstract class AbstractItemStore implements ItemStore {
      * @param masterDB
      * @param protoDB 
      */
-    public AbstractItemStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
+    public AbstractItemStore(
+        String storeName,
+        String dbDirectory,
+        String masterDB,
+        String protoDB
+    ) {
         this.storeName = storeName;
-        this.dbDirectory = dbDirectory;
-        this.masterDB = masterDB;
-        this.protoDB = protoDB;
-        this.masterLock = Paths.get(this.masterDB + ".lock");
+        this.dbDirectory = Paths.get(dbDirectory);
+        this.masterDB = this.dbDirectory.resolve(masterDB);
+        this.protoDB = this.dbDirectory.resolve(protoDB);
+        this.masterLock = this.dbDirectory.resolve(masterDB + ".lock");
         this.fileChannel = null;
         this.fileLock = null;
         this.RANDOM = new Random();
@@ -82,7 +86,7 @@ public abstract class AbstractItemStore implements ItemStore {
      */
     @Override
     public String getMasterFilePath() {
-        return this.masterDB;
+        return this.masterDB.toString();
     }
 
     
@@ -93,7 +97,7 @@ public abstract class AbstractItemStore implements ItemStore {
      */
     @Override
     public String getFilePath() {
-        return this.protoDB;
+        return this.protoDB.toString();
     }
 
     
@@ -104,7 +108,7 @@ public abstract class AbstractItemStore implements ItemStore {
      */
     @Override
     public String getDbDirectory() {
-        return this.dbDirectory;
+        return this.dbDirectory.toString();
     }
 
     
@@ -270,7 +274,7 @@ public abstract class AbstractItemStore implements ItemStore {
     @Override
     public boolean cacheMaster() {
         try {
-            Files.copy(Paths.get(this.masterDB), Paths.get(this.protoDB), StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(this.masterDB, this.protoDB, StandardCopyOption.REPLACE_EXISTING);
             return true;
         }
         catch (IOException ex) {
@@ -287,7 +291,7 @@ public abstract class AbstractItemStore implements ItemStore {
     @Override
     public boolean clearPrototype() {
         try {
-            this.deleteRecursively( Paths.get(this.protoDB) );
+            this.deleteRecursively(this.protoDB);
             return true;
         } catch (IOException ex) {
             return false;

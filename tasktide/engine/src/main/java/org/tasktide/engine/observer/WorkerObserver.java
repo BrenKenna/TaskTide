@@ -23,35 +23,35 @@ public interface WorkerObserver<T extends TaskTideModel<T>> extends TaskTideWork
      * Defines action to take on starting task execution
      * 
      * @param task
-     * @return boolean
+     * @return public boolean
      */
-    boolean onTaskStart(T task);
+    public ObserverResult onTaskStart(T task);
     
     
     /**
      * Defines actions to take during processing
      * 
      * @param task
-     * @return boolean
+     * @return public boolean
      */
-    boolean onTaskProcessing(T task);
+    public ObserverResult onTaskProcessing(T task);
     
     
     /**
      * Defines action to take when task completes
      * 
      * @param task
-     * @return boolean
+     * @return public boolean
      */
-    boolean onTaskEnd(T task);
+    public ObserverResult onTaskEnd(T task);
     
     
     /**
      * Defines whether implementing observer is optional
      * 
-     * @return boolean
+     * @return public boolean
      */
-    boolean isOptional();
+    public boolean isOptional();
     
     
     /**
@@ -59,5 +59,13 @@ public interface WorkerObserver<T extends TaskTideModel<T>> extends TaskTideWork
      * 
      * @return {@link ObserverType}
      */
-    ObserverType getType();
+    public ObserverType getType();
+    
+    
+    /**
+     * Get observer name
+     * 
+     * @return String
+     */
+    public String getName();
 }

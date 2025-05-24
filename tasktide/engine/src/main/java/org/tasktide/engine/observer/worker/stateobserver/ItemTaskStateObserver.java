@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
+import org.tasktide.engine.observer.ObserverResult;
 
 import org.tasktide.engine.observer.worker.StateObserver;
 
@@ -57,15 +58,15 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      * @return boolean 
      */
     @Override
-    public boolean onTaskStart(ItemTask task) {
+    public ObserverResult onTaskStart(ItemTask task) {
         if ( task.getTaskState() == TaskState.PENDING ) {
             stateTracker.markTask(task.getId(), ExecutionState.PREPARE);
-            return true;
+            return ObserverResult.success();
         }
         else {
             stateTracker.markTask(task.getId(), ExecutionState.SKIPPED);
-            logger.warn("Skipping non pending ItemTask:\t'{}'", task.getId());
-            return false;
+            logger.warn("Skipping non pending ItemTask:\t'{}' with '{}'", task.getId(), task.getState());
+            return ObserverResult.failure(this);
         }
     }
     
@@ -77,10 +78,10 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      * @return boolean
      */
     @Override
-    public boolean onTaskProcessing(ItemTask task) {
+    public ObserverResult onTaskProcessing(ItemTask task) {
         stateTracker.markTask(task.getId(), ExecutionState.RUNNING);
         task.setTaskState(TaskState.ACTIVE);
-        return true;
+        return ObserverResult.success();
     }
     
     
@@ -91,11 +92,12 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      * @return boolean
      */
     @Override
-    public boolean onTaskEnd(ItemTask task) {
+    public ObserverResult onTaskEnd(ItemTask task) {
+        // System.out.println("\n\nItemTask Exit Code:\t" + task.getTaskLog().getExitCode() + "\n\n\n");
         if (task.getTaskLog().getExitCode() == 0) {
             task.setTaskState(TaskState.COMPLETE);
             stateTracker.markTask(task.getId(), ExecutionState.COMPLETED);
-            return true;
+            return ObserverResult.success();
         }
         
         // Otherwise acknowledge error
@@ -103,7 +105,18 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
             task.setTaskState(TaskState.ERROR);
             stateTracker.markTask(task.getId(), ExecutionState.FAILED);
             logger.warn("Execution failed forItemTask:\t'{}'", task.getId());
-            return false;
+            return ObserverResult.failure(this, true);
         }
+    }
+    
+    
+    /**
+     * Return observer name
+     * 
+     * @return 
+     */
+    @Override
+    public String getName() {
+        return this.getClass().getSimpleName();
     }
 }

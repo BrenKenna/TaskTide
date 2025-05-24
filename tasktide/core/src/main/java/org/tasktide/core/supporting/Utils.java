@@ -35,8 +35,8 @@ public class Utils {
      * @param expiration
      */
     public Utils(
-       @ConfigProperty(name = "task-tide.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
-       @ConfigProperty(name = "task-tide.expiration", defaultValue = "4") int expiration
+       @ConfigProperty(name = "task-tide.core.utils.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
+       @ConfigProperty(name = "task-tide.core.utils.expiration", defaultValue = "4") int expiration
     ) {
         this.rand = new Random();
         this.dateUtils = new DateUtility(dateFormat, expiration);

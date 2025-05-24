@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.observer.ObserverResult;
 
 import org.tasktide.engine.observer.worker.StateObserver;
 import org.tasktide.engine.worker.tasktracker.ExecutionState;
@@ -51,7 +52,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
      * @return boolean
      */
     @Override
-    public boolean onTaskStart(WorkItem task) {
+    public ObserverResult onTaskStart(WorkItem task) {
         
         // Check task is still available
         String taskId = task.getId();
@@ -60,15 +61,18 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             
             // Verify task is still available
             if ( verifyItem(task) ) {
-                stateTracker.markTask(taskId, ExecutionState.RUNNING);
-                return true;
+                stateTracker.markTask(taskId, ExecutionState.LOCKED);
+                return ObserverResult.success();
             }
             
-            // Mark as skipped if not running on another thread within JVM
+            // Mark task as skipped if nor running on another thread
             if ( !stateTracker.isRunning(taskId) ) {
                 stateTracker.markTask(task.getId(), ExecutionState.SKIPPED);
+                return ObserverResult.failure(this);
             }
-            return false;
+            
+            // Mark as skipped if running on another thread within JVM
+            return ObserverResult.failure(this);
         }
         
         // Skip task if not running on another thread within JVM
@@ -76,7 +80,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             if ( !stateTracker.isRunning(taskId) ) {
                 stateTracker.markTask(task.getId(), ExecutionState.SKIPPED);
             }
-            return false;
+            return ObserverResult.failure(this);
         }
     }
     
@@ -107,9 +111,9 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
      * @return 
      */
     @Override
-    public boolean onTaskProcessing(WorkItem task) {
+    public ObserverResult onTaskProcessing(WorkItem task) {
         stateTracker.markTask(task.getId(), ExecutionState.RUNNING);
-        return true;
+        return ObserverResult.success();
     }
 
     
@@ -120,7 +124,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
      * @return boolean
      */
     @Override
-    public boolean onTaskEnd(WorkItem task) {
+    public ObserverResult onTaskEnd(WorkItem task) {
         
         // Update task counts
         task.setTaskCounts();
@@ -131,7 +135,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             task.setItemState(ItemState.DONE);
             task.setDoneDate(doneTime);
             stateTracker.markTask(task.getId(), ExecutionState.COMPLETED);
-            return true;
+            return ObserverResult.success();
         }
         
         // Otherwise unlock work item
@@ -140,7 +144,18 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             task.setLockDate(0L);
             task.setLockId("");
             stateTracker.markTask(task.getId(), ExecutionState.ABORTED);
-            return false;
+            return ObserverResult.failure(this, true);
         }
+    }
+    
+    
+    /**
+     * Return observer name
+     * 
+     * @return 
+     */
+    @Override
+    public String getName() {
+        return this.getClass().getSimpleName();
     }
 }

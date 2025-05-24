@@ -5,6 +5,7 @@
 package org.tasktide.engine.observer.worker.timekeeper;
 
 import org.apache.logging.log4j.LogManager;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -25,7 +26,9 @@ public class ItemTaskTimeKeeper extends TimeKeeperObserver<ItemTask> {
      * 
      * @param maxTime 
      */
-    public ItemTaskTimeKeeper(long maxTime) {
+    public ItemTaskTimeKeeper(
+        @ConfigProperty(name = "task-tide.engine.observer.worker.timekeep.itemtask", defaultValue = "10000") long maxTime
+    ) {
         super(maxTime, LogManager.getLogger(WorkItemTimeKeeper.class));
     }
 
@@ -41,5 +44,16 @@ public class ItemTaskTimeKeeper extends TimeKeeperObserver<ItemTask> {
         if (!flag) {
             task.setTaskState(TaskState.TIME_KEEPER);
         }
+    }
+    
+    
+    /**
+     * Return observer name
+     * 
+     * @return 
+     */
+    @Override
+    public String getName() {
+        return this.getClass().getSimpleName();
     }
 }

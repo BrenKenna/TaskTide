@@ -14,12 +14,12 @@ import org.apache.logging.log4j.Logger;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.engine.observer.ObserverResult;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 
 import org.tasktide.engine.worker.TaskTideWorkerUnit;
  
+
 /**
  * Abstract class to handle the nuances of workload execution
  * 
@@ -64,8 +64,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
             synchronized(task) {
             
                 // Verify task before execution
-                ObserverResult result = observer.onTaskStart(task);
-                if ( result.isSuccess() ) {
+                if ( observer.onTaskStart(task) ) {
                     try {
                         
                         // Execute work of task, evaluating output
@@ -97,8 +96,8 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
                 // Otherwise skip task
                 else {
                     logger.warn(
-                  "Warning, skipping task failing '{}' Observer '{}' on WorkItem:\t'{}'", 
-                     result.getType(), result.getFailedObserver(), task.getId()
+                  "Warning, skipping task failing Observer checks for WorkItem:\t'{}'", 
+                     task.getId()
                     );
                     skipped++;
                 }

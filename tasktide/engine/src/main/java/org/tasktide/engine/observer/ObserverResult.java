@@ -83,6 +83,16 @@ public class ObserverResult {
     
     
     /**
+     * Return whether failure can be ignored
+     * 
+     * @return boolean
+     */
+    public boolean canIgnore() {
+        return this.canIgnore;
+    }
+    
+    
+    /**
      * Create successful observer result
      * 
      * @return ObserverResult 

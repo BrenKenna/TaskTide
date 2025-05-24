@@ -26,7 +26,7 @@ public interface TaskTideEngineObserver<T extends TaskTideModel<T>> extends Task
      * @param task
      * @return {@link ObserverResult}
      */
-    public ObserverResult onTaskStart(T task);
+    public boolean onTaskStart(T task);
     
     
     /**
@@ -35,7 +35,7 @@ public interface TaskTideEngineObserver<T extends TaskTideModel<T>> extends Task
      * @param task
      * @return {@link ObserverResult}
      */
-    public ObserverResult onTaskProcessing(T task);
+    public boolean onTaskProcessing(T task);
     
     
     /**
@@ -44,5 +44,5 @@ public interface TaskTideEngineObserver<T extends TaskTideModel<T>> extends Task
      * @param task
      * @return {@link ObserverResult}
      */
-    public ObserverResult onTaskEnd(T task);
+    public boolean onTaskEnd(T task);
 }

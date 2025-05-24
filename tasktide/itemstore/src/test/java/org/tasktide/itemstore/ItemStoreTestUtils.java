@@ -131,8 +131,8 @@ public class ItemStoreTestUtils {
      */
     public static RocksDBStore makeRocksDB(String storeName, Path workDir) {
         String dbDirectory = workDir.toString();
-        String masterDB = dbDirectory + "/" + "master";
-        String protoDB = dbDirectory + "/" + UUID.randomUUID().toString();
+        String masterDB = "master";
+        String protoDB = UUID.randomUUID().toString();
         try {
             RocksDBStore itemStore = new RocksDBStore(storeName, dbDirectory, masterDB, protoDB);
             return itemStore;

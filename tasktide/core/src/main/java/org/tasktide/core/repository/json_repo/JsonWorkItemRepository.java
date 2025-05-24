@@ -32,7 +32,7 @@ public class JsonWorkItemRepository extends JsonRepository<WorkItem> {
     @Inject
     public JsonWorkItemRepository(
         List<WorkItem> modelCollection,
-        @ConfigProperty(name = "task-tide.repository.json.collection.workitem.name", defaultValue = "WorkItem-Data") String collectionName
+        @ConfigProperty(name = "task-tide.core.repository.json.collection.workitem.name", defaultValue = "WorkItem") String collectionName
     ) {
         super(modelCollection, WorkItem.class, collectionName);
     }

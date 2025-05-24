@@ -16,6 +16,7 @@ import java.util.List;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.observer.ObserverResult;
 
 
 
@@ -82,7 +83,7 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
      * @return boolean
      */
     @Override
-    public boolean onTaskStart(T task) {
+    public ObserverResult onTaskStart(T task) {
         
         // Current time in milliseconds
         long start = startTime.get();
@@ -92,7 +93,14 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
         // Evaluate starting task
         boolean eval = evaluateStart(task, now, start, elapsed);
         logger.info("TimeKeeper evaluated time left for processing as '{}' for ItemTask:\t'{}'", eval, task.getId());
-        return eval;
+        
+        // Return result
+        if ( eval ) {
+            return ObserverResult.success();
+        }
+        else {
+            return ObserverResult.failure(this);
+        }
     }
     
     
@@ -103,7 +111,7 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
      * @return boolean
      */
     @Override
-    public boolean onTaskEnd(T task) {
+    public ObserverResult onTaskEnd(T task) {
     
         // Measure processing time
         logger.info("Measuring the elapsed time of task '{}',", task.getId());
@@ -115,7 +123,14 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
         boolean eval = evaluateDuration(now, duration);
         updateAbortFlag(eval);
         logger.info("TimeKeeper evaluated time left next '{}' with ItemTask:\t'{}'", eval, task.getId());
-        return eval;
+        
+        // Return result
+        if ( eval ) {
+            return ObserverResult.success();
+        }
+        else {
+            return ObserverResult.failure(this);
+        }
     }
     
     
@@ -126,8 +141,8 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
      * @return boolean
      */
     @Override
-    public boolean onTaskProcessing(T task) {
-        return true;
+    public ObserverResult onTaskProcessing(T task) {
+        return ObserverResult.success();
     }
     
     

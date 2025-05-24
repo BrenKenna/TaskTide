@@ -81,7 +81,7 @@ public class ItemTaskTimeKeeperTests {
         
         // Evalute first run
         logger.info("Evaluating first run");
-        if ( timeKeeper.onTaskStart(task) ) {
+        if ( timeKeeper.onTaskStart(task).isSuccess() ) {
             logger.info("Configuration successful");
             passCount++;
         }
@@ -92,7 +92,7 @@ public class ItemTaskTimeKeeperTests {
         // Test on start actions
         logger.info("Letting time elapse for evaluating enough time for re-running the same task");
         EngineTestUtils.wait(20000, logger);
-        if ( !timeKeeper.onTaskStart(task) ) {
+        if ( !timeKeeper.onTaskStart(task).isSuccess() ) {
             logger.info("Measuring time elapsed successful");
             passCount++;
         }
@@ -129,7 +129,7 @@ public class ItemTaskTimeKeeperTests {
             }
 
         };
-        assertionState = timeKeeper.onTaskEnd(task);
+        assertionState = timeKeeper.onTaskEnd(task).isSuccess();
         
         // End test
         assertFalse(assertionState, "Not all tests passed ");

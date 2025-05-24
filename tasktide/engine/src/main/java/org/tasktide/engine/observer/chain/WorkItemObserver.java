@@ -5,10 +5,12 @@
 package org.tasktide.engine.observer.chain;
 
 import java.util.List;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.ObserverChain;
+import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.observer.WorkerObserver;
 
 import org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver;
@@ -48,7 +50,11 @@ public class WorkItemObserver extends ObserverChain<WorkItem> {
      * @param workload
      * @param maxTime
      */
-    public WorkItemObserver(TaskTracker tracker, List<WorkItem> workload, int maxTime) {
+    public WorkItemObserver(
+        TaskTracker tracker,
+        List<WorkItem> workload,
+        @ConfigProperty(name="task-tide.engine.observer.worker.timekeeper.workitem", defaultValue="100000") int maxTime
+    ) {
         super(
             List.of(
                 new WorkItemStateObserver(tracker, workload),

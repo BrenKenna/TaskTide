@@ -49,7 +49,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     @Inject
     public WorkItemService(
         TaskTideRepository<WorkItem> repo,
-        @ConfigProperty(name = "task-tide.model.workitem.locking-wait-time", defaultValue = "4") int lockingWaitTime
+        @ConfigProperty(name = "task-tide.service.workitem.locking-wait-time", defaultValue = "4") int lockingWaitTime
     ) {
         this.repo = repo;
         this.LOCKING_WAIT_TIME = lockingWaitTime;

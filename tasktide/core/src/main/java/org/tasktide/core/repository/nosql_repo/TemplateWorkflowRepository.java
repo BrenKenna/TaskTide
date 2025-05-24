@@ -31,7 +31,7 @@ public class TemplateWorkflowRepository extends TemplateRepository<Workflow> {
      */
     @Inject
     public TemplateWorkflowRepository(Template template,
-        @ConfigProperty(name = "task-tide.repository.nosql.collection.workflow.name", defaultValue = "Workflow") String collectionName
+        @ConfigProperty(name = "task-tide.core.repository.nosql.collection.workflow.name", defaultValue = "Workflow") String collectionName
     ) {
         super(template, Workflow.class, collectionName);
     }

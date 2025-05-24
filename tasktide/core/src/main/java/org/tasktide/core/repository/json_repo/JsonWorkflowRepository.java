@@ -30,7 +30,7 @@ public class JsonWorkflowRepository extends JsonRepository<Workflow> {
     @Inject
     public JsonWorkflowRepository(
         List<Workflow> modelCollection,
-        @ConfigProperty(name = "task-tide.repository.json.collection.workflow.name", defaultValue = "Workflow-Data") String collectionName
+        @ConfigProperty(name = "task-tide.core.repository.json.collection.workflow.name", defaultValue = "Workflow") String collectionName
     ) {
         super(modelCollection, Workflow.class, collectionName);
     }

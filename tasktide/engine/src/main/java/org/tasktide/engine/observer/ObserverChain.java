@@ -41,13 +41,17 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
      * @return {@link ObserverResult}
      */
     @Override
-    public ObserverResult onTaskStart(T task) {
+    public boolean onTaskStart(T task) {
         for ( WorkerObserver<T> obs : this.observers ) {
-            if ( !obs.onTaskStart(task) ) {
-                return ObserverResult.failure(obs);
+            ObserverResult result = obs.onTaskStart(task);
+            if ( !result.isSuccess() && !result.getType().isOptional() ) {
+                if ( !result.canIgnore() ) {
+                    // System.out.println("\n\nnObserver failing out onTaskStart for '" + obs.getClass().getSimpleName() + "':\n" + task.toJson() + "\n\n");
+                    return false;
+                }
             }
         }
-        return ObserverResult.success();
+        return true;
     }
 
 
@@ -59,15 +63,17 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
      * @return {@link ObserverResult}
      */
     @Override
-    public ObserverResult onTaskProcessing(T task) {
+    public boolean onTaskProcessing(T task) {
         for ( WorkerObserver<T> obs : this.observers ) {
-            if ( !obs.onTaskProcessing(task) ) {
-                if ( !obs.getClass().getSimpleName().equals("WorkItemExecutor")) {
-                    return ObserverResult.failure(obs);
+            ObserverResult result = obs.onTaskProcessing(task);
+            if ( !result.isSuccess() && !result.getType().isOptional() ) {
+                if ( !result.canIgnore() ) {
+                    // System.out.println("\n\nnObserver failing out onTaskProcessing for '" + obs.getClass().getSimpleName() + "':\n" + task.toJson() + "\n\n");
+                    return false;
                 }
             }
         }
-        return ObserverResult.success();
+        return true;
     }
 
 
@@ -79,12 +85,16 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
      * @return {@link ObserverResult}
      */
     @Override
-    public ObserverResult onTaskEnd(T task) {
+    public boolean onTaskEnd(T task) {
         for ( WorkerObserver<T> obs : this.observers ) {
-            if ( !obs.onTaskEnd(task) ) {
-                return ObserverResult.failure(obs);
+            ObserverResult result = obs.onTaskEnd(task);
+            if ( !result.isSuccess() && !result.getType().isOptional() ) {
+                if ( !result.canIgnore() ) {
+                    // System.out.println("\n\nnObserver failing out onTaskEnd for '" + obs.getClass().getSimpleName() + "':\n" + task.toJson() + "\n\n");
+                    return false;
+                }
             }
         }
-        return ObserverResult.success();
+        return true;
     }
 }

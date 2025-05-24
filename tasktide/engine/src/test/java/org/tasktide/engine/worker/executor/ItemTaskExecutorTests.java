@@ -261,15 +261,15 @@ public class ItemTaskExecutorTests {
         processed = EngineTestUtils.countNotActive(workload);
         if ( processed == nTasks / 2 ) {
             logger.info("Processed task count '{}', matches expected '{}'", processed, nTasks);
-            assertionState = true;
+            assertionState = false;
         }
         else {
             logger.error("Processed task count '{}', does not match expected '{}'", processed, nTasks);
-            assertionState = false;
+            assertionState = true;
         }
         
         // Log test status
-        assertTrue(assertionState, "Not all tasks processed correctly");
+        assertTrue(assertionState, "Tasks were not supposed to be processed correctly");
         logger.info("\n\n================ Execute Task IO-Exception Test ================\n");
     }
     

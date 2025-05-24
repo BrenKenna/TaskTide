@@ -46,6 +46,23 @@ public enum ExecutionState {
         }
     },
     
+    LOCKED {
+        @Override
+        public boolean isState(String query) {
+            return "locked".equals( query.toLowerCase() );
+        }
+
+        @Override
+        public boolean isState(ExecutionState query) {
+            return LOCKED == query;
+        }
+
+        @Override
+        public String toString() {
+            return "Locked";
+        }
+    },
+    
     RUNNING {
         @Override
         public boolean isState(String query) {

@@ -30,6 +30,7 @@ import org.tasktide.itemstore.stores.DbTarget;
 public abstract class RocksDbRepository<T extends TaskTideModel> implements TaskTideRepository<T> {
 
     // Attributes
+    private final String collectionName;
     private final Class<T> modelClass;
     private final ItemStore repo;
     private final Jsonb JSON_BUILDER = JsonbBuilder.create();
@@ -40,13 +41,12 @@ public abstract class RocksDbRepository<T extends TaskTideModel> implements Task
      * 
      * @param itemStore
      * @param modelClass 
-     * @throws java.lang.Exception 
+     * @param collectionName 
      */
-    public RocksDbRepository(ItemStore itemStore, Class<T> modelClass) throws Exception {
+    public RocksDbRepository(ItemStore itemStore, Class<T> modelClass, String collectionName) {
         this.modelClass = modelClass;
         this.repo = itemStore;
-        repo.openConn(DbTarget.BOTH);
-        repo.cacheMaster();
+        this.collectionName = collectionName;
     }
     
     
@@ -261,5 +261,15 @@ public abstract class RocksDbRepository<T extends TaskTideModel> implements Task
         catch ( Exception ex ) {
             return false;
         }
+    }
+    
+    
+    /**
+     * Return collection name
+     * 
+     * @return String
+     */
+    public String getCollectionName() {
+        return this.collectionName;
     }
 }

@@ -31,7 +31,7 @@ public class TemplateStepRepository extends TemplateRepository<Step> {
      */
     @Inject
     public TemplateStepRepository(Template template,
-       @ConfigProperty(name = "task-tide.repository.nosql.collection.step.name", defaultValue = "Step") String collectionName
+       @ConfigProperty(name = "task-tide.core.repository.nosql.collection.step.name", defaultValue = "Step") String collectionName
     ) {
         super(template, Step.class, collectionName);
     }

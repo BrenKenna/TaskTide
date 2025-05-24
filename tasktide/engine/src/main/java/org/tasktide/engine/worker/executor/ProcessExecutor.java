@@ -41,8 +41,8 @@ public class ProcessExecutor {
      * @param expiration 
      */
     public ProcessExecutor(
-       @ConfigProperty(name = "task-tide.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
-       @ConfigProperty(name = "task-tide.expiration", defaultValue = "2") int expiration
+       @ConfigProperty(name = "task-tide.core.utils.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
+       @ConfigProperty(name = "task-tide.core.utils.expiration", defaultValue = "2") int expiration
     ) {
         this.dateUtils = new DateUtility(dateFormat, expiration);
     }

@@ -31,7 +31,7 @@ public class JsonStepRepository extends JsonRepository<Step> {
     @Inject
     public JsonStepRepository(
         List<Step> modelCollection,
-        @ConfigProperty(name = "task-tide.repository.json.collection.step.name", defaultValue = "Step-Data") String collectionName
+        @ConfigProperty(name = "task-tide.core.repository.json.collection.step.name", defaultValue = "Step-Data") String collectionName
     ) {
         super(modelCollection, Step.class, collectionName);
     }

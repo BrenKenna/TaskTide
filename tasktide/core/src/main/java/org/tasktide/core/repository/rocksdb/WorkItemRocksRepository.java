@@ -6,6 +6,7 @@ package org.tasktide.core.repository.rocksdb;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RocksDbRepository;
@@ -26,10 +27,13 @@ public class WorkItemRocksRepository extends RocksDbRepository<WorkItem> {
      * Construct {@link WorkItem} repository with {@link ItemStore}
      * 
      * @param itemStore
-     * @throws Exception 
+     * @param collectionName
      */
     @Inject
-    public WorkItemRocksRepository(ItemStore itemStore) throws Exception {
-        super(itemStore, WorkItem.class);
+    public WorkItemRocksRepository(
+       ItemStore itemStore,
+       @ConfigProperty(name = "task-tide.core.repository.rocksdb.collection.workitem.name", defaultValue = "WorkItem") String collectionName
+    ) {
+        super(itemStore, WorkItem.class, collectionName);
     }
 }

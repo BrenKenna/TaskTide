@@ -13,6 +13,7 @@ import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.engine.observer.ObserverResult;
 
 import org.tasktide.engine.observer.worker.ExecutorObserver;
 
@@ -40,8 +41,13 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
      * @param task 
      */
     @Override
-    public boolean onTaskProcessing(WorkItem task) {
-        return this.pollUntilDone(task);
+    public ObserverResult onTaskProcessing(WorkItem task) {
+        if ( this.pollUntilDone(task) ) {
+            return ObserverResult.success();
+        }
+        else {
+            return ObserverResult.failure(this, true);
+        }
     }
 
     
@@ -51,14 +57,19 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
      * @param task 
      */
     @Override
-    public boolean onTaskEnd(WorkItem task) {
+    public ObserverResult onTaskEnd(WorkItem task) {
         
         // Handle unlocks
         int unlocked = this.handleUnlocks(task);
         logger.info("Unlocked N = '{}' sub tasks for WorkItem:\t'{}'", unlocked, task.getId());
         
         // Return whether completed
-        return task.getTaskCount() == task.getTaskDone();
+        if ( task.getTaskCount() == task.getTaskDone() ) {
+            return ObserverResult.success();
+        }
+        else {
+            return ObserverResult.failure(this, true);
+        }
     }
     
     
@@ -138,15 +149,26 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
      * @return boolean
      */
     @Override
-    public boolean onTaskStart(WorkItem task) {
+    public ObserverResult onTaskStart(WorkItem task) {
     
         // Log warning and flag no open tasks
         if ( task.fetchByStates().get(ItemState.TODO).isEmpty() ) {
             logger.warn("Warning, no open tasks detected for WorkItem:\t'{}'", task.getId());
-            return false;
+            return ObserverResult.failure(this, false);
         }
 
         // Return open tasks flag
-        return true;
+        return ObserverResult.success();
+    }
+    
+    
+    /**
+     * Return observer name
+     * 
+     * @return 
+     */
+    @Override
+    public String getName() {
+        return this.getClass().getSimpleName();
     }
 }
