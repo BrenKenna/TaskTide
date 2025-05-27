@@ -31,6 +31,16 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
 
     
     /**
+     * Construct with {@link}
+     * 
+     * @param observer 
+     */
+    public ItemTaskExecutor(ItemTaskObserver observer) {
+        super(observer, LogManager.getLogger(ItemTaskExecutor.class));
+    }
+    
+    
+    /**
      * Execute the work of a {@link ItemTask}
      * 
      * @param task

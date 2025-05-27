@@ -15,7 +15,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.engine.observer.ObserverResult;
+import org.tasktide.engine.observer.TaskTideEngineObserver;
 
 import org.tasktide.engine.observer.chain.WorkItemObserver;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
@@ -31,6 +31,8 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
 
     // Attributes
     private final int nThreads, taskThreshold;
+    private TaskTideProcessor<ItemTask> subProcessor;
+    private TaskTideEngineObserver<ItemTask> subObserver;
     
     
     /**
@@ -38,7 +40,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
      * 
      */
     public WorkItemExecutor() {
-        super(new WorkItemObserver(), LogManager.getLogger(ItemTaskExecutor.class));
+        super(new WorkItemObserver(), LogManager.getLogger(WorkItemExecutor.class));
         this.nThreads = 4;
         this.taskThreshold = 2;
     }
@@ -54,9 +56,54 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
         @ConfigProperty(name="task-tide.engine.worker.processor.thread-count.itemtask", defaultValue="2") int nThreads,
         @ConfigProperty(name="task-tide.engine.worker.processor.task-size-threshold.itemtask", defaultValue="2") int taskThrehold
     ) {
-        super(new WorkItemObserver(), LogManager.getLogger(ItemTaskExecutor.class));
+        super(new WorkItemObserver(), LogManager.getLogger(WorkItemExecutor.class));
         this.nThreads = nThreads;
         this.taskThreshold = taskThrehold;
+    }
+    
+    
+    /**
+     * 
+     * @param nThreads
+     * @param taskThrehold
+     * @param subProcessor
+     * @param subObserver 
+     */
+    public WorkItemExecutor(
+        @ConfigProperty(name="task-tide.engine.worker.processor.thread-count.itemtask", defaultValue="2") int nThreads,
+        @ConfigProperty(name="task-tide.engine.worker.processor.task-size-threshold.itemtask", defaultValue="2") int taskThrehold,
+        TaskTideProcessor<ItemTask> subProcessor,
+        TaskTideEngineObserver<ItemTask> subObserver
+    ) {
+        super(new WorkItemObserver(), LogManager.getLogger(WorkItemExecutor.class));
+        this.nThreads = nThreads;
+        this.taskThreshold = taskThrehold;
+        this.subProcessor = subProcessor;
+        this.subObserver = subObserver;
+    }
+    
+    
+    /**
+     * Construct with all arguments
+     * 
+     * @param workItemObserver
+     * @param nThreads
+     * @param taskThrehold
+     * @param subProcessor
+     * @param subObserver 
+     */
+    public WorkItemExecutor(
+        TaskTideEngineObserver<WorkItem> workItemObserver,
+        @ConfigProperty(name="task-tide.engine.worker.processor.thread-count.itemtask", defaultValue="2") int nThreads,
+        @ConfigProperty(name="task-tide.engine.worker.processor.task-size-threshold.itemtask", defaultValue="2") int taskThrehold,
+        TaskTideProcessor<ItemTask> subProcessor,
+        TaskTideEngineObserver<ItemTask> subObserver
+    ) {
+        super(workItemObserver, LogManager.getLogger(WorkItemExecutor.class));
+        this.nThreads = nThreads;
+        this.taskThreshold = taskThrehold;
+        this.subProcessor = subProcessor;
+        this.subObserver = subObserver;
     }
     
     
@@ -75,16 +122,14 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     protected boolean executeTask(WorkItem task) throws IOException, InterruptedException {
         
         // Configure ItemTaskProcessor
-        ObserverResult result;
         logger.info(
       "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
          task.getTaskCount(), Thread.currentThread().getName(), task.getId()
         );
-        TaskTideProcessor<ItemTask> itemTaskProcessor = this.provideProcessor(task);
             
         // Execute workload of processor
         logger.info("Processor configured, processing workload for WorkItem:\t'{}'", task.getId());
-        itemTaskProcessor.execute();
+        this.subProcessor.execute();
             
         // Leave work item observer periodically summarize states until done
         logger.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
@@ -119,7 +164,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
         
         // Fetch required components
         List<ItemTask> toDo = task.fetchByStates().get(ItemState.TODO);
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        ExecutorService executorService = Executors.newFixedThreadPool(this.nThreads);
         
         // Construct sub processor
         TaskTideProcessor<ItemTask> itemTaskProcessor = new ItemTaskProcessor(toDo, 2, executorService);

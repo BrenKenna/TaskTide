@@ -43,6 +43,25 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new ItemTaskExecutor();
     }
+    
+    
+    /**
+     * Construct with all attributes
+     * 
+     * @param workload
+     * @param threshold
+     * @param executorService
+     * @param executor 
+     */
+    public ItemTaskProcessor(
+        List<ItemTask> workload,
+        @ConfigProperty(name = "task-tide.engine.worker.processor.threshold.itemtask", defaultValue = "2") int threshold,
+        ExecutorService executorService,
+        TaskTideExecutor<ItemTask> executor
+    ) {
+        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
+        this.worker = (ItemTaskExecutor) executor;
+    }
 
     
     /**

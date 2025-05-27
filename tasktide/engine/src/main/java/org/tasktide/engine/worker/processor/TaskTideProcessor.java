@@ -25,7 +25,6 @@ import org.tasktide.engine.worker.TaskTideWorkerUnit;
  */
 public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements TaskTideWorkerUnit<T> {
     
-    
     // Attributes
     private final List<T> workload;
     protected final Logger logger;

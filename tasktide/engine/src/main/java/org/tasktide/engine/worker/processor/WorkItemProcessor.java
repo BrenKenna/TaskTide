@@ -23,7 +23,6 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
  */
 public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     
-    
     // Attributes
     private final WorkItemExecutor worker;
     
@@ -42,6 +41,25 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     ) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new WorkItemExecutor();
+    }
+    
+    
+    /**
+     * Construct with all attributes
+     * 
+     * @param workload
+     * @param threshold
+     * @param executorService
+     * @param executor 
+     */
+    public WorkItemProcessor(
+        List<WorkItem> workload,
+        @ConfigProperty(name = "task-tide.engine.worker.processor.threshold.workitem", defaultValue = "2") int threshold,
+        ExecutorService executorService,
+        TaskTideExecutor<WorkItem> executor
+    ) {
+        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
+        this.worker = (WorkItemExecutor) executor;
     }
     
 

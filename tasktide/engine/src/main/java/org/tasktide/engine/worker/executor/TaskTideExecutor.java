@@ -28,7 +28,6 @@ import org.tasktide.engine.worker.TaskTideWorkerUnit;
  */
 public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements TaskTideWorkerUnit<T> {
     
-    
     // Attributes 
     protected final Logger logger;
     protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
