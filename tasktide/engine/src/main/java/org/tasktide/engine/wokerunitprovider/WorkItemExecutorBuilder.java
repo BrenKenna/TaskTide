@@ -13,11 +13,8 @@ import org.tasktide.engine.observer.chain.WorkItemObserver;
 
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
-import org.tasktide.engine.worker.processor.ItemTaskProcessor;
 
 import org.tasktide.engine.tasktracker.TaskTracker;
-
-import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
 
 
 /**

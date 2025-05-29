@@ -60,8 +60,8 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
         
         // Process iteratively
         if ( this.workload.size() < this.threshold ) {
-            logger.info("Processing tasks of workload thread:\t" + Thread.currentThread().getName() );
-            getExecutor().runTasks(workload); // <- Could start the TimeKeepr here
+            logger.info("Processing tasks of workload thread:\t'{}'", Thread.currentThread().getName() );
+            getExecutor().runTasks(workload);
         }
         
         // Recursively chunk and process

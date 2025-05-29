@@ -7,19 +7,20 @@ package org.tasktide.engine.worker.executor;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.apache.logging.log4j.LogManager;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.engine.observer.TaskTideEngineObserver;
 
+import org.tasktide.engine.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.TaskTideWorkerUnitProvider;
+
+import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.observer.chain.WorkItemObserver;
+
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
-import org.tasktide.engine.worker.processor.ItemTaskProcessor;
 
 
 /**
@@ -31,6 +32,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
 
     // Attributes
     private final int nThreads, taskThreshold;
+    private final TaskTideWorkerUnitProvider unitProvider;
     
     
     /**
@@ -41,6 +43,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
         super(new WorkItemObserver(), LogManager.getLogger(WorkItemExecutor.class));
         this.nThreads = 4;
         this.taskThreshold = 2;
+        this.unitProvider = new TaskTideWorkerUnitProvider();
     }
     
     
@@ -50,13 +53,11 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
      * @param nThreads
      * @param taskThrehold 
      */
-    public WorkItemExecutor(
-        @ConfigProperty(name="task-tide.engine.worker.processor.thread-count.itemtask", defaultValue="2") int nThreads,
-        @ConfigProperty(name="task-tide.engine.worker.processor.task-size-threshold.itemtask", defaultValue="2") int taskThrehold
-    ) {
+    public WorkItemExecutor(int nThreads, int taskThrehold) {
         super(new WorkItemObserver(), LogManager.getLogger(WorkItemExecutor.class));
         this.nThreads = nThreads;
         this.taskThreshold = taskThrehold;
+        this.unitProvider = new TaskTideWorkerUnitProvider();
     }
     
     
@@ -68,14 +69,11 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
      * @param nThreads
      * @param taskThrehold
      */
-    public WorkItemExecutor(
-        TaskTideEngineObserver<WorkItem> observer,
-        @ConfigProperty(name="task-tide.engine.worker.processor.thread-count.itemtask", defaultValue="2") int nThreads,
-        @ConfigProperty(name="task-tide.engine.worker.processor.task-size-threshold.itemtask", defaultValue="2") int taskThrehold
-    ) {
+    public WorkItemExecutor( TaskTideEngineObserver<WorkItem> observer, int nThreads, int taskThrehold) {
         super(observer, LogManager.getLogger(WorkItemExecutor.class));
         this.nThreads = nThreads;
         this.taskThreshold = taskThrehold;
+        this.unitProvider = new TaskTideWorkerUnitProvider();
     }
     
     
@@ -110,7 +108,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
         // Evaluate task processing
         if ( this.observer.onTaskProcessing(task) ) {
             logger.info(
-          "Task processing complete on WorkItem:\t{}",
+          "Task processing complete on WorkItem:\t'{}'",
              task.getId()
             );
             return true;
@@ -135,15 +133,24 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
      */
     public TaskTideProcessor<ItemTask> provideProcessor(WorkItem task) {
         
+        // Initialize required variables
+        TaskTideProcessor<ItemTask> processor;
+        List<ItemTask> toDo;
+        ExecutorService executorService;
+        
         // Fetch required components
-        List<ItemTask> toDo = task.fetchByStates().get(ItemState.TODO);
-        ExecutorService executorService = Executors.newFixedThreadPool(this.nThreads);
+        toDo = task.fetchByStates().get(ItemState.TODO);
+        executorService = TaskTideExecutorServiceProvider.itemTaskExecutorService(); // Maybe configure it not
         
         // Construct sub processor
-        TaskTideProcessor<ItemTask> itemTaskProcessor = new ItemTaskProcessor(toDo, 2, executorService);
+        processor = unitProvider.getItemTaskProcBuilder()
+            .withWorkload(toDo)
+            .withExecutorService(executorService)
+            .withThreshold(taskThreshold)
+        .build();
         
        // Return processor
-       return itemTaskProcessor;
+       return processor;
     }
 
     

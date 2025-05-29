@@ -11,7 +11,6 @@ import java.util.List;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.engine.observer.TaskTideEngineObserver;
 
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
@@ -35,11 +34,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
      * @param threshold
      * @param executorService 
      */
-    public WorkItemProcessor(
-        List<WorkItem> workload,
-        @ConfigProperty(name = "task-tide.engine.worker.processor.threshold.workitem", defaultValue = "2") int threshold,
-        ExecutorService executorService
-    ) {
+    public WorkItemProcessor(List<WorkItem> workload, int threshold, ExecutorService executorService) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new WorkItemExecutor();
     }
@@ -55,7 +50,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
      */
     public WorkItemProcessor(
         List<WorkItem> workload,
-        @ConfigProperty(name = "task-tide.engine.worker.processor.threshold.workitem", defaultValue = "2") int threshold,
+        int threshold,
         ExecutorService executorService,
         TaskTideExecutor<WorkItem> executor
     ) {
