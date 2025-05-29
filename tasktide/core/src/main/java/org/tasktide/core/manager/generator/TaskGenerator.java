@@ -102,7 +102,6 @@ public class TaskGenerator {
      */
     public static WorkItem generateExampleWorkItem(ExampleGenerators taskType, int nTasks) {
         Workload workload = BuilderUtility.buildWorkload(generateItemTasks(taskType, nTasks));
-        System.out.println(workload.toJsonDoc());
         WorkItem output = BuilderUtility.buildWorkItem(taskType.toString(), workload, taskType.name());
         output.setLockId("asdfg");
         return output;

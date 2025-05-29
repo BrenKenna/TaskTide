@@ -15,7 +15,7 @@ import org.tasktide.engine.observer.WorkerObserver;
 
 import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
 import org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver;
-import org.tasktide.engine.worker.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.TaskTracker;
 
 
 /**
@@ -35,6 +35,25 @@ public class ItemTaskObserver extends ObserverChain<ItemTask> {
      List.of(
                 new ItemTaskStateObserver( new TaskTracker() ),
                 new ItemTaskTimeKeeper(100000)
+            )
+        );
+    }
+    
+    
+    /**
+     * Construct with required arguments
+     * 
+     * @param tracker
+     * @param maxTime
+     */
+    public ItemTaskObserver(
+        TaskTracker tracker,
+        @ConfigProperty(name="task-tide.engine.observer.worker.timekeeper.itemtask", defaultValue="100000") int maxTime
+    ) {
+        super(
+            List.of(
+                new ItemTaskStateObserver(tracker),
+                new ItemTaskTimeKeeper(maxTime)
             )
         );
     }

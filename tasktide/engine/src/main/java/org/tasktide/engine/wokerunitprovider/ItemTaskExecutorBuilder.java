@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.worker.executor.builders;
+package org.tasktide.engine.wokerunitprovider;
 
-import org.tasktide.engine.observer.builders.ItemTaskObserverBuilder;
+import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
 import java.util.List;
 
 import org.tasktide.core.model.task.ItemTask;
@@ -15,7 +15,7 @@ import org.tasktide.engine.observer.chain.ItemTaskObserver;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 
-import org.tasktide.engine.worker.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.TaskTracker;
 
 
 /**
@@ -51,6 +51,42 @@ public class ItemTaskExecutorBuilder {
         .build();
         
         // Return builder
+        return this;
+    }
+    
+    
+    /**
+     * Build observer without workload
+     * 
+     * @param taskTracker
+     * @param maxTime
+     * @return {@link ItemTaskExecutorBuilder} for {@link TaskTideEngineObserver} of {@link ItemTask} 
+     */
+    public ItemTaskExecutorBuilder withObserver(TaskTracker taskTracker, int maxTime) {
+    
+        // Set required vars
+        ItemTaskObserverBuilder obsBuilder;
+        
+        // Build observer
+        obsBuilder = new ItemTaskObserverBuilder();
+        this.itemTaskObserver = obsBuilder
+            .withTaskTracker(taskTracker)
+            .withMaxTime(maxTime)
+        .build();
+        
+        // Return builder
+        return this;
+    }
+    
+    
+    /**
+     * Build with provided {@link TaskTideEngineObserver} of {@link ItemTask}
+     * 
+     * @param observer
+     * @return {@link ItemTaskExecutorBuilder} for {@link TaskTideEngineObserver} of {@link ItemTask}
+     */
+    public ItemTaskExecutorBuilder withObserver(TaskTideEngineObserver<ItemTask> observer) {
+        this.itemTaskObserver = observer;
         return this;
     }
     

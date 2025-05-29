@@ -31,8 +31,6 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
 
     // Attributes
     private final int nThreads, taskThreshold;
-    private TaskTideProcessor<ItemTask> subProcessor;
-    private TaskTideEngineObserver<ItemTask> subObserver;
     
     
     /**
@@ -63,47 +61,21 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     
     
     /**
+     * Construct with {@link TaskTideEngineObserver} for {@link WorkItem} and 
+     *     parallelism for {@link ItemTask} processing
      * 
+     * @param observer
      * @param nThreads
      * @param taskThrehold
-     * @param subProcessor
-     * @param subObserver 
      */
     public WorkItemExecutor(
+        TaskTideEngineObserver<WorkItem> observer,
         @ConfigProperty(name="task-tide.engine.worker.processor.thread-count.itemtask", defaultValue="2") int nThreads,
-        @ConfigProperty(name="task-tide.engine.worker.processor.task-size-threshold.itemtask", defaultValue="2") int taskThrehold,
-        TaskTideProcessor<ItemTask> subProcessor,
-        TaskTideEngineObserver<ItemTask> subObserver
+        @ConfigProperty(name="task-tide.engine.worker.processor.task-size-threshold.itemtask", defaultValue="2") int taskThrehold
     ) {
-        super(new WorkItemObserver(), LogManager.getLogger(WorkItemExecutor.class));
+        super(observer, LogManager.getLogger(WorkItemExecutor.class));
         this.nThreads = nThreads;
         this.taskThreshold = taskThrehold;
-        this.subProcessor = subProcessor;
-        this.subObserver = subObserver;
-    }
-    
-    
-    /**
-     * Construct with all arguments
-     * 
-     * @param workItemObserver
-     * @param nThreads
-     * @param taskThrehold
-     * @param subProcessor
-     * @param subObserver 
-     */
-    public WorkItemExecutor(
-        TaskTideEngineObserver<WorkItem> workItemObserver,
-        @ConfigProperty(name="task-tide.engine.worker.processor.thread-count.itemtask", defaultValue="2") int nThreads,
-        @ConfigProperty(name="task-tide.engine.worker.processor.task-size-threshold.itemtask", defaultValue="2") int taskThrehold,
-        TaskTideProcessor<ItemTask> subProcessor,
-        TaskTideEngineObserver<ItemTask> subObserver
-    ) {
-        super(workItemObserver, LogManager.getLogger(WorkItemExecutor.class));
-        this.nThreads = nThreads;
-        this.taskThreshold = taskThrehold;
-        this.subProcessor = subProcessor;
-        this.subObserver = subObserver;
     }
     
     
@@ -129,7 +101,8 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
             
         // Execute workload of processor
         logger.info("Processor configured, processing workload for WorkItem:\t'{}'", task.getId());
-        this.subProcessor.execute();
+        TaskTideProcessor<ItemTask> subProcessor = this.provideProcessor(task);
+        subProcessor.process();
             
         // Leave work item observer periodically summarize states until done
         logger.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());

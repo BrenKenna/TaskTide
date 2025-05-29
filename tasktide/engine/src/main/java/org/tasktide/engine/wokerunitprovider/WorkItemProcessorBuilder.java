@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.worker.processor.builders;
+package org.tasktide.engine.wokerunitprovider;
 
 import java.util.List;
 
@@ -97,6 +97,11 @@ public class WorkItemProcessorBuilder {
      * @return {@link TaskTideProcesor} of {@link WorkItem}
      */
     public TaskTideProcessor<WorkItem> build() {
-        return new WorkItemProcessor(this.workload, this.threshold, this.executorService, this.executor);
+        return new WorkItemProcessor(
+     this.workload,
+     this.threshold,
+this.executorService,
+     this.executor
+        );
     }
 }

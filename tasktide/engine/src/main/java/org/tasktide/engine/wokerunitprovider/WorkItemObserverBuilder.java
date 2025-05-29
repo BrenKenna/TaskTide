@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.observer.builders;
+package org.tasktide.engine.wokerunitprovider;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.observer.chain.WorkItemObserver;
 
-import org.tasktide.engine.worker.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.TaskTracker;
 
 
 /**
@@ -28,7 +28,7 @@ public class WorkItemObserverBuilder {
     
     
     /**
-     * Build with {@link WorkItem} workload
+     * Optional to build with {@link WorkItem} workload
      * 
      * @param workload
      * @return {@link WorkItemObserverBuilder}
@@ -69,6 +69,11 @@ public class WorkItemObserverBuilder {
      * @return {@link TaskTideEngineObserver} of {@link WorkItem}
      */
     public TaskTideEngineObserver<WorkItem> build() {
-        return new WorkItemObserver(taskTracker, workload, maxTime);
+        if ( this.workload == null ) {
+            return new WorkItemObserver(this.taskTracker, this.maxTime);
+        }
+        else {
+            return new WorkItemObserver(this.taskTracker, this.workload, this.maxTime);
+        }
     }
 }

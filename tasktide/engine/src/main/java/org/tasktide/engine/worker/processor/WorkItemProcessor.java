@@ -11,6 +11,7 @@ import java.util.List;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.observer.TaskTideEngineObserver;
 
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;

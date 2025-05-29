@@ -73,7 +73,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
         }
 
         // Debugger message
-        logger.debug("Task after execution:\n{}\n\n", task.toJsonDoc());
+        // Move to Observer logger.debug("Task after execution:\n{}\n\n", task.toJsonDoc());
         return taskLog.getExitCode() == 0;
     }
 }

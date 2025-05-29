@@ -31,7 +31,6 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     protected final int threshold;
     protected final ExecutorService executorService;
     
-    
     /**
      * Construct parallel executor
      * 
@@ -57,7 +56,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     /**
      * Process workload of {@link WorkItem}, {@link ItemTask}
      */
-    public void execute() {
+    public void process() {
         
         // Process iteratively
         if ( this.workload.size() < this.threshold ) {
@@ -87,7 +86,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
      */
     protected void submitSubTask(List<T> subList) {
         executorService.submit( () -> {
-            newSubProcessor(subList).execute();
+            newSubProcessor(subList).process();
         });
     }
     

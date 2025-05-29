@@ -78,7 +78,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
                         }
                         else {
                             logger.warn(
-                          "Warning, execution completed with error for WorkItem:\t'{}'",
+                          "Warning, execution completed with error for task:\t'{}'",
                              task.getId()
                             );
                         }
@@ -95,7 +95,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
                 // Otherwise skip task
                 else {
                     logger.warn(
-                  "Warning, skipping task failing Observer checks for WorkItem:\t'{}'", 
+                  "Warning, skipping task failing Observer checks for task:\t'{}'", 
                      task.getId()
                     );
                     skipped++;

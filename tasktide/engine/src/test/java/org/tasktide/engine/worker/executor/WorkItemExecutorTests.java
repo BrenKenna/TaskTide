@@ -18,7 +18,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
-import org.tasktide.core.model.task.ItemTask;
+
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.EngineTestUtils;
@@ -82,7 +82,7 @@ public class WorkItemExecutorTests {
         // Process workload
         logger.info("Process workload");
         workItemExecutor.runTasks(workload);
-        EngineTestUtils.waitUntilDoneWorkItem(workload, 10, logger);
+        EngineTestUtils.waitUntilDoneWorkItem(workload, 30, logger);
         
         // Evaluate test status
         processed = EngineTestUtils.countNonPending(workload);

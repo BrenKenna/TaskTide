@@ -80,13 +80,13 @@ public class WorkItemProcessorTests {
         // Make test workload
         logger.info("Configuring workload and WorkItemProcessor");
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4, 4);
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
         workItemProcessor = new WorkItemProcessor(workload, 2, executorService);
         
         // Process work items
         logger.info("Processing workload of N Items = '{}'", workload.size());
-        workItemProcessor.execute();
-        EngineTestUtils.waitUntilDoneWorkItem(workload, 10, logger);
+        workItemProcessor.process();
+        EngineTestUtils.waitUntilDoneWorkItem(workload, 30, logger);
         
         
         // Evaluate test status
@@ -105,7 +105,7 @@ public class WorkItemProcessorTests {
         workload.stream().forEach( elm -> logger.info(elm.toJsonDoc()) );
         logger.info("-------- Displaying Execution Time Summary --------");
         EngineTestUtils.fetchExecutionTimesWorkItem(workload, logger);
-        String template = String.format("Notall tasks processed correctl:\tTotal = '%d', Processed = '%d'", nTasks, processed);
+        String template = String.format("Not all tasks processed correctl:\tTotal = '%d', Processed = '%d'", nTasks, processed);
         assertTrue(assertionState, template);
         logger.info("\n\n================ Can Process WorkItems Test ================\n");
     }

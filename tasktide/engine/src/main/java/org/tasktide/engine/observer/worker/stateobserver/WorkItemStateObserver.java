@@ -12,8 +12,8 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.observer.ObserverResult;
 
 import org.tasktide.engine.observer.worker.StateObserver;
-import org.tasktide.engine.worker.tasktracker.ExecutionState;
-import org.tasktide.engine.worker.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.ExecutionState;
+import org.tasktide.engine.tasktracker.TaskTracker;
 
 
 /**
@@ -140,9 +140,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         
         // Otherwise unlock work item
         else {
-            task.setItemState(ItemState.TODO);
-            task.setLockDate(0L);
-            task.setLockId("");
+            task.setItemState(ItemState.ERROR);
             stateTracker.markTask(task.getId(), ExecutionState.ABORTED);
             return ObserverResult.failure(this, true);
         }

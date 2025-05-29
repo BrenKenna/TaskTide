@@ -4,6 +4,8 @@
  */
 package org.tasktide.engine.worker.tasktracker;
 
+import org.tasktide.engine.tasktracker.ExecutionState;
+import org.tasktide.engine.tasktracker.TaskTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

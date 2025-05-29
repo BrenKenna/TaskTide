@@ -83,7 +83,7 @@ public class EngineTestUtils {
             );
             
             // Wait and check
-            try {Thread.sleep(waitTime);} catch(Exception ex) {logger.warn("Unable to sleep for iteration:\t" + counter);}
+            try {Thread.sleep(waitTime * 1000L);} catch(Exception ex) {logger.warn("Unable to sleep for iteration:\t" + counter);}
             nInactive = countNotActive(workload);
             logger.debug("\n\n=========== Count of Tasks Done = " + nInactive + " ===============\n\n");
             counter++;

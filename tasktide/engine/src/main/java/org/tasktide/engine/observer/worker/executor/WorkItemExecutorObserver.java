@@ -7,6 +7,7 @@ package org.tasktide.engine.observer.worker.executor;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -101,10 +102,10 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
             }
             
             // Wait
-            logger.info("Letting '{}'s elapse for state monitoring of WorkItem:\t'{}'", 
+            logger.info("Letting '{}'ms elapse for state monitoring of WorkItem:\t'{}'", 
                 sleepTime, task.getId()
             );
-            try {Thread.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
+            try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
             
             // Fetch summary
             stateSummary = new StateSummary<>(task.summarizeByState());

@@ -14,8 +14,8 @@ import org.tasktide.engine.observer.ObserverResult;
 
 import org.tasktide.engine.observer.worker.StateObserver;
 
-import org.tasktide.engine.worker.tasktracker.ExecutionState;
-import org.tasktide.engine.worker.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.ExecutionState;
+import org.tasktide.engine.tasktracker.TaskTracker;
 
 
 /**
@@ -93,7 +93,6 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      */
     @Override
     public ObserverResult onTaskEnd(ItemTask task) {
-        // System.out.println("\n\nItemTask Exit Code:\t" + task.getTaskLog().getExitCode() + "\n\n\n");
         if (task.getTaskLog().getExitCode() == 0) {
             task.setTaskState(TaskState.COMPLETE);
             stateTracker.markTask(task.getId(), ExecutionState.COMPLETED);
