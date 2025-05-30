@@ -17,6 +17,7 @@ public class TaskTideExecutorServiceProvider {
     private static volatile TaskTideExecutorServiceProvider instance;
     
     // Executor services
+    private final int workItemThreads, itemTaskThreads;
     private final ExecutorService workItemExecutorService;
     private final ExecutorService itemTaskExecutorService;
     
@@ -28,6 +29,8 @@ public class TaskTideExecutorServiceProvider {
      * @param itemTaskThreds 
      */
     private TaskTideExecutorServiceProvider(int workItemThreads, int itemTaskThreds) {
+        this.workItemThreads = workItemThreads;
+        this.itemTaskThreads = itemTaskThreds;
         this.workItemExecutorService = Executors.newFixedThreadPool(workItemThreads);
         this.itemTaskExecutorService = Executors.newFixedThreadPool(itemTaskThreds);
     }
@@ -84,4 +87,15 @@ public class TaskTideExecutorServiceProvider {
     public static ExecutorService itemTaskExecutorService() {
         return getInstance().getItemTaskExecutorService();
     }
+
+    public int getWorkItemThreads() {
+        return workItemThreads;
+    }
+
+    public int getItemTaskThreads() {
+        return itemTaskThreads;
+    }
+    
+    
+    
 }

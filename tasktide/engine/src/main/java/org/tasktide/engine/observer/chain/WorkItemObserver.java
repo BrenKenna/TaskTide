@@ -35,9 +35,9 @@ public class WorkItemObserver extends ObserverChain<WorkItem> {
     public WorkItemObserver() {
         super(
      List.of(
+                new WorkItemTimeKeeper(100000),
                 new WorkItemStateObserver( new TaskTracker() ),
-                new WorkItemExecutorObserver(),
-                new WorkItemTimeKeeper(100000)
+                new WorkItemExecutorObserver()
             )
         );
     }
@@ -55,9 +55,9 @@ public class WorkItemObserver extends ObserverChain<WorkItem> {
     ) {
         super(
             List.of(
+                new WorkItemTimeKeeper(maxTime),
                 new WorkItemStateObserver(tracker),
-                new WorkItemExecutorObserver(),
-                new WorkItemTimeKeeper(maxTime)
+                new WorkItemExecutorObserver()
             )
         );
     }
@@ -77,10 +77,25 @@ public class WorkItemObserver extends ObserverChain<WorkItem> {
     ) {
         super(
             List.of(
+                new WorkItemTimeKeeper(maxTime),
                 new WorkItemStateObserver(tracker, workload),
-                new WorkItemExecutorObserver(),
-                new WorkItemTimeKeeper(maxTime)
+                new WorkItemExecutorObserver()
             )
         );
+    }
+
+    @Override
+    public List<WorkerObserver<WorkItem>> getObservers() {
+        return this.observers;
+    }
+
+    @Override
+    public WorkerObserver<WorkItem> getObserver(String query) {
+        for ( WorkerObserver<WorkItem> obs : this.observers ) {
+            if ( obs.getName().equals(query) ) {
+                return obs;
+            }
+        }
+        return null;
     }
 }

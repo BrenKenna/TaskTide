@@ -4,13 +4,19 @@
  */
 package org.tasktide.engine.worker.processor;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
+import java.util.concurrent.Future;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.engine.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.tasktracker.ExecutorServiceItem;
+import org.tasktide.engine.tasktracker.ExecutorServiceTrackerItemTask;
+import org.tasktide.engine.tasktracker.ExecutorServiceTrackerWorkItem;
 
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
@@ -25,6 +31,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
 
     // Attributes
     private final ItemTaskExecutor worker;
+    private final ExecutorServiceTrackerItemTask executorServiceTracker;
     
     
     /**
@@ -41,6 +48,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     ) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new ItemTaskExecutor();
+        this.executorServiceTracker = ExecutorServiceTrackerItemTask.getInstance();
     }
     
     
@@ -60,6 +68,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     ) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = (ItemTaskExecutor) executor;
+        this.executorServiceTracker = ExecutorServiceTrackerItemTask.getInstance();
     }
 
     
@@ -83,5 +92,46 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     @Override
     protected TaskTideExecutor<ItemTask> getExecutor() {
         return this.worker;
+    }
+    
+    
+    /**
+     * Add workload to the {@link ExecutorServiceTrackerWorkItem}
+     * 
+     * @param subList
+     * @param future 
+     */
+    @Override
+    protected void addTasksToTracker(List<ItemTask> subList, Future future) {
+        for ( ItemTask task : subList ) {
+            ExecutorServiceItem<ItemTask> item = new ExecutorServiceItem<>(task, future);
+            this.executorServiceTracker.markTask(task.getId(), item);
+        }
+    }
+    
+    
+    @Override
+    protected List<List<ItemTask>> parallelChunks(List<ItemTask> workload) {
+        // Initialize variables
+        List<ItemTask> slize = new ArrayList<>();
+        List< List<ItemTask> > results = new ArrayList<>();
+        
+        // Initialize batch handler
+        int itemTaskThreads = TaskTideExecutorServiceProvider.getInstance().getItemTaskThreads();
+        int batchSize = workload.size() / itemTaskThreads;
+        
+        // Fetch sclies
+        int start = 0, end = 0;
+        while ( end < workload.size() ) {
+            results.add(workload.subList(start, end));
+            start = end + 1;
+            end = start + batchSize;
+            
+            if ( end > workload.size() ) {
+                results.add(workload.subList(start, workload.size()));
+            }
+        }
+        
+        return results;
     }
 }

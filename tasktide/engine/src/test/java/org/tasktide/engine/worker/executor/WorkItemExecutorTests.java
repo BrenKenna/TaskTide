@@ -76,7 +76,7 @@ public class WorkItemExecutorTests {
         
         // Make test workload
         logger.info("Configuring workload and WorkItemExecutor");
-        workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4, 4);
+        workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 2, 3);
         workItemExecutor = new WorkItemExecutor();
         
         // Process workload

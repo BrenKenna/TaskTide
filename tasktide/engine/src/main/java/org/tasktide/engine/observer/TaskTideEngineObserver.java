@@ -4,6 +4,7 @@
  */
 package org.tasktide.engine.observer;
 
+import java.util.List;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -45,4 +46,21 @@ public interface TaskTideEngineObserver<T extends TaskTideModel<T>> extends Task
      * @return {@link ObserverResult}
      */
     public boolean onTaskEnd(T task);
+    
+    
+    /**
+     * Get lower level observer
+     * 
+     * @return WorkerObserver for {@link WorkItem}/{@link ItemTask}
+     */
+    public List<WorkerObserver<T>> getObservers();
+    
+    
+    /**
+     * Get lower level observer by simple class name
+     * 
+     * @param query
+     * @return 
+     */
+    public WorkerObserver<T> getObserver(String query);
 }

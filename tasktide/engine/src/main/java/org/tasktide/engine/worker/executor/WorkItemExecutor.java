@@ -140,7 +140,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
         
         // Fetch required components
         toDo = task.fetchByStates().get(ItemState.TODO);
-        executorService = TaskTideExecutorServiceProvider.itemTaskExecutorService(); // Maybe configure it not
+        executorService = TaskTideExecutorServiceProvider.itemTaskExecutorService();
         
         // Construct sub processor
         processor = unitProvider.getItemTaskProcBuilder()

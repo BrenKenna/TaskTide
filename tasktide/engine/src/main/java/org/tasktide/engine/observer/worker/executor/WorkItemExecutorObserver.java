@@ -115,12 +115,13 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
             
             // Sum of touched ItemTasks, did any raise TK error, Executor have states?
             int progress = stateSummary.getCount(ItemState.DONE) + stateSummary.getCount(ItemState.ERROR) ;
+            counter++;
             done = progress == expected;
-            
         }
         
         // Return whether any changes in states
         totalTouched = stateSummary.getCount(ItemState.DONE) + stateSummary.getCount(ItemState.ERROR);
+        logger.info("Completed processing of '{}' WorkItems with '{}'", totalTouched, expected);
         return totalTouched == expected;
     }
     

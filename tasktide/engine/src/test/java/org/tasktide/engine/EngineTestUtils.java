@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -17,6 +19,8 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.concurrency.ParallelItemTaskExecutor;
+import org.tasktide.engine.tasktracker.ExecutorServiceTrackerItemTask;
+import org.tasktide.engine.tasktracker.ExecutorServiceTrackerWorkItem;
 
 
 /**
@@ -25,6 +29,134 @@ import org.tasktide.engine.concurrency.ParallelItemTaskExecutor;
  * @author bkenna
  */
 public class EngineTestUtils {
+    
+    
+    
+    /**
+     * Initialize and return an {@link ExecutorService} for {@link WorkItem}
+     * 
+     * @param nWorkItemThreads
+     * @param nItemTaskThreads
+     * @return {@link ExecutorService}
+     */
+    public static ExecutorService initThenFetchExecutorService(int nWorkItemThreads, int nItemTaskThreads) {
+    
+        // Configure executor service for work items, and item tasks
+        TaskTideExecutorServiceProvider.initialize(nWorkItemThreads, nItemTaskThreads);
+        
+        // Return result
+        return TaskTideExecutorServiceProvider.workItemExecutorService();
+    }
+    
+    
+    /**
+     * Waits via {@link ExecutorServiceTrackerWorkItem}
+     * 
+     * @param expected
+     * @param logger 
+     */
+    public static void waitOnExecutorTrackerItemTask(int expected, Logger logger) {
+        
+        // Initialize vars
+        boolean done = false;
+        int baseDelaySeconds = 1, counter = 0;
+        long sleepTime;
+        ExecutorServiceTrackerItemTask executorServiceTracker = ExecutorServiceTrackerItemTask.getInstance();
+        int baseCount, currentDone, nRemaining;
+        
+        // Wait until done
+        baseCount = executorServiceTracker.taskCount();
+        logger.info("Begining state monitoring of ExecutorServiceTracker:\tN tasks = '{}'", baseCount);
+        while ( !done ) {
+        
+            // Measure delay capping to 512
+            int waitVal = baseDelaySeconds * (int)Math.pow(2, counter - 1);
+            if ( waitVal <= 5) {
+                sleepTime = 10 * 1000L;
+            }
+            else {
+                sleepTime = Math.min(waitVal, 512) * 1000L;
+            }
+            
+            // Wait
+            logger.info("Letting '{}'ms elapse for state monitoring of ExecutorServiceTracker:\t'{}'", 
+                sleepTime, executorServiceTracker.toString()
+            );
+            try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
+            
+            // Fetch summary
+            currentDone = executorServiceTracker.countDone();
+            nRemaining = baseCount - currentDone;
+            if (nRemaining < 0) {
+                baseCount = executorServiceTracker.taskCount();
+                currentDone = executorServiceTracker.countDone();
+                nRemaining = baseCount - currentDone;
+            }
+            logger.info(
+          "Displaying Iter-'{}' StateSummary of ExecutorServiceTracker:\n\nTotal='{}', Remaining='{}', Done='{}', Expected='{}'", 
+             counter, baseCount, nRemaining, currentDone, expected
+            );
+            
+            // Sum of touched ItemTasks, did any raise TK error, Executor have states?
+            counter++;
+            done = currentDone == expected;
+        }
+    }
+    
+    
+    /**
+     * Waits via {@link ExecutorServiceTrackerWorkItem}
+     * 
+     * @param expected
+     * @param logger 
+     */
+    public static void waitOnExecutorTrackerWorkItem(int expected, Logger logger) {
+        
+        // Initialize vars
+        boolean done = false;
+        int baseDelaySeconds = 1, counter = 0;
+        long sleepTime;
+        ExecutorServiceTrackerWorkItem executorServiceTracker = ExecutorServiceTrackerWorkItem.getInstance();
+        int baseCount, currentDone, nRemaining;
+        
+        // Wait until done
+        baseCount = executorServiceTracker.taskCount();
+        logger.info("Begining state monitoring of ExecutorServiceTracker:\tN tasks = '{}'", baseCount);
+        while ( !done ) {
+        
+            // Measure delay capping to 512
+            int waitVal = baseDelaySeconds * (int)Math.pow(2, counter - 1);
+            if ( waitVal <= 5) {
+                sleepTime = 10 * 1000L;
+            }
+            else {
+                sleepTime = Math.min(waitVal, 85) * 1000L;
+            }
+            
+            // Wait
+            logger.info("Letting '{}'ms elapse for state monitoring of ExecutorServiceTracker:\t'{}'", 
+                sleepTime
+            );
+            try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
+            
+            // Fetch summary
+            currentDone = executorServiceTracker.countDone();
+            nRemaining = baseCount - currentDone;
+            if (nRemaining < 0) {
+                baseCount = executorServiceTracker.taskCount();
+                currentDone = executorServiceTracker.countDone();
+                nRemaining = baseCount - currentDone;
+            }
+            logger.info(
+          "Displaying Iter-'{}' StateSummary of ExecutorServiceTracker:\n\nTotal='{}', Remaining='{}', Done='{}', Expected='{}'", 
+             counter, baseCount, nRemaining, currentDone, expected
+            );
+            
+            // Sum of touched ItemTasks, did any raise TK error, Executor have states?
+            counter++;
+            done = currentDone == expected;
+        }
+    }
     
     
     /**
@@ -40,7 +172,7 @@ public class EngineTestUtils {
         } catch (InterruptedException ex) {
             logger.warn("Unable to wait time '{}'", waitTime);
         }
-    }
+    }    
     
     
     /**
@@ -207,7 +339,7 @@ public class EngineTestUtils {
         for (ItemTask task : workload) {
             output += String.format(
                "Task '%s' started on Thread '%s' '%d' finished '%d' duration '%d'\n",
-               task.getTaskName(), 
+               task.getId(), 
                task.getTaskLog().getThreadName(),
                task.getTaskLog().getStartTime(),
                task.getTaskLog().getEndTime(),
@@ -226,8 +358,10 @@ public class EngineTestUtils {
      */
     public static void fetchExecutionTimesWorkItem(List<WorkItem> workload, Logger logger) {
         for ( WorkItem item : workload ) {
+            System.out.println("\n\n========= Analysing WorkItem:\t'" + item.getId() + "'=============\n\n");
             fetchExecutionTimes(item.fetchByStates().get(ItemState.DONE), logger);
             fetchExecutionTimes(item.fetchByStates().get(ItemState.ERROR), logger);
+            System.out.println("\n\n========= Done WorkItem:\t'" + item.getId() + "'=============\n\n");
         }
     }
 }

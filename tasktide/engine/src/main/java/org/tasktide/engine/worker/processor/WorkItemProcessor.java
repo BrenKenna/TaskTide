@@ -4,13 +4,18 @@
  */
 package org.tasktide.engine.worker.processor;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+import java.util.concurrent.Future;
+import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.tasktracker.ExecutorServiceItem;
+import org.tasktide.engine.tasktracker.ExecutorServiceTrackerWorkItem;
 
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
@@ -25,6 +30,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     
     // Attributes
     private final WorkItemExecutor worker;
+    private final ExecutorServiceTrackerWorkItem executorServiceTracker;
     
     
     /**
@@ -37,6 +43,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     public WorkItemProcessor(List<WorkItem> workload, int threshold, ExecutorService executorService) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new WorkItemExecutor();
+        this.executorServiceTracker = ExecutorServiceTrackerWorkItem.getInstance();
     }
     
     
@@ -56,6 +63,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     ) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = (WorkItemExecutor) executor;
+        this.executorServiceTracker = ExecutorServiceTrackerWorkItem.getInstance();
     }
     
 
@@ -67,7 +75,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
      */
     @Override
     protected TaskTideProcessor<WorkItem> newSubProcessor(List<WorkItem> subList) {
-        return new WorkItemProcessor(subList, threshold, executorService);
+        return new WorkItemProcessor(subList, this.threshold, this.executorService);
     }
 
     
@@ -79,5 +87,46 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     @Override
     protected TaskTideExecutor<WorkItem> getExecutor() {
         return this.worker;
+    }
+
+    
+    /**
+     * Add workload to the {@link ExecutorServiceTrackerWorkItem}
+     * 
+     * @param subList
+     * @param future 
+     */
+    @Override
+    protected void addTasksToTracker(List<WorkItem> subList, Future future) {
+        for ( WorkItem task : subList ) {
+            ExecutorServiceItem<WorkItem> item = new ExecutorServiceItem<>(task, future);
+            this.executorServiceTracker.markTask(task.getId(), item);
+        }
+    }
+
+    @Override
+    protected List<List<WorkItem>> parallelChunks(List<WorkItem> workload) {
+        // Initialize variables
+        List<WorkItem> slize = new ArrayList<>();
+        List< List<WorkItem> > results = new ArrayList<>();
+        
+        // Initialize batch handler
+        int workItemThreads = TaskTideExecutorServiceProvider.getInstance().getWorkItemThreads();
+        int batchSize = workload.size() / workItemThreads;
+        
+        // Fetch sclies
+        int start = 0, end = 0;
+        while ( end < workload.size() ) {
+            results.add(workload.subList(start, end));
+            start = end + 1;
+            end = start + batchSize;
+            
+            if ( end > workload.size() ) {
+                results.add(workload.subList(start, workload.size()));
+            }
+        }
+        
+        
+        return results;
     }
 }

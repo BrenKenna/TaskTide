@@ -4,8 +4,10 @@
  */
 package org.tasktide.engine.tasktracker;
 
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
 
 
 /**
@@ -16,7 +18,7 @@ import java.util.concurrent.ConcurrentMap;
 public class TaskTracker {
     
     // Map of task states
-    private final ConcurrentMap<String, ExecutionState> taskStates = new ConcurrentHashMap<>();
+    private static final ConcurrentMap<String, ExecutionState> taskStates = new ConcurrentHashMap<>();
 
     
     /**
@@ -26,7 +28,7 @@ public class TaskTracker {
      * @param state 
      */
     public void markTask(String taskId, ExecutionState state) {
-        taskStates.put(taskId, state);
+        taskStates.putIfAbsent(taskId, state);
     }
     
     
@@ -112,5 +114,20 @@ public class TaskTracker {
      */
     public int taskCount() {
         return taskStates.size();
+    }
+    
+    
+    /**
+     * String representation of tracked tasks and their states.
+     * 
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return taskStates.entrySet()
+            .stream()
+            .sorted(Map.Entry.comparingByKey())
+            .map(entry -> String.format("TaskId: %s, State: %s", entry.getKey(), entry.getValue()))
+            .collect(Collectors.joining("\n"));
     }
 }

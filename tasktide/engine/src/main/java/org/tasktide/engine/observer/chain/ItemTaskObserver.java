@@ -73,9 +73,26 @@ public class ItemTaskObserver extends ObserverChain<ItemTask> {
     ) {
         super(
             List.of(
-                new ItemTaskStateObserver(tracker, workload),
-                new ItemTaskTimeKeeper(maxTime)
+                new ItemTaskTimeKeeper(maxTime),
+                new ItemTaskStateObserver(tracker, workload)
             )
         );
+    }
+    
+    
+    @Override
+    public List<WorkerObserver<ItemTask>> getObservers() {
+        return this.observers;
+    }
+    
+    
+    @Override
+    public WorkerObserver<ItemTask> getObserver(String query) {
+        for ( WorkerObserver<ItemTask> obs : this.observers ) {
+            if ( obs.getName().equals(query) ) {
+                return obs;
+            }
+        }
+        return null;
     }
 }
