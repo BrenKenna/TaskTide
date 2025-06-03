@@ -10,12 +10,12 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
-import org.tasktide.engine.observer.ObserverResult;
 
+import org.tasktide.engine.observer.ObserverResult;
 import org.tasktide.engine.observer.worker.StateObserver;
 
 import org.tasktide.engine.tasktracker.ExecutionState;
-import org.tasktide.engine.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.TaskTrackers;
 
 
 /**
@@ -31,10 +31,9 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
     /**
      * Construct with state tracker
      * 
-     * @param stateTracker 
      */
-    public ItemTaskStateObserver(TaskTracker stateTracker) {
-        super(stateTracker);
+    public ItemTaskStateObserver() {
+        super();
         this.logger = LogManager.getLogger(ItemTaskStateObserver.class);
     }
 
@@ -42,12 +41,17 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
     /**
      * Construct feeding {@link ItemTask} workload into {@link TaskTracker}
      * 
-     * @param stateTracker
      * @param workload 
      */
-    public ItemTaskStateObserver(TaskTracker stateTracker, List<ItemTask> workload) {
-        super(stateTracker, workload);
+    public ItemTaskStateObserver(List<ItemTask> workload) {
+        super();
         this.logger = LogManager.getLogger(ItemTaskStateObserver.class);
+        workload
+            .stream()
+            .parallel()
+            .forEach(
+                elm -> TaskTrackers.ITEM_TASK_TRACKER.markTask(elm.getId(), ExecutionState.QUEUED)
+            );
     }
     
     
@@ -60,11 +64,11 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
     @Override
     public ObserverResult onTaskStart(ItemTask task) {
         if ( task.getTaskState() == TaskState.PENDING ) {
-            stateTracker.markTask(task.getId(), ExecutionState.PREPARE);
+            TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.PREPARE);
             return ObserverResult.success();
         }
         else {
-            stateTracker.markTask(task.getId(), ExecutionState.SKIPPED);
+            TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
             logger.warn("Skipping non pending ItemTask:\t'{}' with '{}'", task.getId(), task.getState());
             return ObserverResult.failure(this);
         }
@@ -79,7 +83,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      */
     @Override
     public ObserverResult onTaskProcessing(ItemTask task) {
-        stateTracker.markTask(task.getId(), ExecutionState.RUNNING);
+        TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.RUNNING);
         task.setTaskState(TaskState.ACTIVE);
         return ObserverResult.success();
     }
@@ -95,14 +99,14 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
     public ObserverResult onTaskEnd(ItemTask task) {
         if (task.getTaskLog().getExitCode() == 0) {
             task.setTaskState(TaskState.COMPLETE);
-            stateTracker.markTask(task.getId(), ExecutionState.COMPLETED);
+            TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.COMPLETED);
             return ObserverResult.success();
         }
         
         // Otherwise acknowledge error
         else {
             task.setTaskState(TaskState.ERROR);
-            stateTracker.markTask(task.getId(), ExecutionState.FAILED);
+            TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.FAILED);
             logger.warn("Execution failed forItemTask:\t'{}'", task.getId());
             return ObserverResult.failure(this, true);
         }

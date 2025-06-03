@@ -5,7 +5,7 @@
 package org.tasktide.engine.worker.tasktracker;
 
 import org.tasktide.engine.tasktracker.ExecutionState;
-import org.tasktide.engine.tasktracker.TaskTracker;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.tasktide.engine.tasktracker.TaskTrackers;
 
 
 
@@ -67,18 +68,17 @@ public class TaskTrackerTests {
         // Initialize test
         logger.info("\n\n================ Can Register Test ================\n");
         int nTasks = 0;
-        TaskTracker tracker = new TaskTracker();
         boolean assertionState;
         
         // Add tasks
         logger.info("Registering three tasks in tracker");
-        tracker.markTask("Task-1", ExecutionState.QUEUED);
-        tracker.markTask("Task-2", ExecutionState.QUEUED);
-        tracker.markTask("Task-3", ExecutionState.QUEUED);
-        logger.info("Tasks registered = '{}'", tracker.taskCount());
+        TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-1", ExecutionState.QUEUED);
+        TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-2", ExecutionState.QUEUED);
+        TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-3", ExecutionState.QUEUED);
+        logger.info("Tasks registered = '{}'", TaskTrackers.WORK_ITEM_TRACKER.taskCount());
         
         // Check registered tasks
-        assertionState = tracker.taskCount() == 3;
+        assertionState = TaskTrackers.WORK_ITEM_TRACKER.taskCount() == 3;
         assertTrue(assertionState, "Not all three tasks were registered");
         logger.info("\n\n================ Can Register Tasks Test ================\n");
     }
@@ -93,17 +93,16 @@ public class TaskTrackerTests {
     
         // Initialize test
         logger.info("\n\n================ Can Track Tasks Test ================\n");
-        TaskTracker tracker = new TaskTracker();
         
         // Add tasks
         logger.info("Registering task");
-        tracker.markTask("Task-1", ExecutionState.QUEUED);
-        ExecutionState oldState = tracker.get("Task-1");
+        TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-1", ExecutionState.QUEUED);
+        ExecutionState oldState = TaskTrackers.WORK_ITEM_TRACKER.get("Task-1");
 
         // Mark new state
         logger.info("Marking task as '{}'", ExecutionState.RUNNING);
-        tracker.markTask("Task-1", ExecutionState.RUNNING);
-        ExecutionState currentState = tracker.get("Task-1");
+        TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-1", ExecutionState.RUNNING);
+        ExecutionState currentState = TaskTrackers.WORK_ITEM_TRACKER.get("Task-1");
         
         // Check state has changed
         assertFalse(oldState.isState(currentState), "Task Not Tracked");
@@ -121,14 +120,13 @@ public class TaskTrackerTests {
     
         // Initialize test
         logger.info("\n\n================ Can Check State Test ================\n");
-        TaskTracker tracker = new TaskTracker();
         String taskId = "Task-1";
         int progress = 0;
         
         // Check task is held
         logger.info("Registering task");
-        tracker.markTask(taskId, ExecutionState.QUEUED);
-        if ( tracker.isHeld(taskId) ) {
+        TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.QUEUED);
+        if ( TaskTrackers.WORK_ITEM_TRACKER.isHeld(taskId) ) {
             progress++;
         }
         else {
@@ -137,8 +135,8 @@ public class TaskTrackerTests {
         
         // Check task is active
         logger.info("Marking task '{}' as running", taskId);
-        tracker.markTask(taskId, ExecutionState.RUNNING);
-        if ( tracker.isActive(taskId) ) {
+        TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.RUNNING);
+        if ( TaskTrackers.WORK_ITEM_TRACKER.isActive(taskId) ) {
             progress++;
         }
         else {
@@ -146,8 +144,8 @@ public class TaskTrackerTests {
         }
         
         // Check task is done
-        tracker.markTask(taskId, ExecutionState.COMPLETED);
-        if ( tracker.isDone(taskId) ) {
+        TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.COMPLETED);
+        if ( TaskTrackers.WORK_ITEM_TRACKER.isDone(taskId) ) {
             progress++;
         }
         else {

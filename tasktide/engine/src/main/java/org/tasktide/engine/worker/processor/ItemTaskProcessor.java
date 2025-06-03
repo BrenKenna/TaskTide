@@ -13,10 +13,11 @@ import java.util.concurrent.Future;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
+
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.tasktracker.ExecutorServiceItem;
-import org.tasktide.engine.tasktracker.ExecutorServiceTrackerItemTask;
-import org.tasktide.engine.tasktracker.ExecutorServiceTrackerWorkItem;
+
+import org.tasktide.engine.tasktracker.FutureTrackers;
 
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
@@ -30,8 +31,7 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
 public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
 
     // Attributes
-    private final ItemTaskExecutor worker;
-    private final ExecutorServiceTrackerItemTask executorServiceTracker;
+    private final ItemTaskExecutor worker;;
     
     
     /**
@@ -48,7 +48,6 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     ) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new ItemTaskExecutor();
-        this.executorServiceTracker = ExecutorServiceTrackerItemTask.getInstance();
     }
     
     
@@ -68,7 +67,6 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     ) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = (ItemTaskExecutor) executor;
-        this.executorServiceTracker = ExecutorServiceTrackerItemTask.getInstance();
     }
 
     
@@ -105,7 +103,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     protected void addTasksToTracker(List<ItemTask> subList, Future future) {
         for ( ItemTask task : subList ) {
             ExecutorServiceItem<ItemTask> item = new ExecutorServiceItem<>(task, future);
-            this.executorServiceTracker.markTask(task.getId(), item);
+            FutureTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), item);
         }
     }
     

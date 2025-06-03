@@ -5,21 +5,29 @@
 package org.tasktide.engine.tasktracker;
 
 import java.util.Map;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+
 import java.util.stream.Collectors;
+
+import org.tasktide.core.TaskTideModel;
 
 
 /**
- * Class for tracking of task states
+ * Generic class to hold logic for tracking execution states of {@link TaskTideModel}
+ *  elements (ie {@link ItemTask}, {@link WorkItem}).
  * 
+ * @param <T> of TaskTideModel 
  * @author bkenna
  */
-public class TaskTracker {
+public class GenericTaskTracker<T extends TaskTideModel<T>> {
     
     // Map of task states
-    private static final ConcurrentMap<String, ExecutionState> taskStates = new ConcurrentHashMap<>();
-
+    private final ConcurrentMap<String, ExecutionState> taskStates = new ConcurrentHashMap<>();
+    
+    GenericTaskTracker() {}
+    
     
     /**
      * Mark task with {@link ExecutionState}

@@ -9,11 +9,12 @@ import java.util.UUID;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.engine.observer.ObserverResult;
 
+import org.tasktide.engine.observer.ObserverResult;
 import org.tasktide.engine.observer.worker.StateObserver;
+
 import org.tasktide.engine.tasktracker.ExecutionState;
-import org.tasktide.engine.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.TaskTrackers;
 
 
 /**
@@ -27,21 +28,25 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
     /**
      * Construct with {@link TaskTracker}
      * 
-     * @param stateTracker 
      */
-    public WorkItemStateObserver(TaskTracker stateTracker) {
-        super(stateTracker);
+    public WorkItemStateObserver() {
+        super();
     }
 
     
     /**
      * Construct feeding {@link WorkItem} workload into {@link TaskTracker}
      * 
-     * @param stateTracker
      * @param workload 
      */
-    public WorkItemStateObserver(TaskTracker stateTracker, List<WorkItem> workload) {
-        super(stateTracker, workload);
+    public WorkItemStateObserver(List<WorkItem> workload) {
+        super();
+        workload
+            .stream()
+            .parallel()
+            .forEach(
+                elm -> TaskTrackers.WORK_ITEM_TRACKER.markTask(elm.getId(), ExecutionState.QUEUED)
+            );
     }
 
     
@@ -57,17 +62,17 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         // Check task is still available
         String taskId = task.getId();
         if ( task.getItemState() == ItemState.TODO ) {
-            stateTracker.markTask(taskId, ExecutionState.PREPARE);
+            TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.PREPARE);
             
             // Verify task is still available
             if ( verifyItem(task) ) {
-                stateTracker.markTask(taskId, ExecutionState.LOCKED);
+                TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.LOCKED);
                 return ObserverResult.success();
             }
             
             // Mark task as skipped if nor running on another thread
-            if ( !stateTracker.isRunning(taskId) ) {
-                stateTracker.markTask(task.getId(), ExecutionState.SKIPPED);
+            if ( !TaskTrackers.WORK_ITEM_TRACKER.isRunning(taskId) ) {
+                TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
                 return ObserverResult.failure(this);
             }
             
@@ -77,8 +82,8 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         
         // Skip task if not running on another thread within JVM
         else {
-            if ( !stateTracker.isRunning(taskId) ) {
-                stateTracker.markTask(task.getId(), ExecutionState.SKIPPED);
+            if ( !TaskTrackers.WORK_ITEM_TRACKER.isRunning(taskId) ) {
+                TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
             }
             return ObserverResult.failure(this);
         }
@@ -112,7 +117,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
      */
     @Override
     public ObserverResult onTaskProcessing(WorkItem task) {
-        stateTracker.markTask(task.getId(), ExecutionState.RUNNING);
+        TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.RUNNING);
         return ObserverResult.success();
     }
 
@@ -134,14 +139,14 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             long doneTime = task.getWorkload().getLatestDone();
             task.setItemState(ItemState.DONE);
             task.setDoneDate(doneTime);
-            stateTracker.markTask(task.getId(), ExecutionState.COMPLETED);
+            TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.COMPLETED);
             return ObserverResult.success();
         }
         
         // Otherwise unlock work item
         else {
             task.setItemState(ItemState.ERROR);
-            stateTracker.markTask(task.getId(), ExecutionState.ABORTED);
+            TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.ABORTED);
             return ObserverResult.failure(this, true);
         }
     }

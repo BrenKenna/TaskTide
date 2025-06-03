@@ -11,8 +11,6 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.observer.chain.WorkItemObserver;
 
-import org.tasktide.engine.tasktracker.TaskTracker;
-
 
 /**
  * Class to the logic for build {@link TaskTideEngineObserver} of {@link WorkItemObserver}
@@ -23,7 +21,6 @@ public class WorkItemObserverBuilder {
     
     // Attributes
     private List<WorkItem> workload;
-    private TaskTracker taskTracker;
     private int maxTime;
     
     
@@ -37,19 +34,7 @@ public class WorkItemObserverBuilder {
         this.workload = workload;
         return this;
     }
-    
-    
-    /**
-     * Build with {@link TaskTracker}
-     * 
-     * @param taskTracker
-     * @return {@link WorkItemObserverBuilder}
-     */
-    public WorkItemObserverBuilder withTaskTracker(TaskTracker taskTracker) {
-        this.taskTracker = taskTracker;
-        return this;
-    }
-    
+
     
     /**
      * Build with {@link TimeKeeper} max time
@@ -70,10 +55,10 @@ public class WorkItemObserverBuilder {
      */
     public TaskTideEngineObserver<WorkItem> build() {
         if ( this.workload == null ) {
-            return new WorkItemObserver(this.taskTracker, this.maxTime);
+            return new WorkItemObserver(this.maxTime);
         }
         else {
-            return new WorkItemObserver(this.taskTracker, this.workload, this.maxTime);
+            return new WorkItemObserver(this.workload, this.maxTime);
         }
     }
 }

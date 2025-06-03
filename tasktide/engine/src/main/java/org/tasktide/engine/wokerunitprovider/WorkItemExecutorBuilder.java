@@ -14,8 +14,6 @@ import org.tasktide.engine.observer.chain.WorkItemObserver;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 
-import org.tasktide.engine.tasktracker.TaskTracker;
-
 
 /**
  * Class to hold the logic for constructing {@link TaskTideExecutor} for {@link WorkItem}
@@ -33,11 +31,10 @@ public class WorkItemExecutorBuilder {
      * Build with {@link WorkItemObserver}
      * 
      * @param workload
-     * @param taskTracker
      * @param maxTime
      * @return {@link WorkItemExecutorBuilder} with {@link TaskTideEngineObserver} of {@link WorkItem}
      */
-    public WorkItemExecutorBuilder withWorkItemObserver(List<WorkItem> workload, TaskTracker taskTracker, int maxTime) {
+    public WorkItemExecutorBuilder withWorkItemObserver(List<WorkItem> workload, int maxTime) {
     
         // Set required vars
         WorkItemObserverBuilder obsBuilder;
@@ -46,7 +43,6 @@ public class WorkItemExecutorBuilder {
         obsBuilder = new WorkItemObserverBuilder();
         this.observer = obsBuilder
             .withWorkload(workload)
-            .withTaskTracker(taskTracker)
             .withMaxTime(maxTime)
         .build();
         
@@ -58,11 +54,10 @@ public class WorkItemExecutorBuilder {
     /**
      * Build with {@link WorkItemObserver}
      * 
-     * @param taskTracker
      * @param maxTime
      * @return {@link WorkItemExecutorBuilder} with {@link TaskTideEngineObserver} of {@link WorkItem}
      */
-    public WorkItemExecutorBuilder withWorkItemObserver(TaskTracker taskTracker, int maxTime) {
+    public WorkItemExecutorBuilder withWorkItemObserver(int maxTime) {
     
         // Set required vars
         WorkItemObserverBuilder obsBuilder;
@@ -70,7 +65,6 @@ public class WorkItemExecutorBuilder {
         // Build with work item observer
         obsBuilder = new WorkItemObserverBuilder();
         this.observer = obsBuilder
-            .withTaskTracker(taskTracker)
             .withMaxTime(maxTime)
         .build();
         

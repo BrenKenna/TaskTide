@@ -16,7 +16,6 @@ import org.tasktide.engine.observer.WorkerObserver;
 import org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver;
 import org.tasktide.engine.observer.worker.timekeeper.WorkItemTimeKeeper;
 import org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver;
-import org.tasktide.engine.tasktracker.TaskTracker;
 
 
 
@@ -36,7 +35,7 @@ public class WorkItemObserver extends ObserverChain<WorkItem> {
         super(
      List.of(
                 new WorkItemTimeKeeper(100000),
-                new WorkItemStateObserver( new TaskTracker() ),
+                new WorkItemStateObserver(),
                 new WorkItemExecutorObserver()
             )
         );
@@ -46,17 +45,15 @@ public class WorkItemObserver extends ObserverChain<WorkItem> {
     /**
      * Construct with required arguments
      * 
-     * @param tracker
      * @param maxTime 
      */
     public WorkItemObserver(
-        TaskTracker tracker,
         @ConfigProperty(name="task-tide.engine.observer.worker.timekeeper.workitem", defaultValue="100000") int maxTime
     ) {
         super(
             List.of(
                 new WorkItemTimeKeeper(maxTime),
-                new WorkItemStateObserver(tracker),
+                new WorkItemStateObserver(),
                 new WorkItemExecutorObserver()
             )
         );
@@ -66,19 +63,17 @@ public class WorkItemObserver extends ObserverChain<WorkItem> {
     /**
      * Construct with optional workload
      * 
-     * @param tracker
      * @param workload
      * @param maxTime
      */
     public WorkItemObserver(
-        TaskTracker tracker,
         List<WorkItem> workload,
         @ConfigProperty(name="task-tide.engine.observer.worker.timekeeper.workitem", defaultValue="100000") int maxTime
     ) {
         super(
             List.of(
                 new WorkItemTimeKeeper(maxTime),
-                new WorkItemStateObserver(tracker, workload),
+                new WorkItemStateObserver(workload),
                 new WorkItemExecutorObserver()
             )
         );

@@ -5,38 +5,56 @@
 package org.tasktide.engine.tasktracker;
 
 import java.util.Map;
+import java.util.List;
 import java.util.Set;
+
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.Future;
 import java.util.stream.Collectors;
-import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.workitem.WorkItem;
+
+import org.tasktide.core.TaskTideModel;
 
 
 /**
- * Stores {@link Future} from {@link WorkItem}/{@link ItemTask} processing
- *  and what can be used for
+ * Generic class to hold logic for tracking futures of {@link TaskTideModel}
+ *  elements (ie {@link ItemTask}, {@link WorkItem}) as {@link ExecutorServiceItem}.
  * 
+ * @param <T> of {@link TaskTideModel}
  * @author bkenna
  */
-public class ExecutorServiceTrackerWorkItem {
+public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     
-    // Map of task futures
-    private static volatile ExecutorServiceTrackerWorkItem instance;
-    private final ConcurrentMap<String, ExecutorServiceItem<WorkItem>> taskStates;
+    // Attributes
+    private final ConcurrentMap<String, ExecutorServiceItem<T>> taskStates;
     
     
-    private ExecutorServiceTrackerWorkItem() {
+    ExecutorServiceTracker() {
         this.taskStates = new ConcurrentHashMap<>();
     }
     
     
-    public static synchronized ExecutorServiceTrackerWorkItem getInstance() {
-        if ( instance == null ) {
-            instance = new ExecutorServiceTrackerWorkItem();
-        }
-        return instance;
+    /**
+     * Clear entries from collection
+     * 
+     */
+    public void clearMap() {
+        this.taskStates.clear();
+    }
+    
+    
+    /**
+     * Fetch list of completed Ids
+     * 
+     * @return List-String
+     */
+    public List<String> fetchDone() {
+        return taskStates.keySet()
+            .stream()
+            .parallel()
+            .filter(
+                elm -> this.isDone(elm)
+            )
+            .collect(Collectors.toList());
     }
     
     
@@ -46,7 +64,7 @@ public class ExecutorServiceTrackerWorkItem {
      * @param taskId
      * @param item 
      */
-    public void markTask(String taskId, ExecutorServiceItem<WorkItem> item) {
+    public void markTask(String taskId, ExecutorServiceItem<T> item) {
         taskStates.putIfAbsent(taskId, item);
     }
     
@@ -57,7 +75,7 @@ public class ExecutorServiceTrackerWorkItem {
      * @param taskId
      * @return {@link ExecutorServiceItem}
      */
-    public ExecutorServiceItem<WorkItem> get(String taskId) {
+    public ExecutorServiceItem<T> get(String taskId) {
         return taskStates.get(taskId);
     }
     
@@ -69,7 +87,7 @@ public class ExecutorServiceTrackerWorkItem {
      * @return boolean
      */
     public boolean isDone(String taskId) {
-        ExecutorServiceItem<WorkItem> item = taskStates.get(taskId);
+        ExecutorServiceItem<T> item = taskStates.get(taskId);
         return item.getFuture().isDone();
     }
     
@@ -81,7 +99,7 @@ public class ExecutorServiceTrackerWorkItem {
      * @return boolean
      */
     public boolean isActive(String taskId) {
-        ExecutorServiceItem<WorkItem> item = taskStates.get(taskId);
+        ExecutorServiceItem<T> item = taskStates.get(taskId);
         return !item.getFuture().isDone() || !item.getFuture().isCancelled();
     }
 
@@ -93,7 +111,7 @@ public class ExecutorServiceTrackerWorkItem {
      * @return boolean
      */
     public boolean isComplete(String taskId) {
-        ExecutorServiceItem<WorkItem>item = taskStates.get(taskId);
+        ExecutorServiceItem<T>item = taskStates.get(taskId);
         return item.getFuture().isDone();
     }
     
@@ -161,13 +179,18 @@ public class ExecutorServiceTrackerWorkItem {
     }
     
     
+    /**
+     * Get Ids from task states
+     * 
+     * @return Set of String
+     */
     public Set<String> getIds() {
         return taskStates.keySet();
     }
     
     
     /**
-     * String representation of tracked tasks and their states.
+     * Represent collection as String
      * 
      * @return String
      */

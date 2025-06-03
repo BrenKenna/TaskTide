@@ -29,10 +29,12 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.TaskTrackers;
 
 import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
 import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
+import org.tasktide.engine.worker.executor.ItemTaskExecutor;
+import org.tasktide.engine.worker.executor.WorkItemExecutor;
 
 
 /**
@@ -84,12 +86,10 @@ public class ExecutorBuilderTests {
         ItemTaskExecutorBuilder execBuilder;
         TaskTideEngineObserver<ItemTask> obs;
         TaskTideExecutor<ItemTask> executor;
-        TaskTracker taskTracker;
         WorkItem task;
         List<ItemTask> workload;
         
         // Configure requirements
-        taskTracker = new TaskTracker();
         obsBuilder = new ItemTaskObserverBuilder();
         execBuilder = new ItemTaskExecutorBuilder();
         task = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 2);
@@ -98,7 +98,6 @@ public class ExecutorBuilderTests {
         // Build Observer
         obs = obsBuilder
             .withWorkload(workload)
-            .withTaskTracker(taskTracker)
             .withMaxTime(10000000)
         .build();
         
@@ -111,10 +110,10 @@ public class ExecutorBuilderTests {
         executor.runTasks(workload);
         
         // Check task tracker
-        assertionState = taskTracker.taskCount() > 0;
+        assertionState = TaskTrackers.ITEM_TASK_TRACKER.taskCount() > 0;
         logger.info(
       "Tracked '{}' ItemTasks displaying state of first:\t'{}'",
-            taskTracker.taskCount(), taskTracker.get(workload.get(0).getId())
+            TaskTrackers.ITEM_TASK_TRACKER.taskCount(), TaskTrackers.ITEM_TASK_TRACKER.get(workload.get(0).getId())
         );
         logger.info("Displaying first task after processing:\n\n{}", workload.get(0).toJsonDoc());
         
@@ -139,18 +138,15 @@ public class ExecutorBuilderTests {
         
         TaskTideEngineObserver<WorkItem> obs;
         TaskTideExecutor<WorkItem> executor;
-        TaskTracker taskTracker;
         WorkItem task;
         
         // Configure requirements
-        taskTracker = new TaskTracker();
         obsBuilder = new WorkItemObserverBuilder();
         execBuilder = new WorkItemExecutorBuilder();
         task = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4);
         
         // Build observers
         obs = obsBuilder
-            .withTaskTracker(taskTracker)
             .withMaxTime(1000000)
         .build();
 
@@ -170,10 +166,10 @@ public class ExecutorBuilderTests {
         catch ( Exception ex ) {logger.warn("Interupt exception encountered while waiting for 1min");}
         
         // Evaluate processing
-        assertionState = taskTracker.taskCount() > 0;
+        assertionState = TaskTrackers.ITEM_TASK_TRACKER.taskCount() > 0;
         logger.info(
       "Tracked '{}' ItemTasks displaying state of first:\t'{}'",
-            taskTracker.taskCount(), taskTracker.get(task.getId())
+            TaskTrackers.ITEM_TASK_TRACKER.taskCount(), TaskTrackers.ITEM_TASK_TRACKER.get(task.getId())
         );
         logger.info("Displaying first task after processing:\n\n{}", task.toJsonDoc());
         

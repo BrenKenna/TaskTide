@@ -18,9 +18,7 @@ import java.util.concurrent.ExecutionException;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.engine.TaskTideExecutorServiceProvider;
 
-import org.tasktide.engine.tasktracker.ExecutorServiceTrackerWorkItem;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.TaskTideWorkerUnit;
 

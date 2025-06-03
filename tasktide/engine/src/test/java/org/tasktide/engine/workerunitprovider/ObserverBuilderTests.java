@@ -6,6 +6,7 @@ package org.tasktide.engine.workerunitprovider;
 
 import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
 import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.tasktracker.TaskTracker;
+import org.tasktide.engine.tasktracker.TaskTrackers;
 
 
 /**
@@ -77,18 +78,15 @@ public class ObserverBuilderTests {
         boolean assertionState;
         WorkItemObserverBuilder obsBuilder;
         TaskTideEngineObserver<WorkItem> obs;
-        TaskTracker taskTracker;
         List<WorkItem> workload;
         
         // Configure builder requirements
-        taskTracker = new TaskTracker();
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 3, 4);
     
         // Build - How needed is withWorkload really?
         obsBuilder = new WorkItemObserverBuilder();
         obs = obsBuilder
             .withWorkload(workload)
-            .withTaskTracker(taskTracker)
             .withMaxTime(1000000)
         .build();
         
@@ -113,12 +111,10 @@ public class ObserverBuilderTests {
         boolean assertionState;
         ItemTaskObserverBuilder obsBuilder;
         TaskTideEngineObserver<ItemTask> obs;
-        TaskTracker taskTracker;
         WorkItem task;
         List<ItemTask> workload;
         
         // Configure builder requirements
-        taskTracker = new TaskTracker();
         obsBuilder = new ItemTaskObserverBuilder();
         task = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4);
         workload = new ArrayList<>(task.getWorkload().getWorkload().values());
@@ -126,7 +122,6 @@ public class ObserverBuilderTests {
         // Build ItemTask Observer
         obs = obsBuilder
             .withWorkload(workload)
-            .withTaskTracker(taskTracker)
             .withMaxTime(100000)
         .build();
         
@@ -136,7 +131,7 @@ public class ObserverBuilderTests {
         // Fetch task tracker info
         logger.info(
       "TaskTracker state following Observer pipeline for ItemTask:\t'{}'",
-            taskTracker.get( workload.get(0).getId() )
+            TaskTrackers.WORK_ITEM_TRACKER.get( workload.get(0).getId() )
         );
         
         // Evaluate test

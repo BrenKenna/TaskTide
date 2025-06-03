@@ -4,7 +4,6 @@
  */
 package org.tasktide.engine.wokerunitprovider;
 
-import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
 import java.util.List;
 
 import org.tasktide.core.model.task.ItemTask;
@@ -15,7 +14,6 @@ import org.tasktide.engine.observer.chain.ItemTaskObserver;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 
-import org.tasktide.engine.tasktracker.TaskTracker;
 
 
 /**
@@ -33,11 +31,10 @@ public class ItemTaskExecutorBuilder {
      * Build with {@link ItemTaskObserver} fields
      * 
      * @param workload
-     * @param taskTracker
      * @param maxTime
      * @return {@link ItemTaskExecutorBuilder} for {@link TaskTideEngineObserver} of {@link ItemTask}
      */
-    public ItemTaskExecutorBuilder withObserver(List<ItemTask> workload, TaskTracker taskTracker, int maxTime) {
+    public ItemTaskExecutorBuilder withObserver(List<ItemTask> workload, int maxTime) {
     
         // Set required vars
         ItemTaskObserverBuilder obsBuilder;
@@ -46,7 +43,6 @@ public class ItemTaskExecutorBuilder {
         obsBuilder = new ItemTaskObserverBuilder();
         this.itemTaskObserver = obsBuilder
             .withWorkload(workload)
-            .withTaskTracker(taskTracker)
             .withMaxTime(maxTime)
         .build();
         
@@ -58,11 +54,10 @@ public class ItemTaskExecutorBuilder {
     /**
      * Build observer without workload
      * 
-     * @param taskTracker
      * @param maxTime
      * @return {@link ItemTaskExecutorBuilder} for {@link TaskTideEngineObserver} of {@link ItemTask} 
      */
-    public ItemTaskExecutorBuilder withObserver(TaskTracker taskTracker, int maxTime) {
+    public ItemTaskExecutorBuilder withObserver(int maxTime) {
     
         // Set required vars
         ItemTaskObserverBuilder obsBuilder;
@@ -70,7 +65,6 @@ public class ItemTaskExecutorBuilder {
         // Build observer
         obsBuilder = new ItemTaskObserverBuilder();
         this.itemTaskObserver = obsBuilder
-            .withTaskTracker(taskTracker)
             .withMaxTime(maxTime)
         .build();
         

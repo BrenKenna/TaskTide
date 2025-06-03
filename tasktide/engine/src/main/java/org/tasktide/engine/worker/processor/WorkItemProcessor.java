@@ -15,7 +15,7 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.tasktracker.ExecutorServiceItem;
-import org.tasktide.engine.tasktracker.ExecutorServiceTrackerWorkItem;
+import org.tasktide.engine.tasktracker.FutureTrackers;
 
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
@@ -30,7 +30,6 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     
     // Attributes
     private final WorkItemExecutor worker;
-    private final ExecutorServiceTrackerWorkItem executorServiceTracker;
     
     
     /**
@@ -43,7 +42,6 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     public WorkItemProcessor(List<WorkItem> workload, int threshold, ExecutorService executorService) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = new WorkItemExecutor();
-        this.executorServiceTracker = ExecutorServiceTrackerWorkItem.getInstance();
     }
     
     
@@ -63,7 +61,6 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     ) {
         super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
         this.worker = (WorkItemExecutor) executor;
-        this.executorServiceTracker = ExecutorServiceTrackerWorkItem.getInstance();
     }
     
 
@@ -100,7 +97,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     protected void addTasksToTracker(List<WorkItem> subList, Future future) {
         for ( WorkItem task : subList ) {
             ExecutorServiceItem<WorkItem> item = new ExecutorServiceItem<>(task, future);
-            this.executorServiceTracker.markTask(task.getId(), item);
+            FutureTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), item);
         }
     }
 

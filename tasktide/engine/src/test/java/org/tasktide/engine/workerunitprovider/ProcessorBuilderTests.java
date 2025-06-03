@@ -25,7 +25,6 @@ import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.tasktracker.TaskTracker;
 
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
@@ -40,6 +39,7 @@ import org.tasktide.engine.wokerunitprovider.WorkItemProcessorBuilder;
 import org.tasktide.engine.wokerunitprovider.ItemTaskProcessorBuilder;
 
 import org.tasktide.engine.EngineTestUtils;
+import org.tasktide.engine.tasktracker.TaskTrackers;
 
 
 /**
@@ -93,12 +93,10 @@ public class ProcessorBuilderTests {
         TaskTideEngineObserver<ItemTask> obs;
         TaskTideExecutor<ItemTask> executor;
         TaskTideProcessor<ItemTask> processor;
-        TaskTracker taskTracker;
         WorkItem task;
         List<ItemTask> workload;
         
         // Configure requirements
-        taskTracker = new TaskTracker();
         obsBuilder = new ItemTaskObserverBuilder();
         execBuilder = new ItemTaskExecutorBuilder();
         procBuilder = new ItemTaskProcessorBuilder();
@@ -106,7 +104,7 @@ public class ProcessorBuilderTests {
         workload = new ArrayList<>(task.getWorkload().getWorkload().values());
         
         // Configure ItemTaskObserver + SubExecutor
-        obs = obsBuilder.withWorkload(workload).withTaskTracker(taskTracker).withMaxTime(1000000).build();
+        obs = obsBuilder.withWorkload(workload).withMaxTime(1000000).build();
         executor = execBuilder.withObserver(obs).build();
         processor = procBuilder
             .withWorkload(workload)
@@ -120,10 +118,10 @@ public class ProcessorBuilderTests {
         EngineTestUtils.waitUntilDoneTarget(workload, 30, logger);
         
         // Evaluate test
-        assertionState = taskTracker.taskCount() > 0;
+        assertionState = TaskTrackers.WORK_ITEM_TRACKER.taskCount() > 0;
         logger.info(
       "Tracked '{}' ItemTasks displaying state of first:\t'{}'",
-            taskTracker.taskCount(), taskTracker.get(workload.get(0).getId())
+            TaskTrackers.WORK_ITEM_TRACKER.taskCount(), TaskTrackers.WORK_ITEM_TRACKER.get(workload.get(0).getId())
         );
         logger.info("Displaying first task after processing:\n\n{}", workload.get(0).toJsonDoc());
         
@@ -151,7 +149,6 @@ public class ProcessorBuilderTests {
         TaskTideExecutor<WorkItem> executor;
         TaskTideProcessor<WorkItem> processor;
         TaskTideEngineObserver<WorkItem> obs;
-        TaskTracker taskTracker;
         
         // Construct builders
         procBuilder = new WorkItemProcessorBuilder();
@@ -159,10 +156,8 @@ public class ProcessorBuilderTests {
         obsBuilder = new WorkItemObserverBuilder();
         
         // Build observer
-        taskTracker = new TaskTracker();
         obs = obsBuilder
             .withMaxTime(1000000)
-            .withTaskTracker(taskTracker)
         .build();
         
         // Build executor

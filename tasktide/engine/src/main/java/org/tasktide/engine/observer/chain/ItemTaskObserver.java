@@ -15,8 +15,6 @@ import org.tasktide.engine.observer.WorkerObserver;
 
 import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
 import org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver;
-import org.tasktide.engine.tasktracker.TaskTracker;
-
 
 /**
  * Coordinates the work across the {@link WorkerObserver}s for the processing of {@link WorkItem}
@@ -33,7 +31,7 @@ public class ItemTaskObserver extends ObserverChain<ItemTask> {
     public ItemTaskObserver() {
         super(
      List.of(
-                new ItemTaskStateObserver( new TaskTracker() ),
+                new ItemTaskStateObserver(),
                 new ItemTaskTimeKeeper(100000)
             )
         );
@@ -43,16 +41,14 @@ public class ItemTaskObserver extends ObserverChain<ItemTask> {
     /**
      * Construct with required arguments
      * 
-     * @param tracker
      * @param maxTime
      */
     public ItemTaskObserver(
-        TaskTracker tracker,
         @ConfigProperty(name="task-tide.engine.observer.worker.timekeeper.itemtask", defaultValue="100000") int maxTime
     ) {
         super(
             List.of(
-                new ItemTaskStateObserver(tracker),
+                new ItemTaskStateObserver(),
                 new ItemTaskTimeKeeper(maxTime)
             )
         );
@@ -62,19 +58,17 @@ public class ItemTaskObserver extends ObserverChain<ItemTask> {
     /**
      * Construct with required arguments
      * 
-     * @param tracker
      * @param workload
      * @param maxTime
      */
     public ItemTaskObserver(
-        TaskTracker tracker,
         List<ItemTask> workload,
         @ConfigProperty(name="task-tide.engine.observer.worker.timekeeper.itemtask", defaultValue="100000") int maxTime
     ) {
         super(
             List.of(
                 new ItemTaskTimeKeeper(maxTime),
-                new ItemTaskStateObserver(tracker, workload)
+                new ItemTaskStateObserver(workload)
             )
         );
     }

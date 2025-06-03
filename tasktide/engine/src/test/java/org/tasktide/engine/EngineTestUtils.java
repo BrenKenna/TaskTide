@@ -6,10 +6,12 @@ package org.tasktide.engine;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.Map;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -19,8 +21,7 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.concurrency.ParallelItemTaskExecutor;
-import org.tasktide.engine.tasktracker.ExecutorServiceTrackerItemTask;
-import org.tasktide.engine.tasktracker.ExecutorServiceTrackerWorkItem;
+import org.tasktide.engine.tasktracker.FutureTrackers;
 
 
 /**
@@ -61,11 +62,10 @@ public class EngineTestUtils {
         boolean done = false;
         int baseDelaySeconds = 1, counter = 0;
         long sleepTime;
-        ExecutorServiceTrackerItemTask executorServiceTracker = ExecutorServiceTrackerItemTask.getInstance();
         int baseCount, currentDone, nRemaining;
         
         // Wait until done
-        baseCount = executorServiceTracker.taskCount();
+        baseCount = FutureTrackers.ITEM_TASK_TRACKER.taskCount();
         logger.info("Begining state monitoring of ExecutorServiceTracker:\tN tasks = '{}'", baseCount);
         while ( !done ) {
         
@@ -80,16 +80,16 @@ public class EngineTestUtils {
             
             // Wait
             logger.info("Letting '{}'ms elapse for state monitoring of ExecutorServiceTracker:\t'{}'", 
-                sleepTime, executorServiceTracker.toString()
+                sleepTime, FutureTrackers.ITEM_TASK_TRACKER.toString()
             );
             try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
             
             // Fetch summary
-            currentDone = executorServiceTracker.countDone();
+            currentDone = FutureTrackers.ITEM_TASK_TRACKER.countDone();
             nRemaining = baseCount - currentDone;
             if (nRemaining < 0) {
-                baseCount = executorServiceTracker.taskCount();
-                currentDone = executorServiceTracker.countDone();
+                baseCount = FutureTrackers.ITEM_TASK_TRACKER.taskCount();
+                currentDone = FutureTrackers.ITEM_TASK_TRACKER.countDone();
                 nRemaining = baseCount - currentDone;
             }
             logger.info(
@@ -116,11 +116,10 @@ public class EngineTestUtils {
         boolean done = false;
         int baseDelaySeconds = 1, counter = 0;
         long sleepTime;
-        ExecutorServiceTrackerWorkItem executorServiceTracker = ExecutorServiceTrackerWorkItem.getInstance();
         int baseCount, currentDone, nRemaining;
         
         // Wait until done
-        baseCount = executorServiceTracker.taskCount();
+        baseCount = FutureTrackers.WORK_ITEM_TRACKER.taskCount();
         logger.info("Begining state monitoring of ExecutorServiceTracker:\tN tasks = '{}'", baseCount);
         while ( !done ) {
         
@@ -140,11 +139,11 @@ public class EngineTestUtils {
             try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
             
             // Fetch summary
-            currentDone = executorServiceTracker.countDone();
+            currentDone = FutureTrackers.WORK_ITEM_TRACKER.countDone();
             nRemaining = baseCount - currentDone;
             if (nRemaining < 0) {
-                baseCount = executorServiceTracker.taskCount();
-                currentDone = executorServiceTracker.countDone();
+                baseCount = FutureTrackers.WORK_ITEM_TRACKER.taskCount();
+                currentDone = FutureTrackers.WORK_ITEM_TRACKER.countDone();
                 nRemaining = baseCount - currentDone;
             }
             logger.info(

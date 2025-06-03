@@ -6,6 +6,7 @@ package org.tasktide.engine;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,14 +17,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
+
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.tasktracker.ExecutorServiceTrackerItemTask;
-import org.tasktide.engine.tasktracker.ExecutorServiceTrackerWorkItem;
-import org.tasktide.engine.tasktracker.TaskTracker;
+
+import org.tasktide.engine.tasktracker.FutureTrackers;
+import org.tasktide.engine.tasktracker.TaskTrackers;
+
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
@@ -81,7 +86,6 @@ public class InitialEngineTests {
         TaskTideEngineObserver<WorkItem> observer;
         TaskTideProcessor<WorkItem> processor;
         TaskTideExecutor<WorkItem> executor;
-        TaskTracker taskTracker;
         List<WorkItem> workload;
         
         // Configure executor service for work items, and item tasks
@@ -91,12 +95,10 @@ public class InitialEngineTests {
         
         // Configure builders, task tracker and workload
         unitProvider = new TaskTideWorkerUnitProvider();
-        taskTracker = new TaskTracker();
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4, 6);
         
         // Configure observer
         observer = unitProvider.getWorkItemObsBuilder()
-            .withTaskTracker(taskTracker)
             .withMaxTime(1000000)
         .build();
         
@@ -162,7 +164,6 @@ public class InitialEngineTests {
         TaskTideEngineObserver<WorkItem> observer;
         TaskTideProcessor<WorkItem> processor;
         TaskTideExecutor<WorkItem> executor;
-        TaskTracker taskTracker;
         List<WorkItem> workload;
         
         // Configure executor service for work items, and item tasks
@@ -172,12 +173,10 @@ public class InitialEngineTests {
         
         // Configure builders, task tracker and workload
         unitProvider = new TaskTideWorkerUnitProvider();
-        taskTracker = new TaskTracker();
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 1, 2);
         
         // Configure observer
         observer = unitProvider.getWorkItemObsBuilder()
-            .withTaskTracker(taskTracker)
             .withMaxTime(1000000)
         .build();
         
@@ -205,7 +204,7 @@ public class InitialEngineTests {
         //   -> Should probably separate
         //EngineTestUtils.waitOnExecutorTracker(2, logger); 
         logger.info("Displaying ExecutorServiceTracker:\n\n'{}'\n\n",
-            ExecutorServiceTrackerWorkItem.getInstance().getIds()
+            FutureTrackers.WORK_ITEM_TRACKER.getIds()
         );
         
         // Evaluate test status
@@ -249,7 +248,6 @@ public class InitialEngineTests {
         TaskTideEngineObserver<WorkItem> observer;
         TaskTideProcessor<WorkItem> processor;
         TaskTideExecutor<WorkItem> executor;
-        TaskTracker taskTracker;
         List<WorkItem> workload;
         
         // Configure executor service for work items, and item tasks
@@ -259,12 +257,10 @@ public class InitialEngineTests {
         
         // Configure builders, task tracker and workload
         unitProvider = new TaskTideWorkerUnitProvider();
-        taskTracker = new TaskTracker();
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 1, 2);
         
         // Configure observer
         observer = unitProvider.getWorkItemObsBuilder()
-            .withTaskTracker(taskTracker)
             .withMaxTime(1000000)
         .build();
         
@@ -292,7 +288,7 @@ public class InitialEngineTests {
         //   -> Should probably separate
         //EngineTestUtils.waitOnExecutorTracker(2, logger); 
         logger.info("Displaying ExecutorServiceTracker:\n\n'{}'\n\n",
-            ExecutorServiceTrackerWorkItem.getInstance().getIds()
+            FutureTrackers.WORK_ITEM_TRACKER.getIds()
         );
         
         // Evaluate test status
@@ -337,7 +333,6 @@ public class InitialEngineTests {
         TaskTideEngineObserver<WorkItem> observer;
         TaskTideProcessor<WorkItem> processor;
         TaskTideExecutor<WorkItem> executor;
-        TaskTracker taskTracker;
         List<WorkItem> workload;
         
         // Configure executor service for work items, and item tasks
@@ -347,12 +342,10 @@ public class InitialEngineTests {
         
         // Configure builders, task tracker and workload
         unitProvider = new TaskTideWorkerUnitProvider();
-        taskTracker = new TaskTracker();
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, workItems, tasks);
         
         // Configure observer
         observer = unitProvider.getWorkItemObsBuilder()
-            .withTaskTracker(taskTracker)
             .withMaxTime(1000000)
         .build();
         
@@ -378,7 +371,7 @@ public class InitialEngineTests {
         int expected = workItems * tasks;
         EngineTestUtils.waitOnExecutorTrackerWorkItem(workItems, logger); 
         logger.info("Displaying ExecutorServiceTracker:\n\n'{}'\n\n",
-            ExecutorServiceTrackerWorkItem.getInstance().getIds()
+            FutureTrackers.WORK_ITEM_TRACKER.getIds()
         );
         
         // Evaluate test status
@@ -423,7 +416,6 @@ public class InitialEngineTests {
         TaskTideEngineObserver<WorkItem> observer;
         TaskTideProcessor<WorkItem> processor;
         TaskTideExecutor<WorkItem> executor;
-        TaskTracker taskTracker;
         List<WorkItem> workload;
         
         // Configure executor service for work items, and item tasks
@@ -433,12 +425,10 @@ public class InitialEngineTests {
         
         // Configure builders, task tracker and workload
         unitProvider = new TaskTideWorkerUnitProvider();
-        taskTracker = new TaskTracker();
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, workItems, tasks);
         
         // Configure observer
         observer = unitProvider.getWorkItemObsBuilder()
-            .withTaskTracker(taskTracker)
             .withMaxTime(1000000)
         .build();
         
@@ -464,7 +454,7 @@ public class InitialEngineTests {
         int expected = workItems * tasks;
         EngineTestUtils.waitOnExecutorTrackerWorkItem(workItems, logger);
         logger.info("Displaying ExecutorServiceTracker:\n\n'{}'\n\n",
-            ExecutorServiceTrackerWorkItem.getInstance().getIds()
+            FutureTrackers.WORK_ITEM_TRACKER.getIds()
         );
         
         // Evaluate test status
@@ -479,9 +469,9 @@ public class InitialEngineTests {
         }
         
         // Display trackers
-        logger.info("Displaying task tracker:\n\n{}\n\n", taskTracker.toString());
-        logger.info("Displaying WorkItem tracker:\n\n{}\n\n", ExecutorServiceTrackerWorkItem.getInstance().toString());
-        logger.info("Displaying ItemTask tracker:\n\n{}\n\n", ExecutorServiceTrackerWorkItem.getInstance().toString());
+        logger.info("Displaying task tracker:\n\n{}\n\n", TaskTrackers.WORK_ITEM_TRACKER.toString());
+        logger.info("Displaying WorkItem tracker:\n\n{}\n\n", FutureTrackers.WORK_ITEM_TRACKER.toString());
+        logger.info("Displaying ItemTask tracker:\n\n{}\n\n", FutureTrackers.ITEM_TASK_TRACKER.toString());
         
         // Log test status
         logger.info("-------- Displaying Processed WorkItems --------");
