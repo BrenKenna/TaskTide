@@ -34,18 +34,19 @@ public class CliParser {
 
     
     /**
-     * Parse defined arguments
+     * Parse defined arguments, or return help string
      * 
-     * @return boolean
+     * @return List-String
      */
-    public boolean parseArguments() {
+    public List<String> parseArguments() {
         
         // Check whether help flag was raised
         boolean helpFlag = Arrays.stream(argIn)
-            .anyMatch( elm -> elm.contains("-h") );
+            .anyMatch( 
+                elm -> elm.contains("-h")
+        );
         if (helpFlag) {
-            List<String> help = this.args.getHelp();
-            return true;
+            return this.args.getHelp();
         }
         
         // Parse global arguments
@@ -65,7 +66,7 @@ public class CliParser {
                 }
             }
         }
-        return false;
+        return null;
     }
 
     
