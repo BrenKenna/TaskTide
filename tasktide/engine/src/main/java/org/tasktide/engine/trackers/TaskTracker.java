@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.tasktracker;
+package org.tasktide.engine.trackers;
 
 import java.util.Map;
 
@@ -21,12 +21,12 @@ import org.tasktide.core.TaskTideModel;
  * @param <T> of TaskTideModel 
  * @author bkenna
  */
-public class GenericTaskTracker<T extends TaskTideModel<T>> {
+public class TaskTracker<T extends TaskTideModel<T>> {
     
     // Map of task states
     private final ConcurrentMap<String, ExecutionState> taskStates = new ConcurrentHashMap<>();
     
-    GenericTaskTracker() {}
+    TaskTracker() {}
     
     
     /**

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.tasktracker;
+package org.tasktide.engine.trackers;
 
 import java.util.concurrent.Future;
 import org.tasktide.core.TaskTideModel;

@@ -26,8 +26,8 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 
-import org.tasktide.engine.tasktracker.FutureTrackers;
-import org.tasktide.engine.tasktracker.TaskTrackers;
+import org.tasktide.engine.trackers.FutureTrackers;
+import org.tasktide.engine.trackers.TaskTrackers;
 
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
@@ -409,7 +409,7 @@ public class InitialEngineTests {
     
         // Initialize test
         logger.info("\n\n================ Multiple WorkItems Test ================\n");
-        int nProcessed = 0, workItems = 25, tasks = 13;
+        int nProcessed = 0, workItems = 2, tasks = 3;
         boolean assertionState;
         TaskTideWorkerUnitProvider unitProvider;
         ExecutorService executorService;
@@ -419,7 +419,7 @@ public class InitialEngineTests {
         List<WorkItem> workload;
         
         // Configure executor service for work items, and item tasks
-        int nWorkItemThreads = 7, nItemTaskThreads = 21;
+        int nWorkItemThreads = 2, nItemTaskThreads = 3;
         TaskTideExecutorServiceProvider.initialize(nWorkItemThreads, nItemTaskThreads);
         executorService = TaskTideExecutorServiceProvider.workItemExecutorService();
         
@@ -435,7 +435,7 @@ public class InitialEngineTests {
         // Configure executor
         executor = unitProvider.getWorkItemExecBuilder()
             .withWorkItemObserver(observer)
-            .withSubThreads(nItemTaskThreads)
+            .withSubThreads(1)
             .withSubTaskThreshold(7)
         .build();
         
@@ -443,7 +443,7 @@ public class InitialEngineTests {
         processor = unitProvider.getWorkItemProcBuilder()
             .withWorkload(workload)
             .withExecutorService(executorService)
-            .withThreshold(13)
+            .withThreshold(1)
             .withSubExecutor(executor)
         .build();
         

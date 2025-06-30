@@ -4,7 +4,7 @@
  */
 package org.tasktide.engine.worker.tasktracker;
 
-import org.tasktide.engine.tasktracker.ExecutionState;
+import org.tasktide.engine.trackers.ExecutionState;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.tasktide.engine.tasktracker.TaskTrackers;
+import org.tasktide.engine.trackers.TaskTrackers;
 
 
 

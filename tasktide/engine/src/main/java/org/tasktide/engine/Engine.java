@@ -4,10 +4,28 @@
  */
 package org.tasktide.engine;
 
+
 /**
- *
+ * 
+ * 
  * @author bkenna
  */
 public class Engine {
     
+    // Attributes
+    private final TaskTideExecutorServiceProvider execProv;
+    private final TaskTideWorkerUnitProvider workerProv;
+    
+    
+    /**
+     * Construct with required arguments
+     * 
+     * @param workItemThreads
+     * @param itemTaskThreads 
+     */
+    public Engine(int workItemThreads, int itemTaskThreads) {
+        TaskTideExecutorServiceProvider.initialize(workItemThreads, itemTaskThreads);
+        this.execProv = TaskTideExecutorServiceProvider.getInstance();
+        this.workerProv = new TaskTideWorkerUnitProvider();
+    }
 }

@@ -13,8 +13,8 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.observer.ObserverResult;
 import org.tasktide.engine.observer.worker.StateObserver;
 
-import org.tasktide.engine.tasktracker.ExecutionState;
-import org.tasktide.engine.tasktracker.TaskTrackers;
+import org.tasktide.engine.trackers.ExecutionState;
+import org.tasktide.engine.trackers.TaskTrackers;
 
 
 /**
