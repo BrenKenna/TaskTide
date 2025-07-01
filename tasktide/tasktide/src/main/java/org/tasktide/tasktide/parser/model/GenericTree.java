@@ -73,10 +73,9 @@ public class GenericTree<T> {
      * Fetch data value for address
      * 
      * @param path
-     * @param delim
      * @return T
      */
-    public T getDataForAddress(String path, String delim) {
+    public T getDataForAddress(String path) {
         return this.findByAddress(path).getData();
     }
     
@@ -286,7 +285,7 @@ public class GenericTree<T> {
         GenericTreeNode<T> child = current.getChildren().get(addressArr[0]);
         
         if ( child == null ) return null;
-        if ( addressArr[1].length() == 1 ) return child;
+        if ( addressArr.length == 1 ) return child;
         return recursiveGetByAddress(child, addressArr[1]);
     }
     

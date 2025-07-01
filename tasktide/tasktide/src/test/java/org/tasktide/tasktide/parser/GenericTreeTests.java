@@ -7,31 +7,33 @@ package org.tasktide.tasktide.parser;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
+
 import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.tasktide.tasktide.parser.model.GenericTree;
 
 
 /**
- *
+ * Tests the GenericTree module
  * 
  * @author bkenna
  */
 public class GenericTreeTests {
     
     private static final Logger logger = LogManager.getLogger(GenericTreeTests.class);
-    private static final JsonbConfig config = new JsonbConfig().withFormatting(true);
-    private static final JsonbConfig configNoIndent = new JsonbConfig();
+    private static final Jsonb PRETTY_JSON = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
+    private static final Jsonb JSON = JsonbBuilder.create(new JsonbConfig());
     
     public GenericTreeTests() {}
     
@@ -60,9 +62,9 @@ public class GenericTreeTests {
     }
     
     
-    
     /**
      * Test that records can be added to the tree, and display in log
+     * 
      */
     @Test
     @Order(0)
@@ -71,7 +73,6 @@ public class GenericTreeTests {
         // Initialize test
         logger.info("\n\n================ Can Setup Tree Test ================\n");
         boolean assertionState;
-        String template;
         int treeSize;
         GenericTree<String> myTree;
         
@@ -93,11 +94,49 @@ public class GenericTreeTests {
         treeSize = myTree.size();
         assertionState = treeSize >= 1;
         Map<String, String> treeData = myTree.toAddressDataMap();
-        Jsonb jsonb = JsonbBuilder.create(config);
-        logger.info("\n\nDisplaying Tree:\n\n{}\n", jsonb.toJson(treeData));
+        logger.info("\n\nDisplaying Tree:\n\n{}\n", PRETTY_JSON.toJson(treeData));
         
         // Evaluate test
         assertTrue(assertionState, "Not all records added");
         logger.info("\n\n================ Can Setup Tree Test ================\n");
+    }
+    
+    
+    /**
+     * Test find/removing a datapoint
+     * 
+     */
+    @Test
+    @Order(1)
+    public void canFindAndRemove() {
+    
+        // Initialize test
+        logger.info("\n\n================ Can Add/Remove to Tree Test ================\n");
+        boolean assertionState = false;
+        GenericTree<String> myTree;
+        
+        // Create tree and add some records
+        myTree = new GenericTree<>("/");
+        myTree.addChild("red/apple", "Apple");
+        myTree.addChild("yellow/lemon", "Lemon");
+        myTree.addChild("green/grape", "Grape");
+        
+        // Find by address, and value
+        String value = myTree.getDataForAddress("red/apple");
+        if ( value != null ) {
+            logger.info("Successfully found address:\t\"{}\"", "red/apple");
+            if ( myTree.containsData(value) ) {
+                logger.info("Successfully queried value:\t\"{}\"", "Apple");
+                assertionState = myTree.removeByAddress("red/apple");
+            }
+        }
+        logger.info(
+      "\n\nDisplaying Tree After Test:\n\n{}\n",
+         PRETTY_JSON.toJson(myTree.toAddressDataMap())
+        );
+        
+        // Evaluate test
+        assertTrue(assertionState, "Unable to query/remove data");
+        logger.info("\n\n================ Can Add/Remove to Tree Test ================\n");
     }
 }

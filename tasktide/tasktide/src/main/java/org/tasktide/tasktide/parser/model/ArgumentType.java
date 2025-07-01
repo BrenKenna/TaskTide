@@ -9,7 +9,6 @@ package org.tasktide.tasktide.parser.model;
  * @author bkenna
  */
 public enum ArgumentType {
-    
     GLOBAL,
     ACTION;
 }

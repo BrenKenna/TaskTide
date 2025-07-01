@@ -110,3 +110,93 @@ Displaying Tree:
 
 ---------------- Generic Tree Tests ----------------
 
+2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+================ Can Add/Remove to Tree Test ================
+
+2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+================ Can Add/Remove to Tree Test ================
+
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully found address:	red/apple
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully queried value:	Apple
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+Displaying Tree After Test:
+
+{
+    "green/grape": "Grape",
+    "yellow/lemon": "Lemon"
+}
+
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+================ Can Add/Remove to Tree Test ================
+
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+================ Can Add/Remove to Tree Test ================
+
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully found address:	"red/apple"
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully queried value:	"Apple"
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+Displaying Tree After Test:
+
+{
+    "green/grape": "Grape",
+    "yellow/lemon": "Lemon"
+}
+
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+================ Can Add/Remove to Tree Test ================
+
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+
+---------------- Generic Tree Tests ----------------
+

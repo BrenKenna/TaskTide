@@ -4,143 +4,138 @@
  */
 package org.tasktide.tasktide.parser;
 
-import java.util.Arrays;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 
 import org.tasktide.tasktide.parser.model.Argument;
+import org.tasktide.tasktide.parser.model.ArgumentMap;
 
 
 /**
- *
+ * Class to parse command-line arguments into {@link ArgumentTree}
+ * 
  * @author bkenna
  */
 public class CliParser {
-
+    
     // Attributes
-    private final Arguments args;
-    private final String[] argIn;
-
+    private final ArgumentTree argTree;
+    private final String[] argsIn;
+    private final Map<String, Argument<?>> parsedArgs;
+    
     
     /**
-     * Construct command-line argument parser
+     * Construct with {@link ArgumentTree} and argument array
      * 
-     * @param argIn
-     * @param args
+     * @param argTree
+     * @param argsIn 
      */
-    public CliParser(String[] argIn, Arguments args) {
-        this.args = args;
-        this.argIn = argIn;
+    public CliParser(ArgumentTree argTree, String[] argsIn) {
+        this.argTree = argTree;
+        this.argsIn = argsIn;
+        this.parsedArgs = new HashMap<>();
     }
-
+    
     
     /**
-     * Parse defined arguments, or return help string
+     * Parse command-line arguments into {@link ArgumentTree}, and resulting map
      * 
-     * @return List-String
+     * @return Map-String, {@link Argument}
      */
-    public List<String> parseArguments() {
+    public Map<String, Argument<?>> parse() {
+        parsedArgs.clear();;
         
-        // Check whether help flag was raised
-        boolean helpFlag = Arrays.stream(argIn)
-            .anyMatch( 
-                elm -> elm.contains("-h")
-        );
-        if (helpFlag) {
-            return this.args.getHelp();
-        }
+        // Resolve command paths
+        List<String> pathTokens = argTree.resolveActionPath(argsIn);
+        String actionPath = String.join(" ", pathTokens);
         
         // Parse global arguments
-        for (Argument<?> arg : this.args.getGlobalArguments().getArgMap().values()) {
-            String val = this.fetchRawValueFromArr(arg);
-            if (val != null) {
-                arg.parseValue(val);
-            }
-        }
-
-        // Parse action arguments
-        for (String action : this.args.getActionMap().keySet()) {
-            for (Argument<?> arg : this.args.getActionArguments(action).getArgMap().values()) {
-                String val = this.fetchRawValueFromArr(arg);
-                if (val != null) {
-                    arg.parseValue(val);
-                }
-            }
-        }
-        return null;
-    }
-
-    
-    /**
-     * Fetch the raw value for an argument from args arr
-     * 
-     * @param arg
-     * @return String
-     */
-    private String fetchRawValueFromArr(Argument<?> arg) {
-        int index = indexOf(arg);
-        if (index < 0) {
-            return null;
-        }
-
-        String current = this.argIn[index];
-        if ( current.contains("=") ) {
-            return current.split("=")[1];
-        }
-
-        // Fetch all values up to next arg
-        int j = index + 1;
-        boolean hitNext = false;
-        StringBuilder result = new StringBuilder();
-        while (j < this.argIn.length && !hitNext) {
-            String active = this.argIn[j];
-            if (active.startsWith("-")) {
-                hitNext = true;
-            } else {
-                if ( result.length() > 0 ) {
-                    result.append(",");
-                }
-                result.append(active);
-                j++;
-            }
+        ArgumentMap globalArgs = argTree.getGlobalArguments();
+        if ( globalArgs != null ) {
+            this.parseFromMap(globalArgs);
         }
         
-        // Return result
-        return result.toString();
+        // Parse command specific arguments
+        ArgumentMap actionArgs = argTree.getActionArguments(actionPath);
+        if ( actionArgs != null ) {
+            this.parseFromMap(actionArgs);
+        }
+        
+        // Return parsed arguments
+        return parsedArgs;
     }
-
+    
     
     /**
-     * Fetch index of {@link Argument} in args[]
+     * Parse command-line argument values from {@link ArgumentMap}
      * 
-     * @param arr
+     * @param map 
+     */
+    private void parseFromMap(ArgumentMap map) {
+        for ( Argument<?> arg : map.getArgMap().values() ) {
+            int index = this.indexOf(arg);
+            String raw = this.fetchRawValue(index);
+            if ( raw != null ) {
+                arg.parseValue(raw);
+                this.parsedArgs.put(arg.getName(), arg);
+            }
+        }
+    }
+    
+    
+    /**
+     * Fetch index of argument in command-line argument array
+     * 
      * @param arg
      * @return int
      */
     private int indexOf(Argument<?> arg) {
-        for (int i = 0; i < this.argIn.length; i++) {
-            String current = this.argIn[i];
-            if (matchToArg(current, arg)) {
-                return i;
-            }
+        for (int i = 0; i < this.argsIn.length; i++) {
+            if (this.matchToArg(this.argsIn[i], arg)) return i;
         }
         return -1;
     }
-
+    
     
     /**
-     * Check whether queried matches either the short or
-     *   long flag for provided {@link Argument}
+     * Match query to the long/short argument flags
      * 
      * @param query
      * @param arg
+     * 
      * @return boolean
      */
     private boolean matchToArg(String query, Argument<?> arg) {
-        if (arg.getShortFlag().equals(query)) {
-            return true;
-        } else if (arg.getLongFlag().equals(query)) {
-            return true;
+        return query.equals(arg.getShortFlag()) || query.equals(arg.getLongFlag());
+    }
+    
+    
+    /**
+     * Fetch raw string value for argument from the argument array
+     * 
+     * @param index
+     * @return String
+     */
+    private String fetchRawValue(int index) {
+        
+        // Handle absent
+        if ( index < 0 ) {
+            return null;
         }
-        return false;
+        
+        // Support --key=value
+        if (this.argsIn[index].contains("=")) {
+            return this.argsIn[index].split("=", 2)[1];
+        }
+
+        // Support --key value
+        if (index + 1 < this.argsIn.length && !this.argsIn[index + 1].startsWith("-")) {
+            return this.argsIn[index + 1];
+        }
+
+        // Support --keyOfInterest --nextKey
+        // Treat as boolean flag
+        return "true";
     }
 }

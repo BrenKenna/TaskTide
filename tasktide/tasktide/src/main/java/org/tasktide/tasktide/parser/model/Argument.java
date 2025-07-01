@@ -29,11 +29,11 @@ public class Argument<T> {
      * @param argType
      */
     public Argument(
-            String name,
-            String description,
-            String shortFlag,
-            String longFlag,
-            ArgumentType argType
+        String name,
+        String description,
+        String shortFlag,
+        String longFlag,
+        ArgumentType argType
     ) {
         this.name = name;
         this.description = description;
@@ -53,15 +53,16 @@ public class Argument<T> {
      * @param shortFlag
      * @param longFlag
      * @param argType
+     * @param clazz
      */
     public Argument(
-            T value,
-            String name,
-            String description,
-            String shortFlag,
-            String longFlag,
-            ArgumentType argType,
-            Class<T> clazz
+        T value,
+        String name,
+        String description,
+        String shortFlag,
+        String longFlag,
+        ArgumentType argType,
+        Class<T> clazz
     ) {
         this.value = value;
         this.name = name;
