@@ -36,3 +36,77 @@ _________________________________________________
 
 ---------------- Terminating Supplemental Tests ----------------
 
+2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+
+================ Can Setup Tree Test ================
+
+2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+
+Displaying Tree:
+
+{
+    "red/apple": "Apple",
+    "red/cherry": "Cherry",
+    "red/strawberry": "Strawberry",
+    "green/kiwi": "Kiwi",
+    "green/lime": "Lime",
+    "green/grape": "Grape",
+    "yellow/banana": "Banana",
+    "yellow/lemon": "Lemon",
+    "yellow/pineapple": "Pineapple"
+}
+2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+
+================ Can Setup Tree Test ================
+
+2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+
+Displaying Tree:
+
+{
+    "red/apple": "Apple",
+    "red/cherry": "Cherry",
+    "red/strawberry": "Strawberry",
+    "green/kiwi": "Kiwi",
+    "green/lime": "Lime",
+    "green/grape": "Grape",
+    "yellow/banana": "Banana",
+    "yellow/lemon": "Lemon",
+    "yellow/pineapple": "Pineapple"
+}
+2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+
+================ Can Setup Tree Test ================
+
+2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
