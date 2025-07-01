@@ -93,8 +93,7 @@ public class GenericTreeTests {
         // Check size
         treeSize = myTree.size();
         assertionState = treeSize >= 1;
-        Map<String, String> treeData = myTree.toAddressDataMap();
-        logger.info("\n\nDisplaying Tree:\n\n{}\n", PRETTY_JSON.toJson(treeData));
+        logger.info("\n\nDisplaying Tree:\n\n{}\n", PRETTY_JSON.toJson(myTree.toAddressDataMap()));
         
         // Evaluate test
         assertTrue(assertionState, "Not all records added");
