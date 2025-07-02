@@ -43083,3 +43083,692 @@ Task 'ItemTask-c6ccdd53-3acb-4eed-a16c-3c1d03d60ed8' started on Thread 'pool-3-t
 
 ---------------- Terminating WorkItemProcessor Tests ----------------
 
+2025-07-02 12:46:04 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.setUpClass ]: 
+
+---------------- Initiating WorkItemProcessor Tests ----------------
+
+2025-07-02 12:46:04 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-02 12:46:04 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: 
+
+================ Multiple WorkItems Test ================
+
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988' set on thread 'pool-2-thread-1'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf' set on thread 'pool-2-thread-2'
+2025-07-02 12:46:04 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitOnExecutorTrackerWorkItem ]: Begining state monitoring of ExecutorServiceTracker:	N tasks = '2'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:04 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '3' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '3' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:04 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-3', Size='2', First ItemId = 'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010' set on thread 'pool-3-thread-2'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262' set on thread 'pool-3-thread-1'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping google.com
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c' set on thread 'pool-3-thread-3'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping google.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginging execution of task:	ping google.com
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-3':ping bbc.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginging execution of task:	ping bbc.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginging execution of task:	ping google.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping google.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping google.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping bbc.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping bbc.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping google.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping google.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host bbc.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-a74dbff5-eb3e-479b-90c8-cdcb09426c24"
+}
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host google.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-fde080ef-a7fa-4823-80f5-09ce2ded1dee"
+}
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host google.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-48ce7619-d586-4034-8000-cadf15be5548"
+}
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host google.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-48ce7619-d586-4034-8000-cadf15be5548"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping google.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host bbc.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-a74dbff5-eb3e-479b-90c8-cdcb09426c24"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping bbc.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host google.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-fde080ef-a7fa-4823-80f5-09ce2ded1dee"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping google.com
+2025-07-02 12:46:04 ERROR [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1751456764371,
+    "Exit Code": 1,
+    "Process Id": 18696,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "Ping request could not find host bbc.com. Please check the name and try again."
+        ],
+        "id": "ProcessLog-a74dbff5-eb3e-479b-90c8-cdcb09426c24"
+    },
+    "Start Time": 1751456764322,
+    "Thread Name": "pool-3-thread-3",
+    "id": "TaskLogging-f12b68de-29c8-48ec-889b-1aed6ce351a3"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1751456764380,
+    "Exit Code": 1,
+    "Process Id": 22092,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "Ping request could not find host google.com. Please check the name and try again."
+        ],
+        "id": "ProcessLog-48ce7619-d586-4034-8000-cadf15be5548"
+    },
+    "Start Time": 1751456764324,
+    "Thread Name": "pool-3-thread-2",
+    "id": "TaskLogging-706ca065-976e-4ed3-9401-c1695521ee2f"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping bbc.com-2' failed on thread 'pool-3-thread-3' with exit code 1
+
+2025-07-02 12:46:04 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping google.com-0' failed on thread 'pool-3-thread-2' with exit code 1
+
+2025-07-02 12:46:04 WARN  [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c'
+2025-07-02 12:46:04 WARN  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010'
+2025-07-02 12:46:04 WARN  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c'
+2025-07-02 12:46:04 WARN  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010'
+2025-07-02 12:46:04 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1751456764364,
+    "Exit Code": 1,
+    "Process Id": 22240,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "Ping request could not find host google.com. Please check the name and try again."
+        ],
+        "id": "ProcessLog-fde080ef-a7fa-4823-80f5-09ce2ded1dee"
+    },
+    "Start Time": 1751456764320,
+    "Thread Name": "pool-3-thread-1",
+    "id": "TaskLogging-a4a4d22e-7ddd-4787-951c-144c09caa5da"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping google.com-1' failed on thread 'pool-3-thread-1' with exit code 1
+
+2025-07-02 12:46:04 WARN  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262'
+2025-07-02 12:46:04 WARN  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010',
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c',
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262',
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262' completed in 430ms
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c' completed in 432ms
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010' completed in 431ms
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '430ms', Expected Next = '1751456765178ms', Max End '1751456864318ms', Is time = 'true'
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '432ms', Expected Next = '1751456765180ms', Max End '1751456864316ms', Is time = 'true'
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '431ms', Expected Next = '1751456765179ms', Max End '1751456864317ms', Is time = 'true'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '0', Failed = '0', Skipped = '0'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '0', Failed = '0', Skipped = '0'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b' set on thread 'pool-3-thread-1'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping spotify.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginging execution of task:	ping spotify.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Now = '1751456764777ms', Start Time = '1751456764777ms', Elapsed Time = '461ms'
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating elapsed time '461ms' > '100000'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-3':ping amazon.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginging execution of task:	ping amazon.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping spotify.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping spotify.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping amazon.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping amazon.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host spotify.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-1b5c00e2-029e-43d0-87f6-e060654e8e7d"
+}
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host spotify.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-1b5c00e2-029e-43d0-87f6-e060654e8e7d"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping spotify.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host amazon.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-e712970b-7cb2-4e94-8acd-1594f90b9562"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1751456764795,
+    "Exit Code": 1,
+    "Process Id": 34276,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "Ping request could not find host spotify.com. Please check the name and try again."
+        ],
+        "id": "ProcessLog-1b5c00e2-029e-43d0-87f6-e060654e8e7d"
+    },
+    "Start Time": 1751456764778,
+    "Thread Name": "pool-3-thread-1",
+    "id": "TaskLogging-4d583790-cb00-4f50-91df-f0abad8174d5"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping spotify.com-1' failed on thread 'pool-3-thread-1' with exit code 1
+
+2025-07-02 12:46:04 WARN  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b'
+2025-07-02 12:46:04 WARN  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b',
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b' completed in 113ms
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '113ms', Expected Next = '1751456765002ms', Max End '1751456864776ms', Is time = 'true'
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host amazon.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-e712970b-7cb2-4e94-8acd-1594f90b9562"
+}
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-02 12:46:04 ERROR [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping amazon.com
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282'
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Now = '1751456764889ms', Start Time = '1751456764889ms', Elapsed Time = '113ms'
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating elapsed time '113ms' > '100000'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping bbc.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginging execution of task:	ping bbc.com
+2025-07-02 12:46:04 ERROR [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1751456764809,
+    "Exit Code": 1,
+    "Process Id": 27912,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "Ping request could not find host amazon.com. Please check the name and try again."
+        ],
+        "id": "ProcessLog-e712970b-7cb2-4e94-8acd-1594f90b9562"
+    },
+    "Start Time": 1751456764782,
+    "Thread Name": "pool-3-thread-3",
+    "id": "TaskLogging-9cb900b2-bc54-4ec6-8757-c608755bade5"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping amazon.com-0' failed on thread 'pool-3-thread-3' with exit code 1
+
+2025-07-02 12:46:04 WARN  [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9'
+2025-07-02 12:46:04 WARN  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9',
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9' completed in 127ms
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '279ms', Expected Next = '1751456765183ms', Max End '1751456864777ms', Is time = 'true'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9'
+2025-07-02 12:46:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '0', Failed = '0', Skipped = '0'
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping bbc.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping bbc.com
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host bbc.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-669e112a-0915-4df0-9954-be9b246c1e5d"
+}
+2025-07-02 12:46:04 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "Ping request could not find host bbc.com. Please check the name and try again."
+    ],
+    "id": "ProcessLog-669e112a-0915-4df0-9954-be9b246c1e5d"
+}
+2025-07-02 12:46:04 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping bbc.com
+2025-07-02 12:46:05 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1751456764913,
+    "Exit Code": 1,
+    "Process Id": 15744,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "Ping request could not find host bbc.com. Please check the name and try again."
+        ],
+        "id": "ProcessLog-669e112a-0915-4df0-9954-be9b246c1e5d"
+    },
+    "Start Time": 1751456764895,
+    "Thread Name": "pool-3-thread-1",
+    "id": "TaskLogging-20416fcc-d2b7-4386-857d-9c43cf9a44ad"
+}
+2025-07-02 12:46:05 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping bbc.com-2' failed on thread 'pool-3-thread-1' with exit code 1
+
+2025-07-02 12:46:05 WARN  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282'
+2025-07-02 12:46:05 WARN  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282'
+2025-07-02 12:46:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282',
+2025-07-02 12:46:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282' completed in 117ms
+2025-07-02 12:46:05 DEBUG [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '115ms', Expected Next = '1751456765121ms', Max End '1751456864889ms', Is time = 'true'
+2025-07-02 12:46:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-02 12:46:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282'
+2025-07-02 12:46:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '0', Failed = '0', Skipped = '0'
+2025-07-02 12:46:14 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'0' StateSummary of ExecutorServiceTracker:
+
+Total='2', Remaining='2', Done='0', Expected='2'
+2025-07-02 12:46:14 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+
+{
+    "State Summary": {
+        "ERROR": 3,
+        "DONE": 0,
+        "FOR_UNLOCK": 0,
+        "TODO": 0,
+        "LOCKED": 0
+    }
+}
+
+
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+
+{
+    "State Summary": {
+        "ERROR": 3,
+        "DONE": 0,
+        "FOR_UNLOCK": 0,
+        "TODO": 0,
+        "LOCKED": 0
+    }
+}
+
+
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '3' WorkItems with '3'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '3' WorkItems with '3'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf', global count: 2
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988', global count: 1
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf',
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988',
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf' completed in 10061ms
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988' completed in 10061ms
+2025-07-02 12:46:14 DEBUG [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '10061ms', Expected Next = '1751456784393ms', Max End '1751456864271ms', Is time = 'true'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '2', Failed = '0', Skipped = '0'
+2025-07-02 12:46:14 DEBUG [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '10061ms', Expected Next = '1751456784393ms', Max End '1751456864271ms', Is time = 'true'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988'
+2025-07-02 12:46:14 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '2', Failed = '0', Skipped = '0'
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'1' StateSummary of ExecutorServiceTracker:
+
+Total='2', Remaining='0', Done='2', Expected='2'
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: Displaying ExecutorServiceTracker:
+
+'[WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf, WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988]'
+
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: Processed task count '6', matches expected '6'
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: Displaying task tracker:
+
+TaskId: WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988, State: Prepare
+TaskId: WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf, State: Prepare
+
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: Displaying WorkItem tracker:
+
+TaskId: WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988, Is Done: true
+TaskId: WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf, Is Done: true
+
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: Displaying ItemTask tracker:
+
+TaskId: ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b, Is Done: true
+TaskId: ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010, Is Done: true
+TaskId: ItemTask-38d7addc-1513-4131-a2f3-d4653006b282, Is Done: true
+TaskId: ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9, Is Done: true
+TaskId: ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262, Is Done: true
+TaskId: ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c, Is Done: true
+
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: -------- Displaying Processed WorkItems --------
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.lambda$canWaitWithMultipleItemTaskLarger$4 ]: {
+    "Done Date": 0,
+    "Id": "WorkItem-2eb5c2cd-d2b0-4716-818c-b25275317988",
+    "Item Name": "PING",
+    "Item State": "ERROR",
+    "Item Type": "NESTED",
+    "Lock Date": 1751456764296,
+    "Lock Id": "bba0ad8f-5927-4b49-a0c4-44d432cb800c",
+    "Step Name": "PING",
+    "Task Count": 3,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "Ping google.com-1": {
+                "Task": "ping google.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 1751456764364,
+                    "Exit Code": 1,
+                    "Process Id": 22240,
+                    "Process Log": {
+                        "Stderr": [
+                        ],
+                        "Stdout": [
+                            "Ping request could not find host google.com. Please check the name and try again."
+                        ],
+                        "id": "ProcessLog-fde080ef-a7fa-4823-80f5-09ce2ded1dee"
+                    },
+                    "Start Time": 1751456764320,
+                    "Thread Name": "pool-3-thread-1",
+                    "id": "TaskLogging-a4a4d22e-7ddd-4787-951c-144c09caa5da"
+                },
+                "Task Name": "Ping google.com-1",
+                "Task State": "ERROR",
+                "id": "ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262",
+                "state": "ping google.com"
+            },
+            "Ping bbc.com-2": {
+                "Task": "ping bbc.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 1751456764371,
+                    "Exit Code": 1,
+                    "Process Id": 18696,
+                    "Process Log": {
+                        "Stderr": [
+                        ],
+                        "Stdout": [
+                            "Ping request could not find host bbc.com. Please check the name and try again."
+                        ],
+                        "id": "ProcessLog-a74dbff5-eb3e-479b-90c8-cdcb09426c24"
+                    },
+                    "Start Time": 1751456764322,
+                    "Thread Name": "pool-3-thread-3",
+                    "id": "TaskLogging-f12b68de-29c8-48ec-889b-1aed6ce351a3"
+                },
+                "Task Name": "Ping bbc.com-2",
+                "Task State": "ERROR",
+                "id": "ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c",
+                "state": "ping bbc.com"
+            },
+            "Ping amazon.com-0": {
+                "Task": "ping amazon.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 1751456764809,
+                    "Exit Code": 1,
+                    "Process Id": 27912,
+                    "Process Log": {
+                        "Stderr": [
+                        ],
+                        "Stdout": [
+                            "Ping request could not find host amazon.com. Please check the name and try again."
+                        ],
+                        "id": "ProcessLog-e712970b-7cb2-4e94-8acd-1594f90b9562"
+                    },
+                    "Start Time": 1751456764782,
+                    "Thread Name": "pool-3-thread-3",
+                    "id": "TaskLogging-9cb900b2-bc54-4ec6-8757-c608755bade5"
+                },
+                "Task Name": "Ping amazon.com-0",
+                "Task State": "ERROR",
+                "id": "ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9",
+                "state": "ping amazon.com"
+            }
+        },
+        "Workload Type": "NESTED",
+        "earliestDone": -1,
+        "id": "Workload-849d2bcb-ee16-490a-addf-6c54c5436959",
+        "latestDone": 0,
+        "workloadSize": 3
+    },
+    "state": "Error",
+    "workloadSize": 3
+}
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.lambda$canWaitWithMultipleItemTaskLarger$4 ]: {
+    "Done Date": 0,
+    "Id": "WorkItem-bfb63ddb-0a04-4300-8a56-96157f9a1ebf",
+    "Item Name": "PING",
+    "Item State": "ERROR",
+    "Item Type": "NESTED",
+    "Lock Date": 1751456764297,
+    "Lock Id": "f87e18ba-27f0-4632-945a-0d6865eca292",
+    "Step Name": "PING",
+    "Task Count": 3,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "Ping google.com-0": {
+                "Task": "ping google.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 1751456764380,
+                    "Exit Code": 1,
+                    "Process Id": 22092,
+                    "Process Log": {
+                        "Stderr": [
+                        ],
+                        "Stdout": [
+                            "Ping request could not find host google.com. Please check the name and try again."
+                        ],
+                        "id": "ProcessLog-48ce7619-d586-4034-8000-cadf15be5548"
+                    },
+                    "Start Time": 1751456764324,
+                    "Thread Name": "pool-3-thread-2",
+                    "id": "TaskLogging-706ca065-976e-4ed3-9401-c1695521ee2f"
+                },
+                "Task Name": "Ping google.com-0",
+                "Task State": "ERROR",
+                "id": "ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010",
+                "state": "ping google.com"
+            },
+            "Ping spotify.com-1": {
+                "Task": "ping spotify.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 1751456764795,
+                    "Exit Code": 1,
+                    "Process Id": 34276,
+                    "Process Log": {
+                        "Stderr": [
+                        ],
+                        "Stdout": [
+                            "Ping request could not find host spotify.com. Please check the name and try again."
+                        ],
+                        "id": "ProcessLog-1b5c00e2-029e-43d0-87f6-e060654e8e7d"
+                    },
+                    "Start Time": 1751456764778,
+                    "Thread Name": "pool-3-thread-1",
+                    "id": "TaskLogging-4d583790-cb00-4f50-91df-f0abad8174d5"
+                },
+                "Task Name": "Ping spotify.com-1",
+                "Task State": "ERROR",
+                "id": "ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b",
+                "state": "ping spotify.com"
+            },
+            "Ping bbc.com-2": {
+                "Task": "ping bbc.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 1751456764913,
+                    "Exit Code": 1,
+                    "Process Id": 15744,
+                    "Process Log": {
+                        "Stderr": [
+                        ],
+                        "Stdout": [
+                            "Ping request could not find host bbc.com. Please check the name and try again."
+                        ],
+                        "id": "ProcessLog-669e112a-0915-4df0-9954-be9b246c1e5d"
+                    },
+                    "Start Time": 1751456764895,
+                    "Thread Name": "pool-3-thread-1",
+                    "id": "TaskLogging-20416fcc-d2b7-4386-857d-9c43cf9a44ad"
+                },
+                "Task Name": "Ping bbc.com-2",
+                "Task State": "ERROR",
+                "id": "ItemTask-38d7addc-1513-4131-a2f3-d4653006b282",
+                "state": "ping bbc.com"
+            }
+        },
+        "Workload Type": "NESTED",
+        "earliestDone": -1,
+        "id": "Workload-8b96dfed-8ecd-4875-886d-fd7af0952055",
+        "latestDone": 0,
+        "workloadSize": 3
+    },
+    "state": "Error",
+    "workloadSize": 3
+}
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: -------- Displaying Execution Time Summary --------
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.fetchExecutionTimes ]: Displaying Execution Times Across ItemTasks:
+
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.fetchExecutionTimes ]: Displaying Execution Times Across ItemTasks:
+
+Task 'ItemTask-cbf4647a-4a7b-41f9-9bcf-3217e08cb262' started on Thread 'pool-3-thread-1' '1751456764320' finished '1751456764364' duration '44'
+Task 'ItemTask-f6a9fef5-c1d4-44d3-9b18-559cf1d12f0c' started on Thread 'pool-3-thread-3' '1751456764322' finished '1751456764371' duration '49'
+Task 'ItemTask-725a66ee-a219-47d4-a2ce-21c3f99aefe9' started on Thread 'pool-3-thread-3' '1751456764782' finished '1751456764809' duration '27'
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.fetchExecutionTimes ]: Displaying Execution Times Across ItemTasks:
+
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.fetchExecutionTimes ]: Displaying Execution Times Across ItemTasks:
+
+Task 'ItemTask-2bbfefe2-1f41-4ad8-999a-9f223d4a7010' started on Thread 'pool-3-thread-2' '1751456764324' finished '1751456764380' duration '56'
+Task 'ItemTask-219137c5-e4ba-43cf-bee0-ad5a1c642a1b' started on Thread 'pool-3-thread-1' '1751456764778' finished '1751456764795' duration '17'
+Task 'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282' started on Thread 'pool-3-thread-1' '1751456764895' finished '1751456764913' duration '18'
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: 
+
+================ Multiple WorkItems Test ================
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-02 12:46:24 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.tearDownClass ]: 
+
+---------------- Terminating WorkItemProcessor Tests ----------------
+

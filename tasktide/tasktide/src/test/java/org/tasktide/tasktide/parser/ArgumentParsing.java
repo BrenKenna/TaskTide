@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+
 import org.tasktide.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.parser.model.ArgumentBuilder;
 import org.tasktide.tasktide.parser.model.ArgumentMap;
@@ -25,7 +26,8 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
 
 
 /**
- *
+ * Module for testing the parsing of command-line arguments into argument tree
+ * 
  * @author bkenna
  */
 public class ArgumentParsing {
@@ -112,8 +114,8 @@ public class ArgumentParsing {
         
         // Add the argument maps to the argument tree
         argTree.getTree().getRoot().setData(globalArgs);
-        argTree.getTree().addChild("docker container", containerArgs);
         argTree.getTree().addChild("docker container run", containerRunArgs);
+        argTree.getTree().addChild("docker container", containerArgs);
         
         
         // Check tree after definition

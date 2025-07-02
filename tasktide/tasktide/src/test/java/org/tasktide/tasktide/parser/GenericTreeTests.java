@@ -90,6 +90,8 @@ public class GenericTreeTests {
         myTree.addChild("green/kiwi", "Kiwi");
         myTree.addChild("green/grape", "Grape");
         
+        myTree.addChild("secondary/multicolor/large", "papya");
+        
         // Check size
         treeSize = myTree.size();
         assertionState = treeSize >= 1;
@@ -137,5 +139,35 @@ public class GenericTreeTests {
         // Evaluate test
         assertTrue(assertionState, "Unable to query/remove data");
         logger.info("\n\n================ Can Add/Remove to Tree Test ================\n");
+    }
+    
+    
+    
+    /**
+     * Test that records can be added to the tree under an unexisting branch
+     * 
+     */
+    @Test
+    @Order(2)
+    public void canAddUnderUnexistingBranch() {
+    
+        // Initialize test
+        logger.info("\n\n================ Can Add Under Unexting Branch Test ================\n");
+        boolean assertionState;
+        String testData = "papya", testAddress = "secondary/multicolor/large";
+        GenericTree<String> myTree;
+        
+        // Create tree and add some records
+        myTree = new GenericTree<>("/");
+        myTree.addChild("red/apple", "Apple");
+        myTree.addChild(testAddress, testData);
+        
+        // Check size
+        assertionState = myTree.containsData("papya");
+        logger.info("\n\nDisplaying Tree:\n\n{}\n", PRETTY_JSON.toJson(myTree.toAddressDataMap()));
+        
+        // Evaluate test
+        assertTrue(assertionState, "Not all records added");
+        logger.info("\n\n================ Can Add Under Unexting Branch Test ================\n");
     }
 }

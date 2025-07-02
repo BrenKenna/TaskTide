@@ -330,3 +330,119 @@ Displaying tree data:
 
 ---------------- Argument Parsing Tests ----------------
 
+2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+
+================ Can Setup Tree Test ================
+
+2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+
+Displaying Tree:
+
+{
+    "red/apple": "Apple",
+    "red/cherry": "Cherry",
+    "red/strawberry": "Strawberry",
+    "secondary/multicolor/large": "papya",
+    "green/kiwi": "Kiwi",
+    "green/lime": "Lime",
+    "green/grape": "Grape",
+    "yellow/banana": "Banana",
+    "yellow/lemon": "Lemon",
+    "yellow/pineapple": "Pineapple"
+}
+
+2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+
+================ Can Setup Tree Test ================
+
+2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-02 09:37:46 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
+
+================ Can Add Under Unexting Branch Test ================
+
+2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
+
+Displaying Tree:
+
+{
+    "red/apple": "Apple",
+    "secondary/multicolor/large": "papya"
+}
+
+2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
+
+================ Can Add Under Unexting Branch Test ================
+
+2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+
+---------------- Generic Tree Tests ----------------
+
+2025-07-02 09:40:07 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
+
+---------------- Argument Parsing Tests ----------------
+
+2025-07-02 09:40:07 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-02 09:40:07 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+================ Can EmulateDockerCommand Test ================
+
+2025-07-02 09:40:08 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+Displaying tree data:
+
+[
+    "\nGlobal Options:\n",
+    "  debug      --debug    Enable debug mode",
+    "",
+    "\nAction Arguments:\n",
+    "\nOptions for Action:\t\"docker container\"",
+    "  help       --help     Show help for container actions",
+    "\n\n",
+    "\nOptions for Action:\t\"docker container run\"",
+    "  name       --name     Set container name",
+    "\n\n"
+]
+
+
+2025-07-02 09:40:08 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+================ Can Setup Tree Test ================
+
+2025-07-02 09:40:08 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-02 09:40:08 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
+
+---------------- Argument Parsing Tests ----------------
+
