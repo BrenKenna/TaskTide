@@ -18,7 +18,6 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 
-import org.tasktide.core.manager.ManagerTask;
 
 
 /**

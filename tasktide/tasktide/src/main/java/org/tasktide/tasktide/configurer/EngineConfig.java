@@ -16,40 +16,73 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
 
 
 /**
- * Class to template the {@link TaskTideEngine} module
+ * Class to template the {@link TaskTideEngine} module parameters
  * 
  * @author bkenna
  */
 public class EngineConfig extends AbstractConfigurer {
     
+    /**
+     *
+     * Worker Params
+     * 
+     */
+    @Inject
+    @ConfigProperty(name = "tasktide.engine.worker.lock-wait-time", defaultValue = "4")
+    int lockTime;
     
     @Inject
-    @ConfigProperty(name = "tasktide.engine.worker.workitem.threads", default = "1")
+    @ConfigProperty(name = "tasktide.engine.worker.processor.workitem.threads", defaultValue = "1")
     int workItemThreads;
     
     @Inject
-    @ConfigProperty(name = "tasktide.engine.worker.workItem.threshold", default = "-1")
+    @ConfigProperty(name = "tasktide.engine.worker.processor.workItem.threshold", defaultValue = "-1")
     int workItemThreshold;
     
     @Inject
-    @ConfigProperty(name = "tasktide.engine.worker.threads.itemTask", default = "1")
+    @ConfigProperty(name = "tasktide.engine.worker.processor.threads.itemTask", defaultValue = "1")
     int itemTaskThreads;
     
     @Inject
-    @ConfigProperty(name = "tasktide.engine.worker.itemTask.threshold", default = "-1")
+    @ConfigProperty(name = "tasktide.engine.worker.processor.itemTask.threshold", defaultValue = "-1")
     int itemTaskThreshold;
     
+    
+    /**
+     *
+     * TimeKeeper Params
+     * 
+     */
     @Inject
-    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.waitTime", default = "1000000")
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.level", defaultValue = "Optional")
+    String timeKeeperLevel;
+    
+    @Inject
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.onStart.canFail", defaultValue = "true")
+    boolean timeKeeperOnStartCanFail;
+    
+    @Inject
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.onProcessing.canFail", defaultValue = "true")
+    boolean timeKeeperOnProcessingCanFail;
+    
+    @Inject
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.onPEnd.canFail", defaultValue = "true")
+    boolean timeKeeperOnEndCanFail;
+    
+    @Inject
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.waitTime", defaultValue = "1000000")
     long timeKeeperWaitTime;
+    
     
     
     /**
      * Defaults config path to 'tasktide engine'
+     * 
      */
     public EngineConfig() {
         super("tasktide engine");
     }
+    
     
     /**
      * Uses supplied path for engine config
@@ -73,6 +106,24 @@ public class EngineConfig extends AbstractConfigurer {
         this.itemTaskThreads();
         this.itemTaskSubTaskThreshold();
         this.timeKeeperMaxWallTime();
+    }
+    
+    
+    /**
+     * Configures the wait time in seconds for locking an item
+     * 
+     */
+    public void lockTime() {
+        Argument<Integer> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Lock Wait Time")
+            .withDescription("Configures the wait time in seconds for locking an item")
+            .withShortFlag("-t")
+            .withLongFlag("--max-wall-time")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(this.lockTime, int.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
     }
     
     
@@ -163,6 +214,78 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--max-wall-time")
             .withArgType(ArgumentType.ACTION)
             .withValue(this.timeKeeperWaitTime, long.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configure the {@link TimeKeeper} {@link TaskTideObserver} level
+     * 
+     */
+    public void timeKeeperLevel() {
+        Argument<Long> arg;
+        arg = this.getArgumentBuilder()
+            .withName("TimeKeeper Observer Level")
+            .withDescription("Configure whether TimeKeeper is optional")
+            .withShortFlag("-to")
+            .withLongFlag("--timeKeeper-observer")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(this.timeKeeperWaitTime, long.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configure the {@link TimeKeeper} {@link TaskTideObserver} level
+     * 
+     */
+    public void timeKeeperOnStartCanFail() {
+        Argument<Boolean> arg;
+        arg = this.getArgumentBuilder()
+            .withName("TimeKeeper Observer onStart")
+            .withDescription("Configure whether TimeKeeper onStart method can fail")
+            .withShortFlag("-tos")
+            .withLongFlag("--timeKeeper-onStart")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(this.timeKeeperOnStartCanFail, boolean.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configure the {@link TimeKeeper} {@link TaskTideObserver} level
+     * 
+     */
+    public void timeKeeperOnProcessingCanFail() {
+        Argument<Boolean> arg;
+        arg = this.getArgumentBuilder()
+            .withName("TimeKeeper Observer onProcessing")
+            .withDescription("Configure whether TimeKeeper onProcessing method can fail")
+            .withShortFlag("-top")
+            .withLongFlag("--timeKeeper-onProcessing")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(this.timeKeeperOnStartCanFail, boolean.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configure the {@link TimeKeeper} {@link TaskTideObserver} level
+     * 
+     */
+    public void timeKeeperOnEndCanFail() {
+        Argument<Boolean> arg;
+        arg = this.getArgumentBuilder()
+            .withName("TimeKeeper Observer onEnd")
+            .withDescription("Configure whether TimeKeeper onEnd method can fail")
+            .withShortFlag("-toe")
+            .withLongFlag("--timeKeeper-onEnd")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(this.timeKeeperOnStartCanFail, boolean.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }

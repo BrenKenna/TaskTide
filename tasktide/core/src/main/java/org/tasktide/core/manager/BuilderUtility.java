@@ -364,7 +364,7 @@ public class BuilderUtility {
      * @return {@link ManagerTask ManagerTask}
      */
     public static ManagerTask getSeqTask() {
-        return taskGenerator.generateSeqTask();
+        return TaskGenerator.generateSeqTask();
     }
     
     
@@ -374,7 +374,7 @@ public class BuilderUtility {
      * @return {@link ManagerTask ManagerTask}
      */
     public static ManagerTask getPingTask() {
-        return taskGenerator.generatePingTask();
+        return TaskGenerator.generatePingTask();
     }
     
     
@@ -385,7 +385,7 @@ public class BuilderUtility {
      * @return List-{@link ManagerTask ManagerTask}
      */
     public static List<ManagerTask> getPingTasks(int nTasks) {
-        return taskGenerator.generateTasks(ExampleGenerators.PING, nTasks);
+        return TaskGenerator.generateTasks(ExampleGenerators.PING, nTasks);
     }
     
     
@@ -396,6 +396,6 @@ public class BuilderUtility {
      * @return List-{@link ManagerTask ManagerTask}
      */
     public static List<ManagerTask> getSeqTasks(int nTasks) {
-        return taskGenerator.generateTasks(ExampleGenerators.SEQ, nTasks);
+        return TaskGenerator.generateTasks(ExampleGenerators.SEQ, nTasks);
     }
 }

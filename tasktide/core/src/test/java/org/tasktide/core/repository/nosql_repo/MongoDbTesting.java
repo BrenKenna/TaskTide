@@ -100,7 +100,7 @@ public class MongoDbTesting {
         
     @Test
     @Order(0)
-    void shouldInjectMongoDBTemplate() {
+    public void shouldInjectMongoDBTemplate() {
         Assertions.assertNotNull(template);
     }
     
