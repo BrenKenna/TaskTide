@@ -25,7 +25,9 @@ docker container run  -p 27017:27017 mongo:latest
 
 
 # Run image
-docker container run -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password --name 'couchDB' -p 59484:5984 couchdb:latest
+docker container run -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password -p 59484:5984 couchdb:latest
+curl -X PUT http://localhost:59584/myDB
+
 
 
 # Run image
@@ -43,4 +45,18 @@ docker run -d -p 8529:8529 -e ARANGO_RANDOM_ROOT_PASSWORD=password --name arango
 
 
 # Run image
-docker container run --name cassandra -p 7000:7000 cassandra:latest
+docker container run -e CASSANDRA_PASSWORD_SEEDER=yes -e CASSANDRA_USER=admin -e CASSANDRA_PASSWORD=password -p 9042:9042 cassandra:latest
+
+
+
+####################################
+####################################
+# 
+# c). Key-Value
+# 
+####################################
+####################################
+
+# Redis
+docker container run -p 6379:6379 redis:latest
+

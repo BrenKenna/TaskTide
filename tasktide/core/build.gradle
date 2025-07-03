@@ -25,6 +25,8 @@ dependencies {
     implementation "org.eclipse.jnosql.databases:jnosql-arangodb:1.1.6"
     implementation "org.eclipse.jnosql.databases:jnosql-dynamodb:1.1.6"
     implementation "org.eclipse.jnosql.databases:jnosql-couchbase:1.1.6"
+    implementation "org.eclipse.jnosql.databases:jnosql-redis:1.1.6"
+    implementation "org.eclipse.jnosql.databases:jnosql-cassandra:1.1.6"
 }
 
 jar {

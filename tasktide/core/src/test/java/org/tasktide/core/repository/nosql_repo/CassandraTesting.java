@@ -23,8 +23,8 @@ import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.nosql.Template;
 
 import org.eclipse.jnosql.mapping.core.Converters;
-import org.eclipse.jnosql.mapping.document.DocumentTemplate;
-import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
+import org.eclipse.jnosql.mapping.column.ColumnTemplate;
+import org.eclipse.jnosql.mapping.column.spi.ColumnExtension;
 import org.eclipse.jnosql.mapping.reflection.Reflections;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
 import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
@@ -44,21 +44,22 @@ import org.tasktide.core.repository.Tunes;
  * @author bkenna
  */
 @EnableAutoWeld
-@AddPackages(value = {Converters.class, EntityConverter.class, Template.class, DocumentTemplate.class})
+@AddPackages(value = {Converters.class, EntityConverter.class, Template.class, ColumnTemplate.class})
 @AddPackages(value = {Tunes.class, Reflections.class})
-@AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
+@AddExtensions( {ReflectionEntityMetadataExtension.class, ColumnExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class MongoDbTesting {
+public class CassandraTesting {
     
     // Logger for tests
-    private static final Logger logger = LogManager.getLogger(MongoDbTesting.class);
+    private static final Logger logger = LogManager.getLogger(CassandraTesting.class);
     
     private SeContainer container;
     
     private Template template;
     
-    public MongoDbTesting() {
+    public CassandraTesting() {
     }
+    
     
     
     @BeforeAll
@@ -69,10 +70,10 @@ public class MongoDbTesting {
         // Initialize CDI
         container = SeContainerInitializer.newInstance().initialize();
         logger.info(container.isRunning());
-        //new DocumentTemplate();
-        template = (Template) container.select(DocumentTemplate.class).get();
+        template = (Template) container.select(ColumnTemplate.class).get();
         logger.info("MongoDB template state" + template == null);
     }
+    
     
     @AfterAll
     public void tearDownClass() {
@@ -98,7 +99,7 @@ public class MongoDbTesting {
         
     @Test
     @Order(0)
-    public void shouldInjectMongoDBTemplate() {
+    public void shouldInjectCouchDBTemplate() {
         Assertions.assertNotNull(template);
     }
     

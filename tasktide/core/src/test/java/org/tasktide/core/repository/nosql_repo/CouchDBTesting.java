@@ -48,16 +48,16 @@ import org.tasktide.core.repository.Tunes;
 @AddPackages(value = {Tunes.class, Reflections.class})
 @AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class MongoDbTesting {
+public class CouchDBTesting {
     
     // Logger for tests
-    private static final Logger logger = LogManager.getLogger(MongoDbTesting.class);
+    private static final Logger logger = LogManager.getLogger(CouchDBTesting.class);
     
     private SeContainer container;
     
     private Template template;
     
-    public MongoDbTesting() {
+    public CouchDBTesting() {
     }
     
     
@@ -69,7 +69,6 @@ public class MongoDbTesting {
         // Initialize CDI
         container = SeContainerInitializer.newInstance().initialize();
         logger.info(container.isRunning());
-        //new DocumentTemplate();
         template = (Template) container.select(DocumentTemplate.class).get();
         logger.info("MongoDB template state" + template == null);
     }
@@ -98,7 +97,7 @@ public class MongoDbTesting {
         
     @Test
     @Order(0)
-    public void shouldInjectMongoDBTemplate() {
+    public void shouldInjectCouchDBTemplate() {
         Assertions.assertNotNull(template);
     }
     
