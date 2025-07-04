@@ -26,8 +26,9 @@ docker container run  -p 27017:27017 mongo:latest
 
 # Run image
 docker container run -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password -p 59484:5984 couchdb:latest
-curl -X PUT http://localhost:59584/myDB
+curl -X PUT http://admin:password@localhost:59484/test_workflow
 
+curl -X GET http://admin:password@localhost:59484/test_workflow
 
 
 # Run image

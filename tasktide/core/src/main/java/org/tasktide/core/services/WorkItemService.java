@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.services;
 
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
@@ -265,7 +264,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
         }
         
         // Return results
-        return new StateSummary<ItemState>(countMap);
+        return new StateSummary<>(countMap);
     }
     
     

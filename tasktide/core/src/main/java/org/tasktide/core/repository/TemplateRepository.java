@@ -6,8 +6,10 @@ package org.tasktide.core.repository;
 
 import jakarta.enterprise.context.Dependent;
 import jakarta.nosql.Template;
+import java.util.HashMap;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.tasktide.core.TaskTideModel;
 
@@ -45,6 +47,26 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
         this.repoType = RepositoryType.NOSQL;
     }
     
+    /**
+     * Provide a map of repository meta data reference class,
+     *   repository type (NoSQL, RocksDB etc), collecion name
+     * 
+     * @return Map-String, String
+     */
+    @Override
+    public Map<String, String> getRepositoryMetaData() {
+        
+        // Initialize results
+        Map<String, String> results = new HashMap<>();
+        
+        // Append data
+        results.put("Model Class", this.COLLECTION_CLASS.getSimpleName());
+        results.put("Repository Type", RepositoryType.ITEMSTORE.toString());
+        results.put("Collection Name", this.collectionName);
+        
+        // Return results
+        return results;
+    }
     
     /**
      * Fetch WorkItem by its Id

@@ -1,0 +1,290 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ */
+package org.tasktide.core.repository;
+
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
+import jakarta.nosql.Template;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import org.eclipse.jnosql.mapping.core.Converters;
+import org.eclipse.jnosql.mapping.document.DocumentTemplate;
+import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
+import org.eclipse.jnosql.mapping.reflection.Reflections;
+import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
+import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
+import org.jboss.weld.junit5.auto.AddExtensions;
+import org.jboss.weld.junit5.auto.AddPackages;
+import org.jboss.weld.junit5.auto.EnableAutoWeld;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestInstance;
+
+import org.tasktide.TestCaseBuilderUtility;
+import org.tasktide.TestUtils;
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.stores.RocksDBStore;
+
+
+/**
+ *
+ * @author bkenna
+ */
+@EnableAutoWeld
+@AddPackages(value = {Converters.class, EntityConverter.class, Template.class, DocumentTemplate.class})
+@AddPackages(value = {Tunes.class, Reflections.class})
+@AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class StepRepositoryFactoryTests {
+    
+    private static final Logger logger = LogManager.getLogger(StepRepositoryFactoryTests.class);
+    
+    public StepRepositoryFactoryTests() {}
+    
+    @BeforeAll
+    public static void setUpClass() {        
+        String msg = "\n\n---------------- Initiating Repository Tests ----------------\n";
+        logger.info(msg);
+    }
+    
+    @AfterAll
+    public static void tearDownClass() {
+        String msg = "\n\n---------------- Terminating Repository Tests ----------------\n";
+        logger.info(msg);
+    }
+    
+    @BeforeEach
+    public void setUp() {
+        logger.info("\n\n================ Initiating Next Test ================\n");
+    }
+    
+    @AfterEach
+    public void tearDown() {
+        logger.info("\n\n================ Terminating Test ================\n");
+    }
+    
+    
+    /**
+     * Resolve a path string for test purposes
+     * 
+     * @return String
+     */
+    public String resolveRocksRepoPath() {
+        Path cwd = Paths.get( System.getProperty("user.dir") );
+        Path workDir = cwd.resolve("project-test-repos").resolve("step");
+        return workDir.toString();
+    }
+    
+    
+    /**
+     * Fetch a {@link RocksDBStore} with name
+     * 
+     * @param storeName
+     * @return {@link ItemStore} of {@link RocksDBStore}
+     */
+    public ItemStore fetchItemStore(String storeName) {
+    
+        // Resolve store name location to a Path
+        Path targetPath = Paths.get(storeName);
+        try {
+            
+            // Create path if required
+            Files.createDirectories(targetPath);
+            
+            // Set required properites
+            String dbDirectory = targetPath.toString();
+            String masterDB = "master";
+            String protoDB = UUID.randomUUID().toString();
+            RocksDBStore itemStore = new RocksDBStore(storeName, dbDirectory, masterDB, protoDB);
+            
+            // Return ItemStore
+            return itemStore;
+        }
+        catch (Exception ex) {
+            return null;
+        }
+    }
+    
+    
+    /**
+     * Fetch Jakarta NoSQL backend database from container
+     * 
+     * @return {@link Template}
+     */
+    public Template fetchTemplate() {
+        logger.info("Initializing container");
+        SeContainer container;
+        container = SeContainerInitializer.newInstance().initialize();
+        logger.info("Weld container running:\t'{}'", container.isRunning());
+        return container.select(DocumentTemplate.class).get();
+    }
+    
+    
+    /**
+     * Test that a work item can be fetched 
+     */
+    @Test
+    @Order(0)
+    public void canConstructStepJsonRepository() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct JSON Repositories From Factory Test ================\n");
+        TaskTideRepository<Step> stepRepo;
+        RepositoryFactory<Step> stepRepoFactory;
+        RepositoryType repoType;
+        List<Step> backend;
+        Step record;
+        boolean assertionState;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        repoType = RepositoryType.JSON;
+        backend = List.of(
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep()
+        );
+        
+        // Setup requirements
+        logger.info("Configuring repository");
+        stepRepoFactory = new RepositoryFactory<>("Test-Json-Step", Step.class, backend, repoType);
+        stepRepo = stepRepoFactory.make();
+        Map<String, String> map = stepRepo.getRepositoryMetaData();
+        logger.info("Displaying meta data for Step Repository:\n'{}'", TestUtils.mapToJsonString(map));
+        
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<Step> ref = backend.get(0);
+        assertionState = stepRepo.findById(ref.getId()).get() != null;
+        
+        // Log test state
+        logger.info("\n\n================ Construct JSON Repositories From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+    
+    
+    /**
+     * Test that a work item can be fetched 
+     */
+    @Test
+    @Order(1)
+    public void canConstructStepRocksDbRepository() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct RocksDB Repositories From Factory Test ================\n");
+        TaskTideRepository<Step> stepRepo;
+        RepositoryFactory<Step> stepRepoFactory;
+        RepositoryType repoType;
+        ItemStore backend;
+        List<Step> data;
+        boolean assertionState ;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep()
+        );
+        
+        // Configure requirements
+        repoType = RepositoryType.ITEMSTORE;
+        String collectionName = resolveRocksRepoPath();
+        backend = this.fetchItemStore(collectionName);
+        
+        // Configure repository
+        logger.info("\nConfiguring repository");
+        stepRepoFactory = new RepositoryFactory<>("Test-Rocks-Step", Step.class, backend, repoType);
+        stepRepo = stepRepoFactory.make();
+        Map<String, String> map = stepRepo.getRepositoryMetaData();
+        logger.info("\nDisplaying meta data for StepRepository:\n'{}'", TestUtils.mapToJsonString(map));
+        
+        // Add records
+        data.stream()
+            .forEach( elm -> stepRepo.insertModel(elm));
+        
+        // Check that records can be queried
+        logger.info("\nVerifying records can be retrieved");
+        TaskTideModel<Step> ref = data.get(0);
+        System.out.println("\nDisplaying reference step:\n" + ref.toJson());
+        assertionState = !stepRepo.findById(ref.getId()).isEmpty();
+        logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(stepRepo.findAll()));
+        logger.info("\nVerifying method calls:\n\n'{}'", stepRepo.findAll().get(0).summarizeByState().toJsonDoc());
+        
+        // Log test state
+        logger.info("\n\n================ Construct RocksDB Repositories From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+    
+    
+    /**
+     * Test that a work item can be fetched 
+     */
+    @Test
+    @Order(2)
+    public void canConstructStepNoSqlRepository() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct NoSQL Repositories From Factory Test ================\n");
+        TaskTideRepository<Step> stepRepo;
+        RepositoryFactory<Step> stepRepoFactory;
+        RepositoryType repoType;
+        Template backend;
+        List<Step> data;
+        Step record;
+        boolean assertionState = false;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep()
+        );
+        
+        // Fetch backend instance
+        repoType = RepositoryType.NOSQL;
+        backend = this.fetchTemplate();
+        logger.info("Backend template:\t'{}'", backend);
+        
+        // Configure repository
+        logger.info("\nConfiguring repository");
+        stepRepoFactory = new RepositoryFactory<>("Test-Template-Step", Step.class, backend, repoType);
+        stepRepo = stepRepoFactory.make();
+        Map<String, String> map = stepRepo.getRepositoryMetaData();
+        logger.info("\nDisplaying meta data for StepRepository:\n'{}'", TestUtils.mapToJsonString(map));
+        
+        // Add records
+        data.stream()
+            .forEach( elm -> stepRepo.insertModel(elm));
+        
+        // Check that records can be queried
+        logger.info("\nVerifying records can be retrieved");
+        TaskTideModel<Step> ref = data.get(0);
+        assertionState = !stepRepo.findById(ref.getId()).isEmpty();
+        List<Step> steps = stepRepo.findAll();
+        logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(steps));
+        
+        // Log test state
+        logger.info("\n\n================ Construct NoSQL Repositories From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+}

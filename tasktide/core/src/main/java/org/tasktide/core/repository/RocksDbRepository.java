@@ -7,8 +7,10 @@ package org.tasktide.core.repository;
 import jakarta.enterprise.context.Dependent;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import java.util.HashMap;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -31,9 +33,10 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
 
     // Attributes
     private final String collectionName;
-    private final Class<T> modelClass;
+    private final Class<T> COLLECTION_CLASS;
     private final ItemStore repo;
     private final Jsonb JSON_BUILDER = JsonbBuilder.create();
+    protected final RepositoryType repoType;
     
     
     /**
@@ -44,9 +47,32 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
      * @param collectionName 
      */
     public RocksDbRepository(ItemStore itemStore, Class<T> modelClass, String collectionName) {
-        this.modelClass = modelClass;
+        this.COLLECTION_CLASS = modelClass;
         this.repo = itemStore;
         this.collectionName = collectionName;
+        this.repoType = RepositoryType.ITEMSTORE;
+    }
+    
+    
+    /**
+     * Provide a map of repository meta data reference class,
+     *   repository type (NoSQL, RocksDB etc), collecion name
+     * 
+     * @return Map-String, String
+     */
+    @Override
+    public Map<String, String> getRepositoryMetaData() {
+        
+        // Initialize results
+        Map<String, String> results = new HashMap<>();
+        
+        // Append data
+        results.put("Model Class", this.COLLECTION_CLASS.getSimpleName());
+        results.put("Repository Type", this.repoType.toString());
+        results.put("Collection Name", this.collectionName);
+        
+        // Return results
+        return results;
     }
     
     
@@ -70,7 +96,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
      * @return T of {@link TaskTideModel}
      */
     private T toModel(Item item) {
-        return this.JSON_BUILDER.fromJson(item.getPayload(), modelClass);
+        return this.JSON_BUILDER.fromJson(item.getPayload(), COLLECTION_CLASS);
     }
 
     
@@ -89,7 +115,8 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
         
         // Fetch and convert to model
         try {
-            queried = this.repo.getByIdFromMaster(id);
+            queried = this.repo.getById(id);
+            System.out.println(queried);
             result = this.toModel(queried);
             return Optional.ofNullable(result);
         }
@@ -113,8 +140,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
         // Insert record
         try {
             Item item = this.toItem(model);
-            this.repo.saveItem(item);
-            this.repo.syncToMaster();
+            this.repo.saveItemToMaster(item);
             item = this.repo.getById(model.getId());
             return this.toModel(item);
         }
@@ -203,7 +229,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
         return this.repo.getAll(true)
             .stream()
             .parallel()
-            .map(this::toModel)
+            .map(elm -> this.toModel(elm))
             .collect(Collectors.toList());
     }
 

@@ -10,6 +10,7 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 import jakarta.nosql.Column;
 import jakarta.nosql.Entity;
@@ -197,6 +198,7 @@ public class Workflow implements TaskTideModel<Workflow> {
      * 
      * @return Map-String,{@link StateSummary StateSummary}-{@link ItemState ItemState}
      */
+    @JsonbTransient
     public Map<String, StateSummary<ItemState>> summarizeStepStates() {
         Map<String, StateSummary<ItemState>> results = new HashMap<>();
         for ( Entry<String, Step> elm : workflowSteps.entrySet() ) {

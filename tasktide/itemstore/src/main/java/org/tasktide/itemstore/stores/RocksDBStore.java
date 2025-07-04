@@ -166,6 +166,7 @@ public class RocksDBStore extends AbstractItemStore {
     @Override
     public void saveItem(Item item) throws Exception {
         try {
+            this.openConn(DbTarget.PROTOTYPE);
             proto.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
         }
         catch ( JsonProcessingException | RocksDBException ex ) {}

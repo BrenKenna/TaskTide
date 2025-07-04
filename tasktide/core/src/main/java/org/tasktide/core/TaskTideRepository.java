@@ -5,7 +5,11 @@
 package org.tasktide.core;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
@@ -95,4 +99,12 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      * @return List-T
      */
     public boolean extendModel(List<T> toAdd);
+    
+    
+    /**
+     * Return a map of the repository metadata
+     * 
+     * @return Map-String, String
+     */
+    public Map<String, String> getRepositoryMetaData();
 }

@@ -6,6 +6,7 @@ package org.tasktide;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.TaskLoggingBuilder;
@@ -36,6 +37,7 @@ import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 
 import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.manager.generator.ExampleGenerators;
+import static org.tasktide.core.manager.generator.TaskGenerator.generateSeqTask;
 
 
 /**
@@ -57,7 +59,7 @@ public class TestCaseBuilderUtility {
         String[] stdout = {"apples", "oragnes"};
         String[] stderr = {"pears", "pineapples"};
         return new ProcessLogBuilder()
-            .id("alpha")
+            .id(UUID.randomUUID().toString())
             .stdout(stdout)
             .stderr(stderr)
         .build();
@@ -71,7 +73,7 @@ public class TestCaseBuilderUtility {
      */
     public static TaskLogging makeTestTaskLog() {
         return new TaskLoggingBuilder()
-            .id("beta")
+            .id(UUID.randomUUID().toString())
             .processLog(makeTestProcessLog())
             .threadName("myThread")
             .cpuDuration(-1L)
@@ -89,7 +91,7 @@ public class TestCaseBuilderUtility {
      */
     public static ItemTask makeTestItemTask() {
         return new ItemTaskBuilder()
-            .id("gamma")
+            .id(UUID.randomUUID().toString())
             .taskName("My Task Name")
             .task("My Task")
             .taskState(TaskState.COMPLETE)
@@ -122,10 +124,10 @@ public class TestCaseBuilderUtility {
      */
     public static WorkItem makeTestWorkItem() {
         return new WorkItemBuilder()
-            .id("My WorkItem")
+            .id(UUID.randomUUID().toString())
             .itemName("My WorkItem Name")
             .workload(makeTestWorkload())
-            .lockId("Some random hexadecimal string")
+            .lockId(UUID.randomUUID().toString())
             .lockDate(0L)
             .doneDate(0L)
             .taskCount(1)
@@ -144,10 +146,10 @@ public class TestCaseBuilderUtility {
      */
     public static WorkItem makeTestWorkItem(String stepName) {
         return new WorkItemBuilder()
-            .id("My WorkItem")
+            .id(UUID.randomUUID().toString())
             .itemName("My WorkItem Name")
             .workload(makeTestWorkload())
-            .lockId("Some random hexadecimal string")
+            .lockId(UUID.randomUUID().toString())
             .lockDate(0L)
             .doneDate(0L)
             .taskCount(1)
@@ -166,7 +168,7 @@ public class TestCaseBuilderUtility {
      */
     public static Step makeTestStep() {
         return new StepBuilder()
-            .stepId("My Step Id")
+            .stepId(UUID.randomUUID().toString())
             .stepName("My step name")
             .stepState(TaskState.PENDING)
             .stepCount(10)
@@ -237,10 +239,10 @@ public class TestCaseBuilderUtility {
     public static List<Workflow> makeTestWorkflows() {
         
         // Initialize vars
-        List<Workflow> output = new ArrayList();
+        List<Workflow> output = new ArrayList<>();
         List<Step> stepA;
-        List<Step> stepB = new ArrayList();
-        List<Step> stepC = new ArrayList();
+        List<Step> stepB = new ArrayList<>();
+        List<Step> stepC = new ArrayList<>();
         
         // Create step lists
         stepA = makeTestStepList();
@@ -263,7 +265,7 @@ public class TestCaseBuilderUtility {
      * @return {@link ManagerTask ManagerTask}
      */
     public static ManagerTask getSeqTask() {
-        return taskGenerator.generateSeqTask();
+        return generateSeqTask();
     }
     
     
@@ -273,7 +275,7 @@ public class TestCaseBuilderUtility {
      * @return {@link ManagerTask ManagerTask}
      */
     public static ManagerTask getPingTask() {
-        return taskGenerator.generatePingTask();
+        return TaskGenerator.generatePingTask();
     }
     
     
@@ -284,7 +286,7 @@ public class TestCaseBuilderUtility {
      * @return List-{@link ManagerTask ManagerTask}
      */
     public static List<ManagerTask> getPingTasks(int nTasks) {
-        return taskGenerator.generateTasks(ExampleGenerators.PING, nTasks);
+        return TaskGenerator.generateTasks(ExampleGenerators.PING, nTasks);
     }
     
     
@@ -295,7 +297,7 @@ public class TestCaseBuilderUtility {
      * @return List-{@link ManagerTask ManagerTask}
      */
     public static List<ManagerTask> getSeqTasks(int nTasks) {
-        return taskGenerator.generateTasks(ExampleGenerators.SEQ, nTasks);
+        return TaskGenerator.generateTasks(ExampleGenerators.SEQ, nTasks);
     }
     
     

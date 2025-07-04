@@ -4,10 +4,8 @@
  */
 package org.tasktide.core.repository;
 
-
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
-
 
 
 /**
@@ -41,8 +39,16 @@ public class RepositoryFactory<T extends TaskTideModel<T>> {
     }
     
     
-    
+    /**
+     * Make the required {@link TaskTideRepository} of type 
+     *  {@link Workflow}, {@link Step}, {@link WorkItem} with
+     *  required backend {@link RepositoryType}
+     * 
+     * @param <T>
+     * @return {@link TaskTideRepository} for {@link TaskTideModel}
+     */
+    @SuppressWarnings("unchecked")
     public <T extends TaskTideModel<T>> TaskTideRepository<T> make() {
-        return this.repoType.createRepository(this.ofModel, backend, collectionName);
+        return this.repoType.createRepository(this.ofModel, this.backend, this.collectionName);
     }
 }

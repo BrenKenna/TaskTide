@@ -22,7 +22,7 @@ import java.util.List;
  * 
  * @author bkenna
  */
-public interface TaskTideMapper<T extends TaskTideModel, U extends TaskTideModel> {
+public interface TaskTideMapper<T extends TaskTideModel<T>, U extends TaskTideModel<U>> {
     
     
     /**

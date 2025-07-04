@@ -1,0 +1,263 @@
+2025/07/04-18:18:11.067803 f144 RocksDB version: 10.1.3
+2025/07/04-18:18:11.067917 f144 Git sha 5823cf08d69e4d9cba6953d51fb7d6996c72df94
+2025/07/04-18:18:11.067956 f144 Compile date 2025-05-12 17:54:01
+2025/07/04-18:18:11.067984 f144 DB SUMMARY
+2025/07/04-18:18:11.068014 f144 Host name (Env):  BKENNA-XPS
+2025/07/04-18:18:11.068049 f144 DB Session ID:  PQ7B4FSWXGHUT3IO3PK1
+2025/07/04-18:18:11.068765 f144 CURRENT file:  CURRENT
+2025/07/04-18:18:11.068793 f144 IDENTITY file:  IDENTITY
+2025/07/04-18:18:11.068850 f144 MANIFEST file:  MANIFEST-000015 size: 333 Bytes
+2025/07/04-18:18:11.068866 f144 SST files in C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\core\project-test-repos\workflow\master dir, Total Num: 2, files: 000008.sst 000013.sst 
+2025/07/04-18:18:11.068954 f144 Write Ahead Log file in C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\core\project-test-repos\workflow\master: 000014.log size: 572 ; 
+2025/07/04-18:18:11.068965 f144                         Options.error_if_exists: 0
+2025/07/04-18:18:11.068971 f144                       Options.create_if_missing: 1
+2025/07/04-18:18:11.068978 f144                         Options.paranoid_checks: 1
+2025/07/04-18:18:11.068984 f144             Options.flush_verify_memtable_count: 1
+2025/07/04-18:18:11.068991 f144          Options.compaction_verify_record_count: 1
+2025/07/04-18:18:11.068997 f144                               Options.track_and_verify_wals_in_manifest: 0
+2025/07/04-18:18:11.069004 f144                               Options.track_and_verify_wals: 0
+2025/07/04-18:18:11.069010 f144        Options.verify_sst_unique_id_in_manifest: 1
+2025/07/04-18:18:11.069016 f144                                     Options.env: 0000029D7B96D3C0
+2025/07/04-18:18:11.069023 f144                                      Options.fs: WinFS
+2025/07/04-18:18:11.069029 f144                                Options.info_log: 0000029D7CA9BF10
+2025/07/04-18:18:11.069036 f144                Options.max_file_opening_threads: 16
+2025/07/04-18:18:11.069042 f144                              Options.statistics: 0000000000000000
+2025/07/04-18:18:11.069048 f144                               Options.use_fsync: 0
+2025/07/04-18:18:11.069055 f144                       Options.max_log_file_size: 0
+2025/07/04-18:18:11.069061 f144                  Options.max_manifest_file_size: 1073741824
+2025/07/04-18:18:11.069067 f144                   Options.log_file_time_to_roll: 0
+2025/07/04-18:18:11.069074 f144                       Options.keep_log_file_num: 1000
+2025/07/04-18:18:11.069080 f144                    Options.recycle_log_file_num: 0
+2025/07/04-18:18:11.069086 f144                         Options.allow_fallocate: 1
+2025/07/04-18:18:11.069093 f144                        Options.allow_mmap_reads: 0
+2025/07/04-18:18:11.069099 f144                       Options.allow_mmap_writes: 0
+2025/07/04-18:18:11.069105 f144                        Options.use_direct_reads: 0
+2025/07/04-18:18:11.069111 f144                        Options.use_direct_io_for_flush_and_compaction: 0
+2025/07/04-18:18:11.069117 f144          Options.create_missing_column_families: 0
+2025/07/04-18:18:11.069124 f144                              Options.db_log_dir: 
+2025/07/04-18:18:11.069131 f144                                 Options.wal_dir: 
+2025/07/04-18:18:11.069137 f144                Options.table_cache_numshardbits: 6
+2025/07/04-18:18:11.069143 f144                         Options.WAL_ttl_seconds: 0
+2025/07/04-18:18:11.069149 f144                       Options.WAL_size_limit_MB: 0
+2025/07/04-18:18:11.069155 f144                        Options.max_write_batch_group_size_bytes: 1048576
+2025/07/04-18:18:11.069161 f144             Options.manifest_preallocation_size: 4194304
+2025/07/04-18:18:11.069168 f144                     Options.is_fd_close_on_exec: 1
+2025/07/04-18:18:11.069174 f144                   Options.advise_random_on_open: 1
+2025/07/04-18:18:11.069180 f144                    Options.db_write_buffer_size: 0
+2025/07/04-18:18:11.069186 f144                    Options.write_buffer_manager: 0000029D7B520870
+2025/07/04-18:18:11.069192 f144                      Options.use_adaptive_mutex: 0
+2025/07/04-18:18:11.069215 f144                            Options.rate_limiter: 0000000000000000
+2025/07/04-18:18:11.069223 f144     Options.sst_file_manager.rate_bytes_per_sec: 0
+2025/07/04-18:18:11.069229 f144                       Options.wal_recovery_mode: 2
+2025/07/04-18:18:11.069235 f144                  Options.enable_thread_tracking: 0
+2025/07/04-18:18:11.069240 f144                  Options.enable_pipelined_write: 0
+2025/07/04-18:18:11.069246 f144                  Options.unordered_write: 0
+2025/07/04-18:18:11.069252 f144         Options.allow_concurrent_memtable_write: 1
+2025/07/04-18:18:11.069258 f144      Options.enable_write_thread_adaptive_yield: 1
+2025/07/04-18:18:11.069264 f144             Options.write_thread_max_yield_usec: 100
+2025/07/04-18:18:11.069270 f144            Options.write_thread_slow_yield_usec: 3
+2025/07/04-18:18:11.069275 f144                               Options.row_cache: None
+2025/07/04-18:18:11.069281 f144                              Options.wal_filter: None
+2025/07/04-18:18:11.069287 f144             Options.avoid_flush_during_recovery: 0
+2025/07/04-18:18:11.069292 f144             Options.allow_ingest_behind: 0
+2025/07/04-18:18:11.069298 f144             Options.two_write_queues: 0
+2025/07/04-18:18:11.069304 f144             Options.manual_wal_flush: 0
+2025/07/04-18:18:11.069310 f144             Options.wal_compression: 0
+2025/07/04-18:18:11.069315 f144             Options.background_close_inactive_wals: 0
+2025/07/04-18:18:11.069321 f144             Options.atomic_flush: 0
+2025/07/04-18:18:11.069327 f144             Options.avoid_unnecessary_blocking_io: 0
+2025/07/04-18:18:11.069332 f144             Options.prefix_seek_opt_in_only: 0
+2025/07/04-18:18:11.069338 f144                 Options.persist_stats_to_disk: 0
+2025/07/04-18:18:11.069344 f144                 Options.write_dbid_to_manifest: 1
+2025/07/04-18:18:11.069349 f144                 Options.write_identity_file: 1
+2025/07/04-18:18:11.069355 f144                 Options.log_readahead_size: 0
+2025/07/04-18:18:11.069361 f144                 Options.file_checksum_gen_factory: Unknown
+2025/07/04-18:18:11.069366 f144                 Options.best_efforts_recovery: 0
+2025/07/04-18:18:11.069372 f144                Options.max_bgerror_resume_count: 2147483647
+2025/07/04-18:18:11.069378 f144            Options.bgerror_resume_retry_interval: 1000000
+2025/07/04-18:18:11.069384 f144             Options.allow_data_in_errors: 0
+2025/07/04-18:18:11.069390 f144             Options.db_host_id: __hostname__
+2025/07/04-18:18:11.069395 f144             Options.enforce_single_del_contracts: true
+2025/07/04-18:18:11.069402 f144             Options.metadata_write_temperature: kUnknown
+2025/07/04-18:18:11.069408 f144             Options.wal_write_temperature: kUnknown
+2025/07/04-18:18:11.069413 f144             Options.max_background_jobs: 2
+2025/07/04-18:18:11.069419 f144             Options.max_background_compactions: -1
+2025/07/04-18:18:11.069425 f144             Options.max_subcompactions: 1
+2025/07/04-18:18:11.069431 f144             Options.avoid_flush_during_shutdown: 0
+2025/07/04-18:18:11.069436 f144           Options.writable_file_max_buffer_size: 1048576
+2025/07/04-18:18:11.069442 f144             Options.delayed_write_rate : 16777216
+2025/07/04-18:18:11.069448 f144             Options.max_total_wal_size: 0
+2025/07/04-18:18:11.069453 f144             Options.delete_obsolete_files_period_micros: 21600000000
+2025/07/04-18:18:11.069459 f144                   Options.stats_dump_period_sec: 600
+2025/07/04-18:18:11.069464 f144                 Options.stats_persist_period_sec: 600
+2025/07/04-18:18:11.069470 f144                 Options.stats_history_buffer_size: 1048576
+2025/07/04-18:18:11.069476 f144                          Options.max_open_files: -1
+2025/07/04-18:18:11.069482 f144                          Options.bytes_per_sync: 0
+2025/07/04-18:18:11.069487 f144                      Options.wal_bytes_per_sync: 0
+2025/07/04-18:18:11.069493 f144                   Options.strict_bytes_per_sync: 0
+2025/07/04-18:18:11.069511 f144       Options.compaction_readahead_size: 2097152
+2025/07/04-18:18:11.069518 f144                  Options.max_background_flushes: -1
+2025/07/04-18:18:11.069524 f144 Options.daily_offpeak_time_utc: 
+2025/07/04-18:18:11.069529 f144 Compression algorithms supported:
+2025/07/04-18:18:11.069535 f144 	kZSTD supported: 1
+2025/07/04-18:18:11.069541 f144 	kSnappyCompression supported: 1
+2025/07/04-18:18:11.069548 f144 	kBZip2Compression supported: 0
+2025/07/04-18:18:11.069553 f144 	kZlibCompression supported: 1
+2025/07/04-18:18:11.069559 f144 	kLZ4Compression supported: 1
+2025/07/04-18:18:11.069564 f144 	kXpressCompression supported: 0
+2025/07/04-18:18:11.069570 f144 	kLZ4HCCompression supported: 1
+2025/07/04-18:18:11.069576 f144 Fast CRC32 supported: Not supported on x86
+2025/07/04-18:18:11.069582 f144 DMutex implementation: std::mutex
+2025/07/04-18:18:11.069588 f144 Jemalloc supported: 0
+2025/07/04-18:18:11.075173 f144 [db\version_set.cc:6116] Recovering from manifest file: C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\core\project-test-repos\workflow\master/MANIFEST-000015
+2025/07/04-18:18:11.077553 f144 [db\column_family.cc:658] --------------- Options for column family [default]:
+2025/07/04-18:18:11.077572 f144               Options.comparator: leveldb.BytewiseComparator
+2025/07/04-18:18:11.077579 f144           Options.merge_operator: None
+2025/07/04-18:18:11.077585 f144        Options.compaction_filter: None
+2025/07/04-18:18:11.077592 f144        Options.compaction_filter_factory: None
+2025/07/04-18:18:11.077598 f144  Options.sst_partitioner_factory: None
+2025/07/04-18:18:11.077604 f144         Options.memtable_factory: SkipListFactory
+2025/07/04-18:18:11.077610 f144            Options.table_factory: BlockBasedTable
+2025/07/04-18:18:11.077637 f144            table_factory options:   flush_block_policy_factory: FlushBlockBySizePolicyFactory (0000029D7B5E4730)
+  cache_index_and_filter_blocks: 0
+  cache_index_and_filter_blocks_with_high_priority: 1
+  pin_l0_filter_and_index_blocks_in_cache: 0
+  pin_top_level_index_and_filter: 1
+  index_type: 0
+  data_block_index_type: 0
+  index_shortening: 1
+  data_block_hash_table_util_ratio: 0.750000
+  checksum: 4
+  no_block_cache: 0
+  block_cache: 0000029D7D2ACB90
+  block_cache_name: LRUCache
+  block_cache_options:
+    capacity : 33554432
+    num_shard_bits : 6
+    strict_capacity_limit : 0
+    memory_allocator : None
+    high_pri_pool_ratio: 0.500
+    low_pri_pool_ratio: 0.000
+  persistent_cache: 0000000000000000
+  block_size: 4096
+  block_size_deviation: 10
+  block_restart_interval: 16
+  index_block_restart_interval: 1
+  metadata_block_size: 4096
+  partition_filters: 0
+  use_delta_encoding: 1
+  filter_policy: nullptr
+  whole_key_filtering: 1
+  verify_compression: 0
+  read_amp_bytes_per_bit: 0
+  format_version: 6
+  enable_index_compression: 1
+  block_align: 0
+  max_auto_readahead_size: 262144
+  prepopulate_block_cache: 0
+  initial_auto_readahead_size: 8192
+  num_file_reads_for_auto_readahead: 2
+2025/07/04-18:18:11.077643 f144        Options.write_buffer_size: 67108864
+2025/07/04-18:18:11.077650 f144  Options.max_write_buffer_number: 2
+2025/07/04-18:18:11.077656 f144          Options.compression: Snappy
+2025/07/04-18:18:11.077662 f144                  Options.bottommost_compression: Disabled
+2025/07/04-18:18:11.077668 f144       Options.prefix_extractor: nullptr
+2025/07/04-18:18:11.077674 f144   Options.memtable_insert_with_hint_prefix_extractor: nullptr
+2025/07/04-18:18:11.077680 f144             Options.num_levels: 7
+2025/07/04-18:18:11.077686 f144        Options.min_write_buffer_number_to_merge: 1
+2025/07/04-18:18:11.077692 f144     Options.max_write_buffer_number_to_maintain: 0
+2025/07/04-18:18:11.077698 f144     Options.max_write_buffer_size_to_maintain: 0
+2025/07/04-18:18:11.077704 f144            Options.bottommost_compression_opts.window_bits: -14
+2025/07/04-18:18:11.077711 f144                  Options.bottommost_compression_opts.level: 32767
+2025/07/04-18:18:11.077717 f144               Options.bottommost_compression_opts.strategy: 0
+2025/07/04-18:18:11.077723 f144         Options.bottommost_compression_opts.max_dict_bytes: 0
+2025/07/04-18:18:11.077731 f144         Options.bottommost_compression_opts.zstd_max_train_bytes: 0
+2025/07/04-18:18:11.077739 f144         Options.bottommost_compression_opts.parallel_threads: 1
+2025/07/04-18:18:11.077745 f144                  Options.bottommost_compression_opts.enabled: false
+2025/07/04-18:18:11.077751 f144         Options.bottommost_compression_opts.max_dict_buffer_bytes: 0
+2025/07/04-18:18:11.077758 f144         Options.bottommost_compression_opts.use_zstd_dict_trainer: true
+2025/07/04-18:18:11.077764 f144            Options.compression_opts.window_bits: -14
+2025/07/04-18:18:11.077770 f144                  Options.compression_opts.level: 32767
+2025/07/04-18:18:11.077776 f144               Options.compression_opts.strategy: 0
+2025/07/04-18:18:11.077782 f144         Options.compression_opts.max_dict_bytes: 0
+2025/07/04-18:18:11.077788 f144         Options.compression_opts.zstd_max_train_bytes: 0
+2025/07/04-18:18:11.077794 f144         Options.compression_opts.use_zstd_dict_trainer: true
+2025/07/04-18:18:11.077800 f144         Options.compression_opts.parallel_threads: 1
+2025/07/04-18:18:11.077806 f144                  Options.compression_opts.enabled: false
+2025/07/04-18:18:11.077812 f144         Options.compression_opts.max_dict_buffer_bytes: 0
+2025/07/04-18:18:11.077819 f144      Options.level0_file_num_compaction_trigger: 4
+2025/07/04-18:18:11.077825 f144          Options.level0_slowdown_writes_trigger: 20
+2025/07/04-18:18:11.077831 f144              Options.level0_stop_writes_trigger: 36
+2025/07/04-18:18:11.077837 f144                   Options.target_file_size_base: 67108864
+2025/07/04-18:18:11.077843 f144             Options.target_file_size_multiplier: 1
+2025/07/04-18:18:11.077849 f144                Options.max_bytes_for_level_base: 268435456
+2025/07/04-18:18:11.077855 f144 Options.level_compaction_dynamic_level_bytes: 1
+2025/07/04-18:18:11.077861 f144          Options.max_bytes_for_level_multiplier: 10.000000
+2025/07/04-18:18:11.077868 f144 Options.max_bytes_for_level_multiplier_addtl[0]: 1
+2025/07/04-18:18:11.077874 f144 Options.max_bytes_for_level_multiplier_addtl[1]: 1
+2025/07/04-18:18:11.077881 f144 Options.max_bytes_for_level_multiplier_addtl[2]: 1
+2025/07/04-18:18:11.077887 f144 Options.max_bytes_for_level_multiplier_addtl[3]: 1
+2025/07/04-18:18:11.077893 f144 Options.max_bytes_for_level_multiplier_addtl[4]: 1
+2025/07/04-18:18:11.077899 f144 Options.max_bytes_for_level_multiplier_addtl[5]: 1
+2025/07/04-18:18:11.077906 f144 Options.max_bytes_for_level_multiplier_addtl[6]: 1
+2025/07/04-18:18:11.077913 f144       Options.max_sequential_skip_in_iterations: 8
+2025/07/04-18:18:11.077919 f144                    Options.max_compaction_bytes: 1677721600
+2025/07/04-18:18:11.077926 f144                        Options.arena_block_size: 1048576
+2025/07/04-18:18:11.077932 f144   Options.soft_pending_compaction_bytes_limit: 68719476736
+2025/07/04-18:18:11.077940 f144   Options.hard_pending_compaction_bytes_limit: 274877906944
+2025/07/04-18:18:11.077947 f144                Options.disable_auto_compactions: 0
+2025/07/04-18:18:11.077959 f144                        Options.compaction_style: kCompactionStyleLevel
+2025/07/04-18:18:11.077966 f144                          Options.compaction_pri: kMinOverlappingRatio
+2025/07/04-18:18:11.077972 f144 Options.compaction_options_universal.size_ratio: 1
+2025/07/04-18:18:11.077977 f144 Options.compaction_options_universal.min_merge_width: 2
+2025/07/04-18:18:11.077983 f144 Options.compaction_options_universal.max_merge_width: 4294967295
+2025/07/04-18:18:11.077989 f144 Options.compaction_options_universal.max_size_amplification_percent: 200
+2025/07/04-18:18:11.077995 f144 Options.compaction_options_universal.compression_size_percent: -1
+2025/07/04-18:18:11.078001 f144 Options.compaction_options_universal.stop_style: kCompactionStopStyleTotalSize
+2025/07/04-18:18:11.078007 f144 Options.compaction_options_universal.max_read_amp: -1
+2025/07/04-18:18:11.078013 f144 Options.compaction_options_fifo.max_table_files_size: 1073741824
+2025/07/04-18:18:11.078058 f144 Options.compaction_options_fifo.allow_compaction: 0
+2025/07/04-18:18:11.078066 f144                   Options.table_properties_collectors: 
+2025/07/04-18:18:11.078072 f144                   Options.inplace_update_support: 0
+2025/07/04-18:18:11.078078 f144                 Options.inplace_update_num_locks: 10000
+2025/07/04-18:18:11.078084 f144               Options.memtable_prefix_bloom_size_ratio: 0.000000
+2025/07/04-18:18:11.078091 f144               Options.memtable_whole_key_filtering: 0
+2025/07/04-18:18:11.078097 f144   Options.memtable_huge_page_size: 0
+2025/07/04-18:18:11.078103 f144                           Options.bloom_locality: 0
+2025/07/04-18:18:11.078109 f144                    Options.max_successive_merges: 0
+2025/07/04-18:18:11.078115 f144             Options.strict_max_successive_merges: 0
+2025/07/04-18:18:11.078123 f144                Options.optimize_filters_for_hits: 0
+2025/07/04-18:18:11.078130 f144                Options.paranoid_file_checks: 0
+2025/07/04-18:18:11.078136 f144                Options.force_consistency_checks: 1
+2025/07/04-18:18:11.078142 f144                Options.report_bg_io_stats: 0
+2025/07/04-18:18:11.078149 f144                Options.disallow_memtable_writes: 0
+2025/07/04-18:18:11.078156 f144                               Options.ttl: 2592000
+2025/07/04-18:18:11.078162 f144          Options.periodic_compaction_seconds: 0
+2025/07/04-18:18:11.078169 f144                        Options.default_temperature: kUnknown
+2025/07/04-18:18:11.078175 f144  Options.preclude_last_level_data_seconds: 0
+2025/07/04-18:18:11.078181 f144    Options.preserve_internal_time_seconds: 0
+2025/07/04-18:18:11.078187 f144                       Options.enable_blob_files: false
+2025/07/04-18:18:11.078193 f144                           Options.min_blob_size: 0
+2025/07/04-18:18:11.078199 f144                          Options.blob_file_size: 268435456
+2025/07/04-18:18:11.078205 f144                   Options.blob_compression_type: NoCompression
+2025/07/04-18:18:11.078211 f144          Options.enable_blob_garbage_collection: false
+2025/07/04-18:18:11.078217 f144      Options.blob_garbage_collection_age_cutoff: 0.250000
+2025/07/04-18:18:11.078223 f144 Options.blob_garbage_collection_force_threshold: 1.000000
+2025/07/04-18:18:11.078229 f144          Options.blob_compaction_readahead_size: 0
+2025/07/04-18:18:11.078235 f144                Options.blob_file_starting_level: 0
+2025/07/04-18:18:11.078241 f144         Options.experimental_mempurge_threshold: 0.000000
+2025/07/04-18:18:11.078247 f144            Options.memtable_max_range_deletions: 0
+2025/07/04-18:18:11.079625 f144 [db\version_set.cc:6174] Recovered from manifest file:C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\core\project-test-repos\workflow\master/MANIFEST-000015 succeeded,manifest_file_number is 15, next_file_number is 17, last_sequence is 2, log_number is 10,prev_log_number is 0,max_column_family is 0,min_log_number_to_keep is 10
+2025/07/04-18:18:11.079642 f144 [db\version_set.cc:6183] Column family [default] (ID 0), log number is 10
+2025/07/04-18:18:11.080320 f144 [db\db_impl\db_impl_open.cc:692] DB ID: db5d5d79-58fa-11f0-b836-04e8b9717388
+2025/07/04-18:18:11.081321 f144 EVENT_LOG_v1 {"time_micros": 1751649491081316, "job": 1, "event": "recovery_started", "wal_files": [14]}
+2025/07/04-18:18:11.081335 f144 [db\db_impl\db_impl_open.cc:1379] Recovering log #14 mode 2
+2025/07/04-18:18:11.083773 f144 [db\db_impl\db_impl_open.cc:1353] Recovered to log #14 next seq #4
+2025/07/04-18:18:11.091488 f144 EVENT_LOG_v1 {"time_micros": 1751649491091461, "cf_name": "default", "job": 1, "event": "table_file_creation", "file_number": 18, "file_size": 1346, "file_checksum": "", "file_checksum_func_name": "Unknown", "smallest_seqno": 3, "largest_seqno": 3, "table_properties": {"data_size": 297, "index_size": 27, "index_partitions": 0, "top_level_index_size": 0, "index_key_is_user_key": 1, "index_value_is_delta_encoded": 1, "filter_size": 0, "raw_key_size": 17, "raw_average_key_size": 17, "raw_value_size": 540, "raw_average_value_size": 540, "num_data_blocks": 1, "num_entries": 1, "num_filter_entries": 0, "num_deletions": 0, "num_merge_operands": 0, "num_range_deletions": 0, "format_version": 6, "fixed_key_len": 0, "filter_policy": "", "column_family_name": "default", "column_family_id": 0, "comparator": "leveldb.BytewiseComparator", "user_defined_timestamps_persisted": 1, "key_largest_seqno": 3, "merge_operator": "nullptr", "prefix_extractor_name": "nullptr", "property_collectors": "[]", "compression": "Snappy", "compression_options": "window_bits=-14; level=32767; strategy=0; max_dict_bytes=0; zstd_max_train_bytes=0; enabled=0; max_dict_buffer_bytes=0; use_zstd_dict_trainer=1; ", "creation_time": 1751649491, "oldest_key_time": 1751649491, "newest_key_time": 0, "file_creation_time": 0, "slow_compression_estimated_data_size": 0, "fast_compression_estimated_data_size": 0, "db_id": "db5d5d79-58fa-11f0-b836-04e8b9717388", "db_session_id": "PQ7B4FSWXGHUT3IO3PK1", "orig_file_number": 18, "seqno_to_time_mapping": "N/A"}}
+2025/07/04-18:18:11.092958 f144 EVENT_LOG_v1 {"time_micros": 1751649491092952, "job": 1, "event": "recovery_finished", "status": "OK"}
+2025/07/04-18:18:11.093833 f144 [db\version_set.cc:5624] Creating manifest 20
+2025/07/04-18:18:11.112249 f144 [db\db_impl\db_impl_open.cc:2607] SstFileManager instance 0000029D7DD71510
+2025/07/04-18:18:11.114082 f144 [file\delete_scheduler.cc:77] Deleted file C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\core\project-test-repos\workflow\master/000014.log immediately, rate_bytes_per_sec 0, total_trash_size 0, total_size 4084, max_trash_db_ratio 0.250000
+2025/07/04-18:18:11.114934 f144 DB pointer 0000029D7A8B3300
+2025/07/04-18:18:11.116323 f144 [db\db_impl\db_impl.cc:498] Shutdown: canceling all background work
+2025/07/04-18:18:11.117782 f144 [db\db_impl\db_impl.cc:712] Shutdown complete

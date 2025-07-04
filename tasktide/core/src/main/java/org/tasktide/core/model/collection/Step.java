@@ -11,8 +11,10 @@ import jakarta.json.bind.JsonbConfig;
 
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.nosql.Column;
-import jakarta.nosql.Embeddable;
+import jakarta.nosql.Entity;
+import jakarta.nosql.Id;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -31,11 +33,11 @@ import org.tasktide.core.TaskTideModel;
  * 
  * @author bkenna
  */
-@Embeddable
+@Entity
 @Dependent
 public class Step implements TaskTideModel<Step> {
     
-    @Column
+    @Id
     @JsonbProperty("Step Id")
     private String stepId;
     
@@ -270,8 +272,9 @@ public class Step implements TaskTideModel<Step> {
 
     
     @Override
+    @JsonbTransient
     public String getState() {
-        return this.getStepState().toString();
+        return this.getStepState().name();
     }
     
     /**
@@ -332,6 +335,7 @@ public class Step implements TaskTideModel<Step> {
      * @return String
      */
     @Override
+    @JsonbTransient
     public String getId() {
         return getStepId();
     }
@@ -342,6 +346,7 @@ public class Step implements TaskTideModel<Step> {
      * 
      * @return StateSumary-ItemState
      */
+    @JsonbTransient
     public StateSummary<ItemState> summarizeByState() {
     
         // Initialize vars
@@ -354,7 +359,7 @@ public class Step implements TaskTideModel<Step> {
         results.put(ItemState.ERROR, this.stepsError);
         
         // Return results
-        return new StateSummary<ItemState>(results);
+        return new StateSummary<>(results);
     }
     
     
@@ -363,6 +368,7 @@ public class Step implements TaskTideModel<Step> {
      * 
      * @param counts 
      */
+    @JsonbTransient
     public void setStateCounts(StateSummary<ItemState> counts) {
         setStepsLocked( counts.getCount(ItemState.LOCKED) );
         setStepsDone(counts.getCount(ItemState.DONE));

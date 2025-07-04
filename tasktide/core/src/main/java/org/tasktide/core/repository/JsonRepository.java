@@ -10,12 +10,17 @@ import jakarta.json.bind.JsonbBuilder;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.json_repo.Compression;
 
 
@@ -53,6 +58,28 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
         this.collectionName = collectionName;
         this.compUtil = new Compression();
         this.repoType = RepositoryType.JSON;
+    }
+
+    
+    /**
+     * Provide a map of repository meta data reference class,
+     *   repository type (NoSQL, RocksDB etc), collecion name
+     * 
+     * @return Map-String, String
+     */
+    @Override
+    public Map<String, String> getRepositoryMetaData() {
+        
+        // Initialize results
+        Map<String, String> results = new HashMap<>();
+        
+        // Append data
+        results.put("Model Class", this.COLLECTION_CLASS.getSimpleName());
+        results.put("Repository Type", this.repoType.toString());
+        results.put("Collection Name", this.collectionName);
+        
+        // Return results
+        return results;
     }
     
     
