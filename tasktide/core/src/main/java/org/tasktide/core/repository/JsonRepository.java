@@ -26,7 +26,7 @@ import org.tasktide.core.repository.json_repo.Compression;
  * @param <T> of {@link TaskTideModel TaskTideModel}-{@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
  */
 @Dependent
-public abstract class JsonRepository<T extends TaskTideModel> implements TaskTideRepository<T> {
+public abstract class JsonRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
     
     // Attributes
     protected final List<T> modelCollection;

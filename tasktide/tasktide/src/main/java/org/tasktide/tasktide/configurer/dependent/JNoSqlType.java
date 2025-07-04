@@ -4,8 +4,10 @@
  */
 package org.tasktide.tasktide.configurer.dependent;
 
+
 /**
- *
+ * Enum to support valid Jakarta NoSQL databases
+ * 
  * @author bkenna
  */
 public enum JNoSqlType {

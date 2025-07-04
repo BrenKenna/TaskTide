@@ -15,7 +15,7 @@ import java.util.Optional;
  * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link Step},{@link Workflow}
  * @author bkenna
  */
-public interface TaskTideRepository<T> {
+public interface TaskTideRepository<T extends TaskTideModel<T>> {
     
     
     /**

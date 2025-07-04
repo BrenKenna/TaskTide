@@ -20,7 +20,7 @@ import org.tasktide.itemstore.ItemStore;
  * @author bkenna
  */
 @ApplicationScoped
-public class WorkItemRocksRepository extends RocksDbRepository<WorkItem> {
+public class RocksDbWorkItemRepository extends RocksDbRepository<WorkItem> {
     
     
     /**
@@ -30,7 +30,7 @@ public class WorkItemRocksRepository extends RocksDbRepository<WorkItem> {
      * @param collectionName
      */
     @Inject
-    public WorkItemRocksRepository(
+    public RocksDbWorkItemRepository(
        ItemStore itemStore,
        @ConfigProperty(name = "task-tide.core.repository.rocksdb.collection.workitem.name", defaultValue = "WorkItem") String collectionName
     ) {

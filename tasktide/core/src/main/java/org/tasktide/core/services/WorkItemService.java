@@ -49,13 +49,26 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     @Inject
     public WorkItemService(
         TaskTideRepository<WorkItem> repo,
-        @ConfigProperty(name = "task-tide.service.workitem.locking-wait-time", defaultValue = "4") int lockingWaitTime
+        int lockingWaitTime
     ) {
         this.repo = repo;
         this.LOCKING_WAIT_TIME = lockingWaitTime;
         this.utils = new Utils("dd/MM/yy HH:mm:ss", lockingWaitTime);
     }
-   
+    
+    
+    /**
+     * 
+     * @param repo
+     * @param lockWait
+     * @param utilDate 
+     */
+    public WorkItemService(TaskTideRepository<WorkItem> repo, int lockWait, String utilDate) {
+        this.repo = repo;
+        this.LOCKING_WAIT_TIME = lockWait;
+        this.utils = new Utils("dd/MM/yy HH:mm:ss", lockWait);
+    }
+    
     
     /**
      * Insert work item

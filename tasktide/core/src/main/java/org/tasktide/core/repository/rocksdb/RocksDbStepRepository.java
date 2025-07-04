@@ -21,7 +21,7 @@ import org.tasktide.itemstore.ItemStore;
  * @author bkenna
  */
 @ApplicationScoped
-public class StepRocksRepository extends RocksDbRepository<Step> {
+public class RocksDbStepRepository extends RocksDbRepository<Step> {
     
     
     /**
@@ -31,7 +31,7 @@ public class StepRocksRepository extends RocksDbRepository<Step> {
      * @param collectionName
      */
     @Inject
-    public StepRocksRepository(
+    public RocksDbStepRepository(
        ItemStore itemStore,
        @ConfigProperty(name = "task-tide.core.repository.rocksdb.collection.step.name", defaultValue = "Step") String collectionName
     ) {

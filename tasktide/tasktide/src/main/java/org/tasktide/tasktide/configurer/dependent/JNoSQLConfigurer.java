@@ -5,18 +5,22 @@
 package org.tasktide.tasktide.configurer.dependent;
 
 import jakarta.inject.Inject;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import org.eclipse.jnosql.mapping.column.ColumnTemplate;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
 import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import org.tasktide.tasktide.configurer.AbstractConfigurer;
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.parser.model.ArgumentType;
 
+
 /**
- *
+ * Configurer for Jakarta NoSQL {@link Template}.class
+ * 
  * @author bkenna
  */
 public class JNoSQLConfigurer extends AbstractConfigurer {
@@ -29,14 +33,30 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
     @ConfigProperty(name = "tasktide.core.repository.jnosql.provider", defaultValue = "mongo") // e.g., "mongo", "redis", "cassandra", "couchdb"
     private String provider;
     
+    
+    /**
+     * Defaults {@link ArgumentTree} path to root
+     */
     public JNoSQLConfigurer() {
         super("tasktide");
     }
     
+    
+    /**
+     * Sets {@link ArgumentTree} path to provided
+     * 
+     * @param path 
+     */
     public JNoSQLConfigurer(String path) {
         super(path);
     }
     
+    
+    /**
+     * Applies configs to {@link ArgumentTree}
+     * 
+     * @param argTree 
+     */
     @Override
     public void initConfig(ArgumentTree argTree) {
         this.dbType();
@@ -44,6 +64,10 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
     }
     
     
+    /**
+     * Configures database type ie Document, KeyValue etc
+     * 
+     */
     public void dbType() {
         Argument<String> arg;
         arg = this.getArgumentBuilder()
@@ -58,6 +82,10 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
     }
 
     
+    /**
+     * Configures specific database provided ie MongoDB etc
+     * 
+     */
     public void provider() {
         Argument<String> arg;
         arg = this.getArgumentBuilder()

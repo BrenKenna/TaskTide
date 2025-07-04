@@ -9,8 +9,8 @@ import jakarta.nosql.Template;
 
 import java.util.List;
 import java.util.Optional;
+import org.tasktide.core.TaskTideModel;
 
-import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.TaskTideRepository;
 
 
@@ -19,10 +19,10 @@ import org.tasktide.core.TaskTideRepository;
  * Template Model Repository adding utility and collection info
  * 
  * @author bkenna
- * @param <T> of ModelClass-WorkItem,Step,Workflow
+ * @param <T> of {@link TaskTideModel}-WorkItem,Step,Workflow
  */
-@Dependent
-public abstract class TemplateRepository<T> implements TaskTideRepository<T> {
+@Dependent 
+public abstract class TemplateRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
     
     // Attributes
     protected final Template template;

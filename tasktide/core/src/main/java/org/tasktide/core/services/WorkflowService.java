@@ -21,7 +21,6 @@ import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.state_summary.StateSummary;
 import org.tasktide.core.model.workitem.ItemState;
 
-import org.tasktide.core.supporting.Utils;
 
 
 /**
