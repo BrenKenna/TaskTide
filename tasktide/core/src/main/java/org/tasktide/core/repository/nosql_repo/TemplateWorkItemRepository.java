@@ -5,9 +5,9 @@
 package org.tasktide.core.repository.nosql_repo;
 
 import org.tasktide.core.repository.TemplateRepository;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+// import jakarta.enterprise.context.ApplicationScoped;
+// import jakarta.inject.Inject;
+// import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.nosql.Template;
 import java.util.List;
@@ -21,7 +21,7 @@ import org.tasktide.core.model.workitem.WorkItem;
  * 
  * @author bkenna
  */
-@ApplicationScoped
+// @ApplicationScoped
 public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
     
     /**
@@ -30,10 +30,10 @@ public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
      * @param template
      * @param collectionName workitem.repo-name
      */
-    @Inject
+    //@Inject
     public TemplateWorkItemRepository(
         Template template,
-        @ConfigProperty(name = "task-tide.core.repository.nosql.collection.workitem.name", defaultValue = "WorkItem") String collectionName
+        String collectionName
     ) {
         super(template, WorkItem.class, collectionName);
     }

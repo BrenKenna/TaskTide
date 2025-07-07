@@ -4,7 +4,7 @@
  */
 package org.tasktide.core.repository;
 
-import jakarta.enterprise.context.Dependent;
+// import jakarta.enterprise.context.Dependent;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ import org.tasktide.itemstore.stores.DbTarget;
  * @param <T> of {@link TaskTideModel}
  * @author bkenna
  */
-@Dependent
+// @Dependent
 public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
 
     // Attributes

@@ -57,4 +57,15 @@ public class ArgumentMap {
     public Argument<?> getArgument(String arg) {
         return this.args.get(arg);
     }
+    
+    public Map<String, Argument<?>> getArgumentMap() {
+        return this.args;
+    }
+
+    @Override
+    public String toString() {
+        return "ArgumentMap{" +
+            "args=" + args +
+        '}';
+    }
 }

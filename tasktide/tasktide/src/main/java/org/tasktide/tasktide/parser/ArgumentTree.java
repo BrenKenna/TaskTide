@@ -128,7 +128,9 @@ public class ArgumentTree {
         
         // Initialize output
         List<String> results = new ArrayList<>();
-        results.add("\nGlobal Options:\n");
+        results.add("");
+        results.add("Global Options:");
+        results.add("");
         
         // Fetch and format global arguments
         ArgumentMap map = this.getGlobalArguments();
@@ -151,7 +153,9 @@ public class ArgumentTree {
      */
     public List<String> getActionHelp(String path) {
         List<String> results = new ArrayList<>();
-        results.add("\nOptions for Action:\t\"" + path + "\"");
+        results.add("");
+        results.add("Options for Action:\t" + path);
+        results.add("");
         ArgumentMap map = this.getActionArguments(path);
         if (map != null) {
             for (Argument<?> arg : map.getArgMap().values()) {
@@ -166,7 +170,9 @@ public class ArgumentTree {
         
         // Initialize output
         List<String> results = new ArrayList<>();
-        results.add("\nAction Arguments:\n");
+        results.add("");
+        results.add("Action Arguments:");
+        results.add("");
         
         // Traverse tree, collating help messages
         Map<String, ArgumentMap> addressMap = this.argTree.toAddressDataMap();

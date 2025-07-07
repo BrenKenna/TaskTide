@@ -4,7 +4,7 @@
  */
 package org.tasktide.core.repository;
 
-import jakarta.enterprise.context.Dependent;
+//import jakarta.enterprise.context.Dependent;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 
@@ -30,7 +30,7 @@ import org.tasktide.core.repository.json_repo.Compression;
  * @author bkenna
  * @param <T> of {@link TaskTideModel TaskTideModel}-{@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
  */
-@Dependent
+//@Dependent
 public abstract class JsonRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
     
     // Attributes

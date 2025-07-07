@@ -4,6 +4,7 @@
  */
 package org.tasktide.tasktide.configurer;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -20,6 +21,7 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
  * 
  * @author bkenna
  */
+@ApplicationScoped
 public class EngineConfig extends AbstractConfigurer {
     
     /**
@@ -27,23 +29,23 @@ public class EngineConfig extends AbstractConfigurer {
      * Worker Params
      * 
      */
-    @Inject
+    
     @ConfigProperty(name = "tasktide.engine.worker.lock-wait-time", defaultValue = "4")
     int lockTime;
     
-    @Inject
-    @ConfigProperty(name = "tasktide.engine.worker.processor.workitem.threads", defaultValue = "1")
+    
+    @ConfigProperty(name = "tasktide.engine.worker.processor.threads.workitem", defaultValue = "1")
     int workItemThreads;
     
-    @Inject
-    @ConfigProperty(name = "tasktide.engine.worker.processor.workItem.threshold", defaultValue = "-1")
+    
+    @ConfigProperty(name = "tasktide.engine.worker.processor.threshold.workItem", defaultValue = "-1")
     int workItemThreshold;
     
-    @Inject
+    
     @ConfigProperty(name = "tasktide.engine.worker.processor.threads.itemTask", defaultValue = "1")
     int itemTaskThreads;
     
-    @Inject
+    
     @ConfigProperty(name = "tasktide.engine.worker.processor.itemTask.threshold", defaultValue = "-1")
     int itemTaskThreshold;
     
@@ -53,24 +55,24 @@ public class EngineConfig extends AbstractConfigurer {
      * TimeKeeper Params
      * 
      */
-    @Inject
-    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.level", defaultValue = "Optional")
+    
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeper.level", defaultValue = "Optional")
     String timeKeeperLevel;
     
-    @Inject
-    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.onStart.canFail", defaultValue = "true")
+    
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeper.onStart.canFail", defaultValue = "true")
     boolean timeKeeperOnStartCanFail;
     
-    @Inject
-    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.onProcessing.canFail", defaultValue = "true")
+    
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeper.onProcessing.canFail", defaultValue = "true")
     boolean timeKeeperOnProcessingCanFail;
     
-    @Inject
-    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.onPEnd.canFail", defaultValue = "true")
+    
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeper.onPEnd.canFail", defaultValue = "true")
     boolean timeKeeperOnEndCanFail;
     
-    @Inject
-    @ConfigProperty(name = "tasktide.engine.observer.timekeeoer.waitTime", defaultValue = "1000000")
+    
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeper.waitTime", defaultValue = "1000000")
     long timeKeeperWaitTime;
     
     
@@ -80,7 +82,7 @@ public class EngineConfig extends AbstractConfigurer {
      * 
      */
     public EngineConfig() {
-        super("tasktide engine");
+        super("engine");
     }
     
     
@@ -106,6 +108,13 @@ public class EngineConfig extends AbstractConfigurer {
         this.itemTaskThreads();
         this.itemTaskSubTaskThreshold();
         this.timeKeeperMaxWallTime();
+        
+        if ( this.getPath().isEmpty() ) {
+            argTree.getTree().getRoot().setData(this.getArgumentMap());
+        }
+        else {
+            argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
+        }
     }
     
     

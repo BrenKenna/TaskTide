@@ -4,8 +4,8 @@
  */
 package org.tasktide.core.services;
 
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
+// import jakarta.enterprise.context.Dependent;
+// import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +29,7 @@ import org.tasktide.core.model.workitem.ItemState;
  * 
  * @author bkenna
  */
-@Dependent
+// @Dependent
 public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTideService<Workflow> {
     
     // Attributes
@@ -41,7 +41,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
      * 
      * @param repo 
      */
-    @Inject
+    // @Inject
     public WorkflowService(TaskTideRepository<Workflow> repo) {
         this.repo = repo;
     }

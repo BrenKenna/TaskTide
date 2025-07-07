@@ -201,4 +201,18 @@ public class Argument<T> {
         }
         this.setValue(refClass.cast(val));
     }
+
+    @Override
+    public String toString() {
+        return "Argument{" + 
+            "value=" + value + 
+            ", refClass=" + refClass +
+            ", name=" + name + 
+            ", shortFlag=" + shortFlag +
+            ", longFlag=" + longFlag +
+            ", description=" + description +
+            ", argType=" + argType +
+            ", isSet=" + isSet +
+        '}';
+    }
 }

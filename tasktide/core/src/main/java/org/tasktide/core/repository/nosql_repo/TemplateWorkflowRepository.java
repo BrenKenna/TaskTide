@@ -5,9 +5,9 @@
 package org.tasktide.core.repository.nosql_repo;
 
 import org.tasktide.core.repository.TemplateRepository;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+// import jakarta.enterprise.context.ApplicationScoped;
+// import jakarta.inject.Inject;
+// import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import jakarta.nosql.Template;
 import java.util.List;
@@ -20,7 +20,7 @@ import org.tasktide.core.model.collection.Workflow;
  * 
  * @author bkenna
  */
-@ApplicationScoped
+// @ApplicationScoped
 public class TemplateWorkflowRepository extends TemplateRepository<Workflow> {
     
     /**
@@ -29,10 +29,10 @@ public class TemplateWorkflowRepository extends TemplateRepository<Workflow> {
      * @param template
      * @param collectionName workflow.repo-name
      */
-    @Inject
+    // @Inject
     public TemplateWorkflowRepository(
         Template template,
-        @ConfigProperty(name = "task-tide.core.repository.nosql.collection.workflow.name", defaultValue = "Workflow") String collectionName
+        String collectionName
     ) {
         super(template, Workflow.class, collectionName);
     }

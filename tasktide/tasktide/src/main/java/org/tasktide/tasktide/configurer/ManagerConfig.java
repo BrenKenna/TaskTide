@@ -4,8 +4,10 @@
  */
 package org.tasktide.tasktide.configurer;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.tasktide.core.manager.TaskTideManager;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
@@ -17,22 +19,23 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
  * 
  * @author bkenna
  */
+@ApplicationScoped
 public class ManagerConfig extends AbstractConfigurer {
     
-    @Inject
+    
     @ConfigProperty(name = "tasktide.manager.inputFile", defaultValue = "")
     String inputFile;
     
-    @Inject
+    
     @ConfigProperty(name = "tasktide.manager.outputFile", defaultValue = "")
     String outputFile;
     
-    @Inject
+    
     @ConfigProperty(name = "tasktide.manager.delimiter", defaultValue = "")
     String delimiter;
     
-    @Inject
-    @ConfigProperty(name = "tasktide.manager.nested-delimiter", defaultValue = "")
+    
+    @ConfigProperty(name = "tasktide.manager.nestedDelimiter", defaultValue = "")
     String nestedDelimiter;
     
     
@@ -41,7 +44,7 @@ public class ManagerConfig extends AbstractConfigurer {
      * 
      */
     public ManagerConfig() {
-        super("tasktide manager");
+        super("manager");
     }
     
     
@@ -66,6 +69,13 @@ public class ManagerConfig extends AbstractConfigurer {
         this.delimiter();
         this.outputFile();
         this.nestedDelimiter();
+        
+        if ( this.getPath().isEmpty() ) {
+            argTree.getTree().getRoot().setData(this.getArgumentMap());
+        }
+        else {
+            argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
+        }
     }
     
     
@@ -101,7 +111,7 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-d")
             .withLongFlag("--delimiter")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.inputFile, String.class)
+            .withValue(this.delimiter, String.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }
@@ -120,7 +130,7 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-o")
             .withLongFlag("--output-file")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.inputFile, String.class)
+            .withValue(this.outputFile, String.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }
@@ -139,7 +149,7 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-nd")
             .withLongFlag("--nested-delimiter")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.inputFile, String.class)
+            .withValue(this.nestedDelimiter, String.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }

@@ -4,7 +4,7 @@
  */
 package org.tasktide.core.repository;
 
-import jakarta.enterprise.context.Dependent;
+// import jakarta.enterprise.context.Dependent;
 import jakarta.nosql.Template;
 import java.util.HashMap;
 
@@ -23,7 +23,7 @@ import org.tasktide.core.TaskTideRepository;
  * @author bkenna
  * @param <T> of {@link TaskTideModel}-WorkItem,Step,Workflow
  */
-@Dependent 
+// @Dependent 
 public abstract class TemplateRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
     
     // Attributes

@@ -4,8 +4,8 @@
  */
 package org.tasktide.core.services;
 
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
+// import jakarta.enterprise.context.Dependent;
+// import jakarta.inject.Inject;
 
 import java.util.List;
 import java.util.Map;
@@ -30,7 +30,7 @@ import org.tasktide.core.supporting.Utils;
  * 
  * @author bkenna
  */
-@Dependent
+// @Dependent
 public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTideService<WorkItem> {
     
     // Attributes
@@ -52,7 +52,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param repo
      * @param lockingWaitTime task-tide.model.workitem.locking-wait-time
      */
-    @Inject
+    // @Inject
     public WorkItemService(
         TaskTideRepository<WorkItem> repo,
         int lockingWaitTime

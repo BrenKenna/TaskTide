@@ -5,8 +5,8 @@
 package org.tasktide.core.repository.json_repo;
 
 import org.tasktide.core.repository.JsonRepository;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
+// import jakarta.enterprise.context.ApplicationScoped;
+// import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import java.util.List;
@@ -19,7 +19,7 @@ import org.tasktide.core.model.workitem.WorkItem;
  * 
  * @author bkenna
  */
-@ApplicationScoped
+//@ApplicationScoped
 public class JsonWorkItemRepository extends JsonRepository<WorkItem> {
 
         
@@ -29,10 +29,10 @@ public class JsonWorkItemRepository extends JsonRepository<WorkItem> {
      * @param modelCollection
      * @param collectionName workitem.repo-name
      */
-    @Inject
+    //@Inject
     public JsonWorkItemRepository(
         List<WorkItem> modelCollection,
-        @ConfigProperty(name = "task-tide.core.repository.json.collection.workitem.name", defaultValue = "WorkItem") String collectionName
+        String collectionName
     ) {
         super(modelCollection, WorkItem.class, collectionName);
     }

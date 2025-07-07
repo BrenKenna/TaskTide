@@ -1,16 +1,16 @@
-2025-04-28 19:22:06 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.setUpClass ]: 
+2025-07-07 18:34:18 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.setUpClass ]: 
 
 ---------------- Initiating Supplemental Tests ----------------
 
-2025-04-28 19:22:06 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.setUp ]: 
+2025-07-07 18:34:18 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-04-28 19:22:06 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.testSplash ]: 
+2025-07-07 18:34:18 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.testSplash ]: 
 
 ================ Print Splash Test ================
 
-2025-04-28 19:22:06 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.testSplash ]: 
+2025-07-07 18:34:18 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.testSplash ]: 
 
 Displaying splash string:
 
@@ -24,325 +24,351 @@ TaskTide-v0.0.1
 _________________________________________________
 
 
-2025-04-28 19:22:06 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.testSplash ]: 
+2025-07-07 18:34:18 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.testSplash ]: 
 
 ================ Print Splash Test ================
 
-2025-04-28 19:22:06 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.tearDown ]: 
+2025-07-07 18:34:18 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-04-28 19:22:06 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.tearDownClass ]: 
+2025-07-07 18:34:18 INFO  [ Test worker -> org.tasktide.tasktide.TestSplash.tearDownClass ]: 
 
 ---------------- Terminating Supplemental Tests ----------------
 
-2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+2025-07-07 18:34:18 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:34:18 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:34:18 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:34:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container d79b62b2-d30e-464c-8fa0-631531d5151b initialized
+2025-07-07 18:34:19 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:34:19 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:34:19 WARN  [ ForkJoinPool.commonPool-worker-1 -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.StepService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:34:19 WARN  [ ForkJoinPool.commonPool-worker-8 -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.WorkflowService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:34:19 WARN  [ ForkJoinPool.commonPool-worker-9 -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.WorkItemService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6748bcf5-1c7f-4e60-b503-35629d8ef095 initialized
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
 
----------------- Generic Tree Tests ----------------
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
 
-2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
-
-================ Can Setup Tree Test ================
-
-2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
-
-Displaying Tree:
-
-{
-    "red/apple": "Apple",
-    "red/cherry": "Cherry",
-    "red/strawberry": "Strawberry",
-    "green/kiwi": "Kiwi",
-    "green/lime": "Lime",
-    "green/grape": "Grape",
-    "yellow/banana": "Banana",
-    "yellow/lemon": "Lemon",
-    "yellow/pineapple": "Pineapple"
-}
-2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-07-01 13:51:55 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
-
----------------- Generic Tree Tests ----------------
-
-2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
-
----------------- Generic Tree Tests ----------------
-
-2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
 
-================ Can Setup Tree Test ================
+================ Tests Displaying TaskTide Config  ================
 
-2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Configuring TaskTide client
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [d79b62b2-d30e-464c-8fa0-631531d5151b, 6748bcf5-1c7f-4e60-b503-35629d8ef095]
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [d79b62b2-d30e-464c-8fa0-631531d5151b, 6748bcf5-1c7f-4e60-b503-35629d8ef095]
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'1'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [d79b62b2-d30e-464c-8fa0-631531d5151b, 6748bcf5-1c7f-4e60-b503-35629d8ef095]
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [d79b62b2-d30e-464c-8fa0-631531d5151b, 6748bcf5-1c7f-4e60-b503-35629d8ef095]
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'2'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [d79b62b2-d30e-464c-8fa0-631531d5151b, 6748bcf5-1c7f-4e60-b503-35629d8ef095]
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [d79b62b2-d30e-464c-8fa0-631531d5151b, 6748bcf5-1c7f-4e60-b503-35629d8ef095]
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'3'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying configured client:
+'[
+    "",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tmanager",
+    "",
+    "  Output File --output-file Defines the full JSON formatted file path for export",
+    "  Delimiter  --delimiter Defines the delimiter to use for im/export",
+    "  Input File --input-file Defines the full file path for import",
+    "  Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required",
+    "\n\n",
+    "",
+    "Options for Action:\tengine",
+    "",
+    "  TimeKeeper wall time --max-wall-time Configures the max wall-time for task processing in __",
+    "  WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool",
+    "  ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to",
+    "  WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to",
+    "  ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool",
+    "\n\n"
+]'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying Address Data map:
+'{=ArgumentMap{args={NoSQL Host:Port=Argument{value=null, refClass=null, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION, isSet=false}, Token Expiration=Argument{value=0, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION, isSet=true}, NoSQL Database Type=Argument{value=null, refClass=null, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION, isSet=false}, WorkItem Name=Argument{value=null, refClass=null, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION, isSet=false}, Workflow Name=Argument{value=null, refClass=null, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION, isSet=false}, Step Name=Argument{value=null, refClass=null, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION, isSet=false}, Date Format=Argument{value=null, refClass=null, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION, isSet=false}, NoSQL Provider=Argument{value=null, refClass=null, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION, isSet=false}, NoSQL Password=Argument{value=null, refClass=null, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION, isSet=false}, NoSQL Provider Class=Argument{value=null, refClass=null, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION, isSet=false}, File Path=Argument{value=null, refClass=null, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION, isSet=false}, NoSQL User=Argument{value=null, refClass=null, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION, isSet=false}, Repository Type=Argument{value=null, refClass=null, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION, isSet=false}}}, manager=ArgumentMap{args={Output File=Argument{value=null, refClass=class java.lang.String, name=Output File, shortFlag=-o, longFlag=--output-file, description=Defines the full JSON formatted file path for export, argType=ACTION, isSet=true}, Delimiter=Argument{value=null, refClass=class java.lang.String, name=Delimiter, shortFlag=-d, longFlag=--delimiter, description=Defines the delimiter to use for im/export, argType=ACTION, isSet=true}, Input File=Argument{value=null, refClass=class java.lang.String, name=Input File, shortFlag=-i, longFlag=--input-file, description=Defines the full file path for import, argType=ACTION, isSet=true}, Nested Delimiter=Argument{value=null, refClass=class java.lang.String, name=Nested Delimiter, shortFlag=-nd, longFlag=--nested-delimiter, description=Defines the ItemTask delimiter if required, argType=ACTION, isSet=true}}}, engine=ArgumentMap{args={TimeKeeper wall time=Argument{value=0, refClass=long, name=TimeKeeper wall time, shortFlag=-t, longFlag=--max-wall-time, description=Configures the max wall-time for task processing in __, argType=ACTION, isSet=true}, WorkItem SubTasking Threshold=Argument{value=0, refClass=int, name=WorkItem SubTasking Threshold, shortFlag=-ws, longFlag=--work-item-sub-task-threshold, description=Defines the numbers of WorkItems which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}, ItemTask Threads=Argument{value=0, refClass=int, name=ItemTask Threads, shortFlag=-i, longFlag=--item-task-threads, description=Defines the number of threads that item task processing can be distributed to, argType=ACTION, isSet=true}, WorkItem Threads=Argument{value=0, refClass=int, name=WorkItem Threads, shortFlag=-w, longFlag=--work-item-threads, description=Defines the number of threads that work item processing can be distributed to, argType=ACTION, isSet=true}, ItemTask SubTasking Threshold=Argument{value=0, refClass=int, name=ItemTask SubTasking Threshold, shortFlag=-is, longFlag=--item-task-sub-task-threshold, description=Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}}}}'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
 
-Displaying Tree:
+================ Tests Displaying TaskTide Config ================
 
-{
-    "red/apple": "Apple",
-    "red/cherry": "Cherry",
-    "red/strawberry": "Strawberry",
-    "green/kiwi": "Kiwi",
-    "green/lime": "Lime",
-    "green/grape": "Grape",
-    "yellow/banana": "Banana",
-    "yellow/lemon": "Lemon",
-    "yellow/pineapple": "Pineapple"
-}
-2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
-
-================ Can Setup Tree Test ================
-
-2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-07-01 13:52:54 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6748bcf5-1c7f-4e60-b503-35629d8ef095 shut down
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
 
----------------- Generic Tree Tests ----------------
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
 
-2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container d79b62b2-d30e-464c-8fa0-631531d5151b shut down
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.setUpClass ]: 
 
----------------- Generic Tree Tests ----------------
+---------------- Initiating Configuration Tests ----------------
 
-2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: 
 
-================ Can Add/Remove to Tree Test ================
+================ Tests Displaying TaskTide Config  ================
 
-2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: Configuring TaskTide client
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: Records in tree:
+'1'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: Displaying configured client:
+'[
+    "",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    ""
+]'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: Records in tree:
+'2'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: Displaying configured client:
+'[
+    "",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tmanager",
+    "",
+    "  Output File --output-file Defines the full JSON formatted file path for export",
+    "  Delimiter  --delimiter Defines the delimiter to use for im/export",
+    "  Input File --input-file Defines the full file path for import",
+    "  Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required",
+    "\n\n"
+]'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: Records in tree:
+'3'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: Displaying configured client:
+'[
+    "",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tmanager",
+    "",
+    "  Output File --output-file Defines the full JSON formatted file path for export",
+    "  Delimiter  --delimiter Defines the delimiter to use for im/export",
+    "  Input File --input-file Defines the full file path for import",
+    "  Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required",
+    "\n\n",
+    "",
+    "Options for Action:\tengine",
+    "",
+    "  TimeKeeper wall time --max-wall-time Configures the max wall-time for task processing in __",
+    "  WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool",
+    "  ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to",
+    "  WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to",
+    "  ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool",
+    "\n\n"
+]'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: Displaying Address Data map:
+'{=ArgumentMap{args={NoSQL Host:Port=Argument{value=null, refClass=null, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION, isSet=false}, Token Expiration=Argument{value=0, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION, isSet=true}, NoSQL Database Type=Argument{value=null, refClass=null, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION, isSet=false}, WorkItem Name=Argument{value=null, refClass=null, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION, isSet=false}, Workflow Name=Argument{value=null, refClass=null, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION, isSet=false}, Step Name=Argument{value=null, refClass=null, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION, isSet=false}, Date Format=Argument{value=null, refClass=null, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION, isSet=false}, NoSQL Provider=Argument{value=null, refClass=null, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION, isSet=false}, NoSQL Password=Argument{value=null, refClass=null, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION, isSet=false}, NoSQL Provider Class=Argument{value=null, refClass=null, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION, isSet=false}, File Path=Argument{value=null, refClass=null, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION, isSet=false}, NoSQL User=Argument{value=null, refClass=null, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION, isSet=false}, Repository Type=Argument{value=null, refClass=null, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION, isSet=false}}}, manager=ArgumentMap{args={Output File=Argument{value=null, refClass=class java.lang.String, name=Output File, shortFlag=-o, longFlag=--output-file, description=Defines the full JSON formatted file path for export, argType=ACTION, isSet=true}, Delimiter=Argument{value=null, refClass=class java.lang.String, name=Delimiter, shortFlag=-d, longFlag=--delimiter, description=Defines the delimiter to use for im/export, argType=ACTION, isSet=true}, Input File=Argument{value=null, refClass=class java.lang.String, name=Input File, shortFlag=-i, longFlag=--input-file, description=Defines the full file path for import, argType=ACTION, isSet=true}, Nested Delimiter=Argument{value=null, refClass=class java.lang.String, name=Nested Delimiter, shortFlag=-nd, longFlag=--nested-delimiter, description=Defines the ItemTask delimiter if required, argType=ACTION, isSet=true}}}, engine=ArgumentMap{args={TimeKeeper wall time=Argument{value=0, refClass=long, name=TimeKeeper wall time, shortFlag=-t, longFlag=--max-wall-time, description=Configures the max wall-time for task processing in __, argType=ACTION, isSet=true}, WorkItem SubTasking Threshold=Argument{value=0, refClass=int, name=WorkItem SubTasking Threshold, shortFlag=-ws, longFlag=--work-item-sub-task-threshold, description=Defines the numbers of WorkItems which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}, ItemTask Threads=Argument{value=0, refClass=int, name=ItemTask Threads, shortFlag=-i, longFlag=--item-task-threads, description=Defines the number of threads that item task processing can be distributed to, argType=ACTION, isSet=true}, WorkItem Threads=Argument{value=0, refClass=int, name=WorkItem Threads, shortFlag=-w, longFlag=--work-item-threads, description=Defines the number of threads that work item processing can be distributed to, argType=ACTION, isSet=true}, ItemTask SubTasking Threshold=Argument{value=0, refClass=int, name=ItemTask SubTasking Threshold, shortFlag=-is, longFlag=--item-task-sub-task-threshold, description=Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}}}}'
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.canDisplayTree ]: 
+
+================ Tests Displaying TaskTide Config ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-07-01 16:31:06 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.configurer.TaskTideConfigurerTests.tearDownClass ]: 
 
----------------- Generic Tree Tests ----------------
+---------------- Terminating Configuration Tests ----------------
 
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
-
----------------- Generic Tree Tests ----------------
-
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
-
-================ Can Add/Remove to Tree Test ================
-
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully found address:	red/apple
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully queried value:	Apple
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
-
-Displaying Tree After Test:
-
-{
-    "green/grape": "Grape",
-    "yellow/lemon": "Lemon"
-}
-
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
-
-================ Can Add/Remove to Tree Test ================
-
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-07-01 16:33:59 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
-
----------------- Generic Tree Tests ----------------
-
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
-
----------------- Generic Tree Tests ----------------
-
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
-
-================ Can Add/Remove to Tree Test ================
-
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully found address:	"red/apple"
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully queried value:	"Apple"
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
-
-Displaying Tree After Test:
-
-{
-    "green/grape": "Grape",
-    "yellow/lemon": "Lemon"
-}
-
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
-
-================ Can Add/Remove to Tree Test ================
-
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-07-01 16:34:43 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
-
----------------- Generic Tree Tests ----------------
-
-2025-07-01 19:18:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
 
 ---------------- Argument Parsing Tests ----------------
 
-2025-07-01 19:18:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-07-01 19:18:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
 
 ================ Can EmulateDockerCommand Test ================
 
-2025-07-01 19:18:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-07-01 19:18:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
-
----------------- Argument Parsing Tests ----------------
-
-2025-07-01 19:19:17 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
-
----------------- Argument Parsing Tests ----------------
-
-2025-07-01 19:19:17 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-07-01 19:19:17 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-================ Can EmulateDockerCommand Test ================
-
-2025-07-01 19:19:17 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
 
 Displaying tree data:
 
 [
-    "\nGlobal Options:\n",
-    "  debug      --debug    Enable debug mode"
-]
-
-
-2025-07-01 19:19:17 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-================ Can Setup Tree Test ================
-
-2025-07-01 19:19:17 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-07-01 19:19:17 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
-
----------------- Argument Parsing Tests ----------------
-
-2025-07-01 19:19:52 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
-
----------------- Argument Parsing Tests ----------------
-
-2025-07-01 19:19:52 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-07-01 19:19:52 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-================ Can EmulateDockerCommand Test ================
-
-2025-07-01 19:19:52 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-Displaying tree data:
-
-[
-    "\nGlobal Options:\n",
-    "  debug      --debug    Enable debug mode"
-]
-
-
-2025-07-01 19:19:52 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-================ Can Setup Tree Test ================
-
-2025-07-01 19:19:52 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-07-01 19:19:52 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
-
----------------- Argument Parsing Tests ----------------
-
-2025-07-01 19:20:36 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
-
----------------- Argument Parsing Tests ----------------
-
-2025-07-01 19:20:36 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-07-01 19:20:36 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-================ Can EmulateDockerCommand Test ================
-
-2025-07-01 19:20:36 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-Displaying tree data:
-
-[
-    "\nGlobal Options:\n",
+    "",
+    "Global Options:",
+    "",
     "  debug      --debug    Enable debug mode",
     "",
-    "\nAction Arguments:\n",
-    "\nOptions for Action:\t\"docker container\"",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tdocker container",
+    "",
     "  help       --help     Show help for container actions",
     "\n\n",
-    "\nOptions for Action:\t\"docker container run\"",
+    "",
+    "Options for Action:\tdocker container run",
+    "",
     "  name       --name     Set container name",
     "\n\n"
 ]
 
 
-2025-07-01 19:20:36 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
 
 ================ Can Setup Tree Test ================
 
-2025-07-01 19:20:36 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-07-01 19:20:36 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
 
 ---------------- Argument Parsing Tests ----------------
 
-2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
 
 ---------------- Generic Tree Tests ----------------
 
-2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+================ Can Add/Remove to Tree Test ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully found address:	"red/apple"
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: Successfully queried value:	"Apple"
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+Displaying Tree After Test:
+
+{
+    "green/grape": "Grape",
+    "yellow/lemon": "Lemon"
+}
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canFindAndRemove ]: 
+
+================ Can Add/Remove to Tree Test ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
+
+================ Can Add Under Unexting Branch Test ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
+
+Displaying Tree:
+
+{
+    "red/apple": "Apple",
+    "secondary/multicolor/large": "papya"
+}
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
+
+================ Can Add Under Unexting Branch Test ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
 
 ================ Can Setup Tree Test ================
 
-2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
 
 Displaying Tree:
 
@@ -359,90 +385,551 @@ Displaying Tree:
     "yellow/pineapple": "Pineapple"
 }
 
-2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canSetupTree ]: 
 
 ================ Can Setup Tree Test ================
 
-2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-07-02 09:34:21 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
+2025-07-07 18:34:22 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
 
 ---------------- Generic Tree Tests ----------------
 
-2025-07-02 09:37:46 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUpClass ]: 
+2025-07-07 18:37:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:37:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:37:25 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:37:25 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 507f5d9f-12f7-42f3-9d40-064ae257df3f initialized
+2025-07-07 18:37:25 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:37:26 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:37:26 WARN  [ ForkJoinPool.commonPool-worker-6 -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.WorkflowService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:37:26 WARN  [ ForkJoinPool.commonPool-worker-3 -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.StepService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:37:26 WARN  [ ForkJoinPool.commonPool-worker-5 -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.WorkItemService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:37:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a9bf92c3-b5f3-4c15-810d-db66696c60fb initialized
+2025-07-07 18:37:28 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
 
----------------- Generic Tree Tests ----------------
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
 
-2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.setUp ]: 
+2025-07-07 18:37:28 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
+2025-07-07 18:37:28 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
 
-================ Can Add Under Unexting Branch Test ================
+================ Tests Displaying TaskTide Config  ================
 
-2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
-
-Displaying Tree:
-
-{
-    "red/apple": "Apple",
-    "secondary/multicolor/large": "papya"
-}
-
-2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.canAddUnderUnexistingBranch ]: 
-
-================ Can Add Under Unexting Branch Test ================
-
-2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDown ]: 
-
-================ Terminating Test ================
-
-2025-07-02 09:37:47 INFO  [ Test worker -> org.tasktide.tasktide.parser.GenericTreeTests.tearDownClass ]: 
-
----------------- Generic Tree Tests ----------------
-
-2025-07-02 09:40:07 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
-
----------------- Argument Parsing Tests ----------------
-
-2025-07-02 09:40:07 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
-
-================ Initiating Next Test ================
-
-2025-07-02 09:40:07 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-================ Can EmulateDockerCommand Test ================
-
-2025-07-02 09:40:08 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-Displaying tree data:
-
-[
-    "\nGlobal Options:\n",
-    "  debug      --debug    Enable debug mode",
+2025-07-07 18:37:28 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Configuring TaskTide client
+2025-07-07 18:37:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [507f5d9f-12f7-42f3-9d40-064ae257df3f, a9bf92c3-b5f3-4c15-810d-db66696c60fb]
+2025-07-07 18:37:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [507f5d9f-12f7-42f3-9d40-064ae257df3f, a9bf92c3-b5f3-4c15-810d-db66696c60fb]
+2025-07-07 18:37:29 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'1'
+2025-07-07 18:37:29 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [507f5d9f-12f7-42f3-9d40-064ae257df3f, a9bf92c3-b5f3-4c15-810d-db66696c60fb]
+2025-07-07 18:37:29 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [507f5d9f-12f7-42f3-9d40-064ae257df3f, a9bf92c3-b5f3-4c15-810d-db66696c60fb]
+2025-07-07 18:37:29 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'2'
+2025-07-07 18:37:29 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [507f5d9f-12f7-42f3-9d40-064ae257df3f, a9bf92c3-b5f3-4c15-810d-db66696c60fb]
+2025-07-07 18:37:29 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [507f5d9f-12f7-42f3-9d40-064ae257df3f, a9bf92c3-b5f3-4c15-810d-db66696c60fb]
+2025-07-07 18:37:29 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'3'
+2025-07-07 18:37:29 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying configured client:
+'[
     "",
-    "\nAction Arguments:\n",
-    "\nOptions for Action:\t\"docker container\"",
-    "  help       --help     Show help for container actions",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tmanager",
+    "",
+    "  Output File --output-file Defines the full JSON formatted file path for export",
+    "  Delimiter  --delimiter Defines the delimiter to use for im/export",
+    "  Input File --input-file Defines the full file path for import",
+    "  Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required",
     "\n\n",
-    "\nOptions for Action:\t\"docker container run\"",
-    "  name       --name     Set container name",
+    "",
+    "Options for Action:\tengine",
+    "",
+    "  TimeKeeper wall time --max-wall-time Configures the max wall-time for task processing in __",
+    "  WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool",
+    "  ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to",
+    "  WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to",
+    "  ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool",
     "\n\n"
-]
+]'
+2025-07-07 18:37:29 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying Address Data map:
+'{=ArgumentMap{args={NoSQL Host:Port=Argument{value=null, refClass=null, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION, isSet=false}, Token Expiration=Argument{value=0, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION, isSet=true}, NoSQL Database Type=Argument{value=null, refClass=null, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION, isSet=false}, WorkItem Name=Argument{value=null, refClass=null, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION, isSet=false}, Workflow Name=Argument{value=null, refClass=null, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION, isSet=false}, Step Name=Argument{value=null, refClass=null, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION, isSet=false}, Date Format=Argument{value=null, refClass=null, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION, isSet=false}, NoSQL Provider=Argument{value=null, refClass=null, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION, isSet=false}, NoSQL Password=Argument{value=null, refClass=null, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION, isSet=false}, NoSQL Provider Class=Argument{value=null, refClass=null, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION, isSet=false}, File Path=Argument{value=null, refClass=null, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION, isSet=false}, NoSQL User=Argument{value=null, refClass=null, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION, isSet=false}, Repository Type=Argument{value=null, refClass=null, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION, isSet=false}}}, manager=ArgumentMap{args={Output File=Argument{value=null, refClass=class java.lang.String, name=Output File, shortFlag=-o, longFlag=--output-file, description=Defines the full JSON formatted file path for export, argType=ACTION, isSet=true}, Delimiter=Argument{value=null, refClass=class java.lang.String, name=Delimiter, shortFlag=-d, longFlag=--delimiter, description=Defines the delimiter to use for im/export, argType=ACTION, isSet=true}, Input File=Argument{value=null, refClass=class java.lang.String, name=Input File, shortFlag=-i, longFlag=--input-file, description=Defines the full file path for import, argType=ACTION, isSet=true}, Nested Delimiter=Argument{value=null, refClass=class java.lang.String, name=Nested Delimiter, shortFlag=-nd, longFlag=--nested-delimiter, description=Defines the ItemTask delimiter if required, argType=ACTION, isSet=true}}}, engine=ArgumentMap{args={TimeKeeper wall time=Argument{value=0, refClass=long, name=TimeKeeper wall time, shortFlag=-t, longFlag=--max-wall-time, description=Configures the max wall-time for task processing in __, argType=ACTION, isSet=true}, WorkItem SubTasking Threshold=Argument{value=0, refClass=int, name=WorkItem SubTasking Threshold, shortFlag=-ws, longFlag=--work-item-sub-task-threshold, description=Defines the numbers of WorkItems which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}, ItemTask Threads=Argument{value=0, refClass=int, name=ItemTask Threads, shortFlag=-i, longFlag=--item-task-threads, description=Defines the number of threads that item task processing can be distributed to, argType=ACTION, isSet=true}, WorkItem Threads=Argument{value=0, refClass=int, name=WorkItem Threads, shortFlag=-w, longFlag=--work-item-threads, description=Defines the number of threads that work item processing can be distributed to, argType=ACTION, isSet=true}, ItemTask SubTasking Threshold=Argument{value=0, refClass=int, name=ItemTask SubTasking Threshold, shortFlag=-is, longFlag=--item-task-sub-task-threshold, description=Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}}}}'
+2025-07-07 18:37:29 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
 
+================ Tests Displaying TaskTide Config ================
 
-2025-07-02 09:40:08 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
-
-================ Can Setup Tree Test ================
-
-2025-07-02 09:40:08 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
+2025-07-07 18:37:29 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-07-02 09:40:08 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
+2025-07-07 18:37:29 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a9bf92c3-b5f3-4c15-810d-db66696c60fb shut down
+2025-07-07 18:37:29 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
 
----------------- Argument Parsing Tests ----------------
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
 
+2025-07-07 18:37:29 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 507f5d9f-12f7-42f3-9d40-064ae257df3f shut down
+2025-07-07 18:40:20 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:40:20 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:40:20 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:40:20 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container c1a49b04-1464-4f5b-8f8d-85b1b430ec2e initialized
+2025-07-07 18:40:20 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:40:20 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:40:21 WARN  [ ForkJoinPool.commonPool-worker-8 -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.StepService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:40:21 WARN  [ Test worker -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.WorkItemService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:40:21 WARN  [ ForkJoinPool.commonPool-worker-2 -> org.jboss.weld.bootstrap.BeanDeployer.createClassBean ]: WELD-000167: Class org.tasktide.core.services.WorkflowService is annotated with @Dependent but it does not declare an appropriate constructor therefore is not registered as a bean!
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 3abb2fc0-8073-4f0f-9622-110c05501b94 initialized
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
+
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config  ================
+
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Configuring TaskTide client
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c1a49b04-1464-4f5b-8f8d-85b1b430ec2e, 3abb2fc0-8073-4f0f-9622-110c05501b94]
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c1a49b04-1464-4f5b-8f8d-85b1b430ec2e, 3abb2fc0-8073-4f0f-9622-110c05501b94]
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'1'
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c1a49b04-1464-4f5b-8f8d-85b1b430ec2e, 3abb2fc0-8073-4f0f-9622-110c05501b94]
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c1a49b04-1464-4f5b-8f8d-85b1b430ec2e, 3abb2fc0-8073-4f0f-9622-110c05501b94]
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'2'
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c1a49b04-1464-4f5b-8f8d-85b1b430ec2e, 3abb2fc0-8073-4f0f-9622-110c05501b94]
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c1a49b04-1464-4f5b-8f8d-85b1b430ec2e, 3abb2fc0-8073-4f0f-9622-110c05501b94]
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'3'
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying configured client:
+'[
+    "",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tmanager",
+    "",
+    "  Output File --output-file Defines the full JSON formatted file path for export",
+    "  Delimiter  --delimiter Defines the delimiter to use for im/export",
+    "  Input File --input-file Defines the full file path for import",
+    "  Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required",
+    "\n\n",
+    "",
+    "Options for Action:\tengine",
+    "",
+    "  TimeKeeper wall time --max-wall-time Configures the max wall-time for task processing in __",
+    "  WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool",
+    "  ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to",
+    "  WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to",
+    "  ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool",
+    "\n\n"
+]'
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying Address Data map:
+'{=ArgumentMap{args={NoSQL Host:Port=Argument{value=null, refClass=null, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION, isSet=false}, Token Expiration=Argument{value=0, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION, isSet=true}, NoSQL Database Type=Argument{value=null, refClass=null, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION, isSet=false}, WorkItem Name=Argument{value=null, refClass=null, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION, isSet=false}, Workflow Name=Argument{value=null, refClass=null, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION, isSet=false}, Step Name=Argument{value=null, refClass=null, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION, isSet=false}, Date Format=Argument{value=null, refClass=null, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION, isSet=false}, NoSQL Provider=Argument{value=null, refClass=null, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION, isSet=false}, NoSQL Password=Argument{value=null, refClass=null, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION, isSet=false}, NoSQL Provider Class=Argument{value=null, refClass=null, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION, isSet=false}, File Path=Argument{value=null, refClass=null, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION, isSet=false}, NoSQL User=Argument{value=null, refClass=null, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION, isSet=false}, Repository Type=Argument{value=null, refClass=null, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION, isSet=false}}}, manager=ArgumentMap{args={Output File=Argument{value=null, refClass=class java.lang.String, name=Output File, shortFlag=-o, longFlag=--output-file, description=Defines the full JSON formatted file path for export, argType=ACTION, isSet=true}, Delimiter=Argument{value=null, refClass=class java.lang.String, name=Delimiter, shortFlag=-d, longFlag=--delimiter, description=Defines the delimiter to use for im/export, argType=ACTION, isSet=true}, Input File=Argument{value=null, refClass=class java.lang.String, name=Input File, shortFlag=-i, longFlag=--input-file, description=Defines the full file path for import, argType=ACTION, isSet=true}, Nested Delimiter=Argument{value=null, refClass=class java.lang.String, name=Nested Delimiter, shortFlag=-nd, longFlag=--nested-delimiter, description=Defines the ItemTask delimiter if required, argType=ACTION, isSet=true}}}, engine=ArgumentMap{args={TimeKeeper wall time=Argument{value=0, refClass=long, name=TimeKeeper wall time, shortFlag=-t, longFlag=--max-wall-time, description=Configures the max wall-time for task processing in __, argType=ACTION, isSet=true}, WorkItem SubTasking Threshold=Argument{value=0, refClass=int, name=WorkItem SubTasking Threshold, shortFlag=-ws, longFlag=--work-item-sub-task-threshold, description=Defines the numbers of WorkItems which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}, ItemTask Threads=Argument{value=0, refClass=int, name=ItemTask Threads, shortFlag=-i, longFlag=--item-task-threads, description=Defines the number of threads that item task processing can be distributed to, argType=ACTION, isSet=true}, WorkItem Threads=Argument{value=0, refClass=int, name=WorkItem Threads, shortFlag=-w, longFlag=--work-item-threads, description=Defines the number of threads that work item processing can be distributed to, argType=ACTION, isSet=true}, ItemTask SubTasking Threshold=Argument{value=0, refClass=int, name=ItemTask SubTasking Threshold, shortFlag=-is, longFlag=--item-task-sub-task-threshold, description=Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}}}}'
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config ================
+
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 3abb2fc0-8073-4f0f-9622-110c05501b94 shut down
+2025-07-07 18:40:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:40:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container c1a49b04-1464-4f5b-8f8d-85b1b430ec2e shut down
+2025-07-07 18:44:12 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:44:12 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:44:12 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:44:12 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 8bf1637f-cfc1-4475-a189-31f377904763 initialized
+2025-07-07 18:44:12 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:44:12 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f0dc5288-9158-429d-9fe7-4210b18a1987 initialized
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
+
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config  ================
+
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Configuring TaskTide client
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [8bf1637f-cfc1-4475-a189-31f377904763, f0dc5288-9158-429d-9fe7-4210b18a1987]
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [8bf1637f-cfc1-4475-a189-31f377904763, f0dc5288-9158-429d-9fe7-4210b18a1987]
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'1'
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [8bf1637f-cfc1-4475-a189-31f377904763, f0dc5288-9158-429d-9fe7-4210b18a1987]
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [8bf1637f-cfc1-4475-a189-31f377904763, f0dc5288-9158-429d-9fe7-4210b18a1987]
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'2'
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [8bf1637f-cfc1-4475-a189-31f377904763, f0dc5288-9158-429d-9fe7-4210b18a1987]
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [8bf1637f-cfc1-4475-a189-31f377904763, f0dc5288-9158-429d-9fe7-4210b18a1987]
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'3'
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying configured client:
+'[
+    "",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tmanager",
+    "",
+    "  Output File --output-file Defines the full JSON formatted file path for export",
+    "  Delimiter  --delimiter Defines the delimiter to use for im/export",
+    "  Input File --input-file Defines the full file path for import",
+    "  Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required",
+    "\n\n",
+    "",
+    "Options for Action:\tengine",
+    "",
+    "  TimeKeeper wall time --max-wall-time Configures the max wall-time for task processing in __",
+    "  WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool",
+    "  ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to",
+    "  WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to",
+    "  ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool",
+    "\n\n"
+]'
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying Address Data map:
+'{=ArgumentMap{args={NoSQL Host:Port=Argument{value=null, refClass=null, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION, isSet=false}, Token Expiration=Argument{value=0, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION, isSet=true}, NoSQL Database Type=Argument{value=null, refClass=null, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION, isSet=false}, WorkItem Name=Argument{value=null, refClass=null, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION, isSet=false}, Workflow Name=Argument{value=null, refClass=null, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION, isSet=false}, Step Name=Argument{value=null, refClass=null, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION, isSet=false}, Date Format=Argument{value=null, refClass=null, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION, isSet=false}, NoSQL Provider=Argument{value=null, refClass=null, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION, isSet=false}, NoSQL Password=Argument{value=null, refClass=null, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION, isSet=false}, NoSQL Provider Class=Argument{value=null, refClass=null, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION, isSet=false}, File Path=Argument{value=null, refClass=null, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION, isSet=false}, NoSQL User=Argument{value=null, refClass=null, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION, isSet=false}, Repository Type=Argument{value=null, refClass=null, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION, isSet=false}}}, manager=ArgumentMap{args={Output File=Argument{value=null, refClass=class java.lang.String, name=Output File, shortFlag=-o, longFlag=--output-file, description=Defines the full JSON formatted file path for export, argType=ACTION, isSet=true}, Delimiter=Argument{value=null, refClass=class java.lang.String, name=Delimiter, shortFlag=-d, longFlag=--delimiter, description=Defines the delimiter to use for im/export, argType=ACTION, isSet=true}, Input File=Argument{value=null, refClass=class java.lang.String, name=Input File, shortFlag=-i, longFlag=--input-file, description=Defines the full file path for import, argType=ACTION, isSet=true}, Nested Delimiter=Argument{value=null, refClass=class java.lang.String, name=Nested Delimiter, shortFlag=-nd, longFlag=--nested-delimiter, description=Defines the ItemTask delimiter if required, argType=ACTION, isSet=true}}}, engine=ArgumentMap{args={TimeKeeper wall time=Argument{value=0, refClass=long, name=TimeKeeper wall time, shortFlag=-t, longFlag=--max-wall-time, description=Configures the max wall-time for task processing in __, argType=ACTION, isSet=true}, WorkItem SubTasking Threshold=Argument{value=0, refClass=int, name=WorkItem SubTasking Threshold, shortFlag=-ws, longFlag=--work-item-sub-task-threshold, description=Defines the numbers of WorkItems which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}, ItemTask Threads=Argument{value=0, refClass=int, name=ItemTask Threads, shortFlag=-i, longFlag=--item-task-threads, description=Defines the number of threads that item task processing can be distributed to, argType=ACTION, isSet=true}, WorkItem Threads=Argument{value=0, refClass=int, name=WorkItem Threads, shortFlag=-w, longFlag=--work-item-threads, description=Defines the number of threads that work item processing can be distributed to, argType=ACTION, isSet=true}, ItemTask SubTasking Threshold=Argument{value=0, refClass=int, name=ItemTask SubTasking Threshold, shortFlag=-is, longFlag=--item-task-sub-task-threshold, description=Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}}}}'
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config ================
+
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container f0dc5288-9158-429d-9fe7-4210b18a1987 shut down
+2025-07-07 18:44:15 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:44:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 8bf1637f-cfc1-4475-a189-31f377904763 shut down
+2025-07-07 18:45:39 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:45:39 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:45:40 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:45:42 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 268cad1a-1f37-4825-bc0b-08694631c10c initialized
+2025-07-07 18:45:42 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
+
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:45:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:45:42 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container ee051bdd-67e0-486e-a72a-25f27d0bf9f4 initialized
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config  ================
+
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Configuring TaskTide client
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [268cad1a-1f37-4825-bc0b-08694631c10c, ee051bdd-67e0-486e-a72a-25f27d0bf9f4]
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [268cad1a-1f37-4825-bc0b-08694631c10c, ee051bdd-67e0-486e-a72a-25f27d0bf9f4]
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'1'
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [268cad1a-1f37-4825-bc0b-08694631c10c, ee051bdd-67e0-486e-a72a-25f27d0bf9f4]
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [268cad1a-1f37-4825-bc0b-08694631c10c, ee051bdd-67e0-486e-a72a-25f27d0bf9f4]
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'2'
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [268cad1a-1f37-4825-bc0b-08694631c10c, ee051bdd-67e0-486e-a72a-25f27d0bf9f4]
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [268cad1a-1f37-4825-bc0b-08694631c10c, ee051bdd-67e0-486e-a72a-25f27d0bf9f4]
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'3'
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying configured client:
+'[
+    "",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tmanager",
+    "",
+    "  Output File --output-file Defines the full JSON formatted file path for export",
+    "  Delimiter  --delimiter Defines the delimiter to use for im/export",
+    "  Input File --input-file Defines the full file path for import",
+    "  Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required",
+    "\n\n",
+    "",
+    "Options for Action:\tengine",
+    "",
+    "  TimeKeeper wall time --max-wall-time Configures the max wall-time for task processing in __",
+    "  WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool",
+    "  ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to",
+    "  WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to",
+    "  ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool",
+    "\n\n"
+]'
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying Address Data map:
+'{=ArgumentMap{args={NoSQL Host:Port=Argument{value=null, refClass=null, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION, isSet=false}, Token Expiration=Argument{value=0, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION, isSet=true}, NoSQL Database Type=Argument{value=null, refClass=null, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION, isSet=false}, WorkItem Name=Argument{value=null, refClass=null, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION, isSet=false}, Workflow Name=Argument{value=null, refClass=null, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION, isSet=false}, Step Name=Argument{value=null, refClass=null, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION, isSet=false}, Date Format=Argument{value=null, refClass=null, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION, isSet=false}, NoSQL Provider=Argument{value=null, refClass=null, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION, isSet=false}, NoSQL Password=Argument{value=null, refClass=null, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION, isSet=false}, NoSQL Provider Class=Argument{value=null, refClass=null, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION, isSet=false}, File Path=Argument{value=null, refClass=null, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION, isSet=false}, NoSQL User=Argument{value=null, refClass=null, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION, isSet=false}, Repository Type=Argument{value=null, refClass=null, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION, isSet=false}}}, manager=ArgumentMap{args={Output File=Argument{value=null, refClass=class java.lang.String, name=Output File, shortFlag=-o, longFlag=--output-file, description=Defines the full JSON formatted file path for export, argType=ACTION, isSet=true}, Delimiter=Argument{value=null, refClass=class java.lang.String, name=Delimiter, shortFlag=-d, longFlag=--delimiter, description=Defines the delimiter to use for im/export, argType=ACTION, isSet=true}, Input File=Argument{value=null, refClass=class java.lang.String, name=Input File, shortFlag=-i, longFlag=--input-file, description=Defines the full file path for import, argType=ACTION, isSet=true}, Nested Delimiter=Argument{value=null, refClass=class java.lang.String, name=Nested Delimiter, shortFlag=-nd, longFlag=--nested-delimiter, description=Defines the ItemTask delimiter if required, argType=ACTION, isSet=true}}}, engine=ArgumentMap{args={TimeKeeper wall time=Argument{value=0, refClass=long, name=TimeKeeper wall time, shortFlag=-t, longFlag=--max-wall-time, description=Configures the max wall-time for task processing in __, argType=ACTION, isSet=true}, WorkItem SubTasking Threshold=Argument{value=0, refClass=int, name=WorkItem SubTasking Threshold, shortFlag=-ws, longFlag=--work-item-sub-task-threshold, description=Defines the numbers of WorkItems which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}, ItemTask Threads=Argument{value=0, refClass=int, name=ItemTask Threads, shortFlag=-i, longFlag=--item-task-threads, description=Defines the number of threads that item task processing can be distributed to, argType=ACTION, isSet=true}, WorkItem Threads=Argument{value=0, refClass=int, name=WorkItem Threads, shortFlag=-w, longFlag=--work-item-threads, description=Defines the number of threads that work item processing can be distributed to, argType=ACTION, isSet=true}, ItemTask SubTasking Threshold=Argument{value=0, refClass=int, name=ItemTask SubTasking Threshold, shortFlag=-is, longFlag=--item-task-sub-task-threshold, description=Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}}}}'
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config ================
+
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container ee051bdd-67e0-486e-a72a-25f27d0bf9f4 shut down
+2025-07-07 18:45:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 268cad1a-1f37-4825-bc0b-08694631c10c shut down
+2025-07-07 18:45:43 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:48:02 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:48:02 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:48:02 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:48:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9c96754f-a9d2-450b-8911-0b75328c5feb initialized
+2025-07-07 18:48:05 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
+
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:48:05 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:48:05 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:48:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9c96754f-a9d2-450b-8911-0b75328c5feb shut down
+2025-07-07 18:48:05 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:48:46 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:48:46 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:48:46 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:48:49 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 3dad027b-f4a8-471a-ab89-9dc7cf2ccb09 initialized
+2025-07-07 18:48:49 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
+
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:48:49 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:48:49 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:48:49 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 3dad027b-f4a8-471a-ab89-9dc7cf2ccb09 shut down
+2025-07-07 18:48:49 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:52:20 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:52:20 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:52:21 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:52:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 27aa1ae5-fcac-4a46-b556-80659930edd1 initialized
+2025-07-07 18:52:23 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
+
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:52:24 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:52:24 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:52:24 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4fd8839c-ae9e-4ac9-86e7-64306ca53fce initialized
+2025-07-07 18:52:24 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-07 18:52:24 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config  ================
+
+2025-07-07 18:52:24 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Configuring TaskTide client
+2025-07-07 18:52:24 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-07 18:52:24 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4fd8839c-ae9e-4ac9-86e7-64306ca53fce shut down
+2025-07-07 18:52:24 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 27aa1ae5-fcac-4a46-b556-80659930edd1 shut down
+2025-07-07 18:52:24 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:53:29 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:53:30 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:53:30 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:53:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e245952f-fab5-4072-afcc-85db241e8214 initialized
+2025-07-07 18:53:30 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:53:30 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:53:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 05867717-daef-47df-aca7-921f03cff7b0 initialized
+2025-07-07 18:53:32 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
+
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:53:32 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-07 18:53:33 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config  ================
+
+2025-07-07 18:53:33 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Configuring TaskTide client
+2025-07-07 18:53:33 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-07 18:53:33 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 05867717-daef-47df-aca7-921f03cff7b0 shut down
+2025-07-07 18:53:33 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:53:33 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e245952f-fab5-4072-afcc-85db241e8214 shut down
+2025-07-07 18:55:15 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-07 18:55:15 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:55:15 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-07 18:55:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 10d2053f-791b-4bd0-a32a-c225243e1291 initialized
+2025-07-07 18:55:15 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-07 18:55:15 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 31b25abc-fa0a-4ec3-afe1-ea6c1d191e29 initialized
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUpClass ]: 
+
+---------------- Initiating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config  ================
+
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Configuring TaskTide client
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [10d2053f-791b-4bd0-a32a-c225243e1291, 31b25abc-fa0a-4ec3-afe1-ea6c1d191e29]
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [10d2053f-791b-4bd0-a32a-c225243e1291, 31b25abc-fa0a-4ec3-afe1-ea6c1d191e29]
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'1'
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [10d2053f-791b-4bd0-a32a-c225243e1291, 31b25abc-fa0a-4ec3-afe1-ea6c1d191e29]
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [10d2053f-791b-4bd0-a32a-c225243e1291, 31b25abc-fa0a-4ec3-afe1-ea6c1d191e29]
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'2'
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [10d2053f-791b-4bd0-a32a-c225243e1291, 31b25abc-fa0a-4ec3-afe1-ea6c1d191e29]
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [10d2053f-791b-4bd0-a32a-c225243e1291, 31b25abc-fa0a-4ec3-afe1-ea6c1d191e29]
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Records in tree:
+'3'
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying configured client:
+'[
+    "",
+    "Global Options:",
+    "",
+    "  NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use",
+    "  Token Expiration --date-format Specifies the token expiration limit, default is 4 days",
+    "  NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph",
+    "  WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use",
+    "  Workflow Name --workflow-name Specifies the workflow name to use",
+    "  Step Name  --step-name Specifies the step name to use",
+    "  Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'",
+    "  NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc",
+    "  NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use",
+    "  NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class",
+    "  File Path  --file-path Specifies the file path for RocksDB/Json repository",
+    "  NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use",
+    "  Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tmanager",
+    "",
+    "  Output File --output-file Defines the full JSON formatted file path for export",
+    "  Delimiter  --delimiter Defines the delimiter to use for im/export",
+    "  Input File --input-file Defines the full file path for import",
+    "  Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required",
+    "\n\n",
+    "",
+    "Options for Action:\tengine",
+    "",
+    "  TimeKeeper wall time --max-wall-time Configures the max wall-time for task processing in __",
+    "  WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool",
+    "  ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to",
+    "  WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to",
+    "  ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool",
+    "\n\n"
+]'
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: Displaying Address Data map:
+'{=ArgumentMap{args={NoSQL Host:Port=Argument{value=null, refClass=null, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION, isSet=false}, Token Expiration=Argument{value=0, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION, isSet=true}, NoSQL Database Type=Argument{value=null, refClass=null, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION, isSet=false}, WorkItem Name=Argument{value=null, refClass=null, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION, isSet=false}, Workflow Name=Argument{value=null, refClass=null, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION, isSet=false}, Step Name=Argument{value=null, refClass=null, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION, isSet=false}, Date Format=Argument{value=null, refClass=null, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION, isSet=false}, NoSQL Provider=Argument{value=null, refClass=null, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION, isSet=false}, NoSQL Password=Argument{value=null, refClass=null, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION, isSet=false}, NoSQL Provider Class=Argument{value=null, refClass=null, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION, isSet=false}, File Path=Argument{value=null, refClass=null, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION, isSet=false}, NoSQL User=Argument{value=null, refClass=null, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION, isSet=false}, Repository Type=Argument{value=null, refClass=null, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION, isSet=false}}}, manager=ArgumentMap{args={Output File=Argument{value=null, refClass=class java.lang.String, name=Output File, shortFlag=-o, longFlag=--output-file, description=Defines the full JSON formatted file path for export, argType=ACTION, isSet=true}, Delimiter=Argument{value=null, refClass=class java.lang.String, name=Delimiter, shortFlag=-d, longFlag=--delimiter, description=Defines the delimiter to use for im/export, argType=ACTION, isSet=true}, Input File=Argument{value=null, refClass=class java.lang.String, name=Input File, shortFlag=-i, longFlag=--input-file, description=Defines the full file path for import, argType=ACTION, isSet=true}, Nested Delimiter=Argument{value=null, refClass=class java.lang.String, name=Nested Delimiter, shortFlag=-nd, longFlag=--nested-delimiter, description=Defines the ItemTask delimiter if required, argType=ACTION, isSet=true}}}, engine=ArgumentMap{args={TimeKeeper wall time=Argument{value=0, refClass=long, name=TimeKeeper wall time, shortFlag=-t, longFlag=--max-wall-time, description=Configures the max wall-time for task processing in __, argType=ACTION, isSet=true}, WorkItem SubTasking Threshold=Argument{value=0, refClass=int, name=WorkItem SubTasking Threshold, shortFlag=-ws, longFlag=--work-item-sub-task-threshold, description=Defines the numbers of WorkItems which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}, ItemTask Threads=Argument{value=0, refClass=int, name=ItemTask Threads, shortFlag=-i, longFlag=--item-task-threads, description=Defines the number of threads that item task processing can be distributed to, argType=ACTION, isSet=true}, WorkItem Threads=Argument{value=0, refClass=int, name=WorkItem Threads, shortFlag=-w, longFlag=--work-item-threads, description=Defines the number of threads that work item processing can be distributed to, argType=ACTION, isSet=true}, ItemTask SubTasking Threshold=Argument{value=0, refClass=int, name=ItemTask SubTasking Threshold, shortFlag=-is, longFlag=--item-task-sub-task-threshold, description=Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, argType=ACTION, isSet=true}}}}'
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.canConfigureFromProfile ]: 
+
+================ Tests Displaying TaskTide Config ================
+
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 31b25abc-fa0a-4ec3-afe1-ea6c1d191e29 shut down
+2025-07-07 18:55:18 INFO  [ Test worker -> org.tasktide.tasktide.configurer.ProfileConfigureTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from Micro-Profile Tests ----------------
+
+2025-07-07 18:55:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 10d2053f-791b-4bd0-a32a-c225243e1291 shut down

@@ -4,8 +4,8 @@
  */
 package org.tasktide.core.services;
 
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
+// import jakarta.enterprise.context.Dependent;
+// import jakarta.inject.Inject;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +35,7 @@ import org.tasktide.core.model.state_summary.StateSummary;
  * 
  * @author bkenna
  */
-@Dependent
+// @Dependent
 public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideService<Step> {
     
     // Attributes
@@ -47,7 +47,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * 
      * @param repo 
      */
-    @Inject
+    // @Inject
     public StepService(TaskTideRepository<Step> repo) {
         this.repo = repo;
     }

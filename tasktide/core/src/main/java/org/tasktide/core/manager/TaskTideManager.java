@@ -23,7 +23,6 @@ import org.tasktide.core.model.workitem.WorkItem;
  *
  * @author bkenna
  */
-@Dependent
 public class TaskTideManager {
     
     // Attributes
@@ -36,7 +35,7 @@ public class TaskTideManager {
      * @param stepServ
      * @param workItemServ 
      */
-    @Inject
+    // @Inject
     public TaskTideManager(
         TaskTideService<Workflow> workflowServ,
         TaskTideService<Step> stepServ,

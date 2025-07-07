@@ -4,7 +4,7 @@
  */
 package org.tasktide.core.repository.rocksdb;
 
-import jakarta.enterprise.context.ApplicationScoped;
+// import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -19,7 +19,7 @@ import org.tasktide.itemstore.ItemStore;
  * 
  * @author bkenna
  */
-@ApplicationScoped
+// @ApplicationScoped
 public class RocksDbWorkflowRepository extends RocksDbRepository<Workflow> {
     
     
@@ -29,7 +29,7 @@ public class RocksDbWorkflowRepository extends RocksDbRepository<Workflow> {
      * @param itemStore
      * @param collectionName
      */
-    @Inject
+    //@Inject
     public RocksDbWorkflowRepository(
        ItemStore itemStore,
        @ConfigProperty(name = "task-tide.core.repository.rocksdb.collection.workflow.name", defaultValue = "Workflow") String collectionName
