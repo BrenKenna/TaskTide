@@ -4,15 +4,10 @@
  */
 package org.tasktide.core.repository;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.nosql.Template;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,6 +17,7 @@ import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
 import org.eclipse.jnosql.mapping.reflection.Reflections;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
 import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
+
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
@@ -41,11 +37,11 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.stores.RocksDBStore;
 
 
 /**
- *
+ * Test module for {@link RepositoryFactory}
+ * 
  * @author bkenna
  */
 @EnableAutoWeld
@@ -79,62 +75,6 @@ public class StepRepositoryFactoryTests {
     @AfterEach
     public void tearDown() {
         logger.info("\n\n================ Terminating Test ================\n");
-    }
-    
-    
-    /**
-     * Resolve a path string for test purposes
-     * 
-     * @return String
-     */
-    public String resolveRocksRepoPath() {
-        Path cwd = Paths.get( System.getProperty("user.dir") );
-        Path workDir = cwd.resolve("project-test-repos").resolve("step");
-        return workDir.toString();
-    }
-    
-    
-    /**
-     * Fetch a {@link RocksDBStore} with name
-     * 
-     * @param storeName
-     * @return {@link ItemStore} of {@link RocksDBStore}
-     */
-    public ItemStore fetchItemStore(String storeName) {
-    
-        // Resolve store name location to a Path
-        Path targetPath = Paths.get(storeName);
-        try {
-            
-            // Create path if required
-            Files.createDirectories(targetPath);
-            
-            // Set required properites
-            String dbDirectory = targetPath.toString();
-            String masterDB = "master";
-            String protoDB = UUID.randomUUID().toString();
-            RocksDBStore itemStore = new RocksDBStore(storeName, dbDirectory, masterDB, protoDB);
-            
-            // Return ItemStore
-            return itemStore;
-        }
-        catch (Exception ex) {
-            return null;
-        }
-    }
-    
-    
-    /**
-     * Fetch Jakarta NoSQL backend database from container
-     * 
-     * @return {@link Template}
-     */
-    public Template fetchTemplate() {
-        logger.info("Initializing container");
-        SeContainer container;
-        container = SeContainerInitializer.newInstance().initialize();
-        logger.info("Weld container running:\t'{}'", container.isRunning());
-        return container.select(DocumentTemplate.class).get();
     }
     
     
@@ -207,8 +147,8 @@ public class StepRepositoryFactoryTests {
         
         // Configure requirements
         repoType = RepositoryType.ITEMSTORE;
-        String collectionName = resolveRocksRepoPath();
-        backend = this.fetchItemStore(collectionName);
+        String collectionName = TestUtils.resolveRocksRepoPath();
+        backend = TestUtils.fetchItemStore(collectionName);
         
         // Configure repository
         logger.info("\nConfiguring repository");
@@ -262,7 +202,7 @@ public class StepRepositoryFactoryTests {
         
         // Fetch backend instance
         repoType = RepositoryType.NOSQL;
-        backend = this.fetchTemplate();
+        backend = TestUtils.fetchTemplate();
         logger.info("Backend template:\t'{}'", backend);
         
         // Configure repository

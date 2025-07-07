@@ -201,6 +201,28 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     
     
     /**
+     * Return {@link Step} {@link TaskTideRepository}
+     * 
+     * @return {@link TaskTideRepository} of {@link Step}
+     */
+    @Override
+    public TaskTideRepository<Step> getRepo() {
+        return this.repo;
+    }
+    
+    
+    /**
+     * Save data to backend
+     * 
+     * @return int
+     */
+    @Override
+    public int save() {
+        return repo.save();
+    }
+    
+    
+    /**
      * Represent service as string
      * 
      * @return String
@@ -211,16 +233,5 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
             "ServiceType=Step" +
             ",ServiceLink=WorkItem" +
         '}';
-    }
-
-    
-    /**
-     * Save data to backend
-     * 
-     * @return int
-     */
-    @Override
-    public int save() {
-        return repo.save();
     }
 }

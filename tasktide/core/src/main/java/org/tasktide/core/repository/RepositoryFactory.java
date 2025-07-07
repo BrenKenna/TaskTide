@@ -44,11 +44,9 @@ public class RepositoryFactory<T extends TaskTideModel<T>> {
      *  {@link Workflow}, {@link Step}, {@link WorkItem} with
      *  required backend {@link RepositoryType}
      * 
-     * @param <T>
      * @return {@link TaskTideRepository} for {@link TaskTideModel}
      */
-    @SuppressWarnings("unchecked")
-    public <T extends TaskTideModel<T>> TaskTideRepository<T> make() {
+    public TaskTideRepository<T> make() {
         return this.repoType.createRepository(this.ofModel, this.backend, this.collectionName);
     }
 }

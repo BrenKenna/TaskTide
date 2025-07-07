@@ -11,6 +11,7 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 import java.lang.reflect.Field;
 
 import jakarta.nosql.Column;
@@ -515,7 +516,8 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         '}';
     }
 
-    
+   
+    @JsonbTransient
     @Override
     public String getState() {
         return this.getItemState().toString();

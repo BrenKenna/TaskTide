@@ -49,8 +49,7 @@ import org.tasktide.itemstore.stores.RocksDBStore;
  * @author bkenna
  */
 @EnableAutoWeld
-@AddPackages(value = {Converters.class, EntityConverter.class, Template.class, DocumentTemplate.class})
-@AddPackages(value = {Tunes.class, Reflections.class})
+@AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
 @AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowRepositoryFactoryTests {

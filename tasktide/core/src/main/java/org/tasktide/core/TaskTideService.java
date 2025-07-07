@@ -84,4 +84,12 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
     public int save();
     
     // public int load(String uri);
+    
+    
+    /**
+     * Return repository
+     * 
+     * @return {@link TaskTideRepository} of {@link Workflow},{@link Step},{@link WorkItem}
+     */
+    public TaskTideRepository<T> getRepo();
 }

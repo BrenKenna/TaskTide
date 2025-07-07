@@ -190,6 +190,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
         return repo.extendModel(toAdd);
     }
     
+    
     /**
      * Save data to backend
      * 
@@ -198,6 +199,17 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
     @Override
     public int save() {
         return repo.save();
+    }
+    
+    
+    /**
+     * Return {@link Workflow} {@link TaskTideRepository}
+     * 
+     * @return {@link TaskTideRepository} of {@link Workflow}
+     */
+    @Override
+    public TaskTideRepository<Workflow> getRepo() {
+        return this.repo;
     }
     
     

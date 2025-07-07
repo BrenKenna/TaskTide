@@ -40,6 +40,9 @@ public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
 
     @Override
     public boolean extendModel(List<WorkItem> toAdd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        long importCount = toAdd.stream()
+            .filter( elm -> insertModel(elm) != null)
+        .count();
+        return importCount == toAdd.size();
     }
 }

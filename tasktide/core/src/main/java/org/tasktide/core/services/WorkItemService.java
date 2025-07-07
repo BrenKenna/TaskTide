@@ -39,6 +39,13 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     private final int LOCKING_WAIT_TIME;
     
     
+    public WorkItemService(TaskTideRepository<WorkItem> repo) {
+        this.repo = repo;
+        this.LOCKING_WAIT_TIME = 4;
+        this.utils = new Utils("dd/MM/yy HH:mm:ss", 4);
+    }
+    
+    
     /**
      * Construct with configurable wait time
      * 
@@ -279,19 +286,15 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
 
     
     /**
-     * Represent service as string
+     * Return {@link WorkItem} {@link TaskTideRepository}
      * 
-     * @return String
+     * @return {@link TaskTideRepository} of {@link WorkItem}
      */
     @Override
-    public String toString() {
-        return "WorkItemService{" + 
-            "LOCKING_WAIT_TIME=" + LOCKING_WAIT_TIME +
-            ",ServiceType=WorkItem" +
-            ",ServiceLink=Step" +
-        '}';
+    public TaskTideRepository<WorkItem> getRepo() {
+        return this.repo;
     }
-
+    
     
     /**
      * Fetches {@link Step Step} for queried {@link WorkItem WorkItem}
@@ -303,5 +306,20 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     @Override
     public List<Step> getThroughLink(TaskTideService<Step> mappingServ, WorkItem model) {
         return mappingServ.viewByField("stepName", model.getStepName());
+    }
+    
+    
+    /**
+     * Represent service as string
+     * 
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "WorkItemService{" + 
+            "LOCKING_WAIT_TIME=" + LOCKING_WAIT_TIME +
+            ",ServiceType=WorkItem" +
+            ",ServiceLink=Step" +
+        '}';
     }
 }

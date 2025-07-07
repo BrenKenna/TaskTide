@@ -38,6 +38,9 @@ public class TemplateStepRepository extends TemplateRepository<Step> {
 
     @Override
     public boolean extendModel(List<Step> toAdd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        long importCount = toAdd.stream()
+            .filter( elm -> insertModel(elm) != null)
+        .count();
+        return importCount == toAdd.size();
     }
 }

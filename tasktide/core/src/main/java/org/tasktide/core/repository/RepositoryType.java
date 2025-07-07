@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.repository;
 
-
 import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.TaskTideModel;
@@ -23,18 +22,19 @@ import org.tasktide.core.repository.rocksdb.RocksDbWorkItemRepository;
 import org.tasktide.core.repository.rocksdb.RocksDbWorkflowRepository;
 
 import java.util.List;
+import org.tasktide.core.TaskTideService;
 import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
-
+import org.tasktide.core.services.ServiceFactory;
 
 /**
  * Enum of valid repository types
- * 
+ *
  * @author bkenna
  */
 public enum RepositoryType {
-    
+
     NOSQL {
         @Override
         public boolean isRepository(String query) {
@@ -50,39 +50,33 @@ public enum RepositoryType {
         public String toString() {
             return "NoSQL";
         }
-        
-        
+
         /**
          * Create targeted {@link TaskTideRepository}-{@link TemplateRepository}
-         *  of {@link Workflow}, {@link Step}, {@link WorkItem}
-         * 
+         * of {@link Workflow}, {@link Step}, {@link WorkItem}
+         *
          * @param <T>
          * @param modelType
          * @param backend
          * @param collectionName
-         * 
+         *
          * @return {@link TemplateRepository}-{@link TaskTideModel of {@link Workflow}, {@link Step}, {@link WorkItem}
          */
-       @Override
-       public <T extends TaskTideModel<T>> TemplateRepository createRepository(Class<T> modelType, Object backend, String collectionName) {
-           Template template = (Template) backend;
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T extends TaskTideModel<T>> TemplateRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName) {
+            Template template = (Template) backend;
 
-           if ( modelType.equals( Workflow.class ) ) {
-               return new TemplateWorkflowRepository( template, collectionName);
-           }
-
-           else if ( modelType.equals( Step.class ) ) {
-               return new TemplateStepRepository( template, collectionName);
-           }
-
-           else if ( modelType.equals( WorkItem.class ) ) {
-               return new TemplateWorkItemRepository( template, collectionName);
-           }
-
-           else {
-               throw new IllegalArgumentException("Unsupported model type for Template repository: " + modelType.getSimpleName());
-           }
-       }
+            if (modelType.equals(Workflow.class)) {
+                return (TemplateRepository<T>) new TemplateWorkflowRepository(template, collectionName);
+            } else if (modelType.equals(Step.class)) {
+                return (TemplateRepository<T>) new TemplateStepRepository(template, collectionName);
+            } else if (modelType.equals(WorkItem.class)) {
+                return (TemplateRepository<T>) new TemplateWorkItemRepository(template, collectionName);
+            } else {
+                throw new IllegalArgumentException("Unsupported model type for Template repository: " + modelType.getSimpleName());
+            }
+        }
     },
     
     JSON {
@@ -100,38 +94,31 @@ public enum RepositoryType {
         public String toString() {
             return "JSON";
         }
-        
-        
+
         /**
-         * Create targeted {@link TaskTideRepository}-{@link JsonRepository}
-         *  of {@link Workflow}, {@link Step}, {@link WorkItem}
-         * 
+         * Create targeted {@link TaskTideRepository}-{@link JsonRepository} of
+         * {@link Workflow}, {@link Step}, {@link WorkItem}
+         *
          * @param <T>
          * @param modelType
          * @param backend
          * @param collectionName
-         * 
+         *
          * @return {@link JsonRepository}-{@link TaskTideModel of {@link Workflow}, {@link Step}, {@link WorkItem}
          */
-       @SuppressWarnings("unchecked")
-       @Override
-       public <T extends TaskTideModel<T>> JsonRepository createRepository(Class<T> modelType, Object backend, String collectionName) {
-            if ( modelType.equals( Workflow.class ) ) {
-                return new JsonWorkflowRepository( (List<Workflow>) backend, collectionName);
-            }
-
-            else if ( modelType.equals( Step.class ) ) {
-                return new JsonStepRepository( (List<Step>) backend, collectionName);
-            }
-
-            else if ( modelType.equals( WorkItem.class ) ) {
-                return new JsonWorkItemRepository( (List<WorkItem>) backend, collectionName);
-            }
-
-            else {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T extends TaskTideModel<T>> JsonRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName) {
+            if (modelType.equals(Workflow.class)) {
+                return (JsonRepository<T>) new JsonWorkflowRepository((List<Workflow>) backend, collectionName);
+            } else if (modelType.equals(Step.class)) {
+                return (JsonRepository<T>) new JsonStepRepository((List<Step>) backend, collectionName);
+            } else if (modelType.equals(WorkItem.class)) {
+                return (JsonRepository<T>) new JsonWorkItemRepository((List<WorkItem>) backend, collectionName);
+            } else {
                 throw new IllegalArgumentException("Unsupported model type for JSON repository: " + modelType.getSimpleName());
             }
-       }
+        }
     },
     
     ITEMSTORE {
@@ -150,39 +137,32 @@ public enum RepositoryType {
         public String toString() {
             return "Item Store";
         }
-        
-        
+
         /**
-         * Create targeted {@link TaskTideRepository}-{@link JsonRepository}
-         *  of {@link Workflow}, {@link Step}, {@link WorkItem}
-         * 
+         * Create targeted {@link TaskTideRepository}-{@link JsonRepository} of
+         * {@link Workflow}, {@link Step}, {@link WorkItem}
+         *
          * @param <T>
          * @param modelType
          * @param backend
          * @param collectionName
-         * 
+         *
          * @return {@link JsonRepository}-{@link TaskTideModel of {@link Workflow}, {@link Step}, {@link WorkItem}
          */
-
-       @Override
-       public <T extends TaskTideModel<T>> RocksDbRepository createRepository(Class<T> modelType, Object backend, String collectionName) {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T extends TaskTideModel<T>> RocksDbRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName) {
             ItemStore data = (ItemStore) backend;
-            if ( modelType.equals( Workflow.class ) ) {
-                return new RocksDbWorkflowRepository(data, collectionName);
-            }
-
-            else if ( modelType.equals( Step.class ) ) {
-                return new RocksDbStepRepository(data, collectionName);
-            }
-
-            else if ( modelType.equals( WorkItem.class ) ) {
-                return new RocksDbWorkItemRepository(data, collectionName);
-            }
-
-            else {
+            if (modelType.equals(Workflow.class)) {
+                return (RocksDbRepository<T>) new RocksDbWorkflowRepository(data, collectionName);
+            } else if (modelType.equals(Step.class)) {
+                return (RocksDbRepository<T>) new RocksDbStepRepository(data, collectionName);
+            } else if (modelType.equals(WorkItem.class)) {
+                return (RocksDbRepository<T>) new RocksDbWorkItemRepository(data, collectionName);
+            } else {
                 throw new IllegalArgumentException("Unsupported model type for RocksDb repository: " + modelType.getSimpleName());
             }
-       }
+        }
     },
     
     SQL {
@@ -202,90 +182,85 @@ public enum RepositoryType {
         }
 
         @Override
-        public <T extends TaskTideModel<T>> TaskTideRepository createRepository(Class<T> modelType, Object backend, String collectionName) {
+        public <T extends TaskTideModel<T>> TaskTideRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName) {
             throw new UnsupportedOperationException("Not supported yet.");
         }
     };
-    
-    
+
     /**
      * Compare to queried repository string
-     * 
+     *
      * @param query
      * @return boolean
      */
     public abstract boolean isRepository(String query);
-    
-    
+
     /**
      * Compare to queried to repository
-     * 
+     *
      * @param query
      * @return boolean
      */
     public abstract boolean isRepository(RepositoryType query);
 
-    
-    
     /**
      * Represent value as a string
-     * 
+     *
      * @return String
      */
     @Override
     public abstract String toString();
-    
+
     
     /**
-     * Abstract method to allow each enumeration to define how to
-     *  create targeted {@link TaskTideRepository}
-     *  of {@link Workflow}, {@link Step}, {@link WorkItem}.
-     *  For for {@link TemplateRepository}, {@link RocksDbRepository},
-     *   or {@link JsonRepository}
-     * 
+     * Abstract method to allow each enumeration to define how to create
+     * targeted {@link TaskTideRepository} of
+     * {@link Workflow}, {@link Step}, {@link WorkItem}. For for
+     * {@link TemplateRepository}, {@link RocksDbRepository}, or
+     * {@link JsonRepository}
+     *
      * @param <T>
      * @param modelType
      * @param backend
      * @param collectionName
-     * 
-     * @return {@link TaskTideRepository} of {@link Workflow}, {@link Step}, {@link WorkItem}
+     *
+     * @return {@link TaskTideRepository} of
+     * {@link Workflow}, {@link Step}, {@link WorkItem}
      */
     public abstract <T extends TaskTideModel<T>>
-        TaskTideRepository createRepository(Class<T> modelType, Object backend, String collectionName);
-    
-    
+            TaskTideRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName);
+
+
     /**
      * Return index of queried state
-     * 
+     *
      * @param query
      * @return int
      */
     public static int indexOf(String query) {
-        
+
         // Initialize values
         int repoInd = -1;
         int limit = RepositoryType.values().length;
         int counter = 0;
-        
+
         // Search until found
-        while ( counter <= limit && repoInd < 0 ) {
+        while (counter <= limit && repoInd < 0) {
             RepositoryType repoType = RepositoryType.values()[counter];
-            if ( repoType.isRepository(query) ) {
+            if (repoType.isRepository(query)) {
                 repoInd = counter;
-            }
-            else {
+            } else {
                 counter++;
             }
         }
-        
+
         // Return search result
         return repoInd;
     }
-    
-    
+
     /**
      * Check if queried type exists
-     * 
+     *
      * @param query
      * @return boolean
      */
