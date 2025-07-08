@@ -16,6 +16,7 @@ dependencies {
     // Command-line argument parser
     implementation 'info.picocli:picocli:4.7.7'
 
+    // Jakarta-NoSQL
     implementation 'jakarta.nosql:jakarta.nosql-api:1.0.0'
     implementation "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
     implementation "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.8"

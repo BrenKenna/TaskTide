@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.model.task;
 
-import jakarta.enterprise.context.Dependent;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -15,6 +14,7 @@ import jakarta.nosql.Column;
 
 import jakarta.nosql.Embeddable;
 import java.lang.reflect.Field;
+
 import org.tasktide.core.TaskTideModel;
 
 
@@ -25,7 +25,6 @@ import org.tasktide.core.TaskTideModel;
  * @author bkenna
  */
 @Embeddable
-@Dependent
 public class ItemTask implements TaskTideModel<ItemTask> {
     
     @Column

@@ -4553,3 +4553,607 @@ Displaying retreieved Workflow:
 ---------------- Terminating Service Tests ----------------
 
 2025-07-07 13:03:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 95280df9-34bc-4d00-bdb3-75fb2b58541c shut down
+2025-07-08 14:39:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 14:39:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 14:39:53 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 14:39:56 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4578e684-41c3-4964-9df5-dc0b5d05ce7f initialized
+2025-07-08 14:39:56 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 14:39:56 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 14:39:56 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+================ Construct WorkItemService-Template From Factory Test ================
+
+2025-07-08 14:39:56 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Generating data for testing
+2025-07-08 14:39:56 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 14:39:56 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b727670c-e720-428a-b40b-91250c479e16 initialized
+2025-07-08 14:39:57 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Configuring Service
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4578e684-41c3-4964-9df5-dc0b5d05ce7f, b727670c-e720-428a-b40b-91250c479e16]
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4578e684-41c3-4964-9df5-dc0b5d05ce7f, b727670c-e720-428a-b40b-91250c479e16]
+2025-07-08 14:39:57 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Displaying meta data for Template WorkItem Service:
+'{
+    "Collection Name": "WorkItem-Service",
+    "Model Class": "WorkItem",
+    "Repository Type": "Item Store"
+}'
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4578e684-41c3-4964-9df5-dc0b5d05ce7f, b727670c-e720-428a-b40b-91250c479e16]
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4578e684-41c3-4964-9df5-dc0b5d05ce7f, b727670c-e720-428a-b40b-91250c479e16]
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4578e684-41c3-4964-9df5-dc0b5d05ce7f, b727670c-e720-428a-b40b-91250c479e16]
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4578e684-41c3-4964-9df5-dc0b5d05ce7f, b727670c-e720-428a-b40b-91250c479e16]
+2025-07-08 14:39:57 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Verifying records can be retrieved
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4578e684-41c3-4964-9df5-dc0b5d05ce7f, b727670c-e720-428a-b40b-91250c479e16]
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4578e684-41c3-4964-9df5-dc0b5d05ce7f, b727670c-e720-428a-b40b-91250c479e16]
+2025-07-08 14:39:57 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+Displaying retreieved WorkItem:
+'{
+    "Done Date": 0,
+    "Id": "38c6dadc-f65f-4105-b8b6-baff3f274e7a",
+    "Item Name": "My WorkItem Name",
+    "Item State": "TODO",
+    "Item Type": "SINGLE",
+    "Lock Date": 0,
+    "Lock Id": "1dde486a-44a2-4f65-9d24-f13f799f4d61",
+    "Task Count": 1,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "1143699d-5315-411b-a27d-2b45ff96efc9"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "fccd799f-00c5-428e-883b-f3c8b4f1c46b"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "8e076925-e226-49d7-b259-563100266e49",
+                "state": "My Task"
+            }
+        },
+        "Workload Type": "SINGLE",
+        "earliestDone": -3,
+        "id": "My Workload",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}'
+2025-07-08 14:39:57 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+================ Construct WorkItemService-Template From Factory Test ================
+
+2025-07-08 14:39:57 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 14:39:57 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 14:39:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4578e684-41c3-4964-9df5-dc0b5d05ce7f shut down
+2025-07-08 15:30:19 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:30:19 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:30:19 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:30:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container bfee334a-264b-4d6c-bd6b-205b9b5204b8 initialized
+2025-07-08 15:30:22 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:30:22 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:30:22 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+================ Construct WorkItemService-Template From Factory Test ================
+
+2025-07-08 15:30:22 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Generating data for testing
+2025-07-08 15:30:22 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:30:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:30:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1f9d9a12-90e9-48b1-b755-ab28ebac580a initialized
+2025-07-08 15:30:22 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Configuring Service
+2025-07-08 15:30:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Displaying meta data for Template WorkItem Service:
+'{
+    "Collection Name": "WorkItem-Service",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [bfee334a-264b-4d6c-bd6b-205b9b5204b8, 1f9d9a12-90e9-48b1-b755-ab28ebac580a]
+2025-07-08 15:30:23 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Verifying records can be retrieved
+2025-07-08 15:30:23 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:30:23 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:30:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container bfee334a-264b-4d6c-bd6b-205b9b5204b8 shut down
+2025-07-08 15:35:04 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:35:04 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:35:04 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:35:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758 initialized
+2025-07-08 15:35:07 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:35:07 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:35:07 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: 
+
+================ Construct WorkflowService-Template From Factory Test ================
+
+2025-07-08 15:35:07 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Generating data for testing
+2025-07-08 15:35:07 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:35:07 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a4b80bb7-f585-4c80-9a70-642043fe363c initialized
+2025-07-08 15:35:08 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Configuring Service
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Displaying meta data for NoSQL Workflow Service:
+'{
+    "Collection Name": "Workflow-Service",
+    "Model Class": "Workflow",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Verifying records can be retrieved
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758, a4b80bb7-f585-4c80-9a70-642043fe363c]
+2025-07-08 15:35:08 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: 
+
+Displaying retreieved Workflow:
+'{
+    "Workflow Id": "workflow1",
+    "Workflow Name": "myFirstWorkflow",
+    "Workflow Steps": {
+        "myFirstStep": {
+            "Step Count": 10,
+            "Step Id": "step1",
+            "Step Name": "myFirstStep",
+            "Step State": "PENDING",
+            "Steps Done": 2,
+            "Steps Error": 1,
+            "Steps Locked": 2,
+            "Steps ToDo": 5
+        },
+        "mySecondStep": {
+            "Step Count": 10,
+            "Step Id": "step2",
+            "Step Name": "mySecondStep",
+            "Step State": "PENDING",
+            "Steps Done": 2,
+            "Steps Error": 1,
+            "Steps Locked": 2,
+            "Steps ToDo": 5
+        }
+    },
+    "id": "workflow1",
+    "state": ""
+}'
+2025-07-08 15:35:08 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: 
+
+================ Construct WorkflowService-Template From Factory Test ================
+
+2025-07-08 15:35:08 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:35:08 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b6ba7a61-7d57-4f51-b4a4-f4fbb6a8e758 shut down
+2025-07-08 15:35:45 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:35:45 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:35:45 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 7b68f7f1-7ceb-4e5e-bf5f-37de3e4cd919 initialized
+2025-07-08 15:35:48 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:35:48 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:35:48 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: 
+
+================ Construct WorkflowService-Template From Factory Test ================
+
+2025-07-08 15:35:48 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Generating data for testing
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4dd45a4a-da37-4402-93c8-7aa7baa7a4b3 initialized
+2025-07-08 15:35:48 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Configuring Service
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7b68f7f1-7ceb-4e5e-bf5f-37de3e4cd919, 4dd45a4a-da37-4402-93c8-7aa7baa7a4b3]
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7b68f7f1-7ceb-4e5e-bf5f-37de3e4cd919, 4dd45a4a-da37-4402-93c8-7aa7baa7a4b3]
+2025-07-08 15:35:48 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Displaying meta data for NoSQL Workflow Service:
+'{
+    "Collection Name": "Workflow-Service",
+    "Model Class": "Workflow",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7b68f7f1-7ceb-4e5e-bf5f-37de3e4cd919, 4dd45a4a-da37-4402-93c8-7aa7baa7a4b3]
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7b68f7f1-7ceb-4e5e-bf5f-37de3e4cd919, 4dd45a4a-da37-4402-93c8-7aa7baa7a4b3]
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7b68f7f1-7ceb-4e5e-bf5f-37de3e4cd919, 4dd45a4a-da37-4402-93c8-7aa7baa7a4b3]
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7b68f7f1-7ceb-4e5e-bf5f-37de3e4cd919, 4dd45a4a-da37-4402-93c8-7aa7baa7a4b3]
+2025-07-08 15:35:48 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:35:48 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:35:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 7b68f7f1-7ceb-4e5e-bf5f-37de3e4cd919 shut down
+2025-07-08 15:36:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:36:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:36:23 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:36:25 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6c81bdf5-14f2-4357-b764-b1161eba413f initialized
+2025-07-08 15:36:25 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:36:25 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:36:25 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: 
+
+================ Construct WorkflowService-Template From Factory Test ================
+
+2025-07-08 15:36:25 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Generating data for testing
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 15fe743a-36e2-41c0-9cdd-71097e90e249 initialized
+2025-07-08 15:36:26 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Configuring Service
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [6c81bdf5-14f2-4357-b764-b1161eba413f, 15fe743a-36e2-41c0-9cdd-71097e90e249]
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [6c81bdf5-14f2-4357-b764-b1161eba413f, 15fe743a-36e2-41c0-9cdd-71097e90e249]
+2025-07-08 15:36:26 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Displaying meta data for NoSQL Workflow Service:
+'{
+    "Collection Name": "Workflow-Service",
+    "Model Class": "Workflow",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [6c81bdf5-14f2-4357-b764-b1161eba413f, 15fe743a-36e2-41c0-9cdd-71097e90e249]
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [6c81bdf5-14f2-4357-b764-b1161eba413f, 15fe743a-36e2-41c0-9cdd-71097e90e249]
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [6c81bdf5-14f2-4357-b764-b1161eba413f, 15fe743a-36e2-41c0-9cdd-71097e90e249]
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [6c81bdf5-14f2-4357-b764-b1161eba413f, 15fe743a-36e2-41c0-9cdd-71097e90e249]
+2025-07-08 15:36:26 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:36:26 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:36:26 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6c81bdf5-14f2-4357-b764-b1161eba413f shut down
+2025-07-08 15:37:03 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:37:03 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:37:03 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:37:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container aa14a8a7-6658-45ee-8d65-13dd542b5a79 initialized
+2025-07-08 15:37:06 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:37:06 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:37:06 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: 
+
+================ Construct WorkflowService-Template From Factory Test ================
+
+2025-07-08 15:37:06 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Generating data for testing
+2025-07-08 15:37:06 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:37:06 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:37:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 367462b7-d2d1-4a31-8c3a-c404e8c5d706 initialized
+2025-07-08 15:37:06 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Configuring Service
+2025-07-08 15:37:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aa14a8a7-6658-45ee-8d65-13dd542b5a79, 367462b7-d2d1-4a31-8c3a-c404e8c5d706]
+2025-07-08 15:37:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aa14a8a7-6658-45ee-8d65-13dd542b5a79, 367462b7-d2d1-4a31-8c3a-c404e8c5d706]
+2025-07-08 15:37:07 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.canConstructWorkflowNoSqlService ]: Displaying meta data for NoSQL Workflow Service:
+'{
+    "Collection Name": "Workflow-Service",
+    "Model Class": "Workflow",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:37:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aa14a8a7-6658-45ee-8d65-13dd542b5a79, 367462b7-d2d1-4a31-8c3a-c404e8c5d706]
+2025-07-08 15:37:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aa14a8a7-6658-45ee-8d65-13dd542b5a79, 367462b7-d2d1-4a31-8c3a-c404e8c5d706]
+2025-07-08 15:37:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aa14a8a7-6658-45ee-8d65-13dd542b5a79, 367462b7-d2d1-4a31-8c3a-c404e8c5d706]
+2025-07-08 15:37:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aa14a8a7-6658-45ee-8d65-13dd542b5a79, 367462b7-d2d1-4a31-8c3a-c404e8c5d706]
+2025-07-08 15:37:07 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:37:07 INFO  [ Test worker -> org.tasktide.core.services.WorkflowServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:37:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container aa14a8a7-6658-45ee-8d65-13dd542b5a79 shut down
+2025-07-08 15:39:03 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:39:04 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:39:04 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:39:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e71b2fbe-8739-4361-8679-54cdb6a4e3cc initialized
+2025-07-08 15:39:06 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:39:06 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:39:06 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+================ Construct WorkItemService-Template From Factory Test ================
+
+2025-07-08 15:39:06 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Generating data for testing
+2025-07-08 15:39:06 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:39:06 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f55d1794-506b-4fb3-ad76-cdd32358279d initialized
+2025-07-08 15:39:07 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Configuring Service
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Displaying meta data for Template WorkItem Service:
+'{
+    "Collection Name": "WorkItem-Service",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Verifying records can be retrieved
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [e71b2fbe-8739-4361-8679-54cdb6a4e3cc, f55d1794-506b-4fb3-ad76-cdd32358279d]
+2025-07-08 15:39:07 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+Displaying retreieved WorkItem:
+'{
+    "Done Date": 0,
+    "Id": "8edecf0b-dade-40d0-bd31-33a89a52770a",
+    "Item Name": "My WorkItem Name",
+    "Item State": "TODO",
+    "Item Type": "SINGLE",
+    "Lock Date": 0,
+    "Lock Id": "8d3838e7-72e6-41f1-ae27-6ac5011aae1d",
+    "Task Count": 1,
+    "Task Done": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "69d23068-4297-40dc-a822-ac4b2b711119"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "8b14abfc-665c-4dc3-8cea-095c7c975aa3"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "f91e2a4d-6ae9-4f2c-a49b-1277864d14c0",
+                "state": "My Task"
+            }
+        },
+        "Workload Type": "SINGLE",
+        "earliestDone": -3,
+        "id": "My Workload",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}'
+2025-07-08 15:39:07 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+================ Construct WorkItemService-Template From Factory Test ================
+
+2025-07-08 15:39:07 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:39:07 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:39:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e71b2fbe-8739-4361-8679-54cdb6a4e3cc shut down
+2025-07-08 15:40:06 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:40:06 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:40:06 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:40:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9a4c9118-8b15-434b-90df-b711877de37a initialized
+2025-07-08 15:40:09 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:40:09 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:40:09 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+================ Construct WorkItemService-Template From Factory Test ================
+
+2025-07-08 15:40:09 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Generating data for testing
+2025-07-08 15:40:09 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:40:09 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:40:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e9d7d728-3d01-47b9-92ed-aaabb73ba511 initialized
+2025-07-08 15:40:09 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Configuring Service
+2025-07-08 15:40:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [9a4c9118-8b15-434b-90df-b711877de37a, e9d7d728-3d01-47b9-92ed-aaabb73ba511]
+2025-07-08 15:40:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [9a4c9118-8b15-434b-90df-b711877de37a, e9d7d728-3d01-47b9-92ed-aaabb73ba511]
+2025-07-08 15:40:09 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Displaying meta data for Template WorkItem Service:
+'{
+    "Collection Name": "WorkItem-Service",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:40:10 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:40:10 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:40:10 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9a4c9118-8b15-434b-90df-b711877de37a shut down
+2025-07-08 15:40:10 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e9d7d728-3d01-47b9-92ed-aaabb73ba511 shut down
+2025-07-08 15:41:24 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:41:24 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:41:25 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:41:27 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1c56f077-7e14-40a9-a937-55ee76f2204b initialized
+2025-07-08 15:41:27 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:41:27 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:41:27 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+================ Construct WorkItemService-Template From Factory Test ================
+
+2025-07-08 15:41:27 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Generating data for testing
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a1352a31-1e7b-462d-9467-66bc946145c0 initialized
+2025-07-08 15:41:28 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Configuring Service
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Displaying meta data for Template WorkItem Service:
+'{
+    "Collection Name": "WorkItem-Service",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1c56f077-7e14-40a9-a937-55ee76f2204b, a1352a31-1e7b-462d-9467-66bc946145c0]
+2025-07-08 15:41:28 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Verifying records can be retrieved
+2025-07-08 15:41:29 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:41:29 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:41:29 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1c56f077-7e14-40a9-a937-55ee76f2204b shut down
+2025-07-08 15:42:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-08 15:42:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:42:32 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-08 15:42:34 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2116cad1-8af7-4978-ae99-708185ce88d1 initialized
+2025-07-08 15:42:34 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating Service Tests ----------------
+
+2025-07-08 15:42:34 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-07-08 15:42:34 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: 
+
+================ Construct WorkItemService-Template From Factory Test ================
+
+2025-07-08 15:42:34 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Generating data for testing
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container ffeb45ae-2b51-49ee-84d5-763e371b190c initialized
+2025-07-08 15:42:35 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Configuring Service
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Displaying meta data for Template WorkItem Service:
+'{
+    "Collection Name": "WorkItem-Service",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2116cad1-8af7-4978-ae99-708185ce88d1, ffeb45ae-2b51-49ee-84d5-763e371b190c]
+2025-07-08 15:42:35 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.canConstructWorkItemNoSqlService ]: Verifying records can be retrieved
+2025-07-08 15:42:35 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-07-08 15:42:35 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating Service Tests ----------------
+
+2025-07-08 15:42:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 2116cad1-8af7-4978-ae99-708185ce88d1 shut down

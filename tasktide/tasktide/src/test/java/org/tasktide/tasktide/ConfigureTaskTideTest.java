@@ -11,6 +11,7 @@ import jakarta.enterprise.inject.spi.CDI;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -20,7 +21,18 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import jakarta.nosql.Template;
+import java.util.Map;
+import org.eclipse.jnosql.mapping.core.Converters;
+import org.eclipse.jnosql.mapping.document.DocumentTemplate;
+import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
+import org.eclipse.jnosql.mapping.reflection.Reflections;
+import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
+import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
+
 import org.jboss.weld.junit5.auto.AddBeanClasses;
+import org.jboss.weld.junit5.auto.AddExtensions;
+import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
 
 import org.junit.jupiter.api.AfterEach;
@@ -31,14 +43,18 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.tasktide.core.TaskTideModel;
+
+import org.tasktide.core.TaskTideService;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.services.ServiceFactory;
 
-import org.tasktide.engine.Engine;
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
@@ -46,27 +62,34 @@ import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 import org.tasktide.tasktide.configurer.EngineConfig;
+import org.tasktide.tasktide.configurer.GlobalConfig;
 import org.tasktide.tasktide.configurer.TaskTideConfigurer;
 import org.tasktide.tasktide.parser.ArgumentTree;
 
 
 /**
- * 
+ * Verifies that the TaskTide-Engine can be configured and used from
+ *  configurations
  * 
  * @author bkenna
  */
 @EnableAutoWeld
-@AddBeanClasses( { EngineConfig.class } )
+@AddPackages(value = {
+    Converters.class, Reflections.class, EntityConverter.class,
+    Template.class, DocumentTemplate.class,
+    EngineConfig.class, GlobalConfig.class
+})
+@AddExtensions( { ReflectionEntityMetadataExtension.class, DocumentExtension.class } )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class ConfigureTaskTideEngine {
+public class ConfigureTaskTideTest {
     
-    private static final Logger logger = LogManager.getLogger(ConfigureTaskTideEngine.class);
+    private static final Logger logger = LogManager.getLogger(ConfigureTaskTideTest.class);
     private static final Jsonb PRETTY_JSON = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
     private static final Jsonb JSON = JsonbBuilder.create(new JsonbConfig());
   
     private static SeContainer container;
     
-    public ConfigureTaskTideEngine() {}
+    public ConfigureTaskTideTest() {}
     
     
     @BeforeAll
@@ -221,6 +244,22 @@ public class ConfigureTaskTideEngine {
     
     
     /**
+     * Represent map as json string
+     * 
+     * @param map
+     * @return String Json
+     */
+    public static String mapToJsonString(Object map) {
+        Jsonb jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
+        return jsonb.toJson(map);
+    }
+    
+    public static Template fetchTemplate() {
+        container = SeContainerInitializer.newInstance().initialize();
+        return container.select(DocumentTemplate.class).get();
+    }
+    
+    /**
      * Tests that the engine can be configured from micro-profile config
      * 
      */
@@ -229,7 +268,7 @@ public class ConfigureTaskTideEngine {
     public void canConfigureEngine() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Displaying TaskTide Config  ================\n");
+        logger.info("\n\n================ Tests Running Engine Through Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfigurer engineConfig;
         
@@ -240,12 +279,10 @@ public class ConfigureTaskTideEngine {
         TaskTideExecutor<WorkItem> executor;
         List<WorkItem> workload;
         
-        
         // Fetch engine parameters into argument tree
         argTree = new ArgumentTree(" ");
         engineConfig = CDI.current().select(EngineConfig.class).get();
         engineConfig.initConfig(argTree);
-        
         
         // Fetch configure values
         int workItemThreads, workItemThreshold, itemTaskThreads, itemTaskThreshold;
@@ -254,17 +291,14 @@ public class ConfigureTaskTideEngine {
         itemTaskThreads = (int) argTree.getTree().getDataForAddress("engine").getArgument("ItemTask Threads").getValue();
         itemTaskThreshold = (int) argTree.getTree().getDataForAddress("engine").getArgument("ItemTask SubTasking Threshold").getValue();
         
-        
         // Configure executor service for work items, and item tasks
         TaskTideExecutorServiceProvider.initialize(workItemThreads, itemTaskThreads);
         executorService = TaskTideExecutorServiceProvider.workItemExecutorService();
-        
         
         // Configure builders, task tracker and workload
         int nWorkItems = 4, nItemTask = 3;
         unitProvider = new TaskTideWorkerUnitProvider();
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, nWorkItems, nItemTask);
-        
         
         // Configure observer
         int timeKeeperObserverMaxTime = (int) argTree.getTree().getDataForAddress("engine").getArgument("TimeKeeper Wall Time").getValue();
@@ -315,6 +349,54 @@ public class ConfigureTaskTideEngine {
         logger.info("\n-------- Displaying Execution Time Summary --------\n");
         String template = String.format("Not all tasks processed correctl:\tTotal = '%d', Processed = '%d'", expected, nProcessed);
         assertTrue(assertionState, template);
-        logger.info("\n\n================ Tests Displaying TaskTide Config  ================\n");
+        logger.info("\n\n================ Tests Running Engine Through Config  ================\n");
+    }
+    
+    
+    @Test
+    @Order(1)
+    public void canConfigureService() {
+    
+        // Initialize data
+        logger.info("\n\n================ Tests Running Services Through Config  ================\n");
+        ArgumentTree argTree;
+        TaskTideConfigurer globalConfig;
+        
+        TaskTideService<WorkItem> workItemService;
+        RepositoryType repoType;
+        Template backend;
+        List<WorkItem> workload;
+        boolean assertionState ;
+        
+        // Initialize configuration
+        argTree = new ArgumentTree(" ");
+        globalConfig = CDI.current().select(GlobalConfig.class).get();
+        globalConfig.initConfig(argTree);
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        int nWorkItems = 4, nItemTask = 4;
+        workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, nWorkItems, nItemTask);
+        
+        // Configure requirements
+        String provider = (String) argTree.getTree().getDataForAddress("").getArgument("NoSQL Provider").getValue();
+        logger.info("Fetching Service Using '{}' Backend", provider);
+        repoType = RepositoryType.NOSQL;
+        backend = fetchTemplate();
+        workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
+        Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for Template WorkItem Service:\n'{}'", mapToJsonString(map));
+        
+        // Add records
+        logger.info("Verifying that records can be added");
+        workItemService.extendModel(workload);
+        TaskTideModel<WorkItem> ref = workload.get(0);
+        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId()); // Find by Id Fails here?
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
+        
+        // Log test state
+        logger.info("\n\n================ Tests Running Services Through Config ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

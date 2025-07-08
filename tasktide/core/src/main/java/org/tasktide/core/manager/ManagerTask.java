@@ -14,7 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
+import org.tasktide.core.model.builders.ProcessLogBuilder;
+import org.tasktide.core.model.builders.TaskLoggingBuilder;
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.ProcessLog;
+import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.TaskState;
 
 
@@ -34,6 +38,8 @@ public class ManagerTask {
     private String taskScript;
     
     private final ItemTaskBuilder itemTaskBuilder;
+    private final ProcessLogBuilder procLogBuilder;
+    private final TaskLoggingBuilder taskLogBuilder;
     private final Utils utils;
     
     /**
@@ -41,6 +47,8 @@ public class ManagerTask {
      */
     public ManagerTask() {
         this.itemTaskBuilder = new ItemTaskBuilder();
+        this.procLogBuilder = new ProcessLogBuilder();
+        this.taskLogBuilder = new TaskLoggingBuilder();
         this.utils = new Utils("dd/MM/yy HH:mm:ss", 4);
     }
     
@@ -58,6 +66,8 @@ public class ManagerTask {
         this.taskName = taskName;
         this.taskScript = taskScript;
         this.itemTaskBuilder = new ItemTaskBuilder();
+        this.procLogBuilder = new ProcessLogBuilder();
+        this.taskLogBuilder = new TaskLoggingBuilder();
         this.utils = new Utils("dd/MM/yy HH:mm:ss", 4);
     }
     
@@ -81,12 +91,31 @@ public class ManagerTask {
      * @return {@link ItemTask ItemTask}
      */
     public ItemTask asItemTask() {
+        
+        String[] emptyArr = {""};
+        ProcessLog procLog = this.procLogBuilder
+            .id("ProcessLog-" + utils.generateSalt())
+            .stderr(emptyArr)
+            .stdout(emptyArr)
+        .build();
+        TaskLogging taskLog = this.taskLogBuilder
+            .id("TaskLog-" + utils.generateSalt())
+            .processLog(procLog)
+            .endTime(0L)
+            .exitCode(-1)
+            .startTime(0L)
+            .procId(0L)
+            .cpuDuration(0L)
+            .threadName("NA")
+        .build();
+        
         return itemTaskBuilder
             .id( "ItemTask-" + utils.generateSalt() )
             .taskName(taskName)
             .task(taskScript)
             .taskState(TaskState.PENDING)
-            .build();
+            .taskLog(taskLog)
+        .build();
     }
     
     

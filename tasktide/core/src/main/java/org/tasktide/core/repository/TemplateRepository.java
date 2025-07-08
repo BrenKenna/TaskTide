@@ -61,7 +61,7 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
         
         // Append data
         results.put("Model Class", this.COLLECTION_CLASS.getSimpleName());
-        results.put("Repository Type", RepositoryType.ITEMSTORE.toString());
+        results.put("Repository Type", this.repoType.toString());
         results.put("Collection Name", this.collectionName);
         
         // Return results
@@ -76,7 +76,8 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      */
     @Override
     public Optional<T> findById(String id) {
-        return template.find(COLLECTION_CLASS, id);
+        System.out.println("\n\nDEBUGGING >>>\n Collection Class:" + this.COLLECTION_CLASS);
+        return template.find(this.COLLECTION_CLASS, id);
     }
 
     
@@ -88,7 +89,9 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      */
     @Override
     public T insertModel(T model) {
-        return template.insert(model);
+        T result = template.insert(model);
+        System.out.println("\n\nDEBUGGING >>>\n" + result.toJson());
+        return result;
     }
 
     

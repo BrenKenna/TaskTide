@@ -85,7 +85,7 @@ public class TaskGenerator {
         for ( int i = 0; i < nTasks; i++ ) {
             ManagerTask elm = generateTask(taskType);
             ItemTask task = elm.asItemTask();
-            task.setTaskName( task.getTaskName() + "-" + i );
+            task.setTaskName( task.getTaskName() + "-" + i );            
             output.add(task);
         }
         return output;

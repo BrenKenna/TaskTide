@@ -4,7 +4,7 @@
  */
 package org.tasktide.core.model.workitem;
 
-import jakarta.enterprise.context.Dependent;
+
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -30,7 +30,6 @@ import org.tasktide.core.model.task.TaskState;
  * @author bkenna
  */
 @Embeddable
-@Dependent
 public class Workload {
     
     @Column

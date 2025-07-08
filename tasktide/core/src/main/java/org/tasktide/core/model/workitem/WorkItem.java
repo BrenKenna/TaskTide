@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.model.workitem;
 
-import jakarta.enterprise.context.Dependent;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -35,7 +34,6 @@ import org.tasktide.core.TaskTideModel;
  * @author bkenna
  */
 @Entity
-@Dependent
 public class WorkItem implements TaskTideModel<WorkItem> {
     
     @Id
