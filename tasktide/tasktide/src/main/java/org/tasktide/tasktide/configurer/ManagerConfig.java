@@ -5,7 +5,8 @@
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
+import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.tasktide.core.manager.TaskTideManager;
 
@@ -86,6 +87,7 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void inputFile() {
         Argument<String> arg;
+        this.inputFile = this.getConfig().getValue("tasktide.manager.inputFile", String.class);
         arg = this.getArgumentBuilder()
             .withName("Input File")
             .withDescription("Defines the full file path for import")
@@ -105,6 +107,7 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void delimiter() {
         Argument<String> arg;
+        this.delimiter = this.getConfig().getValue("tasktide.manager.delimiter", String.class);
         arg = this.getArgumentBuilder()
             .withName("Delimiter")
             .withDescription("Defines the delimiter to use for im/export")
@@ -124,6 +127,7 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void outputFile() {
         Argument<String> arg;
+        this.outputFile = this.getConfig().getValue("tasktide.manager.outputFile", String.class);
         arg = this.getArgumentBuilder()
             .withName("Output File")
             .withDescription("Defines the full JSON formatted file path for export")
@@ -143,6 +147,7 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void nestedDelimiter() {
         Argument<String> arg;
+        this.nestedDelimiter = this.getConfig().getValue("tasktide.manager.nestedDelimiter", String.class);
         arg = this.getArgumentBuilder()
             .withName("Nested Delimiter")
             .withDescription("Defines the ItemTask delimiter if required")

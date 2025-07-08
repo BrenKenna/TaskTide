@@ -4,6 +4,8 @@
  */
 package org.tasktide.tasktide.configurer;
 
+import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.ConfigProvider;
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.CliParser;
 
@@ -22,6 +24,7 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
     private final ArgumentMap argMap;
     private final String path;
     private final ArgumentBuilder argBuilder;
+    private final Config config;
     
     
     /**
@@ -33,6 +36,7 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
         this.argMap = new ArgumentMap();
         this.path = path;
         this.argBuilder = new ArgumentBuilder();
+        this.config = ConfigProvider.getConfig();
     }
 
     
@@ -78,6 +82,17 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
     @Override
     public ArgumentBuilder getArgumentBuilder() {
         return this.argBuilder;
+    }
+    
+    
+    /**
+     * Provide {@link Config}
+     * 
+     * @return {@link Config}
+     */
+    @Override
+    public Config getConfig() {
+        return this.config;
     }
     
     

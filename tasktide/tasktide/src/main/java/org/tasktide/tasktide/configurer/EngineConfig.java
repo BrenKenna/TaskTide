@@ -5,7 +5,6 @@
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
@@ -24,27 +23,23 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
 @ApplicationScoped
 public class EngineConfig extends AbstractConfigurer {
     
+    
     /**
      *
      * Worker Params
      * 
      */
-    
     @ConfigProperty(name = "tasktide.engine.worker.lock-wait-time", defaultValue = "4")
     int lockTime;
-    
     
     @ConfigProperty(name = "tasktide.engine.worker.processor.threads.workitem", defaultValue = "1")
     int workItemThreads;
     
-    
     @ConfigProperty(name = "tasktide.engine.worker.processor.threshold.workItem", defaultValue = "-1")
     int workItemThreshold;
     
-    
     @ConfigProperty(name = "tasktide.engine.worker.processor.threads.itemTask", defaultValue = "1")
     int itemTaskThreads;
-    
     
     @ConfigProperty(name = "tasktide.engine.worker.processor.itemTask.threshold", defaultValue = "-1")
     int itemTaskThreshold;
@@ -55,26 +50,20 @@ public class EngineConfig extends AbstractConfigurer {
      * TimeKeeper Params
      * 
      */
-    
     @ConfigProperty(name = "tasktide.engine.observer.timekeeper.level", defaultValue = "Optional")
-    String timeKeeperLevel;
-    
+    int timeKeeperLevel;
     
     @ConfigProperty(name = "tasktide.engine.observer.timekeeper.onStart.canFail", defaultValue = "true")
     boolean timeKeeperOnStartCanFail;
     
-    
     @ConfigProperty(name = "tasktide.engine.observer.timekeeper.onProcessing.canFail", defaultValue = "true")
     boolean timeKeeperOnProcessingCanFail;
-    
     
     @ConfigProperty(name = "tasktide.engine.observer.timekeeper.onPEnd.canFail", defaultValue = "true")
     boolean timeKeeperOnEndCanFail;
     
-    
     @ConfigProperty(name = "tasktide.engine.observer.timekeeper.waitTime", defaultValue = "1000000")
-    long timeKeeperWaitTime;
-    
+    int timeKeeperWaitTime;
     
     
     /**
@@ -124,6 +113,7 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void lockTime() {
         Argument<Integer> arg;
+        this.lockTime = this.getConfig().getValue("tasktide.engine.worker.lock-wait-time", int.class);
         arg = this.getArgumentBuilder()
             .withName("Lock Wait Time")
             .withDescription("Configures the wait time in seconds for locking an item")
@@ -142,6 +132,7 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void workItemThreads() {
         Argument<Integer> arg;
+        this.workItemThreads = this.getConfig().getValue("tasktide.engine.worker.processor.threads.workitem", int.class);
         arg = this.getArgumentBuilder()
             .withName("WorkItem Threads")
             .withDescription("Defines the number of threads that work item processing can be distributed to")
@@ -159,6 +150,7 @@ public class EngineConfig extends AbstractConfigurer {
      * 
      */
     public void workItemSubTaskThreshold() {
+        this.workItemThreshold = this.getConfig().getValue("tasktide.engine.worker.processor.threshold.workitem", int.class);
         int value = this.workItemThreshold <= 0 ? this.workItemThreads : this.workItemThreshold;
         Argument<Integer> arg;
         arg = this.getArgumentBuilder()
@@ -178,6 +170,7 @@ public class EngineConfig extends AbstractConfigurer {
      * 
      */
     public void itemTaskSubTaskThreshold() {
+        this.itemTaskThreshold = this.getConfig().getValue("tasktide.engine.worker.processor.threshold.itemtask", int.class);
         int value = this.itemTaskThreshold <= 0 ? this.itemTaskThreads : this.itemTaskThreshold;
         Argument<Integer> arg;
         arg = this.getArgumentBuilder()
@@ -198,6 +191,7 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void itemTaskThreads() {
         Argument<Integer> arg;
+        this.itemTaskThreads = this.getConfig().getValue("tasktide.engine.worker.processor.threads.itemtask", int.class);
         arg = this.getArgumentBuilder()
             .withName("ItemTask Threads")
             .withDescription("Defines the number of threads that item task processing can be distributed to")
@@ -215,14 +209,15 @@ public class EngineConfig extends AbstractConfigurer {
      * 
      */
     public void timeKeeperMaxWallTime() {
-        Argument<Long> arg;
+        Argument<Integer> arg;
+        this.timeKeeperWaitTime = this.getConfig().getValue("tasktide.engine.observer.timekeeper.waitTime", int.class);
         arg = this.getArgumentBuilder()
-            .withName("TimeKeeper wall time")
+            .withName("TimeKeeper Wall Time")
             .withDescription("Configures the max wall-time for task processing in __")
             .withShortFlag("-t")
             .withLongFlag("--max-wall-time")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperWaitTime, long.class)
+            .withValue(this.timeKeeperWaitTime, int.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }
@@ -233,14 +228,15 @@ public class EngineConfig extends AbstractConfigurer {
      * 
      */
     public void timeKeeperLevel() {
-        Argument<Long> arg;
+        Argument<Integer> arg;
+        this.timeKeeperLevel = this.getConfig().getValue("tasktide.engine.observer.timekeeper.level", int.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer Level")
             .withDescription("Configure whether TimeKeeper is optional")
             .withShortFlag("-to")
             .withLongFlag("--timeKeeper-observer")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperWaitTime, long.class)
+            .withValue(this.timeKeeperLevel, int.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }
@@ -252,6 +248,7 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void timeKeeperOnStartCanFail() {
         Argument<Boolean> arg;
+        this.timeKeeperOnStartCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onStart.canFail", boolean.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onStart")
             .withDescription("Configure whether TimeKeeper onStart method can fail")
@@ -270,13 +267,14 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void timeKeeperOnProcessingCanFail() {
         Argument<Boolean> arg;
+        this.timeKeeperOnProcessingCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onProcessing.canFail", boolean.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onProcessing")
             .withDescription("Configure whether TimeKeeper onProcessing method can fail")
             .withShortFlag("-top")
             .withLongFlag("--timeKeeper-onProcessing")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperOnStartCanFail, boolean.class)
+            .withValue(this.timeKeeperOnProcessingCanFail, boolean.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }
@@ -288,13 +286,14 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void timeKeeperOnEndCanFail() {
         Argument<Boolean> arg;
+        this.timeKeeperOnProcessingCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onEnd.canFail", boolean.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onEnd")
             .withDescription("Configure whether TimeKeeper onEnd method can fail")
             .withShortFlag("-toe")
             .withLongFlag("--timeKeeper-onEnd")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperOnStartCanFail, boolean.class)
+            .withValue(this.timeKeeperOnEndCanFail, boolean.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }

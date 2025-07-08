@@ -5,7 +5,6 @@
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
@@ -26,6 +25,7 @@ public class GlobalConfig extends AbstractConfigurer {
      * Collection Params
      * 
      */
+    
     @ConfigProperty(name = "tasktide.core.collection.workflow.name", defaultValue = "Workflow")
     private String workflowName;
     
@@ -159,6 +159,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void workflowName() {
         Argument<String> arg;
+        this.workflowName = this.getConfig().getValue("tasktide.core.collection.workflow.name", String.class);
         if ( this.workflowName != null ) {
             arg = this.getArgumentBuilder()
                 .withName("Workflow Name")
@@ -189,6 +190,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void stepName() {
         Argument<String> arg;
+        this.stepName = this.getConfig().getValue("tasktide.core.collection.step.name", String.class);
         if ( this.stepName != null ) {
             arg = this.getArgumentBuilder()
                 .withName("Step Name")
@@ -218,6 +220,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void workItemName() {
         Argument<String> arg;
+        this.workItemName = this.getConfig().getValue("tasktide.core.collection.workitem.name", String.class);
         if ( this.workItemName != null ) {
             arg = this.getArgumentBuilder()
                 .withName("WorkItem Name")
@@ -247,6 +250,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void dateFormat() {
         Argument<String> arg;
+        this.dateFormat = this.getConfig().getValue("tasktide.utils.date-format", String.class);
         if ( this.dateFormat != null) {
             arg = this.getArgumentBuilder()
                 .withName("Date Format")
@@ -276,6 +280,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void tokenExpirationDays() {
         Argument<Integer> arg;
+        this.tokenExpirationDays = this.getConfig().getValue("tasktide.utils.token-expiration-days", int.class);
         arg = this.getArgumentBuilder()
             .withName("Token Expiration")
             .withDescription("Specifies the token expiration limit, default is 4 days")
@@ -294,6 +299,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void repositoryType() {
         Argument<String> arg;
+        this.repositoryType = this.getConfig().getValue("tasktide.core.repository.jnosql.type", String.class);
         if ( this.repositoryType != null ) {
             arg = this.getArgumentBuilder()
                 .withName("Repository Type")
@@ -323,6 +329,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void filePath() {
         Argument<String> arg;
+        this.filePath = this.getConfig().getValue("tasktide.core.repository.file-path", String.class);
         if ( this.filePath != null  ) {
             arg = this.getArgumentBuilder()
                 .withName("File Path")
@@ -352,6 +359,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void nosqlType() {
         Argument<String> arg;
+        this.nosqlType = this.getConfig().getValue("tasktide.core.repository.file-path", String.class);
         if ( this.nosqlType != null ) {
             arg = this.getArgumentBuilder()
                 .withName("NoSQL Database Type")
@@ -381,6 +389,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void nosqlProvider() {
         Argument<String> arg;
+        this.nosqlProvider = this.getConfig().getValue("tasktide.core.repository.jnosql.provider", String.class);
         if ( this.nosqlProvider != null ) {
             arg = this.getArgumentBuilder()
                 .withName("NoSQL Provider")
@@ -410,6 +419,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void nosqlProviderClass() {
         Argument<String> arg;
+        this.nosqlProviderClass = this.getConfig().getValue("tasktide.core.repository.jnosql.provider-class", String.class);
         if ( this.nosqlProviderClass != null ) {
             arg = this.getArgumentBuilder()
                 .withName("NoSQL Provider Class")
@@ -439,6 +449,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void nosqlUser() {
         Argument<String> arg;
+        this.nosqlUser = this.getConfig().getValue("tasktide.core.repository.jnosql.user", String.class);
         if ( this.nosqlUser != null ) {
             arg = this.getArgumentBuilder()
                 .withName("NoSQL User")
@@ -468,6 +479,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void nosqlPassword() {
         Argument<String> arg;
+        this.nosqlPassword = this.getConfig().getValue("tasktide.core.repository.jnosql.password", String.class);
         if ( this.nosqlPassword != null ) {
             arg = this.getArgumentBuilder()
                 .withName("NoSQL Password")
@@ -497,6 +509,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void nosqlHost() {
         Argument<String> arg;
+        this.nosqlHost = this.getConfig().getValue("tasktide.core.repository.jnosql.host", String.class);
         if ( this.nosqlHost != null ) {
             arg = this.getArgumentBuilder()
                 .withName("NoSQL Host:Port")
@@ -519,111 +532,4 @@ public class GlobalConfig extends AbstractConfigurer {
         System.out.println(this.getArgumentMap().getArgMap());
         this.getArgumentMap().putArgument(arg);
     }
-
-    public String getWorkflowName() {
-        return workflowName;
-    }
-
-    public void setWorkflowName(String workflowName) {
-        this.workflowName = workflowName;
-    }
-
-    public String getStepName() {
-        return stepName;
-    }
-
-    public void setStepName(String stepName) {
-        this.stepName = stepName;
-    }
-
-    public String getWorkItemName() {
-        return workItemName;
-    }
-
-    public void setWorkItemName(String workItemName) {
-        this.workItemName = workItemName;
-    }
-
-    public String getRepositoryType() {
-        return repositoryType;
-    }
-
-    public void setRepositoryType(String repositoryType) {
-        this.repositoryType = repositoryType;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public String getNosqlType() {
-        return nosqlType;
-    }
-
-    public void setNosqlType(String nosqlType) {
-        this.nosqlType = nosqlType;
-    }
-
-    public String getNosqlProvider() {
-        return nosqlProvider;
-    }
-
-    public void setNosqlProvider(String nosqlProvider) {
-        this.nosqlProvider = nosqlProvider;
-    }
-
-    public String getNosqlProviderClass() {
-        return nosqlProviderClass;
-    }
-
-    public void setNosqlProviderClass(String nosqlProviderClass) {
-        this.nosqlProviderClass = nosqlProviderClass;
-    }
-
-    public String getNosqlUser() {
-        return nosqlUser;
-    }
-
-    public void setNosqlUser(String nosqlUser) {
-        this.nosqlUser = nosqlUser;
-    }
-
-    public String getNosqlPassword() {
-        return nosqlPassword;
-    }
-
-    public void setNosqlPassword(String nosqlPassword) {
-        this.nosqlPassword = nosqlPassword;
-    }
-
-    public String getNosqlHost() {
-        return nosqlHost;
-    }
-
-    public void setNosqlHost(String nosqlHost) {
-        this.nosqlHost = nosqlHost;
-    }
-
-    public String getDateFormat() {
-        return dateFormat;
-    }
-
-    public void setDateFormat(String dateFormat) {
-        this.dateFormat = dateFormat;
-    }
-
-    public int getTokenExpirationDays() {
-        return tokenExpirationDays;
-    }
-
-    public void setTokenExpirationDays(int tokenExpirationDays) {
-        this.tokenExpirationDays = tokenExpirationDays;
-    }
-    
-    
-    
 }

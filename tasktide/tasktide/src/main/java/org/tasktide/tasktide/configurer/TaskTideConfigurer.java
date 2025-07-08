@@ -4,6 +4,7 @@
  */
 package org.tasktide.tasktide.configurer;
 
+import org.eclipse.microprofile.config.Config;
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.ArgumentBuilder;
 import org.tasktide.tasktide.parser.model.ArgumentMap;
@@ -20,6 +21,7 @@ public interface TaskTideConfigurer {
     public ArgumentMap getArgumentMap();
     public ArgumentBuilder getArgumentBuilder();
     public String getPath();
+    public Config getConfig();
     public boolean parseCommandLineArguments(String[] argsIn, ArgumentTree argTree);
     public void initConfig(ArgumentTree argTree); // Separate methods used for config, this just runs them
 }
