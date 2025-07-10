@@ -21,18 +21,19 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
 public class GlobalConfig extends AbstractConfigurer {
     
     
+    // Which client to use
+    @ConfigProperty(name = "tasktide.client", defaultValue = "Manager")
+    private String client;
+    
     /**
      * Collection Params
      * 
      */
-    
     @ConfigProperty(name = "tasktide.core.collection.workflow.name", defaultValue = "Workflow")
     private String workflowName;
     
-    
     @ConfigProperty(name = "tasktide.core.collection.step.name", defaultValue = "Step")
     private String stepName;
-    
     
     @ConfigProperty(name = "tasktide.core.collection.work-item.name", defaultValue = "WorkItem")
     private String workItemName;
@@ -42,10 +43,8 @@ public class GlobalConfig extends AbstractConfigurer {
      * Repository Params
      * 
      */
-    
     @ConfigProperty(name = "tasktide.core.repository.type", defaultValue = "RocksDB")// Or, JSON, NOSQL
     private String repositoryType;
-    
     
     @ConfigProperty(name = "tasktide.core.repository.file-path", defaultValue = "myData")// RocksDB or Json
     private String filePath;
@@ -55,26 +54,20 @@ public class GlobalConfig extends AbstractConfigurer {
      * Jakarta NoSQL Config
      * 
      */
-    
     @ConfigProperty(name = "tasktide.core.repository.jnosql.type", defaultValue = "")// Document, KeyValue, Graph, Column
     private String nosqlType;
-    
     
     @ConfigProperty(name = "tasktide.core.repository.jnosql.provider", defaultValue = "")// CouchDb, MonogoDB etc
     private String nosqlProvider;
     
-    
     @ConfigProperty(name = "tasktide.core.repository.jnosql.provider-class", defaultValue = "")
     private String nosqlProviderClass;
-    
     
     @ConfigProperty(name = "tasktide.core.repository.jnosql.user", defaultValue = "")
     private String nosqlUser;
     
-    
     @ConfigProperty(name = "tasktide.core.repository.jnosql.password", defaultValue = "")
     private String nosqlPassword;
-    
     
     @ConfigProperty(name = "tasktide.core.repository.jnosql.host", defaultValue = "")
     private String nosqlHost;
@@ -84,10 +77,8 @@ public class GlobalConfig extends AbstractConfigurer {
      * Utility Params
      * 
      */
-    
     @ConfigProperty(name = "tasktide.utils.date-format", defaultValue = "dd/MM/yy HH:mm:ss")
     private String dateFormat;
-    
     
     @ConfigProperty(name = "tasktide.utils.token-expiration-days", defaultValue = "4")
     private int tokenExpirationDays;
@@ -121,6 +112,7 @@ public class GlobalConfig extends AbstractConfigurer {
     public void initConfig(ArgumentTree argTree) {
         
         // Collection name settings
+        this.client();
         this.workflowName();
         this.stepName();
         this.workItemName();
@@ -150,6 +142,35 @@ public class GlobalConfig extends AbstractConfigurer {
         else {
             argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
         }
+    }
+    
+    
+    /**
+     * Configures client to use
+     */
+    public void client() {
+        Argument<String> arg;
+        this.client = this.getConfig().getValue("tasktide.client", String.class);
+        if ( this.client != null ) {
+            arg = this.getArgumentBuilder()
+                .withName("Client")
+                .withDescription("Specifies which client is being configuerd")
+                .withShortFlag("-c")
+                .withLongFlag("--client")
+                .withArgType(ArgumentType.ACTION)
+                .withValue(this.client, String.class)
+            .build();
+        }
+        else {
+            arg = this.getArgumentBuilder()
+                .withName("Client")
+                .withDescription("Specifies which client is being configuerd")
+                .withShortFlag("-c")
+                .withLongFlag("--client")
+                .withArgType(ArgumentType.ACTION)
+            .build();
+        }
+        this.getArgumentMap().putArgument(arg);
     }
     
     

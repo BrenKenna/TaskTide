@@ -8,7 +8,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.tasktide.core.manager.TaskTideManager;
+import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
@@ -16,28 +16,27 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
 
 
 /**
- * Class to template the {@link TaskTideManager} module parameters
+ * Class to template the {@link TaskTideServiceManager} module parameters
  * 
  * @author bkenna
  */
 @ApplicationScoped
 public class ManagerConfig extends AbstractConfigurer {
     
-    
     @ConfigProperty(name = "tasktide.manager.inputFile", defaultValue = "")
     String inputFile;
-    
     
     @ConfigProperty(name = "tasktide.manager.outputFile", defaultValue = "")
     String outputFile;
     
-    
     @ConfigProperty(name = "tasktide.manager.delimiter", defaultValue = "")
     String delimiter;
     
-    
     @ConfigProperty(name = "tasktide.manager.nestedDelimiter", defaultValue = "")
     String nestedDelimiter;
+    
+    @ConfigProperty(name = "tasktide.manager.method", defaultValue = "Import/Export")
+    String method;
     
     
     /**
@@ -60,7 +59,7 @@ public class ManagerConfig extends AbstractConfigurer {
     
     
     /**
-     * Applies the {@link TaskTideManager} configurations to {@link ArgumentTree}
+     * Applies the {@link TaskTideServiceManager} configurations to {@link ArgumentTree}
      * 
      * @param argTree 
      */
@@ -70,6 +69,7 @@ public class ManagerConfig extends AbstractConfigurer {
         this.delimiter();
         this.outputFile();
         this.nestedDelimiter();
+        this.method();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -81,7 +81,7 @@ public class ManagerConfig extends AbstractConfigurer {
     
     
     /**
-     * Configure the input file for the {@link TaskTideManager} to use
+     * Configure the input file for the {@link TaskTideServiceManager} to use
      *  for any of its relevant operations
      * 
      */
@@ -101,7 +101,7 @@ public class ManagerConfig extends AbstractConfigurer {
     
     
     /**
-     * Configure the delimiter that the {@link TaskTideManager} should use
+     * Configure the delimiter that the {@link TaskTideServiceManager} should use
      *  for File I/O
      * 
      */
@@ -121,7 +121,7 @@ public class ManagerConfig extends AbstractConfigurer {
     
     
     /**
-     * Configure the output file for the {@link TaskTideManager} to use
+     * Configure the output file for the {@link TaskTideServiceManager} to use
      *  for any of its relevant operations
      * 
      */
@@ -141,7 +141,7 @@ public class ManagerConfig extends AbstractConfigurer {
     
     
     /**
-     * Configure the delimiter that the {@link TaskTideManager} should use
+     * Configure the delimiter that the {@link TaskTideServiceManager} should use
      *  for File I/O
      * 
      */
@@ -155,6 +155,25 @@ public class ManagerConfig extends AbstractConfigurer {
             .withLongFlag("--nested-delimiter")
             .withArgType(ArgumentType.ACTION)
             .withValue(this.nestedDelimiter, String.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configure method to manager method to run import/export
+     * 
+     */
+    public void method() {
+        Argument<String> arg;
+        this.method = this.getConfig().getValue("tasktide.manager.method", String.class).toLowerCase();
+        arg = this.getArgumentBuilder()
+            .withName("Method")
+            .withDescription("Whether to run import or export")
+            .withShortFlag("-m")
+            .withLongFlag("--method")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(this.method, String.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }

@@ -7,33 +7,84 @@ description = 'tasktide:tasktide'
 group = 'org.tasktide.tasktide'
 version = '0.0.1'
 
+
+// Embeds Weld and Quarkus runtimes
+configurations {
+    weldRuntime
+    quarkusRuntime
+}
+
 dependencies {
 
     // Project core lib
-    implementation project(':core')
-    implementation project(':engine')
+    implementation  project(':core')
+    implementation  project(':engine')
 
     // Command-line argument parser
-    implementation 'info.picocli:picocli:4.7.7'
+    implementation  'info.picocli:picocli:4.7.7'
 
     // Jakarta-NoSQL
-    implementation 'jakarta.nosql:jakarta.nosql-api:1.0.0'
-    implementation "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
-    implementation "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.8"
-    implementation "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.8"
-    implementation "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.8"
+    implementation  'jakarta.nosql:jakarta.nosql-api:1.0.0'
+    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
+    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.8"
+    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.8"
+    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.8"
+
+    // CDI Provider
+    weldRuntime     'org.jboss.weld.se:weld-se-core:5.1.2.Final'
+    quarkusRuntime  'io.quarkus.arc:arc:3.11.1'
+
+    // Include Weld and Quarkus Arc on compile classpath for IDE support
+    compileOnly     'org.jboss.weld.se:weld-se-core:5.1.2.Final'
+    compileOnly     'io.quarkus.arc:arc:3.11.1'
 }
 
+
+// Slim jar no dependancies or CDI runtime
 jar {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)
 }
 
-tasks.register('fatJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+
+// Fat JAR with the Weld Runtime
+tasks.register('fatJarWithWeld', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)
-    archiveClassifier.set('all')
-    configurations = [project.configurations.runtimeClasspath]
+    archiveClassifier.set('weld-all')
+    configurations = [ project.configurations.runtimeClasspath, project.configurations.weldRuntime ]
+    from sourceSets.main.output
+    manifest {
+        attributes 'Main-Class': 'org.tasktide.tasktide.TaskTide'
+    }
 }
 
-build.dependsOn fatJar
+
+// Fat JAR with the Quarkus Arc Runtime
+tasks.register('fatJarWithQuarkus', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("tasktide-${project.name}")
+    archiveVersion.set(version)
+    archiveClassifier.set('quarkus-all')
+    configurations = [ project.configurations.runtimeClasspath, project.configurations.quarkusRuntime ]
+    from sourceSets.main.output
+    manifest {
+        attributes 'Main-Class': 'org.tasktide.tasktide.TaskTide'
+    }
+}
+
+
+// Fat JAR woth not CDI runtimes, only the dependancies
+tasks.register('fatJarNoCdi', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveBaseName.set("tasktide-${project.name}")
+    archiveVersion.set(version)
+    archiveClassifier.set('no-cdi-all')
+    configurations = [ project.configurations.runtimeClasspath ]
+    from sourceSets.main.output
+    manifest {
+        attributes 'Main-Class': 'org.tasktide.tasktide.TaskTide'  // Replace as needed
+    }
+}
+
+
+// Build the 4 jars
+build.dependsOn fatJarNoCdi, fatJarWithWeld, fatJarWithQuarkus

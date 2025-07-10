@@ -30,7 +30,6 @@ import org.eclipse.jnosql.mapping.reflection.Reflections;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
 import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 
-import org.jboss.weld.junit5.auto.AddBeanClasses;
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
@@ -44,10 +43,15 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.TaskTideService;
+import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
@@ -63,6 +67,7 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 import org.tasktide.tasktide.configurer.EngineConfig;
 import org.tasktide.tasktide.configurer.GlobalConfig;
+import org.tasktide.tasktide.configurer.ManagerConfig;
 import org.tasktide.tasktide.configurer.TaskTideConfigurer;
 import org.tasktide.tasktide.parser.ArgumentTree;
 
@@ -99,12 +104,14 @@ public class ConfigureTaskTideTest {
         logger.info(msg);
     }
     
+    
     @AfterAll
     public static void tearDownClass() {
         String msg = "\n\n---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------\n";
         container.close();
         logger.info(msg);
     }
+    
     
     @BeforeEach
     public void setUp() {
@@ -198,8 +205,8 @@ public class ConfigureTaskTideTest {
             .stream()
             .parallel()
             .mapToInt( elm -> {
-                    Collection<ItemTask> itemTasks = elm.getWorkload().getWorkload().values();
-                    return countNotActive(new ArrayList<>(itemTasks));
+                Collection<ItemTask> itemTasks = elm.getWorkload().getWorkload().values();
+                return countNotActive(new ArrayList<>(itemTasks));
             })
             .sum();
     }
@@ -211,7 +218,7 @@ public class ConfigureTaskTideTest {
      * @param workload 
      * @param logger  
      */
-    public static void fetchExecutionTimes(List<ItemTask> workload, Logger logger) {
+    public void fetchExecutionTimes(List<ItemTask> workload, Logger logger) {
         String output = "\n\n";
         for (ItemTask task : workload) {
             output += String.format(
@@ -233,7 +240,7 @@ public class ConfigureTaskTideTest {
      * @param workload
      * @param logger 
      */
-    public static void fetchExecutionTimesWorkItem(List<WorkItem> workload, Logger logger) {
+    public void fetchExecutionTimesWorkItem(List<WorkItem> workload, Logger logger) {
         for ( WorkItem item : workload ) {
             System.out.println("\n\n========= Analysing WorkItem:\t'" + item.getId() + "'=============\n\n");
             fetchExecutionTimes(item.fetchByStates().get(ItemState.DONE), logger);
@@ -249,15 +256,46 @@ public class ConfigureTaskTideTest {
      * @param map
      * @return String Json
      */
-    public static String mapToJsonString(Object map) {
+    public String mapToJsonString(Object map) {
         Jsonb jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
         return jsonb.toJson(map);
     }
     
-    public static Template fetchTemplate() {
+    
+    /**
+     * Fetch {@link DocumentTemplate} for {@link Template}
+     * 
+     * @return {@link Template}
+     */
+    public Template fetchDocumentTemplate() {
         container = SeContainerInitializer.newInstance().initialize();
         return container.select(DocumentTemplate.class).get();
     }
+    
+    
+    /**
+     * Fetch {@link TaskTideServiceManager} for the 
+     * 
+     * @param backend
+     * @return 
+     */
+    public TaskTideServiceManager fetchManager(Template backend) {
+        
+        // Initialize vars
+        TaskTideServiceManager output;
+        TaskTideService<WorkItem> workItemService;
+        TaskTideService<Step> stepService;
+        TaskTideService<Workflow> workflowService;
+        
+        // Make services
+        workItemService = ServiceFactory.makeWorkItemService(RepositoryType.NOSQL, backend, "WorkItem-Service");
+        stepService = ServiceFactory.makeStepService(RepositoryType.NOSQL, backend, "Step-Service");
+        workflowService = ServiceFactory.makeWorkflowService(RepositoryType.NOSQL, backend, "Workflow-Service");
+        
+        // Return manager
+        return new TaskTideServiceManager(workItemService, stepService, workflowService);
+    }
+    
     
     /**
      * Tests that the engine can be configured from micro-profile config
@@ -265,10 +303,10 @@ public class ConfigureTaskTideTest {
      */
     @Test
     @Order(0)
-    public void canConfigureEngine() {
+    public void canConfigureEngineClient() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Running Engine Through Config  ================\n");
+        logger.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfigurer engineConfig;
         
@@ -306,14 +344,12 @@ public class ConfigureTaskTideTest {
             .withMaxTime(timeKeeperObserverMaxTime)
         .build();
         
-        
         // Configure executor
         executor = unitProvider.getWorkItemExecBuilder()
             .withWorkItemObserver(observer)
             .withSubThreads(workItemThreads)
             .withSubTaskThreshold(workItemThreshold)
         .build();
-        
         
         // Configure processor
         processor = unitProvider.getWorkItemProcBuilder()
@@ -323,11 +359,9 @@ public class ConfigureTaskTideTest {
             .withSubExecutor(executor)
         .build();
         
-        
         // Process work
         processor.process();
         this.waitOnExecutorTrackerWorkItem(nWorkItems, logger);
-        
         
         // Evaluate test status
         boolean assertionState;
@@ -349,54 +383,55 @@ public class ConfigureTaskTideTest {
         logger.info("\n-------- Displaying Execution Time Summary --------\n");
         String template = String.format("Not all tasks processed correctl:\tTotal = '%d', Processed = '%d'", expected, nProcessed);
         assertTrue(assertionState, template);
-        logger.info("\n\n================ Tests Running Engine Through Config  ================\n");
+        logger.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
     }
     
     
     @Test
     @Order(1)
-    public void canConfigureService() {
+    public void canConfigurerManagerClient() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Running Services Through Config  ================\n");
+        logger.info("\n\n================ Tests Running ManagerClient Through Config  ================\n");
         ArgumentTree argTree;
-        TaskTideConfigurer globalConfig;
-        
-        TaskTideService<WorkItem> workItemService;
-        RepositoryType repoType;
+        TaskTideConfigurer globalConfig, managerConfig;
+        TaskTideServiceManager taskTideManager;
         Template backend;
         List<WorkItem> workload;
+        TaskTideModel<WorkItem> result;
         boolean assertionState ;
+        
         
         // Initialize configuration
         argTree = new ArgumentTree(" ");
         globalConfig = CDI.current().select(GlobalConfig.class).get();
         globalConfig.initConfig(argTree);
-        
-        // Generate data
-        logger.info("Generating data for testing");
-        int nWorkItems = 4, nItemTask = 4;
-        workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, nWorkItems, nItemTask);
+        managerConfig = CDI.current().select(ManagerConfig.class).get();
+        managerConfig.initConfig(argTree);
         
         // Configure requirements
         String provider = (String) argTree.getTree().getDataForAddress("").getArgument("NoSQL Provider").getValue();
         logger.info("Fetching Service Using '{}' Backend", provider);
-        repoType = RepositoryType.NOSQL;
-        backend = fetchTemplate();
-        workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
-        Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
+        backend = fetchDocumentTemplate();
+        taskTideManager = fetchManager(backend);
+        Map<String, String> map = taskTideManager.getWorkItemService().getRepo().getRepositoryMetaData();
         logger.info("Displaying meta data for Template WorkItem Service:\n'{}'", mapToJsonString(map));
         
         // Add records
         logger.info("Verifying that records can be added");
-        workItemService.extendModel(workload);
-        TaskTideModel<WorkItem> ref = workload.get(0);
-        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId()); // Find by Id Fails here?
-        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
+        try {
+            workload = TaskTideManagerUtility.importTasks("TestData", "nestedTaskImports.txt", "|", ",");
+            assertionState = taskTideManager.getWorkItemService().extendModel(workload);
+            result = taskTideManager.getWorkItemService().fetchById( workload.get(0).getId());
+            logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        }
+        catch (Exception ex) {
+            logger.error("Unable to parse the 'nestedTaskImports.txt' from test resources");
+            assertionState = false;
+        }
         
         // Log test state
-        logger.info("\n\n================ Tests Running Services Through Config ================\n");
+        logger.info("\n\n================ Tests Running ManagerClient Through Config ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

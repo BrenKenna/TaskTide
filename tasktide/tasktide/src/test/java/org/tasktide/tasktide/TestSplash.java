@@ -56,25 +56,6 @@ public class TestSplash {
     public void tearDown() {
         logger.info("\n\n================ Terminating Test ================\n");
     }
-
-    
-    /**
-     * Print splash
-     * 
-     * @throws IOException 
-     */
-    public void printSplash() throws IOException {
-        try (InputStream is = getClass().getClassLoader().getResourceAsStream("splash.txt");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-            System.out.println();
-        } catch (IOException e) {
-            throw e;
-        }
-    }
     
     
     /**

@@ -5,7 +5,6 @@
 package org.tasktide.engine.worker.processor;
 
 import jakarta.inject.Inject;
-import java.util.ArrayList;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.ExecutorService;

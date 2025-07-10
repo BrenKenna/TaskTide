@@ -103,8 +103,8 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
 
     @Override
     protected List<List<WorkItem>> parallelChunks(List<WorkItem> workload) {
-        // Initialize variables
-        List<WorkItem> slize = new ArrayList<>();
+        
+        // Initialize output
         List< List<WorkItem> > results = new ArrayList<>();
         
         // Initialize batch handler

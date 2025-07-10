@@ -6,6 +6,8 @@
 ######################################################
 ######################################################
 
+# Which client to run
+tasktide.client=engine
 
 # Collection Paramenters
 tasktide.core.collection.workflow.name=profiled-workflow
@@ -44,8 +46,9 @@ tasktide.utils.token-expiration-days=4
 # Collection Paramenters
 tasktide.manager.inputFile=manager-input-file
 tasktide.manager.outputFile=manager-output-file
-tasktide.manager.delimiter=manager-delimiter
-tasktide.manager.nestedDelimiter=manager-nested-delimiter
+tasktide.manager.delimiter=|
+tasktide.manager.nestedDelimiter=,
+tasktide.manager.method=import
 
 
 ######################################################

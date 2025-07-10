@@ -4,15 +4,14 @@
  */
 package org.tasktide.core.repository;
 
-// import jakarta.enterprise.context.Dependent;
 import jakarta.nosql.Template;
 import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import org.tasktide.core.TaskTideModel;
 
+import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 
 
@@ -47,6 +46,7 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
         this.repoType = RepositoryType.NOSQL;
     }
     
+    
     /**
      * Provide a map of repository meta data reference class,
      *   repository type (NoSQL, RocksDB etc), collecion name
@@ -67,6 +67,7 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
         // Return results
         return results;
     }
+    
     
     /**
      * Fetch WorkItem by its Id
@@ -90,7 +91,6 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
     @Override
     public T insertModel(T model) {
         T result = template.insert(model);
-        System.out.println("\n\nDEBUGGING >>>\n" + result.toJson());
         return result;
     }
 

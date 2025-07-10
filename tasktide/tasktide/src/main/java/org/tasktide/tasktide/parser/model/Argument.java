@@ -16,7 +16,6 @@ public class Argument<T> {
     private Class<T> refClass;
     private final String name, shortFlag, longFlag, description;
     private final ArgumentType argType;
-    private boolean isSet;
 
     
     /**
@@ -40,7 +39,6 @@ public class Argument<T> {
         this.shortFlag = shortFlag;
         this.longFlag = longFlag;
         this.argType = argType;
-        this.isSet = false;
     }
 
     
@@ -71,7 +69,6 @@ public class Argument<T> {
         this.longFlag = longFlag;
         this.argType = argType;
         this.refClass = clazz;
-        this.isSet = true;
     }
 
     
@@ -81,10 +78,7 @@ public class Argument<T> {
      * @param value
      */
     public void setValue(T value) {
-        if (this.isSet == false) {
-            this.value = value;
-            this.isSet = true;
-        }
+        this.value = value;
     }
 
     
@@ -97,6 +91,7 @@ public class Argument<T> {
         return this.value;
     }
 
+    
     /**
      * Get the reference {@link Class} of this argument
      *
@@ -156,27 +151,7 @@ public class Argument<T> {
         return this.argType;
     }
 
-    
-    /**
-     * Check whether argument value is set
-     * 
-     * @return boolean
-     */
-    public boolean getIsSet() {
-        return this.isSet;
-    }
-
-    
-    /**
-     * Set the argument to specified state
-     * 
-     * @param state
-     */
-    public void setActiveState(boolean state) {
-        this.isSet = state;
-    }
-    
-    
+        
     /**
      * Set argument through parsing of raw input string
      * 
@@ -202,6 +177,7 @@ public class Argument<T> {
         this.setValue(refClass.cast(val));
     }
 
+    
     @Override
     public String toString() {
         return "Argument{" + 
@@ -212,7 +188,6 @@ public class Argument<T> {
             ", longFlag=" + longFlag +
             ", description=" + description +
             ", argType=" + argType +
-            ", isSet=" + isSet +
         '}';
     }
 }
