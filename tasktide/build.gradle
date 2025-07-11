@@ -3,11 +3,9 @@ plugins {
 }
 
 description = 'tasktide'
-
 allprojects {
-
     group = 'org.tasktide'
-
+    version = '0.0.1'
     repositories {
         mavenCentral()
     }

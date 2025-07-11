@@ -85,7 +85,6 @@ import org.tasktide.tasktide.parser.ArgumentTree;
     EngineConfig.class, GlobalConfig.class
 })
 @AddExtensions( { ReflectionEntityMetadataExtension.class, DocumentExtension.class } )
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ConfigureTaskTideTest {
     
     private static final Logger logger = LogManager.getLogger(ConfigureTaskTideTest.class);

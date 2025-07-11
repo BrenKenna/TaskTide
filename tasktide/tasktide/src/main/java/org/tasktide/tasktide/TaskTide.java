@@ -4,6 +4,9 @@
  */
 package org.tasktide.tasktide;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
+import jakarta.nosql.Entity;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,24 +17,27 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jakarta.nosql.Template;
-import org.eclipse.jnosql.mapping.column.ColumnTemplate;
+import org.eclipse.jnosql.communication.semistructured.DatabaseManager;
+import org.eclipse.jnosql.mapping.Database;
+import org.eclipse.jnosql.mapping.DatabaseQualifier;
 import org.eclipse.jnosql.mapping.core.Converters;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
-import org.eclipse.jnosql.mapping.graph.GraphTemplate;
-import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
 import org.eclipse.jnosql.mapping.reflection.Reflections;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
 import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 
 import org.tasktide.tasktide.client.TaskTideClient;
 import org.tasktide.tasktide.client.TaskTideClientUtility;
 import org.tasktide.tasktide.client.TaskTideClients;
 
-import org.tasktide.tasktide.configurer.EngineConfig;
 import org.tasktide.tasktide.configurer.GlobalConfig;
 import org.tasktide.tasktide.configurer.ManagerConfig;
 import org.tasktide.tasktide.configurer.TaskTideConfigurer;
@@ -40,6 +46,8 @@ import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
 
+import org.eclipse.jnosql.communication.semistructured.DatabaseManager;
+import org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentManager;
 
 /**
  * Runs the desited {@link TaskTideClient}
@@ -106,10 +114,9 @@ public class TaskTide {
         // Add packages, and extensions
         if ( !cdiProvider.isProvider(CdiProviders.QUARKUS) ) {
             provider.addExtension(ReflectionEntityMetadataExtension.class, DocumentExtension.class);
-            provider.addPackage(
-           Converters.class, Reflections.class, EntityConverter.class,
-           Template.class, DocumentTemplate.class,
-           EngineConfig.class, GlobalConfig.class, ManagerConfig.class
+            provider.addBeanClass(
+           GlobalConfig.class, ManagerConfig.class,
+           WorkItem.class, ItemTask.class, Step.class, Workflow.class
             );
         }
         
@@ -129,8 +136,11 @@ public class TaskTide {
         try {
             
             // Configure provider and argument tree
+            //SeContainer container = SeContainerInitializer.newInstance().initialize();
             TaskTide.printSplash();
             LOGGER.info("Configuring the CDI Container Provider");
+            //Template template = container.select(DocumentTemplate.class).get();
+            //LOGGER.info("Created template:\t'{}'", template);
             CdiContainerProvider provider = configureCdiInstance(CdiProviders.WELD);
 
             // Fetch config map
@@ -160,7 +170,7 @@ public class TaskTide {
         
         // Otherwise show error
         catch (Exception ex) {
-            LOGGER.error("Exiting on fatal error:\t{}", ex);
+            LOGGER.fatal("Exiting on fatal error:\t'{}'", ex.toString());
             ex.printStackTrace();
             System.exit(1);
         }

@@ -65,6 +65,17 @@ public interface CdiContainerProvider<T> {
      * @param clazz 
      */
     @SuppressWarnings("unchecked")
+    public <V> void addBeanClass(Class<V>... clazz);
+    
+    
+    /**
+     * Allows implementing classes to define injecting
+     *  classes into container
+     * 
+     * @param <V>
+     * @param clazz 
+     */
+    @SuppressWarnings("unchecked")
     public <V> void addPackage(Class<V>... clazz);
     
     

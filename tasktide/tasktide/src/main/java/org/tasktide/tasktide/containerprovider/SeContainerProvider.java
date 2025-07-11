@@ -68,11 +68,21 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
     
     @Override
     @SuppressWarnings("unchecked")
-    public <V> void addPackage(Class<V>... clazz) {
+    public <V> void addBeanClass(Class<V>... clazz) {
         if ( initializer != null ) {
             initializer.addBeanClasses(clazz);
         }
     }
+    
+    
+    @Override
+    @SuppressWarnings("unchecked")
+    public <V> void addPackage(Class<V>... clazz) {
+        if ( initializer != null ) {
+            initializer.addPackages(clazz);
+        }
+    }
+    
 
     @Override
     @SuppressWarnings("unchecked")

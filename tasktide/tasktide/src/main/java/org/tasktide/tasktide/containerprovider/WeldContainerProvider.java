@@ -66,12 +66,21 @@ public class WeldContainerProvider implements CdiContainerProvider<WeldContainer
             throw new IllegalStateException("Weld/SeContainer not initialized");
         }
     }
+    
+    @Override
+    @SuppressWarnings("unchecked")
+    public <V> void addBeanClass(Class<V>... clazz) {
+        if ( weld != null ) {
+            weld.addBeanClasses(clazz);
+        }
+    }
+    
 
     @Override
     @SuppressWarnings("unchecked")
     public <V> void addPackage(Class<V>... clazz) {
         if ( weld != null ) {
-            weld.addBeanClasses(clazz);
+            weld.addPackages(clazz);
         }
     }
 

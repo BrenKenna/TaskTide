@@ -6,10 +6,14 @@ package org.tasktide.tasktide.client;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+import jakarta.enterprise.inject.spi.CDI;
 
 import jakarta.nosql.Template;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jnosql.mapping.column.ColumnTemplate;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
@@ -23,7 +27,6 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.tasktide.configurer.EngineConfig;
 import org.tasktide.tasktide.configurer.GlobalConfig;
 import org.tasktide.tasktide.configurer.ManagerConfig;
 import org.tasktide.tasktide.configurer.TaskTideConfigurer;
@@ -39,6 +42,7 @@ import org.tasktide.tasktide.parser.ArgumentTree;
  */
 public class TaskTideClientUtility {
     
+    private static final Logger LOGGER = LogManager.getLogger(TaskTideClientUtility.class);
     
     /**
      * Fetch the specific client to configure and run
@@ -110,7 +114,9 @@ public class TaskTideClientUtility {
     public static TaskTideServiceManager fetchManager(CdiContainerProvider cdiProvider, RepositoryType repoType) {
         switch ( repoType ) {
             case NOSQL -> {
-                Template backend = (Template) cdiProvider.getBean(Template.class);
+                //SeContainer weldContainer = (SeContainer) cdiProvider.getContainer();
+                Template backend = CDI.current().select(DocumentTemplate.class).get();
+                //Template backend = (DocumentTemplate) cdiProvider.getBean(DocumentTemplate.class);
                 return fetchManager(backend);
             }
             
@@ -138,6 +144,11 @@ public class TaskTideClientUtility {
         workItemService = ServiceFactory.makeWorkItemService(RepositoryType.NOSQL, backend, "WorkItem-Service");
         stepService = ServiceFactory.makeStepService(RepositoryType.NOSQL, backend, "Step-Service");
         workflowService = ServiceFactory.makeWorkflowService(RepositoryType.NOSQL, backend, "Workflow-Service");
+        
+        // Query as a sanity check
+        LOGGER.info("Services for TaskTideModels created. Sanity checking querying a record");
+        List<WorkItem> data = workItemService.viewAll();
+        LOGGER.info("\nDisplaying sanity check data:\n{}", data.get(0).toJsonDoc());
         
         // Return manager
         return new TaskTideServiceManager(workItemService, stepService, workflowService);

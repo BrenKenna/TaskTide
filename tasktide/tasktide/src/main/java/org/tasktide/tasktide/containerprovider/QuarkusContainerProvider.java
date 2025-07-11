@@ -68,4 +68,10 @@ public class QuarkusContainerProvider implements CdiContainerProvider<ArcContain
     public <V extends Extension> void addExtension(Class<V>... clazz) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public <V> void addBeanClass(Class<V>... clazz) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
