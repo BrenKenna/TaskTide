@@ -4,7 +4,6 @@
  */
 package org.tasktide.tasktide.containerprovider;
 
-
 import jakarta.enterprise.inject.spi.Extension;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
@@ -35,17 +34,28 @@ public class WeldContainerProvider implements CdiContainerProvider<WeldContainer
             container = weld.initialize();
         }
     }
-
-    @Override
-    public void shutdown() {
+    
+    
+    public void close() {
         if ( container != null ) {
-            container.close();
-            container = null;
             weld.shutdown();
+            if ( container.isRunning() ) {
+                container.close();
+            }
+            container = null;
             weld = null;
         }
     }
 
+    
+    @Override
+    public void shutdown() {
+        if ( container != null ) {
+            this.close();
+        }
+    }
+
+    
     @Override
     public WeldContainer getContainer() {
         if ( container != null ) {
@@ -58,6 +68,7 @@ public class WeldContainerProvider implements CdiContainerProvider<WeldContainer
     
     
     @Override
+    @SuppressWarnings("unchecked")
     public <U> U getBean(Class<U> clazz) {
         if ( container != null ) {
             return container.select(clazz).get();

@@ -8,12 +8,10 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
 
-import jakarta.nosql.Template;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import jakarta.nosql.Template;
 import org.eclipse.jnosql.mapping.column.ColumnTemplate;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
@@ -27,12 +25,10 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.tasktide.configurer.GlobalConfig;
-import org.tasktide.tasktide.configurer.ManagerConfig;
-import org.tasktide.tasktide.configurer.TaskTideConfigurer;
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.parser.ArgumentTree;
-
 
 
 /**
@@ -42,62 +38,30 @@ import org.tasktide.tasktide.parser.ArgumentTree;
  */
 public class TaskTideClientUtility {
     
+    // Attributes
     private static final Logger LOGGER = LogManager.getLogger(TaskTideClientUtility.class);
+    
     
     /**
      * Fetch the specific client to configure and run
      * 
      * @param argTree
-     * @return {@link TaskTideClients}
+     * @return {@link TaskTideClientType}
      */
-    public static TaskTideClients configureClient(ArgumentTree argTree) {
+    public static TaskTideClientType configureClient(ArgumentTree argTree) {
         String cliString = (String) argTree.getGlobalArguments().getArgMap().get("Client").getValue();
-        return TaskTideClients.valueOf(cliString);
+        return TaskTideClientType.valueOf(cliString);
     }
-    
-    
-    /**
-     * Fetch client config map
-     * 
-     * @param provider
-     * @param argTree
-     * @param argsIn
-     * @return 
-     */
-    @SuppressWarnings("unchecked")
-    public static Map<String, TaskTideConfigurer> fetchClienConfigMap(CdiContainerProvider provider, ArgumentTree argTree, String[] argsIn) {
-    
-        // Initialize vars
-        Map<String, TaskTideConfigurer> results = new HashMap<>();
-        TaskTideConfigurer config;
-        
-        // Fetch and parse global config
-        config = (TaskTideConfigurer) provider.getBean(GlobalConfig.class);
-        config.parseCommandLineArguments(argsIn, argTree);
-        results.put("Global", config);
-        
-        // Configure argument tree with manager arguments
-        config = (TaskTideConfigurer) provider.getBean(ManagerConfig.class);
-        config.parseCommandLineArguments(argsIn, argTree);
-        results.put("Manager", config);
-                
-        // Configure argument tree with manager arguments
-        config = (TaskTideConfigurer) provider.getBean(ManagerConfig.class);
-        config.parseCommandLineArguments(argsIn, argTree);
-        results.put("Engine", config);
-        
-        // Return results
-        return results;
-    }
+
     
     /**
      * Fetches the {@link RepositoryType} from the {@link GlobalConfig}.
      *   Returns NOSQL atm
      * 
-     * @param globalConfig
+     * @param configMap
      * @return {@link RepositoryType}
      */
-    public static RepositoryType fetchRepoType(TaskTideConfigurer globalConfig) {
+    public static RepositoryType fetchRepoType(ClientConfigMap configMap) {
         return RepositoryType.NOSQL;
     }
     
@@ -146,9 +110,9 @@ public class TaskTideClientUtility {
         workflowService = ServiceFactory.makeWorkflowService(RepositoryType.NOSQL, backend, "Workflow-Service");
         
         // Query as a sanity check
-        LOGGER.info("Services for TaskTideModels created. Sanity checking querying a record");
-        List<WorkItem> data = workItemService.viewAll();
-        LOGGER.info("\nDisplaying sanity check data:\n{}", data.get(0).toJsonDoc());
+        // LOGGER.info("Services for TaskTideModels created. Sanity checking querying a record");
+        // List<WorkItem> data = workItemService.viewAll();
+        // LOGGER.info("\nDisplaying sanity check data:\n{}", data.get(0).toJsonDoc());
         
         // Return manager
         return new TaskTideServiceManager(workItemService, stepService, workflowService);

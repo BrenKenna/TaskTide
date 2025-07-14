@@ -23,7 +23,7 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.services.WorkItemService;
+
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
@@ -33,8 +33,6 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 import org.tasktide.engine.worker.processor.WorkItemProcessor;
-import org.tasktide.tasktide.configurer.TaskTideConfigurer;
-import org.tasktide.tasktide.parser.ArgumentTree;
 
 
 /**
@@ -57,11 +55,10 @@ public class TaskTideEngineClient extends TaskTideClient {
      * Construct engine client
      * 
      * @param manager
-     * @param engineConfig
-     * @param argTree 
+     * @param configMap
      */
-    public TaskTideEngineClient(TaskTideServiceManager manager, TaskTideConfigurer engineConfig, ArgumentTree argTree) {
-        super(manager, engineConfig, argTree);
+    public TaskTideEngineClient(TaskTideServiceManager manager, ClientConfigMap configMap) {
+        super(manager, configMap);
         this.unitProvider = new TaskTideWorkerUnitProvider();
     }
     
@@ -103,12 +100,21 @@ public class TaskTideEngineClient extends TaskTideClient {
     @Override
     protected void performClientTask() {
         
-        // Submit work to processor
+        //Fetch to do work
         List<WorkItem> workload = this.fetchToDoWork();
-        this.processor.processChunks(workload);
         
-        // Wait on workload
-        this.waitOnExecutorTrackerWorkItem(workload.size(), logger);
+        // Process if available
+        if ( !workload.isEmpty() ) {
+            logger.info("Processing workload of size:\t'{}'", workload.size());
+            this.processor.processChunks(workload);
+            this.waitOnExecutorTrackerWorkItem(workload.size(), logger);
+        }
+        else {
+            logger.warn(
+          "Warning, no ToDo tasks available for processing. Query below backend for more information\n\n{}\n\n",
+             this.getTaskTideManager().getWorkItemService().getRepo().getRepositoryMetaData()
+            );
+        }
         
         // Clean up - close connections etc
         this.cleanUp();

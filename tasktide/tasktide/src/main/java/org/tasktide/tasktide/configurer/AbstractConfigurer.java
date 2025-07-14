@@ -6,6 +6,7 @@ package org.tasktide.tasktide.configurer;
 
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
+
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.CliParser;
 

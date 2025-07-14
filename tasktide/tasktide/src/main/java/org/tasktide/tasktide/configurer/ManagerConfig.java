@@ -5,9 +5,8 @@
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import org.eclipse.microprofile.config.Config;
-import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.tasktide.parser.ArgumentTree;

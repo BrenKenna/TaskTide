@@ -25,6 +25,7 @@ public class GlobalConfig extends AbstractConfigurer {
     @ConfigProperty(name = "tasktide.client", defaultValue = "Manager")
     private String client;
     
+    
     /**
      * Collection Params
      * 
@@ -550,7 +551,7 @@ public class GlobalConfig extends AbstractConfigurer {
                 .withArgType(ArgumentType.ACTION)
             .build();
         }
-        System.out.println(this.getArgumentMap().getArgMap());
+        //System.out.println(this.getArgumentMap().getArgMap());
         this.getArgumentMap().putArgument(arg);
     }
 }

@@ -25,21 +25,18 @@ public abstract class TaskTideClient {
     
     // Shared attributes
     private final TaskTideServiceManager taskTideManager;
-    private final TaskTideConfigurer clientConf;
-    private final ArgumentTree argTree;
+    private final ClientConfigMap config;
     
     
     /**
      * Construct engine client
      * 
      * @param manager
-     * @param clientConf
-     * @param argTree 
+     * @param config
      */
-    public TaskTideClient(TaskTideServiceManager manager, TaskTideConfigurer clientConf, ArgumentTree argTree) {
+    public TaskTideClient(TaskTideServiceManager manager, ClientConfigMap config) {
         this.taskTideManager = manager;
-        this.clientConf = clientConf;
-        this.argTree = argTree;
+        this.config = config;
     }
     
     
@@ -48,14 +45,9 @@ public abstract class TaskTideClient {
      *  client with these parameters, performs the required client
      *  action, and runs any required clean-up
      * 
-     * @param argsIn 
      */
-    public void runClient(String[] argsIn) {
+    public void runClient() {
     
-        // Parse command-line arguments
-        this.getClientConf().initConfig(this.getArgTree());
-        this.getClientConf().parseCommandLineArguments(argsIn, this.getArgTree());
-        
         // Initialize client
         this.configureClient();
         
@@ -106,7 +98,7 @@ public abstract class TaskTideClient {
         List<WorkItem> workload, check;
         check = ((WorkItemService) this.taskTideManager.getWorkItemService()).viewItemsByState(ItemState.TODO);
         workload = this.taskTideManager.getWorkItemService().viewByField("state", "todo");
-        System.out.println(String.format("Comparing query sizes:\tConcrete service '%d', Manager '%d'", check.size(), workload.size()));
+        // System.out.println(String.format("Comparing query sizes:\tConcrete service '%d', Manager '%d'", check.size(), workload.size()));
         return workload;
     }
 
@@ -116,8 +108,8 @@ public abstract class TaskTideClient {
      * 
      * @return {@link TaskTideConfigurer}
      */
-    public TaskTideConfigurer getClientConf() {
-        return clientConf;
+    public ClientConfigMap getClientConf() {
+        return this.config;
     }
 
     
@@ -127,6 +119,6 @@ public abstract class TaskTideClient {
      * @return {@link ArgumentTree}
      */
     public ArgumentTree getArgTree() {
-        return argTree;
+        return this.config.getArgTree();
     }
 }

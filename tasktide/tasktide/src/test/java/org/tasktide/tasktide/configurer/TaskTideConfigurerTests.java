@@ -67,7 +67,7 @@ public class TaskTideConfigurerTests {
         logger.info("\n\n================ Tests Displaying TaskTide Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfigurer engineConfig, globalConfig, managerConfig;
-        boolean assertionState = false;
+        boolean assertionState;
         
         // Setup global config
         logger.info("Configuring TaskTide client");

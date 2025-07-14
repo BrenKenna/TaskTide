@@ -4,34 +4,29 @@
  */
 package org.tasktide.tasktide.client;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
-
-import org.tasktide.tasktide.configurer.TaskTideConfigurer;
-import org.tasktide.tasktide.parser.ArgumentTree;
 
 
 /**
  *
  * @author bkenna
  */
-public class TaskTideManagerClient extends  TaskTideClient {
+public class TaskTideManagerClient extends TaskTideClient {
     
     private final Logger logger = LogManager.getLogger(TaskTideEngineClient.class);
 
 
-    
     /**
      * Construct engine client
      * 
      * @param manager
-     * @param engineConfig
+     * @param configMap
      */
-    public TaskTideManagerClient(TaskTideServiceManager manager, TaskTideConfigurer engineConfig, ArgumentTree argTree) {
-        super(manager, engineConfig, argTree);
+    public TaskTideManagerClient(TaskTideServiceManager manager, ClientConfigMap configMap) {
+        super(manager, configMap);
     }
 
     @Override
@@ -48,6 +43,4 @@ public class TaskTideManagerClient extends  TaskTideClient {
     protected void cleanUp() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-
 }
