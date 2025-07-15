@@ -33,6 +33,7 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 import org.tasktide.engine.worker.processor.WorkItemProcessor;
+import org.tasktide.tasktide.parser.model.ArgumentMap;
 
 
 /**
@@ -139,10 +140,11 @@ public class TaskTideEngineClient extends TaskTideClient {
      * @return {@link ExecutorService}
      */
     private ExecutorService initializeAndConfigureExecutorServices() {
-        this.workItemThreads = (int) this.getArgTree().getTree().getDataForAddress("engine").getArgument("WorkItem Threads").getValue();
-        this.workThreshold = (int) this.getArgTree().getTree().getDataForAddress("engine").getArgument("WorkItem SubTasking Threshold").getValue();
-        this.itemTaskThreads = (int) this.getArgTree().getTree().getDataForAddress("engine").getArgument("ItemTask Threads").getValue();
-        this.taskThreshold = (int) this.getArgTree().getTree().getDataForAddress("engine").getArgument("ItemTask SubTasking Threshold").getValue();
+        ArgumentMap engineConf = this.getArgTree().getTree().getDataForAddress("engine");
+        this.workItemThreads = (int) engineConf.getArgument("WorkItem Threads").getValue();
+        this.workThreshold = (int) engineConf.getArgument("WorkItem SubTasking Threshold").getValue();
+        this.itemTaskThreads = (int) engineConf.getArgument("ItemTask Threads").getValue();
+        this.taskThreshold = (int) engineConf.getArgument("ItemTask SubTasking Threshold").getValue();
         TaskTideExecutorServiceProvider.initialize(this.workItemThreads, this.itemTaskThreads);
         return TaskTideExecutorServiceProvider.workItemExecutorService();
     }

@@ -21,8 +21,8 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.tasktide.client.ClientConfigMap;
 
+import org.tasktide.tasktide.client.ClientConfigMap;
 import org.tasktide.tasktide.client.TaskTideClient;
 import org.tasktide.tasktide.client.TaskTideClientUtility;
 import org.tasktide.tasktide.client.TaskTideClientType;
@@ -113,6 +113,7 @@ public class TaskTide {
         return provider;
     }
     
+    
     /**
      * 
      * @param args the command line arguments
@@ -157,5 +158,4 @@ public class TaskTide {
             System.exit(1);
         }
     }
-    
 }

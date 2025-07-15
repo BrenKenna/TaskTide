@@ -8,6 +8,10 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,6 +44,20 @@ public class TaskTideClientUtility {
     
     // Attributes
     private static final Logger LOGGER = LogManager.getLogger(TaskTideClientUtility.class);
+    private static final Jsonb JSON_PRETTY = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
+    private static final Jsonb JSON = JsonbBuilder.create(new JsonbConfig());
+    
+    
+    /**
+     * Represent map as json string
+     * 
+     * @param map
+     * @return String Json
+     */
+    public static String mapToJsonString(Object map) {
+        Jsonb jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
+        return jsonb.toJson(map);
+    }
     
     
     /**
@@ -78,9 +96,7 @@ public class TaskTideClientUtility {
     public static TaskTideServiceManager fetchManager(CdiContainerProvider cdiProvider, RepositoryType repoType) {
         switch ( repoType ) {
             case NOSQL -> {
-                //SeContainer weldContainer = (SeContainer) cdiProvider.getContainer();
                 Template backend = CDI.current().select(DocumentTemplate.class).get();
-                //Template backend = (DocumentTemplate) cdiProvider.getBean(DocumentTemplate.class);
                 return fetchManager(backend);
             }
             

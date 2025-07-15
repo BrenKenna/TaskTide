@@ -15,6 +15,7 @@ import jakarta.json.bind.JsonbConfig;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -22,7 +23,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jakarta.nosql.Template;
-import java.util.Map;
 import org.eclipse.jnosql.mapping.core.Converters;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
@@ -41,15 +41,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.TaskTideModelType;
 
+import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
+
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.task.ItemTask;
@@ -65,6 +64,7 @@ import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
+
 import org.tasktide.tasktide.configurer.EngineConfig;
 import org.tasktide.tasktide.configurer.GlobalConfig;
 import org.tasktide.tasktide.configurer.ManagerConfig;

@@ -37,6 +37,9 @@ public class ManagerConfig extends AbstractConfigurer {
     @ConfigProperty(name = "tasktide.manager.method", defaultValue = "Import/Export")
     String method;
     
+    @ConfigProperty(name = "tasktide.manager.targetStep", defaultValue = "myStep")
+    String targetStep;
+    
     
     /**
      * Defaults config path to 'tasktide engine'
@@ -69,6 +72,7 @@ public class ManagerConfig extends AbstractConfigurer {
         this.outputFile();
         this.nestedDelimiter();
         this.method();
+        this.targetStep();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -173,6 +177,25 @@ public class ManagerConfig extends AbstractConfigurer {
             .withLongFlag("--method")
             .withArgType(ArgumentType.ACTION)
             .withValue(this.method, String.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configure the target step to reference for import
+     * 
+     */
+    public void targetStep() {
+        Argument<String> arg;
+        this.targetStep = this.getConfig().getValue("tasktide.manager.targetStep", String.class);
+        arg = this.getArgumentBuilder()
+            .withName("Target Step")
+            .withDescription("Defines the target step for import")
+            .withShortFlag("-ts")
+            .withLongFlag("--target-step")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(this.targetStep, String.class)
         .build();
         this.getArgumentMap().putArgument(arg);
     }
