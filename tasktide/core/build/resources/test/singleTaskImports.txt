@@ -1,4 +1,0 @@
-Seq_Test_1|seq 10
-Seq_Test_2|seq 12
-Seq_Test_3|seq 4
-Seq_Test_4|seq 8

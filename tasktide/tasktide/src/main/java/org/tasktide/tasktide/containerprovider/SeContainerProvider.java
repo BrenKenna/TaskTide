@@ -22,6 +22,22 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
     private SeContainer container;
     
     
+    public SeContainerProvider() {
+    }
+    
+    // 
+    public SeContainerProvider(SeContainer container) {
+        this.container = container;
+    }
+    
+    
+    // 
+    public void setContainer(SeContainer container) {
+        this.container = container;
+    }
+    
+    
+    // 
     @Override
     public void initialize() {
         if ( initializer != null ) {
@@ -29,6 +45,8 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
         }
     }
 
+    
+    // 
     @Override
     public void start() {
         if ( initializer != null ) {
@@ -36,6 +54,8 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
         }
     }
 
+    
+    // 
     @Override
     public void shutdown() {
         if ( container != null ) {
@@ -44,6 +64,8 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
         }
     }
 
+    
+    // 
     @Override
     public SeContainer getContainer() {
         if ( container != null ) {
@@ -55,10 +77,11 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
     }
     
     
+    // 
     @Override
     public <T> T getBean(Class<T> clazz) {
         if ( container != null ) {
-            return CDI.current().select(clazz).get();
+            return container.select(clazz).get();
         }
         else {
             throw new IllegalStateException("CDI not started");
@@ -66,6 +89,7 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
     }
 
     
+    // 
     @Override
     @SuppressWarnings("unchecked")
     public <V> void addBeanClass(Class<V>... clazz) {
@@ -75,6 +99,7 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
     }
     
     
+    // 
     @Override
     @SuppressWarnings("unchecked")
     public <V> void addPackage(Class<V>... clazz) {
@@ -84,6 +109,7 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
     }
     
 
+    // 
     @Override
     @SuppressWarnings("unchecked")
     public <V extends Extension> void addExtension(Class<V>... clazz) {

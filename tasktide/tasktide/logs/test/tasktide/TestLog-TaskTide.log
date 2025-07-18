@@ -8071,3 +8071,236 @@ Task 'ItemTask-2d454e65-e366-484e-8499-94dd14e0a3a9' started on Thread 'pool-3-t
 
 ---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
 
+2025-07-15 14:34:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-15 14:34:58 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-15 14:34:59 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-15 14:35:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4fffc790-16c9-4d6c-ac41-36e479cc5b1a initialized
+2025-07-15 14:35:03 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-15 14:35:03 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-15 14:35:03 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-15 14:35:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1a9b37bc-9eaf-4fcd-ac50-c3fbc5fee8cd initialized
+2025-07-15 14:35:03 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-15 14:35:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4fffc790-16c9-4d6c-ac41-36e479cc5b1a, 1a9b37bc-9eaf-4fcd-ac50-c3fbc5fee8cd]
+2025-07-15 14:35:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [4fffc790-16c9-4d6c-ac41-36e479cc5b1a, 1a9b37bc-9eaf-4fcd-ac50-c3fbc5fee8cd]
+2025-07-15 14:35:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1a9b37bc-9eaf-4fcd-ac50-c3fbc5fee8cd shut down
+2025-07-15 14:35:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4fffc790-16c9-4d6c-ac41-36e479cc5b1a shut down
+2025-07-15 14:35:03 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-15 14:40:37 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-15 14:40:37 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-15 14:40:37 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-15 14:40:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a9c69e06-dd86-4fa0-9503-368f6c4668ed initialized
+2025-07-15 14:40:41 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-15 14:40:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-15 14:40:41 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-15 14:40:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container fd044b57-1b1d-4c2f-964c-06cc8b1c01b3 initialized
+2025-07-15 14:40:41 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-15 14:40:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container fd044b57-1b1d-4c2f-964c-06cc8b1c01b3 shut down
+2025-07-15 14:40:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a9c69e06-dd86-4fa0-9503-368f6c4668ed shut down
+2025-07-15 14:40:41 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-15 14:41:17 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-15 14:41:17 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.ReflectionDiscoveryStrategy.processAnnotatedDiscovery ]: WELD-ENV-000014: Falling back to Java Reflection for bean-discovery-mode="annotated" discovery. Add org.jboss:jandex to the classpath to speed-up startup.
+2025-07-15 14:41:17 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-15 14:41:20 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 586c01a3-a69e-4124-bfc2-9ed65203b7f2 initialized
+2025-07-15 14:41:20 INFO  [ Test worker -> org.tasktide.tasktide.ConfigureTaskTideTest.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-15 14:41:20 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-15 14:41:20 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-07-15 14:41:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container d6446a03-9ddb-4b4f-96eb-610b1afd11fe initialized
+2025-07-15 14:41:21 INFO  [ Test worker -> org.tasktide.tasktide.ConfigureTaskTideTest.canConfigureEngineClient ]: 
+
+================ Tests Running EngineClient Through Config  ================
+
+2025-07-15 14:41:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:21 INFO  [ Test worker -> org.tasktide.tasktide.ConfigureTaskTideTest.waitOnExecutorTrackerWorkItem ]: Begining state monitoring of ExecutorServiceTracker:	N tasks = '4'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-1', Size='2', First ItemId = 'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='2', First ItemId = 'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-15 14:41:21 INFO  [ Test worker -> org.tasktide.tasktide.ConfigureTaskTideTest.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638' set on thread 'pool-2-thread-1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1' set on thread 'pool-2-thread-2'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '3' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '3' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:21 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-15 14:41:21 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-15 14:41:21 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223' set on thread 'pool-3-thread-1'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4' set on thread 'pool-3-thread-2'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4'
+2025-07-15 14:41:21 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping spotify.com
+2025-07-15 14:41:21 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping rte.ie
+2025-07-15 14:41:31 INFO  [ pool-2-thread-2 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:31 INFO  [ pool-2-thread-1 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:31 INFO  [ pool-2-thread-2 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:31 INFO  [ pool-2-thread-1 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:31 INFO  [ Test worker -> org.tasktide.tasktide.ConfigureTaskTideTest.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'0' StateSummary of ExecutorServiceTracker:
+
+Total='4', Remaining='4', Done='0', Expected='4'
+2025-07-15 14:41:31 INFO  [ Test worker -> org.tasktide.tasktide.ConfigureTaskTideTest.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-15 14:41:31 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "LOCKED": 1,
+        "DONE": 0,
+        "TODO": 2,
+        "FOR_UNLOCK": 0
+    }
+}
+
+
+2025-07-15 14:41:31 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "LOCKED": 1,
+        "DONE": 0,
+        "TODO": 2,
+        "FOR_UNLOCK": 0
+    }
+}
+
+
+2025-07-15 14:41:31 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-4ec61760-1bf9-46bf-b083-cd1766f0c638'
+2025-07-15 14:41:31 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-d5936510-4d60-46b1-b6ab-6fdda57d7ed1'
+2025-07-15 14:41:39 INFO  [ pool-3-thread-1 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-2 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-1 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-2 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-1 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-2 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-1 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-2 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping rte.ie
+2025-07-15 14:41:39 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping spotify.com
+2025-07-15 14:41:39 INFO  [ pool-3-thread-2 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-1 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-1 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:39 INFO  [ pool-3-thread-2 -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [586c01a3-a69e-4124-bfc2-9ed65203b7f2, d6446a03-9ddb-4b4f-96eb-610b1afd11fe]
+2025-07-15 14:41:40 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1752586881200,
+    "Exit Code": 1,
+    "Process Id": 31944,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging rte.ie [104.18.125.28] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 104.18.125.28:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-cefd1a24-7219-4d05-98e9-d35c538a49d1"
+    },
+    "Start Time": 1752586881106,
+    "Thread Name": "pool-3-thread-2",
+    "id": "TaskLogging-91d5bb25-8c36-44a7-a4f1-5cd9521d70f9"
+}
+2025-07-15 14:41:40 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping rte.ie-2' failed on thread 'pool-3-thread-2' with exit code 1
+
+2025-07-15 14:41:40 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1752586881187,
+    "Exit Code": 1,
+    "Process Id": 19056,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging spotify.com [35.186.224.24] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 35.186.224.24:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-947d66ad-df65-4786-9733-27807958f413"
+    },
+    "Start Time": 1752586881106,
+    "Thread Name": "pool-3-thread-1",
+    "id": "TaskLogging-ae4fd49d-2382-4b32-8f03-49a807979f08"
+}
+2025-07-15 14:41:40 WARN  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4'
+2025-07-15 14:41:40 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping spotify.com-2' failed on thread 'pool-3-thread-1' with exit code 1
+
+2025-07-15 14:41:40 WARN  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4'
+2025-07-15 14:41:40 WARN  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4',
+2025-07-15 14:41:40 WARN  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4' completed in 18904ms
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223',
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223' completed in 18904ms
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-d1b94890-9f40-42f1-9112-bf48f8200223'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-18812a5f-10ba-4abd-8d37-179ba388f6c4'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '0', Failed = '0', Skipped = '0'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '0', Failed = '0', Skipped = '0'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-b8e461c5-69c4-404f-9c9e-24896e4ce9aa'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-6335e151-6181-46bc-b825-0d562770ae5b'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-b8e461c5-69c4-404f-9c9e-24896e4ce9aa'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-6335e151-6181-46bc-b825-0d562770ae5b'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-b8e461c5-69c4-404f-9c9e-24896e4ce9aa' set on thread 'pool-3-thread-2'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-6335e151-6181-46bc-b825-0d562770ae5b' set on thread 'pool-3-thread-1'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-b8e461c5-69c4-404f-9c9e-24896e4ce9aa'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping spotify.com
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-6335e151-6181-46bc-b825-0d562770ae5b'
+2025-07-15 14:41:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping facebook.com
