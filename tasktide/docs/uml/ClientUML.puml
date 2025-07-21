@@ -1286,7 +1286,7 @@ class org.tasktide.core.manager.BuilderUtility #FFFFE0 {
     .. **Class Methods** ..
     + static ProcessLog makeEmptyProcessLog()
     + static ProcessLog buildProcessLog(String[], String[])
-    + static ProcessLog buildProcessLog(String, Stringp[], String[]
+    + static ProcessLog buildProcessLog(String, String[], String[]
 
     + static TaskLogging buildEmptyTaskLogging()
     + static TaskLogging buildTaskLogging(ProcessLog)

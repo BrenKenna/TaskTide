@@ -4,6 +4,10 @@
  */
 package org.tasktide.core.repository;
 
+import java.util.List;
+import jakarta.nosql.Template;
+
+
 import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.TaskTideModel;
@@ -11,7 +15,6 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import jakarta.nosql.Template;
 import org.tasktide.core.repository.nosql_repo.TemplateStepRepository;
 import org.tasktide.core.repository.nosql_repo.TemplateWorkItemRepository;
 import org.tasktide.core.repository.nosql_repo.TemplateWorkflowRepository;
@@ -21,12 +24,10 @@ import org.tasktide.core.repository.rocksdb.RocksDbStepRepository;
 import org.tasktide.core.repository.rocksdb.RocksDbWorkItemRepository;
 import org.tasktide.core.repository.rocksdb.RocksDbWorkflowRepository;
 
-import java.util.List;
-import org.tasktide.core.TaskTideService;
 import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
-import org.tasktide.core.services.ServiceFactory;
+
 
 /**
  * Enum of valid repository types
@@ -266,5 +267,20 @@ public enum RepositoryType {
      */
     public static boolean hasType(String query) {
         return indexOf(query) >= 0;
+    }
+    
+    
+    /**
+     * Map query to a RepositoryType
+     * 
+     * @param query
+     * @return RepositoryType
+     */
+    public static RepositoryType get(String query) {
+        int ind = indexOf(query);
+        if ( ind > -1 ) {
+            return values()[ind];
+        }
+        return null;
     }
 }

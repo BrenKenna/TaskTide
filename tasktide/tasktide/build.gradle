@@ -33,6 +33,7 @@ configurations {
 dependencies {
 
     // Project core lib
+    implementation  project(':itemstore')
     implementation  project(':core')
     implementation  project(':engine')
 

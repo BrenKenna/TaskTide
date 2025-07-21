@@ -11,10 +11,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.TaskTideMapper;
+import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.collection.Step;
@@ -133,7 +135,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
 
     
     /**
-     * 
+     * Fetch all {@link Workflow}
      * 
      * @return List-{@link Workflow Workflow}
      */
@@ -142,6 +144,21 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
         return repo.findAll();
     }
 
+    
+    /**
+     * Fetch all {@link Workflow} as {@link TaskTideModel}
+     * 
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<TaskTideModel> viewAllToTaskTideModel() {
+        return this.viewAll()
+            .stream()
+            .parallel()
+            .map(elm -> (TaskTideModel<Workflow>) elm)
+            .collect(Collectors.toList());
+    }
+    
     
     /**
      * Fetch {@link Workflow Workflow} by Id

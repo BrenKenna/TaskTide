@@ -45,6 +45,9 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
     public List<T> viewAll();
     
     
+    public List<TaskTideModel> viewAllToTaskTideModel();
+    
+    
     /**
      * Query backend for models with Id
      * 

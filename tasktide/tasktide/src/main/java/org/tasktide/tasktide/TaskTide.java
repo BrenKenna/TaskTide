@@ -47,74 +47,6 @@ public class TaskTide {
     
     
     /**
-     * Fetches splash string
-     * 
-     * @return String
-     */
-    static String fetchSplashString() {
-        String output = "";
-        try (InputStream is = TaskTide.class.getClassLoader().getResourceAsStream("splash.txt");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                output += "\n" + line;
-            }
-            return output;
-        } catch (IOException e) {
-            return "";
-        }
-    }
-    
-    
-    /**
-     * Print splash
-     * 
-     */
-    static void printSplash() {
-        try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("splash.txt");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-            System.out.println();
-        } catch (IOException e) {
-            
-        }
-    }
-    
-    
-    /**
-     * Method to configure CDI container
-     * 
-     * @param cdiProvider
-     * @return {@link CdiContainerProvider}
-     */
-    @SuppressWarnings("unchecked")
-    static CdiContainerProvider configureCdiInstance(CdiProviders cdiProvider) {
-        
-        // Initialize
-        CdiContainerProvider provider = cdiProvider.createProvider();
-        provider.initialize();
-        
-        // Add packages, and extensions
-        //  Required with Netbeans, not with in linux shell?
-        if ( !cdiProvider.isProvider(CdiProviders.QUARKUS) ) {
-            provider.addExtension(ReflectionEntityMetadataExtension.class, DocumentExtension.class);
-            provider.addBeanClass(
-           GlobalConfig.class, ManagerConfig.class, EngineConfig.class,
-           WorkItem.class, ItemTask.class, Step.class, Workflow.class
-            );
-        }
-        
-        // Return
-        LOGGER.info("Starting '{}' container", cdiProvider);
-        provider.start();
-        return provider;
-    }
-    
-    
-    /**
      * 
      * @param args the command line arguments
      */
@@ -124,9 +56,9 @@ public class TaskTide {
         try {
             
             // Configure provider and argument tree
-            TaskTide.printSplash();
+            TaskTideClientUtility.printSplash();
             LOGGER.info("Configuring the CDI Container Provider");
-            CdiContainerProvider provider = configureCdiInstance(CdiProviders.WELD);
+            CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD);
 
             // Fetch config map
             LOGGER.info("Fetching TaskTide configs");
@@ -136,9 +68,9 @@ public class TaskTide {
             TaskTideClientType clientType = configMap.whichClient();
 
             // Fetch TaskTideServiceManager
-            LOGGER.info("Fetching the TaskTideServiceManager");
             RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-            TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(provider, repoType);
+            LOGGER.info("Fetching the TaskTideServiceManager for '{}' Repository", repoType);
+            TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(repoType, configMap);
 
             // Run client
             LOGGER.info("Constructing client:\t'{}'", clientType);

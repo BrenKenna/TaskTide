@@ -40,6 +40,9 @@ public class ManagerConfig extends AbstractConfigurer {
     @ConfigProperty(name = "tasktide.manager.targetStep", defaultValue = "myStep")
     String targetStep;
     
+    @ConfigProperty(name = "tasktide.manager.target", defaultValue = "WorkItem")
+    String target;
+    
     
     /**
      * Defaults config path to 'tasktide engine'
@@ -73,6 +76,7 @@ public class ManagerConfig extends AbstractConfigurer {
         this.nestedDelimiter();
         this.method();
         this.targetStep();
+        this.target();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -80,6 +84,20 @@ public class ManagerConfig extends AbstractConfigurer {
         else {
             argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
         }
+    }
+    
+    
+    public void target() {
+        Argument<String> arg;
+        this.target = this.getConfig().getValue("tasktide.manager.target", String.class);
+        arg = this.getArgumentBuilder()
+            .withName("Target")
+            .withDescription("Defines the Import/Export target")
+            .withShortFlag("-tgt")
+            .withLongFlag("--target")
+            .withValue(this.target, String.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
     }
     
     

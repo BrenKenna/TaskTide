@@ -10,14 +10,17 @@ package org.tasktide.core.services;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.TaskTideMapper;
+import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.state_summary.StateSummary;
 
@@ -122,6 +125,21 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     @Override
     public List<WorkItem> viewAll() {
         return repo.findAll();
+    }
+    
+    
+    /**
+     * Fetch all {@link WorkItem} as {@link TaskTideModel}
+     * 
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<TaskTideModel> viewAllToTaskTideModel() {
+        return this.viewAll()
+            .stream()
+            .parallel()
+            .map(elm -> (TaskTideModel<WorkItem>) elm)
+            .collect(Collectors.toList());
     }
     
     

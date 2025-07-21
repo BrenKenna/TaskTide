@@ -4,13 +4,23 @@
  */
 package org.tasktide.tasktide.client;
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.tasktide.core.TaskTideModel;
+
 import org.tasktide.core.manager.ManagerAction;
+import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -60,11 +70,11 @@ public class TaskTideManagerClient extends TaskTideClient {
             }
         
             case EXPORT -> {
-                
+                this.handleExport();
             }
             
             default -> {
-            
+                throw new IllegalStateException("Manager method must be one of Import/Export");
             }
         }
     }
@@ -94,13 +104,38 @@ public class TaskTideManagerClient extends TaskTideClient {
     
     
     /**
+     * Export the {@link TaskTideModel} list to specified file
+     * 
+     * @param data
+     * @param outFile
+     * @return boolean
+     */
+    private boolean exportJson(List<TaskTideModel> data, String outFile) {
+        try (Writer writer = new FileWriter(outFile) ) {
+            Jsonb jsonb = JsonbBuilder.create();
+            jsonb.toJson(data, writer);
+            return true;
+        }
+        catch (IOException ex) {
+            return false;
+        }
+    }
+    
+    
+    /**
      * Deserialize {@link WorkItem} collection from 
      * 
      * @param file
      * @return List of {@link WorkItem}
      */
     private List<WorkItem> importJson(String file){
-        return null;
+        try ( Reader inpStream = new FileReader(file) ) {
+            Jsonb jsonb = JsonbBuilder.create();
+            return Arrays.asList(jsonb.fromJson(inpStream, WorkItem[].class));
+        }
+        catch ( IOException ex ) {
+            return null;
+        }
     }
     
     
@@ -163,7 +198,30 @@ public class TaskTideManagerClient extends TaskTideClient {
             ex.printStackTrace();
         }
     }
+    
+    
+    /**
+     * Handle exporting target data to output file
+     */
+    private void handleExport() {
+        String outFile = parseFile(ManagerAction.EXPORT);
+        String target = (String) this.argMap.getArgument("Target").getValue();
+        if ( !outFile.isEmpty() && !target.isEmpty() ) {
+            ManagerTarget tgt = ManagerTarget.get(target);
+            if ( tgt != null ) {
+                List<TaskTideModel> data = tgt.fetchModels(this.getTaskTideManager());
+                this.exportJson(data, outFile);
+            }
+            else {
+                throw new IllegalStateException(String.format("Target must be one of: %s", ManagerTarget.valuesString()));
+            }
+        }
+        else {
+            throw new IllegalArgumentException("OutFile & Target cannot be empty");
+        }
+    }
 
+    
     
     @Override
     protected void configureClient() {

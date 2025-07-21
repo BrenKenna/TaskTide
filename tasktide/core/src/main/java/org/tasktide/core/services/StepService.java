@@ -10,6 +10,7 @@ package org.tasktide.core.services;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideMapper;
 import org.tasktide.core.TaskTideModel;
@@ -17,6 +18,7 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
@@ -112,6 +114,21 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
         return repo.findAll();
     }
 
+    
+    /**
+     * Fetch all {@link Step} as {@link TaskTideModel}
+     * 
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<TaskTideModel> viewAllToTaskTideModel() {
+        return this.viewAll()
+            .stream()
+            .parallel()
+            .map(elm -> (TaskTideModel<Step>) elm)
+            .collect(Collectors.toList());
+    }
+    
         
     /**
      * Fetch steps having name
