@@ -1,5 +1,5 @@
 # TaskTide - ItemStore
-The purpose of this Library is to offer 1). Support for File based Databases like SQLite, and RocksDB, and 2). Lock Coordination system so that different instances of TaskTide can read/write to the "backend".
+The purpose of this Library is to offer support for File based Databases like SQLite, and RocksDB, locking coordination system so that different instances of TaskTide can read/write to the "backend".
 
 Currently this is branch is only developed with RocksDB & SQLite in mind, and RocksDB is the only one implemented. However, given an Item is stored, these will be implemented to cover both SQLite, and SQL backends.
 
