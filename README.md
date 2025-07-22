@@ -30,5 +30,5 @@
 - **Manager** – Provides access and services for workflows and persistence.
 
 <p align="center">
-  <img src="tasktide/docs/assets/tasktide-arch.png" alt="TaskTide Architecture" width="300"/>
+  <img src="tasktide/docs/assets/tasktide-arch.png" alt="TaskTide Architecture"/>
 </p>
