@@ -13,5 +13,5 @@ Currently this is branch is only developed with RocksDB & SQLite in mind, and Ro
 
 
 <p align="center">
-  <img src="itemstore-uml.svg" alt="ItemStore-UML"/>
+  <img src="/tasktide/docs/uml/itemstore-uml.svg" alt="ItemStore-UML"/>
 </p>
