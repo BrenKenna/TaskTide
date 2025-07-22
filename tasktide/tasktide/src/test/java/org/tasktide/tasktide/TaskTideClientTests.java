@@ -111,7 +111,7 @@ public class TaskTideClientTests {
         
         // Fetch service manager
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(provider, repoType);
+        TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(repoType, configMap);
         
         // Fetch client
         TaskTideClientType clientType = TaskTideClientType.MANAGER;
@@ -143,7 +143,7 @@ public class TaskTideClientTests {
         
         // Fetch service manager
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(provider, repoType);
+        TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(repoType, configMap);
         
         // Fetch client
         TaskTideClientType clientType = TaskTideClientType.ENGINE;

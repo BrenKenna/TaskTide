@@ -40,7 +40,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
      * @param executorService 
      */
     public WorkItemProcessor(List<WorkItem> workload, int threshold, ExecutorService executorService) {
-        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
+        super(workload, threshold, executorService, LogManager.getLogger(WorkItemProcessor.class));
         this.worker = new WorkItemExecutor();
     }
     
@@ -59,7 +59,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
         ExecutorService executorService,
         TaskTideExecutor<WorkItem> executor
     ) {
-        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
+        super(workload, threshold, executorService, LogManager.getLogger(WorkItemProcessor.class));
         this.worker = (WorkItemExecutor) executor;
     }
     
