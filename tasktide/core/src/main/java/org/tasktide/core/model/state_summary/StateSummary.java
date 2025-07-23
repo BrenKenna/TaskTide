@@ -9,14 +9,16 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+
 import java.util.HashMap;
 import java.util.List;
-
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.task.ItemTask;
 
 
 /**

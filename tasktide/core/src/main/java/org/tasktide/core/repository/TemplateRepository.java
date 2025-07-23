@@ -144,7 +144,7 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      * @param value
      * @param group
      * @param groupVal
-     * @return List<T>
+     * @return List-{@link TaskTideModel} 
      */
     @Override
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {

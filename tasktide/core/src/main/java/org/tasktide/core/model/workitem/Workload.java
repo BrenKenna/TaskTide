@@ -196,7 +196,7 @@ public class Workload {
     
     
     /**
-     * Summarize {@link ItemTask} by count of their {@link TaskSate}
+     * Summarize {@link ItemTask} by count of their {@link TaskState}
      * 
      * @return Map-{@link TaskState}, Integer
      */

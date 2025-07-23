@@ -7,6 +7,7 @@ package org.tasktide.core.repository.rocksdb;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.RocksDbRepository;
 import org.tasktide.itemstore.ItemStore;
 

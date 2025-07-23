@@ -216,7 +216,7 @@ public class Utils {
     /**
      * Get char set
      * 
-     * @return {@link CharSet CharSet}
+     * @return Charset
      */
     public Charset getCharSet() {
         return charSet;

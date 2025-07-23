@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
@@ -21,7 +22,7 @@ import org.tasktide.core.model.workitem.Workload;
 
 
 /**
- * Collection of static methods to support {@link ManagerTask ManagerTask} to {@link TaskTideModel TaskTideModel}.
+ * Collection of static methods to support {@link ManagerTask} to {@link TaskTideModel}.
  * 
  * @author bkenna
  */

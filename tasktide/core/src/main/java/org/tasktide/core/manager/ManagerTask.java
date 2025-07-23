@@ -23,9 +23,7 @@ import org.tasktide.core.model.task.TaskState;
 
 
 /**
- * Simple converter class for converting user input into {@link ItemTask}.
- * <br><br>
- * Using to get the lay of the land of this in {@linl TaskTideManagerTests}.
+ * Simple converter class for converting user input into {@link ItemTask}
  * 
  * @author bkenna
  */

@@ -6,7 +6,9 @@ package org.tasktide.core.model.builders;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.tasktide.core.TaskTideModelType;
+import org.tasktide.core.TaskTideModel;
 
 
 /**
@@ -48,7 +50,7 @@ public class ModelBuilderProvider {
      * Get builder for {@link TaskTideModel}
      * 
      * @param modelType
-     * @return {@linke ModelBuilder}
+     * @return {@link ModelBuilder}
      */
     public ModelBuilder getBuilder(TaskTideModelType modelType) {
         return getBuilder(mapToModel(modelType));

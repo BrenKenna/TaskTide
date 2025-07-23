@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.repository.rocksdb;
 
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.repository.RocksDbRepository;
 import org.tasktide.itemstore.ItemStore;

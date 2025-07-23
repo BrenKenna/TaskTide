@@ -24,7 +24,7 @@ import org.tasktide.core.supporting.Utils;
 
 
 /**
- * Service to provide {@link WorkItemWorkItem} interactions to backend DB
+ * Service to provide {@link WorkItem} interactions to backend DB
  * 
  * @author bkenna
  */

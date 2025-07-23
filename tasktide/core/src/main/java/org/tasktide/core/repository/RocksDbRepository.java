@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.itemstore.Item;
 import org.tasktide.itemstore.ItemStore;
@@ -281,7 +285,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
 
     
     /**
-     * Open connection to both master & prototype
+     * Open connection to both master and prototype
      * 
      * @return List of {@link TaskTideModel}
      */

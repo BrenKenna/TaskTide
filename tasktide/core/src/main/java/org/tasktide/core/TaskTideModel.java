@@ -4,6 +4,10 @@
  */
 package org.tasktide.core;
 
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+
 
 /**
  * Interface to support methods around model classes

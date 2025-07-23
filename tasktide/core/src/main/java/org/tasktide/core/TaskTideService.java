@@ -6,6 +6,10 @@ package org.tasktide.core;
 
 import java.util.List;
 
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+
 
 /**
  * Marker interface for TaskTideService, want to restrict eventually.
@@ -45,7 +49,7 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
      * @param value
      * @param group
      * @param groupVal
-     * @return List<T>
+     * @return List-{@link TaskTideModel}
      */
     public List<T> viewByFieldForGroup(String field, Object value, String group, Object groupVal);
     

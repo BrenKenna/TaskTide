@@ -77,7 +77,7 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      * @param value
      * @param group
      * @param groupVal
-     * @return List<T>
+     * @return List-{@link TaskTideModel}
      */
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal);
     

@@ -6,15 +6,19 @@ package org.tasktide.core;
 
 import java.util.List;
 
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.task.ItemTask;
 
 /**
  * 
  * Interface to facilitate model class mapping from
  * <br>
  * <ul>
- *  <li>{@link WorkflowService} -> {@link Step}</li>
- *  <li>{@link StepService} -> {@link WorkItem}</li>
- *  <li>{@link WorkItemService} -> {@link ItemTask}</li>
+ *  <li>{@link TaskTideService WorkflowService} -> {@link Step}</li>
+ *  <li>{@link TaskTideService StepService} -> {@link WorkItem}</li>
+ *  <li>{@link TaskTideService WorkItemService} -> {@link ItemTask}</li>
  * </ul>
  * 
  * @param <T> of {@link Workflow},{@link Step},{@link WorkItem}

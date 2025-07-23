@@ -6,13 +6,14 @@ package org.tasktide.core.repository.rocksdb;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.repository.RocksDbRepository;
 import org.tasktide.itemstore.ItemStore;
 
 
 /**
- * {@link Workflow} {@link TaskTideRepositor} backed by RocksDB
+ * {@link Workflow} {@link TaskTideRepository} backed by RocksDB
  * 
  * @author bkenna
  */

@@ -342,7 +342,7 @@ public class Step implements TaskTideModel<Step> {
     /**
      * Summarize step by ItemState
      * 
-     * @return {@link StateSumary}-{@link ItemState}
+     * @return {@link StateSummary}-{@link ItemState}
      */
     @JsonbTransient
     public StateSummary<ItemState> summarizeByState() {

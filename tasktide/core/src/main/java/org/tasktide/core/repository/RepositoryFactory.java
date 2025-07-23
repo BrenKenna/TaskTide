@@ -7,10 +7,14 @@ package org.tasktide.core.repository;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.workitem.WorkItem;
+
 
 /**
  *
- * @param <T> of {@link TaskTideModel}-{@link Workflow}, {@link Step}, {@lnik WorkItem}
+ * @param <T> of {@link TaskTideModel}-{@link Workflow}, {@link Step}, {@link WorkItem}
  * 
  * @author bkenna
  */
