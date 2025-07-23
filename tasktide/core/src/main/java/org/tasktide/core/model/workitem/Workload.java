@@ -4,15 +4,14 @@
  */
 package org.tasktide.core.model.workitem;
 
-
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
-import jakarta.nosql.Column;
 
+import jakarta.nosql.Column;
 import jakarta.nosql.Embeddable;
 
 import java.util.ArrayList;
@@ -133,7 +132,7 @@ public class Workload {
      * Fetch task if present
      * 
      * @param taskName
-     * @return ItemTask
+     * @return {@link ItemTask}
      */
     public ItemTask getTask(String taskName) {
         return workload.get(taskName);
@@ -197,9 +196,9 @@ public class Workload {
     
     
     /**
-     * Summarize ItemTasks by count of their TaskSate
+     * Summarize {@link ItemTask} by count of their {@link TaskSate}
      * 
-     * @return Map-TaskState, Integer
+     * @return Map-{@link TaskState}, Integer
      */
     public Map<TaskState, Integer> summarizeWorkload() {
         
@@ -225,7 +224,7 @@ public class Workload {
     /**
      * Fetch tasks by their state
      * 
-     * @return Map-TaskState, List-ItemTask
+     * @return Map-{@link TaskState}, List-{@link ItemTask}
      */
     public Map<TaskState, List<ItemTask>> fetchByState() {
     
@@ -323,7 +322,7 @@ public class Workload {
     /**
      * Get workload
      * 
-     * @return Map-TaskName, ItemTask
+     * @return Map-TaskName, {@link ItemTask}
      */
     public Map<String, ItemTask> getWorkload() {
         return workload;
@@ -349,7 +348,7 @@ public class Workload {
     /**
      * Get workload type
      * 
-     * @return ItemType
+     * @return {@link ItemType}
      */
     public ItemType getWorkloadType() {
         return workloadType;

@@ -44,7 +44,7 @@ public class ItemTaskBuilder extends ModelBuilder {
      * Add task name field
      * 
      * @param taskName
-     * @return ItemTaskBuilder
+     * @return {@link ItemTaskBuilder}
      */
     public ItemTaskBuilder taskName(String taskName) {
         this.taskName = taskName;
@@ -56,7 +56,7 @@ public class ItemTaskBuilder extends ModelBuilder {
      * Add task field
      * 
      * @param task
-     * @return ItemTaskBuilder
+     * @return {@link ItemTaskBuilder}
      */
     public ItemTaskBuilder task(String task) {
         this.task = task;
@@ -68,7 +68,7 @@ public class ItemTaskBuilder extends ModelBuilder {
      * Add task state field
      * 
      * @param taskState
-     * @return ItemTaskBuilder
+     * @return {@link ItemTaskBuilder}
      */
     public ItemTaskBuilder taskState(TaskState taskState) {
         this.taskState = taskState;
@@ -80,7 +80,7 @@ public class ItemTaskBuilder extends ModelBuilder {
      * Add task logging field
      * 
      * @param taskLog
-     * @return ItemTaskBuilder
+     * @return {@link ItemTaskBuilder}
      */
     public ItemTaskBuilder taskLog(TaskLogging taskLog) {
         this.taskLog = taskLog;
@@ -91,7 +91,7 @@ public class ItemTaskBuilder extends ModelBuilder {
     /**
      * Construct ItemTask from provided fields
      * 
-     * @return ItemTask 
+     * @return {@link ItemTask} 
      */
     @Override
     public ItemTask build() {

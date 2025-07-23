@@ -149,8 +149,7 @@ public enum ItemState implements StateSummaryType {
     /**
      * Map ItemState to a TaskState
      * 
-     * @param task
-     * @return TaskState
+     * @return {@link TaskState}
      */
     public abstract TaskState mapToTaskState();
     

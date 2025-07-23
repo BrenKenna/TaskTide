@@ -136,7 +136,7 @@ public enum TaskTideModelType {
      * Return the TaskTide model type for query or null
      * 
      * @param query
-     * @return TaskTideModelType
+     * @return {@link TaskTideModelType}
      */
     public static TaskTideModelType getQuery(String query) {
         int index = indexOf(query);

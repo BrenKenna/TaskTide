@@ -33,7 +33,6 @@ public class TaskTideServiceManager {
      * @param stepServ
      * @param workflowServ
      */
-    // @Inject
     public TaskTideServiceManager(
         TaskTideService<WorkItem> workItemServ,
         TaskTideService<Step> stepServ,

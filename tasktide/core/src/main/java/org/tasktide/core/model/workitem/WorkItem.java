@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.model.workitem;
 
-
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -179,9 +178,9 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     
     
     /**
-     * Summarize ItemTask by ItemState
+     * Summarize {@link ItemTask} by {@link ItemState}
      * 
-     * @return Map-ItemState, Integer
+     * @return Map-{@link ItemState}, Integer
      */
     public Map<ItemState, Integer> summarizeByState() {
     
@@ -200,9 +199,9 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     
     
     /**
-     * Fetch ItemTasks by their ItemState
+     * Fetch {@link ItemTask} by their {@link ItemState}
      * 
-     * @return Map-ItemState, List-ItemTask
+     * @return Map-{@link ItemState}, List-{@link ItemTask}
      */
     public Map<ItemState, List<ItemTask>> fetchByStates() {
     
@@ -274,7 +273,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     /**
      * Get item type
      * 
-     * @return ItemType
+     * @return {@link ItemType}
      */
     public ItemType getItemType() {
         return itemType;
@@ -294,7 +293,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     /**
      * Get item state
      * 
-     * @return ItemState
+     * @return {@link ItemState}
      */
     public ItemState getItemState() {
         return itemState;
@@ -432,7 +431,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     /**
      * Get workload
      * 
-     * @return Workload
+     * @return {@link Workload}
      */
     public Workload getWorkload() {
         return workload;

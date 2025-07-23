@@ -29,7 +29,7 @@ public class ProcessLogBuilder extends ModelBuilder {
      * Add id field
      * 
      * @param id
-     * @return ProcessLogBuilder
+     * @return {@link ProcessLogBuilder}
      */
     public ProcessLogBuilder id(String id) {
         this.id = id;
@@ -41,7 +41,7 @@ public class ProcessLogBuilder extends ModelBuilder {
      * Add stdout field
      * 
      * @param stdout
-     * @return ProcessLogBuilder
+     * @return {@link ProcessLogBuilder}
      */
     public ProcessLogBuilder stdout(String[] stdout) {
         this.stdout = stdout;
@@ -53,7 +53,7 @@ public class ProcessLogBuilder extends ModelBuilder {
      * Add stderr field
      * 
      * @param stderr
-     * @return ProcessLogBuilder
+     * @return {@link ProcessLogBuilder}
      */
     public ProcessLogBuilder stderr(String[] stderr) {
         this.stderr = stderr;
@@ -64,7 +64,7 @@ public class ProcessLogBuilder extends ModelBuilder {
     /**
      * Construct ProcessLog from provided fields
      * 
-     * @return ProcessLog
+     * @return {@link ProcessLogBuilder}
      */
     @Override
     public ProcessLog build() {

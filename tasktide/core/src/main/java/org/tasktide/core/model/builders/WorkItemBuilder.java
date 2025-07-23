@@ -4,8 +4,6 @@
  */
 package org.tasktide.core.model.builders;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
@@ -39,7 +37,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add id field
      * 
      * @param id 
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder id(String id) {
         this.id = id;
@@ -51,7 +49,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add item name field
      * 
      * @param itemName
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder itemName(String itemName) {
         this.itemName = itemName;
@@ -63,7 +61,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add lockId field
      * 
      * @param lockId
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder lockId(String lockId) {
         this.lockId = lockId;
@@ -75,7 +73,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add item type field
      * 
      * @param itemType
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder itemType(ItemType itemType) {
         this.itemType = itemType;
@@ -87,7 +85,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add item state field
      * 
      * @param itemState
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder itemState(ItemState itemState) {
         this.itemState = itemState;
@@ -99,7 +97,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add lock date field
      * 
      * @param lockDate
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder lockDate(long lockDate) {
         this.lockDate = lockDate;
@@ -111,7 +109,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add done date field
      * 
      * @param doneDate
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder doneDate(long doneDate) {
         this.doneDate = doneDate;
@@ -123,7 +121,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add task count field
      * 
      * @param taskCount
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder taskCount(int taskCount) {
         this.taskCount = taskCount;
@@ -135,7 +133,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add task done field
      * 
      * @param taskDone
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder taskDone(int taskDone) {
         this.taskDone = taskDone;
@@ -147,7 +145,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add workload field
      * 
      * @param workload
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder workload(Workload workload) {
         this.workload = workload;
@@ -159,7 +157,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add workload field with single {@link ItemTask ItemTask}
      * 
      * @param itemTask
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder workload(ItemTask itemTask) {
         WorkloadBuilder builder = new WorkloadBuilder();
@@ -172,7 +170,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * Add step name field
      * 
      * @param stepName
-     * @return WorkItemBuilder
+     * @return {@link WorkItemBuilder}
      */
     public WorkItemBuilder stepName(String stepName) {
         this.stepName = stepName;
@@ -181,9 +179,9 @@ public class WorkItemBuilder extends ModelBuilder {
     
     
     /**
-     * Build {@link WorkItem WorkItem} from provided fields
+     * Build {@link WorkItem} from provided fields
      * 
-     * @return {@link WorkItem WorkItem}
+     * @return {@link WorkItem}
      */
     @Override
     public WorkItem build() {

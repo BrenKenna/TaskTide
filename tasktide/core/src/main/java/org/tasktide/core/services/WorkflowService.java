@@ -4,8 +4,6 @@
  */
 package org.tasktide.core.services;
 
-// import jakarta.enterprise.context.Dependent;
-// import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,11 +48,11 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
 
     
     /**
-     * Add {@link Step Step} from {@link Workflow Workflow}
+     * Add {@link Step Step} from {@link Workflow}
      * 
      * @param workflow
      * @param step
-     * @return {@link Workflow Workflow}
+     * @return {@link Workflow}
      */
     public Workflow addStepToWorkflow(Workflow workflow, Step step) {
         workflow.getWorkflowSteps().put(step.getId(), step);
@@ -63,7 +61,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
     
     
     /**
-     * Drop {@link Step Step} from {@link Workflow Workflow}
+     * Drop {@link Step Step} from {@link Workflow}
      * 
      * @param workflow
      * @param step
@@ -76,9 +74,9 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
     
     
     /**
-     * Summarize {@link Step Step} across all {@link Workflow Workflow}
+     * Summarize {@link Step} across all {@link Workflow}
      * 
-     * @return WorkflowId, StepId,{@link StateSummary StateSummary}-{@link ItemState ItemState}
+     * @return WorkflowId, StepId,{@link StateSummary}-{@link ItemState}
      */
     public Map<String, Map<String, StateSummary<ItemState>>> summarizeWorkflow() {
     
@@ -97,11 +95,11 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
     
     
     /**
-     * Fetch steps for {@link Workflow Workflow}
+     * Fetch steps for {@link Workflow}
      * 
      * @param mappingServ
      * @param model
-     * @return {@link List List}-{@link Step Step}
+     * @return List-{@link Step}
      */
     @Override
     public List<Step> getThroughLink(TaskTideService<Step> mappingServ, Workflow model) {
@@ -110,10 +108,10 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
 
     
     /**
-     * Add {@link Workflow Workflow}
+     * Add {@link Workflow}
      * 
      * @param model
-     * @return {@link Workflow Workflow}
+     * @return {@link Workflow}
      */
     @Override
     public Workflow appendModel(Workflow model) {
@@ -126,18 +124,34 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
      * 
      * @param field
      * @param value
-     * @return List-{@link Workflow Workflow}
+     * @return List-{@link Workflow}
      */
     @Override
     public List<Workflow> viewByField(String field, Object value) {
         return repo.findByField(field, value);
+    }
+    
+    
+    /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value. Step = Name, State = ToDo
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @return List-{@link Workflow}
+     */
+    @Override
+    public List<Workflow> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        return repo.findByFieldForGroup(field, value, group, groupVal);
     }
 
     
     /**
      * Fetch all {@link Workflow}
      * 
-     * @return List-{@link Workflow Workflow}
+     * @return List-{@link Workflow}
      */
     @Override
     public List<Workflow> viewAll() {
@@ -164,7 +178,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
      * Fetch {@link Workflow Workflow} by Id
      * 
      * @param id
-     * @return {@link Workflow Workflow}
+     * @return {@link Workflow}
      */
     @Override
     public Workflow fetchById(String id) {
@@ -173,7 +187,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
 
     
     /**
-     * Drop {@link Workflow Workflow} by Id
+     * Drop {@link Workflow} by Id
      * 
      * @param id
      * @return boolean
@@ -185,10 +199,10 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
 
     
     /**
-     * Update {@link Workflow Workflow}
+     * Update {@link Workflow}
      * 
      * @param model
-     * @return {@link Workflow Workflow}
+     * @return {@link Workflow}
      */
     @Override
     public Workflow updateModel(Workflow model) {
@@ -197,7 +211,7 @@ public class WorkflowService implements TaskTideMapper<Workflow, Step>, TaskTide
 
     
     /**
-     * Extend {@link Workflow Workflow} matching imported count against expected
+     * Extend {@link Workflow} matching imported count against expected
      * 
      * @param toAdd
      * @return boolean

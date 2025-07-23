@@ -4,14 +4,11 @@
  */
 package org.tasktide.core.repository.nosql_repo;
 
-import org.tasktide.core.repository.TemplateRepository;
-// import jakarta.enterprise.context.ApplicationScoped;
-// import jakarta.inject.Inject;
-// import org.eclipse.microprofile.config.inject.ConfigProperty;
-
-import jakarta.nosql.Template;
 import java.util.List;
 
+import jakarta.nosql.Template;
+
+import org.tasktide.core.repository.TemplateRepository;
 import org.tasktide.core.model.workitem.WorkItem;
 
 
@@ -21,7 +18,6 @@ import org.tasktide.core.model.workitem.WorkItem;
  * 
  * @author bkenna
  */
-// @ApplicationScoped
 public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
     
     /**
@@ -30,7 +26,6 @@ public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
      * @param template
      * @param collectionName workitem.repo-name
      */
-    //@Inject
     public TemplateWorkItemRepository(
         Template template,
         String collectionName

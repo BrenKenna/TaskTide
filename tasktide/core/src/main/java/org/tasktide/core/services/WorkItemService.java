@@ -4,9 +4,6 @@
  */
 package org.tasktide.core.services;
 
-// import jakarta.enterprise.context.Dependent;
-// import jakarta.inject.Inject;
-
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -20,7 +17,6 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.state_summary.StateSummary;
 
@@ -28,12 +24,10 @@ import org.tasktide.core.supporting.Utils;
 
 
 /**
- *
  * Service to provide {@link WorkItemWorkItem} interactions to backend DB
  * 
  * @author bkenna
  */
-// @Dependent
 public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTideService<WorkItem> {
     
     // Attributes
@@ -42,6 +36,11 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     private final int LOCKING_WAIT_TIME;
     
     
+    /**
+     * Construct {@link TaskTideService} with {@link TaskTideRepository}
+     * 
+     * @param repo 
+     */
     public WorkItemService(TaskTideRepository<WorkItem> repo) {
         this.repo = repo;
         this.LOCKING_WAIT_TIME = 4;
@@ -83,7 +82,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * Insert work item
      * 
      * @param model
-     * @return {@link WorkItem WorkItem}
+     * @return {@link WorkItem}
      */
     @Override
     public WorkItem appendModel(WorkItem model) {
@@ -91,13 +90,12 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     }
     
     
-    
     /**
      * Fetch work item list by field
      * 
      * @param field
      * @param value
-     * @return List-WorkItem
+     * @return List-{@link WorkItem}
      */
     @Override
     public List<WorkItem> viewByField(String field, Object value) {
@@ -106,10 +104,26 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     
     
     /**
-     * Find {@link WorkItem WorkItem} by Id
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value. Step = Name, State = ToDo
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @return List-{@link WorkItem}
+     */
+    @Override
+    public List<WorkItem> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        return repo.findByFieldForGroup(field, value, group, groupVal);
+    }
+    
+    
+    /**
+     * Find {@link WorkItem} by Id
      * 
      * @param id
-     * @return {@link WorkItem WorkItem}
+     * @return {@link WorkItem}
      */
     @Override
     public WorkItem fetchById(String id) {
@@ -120,7 +134,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     /**
      * Find all work items
      * 
-     * @return List-{@link WorkItem WorkItem}
+     * @return List-{@link WorkItem}
      */
     @Override
     public List<WorkItem> viewAll() {
@@ -144,7 +158,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     
     
     /**
-     * Drop {@link WorkItem WorkItem} by Id
+     * Drop {@link WorkItem} by Id
      * 
      * @param id
      * @return boolean
@@ -156,10 +170,10 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
 
     
     /**
-     * Update {@link WorkItem WorkItem}
+     * Update {@link WorkItem}
      * 
      * @param model
-     * @return {@link WorkItem WorkItem}
+     * @return {@link WorkItem}
      */
     @Override
     public WorkItem updateModel(WorkItem model) {
@@ -168,7 +182,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
 
     
     /**
-     * Import {@link WorkItem WorkItem} list matching imported count against expected
+     * Import {@link WorkItem} list matching imported count against expected
      * 
      * @param toAdd
      * @return boolean
@@ -195,7 +209,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * 
      * @param workItem
      * @param task
-     * @return {@link WorkItem WorkItem}
+     * @return {@link WorkItem}
      */
     public WorkItem appendTask(WorkItem workItem, ItemTask task) {
     
@@ -208,7 +222,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     
     
     /**
-     * Lock provided WorkItem
+     * Lock provided {@link WorkItem}
      * 
      * @param workItem
      * @return boolean 
@@ -227,7 +241,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * Mark task as done
      * 
      * @param workItem
-     * @return WorkItem
+     * @return {@link WorkItem}
      */
     public WorkItem markAsDone(WorkItem workItem) {
     
@@ -242,7 +256,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * Find WorkItems by state
      * 
      * @param itemState
-     * @return List-WorkItem
+     * @return List-{@link WorkItem}
      */
     public List<WorkItem> viewItemsByState(ItemState itemState) {
         return repo.findByField("itemState", itemState);
@@ -253,7 +267,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * Fetch list of work items with name
      * 
      * @param itemName
-     * @return List-WorkItem
+     * @return List-{@link WorkItem}
      */
     public List<WorkItem> viewItemsByName(String itemName) {
         return repo.findByField("itemName", itemName);
@@ -274,7 +288,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * Provide count of collection by their state
      * 
      * @param traceFirst - Update per item task counts before providing
-     * @return StateSummary
+     * @return {@link StateSummary}
      */
     public StateSummary<ItemState> fetchCountByState(boolean traceFirst) {
         
@@ -304,9 +318,9 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
 
     
     /**
-     * Return {@link WorkItem} {@link TaskTideRepository}
+     * Return -{@link WorkItem} {@link TaskTideRepository}
      * 
-     * @return {@link TaskTideRepository} of {@link WorkItem}
+     * @return {@link TaskTideRepository} of -{@link WorkItem}
      */
     @Override
     public TaskTideRepository<WorkItem> getRepo() {
@@ -315,11 +329,11 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     
     
     /**
-     * Fetches {@link Step Step} for queried {@link WorkItem WorkItem}
+     * Fetches {@link Step} for queried {@link WorkItem}
      * 
      * @param mappingServ
      * @param model
-     * @return List-{@link Step Step}
+     * @return List-{@link Step}
      */
     @Override
     public List<Step> getThroughLink(TaskTideService<Step> mappingServ, WorkItem model) {

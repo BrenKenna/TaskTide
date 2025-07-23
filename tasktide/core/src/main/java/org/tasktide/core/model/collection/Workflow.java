@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.model.collection;
 
-import jakarta.enterprise.context.Dependent;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -34,7 +33,6 @@ import org.tasktide.core.model.workitem.ItemState;
  * @author bkenna
  */
 @Entity
-@Dependent
 public class Workflow implements TaskTideModel<Workflow> {
     
     @Id
@@ -121,7 +119,7 @@ public class Workflow implements TaskTideModel<Workflow> {
     /**
      * Get workflow steps
      * 
-     * @return List-Step
+     * @return Map-String, {@link Step}
      */
     public Map<String, Step> getWorkflowSteps() {
         return workflowSteps;
@@ -194,9 +192,9 @@ public class Workflow implements TaskTideModel<Workflow> {
     }
     
     /**
-     * Summarize {@link Workflow Workflow} {@link Step Step} collection
+     * Summarize {@link Workflow} {@link Step} collection
      * 
-     * @return Map-String,{@link StateSummary StateSummary}-{@link ItemState ItemState}
+     * @return Map-String,{@link StateSummary}-{@link ItemState}
      */
     @JsonbTransient
     public Map<String, StateSummary<ItemState>> summarizeStepStates() {
@@ -231,7 +229,7 @@ public class Workflow implements TaskTideModel<Workflow> {
 
     
     /**
-     * TaskTideModel interface get the value from the required field
+     * {@link TaskTideModel} interface get the value from the required field
      * 
      * @param field
      * @return Object

@@ -26,10 +26,10 @@ public class WorkflowBuilder extends ModelBuilder {
     
     
     /**
-     * Add {@link Workflow Workflow} Id field
+     * Add {@link Workflow} Id field
      * 
      * @param workflowId
-     * @return WorkflowBuilder
+     * @return {@link WorkflowBuilder}
      */
     public WorkflowBuilder id(String workflowId) {
         this.workflowId = workflowId;
@@ -38,7 +38,7 @@ public class WorkflowBuilder extends ModelBuilder {
     
     
     /**
-     * Add {@link Workflow Workflow} name field
+     * Add {@link Workflow} name field
      * 
      * @param workflowName
      * @return String
@@ -50,10 +50,10 @@ public class WorkflowBuilder extends ModelBuilder {
     
     
     /**
-     * Add {@link Workflow Workflow} steps field
+     * Add {@link Workflow} steps field
      * 
      * @param steps
-     * @return WorkflowBuilder
+     * @return {@link WorkflowBuilder}
      */
     public WorkflowBuilder steps(Map<String, Step> steps) {
         this.steps = steps;
@@ -61,10 +61,10 @@ public class WorkflowBuilder extends ModelBuilder {
     }
     
     /**
-     * Add {@link Workflow Workflow} steps field
+     * Add {@link Workflow} steps field
      * 
      * @param stepList
-     * @return WorkflowBuilder
+     * @return {@link WorkflowBuilder}
      */
     public WorkflowBuilder steps(List<Step> stepList) {
         this.steps = new HashMap<>();
@@ -76,9 +76,9 @@ public class WorkflowBuilder extends ModelBuilder {
     
     
     /**
-     * Construct {@link Workflow Workflow} with the provided fields
+     * Construct {@link Workflow} with the provided fields
      * 
-     * @return {@link Workflow Workflow}
+     * @return {@link Workflow}
      */
     @Override
     public Workflow build() {

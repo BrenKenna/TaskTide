@@ -4,12 +4,9 @@
  */
 package org.tasktide.core.repository.json_repo;
 
-import org.tasktide.core.repository.JsonRepository;
-// import jakarta.inject.Inject;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-
 import java.util.List;
 
+import org.tasktide.core.repository.JsonRepository;
 import org.tasktide.core.model.collection.Workflow;
 
 
@@ -27,7 +24,6 @@ public class JsonWorkflowRepository extends JsonRepository<Workflow> {
      * @param modelCollection
      * @param collectionName task-tide.repository.json.collection.step.name
      */
-    //@Inject
     public JsonWorkflowRepository(
         List<Workflow> modelCollection,
         String collectionName

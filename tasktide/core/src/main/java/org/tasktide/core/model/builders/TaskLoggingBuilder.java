@@ -32,7 +32,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * Add Id field
      * 
      * @param id
-     * @return TaskLoggingBuilder
+     * @return {@link TaskLoggingBuilder}
      */
     public TaskLoggingBuilder id(String id) {
         this.id = id;
@@ -44,7 +44,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * Add Id field
      * 
      * @param procId
-     * @return TaskLoggingBuilder
+     * @return {@link TaskLoggingBuilder}
      */
     public TaskLoggingBuilder procId(long procId) {
         this.procId = procId;
@@ -56,7 +56,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * Add ProcessLog field
      * 
      * @param procLog
-     * @return TaskLoggingBuilder
+     * @return {@link TaskLoggingBuilder}
      */
     public TaskLoggingBuilder processLog(ProcessLog procLog) {
         this.procLog = procLog;
@@ -68,7 +68,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * Add start time
      * 
      * @param startTime
-     * @return TaskLoggingBuilder
+     * @return {@link TaskLoggingBuilder}
      */
     public TaskLoggingBuilder startTime(long startTime) {
         this.startTime = startTime;
@@ -80,7 +80,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * Add end time field
      * 
      * @param endTime
-     * @return TaskLoggingBuilder
+     * @return {@link TaskLoggingBuilder}
      */
     public TaskLoggingBuilder endTime(long endTime) {
         this.endTime = endTime;
@@ -92,7 +92,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * Add thread name field
      * 
      * @param threadName
-     * @return TaskLoggingBuilder
+     * @return {@link TaskLoggingBuilder}
      */
     public TaskLoggingBuilder threadName(String threadName) {
         this.threadName = threadName;
@@ -104,7 +104,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * Add CPU duration field
      * 
      * @param cpuDuration
-     * @return TaskLoggingBuilder
+     * @return {@link TaskLoggingBuilder}
      */
     public TaskLoggingBuilder cpuDuration(long cpuDuration) {
         this.cpuDuration = cpuDuration;
@@ -116,7 +116,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * Add Exit Code field
      * 
      * @param exitCode
-     * @return TaskLoggingBuilder
+     * @return {@link TaskLoggingBuilder}
      */
     public TaskLoggingBuilder exitCode(int exitCode) {
         this.exitCode = exitCode;
@@ -127,7 +127,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
     /**
      * Construct TaskLogging object from provided fields
      * 
-     * @return TaskLogging
+     * @return {@link TaskLogging}
      */
     @Override
     public TaskLogging build() {

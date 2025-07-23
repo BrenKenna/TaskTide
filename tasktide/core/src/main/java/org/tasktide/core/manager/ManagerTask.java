@@ -23,9 +23,9 @@ import org.tasktide.core.model.task.TaskState;
 
 
 /**
- * Simple converter class for converting user input into {@link ItemTask ItemTask}.
+ * Simple converter class for converting user input into {@link ItemTask}.
  * <br><br>
- * Using to get the lay of the land of this in {@linl TaskTideManagerTests TaskTideManagerTests}.
+ * Using to get the lay of the land of this in {@linl TaskTideManagerTests}.
  * 
  * @author bkenna
  */
@@ -73,7 +73,7 @@ public class ManagerTask {
     
     
     /**
-     * Generate a command map from {@link ManagerTask ManagerTask}
+     * Generate a command map from {@link ManagerTask}
      * 
      * @return Map-String, String
      */
@@ -86,9 +86,9 @@ public class ManagerTask {
         
     
     /**
-     * Represent as {@link ItemTask ItemTask}
+     * Represent as {@link ItemTask}
      * 
-     * @return {@link ItemTask ItemTask}
+     * @return {@link ItemTask}
      */
     public ItemTask asItemTask() {
         

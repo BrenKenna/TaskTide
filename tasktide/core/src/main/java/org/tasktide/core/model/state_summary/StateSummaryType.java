@@ -6,8 +6,7 @@ package org.tasktide.core.model.state_summary;
 
 
 /**
- *
- * Marker interface for {@link StateSummary StateSummary}
+ * Marker interface for {@link StateSummary}
  * 
  * @author bkenna
  */

@@ -57,11 +57,11 @@ public class BuilderUtility {
 
     
     /**
-     * Build a {@link ProcessLog ProcessLog} from stdout/err string[] 
+     * Build a {@link ProcessLog} from stdout/err string[] 
      * 
      * @param stdout
      * @param stderr
-     * @return {@link ProcessLog ProcessLog}
+     * @return {@link ProcessLog}
      */
     public static ProcessLog buildProcessLog(String[] stdout, String[] stderr) {
         return new ProcessLogBuilder()
@@ -73,12 +73,12 @@ public class BuilderUtility {
     
     
     /**
-     * Build a {@link ProcessLog ProcessLog} from stdout/err string[] 
+     * Build a {@link ProcessLog} from stdout/err string[] 
      * 
      * @param procLogId
      * @param stdout
      * @param stderr
-     * @return {@link ProcessLog ProcessLog}
+     * @return {@link ProcessLog}
      */
     public static ProcessLog buildProcessLog(String procLogId, String[] stdout, String[] stderr) {
         return new ProcessLogBuilder()
@@ -90,9 +90,9 @@ public class BuilderUtility {
     
     
     /**
-     * Build an empty {@link TaskLogging TaskLogging}
+     * Build an empty {@link TaskLogging}
      * 
-     * @return Empty {@link TaskLogging TaskLogging}
+     * @return Empty {@link TaskLogging}
      */
     public static TaskLogging buildEmptyTaskLogging() {
         return new TaskLoggingBuilder()
@@ -102,10 +102,10 @@ public class BuilderUtility {
     
     
     /**
-     * Build a {@link TaskLogging TaskLogging} with a {@link ProcessLog ProcessLog}
+     * Build a {@link TaskLogging} with a {@link ProcessLog}
      * 
      * @param procLog
-     * @return 
+     * @return {@link TaskLogging}
      */
     public static TaskLogging buildTaskLogging(ProcessLog procLog) {
         return new TaskLoggingBuilder()
@@ -116,11 +116,11 @@ public class BuilderUtility {
     
     
     /**
-     * Build {@link TaskLogging TaskLogging} from {@link ProcessLog ProcessLog} and process
+     * Build {@link TaskLogging} from {@link ProcessLog} and process
      * 
      * @param procLog
      * @param proc
-     * @return {@link TaskLogging TaskLogging}
+     * @return {@link TaskLogging}
      */
     public static TaskLogging buildTaskLogging(ProcessLog procLog, Process proc) {
         return new TaskLoggingBuilder()
@@ -134,11 +134,11 @@ public class BuilderUtility {
     
     
     /**
-     * Build a {@link TaskLogging TaskLogging} with a {@link ProcessLog ProcessLog}
+     * Build a {@link TaskLogging} with a {@link ProcessLog}
      * 
      * @param taskLogId
      * @param procLog
-     * @return TaskLogging
+     * @return {@link TaskLogging}
      */
     public static TaskLogging buildTaskLogging(String taskLogId, ProcessLog procLog) {
         return new TaskLoggingBuilder()
@@ -149,9 +149,9 @@ public class BuilderUtility {
     
     
     /**
-     * Build an empty {@link Workload Workload}
+     * Build an empty {@link Workload}
      * 
-     * @return Empty {@link Workload Workload}
+     * @return Empty {@link Workload}
      */
     public static Workload buildEmptyWorkload() {
         return new WorkloadBuilder()
@@ -162,10 +162,10 @@ public class BuilderUtility {
     
     
     /**
-     * Build a {@link Workload Workload} from {@link ItemTask ItemTask}
+     * Build a {@link Workload} from {@link ItemTask}
      * 
      * @param itemTask
-     * @return {@link Workload Workload}
+     * @return {@link Workload}
      */
     public static Workload buildWorkload(ItemTask itemTask) {
         return new WorkloadBuilder()
@@ -178,11 +178,11 @@ public class BuilderUtility {
     
     
     /**
-     * Build a {@link Workload Workload} from {@link ItemTask ItemTask}
+     * Build a {@link Workload} from {@link ItemTask}
      * 
      * @param workloadId
      * @param itemTask
-     * @return {@link Workload Workload}
+     * @return {@link Workload}
      */
     public static Workload buildWorkload(String workloadId, ItemTask itemTask) {
         return new WorkloadBuilder()
@@ -195,10 +195,10 @@ public class BuilderUtility {
     
     
     /**
-     * Build a {@link ItemType ItemType.NESTED} {@link Workload Workload} from {@link ItemTask ItemTask} list
+     * Build a {@link ItemType ItemType.NESTED} {@link Workload} from {@link ItemTask} list
      * 
      * @param tasks
-     * @return {@link Workload Workload}
+     * @return {@link Workload}
      */
     public static Workload buildWorkload(List<ItemTask> tasks) {
         return new WorkloadBuilder()
@@ -210,11 +210,11 @@ public class BuilderUtility {
     }
     
     /**
-     * Build a {@link ItemType ItemType.NESTED} {@link Workload Workload} from {@link ItemTask ItemTask} list
+     * Build a {@link ItemType ItemType.NESTED} {@link Workload} from {@link ItemTask} list
      * 
      * @param workloadId
      * @param tasks
-     * @return {@link Workload Workload}
+     * @return {@link Workload}
      */
     public static Workload buildWorkload(String workloadId, List<ItemTask> tasks) {
         return new WorkloadBuilder()
@@ -227,12 +227,12 @@ public class BuilderUtility {
     
     
     /**
-     * Build a {@link WorkItem} from {@link Workload Workload}
+     * Build a {@link WorkItem} from {@link Workload}
      * 
      * @param itemName
      * @param workload
      * @param stepName
-     * @return {@link WorkItem WorkItem}
+     * @return {@link WorkItem}
      */
     public static WorkItem buildWorkItem(String itemName, Workload workload, String stepName) {
         return new WorkItemBuilder()
@@ -248,13 +248,13 @@ public class BuilderUtility {
     
     
     /**
-     * Build a {@link WorkItem} from {@link Workload Workload}
+     * Build a {@link WorkItem} from {@link Workload}
      * 
      * @param itemId
      * @param itemName
      * @param workload
      * @param stepName
-     * @return {@link WorkItem WorkItem}
+     * @return {@link WorkItem}
      */
     public static WorkItem buildWorkItem(String itemId, String itemName, Workload workload, String stepName) {
         return new WorkItemBuilder()
@@ -270,9 +270,9 @@ public class BuilderUtility {
     
     
     /**
-     * Build an empty {@link Step Step}
+     * Build an empty {@link Step}
      * 
-     * @return Empty {@link Step Step}
+     * @return Empty {@link Step}
      */
     public static Step buildEmptyStep() {
         return new StepBuilder()
@@ -283,10 +283,10 @@ public class BuilderUtility {
     
     
     /**
-     * Make a {@link Step Step}
+     * Make a {@link Step}
      * 
      * @param stepName
-     * @return {@link Step Step}
+     * @return {@link Step}
      */
     public static Step buildStep(String stepName) {
         return new StepBuilder()
@@ -298,11 +298,11 @@ public class BuilderUtility {
     
     
     /**
-     * Make a {@link Step Step}
+     * Make a {@link Step}
      * 
      * @param stepId
      * @param stepName
-     * @return {@link Step Step}
+     * @return {@link Step}
      */
     public static Step buildStep(String stepId, String stepName) {
         return new StepBuilder()
@@ -314,9 +314,9 @@ public class BuilderUtility {
     
     
     /**
-     * Build an empty {@link Workflow Workflow}
+     * Build an empty {@link Workflow}
      * 
-     * @return Empty {@link Workflow Workflow}
+     * @return Empty {@link Workflow}
      */
     public static Workflow buildEmptyWorkflow() {
         return new WorkflowBuilder()
@@ -326,11 +326,11 @@ public class BuilderUtility {
     
     
     /**
-     * Build {@link Workflow Workflow}
+     * Build {@link Workflow}
      * 
      * @param steps
      * @param workflowName
-     * @return {@link Workflow Workflow}
+     * @return {@link Workflow}
      */
     public static Workflow buildWorkflow(List<Step> steps, String workflowName) {
         return new WorkflowBuilder()
@@ -342,12 +342,12 @@ public class BuilderUtility {
     
     
     /**
-     * Build {@link Workflow Workflow}
+     * Build {@link Workflow}
      * 
      * @param steps
      * @param workflowId
      * @param workflowName
-     * @return {@link Workflow Workflow}
+     * @return {@link Workflow}
      */
     public static Workflow buildWorkflow(List<Step> steps, String workflowId, String workflowName) {
         return new WorkflowBuilder()
@@ -361,7 +361,7 @@ public class BuilderUtility {
     /**
      * Fetch seq task
      * 
-     * @return {@link ManagerTask ManagerTask}
+     * @return {@link ManagerTask}
      */
     public static ManagerTask getSeqTask() {
         return TaskGenerator.generateSeqTask();
@@ -371,7 +371,7 @@ public class BuilderUtility {
     /**
      * Fetch ping task
      * 
-     * @return {@link ManagerTask ManagerTask}
+     * @return {@link ManagerTask}
      */
     public static ManagerTask getPingTask() {
         return TaskGenerator.generatePingTask();
@@ -382,7 +382,7 @@ public class BuilderUtility {
      * Generate list of random ping tasks
      * 
      * @param nTasks
-     * @return List-{@link ManagerTask ManagerTask}
+     * @return List-{@link ManagerTask}
      */
     public static List<ManagerTask> getPingTasks(int nTasks) {
         return TaskGenerator.generateTasks(ExampleGenerators.PING, nTasks);
@@ -393,7 +393,7 @@ public class BuilderUtility {
      * Generate list of random seq tasks
      * 
      * @param nTasks
-     * @return List-{@link ManagerTask ManagerTask}
+     * @return List-{@link ManagerTask}
      */
     public static List<ManagerTask> getSeqTasks(int nTasks) {
         return TaskGenerator.generateTasks(ExampleGenerators.SEQ, nTasks);

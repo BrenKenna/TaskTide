@@ -55,7 +55,7 @@ public class TaskTideManagerUtility {
      * @param stepName
      * @param resourcePath
      * @param delim
-     * @return List-{@link WorkItem WorkItem}
+     * @return List-{@link WorkItem}
      * <br><br>
      * @throws java.io.IOException 
      * @throws IllegalArgumentException 
@@ -84,7 +84,7 @@ public class TaskTideManagerUtility {
      * @param resourcePath
      * @param delim
      * @param nestedDelim
-     * @return List-{@link WorkItem WorkItem}
+     * @return List-{@link WorkItem}
      * <br><br>
      * @throws IOException
      * @throws IllegalArgumentException 
@@ -107,7 +107,7 @@ public class TaskTideManagerUtility {
     
     
     /**
-     * Handle parsing of data line to {@link WorkItem WorkItem}
+     * Handle parsing of data line to {@link WorkItem}
      * 
      * @param parts
      * @param stepName
@@ -135,7 +135,7 @@ public class TaskTideManagerUtility {
      * @param parts
      * @param stepName
      * @param nestedDelim
-     * @return {@link WorkItem WorkItem}
+     * @return {@link WorkItem}
      * <br><br>
      * @throws IllegalArgumentException 
      */
@@ -180,7 +180,7 @@ public class TaskTideManagerUtility {
      * Provide reader for resource
      * 
      * @param resourcePath
-     * @return {@link BufferedReader BufferedReader}
+     * @return {@link BufferedReader}
      * @throws IllegalArgumentException
      */
     public static BufferedReader provideResourceReader(String resourcePath) throws IllegalArgumentException{
@@ -203,7 +203,7 @@ public class TaskTideManagerUtility {
      * @param resourcePath
      * @param stepName
      * @param delim
-     * @return List-{@link WorkItem WorkItem}
+     * @return List-{@link WorkItem}
      * <br><br>
      * @throws IOException
      * @throws IllegalArgumentException
@@ -245,7 +245,7 @@ public class TaskTideManagerUtility {
      * @param stepName
      * @param delim
      * @param nestedDelim
-     * @return List-{@link WorkItem WorkItem}
+     * @return List-{@link WorkItem}
      * <br><br>
      * @throws IOException
      * @throws IllegalArgumentException 

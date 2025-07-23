@@ -4,15 +4,13 @@
  */
 package org.tasktide.core.model.task;
 
-import jakarta.enterprise.context.Dependent;
-
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
-import jakarta.nosql.Column;
 
+import jakarta.nosql.Column;
 import jakarta.nosql.Embeddable;
 
 
@@ -23,7 +21,6 @@ import jakarta.nosql.Embeddable;
  * @author bkenna
  */
 @Embeddable
-@Dependent
 public class ProcessLog {
     
     @Column
@@ -90,7 +87,7 @@ public class ProcessLog {
     /**
      * Set Id
      * 
-     * @param id 
+     * @param procLogId
      */
     public void setId(String procLogId) {
         this.procLogId = procLogId;

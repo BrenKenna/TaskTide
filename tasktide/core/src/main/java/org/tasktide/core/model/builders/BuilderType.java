@@ -198,7 +198,7 @@ public enum BuilderType {
     /**
      * Make builder
      * 
-     * @return ModelBuilder
+     * @return {@link ModelBuilder}
      */
     public abstract ModelBuilder makeBuilder();
     

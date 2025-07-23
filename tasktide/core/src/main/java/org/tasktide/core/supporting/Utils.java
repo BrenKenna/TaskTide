@@ -28,6 +28,7 @@ public class Utils {
     private final Charset charSet;
     private final DateUtility dateUtils;
     
+    
     /**
      * Construct with a task generator and random
      * 

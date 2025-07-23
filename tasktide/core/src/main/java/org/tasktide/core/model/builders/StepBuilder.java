@@ -34,7 +34,7 @@ public class StepBuilder extends ModelBuilder {
      * Add stepId field
      * 
      * @param stepId
-     * @return StepBuilder
+     * @return {@link StepBuilder}
      */
     public StepBuilder stepId(String stepId) {
         this.stepId = stepId;
@@ -46,7 +46,7 @@ public class StepBuilder extends ModelBuilder {
      * Add step name field
      * 
      * @param stepName
-     * @return StepBuilder
+     * @return {@link StepBuilder}
      */
     public StepBuilder stepName(String stepName) {
         this.stepName = stepName;
@@ -58,7 +58,7 @@ public class StepBuilder extends ModelBuilder {
      * Add step state field
      * 
      * @param stepState
-     * @return StepBuilder
+     * @return {@link StepBuilder}
      */
     public StepBuilder stepState(TaskState stepState) {
         this.stepState = stepState;
@@ -70,7 +70,7 @@ public class StepBuilder extends ModelBuilder {
      * Add step count field
      * 
      * @param stepCount
-     * @return StepBuilder
+     * @return {@link StepBuilder}
      */
     public StepBuilder stepCount(int stepCount) {
         this.stepCount = stepCount;
@@ -82,7 +82,7 @@ public class StepBuilder extends ModelBuilder {
      * Add count of the steps locked field 
      * 
      * @param stepsLocked
-     * @return StepBuilder
+     * @return {@link StepBuilder}
      */
     public StepBuilder stepsLocked(int stepsLocked) {
         this.stepsLocked = stepsLocked;
@@ -94,7 +94,7 @@ public class StepBuilder extends ModelBuilder {
      * Add count of the steps done field
      * 
      * @param stepsDone
-     * @return StepBuilder
+     * @return {@link StepBuilder}
      */
     public StepBuilder stepsDone(int stepsDone) {
         this.stepsDone = stepsDone;
@@ -106,7 +106,7 @@ public class StepBuilder extends ModelBuilder {
      * Add count of the steps to do
      * 
      * @param stepsToDo
-     * @return StepBuilder
+     * @return {@link StepBuilder}
      */
     public StepBuilder stepsToDo(int stepsToDo) {
         this.stepsToDo = stepsToDo;
@@ -118,7 +118,7 @@ public class StepBuilder extends ModelBuilder {
      * Add count of steps in error state
      * 
      * @param stepsError
-     * @return StepBuilder
+     * @return {@link StepBuilder}
      */
     public StepBuilder stepsError(int stepsError) {
         this.stepsError = stepsError;
@@ -127,9 +127,9 @@ public class StepBuilder extends ModelBuilder {
     
     
     /**
-     * Construct {@link Step Step} from provided fields
+     * Construct {@link Step} from provided fields
      * 
-     * @return {@link Step Step}
+     * @return {@link Step}
      */
     @Override
     public Step build() {

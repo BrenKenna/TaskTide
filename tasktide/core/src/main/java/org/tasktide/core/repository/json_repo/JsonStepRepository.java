@@ -4,13 +4,10 @@
  */
 package org.tasktide.core.repository.json_repo;
 
-import org.tasktide.core.repository.JsonRepository;
-// import jakarta.inject.Inject;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-
 import java.util.List;
 
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.repository.JsonRepository;
 
 
 /**
@@ -28,7 +25,6 @@ public class JsonStepRepository extends JsonRepository<Step> {
      * @param modelCollection
      * @param collectionName task-tide.repository.json.collection.step.name
      */
-    // @Inject
     public JsonStepRepository(
         List<Step> modelCollection,
         String collectionName

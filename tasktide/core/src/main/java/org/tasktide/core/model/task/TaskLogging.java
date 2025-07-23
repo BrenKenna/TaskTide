@@ -4,8 +4,6 @@
  */
 package org.tasktide.core.model.task;
 
-import jakarta.enterprise.context.Dependent;
-
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -26,7 +24,6 @@ import java.time.Duration;
  * @author bkenna
  */
 @Embeddable
-@Dependent
 public class TaskLogging {
     
     @Column
@@ -195,7 +192,7 @@ public class TaskLogging {
     /**
      * Get process log
      * 
-     * @return Process Log
+     * @return {@link ProcessLog}
      */
     public ProcessLog getProcLog() {
         return procLog;

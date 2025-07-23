@@ -10,7 +10,7 @@ import org.tasktide.core.TaskTideRepository;
 
 /**
  *
- * @param <T> of {@link TaskTideModel}-Workflow, Step, WorkItem
+ * @param <T> of {@link TaskTideModel}-{@link Workflow}, {@link Step}, {@lnik WorkItem}
  * 
  * @author bkenna
  */

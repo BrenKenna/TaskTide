@@ -4,9 +4,6 @@
  */
 package org.tasktide.core.services;
 
-// import jakarta.enterprise.context.Dependent;
-// import jakarta.inject.Inject;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +15,6 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
@@ -27,17 +23,16 @@ import org.tasktide.core.model.state_summary.StateSummary;
 
 /**
  *
- * Service to provide {@link Step Step} interactions to backend DB ({@link TaskTideRepository}).
+ * Service to provide {@link Step} interactions to backend DB ({@link TaskTideRepository}).
  * <br><br>
- * A step has a list of {@link WorkItem WorkItems} associated with it.
+ * A step has a list of {@link WorkItem} associated with it.
  * <br><br>
  * Service methods include providing Step, list of them. Getting list of WorkItems be useful, means composing repo though.
  * <br><br>
- * Implementing the {@link TaskTideMapper} allows mapping of {@link Step Step} to {@link WorkItem WorkItem}
+ * Implementing the {@link TaskTideMapper} allows mapping of {@link Step} to {@link WorkItem}
  * 
  * @author bkenna
  */
-// @Dependent
 public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideService<Step> {
     
     // Attributes
@@ -49,7 +44,6 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * 
      * @param repo 
      */
-    // @Inject
     public StepService(TaskTideRepository<Step> repo) {
         this.repo = repo;
     }
@@ -59,7 +53,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * Add step to backend
      * 
      * @param model
-     * @return {@link TaskTideModel TaskTideModel} of {@link Step Step}
+     * @return {@link TaskTideModel} of {@link Step Step}
      */
     @Override
     public Step appendModel(Step model) {
@@ -84,7 +78,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * 
      * @param field
      * @param value
-     * @return List-{@link TaskTideModel TaskTideModel} of {@link Step Step}
+     * @return List-{@link TaskTideModel} of {@link Step}
      */
     @Override
     public List<Step> viewByField(String field, Object value) {
@@ -93,10 +87,26 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     
     
     /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value. Step = Name, State = ToDo
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @return List-{@link Step}
+     */
+    @Override
+    public List<Step> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        return repo.findByFieldForGroup(field, value, group, groupVal);
+    }
+    
+    
+    /**
      * Fetch step by id
      * 
      * @param id
-     * @return {@link TaskTideModel TaskTideModel} of {@link Step Step}
+     * @return {@link TaskTideModel} of {@link Step}
      */
     @Override
     public Step fetchById(String id) {
@@ -107,7 +117,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     /**
      * View all steps
      * 
-     * @return List-{@link Step Step}
+     * @return List-{@link Step}
      */
     @Override
     public List<Step> viewAll() {
@@ -134,7 +144,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * Fetch steps having name
      * 
      * @param stepName
-     * @return List-{@link Step Step}
+     * @return List-{@link Step}
      */
     public List<Step> viewStepsByName(String stepName) {
         return repo.findByField("stepName", stepName);
@@ -157,7 +167,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * Update step
      * 
      * @param model
-     * @return {@link Step Step}
+     * @return {@link Step}
      */
     @Override
     public Step updateModel(Step model) {
@@ -169,7 +179,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * View task count summary for provided step
      * 
      * @param step
-     * @return {@link StateSummary StateSummary}-{@link ItemState ItemState}
+     * @return {@link StateSummary}-{@link ItemState}
      */
     public StateSummary<ItemState> viewStepSummary(Step step) {
         return step.summarizeByState();
@@ -179,7 +189,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     /**
      * View task count summary for all steps
      * 
-     * @return Map-String, {@link StateSummary StateSummary}-{@link ItemState ItemState}
+     * @return Map-String, {@link StateSummary}-{@link ItemState}
      */
     public Map<String, StateSummary<ItemState>> viewSummary() {
         
@@ -192,11 +202,11 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     
     
     /**
-     * Update step {@link WorkItem WorkItem} {@link ItemState ItemState} counts to new values
+     * Update {@link Step} {@link ItemState} counts to new values
      * 
      * @param step
      * @param newCounts
-     * @return {@link Step Step}
+     * @return {@link Step}
      */
     public Step updateStepCounts(Step step, StateSummary<ItemState> newCounts) {
         step.setStateCounts(newCounts);
@@ -205,11 +215,11 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
 
     
     /**
-     * Map queried {@link Step Step} to {@link WorkItem WorkItem} collection
+     * Map queried {@link Step} to {@link WorkItem} collection
      * 
      * @param mappingServ
      * @param model
-     * @return List-{@link WorkItem WorkItem}
+     * @return List-{@link WorkItem}
      */
     @Override
     public List<WorkItem> getThroughLink(TaskTideService<WorkItem> mappingServ, Step model) {

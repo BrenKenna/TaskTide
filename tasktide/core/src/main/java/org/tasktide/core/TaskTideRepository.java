@@ -70,6 +70,20 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
     
     
     /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value. Step = Name, State = ToDo
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @return List<T>
+     */
+    public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal);
+    
+    
+    
+    /**
      * Provide all model 
      * 
      * @return List-T

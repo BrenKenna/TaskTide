@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.repository;
 
-// import jakarta.enterprise.context.Dependent;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import java.util.HashMap;
@@ -28,7 +27,6 @@ import org.tasktide.itemstore.stores.DbTarget;
  * @param <T> of {@link TaskTideModel}
  * @author bkenna
  */
-// @Dependent
 public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
 
     // Attributes
@@ -218,6 +216,37 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
             .collect(Collectors.toList());
     }
 
+    
+    /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value. Step = Name, State = ToDo
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        
+        // Fetch repo and scan records
+        List<Item> queried = this.repo.getAll(true);
+        return queried
+            .stream()
+            .parallel()
+            .map( this::toModel )
+            .filter( elm -> {
+                Object val = elm.getValueFromField(field);
+                return val != null && val.equals(value);
+            })
+            .filter( elm -> {
+                Object val = elm.getValueFromField(group);
+                return val != null && val.equals(groupVal);
+            })
+        .collect(Collectors.toList());
+    }
+    
     
     /**
      * Retrieve all records

@@ -22,7 +22,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 /**
  * Class to (de)serialize work item state summary as JSON.
  * <br><br>
- * Currently constrained to {@link WorkItem WorkItem} and {@link TaskState TaskState}
+ * Currently constrained to {@link WorkItem WorkItem} and {@link TaskState}
  * implement the {@link StateSummaryType} interface.
  *
  * @author bkenna

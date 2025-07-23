@@ -132,9 +132,30 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
         return template.select(COLLECTION_CLASS)
                 .where(field)
                 .eq(value)
-                .result();
+            .result();
     }
 
+    
+    /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value. Step = Name, State = ToDo
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @return List<T>
+     */
+    @Override
+    public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        return template.select(COLLECTION_CLASS)
+            .where(field)
+            .eq(value)
+            .and(group)
+            .eq(groupVal)
+        .result();
+    }
+    
     
     /**
      * Fetch all records

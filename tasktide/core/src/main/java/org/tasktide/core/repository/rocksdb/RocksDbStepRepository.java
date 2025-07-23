@@ -4,14 +4,8 @@
  */
 package org.tasktide.core.repository.rocksdb;
 
-// import jakarta.enterprise.context.ApplicationScoped;
-// import jakarta.inject.Inject;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-
 import org.tasktide.core.model.collection.Step;
-
 import org.tasktide.core.repository.RocksDbRepository;
-
 import org.tasktide.itemstore.ItemStore;
 
 
@@ -20,9 +14,7 @@ import org.tasktide.itemstore.ItemStore;
  * 
  * @author bkenna
  */
-// @ApplicationScoped
 public class RocksDbStepRepository extends RocksDbRepository<Step> {
-    
     
     /**
      * Construct {@link Step} repository with {@link ItemStore}
@@ -30,7 +22,6 @@ public class RocksDbStepRepository extends RocksDbRepository<Step> {
      * @param itemStore
      * @param collectionName
      */
-    // @Inject
     public RocksDbStepRepository(
        ItemStore itemStore,
        String collectionName

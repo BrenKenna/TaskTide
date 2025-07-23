@@ -7,8 +7,6 @@ package org.tasktide.core.manager.generator;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.tasktide.core.supporting.Utils;
-
 
 /**
  *

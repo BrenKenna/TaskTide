@@ -38,6 +38,19 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
     
     
     /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value. Step = Name, State = ToDo
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @return List<T>
+     */
+    public List<T> viewByFieldForGroup(String field, Object value, String group, Object groupVal);
+    
+    
+    /**
      * Fetch model collection
      * 
      * @return List-{@link TaskTideModel} of {@link WorkItem},{@link Step},{@link Workflow}
@@ -85,8 +98,6 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
     
     
     public int save();
-    
-    // public int load(String uri);
     
     
     /**

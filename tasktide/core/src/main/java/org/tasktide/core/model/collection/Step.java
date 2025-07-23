@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.model.collection;
 
-import jakarta.enterprise.context.Dependent;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -34,7 +33,6 @@ import org.tasktide.core.TaskTideModel;
  * @author bkenna
  */
 @Entity
-@Dependent
 public class Step implements TaskTideModel<Step> {
     
     @Id
@@ -154,7 +152,7 @@ public class Step implements TaskTideModel<Step> {
     /**
      * Get step state
      * 
-     * @return TaskState
+     * @return {@link TaskState}
      */
     public TaskState getStepState() {
         return stepState;
@@ -319,7 +317,7 @@ public class Step implements TaskTideModel<Step> {
 
     
     /**
-     * TaskTideModel interface method to represent as JsonDoc
+     * {@link TaskTideModel} interface method to represent as JsonDoc
      * 
      * @return String
      */
@@ -330,7 +328,7 @@ public class Step implements TaskTideModel<Step> {
 
     
     /**
-     * TaskTideModel interface method to return Id
+     * {@link TaskTideModel} interface method to return Id
      * 
      * @return String
      */
@@ -344,7 +342,7 @@ public class Step implements TaskTideModel<Step> {
     /**
      * Summarize step by ItemState
      * 
-     * @return StateSumary-ItemState
+     * @return {@link StateSumary}-{@link ItemState}
      */
     @JsonbTransient
     public StateSummary<ItemState> summarizeByState() {
@@ -382,7 +380,7 @@ public class Step implements TaskTideModel<Step> {
     
     
     /**
-     * TaskTideModel interface get the value from the required field
+     * {@link TaskTideModel} interface get the value from the required field
      * 
      * @param field
      * @return Object

@@ -4,15 +4,12 @@
  */
 package org.tasktide.core.repository.nosql_repo;
 
-import org.tasktide.core.repository.TemplateRepository;
-// import jakarta.enterprise.context.ApplicationScoped;
-// import jakarta.inject.Inject;
-// import org.eclipse.microprofile.config.inject.ConfigProperty;
-
-import jakarta.nosql.Template;
 import java.util.List;
 
+import jakarta.nosql.Template;
+
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.repository.TemplateRepository;
 
 
 /**
@@ -20,7 +17,6 @@ import org.tasktide.core.model.collection.Step;
  * 
  * @author bkenna
  */
-// @ApplicationScoped
 public class TemplateStepRepository extends TemplateRepository<Step> {
     
     /**
@@ -29,7 +25,6 @@ public class TemplateStepRepository extends TemplateRepository<Step> {
      * @param template
      * @param collectionName step.repo-name
      */
-    // @Inject
     public TemplateStepRepository(Template template,
        String collectionName
     ) {

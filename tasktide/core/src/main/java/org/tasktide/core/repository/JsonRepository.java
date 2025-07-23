@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.repository;
 
-//import jakarta.enterprise.context.Dependent;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 
@@ -28,9 +27,8 @@ import org.tasktide.core.repository.json_repo.Compression;
  * Class to support file backend in compressed json format. All linear operations
  *
  * @author bkenna
- * @param <T> of {@link TaskTideModel TaskTideModel}-{@link WorkItem WorkItem},{@link Step Step},{@link Workflow Workflow}
+ * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link Step},{@link Workflow}
  */
-//@Dependent
 public abstract class JsonRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
     
     // Attributes
@@ -106,7 +104,7 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
      * Search for Items by Id
      * 
      * @param id
-     * @return WorkItem
+     * @return {@link TaskTideModel}
      */
     @Override
     public Optional<T> findById(String id) {
@@ -120,7 +118,7 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
      * Insert model, duplicates allowed
      * 
      * @param model
-     * @return WorkItem
+     * @return {@link TaskTideModel}
      */
     @Override
     public T insertModel(T model) {
@@ -167,7 +165,7 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
     /**
      * Return dataset
      * 
-     * @return List-
+     * @return List-{@link TaskTideModel}
      */
     @Override
     public List<T> findAll() {
@@ -179,7 +177,7 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
      * Swap old model for new, index changes
      * 
      * @param model
-     * @return WorkItem
+     * @return {@link TaskTideModel}
      */
     @Override
     public T updateModel(T model) {
@@ -200,21 +198,41 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
      * 
      * @param field
      * @param value
-     * @return List-T
+     * @return List-{@link TaskTideModel}
      */
     @Override
     public List<T> findByField(String field, Object value) { 
         return modelCollection.stream()
-                .parallel()
-                .filter(item -> item.getValueFromField(field) == value )
-                .toList();
+            .parallel()
+            .filter(item -> item.getValueFromField(field) == value )
+        .toList();
+    }
+    
+    
+    /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value. Step = Name, State = ToDo
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        return modelCollection.stream()
+            .parallel()
+            .filter(item -> item.getValueFromField(field) == value )
+            .filter(item -> item.getValueFromField(group) == groupVal )
+        .toList();
     }
 
     
     /**
      * Save to file
      * 
-     * @return int
+     * @return List-{@link TaskTideModel}
      */
     @Override
     public List<T> load() {
@@ -267,7 +285,7 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
     /**
      * Get class of repository
      * 
-     * @return Class-T
+     * @return Class-{@link TaskTideModel}
      */
     public Class<T> getCollectionClass() {
         return COLLECTION_CLASS;
@@ -287,7 +305,7 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
     /**
      * Get repository type
      * 
-     * @return RepositoryType
+     * @return {@link RepositoryType}
      */
     public RepositoryType getRepoType() {
         return repoType;

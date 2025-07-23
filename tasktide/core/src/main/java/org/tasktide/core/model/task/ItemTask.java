@@ -51,6 +51,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     @JsonbProperty("Task Log")
     private TaskLogging taskLog;
     
+    
     /**
      * Empty constructor
      */
@@ -156,7 +157,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     /**
      * Get task state
      * 
-     * @return TaskState
+     * @return {@link TaskState}
      */
     public TaskState getTaskState() {
         return taskState;
@@ -176,7 +177,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     /**
      * Get task log
      * 
-     * @return TaskLogging
+     * @return {@link TaskLogging}
      */
     public TaskLogging getTaskLog() {
         return taskLog;
