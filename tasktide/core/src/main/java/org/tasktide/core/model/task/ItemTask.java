@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.model.task;
 
-
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -51,6 +50,9 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     @JsonbProperty("Task Log")
     private TaskLogging taskLog;
     
+    @Column
+    @JsonbProperty("Work Item Id")
+    private String workItemId;
     
     /**
      * Empty constructor
@@ -74,8 +76,26 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskState = taskState;
         this.taskLog = taskLog;
         this.task = task;
+        this.workItemId = "";
     }
     
+    
+    /**
+     * Construct with all fields
+     * 
+     * @param itemTaskId
+     * @param taskName
+     * @param task
+     * @param taskState
+     * @param taskLog 
+     */
+    public ItemTask(String itemTaskId, String taskName, String task, TaskState taskState, TaskLogging taskLog) {
+        this.itemTaskId = itemTaskId;
+        this.taskName = taskName;
+        this.taskState = taskState;
+        this.taskLog = taskLog;
+        this.task = task;
+    }
     
     /**
      * Constructor for JSON Deserialization
@@ -85,20 +105,23 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      * @param task 
      * @param taskState
      * @param taskLog
-     */
+     * @param workItemId
+     */    
     @JsonbCreator
     public ItemTask(
         @JsonbProperty("Id") String itemTaskId,
         @JsonbProperty("Task Name") String taskName,
         @JsonbProperty("Task") String task,
         @JsonbProperty("Task State") TaskState taskState,
-        @JsonbProperty("Task Log") TaskLogging taskLog
+        @JsonbProperty("Task Log") TaskLogging taskLog,
+        @JsonbProperty("Work Item Id") String workItemId
     ) {
         this.itemTaskId = itemTaskId;
         this.taskName = taskName;
         this.task = task;
         this.taskState = taskState;
         this.taskLog = taskLog;
+        this.workItemId = workItemId;
     }
 
     
@@ -135,6 +158,26 @@ public class ItemTask implements TaskTideModel<ItemTask> {
 
     
     /**
+     * Set Id of the parent {@link WorkItem}
+     * 
+     * @param workItemId 
+     */
+    public void setWorkItemId(String workItemId) {
+        this.workItemId = workItemId;
+    }
+    
+    
+    /**
+     * Get the Id of the parent {@link WorkItem}
+     * 
+     * @return String
+     */
+    public String getWorkItemId() {
+        return this.workItemId;
+    }
+    
+    
+    /**
      * Get task name
      * 
      * @return String
@@ -142,7 +185,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     public String getTaskName() {
         return taskName;
     }
-
+    
     
     /**
      * Set task name
@@ -227,6 +270,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
             ", taskState=" + taskState +
             ", taskLog=" + taskLog +
             ", task=" + task +
+            ", workItemId=" + workItemId +
         '}';
     }
     

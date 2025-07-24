@@ -5,11 +5,15 @@
 package org.tasktide.engine.observer.worker.stateobserver;
 
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.tasktide.core.manager.TaskTideServiceManager;
+
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.ObserverResult;
 import org.tasktide.engine.observer.worker.StateObserver;
@@ -85,6 +89,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
     public ObserverResult onTaskProcessing(ItemTask task) {
         TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.RUNNING);
         task.setTaskState(TaskState.ACTIVE);
+        this.handleWorkItemUpdate(task);
         return ObserverResult.success();
     }
     
@@ -100,6 +105,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
         if (task.getTaskLog().getExitCode() == 0) {
             task.setTaskState(TaskState.COMPLETE);
             TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.COMPLETED);
+            this.handleWorkItemUpdate(task);
             return ObserverResult.success();
         }
         
@@ -107,9 +113,23 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
         else {
             task.setTaskState(TaskState.ERROR);
             TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.FAILED);
+            this.handleWorkItemUpdate(task);
             logger.warn("Execution failed forItemTask:\t'{}'", task.getId());
             return ObserverResult.failure(this, true);
         }
+    }
+    
+    
+    /**
+     * Handle updating parent {@link WorkItem} with {@link ItemTask}
+     * 
+     * @param task 
+     */
+    public void handleWorkItemUpdate(ItemTask task) {
+        WorkItem ref = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getWorkItemId());
+        ref.dropTask(task);
+        ref.addTask(task);
+        TaskTideServiceManager.fetchWorkItemService().updateModel(ref);
     }
     
     

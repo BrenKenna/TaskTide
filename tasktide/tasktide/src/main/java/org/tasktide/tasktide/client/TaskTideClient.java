@@ -82,11 +82,7 @@ public abstract class TaskTideClient {
      * @return List of {@link WorkItem}
      */
     protected List<WorkItem> fetchToDoWork() {
-        List<WorkItem> workload, check;
-        check = ((WorkItemService) TaskTideServiceManager.fetchWorkItemService()).viewItemsByState(ItemState.TODO);
-        workload = TaskTideServiceManager.fetchWorkItemService().viewByField("state", "todo");
-        // System.out.println(String.format("Comparing query sizes:\tConcrete service '%d', Manager '%d'", check.size(), workload.size()));
-        return workload;
+        return TaskTideServiceManager.fetchWorkItemService().viewByField("itemState", ItemState.TODO);
     }
 
     

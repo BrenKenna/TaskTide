@@ -321,7 +321,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void repositoryType() {
         Argument<String> arg;
-        this.repositoryType = this.getConfig().getValue("tasktide.core.repository.jnosql.type", String.class);
+        this.repositoryType = this.getConfig().getValue("tasktide.core.repository.type", String.class);
         if ( this.repositoryType != null ) {
             arg = this.getArgumentBuilder()
                 .withName("Repository Type")
@@ -381,7 +381,7 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public void nosqlType() {
         Argument<String> arg;
-        this.nosqlType = this.getConfig().getValue("tasktide.core.repository.file-path", String.class);
+        this.nosqlType = this.getConfig().getValue("tasktide.core.repository.jnosql.type", String.class);
         if ( this.nosqlType != null ) {
             arg = this.getArgumentBuilder()
                 .withName("NoSQL Database Type")

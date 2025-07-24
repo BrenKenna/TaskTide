@@ -170,6 +170,7 @@ public class TaskTideClientUtility {
      */
     public static RepositoryType fetchRepoType(ClientConfigMap configMap) {
         String str = (String) configMap.getArgTree().getGlobalArguments().getArgMap().get("Repository Type").getValue();
+        LOGGER.info("Querying configured repo type:\t'{}'", str);
         return RepositoryType.get(str);
     }
     
@@ -180,7 +181,6 @@ public class TaskTideClientUtility {
      * 
      * @param repoType
      * @param configMap
-     * @return {@link TaskTideServiceManager}
      */
 
     public static void initServiceManager(RepositoryType repoType, ClientConfigMap configMap) {
@@ -295,6 +295,7 @@ public class TaskTideClientUtility {
     public static Class provideTemplateClass(ClientConfigMap configMap) {
         String dbType = (String) configMap.getArgTree().getGlobalArguments().getArgMap().get("NoSQL Database Type").getValue();
         dbType = dbType.strip().replace(" ", "").replace("-", "");
+        LOGGER.info("Evaluating DatabaseType:\t'{}'", dbType);
         switch( dbType.toLowerCase() ) {
             case "document" -> {
                 return DocumentTemplate.class;

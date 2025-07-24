@@ -4,25 +4,11 @@
  */
 package org.tasktide.tasktide;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
-
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import jakarta.nosql.Template;
-import org.eclipse.jnosql.mapping.core.Converters;
-import org.eclipse.jnosql.mapping.document.DocumentTemplate;
-import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
-import org.eclipse.jnosql.mapping.reflection.Reflections;
-import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
-import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
-
-import org.jboss.weld.junit5.auto.AddExtensions;
-import org.jboss.weld.junit5.auto.AddPackages;
-import org.jboss.weld.junit5.auto.EnableAutoWeld;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,7 +16,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.repository.RepositoryType;
@@ -39,28 +24,17 @@ import org.tasktide.tasktide.client.TaskTideClient;
 import org.tasktide.tasktide.client.TaskTideClientType;
 import org.tasktide.tasktide.client.TaskTideClientUtility;
 
-import org.tasktide.tasktide.configurer.EngineConfig;
-import org.tasktide.tasktide.configurer.GlobalConfig;
-import org.tasktide.tasktide.configurer.ManagerConfig;
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
-import org.tasktide.tasktide.containerprovider.SeContainerProvider;
+import org.tasktide.tasktide.containerprovider.CdiProviders;
 
 
 /**
  *
  * @author bkenna
  */
-@EnableAutoWeld
-@AddPackages(value = {
-    Converters.class, Reflections.class, EntityConverter.class,
-    Template.class, DocumentTemplate.class,
-    EngineConfig.class, GlobalConfig.class, ManagerConfig.class
-})
-@AddExtensions( { ReflectionEntityMetadataExtension.class, DocumentExtension.class } )
 public class TaskTideClientTests {
     
     private static final Logger logger = LogManager.getLogger(ConfigureTaskTideTest.class);
-    private static SeContainer container;
     private static CdiContainerProvider provider;
     
     public TaskTideClientTests() {
@@ -69,15 +43,14 @@ public class TaskTideClientTests {
     @BeforeAll
     public static void setUpClass() {
         String msg = "\n\n---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------\n";
-        container = SeContainerInitializer.newInstance().initialize();
-        provider = new SeContainerProvider(container);
+        provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD);
         logger.info(msg);
     }
     
     @AfterAll
     public static void tearDownClass() {
         String msg = "\n\n---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------\n";
-        container.close();
+        provider.shutdown();
         logger.info(msg);
     }
     
@@ -101,24 +74,24 @@ public class TaskTideClientTests {
     
         // Initialize data
         logger.info("\n\n================ Tests ManagerClient-Import  ================\n");
-        List<WorkItem> workload, results;
-        WorkItem ref, query;
-        boolean assertionState;
         
         // Fetch config
+        logger.info("Creating ClientConfigMap");
         ClientConfigMap configMap = new ClientConfigMap();
         configMap.addConfigs(provider);
         
         // Fetch service manager
+        logger.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
         TaskTideClientUtility.initServiceManager(repoType, configMap);
         
         // Fetch client
+        logger.info("Constructing TaskTideClient");
         TaskTideClientType clientType = TaskTideClientType.MANAGER;
         TaskTideClient client = clientType.makeClient(configMap);
         
         // Import data
-        logger.info("Running manager client import");
+        logger.info("Running the '{}'", clientType);
         client.runClient();
         logger.info("\n\n================ Tests ManagerClient-Import  ================\n");
     }
@@ -133,24 +106,24 @@ public class TaskTideClientTests {
     
         // Initialize data
         logger.info("\n\n================ Tests EngineClient  ================\n");
-        List<WorkItem> workload, results;
-        WorkItem ref, query;
-        boolean assertionState;
         
         // Fetch config
+        logger.info("Constructing ClientConfigMap");
         ClientConfigMap configMap = new ClientConfigMap();
         configMap.addConfigs(provider);
         
         // Fetch service manager
+        logger.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
         TaskTideClientUtility.initServiceManager(repoType, configMap);
         
         // Fetch client
+        logger.info("Fetching Client");
         TaskTideClientType clientType = TaskTideClientType.ENGINE;
         TaskTideClient client = clientType.makeClient(configMap);
         
         // Import data
-        logger.info("Running manager client import");
+        logger.info("Running the '{}'", clientType);
         client.runClient();
         logger.info("\n\n================ Tests EngineClient  ================\n");
     }

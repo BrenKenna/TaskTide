@@ -46,9 +46,8 @@ public class ClientConfigMap {
     @SuppressWarnings("unchecked")
     private TaskTideConfigurer parseConfigs(CdiContainerProvider provider, TaskTideClientType clientType) {
         TaskTideConfigurer config;
-        config = (TaskTideConfigurer) provider.getBean( clientType.getConfigClass() );
+        config = (TaskTideConfigurer) provider.getBean( clientType.getConfigClass());
         config.initConfig(this.argTree);
-        // config.parseCommandLineArguments(this.argsIn, this.argTree);
         return config;
     }
     

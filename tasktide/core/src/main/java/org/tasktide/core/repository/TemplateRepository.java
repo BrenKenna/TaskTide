@@ -77,7 +77,6 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      */
     @Override
     public Optional<T> findById(String id) {
-        System.out.println("\n\nDEBUGGING >>>\n Collection Class:" + this.COLLECTION_CLASS);
         return template.find(this.COLLECTION_CLASS, id);
     }
 

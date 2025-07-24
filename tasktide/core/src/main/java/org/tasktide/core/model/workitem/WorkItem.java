@@ -79,11 +79,40 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     @JsonbProperty("Step Name")
     private String stepName;
     
+    @Column
+    @JsonbProperty("Step Id")
+    private String stepId;
     
     /**
      * Null constructor
      */
     public WorkItem(){}
+
+    public WorkItem(
+        String id,
+        String itemName,
+        ItemType itemType,
+        ItemState itemState,
+        String lockId,
+        long lockDate,
+        long doneDate,
+        int taskCount,
+        int taskDone,
+        Workload workload,
+        String stepName
+    ) {
+        this.id = id;
+        this.itemName = itemName;
+        this.itemType = itemType;
+        this.itemState = itemState;
+        this.lockId = lockId;
+        this.lockDate = lockDate;
+        this.doneDate = doneDate;
+        this.taskCount = taskCount;
+        this.taskDone = taskDone;
+        this.workload = workload;
+        this.stepName = stepName;
+    }
     
     
     /**
@@ -100,6 +129,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
      * @param taskDone
      * @param workload 
      * @param stepName
+     * @param stepId
      */
     @JsonbCreator
     public WorkItem(
@@ -113,7 +143,8 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         @JsonbProperty("Task Count") int taskCount,
         @JsonbProperty("Task Done") int taskDone,
         @JsonbProperty("Workload") Workload workload,
-        @JsonbProperty("Step Name") String stepName
+        @JsonbProperty("Step Name") String stepName,
+        @JsonbProperty("Step Id") String stepId
     ) {
         this.id = id;
         this.itemName = itemName;
@@ -126,8 +157,9 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         this.taskDone = taskDone;
         this.workload = workload;
         this.stepName = stepName;
+        this.stepId = stepId;
     }
-
+    
     
     /**
      * Add task
@@ -469,6 +501,25 @@ public class WorkItem implements TaskTideModel<WorkItem> {
 
     
     /**
+     * Set the parent {@link Step} Id
+     * @param stepId 
+     */
+    public void setStepId(String stepId) {
+        this.stepId = stepId;
+    }
+    
+    
+    /**
+     * Get the parent {@link StepId}
+     * 
+     * @return String
+     */
+    public String getStepId() {
+        return this.stepId;
+    }
+    
+    
+    /**
      * Serialize to JSON string
      * 
      * @return String
@@ -510,6 +561,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
            ", taskDone=" + taskDone +
            ", workload=" + workload +
            ", stepName=" + stepName +
+           ", stepId=" + stepId +
         '}';
     }
 

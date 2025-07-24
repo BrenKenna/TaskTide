@@ -10,6 +10,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 import java.util.Random;
 import java.util.UUID;
@@ -27,7 +28,6 @@ public class Utils {
     private final Random rand;
     private final Charset charSet;
     private final DateUtility dateUtils;
-    
     
     /**
      * Construct with a task generator and random
@@ -105,6 +105,21 @@ public class Utils {
         
         // Return string as hexdecimal
         return convertStringToHex(token);
+    }
+    
+    
+    public String generateBase64Token() {
+        
+        // Initialize vars
+        String nowDate, salt, token;
+        
+        // Create token string
+        nowDate = dateUtils.getNowString();
+        salt = generateSalt();
+        token = nowDate + "-" + salt;
+        
+        // Return string as hexdecimal
+        return Base64.getEncoder().encodeToString(token.getBytes());
     }
     
     

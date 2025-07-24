@@ -4,8 +4,12 @@
  */
 package org.tasktide.engine.observer.worker.stateobserver;
 
+import java.util.Base64;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -24,6 +28,8 @@ import org.tasktide.engine.trackers.TaskTrackers;
  */
 public class WorkItemStateObserver extends StateObserver<WorkItem> {
 
+    private final Random RAND = new Random();
+    
     
     /**
      * Construct with {@link TaskTrackers}
@@ -70,7 +76,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
                 return ObserverResult.success();
             }
             
-            // Mark task as skipped if nor running on another thread
+            // Mark task as skipped if marked running on another thread
             if ( !TaskTrackers.WORK_ITEM_TRACKER.isRunning(taskId) ) {
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
                 return ObserverResult.failure(this);
@@ -99,21 +105,31 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
     private boolean verifyItem(WorkItem task) {
         
         // Lock item
-        String lockId = UUID.randomUUID().toString();
+        String msg = System.currentTimeMillis() + UUID.randomUUID().toString();
+        String lockId = Base64.getEncoder().encodeToString(msg.getBytes());
         task.setItemState(ItemState.LOCKED);
         task.setLockDate( System.currentTimeMillis() );
         task.setLockId( lockId );
         
-        // Wait a few seconds and check lock is the still the same
-        return true;
+        // Update item
+        TaskTideServiceManager.fetchWorkItemService().updateModel(task);
+        try {TimeUnit.MILLISECONDS.sleep(RAND.nextInt(4+1));}
+        catch(InterruptedException ex) {return false;}
+        
+        // Fetch and verify active locked the task
+        WorkItem check = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getId());
+        if (check != null) {
+            return lockId.equals( check.getLockId() );
+        }
+        return false;
     }
 
     
     /**
-     * 
+     * Handles actions when task is being processed
      * 
      * @param task
-     * @return 
+     * @return {@link ObserverResult}
      */
     @Override
     public ObserverResult onTaskProcessing(WorkItem task) {
@@ -140,6 +156,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             task.setItemState(ItemState.DONE);
             task.setDoneDate(doneTime);
             TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.COMPLETED);
+            TaskTideServiceManager.fetchWorkItemService().updateModel(task);
             return ObserverResult.success();
         }
         
@@ -147,6 +164,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         else {
             task.setItemState(ItemState.ERROR);
             TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.ABORTED);
+            TaskTideServiceManager.fetchWorkItemService().updateModel(task);
             return ObserverResult.failure(this, true);
         }
     }

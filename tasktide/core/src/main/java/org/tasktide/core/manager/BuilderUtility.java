@@ -40,9 +40,23 @@ import org.tasktide.core.manager.generator.ExampleGenerators;
 public class BuilderUtility {
     
     // Task Generator
-    private static final TaskGenerator taskGenerator = new TaskGenerator();
     private static final Utils utils = new Utils("dd/MM/yy HH:mm:ss", 4);
 
+    
+    /**
+     * Fetch a random Id
+     * 
+     * @return String
+     */
+    public static String fetchRandomId() {
+        return utils.generateSalt();
+    }
+    
+    
+    public static String fetchRandomToken() {
+        return utils.generateBase64Token();
+    }
+    
     
     /**
      * Build an empty {@link ProcessLog ProcessLog}
@@ -235,7 +249,7 @@ public class BuilderUtility {
      * @return {@link WorkItem}
      */
     public static WorkItem buildWorkItem(String itemName, Workload workload, String stepName) {
-        return new WorkItemBuilder()
+        WorkItem output = new WorkItemBuilder()
             .id( "WorkItem-" + utils.generateSalt() )
             .itemName(itemName)
             .workload(workload)
@@ -244,6 +258,41 @@ public class BuilderUtility {
             .itemType(workload.getWorkloadType())
             .stepName(stepName)
         .build();
+        output.getWorkload()
+            .getWorkload().values().stream()
+            .forEach(
+               elm -> elm.setWorkItemId(output.getId())
+        );
+        return output;
+    }
+    
+    
+    /**
+     * Build with stepId
+     * 
+     * @param itemName
+     * @param workload
+     * @param stepName
+     * @param stepId
+     * @return {@link WorkItem}
+     */
+    public static WorkItem buildWorkItem(String itemName, Workload workload, String stepName, String stepId) {
+        WorkItem output = new WorkItemBuilder()
+            .id( "WorkItem-" + utils.generateSalt() )
+            .itemName(itemName)
+            .workload(workload)
+            .itemState(ItemState.TODO)
+            .taskCount(workload.getWorkloadSize())
+            .itemType(workload.getWorkloadType())
+            .stepName(stepName)
+            .stepId(stepId)
+        .build();
+        output.getWorkload()
+            .getWorkload().values().stream()
+            .forEach(
+               elm -> elm.setWorkItemId(output.getId())
+        );
+        return output;
     }
     
     
@@ -257,7 +306,7 @@ public class BuilderUtility {
      * @return {@link WorkItem}
      */
     public static WorkItem buildWorkItem(String itemId, String itemName, Workload workload, String stepName) {
-        return new WorkItemBuilder()
+        WorkItem output = new WorkItemBuilder()
             .id(itemId)
             .itemName(itemName)
             .workload(workload)
@@ -266,6 +315,45 @@ public class BuilderUtility {
             .itemType(workload.getWorkloadType())
             .stepName(stepName)
         .build();
+        
+        output.getWorkload()
+            .getWorkload().values().stream()
+            .forEach(
+               elm -> elm.setWorkItemId(output.getId())
+        );
+        return output;
+    }
+    
+    
+    /**
+     * Build with StepId
+     * 
+     * @param itemId
+     * @param itemName
+     * @param workload
+     * @param stepName
+     * @param stepId
+     * 
+     * @return {@link WorkItem}
+     */
+    public static WorkItem buildWorkItem(String itemId, String itemName, Workload workload, String stepName, String stepId) {
+        WorkItem output = new WorkItemBuilder()
+            .id(itemId)
+            .itemName(itemName)
+            .workload(workload)
+            .itemState(ItemState.TODO)
+            .taskCount(workload.getWorkloadSize())
+            .itemType(workload.getWorkloadType())
+            .stepName(stepName)
+            .stepId(stepId)
+        .build();
+        
+        output.getWorkload()
+            .getWorkload().values().stream()
+            .forEach(
+               elm -> elm.setWorkItemId(output.getId())
+        );
+        return output;
     }
     
     

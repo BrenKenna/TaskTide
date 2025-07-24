@@ -5,8 +5,8 @@
 package org.tasktide.core.repository;
 
 import java.util.List;
-import jakarta.nosql.Template;
 
+import jakarta.nosql.Template;
 
 import org.tasktide.core.TaskTideRepository;
 

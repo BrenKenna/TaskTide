@@ -28,6 +28,7 @@ public class SeContainerProvider implements CdiContainerProvider<SeContainer> {
     // 
     public SeContainerProvider(SeContainer container) {
         this.container = container;
+        this.initializer = SeContainerInitializer.newInstance();
     }
     
     

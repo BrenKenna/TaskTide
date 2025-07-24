@@ -122,7 +122,8 @@ public class TaskTideManagerUtility {
         if ( parts.length == 2) {
             ItemTask task = new ManagerTask(parts[0], parts[1]).asItemTask();
             Workload workload = BuilderUtility.buildWorkload(task);
-            return BuilderUtility.buildWorkItem(parts[0], workload, stepName);
+            String stepId = "Step-" + BuilderUtility.fetchRandomToken();
+            return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
         }
         throw new IllegalArgumentException(
             "Invalid format: Expected 2 fields but got " + parts.length
@@ -159,7 +160,8 @@ public class TaskTideManagerUtility {
             }
             Workload workload = BuilderUtility.buildWorkload(nestedTasks);
             System.out.println("\n\nDisplaying created workload:\n" + workload.toJsonDoc());
-            return BuilderUtility.buildWorkItem(parts[0], workload, stepName);
+            String stepId = "Step-" + BuilderUtility.fetchRandomToken();
+            return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
         }
         
         // Handle single task

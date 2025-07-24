@@ -18,7 +18,7 @@ import org.tasktide.core.model.task.TaskLogging;
 public class ItemTaskBuilder extends ModelBuilder {
     
     // Attributes
-    private String id, taskName, task;
+    private String id, taskName, task, workItemId;
     private TaskLogging taskLog;
     private TaskState taskState;
     
@@ -36,6 +36,18 @@ public class ItemTaskBuilder extends ModelBuilder {
      */
     public ItemTaskBuilder id(String id) {
         this.id = id;
+        return this;
+    }
+    
+    
+    /**
+     * Add workItemId field
+     * 
+     * @param workItemId
+     * @return {@link ItemTaskBuilder}
+     */
+    public ItemTaskBuilder workItemId(String workItemId) {
+        this.workItemId = workItemId;
         return this;
     }
     
@@ -95,6 +107,9 @@ public class ItemTaskBuilder extends ModelBuilder {
      */
     @Override
     public ItemTask build() {
+        if ( workItemId != null ) {
+            return new ItemTask(id, taskName, task, taskState, taskLog, workItemId);
+        }
         return new ItemTask(id, taskName, task, taskState, taskLog);
     }
 }
