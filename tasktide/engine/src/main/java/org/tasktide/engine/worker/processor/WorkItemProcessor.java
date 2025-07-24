@@ -88,7 +88,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
 
     
     /**
-     * Add workload to the {@link ExecutorServiceTrackerWorkItem}
+     * Add workload to the {@link FutureTrackers}
      * 
      * @param subList
      * @param future 
@@ -101,6 +101,13 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
         }
     }
 
+    
+    /**
+     * Splits workload into smaller chunks for each thread
+     * 
+     * @param workload
+     * @return List-List-{@link WorkItem}
+     */
     @Override
     protected List<List<WorkItem>> parallelChunks(List<WorkItem> workload) {
         
@@ -122,8 +129,6 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
                 results.add(workload.subList(start, workload.size()));
             }
         }
-        
-        
         return results;
     }
 }

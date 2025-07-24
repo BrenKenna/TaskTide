@@ -12,6 +12,13 @@ import org.tasktide.engine.wokerunitprovider.WorkItemExecutorBuilder;
 import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
 import org.tasktide.engine.wokerunitprovider.WorkItemProcessorBuilder;
 
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.engine.worker.executor.TaskTideExecutor;
+import org.tasktide.engine.observer.TaskTideEngineObserver;
+import org.tasktide.engine.worker.processor.TaskTideProcessor;
+
+
 
 /**
  * Single class to provide the builders for Observer, Processors and Executors
@@ -69,7 +76,7 @@ public class TaskTideWorkerUnitProvider {
 
     
     /**
-     * Get builder for {@link TaskTideEexecutor} for {@link WorkItem}
+     * Get builder for {@link TaskTideExecutor} for {@link WorkItem}
      * 
      * @return {@link WorkItemExecutorBuilder}
      */
@@ -99,7 +106,7 @@ public class TaskTideWorkerUnitProvider {
 
     
     /**
-     * Get builder for {@link TaskTideEexecutor} for {@link ItemTask}
+     * Get builder for {@link TaskTideExecutor} for {@link ItemTask}
      * 
      * @return {@link ItemTaskExecutorBuilder}
      */

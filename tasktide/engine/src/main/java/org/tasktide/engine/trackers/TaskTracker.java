@@ -12,6 +12,8 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
@@ -26,6 +28,10 @@ public class TaskTracker<T extends TaskTideModel<T>> {
     // Map of task states
     private final ConcurrentMap<String, ExecutionState> taskStates = new ConcurrentHashMap<>();
     
+    
+    /**
+     * Only constructable within package
+     */
     TaskTracker() {}
     
     

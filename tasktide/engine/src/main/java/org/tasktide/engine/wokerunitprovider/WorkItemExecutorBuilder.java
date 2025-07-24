@@ -6,6 +6,7 @@ package org.tasktide.engine.wokerunitprovider;
 
 import java.util.List;
 
+import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;

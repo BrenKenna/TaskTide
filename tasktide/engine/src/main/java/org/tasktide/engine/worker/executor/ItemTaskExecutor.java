@@ -31,7 +31,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
 
     
     /**
-     * Construct with {@link}
+     * Construct with {@link ItemTaskObserver}
      * 
      * @param observer 
      */

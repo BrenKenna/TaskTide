@@ -39,7 +39,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
 
     
     /**
-     * Construct feeding {@link ItemTask} workload into {@link TaskTracker}
+     * Construct feeding {@link ItemTask} workload into {@link TaskTrackers}
      * 
      * @param workload 
      */
@@ -116,7 +116,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
     /**
      * Return observer name
      * 
-     * @return 
+     * @return String
      */
     @Override
     public String getName() {

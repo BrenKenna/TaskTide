@@ -7,10 +7,12 @@ package org.tasktide.engine.observer;
 import java.util.List;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.task.ItemTask;
 
 
 /**
- * Hold {@link WorkerObserver}s in a list, with onStart, onProcessing, and onEnd
+ * Holds each {@link WorkerObserver} in a list, with onStart, onProcessing, and onEnd
  *  methods operating iteratively where the failure of one breaks exeuction chain. To 
  *  context failure methods a {@link ObserverResult} are returned.
  * 

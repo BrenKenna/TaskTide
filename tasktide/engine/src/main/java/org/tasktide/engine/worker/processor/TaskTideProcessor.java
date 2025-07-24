@@ -20,6 +20,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.TaskTideWorkerUnit;
+import org.tasktide.engine.trackers.TaskTrackers;
 
 
 /**
@@ -101,10 +102,10 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     
     
     /**
-     * Submit list for processing {@link ExecutorServiceTrackerWorkItem}
+     * Submit list for processing and add to {@link TaskTrackers}
      * 
      * @param subList 
-     * @return  
+     * @return Future
      */
     protected Future<?> submitSubTask(List<T> subList) {
         Future<?> item = executorService.submit(( () -> {
@@ -124,7 +125,11 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     protected abstract List<List<T>> parallelChunks(List<T> workload);
     
     
-    
+    /**
+     * Process workload across threads
+     * 
+     * @param workload 
+     */
     public void processChunks(List<T> workload) {
     
         // Initialize data
@@ -136,6 +141,12 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
         }
     }
     
+    
+    /**
+     * Wrapper method for processing chunks
+     * 
+     * @param workload 
+     */
     private void submitParallelChunks(List<T> workload) {
         for ( T task : this.workload ) {
             this.submitParallelSubTask(List.of(task));
@@ -143,6 +154,13 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     }
     
     
+    /**
+     * Submit task execution by {@link TaskTideExecutor} to the executor service, adding future
+     *  to {@link TaskTrackers}
+     * 
+     * @param task
+     * @return 
+     */
     protected Future<?> submitParallelSubTask(List<T> task) {
         Future<?> item = executorService.submit(( () -> {
             newSubProcessor(task).getExecutor().runTasks(task);
@@ -153,7 +171,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     
     
     /**
-     * Adds tasks from subList to 
+     * Adds tasks from subList to {@link TaskTrackers}
      * 
      * @param subList 
      * @param future 

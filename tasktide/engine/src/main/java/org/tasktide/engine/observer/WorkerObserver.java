@@ -5,15 +5,17 @@
 package org.tasktide.engine.observer;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.observer.worker.ObserverType;
 
 import org.tasktide.engine.worker.TaskTideWorkerUnit;
 
 
 /**
- * Observer interface for observing {@link Workitem}, and {@link ItemTask} execution
+ * Observer interface for observing {@link WorkItem}, and {@link ItemTask} execution
  * 
- * @param <T> of {@link TaskTideModel}-{@link Workitem}, {@link ItemTask}
+ * @param <T> of {@link TaskTideModel}-{@link WorkItem}, {@link ItemTask}
  * @author bkenna
  */
 public interface WorkerObserver<T extends TaskTideModel<T>> extends TaskTideWorkerUnit<T> {

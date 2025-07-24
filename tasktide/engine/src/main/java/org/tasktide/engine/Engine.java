@@ -6,7 +6,7 @@ package org.tasktide.engine;
 
 
 /**
- * 
+ * Entry-point class for the TaskTide Engine
  * 
  * @author bkenna
  */

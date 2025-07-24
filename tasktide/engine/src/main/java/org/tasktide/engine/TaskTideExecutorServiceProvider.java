@@ -7,8 +7,14 @@ package org.tasktide.engine;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.task.ItemTask;
+
+
 /**
- *
+ * Singleton class to provide the {@link ExecutorService}
+ *  for {@link WorkItem} and {@link ItemTask}
+ * 
  * @author bkenna
  */
 public class TaskTideExecutorServiceProvider {
@@ -36,6 +42,12 @@ public class TaskTideExecutorServiceProvider {
     }
 
     
+    /**
+     * Initialize executor services for provided pool sizes
+     * 
+     * @param workItemThreads
+     * @param itemTaskThreads
+     */
     public static synchronized void initialize(int workItemThreads, int itemTaskThreads) {
         if ( instance != null ) {
             throw new IllegalStateException("TaskTideExecutorService already initialize");
@@ -46,8 +58,9 @@ public class TaskTideExecutorServiceProvider {
     
     
     /**
+     * Provides the executor if initialized
      * 
-     * @return 
+     * @return TaskTideExecutorServiceProvider
      */
     public static TaskTideExecutorServiceProvider getInstance() {
         if ( instance == null ) {
@@ -77,25 +90,46 @@ public class TaskTideExecutorServiceProvider {
     public ExecutorService getItemTaskExecutorService() {
         return itemTaskExecutorService;
     }
+
     
-    
-    // Static accessors for convenience
+    /**
+     * Static accessor for convenience for {@link WorkItem}
+     *  exectuor service
+     * 
+     * @return ExecutorService
+     */
     public static ExecutorService workItemExecutorService() {
         return getInstance().getWorkItemExecutorService();
     }
 
+    
+    /**
+     * Static accessor for convenience for {@link ItemTask}
+     *  exectuor service
+     * 
+     * @return ExecutorService
+     */
     public static ExecutorService itemTaskExecutorService() {
         return getInstance().getItemTaskExecutorService();
     }
 
+    
+    /**
+     * Thread pool size for {@link WorkItem} executor
+     * 
+     * @return int
+     */
     public int getWorkItemThreads() {
         return workItemThreads;
     }
 
+    
+    /**
+     * Thread pool size for {@link ItemTask} executor
+     * 
+     * @return int
+     */
     public int getItemTaskThreads() {
         return itemTaskThreads;
     }
-    
-    
-    
 }

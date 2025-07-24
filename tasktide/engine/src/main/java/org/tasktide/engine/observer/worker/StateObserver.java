@@ -11,7 +11,7 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.WorkerObserver;
-
+import org.tasktide.engine.trackers.TaskTrackers;
 
 
 /**
@@ -29,7 +29,7 @@ public abstract class StateObserver<T extends TaskTideModel<T>> implements Worke
             
     
     /**
-     * Construct with {@link TaskTracker}
+     * Construct with {@link TaskTrackers}
      * 
      */
     public StateObserver() {

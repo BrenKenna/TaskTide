@@ -10,6 +10,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.observer.chain.WorkItemObserver;
+import org.tasktide.engine.observer.worker.TimeKeeperObserver;
 
 
 /**
@@ -37,7 +38,7 @@ public class WorkItemObserverBuilder {
 
     
     /**
-     * Build with {@link TimeKeeper} max time
+     * Build with {@link TimeKeeperObserver} max time
      * 
      * @param maxTime
      * @return {@link WorkItemObserverBuilder}

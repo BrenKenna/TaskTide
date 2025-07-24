@@ -93,7 +93,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     
     
     /**
-     * Add workload to the {@link ExecutorServiceTrackerWorkItem}
+     * Add workload to the {@link FutureTrackers}
      * 
      * @param subList
      * @param future 
@@ -107,6 +107,12 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     }
     
     
+    /**
+     * Divide workload across number of threads
+     * 
+     * @param workload
+     * @return List-List-{@link ItemTask}
+     */
     @Override
     protected List<List<ItemTask>> parallelChunks(List<ItemTask> workload) {
         // Initialize variables

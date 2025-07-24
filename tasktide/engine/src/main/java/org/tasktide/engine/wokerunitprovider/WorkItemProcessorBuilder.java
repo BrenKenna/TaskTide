@@ -47,7 +47,7 @@ public class WorkItemProcessorBuilder {
      * Build with sub tasking threshold
      * 
      * @param threshold
-     * @return {@link WorkItemPkTideProcessor} of {@link WorkItem}rocessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
+     * @return {@link WorkItemProcessor} of {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
      */
     public WorkItemProcessorBuilder withThreshold(int threshold) {
         this.threshold = threshold;
@@ -59,7 +59,7 @@ public class WorkItemProcessorBuilder {
      * Build with provided {@link ExecutorService}
      * 
      * @param executorService
-     * @return {@link WorkItemPkTideProcessor} of {@link WorkItem}rocessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
+     * @return {@link WorkItemProcessor} of {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
      */
     public WorkItemProcessorBuilder withExecutorService(ExecutorService executorService) {
         this.executorService = executorService;
@@ -71,7 +71,7 @@ public class WorkItemProcessorBuilder {
      * Build with new {@link ExecutorService}
      * 
      * @param nThreads
-     * @return {@link WorkItemPkTideProcessor} of {@link WorkItem}rocessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
+     * @return {@link WorkItemProcessor} of {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
      */
     public WorkItemProcessorBuilder withExecutorService(int nThreads) {
         this.executorService = Executors.newFixedThreadPool(nThreads);
@@ -83,7 +83,7 @@ public class WorkItemProcessorBuilder {
      * Build with provided {@link TaskTideExecutor} of {@link WorkItem}
      * 
      * @param executor
-     * @return {@link WorkItemPkTideProcessor} of {@link WorkItem}rocessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
+     * @return {@link WorkItemProcessor} of {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
      */
     public WorkItemProcessorBuilder withSubExecutor(TaskTideExecutor<WorkItem> executor) {
         this.executor = executor;
@@ -94,7 +94,7 @@ public class WorkItemProcessorBuilder {
     /**
      * Build {@link TaskTideProcessor} for {@link WorkItem}
      * 
-     * @return {@link TaskTideProcesor} of {@link WorkItem}
+     * @return {@link TaskTideProcessor} of {@link WorkItem}
      */
     public TaskTideProcessor<WorkItem> build() {
         return new WorkItemProcessor(

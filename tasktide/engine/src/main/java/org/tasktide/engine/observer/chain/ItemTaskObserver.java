@@ -16,6 +16,9 @@ import org.tasktide.engine.observer.WorkerObserver;
 import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
 import org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver;
 
+import org.tasktide.engine.observer.TaskTideEngineObserver;
+
+
 /**
  * Coordinates the work across the {@link WorkerObserver}s for the processing of {@link WorkItem}
  *  through the {@link TaskTideEngineObserver} chain for {@link ItemTask}s

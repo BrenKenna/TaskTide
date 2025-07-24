@@ -26,7 +26,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
 
     
     /**
-     * Construct with {@link TaskTracker}
+     * Construct with {@link TaskTrackers}
      * 
      */
     public WorkItemStateObserver() {
@@ -35,7 +35,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
 
     
     /**
-     * Construct feeding {@link WorkItem} workload into {@link TaskTracker}
+     * Construct feeding {@link WorkItem} workload into {@link TaskTrackers}
      * 
      * @param workload 
      */

@@ -13,13 +13,15 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.task.ItemTask;
 
 
 /**
  * Generic class to hold logic for tracking futures of {@link TaskTideModel}
  *  elements (ie {@link ItemTask}, {@link WorkItem}) as {@link ExecutorServiceItem}.
  * 
- * @param <T> of {@link TaskTideModel}
+ * @param <T> of {@link TaskTideModel} of {@link WorkItem}, {@link ItemTask}
  * @author bkenna
  */
 public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
@@ -28,6 +30,9 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     private final ConcurrentMap<String, ExecutorServiceItem<T>> taskStates;
     
     
+    /**
+     * Only constructable from within package
+     */
     ExecutorServiceTracker() {
         this.taskStates = new ConcurrentHashMap<>();
     }
@@ -166,7 +171,7 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     
     
     /**
-     * Count done & terminated elements
+     * Count done and terminated elements
      * 
      * @return int
      */

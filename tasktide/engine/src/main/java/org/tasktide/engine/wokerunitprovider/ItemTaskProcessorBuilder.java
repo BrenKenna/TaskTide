@@ -47,7 +47,7 @@ public class ItemTaskProcessorBuilder {
      * Build with sub tasking threshold
      * 
      * @param threshold
-     * @return {@link ItemTaskPkTideProcessor} of {@link ItemTask}rocessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
+     * @return {@link ItemTaskProcessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
      */
     public ItemTaskProcessorBuilder withThreshold(int threshold) {
         this.threshold = threshold;
@@ -59,7 +59,7 @@ public class ItemTaskProcessorBuilder {
      * Build with provided {@link ExecutorService}
      * 
      * @param executorService
-     * @return {@link ItemTaskPkTideProcessor} of {@link ItemTask}rocessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
+     * @return {@link ItemTaskProcessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
      */
     public ItemTaskProcessorBuilder withExecutorService(ExecutorService executorService) {
         this.executorService = executorService;
@@ -71,7 +71,7 @@ public class ItemTaskProcessorBuilder {
      * Build with new {@link ExecutorService}
      * 
      * @param nThreads
-     * @return {@link ItemTaskPkTideProcessor} of {@link ItemTask}rocessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
+     * @return {@link ItemTaskProcessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
      */
     public ItemTaskProcessorBuilder withExecutorService(int nThreads) {
         this.executorService = Executors.newFixedThreadPool(nThreads);
@@ -83,7 +83,7 @@ public class ItemTaskProcessorBuilder {
      * Build with provided {@link TaskTideExecutor} of {@link ItemTask}
      * 
      * @param executor
-     * @return {@link ItemTaskPkTideProcessor} of {@link ItemTask}rocessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
+     * @return {@link ItemTaskProcessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
      */
     public ItemTaskProcessorBuilder withSubExecutor(TaskTideExecutor<ItemTask> executor) {
         this.executor = executor;
@@ -94,7 +94,7 @@ public class ItemTaskProcessorBuilder {
     /**
      * Build {@link TaskTideProcessor} for {@link ItemTask}
      * 
-     * @return {@link TaskTideProcesor} of {@link ItemTask}
+     * @return {@link TaskTideProcessor} of {@link ItemTask}
      */
     public TaskTideProcessor<ItemTask> build() {
         return new ItemTaskProcessor(this.workload, this.threshold, this.executorService, this.executor);

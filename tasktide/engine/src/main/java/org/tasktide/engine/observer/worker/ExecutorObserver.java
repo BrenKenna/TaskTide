@@ -9,11 +9,14 @@ import org.apache.logging.log4j.Logger;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.engine.observer.WorkerObserver;
 
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.task.ItemTask;
+
 
 /**
  * Observer for the full processing life-cycle of an executor
  * 
- * @param <T> of {@link TaskTidModel}-{@link WorkItem},{@link ItemTask}
+ * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
  * @param <U> subunit {@alink ItemTask} for now
  * @author bkenna
  */
@@ -21,7 +24,7 @@ public abstract class ExecutorObserver<T extends TaskTideModel<T>, U extends Tas
 
     // Attributes
     protected final Logger logger;
-    private ObserverType type;
+    private final ObserverType type;
 
     
     /**

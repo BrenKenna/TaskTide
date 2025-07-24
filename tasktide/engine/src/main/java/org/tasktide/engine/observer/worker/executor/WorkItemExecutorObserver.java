@@ -13,15 +13,16 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.workitem.Workload;
 import org.tasktide.core.model.state_summary.StateSummary;
+
 import org.tasktide.engine.observer.ObserverResult;
-
 import org.tasktide.engine.observer.worker.ExecutorObserver;
-
+import org.tasktide.engine.observer.WorkerObserver;
 
 
 /**
- * {@link TaskTideWorkerObserver} of {@link ExecutorObserver} to handle tasks around
+ * {@link WorkerObserver} of {@link ExecutorObserver} to handle tasks around
  *  execution of {@link WorkItem} {@link Workload}
  * 
  * @author bkenna
