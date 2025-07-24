@@ -1,5 +1,5 @@
 .gradle/
-tasktide/build
+tasktide/build/
 tasktide/*/build/
 tasktide/*/bin/
 .gitignore
