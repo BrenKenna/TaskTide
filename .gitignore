@@ -4,6 +4,3 @@ tasktide/*/build/
 tasktide/*/bin/
 .gitignore
 .secret/
-TaskTide.zip
-Notes.txt
-tasktide/tasktide/TaskTideClient-Uml.puml
