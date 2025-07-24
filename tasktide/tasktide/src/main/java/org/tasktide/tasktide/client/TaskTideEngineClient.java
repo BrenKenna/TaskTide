@@ -196,7 +196,7 @@ public class TaskTideEngineClient extends TaskTideClient {
     
     
     /**
-     * Waits via {@link ExecutorServiceTrackerWorkItem}
+     * Waits via {@link FutureTrackers}
      * 
      * @param expected
      * @param logger 

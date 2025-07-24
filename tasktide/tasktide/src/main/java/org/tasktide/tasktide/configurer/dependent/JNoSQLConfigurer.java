@@ -17,9 +17,10 @@ import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.parser.model.ArgumentType;
 
+import jakarta.nosql.Template;
 
 /**
- * Configurer for Jakarta NoSQL {@link Template}.class
+ * Configurer for Jakarta NoSQL {@link Template}
  * 
  * @author bkenna
  */

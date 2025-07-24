@@ -42,8 +42,8 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
 
     
     /**
-     * Add the {@link TaskTideEngine} configuration to the supplied
-     *  {@link ArgumentTree}
+     * Add the configured {@link ArgumentMap} to the supplied
+     *  {@link ArgumentTree} under the instances path attribute
      * 
      * @param argTree 
      */
@@ -65,7 +65,7 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
     
     
     /**
-     * Return the {@link TaskTideEngine} argument map
+     * Return the instances configured {@link ArgumentMap}
      * 
      * @return {@link ArgumentMap}
      */

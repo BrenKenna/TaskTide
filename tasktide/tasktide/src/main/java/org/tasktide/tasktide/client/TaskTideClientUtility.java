@@ -299,7 +299,7 @@ public class TaskTideClientUtility {
     
     
     /**
-     * Provides the required {@link Temaplte} class to inject
+     * Provides the required {@link Template} class to inject
      * 
      * @param configMap
      * @return Class

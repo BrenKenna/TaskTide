@@ -342,7 +342,7 @@ public class RocksDBStore extends AbstractItemStore {
 
     
     /**
-     * Close master & cache connections
+     * Close master and cache connections
      * 
      * @param target
      * @return boolean

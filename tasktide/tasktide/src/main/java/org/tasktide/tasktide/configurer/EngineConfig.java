@@ -14,9 +14,13 @@ import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.parser.model.ArgumentType;
 
+import org.tasktide.engine.observer.WorkerObserver;
+import org.tasktide.engine.observer.worker.TimeKeeperObserver;
+import org.tasktide.engine.Engine;
+        
 
 /**
- * Class to template the {@link TaskTideEngine} module parameters
+ * Class to template the {@link Engine} module parameters
  * 
  * @author bkenna
  */
@@ -86,7 +90,7 @@ public class EngineConfig extends AbstractConfigurer {
     
     
     /**
-     * Applies the {@link TaskTideEngine} configurations to {@link ArgumentTree}
+     * Applies the {@link Engine} configurations to {@link ArgumentTree}
      * 
      * @param argTree 
      */
@@ -224,7 +228,7 @@ public class EngineConfig extends AbstractConfigurer {
     
     
     /**
-     * Configure the {@link TimeKeeper} {@link TaskTideObserver} level
+     * Configure the {@link TimeKeeperObserver} {@link WorkerObserver} level
      * 
      */
     public void timeKeeperLevel() {
@@ -243,7 +247,7 @@ public class EngineConfig extends AbstractConfigurer {
     
     
     /**
-     * Configure the {@link TimeKeeper} {@link TaskTideObserver} level
+     * Configure the {@link TimeKeeperObserver} {@link WorkerObserver} level
      * 
      */
     public void timeKeeperOnStartCanFail() {
@@ -262,7 +266,7 @@ public class EngineConfig extends AbstractConfigurer {
     
     
     /**
-     * Configure the {@link TimeKeeper} {@link TaskTideObserver} level
+     * Configure the {@link TimeKeeperObserver} {@link WorkerObserver} level
      * 
      */
     public void timeKeeperOnProcessingCanFail() {
@@ -281,7 +285,7 @@ public class EngineConfig extends AbstractConfigurer {
     
     
     /**
-     * Configure the {@link TimeKeeper} {@link TaskTideObserver} level
+     * Configure the {@link TimeKeeperObserver} {@link WorkerObserver} level
      * 
      */
     public void timeKeeperOnEndCanFail() {
