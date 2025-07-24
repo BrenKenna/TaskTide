@@ -24,18 +24,15 @@ import org.tasktide.tasktide.parser.ArgumentTree;
 public abstract class TaskTideClient {
     
     // Shared attributes
-    private final TaskTideServiceManager taskTideManager;
     private final ClientConfigMap config;
     
     
     /**
      * Construct engine client
      * 
-     * @param manager
      * @param config
      */
-    public TaskTideClient(TaskTideServiceManager manager, ClientConfigMap config) {
-        this.taskTideManager = manager;
+    public TaskTideClient(ClientConfigMap config) {
         this.config = config;
     }
     
@@ -78,16 +75,6 @@ public abstract class TaskTideClient {
      */
     protected abstract void cleanUp();
 
-
-    /**
-     * Get {@link TaskTideServiceManager}
-     * 
-     * @return {@link TaskTideServiceManager}
-     */
-    public TaskTideServiceManager getTaskTideManager() {
-        return taskTideManager;
-    }
-
     
     /**
      * Fetch to work from {@link WorkItemService}
@@ -96,8 +83,8 @@ public abstract class TaskTideClient {
      */
     protected List<WorkItem> fetchToDoWork() {
         List<WorkItem> workload, check;
-        check = ((WorkItemService) this.taskTideManager.getWorkItemService()).viewItemsByState(ItemState.TODO);
-        workload = this.taskTideManager.getWorkItemService().viewByField("state", "todo");
+        check = ((WorkItemService) TaskTideServiceManager.fetchWorkItemService()).viewItemsByState(ItemState.TODO);
+        workload = TaskTideServiceManager.fetchWorkItemService().viewByField("state", "todo");
         // System.out.println(String.format("Comparing query sizes:\tConcrete service '%d', Manager '%d'", check.size(), workload.size()));
         return workload;
     }

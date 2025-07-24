@@ -276,9 +276,8 @@ public class ConfigureTaskTideTest {
      * Fetch {@link TaskTideServiceManager} for the 
      * 
      * @param backend
-     * @return 
      */
-    public TaskTideServiceManager fetchManager(Template backend) {
+    public void fetchManager(Template backend) {
         
         // Initialize vars
         TaskTideServiceManager output;
@@ -292,7 +291,7 @@ public class ConfigureTaskTideTest {
         workflowService = ServiceFactory.makeWorkflowService(RepositoryType.NOSQL, backend, "Workflow-Service");
         
         // Return manager
-        return new TaskTideServiceManager(workItemService, stepService, workflowService);
+        TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
     }
     
     
@@ -412,16 +411,15 @@ public class ConfigureTaskTideTest {
         String provider = (String) argTree.getTree().getDataForAddress("").getArgument("NoSQL Provider").getValue();
         logger.info("Fetching Service Using '{}' Backend", provider);
         backend = fetchDocumentTemplate();
-        taskTideManager = fetchManager(backend);
-        Map<String, String> map = taskTideManager.getWorkItemService().getRepo().getRepositoryMetaData();
+        Map<String, String> map = TaskTideServiceManager.fetchWorkItemService().getRepo().getRepositoryMetaData();
         logger.info("Displaying meta data for Template WorkItem Service:\n'{}'", mapToJsonString(map));
         
         // Add records
         logger.info("Verifying that records can be added");
         try {
             workload = TaskTideManagerUtility.importTasks("TestData", "nestedTaskImports.txt", "|", ",");
-            assertionState = taskTideManager.getWorkItemService().extendModel(workload);
-            result = taskTideManager.getWorkItemService().fetchById( workload.get(0).getId());
+            assertionState = TaskTideServiceManager.fetchWorkItemService().extendModel(workload);
+            result = TaskTideServiceManager.fetchWorkItemService().fetchById( workload.get(0).getId());
             logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
         }
         catch (Exception ex) {

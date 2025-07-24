@@ -40,7 +40,7 @@ public enum TaskTideClientType {
         }
 
         @Override
-        public TaskTideClient makeClient(TaskTideServiceManager servManager, ClientConfigMap configMap) {
+        public TaskTideClient makeClient(ClientConfigMap configMap) {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     },
@@ -62,8 +62,8 @@ public enum TaskTideClientType {
         }
 
         @Override
-        public TaskTideClient makeClient(TaskTideServiceManager servManager, ClientConfigMap configMap) {
-            return new TaskTideEngineClient(servManager, configMap);
+        public TaskTideClient makeClient(ClientConfigMap configMap) {
+            return new TaskTideEngineClient(configMap);
         }
         
         @Override
@@ -89,8 +89,8 @@ public enum TaskTideClientType {
         }
         
         @Override
-        public TaskTideClient makeClient(TaskTideServiceManager servManager, ClientConfigMap configMap) {
-            return new TaskTideManagerClient(servManager, configMap);
+        public TaskTideClient makeClient(ClientConfigMap configMap) {
+            return new TaskTideManagerClient(configMap);
         }
         
         @Override
@@ -100,7 +100,7 @@ public enum TaskTideClientType {
     };
 
     public abstract Class getConfigClass();
-    public abstract TaskTideClient makeClient(TaskTideServiceManager servManager, ClientConfigMap configMap);
+    public abstract TaskTideClient makeClient(ClientConfigMap configMap);
     public abstract boolean isClient(String s);
     public abstract boolean isClient(TaskTideClientType other);
     

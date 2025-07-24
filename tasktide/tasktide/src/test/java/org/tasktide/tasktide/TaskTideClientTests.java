@@ -111,11 +111,11 @@ public class TaskTideClientTests {
         
         // Fetch service manager
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(repoType, configMap);
+        TaskTideClientUtility.initServiceManager(repoType, configMap);
         
         // Fetch client
         TaskTideClientType clientType = TaskTideClientType.MANAGER;
-        TaskTideClient client = clientType.makeClient(taskTideServiceManager, configMap);
+        TaskTideClient client = clientType.makeClient(configMap);
         
         // Import data
         logger.info("Running manager client import");
@@ -143,11 +143,11 @@ public class TaskTideClientTests {
         
         // Fetch service manager
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(repoType, configMap);
+        TaskTideClientUtility.initServiceManager(repoType, configMap);
         
         // Fetch client
         TaskTideClientType clientType = TaskTideClientType.ENGINE;
-        TaskTideClient client = clientType.makeClient(taskTideServiceManager, configMap);
+        TaskTideClient client = clientType.makeClient(configMap);
         
         // Import data
         logger.info("Running manager client import");

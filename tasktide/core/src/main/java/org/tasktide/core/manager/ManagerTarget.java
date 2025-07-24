@@ -31,8 +31,8 @@ public enum ManagerTarget {
         }
         
         @Override
-        public List<TaskTideModel> fetchModels(TaskTideServiceManager servManager) {
-            return servManager.getWorkItemService().viewAllToTaskTideModel();
+        public List<TaskTideModel> fetchModels() {
+            return TaskTideServiceManager.fetchWorkItemService().viewAllToTaskTideModel();
         }
 
         @Override
@@ -53,8 +53,8 @@ public enum ManagerTarget {
         }
         
         @Override
-        public List<TaskTideModel> fetchModels(TaskTideServiceManager servManager) {
-            return servManager.getStepService().viewAllToTaskTideModel();
+        public List<TaskTideModel> fetchModels() {
+            return TaskTideServiceManager.fetchStepService().viewAllToTaskTideModel();
         }
 
         @Override
@@ -75,8 +75,8 @@ public enum ManagerTarget {
         }
         
         @Override
-        public List<TaskTideModel> fetchModels(TaskTideServiceManager servManager) {
-            return servManager.getWorkflowService().viewAllToTaskTideModel();
+        public List<TaskTideModel> fetchModels() {
+            return TaskTideServiceManager.fetchWorkflowService().viewAllToTaskTideModel();
         }
     
         @Override
@@ -107,10 +107,9 @@ public enum ManagerTarget {
     /**
      * Fetch 
      * 
-     * @param servManager
-     * @return 
+     * @return List-{@link TaskTideModel}
      */
-    public abstract List<TaskTideModel> fetchModels(TaskTideServiceManager servManager);
+    public abstract List<TaskTideModel> fetchModels();
 
     
     /**

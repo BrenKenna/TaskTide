@@ -55,11 +55,10 @@ public class TaskTideEngineClient extends TaskTideClient {
     /**
      * Construct engine client
      * 
-     * @param manager
      * @param configMap
      */
-    public TaskTideEngineClient(TaskTideServiceManager manager, ClientConfigMap configMap) {
-        super(manager, configMap);
+    public TaskTideEngineClient(ClientConfigMap configMap) {
+        super(configMap);
         this.unitProvider = new TaskTideWorkerUnitProvider();
     }
     
@@ -113,7 +112,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         else {
             logger.warn(
           "Warning, no ToDo tasks available for processing. Query below backend for more information\n\n{}\n\n",
-             this.getTaskTideManager().getWorkItemService().getRepo().getRepositoryMetaData()
+             TaskTideServiceManager.fetchWorkItemService().getRepo().getRepositoryMetaData()
             );
         }
         

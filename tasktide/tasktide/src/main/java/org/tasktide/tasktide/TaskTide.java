@@ -55,11 +55,12 @@ public class TaskTide {
             // Fetch TaskTideServiceManager
             RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
             LOGGER.info("Fetching the TaskTideServiceManager for '{}' Repository", repoType);
-            TaskTideServiceManager taskTideServiceManager = TaskTideClientUtility.fetchManager(repoType, configMap);
+            TaskTideClientUtility.initServiceManager(repoType, configMap);
+            LOGGER.info("ServiceManager state is now:\t'{}'", TaskTideServiceManager.isInitialized());
 
             // Run client
             LOGGER.info("Constructing client:\t'{}'", clientType);
-            TaskTideClient client = clientType.makeClient(taskTideServiceManager, configMap);
+            TaskTideClient client = clientType.makeClient(configMap);
             client.runClient();
 
             // Tear down container

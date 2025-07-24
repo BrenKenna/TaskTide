@@ -44,11 +44,10 @@ public class TaskTideManagerClient extends TaskTideClient {
     /**
      * Construct engine client
      * 
-     * @param manager
      * @param configMap
      */
-    public TaskTideManagerClient(TaskTideServiceManager manager, ClientConfigMap configMap) {
-        super(manager, configMap);
+    public TaskTideManagerClient(ClientConfigMap configMap) {
+        super(configMap);
         argMap = this.getArgTree().getTree().getDataForAddress("manager");
     }
 
@@ -185,10 +184,10 @@ public class TaskTideManagerClient extends TaskTideClient {
             List<WorkItem> workload = this.importFile();
             LOGGER.info("Import '{}' workitems", workload.size());
 
-            this.getTaskTideManager().getWorkItemService().extendModel(workload);
+            TaskTideServiceManager.fetchWorkItemService().extendModel(workload);
             LOGGER.info(
           "Import complete displaying first item for referece",
-             this.getTaskTideManager().getWorkItemService().fetchById(workload.get(0).getId())
+             TaskTideServiceManager.fetchWorkItemService().fetchById(workload.get(0).getId())
             );
         } catch (IOException ex) {
             LOGGER.error(
@@ -209,7 +208,7 @@ public class TaskTideManagerClient extends TaskTideClient {
         if ( !outFile.isEmpty() && !target.isEmpty() ) {
             ManagerTarget tgt = ManagerTarget.get(target);
             if ( tgt != null ) {
-                List<TaskTideModel> data = tgt.fetchModels(this.getTaskTideManager());
+                List<TaskTideModel> data = tgt.fetchModels();
                 this.exportJson(data, outFile);
             }
             else {

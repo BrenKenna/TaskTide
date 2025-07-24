@@ -54,7 +54,6 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param repo
      * @param lockingWaitTime task-tide.model.workitem.locking-wait-time
      */
-    // @Inject
     public WorkItemService(
         TaskTideRepository<WorkItem> repo,
         int lockingWaitTime
@@ -85,7 +84,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return {@link WorkItem}
      */
     @Override
-    public WorkItem appendModel(WorkItem model) {
+    public synchronized WorkItem appendModel(WorkItem model) {
         return repo.insertModel(model);
     }
     
@@ -98,7 +97,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return List-{@link WorkItem}
      */
     @Override
-    public List<WorkItem> viewByField(String field, Object value) {
+    public synchronized List<WorkItem> viewByField(String field, Object value) {
         return repo.findByField(field, value);
     }
     
@@ -114,7 +113,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return List-{@link WorkItem}
      */
     @Override
-    public List<WorkItem> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
+    public synchronized List<WorkItem> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
         return repo.findByFieldForGroup(field, value, group, groupVal);
     }
     
@@ -126,7 +125,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return {@link WorkItem}
      */
     @Override
-    public WorkItem fetchById(String id) {
+    public synchronized WorkItem fetchById(String id) {
         return repo.findById(id).get();
     }
     
@@ -137,7 +136,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return List-{@link WorkItem}
      */
     @Override
-    public List<WorkItem> viewAll() {
+    public synchronized List<WorkItem> viewAll() {
         return repo.findAll();
     }
     
@@ -148,7 +147,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return List-{@link TaskTideModel}
      */
     @Override
-    public List<TaskTideModel> viewAllToTaskTideModel() {
+    public synchronized List<TaskTideModel> viewAllToTaskTideModel() {
         return this.viewAll()
             .stream()
             .parallel()
@@ -164,7 +163,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return boolean
      */
     @Override
-    public boolean dropById(String id) {
+    public synchronized boolean dropById(String id) {
         return repo.deleteModel(id);
     }
 
@@ -176,7 +175,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return {@link WorkItem}
      */
     @Override
-    public WorkItem updateModel(WorkItem model) {
+    public synchronized WorkItem updateModel(WorkItem model) {
         return repo.updateModel(model);
     }
 
@@ -188,7 +187,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return boolean
      */
     @Override
-    public boolean extendModel(List<WorkItem> toAdd) {
+    public synchronized boolean extendModel(List<WorkItem> toAdd) {
         return repo.extendModel(toAdd);
     }
     
@@ -199,7 +198,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return int
      */
     @Override
-    public int save() {
+    public synchronized int save() {
         return repo.save();
     }
     
@@ -211,7 +210,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param task
      * @return {@link WorkItem}
      */
-    public WorkItem appendTask(WorkItem workItem, ItemTask task) {
+    public synchronized WorkItem appendTask(WorkItem workItem, ItemTask task) {
     
         // Add task to item
         if ( !workItem.addTask(task) ) {
@@ -227,7 +226,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param workItem
      * @return boolean 
      */
-    public WorkItem lockItem(WorkItem workItem) {
+    public synchronized WorkItem lockItem(WorkItem workItem) {
     
         // Lock the provided Item
         String lockId = utils.generateToken();
@@ -243,7 +242,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param workItem
      * @return {@link WorkItem}
      */
-    public WorkItem markAsDone(WorkItem workItem) {
+    public synchronized WorkItem markAsDone(WorkItem workItem) {
     
         // Set done fields
         workItem.setDoneDate(utils.getDateUtility().getDateLong());
@@ -258,7 +257,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param itemState
      * @return List-{@link WorkItem}
      */
-    public List<WorkItem> viewItemsByState(ItemState itemState) {
+    public synchronized List<WorkItem> viewItemsByState(ItemState itemState) {
         return repo.findByField("itemState", itemState);
     }
 
@@ -269,7 +268,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param itemName
      * @return List-{@link WorkItem}
      */
-    public List<WorkItem> viewItemsByName(String itemName) {
+    public synchronized List<WorkItem> viewItemsByName(String itemName) {
         return repo.findByField("itemName", itemName);
     }
 
@@ -277,7 +276,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
     /**
      * Set task counts on for each work item
      */
-    public void traceCounts() {
+    public synchronized void traceCounts() {
         repo.findAll().stream()
             .parallel()
             .forEach( elm -> elm.setTaskCounts() );
@@ -290,7 +289,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param traceFirst - Update per item task counts before providing
      * @return {@link StateSummary}
      */
-    public StateSummary<ItemState> fetchCountByState(boolean traceFirst) {
+    public synchronized StateSummary<ItemState> fetchCountByState(boolean traceFirst) {
         
         // Initialize output
         Map<ItemState, Integer> countMap = new HashMap<>();
@@ -312,7 +311,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * 
      * @return int 
      */
-    public int getLockWaitTime() {
+    public synchronized int getLockWaitTime() {
         return LOCKING_WAIT_TIME;
     }
 
@@ -323,7 +322,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return {@link TaskTideRepository} of -{@link WorkItem}
      */
     @Override
-    public TaskTideRepository<WorkItem> getRepo() {
+    public synchronized TaskTideRepository<WorkItem> getRepo() {
         return this.repo;
     }
     
@@ -336,7 +335,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return List-{@link Step}
      */
     @Override
-    public List<Step> getThroughLink(TaskTideService<Step> mappingServ, WorkItem model) {
+    public synchronized List<Step> getThroughLink(TaskTideService<Step> mappingServ, WorkItem model) {
         return mappingServ.viewByField("stepName", model.getStepName());
     }
     
@@ -347,7 +346,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @return String
      */
     @Override
-    public String toString() {
+    public synchronized String toString() {
         return "WorkItemService{" + 
             "LOCKING_WAIT_TIME=" + LOCKING_WAIT_TIME +
             ",ServiceType=WorkItem" +

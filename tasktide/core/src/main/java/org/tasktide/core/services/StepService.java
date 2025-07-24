@@ -56,7 +56,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return {@link TaskTideModel} of {@link Step Step}
      */
     @Override
-    public Step appendModel(Step model) {
+    public synchronized Step appendModel(Step model) {
         return repo.insertModel(model);
     }
 
@@ -68,7 +68,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return boolean
      */
     @Override
-    public boolean extendModel(List<Step> toAdd) {
+    public synchronized boolean extendModel(List<Step> toAdd) {
         return repo.extendModel(toAdd);
     }
     
@@ -81,7 +81,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return List-{@link TaskTideModel} of {@link Step}
      */
     @Override
-    public List<Step> viewByField(String field, Object value) {
+    public synchronized List<Step> viewByField(String field, Object value) {
         return repo.findByField(field, value);
     }
     
@@ -97,7 +97,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return List-{@link Step}
      */
     @Override
-    public List<Step> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
+    public synchronized List<Step> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
         return repo.findByFieldForGroup(field, value, group, groupVal);
     }
     
@@ -109,7 +109,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return {@link TaskTideModel} of {@link Step}
      */
     @Override
-    public Step fetchById(String id) {
+    public synchronized Step fetchById(String id) {
         return repo.findById(id).get();
     }
     
@@ -120,7 +120,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return List-{@link Step}
      */
     @Override
-    public List<Step> viewAll() {
+    public synchronized List<Step> viewAll() {
         return repo.findAll();
     }
 
@@ -131,7 +131,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return List-{@link TaskTideModel}
      */
     @Override
-    public List<TaskTideModel> viewAllToTaskTideModel() {
+    public synchronized List<TaskTideModel> viewAllToTaskTideModel() {
         return this.viewAll()
             .stream()
             .parallel()
@@ -146,7 +146,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @param stepName
      * @return List-{@link Step}
      */
-    public List<Step> viewStepsByName(String stepName) {
+    public synchronized List<Step> viewStepsByName(String stepName) {
         return repo.findByField("stepName", stepName);
     }
     
@@ -158,7 +158,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return boolean
      */
     @Override
-    public boolean dropById(String id) {
+    public synchronized boolean dropById(String id) {
         return repo.deleteModel(id);
     }
     
@@ -170,7 +170,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return {@link Step}
      */
     @Override
-    public Step updateModel(Step model) {
+    public synchronized Step updateModel(Step model) {
         return repo.updateModel(model);
     }
     
@@ -181,7 +181,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @param step
      * @return {@link StateSummary}-{@link ItemState}
      */
-    public StateSummary<ItemState> viewStepSummary(Step step) {
+    public synchronized StateSummary<ItemState> viewStepSummary(Step step) {
         return step.summarizeByState();
     }
     
@@ -191,7 +191,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * 
      * @return Map-String, {@link StateSummary}-{@link ItemState}
      */
-    public Map<String, StateSummary<ItemState>> viewSummary() {
+    public synchronized Map<String, StateSummary<ItemState>> viewSummary() {
         
         Map<String, StateSummary<ItemState>> results = new HashMap<>();
         for ( Step step : repo.findAll() ) {
@@ -208,7 +208,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @param newCounts
      * @return {@link Step}
      */
-    public Step updateStepCounts(Step step, StateSummary<ItemState> newCounts) {
+    public synchronized Step updateStepCounts(Step step, StateSummary<ItemState> newCounts) {
         step.setStateCounts(newCounts);
         return repo.updateModel(step);
     }
@@ -222,7 +222,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return List-{@link WorkItem}
      */
     @Override
-    public List<WorkItem> getThroughLink(TaskTideService<WorkItem> mappingServ, Step model) {
+    public synchronized List<WorkItem> getThroughLink(TaskTideService<WorkItem> mappingServ, Step model) {
         return mappingServ.viewByField("stepName", model.getStepName());
     }
     
@@ -233,7 +233,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return {@link TaskTideRepository} of {@link Step}
      */
     @Override
-    public TaskTideRepository<Step> getRepo() {
+    public synchronized TaskTideRepository<Step> getRepo() {
         return this.repo;
     }
     
@@ -244,7 +244,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return int
      */
     @Override
-    public int save() {
+    public synchronized int save() {
         return repo.save();
     }
     
@@ -255,7 +255,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return String
      */
     @Override
-    public String toString() {
+    public synchronized String toString() {
         return "StepService{" + 
             "ServiceType=Step" +
             ",ServiceLink=WorkItem" +

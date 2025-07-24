@@ -183,18 +183,18 @@ public class TaskTideClientUtility {
      * @return {@link TaskTideServiceManager}
      */
 
-    public static TaskTideServiceManager fetchManager(RepositoryType repoType, ClientConfigMap configMap) {
+    public static void initServiceManager(RepositoryType repoType, ClientConfigMap configMap) {
         switch ( repoType ) {
             case NOSQL -> {
                 LOGGER.info("Configuring NoSQL Template ServiceManager");
                 Template backend = TaskTideClientUtility.fetchTemplate(configMap);
-                return fetchManager(backend);
+                initServiceManager(backend);
             }
             
             case ITEMSTORE -> {
                 LOGGER.info("Configuring ItemStore ServiceManager");
                 Map<ManagerTarget, TaskTideRepository> repoMap = fetchItemStoreRepoMap(repoType, configMap);
-                return fetchManager(repoType, repoMap);
+                initServiceManager(repoType, repoMap);
             }
             
             default -> {
@@ -208,9 +208,8 @@ public class TaskTideClientUtility {
      * Fetch {@link TaskTideServiceManager} for {@link Template} backend
      * 
      * @param backend
-     * @return {@link TaskTideServiceManager} 
      */
-    public static TaskTideServiceManager fetchManager(Template backend) {
+    public static void initServiceManager(Template backend) {
         
         // Initialize vars
         TaskTideService<WorkItem> workItemService;
@@ -222,13 +221,8 @@ public class TaskTideClientUtility {
         stepService = ServiceFactory.makeStepService(RepositoryType.NOSQL, backend, "Step-Service");
         workflowService = ServiceFactory.makeWorkflowService(RepositoryType.NOSQL, backend, "Workflow-Service");
         
-        // Query as a sanity check
-        // LOGGER.info("Services for TaskTideModels created. Sanity checking querying a record");
-        // List<WorkItem> data = workItemService.viewAll();
-        // LOGGER.info("\nDisplaying sanity check data:\n{}", data.get(0).toJsonDoc());
-        
         // Return manager
-        return new TaskTideServiceManager(workItemService, stepService, workflowService);
+        TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
     }
     
     
@@ -237,9 +231,8 @@ public class TaskTideClientUtility {
      * 
      * @param repoType
      * @param repoMap
-     * @return {@link TaskTideServiceManager}
      */
-    public static TaskTideServiceManager fetchManager(RepositoryType repoType, Map<ManagerTarget, TaskTideRepository> repoMap) {
+    public static void initServiceManager(RepositoryType repoType, Map<ManagerTarget, TaskTideRepository> repoMap) {
         
         // Initialize vars
         TaskTideService<WorkItem> workItemService;
@@ -252,7 +245,7 @@ public class TaskTideClientUtility {
         workflowService = ServiceFactory.makeWorkflowService(repoType, repoMap.get(ManagerTarget.WORKFLOW), "Workflow-Service");
         
         // Return manager
-        return new TaskTideServiceManager(workItemService, stepService, workflowService);
+        TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
     }
     
     /**
@@ -260,9 +253,8 @@ public class TaskTideClientUtility {
      * 
      * @param repoType
      * @param backend
-     * @return {@link TaskTideServiceManager}
      */
-    public static TaskTideServiceManager fetchManager(RepositoryType repoType, Object backend) {
+    public static void initServiceManager(RepositoryType repoType, Object backend) {
         
         // Initialize vars
         TaskTideService<WorkItem> workItemService;
@@ -273,14 +265,10 @@ public class TaskTideClientUtility {
         workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
         stepService = ServiceFactory.makeStepService(repoType, backend, "Step-Service");
         workflowService = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow-Service");
-        
-        // Query as a sanity check
-        // LOGGER.info("Services for TaskTideModels created. Sanity checking querying a record");
-        // List<WorkItem> data = workItemService.viewAll();
-        // LOGGER.info("\nDisplaying sanity check data:\n{}", data.get(0).toJsonDoc());
+
         
         // Return manager
-        return new TaskTideServiceManager(workItemService, stepService, workflowService);
+        TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
     }
     
     
