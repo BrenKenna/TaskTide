@@ -332,4 +332,26 @@ public class TaskTideEngineClient extends TaskTideClient {
         Jsonb jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
         return jsonb.toJson(map);
     }
+    
+    
+    /**
+     * Fetch todo
+     * 
+     * @return List-{@link WorkItem}
+     */
+    private List<WorkItem> fetchToDoWork() {
+        return TaskTideServiceManager.fetchWorkItemService().viewByField("itemState", ItemState.TODO);
+    }
+    
+    
+    /**
+     * Fetch todo for target step
+     * 
+     * @return List-{@link WorkItem}
+     */
+    private List<WorkItem> fetchToDoWorkTarget(String stepName) {
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+            .viewByFieldForGroup("itemState", ItemState.TODO, "stepName", stepName);
+    }
 }

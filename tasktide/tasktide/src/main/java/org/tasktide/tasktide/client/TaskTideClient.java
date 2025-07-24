@@ -77,16 +77,6 @@ public abstract class TaskTideClient {
 
     
     /**
-     * Fetch to work from {@link WorkItemService}
-     * 
-     * @return List of {@link WorkItem}
-     */
-    protected List<WorkItem> fetchToDoWork() {
-        return TaskTideServiceManager.fetchWorkItemService().viewByField("itemState", ItemState.TODO);
-    }
-
-    
-    /**
      * Get concrete {@link TaskTideConfigurer}
      * 
      * @return {@link TaskTideConfigurer}
