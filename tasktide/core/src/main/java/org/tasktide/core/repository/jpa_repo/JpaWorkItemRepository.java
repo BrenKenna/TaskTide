@@ -6,6 +6,7 @@ package org.tasktide.core.repository.jpa_repo;
 
 import jakarta.persistence.EntityManager;
 
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.JpaRepository;
 
