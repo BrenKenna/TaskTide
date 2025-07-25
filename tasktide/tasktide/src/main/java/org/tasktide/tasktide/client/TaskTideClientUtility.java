@@ -4,16 +4,17 @@
  */
 package org.tasktide.tasktide.client;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import jakarta.enterprise.inject.spi.CDI;
-
-import jakarta.json.bind.Jsonb;
-import jakarta.json.bind.JsonbBuilder;
-import jakarta.json.bind.JsonbConfig;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,14 +26,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.sql.DataSource;
 import org.eclipse.jnosql.mapping.column.ColumnTemplate;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
 import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
-import org.tasktide.core.TaskTideRepository;
 
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.services.ServiceFactory;
@@ -65,9 +67,7 @@ public class TaskTideClientUtility {
     
     // Attributes
     private static final Logger LOGGER = LogManager.getLogger(TaskTideClientUtility.class);
-    private static final Jsonb JSON_PRETTY = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
-    private static final Jsonb JSON = JsonbBuilder.create(new JsonbConfig());
-    
+
     
     /**
      * Fetches splash string
@@ -135,19 +135,7 @@ public class TaskTideClientUtility {
         provider.start();
         return provider;
     }
-    
-    
-    /**
-     * Represent map as json string
-     * 
-     * @param map
-     * @return String Json
-     */
-    public static String mapToJsonString(Object map) {
-        Jsonb jsonb = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
-        return jsonb.toJson(map);
-    }
-    
+
     
     /**
      * Fetch the specific client to configure and run
@@ -182,7 +170,6 @@ public class TaskTideClientUtility {
      * @param repoType
      * @param configMap
      */
-
     public static void initServiceManager(RepositoryType repoType, ClientConfigMap configMap) {
         switch ( repoType ) {
             case NOSQL -> {
@@ -194,6 +181,12 @@ public class TaskTideClientUtility {
             case ITEMSTORE -> {
                 LOGGER.info("Configuring ItemStore ServiceManager");
                 Map<ManagerTarget, TaskTideRepository> repoMap = fetchItemStoreRepoMap(repoType, configMap);
+                initServiceManager(repoType, repoMap);
+            }
+            
+            case SQL -> {
+                LOGGER.info("Configuring SQL ServiceManager");
+                Map<ManagerTarget, TaskTideRepository> repoMap = fetchEntityManagerRepoMap(repoType, configMap);
                 initServiceManager(repoType, repoMap);
             }
             
@@ -266,7 +259,6 @@ public class TaskTideClientUtility {
         stepService = ServiceFactory.makeStepService(repoType, backend, "Step-Service");
         workflowService = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow-Service");
 
-        
         // Return manager
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
     }
@@ -364,13 +356,12 @@ public class TaskTideClientUtility {
     }
     
     
-    
     /**
-     * 
+     * Wrapper method to fetch {@link ItemStore} {@link TaskTideRepository} map
      * 
      * @param repoType
      * @param configMap
-     * @return 
+     * @return Map-{@link ManagerTarget}, {@link TaskTideRepository}
      */
     public static Map<ManagerTarget, TaskTideRepository> fetchItemStoreRepoMap(RepositoryType repoType, ClientConfigMap configMap) {
         
@@ -391,6 +382,146 @@ public class TaskTideClientUtility {
         // Add workflow repo
         store = itemStoreMap.get(ManagerTarget.WORKFLOW);
         repo = repoType.createRepository(Workflow.class, store, store.getDbDirectory());
+        output.put(ManagerTarget.WORKFLOW, repo);
+        
+        // Return results
+        return output;
+    }
+    
+    
+    /**
+     * Wrapper method to construct HikariConfig
+     * 
+     * @param configMap
+     * @return HikariConfig
+     */
+    public static HikariConfig fetchHikariConfig(ClientConfigMap configMap) {
+        HikariConfig conf = new HikariConfig();
+        conf.setJdbcUrl((String) configMap.getArgTree().getGlobalArguments().getArgument("Database URL").getValue());
+        conf.setUsername((String) configMap.getArgTree().getGlobalArguments().getArgument("Database Username").getValue());
+        conf.setPassword((String) configMap.getArgTree().getGlobalArguments().getArgument("Database Password").getValue());
+        conf.setDriverClassName((String) configMap.getArgTree().getGlobalArguments().getArgument("Database Driver").getValue());
+        return conf;
+    }
+    
+    
+    /**
+     * Wrapper method to fetch HikariDataSource
+     * 
+     * @param configMap
+     * @return DataSource
+     */
+    public static DataSource fetchDataSource(ClientConfigMap configMap) {
+        HikariConfig conf = fetchHikariConfig(configMap);
+        return new HikariDataSource(conf);
+    }
+    
+    
+    /**
+     * Fetch configuration map for entity manager
+     * 
+     * @param configMap
+     * @param dataSource
+     * @return Map-String, Object
+     */
+    public static Map<String, Object> fetchEntityManagerConfig(ClientConfigMap configMap, DataSource dataSource) {
+        Map<String, Object> conf = new HashMap<>();
+        conf.put("jakarta.persistence.nonJtaDataSource", dataSource);
+        conf.put("hibernate.hbm2ddl.auto", (String) configMap.getArgTree().getGlobalArguments().getArgument("Database DDL Update").getValue());
+        conf.put("hibernate.dialect", (String) configMap.getArgTree().getGlobalArguments().getArgument("Database Dialect Driver").getValue());
+        conf.put("hibernate.show_sql", (String) configMap.getArgTree().getGlobalArguments().getArgument("Database Show SQL").getValue());
+        return conf;
+    }
+    
+    
+    /**
+     * Fetcg entity manager factory for provided {@link ManagerTarget} using config
+     *  throwing IllegalArgumentException if not Workflow, Step, or WorkItem
+     * 
+     * @param conf
+     * @param modelType
+     * @return EntityManagerFactory
+     */
+    public static EntityManagerFactory fetchEntityManagerFactory(Map<String, Object> conf, ManagerTarget modelType) {
+        switch (modelType) {
+            case WORKFLOW -> {
+                return Persistence.createEntityManagerFactory("Workflow", conf);
+            }
+            case STEP -> {
+                return Persistence.createEntityManagerFactory("Step", conf);
+            }
+            case WORKITEM -> {
+                return Persistence.createEntityManagerFactory("WorkItem", conf);
+            }
+            default -> {
+                throw new IllegalArgumentException("Task TideModel Type must be one of Workflow, Step, or WorkItem");
+            }
+        }
+    }
+    
+    
+    /**
+     * Fetch backend entity manager for {@link ManagerTarget}
+     * 
+     * @param repoType
+     * @param configMap
+     * @param modelType
+     * @return EntityManager
+     */
+    public static EntityManager fetchEntityManager(RepositoryType repoType, ClientConfigMap configMap, ManagerTarget modelType) {
+        
+        // Configure dependanceis
+        DataSource dataSource = fetchDataSource(configMap);
+        Map<String, Object> conf = fetchEntityManagerConfig(configMap, dataSource);
+        
+        // Return entity manager for model type
+        return fetchEntityManagerFactory(conf, modelType).createEntityManager();
+    }
+    
+    
+    /**
+     * Fetch EnityManager map
+     * 
+     * @param repoType
+     * @param configMap
+     * @return Map-{@link ManagerTarget}, EntityManager
+     */
+    public static Map<ManagerTarget, EntityManager> fetchEntityManagerMap(RepositoryType repoType, ClientConfigMap configMap) {
+        Map<ManagerTarget, EntityManager> output = new HashMap<>();
+        for ( ManagerTarget elm : ManagerTarget.values() ) {
+           EntityManager manager = fetchEntityManager(repoType, configMap, elm);
+           output.put(elm, manager);
+        }
+        return output;
+    }
+    
+    
+    /**
+     * Wrapper method to fetch EntityManager {@link TaskTideRepository} map
+     * 
+     * @param repoType
+     * @param configMap
+     * @return Map-{@link ManagerTarget}, {@link TaskTideRepository}
+     */
+    public static Map<ManagerTarget, TaskTideRepository> fetchEntityManagerRepoMap(RepositoryType repoType, ClientConfigMap configMap) {
+        
+        // Initialize output and fetch item store map
+        Map<ManagerTarget, TaskTideRepository> output = new HashMap<>();
+        Map<ManagerTarget, EntityManager> entityStoreMap = fetchEntityManagerMap(repoType, configMap);
+        
+        // Add work item repo
+        EntityManager entity = entityStoreMap.get(ManagerTarget.WORKITEM);
+        TaskTideRepository repo = repoType.createRepository(WorkItem.class, entity, "WorkItem");
+        output.put(ManagerTarget.WORKITEM, repo);
+        
+        // Add step repo
+        entity = entityStoreMap.get(ManagerTarget.STEP);
+        repo = repoType.createRepository(Step.class, entity, "Step");
+        output.put(ManagerTarget.STEP, repo);
+        
+        // Add workflow repo
+        entity = entityStoreMap.get(ManagerTarget.WORKFLOW);
+        repo = repoType.createRepository(Workflow.class, entity, "Workflow");
         output.put(ManagerTarget.WORKFLOW, repo);
         
         // Return results

@@ -100,6 +100,16 @@ public class Argument<T> {
     public Class<T> getRefClass() {
         return this.refClass;
     }
+    
+    
+    /**
+     * Sets reference class
+     * 
+     * @param refClass 
+     */
+    public void setRefClass(Class<T> refClass) {
+        this.refClass = refClass;
+    }
 
     
     /**

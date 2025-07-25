@@ -108,6 +108,11 @@ public class Utils {
     }
     
     
+    /**
+     * Generate base64 encode token
+     * 
+     * @return String
+     */
     public String generateBase64Token() {
         
         // Initialize vars
@@ -120,6 +125,17 @@ public class Utils {
         
         // Return string as hexdecimal
         return Base64.getEncoder().encodeToString(token.getBytes());
+    }
+    
+    
+    /**
+     * Decode base64 encode token
+     * 
+     * @param token
+     * @return 
+     */
+    public String decodeBase64Token(String token) {
+        return new String(Base64.getDecoder().decode(token.getBytes()));
     }
     
     

@@ -6,6 +6,8 @@ package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.tasktide.tasktide.configurer.dependent.JNoSQLConfigurer;
+import org.tasktide.tasktide.configurer.dependent.JpaConfigurer;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
@@ -19,6 +21,10 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
  */
 @ApplicationScoped
 public class GlobalConfig extends AbstractConfigurer {
+    
+    // Delgate Jakarta and JPA
+    private final JpaConfigurer jpaConf;
+    private final JNoSQLConfigurer jnosqlConf;
     
     
     // Which client to use
@@ -91,6 +97,8 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public GlobalConfig() {
         super("");
+        this.jnosqlConf = new JNoSQLConfigurer();
+        this.jpaConf = new JpaConfigurer();
     }
     
     
@@ -101,6 +109,8 @@ public class GlobalConfig extends AbstractConfigurer {
      */
     public GlobalConfig(String path) {
         super(path);
+        this.jnosqlConf = new JNoSQLConfigurer();
+        this.jpaConf = new JpaConfigurer();
     }
     
     
@@ -131,6 +141,9 @@ public class GlobalConfig extends AbstractConfigurer {
         this.nosqlUser();
         this.nosqlPassword();
         this.nosqlHost();
+        
+        // JPA Config
+        this.jpaConf.initConfig(argTree);
         
         // Utility settings
         this.dateFormat();
