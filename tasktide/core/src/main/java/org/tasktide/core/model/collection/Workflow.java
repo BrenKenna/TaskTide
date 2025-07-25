@@ -11,14 +11,15 @@ import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Map.Entry;
 
 import org.tasktide.core.TaskTideModel;
@@ -32,22 +33,26 @@ import org.tasktide.core.model.workitem.ItemState;
  * 
  * @author bkenna
  */
-@Entity
+@jakarta.nosql.Entity("Workflow")
+@jakarta.persistence.Entity(name = "Workflow")
 public class Workflow implements TaskTideModel<Workflow> {
     
-    @Id
-    @JsonbProperty("Workflow Id")
+    @jakarta.nosql.Id
+    @jakarta.persistence.Id
+    @JsonbProperty("WorkflowId")
     private String workflowId;
     
-    
-    @Column
-    @JsonbProperty("Workflow Name")
+    @jakarta.nosql.Column("WorkflowName")
+    @jakarta.persistence.Column(name = "WorkflowName")
+    @JsonbProperty("WorkflowName")
     private String workflowName;
     
-    
-    @Column
-    @JsonbProperty("Workflow Steps")
+    @jakarta.nosql.Column("WorkflowSteps")
+    @JsonbProperty("WorkflowSteps")
     private Map<String, Step> workflowSteps;
+    
+    @OneToMany(mappedBy = "WorkflowId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private final List<Step> stepList = new ArrayList<>();
     
     
     /**
@@ -59,7 +64,7 @@ public class Workflow implements TaskTideModel<Workflow> {
     
     
     /**
-     * Constructor for JSON deserialization
+     * Constructor for JSON (de)serialization
      * 
      * @param workflowId
      * @param workflowName
@@ -67,15 +72,28 @@ public class Workflow implements TaskTideModel<Workflow> {
      */
     @JsonbCreator
     public Workflow(
-        @JsonbProperty("Workflow Id") String workflowId,
-        @JsonbProperty("Workflow Name") String workflowName,
-        @JsonbProperty("Workflow Steps") Map<String, Step> workflowSteps
+        @JsonbProperty("WorkflowId") String workflowId,
+        @JsonbProperty("WorkflowName") String workflowName,
+        @JsonbProperty("WorkflowSteps") Map<String, Step> workflowSteps
     ) {
         this.workflowId = workflowId;
         this.workflowName = workflowName;
         this.workflowSteps = workflowSteps;
     }
 
+    
+    /**
+     * JPA PostLoad method for populating step map from stepList
+     * 
+     */
+    @jakarta.persistence.PostLoad
+    public void populateStateMap() {
+        workflowSteps = new HashMap<>();
+        for ( Step elm : stepList ) {
+            workflowSteps.put(elm.getStepName(), elm);
+        }
+    }
+    
     
     /**
      * Get workflow Id

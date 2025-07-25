@@ -7,6 +7,7 @@ package org.tasktide.core.repository;
 import java.util.List;
 
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
 
 import org.tasktide.core.TaskTideRepository;
 
@@ -14,6 +15,9 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.jpa_repo.JpaStepRepository;
+import org.tasktide.core.repository.jpa_repo.JpaWorkItemRepository;
+import org.tasktide.core.repository.jpa_repo.JpaWorkflowRepository;
 
 import org.tasktide.core.repository.nosql_repo.TemplateStepRepository;
 import org.tasktide.core.repository.nosql_repo.TemplateWorkItemRepository;
@@ -182,9 +186,31 @@ public enum RepositoryType {
             return "SQL";
         }
 
+        /**
+         * Create targeted {@link TaskTideRepository}-{@link JsonRepository} of
+         * {@link Workflow}, {@link Step}, {@link WorkItem}
+         *
+         * @param <T>
+         * @param modelType
+         * @param backend
+         * @param collectionName
+         *
+         * @return {@link JpaRepository}-{@link TaskTideModel of {@link Workflow}, {@link Step}, {@link WorkItem}
+         */
+        @SuppressWarnings("unchecked")
         @Override
         public <T extends TaskTideModel<T>> TaskTideRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName) {
-            throw new UnsupportedOperationException("Not supported yet.");
+            EntityManager entityManager = (EntityManager) backend;
+
+            if (modelType.equals(Workflow.class)) {
+                return (JpaRepository<T>) new JpaWorkflowRepository(entityManager, collectionName);
+            } else if (modelType.equals(Step.class)) {
+                return (JpaRepository<T>) new JpaStepRepository(entityManager, collectionName);
+            } else if (modelType.equals(WorkItem.class)) {
+                return (JpaRepository<T>) new JpaWorkItemRepository(entityManager, collectionName);
+            } else {
+                throw new IllegalArgumentException("Unsupported model type for Template repository: " + modelType.getSimpleName());
+            }
         }
     };
 

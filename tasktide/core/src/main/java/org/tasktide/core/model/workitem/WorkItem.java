@@ -10,11 +10,8 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
-import java.lang.reflect.Field;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
+import java.lang.reflect.Field;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,62 +29,93 @@ import org.tasktide.core.TaskTideModel;
  * 
  * @author bkenna
  */
-@Entity
+@jakarta.nosql.Entity("WorkItem")
+@jakarta.persistence.Entity
+@jakarta.persistence.Table(name = "WorkItem")
 public class WorkItem implements TaskTideModel<WorkItem> {
     
-    @Id
+    @jakarta.persistence.Id
+    @jakarta.nosql.Id
     @JsonbProperty("Id")
     private String id;
     
-    @Column
-    @JsonbProperty("Item Name")
+    @jakarta.persistence.Column(name = "ItemName")
+    @jakarta.nosql.Column("ItemName")
+    @JsonbProperty("ItemName")
     private String itemName;
     
-    @Column
-    @JsonbProperty("Item Type")
+    @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)
+    @jakarta.nosql.Column("ItemType")
+    @JsonbProperty("ItemType")
     private ItemType itemType;
     
-    @Column
-    @JsonbProperty("Item State")
+    @jakarta.persistence.Column(name = "ItemState")
+    @jakarta.nosql.Column("ItemState")
+    @JsonbProperty("ItemState")
     private ItemState itemState;
     
-    @Column
-    @JsonbProperty("Lock Id")
+    @jakarta.persistence.Column(name = "LockId")
+    @jakarta.nosql.Column("LockId")
+    @JsonbProperty("LockId")
     private String lockId;
     
-    @Column
-    @JsonbProperty("Lock Date")
+    @jakarta.persistence.Column(name = "LockDate")
+    @jakarta.nosql.Column("LockDate")
+    @JsonbProperty("LockDate")
     private long lockDate;
     
-    @Column
-    @JsonbProperty("Done Date")
+    @jakarta.persistence.Column(name = "DoneDate")
+    @jakarta.nosql.Column("DoneDate")
+    @JsonbProperty("DoneDate")
     private long doneDate;
     
-    @Column
-    @JsonbProperty("Task Count")
+    @jakarta.persistence.Column(name = "TaskCount")
+    @jakarta.nosql.Column("TaskCount")
+    @JsonbProperty("TaskCount")
     private int taskCount;
     
-    @Column
-    @JsonbProperty("Task Done")
+    @jakarta.persistence.Column(name = "TaskDone")
+    @jakarta.nosql.Column("TaskDone")
+    @JsonbProperty("TaskDone")
     private int taskDone;
     
-    @Column
+    @jakarta.nosql.Column("Workload")
+    @jakarta.persistence.Embedded
     @JsonbProperty("Workload")
     private Workload workload;
     
-    @Column
-    @JsonbProperty("Step Name")
+    @jakarta.persistence.Column(name = "StepName")
+    @jakarta.nosql.Column("StepName")
+    @JsonbProperty("StepName")
     private String stepName;
     
-    @Column
-    @JsonbProperty("Step Id")
+    @jakarta.nosql.Column("StepId")
+    @jakarta.persistence.Column(name = "StepId")
+    @JsonbProperty("StepId")
     private String stepId;
+    
     
     /**
      * Null constructor
      */
     public WorkItem(){}
 
+    
+    /**
+     * Construct with fields
+     * 
+     * @param id
+     * @param itemName
+     * @param itemType
+     * @param itemState
+     * @param lockId
+     * @param lockDate
+     * @param doneDate
+     * @param taskCount
+     * @param taskDone
+     * @param workload
+     * @param stepName 
+     */
     public WorkItem(
         String id,
         String itemName,

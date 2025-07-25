@@ -17,7 +17,7 @@ import org.tasktide.core.model.task.TaskState;
 public class StepBuilder extends ModelBuilder {
     
     // Attributes
-    private String stepId, stepName;
+    private String stepId, stepName, workflowId;
     private TaskState stepState;
     private int stepCount, stepsLocked, stepsDone, stepsToDo, stepsError;
     
@@ -50,6 +50,18 @@ public class StepBuilder extends ModelBuilder {
      */
     public StepBuilder stepName(String stepName) {
         this.stepName = stepName;
+        return this;
+    }
+    
+    
+    /**
+     * Add workflowId field
+     * 
+     * @param workflowId
+     * @return {@link StepBuilder}
+     */
+    public StepBuilder workflowId(String workflowId) {
+        this.workflowId = workflowId;
         return this;
     }
     
@@ -133,6 +145,9 @@ public class StepBuilder extends ModelBuilder {
      */
     @Override
     public Step build() {
-        return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone, stepsToDo, stepsError);
+        if ( workflowId == null ) {
+            return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone, stepsToDo, stepsError);
+        }
+        return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone, stepsToDo, stepsError, workflowId);
     }
 }

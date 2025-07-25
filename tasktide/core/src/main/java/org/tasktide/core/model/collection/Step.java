@@ -11,9 +11,6 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
-import jakarta.nosql.Column;
-import jakarta.nosql.Entity;
-import jakarta.nosql.Id;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -32,40 +29,59 @@ import org.tasktide.core.TaskTideModel;
  * 
  * @author bkenna
  */
-@Entity
+@jakarta.nosql.Embeddable
+@jakarta.persistence.Entity(name = "Step")
 public class Step implements TaskTideModel<Step> {
     
-    @Id
-    @JsonbProperty("Step Id")
+    @jakarta.nosql.Id
+    @jakarta.persistence.Id
+    @JsonbProperty("StepId")
     private String stepId;
     
-    @Column
-    @JsonbProperty("Step Name")
+    @jakarta.persistence.Column(name = "StepName")
+    @jakarta.nosql.Column("StepName")
+    @JsonbProperty("StepName")
     private String stepName;
     
-    @Column
-    @JsonbProperty("Step State")
+    @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)
+    @jakarta.nosql.Column("StepName")
+    @JsonbProperty("StepState")
     private TaskState stepState;
     
-    @Column
-    @JsonbProperty("Step Count")
+    @jakarta.persistence.Column(name = "StepCount")
+    @jakarta.nosql.Column("StepCount")
+    @JsonbProperty("StepCount")
     private int stepCount;
     
-    @Column
-    @JsonbProperty("Steps Locked")
+    @jakarta.persistence.Column(name = "StepsLocked")
+    @jakarta.nosql.Column("StepsLocked")
+    @JsonbProperty("StepsLocked")
     private int stepsLocked;
     
-    @Column
-    @JsonbProperty("Steps Done")
+    @jakarta.persistence.Column(name = "StepsDone")
+    @jakarta.nosql.Column("StepsDone")
+    @JsonbProperty("StepsDone")
     private int stepsDone;
     
-    @Column
-    @JsonbProperty("Steps Error")
+    @jakarta.persistence.Column(name = "StepsError")
+    @jakarta.nosql.Column("StepsError")
+    @JsonbProperty("StepsError")
     private int stepsError;
     
-    @Column
-    @JsonbProperty("Steps ToDo")
+    @jakarta.persistence.Column(name = "StepsToDo")
+    @jakarta.nosql.Column("StepsToDo")
+    @JsonbProperty("StepsToDo")
     private int stepsToDo;
+    
+    @jakarta.persistence.Column(name = "WorkflowId")
+    @jakarta.nosql.Column("WorkflowId")
+    @JsonbProperty("WorkflowId")
+    private String workflowId;
+    
+    @jakarta.persistence.ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
+    @jakarta.persistence.JoinColumn(name = "WorkflowId", referencedColumnName = "workflowId", insertable = false, updatable = false)
+    @JsonbTransient
+    private Workflow workflow;
     
     
     /**
@@ -87,16 +103,15 @@ public class Step implements TaskTideModel<Step> {
      * @param stepsToDo
      * @param stepsError
      */
-    @JsonbCreator
     public Step(
-        @JsonbProperty("Step Id") String stepId,
-        @JsonbProperty("Step Name") String stepName,
-        @JsonbProperty("Step State") TaskState stepState,
-        @JsonbProperty("Step Count") int stepCount,
-        @JsonbProperty("Steps Locked") int stepsLocked,
-        @JsonbProperty("Steps Done") int stepsDone,
-        @JsonbProperty("Steps ToDo") int stepsToDo,
-        @JsonbProperty("Steps Error") int stepsError
+        String stepId,
+        String stepName,
+        TaskState stepState,
+        int stepCount,
+        int stepsLocked,
+        int stepsDone,
+        int stepsToDo,
+        int stepsError
     ) {
         this.stepId = stepId;
         this.stepName = stepName;
@@ -106,6 +121,44 @@ public class Step implements TaskTideModel<Step> {
         this.stepsDone = stepsDone;
         this.stepsError = stepsError;
         this.stepsToDo = stepsToDo;
+        this.workflowId = workflowId;
+    }
+    
+    
+    /**
+     * Constructor for JSON deserialization
+     * 
+     * @param stepId
+     * @param stepName
+     * @param stepState
+     * @param stepCount
+     * @param stepsLocked
+     * @param stepsDone 
+     * @param stepsToDo
+     * @param stepsError
+     * @param workflowId
+     */
+    @JsonbCreator
+    public Step(
+        @JsonbProperty("StepId") String stepId,
+        @JsonbProperty("StepName") String stepName,
+        @JsonbProperty("StepState") TaskState stepState,
+        @JsonbProperty("StepCount") int stepCount,
+        @JsonbProperty("StepsLocked") int stepsLocked,
+        @JsonbProperty("StepsDone") int stepsDone,
+        @JsonbProperty("StepsToDo") int stepsToDo,
+        @JsonbProperty("StepsError") int stepsError,
+        @JsonbProperty("WorkflowId") String workflowId
+    ) {
+        this.stepId = stepId;
+        this.stepName = stepName;
+        this.stepState = stepState;
+        this.stepCount = stepCount;
+        this.stepsLocked = stepsLocked;
+        this.stepsDone = stepsDone;
+        this.stepsError = stepsError;
+        this.stepsToDo = stepsToDo;
+        this.workflowId = workflowId;
     }
 
     
@@ -128,6 +181,46 @@ public class Step implements TaskTideModel<Step> {
         this.stepId = stepId;
     }
 
+    
+    /**
+     * Get parent workflow Id
+     * 
+     * @return String
+     */
+    public String getWorkflowId() {
+        return this.workflowId;
+    }
+
+    
+    /**
+     * Set parent workflow Id
+     * 
+     * @param workflowId 
+     */
+    public void setWorkflowId(String workflowId) {
+        this.workflowId = workflowId;
+    }
+    
+    
+    /**
+     * Get parent workflow Id
+     * 
+     * @return String
+     */
+    public Workflow getWorkflow() {
+        return this.workflow;
+    }
+
+    
+    /**
+     * Set workflow
+     * 
+     * @param workflow
+     */
+    public void setWorkflowId(Workflow workflow) {
+        this.workflow = workflow;
+    }
+    
     
     /**
      * Get step name

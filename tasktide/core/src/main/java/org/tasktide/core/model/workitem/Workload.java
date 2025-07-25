@@ -11,9 +11,6 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Embeddable;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,20 +25,23 @@ import org.tasktide.core.model.task.TaskState;
  * 
  * @author bkenna
  */
-@Embeddable
+@jakarta.nosql.Embeddable
+@jakarta.persistence.Embeddable
 public class Workload {
     
-    @Column
+    @jakarta.nosql.Column("Id")
+    @jakarta.persistence.Column(name = "Id")
     @JsonbProperty("Id")
     private String workloadId;
     
-    
-    @Column
+    @jakarta.nosql.Column("Workload")
+    @jakarta.persistence.Column(name = "Workload", columnDefinition = "CLOB")
     @JsonbProperty("Workload")
     private Map<String, ItemTask> workload;
     
-    @Column
-    @JsonbProperty("Workload Type")
+    @jakarta.nosql.Column("WorkloadType")
+    @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)
+    @JsonbProperty("WorkloadType")
     private ItemType workloadType;
     
     
@@ -65,7 +65,7 @@ public class Workload {
     public Workload(
         @JsonbProperty("Id") String workloadId,
         @JsonbProperty("Workload") Map<String, ItemTask> workload,
-        @JsonbProperty("Workload Type") ItemType workloadType
+        @JsonbProperty("WorkloadType") ItemType workloadType
     ) {
         this.workloadId = workloadId;
         this.workload = workload;
