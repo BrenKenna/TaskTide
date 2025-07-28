@@ -76,10 +76,10 @@ public class ItemStoreTests {
             if ( itemStore != null ) {
                 item = new Item<String>("myId", "state", "payload");
                 try {
-                    itemStore.saveItem(item);
-                    result = itemStore.getById("myId");
+                    itemStore.saveItem(DbTarget.MASTER, item);
+                    result = itemStore.getById(DbTarget.MASTER, "myId");
                     itemStore.syncToMaster();
-                    itemStore.closeConn(DbTarget.PROTOTYPE);
+                    itemStore.closeConn(DbTarget.BOTH);
                     assertionState = item.getId().equals( result.getId() );
                     logger.info("Displaying original & queried Item:\n\n{}\n{}\n", item, result);
                     logger.info("Prototype deletion state:\t'{}'", itemStore.clearPrototype());
@@ -122,9 +122,8 @@ public class ItemStoreTests {
             if ( itemStore != null ) {
                 item = new Item<String>("myId-2", "state-2", "payload-2");
                 try {
-                    itemStore.saveItem(item);
-                    itemStore.syncToMaster();
-                    results = itemStore.getAll(true);
+                    itemStore.saveItem(DbTarget.MASTER, item);
+                    results = itemStore.getAll(DbTarget.PROTOTYPE);
                     itemStore.closeConn(DbTarget.BOTH);
                     assertionState = results.size() >= nExpected;
                     logger.info("Displaying original & queried Item:\n\n{}\n{}\n", item, results.toArray());

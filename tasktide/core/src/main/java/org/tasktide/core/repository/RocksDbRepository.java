@@ -15,10 +15,6 @@ import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.collection.Workflow;
-import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.itemstore.Item;
 import org.tasktide.itemstore.ItemStore;
@@ -117,7 +113,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
         
         // Fetch and convert to model
         try {
-            queried = this.repo.getById(id);
+            queried = repo.getById(DbTarget.BOTH, id);
             System.out.println(queried);
             result = this.toModel(queried);
             return Optional.ofNullable(result);
@@ -142,9 +138,8 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
         // Insert record
         try {
             Item item = this.toItem(model);
-            this.repo.saveItemToMaster(item);
-            item = this.repo.getById(model.getId());
-            return this.toModel(item);
+            this.repo.saveItem(DbTarget.MASTER, item);
+            return this.findById(model.getId()).get();
         }
         
         catch (Exception ex) {
@@ -167,12 +162,10 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
         try {
             
             // Save and sync to master
-            this.repo.saveItem(item);
-            this.repo.syncToMaster();
+            this.insertModel(model);
             
             // Fetch inserted record
-            item = this.repo.getById(model.getId());
-            return this.toModel(item);
+            return this.findById(model.getId()).get();
         }
         catch ( Exception ex ) {
             return null;
@@ -189,7 +182,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
     @Override
     public boolean deleteModel(String id) {
         try {
-            return this.repo.deleteFromMaster(this.repo.getById(id));
+            return this.repo.delete(DbTarget.MASTER, this.repo.getById(DbTarget.MASTER, id));
         }
         catch (Exception ex) {
             return false;
@@ -208,7 +201,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
     public List<T> findByField(String field, Object value) {
         
         // Fetch repo and scan records
-        List<Item> queried = this.repo.getAll(true);
+        List<Item> queried = this.repo.getAll(DbTarget.MASTER);
         return queried
             .stream()
             .parallel()
@@ -235,7 +228,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
         
         // Fetch repo and scan records
-        List<Item> queried = this.repo.getAll(true);
+        List<Item> queried = this.repo.getAll(DbTarget.MASTER);
         return queried
             .stream()
             .parallel()
@@ -259,7 +252,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
      */
     @Override
     public List<T> findAll() {
-        return this.repo.getAll(true)
+        return this.repo.getAll(DbTarget.MASTER)
             .stream()
             .parallel()
             .map(elm -> this.toModel(elm))
@@ -314,7 +307,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
         
         // Import
         try {
-            this.repo.saveItemsToMaster(forImport);
+            this.repo.saveItems(DbTarget.MASTER, forImport);
             return true;
         }
         catch ( Exception ex ) {

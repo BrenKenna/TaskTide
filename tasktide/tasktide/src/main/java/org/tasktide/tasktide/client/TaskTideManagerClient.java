@@ -55,6 +55,22 @@ public class TaskTideManagerClient extends TaskTideClient {
 
     
     /**
+     * Validate client arguments are configurable
+     * 
+     * @return boolean
+     */
+    @Override
+    protected boolean configureClient() {
+        if ( ((String) this.argMap.getArgument("Method").getValue()).isEmpty() ) {
+            return false;
+        }
+        String inFile = ((String) this.argMap.getArgument("Input File").getValue());
+        String outFile = ((String) this.argMap.getArgument("Output File").getValue());
+        return !(inFile.isEmpty() && outFile.isEmpty());
+    }
+    
+
+    /**
      * Executes the configured manager method to by mapping client action
      */
     @Override
@@ -221,17 +237,9 @@ public class TaskTideManagerClient extends TaskTideClient {
             throw new IllegalArgumentException("OutFile & Target cannot be empty");
         }
     }
-
-    
-    
-    @Override
-    protected void configureClient() {
-        
-    }
     
     
     @Override
     protected void cleanUp() {
-        
     }
 }

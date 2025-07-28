@@ -43,9 +43,9 @@ import org.tasktide.tasktide.parser.model.ArgumentMap;
  */
 public class TaskTideEngineClient extends TaskTideClient {
     
-    private final Logger logger = LogManager.getLogger(TaskTideEngineClient.class);
+    // Attributes
+    private final Logger LOGGER = LogManager.getLogger(TaskTideEngineClient.class);
     private final TaskTideWorkerUnitProvider unitProvider;
-    
     private int workItemThreads, itemTaskThreads, workThreshold, taskThreshold;
     private TaskTideProcessor<WorkItem> processor;
     private TaskTideExecutor<WorkItem> workExec;
@@ -76,20 +76,31 @@ public class TaskTideEngineClient extends TaskTideClient {
      * 4). Configuring {@link TaskTideProcessor}.
      */
     @Override
-    protected void configureClient() {
+    protected boolean configureClient() {
         
-        // Initialize executor service 
-        ExecutorService executorServ;
-        executorServ = this.initializeAndConfigureExecutorServices();
+        // Try configure client
+        try {
+            // Initialize executor service 
+            ExecutorService executorServ;
+            executorServ = this.initializeAndConfigureExecutorServices();
+
+            // Configure EngineObserver
+            this.obs = this.configureWorkItemEngineObserverChain();
+
+            // Configure Executor
+            this.workExec = this.configureWorkItemExecutor(obs);
+
+            // Configures processor
+            this.processor = this.configureWorkItemProcessor(executorServ, workExec);
+            return true;
+        }
         
-        // Configure EngineObserver
-        this.obs = this.configureWorkItemEngineObserverChain();
-        
-        // Configure Executor
-        this.workExec = this.configureWorkItemExecutor(obs);
-        
-        // Configures processor
-        this.processor = this.configureWorkItemProcessor(executorServ, workExec);
+        // Catch and log error, return false for graceful shutdown
+        catch (Exception ex) {
+            LOGGER.error("Error during client configuration, displaying stack trace:\n{}", ex);
+            ex.printStackTrace();
+            return false;
+        }
     }
     
     
@@ -105,12 +116,12 @@ public class TaskTideEngineClient extends TaskTideClient {
         
         // Process if available
         if ( !workload.isEmpty() ) {
-            logger.info("Processing workload of size:\t'{}'", workload.size());
+            LOGGER.info("Processing workload of size:\t'{}'", workload.size());
             this.processor.processChunks(workload);
-            this.waitOnExecutorTrackerWorkItem(workload.size(), logger);
+            this.waitOnExecutorTrackerWorkItem(workload.size(), LOGGER);
         }
         else {
-            logger.warn(
+            LOGGER.warn(
           "Warning, no ToDo tasks available for processing. Query below backend for more information\n\n{}\n\n",
              TaskTideServiceManager.fetchWorkItemService().getRepo().getRepositoryMetaData()
             );

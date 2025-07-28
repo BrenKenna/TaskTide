@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.rocksdb.Options;
@@ -19,8 +18,6 @@ import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
 
 import org.tasktide.itemstore.Item;
-import static org.tasktide.itemstore.stores.DbTarget.MASTER;
-import static org.tasktide.itemstore.stores.DbTarget.PROTOTYPE;
 
 
 /**
@@ -68,26 +65,53 @@ public class RocksDBStore extends AbstractItemStore {
     
     
     /**
+     * Fetch iterator from db
+     * 
+     * @param db
+     * @return RocksIterator
+     */
+    public RocksIterator fetchIter(RocksDB db) {
+        return db.newIterator();
+    }
+    
+    
+    /**
+     * Put data in target DB
+     * 
+     * @param db
+     * @param key
+     * @param value 
+     */
+    public void putItem(RocksDB db, byte[] key, byte[] value) {
+        try {
+            db.put(key, value);
+        }
+        catch (RocksDBException ex) {}
+    }
+    
+    
+    /**
      * Fetch all records from either Master (true), or Cache (False)
      * 
-     * @param flag
+     * @param target
      * @return 
      */
     @Override
-    public List<Item> getAll(boolean flag) {
+    public List<Item> getAll(DbTarget target) {
         
         // Initialize variables
         List<Item> output = new ArrayList<>();
         RocksIterator iter;
         
         // Handle which DB to use
-        if ( flag ) {
-            this.openConn(DbTarget.BOTH);
-            iter = master.newIterator();
-        }
-        else {
-            this.openConn(DbTarget.PROTOTYPE);
-            iter = proto.newIterator();
+        this.openConn(target);
+        switch (target) {
+            case MASTER -> {
+                iter = this.fetchIter(this.master);
+            }
+            default -> {
+                iter = this.fetchIter(this.proto);
+            }
         }
         
         // Fetch all records into output
@@ -99,89 +123,46 @@ public class RocksDBStore extends AbstractItemStore {
         }
         
         // Close connection and release lock
-        this.closeConn(DbTarget.BOTH);
-        this.releaseLock();
+        iter.close();
+        this.closeConn(target);
         return output;
-    }
-    
-    
-    /**
-     * Save {@link Item} to master RocksDB
-     * 
-     * @param item
-     * @throws JsonProcessingException
-     * @throws RocksDBException 
-     * @throws java.lang.InterruptedException 
-     */
-    @Override
-    public void saveItemToMaster(Item item) throws JsonProcessingException, RocksDBException, InterruptedException, IOException {
-        this.openConn(DbTarget.BOTH);
-        try {
-            master.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
-            proto.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
-        }
-        finally {
-            this.closeConn(DbTarget.BOTH);
-            this.releaseLock();
-        }
-    }
-    
-    
-    /**
-     * Save {@link Item} list to master RocksDB
-     * 
-     * @param items
-     * @throws JsonProcessingException
-     * @throws RocksDBException 
-     * @throws java.lang.InterruptedException 
-     */
-    @Override
-    public void saveItemsToMaster(List<Item> items) throws JsonProcessingException, RocksDBException, InterruptedException, IOException {
-        this.openConn(DbTarget.BOTH);
-        try (WriteBatch batch = new WriteBatch() ) {
-            for ( Item item : items ) {
-                byte[] key = item.getId().getBytes();
-                byte[] val = MAPPER.writeValueAsBytes(item);
-                batch.put(key, val);
-            }
-            WriteOptions writeOptions = new WriteOptions();
-            writeOptions.setSync(true);
-            master.write(writeOptions, batch);
-            proto.write(writeOptions, batch);
-        }
-        
-        finally {
-            this.closeConn(DbTarget.BOTH);
-            this.releaseLock();
-        }
     }
 
     
     /**
      * Save item to cached RocksDB
      * 
+     * @param target
      * @param item
      * @throws Exception 
      */
     @Override
-    public void saveItem(Item item) throws Exception {
-        try {
-            this.openConn(DbTarget.PROTOTYPE);
-            proto.put(item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+    public void saveItem(DbTarget target, Item item) throws Exception {
+        this.openConn(target);
+        switch ( target ) {
+            case PROTOTYPE -> {
+                putItem(this.proto, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+            }
+            
+            case MASTER -> {
+                putItem(this.master, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+                putItem(this.proto, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+            }
         }
-        catch ( JsonProcessingException | RocksDBException ex ) {}
+        this.closeConn(target);
     }
     
 
     /**
      * Import {@link Item} list to cached DB
      * 
+     * @param target
      * @param items
      * @throws Exception 
      */
     @Override
-    public void saveItems(List<Item> items) throws Exception {
-        this.openConn(DbTarget.PROTOTYPE);
+    public void saveItems(DbTarget target, List<Item> items) throws Exception {
+        this.openConn(target);
         try (WriteBatch batch = new WriteBatch() ) {
             for ( Item item : items ) {
                 byte[] key = item.getId().getBytes();
@@ -190,8 +171,18 @@ public class RocksDBStore extends AbstractItemStore {
             }
             WriteOptions writeOptions = new WriteOptions();
             writeOptions.setSync(true);
-            proto.write(writeOptions, batch);
+            
+            switch ( target ) {
+                case PROTOTYPE -> {
+                    proto.write(writeOptions, batch);
+                }
+                default -> {
+                    proto.write(writeOptions, batch);
+                    master.write(writeOptions, batch);
+                }
+            }
         }
+        this.closeConn(target);
     }
     
     
@@ -203,26 +194,18 @@ public class RocksDBStore extends AbstractItemStore {
      * @throws Exception 
      */
     @Override
-    public Item getById(String id) throws Exception {
-        this.openConn(DbTarget.PROTOTYPE);
-        byte[] data = proto.get(id.getBytes());
-        return data == null ? null : MAPPER.readValue(data, Item.class);
-    }
-
-    
-    /**
-     * Fetch the {@link Item} with provided Id from master
-     * 
-     * @param id
-     * @return
-     * @throws Exception 
-     */
-    @Override
-    public Item getByIdFromMaster(String id) throws Exception {
-        this.openConn(DbTarget.BOTH);
-        byte[] data = master.get(id.getBytes());
-        this.closeConn(DbTarget.BOTH);
-        this.releaseLock();
+    public Item getById(DbTarget target, String id) throws Exception {
+        this.openConn(target);
+        byte[] data;
+        switch ( target ) {
+            case PROTOTYPE -> {
+                data = proto.get(id.getBytes());
+            }
+            default -> {
+                data = master.get(id.getBytes());
+            }
+        }
+        this.closeConn(target);
         return data == null ? null : MAPPER.readValue(data, Item.class);
     }
 
@@ -235,42 +218,29 @@ public class RocksDBStore extends AbstractItemStore {
      * @throws Exception 
      */
     @Override
-    public List<Item> getItemsByState(String state) throws Exception {
-        this.openConn(DbTarget.PROTOTYPE);
+    public List<Item> getItemsByState(DbTarget target, String state) throws Exception {
+        this.openConn(target);
         List<Item> result = new ArrayList<>();
-        try (RocksIterator iter = proto.newIterator()) {
-            for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-                Item item = MAPPER.readValue(iter.value(), Item.class);
-                if (item.getState().equals(state)) {
-                    result.add(item);
-                }
+        RocksIterator iter;
+        
+        switch (target) {
+            case PROTOTYPE -> {
+                iter = proto.newIterator();
+            }
+            default -> {
+                iter = master.newIterator();
             }
         }
-        return result;
-    }
-
-    
-    /**
-     * Fetch item by state from master
-     * 
-     * @param state
-     * @return List-{@link Item}
-     * @throws Exception 
-     */
-    @Override
-    public List<Item> getItemsByStateFromMaster(String state) throws Exception {
-        this.openConn(DbTarget.BOTH);
-        List<Item> result = new ArrayList<>();
-        try (RocksIterator iter = master.newIterator()) {
-            for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-                Item item = MAPPER.readValue(iter.value(), Item.class);
-                if (item.getState().equals(state)) {
-                    result.add(item);
-                }
+        
+        for (iter.seekToFirst(); iter.isValid(); iter.next()) {
+            Item item = MAPPER.readValue(iter.value(), Item.class);
+            if (item.getState().equals(state)) {
+                result.add(item);
             }
         }
-        this.closeConn(DbTarget.BOTH);
-        this.releaseLock();
+        
+        iter.close();
+        this.closeConn(target);
         return result;
     }
 
@@ -282,16 +252,16 @@ public class RocksDBStore extends AbstractItemStore {
      * @return String
      */
     @Override
-    public String getPayloadById(String id) {
+    public String getPayloadById(DbTarget target, String id) {
         
         // Initialize data
         String output = null;
         Item item;
         
         // Try fetch from cache
-        this.openConn(DbTarget.PROTOTYPE);
+        this.openConn(target);
         try { 
-            item = this.getById(id);
+            item = this.getById(target, id);
         }
         catch (Exception ex) {
             item = null;
@@ -303,41 +273,35 @@ public class RocksDBStore extends AbstractItemStore {
         }
         
         // Return result
+        this.closeConn(target);
         return output;
     }
-
+    
     
     /**
-     * Fetch payload for queried {@link Item} from master
+     * Delete {@link Item} from prototype
      * 
-     * @param id
-     * @return String 
+     * @param target
+     * @param item
+     * @return boolean
      */
     @Override
-    public String getPayloadFromMaster(String id) {
-        
-        // Initialize data
-        String output = null;
-        Item item;
-        
-        // Try fetch from cache
-        this.openConn(DbTarget.BOTH);
-        try { 
-            item = this.getByIdFromMaster(id);
+    public boolean delete(DbTarget target, Item item) throws Exception {
+        try {
+            switch (target) {
+                case PROTOTYPE -> {
+                    this.proto.delete(item.getId().getBytes());
+                }
+                default -> {
+                    this.master.delete(item.getId().getBytes());
+                    this.proto.delete(item.getId().getBytes());
+                }
+            }
+            return true;
         }
-        catch (Exception ex) {
-            item = null;
+        catch ( RocksDBException ex ) {
+            return false;
         }
-        
-        // Fetch items payload
-        if ( item != null ) {
-            output = item.getPayload();
-        }
-        
-        // Return result
-        this.closeConn(DbTarget.BOTH);
-        this.releaseLock();
-        return output;
     }
 
     
@@ -447,44 +411,5 @@ public class RocksDBStore extends AbstractItemStore {
                 }
             }
         }    
-    }
-
-    
-    /**
-     * Delete {@link Item} from prototype
-     * 
-     * @param item
-     * @return boolean
-     */
-    @Override
-    public boolean delete(Item item) throws Exception {
-        try {
-            this.proto.delete(item.getId().getBytes());
-            return true;
-        }
-        catch ( RocksDBException ex ) {
-            return false;
-        }
-    }
-
-    
-    /**
-     * Delete {@link Item} from store
-     * 
-     * @param item
-     * @return boolean
-     * @throws Exception 
-     */
-    @Override
-    public boolean deleteFromMaster(Item item) throws Exception {
-        this.waitForLock();
-        try {
-            this.delete(item);
-            this.master.delete(item.getId().getBytes());
-            return true;
-        }
-        finally {
-            this.releaseLock();
-        }
     }
 }

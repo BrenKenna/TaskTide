@@ -4,13 +4,8 @@
  */
 package org.tasktide.tasktide.client;
 
-import java.util.List;
-
-import org.tasktide.core.manager.TaskTideServiceManager;
-import org.tasktide.core.model.workitem.ItemState;
-import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.services.WorkItemService;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.tasktide.tasktide.configurer.TaskTideConfigurer;
 import org.tasktide.tasktide.parser.ArgumentTree;
 
@@ -25,6 +20,7 @@ public abstract class TaskTideClient {
     
     // Shared attributes
     private final ClientConfigMap config;
+    private final Logger LOGGER = LogManager.getLogger(TaskTideClient.class);
     
     
     /**
@@ -46,10 +42,14 @@ public abstract class TaskTideClient {
     public void runClient() {
     
         // Initialize client
-        this.configureClient();
+        if ( this.configureClient() ) {
+            this.performClientTask();
+        }
         
-        // Perform the work of the client
-        this.performClientTask();
+        // Otherwise display help
+        else {
+            LOGGER.info("Displaying help for TaskTideClient:\n'{}'", this.getArgTree().getVerboseHelp());
+        }
         
         // Run any required clean-up
         this.cleanUp();
@@ -59,9 +59,11 @@ public abstract class TaskTideClient {
     /**
      * Configures concrete {@link TaskTideConfigurer}
      * 
+     * @return boolean
+     * 
      */
-    protected abstract void configureClient();
-    
+    protected abstract boolean configureClient();
+
     
     /**
      * Performs configured action of client

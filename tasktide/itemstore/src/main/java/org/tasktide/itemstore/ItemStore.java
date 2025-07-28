@@ -49,108 +49,64 @@ public interface ItemStore {
     /**
      * Save an {@link Item} into cached DB
      * 
+     * @param target
      * @param item
      * @throws Exception 
      */
-    void saveItem(Item item) throws Exception;
+    void saveItem(DbTarget target, Item item) throws Exception;
     
     
     /**
      * Save {@link Item} list into cached DB
      * 
+     * @param target
      * @param items
      * @throws Exception 
      */
-    void saveItems(List<Item> items) throws Exception;
-    
-    
-    /**
-     * Save an {@link Item} into master DB
-     * 
-     * @param item
-     * @throws Exception 
-     */
-    void saveItemToMaster(Item item) throws Exception;
-    
-    
-    /**
-     * Save an {@link Item} into master DB
-     * 
-     * @param item
-     * @throws Exception 
-     */
-    void saveItemsToMaster(List<Item> item) throws Exception;
+    void saveItems(DbTarget target, List<Item> items) throws Exception;
     
     
     /**
      * Get all {@link Item}s
      * 
-     * @param flag for Master/Proto
+     * @param target
      * @return List-{@link Item}
      */
-    List<Item> getAll(boolean flag);
+    List<Item> getAll(DbTarget target);
     
     
     /**
      * Get {@link Item} by Id
      * 
+     * @param target
      * @param id
      * @return {@link Item}
      * 
      * @throws Exception 
      */
-    Item getById(String id) throws Exception;
-    
-    
-    /**
-     * Get {@link Item} by Id from Master
-     * 
-     * @param id
-     * @return {@link Item}
-     * 
-     * @throws Exception 
-     */
-    Item getByIdFromMaster(String id) throws Exception;
+    Item getById(DbTarget target, String id) throws Exception;
     
     
     /**
      * Get {@link Item}s matching queried state
      * 
+     * @param target
      * @param state
      * @return List-{@link Item}
      * @throws Exception 
      */
-    List<Item> getItemsByState(String state) throws Exception;
-    
-    
-    /**
-     * Get {@link Item}s matching queried state from Master
-     * 
-     * @param state
-     * @return List-{@link Item}
-     * @throws Exception 
-     */
-    List<Item> getItemsByStateFromMaster(String state) throws Exception;
+    List<Item> getItemsByState(DbTarget target, String state) throws Exception;
     
     
     /**
      * Fetch the payload for an {@link Item} by an Id
      * 
+     * @param target
      * @param id
      * @return String
      */
-    String getPayloadById(String id);
-    
-    
-    
-    /**
-     * Fetch payload from master
-     * 
-     * @param id
-     * @return String
-     */
-    String getPayloadFromMaster(String id);
-    
+    String getPayloadById(DbTarget target, String id);
+
     
     /**
      * Sync {@link ItemStore} cache to main DB
@@ -214,21 +170,12 @@ public interface ItemStore {
     
     
     /**
-     * Drop {@link Item} from cache
+     * Drop {@link Item} from cache for {@link DbTarget}
      * 
+     * @param target
      * @param item
      * @return boolean
      * @throws java.lang.Exception
      */
-    boolean delete(Item item) throws Exception ;
-    
-    
-    /**
-     * Delete {@link Item} from master
-     * 
-     * @param item
-     * @return boolean
-     * @throws java.lang.Exception
-     */
-    boolean deleteFromMaster(Item item) throws Exception ;
+    boolean delete(DbTarget target, Item item) throws Exception ;
 }

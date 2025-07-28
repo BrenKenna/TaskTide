@@ -6,13 +6,16 @@ package org.tasktide.itemstore.stores;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
+
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+
 import java.util.Comparator;
 
 import java.util.concurrent.TimeUnit;
@@ -34,10 +37,7 @@ public abstract class AbstractItemStore implements ItemStore {
     
     // Attributes
     private final String storeName;
-    private final Path dbDirectory;
-    private final Path masterDB;
-    private final Path protoDB;
-    private final Path masterLock;
+    private final Path dbDirectory, masterDB, protoDB, masterLock;
     private FileChannel fileChannel;
     private FileLock fileLock;
     private final Random RANDOM;
@@ -224,7 +224,7 @@ public abstract class AbstractItemStore implements ItemStore {
     public void syncToMaster(Item item) throws Exception {
         try {
             waitForLock();
-            saveItemToMaster(item);
+            this.saveItem(DbTarget.MASTER, item);
         } 
         finally {
             releaseLock();
@@ -241,7 +241,7 @@ public abstract class AbstractItemStore implements ItemStore {
     public void syncToMaster(List<Item> items) throws Exception {
         try {
             waitForLock();
-            saveItemsToMaster(items);
+            this.saveItems(DbTarget.MASTER, items);
         } 
         finally {
             releaseLock();
@@ -257,7 +257,8 @@ public abstract class AbstractItemStore implements ItemStore {
     public void syncToMaster() throws Exception {
         try {
             waitForLock();
-            saveItemsToMaster(getAll(false));
+            List<Item> data = this.getAll(DbTarget.MASTER);
+            this.saveItems(DbTarget.MASTER, data);
         } 
         catch (InterruptedException ex) {}
         finally {

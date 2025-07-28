@@ -112,7 +112,7 @@ public class CrossJvmFileLocker {
         
         // Try insert record
         try {
-            itemStore.saveItemToMaster(randomItem);
+            itemStore.saveItem(DbTarget.MASTER, randomItem);
             writeFlag(workDir, "Item-Imported");
             
         } catch (Exception ex) {
