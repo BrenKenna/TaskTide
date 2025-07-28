@@ -22,7 +22,7 @@ import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.stores.RocksDBStore;
+import org.tasktide.itemstore.RocksDBStore;
 
 
 /**

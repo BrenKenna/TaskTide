@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package org.tasktide.itemstore.stores;
+package org.tasktide.itemstore;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -12,8 +12,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-import org.tasktide.itemstore.Item;
-import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreTestUtils;
 
 

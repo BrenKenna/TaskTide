@@ -5,7 +5,6 @@
 package org.tasktide.itemstore;
 
 import java.util.List;
-import org.tasktide.itemstore.stores.DbTarget;
 
 /**
  * Interface for storing {@link Item}s into RocksDB/Sqlite

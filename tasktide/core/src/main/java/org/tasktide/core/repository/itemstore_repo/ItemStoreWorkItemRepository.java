@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.core.repository.rocksdb;
+package org.tasktide.core.repository.itemstore_repo;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.repository.RocksDbRepository;
+import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.itemstore.ItemStore;
 
 
@@ -17,7 +17,7 @@ import org.tasktide.itemstore.ItemStore;
  * 
  * @author bkenna
  */
-public class RocksDbWorkItemRepository extends RocksDbRepository<WorkItem> {
+public class ItemStoreWorkItemRepository extends ItemStoreRepository<WorkItem> {
     
     
     /**
@@ -26,7 +26,7 @@ public class RocksDbWorkItemRepository extends RocksDbRepository<WorkItem> {
      * @param itemStore
      * @param collectionName
      */
-    public RocksDbWorkItemRepository(
+    public ItemStoreWorkItemRepository(
        ItemStore itemStore,
        @ConfigProperty(name = "task-tide.core.repository.rocksdb.collection.workitem.name", defaultValue = "WorkItem") String collectionName
     ) {

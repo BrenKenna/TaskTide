@@ -41,7 +41,7 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.stores.RocksDBStore;
+import org.tasktide.itemstore.RocksDBStore;
 
 
 /**

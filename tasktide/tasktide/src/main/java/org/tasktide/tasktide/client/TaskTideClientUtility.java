@@ -15,18 +15,22 @@ import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.sql.DataSource;
+
 import org.eclipse.jnosql.mapping.column.ColumnTemplate;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
@@ -46,7 +50,8 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.stores.RocksDBStore;
+import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.RocksDBStore;
 import org.tasktide.tasktide.TaskTide;
 import org.tasktide.tasktide.configurer.EngineConfig;
 
@@ -316,9 +321,10 @@ public class TaskTideClientUtility {
      * Fetch {@link ItemStore} for store name
      * 
      * @param storeName
+     * @param storeType
      * @return {@link ItemStore}
      */
-    public static ItemStore fetchItemStore(String storeName) {
+    public static ItemStore fetchItemStore(String storeName, ItemStoreType storeType) {
         
         // Resolve store locatoin
         Path store = Paths.get(storeName);
@@ -334,7 +340,7 @@ public class TaskTideClientUtility {
         String dbDirectory = store.toString();
         String masterDB = "master";
         String protoDB = UUID.randomUUID().toString();
-        return new RocksDBStore(storeName, dbDirectory, masterDB, protoDB);
+        return storeType.makeItemStore(storeName, dbDirectory, masterDB, protoDB);
     }
     
     
@@ -348,8 +354,11 @@ public class TaskTideClientUtility {
     public static Map<ManagerTarget, ItemStore> fetchItemStoreMap(RepositoryType repoType, ClientConfigMap configMap) {
         Map<ManagerTarget, ItemStore> output = new HashMap<>();
         String storeName = (String) configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue();
+        String storeTypeString = (String) configMap.getArgTree().getGlobalArguments().getArgument("Repository Type").getValue();
+        
+        ItemStoreType storeType = ItemStoreType.get(storeTypeString);
         for ( ManagerTarget elm : ManagerTarget.values() ) {
-           ItemStore store = fetchItemStore(storeName + "/" + elm.toString());
+           ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType);
            output.put(elm, store);
         }
         return output;

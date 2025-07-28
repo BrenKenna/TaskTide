@@ -18,7 +18,7 @@ import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.itemstore.Item;
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.stores.DbTarget;
+import org.tasktide.itemstore.DbTarget;
 
 
 /**
@@ -27,7 +27,7 @@ import org.tasktide.itemstore.stores.DbTarget;
  * @param <T> of {@link TaskTideModel}
  * @author bkenna
  */
-public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
+public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
 
     // Attributes
     private final String collectionName;
@@ -44,7 +44,7 @@ public abstract class RocksDbRepository<T extends TaskTideModel<T>> implements T
      * @param modelClass 
      * @param collectionName 
      */
-    public RocksDbRepository(ItemStore itemStore, Class<T> modelClass, String collectionName) {
+    public ItemStoreRepository(ItemStore itemStore, Class<T> modelClass, String collectionName) {
         this.COLLECTION_CLASS = modelClass;
         this.repo = itemStore;
         this.collectionName = collectionName;

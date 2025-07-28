@@ -8,9 +8,9 @@ import java.util.List;
 
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
+import org.tasktide.itemstore.ItemStore;
 
 import org.tasktide.core.TaskTideRepository;
-
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.collection.Step;
@@ -23,14 +23,14 @@ import org.tasktide.core.repository.nosql_repo.TemplateStepRepository;
 import org.tasktide.core.repository.nosql_repo.TemplateWorkItemRepository;
 import org.tasktide.core.repository.nosql_repo.TemplateWorkflowRepository;
 
-import org.tasktide.itemstore.ItemStore;
-import org.tasktide.core.repository.rocksdb.RocksDbStepRepository;
-import org.tasktide.core.repository.rocksdb.RocksDbWorkItemRepository;
-import org.tasktide.core.repository.rocksdb.RocksDbWorkflowRepository;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreStepRepository;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreWorkItemRepository;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreWorkflowRepository;
 
 import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
+import org.tasktide.itemstore.ItemStoreType;
 
 
 /**
@@ -129,8 +129,7 @@ public enum RepositoryType {
     ITEMSTORE {
         @Override
         public boolean isRepository(String query) {
-            String tmp = query.replace(" ", query).toLowerCase();
-            return "itemstore".equals(tmp);
+            return ItemStoreType.hasQuery(query);
         }
 
         @Override
@@ -156,14 +155,14 @@ public enum RepositoryType {
          */
         @SuppressWarnings("unchecked")
         @Override
-        public <T extends TaskTideModel<T>> RocksDbRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName) {
+        public <T extends TaskTideModel<T>> ItemStoreRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName) {
             ItemStore data = (ItemStore) backend;
             if (modelType.equals(Workflow.class)) {
-                return (RocksDbRepository<T>) new RocksDbWorkflowRepository(data, collectionName);
+                return (ItemStoreRepository<T>) new ItemStoreWorkflowRepository(data, collectionName);
             } else if (modelType.equals(Step.class)) {
-                return (RocksDbRepository<T>) new RocksDbStepRepository(data, collectionName);
+                return (ItemStoreRepository<T>) new ItemStoreStepRepository(data, collectionName);
             } else if (modelType.equals(WorkItem.class)) {
-                return (RocksDbRepository<T>) new RocksDbWorkItemRepository(data, collectionName);
+                return (ItemStoreRepository<T>) new ItemStoreWorkItemRepository(data, collectionName);
             } else {
                 throw new IllegalArgumentException("Unsupported model type for RocksDb repository: " + modelType.getSimpleName());
             }
@@ -243,7 +242,7 @@ public enum RepositoryType {
      * Abstract method to allow each enumeration to define how to create
      * targeted {@link TaskTideRepository} of
      * {@link Workflow}, {@link Step}, {@link WorkItem}. For for
-     * {@link TemplateRepository}, {@link RocksDbRepository}, or
+     * {@link TemplateRepository}, {@link ItemStoreRepository}, or
      * {@link JsonRepository}
      *
      * @param <T>
