@@ -4,7 +4,6 @@
  */
 package org.tasktide.itemstore;
 
-import org.tasktide.itemstore.AbstractItemStore;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +16,6 @@ import org.rocksdb.RocksIterator;
 import org.rocksdb.RocksDBException;
 import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
-
-import org.tasktide.itemstore.Item;
 
 
 /**

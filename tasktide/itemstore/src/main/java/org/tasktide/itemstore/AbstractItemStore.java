@@ -22,9 +22,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Random;
 
-import org.tasktide.itemstore.Item;
-import org.tasktide.itemstore.ItemStore;
-
 
 /**
  * Abstract ItemStore to implement getting ItemStore attributes,  

@@ -19,7 +19,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 
-import org.tasktide.itemstore.ItemStoreTestUtils;
 
 
 /**
@@ -71,7 +70,7 @@ public class AbstractItemStoreTests {
         Map<String, String> data = new HashMap<>();
         
         // Configure database
-        Path workDir = ItemStoreTestUtils.setWorkingDirectory("AbstractItemStore");
+        Path workDir = ItemStoreTestUtils.setWorkingDirectory("rocksDB", "AbstractItemStore");
         itemStore = ItemStoreTestUtils.makeRocksDB("AbstractItemStore", workDir);
         
         // Fetch attributes

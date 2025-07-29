@@ -34,11 +34,11 @@ import org.tasktide.core.TaskTideModel;
 @jakarta.persistence.Table(name = "WorkItem")
 public class WorkItem implements TaskTideModel<WorkItem> {
     
-    @jakarta.persistence.Id
     @jakarta.nosql.Id
+    @jakarta.persistence.Id
     @JsonbProperty("Id")
     private String id;
-    
+
     @jakarta.persistence.Column(name = "ItemName")
     @jakarta.nosql.Column("ItemName")
     @JsonbProperty("ItemName")
@@ -348,7 +348,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     public void setItemType(ItemType itemType) {
         this.itemType = itemType;
     }
-
+    
     
     /**
      * Get item state

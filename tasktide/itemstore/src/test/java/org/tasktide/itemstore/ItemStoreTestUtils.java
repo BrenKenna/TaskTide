@@ -7,6 +7,7 @@ package org.tasktide.itemstore;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
+
 import java.io.BufferedReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,6 +15,7 @@ import java.nio.file.Paths;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,9 +23,9 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 
 
 /**
@@ -83,14 +85,15 @@ public class ItemStoreTestUtils {
      * Set working {@link Path} for {@link RocksDBStore} under the supplied store
      *  name for the supplied directory
      * 
+     * @param flag
      * @param directory
      * @param storeName
      * @return {@link Path}
      */
-    public static Path setWorkingDirectory(String directory, String storeName) {
+    public static Path setWorkingDirectory(String flag, String directory, String storeName) {
         try {
             Path cwd = Paths.get(directory);
-            Path workDir = cwd.resolve("rocksDB").resolve(storeName);
+            Path workDir = cwd.resolve(flag).resolve(storeName);
             Files.createDirectories(workDir);
             return workDir;
         }
@@ -104,13 +107,14 @@ public class ItemStoreTestUtils {
      * Set working {@link Path} directory for RocksDB under supplied store name
      *  on current directory
      * 
+     * @param flag
      * @param storeName
      * @return {@link Path}
      */
-    public static Path setWorkingDirectory(String storeName) {
+    public static Path setWorkingDirectory(String flag, String storeName) {
         try {
             Path cwd = Paths.get( System.getProperty("user.dir") );
-            Path workDir = cwd.resolve("rocksDB").resolve(storeName);
+            Path workDir = cwd.resolve(flag).resolve(storeName);
             Files.createDirectories(workDir);
             return workDir;
         }

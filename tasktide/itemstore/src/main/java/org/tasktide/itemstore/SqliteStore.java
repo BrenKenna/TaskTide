@@ -4,17 +4,18 @@
  */
 package org.tasktide.itemstore;
 
-import org.tasktide.itemstore.AbstractItemStore;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.tasktide.itemstore.Item;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -25,6 +26,7 @@ import org.tasktide.itemstore.Item;
 public class SqliteStore extends AbstractItemStore {
     
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(SqliteStore.class);
     private Connection master, proto;
     
     
@@ -38,6 +40,48 @@ public class SqliteStore extends AbstractItemStore {
      */
     public SqliteStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
         super(storeName, dbDirectory, masterDB, protoDB);
+        this.initItemStore();
+    }
+
+    
+    /**
+     * Initialize ItemStore throwing RuntimeException
+     *  if failed from delgated call to InitDatabase to
+     *  both the Master & Prototype
+     */
+    private void initItemStore() {
+        this.openConn(DbTarget.BOTH);
+        this.initDatabase(this.master);
+        this.initDatabase(this.proto);
+        this.closeConn(DbTarget.BOTH);
+    }
+    
+    
+    /**
+     * Initialize database on the provided connection.
+     *  Throwing a RuntimeException if failed
+     * 
+     * @param conn
+     * @return boolean
+     */
+    private boolean initDatabase(Connection conn) {
+        String query = 
+        """
+            CREATE TABLE IF NOT EXISTS Items(
+                Auto_Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Id TEXT UNIQUE NOT NULL,
+                State TEXT NOT NULL,
+                Payload TEXT NOT NULL
+            )
+        """;
+        try ( Statement stmt = conn.createStatement() ) {
+            return stmt.execute(query);
+        }
+        catch ( SQLException ex) {
+            LOGGER.error("Error initializing ItemStore displaying statck trace: '{}'", ex);
+            ex.printStackTrace();
+            throw new RuntimeException("Sqlite-ItemStore initialization failed", ex);
+        }
     }
 
     
@@ -50,16 +94,16 @@ public class SqliteStore extends AbstractItemStore {
      */
     private boolean putItem(Connection conn, Item item) {
         String query = 
-            "INSERT INTO ? VALUES (?, ?, ?)"
+            "INSERT INTO Items (Id, State, Payload) VALUES (?, ?, ?)"
         ;
         try (PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setString(1, this.getStoreName());
-            ps.setString(2, item.getId());
-            ps.setString(3, item.getState());
-            ps.setString(4, item.getPayload());
+            ps.setString(1, item.getId());
+            ps.setString(2, item.getState());
+            ps.setString(3, item.getPayload());
             return ps.execute();
         }
         catch (SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
@@ -112,10 +156,9 @@ public class SqliteStore extends AbstractItemStore {
      */
     private List<Item> selectAll(Connection conn) {
         String query = 
-            "SELECT * FROM ?"
+            "SELECT * FROM Items"
         ;
         try (PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setString(1, this.getStoreName());
             ResultSet rs = ps.executeQuery();
             return consumeResultSet(rs);
         }
@@ -129,11 +172,13 @@ public class SqliteStore extends AbstractItemStore {
      * Execute select query
      * 
      * @param conn
+     * @param query
+     * @param val
      * @return List-{@link Item}
      */
-    private List<Item> selectQuery(Connection conn, String query) {
+    private List<Item> selectQuery(Connection conn, String query, String val) {
         try (PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setString(1, this.getStoreName());
+            ps.setString(1, val);
             ResultSet rs = ps.executeQuery();
             return this.consumeResultSet(rs);
         }
@@ -152,11 +197,10 @@ public class SqliteStore extends AbstractItemStore {
      */
     private boolean deleteItem(Connection conn, Item item) {
         String query =
-            "DELETE FROM ? WHERE Id = ?"
+            "DELETE FROM Items WHERE Id = ?"
         ;
         try ( PreparedStatement ps = conn.prepareStatement(query) ) {
-            ps.setString(1, this.getStoreName());
-            ps.setString(2, item.getId());
+            ps.setString(1, item.getId());
             return ps.execute();
         }
         catch (SQLException ex) {
@@ -180,7 +224,9 @@ public class SqliteStore extends AbstractItemStore {
             }
             default -> {
                 this.putItem(this.master, item);
+                this.openConn(DbTarget.PROTOTYPE);
                 this.putItem(this.proto, item);
+                this.closeConn(DbTarget.PROTOTYPE);
             }
         }
         this.closeConn(target);
@@ -234,10 +280,19 @@ public class SqliteStore extends AbstractItemStore {
     @Override
     public Item getById(DbTarget target, String id) {
         List<Item> results;
+        String query = "SELECT * FROM Items WHERE Id = ?";
+        
         this.openConn(target);
-        String query = "SELECT * FROM ? WHERE Id = ?";
-        results = this.selectQuery(proto, query);
+        switch (target) {
+            case PROTOTYPE -> {
+                results = this.selectQuery(this.proto, query, id);
+            }
+            default -> {
+                results = this.selectQuery(this.master, query, id);
+            }
+        }
         this.closeConn(target);
+        
         if ( !results.isEmpty() ) {
             return results.get(0);
         }
@@ -255,10 +310,19 @@ public class SqliteStore extends AbstractItemStore {
     @Override
     public List<Item> getItemsByState(DbTarget target, String state) {
         List<Item> results;
+        String query = "SELECT * FROM Items WHERE State = ?";
+
         this.openConn(target);
-        String query = "SELECT * FROM ? WHERE State = ?";
-        results = this.selectQuery(proto, query);
+        switch (target) {
+            case PROTOTYPE -> {
+                results = this.selectQuery(this.proto, query, state);
+            }
+            default -> {
+                results = this.selectQuery(this.master, query, state);
+            }
+        }
         this.closeConn(target);
+        
         return results;
     }
 
@@ -280,9 +344,27 @@ public class SqliteStore extends AbstractItemStore {
     }
 
     
+    /**
+     * Deletes provided {@link Item} using its Id
+     * 
+     * @param target
+     * @param item
+     * @return boolean
+     */
     @Override
     public boolean delete(DbTarget target, Item item) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        switch (target) {
+            case PROTOTYPE -> {
+                return this.deleteItem(this.proto, item);
+            }
+            
+            default -> {
+                int counter = 0;
+                if ( this.deleteItem(this.proto, item) ) counter++;
+                if ( this.deleteItem(this.master, item) ) counter++;
+                return counter == 2;
+            }
+        }
     }
     
     
@@ -343,6 +425,7 @@ public class SqliteStore extends AbstractItemStore {
             case PROTOTYPE -> {
                 try {
                     if ( this.proto == null ) {
+                        
                         this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
                         return true;
                     }
@@ -379,16 +462,13 @@ public class SqliteStore extends AbstractItemStore {
                     this.waitForLock();
                     if ( this.master == null ) {
                         this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                        return true;
                     }
                     if ( this.master.isClosed() ) {
                         this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
                     }
                     this.releaseLock();
-                    
                     if ( this.proto == null ) {
                         this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                        return true;
                     }
                     if ( this.proto.isClosed() ) {
                         this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
@@ -401,8 +481,4 @@ public class SqliteStore extends AbstractItemStore {
             }
         }
     }
-    
-    
-    
-    
 }

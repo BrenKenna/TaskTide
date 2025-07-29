@@ -30,12 +30,13 @@ import org.tasktide.core.model.task.TaskState;
 public class Workload {
     
     @jakarta.nosql.Column("Id")
-    @jakarta.persistence.Column(name = "Id")
+    @jakarta.persistence.Column(name = "WorkloadId")
     @JsonbProperty("Id")
     private String workloadId;
     
     @jakarta.nosql.Column("Workload")
-    @jakarta.persistence.Column(name = "Workload", columnDefinition = "CLOB")
+    @jakarta.persistence.Column(name = "Workload", columnDefinition = "BLOB")
+    @jakarta.persistence.Convert(converter = WorkloadJpaConverter.class)
     @JsonbProperty("Workload")
     private Map<String, ItemTask> workload;
     

@@ -44,7 +44,7 @@ public class Step implements TaskTideModel<Step> {
     private String stepName;
     
     @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)
-    @jakarta.nosql.Column("StepName")
+    @jakarta.nosql.Column("StepState")
     @JsonbProperty("StepState")
     private TaskState stepState;
     

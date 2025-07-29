@@ -20,7 +20,8 @@ import org.junit.jupiter.api.Order;
 
 
 /**
- *
+ * Unit tests for RocksDB backed ItemStore
+ * 
  * @author bkenna
  */
 public class ItemStoreTests {
@@ -69,7 +70,7 @@ public class ItemStoreTests {
         
         // Make itemstore
         // String storeName, String dbDirectory, String masterDB, String protoDB
-        Path workDir = ItemStoreTestUtils.setWorkingDirectory("testing");
+        Path workDir = ItemStoreTestUtils.setWorkingDirectory("rocksDB", "testing");
         if ( workDir != null ) {
             itemStore = ItemStoreTestUtils.makeRocksDB("testing", workDir);
             if ( itemStore != null ) {
@@ -115,7 +116,7 @@ public class ItemStoreTests {
         int nExpected = 2;
         
         //
-        Path workDir = ItemStoreTestUtils.setWorkingDirectory("testing");
+        Path workDir = ItemStoreTestUtils.setWorkingDirectory("rocksDB", "testing");
         if ( workDir != null ) {
             itemStore = ItemStoreTestUtils.makeRocksDB("testing", workDir);
             if ( itemStore != null ) {

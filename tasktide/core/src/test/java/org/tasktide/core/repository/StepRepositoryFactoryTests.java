@@ -5,6 +5,7 @@
 package org.tasktide.core.repository;
 
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +36,10 @@ import org.tasktide.TestCaseBuilderUtility;
 import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 
 
@@ -225,6 +229,59 @@ public class StepRepositoryFactoryTests {
         
         // Log test state
         logger.info("\n\n================ Construct NoSQL Repositories From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+    
+    
+    /**
+     * Test that a work item can be fetched 
+     */
+    @Test
+    @Order(2)
+    public void canConstructStepSqlRepository() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct JPA step Repository From Factory Test ================\n");
+        TaskTideRepository<Step> stepRepo;
+        RepositoryFactory<Step> stepRepoFactory;
+        RepositoryType repoType;
+        EntityManager backend;
+        List<Step> data;
+        Step record;
+        boolean assertionState = false;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep()
+        );
+        
+        // Fetch backend instance
+        repoType = RepositoryType.SQL;
+        backend = JpaRepositoryUtility.getInstance().fetchEntityManager(ManagerTarget.STEP);
+        logger.info("Backend Entity:\t'{}'", backend);
+        
+        // Configure repository
+        logger.info("\nConfiguring repository");
+        stepRepoFactory = new RepositoryFactory<>("Test-JPA-Step", Step.class, backend, repoType);
+        stepRepo = stepRepoFactory.make();
+        Map<String, String> map = stepRepo.getRepositoryMetaData();
+        logger.info("\nDisplaying meta data for StepRepository:\n'{}'", JsonUtils.toJson(true, map));
+        
+        // Add records
+        data.stream()
+            .forEach( elm -> stepRepo.insertModel(elm));
+        
+        // Check that records can be queried
+        logger.info("\nVerifying records can be retrieved");
+        TaskTideModel<Step> ref = data.get(0);
+        assertionState = !stepRepo.findById(ref.getId()).isEmpty();
+        logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(stepRepo.findAll()));
+        
+        // Log test state
+        logger.info("\n\n================ Construct JPA Step Repository From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

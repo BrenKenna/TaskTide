@@ -5,6 +5,8 @@
 package org.tasktide.core.repository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import jakarta.transaction.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -87,9 +89,13 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param model
      * @return T
      */
+    @Transactional
     @Override
     public T insertModel(T model) {
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
         entityManager.persist(model);
+        tx.commit();
         return entityManager.find(COLLECTION_CLASS, model.getId());
     }
 
@@ -100,9 +106,14 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param model
      * @return T
      */
+    @Transactional
     @Override
     public T updateModel(T model) {
-        return entityManager.merge(model);
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
+        T result = entityManager.merge(model);
+        tx.commit();
+        return result;
     }
 
     
@@ -112,12 +123,16 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param id
      * @return boolean
      */
+    @Transactional
     @Override
     public boolean deleteModel(String id) {
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
         Optional<T> result = this.findById(id);
         result.ifPresent(
             elm -> entityManager.remove(elm)
         );
+        tx.commit();
         return result.isPresent();
     }
 

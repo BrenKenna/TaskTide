@@ -6,13 +6,17 @@ package org.tasktide.core.repository;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+import jakarta.enterprise.inject.spi.CDI;
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,10 +26,10 @@ import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
 import org.eclipse.jnosql.mapping.reflection.Reflections;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
 import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
+
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,17 +43,25 @@ import org.tasktide.TestCaseBuilderUtility;
 import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDBStore;
 
 
 /**
- *
+ * Class tests {@link TaskTideRepository} for {@link WorkItem}
+ *  through the {@link RepositoryType}
+ * 
  * @author bkenna
  */
 @EnableAutoWeld
-@AddPackages(value = {Converters.class, EntityConverter.class, Template.class, DocumentTemplate.class})
+@AddPackages(value = {
+    Converters.class, EntityConverter.class, Template.class, DocumentTemplate.class,
+    EntityManager.class
+})
 @AddPackages(value = {Tunes.class, Reflections.class})
 @AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -138,6 +150,12 @@ public class WorkItemRepositoryFactoryTests {
     }
     
     
+    public EntityManager fetchManager() {
+        return CDI.current().select(EntityManager.class).get();
+    }
+    
+    
+    
     /**
      * Test that a work item can be fetched 
      */
@@ -189,7 +207,7 @@ public class WorkItemRepositoryFactoryTests {
     public void canConstructWorkItemRocksDbRepository() {
     
         // Initialize data
-        logger.info("\n\n================ Construct JSON Repositories From Factory Test ================\n");
+        logger.info("\n\n================ Construct ItemStore WorkItem Repository From Factory Test ================\n");
         TaskTideRepository<WorkItem> workItemRepo;
         RepositoryFactory<WorkItem> workItemRepoFactory;
         RepositoryType repoType;
@@ -229,7 +247,7 @@ public class WorkItemRepositoryFactoryTests {
         logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(workItemRepo.findAll()));
         
         // Log test state
-        logger.info("\n\n================ Construct JSON Repositories From Factory Test ================\n");
+        logger.info("\n\n================ Construct ItemStore WorkItem Repository From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -242,7 +260,7 @@ public class WorkItemRepositoryFactoryTests {
     public void canConstructWorkItemNoSqlRepository() {
     
         // Initialize data
-        logger.info("\n\n================ Construct JSON Repositories From Factory Test ================\n");
+        logger.info("\n\n================ Construct Template WorkItem Repository From Factory Test ================\n");
         TaskTideRepository<WorkItem> workItemRepo;
         RepositoryFactory<WorkItem> workItemRepoFactory;
         RepositoryType repoType;
@@ -282,7 +300,62 @@ public class WorkItemRepositoryFactoryTests {
         logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(workItemRepo.findAll()));
         
         // Log test state
-        logger.info("\n\n================ Construct JSON Repositories From Factory Test ================\n");
+        logger.info("\n\n================ Construct Template WorkItem Repository From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+    
+    
+    /**
+     * Test that a work item can be fetched 
+     */
+    @Test
+    @Order(3)
+    public void canConstructWorkItemSqlRepository() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct JPA WorkItem Repository From Factory Test ================\n");
+        TaskTideRepository<WorkItem> workItemRepo;
+        RepositoryFactory<WorkItem> workItemRepoFactory;
+        RepositoryType repoType;
+        EntityManager backend;
+        List<WorkItem> data;
+        WorkItem record;
+        boolean assertionState = false;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem()
+        );
+        
+        // Fetch backend instance
+        repoType = RepositoryType.SQL;
+        backend = JpaRepositoryUtility.getInstance().fetchEntityManager(ManagerTarget.WORKITEM);
+        logger.info("Backend Entity:\t'{}'", backend);
+        
+        // Configure repository
+        logger.info("\nConfiguring repository");
+        workItemRepoFactory = new RepositoryFactory<>("Test-JPA-WorkItem", WorkItem.class, backend, repoType);
+        workItemRepo = workItemRepoFactory.make();
+        Map<String, String> map = workItemRepo.getRepositoryMetaData();
+        logger.info("\nDisplaying meta data for WorkItemRepository:\n'{}'", JsonUtils.toJson(true, map));
+        
+        // Add records: Inserts then finds by id
+        logger.info("Inserting records");
+        data.stream()
+            .forEach( elm -> workItemRepo.insertModel(elm));
+        
+        // Check that records can be queried
+        logger.info("\nVerifying records can be retrieved");
+        TaskTideModel<WorkItem> ref = data.get(0);
+        TaskTideModel<WorkItem> res = workItemRepo.findById(ref.getId()).get();
+        assertionState = res != null;
+        logger.info("\nDisplayling all records:\n\n{}", JsonUtils.toJson(true, res));
+        
+        // Log test state
+        logger.info("\n\n================ Construct JPA WorkItem Repository From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

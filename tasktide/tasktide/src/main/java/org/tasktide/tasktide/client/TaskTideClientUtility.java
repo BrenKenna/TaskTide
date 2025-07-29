@@ -49,9 +49,10 @@ import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreType;
-import org.tasktide.itemstore.RocksDBStore;
+
 import org.tasktide.tasktide.TaskTide;
 import org.tasktide.tasktide.configurer.EngineConfig;
 
@@ -330,10 +331,10 @@ public class TaskTideClientUtility {
         Path store = Paths.get(storeName);
         try {
             Files.createDirectories(store);
-            LOGGER.info("RocksDB ItemStore created under:\t'{}'", storeName);
+            LOGGER.info("ItemStore Directory created under:\t'{}'", storeName);
         }
         catch (IOException ex) {
-            LOGGER.info("RocksDB ItemStore already exists under:\t'{}'", storeName);
+            LOGGER.info("ItemStoreDirectory already exists under:\t'{}'", storeName);
         }
         
         // Set vars
