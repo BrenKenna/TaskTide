@@ -30,16 +30,57 @@ import org.tasktide.core.model.workitem.WorkItem;
  */
 public class NoSqlTemplateUtility {
     
-
+    // Attributes
+    private static NoSqlTemplateUtility INSTANCE;
+    private String dbType;
+    
+    
+    /**
+     * Construct utility
+     * 
+     * @param dbType 
+     */
+    private NoSqlTemplateUtility(String dbType) {
+        this.dbType = dbType;
+    }
+    
+    
+    /**
+     * Initialize utility with the DB type, throwing an
+     *  illegal state exception if already initialized
+     * 
+     * @param dbType 
+     */
+    public static void initialize(String dbType) {
+        if ( INSTANCE != null ) {
+            throw new IllegalStateException("NoSqlTemplateUtility already initialized");
+        }
+        INSTANCE = new NoSqlTemplateUtility(dbType);
+    }
+    
+    
+    /**
+     * Get configured utility, throwing illegal state exception
+     *  if not already initialized.
+     * 
+     * @return NoSqlTemplateUtility
+     */
+    public static NoSqlTemplateUtility get() {
+        if ( INSTANCE != null ) {
+            return INSTANCE;
+        }
+        throw new IllegalStateException("NoSqlTemplate not initialized");
+    }
+    
+    
     /**
      * Fetch Template for template type (ie DocumentTemplate etc)
      * 
-     * @param dbType
      * @return Template
      */
     @SuppressWarnings("unchecked")
-    public static Template fetchTemplate(String dbType) {
-        Class clazz = provideTemplateClass(dbType);
+    public Template fetchTemplate() {
+        Class clazz = provideTemplateClass(this.dbType);
         return (Template) CDI.current().select(clazz).get();
     }
     
@@ -51,7 +92,7 @@ public class NoSqlTemplateUtility {
      * @param dbType
      * @return Class
      */
-    public static Class provideTemplateClass(String dbType) {
+    public Class provideTemplateClass(String dbType) {
         switch( dbType.toLowerCase() ) {
             case "document" -> {
                 return DocumentTemplate.class;
@@ -79,14 +120,17 @@ public class NoSqlTemplateUtility {
     /**
      * Iniialize the {@link TaskTideServiceManager}
      * 
-     * @param backend 
      */
-    public static void initServiceManager(Template backend) {
+    public void initServiceManager() {
         
         // Initialize vars
+        Template backend;
         TaskTideService<WorkItem> workItemService;
         TaskTideService<Step> stepService;
         TaskTideService<Workflow> workflowService;
+        
+        // Fetch backend
+        backend = this.fetchTemplate();
         
         // Make services
         workItemService = ServiceFactory.makeWorkItemService(RepositoryType.NOSQL, backend, "WorkItem-Service");

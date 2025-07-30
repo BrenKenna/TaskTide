@@ -39,26 +39,72 @@ import org.tasktide.itemstore.ItemStoreType;
  */
 public class ItemStoreRepositoryUtility {
     
-    private static final Logger LOGGER = LogManager.getLogger(ItemStoreRepositoryUtility.class);
+    // Logging
+    private final Logger LOGGER = LogManager.getLogger(ItemStoreRepositoryUtility.class);
+    
+    // Attributes
+    private static ItemStoreRepositoryUtility INSTANCE;
+    private ItemStoreType storeType;
+    private String storeName;
     
     
     /**
-     * Initialize {@link TaskTideServiceManager} with the provided {@link TaskTideRepository} map
+     * Construct utility with {@link ItemStoreType} and store file location
      * 
-     * @param repoType
-     * @param repoMap 
+     * @param storeType
+     * @param storeName 
      */
-    public static void initServiceManager(RepositoryType repoType, Map<ManagerTarget, TaskTideRepository> repoMap) {
+    private ItemStoreRepositoryUtility(ItemStoreType storeType, String storeName) {
+        this.storeType = storeType;
+        this.storeName = storeName;
+    }
+    
+    
+    /**
+     * Initialize the utility with the store type and file location
+     * 
+     * @param storeType
+     * @param storeName 
+     */
+    public static void initialize(ItemStoreType storeType, String storeName) {
+        if ( INSTANCE != null ) {
+            throw new IllegalStateException("ItemStoreRepositoryUtility already initialized");
+        }
+        INSTANCE = new ItemStoreRepositoryUtility(storeType, storeName);
+    }
+    
+    
+    /**
+     * Fetch utility, throwing illegal state exception if not initialized
+     * 
+     * @return ItemStoreRepositoryUtility
+     */
+    public static ItemStoreRepositoryUtility get() {
+        if ( INSTANCE != null ) {
+            return INSTANCE;
+        }
+        throw new IllegalStateException("ItemStoreRepositoryUtility not initialized");
+    }
+    
+    
+    /**
+     * Initialize {@link TaskTideServiceManager}
+     */
+    public void initServiceManager() {
         
         // Initialize vars
+        Map<ManagerTarget, TaskTideRepository> repoMap;
         TaskTideService<WorkItem> workItemService;
         TaskTideService<Step> stepService;
         TaskTideService<Workflow> workflowService;
         
+        // 
+        repoMap = fetchItemStoreRepoMap(this.storeType, this.storeName);
+        
         // Make services
-        workItemService = ServiceFactory.makeWorkItemService(repoType, repoMap.get(ManagerTarget.WORKITEM), "WorkItem-Service");
-        stepService = ServiceFactory.makeStepService(repoType, repoMap.get(ManagerTarget.STEP), "Step-Service");
-        workflowService = ServiceFactory.makeWorkflowService(repoType, repoMap.get(ManagerTarget.WORKFLOW), "Workflow-Service");
+        workItemService = ServiceFactory.makeWorkItemService(RepositoryType.ITEMSTORE, repoMap.get(ManagerTarget.WORKITEM), "WorkItem-Service");
+        stepService = ServiceFactory.makeStepService(RepositoryType.ITEMSTORE, repoMap.get(ManagerTarget.STEP), "Step-Service");
+        workflowService = ServiceFactory.makeWorkflowService(RepositoryType.ITEMSTORE, repoMap.get(ManagerTarget.WORKFLOW), "Workflow-Service");
         
         // Return manager
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
@@ -72,7 +118,7 @@ public class ItemStoreRepositoryUtility {
      * @param storeType
      * @return {@link ItemStore}
      */
-    public static ItemStore fetchItemStore(String storeName, ItemStoreType storeType) {
+    public ItemStore fetchItemStore(String storeName, ItemStoreType storeType) {
         
         // Resolve store locatoin
         Path store = Paths.get(storeName);
@@ -99,7 +145,7 @@ public class ItemStoreRepositoryUtility {
      * @param storeName
      * @return 
      */
-    public static Map<ManagerTarget, ItemStore> fetchItemStoreMap(ItemStoreType storeType, String storeName) {
+    public Map<ManagerTarget, ItemStore> fetchItemStoreMap(ItemStoreType storeType, String storeName) {
         Map<ManagerTarget, ItemStore> output = new HashMap<>();
         for ( ManagerTarget elm : ManagerTarget.values() ) {
            ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType);
@@ -116,7 +162,7 @@ public class ItemStoreRepositoryUtility {
      * @param storeName
      * @return Map-{@link ManagerTarget}, {@link TaskTideRepository}
      */
-    public static Map<ManagerTarget, TaskTideRepository> fetchItemStoreRepoMap(ItemStoreType storeType, String storeName) {
+    public Map<ManagerTarget, TaskTideRepository> fetchItemStoreRepoMap(ItemStoreType storeType, String storeName) {
         
         // Initialize output and fetch item store map
         Map<ManagerTarget, TaskTideRepository> output = new HashMap<>();
