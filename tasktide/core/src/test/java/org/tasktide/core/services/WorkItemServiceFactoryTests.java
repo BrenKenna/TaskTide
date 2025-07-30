@@ -5,6 +5,7 @@
 package org.tasktide.core.services;
 
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,8 @@ import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 
 
@@ -218,6 +221,56 @@ public class WorkItemServiceFactoryTests {
         
         // Log test state
         logger.info("\n\n================ Construct WorkItemService-Template From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+    
+    
+    
+    /**
+     * Test that a work item can be fetched 
+     */
+    @Test
+    @Order(3)
+    public void canConstructWorkItemSqlService() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct WorkItemService-JPA From Factory Test ================\n");
+        TaskTideService<WorkItem> workItemService;
+        RepositoryType repoType;
+        EntityManager backend;
+        List<WorkItem> data;
+        boolean assertionState ;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem()
+        );
+        
+        // Configure requirements
+        repoType = RepositoryType.SQL;
+        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
+        
+        // Setup requirements
+        logger.info("Configuring Service");
+        workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
+        Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for JPA WorkItem Service:\n'{}'", JsonUtils.toJson(true, map));
+        
+        // Add records
+        workItemService.extendModel(data);
+        
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<WorkItem> ref = data.get(0);
+        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
+        
+        // Log test state
+        logger.info("\n\n================ Construct WorkItemService-JPA From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

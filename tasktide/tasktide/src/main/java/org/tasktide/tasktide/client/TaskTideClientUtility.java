@@ -247,6 +247,7 @@ public class TaskTideClientUtility {
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
     }
     
+    
     /**
      * Fetch {@link TaskTideServiceManager} for the backend {@link RepositoryType}
      * 
@@ -268,7 +269,6 @@ public class TaskTideClientUtility {
         // Return manager
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
     }
-    
     
     
     /**

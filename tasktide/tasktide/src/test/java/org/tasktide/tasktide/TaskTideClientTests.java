@@ -4,8 +4,7 @@
  */
 package org.tasktide.tasktide;
 
-import java.util.List;
-
+import java.util.Map.Entry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,9 +15,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import org.tasktide.core.model.workitem.WorkItem;
-
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.tasktide.client.ClientConfigMap;
 import org.tasktide.tasktide.client.TaskTideClient;
 import org.tasktide.tasktide.client.TaskTideClientType;
@@ -29,6 +27,7 @@ import org.tasktide.tasktide.containerprovider.CdiProviders;
 
 
 /**
+ * Test module for specific implementations of {@link TaskTideClient}
  *
  * @author bkenna
  */
@@ -63,8 +62,6 @@ public class TaskTideClientTests {
     }
 
     
-   
-    
     /**
      * Tests importing through the manager client
      */
@@ -79,11 +76,15 @@ public class TaskTideClientTests {
         logger.info("Creating ClientConfigMap");
         ClientConfigMap configMap = new ClientConfigMap();
         configMap.addConfigs(provider);
+        logger.info("Displaying configured properties");
+        for ( Entry elm : configMap.getArgTree().getGlobalArguments().getArgMap().entrySet() ) {
+            logger.info("Key = '{}', Value = '{}'", elm.getKey(), elm.getValue());
+        }
         
         // Fetch service manager
         logger.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        TaskTideClientUtility.initServiceManager(repoType, configMap);
+        JpaRepositoryUtility.getInstance().initServiceManager();
         
         // Fetch client
         logger.info("Constructing TaskTideClient");
@@ -115,7 +116,7 @@ public class TaskTideClientTests {
         // Fetch service manager
         logger.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        TaskTideClientUtility.initServiceManager(repoType, configMap);
+        JpaRepositoryUtility.getInstance().initServiceManager();
         
         // Fetch client
         logger.info("Fetching Client");

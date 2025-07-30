@@ -250,7 +250,7 @@ public class WorkflowServiceTests {
         
         // Add a workflow to collection
         logger.info("Creating new workflow for insertion");
-        Workflow myWorkflow = TestCaseBuilderUtility.makeTestWorkflow(TestCaseBuilderUtility.makeTestStepList(), "workflow4", "myFourthWorkflow");
+        Workflow myWorkflow = TestCaseBuilderUtility.makeTestWorkflow(TestCaseBuilderUtility.makeTestStepList(), "myFourthWorkflow");
         Workflow updated = serv.appendModel(myWorkflow);
         if ( updated != null ) {
             assertionState = true;

@@ -148,8 +148,9 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
     public List<T> findByField(String field, Object value) {
         String query = String.format(
             "SELECT e FROM %s e WHERE e.%s = :value",
-            COLLECTION_CLASS, field
+            COLLECTION_CLASS.getSimpleName(), field
         );
+        System.out.println("DEBUG >>\nDisplaying query " + query);
         return entityManager
             .createQuery(query, COLLECTION_CLASS)
             .setParameter("value", value)
@@ -171,7 +172,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
         String query = String.format(
             "SELECT e FROM %s e WHERE e.%s = :value AND e.%s = :groupVal",
-            COLLECTION_CLASS, field, group
+            COLLECTION_CLASS.getSimpleName(), field, group
         );
         return entityManager
             .createQuery(query, COLLECTION_CLASS)

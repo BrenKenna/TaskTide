@@ -36,7 +36,6 @@ import org.tasktide.TestCaseBuilderUtility;
 import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.supporting.JsonUtils;
@@ -44,7 +43,8 @@ import org.tasktide.itemstore.ItemStore;
 
 
 /**
- * Test module for {@link RepositoryFactory}
+ * Test module for {@link RepositoryFactory} for {@link Step}
+ *  across the {@link RepositoryType}
  * 
  * @author bkenna
  */
@@ -237,7 +237,7 @@ public class StepRepositoryFactoryTests {
      * Test that a work item can be fetched 
      */
     @Test
-    @Order(2)
+    @Order(3)
     public void canConstructStepSqlRepository() {
     
         // Initialize data
@@ -247,8 +247,7 @@ public class StepRepositoryFactoryTests {
         RepositoryType repoType;
         EntityManager backend;
         List<Step> data;
-        Step record;
-        boolean assertionState = false;
+        boolean assertionState;
         
         // Generate data
         logger.info("Generating data for testing");
@@ -260,7 +259,7 @@ public class StepRepositoryFactoryTests {
         
         // Fetch backend instance
         repoType = RepositoryType.SQL;
-        backend = JpaRepositoryUtility.getInstance().fetchEntityManager(ManagerTarget.STEP);
+        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
         logger.info("Backend Entity:\t'{}'", backend);
         
         // Configure repository
@@ -271,14 +270,17 @@ public class StepRepositoryFactoryTests {
         logger.info("\nDisplaying meta data for StepRepository:\n'{}'", JsonUtils.toJson(true, map));
         
         // Add records
+        logger.info("Displaying step:\n{}", data.get(0).toJsonDoc());
         data.stream()
             .forEach( elm -> stepRepo.insertModel(elm));
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
-        TaskTideModel<Step> ref = data.get(0);
-        assertionState = !stepRepo.findById(ref.getId()).isEmpty();
-        logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(stepRepo.findAll()));
+        TaskTideModel<Step> ref, res;
+        ref = data.get(0);
+        res = stepRepo.findById(ref.getId()).get();
+        assertionState = res != null;
+        logger.info("\nDisplayling all records:\n\n{}", JsonUtils.toJson(true, res));
         
         // Log test state
         logger.info("\n\n================ Construct JPA Step Repository From Factory Test ================\n");

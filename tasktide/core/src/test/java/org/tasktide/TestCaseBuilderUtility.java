@@ -176,6 +176,7 @@ public class TestCaseBuilderUtility {
             .stepsLocked(2)
             .stepsDone(2)
             .stepsError(1)
+            .workflowId(UUID.randomUUID().toString())
         .build();
     }
     
@@ -197,6 +198,7 @@ public class TestCaseBuilderUtility {
             .stepsLocked(2)
             .stepsDone(2)
             .stepsError(1)
+            .workflowId(UUID.randomUUID().toString())
         .build();
     }
     
@@ -218,13 +220,12 @@ public class TestCaseBuilderUtility {
      * Make a test {@link Workflow Workflow}
      * 
      * @param steps
-     * @param workflowId
      * @param workflowName
      * @return {@link Workflow Workflow}
      */
-    public static Workflow makeTestWorkflow(List<Step> steps, String workflowId, String workflowName) {
+    public static Workflow makeTestWorkflow(List<Step> steps, String workflowName) {
         return new WorkflowBuilder()
-            .id(workflowId)
+            .id(UUID.randomUUID().toString())
             .workflowName(workflowName)
             .steps( steps )
         .build();
@@ -250,9 +251,9 @@ public class TestCaseBuilderUtility {
         stepC.add(makeTestStep("step4", "myFourthStep"));
         
         // Append workflows
-        output.add(makeTestWorkflow(stepA, "workflow1", "myFirstWorkflow"));
-        output.add(makeTestWorkflow(stepB, "workflow2", "mySecondWorkflow"));
-        output.add(makeTestWorkflow(stepC, "workflow3", "myThirdWorkflow") );
+        output.add(makeTestWorkflow(stepA, "myFirstWorkflow"));
+        output.add(makeTestWorkflow(stepB, "mySecondWorkflow"));
+        output.add(makeTestWorkflow(stepC, "myThirdWorkflow") );
         
         // Return results
         return output;
@@ -306,7 +307,7 @@ public class TestCaseBuilderUtility {
      * 
      * @return {@link TaskTideRepository TaskTideRepository-{@link WorkItem WorkItem}}
      */
-    public static TaskTideRepository createWorkItemJsonRepo() {
+    public static TaskTideRepository<WorkItem> createWorkItemJsonRepo() {
     
         // Generate data
         List<WorkItem> data = new ArrayList<>();
@@ -324,7 +325,7 @@ public class TestCaseBuilderUtility {
      * 
      * @return {@link TaskTideRepository TaskTideRepository-{@link Step Step}}
      */
-    public static TaskTideRepository createStepJsonRepo() {
+    public static TaskTideRepository<Step> createStepJsonRepo() {
         return new JsonStepRepository(makeTestStepList(), "myData");
     }
     
@@ -334,7 +335,7 @@ public class TestCaseBuilderUtility {
      * 
      * @return {@link TaskTideRepository TaskTideRepository-{@link Workflow Workflow}}
      */
-    public static TaskTideRepository createWorkflowJsonRepo() {
+    public static TaskTideRepository<Workflow> createWorkflowJsonRepo() {
         return new JsonWorkflowRepository(makeTestWorkflows(), "myData");
     }
 }

@@ -9,25 +9,30 @@ import org.eclipse.microprofile.config.ConfigProvider;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+
 import java.util.HashMap;
 import java.util.Map;
 import javax.sql.DataSource;
+
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.TaskTideService;
 import org.tasktide.core.manager.ManagerTarget;
-import static org.tasktide.core.manager.ManagerTarget.STEP;
-import static org.tasktide.core.manager.ManagerTarget.WORKFLOW;
-import static org.tasktide.core.manager.ManagerTarget.WORKITEM;
+import org.tasktide.core.manager.TaskTideServiceManager;
+
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.services.ServiceFactory;
 
 
 /**
- * Fetch configurations
+ * Supports creation of {@link JpaRepository} {@link TaskTideRepository},
+ *  {@link TaskTideService}, and initialize the {@link TaskTideServiceManager} 
  * 
  * @author bkenna
  */
@@ -80,6 +85,31 @@ public class JpaRepositoryUtility {
     
     
     /**
+     * Initialize the {@link TaskTideServiceManager}
+     * 
+     */
+    public void initServiceManager() {
+        
+        // Initialize vars
+        EntityManager backend;
+        TaskTideService<WorkItem> workItemService;
+        TaskTideService<Step> stepService;
+        TaskTideService<Workflow> workflowService;
+        
+        // Fetch entity manager
+        backend = fetchEntityManager();
+        
+        // Make services
+        workItemService = ServiceFactory.makeWorkItemService(RepositoryType.SQL, backend, "WorkItem-Service");
+        stepService = ServiceFactory.makeStepService(RepositoryType.SQL, backend, "Step-Service");
+        workflowService = ServiceFactory.makeWorkflowService(RepositoryType.SQL, backend, "Workflow-Service");
+        
+        // Return manager
+        TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
+    }
+    
+    
+    /**
      * Wrapper method to construct HikariConfig
      * 
      * @return HikariConfig
@@ -121,81 +151,54 @@ public class JpaRepositoryUtility {
     }
     
     
-    public EntityManagerFactory fetchEntityManagerFactory(Map<String, Object> conf, ManagerTarget modelType) {
-        switch (modelType) {
-            case WORKFLOW -> {
-                return Persistence.createEntityManagerFactory("Workflow", conf);
-            }
-            case STEP -> {
-                return Persistence.createEntityManagerFactory("Step", conf);
-            }
-            case WORKITEM -> {
-                return Persistence.createEntityManagerFactory("WorkItem", conf);
-            }
-            default -> {
-                throw new IllegalArgumentException("Task TideModel Type must be one of Workflow, Step, or WorkItem");
-            }
-        }
+    /**
+     * Fetches entity manager factory using config
+     * 
+     * @param conf
+     * @return EntityManagerFactory
+     */
+    public EntityManagerFactory fetchEntityManagerFactory(Map<String, Object> conf) {
+        return Persistence.createEntityManagerFactory("TaskTide", conf);
     }
     
     
     /**
      * Fetch an EntityManager for the required {@link ManagerTarget}
      * 
-     * @param modelType
      * @return EntityManager
      */
-    public EntityManager fetchEntityManager(ManagerTarget modelType) {
+    public EntityManager fetchEntityManager() {
         
         // Configure dependanceis
         DataSource dataSource = fetchDataSource();
         Map<String, Object> conf = fetchEntityManagerConfig(dataSource);
         
         // Return entity manager for model type
-        return fetchEntityManagerFactory(conf, modelType).createEntityManager();
-    }
-    
-    
-    /**
-     * Fetch EnityManager map
-     * 
-     * @return Map-{@link ManagerTarget}, EntityManager
-     */
-    public Map<ManagerTarget, EntityManager> fetchEntityManagerMap() {
-        Map<ManagerTarget, EntityManager> output = new HashMap<>();
-        for ( ManagerTarget elm : ManagerTarget.values() ) {
-           EntityManager manager = fetchEntityManager(elm);
-           output.put(elm, manager);
-        }
-        return output;
+        return fetchEntityManagerFactory(conf).createEntityManager();
     }
     
     
     /**
      * Wrapper method to fetch EntityManager {@link TaskTideRepository} map
      * 
-     * @param repoType
      * @return Map-{@link ManagerTarget}, {@link TaskTideRepository}
      */
-    public Map<ManagerTarget, TaskTideRepository> fetchEntityManagerRepoMap(RepositoryType repoType) {
+    public Map<ManagerTarget, TaskTideRepository> fetchEntityManagerRepoMap() {
         
         // Initialize output and fetch item store map
         Map<ManagerTarget, TaskTideRepository> output = new HashMap<>();
-        Map<ManagerTarget, EntityManager> entityStoreMap = fetchEntityManagerMap();
+        EntityManager entityStore = fetchEntityManager();
         
         // Add work item repo
-        EntityManager entity = entityStoreMap.get(ManagerTarget.WORKITEM);
-        TaskTideRepository repo = repoType.createRepository(WorkItem.class, entity, "WorkItem");
+        TaskTideRepository repo = RepositoryType.SQL.createRepository(WorkItem.class, entityStore, "WorkItem");
         output.put(ManagerTarget.WORKITEM, repo);
         
         // Add step repo
-        entity = entityStoreMap.get(ManagerTarget.STEP);
-        repo = repoType.createRepository(Step.class, entity, "Step");
+        repo = RepositoryType.SQL.createRepository(Step.class, entityStore, "Step");
         output.put(ManagerTarget.STEP, repo);
         
         // Add workflow repo
-        entity = entityStoreMap.get(ManagerTarget.WORKFLOW);
-        repo = repoType.createRepository(Workflow.class, entity, "Workflow");
+        repo = RepositoryType.SQL.createRepository(Workflow.class, entityStore, "Workflow");
         output.put(ManagerTarget.WORKFLOW, repo);
         
         // Return results

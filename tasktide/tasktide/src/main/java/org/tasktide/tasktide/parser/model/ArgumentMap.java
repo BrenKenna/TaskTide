@@ -6,6 +6,7 @@ package org.tasktide.tasktide.parser.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 
 /**
@@ -45,6 +46,18 @@ public class ArgumentMap {
      */
     public boolean putArgument(Argument<?> arg) {
         return this.args.put(arg.getName(), arg) != null;
+    }
+    
+    
+    /**
+     * Extend argument map with provided {@link ArgumentMap}
+     * 
+     * @param map 
+     */
+    public void extend(ArgumentMap map) {
+        for ( Entry<String, Argument<?>> elm : map.getArgMap().entrySet() ) {
+            this.args.put(elm.getKey(), elm.getValue());
+        }
     }
     
     

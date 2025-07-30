@@ -24,13 +24,13 @@ import org.tasktide.core.TaskTideModel;
 
 
 /**
- *
  * Model class for a collection of work items as metadata
  * 
  * @author bkenna
  */
 @jakarta.nosql.Embeddable
-@jakarta.persistence.Entity(name = "Step")
+@jakarta.persistence.Entity
+@jakarta.persistence.Table(name = "Step")
 public class Step implements TaskTideModel<Step> {
     
     @jakarta.nosql.Id
@@ -79,7 +79,7 @@ public class Step implements TaskTideModel<Step> {
     private String workflowId;
     
     @jakarta.persistence.ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
-    @jakarta.persistence.JoinColumn(name = "WorkflowId", referencedColumnName = "workflowId", insertable = false, updatable = false)
+    @jakarta.persistence.JoinColumn(name = "MemberId", referencedColumnName = "workflowId", insertable = false, updatable = false)
     @JsonbTransient
     private Workflow workflow;
     

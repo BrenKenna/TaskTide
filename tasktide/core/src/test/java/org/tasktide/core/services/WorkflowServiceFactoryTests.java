@@ -5,6 +5,7 @@
 package org.tasktide.core.services;
 
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +39,8 @@ import org.tasktide.core.TaskTideService;
 import org.tasktide.core.model.collection.Workflow;
 
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 
 
@@ -79,7 +82,6 @@ public class WorkflowServiceFactoryTests {
         logger.info("\n\n================ Terminating Test ================\n");
     }
 
-    
     
     /**
      * Test that a work item can be fetched 
@@ -206,6 +208,51 @@ public class WorkflowServiceFactoryTests {
         
         // Log test state
         logger.info("\n\n================ Construct WorkflowService-Template From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+    
+    
+    /**
+     * Test that a workflow can be fetched 
+     */
+    @Test
+    @Order(3)
+    public void canConstructWorkflowSqlService() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct WorkflowService-JPA From Factory Test ================\n");
+        TaskTideService<Workflow> workflowService;
+        RepositoryType repoType;
+        EntityManager backend;
+        List<Workflow> data;
+        boolean assertionState;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        data = TestCaseBuilderUtility.makeTestWorkflows();
+        
+        // Configure requirements
+        repoType = RepositoryType.SQL;
+        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
+        
+        // Setup requirements
+        logger.info("Configuring Service");
+        workflowService = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow-Service");
+        Map<String, String> map = workflowService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for JPA Step Service:\n'{}'", JsonUtils.toJson(true, map));
+        
+        // Add records
+        workflowService.extendModel(data);
+        
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<Workflow> ref = data.get(0);
+        TaskTideModel<Workflow> result = workflowService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved Workflow:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
+        
+        // Log test state
+        logger.info("\n\n================ Construct Workflow-JPA From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

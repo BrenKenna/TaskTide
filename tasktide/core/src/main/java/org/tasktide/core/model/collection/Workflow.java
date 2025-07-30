@@ -12,7 +12,6 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
@@ -28,13 +27,13 @@ import org.tasktide.core.model.workitem.ItemState;
 
 
 /**
- *
  * Model class for a collection of steps as a workflow/pipeline
  * 
  * @author bkenna
  */
-@jakarta.nosql.Entity("Workflow")
-@jakarta.persistence.Entity(name = "Workflow")
+@jakarta.nosql.Entity
+@jakarta.persistence.Entity
+@jakarta.persistence.Table(name = "Workflow")
 public class Workflow implements TaskTideModel<Workflow> {
     
     @jakarta.nosql.Id
@@ -48,10 +47,11 @@ public class Workflow implements TaskTideModel<Workflow> {
     private String workflowName;
     
     @jakarta.nosql.Column("WorkflowSteps")
+    @jakarta.persistence.Transient
     @JsonbProperty("WorkflowSteps")
     private Map<String, Step> workflowSteps;
     
-    @OneToMany(mappedBy = "WorkflowId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "workflow", cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<Step> stepList = new ArrayList<>();
     
     

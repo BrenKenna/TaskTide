@@ -10347,3 +10347,1283 @@ Total='5', Remaining='0', Done='5', Expected='5'
 
 ---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
 
+2025-07-30 15:54:08 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 15:54:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 15:54:08 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 15:54:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 15:54:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 369929e3-7ba7-414a-8432-9cee0e617ee8 initialized
+2025-07-30 15:54:13 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 15:54:13 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 15:54:13 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2025-07-30 15:54:13 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2025-07-30 15:54:13 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 15:54:13 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-30 15:54:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 369929e3-7ba7-414a-8432-9cee0e617ee8 shut down
+2025-07-30 15:54:13 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 15:56:30 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 15:56:30 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 15:56:30 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 15:56:30 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 15:56:34 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 096695bb-aceb-442b-b60a-98205f3d9ab2 initialized
+2025-07-30 15:56:34 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 15:56:34 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 15:56:34 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2025-07-30 15:56:34 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2025-07-30 15:56:34 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 15:56:34 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-30 15:56:34 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 096695bb-aceb-442b-b60a-98205f3d9ab2 shut down
+2025-07-30 15:56:34 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 15:58:48 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 15:58:48 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 15:58:48 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 15:58:48 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 15:58:52 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f3def177-243e-4e1e-a11c-993ba657e6da initialized
+2025-07-30 15:58:52 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 15:58:52 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 15:58:52 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2025-07-30 15:58:52 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2025-07-30 15:58:52 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 15:58:52 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-30 15:58:52 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container f3def177-243e-4e1e-a11c-993ba657e6da shut down
+2025-07-30 15:58:52 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 15:59:32 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 15:59:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 15:59:32 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 15:59:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 15:59:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b2019422-690f-4402-8a5d-7a000d33c558 initialized
+2025-07-30 15:59:35 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 15:59:35 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 15:59:35 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2025-07-30 15:59:35 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2025-07-30 15:59:35 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 15:59:35 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-30 15:59:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b2019422-690f-4402-8a5d-7a000d33c558 shut down
+2025-07-30 15:59:35 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:02:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 16:02:39 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 16:02:39 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 16:02:40 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 16:02:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 3201c28b-0f06-45ad-bcd5-7014f2fb164d initialized
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Displaying configured properties
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Host:Port', Value = 'Argument{value=localhost:59484, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Token Expiration', Value = 'Argument{value=4, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Database Type', Value = 'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'WorkItem Name', Value = 'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Workflow Name', Value = 'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Step Name', Value = 'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Date Format', Value = 'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider', Value = 'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Password', Value = 'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider Class', Value = 'Argument{value=org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Client', Value = 'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'File Path', Value = 'Argument{value=myData, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL User', Value = 'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Repository Type', Value = 'Argument{value=sql, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-30 16:02:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 3201c28b-0f06-45ad-bcd5-7014f2fb164d shut down
+2025-07-30 16:02:43 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:08:27 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 16:08:27 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 16:08:27 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 16:08:27 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 16:08:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 989c232d-842a-4273-bb98-631cecfda180 initialized
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Displaying configured properties
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Host:Port', Value = 'Argument{value=localhost:59484, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Token Expiration', Value = 'Argument{value=4, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Username', Value = 'Argument{value=admin, refClass=class java.lang.String, name=Database Username, shortFlag=-dbusr, longFlag=--db-username, description=Configures database user name, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Database Type', Value = 'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'WorkItem Name', Value = 'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Workflow Name', Value = 'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Step Name', Value = 'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database DDL Update', Value = 'Argument{value=update, refClass=class java.lang.String, name=Database DDL Update, shortFlag=-dbdu, longFlag=--db-ddl-update, description=Configures DDL Update, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Date Format', Value = 'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Dialect Driver', Value = 'Argument{value=org.hibernate.dialect.MariaDBDialect, refClass=class java.lang.String, name=Database Dialect Driver, shortFlag=-dbdd, longFlag=--db-dialect-driver, description=Configures database dialect driver, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database URL', Value = 'Argument{value=jdbc:mysql://localhost:3307/tasktide_database, refClass=class java.lang.String, name=Database URL, shortFlag=-dbu, longFlag=--db-url, description=Configures database URL in the form jdbcLpostgresql://localhost:5432/mydb, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Driver', Value = 'Argument{value=com.mysql.cj.jdbc.Driver, refClass=class java.lang.String, name=Database Driver, shortFlag=-dbd, longFlag=--db-driver, description=Configures database user name, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Show SQL', Value = 'Argument{value=true, refClass=class java.lang.String, name=Database Show SQL, shortFlag=-dbsq, longFlag=--db-show-sql, description=Configures Show SQL, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider', Value = 'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Password', Value = 'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider Class', Value = 'Argument{value=org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Password', Value = 'Argument{value=password, refClass=class java.lang.String, name=Database Password, shortFlag=-dbp, longFlag=--db-pass, description=Configures database password, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Client', Value = 'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'File Path', Value = 'Argument{value=myData, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL User', Value = 'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Repository Type', Value = 'Argument{value=sql, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-30 16:08:31 ERROR [ Test worker -> com.zaxxer.hikari.HikariConfig.setDriverClassName ]: Failed to load driver class com.mysql.cj.jdbc.Driver from HikariConfig class classloader jdk.internal.loader.ClassLoaders$AppClassLoader@73d16e93
+2025-07-30 16:08:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 989c232d-842a-4273-bb98-631cecfda180 shut down
+2025-07-30 16:08:31 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:09:53 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 16:09:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 16:09:53 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 16:09:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 16:09:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 5cebab89-51fe-4ff4-8835-81fc471a0f68 initialized
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Displaying configured properties
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Host:Port', Value = 'Argument{value=localhost:59484, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Token Expiration', Value = 'Argument{value=4, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Username', Value = 'Argument{value=admin, refClass=class java.lang.String, name=Database Username, shortFlag=-dbusr, longFlag=--db-username, description=Configures database user name, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Database Type', Value = 'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'WorkItem Name', Value = 'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Workflow Name', Value = 'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Step Name', Value = 'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database DDL Update', Value = 'Argument{value=update, refClass=class java.lang.String, name=Database DDL Update, shortFlag=-dbdu, longFlag=--db-ddl-update, description=Configures DDL Update, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Date Format', Value = 'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Dialect Driver', Value = 'Argument{value=org.hibernate.dialect.MariaDBDialect, refClass=class java.lang.String, name=Database Dialect Driver, shortFlag=-dbdd, longFlag=--db-dialect-driver, description=Configures database dialect driver, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database URL', Value = 'Argument{value=jdbc:mysql://localhost:3307/tasktide_database, refClass=class java.lang.String, name=Database URL, shortFlag=-dbu, longFlag=--db-url, description=Configures database URL in the form jdbcLpostgresql://localhost:5432/mydb, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Driver', Value = 'Argument{value=com.mysql.cj.jdbc.Driver, refClass=class java.lang.String, name=Database Driver, shortFlag=-dbd, longFlag=--db-driver, description=Configures database user name, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Show SQL', Value = 'Argument{value=true, refClass=class java.lang.String, name=Database Show SQL, shortFlag=-dbsq, longFlag=--db-show-sql, description=Configures Show SQL, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider', Value = 'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Password', Value = 'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider Class', Value = 'Argument{value=org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Password', Value = 'Argument{value=password, refClass=class java.lang.String, name=Database Password, shortFlag=-dbp, longFlag=--db-pass, description=Configures database password, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Client', Value = 'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'File Path', Value = 'Argument{value=myData, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL User', Value = 'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Repository Type', Value = 'Argument{value=sql, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-30 16:09:57 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-07-30 16:09:57 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e34a84b
+2025-07-30 16:09:57 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-07-30 16:09:57 WARN  [ Test worker -> org.hibernate.jpa.boot.internal.PersistenceXmlParser.parsePersistenceXml ]: HHH015018: Encountered multiple persistence-unit stanzas defining same name [TaskTide]; persistence-unit names must be unique
+2025-07-30 16:09:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 5cebab89-51fe-4ff4-8835-81fc471a0f68 shut down
+2025-07-30 16:09:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:14:16 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 16:14:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 16:14:16 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 16:14:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 16:14:20 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b568e3fe-7657-4589-a69f-66314b90695f initialized
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Displaying configured properties
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Host:Port', Value = 'Argument{value=localhost:59484, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Token Expiration', Value = 'Argument{value=4, refClass=int, name=Token Expiration, shortFlag=-df, longFlag=--date-format, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Username', Value = 'Argument{value=admin, refClass=class java.lang.String, name=Database Username, shortFlag=-dbusr, longFlag=--db-username, description=Configures database user name, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Database Type', Value = 'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-nst, longFlag=--nosql-type, description=Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'WorkItem Name', Value = 'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Workflow Name', Value = 'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Step Name', Value = 'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database DDL Update', Value = 'Argument{value=update, refClass=class java.lang.String, name=Database DDL Update, shortFlag=-dbdu, longFlag=--db-ddl-update, description=Configures DDL Update, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Date Format', Value = 'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Dialect Driver', Value = 'Argument{value=org.hibernate.dialect.MariaDBDialect, refClass=class java.lang.String, name=Database Dialect Driver, shortFlag=-dbdd, longFlag=--db-dialect-driver, description=Configures database dialect driver, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database URL', Value = 'Argument{value=jdbc:mysql://localhost:3307/tasktide_database, refClass=class java.lang.String, name=Database URL, shortFlag=-dbu, longFlag=--db-url, description=Configures database URL in the form jdbcLpostgresql://localhost:5432/mydb, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Driver', Value = 'Argument{value=com.mysql.cj.jdbc.Driver, refClass=class java.lang.String, name=Database Driver, shortFlag=-dbd, longFlag=--db-driver, description=Configures database user name, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Show SQL', Value = 'Argument{value=true, refClass=class java.lang.String, name=Database Show SQL, shortFlag=-dbsq, longFlag=--db-show-sql, description=Configures Show SQL, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider', Value = 'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Provider, shortFlag=-nsp, longFlag=--nosql-provider, description=Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Password', Value = 'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider Class', Value = 'Argument{value=org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Database Password', Value = 'Argument{value=password, refClass=class java.lang.String, name=Database Password, shortFlag=-dbp, longFlag=--db-pass, description=Configures database password, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Client', Value = 'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'File Path', Value = 'Argument{value=myData, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL User', Value = 'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Repository Type', Value = 'Argument{value=sql, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2025-07-30 16:14:20 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 16:14:20 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-07-30 16:14:20 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47e725af
+2025-07-30 16:14:20 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-07-30 16:14:20 WARN  [ Test worker -> org.hibernate.jpa.boot.internal.PersistenceXmlParser.parsePersistenceXml ]: HHH015018: Encountered multiple persistence-unit stanzas defining same name [TaskTide]; persistence-unit names must be unique
+2025-07-30 16:14:20 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-30 16:14:20 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-30 16:14:20 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-30 16:14:20 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-30 16:14:20 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-30 16:14:20 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-30 16:14:21 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-30 16:14:22 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Constructing TaskTideClient
+2025-07-30 16:14:22 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: Running the 'Manager'
+2025-07-30 16:14:22 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-07-30 16:14:22 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-07-30 16:14:22 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2025-07-30 16:14:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b568e3fe-7657-4589-a69f-66314b90695f shut down
+2025-07-30 16:14:22 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:15:51 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 16:15:51 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 16:15:51 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 16:15:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 16:15:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container bd666c84-b0fd-4fe8-9b5e-b0a761fe1e27 initialized
+2025-07-30 16:15:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:15:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-07-30 16:15:57 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Constructing ClientConfigMap
+2025-07-30 16:15:58 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Initializing TaskTideServiceManager
+2025-07-30 16:15:58 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 16:15:58 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-07-30 16:15:59 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@762f8ff6
+2025-07-30 16:15:59 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-07-30 16:15:59 WARN  [ Test worker -> org.hibernate.jpa.boot.internal.PersistenceXmlParser.parsePersistenceXml ]: HHH015018: Encountered multiple persistence-unit stanzas defining same name [TaskTide]; persistence-unit names must be unique
+2025-07-30 16:15:59 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-30 16:15:59 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-30 16:15:59 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-30 16:16:00 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-30 16:16:00 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-30 16:16:00 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-30 16:16:03 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-30 16:16:03 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Fetching Client
+2025-07-30 16:16:03 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Running the 'Engine'
+2025-07-30 16:16:04 ERROR [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.configureClient ]: Error during client configuration, displaying stack trace:
+{}
+java.lang.IllegalArgumentException: org.hibernate.query.SyntaxException: At 1:23 and token '.', mismatched input '.', expecting one of the following tokens: <EOF>, ',', CROSS, FULL, GROUP, INNER, JOIN, LEFT, ORDER, OUTER, RIGHT, WHERE [SELECT e FROM class org.tasktide.core.model.workitem.WorkItem e WHERE e.itemState = :value]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:143) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:167) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:173) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:848) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:198) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.tasktide.core.repository.JpaRepository.findByField(JpaRepository.java:154) ~[tasktide-core-0.0.1.jar:?]
+	at org.tasktide.core.services.WorkItemService.viewByField(WorkItemService.java:101) ~[tasktide-core-0.0.1.jar:?]
+	at org.tasktide.tasktide.client.TaskTideEngineClient.fetchToDoWork(TaskTideEngineClient.java:354) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideEngineClient.configureWorkItemProcessor(TaskTideEngineClient.java:200) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideEngineClient.configureClient(TaskTideEngineClient.java:94) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideClient.runClient(TaskTideClient.java:45) ~[main/:?]
+	at org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient(TaskTideClientTests.java:128) ~[test/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:118) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:93) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:88) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.3.jar:8.3]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.3.jar:8.3]
+	at jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.3.jar:8.3]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
+Caused by: org.hibernate.query.SyntaxException: At 1:23 and token '.', mismatched input '.', expecting one of the following tokens: <EOF>, ',', CROSS, FULL, GROUP, INNER, JOIN, LEFT, ORDER, OUTER, RIGHT, WHERE [SELECT e FROM class org.tasktide.core.model.workitem.WorkItem e WHERE e.itemState = :value]
+	at org.hibernate.query.hql.internal.StandardHqlTranslator$1.syntaxError(StandardHqlTranslator.java:108) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.antlr.v4.runtime.ProxyErrorListener.syntaxError(ProxyErrorListener.java:41) ~[antlr4-runtime-4.13.2.jar:4.13.2]
+	at org.antlr.v4.runtime.Parser.notifyErrorListeners(Parser.java:544) ~[antlr4-runtime-4.13.2.jar:4.13.2]
+	at org.antlr.v4.runtime.DefaultErrorStrategy.reportInputMismatch(DefaultErrorStrategy.java:327) ~[antlr4-runtime-4.13.2.jar:4.13.2]
+	at org.antlr.v4.runtime.DefaultErrorStrategy.reportError(DefaultErrorStrategy.java:139) ~[antlr4-runtime-4.13.2.jar:4.13.2]
+	at org.hibernate.grammars.hql.HqlParser.statement(HqlParser.java:367) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.query.hql.internal.StandardHqlTranslator.parseHql(StandardHqlTranslator.java:143) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.query.hql.internal.StandardHqlTranslator.translate(StandardHqlTranslator.java:67) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.query.internal.QueryInterpretationCacheStandardImpl.createHqlInterpretation(QueryInterpretationCacheStandardImpl.java:165) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.query.internal.QueryInterpretationCacheStandardImpl.resolveHqlInterpretation(QueryInterpretationCacheStandardImpl.java:147) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.interpretHql(AbstractSharedSessionContract.java:790) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:840) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 92 more
+2025-07-30 16:16:04 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClient.runClient ]: Displaying help for TaskTideClient:
+'[, Global Options:, ,   NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use,   Token Expiration --date-format Specifies the token expiration limit, default is 4 days,   Database Username --db-username Configures database user name,   NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph,   WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use,   Workflow Name --workflow-name Specifies the workflow name to use,   Step Name  --step-name Specifies the step name to use,   Database DDL Update --db-ddl-update Configures DDL Update,   Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss',   Database Dialect Driver --db-dialect-driver Configures database dialect driver,   Database URL --db-url   Configures database URL in the form jdbcLpostgresql://localhost:5432/mydb,   Database Driver --db-driver Configures database user name,   Database Show SQL --db-show-sql Configures Show SQL,   NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc,   NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use,   NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class,   Database Password --db-pass  Configures database password,   Client     --client   Specifies which client is being configuerd,   File Path  --file-path Specifies the file path for RocksDB/Json repository,   NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use,   Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json, , , Action Arguments:, , , Options for Action:	manager, ,   Output File --output-file Defines the full JSON formatted file path for export,   Target     --target   Defines the Import/Export target,   Delimiter  --delimiter Defines the delimiter to use for im/export,   Target Step --target-step Defines the target step for import,   Method     --method   Whether to run import or export,   Input File --input-file Defines the full file path for import,   Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required, 
+
+, , Options for Action:	engine, ,   WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool,   ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to,   TimeKeeper Wall Time --max-wall-time Configures the max wall-time for task processing in __,   WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to,   ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, 
+
+, , Options for Action:	tasktide, ,   Database Dialect Driver --db-dialect-driver Configures database dialect driver,   Database Username --db-username Configures database user name,   Database URL --db-url   Configures database URL in the form jdbcLpostgresql://localhost:5432/mydb,   Database Driver --db-driver Configures database user name,   Database Show SQL --db-show-sql Configures Show SQL,   Database Password --db-pass  Configures database password,   Database DDL Update --db-ddl-update Configures DDL Update, 
+
+]'
+2025-07-30 16:16:04 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-07-30 16:16:04 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container bd666c84-b0fd-4fe8-9b5e-b0a761fe1e27 shut down
+2025-07-30 16:16:04 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:47:51 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 16:47:51 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 16:47:51 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 16:47:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 16:48:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container c033ac9f-ded5-4ae7-9084-248f2dc849e6 initialized
+2025-07-30 16:48:02 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:48:02 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-07-30 16:48:02 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Constructing ClientConfigMap
+2025-07-30 16:48:02 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Initializing TaskTideServiceManager
+2025-07-30 16:48:02 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 16:48:02 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-07-30 16:48:03 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4205d5d0
+2025-07-30 16:48:03 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-07-30 16:48:03 WARN  [ Test worker -> org.hibernate.jpa.boot.internal.PersistenceXmlParser.parsePersistenceXml ]: HHH015018: Encountered multiple persistence-unit stanzas defining same name [TaskTide]; persistence-unit names must be unique
+2025-07-30 16:48:03 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-30 16:48:04 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-30 16:48:04 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-30 16:48:04 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-30 16:48:04 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-30 16:48:04 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-30 16:48:07 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-30 16:48:08 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Fetching Client
+2025-07-30 16:48:08 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Running the 'Engine'
+2025-07-30 16:48:08 ERROR [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.configureClient ]: Error during client configuration, displaying stack trace:
+{}
+java.lang.IllegalArgumentException: org.hibernate.query.SyntaxException: At 1:23 and token '.', mismatched input '.', expecting one of the following tokens: <EOF>, ',', CROSS, FULL, GROUP, INNER, JOIN, LEFT, ORDER, OUTER, RIGHT, WHERE [SELECT e FROM class org.tasktide.core.model.workitem.WorkItem e WHERE e.itemState = :value]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:143) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:167) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:173) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:848) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:198) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.tasktide.core.repository.JpaRepository.findByField(JpaRepository.java:155) ~[tasktide-core-0.0.1.jar:?]
+	at org.tasktide.core.services.WorkItemService.viewByField(WorkItemService.java:101) ~[tasktide-core-0.0.1.jar:?]
+	at org.tasktide.tasktide.client.TaskTideEngineClient.fetchToDoWork(TaskTideEngineClient.java:354) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideEngineClient.configureWorkItemProcessor(TaskTideEngineClient.java:200) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideEngineClient.configureClient(TaskTideEngineClient.java:94) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideClient.runClient(TaskTideClient.java:45) ~[main/:?]
+	at org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient(TaskTideClientTests.java:128) ~[test/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:118) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:93) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:88) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.3.jar:8.3]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.3.jar:8.3]
+	at jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.3.jar:8.3]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
+Caused by: org.hibernate.query.SyntaxException: At 1:23 and token '.', mismatched input '.', expecting one of the following tokens: <EOF>, ',', CROSS, FULL, GROUP, INNER, JOIN, LEFT, ORDER, OUTER, RIGHT, WHERE [SELECT e FROM class org.tasktide.core.model.workitem.WorkItem e WHERE e.itemState = :value]
+	at org.hibernate.query.hql.internal.StandardHqlTranslator$1.syntaxError(StandardHqlTranslator.java:108) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.antlr.v4.runtime.ProxyErrorListener.syntaxError(ProxyErrorListener.java:41) ~[antlr4-runtime-4.13.2.jar:4.13.2]
+	at org.antlr.v4.runtime.Parser.notifyErrorListeners(Parser.java:544) ~[antlr4-runtime-4.13.2.jar:4.13.2]
+	at org.antlr.v4.runtime.DefaultErrorStrategy.reportInputMismatch(DefaultErrorStrategy.java:327) ~[antlr4-runtime-4.13.2.jar:4.13.2]
+	at org.antlr.v4.runtime.DefaultErrorStrategy.reportError(DefaultErrorStrategy.java:139) ~[antlr4-runtime-4.13.2.jar:4.13.2]
+	at org.hibernate.grammars.hql.HqlParser.statement(HqlParser.java:367) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.query.hql.internal.StandardHqlTranslator.parseHql(StandardHqlTranslator.java:143) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.query.hql.internal.StandardHqlTranslator.translate(StandardHqlTranslator.java:67) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.query.internal.QueryInterpretationCacheStandardImpl.createHqlInterpretation(QueryInterpretationCacheStandardImpl.java:165) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.query.internal.QueryInterpretationCacheStandardImpl.resolveHqlInterpretation(QueryInterpretationCacheStandardImpl.java:147) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.interpretHql(AbstractSharedSessionContract.java:790) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:840) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	... 92 more
+2025-07-30 16:48:08 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClient.runClient ]: Displaying help for TaskTideClient:
+'[, Global Options:, ,   NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use,   Token Expiration --date-format Specifies the token expiration limit, default is 4 days,   Database Username --db-username Configures database user name,   NoSQL Database Type --nosql-type Specifies the backend NoSQL Database type: Document, Key-Value, Column, Graph,   WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use,   Workflow Name --workflow-name Specifies the workflow name to use,   Step Name  --step-name Specifies the step name to use,   Database DDL Update --db-ddl-update Configures DDL Update,   Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss',   Database Dialect Driver --db-dialect-driver Configures database dialect driver,   Database URL --db-url   Configures database URL in the form jdbcLpostgresql://localhost:5432/mydb,   Database Driver --db-driver Configures database user name,   Database Show SQL --db-show-sql Configures Show SQL,   NoSQL Provider --nosql-provider Specifies the backend NoSQL-DB Provider: MongoDB, CouchDB, Neo4J etc,   NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use,   NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class,   Database Password --db-pass  Configures database password,   Client     --client   Specifies which client is being configuerd,   File Path  --file-path Specifies the file path for RocksDB/Json repository,   NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use,   Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json, , , Action Arguments:, , , Options for Action:	manager, ,   Output File --output-file Defines the full JSON formatted file path for export,   Target     --target   Defines the Import/Export target,   Delimiter  --delimiter Defines the delimiter to use for im/export,   Target Step --target-step Defines the target step for import,   Method     --method   Whether to run import or export,   Input File --input-file Defines the full file path for import,   Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required, 
+
+, , Options for Action:	engine, ,   WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool,   ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to,   TimeKeeper Wall Time --max-wall-time Configures the max wall-time for task processing in __,   WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to,   ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool, 
+
+, , Options for Action:	tasktide, ,   Database Dialect Driver --db-dialect-driver Configures database dialect driver,   Database Username --db-username Configures database user name,   Database URL --db-url   Configures database URL in the form jdbcLpostgresql://localhost:5432/mydb,   Database Driver --db-driver Configures database user name,   Database Show SQL --db-show-sql Configures Show SQL,   Database Password --db-pass  Configures database password,   Database DDL Update --db-ddl-update Configures DDL Update, 
+
+]'
+2025-07-30 16:48:08 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-07-30 16:48:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container c033ac9f-ded5-4ae7-9084-248f2dc849e6 shut down
+2025-07-30 16:48:08 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:50:09 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-30 16:50:09 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-07-30 16:50:09 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-07-30 16:50:10 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-07-30 16:50:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f7faeb97-34d9-465b-8c15-d05ad23f873c initialized
+2025-07-30 16:50:19 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-07-30 16:50:19 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-07-30 16:50:19 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Constructing ClientConfigMap
+2025-07-30 16:50:20 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Initializing TaskTideServiceManager
+2025-07-30 16:50:20 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-30 16:50:20 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-07-30 16:50:20 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a9ff419
+2025-07-30 16:50:20 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-07-30 16:50:21 WARN  [ Test worker -> org.hibernate.jpa.boot.internal.PersistenceXmlParser.parsePersistenceXml ]: HHH015018: Encountered multiple persistence-unit stanzas defining same name [TaskTide]; persistence-unit names must be unique
+2025-07-30 16:50:21 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-30 16:50:21 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-30 16:50:21 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-30 16:50:21 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-30 16:50:21 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-30 16:50:22 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-30 16:50:24 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-30 16:50:25 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Fetching Client
+2025-07-30 16:50:25 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: Running the 'Engine'
+2025-07-30 16:50:26 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.performClientTask ]: Processing workload of size:	'5'
+2025-07-30 16:50:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:50:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a' set on thread 'pool-2-thread-1'
+2025-07-30 16:50:26 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Begining state monitoring of ExecutorServiceTracker:	N tasks = '5'
+2025-07-30 16:50:26 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-30 16:50:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:50:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca' set on thread 'pool-2-thread-2'
+2025-07-30 16:50:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='1', First ItemId = 'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2'
+2025-07-30 16:50:27 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '1' < threshold '2' at start-up. Enqueing all tasks
+2025-07-30 16:50:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-1', Size='1', First ItemId = 'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0'
+2025-07-30 16:50:27 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '1' < threshold '2' at start-up. Enqueing all tasks
+2025-07-30 16:50:27 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:27 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:50:27 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:50:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0' set on thread 'pool-3-thread-2'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2' set on thread 'pool-3-thread-1'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2'
+2025-07-30 16:50:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping google.com
+2025-07-30 16:50:27 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping tudublin.ie
+2025-07-30 16:50:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping google.com
+2025-07-30 16:50:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-30 16:50:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2', global count: 1
+2025-07-30 16:50:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping tudublin.ie
+2025-07-30 16:50:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_5' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-30 16:50:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0', global count: 2
+2025-07-30 16:50:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2',
+2025-07-30 16:50:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2' completed in 4075ms
+2025-07-30 16:50:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-66dfcfce-0697-4d88-811f-f16725abd0c2'
+2025-07-30 16:50:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '2', Failed = '0', Skipped = '0'
+2025-07-30 16:50:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0',
+2025-07-30 16:50:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0' completed in 4151ms
+2025-07-30 16:50:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-db8f3424-4cda-4e94-bc22-f9addaf08ba0'
+2025-07-30 16:50:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '2', Failed = '0', Skipped = '0'
+2025-07-30 16:50:36 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'0' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='5', Done='0', Expected='5'
+2025-07-30 16:50:36 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "DONE": 1,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0
+    }
+}
+
+
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "DONE": 1,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0
+    }
+}
+
+
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '1' WorkItems with '1'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '1' WorkItems with '1'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a', global count: 3
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca', global count: 4
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a',
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca',
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a' completed in 10668ms
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca' completed in 10664ms
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '4', Failed = '0', Skipped = '0'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf' set on thread 'pool-2-thread-1'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '4', Failed = '0', Skipped = '0'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb' set on thread 'pool-2-thread-2'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '4' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-6c95f24b-a93f-44db-8af0-5299dc1743c6'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-30 16:50:37 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-5ced5643-6058-4c01-9404-bf7daf64d3a8'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-6c95f24b-a93f-44db-8af0-5299dc1743c6'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-30 16:50:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-6c95f24b-a93f-44db-8af0-5299dc1743c6' set on thread 'pool-3-thread-1'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-5ced5643-6058-4c01-9404-bf7daf64d3a8'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-6c95f24b-a93f-44db-8af0-5299dc1743c6'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-5ced5643-6058-4c01-9404-bf7daf64d3a8' set on thread 'pool-3-thread-2'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping dcu.ie
+2025-07-30 16:50:37 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-5ced5643-6058-4c01-9404-bf7daf64d3a8'
+2025-07-30 16:50:37 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping amazon.ie
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '5' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:50:37 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping dcu.ie
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-3' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-6c95f24b-a93f-44db-8af0-5299dc1743c6', global count: 5
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping amazon.ie
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-5ced5643-6058-4c01-9404-bf7daf64d3a8', global count: 6
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-6c95f24b-a93f-44db-8af0-5299dc1743c6',
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-6c95f24b-a93f-44db-8af0-5299dc1743c6' completed in 3512ms
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-6c95f24b-a93f-44db-8af0-5299dc1743c6'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping ucd.ie
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-5ced5643-6058-4c01-9404-bf7daf64d3a8',
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-5ced5643-6058-4c01-9404-bf7daf64d3a8' completed in 3563ms
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-5ced5643-6058-4c01-9404-bf7daf64d3a8'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-84748b10-c5d5-431c-8764-88bb5a2451a1'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-84748b10-c5d5-431c-8764-88bb5a2451a1'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-84748b10-c5d5-431c-8764-88bb5a2451a1'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-84748b10-c5d5-431c-8764-88bb5a2451a1'
+2025-07-30 16:50:41 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping youtube.com
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping youtube.com
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-84748b10-c5d5-431c-8764-88bb5a2451a1', global count: 7
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-84748b10-c5d5-431c-8764-88bb5a2451a1',
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-84748b10-c5d5-431c-8764-88bb5a2451a1' completed in 3640ms
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-84748b10-c5d5-431c-8764-88bb5a2451a1'
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '7', Failed = '0', Skipped = '0'
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-8c50db5f-7c64-4ac0-b492-0030357149d8'
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-8c50db5f-7c64-4ac0-b492-0030357149d8'
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-8c50db5f-7c64-4ac0-b492-0030357149d8' set on thread 'pool-3-thread-2'
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-8c50db5f-7c64-4ac0-b492-0030357149d8'
+2025-07-30 16:50:44 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping github.com
+2025-07-30 16:50:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'1' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='3', Done='2', Expected='5'
+2025-07-30 16:50:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-30 16:50:47 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "DONE": 3,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1
+    }
+}
+
+
+2025-07-30 16:50:47 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:47 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "DONE": 0,
+        "TODO": 4,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1
+    }
+}
+
+
+2025-07-30 16:50:47 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping github.com
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-2' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-8c50db5f-7c64-4ac0-b492-0030357149d8', global count: 8
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-8c50db5f-7c64-4ac0-b492-0030357149d8',
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-8c50db5f-7c64-4ac0-b492-0030357149d8' completed in 3559ms
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-8c50db5f-7c64-4ac0-b492-0030357149d8'
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-4fe70333-d2ba-477f-8fc2-00c0e459e41d'
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-4fe70333-d2ba-477f-8fc2-00c0e459e41d'
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-4fe70333-d2ba-477f-8fc2-00c0e459e41d'
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-4fe70333-d2ba-477f-8fc2-00c0e459e41d'
+2025-07-30 16:50:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping medium.com
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping medium.com
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-4fe70333-d2ba-477f-8fc2-00c0e459e41d', global count: 9
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-4fe70333-d2ba-477f-8fc2-00c0e459e41d',
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-4fe70333-d2ba-477f-8fc2-00c0e459e41d' completed in 3397ms
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-4fe70333-d2ba-477f-8fc2-00c0e459e41d'
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '9', Failed = '0', Skipped = '0'
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-8ab4f9fa-313d-4344-a175-b8b6b214f336'
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-8ab4f9fa-313d-4344-a175-b8b6b214f336'
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-8ab4f9fa-313d-4344-a175-b8b6b214f336' set on thread 'pool-3-thread-2'
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-8ab4f9fa-313d-4344-a175-b8b6b214f336'
+2025-07-30 16:50:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping gmail.com
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping gmail.com
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-4' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-8ab4f9fa-313d-4344-a175-b8b6b214f336', global count: 10
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-8ab4f9fa-313d-4344-a175-b8b6b214f336',
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-8ab4f9fa-313d-4344-a175-b8b6b214f336' completed in 3616ms
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-8ab4f9fa-313d-4344-a175-b8b6b214f336'
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '10', Failed = '0', Skipped = '0'
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc'
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc'
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc' set on thread 'pool-3-thread-2'
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc'
+2025-07-30 16:50:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping slack.com
+2025-07-30 16:50:56 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'2' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='3', Done='2', Expected='5'
+2025-07-30 16:50:56 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-30 16:50:57 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'1' StateSummary of WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "DONE": 3,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1
+    }
+}
+
+
+2025-07-30 16:50:57 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:50:57 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'1' StateSummary of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "DONE": 3,
+        "TODO": 1,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1
+    }
+}
+
+
+2025-07-30 16:50:57 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:00 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping ucd.ie
+2025-07-30 16:51:00 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1753890641335,
+    "Exit Code": 1,
+    "Process Id": 7428,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging ucd.ie [18.200.33.200] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 18.200.33.200:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-a8c6e69d-b9cd-4a1e-9218-eb5150a0fa8d"
+    },
+    "Start Time": 1753890641310,
+    "Thread Name": "pool-3-thread-1",
+    "id": "TaskLogging-b5eaf869-70f6-4d8e-9176-833975a65adc"
+}
+2025-07-30 16:51:00 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-2' failed on thread 'pool-3-thread-1' with exit code 1
+
+2025-07-30 16:51:00 WARN  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b'
+2025-07-30 16:51:00 WARN  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b'
+2025-07-30 16:51:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b',
+2025-07-30 16:51:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b' completed in 19620ms
+2025-07-30 16:51:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:51:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-661ebb01-ffa8-4eac-840b-5829c8167b2b'
+2025-07-30 16:51:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '10', Failed = '0', Skipped = '0'
+2025-07-30 16:51:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'3' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='3', Done='2', Expected='5'
+2025-07-30 16:51:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '8000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'2' StateSummary of WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+
+{
+    "State Summary": {
+        "ERROR": 1,
+        "DONE": 3,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0
+    }
+}
+
+
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '4' WorkItems with '4'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf', global count: 11
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf',
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf' completed in 30278ms
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '11', Failed = '0', Skipped = '0'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0' set on thread 'pool-2-thread-1'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'2' StateSummary of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "DONE": 3,
+        "TODO": 1,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1
+    }
+}
+
+
+2025-07-30 16:51:07 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '2' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-1', Size='2', First ItemId = 'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662'
+2025-07-30 16:51:07 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '2' < threshold '2' at start-up. Enqueing all tasks
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:07 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:07 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662'
+2025-07-30 16:51:07 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:07 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662'
+2025-07-30 16:51:07 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662' set on thread 'pool-3-thread-1'
+2025-07-30 16:51:07 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662'
+2025-07-30 16:51:07 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping rte.ie
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping rte.ie
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2-0' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662', global count: 12
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662',
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662' completed in 3788ms
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-b5691ea5-f67a-4680-a542-4c1f72e6d662'
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '12', Failed = '0', Skipped = '0'
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-43f200a6-96c8-4b5f-9d5e-34b417385b55'
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-43f200a6-96c8-4b5f-9d5e-34b417385b55'
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-43f200a6-96c8-4b5f-9d5e-34b417385b55' set on thread 'pool-3-thread-1'
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-43f200a6-96c8-4b5f-9d5e-34b417385b55'
+2025-07-30 16:51:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping bbc.com
+2025-07-30 16:51:14 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping slack.com
+2025-07-30 16:51:14 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1753890655601,
+    "Exit Code": 1,
+    "Process Id": 6404,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging slack.com [34.248.150.55] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 34.248.150.55:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-469f00a9-c30d-41b7-9805-13fa2b486ba9"
+    },
+    "Start Time": 1753890655578,
+    "Thread Name": "pool-3-thread-2",
+    "id": "TaskLogging-80dbb232-e027-4805-90ee-d0cb74a92572"
+}
+2025-07-30 16:51:14 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-3' failed on thread 'pool-3-thread-2' with exit code 1
+
+2025-07-30 16:51:14 WARN  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc'
+2025-07-30 16:51:14 WARN  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc'
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc',
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc' completed in 19201ms
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-8365f93a-32d3-4227-a9ea-1dcce68152bc'
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-2307d408-4595-4a29-9c38-04df70e2b6a9'
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-2307d408-4595-4a29-9c38-04df70e2b6a9'
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-2307d408-4595-4a29-9c38-04df70e2b6a9'
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-2307d408-4595-4a29-9c38-04df70e2b6a9'
+2025-07-30 16:51:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping chatgpt.com
+2025-07-30 16:51:14 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'4' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='2', Done='3', Expected='5'
+2025-07-30 16:51:14 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '16000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-30 16:51:15 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping bbc.com
+2025-07-30 16:51:15 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2-1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-30 16:51:15 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-43f200a6-96c8-4b5f-9d5e-34b417385b55', global count: 13
+2025-07-30 16:51:15 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-43f200a6-96c8-4b5f-9d5e-34b417385b55',
+2025-07-30 16:51:15 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-43f200a6-96c8-4b5f-9d5e-34b417385b55' completed in 3617ms
+2025-07-30 16:51:15 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:51:15 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-43f200a6-96c8-4b5f-9d5e-34b417385b55'
+2025-07-30 16:51:15 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '13', Failed = '0', Skipped = '0'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'3' StateSummary of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+
+{
+    "State Summary": {
+        "ERROR": 1,
+        "DONE": 3,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1
+    }
+}
+
+
+2025-07-30 16:51:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '8000'ms elapse for state monitoring of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "DONE": 2,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0
+    }
+}
+
+
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '2' WorkItems with '2'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0', global count: 14
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0',
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0' completed in 10096ms
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '14', Failed = '0', Skipped = '0'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a' set on thread 'pool-2-thread-1'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:51:17 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '14', Failed = '0', Skipped = '1'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca' set on thread 'pool-2-thread-1'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:51:17 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '14', Failed = '0', Skipped = '1'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf' set on thread 'pool-2-thread-1'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:17 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '14', Failed = '0', Skipped = '1'
+2025-07-30 16:51:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping chatgpt.com
+2025-07-30 16:51:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-30 16:51:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-2307d408-4595-4a29-9c38-04df70e2b6a9', global count: 15
+2025-07-30 16:51:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-2307d408-4595-4a29-9c38-04df70e2b6a9',
+2025-07-30 16:51:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-2307d408-4595-4a29-9c38-04df70e2b6a9' completed in 3449ms
+2025-07-30 16:51:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:51:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-2307d408-4595-4a29-9c38-04df70e2b6a9'
+2025-07-30 16:51:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '15', Failed = '0', Skipped = '0'
+2025-07-30 16:51:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'4' StateSummary of WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+
+{
+    "State Summary": {
+        "ERROR": 1,
+        "DONE": 4,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0
+    }
+}
+
+
+2025-07-30 16:51:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '5' WorkItems with '5'
+2025-07-30 16:51:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb', global count: 16
+2025-07-30 16:51:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb',
+2025-07-30 16:51:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb' completed in 48410ms
+2025-07-30 16:51:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-30 16:51:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '0'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0' set on thread 'pool-2-thread-2'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb' set on thread 'pool-2-thread-1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:26 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:26 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca' set on thread 'pool-2-thread-2'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a' set on thread 'pool-2-thread-1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:51:26 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-46010507-f4fa-49e1-a421-48cc7f3e82ca'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-30 16:51:26 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-33d0d49f-fe35-4d36-a33f-4990216c939a'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf' set on thread 'pool-2-thread-2'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb' set on thread 'pool-2-thread-1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:26 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-8c66a1ad-a2d6-4628-89cd-bcb05fcb1fbf'
+2025-07-30 16:51:26 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-9ba37d53-2823-4397-b670-69507156cbcb'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0' set on thread 'pool-2-thread-1'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:26 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-fec21b51-59e0-492e-815b-a286c6d68ae0'
+2025-07-30 16:51:26 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-30 16:51:30 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'5' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='0', Done='5', Expected='5'
+2025-07-30 16:51:30 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-07-30 16:51:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container f7faeb97-34d9-465b-8c15-d05ad23f873c shut down
+2025-07-30 16:51:30 INFO  [ Test worker -> org.tasktide.tasktide.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+

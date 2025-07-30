@@ -152,6 +152,7 @@ public class GlobalConfig extends AbstractConfigurer {
         // Put argument map into tree
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
+            argTree.getTree().getRoot().getData().extend( this.jpaConf.getArgumentMap() );
         }
         else {
             argTree.getTree().addChild(this.getPath(), this.getArgumentMap());

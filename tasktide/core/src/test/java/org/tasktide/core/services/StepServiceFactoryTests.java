@@ -5,6 +5,7 @@
 package org.tasktide.core.services;
 
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
 import org.eclipse.jnosql.mapping.reflection.Reflections;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
 import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
+
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
@@ -38,6 +40,8 @@ import org.tasktide.core.TaskTideService;
 import org.tasktide.core.model.collection.Step;
 
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 
 
@@ -206,6 +210,55 @@ public class StepServiceFactoryTests {
         
         // Log test state
         logger.info("\n\n================ Construct StepService-Template From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+    
+    
+    /**
+     * Test that a step can be fetched 
+     */
+    @Test
+    @Order(3)
+    public void canConstructStepSqlService() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct StepService-JPA From Factory Test ================\n");
+        TaskTideService<Step> stepService;
+        RepositoryType repoType;
+        EntityManager backend;
+        List<Step> data;
+        boolean assertionState;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep()
+        );
+        
+        // Configure requirements
+        repoType = RepositoryType.SQL;
+        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
+        
+        // Setup requirements
+        logger.info("Configuring Service");
+        stepService = ServiceFactory.makeStepService(repoType, backend, "Step-Service");
+        Map<String, String> map = stepService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for JPA Step Service:\n'{}'", JsonUtils.toJson(true, map));
+        
+        // Add records
+        stepService.extendModel(data);
+        
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<Step> ref = data.get(0);
+        TaskTideModel<Step> result = stepService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved Step:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
+        
+        // Log test state
+        logger.info("\n\n================ Construct StepService-JPA From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

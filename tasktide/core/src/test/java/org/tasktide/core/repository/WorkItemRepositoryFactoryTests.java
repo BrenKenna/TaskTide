@@ -43,7 +43,6 @@ import org.tasktide.TestCaseBuilderUtility;
 import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.supporting.JsonUtils;
@@ -52,8 +51,8 @@ import org.tasktide.itemstore.RocksDBStore;
 
 
 /**
- * Class tests {@link TaskTideRepository} for {@link WorkItem}
- *  through the {@link RepositoryType}
+ * Test module for {@link RepositoryFactory} for {@link Workflow}
+ *  across the {@link RepositoryType}
  * 
  * @author bkenna
  */
@@ -320,7 +319,7 @@ public class WorkItemRepositoryFactoryTests {
         EntityManager backend;
         List<WorkItem> data;
         WorkItem record;
-        boolean assertionState = false;
+        boolean assertionState;
         
         // Generate data
         logger.info("Generating data for testing");
@@ -332,7 +331,7 @@ public class WorkItemRepositoryFactoryTests {
         
         // Fetch backend instance
         repoType = RepositoryType.SQL;
-        backend = JpaRepositoryUtility.getInstance().fetchEntityManager(ManagerTarget.WORKITEM);
+        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
         logger.info("Backend Entity:\t'{}'", backend);
         
         // Configure repository

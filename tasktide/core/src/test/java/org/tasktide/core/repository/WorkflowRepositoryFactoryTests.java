@@ -6,13 +6,18 @@ package org.tasktide.core.repository;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,6 +27,7 @@ import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
 import org.eclipse.jnosql.mapping.reflection.Reflections;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
 import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
+
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
@@ -40,12 +46,16 @@ import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDBStore;
 
 
 /**
- *
+ * Test module for {@link RepositoryFactory} for {@link Workflow}
+ *  across the {@link RepositoryType}
+ * 
  * @author bkenna
  */
 @EnableAutoWeld
@@ -237,18 +247,17 @@ public class WorkflowRepositoryFactoryTests {
         TaskTideRepository<Workflow> workflowRepo;
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType;
-        Template backend;
+        EntityManager backend;
         List<Workflow> data;
-        Workflow record;
-        boolean assertionState = false;
+        boolean assertionState;
         
         // Generate data
         logger.info("Generating data for testing");
         data = TestCaseBuilderUtility.makeTestWorkflows();
         
         // Fetch backend instance
-        repoType = RepositoryType.NOSQL;
-        backend = this.fetchTemplate();
+        repoType = RepositoryType.SQL;
+        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
         logger.info("Backend template:\t'{}'", backend);
         
         // Configure repository
@@ -256,21 +265,23 @@ public class WorkflowRepositoryFactoryTests {
         workflowRepoFactory = new RepositoryFactory<>("Test-Template-Workflow", Workflow.class, backend, repoType);
         workflowRepo = workflowRepoFactory.make();
         Map<String, String> map = workflowRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for WorkflowRepository:\n'{}'", TestUtils.mapToJsonString(map));
+        logger.info("\nDisplaying meta data for WorkflowRepository:\n'{}'", JsonUtils.toJson(true, map));
         
         // Add records
+        logger.info("Displaying first record prior to import:\n{}", data.get(0).toJsonDoc());
         data.stream()
             .forEach( elm -> workflowRepo.insertModel(elm));
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
-        TaskTideModel<Workflow> ref = data.get(0);
-        assertionState = !workflowRepo.findById(ref.getId()).isEmpty();
-        List<Workflow> steps = workflowRepo.findAll();
-        logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(steps));
+        TaskTideModel<Workflow> ref, res;
+        ref = data.get(0);
+        res = workflowRepo.findById(ref.getId()).get();
+        assertionState = res != null;
+        logger.info("\nDisplayling retrieved records:\n\n{}", JsonUtils.toJson(true, res));
         
         // Log test state
-        logger.info("\n\n================ Construct NoSQL Repositories From Factory Test ================\n");
+        logger.info("\n\n================ Construct  Repositories From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }
