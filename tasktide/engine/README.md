@@ -8,7 +8,7 @@ Provides the transactional processing logic over <a href="/tasktide/core/README.
 <p>
 The "<i>WorkUnit</i>" marker interface implicity aggregates the abstract engine components "<i>TaskTideProcessor, TaskTideExecutor, and TaskTideEngineObserver Chain</i>". The "<i>TaskTideProcessor</i>" is implemented by the separate "<i>WorkItemProcessor</i>", and "<i>ItemTaskProcessor</i>" to submit these units of work for processing in their own thread pools. A static package private "<i>FutureTrackers</i>" container was designed so that the units of work can be tracked over their life-cycle either on aggregate, on individual basici via the "<i>ExecutorServiceTracker</i>" which caches the TaskTideModel and its future in separate concurrent maps (ie WorkItems cached separatetly from ItemTasks).
 
-Like the processor, the "<i>TaskTideExecutor" is implemented by separate "<i>WorkItemExecutor</i>", and <i>ItemTaskExecutor</i>" which perform the execution operation. For WorkItems, this is "<i>ItemTaskProcessor</i>" delegation, and ItemTasks is running the associated task script attribute in an OS process. 
+Like the processor, the "<i>TaskTideExecutor</i>" is implemented by separate "<i>WorkItemExecutor</i>", and <i>ItemTaskExecutor</i>" which perform the execution operation. For WorkItems, this is "<i>ItemTaskProcessor</i>" delegation, and ItemTasks is running the associated task script attribute in an OS process. 
 </p>
 
 
