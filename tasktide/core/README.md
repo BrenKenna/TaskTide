@@ -6,7 +6,7 @@ Provides the model entities for the <a href="/tasktide/docs/assets/tasktide-arch
 
 ## 1). TaskTide Entities
 <p>
-The entities that TaskTide uses are summarized below, models a "<i>Workflow<i>" as a collection of "<i>Steps</i>" where each Step has a collection of work units to perform "<i>WorkItem</i>". Due to the decoupling of work units away from their meta-data (step, workflow), TaskTide supports both arbitrary and structured Tasks. Meaning, not all work units to be orchestrated by TaskTide have to be defined under a Workflow-Step model.
+The entities that TaskTide uses are summarized below, models a "<i>Workflow</i>" as a collection of "<i>Steps</i>" where each Step has a collection of work units to perform "<i>WorkItem</i>". Due to the decoupling of work units away from their meta-data (step, workflow), TaskTide supports both arbitrary and structured Tasks. Meaning, not all work units to be orchestrated by TaskTide have to be defined under a Workflow-Step model.
 </p>
 
 <p>
