@@ -30,5 +30,5 @@
 
 
 <p align="center">
-  <img src="/tasktide/docs/assets/tasktide-arch.png" alt="TaskTide Architecture"/>
+  <img src="/tasktide/docs/assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
 </p>
