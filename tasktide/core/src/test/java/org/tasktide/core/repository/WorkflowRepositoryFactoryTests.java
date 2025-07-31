@@ -160,7 +160,6 @@ public class WorkflowRepositoryFactoryTests {
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType;
         List<Workflow> backend;
-        Workflow record;
         boolean assertionState;
         
         // Generate data
@@ -257,7 +256,7 @@ public class WorkflowRepositoryFactoryTests {
         
         // Fetch backend instance
         repoType = RepositoryType.SQL;
-        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
+        backend = JpaRepositoryUtility.get().fetchEntityManager();
         logger.info("Backend template:\t'{}'", backend);
         
         // Configure repository

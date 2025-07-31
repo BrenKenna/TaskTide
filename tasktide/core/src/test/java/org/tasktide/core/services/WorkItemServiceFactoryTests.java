@@ -251,7 +251,7 @@ public class WorkItemServiceFactoryTests {
         
         // Configure requirements
         repoType = RepositoryType.SQL;
-        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
+        backend = JpaRepositoryUtility.get().fetchEntityManager();
         
         // Setup requirements
         logger.info("Configuring Service");

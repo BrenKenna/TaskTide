@@ -259,7 +259,7 @@ public class StepRepositoryFactoryTests {
         
         // Fetch backend instance
         repoType = RepositoryType.SQL;
-        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
+        backend = JpaRepositoryUtility.get().fetchEntityManager();
         logger.info("Backend Entity:\t'{}'", backend);
         
         // Configure repository

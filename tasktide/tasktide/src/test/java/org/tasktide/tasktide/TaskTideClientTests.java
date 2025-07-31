@@ -84,7 +84,7 @@ public class TaskTideClientTests {
         // Fetch service manager
         logger.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        JpaRepositoryUtility.getInstance().initServiceManager();
+        TaskTideClientUtility.initServiceManager(repoType, configMap);
         
         // Fetch client
         logger.info("Constructing TaskTideClient");
@@ -116,7 +116,7 @@ public class TaskTideClientTests {
         // Fetch service manager
         logger.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        JpaRepositoryUtility.getInstance().initServiceManager();
+        TaskTideClientUtility.initServiceManager(repoType, configMap);
         
         // Fetch client
         logger.info("Fetching Client");

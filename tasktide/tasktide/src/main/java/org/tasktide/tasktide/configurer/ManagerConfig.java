@@ -87,16 +87,27 @@ public class ManagerConfig extends AbstractConfigurer {
     }
     
     
+    /**
+     * Sets target for manager
+     */
     public void target() {
         Argument<String> arg;
-        this.target = this.getConfig().getValue("tasktide.manager.target", String.class);
         arg = this.getArgumentBuilder()
             .withName("Target")
             .withDescription("Defines the Import/Export target")
             .withShortFlag("-tgt")
             .withLongFlag("--target")
-            .withValue(this.target, String.class)
         .build();
+        arg.setRefClass(String.class);
+        
+        // Try set target
+        try {
+            this.target = this.getConfig().getValue("tasktide.manager.target", String.class);
+        }
+        catch (Exception ex) {
+            this.target = "";
+        }
+        if ( !target.isEmpty() ) {arg.setValue(target);}
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -108,15 +119,22 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void inputFile() {
         Argument<String> arg;
-        this.inputFile = this.getConfig().getValue("tasktide.manager.inputFile", String.class);
         arg = this.getArgumentBuilder()
             .withName("Input File")
             .withDescription("Defines the full file path for import")
             .withShortFlag("-i")
             .withLongFlag("--input-file")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.inputFile, String.class)
         .build();
+        arg.setRefClass(String.class);
+        
+        try {
+            this.inputFile = this.getConfig().getValue("tasktide.manager.inputFile", String.class);
+        }
+        catch (Exception ex) {
+            this.inputFile = "";
+        }
+        if ( !this.inputFile.isEmpty() ) arg.setValue(inputFile);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -128,15 +146,22 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void delimiter() {
         Argument<String> arg;
-        this.delimiter = this.getConfig().getValue("tasktide.manager.delimiter", String.class);
         arg = this.getArgumentBuilder()
             .withName("Delimiter")
             .withDescription("Defines the delimiter to use for im/export")
             .withShortFlag("-d")
             .withLongFlag("--delimiter")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.delimiter, String.class)
         .build();
+        arg.setRefClass(String.class);
+        
+        try {
+            this.delimiter = this.getConfig().getValue("tasktide.manager.delimiter", String.class);
+        }
+        catch (Exception ex) {
+            this.delimiter = "";
+        }
+        if ( !this.delimiter.isEmpty() ) arg.setValue(delimiter);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -148,15 +173,22 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void outputFile() {
         Argument<String> arg;
-        this.outputFile = this.getConfig().getValue("tasktide.manager.outputFile", String.class);
         arg = this.getArgumentBuilder()
             .withName("Output File")
             .withDescription("Defines the full JSON formatted file path for export")
             .withShortFlag("-o")
             .withLongFlag("--output-file")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.outputFile, String.class)
         .build();
+        arg.setRefClass(String.class);
+        
+        try {
+            this.outputFile = this.getConfig().getValue("tasktide.manager.outputFile", String.class);
+        }
+        catch (Exception ex) {
+            this.outputFile = "";
+        }
+        if ( !this.outputFile.isEmpty() ) arg.setValue(outputFile);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -177,6 +209,15 @@ public class ManagerConfig extends AbstractConfigurer {
             .withArgType(ArgumentType.ACTION)
             .withValue(this.nestedDelimiter, String.class)
         .build();
+        arg.setRefClass(String.class);
+        
+        try {
+            this.nestedDelimiter = this.getConfig().getValue("tasktide.manager.nestedDelimiter", String.class);
+        }
+        catch (Exception ex) {
+            this.nestedDelimiter = "";
+        }
+        if ( !this.nestedDelimiter.isEmpty() ) arg.setValue(nestedDelimiter);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -187,15 +228,21 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void method() {
         Argument<String> arg;
-        this.method = this.getConfig().getValue("tasktide.manager.method", String.class).toLowerCase();
         arg = this.getArgumentBuilder()
             .withName("Method")
             .withDescription("Whether to run import or export")
             .withShortFlag("-m")
             .withLongFlag("--method")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.method, String.class)
         .build();
+        
+        try {
+            this.method = this.getConfig().getValue("tasktide.manager.method", String.class);
+        }
+        catch (Exception ex) {
+            this.method = "";
+        }
+        if ( !this.method.isEmpty() ) arg.setValue(method);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -213,8 +260,15 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-ts")
             .withLongFlag("--target-step")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.targetStep, String.class)
         .build();
+        
+        try {
+            this.targetStep = this.getConfig().getValue("tasktide.manager.targetStep", String.class);
+        }
+        catch (Exception ex) {
+            this.targetStep = "";
+        }
+        if ( !this.targetStep.isEmpty() ) arg.setValue(targetStep);
         this.getArgumentMap().putArgument(arg);
     }
 }

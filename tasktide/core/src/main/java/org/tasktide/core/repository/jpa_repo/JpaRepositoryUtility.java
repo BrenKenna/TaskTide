@@ -9,6 +9,7 @@ import org.eclipse.microprofile.config.ConfigProvider;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import jakarta.inject.Inject;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -16,7 +17,9 @@ import jakarta.persistence.Persistence;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import javax.sql.DataSource;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
@@ -60,7 +63,7 @@ public class JpaRepositoryUtility {
      * 
      * @return JpaRepositoryUtility
      */
-    public static JpaRepositoryUtility getInstance() {
+    public static JpaRepositoryUtility get() {
         if ( INSTANCE == null ) {
             INSTANCE = new JpaRepositoryUtility();
             return INSTANCE;
@@ -74,13 +77,33 @@ public class JpaRepositoryUtility {
      */
     private void configure() {
         this.config = ConfigProvider.getConfig();
-        this.dbURL = this.config.getValue("datasource.url", String.class);
-        this.dbUser = this.config.getValue("datasource.user", String.class);
-        this.dbPassword = this.config.getValue("datasource.password", String.class);
-        this.dbDriver = this.config.getValue("datasource.driver", String.class);
-        this.dialectDriver = this.config.getValue("hibernate.dialect", String.class);
-        this.ddlUpdate = this.config.getValue("hibernate.hbm2ddl.auto", String.class);
-        this.showSql = this.config.getValue("hibernate.show_sql", String.class);
+        try {
+            this.dbURL = this.config.getValue("datasource.url", String.class);
+            this.dbUser = this.config.getValue("datasource.user", String.class);
+            this.dbPassword = this.config.getValue("datasource.password", String.class);
+            this.dbDriver = this.config.getValue("datasource.driver", String.class);
+        }
+        catch (NoSuchElementException ex) {
+            throw new IllegalArgumentException("URL, User, Password, and Driver must be defined");
+        }
+        try {
+            this.dialectDriver = this.config.getValue("hibernate.dialect", String.class);
+        }
+        catch (NoSuchElementException ex) {
+            this.dialectDriver = "";
+        }
+        try {
+            this.ddlUpdate = this.config.getValue("hibernate.hbm2ddl.auto", String.class);
+        }
+        catch (NoSuchElementException ex) {
+            this.ddlUpdate = "";
+        }
+        try {
+            this.showSql = this.config.getValue("hibernate.show_sql", String.class);
+        }
+        catch (NoSuchElementException ex) {
+            this.showSql = "false";
+        }
     }
     
     
@@ -144,9 +167,15 @@ public class JpaRepositoryUtility {
     public Map<String, Object> fetchEntityManagerConfig(DataSource dataSource) {
         Map<String, Object> conf = new HashMap<>();
         conf.put("jakarta.persistence.nonJtaDataSource", dataSource);
-        conf.put("hibernate.hbm2ddl.auto", this.ddlUpdate);
-        conf.put("hibernate.dialect", this.dialectDriver);
-        conf.put("hibernate.show_sql", this.showSql);
+        if ( !this.ddlUpdate.isEmpty() ) {
+            conf.put("hibernate.hbm2ddl.auto", this.ddlUpdate);
+        }
+        if ( !this.dialectDriver.isEmpty() ) {
+            conf.put("hibernate.dialect", this.dialectDriver);
+        }
+        if ( !this.showSql.isEmpty() ) {
+            conf.put("hibernate.show_sql", this.showSql);
+        }
         return conf;
     }
     

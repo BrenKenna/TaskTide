@@ -5,6 +5,7 @@
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import java.util.Random;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
@@ -117,15 +118,23 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void lockTime() {
         Argument<Integer> arg;
-        this.lockTime = this.getConfig().getValue("tasktide.engine.worker.lock-wait-time", int.class);
         arg = this.getArgumentBuilder()
             .withName("Lock Wait Time")
             .withDescription("Configures the wait time in seconds for locking an item")
             .withShortFlag("-t")
             .withLongFlag("--max-wall-time")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.lockTime, int.class)
         .build();
+        arg.setRefClass(int.class);
+        
+        // Set lock time
+        try {
+            this.lockTime = this.getConfig().getValue("tasktide.engine.worker.lock-wait-time", int.class);
+        }
+        catch ( Exception ex ) {
+            this.lockTime = (new Random()).nextInt(4)+1;
+        }
+        arg.setValue(lockTime);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -136,15 +145,23 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void workItemThreads() {
         Argument<Integer> arg;
-        this.workItemThreads = this.getConfig().getValue("tasktide.engine.worker.processor.threads.workitem", int.class);
         arg = this.getArgumentBuilder()
             .withName("WorkItem Threads")
             .withDescription("Defines the number of threads that work item processing can be distributed to")
             .withShortFlag("-w")
             .withLongFlag("--work-item-threads")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.workItemThreads, int.class)
         .build();
+        arg.setRefClass(int.class);
+        
+        // Set work item threads
+        try {
+            this.workItemThreads = this.getConfig().getValue("tasktide.engine.worker.processor.threads.workitem", int.class);
+        }
+        catch ( Exception ex ) {
+            this.workItemThreads = 1;
+        }
+        arg.setValue(workItemThreads);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -154,8 +171,6 @@ public class EngineConfig extends AbstractConfigurer {
      * 
      */
     public void workItemSubTaskThreshold() {
-        this.workItemThreshold = this.getConfig().getValue("tasktide.engine.worker.processor.threshold.workitem", int.class);
-        int value = this.workItemThreshold <= 0 ? this.workItemThreads : this.workItemThreshold;
         Argument<Integer> arg;
         arg = this.getArgumentBuilder()
             .withName("WorkItem SubTasking Threshold")
@@ -163,8 +178,19 @@ public class EngineConfig extends AbstractConfigurer {
             .withShortFlag("-ws")
             .withLongFlag("--work-item-sub-task-threshold")
             .withArgType(ArgumentType.ACTION)
-            .withValue(value, int.class)
         .build();
+        arg.setRefClass(int.class);
+        
+        // Set work item sub tasking threshold
+        try {
+            this.workItemThreshold = this.getConfig().getValue("tasktide.engine.worker.processor.threshold.workitem", int.class);
+            int value = this.workItemThreshold <= 0 ? this.workItemThreads : this.workItemThreshold;
+            this.workItemThreshold = value;
+        }
+        catch ( Exception ex ) {
+            this.workItemThreshold = workItemThreads;
+        }
+        arg.setValue(workItemThreshold);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -174,8 +200,6 @@ public class EngineConfig extends AbstractConfigurer {
      * 
      */
     public void itemTaskSubTaskThreshold() {
-        this.itemTaskThreshold = this.getConfig().getValue("tasktide.engine.worker.processor.threshold.itemtask", int.class);
-        int value = this.itemTaskThreshold <= 0 ? this.itemTaskThreads : this.itemTaskThreshold;
         Argument<Integer> arg;
         arg = this.getArgumentBuilder()
             .withName("ItemTask SubTasking Threshold")
@@ -183,8 +207,19 @@ public class EngineConfig extends AbstractConfigurer {
             .withShortFlag("-is")
             .withLongFlag("--item-task-sub-task-threshold")
             .withArgType(ArgumentType.ACTION)
-            .withValue(value, int.class)
         .build();
+        arg.setRefClass(int.class);
+        
+        // Set item task threshold
+        try {
+            this.itemTaskThreshold = this.getConfig().getValue("tasktide.engine.worker.processor.threshold.itemtask", int.class);
+            int value = this.itemTaskThreshold <= 0 ? this.itemTaskThreads : this.itemTaskThreshold;
+            this.itemTaskThreshold = value;
+        }
+        catch ( Exception ex ) {
+            this.itemTaskThreshold = itemTaskThreads;
+        }
+        arg.setValue(itemTaskThreshold);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -195,15 +230,23 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void itemTaskThreads() {
         Argument<Integer> arg;
-        this.itemTaskThreads = this.getConfig().getValue("tasktide.engine.worker.processor.threads.itemtask", int.class);
         arg = this.getArgumentBuilder()
             .withName("ItemTask Threads")
             .withDescription("Defines the number of threads that item task processing can be distributed to")
             .withShortFlag("-i")
             .withLongFlag("--item-task-threads")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.itemTaskThreads, int.class)
         .build();
+        arg.setRefClass(int.class);
+
+        // Set item task threads
+        try {
+            this.itemTaskThreads = this.getConfig().getValue("tasktide.engine.worker.processor.threads.itemtask", int.class);
+        }
+        catch ( Exception ex ) {
+            this.itemTaskThreads = 1;
+        }
+        arg.setValue(itemTaskThreads);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -214,15 +257,23 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void timeKeeperMaxWallTime() {
         Argument<Integer> arg;
-        this.timeKeeperWaitTime = this.getConfig().getValue("tasktide.engine.observer.timekeeper.waitTime", int.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Wall Time")
             .withDescription("Configures the max wall-time for task processing in __")
             .withShortFlag("-t")
             .withLongFlag("--max-wall-time")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperWaitTime, int.class)
         .build();
+        arg.setRefClass(int.class);
+        
+        // Set wait time
+        try {
+            this.timeKeeperWaitTime = this.getConfig().getValue("tasktide.engine.observer.timekeeper.waitTime", int.class);
+        }
+        catch (Exception ex) {
+            this.timeKeeperWaitTime = 10000;
+        }
+        arg.setValue(this.timeKeeperWaitTime);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -233,15 +284,23 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void timeKeeperLevel() {
         Argument<Integer> arg;
-        this.timeKeeperLevel = this.getConfig().getValue("tasktide.engine.observer.timekeeper.level", int.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer Level")
             .withDescription("Configure whether TimeKeeper is optional")
             .withShortFlag("-to")
             .withLongFlag("--timeKeeper-observer")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperLevel, int.class)
         .build();
+        arg.setRefClass(int.class);
+        
+        // Set observer level
+        try {
+            this.timeKeeperLevel = this.getConfig().getValue("tasktide.engine.observer.timekeeper.level", int.class);
+        }
+        catch (Exception ex) {
+            this.timeKeeperLevel = 10000;
+        }
+        arg.setValue(this.timeKeeperLevel);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -252,15 +311,23 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void timeKeeperOnStartCanFail() {
         Argument<Boolean> arg;
-        this.timeKeeperOnStartCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onStart.canFail", boolean.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onStart")
             .withDescription("Configure whether TimeKeeper onStart method can fail")
             .withShortFlag("-tos")
             .withLongFlag("--timeKeeper-onStart")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperOnStartCanFail, boolean.class)
         .build();
+        arg.setRefClass(boolean.class);
+        
+        // Set whether on start can fail
+        try {
+            this.timeKeeperOnStartCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onStart.canFail", boolean.class);
+        }
+        catch (Exception ex) {
+            this.timeKeeperOnStartCanFail = true;
+        }
+        arg.setValue(this.timeKeeperOnStartCanFail);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -271,15 +338,23 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void timeKeeperOnProcessingCanFail() {
         Argument<Boolean> arg;
-        this.timeKeeperOnProcessingCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onProcessing.canFail", boolean.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onProcessing")
             .withDescription("Configure whether TimeKeeper onProcessing method can fail")
             .withShortFlag("-top")
             .withLongFlag("--timeKeeper-onProcessing")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperOnProcessingCanFail, boolean.class)
         .build();
+        arg.setRefClass(boolean.class);
+        
+        // Set whether on processing can fail
+        try {
+            this.timeKeeperOnProcessingCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onProcessing.canFail", boolean.class);
+        }
+        catch (Exception ex) {
+            this.timeKeeperOnProcessingCanFail = true;
+        }
+        arg.setValue(this.timeKeeperOnProcessingCanFail);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -290,15 +365,23 @@ public class EngineConfig extends AbstractConfigurer {
      */
     public void timeKeeperOnEndCanFail() {
         Argument<Boolean> arg;
-        this.timeKeeperOnProcessingCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onEnd.canFail", boolean.class);
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onEnd")
             .withDescription("Configure whether TimeKeeper onEnd method can fail")
             .withShortFlag("-toe")
             .withLongFlag("--timeKeeper-onEnd")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.timeKeeperOnEndCanFail, boolean.class)
         .build();
+        arg.setRefClass(boolean.class);
+        
+        // Set whether 
+        try {
+            this.timeKeeperOnEndCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onEnd.canFail", boolean.class);
+        }
+        catch (Exception ex) {
+            this.timeKeeperOnEndCanFail = true;
+        }
+        arg.setValue(this.timeKeeperOnEndCanFail);
         this.getArgumentMap().putArgument(arg);
     }
 }

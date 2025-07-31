@@ -6,6 +6,7 @@ package org.tasktide.core.services;
 
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
+
 import java.util.List;
 import java.util.Map;
 
@@ -239,7 +240,7 @@ public class StepServiceFactoryTests {
         
         // Configure requirements
         repoType = RepositoryType.SQL;
-        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
+        backend = JpaRepositoryUtility.get().fetchEntityManager();
         
         // Setup requirements
         logger.info("Configuring Service");

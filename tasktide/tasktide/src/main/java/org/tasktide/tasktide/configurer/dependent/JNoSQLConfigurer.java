@@ -7,20 +7,14 @@ package org.tasktide.tasktide.configurer.dependent;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import org.eclipse.jnosql.mapping.column.ColumnTemplate;
-import org.eclipse.jnosql.mapping.document.DocumentTemplate;
-import org.eclipse.jnosql.mapping.graph.GraphTemplate;
-import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
-
 import org.tasktide.tasktide.configurer.AbstractConfigurer;
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.parser.model.ArgumentType;
 
-import jakarta.nosql.Template;
 
 /**
- * Configurer for Jakarta NoSQL {@link Template}
+ * Configurer for Jakarta NoSQL Template
  * 
  * @author bkenna
  */
@@ -33,6 +27,23 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
     @Inject
     @ConfigProperty(name = "tasktide.core.repository.jnosql.provider", defaultValue = "mongo") // e.g., "mongo", "redis", "cassandra", "couchdb"
     private String provider;
+    
+    
+    /**
+     * Jakarta NoSQL Config
+     * 
+     */    
+    @ConfigProperty(name = "tasktide.core.repository.jnosql.provider-class", defaultValue = "")
+    private String nosqlProviderClass;
+    
+    @ConfigProperty(name = "tasktide.core.repository.jnosql.user", defaultValue = "")
+    private String nosqlUser;
+    
+    @ConfigProperty(name = "tasktide.core.repository.jnosql.password", defaultValue = "")
+    private String nosqlPassword;
+    
+    @ConfigProperty(name = "tasktide.core.repository.jnosql.host", defaultValue = "")
+    private String nosqlHost;
     
     
     /**
@@ -62,6 +73,19 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
     public void initConfig(ArgumentTree argTree) {
         this.dbType();
         this.provider();
+        this.nosqlProviderClass();
+
+        this.nosqlUser();
+        this.nosqlPassword();
+        this.nosqlHost();
+        
+         // Put argument map into tree
+        if ( this.getPath().isEmpty() ) {
+            argTree.getTree().getRoot().setData(this.getArgumentMap());
+        }
+        else {
+            argTree.getTree().getRoot().getData().extend(this.getArgumentMap());
+        }
     }
     
     
@@ -77,8 +101,17 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
             .withShortFlag("-dbt")
             .withLongFlag("--nosql-database-type")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.dbType, String.class)
         .build();
+        arg.setRefClass(String.class);
+        
+        // Fetch value if present
+        try {
+            this.dbType = this.getConfig().getValue("tasktide.core.repository.jnosql.type", String.class);
+        }
+        catch (Exception ex) {
+            this.dbType = "";
+        }
+        if (!this.dbType.isEmpty()) arg.setValue(this.dbType);
         this.getArgumentMap().putArgument(arg);
     }
 
@@ -95,39 +128,127 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
             .withShortFlag("-dbt")
             .withLongFlag("--nosql-database-provider")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.dbType, String.class)
         .build();
+        arg.setRefClass(String.class);
+        
+        // Fetch value if present
+        try {
+            this.provider = this.getConfig().getValue("tasktide.core.repository.jnosql.provider", String.class);
+        }
+        catch (Exception ex) {
+            this.provider = "";
+        }
+        if (!this.provider.isEmpty()) arg.setValue(this.provider);
         this.getArgumentMap().putArgument(arg);
     }
     
     
     /**
-     * Method to provide template class to configure
-     *  defined by tasktide.core.repository.jnosql.type
+     * Configures specific database provided ie MongoDB etc
      * 
-     * @return Class - Document, KeyValue, Column, Graph, null
      */
-    public Class provideTemplateClass() {
-        switch( this.dbType.toLowerCase() ) {
-            case "document" -> {
-                return DocumentTemplate.class;
-            }
-            
-            case "keyvalue" -> {
-                return KeyValueTemplate.class;
-            }
-            
-            case "column" -> {
-                return ColumnTemplate.class;
-            }
-            
-            case "graph" -> {
-                return GraphTemplate.class;
-            }
-            
-            default -> {
-                return null;
-            }
+    public void nosqlProviderClass() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("NoSQL Provider Class")
+            .withDescription("Specifies the backend NoSQL-DB Provider Class")
+            .withShortFlag("-nspc")
+            .withLongFlag("--nosql-provider-class")
+            .withArgType(ArgumentType.ACTION)
+        .build();
+        arg.setRefClass(String.class);
+        
+        // Fetch value if present
+        try {
+            this.nosqlProviderClass = this.getConfig().getValue("tasktide.core.repository.jnosql.provider-class", String.class);
         }
+        catch (Exception ex) {
+            this.nosqlProviderClass = "";
+        }
+        if (!this.nosqlProviderClass.isEmpty()) arg.setValue(this.nosqlProviderClass);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configures the NoSQL repository type
+     * 
+     */
+    public void nosqlUser() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("NoSQL User")
+            .withDescription("Specifies the backend NoSQL-DB Username to use")
+            .withShortFlag("-nsu")
+            .withLongFlag("--nosql-user")
+            .withArgType(ArgumentType.ACTION)
+        .build();
+        arg.setRefClass(String.class);
+        
+        // Fetch value if present
+        try {
+            this.nosqlUser = this.getConfig().getValue("tasktide.core.repository.jnosql.user", String.class);
+        }
+        catch (Exception ex) {
+            this.nosqlUser = "";
+        }
+        if (!this.nosqlUser.isEmpty()) arg.setValue(this.nosqlUser);
+        this.getArgumentMap().putArgument(arg);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configures the NoSQL repository password
+     * 
+     */
+    public void nosqlPassword() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("NoSQL Password")
+            .withDescription("Specifies the backend NoSQL-DB password to use")
+            .withShortFlag("-nsp")
+            .withLongFlag("--nosql-password")
+            .withArgType(ArgumentType.ACTION)
+        .build();
+        arg.setRefClass(String.class);
+        
+        // Fetch value if present
+        try {
+            this.nosqlPassword = this.getConfig().getValue("tasktide.core.repository.jnosql.password", String.class);
+        }
+        catch (Exception ex) {
+            this.nosqlPassword = "";
+        }
+        if (!this.nosqlPassword.isEmpty()) arg.setValue(this.nosqlPassword);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configures the NoSQL repository host:port
+     * 
+     */
+    public void nosqlHost() {
+        Argument<String> arg;
+        this.nosqlHost = this.getConfig().getValue("tasktide.core.repository.jnosql.host", String.class);
+        arg = this.getArgumentBuilder()
+                .withName("NoSQL Host:Port")
+                .withDescription("Specifies the backend NoSQL-DB host:port to use")
+                .withShortFlag("-nsh")
+                .withLongFlag("--nosql-host")
+                .withArgType(ArgumentType.ACTION)
+        .build();
+        arg.setRefClass(String.class);
+        
+        // Fetch value if present
+        try {
+            this.nosqlHost = this.getConfig().getValue("tasktide.core.repository.jnosql.host", String.class);
+        }
+        catch (Exception ex) {
+            this.nosqlHost = "";
+        }
+        if (!this.nosqlHost.isEmpty()) arg.setValue(this.nosqlHost);
+        this.getArgumentMap().putArgument(arg);
     }
 }

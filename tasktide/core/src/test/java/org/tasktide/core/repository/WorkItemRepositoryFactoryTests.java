@@ -7,6 +7,7 @@ package org.tasktide.core.repository;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
+
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 
@@ -331,7 +332,7 @@ public class WorkItemRepositoryFactoryTests {
         
         // Fetch backend instance
         repoType = RepositoryType.SQL;
-        backend = JpaRepositoryUtility.getInstance().fetchEntityManager();
+        backend = JpaRepositoryUtility.get().fetchEntityManager();
         logger.info("Backend Entity:\t'{}'", backend);
         
         // Configure repository

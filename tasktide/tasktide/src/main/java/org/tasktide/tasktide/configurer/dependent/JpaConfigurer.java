@@ -97,7 +97,7 @@ public class JpaConfigurer extends AbstractConfigurer {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
         }
         else {
-            argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
+            argTree.getTree().getRoot().getData().extend(this.getArgumentMap());
         }
     }
     
