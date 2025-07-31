@@ -1,0 +1,771 @@
+@startuml
+
+/'
+################################################################
+################################################################
+##
+## 3). TaskTide CoreLib
+##
+################################################################
+################################################################
+'/
+
+
+/'
+##################################################
+##################################################
+##
+## a). TaskTide Repository: RocksDb is actually an ItemStore like template
+## consider its builder
+##
+##################################################
+##################################################
+'/
+
+interface org.tasktide.core.TaskTideRepository<TaskTideModel> << repo >> #F8DE7E {
+  + {abstract} Optional<T> findById(String)
+  + {abstract} T insertModel(T)
+  + {abstract} T updateModel(T)
+  + {abstract} boolean deleteModel(String)
+  + {abstract} List<T> findByField(String, Object)
+  + {abstract} List<T> findAll()
+  + {abstract} int save()
+  + {abstract} List<T> load()
+  + {abstract} boolean extendModel(List<T>)
+  + {abstract} Map<String, String> getRepositoryMetaData()
+}
+
+
+abstract class org.tasktide.core.repository.TemplateRepository<TaskTideModel> <<implements repo>> #FFE5B4 {
+  .. **Attributes** ..
+  - Template template
+  - Class<T> COLLECTION_CLASS
+  - String collectionName
+  - RepositoryType repoType
+
+  .. **Construction** ..
+  + TemplateRepository(Template, Class<T>, String)
+
+  .. **TaskTideRepository Implementation** ..
+  + Map<String, String> getRepositoryMetaData()
+  + Optional<T> findById(String)
+  + T insertModel(T)
+  + T updateModel(T)
+  + boolean deleteModel(String)
+  + List<T> findByField(String, Object)
+  + List<T> findAll()
+  + int save()
+  + List<T> load()
+
+  .. **Class Methods** ..
+  + Class<T> getCollectionClass()
+  + String getCollectionName()
+  + RepositoryType getRepoType()
+}
+
+
+class org.tasktide.core.repository.nosql_repo.TemplateWorkflowRepository<Workflow> << extends template-repo >> #C6DAF7 {
+  + TemplateWorkflowRepository(Template, String)
+}
+class org.tasktide.core.repository.nosql_repo.TemplateStepRepository<Step> << extends template-repo >> #C6DAF7 {
+  + TemplateStepRepository(Template, String)
+}
+class org.tasktide.core.repository.nosql_repo.TemplateWorkItemRepository<WorkItem> << extends template-repo >> #C6DAF7 {
+  + TemplateWorkItemRepository(Template, String)
+}
+
+
+abstract class org.tasktide.core.repository.JsonRepository<TaskTideModel> <<implements repo>> #FFE5B4 {
+  .. **Attributes** ..
+  - List<T> data
+  - Class<T> COLLECTION_CLASS
+  - String collectionName
+  - RepositoryType repoType
+
+  .. **Construction** ..
+  + JsonRepository(List<T>, Class<T>, String)
+
+  .. **TaskTideRepository Implementation** ..
+  + Map<String, String> getRepositoryMetaData()
+  + Optional<T> findById(String)
+  + T insertModel(T)
+  + T updateModel(T)
+  + boolean deleteModel(String)
+  + List<T> findByField(String, Object)
+  + List<T> findAll()
+  + int save()
+  + List<T> load()
+
+  .. **Class Methods** ..
+  + Class<T> getCollectionClass()
+  + String getCollectionName()
+  + RepositoryType getRepoType()
+}
+
+
+class org.tasktide.core.repository.json_repo.JsonWorkflowRepository<Workflow> << extends json-repo >> #C6DAF7 {
+  + JsonWorkflowRepository(List<Workflow>, String)
+}
+class org.tasktide.core.repository.json_repo.JsonStepRepository<Step> << extends json-repo >> #C6DAF7 {
+  + JsonStepRepository(List<Step>, String)
+}
+class org.tasktide.core.repository.json_repo.JsonWorkItemRepository<WorkItem> << extends json-repo >> #C6DAF7 {
+  + JsonWorkItemRepository(List<WorkItem>, String)
+}
+
+
+abstract class org.tasktide.core.repository.ItemStoreRepository<TaskTideModel> <<implements repo>> #FFE5B4 {
+  .. **Attributes** ..
+  - ItemStore data
+  - Class<T> COLLECTION_CLASS
+  - String collectionName
+  - RepositoryType repoType
+  - Jsonb JSON_BUILDER
+
+  .. **Construction** ..
+  + RocksDbRepository(ItemStore, Class<T>, String)
+
+  .. **TaskTideRepository Implementation** ..
+  + Map<String, String> getRepositoryMetaData()
+  + Optional<T> findById(String)
+  + T insertModel(T)
+  + T updateModel(T)
+  + boolean deleteModel(String)
+  + List<T> findByField(String, Object)
+  + List<T> findAll()
+  + int save()
+  + List<T> load()
+
+  .. **Class Methods** ..
+  + Class<T> getCollectionClass()
+  + String getCollectionName()
+  + RepositoryType getRepoType()
+
+  - Item<T> toItem(T)
+  - T toModel(Item)
+}
+
+class org.tasktide.core.repository.itemstore_repo.ItemStoreWorkflowRepository<Workflow> << extends rocks-repo >> #C6DAF7 {
+  + ItemStoreWorkflowRepository(ItemStore, String)
+}
+class org.tasktide.core.repository.itemstore_repo.ItemStoreStepRepository<Step> << extends rocks-repo >> #C6DAF7 {
+  + ItemStoreStepRepository(ItemStore, String)
+}
+class org.tasktide.core.repository.itemstore_repo.ItemStoreWorkItemRepository<WorkItem> << extends rocks-repo >> #C6DAF7 {
+  + ItemStoreWorkItemRepository(ItemStore, String)
+}
+
+
+
+abstract class org.tasktide.core.repository.JpaRepository<TaskTideModel> <<implements repo>> #FFE5B4 {
+  .. **Attributes** ..
+  - EntityManager data
+  - Class<T> COLLECTION_CLASS
+  - String collectionName
+  - RepositoryType repoType
+  - Jsonb JSON_BUILDER
+
+  .. **Construction** ..
+  + JpaRepository(EntityManager, Class<T>, String)
+
+  .. **TaskTideRepository Implementation** ..
+  + Map<String, String> getRepositoryMetaData()
+  + Optional<T> findById(String)
+  + T insertModel(T)
+  + T updateModel(T)
+  + boolean deleteModel(String)
+  + List<T> findByField(String, Object)
+  + List<T> findAll()
+  + int save()
+  + List<T> load()
+
+  .. **Class Methods** ..
+  + Class<T> getCollectionClass()
+  + String getCollectionName()
+  + RepositoryType getRepoType()
+
+  - Item<T> toItem(T)
+  - T toModel(Item)
+}
+
+class org.tasktide.core.repository.jpa_repo.JpaWorkflowRepository<Workflow> << extends jpa-repo >> #C6DAF7 {
+  + ItemStoreWorkflowRepository(EntityManager, String)
+}
+class org.tasktide.core.repository.jpa_repo.JpaStepRepository<Step> << extends jpa-repo >> #C6DAF7 {
+  + ItemStoreStepRepository(EntityManager, String)
+}
+class org.tasktide.core.repository.jpa_repo.JpaWorkItemRepository<WorkItem> << extends jpa-repo >> #C6DAF7 {
+  + ItemStoreWorkItemRepository(EntityManager, String)
+}
+
+
+
+
+enum org.tasktide.core.repository.RepositoryType #CCCCFF {
+  .. **Attributes** ..
+  NOSQL
+  ROCKSDB
+  JSON
+
+  .. **Strategy Methods** ..
+  + boolean isRepository(String)
+  + boolean isRepository(RepositoryType)
+  + <T> TaskTideRepository<T> createRepository(Class<T>, Object, String)
+
+  .. **Enum Methods** ..
+  + static int indexOf(String)
+  + static boolean hasType(String)
+}
+
+
+org.tasktide.core.repository.TemplateRepository ..|> org.tasktide.core.TaskTideRepository
+org.tasktide.core.repository.ItemStoreRepository ..|> org.tasktide.core.TaskTideRepository
+org.tasktide.core.repository.JpaRepository ..|> org.tasktide.core.TaskTideRepository
+org.tasktide.core.repository.JsonRepository ..|> org.tasktide.core.TaskTideRepository
+
+
+org.tasktide.core.repository.nosql_repo.TemplateWorkflowRepository --|> org.tasktide.core.repository.TemplateRepository
+org.tasktide.core.repository.nosql_repo.TemplateStepRepository --|> org.tasktide.core.repository.TemplateRepository
+org.tasktide.core.repository.nosql_repo.TemplateWorkItemRepository --|> org.tasktide.core.repository.TemplateRepository
+
+
+org.tasktide.core.repository.itemstore_repo.ItemStoreWorkflowRepository --|> org.tasktide.core.repository.ItemStoreRepository
+org.tasktide.core.repository.itemstore_repo.ItemStoreStepRepository --|> org.tasktide.core.repository.ItemStoreRepository
+org.tasktide.core.repository.itemstore_repo.ItemStoreWorkItemRepository --|> org.tasktide.core.repository.ItemStoreRepository
+
+
+org.tasktide.core.repository.json_repo.JsonWorkflowRepository --|> org.tasktide.core.repository.JsonRepository
+org.tasktide.core.repository.json_repo.JsonStepRepository --|> org.tasktide.core.repository.JsonRepository
+org.tasktide.core.repository.json_repo.JsonWorkItemRepository --|> org.tasktide.core.repository.JsonRepository
+
+
+org.tasktide.core.repository.jpa_repo.JpaWorkflowRepository --|> org.tasktide.core.repository.JpaRepository
+org.tasktide.core.repository.jpa_repo.JpaStepRepository --|> org.tasktide.core.repository.JpaRepository
+org.tasktide.core.repository.jpa_repo.JpaWorkItemRepository --|> org.tasktide.core.repository.JpaRepository
+
+
+/'
+##################################################
+##################################################
+##
+## b). TaskTide Service: Use get method instead of delegation
+##
+##################################################
+##################################################
+'/
+
+interface org.tasktide.core.TaskTideMapper #F8DE7E {
+  + {abstract} List< U > getThroughLink(TaskTide Service< U >, T)
+}
+
+interface org.tasktide.core.TaskTideService<TaskTideModel> #F8DE7E {
+  + {abstract} T appendModel(T)
+  + {abstract} List<T> viewByFieldValue(String, Object)
+  + {abstract} List<T> viewAll()
+  + {abstract} fetchById(String)
+  + {abstract} boolean dropById(String)
+  + {abstract} T updateModel(T)
+  + {abstract} boolean extendModel(List<T>)
+  + {abstract} int save()
+  + {abstract}TaskTideRepository<T> getRepo()
+}
+
+
+class org.tasktide.core.services.WorkflowService<Workflow> << implements TaskTideMapper, TaskTideService >> #FFE5B4 {
+  .. **Attributes** ..
+  - TaskTideRepository<Workflow> repo
+
+  .. **Construction** ..
+  + WorkflowService(TaskTideRepository<Workflow>)
+
+  .. **TaskTideService Implementation** ..
+  + Workflow appendModel(Workflow)
+  + List<Workflow> viewByFieldValue(String, Object)
+  + List<Workflow> viewAll()
+  + fetchById(String)
+  + boolean dropById(String)
+  + Workflow updateModel(Workflow)
+  + boolean extendModel(List<Workflow>)
+  + int save()
+  + TaskTideRepository<Workflow> getRepo()
+  + List<Step> getThroughLink(TaskTideService<Step>, Workflow)
+}
+
+
+class org.tasktide.core.services.StepService<Step> << implements TaskTideMapper, TaskTideService >> #FFE5B4 {
+  .. **Attributes** ..
+  - TaskTideRepository<Step> repo
+
+  .. **Construction** ..
+  + StepService(TaskTideRepository<Step>)
+
+  .. **TaskTideService Implementation** ..
+  + Step appendModel(Step)
+  + List<Step> viewByFieldValue(String, Object)
+  + List<Step> viewAll()
+  + fetchById(String)
+  + boolean dropById(String)
+  + Step updateModel(Step)
+  + boolean extendModel(List<Step>)
+  + int save()
+  + TaskTideRepository<Step> getRepo()
+  + List<WorkItem> getThroughLink(TaskTideService<WorkItem>, Step)
+}
+
+
+class org.tasktide.core.services.WorkItemService<WorkItem> << implements TaskTideMapper, TaskTideService >> #FFE5B4 {
+  .. **Attributes** ..
+  - TaskTideRepository<WorkItem> repo
+
+  .. **Construction** ..
+  + StepService(TaskTideRepository<WorkItem>)
+
+  .. **TaskTideService Implementation** ..
+  + WorkItem appendModel(WorkItem)
+  + List<WorkItem> viewByFieldValue(String, Object)
+  + List<WorkItem> viewAll()
+  + fetchById(String)
+  + boolean dropById(String)
+  + WorkItem updateModel(WorkItem)
+  + boolean extendModel(List<WorkItem>)
+  + int save()
+  + TaskTideRepository<WorkItem> getRepo()
+  + List<Step> getThroughLink(TaskTideService<Step>, WorkItem)
+}
+
+
+class org.tasktide.core.services.ServiceFactory {
+  + static TaskTideService<WorkItem> makeWorkItemService(RepositoryType, Object, String, int, String)
+  + static WorkItemService makeWorkItemService(TaskTideRepository<WorkItem>, int, String)
+  + static WorkItemService makeWorkItemService(TaskTideRepository<WorkItem>)
+  + static TaskTideService<WorkItem> makeWorkItemService(RepositoryType, Object, String)
+  + static StepService makeStepService(TaskTideRepository<Step>)
+  + static TaskTideService<Step> makeStepService(RepositoryType, Object, String)
+  + static WorkflowService makeWorkflowService(TaskTideRepository<Workflow>)
+  + static TaskTideService<Workflow> makeWorkflowService(RepositoryType, Object, String)
+}
+
+org.tasktide.core.services.WorkItemService ..|> org.tasktide.core.TaskTideService
+org.tasktide.core.services.StepService ..|> org.tasktide.core.TaskTideService
+org.tasktide.core.services.WorkflowService ..|> org.tasktide.core.TaskTideService
+
+org.tasktide.core.services.WorkItemService ..|> org.tasktide.core.TaskTideMapper
+org.tasktide.core.services.StepService ..|> org.tasktide.core.TaskTideMapper
+org.tasktide.core.services.WorkflowService ..|> org.tasktide.core.TaskTideMapper
+
+org.tasktide.core.services.ServiceFactory --> org.tasktide.core.services.WorkItemService
+org.tasktide.core.services.ServiceFactory --> org.tasktide.core.services.WorkflowService
+org.tasktide.core.services.ServiceFactory --> org.tasktide.core.services.StepService
+
+org.tasktide.core.TaskTideService --> org.tasktide.core.TaskTideRepository
+org.tasktide.core.TaskTideService --> org.tasktide.core.TaskTideModel
+org.tasktide.core.TaskTideRepository --> org.tasktide.core.TaskTideModel
+
+
+/'
+##################################################
+##################################################
+##
+## c). TaskTide Model
+##
+##################################################
+##################################################
+'/
+
+interface org.tasktide.core.TaskTideModel<TaskTideModel> #F8DE7E {
+  + String toJson()
+  + String getId()
+  + String getState()
+  + Object getValueFromField(String)
+}
+
+
+entity org.tasktide.core.model.workitem.WorkItem <<implements TaskTideModel >> #FFE5B4 {
+  .. **Attributes** ..
+  - String id, itemName, lockId, stepName, stepId
+  - long lockDate, doneDate
+  - int taskCount, taskDone
+  - ItemType itemType
+  - ItemState itemState
+  - Workload workload
+  
+  .. **Construction** ..
+  + WorkItem()
+  + WorkItem(< All Attributes >)
+
+  .. **Methods** ..
+  + boolean addTask(ItemTask)
+  + boolean dropTask(ItemTask)
+  + int getWorkloadSize()
+  + Map<ItemState, Integer? summarizeByStates()
+  + Map<ItemState, List<ItemTask>> fetchByStates()
+  + void setTaskCounts()
+  
+  .. **TaskTideModel Implementation** ..
+  + String toJson()
+  + String getId()
+  + String getState()
+  + Object getValueFromField(String)
+
+  .. **// Getters & Setters //** ..
+}
+
+
+
+entity org.tasktide.core.model.workitem.Workload<<Embedded>> {
+    .. **Attributes** ..
+    - String workloadId
+    - Map<String, ItemTask> workload
+    - ItemType itemType
+
+    .. **Construction** ..
+    + Workload()
+    + Workload(String, Map<String, ItemTask>, ItemType)
+
+    .. **Class Methods** ..
+    + boolean addTask(String, ItemTask)
+    + boolean addTask(ItemTask)
+    + ItemTask getTask(String)
+    + boolean dropTask(String)
+    + boolean dropTask(ItemTask)
+    + Map<TaskState, Integer> summarizeWorkload()
+    + Mqp<TaskState, List<ItemTask>> fetchByState()
+    + long getLatestDone()
+    + long getEarliestDone()
+    + int getWorkloadSize()
+    + String getId()
+    
+    .. **// Getters & Setters //** ..
+}
+
+
+
+entity org.tasktide.core.model.task.ItemTask <<Embedded implements TaskTideModel >> #FFE5B4 {
+    .. **Attributes ** ..
+    - String itemTaskId, taskName, task
+    - TaskState taskState
+    - TaskLogging taskLog
+
+    .. **Construction** ..
+    + TaskLogging()
+    + TaskLogging(< All Attributes >)
+
+    .. **Class Methods** ..
+    + String toJsonString()
+    + String toJsonDoc()
+
+    .. **TaskTideModel Implementation** ..
+    + String toJson()
+    + String getId()
+    + String getState()
+    + Object getValueFromField(String)
+
+    .. **// Getters & Setters //** ..
+}
+
+
+
+entity org.tasktide.core.model.task.ProcessLog<<Embedded>> {
+    .. **Attributes** ..
+    - String procId
+    - String[] stdout, stderr
+
+    .. **Construction** ..
+    + ProcessLog()
+    + ProcessLog(< All Attributes >)
+
+    .. **Class Methods** ..
+    + String toJsonString()
+    + String toJsonDoc()
+
+    .. **//Getters & Setters//** ..
+}
+
+
+
+entity org.tasktide.core.model.task.TaskLogging<<Embedded>> {
+    .. **Attributes** ..
+    - String taskLogId
+    - long procId
+    - ProcessLog procLog
+    - long startTime, endTime, cpuDuration
+    - String threadName
+    - int exitCode
+
+    .. **Construction** ..
+    + TaskLogging()
+    + TaskLogging(< All Attributes >)
+
+    .. **Class Methods** ..
+    + String toJsonString()
+    + String toJsonDoc()
+
+    .. **//Getters & Setters//** ..
+}
+
+
+
+entity org.tasktide.core.model.task.TaskState #CCCCFF {
+    .. **Enum Values** ..
+    PENDING
+    ACTIVE
+    ERROR
+    TIME_KEEPER
+    COMPLETE
+
+    .. **Value Methods** ..
+    + {abstract} boolean isState(String)
+    + {abstract+ boolean isState(TaskState)
+    + {abstract} ItemState mapToItemState()
+
+    .. **Enum Methods** ..
+    + static int indexOf(String)
+    + static boole hasType(String)
+}
+
+
+
+entity org.tasktide.core.model.collection.Step<<Entity Implements TaskTideModel>> #FFE5B4 {
+    .. **Attributes** ..
+    - String stepId, stepName
+    - TaskState taskState
+    - int stepCount, stepsLocked, stepsDone
+    - int stepsError, stepsToDo
+    - String workloadId
+    - Workflow workflow // For JPA Join
+
+    .. **Construction** ..
+    + Step()
+    + Step(< All Attributes >)
+
+    .. **Class Methods** ..
+    + StateSummary<ItemState> summarizeByState()
+    + void setStateCounts(StateSummary<ItemState>)
+    + String toJsonString()
+    + String toJsonDoc()
+
+    .. **TaskTideModel Implementation** ..
+    + Object getValueFromField(String) 
+    + String getState()
+    + String toJson()
+    + String getId()
+
+    .. **//Getters & Setters//** ..
+}
+
+
+
+entity org.tasktide.core.model.collection.Workflow<<Entity Implements TaskTideModel>> #FFE5B4 {
+    .. **Attributes** ..
+    - String workflowId, workflowName
+    - Map<String, Step> worklowSteps
+    = List<Step> stepList // For JPA Mapping
+
+    .. **Construction** ..
+    + Workflow()
+    + Workflow(< All Attributes >)
+
+    .. **JPA Persitence** ..
+    @jakarta.persistence.PostLoad
+    + void populateStepMap()
+
+    .. **Class Methods** ..
+    + StateSummary<ItemState> summarizeByState()
+    + void setStateCounts(StateSummary<ItemState>)
+    + String toJsonString()
+    + String toJsonDoc()
+
+    .. **TaskTideModel Implementation** ..
+    + Object getValueFromField(String) 
+    + String getState()
+    + String toJson()
+    + String getId()
+
+    .. **//Getters & Setters//** ..
+}
+
+
+org.tasktide.core.model.task.ItemTask ..|> org.tasktide.core.TaskTideModel
+org.tasktide.core.model.workitem.WorkItem ..|> org.tasktide.core.TaskTideModel
+org.tasktide.core.model.collection.Step ..|> org.tasktide.core.TaskTideModel
+org.tasktide.core.model.collection.Workflow ..|> org.tasktide.core.TaskTideModel
+
+
+org.tasktide.core.model.workitem.Workload *-- org.tasktide.core.model.workitem.WorkItem
+org.tasktide.core.model.workitem.Workload --o org.tasktide.core.model.task.ItemTask
+org.tasktide.core.model.collection.Step --o org.tasktide.core.model.collection.Workflow
+org.tasktide.core.model.task.TaskLogging *-- org.tasktide.core.model.task.ItemTask
+org.tasktide.core.model.task.ProcessLog *-- org.tasktide.core.model.task.TaskLogging
+
+
+/'
+##################################################
+##################################################
+##
+## c). Manager
+##
+##################################################
+##################################################
+'/
+
+
+' Aggregates TaskTideServices
+class org.tasktide.core.manager.TaskTideServiceManager {
+    .. **Attributes** ..
+    - TaskTideService<WorkItem> workItemService
+    - TaskTideService<Step> stepService
+    - TaskTideService<Workflow> workflowService
+
+    .. **Construction** ..
+    + TaskTideServiceManager(< All Attributes >)
+
+    .. **Class Methods** ..
+    + TaskTideService<WorkItem> getWorkItemService()
+    + TaskTideService<Step> getStepService()
+    + TaskTideService<Workflow> getWorkflowService()
+}
+
+
+enum org.tasktide.core.manager.ManagerAction #CCCCFF {
+    .. **Attributes** ..
+    IMPORT
+    EXPORT
+
+    .. **Value Methods**..
+    + {abstract} boolean isManagerAction(String)
+    + {abstract} boolean isMAnagerAction(ManagerAction)
+
+    .. **Enum Methods** ..
+    + static boolean hasQuery(String)
+    + static int indexOf(String)
+    + static ManagerAction get(String)
+}
+
+
+enum org.tasktide.core.manager.ManagerAction #CCCCFF {
+    .. **Attributes** ..
+    IMPORT
+    EXPORT
+
+    .. **Value Methods**..
+    + {abstract} boolean isManagerAction(String)
+    + {abstract} boolean isManagerAction(ManagerAction)
+
+    .. **Enum Methods** ..
+    + static boolean hasQuery(String)
+    + static int indexOf(String)
+    + static ManagerAction get(String)
+} 
+
+
+enum org.tasktide.core.manager.ManagerTarget #CCCCFF {
+    .. **Attributes** ..
+    WORKITEM
+    STEP
+    WORKFLOW
+
+    .. **Value Methods**..
+    + {abstract} boolean isManagerTarget(String)
+    + {abstract} boolean isManagerTarget(ManagerTarget)
+    + {abstract} List<TaskTideModel> fetchModels()
+
+    .. **Enum Methods** ..
+    + static boolean hasQuery(String)
+    + static int indexOf(String)
+    + static ManagerTarget get(String)
+    + static String valuesString()
+} 
+
+
+class org.tasktide.core.manager.BuilderUtility #FFFFE0 {
+    .. **Attributes** ..
+    - TaskGenerator taskGenerator
+    - Utils utils
+
+    .. **Class Methods** ..
+    + static ProcessLog makeEmptyProcessLog()
+    + static ProcessLog buildProcessLog(String[], String[])
+    + static ProcessLog buildProcessLog(String, String[], String[]
+
+    + static TaskLogging buildEmptyTaskLogging()
+    + static TaskLogging buildTaskLogging(ProcessLog)
+    + static TaskLogging buildTaskLogging(ProcessLog, Process)
+    + static TaskLogging buildTaskLogging(String, ProcessLog)
+
+    + static Workload buildEmptyWorkload()
+
+ )
+}
+
+
+org.tasktide.core.manager.TaskTideServiceManager *-- org.tasktide.core.services.WorkItemService
+org.tasktide.core.manager.TaskTideServiceManager *-- org.tasktide.core.services.StepService
+org.tasktide.core.manager.TaskTideServiceManager *-- org.tasktide.core.services.WorkflowService
+org.tasktide.core.manager.TaskTideServiceManager --> org.tasktide.core.services.ServiceFactory
+
+
+
+/'
+##################################################
+##################################################
+##
+## d). Supporting
+##
+##################################################
+##################################################
+'/
+
+
+class org.tasktide.core.supporting.DateUtility #FFFFE0 {
+    .. **Attributes** ..
+    - DateFormat DATE_FORMAT
+    - int EXPIRATION_DAYS
+
+    .. **Class Methods** ..
+    + long getTimeTaken(Date, Date)
+    + long getDateLong*(
+    + Date getDate()
+    + Date getDateFromTime(long)
+    + String formatDate(Date)
+    + String getNoswString()
+    + String getDateString(Date date)
+    + Date parseDate(String)
+    + Date getExpirationForDate(Date)
+    + boolean hasExceeded(Date)
+}
+
+
+class org.tasktide.core.supporting.Utils #FFFFE0 {
+    .. **Attributes** ..
+    - Random rand
+    - Charset charset
+    - DateUtility dateUtils
+
+    .. **Class Methods** ..
+    + String generateSalt()
+    + UUID generateUUID(String)
+    + String stringToHex(String)
+    + String generateToken()
+    + String generateSHA_HASH(String, String)
+    + int getRandomInt(int)
+    + boolean waitSeconds(int)
+    + boolean waitMiliseconds(int)
+    + Random getRandom()
+    + Charset getCharset()
+    + DateUtility getDateUtility()
+}
+
+
+class org.tasktide.core.supporting.JsonUtils #FFFFE0 {
+    .. **Attributes** ..
+    - static JsonbConfig PRETTY_CONFIG
+    - static Jsonb PRETTY_JSON
+    - static Jsonb JSON
+
+    .. **Utility Methods** ..
+    + static String toJson(boolean, Object)
+    + static <T> T fromJson(String, Class<T>)
+    + static <T> T fromJson(String, Type)
+}
+
+@enduml

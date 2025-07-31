@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.tasktide.client.ClientConfigMap;
 import org.tasktide.tasktide.client.TaskTideClient;
 import org.tasktide.tasktide.client.TaskTideClientType;

@@ -1,246 +1,322 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1929px" preserveAspectRatio="none" style="width:953px;height:1929px;background:#FFFFFF;" version="1.1" viewBox="0 0 953 1929" width="953px" zoomAndPan="magnify">
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="2079px" preserveAspectRatio="none" style="width:830px;height:2079px;background:#FFFFFF;" version="1.1" viewBox="0 0 830 2079" width="830px" zoomAndPan="magnify">
     <defs/>
     <g>
         <!--cluster org-->
         <g id="cluster_org">
-            <path d="M8.5,6 L33.5,6 A3.75,3.75 0 0 1 36,8.5 L43,29.6094 L943.5,29.6094 A2.5,2.5 0 0 1 946,32.1094 L946,1919.5 A2.5,2.5 0 0 1 943.5,1922 L8.5,1922 A2.5,2.5 0 0 1 6,1919.5 L6,8.5 A2.5,2.5 0 0 1 8.5,6 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <path d="M8.5,6 L33.5,6 A3.75,3.75 0 0 1 36,8.5 L43,29.6094 L820.5,29.6094 A2.5,2.5 0 0 1 823,32.1094 L823,2069.5 A2.5,2.5 0 0 1 820.5,2072 L8.5,2072 A2.5,2.5 0 0 1 6,2069.5 L6,8.5 A2.5,2.5 0 0 1 8.5,6 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
             <line style="stroke:#000000;stroke-width:1.5;" x1="6" x2="43" y1="29.6094" y2="29.6094"/>
             <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="24" x="10" y="22.5332">org</text>
         </g>
         <!--cluster tasktide-->
         <g id="cluster_tasktide">
-            <path d="M32.5,50 L89.5,50 A3.75,3.75 0 0 1 92,52.5 L99,73.6094 L919.5,73.6094 A2.5,2.5 0 0 1 922,76.1094 L922,1895.5 A2.5,2.5 0 0 1 919.5,1898 L32.5,1898 A2.5,2.5 0 0 1 30,1895.5 L30,52.5 A2.5,2.5 0 0 1 32.5,50 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <path d="M32.5,50 L89.5,50 A3.75,3.75 0 0 1 92,52.5 L99,73.6094 L796.5,73.6094 A2.5,2.5 0 0 1 799,76.1094 L799,2045.5 A2.5,2.5 0 0 1 796.5,2048 L32.5,2048 A2.5,2.5 0 0 1 30,2045.5 L30,52.5 A2.5,2.5 0 0 1 32.5,50 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
             <line style="stroke:#000000;stroke-width:1.5;" x1="30" x2="99" y1="73.6094" y2="73.6094"/>
             <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="56" x="34" y="66.5332">tasktide</text>
         </g>
         <!--cluster itemstore-->
         <g id="cluster_itemstore">
-            <path d="M56.5,94 L124.5,94 A3.75,3.75 0 0 1 127,96.5 L134,117.6094 L895.5,117.6094 A2.5,2.5 0 0 1 898,120.1094 L898,1871.5 A2.5,2.5 0 0 1 895.5,1874 L56.5,1874 A2.5,2.5 0 0 1 54,1871.5 L54,96.5 A2.5,2.5 0 0 1 56.5,94 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <path d="M56.5,94 L124.5,94 A3.75,3.75 0 0 1 127,96.5 L134,117.6094 L772.5,117.6094 A2.5,2.5 0 0 1 775,120.1094 L775,2021.5 A2.5,2.5 0 0 1 772.5,2024 L56.5,2024 A2.5,2.5 0 0 1 54,2021.5 L54,96.5 A2.5,2.5 0 0 1 56.5,94 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
             <line style="stroke:#000000;stroke-width:1.5;" x1="54" x2="134" y1="117.6094" y2="117.6094"/>
             <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="67" x="58" y="110.5332">itemstore</text>
         </g>
-        <!--cluster stores-->
-        <g id="cluster_stores">
-            <path d="M80.5,138 L126.5,138 A3.75,3.75 0 0 1 129,140.5 L136,161.6094 L427.5,161.6094 A2.5,2.5 0 0 1 430,164.1094 L430,1302.5 A2.5,2.5 0 0 1 427.5,1305 L80.5,1305 A2.5,2.5 0 0 1 78,1302.5 L78,140.5 A2.5,2.5 0 0 1 80.5,138 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
-            <line style="stroke:#000000;stroke-width:1.5;" x1="78" x2="136" y1="161.6094" y2="161.6094"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="45" x="82" y="154.5332">stores</text>
-        </g>
         <!--class Item-->
         <g id="elem_Item">
-            <rect codeLine="14" fill="#F1F1F1" height="298.5313" id="Item" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="189" x="569.5" y="1559"/>
-            <ellipse cx="641.25" cy="1575" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
-            <path d="M644.0156,1570.875 Q644.1719,1570.6563 644.3594,1570.5469 Q644.5469,1570.4375 644.7656,1570.4375 Q645.1406,1570.4375 645.375,1570.7031 Q645.6094,1570.9531 645.6094,1571.5625 L645.6094,1573.0156 Q645.6094,1573.625 645.375,1573.8906 Q645.1406,1574.1563 644.7656,1574.1563 Q644.4219,1574.1563 644.2188,1573.9531 Q644.0156,1573.7656 643.9063,1573.25 Q643.8594,1572.8906 643.6719,1572.7031 Q643.3438,1572.3281 642.7344,1572.1094 Q642.125,1571.8906 641.5,1571.8906 Q640.7344,1571.8906 640.0938,1572.2188 Q639.4688,1572.5469 638.9688,1573.2969 Q638.4844,1574.0469 638.4844,1575.0781 L638.4844,1576.1719 Q638.4844,1577.4063 639.375,1578.2344 Q640.2656,1579.0469 641.8594,1579.0469 Q642.7969,1579.0469 643.4531,1578.7969 Q643.8438,1578.6406 644.2656,1578.2031 Q644.5313,1577.9375 644.6719,1577.8594 Q644.8281,1577.7813 645.0313,1577.7813 Q645.3594,1577.7813 645.6094,1578.0469 Q645.875,1578.2969 645.875,1578.6406 Q645.875,1578.9844 645.5313,1579.3906 Q645.0313,1579.9688 644.2344,1580.2969 Q643.1563,1580.75 641.8594,1580.75 Q640.3438,1580.75 639.1406,1580.125 Q638.1563,1579.625 637.4688,1578.5625 Q636.7813,1577.4844 636.7813,1576.2031 L636.7813,1575.0469 Q636.7813,1573.7188 637.3906,1572.5781 Q638.0156,1571.4219 639.1094,1570.8125 Q640.2031,1570.1875 641.4375,1570.1875 Q642.1719,1570.1875 642.8125,1570.3594 Q643.4688,1570.5156 644.0156,1570.875 Z " fill="#000000"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26" x="661.75" y="1580.7285">Item</text>
-            <rect fill="#FFFFFF" height="17.0938" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="9" x="752.5" y="1556"/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="7" x="753.5" y="1569.457">T</text>
-            <line style="stroke:#181818;stroke-width:0.5;" x1="570.5" x2="757.5" y1="1591" y2="1591"/>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="577.5" y="1623.9141"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="589.5" y="1631.1426">String id, state, payload</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="589.5" y="1648.752"> </text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="570.5" x2="629.5" y1="1607.8047" y2="1607.8047"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="629.5" y="1613.0332">Attributes</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="698.5" x2="757.5" y1="1607.8047" y2="1607.8047"/>
-            <ellipse cx="580.5" cy="1683.7422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="589.5" y="1687.9707">Item()</text>
-            <ellipse cx="580.5" cy="1701.3516" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="163" x="589.5" y="1705.5801">Item(String, String, String)</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="589.5" y="1723.1895"> </text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="570.5" x2="618.5" y1="1664.6328" y2="1664.6328"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="618.5" y="1669.8613">Construction</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="709.5" x2="757.5" y1="1664.6328" y2="1664.6328"/>
-            <ellipse cx="580.5" cy="1758.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="589.5" y="1762.4082">void setId(String)</text>
-            <ellipse cx="580.5" cy="1775.7891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129" x="589.5" y="1780.0176">void setState(String)</text>
-            <ellipse cx="580.5" cy="1793.3984" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="147" x="589.5" y="1797.627">void setPayload(String)</text>
-            <ellipse cx="580.5" cy="1811.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="589.5" y="1815.2363">String getId()</text>
-            <ellipse cx="580.5" cy="1828.6172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="589.5" y="1832.8457">String setState()</text>
-            <ellipse cx="580.5" cy="1846.2266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="589.5" y="1850.4551">String setPayload()</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="570.5" x2="603" y1="1739.0703" y2="1739.0703"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="122" x="603" y="1744.2988">Getters &amp; Setters</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="725" x2="757.5" y1="1739.0703" y2="1739.0703"/>
+            <rect codeLine="14" fill="#F1F1F1" height="298.5313" id="Item" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="189" x="157.5" y="1709"/>
+            <ellipse cx="229.25" cy="1725" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M232.0156,1720.875 Q232.1719,1720.6563 232.3594,1720.5469 Q232.5469,1720.4375 232.7656,1720.4375 Q233.1406,1720.4375 233.375,1720.7031 Q233.6094,1720.9531 233.6094,1721.5625 L233.6094,1723.0156 Q233.6094,1723.625 233.375,1723.8906 Q233.1406,1724.1563 232.7656,1724.1563 Q232.4219,1724.1563 232.2188,1723.9531 Q232.0156,1723.7656 231.9063,1723.25 Q231.8594,1722.8906 231.6719,1722.7031 Q231.3438,1722.3281 230.7344,1722.1094 Q230.125,1721.8906 229.5,1721.8906 Q228.7344,1721.8906 228.0938,1722.2188 Q227.4688,1722.5469 226.9688,1723.2969 Q226.4844,1724.0469 226.4844,1725.0781 L226.4844,1726.1719 Q226.4844,1727.4063 227.375,1728.2344 Q228.2656,1729.0469 229.8594,1729.0469 Q230.7969,1729.0469 231.4531,1728.7969 Q231.8438,1728.6406 232.2656,1728.2031 Q232.5313,1727.9375 232.6719,1727.8594 Q232.8281,1727.7813 233.0313,1727.7813 Q233.3594,1727.7813 233.6094,1728.0469 Q233.875,1728.2969 233.875,1728.6406 Q233.875,1728.9844 233.5313,1729.3906 Q233.0313,1729.9688 232.2344,1730.2969 Q231.1563,1730.75 229.8594,1730.75 Q228.3438,1730.75 227.1406,1730.125 Q226.1563,1729.625 225.4688,1728.5625 Q224.7813,1727.4844 224.7813,1726.2031 L224.7813,1725.0469 Q224.7813,1723.7188 225.3906,1722.5781 Q226.0156,1721.4219 227.1094,1720.8125 Q228.2031,1720.1875 229.4375,1720.1875 Q230.1719,1720.1875 230.8125,1720.3594 Q231.4688,1720.5156 232.0156,1720.875 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="26" x="249.75" y="1730.7285">Item</text>
+            <rect fill="#FFFFFF" height="17.0938" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="9" x="340.5" y="1706"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="7" x="341.5" y="1719.457">T</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="158.5" x2="345.5" y1="1741" y2="1741"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="165.5" y="1773.9141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="177.5" y="1781.1426">String id, state, payload</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="177.5" y="1798.752"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="158.5" x2="217.5" y1="1757.8047" y2="1757.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="217.5" y="1763.0332">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="286.5" x2="345.5" y1="1757.8047" y2="1757.8047"/>
+            <ellipse cx="168.5" cy="1833.7422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="177.5" y="1837.9707">Item()</text>
+            <ellipse cx="168.5" cy="1851.3516" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="163" x="177.5" y="1855.5801">Item(String, String, String)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="177.5" y="1873.1895"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="158.5" x2="206.5" y1="1814.6328" y2="1814.6328"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="206.5" y="1819.8613">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="297.5" x2="345.5" y1="1814.6328" y2="1814.6328"/>
+            <ellipse cx="168.5" cy="1908.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="177.5" y="1912.4082">void setId(String)</text>
+            <ellipse cx="168.5" cy="1925.7891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129" x="177.5" y="1930.0176">void setState(String)</text>
+            <ellipse cx="168.5" cy="1943.3984" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="147" x="177.5" y="1947.627">void setPayload(String)</text>
+            <ellipse cx="168.5" cy="1961.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="177.5" y="1965.2363">String getId()</text>
+            <ellipse cx="168.5" cy="1978.6172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="177.5" y="1982.8457">String setState()</text>
+            <ellipse cx="168.5" cy="1996.2266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="121" x="177.5" y="2000.4551">String setPayload()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="158.5" x2="191" y1="1889.0703" y2="1889.0703"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="122" x="191" y="1894.2988">Getters &amp; Setters</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="313" x2="345.5" y1="1889.0703" y2="1889.0703"/>
         </g>
         <!--class ItemStore-->
         <g id="elem_ItemStore">
-            <rect codeLine="32" fill="#F8DE7E" height="498.9375" id="ItemStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="436" x="446" y="1000"/>
-            <ellipse cx="629.25" cy="1021.3516" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
-            <path d="M630.2031,1017.9922 L630.2031,1024.6484 L631.9219,1024.6484 Q632.5313,1024.6484 632.7969,1024.8828 Q633.0625,1025.1172 633.0625,1025.5078 Q633.0625,1025.8828 632.7969,1026.1172 Q632.5313,1026.3516 631.9219,1026.3516 L626.7813,1026.3516 Q626.1719,1026.3516 625.9063,1026.1172 Q625.6406,1025.8828 625.6406,1025.4922 Q625.6406,1025.1172 625.9063,1024.8828 Q626.1719,1024.6484 626.7813,1024.6484 L628.5,1024.6484 L628.5,1017.9922 L626.7813,1017.9922 Q626.1719,1017.9922 625.9063,1017.7578 Q625.6406,1017.5234 625.6406,1017.1328 Q625.6406,1016.7578 625.9063,1016.5234 Q626.1719,1016.2891 626.7813,1016.2891 L631.9219,1016.2891 Q632.5313,1016.2891 632.7969,1016.5234 Q633.0625,1016.7578 633.0625,1017.1328 Q633.0625,1017.5234 632.7969,1017.7578 Q632.5313,1017.9922 631.9219,1017.9922 L630.2031,1017.9922 Z " fill="#000000"/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="65" x="647.75" y="1017.457">«itemstore»</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="61" x="649.75" y="1034.627">ItemStore</text>
-            <line style="stroke:#181818;stroke-width:0.5;" x1="447" x2="881" y1="1042.7031" y2="1042.7031"/>
-            <line style="stroke:#181818;stroke-width:0.5;" x1="447" x2="881" y1="1050.7031" y2="1050.7031"/>
-            <ellipse cx="457" cy="1065.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="142" x="466" y="1069.2363">String getStoreName()</text>
-            <ellipse cx="457" cy="1082.6172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="167" x="466" y="1086.8457">String getMasterFilePath()</text>
-            <ellipse cx="457" cy="1100.2266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="123" x="466" y="1104.4551">String getFilePath()</text>
-            <ellipse cx="457" cy="1117.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="146" x="466" y="1122.0645">String getDbDirectory()</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="466" y="1139.6738"> </text>
-            <ellipse cx="457" cy="1153.0547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="232" x="466" y="1157.2832">void saveItem(Item) throws Exception</text>
-            <ellipse cx="457" cy="1170.6641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="277" x="466" y="1174.8926">void saveItems(List&lt;Item&gt;) throws Exception</text>
-            <ellipse cx="457" cy="1188.2734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="293" x="466" y="1192.502">void saveItemToMaster(Item) throws Exception</text>
-            <ellipse cx="457" cy="1205.8828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="338" x="466" y="1210.1113">void saveItemsToMaster(List&lt;Item&gt;) throws Exception</text>
-            <ellipse cx="457" cy="1223.4922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="165" x="466" y="1227.7207">List&lt;Item&gt; getAll(boolean)</text>
-            <ellipse cx="457" cy="1241.1016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="236" x="466" y="1245.3301">Item getById(String) throws Exception</text>
-            <ellipse cx="457" cy="1258.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="313" x="466" y="1262.9395">Item getByIdFromMaster(String) throws Exception</text>
-            <ellipse cx="457" cy="1276.3203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="329" x="466" y="1280.5488">List&lt;Item&gt; getItemsByState(String) throws Exception</text>
-            <ellipse cx="457" cy="1293.9297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="410" x="466" y="1298.1582">List&lt;Item&gt; getItemsByStateFromMaster(String) throws Exception;</text>
-            <ellipse cx="457" cy="1311.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="187" x="466" y="1315.7676">String getPayloadById(String)</text>
-            <ellipse cx="457" cy="1329.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="236" x="466" y="1333.377">String getPayloadFromMaster(String)</text>
-            <ellipse cx="457" cy="1346.7578" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="266" x="466" y="1350.9863">void syncToMaster(Item) throws Exception</text>
-            <ellipse cx="457" cy="1364.3672" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="304" x="466" y="1368.5957">void syncToMaster(List&lt;Item&gt;) throws Exception</text>
-            <ellipse cx="457" cy="1381.9766" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="239" x="466" y="1386.2051">void syncToMaster() throws Exception</text>
-            <ellipse cx="457" cy="1399.5859" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="257" x="466" y="1403.8145">boolean cacheMaster() throws Exception</text>
-            <ellipse cx="457" cy="1417.1953" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="157" x="466" y="1421.4238">boolean clearPrototype()</text>
-            <ellipse cx="457" cy="1434.8047" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="192" x="466" y="1439.0332">boolean closeConn(DbTarget)</text>
-            <ellipse cx="457" cy="1452.4141" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="191" x="466" y="1456.6426">boolean openConn(DbTarget)</text>
-            <ellipse cx="457" cy="1470.0234" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="241" x="466" y="1474.252">boolean delete(Item) throws Exception</text>
-            <ellipse cx="457" cy="1487.6328" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="318" x="466" y="1491.8613">boolean deleteFromMaster(Item) throws Exception</text>
+            <rect codeLine="32" fill="#F8DE7E" height="393.2813" id="ItemStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="423" x="128.5" y="1256"/>
+            <ellipse cx="305.25" cy="1277.3516" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M306.2031,1273.9922 L306.2031,1280.6484 L307.9219,1280.6484 Q308.5313,1280.6484 308.7969,1280.8828 Q309.0625,1281.1172 309.0625,1281.5078 Q309.0625,1281.8828 308.7969,1282.1172 Q308.5313,1282.3516 307.9219,1282.3516 L302.7813,1282.3516 Q302.1719,1282.3516 301.9063,1282.1172 Q301.6406,1281.8828 301.6406,1281.4922 Q301.6406,1281.1172 301.9063,1280.8828 Q302.1719,1280.6484 302.7813,1280.6484 L304.5,1280.6484 L304.5,1273.9922 L302.7813,1273.9922 Q302.1719,1273.9922 301.9063,1273.7578 Q301.6406,1273.5234 301.6406,1273.1328 Q301.6406,1272.7578 301.9063,1272.5234 Q302.1719,1272.2891 302.7813,1272.2891 L307.9219,1272.2891 Q308.5313,1272.2891 308.7969,1272.5234 Q309.0625,1272.7578 309.0625,1273.1328 Q309.0625,1273.5234 308.7969,1273.7578 Q308.5313,1273.9922 307.9219,1273.9922 L306.2031,1273.9922 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="65" x="323.75" y="1273.457">«itemstore»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="61" x="325.75" y="1290.627">ItemStore</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="129.5" x2="550.5" y1="1298.7031" y2="1298.7031"/>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="129.5" x2="550.5" y1="1306.7031" y2="1306.7031"/>
+            <ellipse cx="139.5" cy="1321.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="142" x="148.5" y="1325.2363">String getStoreName()</text>
+            <ellipse cx="139.5" cy="1338.6172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="167" x="148.5" y="1342.8457">String getMasterFilePath()</text>
+            <ellipse cx="139.5" cy="1356.2266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="123" x="148.5" y="1360.4551">String getFilePath()</text>
+            <ellipse cx="139.5" cy="1373.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="146" x="148.5" y="1378.0645">String getDbDirectory()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="148.5" y="1395.6738"> </text>
+            <ellipse cx="139.5" cy="1409.0547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="300" x="148.5" y="1413.2832">void saveItem(DbTarget, Item) throws Exception</text>
+            <ellipse cx="139.5" cy="1426.6641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="345" x="148.5" y="1430.8926">void saveItems(DbTarget, List&lt;Item&gt;) throws Exception</text>
+            <ellipse cx="139.5" cy="1444.2734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="174" x="148.5" y="1448.502">List&lt;Item&gt; getAll(DbTarget)</text>
+            <ellipse cx="139.5" cy="1461.8828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="304" x="148.5" y="1466.1113">Item getById(DbTarget, String) throws Exception</text>
+            <ellipse cx="139.5" cy="1479.4922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="397" x="148.5" y="1483.7207">List&lt;Item&gt; getItemsByState(DbTarget, String) throws Exception</text>
+            <ellipse cx="139.5" cy="1497.1016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="255" x="148.5" y="1501.3301">String getPayloadById(DbTarget, String)</text>
+            <ellipse cx="139.5" cy="1514.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="309" x="148.5" y="1518.9395">boolean delete(DbTarget, Item) throws Exception</text>
+            <ellipse cx="139.5" cy="1532.3203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="266" x="148.5" y="1536.5488">void syncToMaster(Item) throws Exception</text>
+            <ellipse cx="139.5" cy="1549.9297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="304" x="148.5" y="1554.1582">void syncToMaster(List&lt;Item&gt;) throws Exception</text>
+            <ellipse cx="139.5" cy="1567.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="239" x="148.5" y="1571.7676">void syncToMaster() throws Exception</text>
+            <ellipse cx="139.5" cy="1585.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="257" x="148.5" y="1589.377">boolean cacheMaster() throws Exception</text>
+            <ellipse cx="139.5" cy="1602.7578" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="157" x="148.5" y="1606.9863">boolean clearPrototype()</text>
+            <ellipse cx="139.5" cy="1620.3672" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="192" x="148.5" y="1624.5957">boolean closeConn(DbTarget)</text>
+            <ellipse cx="139.5" cy="1637.9766" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="191" x="148.5" y="1642.2051">boolean openConn(DbTarget)</text>
         </g>
         <!--class AbstractItemStore-->
         <g id="elem_AbstractItemStore">
-            <rect codeLine="61" fill="#FFE5B4" height="164.3594" id="AbstractItemStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="202" x="179" y="776"/>
-            <ellipse cx="212.45" cy="797.3516" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
-            <path d="M214.6375,799.1172 L210.4969,799.1172 L210.075,800.1484 L210.4969,800.1484 Q211.1063,800.1484 211.3719,800.3828 Q211.6375,800.6172 211.6375,801.0078 Q211.6375,801.3828 211.3719,801.6172 Q211.1063,801.8516 210.4969,801.8516 L208.2,801.8516 Q207.5906,801.8516 207.3406,801.6172 Q207.075,801.3828 207.075,800.9922 Q207.075,800.6172 207.3563,800.3828 Q207.6219,800.1328 208.2469,800.1484 L210.9188,793.4922 L209.8094,793.4922 Q209.2,793.4922 208.9344,793.2578 Q208.6688,793.0234 208.6688,792.6328 Q208.6688,792.2578 208.9344,792.0234 Q209.2,791.7891 209.8094,791.7891 L213.4813,791.7891 L216.8719,800.1484 Q217.4656,800.1484 217.6531,800.2891 Q218.0438,800.5547 218.0438,801.0078 Q218.0438,801.3828 217.7781,801.6172 Q217.5281,801.8516 216.9188,801.8516 L214.6219,801.8516 Q214.0125,801.8516 213.7469,801.6172 Q213.4813,801.3828 213.4813,800.9922 Q213.4813,800.6172 213.7469,800.3828 Q214.0125,800.1484 214.6219,800.1484 L215.0438,800.1484 L214.6375,799.1172 Z M213.9188,797.4141 L212.5594,794.0391 L211.1844,797.4141 L213.9188,797.4141 Z " fill="#000000"/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="133" x="228.55" y="793.457">«implements itemstore»</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="113" x="238.55" y="810.627">AbstractItemStore</text>
-            <line style="stroke:#181818;stroke-width:0.5;" x1="180" x2="380" y1="818.7031" y2="818.7031"/>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="187" y="830.0078"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="199" y="837.2363">String storeName</text>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="187" y="847.6172"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176" x="199" y="854.8457">Path dbDirectory, masterDB</text>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="187" y="865.2266"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="199" y="872.4551">Path protoDB, masterLock</text>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="187" y="882.8359"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="199" y="890.0645">FileChannel fileChannel</text>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="187" y="900.4453"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="199" y="907.6738">FileLock fileLock</text>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="187" y="918.0547"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="199" y="925.2832">Random RANDOM</text>
-            <line style="stroke:#181818;stroke-width:0.5;" x1="180" x2="380" y1="932.3594" y2="932.3594"/>
+            <rect codeLine="55" fill="#FFE5B4" height="463.7188" id="AbstractItemStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="404" x="138" y="732"/>
+            <ellipse cx="271.25" cy="753.3516" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M273.4375,755.1172 L269.2969,755.1172 L268.875,756.1484 L269.2969,756.1484 Q269.9063,756.1484 270.1719,756.3828 Q270.4375,756.6172 270.4375,757.0078 Q270.4375,757.3828 270.1719,757.6172 Q269.9063,757.8516 269.2969,757.8516 L267,757.8516 Q266.3906,757.8516 266.1406,757.6172 Q265.875,757.3828 265.875,756.9922 Q265.875,756.6172 266.1563,756.3828 Q266.4219,756.1328 267.0469,756.1484 L269.7188,749.4922 L268.6094,749.4922 Q268,749.4922 267.7344,749.2578 Q267.4688,749.0234 267.4688,748.6328 Q267.4688,748.2578 267.7344,748.0234 Q268,747.7891 268.6094,747.7891 L272.2813,747.7891 L275.6719,756.1484 Q276.2656,756.1484 276.4531,756.2891 Q276.8438,756.5547 276.8438,757.0078 Q276.8438,757.3828 276.5781,757.6172 Q276.3281,757.8516 275.7188,757.8516 L273.4219,757.8516 Q272.8125,757.8516 272.5469,757.6172 Q272.2813,757.3828 272.2813,756.9922 Q272.2813,756.6172 272.5469,756.3828 Q272.8125,756.1484 273.4219,756.1484 L273.8438,756.1484 L273.4375,755.1172 Z M272.7188,753.4141 L271.3594,750.0391 L269.9844,753.4141 L272.7188,753.4141 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="133" x="289.75" y="749.457">«implements itemstore»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="113" x="299.75" y="766.627">AbstractItemStore</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="139" x2="541" y1="774.7031" y2="774.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="786.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="158" y="793.2363">String storeName</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="803.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176" x="158" y="810.8457">Path dbDirectory, masterDB</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="821.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="158" y="828.4551">Path protoDB, masterLock</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="838.8359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="158" y="846.0645">FileChannel fileChannel</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="856.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="158" y="863.6738">FileLock fileLock</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="874.0547"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="117" x="158" y="881.2832">Random RANDOM</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="158" y="898.8926"> </text>
+            <ellipse cx="149" cy="933.8828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="141" x="158" y="938.1113">String getStoreName()</text>
+            <ellipse cx="149" cy="951.4922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="158" y="955.7207">String getMasterFilePath()</text>
+            <ellipse cx="149" cy="969.1016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146" x="158" y="973.3301">String getDbDirectory()</text>
+            <ellipse cx="149" cy="986.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="265" x="158" y="990.9395">void syncToMaster(Item) throws Exception</text>
+            <ellipse cx="149" cy="1004.3203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="303" x="158" y="1008.5488">void syncToMaster(List&lt;Item&gt;) throws Exception</text>
+            <ellipse cx="149" cy="1021.9297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="239" x="158" y="1026.1582">void syncToMaster() throws Exception</text>
+            <ellipse cx="149" cy="1039.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146" x="158" y="1043.7676">boolean cacheMaster()</text>
+            <ellipse cx="149" cy="1057.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="158" y="1061.377">boolean clearPrototype()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="158" y="1078.9863"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="139" x2="250" y1="914.7734" y2="914.7734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="180" x="250" y="920.002">ItemStore Implementation</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="430" x2="541" y1="914.7734" y2="914.7734"/>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="1110.9766"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="235" x="158" y="1118.2051">boolean tryLock() throws IOException</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="1128.5859"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="195" x="158" y="1135.8145">boolean makeMasterLockFile()</text>
+            <polygon fill="#FFFF44" points="149,1144.1953,153,1148.1953,149,1152.1953,145,1148.1953" style="stroke:#B38D22;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="378" x="158" y="1153.4238">void waitForLock() throws InterruptedException, IOException</text>
+            <polygon fill="#FFFF44" points="149,1161.8047,153,1165.8047,149,1169.8047,145,1165.8047" style="stroke:#B38D22;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="158" y="1171.0332">boolean releaseLock()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="146" y="1181.4141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="305" x="158" y="1188.6426">void deleteRecursively(Path) throws IOException</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="139" x2="272" y1="1094.8672" y2="1094.8672"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="136" x="272" y="1100.0957">Decorator Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="408" x2="541" y1="1094.8672" y2="1094.8672"/>
         </g>
         <!--class DbTarget-->
         <g id="elem_DbTarget">
-            <rect codeLine="71" fill="#CCCCFF" height="79.2188" id="DbTarget" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="209" x="175.5" y="1210"/>
-            <ellipse cx="245.75" cy="1226" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
-            <path d="M244.6094,1226.7969 L244.6094,1229.2969 L248.9375,1229.2969 L248.9375,1228.375 Q248.9375,1227.7656 249.1719,1227.5 Q249.4219,1227.2344 249.7969,1227.2344 Q250.1719,1227.2344 250.4063,1227.5 Q250.6406,1227.7656 250.6406,1228.375 L250.6406,1231 L242.6406,1231 Q242.0156,1231 241.75,1230.7656 Q241.5,1230.5313 241.5,1230.1406 Q241.5,1229.7656 241.7656,1229.5313 Q242.0313,1229.2969 242.6406,1229.2969 L242.9063,1229.2969 L242.9063,1222.6406 L242.6406,1222.6406 Q242.0156,1222.6406 241.75,1222.4063 Q241.5,1222.1719 241.5,1221.7813 Q241.5,1221.4063 241.75,1221.1719 Q242.0156,1220.9375 242.6406,1220.9375 L250.2656,1220.9375 L250.2656,1223.5313 Q250.2656,1224.1406 250.0313,1224.4063 Q249.8125,1224.6563 249.4219,1224.6563 Q249.0469,1224.6563 248.8125,1224.4063 Q248.5781,1224.1406 248.5781,1223.5313 L248.5781,1222.6406 L244.6094,1222.6406 L244.6094,1225.0938 L246.0938,1225.0938 Q246.0938,1224.4375 246.2188,1224.25 Q246.4844,1223.8438 246.9531,1223.8438 Q247.3281,1223.8438 247.5625,1224.1094 Q247.7969,1224.3594 247.7969,1224.9688 L247.7969,1226.9375 Q247.7969,1227.4844 247.6719,1227.6719 Q247.4063,1228.0625 246.9531,1228.0625 Q246.4844,1228.0625 246.2188,1227.6563 Q246.0938,1227.4688 246.0938,1226.7969 L244.6094,1226.7969 Z " fill="#000000"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="266.25" y="1231.7285">DbTarget</text>
-            <line style="stroke:#181818;stroke-width:0.5;" x1="176.5" x2="383.5" y1="1242" y2="1242"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197" x="181.5" y="1282.1426">MASTER, PROTOTYPE, BOTH</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="176.5" x2="235" y1="1258.8047" y2="1258.8047"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="90" x="235" y="1264.0332">Enum Values</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="325" x2="383.5" y1="1258.8047" y2="1258.8047"/>
+            <rect codeLine="82" fill="#CCCCFF" height="79.2188" id="DbTarget" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="209" x="381.5" y="1819"/>
+            <ellipse cx="451.75" cy="1835" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M450.6094,1835.7969 L450.6094,1838.2969 L454.9375,1838.2969 L454.9375,1837.375 Q454.9375,1836.7656 455.1719,1836.5 Q455.4219,1836.2344 455.7969,1836.2344 Q456.1719,1836.2344 456.4063,1836.5 Q456.6406,1836.7656 456.6406,1837.375 L456.6406,1840 L448.6406,1840 Q448.0156,1840 447.75,1839.7656 Q447.5,1839.5313 447.5,1839.1406 Q447.5,1838.7656 447.7656,1838.5313 Q448.0313,1838.2969 448.6406,1838.2969 L448.9063,1838.2969 L448.9063,1831.6406 L448.6406,1831.6406 Q448.0156,1831.6406 447.75,1831.4063 Q447.5,1831.1719 447.5,1830.7813 Q447.5,1830.4063 447.75,1830.1719 Q448.0156,1829.9375 448.6406,1829.9375 L456.2656,1829.9375 L456.2656,1832.5313 Q456.2656,1833.1406 456.0313,1833.4063 Q455.8125,1833.6563 455.4219,1833.6563 Q455.0469,1833.6563 454.8125,1833.4063 Q454.5781,1833.1406 454.5781,1832.5313 L454.5781,1831.6406 L450.6094,1831.6406 L450.6094,1834.0938 L452.0938,1834.0938 Q452.0938,1833.4375 452.2188,1833.25 Q452.4844,1832.8438 452.9531,1832.8438 Q453.3281,1832.8438 453.5625,1833.1094 Q453.7969,1833.3594 453.7969,1833.9688 L453.7969,1835.9375 Q453.7969,1836.4844 453.6719,1836.6719 Q453.4063,1837.0625 452.9531,1837.0625 Q452.4844,1837.0625 452.2188,1836.6563 Q452.0938,1836.4688 452.0938,1835.7969 L450.6094,1835.7969 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="472.25" y="1840.7285">DbTarget</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="382.5" x2="589.5" y1="1851" y2="1851"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="197" x="387.5" y="1891.1426">MASTER, PROTOTYPE, BOTH</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="382.5" x2="441" y1="1867.8047" y2="1867.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="90" x="441" y="1873.0332">Enum Values</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="531" x2="589.5" y1="1867.8047" y2="1867.8047"/>
         </g>
         <!--class RocksDBStore-->
         <g id="elem_RocksDBStore">
-            <rect codeLine="77" fill="#C6DAF7" height="542.1563" id="RocksDBStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="319" x="94.5" y="174"/>
-            <ellipse cx="196.25" cy="195.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
-            <path d="M199.0156,191.2266 Q199.1719,191.0078 199.3594,190.8984 Q199.5469,190.7891 199.7656,190.7891 Q200.1406,190.7891 200.375,191.0547 Q200.6094,191.3047 200.6094,191.9141 L200.6094,193.3672 Q200.6094,193.9766 200.375,194.2422 Q200.1406,194.5078 199.7656,194.5078 Q199.4219,194.5078 199.2188,194.3047 Q199.0156,194.1172 198.9063,193.6016 Q198.8594,193.2422 198.6719,193.0547 Q198.3438,192.6797 197.7344,192.4609 Q197.125,192.2422 196.5,192.2422 Q195.7344,192.2422 195.0938,192.5703 Q194.4688,192.8984 193.9688,193.6484 Q193.4844,194.3984 193.4844,195.4297 L193.4844,196.5234 Q193.4844,197.7578 194.375,198.5859 Q195.2656,199.3984 196.8594,199.3984 Q197.7969,199.3984 198.4531,199.1484 Q198.8438,198.9922 199.2656,198.5547 Q199.5313,198.2891 199.6719,198.2109 Q199.8281,198.1328 200.0313,198.1328 Q200.3594,198.1328 200.6094,198.3984 Q200.875,198.6484 200.875,198.9922 Q200.875,199.3359 200.5313,199.7422 Q200.0313,200.3203 199.2344,200.6484 Q198.1563,201.1016 196.8594,201.1016 Q195.3438,201.1016 194.1406,200.4766 Q193.1563,199.9766 192.4688,198.9141 Q191.7813,197.8359 191.7813,196.5547 L191.7813,195.3984 Q191.7813,194.0703 192.3906,192.9297 Q193.0156,191.7734 194.1094,191.1641 Q195.2031,190.5391 196.4375,190.5391 Q197.1719,190.5391 197.8125,190.7109 Q198.4688,190.8672 199.0156,191.2266 Z " fill="#000000"/>
-            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="111" x="214.75" y="191.457">«extends itemstore»</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="224.25" y="208.627">RocksDBStore</text>
-            <line style="stroke:#181818;stroke-width:0.5;" x1="95.5" x2="412.5" y1="216.7031" y2="216.7031"/>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="249.6172"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146" x="114.5" y="256.8457">RocksDB master, proto</text>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="267.2266"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="114.5" y="274.4551">Options options</text>
-            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="284.8359"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="114.5" y="292.0645">ObjectMapper MAPPER</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="114.5" y="309.6738"> </text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="95.5" x2="219.5" y1="233.5078" y2="233.5078"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="219.5" y="238.7363">Attributes</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="288.5" x2="412.5" y1="233.5078" y2="233.5078"/>
-            <ellipse cx="105.5" cy="344.6641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="274" x="114.5" y="348.8926">RocksDBStore(String, String, String, String)</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="114.5" y="366.502"> </text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="95.5" x2="208.5" y1="325.5547" y2="325.5547"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="208.5" y="330.7832">Construction</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="299.5" x2="412.5" y1="325.5547" y2="325.5547"/>
-            <ellipse cx="105.5" cy="401.4922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="240" x="114.5" y="405.7207">Item fetchIteratorValue(RocksIterator);</text>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="114.5" y="423.3301"> </text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="95.5" x2="186" y1="382.3828" y2="382.3828"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="136" x="186" y="387.6113">Decorator Methods</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="322" x2="412.5" y1="382.3828" y2="382.3828"/>
-            <ellipse cx="105.5" cy="458.3203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="164" x="114.5" y="462.5488">List&lt;Item&gt; getAll(boolean)</text>
-            <ellipse cx="105.5" cy="475.9297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="182" x="114.5" y="480.1582">void saveItemToMaster(Item)</text>
-            <ellipse cx="105.5" cy="493.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="227" x="114.5" y="497.7676">void saveItemsToMaster(List&lt;Item&gt;)</text>
-            <ellipse cx="105.5" cy="511.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="114.5" y="515.377">void saveItem(Item)</text>
-            <ellipse cx="105.5" cy="528.7578" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="114.5" y="532.9863">void saveItems(List&lt;Item&gt;)</text>
-            <ellipse cx="105.5" cy="546.3672" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="124" x="114.5" y="550.5957">Item getById(String)</text>
-            <ellipse cx="105.5" cy="563.9766" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="200" x="114.5" y="568.2051">Item getByIdFromMaster(String)</text>
-            <ellipse cx="105.5" cy="581.5859" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="217" x="114.5" y="585.8145">List&lt;Item&gt; getItemsByState(String)</text>
-            <ellipse cx="105.5" cy="599.1953" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="293" x="114.5" y="603.4238">List&lt;Item&gt; getItemsByStateFromMaster(String)</text>
-            <ellipse cx="105.5" cy="616.8047" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="186" x="114.5" y="621.0332">String getPayloadById(String)</text>
-            <ellipse cx="105.5" cy="634.4141" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="186" x="114.5" y="638.6426">String getPayloadById(String)</text>
-            <ellipse cx="105.5" cy="652.0234" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="114.5" y="656.252">boolean closeConn(DbTarget)</text>
-            <ellipse cx="105.5" cy="669.6328" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="114.5" y="673.8613">boolean openConn(DbTarget)</text>
-            <ellipse cx="105.5" cy="687.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="114.5" y="691.4707">boolean delete(Item)</text>
-            <ellipse cx="105.5" cy="704.8516" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="206" x="114.5" y="709.0801">boolean deleteFromMaster(Item)</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="95.5" x2="164" y1="439.2109" y2="439.2109"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="180" x="164" y="444.4395">ItemStore Implementation</text>
-            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="344" x2="412.5" y1="439.2109" y2="439.2109"/>
+            <rect codeLine="88" fill="#C6DAF7" height="471.7188" id="RocksDBStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="311" x="447.5" y="165"/>
+            <ellipse cx="545.25" cy="186.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M548.0156,182.2266 Q548.1719,182.0078 548.3594,181.8984 Q548.5469,181.7891 548.7656,181.7891 Q549.1406,181.7891 549.375,182.0547 Q549.6094,182.3047 549.6094,182.9141 L549.6094,184.3672 Q549.6094,184.9766 549.375,185.2422 Q549.1406,185.5078 548.7656,185.5078 Q548.4219,185.5078 548.2188,185.3047 Q548.0156,185.1172 547.9063,184.6016 Q547.8594,184.2422 547.6719,184.0547 Q547.3438,183.6797 546.7344,183.4609 Q546.125,183.2422 545.5,183.2422 Q544.7344,183.2422 544.0938,183.5703 Q543.4688,183.8984 542.9688,184.6484 Q542.4844,185.3984 542.4844,186.4297 L542.4844,187.5234 Q542.4844,188.7578 543.375,189.5859 Q544.2656,190.3984 545.8594,190.3984 Q546.7969,190.3984 547.4531,190.1484 Q547.8438,189.9922 548.2656,189.5547 Q548.5313,189.2891 548.6719,189.2109 Q548.8281,189.1328 549.0313,189.1328 Q549.3594,189.1328 549.6094,189.3984 Q549.875,189.6484 549.875,189.9922 Q549.875,190.3359 549.5313,190.7422 Q549.0313,191.3203 548.2344,191.6484 Q547.1563,192.1016 545.8594,192.1016 Q544.3438,192.1016 543.1406,191.4766 Q542.1563,190.9766 541.4688,189.9141 Q540.7813,188.8359 540.7813,187.5547 L540.7813,186.3984 Q540.7813,185.0703 541.3906,183.9297 Q542.0156,182.7734 543.1094,182.1641 Q544.2031,181.5391 545.4375,181.5391 Q546.1719,181.5391 546.8125,181.7109 Q547.4688,181.8672 548.0156,182.2266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="111" x="563.75" y="182.457">«extends itemstore»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="573.25" y="199.627">RocksDBStore</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="448.5" x2="757.5" y1="207.7031" y2="207.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="455.5" y="240.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146" x="467.5" y="247.8457">RocksDB master, proto</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="455.5" y="258.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="467.5" y="265.4551">Options options</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="455.5" y="275.8359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="467.5" y="283.0645">ObjectMapper MAPPER</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="467.5" y="300.6738"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="448.5" x2="568.5" y1="224.5078" y2="224.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="568.5" y="229.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="637.5" x2="757.5" y1="224.5078" y2="224.5078"/>
+            <ellipse cx="458.5" cy="335.6641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="274" x="467.5" y="339.8926">RocksDBStore(String, String, String, String)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="467.5" y="357.502"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="448.5" x2="557.5" y1="316.5547" y2="316.5547"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="557.5" y="321.7832">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="648.5" x2="757.5" y1="316.5547" y2="316.5547"/>
+            <ellipse cx="458.5" cy="392.4922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="207" x="467.5" y="396.7207">RocksIterator fetchIter(RocksDB)</text>
+            <ellipse cx="458.5" cy="410.1016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="236" x="467.5" y="414.3301">Item fetchIteratorValue(RocksIterator)</text>
+            <ellipse cx="458.5" cy="427.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="230" x="467.5" y="431.9395">void putItem(RocksDB, byte[], byte[])</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="467.5" y="449.5488"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="448.5" x2="535" y1="373.3828" y2="373.3828"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="136" x="535" y="378.6113">Decorator Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="671" x2="757.5" y1="373.3828" y2="373.3828"/>
+            <ellipse cx="458.5" cy="484.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="173" x="467.5" y="488.7676">List&lt;Item&gt; getAll(DbTarget)</text>
+            <ellipse cx="458.5" cy="502.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190" x="467.5" y="506.377">void saveItem(DbTarget, Item)</text>
+            <ellipse cx="458.5" cy="519.7578" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="235" x="467.5" y="523.9863">void saveItems(DbTarget, List&lt;Item&gt;)</text>
+            <ellipse cx="458.5" cy="537.3672" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="198" x="467.5" y="541.5957">boolean delete(DbTarget, Item)</text>
+            <ellipse cx="458.5" cy="554.9766" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="467.5" y="559.2051">Item getById(DbTarget, String)</text>
+            <ellipse cx="458.5" cy="572.5859" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="285" x="467.5" y="576.8145">List&lt;Item&gt; getItemsByState(DbTarget, String)</text>
+            <ellipse cx="458.5" cy="590.1953" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="254" x="467.5" y="594.4238">String getPayloadById(DbTarget, String)</text>
+            <ellipse cx="458.5" cy="607.8047" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="467.5" y="612.0332">boolean closeConn(DbTarget)</text>
+            <ellipse cx="458.5" cy="625.4141" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="467.5" y="629.6426">boolean openConn(DbTarget)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="448.5" x2="513" y1="465.4297" y2="465.4297"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="180" x="513" y="470.6582">ItemStore Implementation</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="693" x2="757.5" y1="465.4297" y2="465.4297"/>
+        </g>
+        <!--class SqliteStore-->
+        <g id="elem_SqliteStore">
+            <rect codeLine="115" fill="#C6DAF7" height="542.1563" id="SqliteStore" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="342" x="70" y="130"/>
+            <ellipse cx="183.25" cy="151.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M186.0156,147.2266 Q186.1719,147.0078 186.3594,146.8984 Q186.5469,146.7891 186.7656,146.7891 Q187.1406,146.7891 187.375,147.0547 Q187.6094,147.3047 187.6094,147.9141 L187.6094,149.3672 Q187.6094,149.9766 187.375,150.2422 Q187.1406,150.5078 186.7656,150.5078 Q186.4219,150.5078 186.2188,150.3047 Q186.0156,150.1172 185.9063,149.6016 Q185.8594,149.2422 185.6719,149.0547 Q185.3438,148.6797 184.7344,148.4609 Q184.125,148.2422 183.5,148.2422 Q182.7344,148.2422 182.0938,148.5703 Q181.4688,148.8984 180.9688,149.6484 Q180.4844,150.3984 180.4844,151.4297 L180.4844,152.5234 Q180.4844,153.7578 181.375,154.5859 Q182.2656,155.3984 183.8594,155.3984 Q184.7969,155.3984 185.4531,155.1484 Q185.8438,154.9922 186.2656,154.5547 Q186.5313,154.2891 186.6719,154.2109 Q186.8281,154.1328 187.0313,154.1328 Q187.3594,154.1328 187.6094,154.3984 Q187.875,154.6484 187.875,154.9922 Q187.875,155.3359 187.5313,155.7422 Q187.0313,156.3203 186.2344,156.6484 Q185.1563,157.1016 183.8594,157.1016 Q182.3438,157.1016 181.1406,156.4766 Q180.1563,155.9766 179.4688,154.9141 Q178.7813,153.8359 178.7813,152.5547 L178.7813,151.3984 Q178.7813,150.0703 179.3906,148.9297 Q180.0156,147.7734 181.1094,147.1641 Q182.2031,146.5391 183.4375,146.5391 Q184.1719,146.5391 184.8125,146.7109 Q185.4688,146.8672 186.0156,147.2266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="111" x="201.75" y="147.457">«extends itemstore»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="222.75" y="164.627">SqliteStore</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="71" x2="411" y1="172.7031" y2="172.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="205.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="90" y="212.8457">Connection master, proto</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="223.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="90" y="230.4551">Logger LOGGER</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="90" y="248.0645"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="71" x2="206.5" y1="189.5078" y2="189.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="206.5" y="194.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="275.5" x2="411" y1="189.5078" y2="189.5078"/>
+            <ellipse cx="81" cy="283.0547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="251" x="90" y="287.2832">SqliteStore(String, String, String, String)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="90" y="304.8926"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="71" x2="195.5" y1="263.9453" y2="263.9453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="195.5" y="269.1738">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="286.5" x2="411" y1="263.9453" y2="263.9453"/>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="336.8828"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="118" x="90" y="344.1113">void initItemStore()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="354.4922"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="212" x="90" y="361.7207">boolean iniDatabase(Connection)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="372.1016"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="217" x="90" y="379.3301">boolean putItem(Connection, Item)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="389.7109"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="163" x="90" y="396.9395">Item parseItem(ResultSet)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="407.3203"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="257" x="90" y="414.5488">List&lt;Item&gt; consumeResultSet(ResultSet)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="424.9297"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="90" y="432.1582">List&lt;Item&gt; selectAll(Connection)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="442.5391"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="316" x="90" y="449.7676">List&lt;Item&gt; selectQuery(Connection, String, String)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="78" y="460.1484"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="236" x="90" y="467.377">boolean deleteItem(Connection, Item)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="90" y="484.9863"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="71" x2="173" y1="320.7734" y2="320.7734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="136" x="173" y="326.002">Decorator Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="309" x2="411" y1="320.7734" y2="320.7734"/>
+            <ellipse cx="81" cy="519.9766" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="173" x="90" y="524.2051">List&lt;Item&gt; getAll(DbTarget)</text>
+            <ellipse cx="81" cy="537.5859" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190" x="90" y="541.8145">void saveItem(DbTarget, Item)</text>
+            <ellipse cx="81" cy="555.1953" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="235" x="90" y="559.4238">void saveItems(DbTarget, List&lt;Item&gt;)</text>
+            <ellipse cx="81" cy="572.8047" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="198" x="90" y="577.0332">boolean delete(DbTarget, Item)</text>
+            <ellipse cx="81" cy="590.4141" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="90" y="594.6426">Item getById(DbTarget, String)</text>
+            <ellipse cx="81" cy="608.0234" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="285" x="90" y="612.252">List&lt;Item&gt; getItemsByState(DbTarget, String)</text>
+            <ellipse cx="81" cy="625.6328" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="254" x="90" y="629.8613">String getPayloadById(DbTarget, String)</text>
+            <ellipse cx="81" cy="643.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="90" y="647.4707">boolean closeConn(DbTarget)</text>
+            <ellipse cx="81" cy="660.8516" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="90" y="665.0801">boolean openConn(DbTarget)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="71" x2="151" y1="500.8672" y2="500.8672"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="180" x="151" y="506.0957">ItemStore Implementation</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="331" x2="411" y1="500.8672" y2="500.8672"/>
         </g>
         <!--link AbstractItemStore to ItemStore-->
         <g id="link_AbstractItemStore_ItemStore">
-            <path codeLine="108" d="M368.11,940.13 C388.65,959.51 410.28,980.3 430,1000 C435.24,1005.24 427.8857,997.739 433.1957,1003.119 " fill="none" id="AbstractItemStore-to-ItemStore" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
-            <polygon fill="none" points="445.84,1015.93,437.466,998.9042,428.9254,1007.3338,445.84,1015.93" style="stroke:#181818;stroke-width:1.0;"/>
+            <path codeLine="146" d="M340,1196.14 C340,1216.12 340,1218.21 340,1237.87 " fill="none" id="AbstractItemStore-to-ItemStore" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
+            <polygon fill="none" points="340,1255.87,346,1237.87,334,1237.87,340,1255.87" style="stroke:#181818;stroke-width:1.0;"/>
         </g>
         <!--link RocksDBStore to AbstractItemStore-->
         <g id="link_RocksDBStore_AbstractItemStore">
-            <path codeLine="109" d="M271.09,716.13 C272.43,737.4 272.5724,739.666 273.7224,757.826 " fill="none" id="RocksDBStore-to-AbstractItemStore" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="none" points="274.86,775.79,279.7104,757.4468,267.7344,758.2052,274.86,775.79" style="stroke:#181818;stroke-width:1.0;"/>
+            <path codeLine="147" d="M492.8,637.07 C478.1,668.43 470.6667,684.2603 456.0067,715.5503 " fill="none" id="RocksDBStore-to-AbstractItemStore" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="448.37,731.85,461.44,718.0959,450.5735,713.0047,448.37,731.85" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link SqliteStore to AbstractItemStore-->
+        <g id="link_SqliteStore_AbstractItemStore">
+            <path codeLine="148" d="M288.69,672.23 C292.2,692.14 292.6086,694.3927 296.0686,714.0427 " fill="none" id="SqliteStore-to-AbstractItemStore" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="299.19,731.77,301.9776,713.0022,290.1595,715.0832,299.19,731.77" style="stroke:#181818;stroke-width:1.0;"/>
         </g>
         <!--link ItemStore to Item-->
         <g id="link_ItemStore_Item">
-            <path codeLine="110" d="M664,1499.06 C664,1519.47 664,1527.67 664,1546.99 " fill="none" id="ItemStore-to-Item" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="none" points="664,1558.99,668,1552.99,664,1546.99,660,1552.99,664,1558.99" style="stroke:#181818;stroke-width:1.0;"/>
+            <path codeLine="149" d="M297.35,1649.29 C292.99,1669.31 291.1607,1677.6842 286.9407,1697.0842 " fill="none" id="ItemStore-to-Item" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="284.39,1708.81,289.5739,1703.7973,286.9407,1697.0842,281.7567,1702.0969,284.39,1708.81" style="stroke:#181818;stroke-width:1.0;"/>
         </g>
-        <!--link AbstractItemStore to DbTarget-->
-        <g id="link_AbstractItemStore_DbTarget">
-            <path codeLine="111" d="M280,940.18 C280,1022.78 280,1141.29 280,1203.8 " fill="none" id="AbstractItemStore-to-DbTarget" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="#181818" points="280,1209.8,284,1200.8,280,1204.8,276,1200.8,280,1209.8" style="stroke:#181818;stroke-width:1.0;"/>
+        <!--link ItemStore to DbTarget-->
+        <g id="link_ItemStore_DbTarget">
+            <path codeLine="150" d="M410.75,1649.29 C434.03,1713.68 455.561,1773.2671 469.971,1813.1471 " fill="none" id="ItemStore-to-DbTarget" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="472.01,1818.79,472.7135,1808.9663,470.3109,1814.0876,465.1896,1811.6849,472.01,1818.79" style="stroke:#181818;stroke-width:1.0;"/>
         </g>
-        <!--SRC=[hLPjRzem4FwUNt5IfHKefDAqhPEAa0W9MwLI44IJzj4aRicQn55ikgAk_tssav04d1VQ8fHOTy-TdpjVxdnvhfszy_SH3lWVFdTri15zj3qNmmt3mOgH66iViy4x7PnVQfhc-8XI8F63pZXDncdg7gT91KrT41xQ8tZH07GTUhqnOx6ttZ9CUpqkuU81hBWeV03FxGDbYE4-H6Zd4-HoRMOt8I5byTPX7WapomkPZqutNoQU-b1-TxNCom_C68ufV89LiifTFH7F1OhPZTl9h8hYbI2cr2mIhYLT6j63T5SIxLqTIZCtNUsL9zKBERjxvE2wnCfAWE5mBnsDu6pwtRIkB9dm2tX1QvurvB3N0YLfTeU2Z8CID4EKCvXwFbuWjgb3ji6OQzEBiSCttdNaQPHmIIRH4vPdA1vTO9kO_ALWFJiu4cTUQqCxjnvbGx4SdMXgaoJIDssxDpvb-nmhCZFs_SwQ41-Zy2X_0YGmnYuloaRtHQDfJ8AKOLlpCZiPfR4h5VyxNBJWSrrTHEaNKin68_XuH_M9xaBdJPLGj3kz1elMpJPfcO23d0q-tOe_uqLC666xIF7fvpX2CU-sOSTSsoZcgQo4aWY7xP0kzZ6le7QPBHiLJh32NFJBp1fgfv5yKdsSWaizD8Xy7E2GKIYtqwdrrVWYs-b-KD6iWKgXw7tWvWsk3u6aQngvEX9vDurCTKkSHwaKlNEoGM68VRZFrtkT04h5tcA9GfS4i1pVcVEP31s7sw0XuEnyu6p2VzEf32STYPOm_uNyRJwH0MRZbMqj-x1Opksv_NjXzS6Osp_bVcqolEHqgMbaoGNyp73e5b8B8hUJR-PuUbKaStmxa34dtjBazPDifhgvh07E9tbdqlKVVXWp54Kuvi4i5jPIotTHtIL43HPPLrmbIbUAr9s97H8ZRWGpp3R4fKMViXtVO-Pi-4gYPAuxSgzCrBsMwDnbNfatMLsYGxQrSoI_e2Zdd0gXd6OgO8qBXQbgY2bKoaPz7APg83K2AtqtpPQscFhUMKGeMsOHKEoKIjLXFvJVvAdzJjV_ZHflbje9t_XWKEsmYeNMUBKT34WTovF37Wn6BJkbzXy0]-->
+        <!--SRC=[xLVVZzf647xtNp4IKW8NGwIgJVfmGe8pN4yw0WKKgQhwiDXpu9xnkjxr9LQQ_psxQw_N1jj0maCVYavdi_FDpvrlTddxskhyuESQ1iGV_DGRm9gmvxNl8JnmtAyuZT6wZeCVDF3whMLPRa0O0nfl1ro4oKMO0r-4oMIO0ndmxNe8Noo0mG1kRaQSn_ucuSXkRiIAMEx3IYo5M_0z6nWd76s8I1fGuWcfrhkZ8UDnudAVXbhpZQf7jsTUCqisL9yzIrkvHyunPl0ALjcRCVL2VGyOyWUlgxNAooiPMAraaSLQaUKPRPMvob9Xwd1Lc-bPNqLH_L14zqHSR2kiwWIulIrMXqFeJ7zr9kydgk1lu0lPYAeHbtyjXQJKFf2zZg4MD2DCH33r0rmGlcj3deDnDeuVeoiSfrsr6nLSLadoWceFdSsQn4B7LblQ0xwBwIS6ayykHdBtMxLPIVtHP_nMBWvF6p5O6Uue20exHrb9b0IDKx6tnbk-_HTwKZ6FqwmbBZTcAfotJtrGXseRIWCa8NWOOCNl9HLFGtTDipRfVg_U9Ljqh7rQHoVg4dU7bsk9__4YffpoDAfXYy5HXc90XSrDew4qml00AUckWT0wJ4SvgiBzVHJW7aFEe3e6ffDVnZ-hCL0CMAQ9hnObPy4pnBHXhmhaZ8quaiaxOorwfEwp4ahEt-r86680J-Qza4cW4XGQIn9wT0_BqGTdFYlciSdaGUT1gXE-UMoTc5LDmyUCxZCR-3kwzknMhUtFgkIm1tNf77HfJ4HIC4E-erxfFDMwF4vb_OtpXtdPlG7koNFkNU9b8LKKdIoHJyJdKneVc987L9n47Bt2fdtWe5CuYCMW8Gmp4ygrifpDdoMwISpy5mpIhjp0sd0bIp1CzatSq7o2pftuJAUgy_DIJQJUHn8avj81C1kjrfEb3OlbV3rV_x6Os32UhtzJZbfPk1H9C6Ui2GZucMFebUW7adztxvpHz7qvYkERZ-95PYqdc9qnBfVDLUeYaEofLpT_YsQUaIX2iVUZnMAoj8oNkdkIxATor0tNfCfrwLIN5JO53pB04t9t9xzrSr-z7AOEp48giMelkXLr3LPz4ILgncb3DcnIZd_-fPyPrWHvQef8k-q7l25jmosa3jDmryYXxMTikJIDTudQqDjl3BdA-VU2wgofEyVAY8RZgvKlgty2yULAT97EKJLtBMCUwNOhMF4ulxy_YnMbsAv3Ydom-Q5lJkbkBnVfAWgfGpZPY8dODGaTeZG93ABSE_siTo8IiwnXbyYIWA_qdlNBRUEAz9Cz5f1MC1CDwog67CTs1FizGN6gbaCyB5irgOmDBNdzp-h_3AlFleKE1lyEJ_vEjSuvJllzPaj7Vgqp1ivL39fC-ttQbkWv1eQdRZ2MzGq0]-->
     </g>
 </svg>

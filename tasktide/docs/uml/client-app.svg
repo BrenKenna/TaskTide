@@ -1,0 +1,1156 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="2276px" preserveAspectRatio="none" style="width:7972px;height:2276px;background:#FFFFFF;" version="1.1" viewBox="0 0 7972 2276" width="7972px" zoomAndPan="magnify">
+    <defs/>
+    <g>
+        <!--cluster org-->
+        <g id="cluster_org">
+            <path d="M8.5,6 L33.5,6 A3.75,3.75 0 0 1 36,8.5 L43,29.6094 L7962.5,29.6094 A2.5,2.5 0 0 1 7965,32.1094 L7965,2266.5 A2.5,2.5 0 0 1 7962.5,2269 L8.5,2269 A2.5,2.5 0 0 1 6,2266.5 L6,8.5 A2.5,2.5 0 0 1 8.5,6 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="6" x2="43" y1="29.6094" y2="29.6094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="24" x="10" y="22.5332">org</text>
+        </g>
+        <!--cluster tasktide-->
+        <g id="cluster_tasktide">
+            <path d="M32.5,50 L89.5,50 A3.75,3.75 0 0 1 92,52.5 L99,73.6094 L7938.5,73.6094 A2.5,2.5 0 0 1 7941,76.1094 L7941,2242.5 A2.5,2.5 0 0 1 7938.5,2245 L32.5,2245 A2.5,2.5 0 0 1 30,2242.5 L30,52.5 A2.5,2.5 0 0 1 32.5,50 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="30" x2="99" y1="73.6094" y2="73.6094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="56" x="34" y="66.5332">tasktide</text>
+        </g>
+        <!--cluster tasktide-->
+        <g id="cluster_tasktide">
+            <path d="M56.5,94 L113.5,94 A3.75,3.75 0 0 1 116,96.5 L123,117.6094 L7616.5,117.6094 A2.5,2.5 0 0 1 7619,120.1094 L7619,2218.5 A2.5,2.5 0 0 1 7616.5,2221 L56.5,2221 A2.5,2.5 0 0 1 54,2218.5 L54,96.5 A2.5,2.5 0 0 1 56.5,94 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="54" x2="123" y1="117.6094" y2="117.6094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="56" x="58" y="110.5332">tasktide</text>
+        </g>
+        <!--cluster client-->
+        <g id="cluster_client">
+            <path d="M80.5,138 L120.5,138 A3.75,3.75 0 0 1 123,140.5 L130,161.6094 L3054.5,161.6094 A2.5,2.5 0 0 1 3057,164.1094 L3057,1309.5 A2.5,2.5 0 0 1 3054.5,1312 L80.5,1312 A2.5,2.5 0 0 1 78,1309.5 L78,140.5 A2.5,2.5 0 0 1 80.5,138 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="78" x2="130" y1="161.6094" y2="161.6094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="39" x="82" y="154.5332">client</text>
+        </g>
+        <!--cluster containerprovider-->
+        <g id="cluster_containerprovider">
+            <path d="M3524.5,288.5 L3653.5,288.5 A3.75,3.75 0 0 1 3656,291 L3663,312.1094 L5058.5,312.1094 A2.5,2.5 0 0 1 5061,314.6094 L5061,1253 A2.5,2.5 0 0 1 5058.5,1255.5 L3524.5,1255.5 A2.5,2.5 0 0 1 3522,1253 L3522,291 A2.5,2.5 0 0 1 3524.5,288.5 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="3522" x2="3663" y1="312.1094" y2="312.1094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="128" x="3526" y="305.0332">containerprovider</text>
+        </g>
+        <!--cluster configurer-->
+        <g id="cluster_configurer">
+            <path d="M6521.5,248 L6596.5,248 A3.75,3.75 0 0 1 6599,250.5 L6606,271.6094 L7592.5,271.6094 A2.5,2.5 0 0 1 7595,274.1094 L7595,1759.5 A2.5,2.5 0 0 1 7592.5,1762 L6521.5,1762 A2.5,2.5 0 0 1 6519,1759.5 L6519,250.5 A2.5,2.5 0 0 1 6521.5,248 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="6519" x2="6606" y1="271.6094" y2="271.6094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="74" x="6523" y="264.5332">configurer</text>
+        </g>
+        <!--cluster parser-->
+        <g id="cluster_parser">
+            <path d="M5087.5,186.5 L5134.5,186.5 A3.75,3.75 0 0 1 5137,189 L5144,210.1094 L6492.5,210.1094 A2.5,2.5 0 0 1 6495,212.6094 L6495,2194.5 A2.5,2.5 0 0 1 6492.5,2197 L5087.5,2197 A2.5,2.5 0 0 1 5085,2194.5 L5085,189 A2.5,2.5 0 0 1 5087.5,186.5 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="5085" x2="5144" y1="210.1094" y2="210.1094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="46" x="5089" y="203.0332">parser</text>
+        </g>
+        <!--cluster model-->
+        <g id="cluster_model">
+            <path d="M5111.5,230.5 L5155.5,230.5 A3.75,3.75 0 0 1 5158,233 L5165,254.1094 L6468.5,254.1094 A2.5,2.5 0 0 1 6471,256.6094 L6471,1441.5 A2.5,2.5 0 0 1 6468.5,1444 L5111.5,1444 A2.5,2.5 0 0 1 5109,1441.5 L5109,233 A2.5,2.5 0 0 1 5111.5,230.5 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="5109" x2="5165" y1="254.1094" y2="254.1094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="43" x="5113" y="247.0332">model</text>
+        </g>
+        <!--cluster core-->
+        <g id="cluster_core">
+            <path d="M7645.5,1035.5 L7678.5,1035.5 A3.75,3.75 0 0 1 7681,1038 L7688,1059.1094 L7914.5,1059.1094 A2.5,2.5 0 0 1 7917,1061.6094 L7917,1201 A2.5,2.5 0 0 1 7914.5,1203.5 L7645.5,1203.5 A2.5,2.5 0 0 1 7643,1201 L7643,1038 A2.5,2.5 0 0 1 7645.5,1035.5 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="7643" x2="7688" y1="1059.1094" y2="1059.1094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="32" x="7647" y="1052.0332">core</text>
+        </g>
+        <!--cluster manager-->
+        <g id="cluster_manager">
+            <path d="M7669.5,1079.5 L7731.5,1079.5 A3.75,3.75 0 0 1 7734,1082 L7741,1103.1094 L7890.5,1103.1094 A2.5,2.5 0 0 1 7893,1105.6094 L7893,1177 A2.5,2.5 0 0 1 7890.5,1179.5 L7669.5,1179.5 A2.5,2.5 0 0 1 7667,1177 L7667,1082 A2.5,2.5 0 0 1 7669.5,1079.5 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="7667" x2="7741" y1="1103.1094" y2="1103.1094"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="61" x="7671" y="1096.0332">manager</text>
+        </g>
+        <!--class TaskTide-->
+        <g id="elem_TaskTide">
+            <rect codeLine="14" fill="#F1F1F1" height="238.7969" id="TaskTide" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="427" x="3075.5" y="363"/>
+            <ellipse cx="3249.25" cy="384.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M3252.0156,380.2266 Q3252.1719,380.0078 3252.3594,379.8984 Q3252.5469,379.7891 3252.7656,379.7891 Q3253.1406,379.7891 3253.375,380.0547 Q3253.6094,380.3047 3253.6094,380.9141 L3253.6094,382.3672 Q3253.6094,382.9766 3253.375,383.2422 Q3253.1406,383.5078 3252.7656,383.5078 Q3252.4219,383.5078 3252.2188,383.3047 Q3252.0156,383.1172 3251.9063,382.6016 Q3251.8594,382.2422 3251.6719,382.0547 Q3251.3438,381.6797 3250.7344,381.4609 Q3250.125,381.2422 3249.5,381.2422 Q3248.7344,381.2422 3248.0938,381.5703 Q3247.4688,381.8984 3246.9688,382.6484 Q3246.4844,383.3984 3246.4844,384.4297 L3246.4844,385.5234 Q3246.4844,386.7578 3247.375,387.5859 Q3248.2656,388.3984 3249.8594,388.3984 Q3250.7969,388.3984 3251.4531,388.1484 Q3251.8438,387.9922 3252.2656,387.5547 Q3252.5313,387.2891 3252.6719,387.2109 Q3252.8281,387.1328 3253.0313,387.1328 Q3253.3594,387.1328 3253.6094,387.3984 Q3253.875,387.6484 3253.875,387.9922 Q3253.875,388.3359 3253.5313,388.7422 Q3253.0313,389.3203 3252.2344,389.6484 Q3251.1563,390.1016 3249.8594,390.1016 Q3248.3438,390.1016 3247.1406,389.4766 Q3246.1563,388.9766 3245.4688,387.9141 Q3244.7813,386.8359 3244.7813,385.5547 L3244.7813,384.3984 Q3244.7813,383.0703 3245.3906,381.9297 Q3246.0156,380.7734 3247.1094,380.1641 Q3248.2031,379.5391 3249.4375,379.5391 Q3250.1719,379.5391 3250.8125,379.7109 Q3251.4688,379.8672 3252.0156,380.2266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="75" x="3267.75" y="380.457">«Application»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="3275.75" y="397.627">TaskTide</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="3076.5" x2="3501.5" y1="405.7031" y2="405.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3083.5" y="438.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146" x="3095.5" y="445.8457">static Logger LOGGER</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="3095.5" y="463.4551"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3076.5" x2="3254.5" y1="422.5078" y2="422.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="3254.5" y="427.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3323.5" x2="3501.5" y1="422.5078" y2="422.5078"/>
+            <ellipse cx="3086.5" cy="498.4453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="199" x="3095.5" y="502.6738">static String fetchSplashString()</text>
+            <ellipse cx="3086.5" cy="516.0547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="3095.5" y="520.2832">static void printSplash()</text>
+            <ellipse cx="3086.5" cy="533.6641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="401" x="3095.5" y="537.8926">static CdiContainerProvider configureCdiInstance(CdiProviders)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="3095.5" y="555.502"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3076.5" x2="3217" y1="479.3359" y2="479.3359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="144" x="3217" y="484.5645">Supporting Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3361" x2="3501.5" y1="479.3359" y2="479.3359"/>
+            <ellipse cx="3086.5" cy="590.4922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="3095.5" y="594.7207">static void main(String[])</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3076.5" x2="3221" y1="571.3828" y2="571.3828"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="136" x="3221" y="576.6113">Application Method</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3357" x2="3501.5" y1="571.3828" y2="571.3828"/>
+        </g>
+        <!--class TaskTideClient-->
+        <g id="elem_TaskTideClient">
+            <rect codeLine="43" fill="#D7E7F7" height="313.2344" id="TaskTideClient" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="405" x="2249.5" y="983"/>
+            <ellipse cx="2399.75" cy="1004.3516" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M2401.9375,1006.1172 L2397.7969,1006.1172 L2397.375,1007.1484 L2397.7969,1007.1484 Q2398.4063,1007.1484 2398.6719,1007.3828 Q2398.9375,1007.6172 2398.9375,1008.0078 Q2398.9375,1008.3828 2398.6719,1008.6172 Q2398.4063,1008.8516 2397.7969,1008.8516 L2395.5,1008.8516 Q2394.8906,1008.8516 2394.6406,1008.6172 Q2394.375,1008.3828 2394.375,1007.9922 Q2394.375,1007.6172 2394.6563,1007.3828 Q2394.9219,1007.1328 2395.5469,1007.1484 L2398.2188,1000.4922 L2397.1094,1000.4922 Q2396.5,1000.4922 2396.2344,1000.2578 Q2395.9688,1000.0234 2395.9688,999.6328 Q2395.9688,999.2578 2396.2344,999.0234 Q2396.5,998.7891 2397.1094,998.7891 L2400.7813,998.7891 L2404.1719,1007.1484 Q2404.7656,1007.1484 2404.9531,1007.2891 Q2405.3438,1007.5547 2405.3438,1008.0078 Q2405.3438,1008.3828 2405.0781,1008.6172 Q2404.8281,1008.8516 2404.2188,1008.8516 L2401.9219,1008.8516 Q2401.3125,1008.8516 2401.0469,1008.6172 Q2400.7813,1008.3828 2400.7813,1007.9922 Q2400.7813,1007.6172 2401.0469,1007.3828 Q2401.3125,1007.1484 2401.9219,1007.1484 L2402.3438,1007.1484 L2401.9375,1006.1172 Z M2401.2188,1004.4141 L2399.8594,1001.0391 L2398.4844,1004.4141 L2401.2188,1004.4141 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="90" x="2423.25" y="1000.457">«abstract client»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="96" x="2420.25" y="1017.627">TaskTideClient</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="2250.5" x2="2653.5" y1="1025.7031" y2="1025.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2257.5" y="1058.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="280" x="2269.5" y="1065.8457">TaskTideServiceManager taskTideManager;</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2257.5" y="1076.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="2269.5" y="1083.4551">ClientConfigMap config;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="2269.5" y="1101.0645"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2250.5" x2="2417.5" y1="1042.5078" y2="1042.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="2417.5" y="1047.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2486.5" x2="2653.5" y1="1042.5078" y2="1042.5078"/>
+            <ellipse cx="2260.5" cy="1136.0547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="379" x="2269.5" y="1140.2832">TaskTideClient(TaskTideServiceManager, ClientConfigMap)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="2269.5" y="1157.8926"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2250.5" x2="2406.5" y1="1116.9453" y2="1116.9453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="2406.5" y="1122.1738">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2497.5" x2="2653.5" y1="1116.9453" y2="1116.9453"/>
+            <ellipse cx="2260.5" cy="1192.8828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="2269.5" y="1197.1113">void runClient()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="2269.5" y="1214.7207"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2250.5" x2="2366" y1="1173.7734" y2="1173.7734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="172" x="2366" y="1179.002">Implementation Wrapper</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2538" x2="2653.5" y1="1173.7734" y2="1173.7734"/>
+            <ellipse cx="2260.5" cy="1249.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="134" x="2269.5" y="1253.9395">void configureClient()</text>
+            <ellipse cx="2260.5" cy="1267.3203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="156" x="2269.5" y="1271.5488">void performClientTask()</text>
+            <ellipse cx="2260.5" cy="1284.9297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="91" x="2269.5" y="1289.1582">void cleanUp()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2250.5" x2="2391.5" y1="1230.6016" y2="1230.6016"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="121" x="2391.5" y="1235.8301">Interface Method</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2512.5" x2="2653.5" y1="1230.6016" y2="1230.6016"/>
+        </g>
+        <!--class TaskTideEngineClient-->
+        <g id="elem_TaskTideEngineClient">
+            <rect codeLine="61" fill="#C6DAF7" height="616.5938" id="TaskTideEngineClient" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="719" x="1765.5" y="174"/>
+            <ellipse cx="2051.25" cy="195.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M2054.0156,191.2266 Q2054.1719,191.0078 2054.3594,190.8984 Q2054.5469,190.7891 2054.7656,190.7891 Q2055.1406,190.7891 2055.375,191.0547 Q2055.6094,191.3047 2055.6094,191.9141 L2055.6094,193.3672 Q2055.6094,193.9766 2055.375,194.2422 Q2055.1406,194.5078 2054.7656,194.5078 Q2054.4219,194.5078 2054.2188,194.3047 Q2054.0156,194.1172 2053.9063,193.6016 Q2053.8594,193.2422 2053.6719,193.0547 Q2053.3438,192.6797 2052.7344,192.4609 Q2052.125,192.2422 2051.5,192.2422 Q2050.7344,192.2422 2050.0938,192.5703 Q2049.4688,192.8984 2048.9688,193.6484 Q2048.4844,194.3984 2048.4844,195.4297 L2048.4844,196.5234 Q2048.4844,197.7578 2049.375,198.5859 Q2050.2656,199.3984 2051.8594,199.3984 Q2052.7969,199.3984 2053.4531,199.1484 Q2053.8438,198.9922 2054.2656,198.5547 Q2054.5313,198.2891 2054.6719,198.2109 Q2054.8281,198.1328 2055.0313,198.1328 Q2055.3594,198.1328 2055.6094,198.3984 Q2055.875,198.6484 2055.875,198.9922 Q2055.875,199.3359 2055.5313,199.7422 Q2055.0313,200.3203 2054.2344,200.6484 Q2053.1563,201.1016 2051.8594,201.1016 Q2050.3438,201.1016 2049.1406,200.4766 Q2048.1563,199.9766 2047.4688,198.9141 Q2046.7813,197.8359 2046.7813,196.5547 L2046.7813,195.3984 Q2046.7813,194.0703 2047.3906,192.9297 Q2048.0156,191.7734 2049.1094,191.1641 Q2050.2031,190.5391 2051.4375,190.5391 Q2052.1719,190.5391 2052.8125,190.7109 Q2053.4688,190.8672 2054.0156,191.2266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="89" x="2096.75" y="191.457">«extends client»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="2071.75" y="208.627">TaskTideEngineClient</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="1766.5" x2="2483.5" y1="216.7031" y2="216.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="249.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="1785.5" y="256.8457">Logger LOGGER</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="267.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="266" x="1785.5" y="274.4551">TaskTideWorkerUnitProvider unitProvider;</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="284.8359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="245" x="1785.5" y="292.0645">int workItemThreads, itemTaskThreads</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="302.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="214" x="1785.5" y="309.6738">int workThreshold, taskThreshold;</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="320.0547"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="269" x="1785.5" y="327.2832">TaskTideProcessor&lt;WorkItem&gt; processor;</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="337.6641"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="256" x="1785.5" y="344.8926">TaskTideExecutor&lt;WorkItem&gt; workExec;</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="355.2734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="268" x="1785.5" y="362.502">TaskTideEngineObserver&lt;WorkItem&gt; obs;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1785.5" y="380.1113"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1766.5" x2="2090.5" y1="233.5078" y2="233.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="2090.5" y="238.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2159.5" x2="2483.5" y1="233.5078" y2="233.5078"/>
+            <ellipse cx="1776.5" cy="415.1016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="423" x="1785.5" y="419.3301">TaskTideEngineClient(TaskTideServiceManager, ClientConfigMap)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1785.5" y="436.9395"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1766.5" x2="2079.5" y1="395.9922" y2="395.9922"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="2079.5" y="401.2207">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2170.5" x2="2483.5" y1="395.9922" y2="395.9922"/>
+            <ellipse cx="1776.5" cy="471.9297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="1785.5" y="476.1582">void runClient()</text>
+            <ellipse cx="1776.5" cy="489.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135" x="1785.5" y="493.7676">void configureClient()</text>
+            <ellipse cx="1776.5" cy="507.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="156" x="1785.5" y="511.377">void performClientTask()</text>
+            <ellipse cx="1776.5" cy="524.7578" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="1785.5" y="528.9863">void cleanUp()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1785.5" y="546.5957"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1766.5" x2="2017.5" y1="452.8203" y2="452.8203"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="215" x="2017.5" y="458.0488">TaskTideClient Implementation</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2232.5" x2="2483.5" y1="452.8203" y2="452.8203"/>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="578.5859"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="361" x="1785.5" y="585.8145">ExecutorService initializeAndConfigureExecutorServices()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="596.1953"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="509" x="1785.5" y="603.4238">TaskTideEngineObserver&lt;WorkItem&gt; configureWorkItemEngineObserverChain()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="613.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="613" x="1785.5" y="621.0332">TaskTideExecutor&lt;WorkItem&gt; configureWorkItemExecutor(TaskTideEngineObserver&lt;WorkItem&gt;)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1773.5" y="631.4141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="693" x="1785.5" y="638.6426">TaskTideProcessor&lt;WorkItem&gt; configureWorkItemProcessor(ExecutorService, TaskTideExecutor&lt;WorkItem&gt;)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1785.5" y="656.252"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1766.5" x2="2032.5" y1="562.4766" y2="562.4766"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="185" x="2032.5" y="567.7051">TaskTideClient Decorators</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2217.5" x2="2483.5" y1="562.4766" y2="562.4766"/>
+            <ellipse cx="1776.5" cy="691.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="314" x="1785.5" y="695.4707">void waitOnExecutorTrackerWorkItem(int, Logger)</text>
+            <ellipse cx="1776.5" cy="708.8516" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="218" x="1785.5" y="713.0801">int countNotActive(List&lt;ItemTask&gt;)</text>
+            <ellipse cx="1776.5" cy="726.4609" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="224" x="1785.5" y="730.6895">int countNonActive(List&lt;WorkItem&gt;)</text>
+            <ellipse cx="1776.5" cy="744.0703" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="318" x="1785.5" y="748.2988">void fetchExecutionTimes(List&lt;ItemTask&gt;, Logger)</text>
+            <ellipse cx="1776.5" cy="761.6797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="379" x="1785.5" y="765.9082">void fetchExecutionTimesWorkItem(List&lt;WorkItem&gt;, Logger)</text>
+            <ellipse cx="1776.5" cy="779.2891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="1785.5" y="783.5176">String mapToJsonString(Object)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1766.5" x2="2068.5" y1="672.1328" y2="672.1328"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="113" x="2068.5" y="677.3613">Helper Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2181.5" x2="2483.5" y1="672.1328" y2="672.1328"/>
+        </g>
+        <!--class TaskTideManagerClient-->
+        <g id="elem_TaskTideManagerClient">
+            <rect codeLine="96" fill="#C6DAF7" height="383.6719" id="TaskTideManagerClient" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="461" x="94.5" y="290.5"/>
+            <ellipse cx="245.25" cy="311.8516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M248.0156,307.7266 Q248.1719,307.5078 248.3594,307.3984 Q248.5469,307.2891 248.7656,307.2891 Q249.1406,307.2891 249.375,307.5547 Q249.6094,307.8047 249.6094,308.4141 L249.6094,309.8672 Q249.6094,310.4766 249.375,310.7422 Q249.1406,311.0078 248.7656,311.0078 Q248.4219,311.0078 248.2188,310.8047 Q248.0156,310.6172 247.9063,310.1016 Q247.8594,309.7422 247.6719,309.5547 Q247.3438,309.1797 246.7344,308.9609 Q246.125,308.7422 245.5,308.7422 Q244.7344,308.7422 244.0938,309.0703 Q243.4688,309.3984 242.9688,310.1484 Q242.4844,310.8984 242.4844,311.9297 L242.4844,313.0234 Q242.4844,314.2578 243.375,315.0859 Q244.2656,315.8984 245.8594,315.8984 Q246.7969,315.8984 247.4531,315.6484 Q247.8438,315.4922 248.2656,315.0547 Q248.5313,314.7891 248.6719,314.7109 Q248.8281,314.6328 249.0313,314.6328 Q249.3594,314.6328 249.6094,314.8984 Q249.875,315.1484 249.875,315.4922 Q249.875,315.8359 249.5313,316.2422 Q249.0313,316.8203 248.2344,317.1484 Q247.1563,317.6016 245.8594,317.6016 Q244.3438,317.6016 243.1406,316.9766 Q242.1563,316.4766 241.4688,315.4141 Q240.7813,314.3359 240.7813,313.0547 L240.7813,311.8984 Q240.7813,310.5703 241.3906,309.4297 Q242.0156,308.2734 243.1094,307.6641 Q244.2031,307.0391 245.4375,307.0391 Q246.1719,307.0391 246.8125,307.2109 Q247.4688,307.3672 248.0156,307.7266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="89" x="296.75" y="307.957">«extends client»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="265.75" y="325.127">TaskTideManagerClient</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="95.5" x2="554.5" y1="333.2031" y2="333.2031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="366.1172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="114.5" y="373.3457">Logger LOGGER</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="383.7266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="144" x="114.5" y="390.9551">ArgumentMap argMap;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="114.5" y="408.5645"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="95.5" x2="290.5" y1="350.0078" y2="350.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="290.5" y="355.2363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="359.5" x2="554.5" y1="350.0078" y2="350.0078"/>
+            <ellipse cx="105.5" cy="443.5547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="435" x="114.5" y="447.7832">TaskTideManagerClient(TaskTideServiceManager, ClientConfigMap)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="114.5" y="465.3926"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="95.5" x2="279.5" y1="424.4453" y2="424.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="279.5" y="429.6738">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="370.5" x2="554.5" y1="424.4453" y2="424.4453"/>
+            <ellipse cx="105.5" cy="500.3828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="114.5" y="504.6113">void runClient()</text>
+            <ellipse cx="105.5" cy="517.9922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135" x="114.5" y="522.2207">void configureClient()</text>
+            <ellipse cx="105.5" cy="535.6016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="156" x="114.5" y="539.8301">void performClientTask()</text>
+            <ellipse cx="105.5" cy="553.2109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="114.5" y="557.4395">void cleanUp()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="114.5" y="575.0488"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="95.5" x2="217.5" y1="481.2734" y2="481.2734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="215" x="217.5" y="486.502">TaskTideClient Implementation</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="432.5" x2="554.5" y1="481.2734" y2="481.2734"/>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="607.0391"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="234" x="114.5" y="614.2676">String parseFilePath(ManagerAction)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="624.6484"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="216" x="114.5" y="631.877">List&lt;WorkItem&gt; importJson(String)</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="642.2578"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="287" x="114.5" y="649.4863">List&lt;WorkItem&gt; importFile throws IOException</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="102.5" y="659.8672"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="114.5" y="667.0957">void handleImport()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="95.5" x2="232.5" y1="590.9297" y2="590.9297"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="185" x="232.5" y="596.1582">TaskTideClient Decorators</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="417.5" x2="554.5" y1="590.9297" y2="590.9297"/>
+        </g>
+        <!--class TaskTideClientType-->
+        <g id="elem_TaskTideClientType">
+            <rect codeLine="118" fill="#CCCCFF" height="333.75" id="TaskTideClientType" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="534" x="1196" y="315.5"/>
+            <ellipse cx="1395.25" cy="331.5" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M1394.1094,332.2969 L1394.1094,334.7969 L1398.4375,334.7969 L1398.4375,333.875 Q1398.4375,333.2656 1398.6719,333 Q1398.9219,332.7344 1399.2969,332.7344 Q1399.6719,332.7344 1399.9063,333 Q1400.1406,333.2656 1400.1406,333.875 L1400.1406,336.5 L1392.1406,336.5 Q1391.5156,336.5 1391.25,336.2656 Q1391,336.0313 1391,335.6406 Q1391,335.2656 1391.2656,335.0313 Q1391.5313,334.7969 1392.1406,334.7969 L1392.4063,334.7969 L1392.4063,328.1406 L1392.1406,328.1406 Q1391.5156,328.1406 1391.25,327.9063 Q1391,327.6719 1391,327.2813 Q1391,326.9063 1391.25,326.6719 Q1391.5156,326.4375 1392.1406,326.4375 L1399.7656,326.4375 L1399.7656,329.0313 Q1399.7656,329.6406 1399.5313,329.9063 Q1399.3125,330.1563 1398.9219,330.1563 Q1398.5469,330.1563 1398.3125,329.9063 Q1398.0781,329.6406 1398.0781,329.0313 L1398.0781,328.1406 L1394.1094,328.1406 L1394.1094,330.5938 L1395.5938,330.5938 Q1395.5938,329.9375 1395.7188,329.75 Q1395.9844,329.3438 1396.4531,329.3438 Q1396.8281,329.3438 1397.0625,329.6094 Q1397.2969,329.8594 1397.2969,330.4688 L1397.2969,332.4375 Q1397.2969,332.9844 1397.1719,333.1719 Q1396.9063,333.5625 1396.4531,333.5625 Q1395.9844,333.5625 1395.7188,333.1563 Q1395.5938,332.9688 1395.5938,332.2969 L1394.1094,332.2969 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127" x="1415.75" y="337.2285">TaskTideClientType</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="1197" x2="1729" y1="347.5" y2="347.5"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="56" x="1202" y="387.6426">GLOBAL</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="50" x="1202" y="405.252">ENGINE</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="1202" y="422.8613">MANAGER</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1202" y="440.4707"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1197" x2="1334.5" y1="364.3047" y2="364.3047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="257" x="1334.5" y="369.5332">Enum Constants Implement Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1591.5" x2="1729" y1="364.3047" y2="364.3047"/>
+            <ellipse cx="1207" cy="475.4609" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="200" x="1216" y="479.6895">abstract Class getConfigClass()</text>
+            <ellipse cx="1207" cy="493.0703" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="508" x="1216" y="497.2988">abstract TaskTideClient makeClient(TaskTideServiceManager, ClientConfigMap)</text>
+            <ellipse cx="1207" cy="510.6797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="203" x="1216" y="514.9082">abstract boolean isClient(String)</text>
+            <ellipse cx="1207" cy="528.2891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="293" x="1216" y="532.5176">abstract boolean isClient(TaskTideClientType)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="1216" y="550.127"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1197" x2="1401" y1="456.3516" y2="456.3516"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="124" x="1401" y="461.5801">Strategy Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1525" x2="1729" y1="456.3516" y2="456.3516"/>
+            <ellipse cx="1207" cy="585.1172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="241" x="1216" y="589.3457">static int indexOf(TaskTideClientType)</text>
+            <ellipse cx="1207" cy="602.7266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="1216" y="606.9551">static int indexOf(String)</text>
+            <ellipse cx="1207" cy="620.3359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="201" x="1216" y="624.5645">static boolean hasQuery(String)</text>
+            <ellipse cx="1207" cy="637.9453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="235" x="1216" y="642.1738">static TaskTideClientType get(String)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1197" x2="1410.5" y1="566.0078" y2="566.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="105" x="1410.5" y="571.2363">Enum Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="1515.5" x2="1729" y1="566.0078" y2="566.0078"/>
+        </g>
+        <!--class TaskTideClientUtility-->
+        <g id="elem_TaskTideClientUtility">
+            <rect codeLine="138" fill="#FFFFE0" height="280.9219" id="TaskTideClientUtility" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="570" x="591" y="342"/>
+            <ellipse cx="807.75" cy="358" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M810.5156,353.875 Q810.6719,353.6563 810.8594,353.5469 Q811.0469,353.4375 811.2656,353.4375 Q811.6406,353.4375 811.875,353.7031 Q812.1094,353.9531 812.1094,354.5625 L812.1094,356.0156 Q812.1094,356.625 811.875,356.8906 Q811.6406,357.1563 811.2656,357.1563 Q810.9219,357.1563 810.7188,356.9531 Q810.5156,356.7656 810.4063,356.25 Q810.3594,355.8906 810.1719,355.7031 Q809.8438,355.3281 809.2344,355.1094 Q808.625,354.8906 808,354.8906 Q807.2344,354.8906 806.5938,355.2188 Q805.9688,355.5469 805.4688,356.2969 Q804.9844,357.0469 804.9844,358.0781 L804.9844,359.1719 Q804.9844,360.4063 805.875,361.2344 Q806.7656,362.0469 808.3594,362.0469 Q809.2969,362.0469 809.9531,361.7969 Q810.3438,361.6406 810.7656,361.2031 Q811.0313,360.9375 811.1719,360.8594 Q811.3281,360.7813 811.5313,360.7813 Q811.8594,360.7813 812.1094,361.0469 Q812.375,361.2969 812.375,361.6406 Q812.375,361.9844 812.0313,362.3906 Q811.5313,362.9688 810.7344,363.2969 Q809.6563,363.75 808.3594,363.75 Q806.8438,363.75 805.6406,363.125 Q804.6563,362.625 803.9688,361.5625 Q803.2813,360.4844 803.2813,359.2031 L803.2813,358.0469 Q803.2813,356.7188 803.8906,355.5781 Q804.5156,354.4219 805.6094,353.8125 Q806.7031,353.1875 807.9375,353.1875 Q808.6719,353.1875 809.3125,353.3594 Q809.9688,353.5156 810.5156,353.875 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="828.25" y="363.7285">TaskTideClientUtility</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="592" x2="1160" y1="374" y2="374"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="599" y="406.9141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146" x="611" y="414.1426">static Logger LOGGER</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="599" y="424.5234"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176" x="611" y="431.752">static Jsonb JSON_PRETTY</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="599" y="442.1328"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="611" y="449.3613">static Jsonb JSON</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="611" y="466.9707"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="592" x2="841.5" y1="390.8047" y2="390.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="841.5" y="396.0332">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="910.5" x2="1160" y1="390.8047" y2="390.8047"/>
+            <ellipse cx="602" cy="501.9609" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="239" x="611" y="506.1895">static String mapToJsonString(Object)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="611" y="523.7988"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="592" x2="793.5" y1="482.8516" y2="482.8516"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="165" x="793.5" y="488.0801">Generic Utility Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="958.5" x2="1160" y1="482.8516" y2="482.8516"/>
+            <ellipse cx="602" cy="558.7891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="364" x="611" y="563.0176">static TaskTideClientType configureClient(ArgumentTree)</text>
+            <ellipse cx="602" cy="576.3984" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="352" x="611" y="580.627">static RepositoryType fetchRepoType(ClientConfigMap)</text>
+            <ellipse cx="602" cy="594.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="544" x="611" y="598.2363">static TaskTideServiceManager fetchManager(CdiContainerProvider, RepositoryType)</text>
+            <ellipse cx="602" cy="611.6172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="359" x="611" y="615.8457">static TaskTideServiceManager fetchManager(Template)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="592" x2="814.5" y1="539.6797" y2="539.6797"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="123" x="814.5" y="544.9082">Aids construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="937.5" x2="1160" y1="539.6797" y2="539.6797"/>
+        </g>
+        <!--class ClientConfigMap-->
+        <g id="elem_ClientConfigMap">
+            <rect codeLine="155" fill="#F1F1F1" height="263.3125" id="ClientConfigMap" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="521" x="2519.5" y="351"/>
+            <ellipse cx="2723.75" cy="367" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M2726.5156,362.875 Q2726.6719,362.6563 2726.8594,362.5469 Q2727.0469,362.4375 2727.2656,362.4375 Q2727.6406,362.4375 2727.875,362.7031 Q2728.1094,362.9531 2728.1094,363.5625 L2728.1094,365.0156 Q2728.1094,365.625 2727.875,365.8906 Q2727.6406,366.1563 2727.2656,366.1563 Q2726.9219,366.1563 2726.7188,365.9531 Q2726.5156,365.7656 2726.4063,365.25 Q2726.3594,364.8906 2726.1719,364.7031 Q2725.8438,364.3281 2725.2344,364.1094 Q2724.625,363.8906 2724,363.8906 Q2723.2344,363.8906 2722.5938,364.2188 Q2721.9688,364.5469 2721.4688,365.2969 Q2720.9844,366.0469 2720.9844,367.0781 L2720.9844,368.1719 Q2720.9844,369.4063 2721.875,370.2344 Q2722.7656,371.0469 2724.3594,371.0469 Q2725.2969,371.0469 2725.9531,370.7969 Q2726.3438,370.6406 2726.7656,370.2031 Q2727.0313,369.9375 2727.1719,369.8594 Q2727.3281,369.7813 2727.5313,369.7813 Q2727.8594,369.7813 2728.1094,370.0469 Q2728.375,370.2969 2728.375,370.6406 Q2728.375,370.9844 2728.0313,371.3906 Q2727.5313,371.9688 2726.7344,372.2969 Q2725.6563,372.75 2724.3594,372.75 Q2722.8438,372.75 2721.6406,372.125 Q2720.6563,371.625 2719.9688,370.5625 Q2719.2813,369.4844 2719.2813,368.2031 L2719.2813,367.0469 Q2719.2813,365.7188 2719.8906,364.5781 Q2720.5156,363.4219 2721.6094,362.8125 Q2722.7031,362.1875 2723.9375,362.1875 Q2724.6719,362.1875 2725.3125,362.3594 Q2725.9688,362.5156 2726.5156,362.875 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="2744.25" y="372.7285">ClientConfigMap</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="2520.5" x2="3039.5" y1="383" y2="383"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2527.5" y="415.9141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="377" x="2539.5" y="423.1426">Map&lt;TaskTideClientType, TaskTideConfigurer&gt; configMap;</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2527.5" y="433.5234"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="2539.5" y="440.752">ArgumentTree argTree;</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="2527.5" y="451.1328"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="2539.5" y="458.3613">String[] argsIn;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="2539.5" y="475.9707"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2520.5" x2="2745.5" y1="399.8047" y2="399.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="2745.5" y="405.0332">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2814.5" x2="3039.5" y1="399.8047" y2="399.8047"/>
+            <ellipse cx="2530.5" cy="510.9609" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="2539.5" y="515.1895">ClientConfigMap()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="2539.5" y="532.7988"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2520.5" x2="2734.5" y1="491.8516" y2="491.8516"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="2734.5" y="497.0801">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2825.5" x2="3039.5" y1="491.8516" y2="491.8516"/>
+            <ellipse cx="2530.5" cy="567.7891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="495" x="2539.5" y="572.0176">TaskTideConfigurer parseConfigs(CdiContainerProvider, TaskTideClientType)</text>
+            <ellipse cx="2530.5" cy="585.3984" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="248" x="2539.5" y="589.627">void addConfigs(CdiContainerProvider)</text>
+            <ellipse cx="2530.5" cy="603.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="212" x="2539.5" y="607.2363">TaskTideClientType whichClient()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2520.5" x2="2716.5" y1="548.6797" y2="548.6797"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="127" x="2716.5" y="553.9082">Provider Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="2843.5" x2="3039.5" y1="548.6797" y2="548.6797"/>
+        </g>
+        <!--class CdiContainerProvider-->
+        <g id="elem_CdiContainerProvider">
+            <rect codeLine="494" fill="#F8DE7E" height="199.5781" id="CdiContainerProvider" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="370" x="3740" y="1039.5"/>
+            <ellipse cx="3847.75" cy="1060.8516" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M3848.7031,1057.4922 L3848.7031,1064.1484 L3850.4219,1064.1484 Q3851.0313,1064.1484 3851.2969,1064.3828 Q3851.5625,1064.6172 3851.5625,1065.0078 Q3851.5625,1065.3828 3851.2969,1065.6172 Q3851.0313,1065.8516 3850.4219,1065.8516 L3845.2813,1065.8516 Q3844.6719,1065.8516 3844.4063,1065.6172 Q3844.1406,1065.3828 3844.1406,1064.9922 Q3844.1406,1064.6172 3844.4063,1064.3828 Q3844.6719,1064.1484 3845.2813,1064.1484 L3847,1064.1484 L3847,1057.4922 L3845.2813,1057.4922 Q3844.6719,1057.4922 3844.4063,1057.2578 Q3844.1406,1057.0234 3844.1406,1056.6328 Q3844.1406,1056.2578 3844.4063,1056.0234 Q3844.6719,1055.7891 3845.2813,1055.7891 L3850.4219,1055.7891 Q3851.0313,1055.7891 3851.2969,1056.0234 Q3851.5625,1056.2578 3851.5625,1056.6328 Q3851.5625,1057.0234 3851.2969,1057.2578 Q3851.0313,1057.4922 3850.4219,1057.4922 L3848.7031,1057.4922 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="65" x="3903.25" y="1056.957">«container»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="135" x="3868.25" y="1074.127">CdiContainerProvider</text>
+            <rect fill="#FFFFFF" height="17.0938" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="9" x="4104" y="1036.5"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="7" x="4105" y="1049.957">T</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="3741" x2="4109" y1="1082.2031" y2="1082.2031"/>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="3741" x2="4109" y1="1090.2031" y2="1090.2031"/>
+            <ellipse cx="3751" cy="1104.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="3760" y="1108.7363">void initialize()</text>
+            <ellipse cx="3751" cy="1122.1172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="3760" y="1126.3457">void start()</text>
+            <ellipse cx="3751" cy="1139.7266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="3760" y="1143.9551">void shutdown()</text>
+            <ellipse cx="3751" cy="1157.3359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="3760" y="1161.5645">T getContainer()</text>
+            <ellipse cx="3751" cy="1174.9453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="3760" y="1179.1738">&lt; U&gt; U getBean(Class</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="5" x="3899" y="1179.1738">)</text>
+            <ellipse cx="3751" cy="1192.5547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="233" x="3760" y="1196.7832">&lt;V&gt; void addBeanClass(Class&lt;V&gt;...)</text>
+            <ellipse cx="3751" cy="1210.1641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="3760" y="1214.3926">&lt;V&gt; void addPackage(Class&lt;V&gt;...)</text>
+            <ellipse cx="3751" cy="1227.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="344" x="3760" y="1232.002">&lt;V extends Extension&gt; void addExtension(Class&lt;V&gt;...)</text>
+        </g>
+        <!--class CdiProviders-->
+        <g id="elem_CdiProviders">
+            <rect codeLine="474" fill="#CCCCFF" height="316.1406" id="CdiProviders" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="291" x="4753.5" y="324.5"/>
+            <ellipse cx="4854.25" cy="340.5" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M4853.1094,341.2969 L4853.1094,343.7969 L4857.4375,343.7969 L4857.4375,342.875 Q4857.4375,342.2656 4857.6719,342 Q4857.9219,341.7344 4858.2969,341.7344 Q4858.6719,341.7344 4858.9063,342 Q4859.1406,342.2656 4859.1406,342.875 L4859.1406,345.5 L4851.1406,345.5 Q4850.5156,345.5 4850.25,345.2656 Q4850,345.0313 4850,344.6406 Q4850,344.2656 4850.2656,344.0313 Q4850.5313,343.7969 4851.1406,343.7969 L4851.4063,343.7969 L4851.4063,337.1406 L4851.1406,337.1406 Q4850.5156,337.1406 4850.25,336.9063 Q4850,336.6719 4850,336.2813 Q4850,335.9063 4850.25,335.6719 Q4850.5156,335.4375 4851.1406,335.4375 L4858.7656,335.4375 L4858.7656,338.0313 Q4858.7656,338.6406 4858.5313,338.9063 Q4858.3125,339.1563 4857.9219,339.1563 Q4857.5469,339.1563 4857.3125,338.9063 Q4857.0781,338.6406 4857.0781,338.0313 L4857.0781,337.1406 L4853.1094,337.1406 L4853.1094,339.5938 L4854.5938,339.5938 Q4854.5938,338.9375 4854.7188,338.75 Q4854.9844,338.3438 4855.4531,338.3438 Q4855.8281,338.3438 4856.0625,338.6094 Q4856.2969,338.8594 4856.2969,339.4688 L4856.2969,341.4375 Q4856.2969,341.9844 4856.1719,342.1719 Q4855.9063,342.5625 4855.4531,342.5625 Q4854.9844,342.5625 4854.7188,342.1563 Q4854.5938,341.9688 4854.5938,341.2969 L4853.1094,341.2969 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="4874.75" y="346.2285">CdiProviders</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="4754.5" x2="5043.5" y1="356.5" y2="356.5"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="4759.5" y="396.6426">JAKARTA</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="4759.5" y="414.252">WELD</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="4759.5" y="431.8613">QUARKUS</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="4759.5" y="449.4707"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4754.5" x2="4854" y1="373.3047" y2="373.3047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="90" x="4854" y="378.5332">Enum Values</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4944" x2="5043.5" y1="373.3047" y2="373.3047"/>
+            <ellipse cx="4764.5" cy="484.4609" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="265" x="4773.5" y="488.6895">CdiContainerProvider&lt;?&gt; createProvider()</text>
+            <ellipse cx="4764.5" cy="502.0703" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="164" x="4773.5" y="506.2988">boolean isProvider(String)</text>
+            <ellipse cx="4764.5" cy="519.6797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="207" x="4773.5" y="523.9082">boolean isProvider(CdiProviders)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="4773.5" y="541.5176"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4754.5" x2="4837" y1="465.3516" y2="465.3516"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="124" x="4837" y="470.5801">Strategy Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4961" x2="5043.5" y1="465.3516" y2="465.3516"/>
+            <ellipse cx="4764.5" cy="576.5078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="4773.5" y="580.7363">static int indexOf(String)</text>
+            <ellipse cx="4764.5" cy="594.1172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="195" x="4773.5" y="598.3457">static int indexOf(CdiProviders)</text>
+            <ellipse cx="4764.5" cy="611.7266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="201" x="4773.5" y="615.9551">static boolean hasQuery(String)</text>
+            <ellipse cx="4764.5" cy="629.3359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="189" x="4773.5" y="633.5645">static CdiProviders get(String)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4754.5" x2="4846.5" y1="557.3984" y2="557.3984"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="105" x="4846.5" y="562.627">Enum Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4951.5" x2="5043.5" y1="557.3984" y2="557.3984"/>
+        </g>
+        <!--class SeContainerProvider-->
+        <g id="elem_SeContainerProvider">
+            <rect codeLine="506" fill="#FFE5B4" height="287.625" id="SeContainerProvider" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="370" x="3538" y="338.5"/>
+            <ellipse cx="3616.25" cy="359.8516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M3619.0156,355.7266 Q3619.1719,355.5078 3619.3594,355.3984 Q3619.5469,355.2891 3619.7656,355.2891 Q3620.1406,355.2891 3620.375,355.5547 Q3620.6094,355.8047 3620.6094,356.4141 L3620.6094,357.8672 Q3620.6094,358.4766 3620.375,358.7422 Q3620.1406,359.0078 3619.7656,359.0078 Q3619.4219,359.0078 3619.2188,358.8047 Q3619.0156,358.6172 3618.9063,358.1016 Q3618.8594,357.7422 3618.6719,357.5547 Q3618.3438,357.1797 3617.7344,356.9609 Q3617.125,356.7422 3616.5,356.7422 Q3615.7344,356.7422 3615.0938,357.0703 Q3614.4688,357.3984 3613.9688,358.1484 Q3613.4844,358.8984 3613.4844,359.9297 L3613.4844,361.0234 Q3613.4844,362.2578 3614.375,363.0859 Q3615.2656,363.8984 3616.8594,363.8984 Q3617.7969,363.8984 3618.4531,363.6484 Q3618.8438,363.4922 3619.2656,363.0547 Q3619.5313,362.7891 3619.6719,362.7109 Q3619.8281,362.6328 3620.0313,362.6328 Q3620.3594,362.6328 3620.6094,362.8984 Q3620.875,363.1484 3620.875,363.4922 Q3620.875,363.8359 3620.5313,364.2422 Q3620.0313,364.8203 3619.2344,365.1484 Q3618.1563,365.6016 3616.8594,365.6016 Q3615.3438,365.6016 3614.1406,364.9766 Q3613.1563,364.4766 3612.4688,363.4141 Q3611.7813,362.3359 3611.7813,361.0547 L3611.7813,359.8984 Q3611.7813,358.5703 3612.3906,357.4297 Q3613.0156,356.2734 3614.1094,355.6641 Q3615.2031,355.0391 3616.4375,355.0391 Q3617.1719,355.0391 3617.8125,355.2109 Q3618.4688,355.3672 3619.0156,355.7266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="134" x="3635.75" y="355.957">«implements-container»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="3636.75" y="373.127">SeContainerProvider</text>
+            <rect fill="#FFFFFF" height="17.0938" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="71" x="3840" y="335.5"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="69" x="3841" y="348.957">SeContainer</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="3539" x2="3907" y1="381.2031" y2="381.2031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3546" y="414.1172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="191" x="3558" y="421.3457">SeContainerInitializer initializer</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3546" y="431.7266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="3558" y="438.9551">SeContainer container</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="3558" y="456.5645"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3539" x2="3688.5" y1="398.0078" y2="398.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="3688.5" y="403.2363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3757.5" x2="3907" y1="398.0078" y2="398.0078"/>
+            <ellipse cx="3549" cy="491.5547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="3558" y="495.7832">void initialize()</text>
+            <ellipse cx="3549" cy="509.1641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="3558" y="513.3926">void start()</text>
+            <ellipse cx="3549" cy="526.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="3558" y="531.002">void shutdown()</text>
+            <ellipse cx="3549" cy="544.3828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="175" x="3558" y="548.6113">SeContainer getContainer()</text>
+            <ellipse cx="3549" cy="561.9922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="3558" y="566.2207">&lt;T&gt; getBean(Class&lt;T&gt;)</text>
+            <ellipse cx="3549" cy="579.6016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="233" x="3558" y="583.8301">&lt;V&gt; void addBeanClass(Class&lt;V&gt;...)</text>
+            <ellipse cx="3549" cy="597.2109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="3558" y="601.4395">&lt;V&gt; void addPackage(Class&lt;V&gt;...)</text>
+            <ellipse cx="3549" cy="614.8203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="344" x="3558" y="619.0488">&lt;V extends Extension&gt; void addExtension(Class&lt;V&gt;...)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3539" x2="3612.5" y1="472.4453" y2="472.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="221" x="3612.5" y="477.6738">Implements Container Interface</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3833.5" x2="3907" y1="472.4453" y2="472.4453"/>
+        </g>
+        <!--class WeldContainerProvider-->
+        <g id="elem_WeldContainerProvider">
+            <rect codeLine="523" fill="#FFE5B4" height="287.625" id="WeldContainerProvider" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="370" x="4348" y="338.5"/>
+            <ellipse cx="4412.25" cy="359.8516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M4415.0156,355.7266 Q4415.1719,355.5078 4415.3594,355.3984 Q4415.5469,355.2891 4415.7656,355.2891 Q4416.1406,355.2891 4416.375,355.5547 Q4416.6094,355.8047 4416.6094,356.4141 L4416.6094,357.8672 Q4416.6094,358.4766 4416.375,358.7422 Q4416.1406,359.0078 4415.7656,359.0078 Q4415.4219,359.0078 4415.2188,358.8047 Q4415.0156,358.6172 4414.9063,358.1016 Q4414.8594,357.7422 4414.6719,357.5547 Q4414.3438,357.1797 4413.7344,356.9609 Q4413.125,356.7422 4412.5,356.7422 Q4411.7344,356.7422 4411.0938,357.0703 Q4410.4688,357.3984 4409.9688,358.1484 Q4409.4844,358.8984 4409.4844,359.9297 L4409.4844,361.0234 Q4409.4844,362.2578 4410.375,363.0859 Q4411.2656,363.8984 4412.8594,363.8984 Q4413.7969,363.8984 4414.4531,363.6484 Q4414.8438,363.4922 4415.2656,363.0547 Q4415.5313,362.7891 4415.6719,362.7109 Q4415.8281,362.6328 4416.0313,362.6328 Q4416.3594,362.6328 4416.6094,362.8984 Q4416.875,363.1484 4416.875,363.4922 Q4416.875,363.8359 4416.5313,364.2422 Q4416.0313,364.8203 4415.2344,365.1484 Q4414.1563,365.6016 4412.8594,365.6016 Q4411.3438,365.6016 4410.1406,364.9766 Q4409.1563,364.4766 4408.4688,363.4141 Q4407.7813,362.3359 4407.7813,361.0547 L4407.7813,359.8984 Q4407.7813,358.5703 4408.3906,357.4297 Q4409.0156,356.2734 4410.1094,355.6641 Q4411.2031,355.0391 4412.4375,355.0391 Q4413.1719,355.0391 4413.8125,355.2109 Q4414.4688,355.3672 4415.0156,355.7266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="134" x="4439.25" y="355.957">«implements-container»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="147" x="4432.75" y="373.127">WeldContainerProvider</text>
+            <rect fill="#FFFFFF" height="17.0938" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="84" x="4637" y="335.5"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="82" x="4638" y="348.957">WeldContainer</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="4349" x2="4717" y1="381.2031" y2="381.2031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4356" y="414.1172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="90" x="4368" y="421.3457">Weld initializer</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="4356" y="431.7266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="4368" y="438.9551">WeldContainer container</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="4368" y="456.5645"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4349" x2="4498.5" y1="398.0078" y2="398.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="4498.5" y="403.2363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4567.5" x2="4717" y1="398.0078" y2="398.0078"/>
+            <ellipse cx="4359" cy="491.5547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="4368" y="495.7832">void initialize()</text>
+            <ellipse cx="4359" cy="509.1641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="4368" y="513.3926">void start()</text>
+            <ellipse cx="4359" cy="526.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="4368" y="531.002">void shutdown()</text>
+            <ellipse cx="4359" cy="544.3828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190" x="4368" y="548.6113">WeldContainer getContainer()</text>
+            <ellipse cx="4359" cy="561.9922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="4368" y="566.2207">&lt;T&gt; getBean(Class&lt;T&gt;)</text>
+            <ellipse cx="4359" cy="579.6016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="233" x="4368" y="583.8301">&lt;V&gt; void addBeanClass(Class&lt;V&gt;...)</text>
+            <ellipse cx="4359" cy="597.2109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="4368" y="601.4395">&lt;V&gt; void addPackage(Class&lt;V&gt;...)</text>
+            <ellipse cx="4359" cy="614.8203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="344" x="4368" y="619.0488">&lt;V extends Extension&gt; void addExtension(Class&lt;V&gt;...)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4349" x2="4422.5" y1="472.4453" y2="472.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="221" x="4422.5" y="477.6738">Implements Container Interface</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4643.5" x2="4717" y1="472.4453" y2="472.4453"/>
+        </g>
+        <!--class QuarkusContainerProvider-->
+        <g id="elem_QuarkusContainerProvider">
+            <rect codeLine="540" fill="#FFE5B4" height="270.0156" id="QuarkusContainerProvider" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="370" x="3943" y="347.5"/>
+            <ellipse cx="4001.25" cy="368.8516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M4004.0156,364.7266 Q4004.1719,364.5078 4004.3594,364.3984 Q4004.5469,364.2891 4004.7656,364.2891 Q4005.1406,364.2891 4005.375,364.5547 Q4005.6094,364.8047 4005.6094,365.4141 L4005.6094,366.8672 Q4005.6094,367.4766 4005.375,367.7422 Q4005.1406,368.0078 4004.7656,368.0078 Q4004.4219,368.0078 4004.2188,367.8047 Q4004.0156,367.6172 4003.9063,367.1016 Q4003.8594,366.7422 4003.6719,366.5547 Q4003.3438,366.1797 4002.7344,365.9609 Q4002.125,365.7422 4001.5,365.7422 Q4000.7344,365.7422 4000.0938,366.0703 Q3999.4688,366.3984 3998.9688,367.1484 Q3998.4844,367.8984 3998.4844,368.9297 L3998.4844,370.0234 Q3998.4844,371.2578 3999.375,372.0859 Q4000.2656,372.8984 4001.8594,372.8984 Q4002.7969,372.8984 4003.4531,372.6484 Q4003.8438,372.4922 4004.2656,372.0547 Q4004.5313,371.7891 4004.6719,371.7109 Q4004.8281,371.6328 4005.0313,371.6328 Q4005.3594,371.6328 4005.6094,371.8984 Q4005.875,372.1484 4005.875,372.4922 Q4005.875,372.8359 4005.5313,373.2422 Q4005.0313,373.8203 4004.2344,374.1484 Q4003.1563,374.6016 4001.8594,374.6016 Q4000.3438,374.6016 3999.1406,373.9766 Q3998.1563,373.4766 3997.4688,372.4141 Q3996.7813,371.3359 3996.7813,370.0547 L3996.7813,368.8984 Q3996.7813,367.5703 3997.3906,366.4297 Q3998.0156,365.2734 3999.1094,364.6641 Q4000.2031,364.0391 4001.4375,364.0391 Q4002.1719,364.0391 4002.8125,364.2109 Q4003.4688,364.3672 4004.0156,364.7266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="134" x="4039.25" y="364.957">«implements-container»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="169" x="4021.75" y="382.127">QuarkusContainerProvider</text>
+            <rect fill="#FFFFFF" height="17.0938" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="74" x="4242" y="344.5"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="72" x="4243" y="357.957">ArcContainer</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="3944" x2="4312" y1="390.2031" y2="390.2031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="3951" y="423.1172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="3963" y="430.3457">ArcContainer</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="3963" y="447.9551"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3944" x2="4093.5" y1="407.0078" y2="407.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="4093.5" y="412.2363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4162.5" x2="4312" y1="407.0078" y2="407.0078"/>
+            <ellipse cx="3954" cy="482.9453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="3963" y="487.1738">void initialize()</text>
+            <ellipse cx="3954" cy="500.5547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="3963" y="504.7832">void start()</text>
+            <ellipse cx="3954" cy="518.1641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="3963" y="522.3926">void shutdown()</text>
+            <ellipse cx="3954" cy="535.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="179" x="3963" y="540.002">ArcContainer getContainer()</text>
+            <ellipse cx="3954" cy="553.3828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="152" x="3963" y="557.6113">&lt;T&gt; getBean(Class&lt;T&gt;)</text>
+            <ellipse cx="3954" cy="570.9922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="233" x="3963" y="575.2207">&lt;V&gt; void addBeanClass(Class&lt;V&gt;...)</text>
+            <ellipse cx="3954" cy="588.6016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="3963" y="592.8301">&lt;V&gt; void addPackage(Class&lt;V&gt;...)</text>
+            <ellipse cx="3954" cy="606.2109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="344" x="3963" y="610.4395">&lt;V extends Extension&gt; void addExtension(Class&lt;V&gt;...)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="3944" x2="4017.5" y1="463.8359" y2="463.8359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="221" x="4017.5" y="469.0645">Implements Container Interface</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="4238.5" x2="4312" y1="463.8359" y2="463.8359"/>
+        </g>
+        <!--class TaskTideConfigurer-->
+        <g id="elem_TaskTideConfigurer">
+            <rect codeLine="186" fill="#F8DE7E" height="181.9688" id="TaskTideConfigurer" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="430" x="6795" y="1564"/>
+            <ellipse cx="6942.25" cy="1585.3516" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M6943.2031,1581.9922 L6943.2031,1588.6484 L6944.9219,1588.6484 Q6945.5313,1588.6484 6945.7969,1588.8828 Q6946.0625,1589.1172 6946.0625,1589.5078 Q6946.0625,1589.8828 6945.7969,1590.1172 Q6945.5313,1590.3516 6944.9219,1590.3516 L6939.7813,1590.3516 Q6939.1719,1590.3516 6938.9063,1590.1172 Q6938.6406,1589.8828 6938.6406,1589.4922 Q6938.6406,1589.1172 6938.9063,1588.8828 Q6939.1719,1588.6484 6939.7813,1588.6484 L6941.5,1588.6484 L6941.5,1581.9922 L6939.7813,1581.9922 Q6939.1719,1581.9922 6938.9063,1581.7578 Q6938.6406,1581.5234 6938.6406,1581.1328 Q6938.6406,1580.7578 6938.9063,1580.5234 Q6939.1719,1580.2891 6939.7813,1580.2891 L6944.9219,1580.2891 Q6945.5313,1580.2891 6945.7969,1580.5234 Q6946.0625,1580.7578 6946.0625,1581.1328 Q6946.0625,1581.5234 6945.7969,1581.7578 Q6945.5313,1581.9922 6944.9219,1581.9922 L6943.2031,1581.9922 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="47" x="7002.75" y="1581.457">«config»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="127" x="6962.75" y="1598.627">TaskTideConfigurer</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="6796" x2="7224" y1="1606.7031" y2="1606.7031"/>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="6796" x2="7224" y1="1614.7031" y2="1614.7031"/>
+            <ellipse cx="6806" cy="1629.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="256" x="6815" y="1633.2363">void addToTree(ArgumentTree argTree)</text>
+            <ellipse cx="6806" cy="1646.6172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="212" x="6815" y="1650.8457">ArgumentMap getArgumentMap()</text>
+            <ellipse cx="6806" cy="1664.2266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="244" x="6815" y="1668.4551">ArgumentBuilder getArgumentBuilder()</text>
+            <ellipse cx="6806" cy="1681.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="100" x="6815" y="1686.0645">String getPath()</text>
+            <ellipse cx="6806" cy="1699.4453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="116" x="6815" y="1703.6738">Config getConfig()</text>
+            <ellipse cx="6806" cy="1717.0547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="404" x="6815" y="1721.2832">boolean parseCommandLineArguments(String[], ArgumentTree)</text>
+            <ellipse cx="6806" cy="1734.6641" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="160" x="6815" y="1738.8926">initConfig(ArgumentTree)</text>
+        </g>
+        <!--class AbstractConfigurer-->
+        <g id="elem_AbstractConfigurer">
+            <rect codeLine="197" fill="#FFE5B4" height="344.4531" id="AbstractConfigurer" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="430" x="6795" y="967.5"/>
+            <ellipse cx="6946.25" cy="988.8516" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M6948.4375,990.6172 L6944.2969,990.6172 L6943.875,991.6484 L6944.2969,991.6484 Q6944.9063,991.6484 6945.1719,991.8828 Q6945.4375,992.1172 6945.4375,992.5078 Q6945.4375,992.8828 6945.1719,993.1172 Q6944.9063,993.3516 6944.2969,993.3516 L6942,993.3516 Q6941.3906,993.3516 6941.1406,993.1172 Q6940.875,992.8828 6940.875,992.4922 Q6940.875,992.1172 6941.1563,991.8828 Q6941.4219,991.6328 6942.0469,991.6484 L6944.7188,984.9922 L6943.6094,984.9922 Q6943,984.9922 6942.7344,984.7578 Q6942.4688,984.5234 6942.4688,984.1328 Q6942.4688,983.7578 6942.7344,983.5234 Q6943,983.2891 6943.6094,983.2891 L6947.2813,983.2891 L6950.6719,991.6484 Q6951.2656,991.6484 6951.4531,991.7891 Q6951.8438,992.0547 6951.8438,992.5078 Q6951.8438,992.8828 6951.5781,993.1172 Q6951.3281,993.3516 6950.7188,993.3516 L6948.4219,993.3516 Q6947.8125,993.3516 6947.5469,993.1172 Q6947.2813,992.8828 6947.2813,992.4922 Q6947.2813,992.1172 6947.5469,991.8828 Q6947.8125,991.6484 6948.4219,991.6484 L6948.8438,991.6484 L6948.4375,990.6172 Z M6947.7188,988.9141 L6946.3594,985.5391 L6944.9844,988.9141 L6947.7188,988.9141 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="116" x="6968.25" y="984.957">«implements-config»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="119" x="6966.75" y="1002.127">AbstractConfigurer</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="6796" x2="7224" y1="1010.2031" y2="1010.2031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6803" y="1043.1172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="140" x="6815" y="1050.3457">ArgumentMap argMap</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6803" y="1060.7266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="6815" y="1067.9551">String path</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6803" y="1078.3359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="174" x="6815" y="1085.5645">ArgumentBuilder argBuilder</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6803" y="1095.9453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="6815" y="1103.1738">Config config</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6815" y="1120.7832"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6796" x2="6975.5" y1="1027.0078" y2="1027.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="6975.5" y="1032.2363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7044.5" x2="7224" y1="1027.0078" y2="1027.0078"/>
+            <ellipse cx="6806" cy="1155.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="6815" y="1160.002">AbstractConfigurer(String)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6815" y="1177.6113"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6796" x2="6964.5" y1="1136.6641" y2="1136.6641"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="6964.5" y="1141.8926">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7055.5" x2="7224" y1="1136.6641" y2="1136.6641"/>
+            <ellipse cx="6806" cy="1212.6016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="6815" y="1216.8301">void addToTree(ArgumentTree)</text>
+            <ellipse cx="6806" cy="1230.2109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="6815" y="1234.4395">String getPath()</text>
+            <ellipse cx="6806" cy="1247.8203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="210" x="6815" y="1252.0488">ArgumentMap getArgumentMap()</text>
+            <ellipse cx="6806" cy="1265.4297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="244" x="6815" y="1269.6582">ArgumentBuilder getArgumentBuilder()</text>
+            <ellipse cx="6806" cy="1283.0391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="6815" y="1287.2676">Config getConfig()</text>
+            <ellipse cx="6806" cy="1300.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="404" x="6815" y="1304.877">boolean parseCommandLineArguments(String[], ArgumentTree)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6796" x2="6885" y1="1193.4922" y2="1193.4922"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="250" x="6885" y="1198.7207">TaskTideConfigurer Implementation</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7135" x2="7224" y1="1193.4922" y2="1193.4922"/>
+        </g>
+        <!--class GlobalConfig-->
+        <g id="elem_GlobalConfig">
+            <rect codeLine="217" fill="#C6DAF7" height="330.8438" id="GlobalConfig" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="387" x="7191.5" y="317"/>
+            <ellipse cx="7312.25" cy="338.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M7315.0156,334.2266 Q7315.1719,334.0078 7315.3594,333.8984 Q7315.5469,333.7891 7315.7656,333.7891 Q7316.1406,333.7891 7316.375,334.0547 Q7316.6094,334.3047 7316.6094,334.9141 L7316.6094,336.3672 Q7316.6094,336.9766 7316.375,337.2422 Q7316.1406,337.5078 7315.7656,337.5078 Q7315.4219,337.5078 7315.2188,337.3047 Q7315.0156,337.1172 7314.9063,336.6016 Q7314.8594,336.2422 7314.6719,336.0547 Q7314.3438,335.6797 7313.7344,335.4609 Q7313.125,335.2422 7312.5,335.2422 Q7311.7344,335.2422 7311.0938,335.5703 Q7310.4688,335.8984 7309.9688,336.6484 Q7309.4844,337.3984 7309.4844,338.4297 L7309.4844,339.5234 Q7309.4844,340.7578 7310.375,341.5859 Q7311.2656,342.3984 7312.8594,342.3984 Q7313.7969,342.3984 7314.4531,342.1484 Q7314.8438,341.9922 7315.2656,341.5547 Q7315.5313,341.2891 7315.6719,341.2109 Q7315.8281,341.1328 7316.0313,341.1328 Q7316.3594,341.1328 7316.6094,341.3984 Q7316.875,341.6484 7316.875,341.9922 Q7316.875,342.3359 7316.5313,342.7422 Q7316.0313,343.3203 7315.2344,343.6484 Q7314.1563,344.1016 7312.8594,344.1016 Q7311.3438,344.1016 7310.1406,343.4766 Q7309.1563,342.9766 7308.4688,341.9141 Q7307.7813,340.8359 7307.7813,339.5547 L7307.7813,338.3984 Q7307.7813,337.0703 7308.3906,335.9297 Q7309.0156,334.7734 7310.1094,334.1641 Q7311.2031,333.5391 7312.4375,333.5391 Q7313.1719,333.5391 7313.8125,333.7109 Q7314.4688,333.8672 7315.0156,334.2266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="141" x="7330.75" y="334.457">«extends abstract-config»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="7360.25" y="351.627">GlobalConfig</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="7192.5" x2="7577.5" y1="359.7031" y2="359.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="7199.5" y="392.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="348" x="7211.5" y="399.8457">String client, workflowsName, stepName, workItemName</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="7199.5" y="410.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="265" x="7211.5" y="417.4551">String repositoryType, filePath, nosqlType</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="7199.5" y="427.8359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="361" x="7211.5" y="435.0645">String nosqlProvider, nosqlProviderClass, nosqlPassword</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="7199.5" y="445.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="255" x="7211.5" y="452.6738">String nosqlUser, nosqlHost, dateFormat</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="7199.5" y="463.0547"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="7211.5" y="470.2832">int tokenExpirationDays</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="7211.5" y="487.8926"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7192.5" x2="7350.5" y1="376.5078" y2="376.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="7350.5" y="381.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7419.5" x2="7577.5" y1="376.5078" y2="376.5078"/>
+            <ellipse cx="7202.5" cy="522.8828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="92" x="7211.5" y="527.1113">GlobalConfig()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="7211.5" y="544.7207"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7192.5" x2="7339.5" y1="503.7734" y2="503.7734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="7339.5" y="509.002">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7430.5" x2="7577.5" y1="503.7734" y2="503.7734"/>
+            <ellipse cx="7202.5" cy="579.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="7211.5" y="583.9395">void initConfig()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="7211.5" y="601.5488"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7192.5" x2="7260" y1="560.6016" y2="560.6016"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="250" x="7260" y="565.8301">TaskTideConfigurer Implementation</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7510" x2="7577.5" y1="560.6016" y2="560.6016"/>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="7199.5" y="633.5391"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="7211.5" y="640.7676">void client()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7192.5" x2="7301" y1="617.4297" y2="617.4297"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="168" x="7301" y="622.6582">Microprofile Decorators</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7469" x2="7577.5" y1="617.4297" y2="617.4297"/>
+        </g>
+        <!--class EngineConfig-->
+        <g id="elem_EngineConfig">
+            <rect codeLine="236" fill="#C6DAF7" height="397.2813" id="EngineConfig" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="292" x="6864" y="284"/>
+            <ellipse cx="6937.25" cy="305.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M6940.0156,301.2266 Q6940.1719,301.0078 6940.3594,300.8984 Q6940.5469,300.7891 6940.7656,300.7891 Q6941.1406,300.7891 6941.375,301.0547 Q6941.6094,301.3047 6941.6094,301.9141 L6941.6094,303.3672 Q6941.6094,303.9766 6941.375,304.2422 Q6941.1406,304.5078 6940.7656,304.5078 Q6940.4219,304.5078 6940.2188,304.3047 Q6940.0156,304.1172 6939.9063,303.6016 Q6939.8594,303.2422 6939.6719,303.0547 Q6939.3438,302.6797 6938.7344,302.4609 Q6938.125,302.2422 6937.5,302.2422 Q6936.7344,302.2422 6936.0938,302.5703 Q6935.4688,302.8984 6934.9688,303.6484 Q6934.4844,304.3984 6934.4844,305.4297 L6934.4844,306.5234 Q6934.4844,307.7578 6935.375,308.5859 Q6936.2656,309.3984 6937.8594,309.3984 Q6938.7969,309.3984 6939.4531,309.1484 Q6939.8438,308.9922 6940.2656,308.5547 Q6940.5313,308.2891 6940.6719,308.2109 Q6940.8281,308.1328 6941.0313,308.1328 Q6941.3594,308.1328 6941.6094,308.3984 Q6941.875,308.6484 6941.875,308.9922 Q6941.875,309.3359 6941.5313,309.7422 Q6941.0313,310.3203 6940.2344,310.6484 Q6939.1563,311.1016 6937.8594,311.1016 Q6936.3438,311.1016 6935.1406,310.4766 Q6934.1563,309.9766 6933.4688,308.9141 Q6932.7813,307.8359 6932.7813,306.5547 L6932.7813,305.3984 Q6932.7813,304.0703 6933.3906,302.9297 Q6934.0156,301.7734 6935.1094,301.1641 Q6936.2031,300.5391 6937.4375,300.5391 Q6938.1719,300.5391 6938.8125,300.7109 Q6939.4688,300.8672 6940.0156,301.2266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="141" x="6955.75" y="301.457">«extends abstract-config»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="85" x="6983.75" y="318.627">EngineConfig</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="6865" x2="7155" y1="326.7031" y2="326.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="359.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="6884" y="366.8457">int lockTime</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="377.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="254" x="6884" y="384.4551">int workItemThreads, workItemThreshold</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="394.8359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="258" x="6884" y="402.0645">int itemTaskThreads. itemTaskThreshold</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="412.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="6884" y="419.6738">int timeKeeperLevel</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="430.0547"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="225" x="6884" y="437.2832">boolean timeKeeperOnStartCanFail</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="447.6641"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="265" x="6884" y="454.8926">boolean timeKeeperOnProcessingCanFail</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="465.2734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="6884" y="472.502">boolean timeKeeperOnEndCanFail</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="482.8828"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="6884" y="490.1113">int timeKeeperWaitTime</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6884" y="507.7207"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6865" x2="6975.5" y1="343.5078" y2="343.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="6975.5" y="348.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7044.5" x2="7155" y1="343.5078" y2="343.5078"/>
+            <ellipse cx="6875" cy="542.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="6884" y="546.9395">EngineConfig()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6884" y="564.5488"> </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="8" x="6884" y="582.1582">..</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="250" x="6896" y="582.1582">TaskTideConfigurer Implementation</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="7146" y="582.1582">.</text>
+            <ellipse cx="6875" cy="595.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="6884" y="599.7676">void initConfig()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6884" y="617.377"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6865" x2="6964.5" y1="523.6016" y2="523.6016"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="6964.5" y="528.8301">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7055.5" x2="7155" y1="523.6016" y2="523.6016"/>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="649.3672"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="6884" y="656.5957">void lockTime()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6872" y="666.9766"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="148" x="6884" y="674.2051">void workItemThreads()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6865" x2="6926" y1="633.2578" y2="633.2578"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="168" x="6926" y="638.4863">Microprofile Decorators</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="7094" x2="7155" y1="633.2578" y2="633.2578"/>
+        </g>
+        <!--class ManagerConfig-->
+        <g id="elem_ManagerConfig">
+            <rect codeLine="259" fill="#C6DAF7" height="295.625" id="ManagerConfig" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="294" x="6535" y="334.5"/>
+            <ellipse cx="6609.25" cy="355.8516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M6612.0156,351.7266 Q6612.1719,351.5078 6612.3594,351.3984 Q6612.5469,351.2891 6612.7656,351.2891 Q6613.1406,351.2891 6613.375,351.5547 Q6613.6094,351.8047 6613.6094,352.4141 L6613.6094,353.8672 Q6613.6094,354.4766 6613.375,354.7422 Q6613.1406,355.0078 6612.7656,355.0078 Q6612.4219,355.0078 6612.2188,354.8047 Q6612.0156,354.6172 6611.9063,354.1016 Q6611.8594,353.7422 6611.6719,353.5547 Q6611.3438,353.1797 6610.7344,352.9609 Q6610.125,352.7422 6609.5,352.7422 Q6608.7344,352.7422 6608.0938,353.0703 Q6607.4688,353.3984 6606.9688,354.1484 Q6606.4844,354.8984 6606.4844,355.9297 L6606.4844,357.0234 Q6606.4844,358.2578 6607.375,359.0859 Q6608.2656,359.8984 6609.8594,359.8984 Q6610.7969,359.8984 6611.4531,359.6484 Q6611.8438,359.4922 6612.2656,359.0547 Q6612.5313,358.7891 6612.6719,358.7109 Q6612.8281,358.6328 6613.0313,358.6328 Q6613.3594,358.6328 6613.6094,358.8984 Q6613.875,359.1484 6613.875,359.4922 Q6613.875,359.8359 6613.5313,360.2422 Q6613.0313,360.8203 6612.2344,361.1484 Q6611.1563,361.6016 6609.8594,361.6016 Q6608.3438,361.6016 6607.1406,360.9766 Q6606.1563,360.4766 6605.4688,359.4141 Q6604.7813,358.3359 6604.7813,357.0547 L6604.7813,355.8984 Q6604.7813,354.5703 6605.3906,353.4297 Q6606.0156,352.2734 6607.1094,351.6641 Q6608.2031,351.0391 6609.4375,351.0391 Q6610.1719,351.0391 6610.8125,351.2109 Q6611.4688,351.3672 6612.0156,351.7266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="141" x="6627.75" y="351.957">«extends abstract-config»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="6649.75" y="369.127">ManagerConfig</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="6536" x2="6828" y1="377.2031" y2="377.2031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6543" y="410.1172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="227" x="6555" y="417.3457">String inputFile, outputFile, delimiter</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6543" y="427.7266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="268" x="6555" y="434.9551">String nestedDelimiter, method. targetStep</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6555" y="452.5645"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6536" x2="6647.5" y1="394.0078" y2="394.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="6647.5" y="399.2363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6716.5" x2="6828" y1="394.0078" y2="394.0078"/>
+            <ellipse cx="6546" cy="487.5547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="6555" y="491.7832">ManagerConfig()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6555" y="509.3926"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6536" x2="6636.5" y1="468.4453" y2="468.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="6636.5" y="473.6738">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6727.5" x2="6828" y1="468.4453" y2="468.4453"/>
+            <ellipse cx="6546" cy="544.3828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="6555" y="548.6113">void initConfig()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6555" y="566.2207"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6536" x2="6557" y1="525.2734" y2="525.2734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="250" x="6557" y="530.502">TaskTideConfigurer Implementation</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6807" x2="6828" y1="525.2734" y2="525.2734"/>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6543" y="598.2109"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="6555" y="605.4395">void inputFile()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6543" y="615.8203"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="6555" y="623.0488">void outputFile()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6536" x2="6598" y1="582.1016" y2="582.1016"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="168" x="6598" y="587.3301">Microprofile Decorators</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6766" x2="6828" y1="582.1016" y2="582.1016"/>
+        </g>
+        <!--class ArgumentTree-->
+        <g id="elem_ArgumentTree">
+            <rect codeLine="293" fill="#F1F1F1" height="333.75" id="ArgumentTree" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="292" x="5711" y="1488"/>
+            <ellipse cx="5807.25" cy="1504" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M5810.0156,1499.875 Q5810.1719,1499.6563 5810.3594,1499.5469 Q5810.5469,1499.4375 5810.7656,1499.4375 Q5811.1406,1499.4375 5811.375,1499.7031 Q5811.6094,1499.9531 5811.6094,1500.5625 L5811.6094,1502.0156 Q5811.6094,1502.625 5811.375,1502.8906 Q5811.1406,1503.1563 5810.7656,1503.1563 Q5810.4219,1503.1563 5810.2188,1502.9531 Q5810.0156,1502.7656 5809.9063,1502.25 Q5809.8594,1501.8906 5809.6719,1501.7031 Q5809.3438,1501.3281 5808.7344,1501.1094 Q5808.125,1500.8906 5807.5,1500.8906 Q5806.7344,1500.8906 5806.0938,1501.2188 Q5805.4688,1501.5469 5804.9688,1502.2969 Q5804.4844,1503.0469 5804.4844,1504.0781 L5804.4844,1505.1719 Q5804.4844,1506.4063 5805.375,1507.2344 Q5806.2656,1508.0469 5807.8594,1508.0469 Q5808.7969,1508.0469 5809.4531,1507.7969 Q5809.8438,1507.6406 5810.2656,1507.2031 Q5810.5313,1506.9375 5810.6719,1506.8594 Q5810.8281,1506.7813 5811.0313,1506.7813 Q5811.3594,1506.7813 5811.6094,1507.0469 Q5811.875,1507.2969 5811.875,1507.6406 Q5811.875,1507.9844 5811.5313,1508.3906 Q5811.0313,1508.9688 5810.2344,1509.2969 Q5809.1563,1509.75 5807.8594,1509.75 Q5806.3438,1509.75 5805.1406,1509.125 Q5804.1563,1508.625 5803.4688,1507.5625 Q5802.7813,1506.4844 5802.7813,1505.2031 L5802.7813,1504.0469 Q5802.7813,1502.7188 5803.3906,1501.5781 Q5804.0156,1500.4219 5805.1094,1499.8125 Q5806.2031,1499.1875 5807.4375,1499.1875 Q5808.1719,1499.1875 5808.8125,1499.3594 Q5809.4688,1499.5156 5810.0156,1499.875 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="91" x="5827.75" y="1509.7285">ArgumentTree</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="5712" x2="6002" y1="1520" y2="1520"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5719" y="1552.9141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="213" x="5731" y="1560.1426">GenericTree&lt;ArgumentMap&gt; tree</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5731" y="1577.752"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5712" x2="5822.5" y1="1536.8047" y2="1536.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="5822.5" y="1542.0332">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5891.5" x2="6002" y1="1536.8047" y2="1536.8047"/>
+            <ellipse cx="5722" cy="1612.7422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="175" x="5731" y="1616.9707">ArgumentTree(String delim)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5731" y="1634.5801"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5712" x2="5811.5" y1="1593.6328" y2="1593.6328"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="5811.5" y="1598.8613">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5902.5" x2="6002" y1="1593.6328" y2="1593.6328"/>
+            <ellipse cx="5722" cy="1669.5703" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="248" x="5731" y="1673.7988">GenericTree&lt;ArgumentMap&gt; getTree()</text>
+            <ellipse cx="5722" cy="1687.1797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="231" x="5731" y="1691.4082">ArgumentMap getGlobalArguments()</text>
+            <ellipse cx="5722" cy="1704.7891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="266" x="5731" y="1709.0176">ArgumentMap getActionArguments(String)</text>
+            <ellipse cx="5722" cy="1722.3984" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="248" x="5731" y="1726.627">List&lt;String&gt; resolveActionPath(String[])</text>
+            <ellipse cx="5722" cy="1740.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="205" x="5731" y="1744.2363">String&lt;String&gt; getVerboseHelp()</text>
+            <ellipse cx="5722" cy="1757.6172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="178" x="5731" y="1761.8457">List&lt;String&gt; getGlobalHelp()</text>
+            <ellipse cx="5722" cy="1775.2266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="213" x="5731" y="1779.4551">List&lt;String&gt; getActionHelp(String)</text>
+            <ellipse cx="5722" cy="1792.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="176" x="5731" y="1797.0645">List&lt;String&gt; getActionHelp()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5719" y="1807.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="238" x="5731" y="1814.6738">String formatHelpLines(Argument&lt;?&gt;)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5712" x2="5805" y1="1650.4609" y2="1650.4609"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="5805" y="1655.6895">Class Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5909" x2="6002" y1="1650.4609" y2="1650.4609"/>
+        </g>
+        <!--class CliParser-->
+        <g id="elem_CliParser">
+            <rect codeLine="313" fill="#F1F1F1" height="298.5313" id="CliParser" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="298" x="5708" y="1882"/>
+            <ellipse cx="5823.75" cy="1898" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M5826.5156,1893.875 Q5826.6719,1893.6563 5826.8594,1893.5469 Q5827.0469,1893.4375 5827.2656,1893.4375 Q5827.6406,1893.4375 5827.875,1893.7031 Q5828.1094,1893.9531 5828.1094,1894.5625 L5828.1094,1896.0156 Q5828.1094,1896.625 5827.875,1896.8906 Q5827.6406,1897.1563 5827.2656,1897.1563 Q5826.9219,1897.1563 5826.7188,1896.9531 Q5826.5156,1896.7656 5826.4063,1896.25 Q5826.3594,1895.8906 5826.1719,1895.7031 Q5825.8438,1895.3281 5825.2344,1895.1094 Q5824.625,1894.8906 5824,1894.8906 Q5823.2344,1894.8906 5822.5938,1895.2188 Q5821.9688,1895.5469 5821.4688,1896.2969 Q5820.9844,1897.0469 5820.9844,1898.0781 L5820.9844,1899.1719 Q5820.9844,1900.4063 5821.875,1901.2344 Q5822.7656,1902.0469 5824.3594,1902.0469 Q5825.2969,1902.0469 5825.9531,1901.7969 Q5826.3438,1901.6406 5826.7656,1901.2031 Q5827.0313,1900.9375 5827.1719,1900.8594 Q5827.3281,1900.7813 5827.5313,1900.7813 Q5827.8594,1900.7813 5828.1094,1901.0469 Q5828.375,1901.2969 5828.375,1901.6406 Q5828.375,1901.9844 5828.0313,1902.3906 Q5827.5313,1902.9688 5826.7344,1903.2969 Q5825.6563,1903.75 5824.3594,1903.75 Q5822.8438,1903.75 5821.6406,1903.125 Q5820.6563,1902.625 5819.9688,1901.5625 Q5819.2813,1900.4844 5819.2813,1899.2031 L5819.2813,1898.0469 Q5819.2813,1896.7188 5819.8906,1895.5781 Q5820.5156,1894.4219 5821.6094,1893.8125 Q5822.7031,1893.1875 5823.9375,1893.1875 Q5824.6719,1893.1875 5825.3125,1893.3594 Q5825.9688,1893.5156 5826.5156,1893.875 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58" x="5844.25" y="1903.7285">CliParser</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="5709" x2="6005" y1="1914" y2="1914"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5716" y="1946.9141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="146" x="5728" y="1954.1426">ArgumentTree argTree</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5716" y="1964.5234"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="5728" y="1971.752">String[] argsIn</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5716" y="1982.1328"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="250" x="5728" y="1989.3613">Map&lt;String, Argument&lt;?&gt;&gt; parsedArgs</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5728" y="2006.9707"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5709" x2="5822.5" y1="1930.8047" y2="1930.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="5822.5" y="1936.0332">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5891.5" x2="6005" y1="1930.8047" y2="1930.8047"/>
+            <ellipse cx="5719" cy="2041.9609" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="212" x="5728" y="2046.1895">CliParser(ArgumentTree, String[])</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5728" y="2063.7988"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5709" x2="5811.5" y1="2022.8516" y2="2022.8516"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="5811.5" y="2028.0801">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5902.5" x2="6005" y1="2022.8516" y2="2022.8516"/>
+            <ellipse cx="5719" cy="2098.7891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="223" x="5728" y="2103.0176">Map&lt;String, Argument&lt;?&gt;&gt; parse()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5716" y="2113.3984"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="224" x="5728" y="2120.627">void parseFromMap(ArgumentMap)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5716" y="2131.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="5728" y="2138.2363">int indexOf(Argument&lt;?&gt;)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5716" y="2148.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="272" x="5728" y="2155.8457">boolean matchToArg(String, Argument&lt;?&gt;)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5716" y="2166.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="160" x="5728" y="2173.4551">String fetchRawValue(int)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5709" x2="5805" y1="2079.6797" y2="2079.6797"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="5805" y="2084.9082">Class Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5909" x2="6005" y1="2079.6797" y2="2079.6797"/>
+        </g>
+        <!--class ArgumentMap-->
+        <g id="elem_ArgumentMap">
+            <rect codeLine="331" fill="#F1F1F1" height="245.7031" id="ArgumentMap" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="321" x="5972.5" y="1016.5"/>
+            <ellipse cx="6084.75" cy="1032.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M6087.5156,1028.375 Q6087.6719,1028.1563 6087.8594,1028.0469 Q6088.0469,1027.9375 6088.2656,1027.9375 Q6088.6406,1027.9375 6088.875,1028.2031 Q6089.1094,1028.4531 6089.1094,1029.0625 L6089.1094,1030.5156 Q6089.1094,1031.125 6088.875,1031.3906 Q6088.6406,1031.6563 6088.2656,1031.6563 Q6087.9219,1031.6563 6087.7188,1031.4531 Q6087.5156,1031.2656 6087.4063,1030.75 Q6087.3594,1030.3906 6087.1719,1030.2031 Q6086.8438,1029.8281 6086.2344,1029.6094 Q6085.625,1029.3906 6085,1029.3906 Q6084.2344,1029.3906 6083.5938,1029.7188 Q6082.9688,1030.0469 6082.4688,1030.7969 Q6081.9844,1031.5469 6081.9844,1032.5781 L6081.9844,1033.6719 Q6081.9844,1034.9063 6082.875,1035.7344 Q6083.7656,1036.5469 6085.3594,1036.5469 Q6086.2969,1036.5469 6086.9531,1036.2969 Q6087.3438,1036.1406 6087.7656,1035.7031 Q6088.0313,1035.4375 6088.1719,1035.3594 Q6088.3281,1035.2813 6088.5313,1035.2813 Q6088.8594,1035.2813 6089.1094,1035.5469 Q6089.375,1035.7969 6089.375,1036.1406 Q6089.375,1036.4844 6089.0313,1036.8906 Q6088.5313,1037.4688 6087.7344,1037.7969 Q6086.6563,1038.25 6085.3594,1038.25 Q6083.8438,1038.25 6082.6406,1037.625 Q6081.6563,1037.125 6080.9688,1036.0625 Q6080.2813,1034.9844 6080.2813,1033.7031 L6080.2813,1032.5469 Q6080.2813,1031.2188 6080.8906,1030.0781 Q6081.5156,1028.9219 6082.6094,1028.3125 Q6083.7031,1027.6875 6084.9375,1027.6875 Q6085.6719,1027.6875 6086.3125,1027.8594 Q6086.9688,1028.0156 6087.5156,1028.375 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="88" x="6105.25" y="1038.2285">ArgumentMap</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="5973.5" x2="6292.5" y1="1048.5" y2="1048.5"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5980.5" y="1081.4141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="209" x="5992.5" y="1088.6426">Map&lt;String, Argument&lt;?&gt;&gt; args;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5992.5" y="1106.252"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5973.5" x2="6098.5" y1="1065.3047" y2="1065.3047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="6098.5" y="1070.5332">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6167.5" x2="6292.5" y1="1065.3047" y2="1065.3047"/>
+            <ellipse cx="5983.5" cy="1141.2422" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="98" x="5992.5" y="1145.4707">ArgumentMap()</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5992.5" y="1163.0801"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5973.5" x2="6087.5" y1="1122.1328" y2="1122.1328"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="6087.5" y="1127.3613">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6178.5" x2="6292.5" y1="1122.1328" y2="1122.1328"/>
+            <ellipse cx="5983.5" cy="1198.0703" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="256" x="5992.5" y="1202.2988">Map&lt;String, Argument&lt;?&gt;&gt; getArgMap()</text>
+            <ellipse cx="5983.5" cy="1215.6797" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="231" x="5992.5" y="1219.9082">boolean putArgument(Argument&lt;?&gt;)</text>
+            <ellipse cx="5983.5" cy="1233.2891" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="217" x="5992.5" y="1237.5176">Argument&lt;?&gt; getArgument(String)</text>
+            <ellipse cx="5983.5" cy="1250.8984" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="295" x="5992.5" y="1255.127">Map&lt;String, Argument&lt;?&gt;&gt; getArgumentMap()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5973.5" x2="6081" y1="1178.9609" y2="1178.9609"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="6081" y="1184.1895">Class Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6185" x2="6292.5" y1="1178.9609" y2="1178.9609"/>
+        </g>
+        <!--class Argument-->
+        <g id="elem_Argument">
+            <rect codeLine="346" fill="#F1F1F1" height="414.8906" id="Argument" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="441" x="6013.5" y="275"/>
+            <ellipse cx="6199.25" cy="296.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M6202.0156,292.2266 Q6202.1719,292.0078 6202.3594,291.8984 Q6202.5469,291.7891 6202.7656,291.7891 Q6203.1406,291.7891 6203.375,292.0547 Q6203.6094,292.3047 6203.6094,292.9141 L6203.6094,294.3672 Q6203.6094,294.9766 6203.375,295.2422 Q6203.1406,295.5078 6202.7656,295.5078 Q6202.4219,295.5078 6202.2188,295.3047 Q6202.0156,295.1172 6201.9063,294.6016 Q6201.8594,294.2422 6201.6719,294.0547 Q6201.3438,293.6797 6200.7344,293.4609 Q6200.125,293.2422 6199.5,293.2422 Q6198.7344,293.2422 6198.0938,293.5703 Q6197.4688,293.8984 6196.9688,294.6484 Q6196.4844,295.3984 6196.4844,296.4297 L6196.4844,297.5234 Q6196.4844,298.7578 6197.375,299.5859 Q6198.2656,300.3984 6199.8594,300.3984 Q6200.7969,300.3984 6201.4531,300.1484 Q6201.8438,299.9922 6202.2656,299.5547 Q6202.5313,299.2891 6202.6719,299.2109 Q6202.8281,299.1328 6203.0313,299.1328 Q6203.3594,299.1328 6203.6094,299.3984 Q6203.875,299.6484 6203.875,299.9922 Q6203.875,300.3359 6203.5313,300.7422 Q6203.0313,301.3203 6202.2344,301.6484 Q6201.1563,302.1016 6199.8594,302.1016 Q6198.3438,302.1016 6197.1406,301.4766 Q6196.1563,300.9766 6195.4688,299.9141 Q6194.7813,298.8359 6194.7813,297.5547 L6194.7813,296.3984 Q6194.7813,295.0703 6195.3906,293.9297 Q6196.0156,292.7734 6197.1094,292.1641 Q6198.2031,291.5391 6199.4375,291.5391 Q6200.1719,291.5391 6200.8125,291.7109 Q6201.4688,291.8672 6202.0156,292.2266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="21" x="6239.75" y="292.457">«T»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="6219.75" y="309.627">Argument</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="6014.5" x2="6453.5" y1="317.7031" y2="317.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6021.5" y="350.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="47" x="6033.5" y="357.8457">T value</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6021.5" y="368.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="116" x="6033.5" y="375.4551">Class&lt;T&gt; refClass</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6021.5" y="385.8359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="284" x="6033.5" y="393.0645">String name, shortFlag, longFlag, description</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="6021.5" y="403.4453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="6033.5" y="410.6738">ArgumentType argType</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6033.5" y="428.2832"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6014.5" x2="6199.5" y1="334.5078" y2="334.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="6199.5" y="339.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6268.5" x2="6453.5" y1="334.5078" y2="334.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="344" x="6019.5" y="467.502">Argument(String, String, String, String, ArgumentType)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="429" x="6019.5" y="485.1113">Argument(T, String, String, String, String, ArgumentType, Class&lt;T&gt;)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="6019.5" y="502.7207"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6014.5" x2="6188.5" y1="444.1641" y2="444.1641"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="6188.5" y="449.3926">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6279.5" x2="6453.5" y1="444.1641" y2="444.1641"/>
+            <ellipse cx="6024.5" cy="537.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="6033.5" y="541.9395">void parseValue(String)</text>
+            <ellipse cx="6024.5" cy="555.3203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="220" x="6033.5" y="559.5488">ArgumentType getArgumentType()</text>
+            <ellipse cx="6024.5" cy="572.9297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131" x="6033.5" y="577.1582">String getLongFlag()</text>
+            <ellipse cx="6024.5" cy="590.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="133" x="6033.5" y="594.7676">String getShortFlag()</text>
+            <ellipse cx="6024.5" cy="608.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="142" x="6033.5" y="612.377">String getDescription()</text>
+            <ellipse cx="6024.5" cy="625.7578" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="107" x="6033.5" y="629.9863">String getName()</text>
+            <ellipse cx="6024.5" cy="643.3672" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="6033.5" y="647.5957">Class&lt;T&gt; getRefClass()</text>
+            <ellipse cx="6024.5" cy="660.9766" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="6033.5" y="665.2051">T getValue()</text>
+            <ellipse cx="6024.5" cy="678.5859" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="6033.5" y="682.8145">void setValue(T)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6014.5" x2="6182" y1="518.6016" y2="518.6016"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="6182" y="523.8301">Class Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="6286" x2="6453.5" y1="518.6016" y2="518.6016"/>
+        </g>
+        <!--class ArgumentType-->
+        <g id="elem_ArgumentType">
+            <rect codeLine="370" fill="#CCCCFF" height="65.6094" id="ArgumentType" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="127" x="5851.5" y="449.5"/>
+            <ellipse cx="5867.4" cy="465.5" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M5866.2594,466.2969 L5866.2594,468.7969 L5870.5875,468.7969 L5870.5875,467.875 Q5870.5875,467.2656 5870.8219,467 Q5871.0719,466.7344 5871.4469,466.7344 Q5871.8219,466.7344 5872.0563,467 Q5872.2906,467.2656 5872.2906,467.875 L5872.2906,470.5 L5864.2906,470.5 Q5863.6656,470.5 5863.4,470.2656 Q5863.15,470.0313 5863.15,469.6406 Q5863.15,469.2656 5863.4156,469.0313 Q5863.6813,468.7969 5864.2906,468.7969 L5864.5563,468.7969 L5864.5563,462.1406 L5864.2906,462.1406 Q5863.6656,462.1406 5863.4,461.9063 Q5863.15,461.6719 5863.15,461.2813 Q5863.15,460.9063 5863.4,460.6719 Q5863.6656,460.4375 5864.2906,460.4375 L5871.9156,460.4375 L5871.9156,463.0313 Q5871.9156,463.6406 5871.6813,463.9063 Q5871.4625,464.1563 5871.0719,464.1563 Q5870.6969,464.1563 5870.4625,463.9063 Q5870.2281,463.6406 5870.2281,463.0313 L5870.2281,462.1406 L5866.2594,462.1406 L5866.2594,464.5938 L5867.7438,464.5938 Q5867.7438,463.9375 5867.8688,463.75 Q5868.1344,463.3438 5868.6031,463.3438 Q5868.9781,463.3438 5869.2125,463.6094 Q5869.4469,463.8594 5869.4469,464.4688 L5869.4469,466.4375 Q5869.4469,466.9844 5869.3219,467.1719 Q5869.0563,467.5625 5868.6031,467.5625 Q5868.1344,467.5625 5867.8688,467.1563 Q5867.7438,466.9688 5867.7438,466.2969 L5866.2594,466.2969 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93" x="5881.6" y="471.2285">ArgumentType</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="5852.5" x2="5977.5" y1="481.5" y2="481.5"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="5857.5" y="500.0332">GLOBAL, ACTION</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="5852.5" x2="5977.5" y1="507.1094" y2="507.1094"/>
+        </g>
+        <!--class ArgumentBuilder-->
+        <g id="elem_ArgumentBuilder">
+            <rect codeLine="375" fill="#F1F1F1" height="386.5781" id="ArgumentBuilder" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="316" x="5500" y="289"/>
+            <ellipse cx="5601.25" cy="305" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M5604.0156,300.875 Q5604.1719,300.6563 5604.3594,300.5469 Q5604.5469,300.4375 5604.7656,300.4375 Q5605.1406,300.4375 5605.375,300.7031 Q5605.6094,300.9531 5605.6094,301.5625 L5605.6094,303.0156 Q5605.6094,303.625 5605.375,303.8906 Q5605.1406,304.1563 5604.7656,304.1563 Q5604.4219,304.1563 5604.2188,303.9531 Q5604.0156,303.7656 5603.9063,303.25 Q5603.8594,302.8906 5603.6719,302.7031 Q5603.3438,302.3281 5602.7344,302.1094 Q5602.125,301.8906 5601.5,301.8906 Q5600.7344,301.8906 5600.0938,302.2188 Q5599.4688,302.5469 5598.9688,303.2969 Q5598.4844,304.0469 5598.4844,305.0781 L5598.4844,306.1719 Q5598.4844,307.4063 5599.375,308.2344 Q5600.2656,309.0469 5601.8594,309.0469 Q5602.7969,309.0469 5603.4531,308.7969 Q5603.8438,308.6406 5604.2656,308.2031 Q5604.5313,307.9375 5604.6719,307.8594 Q5604.8281,307.7813 5605.0313,307.7813 Q5605.3594,307.7813 5605.6094,308.0469 Q5605.875,308.2969 5605.875,308.6406 Q5605.875,308.9844 5605.5313,309.3906 Q5605.0313,309.9688 5604.2344,310.2969 Q5603.1563,310.75 5601.8594,310.75 Q5600.3438,310.75 5599.1406,310.125 Q5598.1563,309.625 5597.4688,308.5625 Q5596.7813,307.4844 5596.7813,306.2031 L5596.7813,305.0469 Q5596.7813,303.7188 5597.3906,302.5781 Q5598.0156,301.4219 5599.1094,300.8125 Q5600.2031,300.1875 5601.4375,300.1875 Q5602.1719,300.1875 5602.8125,300.3594 Q5603.4688,300.5156 5604.0156,300.875 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="5621.75" y="310.7285">ArgumentBuilder</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="5501" x2="5815" y1="321" y2="321"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5508" y="353.9141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="288" x="5520" y="361.1426">String name, shortFlag, longFlag, description;</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5508" y="371.5234"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="5520" y="378.752">ArgumentType argType;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5520" y="396.3613"> </text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="260" x="5520" y="413.9707">// Optional properties handled generically</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5508" y="424.3516"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="5520" y="431.5801">boolean withValue</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5508" y="441.9609"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="5520" y="449.1895">Object value</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5508" y="459.5703"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="5520" y="466.7988">Class&lt;?&gt; refClass</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5520" y="484.4082"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5501" x2="5623.5" y1="337.8047" y2="337.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="5623.5" y="343.0332">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5692.5" x2="5815" y1="337.8047" y2="337.8047"/>
+            <ellipse cx="5511" cy="519.3984" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="216" x="5520" y="523.627">ArgumentBuilder withName(String)</text>
+            <ellipse cx="5511" cy="537.0078" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="242" x="5520" y="541.2363">ArgumentBuilder withShortFlag(String)</text>
+            <ellipse cx="5511" cy="554.6172" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="240" x="5520" y="558.8457">ArgumentBuilder withLongFlag(String)</text>
+            <ellipse cx="5511" cy="572.2266" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="251" x="5520" y="576.4551">ArgumentBuilder withDescription(String)</text>
+            <ellipse cx="5511" cy="589.8359" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="290" x="5520" y="594.0645">ArgumentBuilder withArgType(ArgumentType)</text>
+            <ellipse cx="5511" cy="607.4453" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="285" x="5520" y="611.6738">&lt;T&gt; ArgumentBuilder withValue(T, Class&lt;T&gt;)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5520" y="629.2832"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5501" x2="5629" y1="500.2891" y2="500.2891"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="58" x="5629" y="505.5176">Building</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5687" x2="5815" y1="500.2891" y2="500.2891"/>
+            <ellipse cx="5511" cy="664.2734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="159" x="5520" y="668.502">&lt;T&gt; Argument&lt;T&gt; build()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5501" x2="5640" y1="645.1641" y2="645.1641"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="36" x="5640" y="650.3926">Build</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5676" x2="5815" y1="645.1641" y2="645.1641"/>
+        </g>
+        <!--class GenericTree-->
+        <g id="elem_GenericTree">
+            <rect codeLine="398" fill="#F1F1F1" height="577.375" id="GenericTree" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="511" x="5326.5" y="851"/>
+            <ellipse cx="5537.75" cy="872.3516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M5540.5156,868.2266 Q5540.6719,868.0078 5540.8594,867.8984 Q5541.0469,867.7891 5541.2656,867.7891 Q5541.6406,867.7891 5541.875,868.0547 Q5542.1094,868.3047 5542.1094,868.9141 L5542.1094,870.3672 Q5542.1094,870.9766 5541.875,871.2422 Q5541.6406,871.5078 5541.2656,871.5078 Q5540.9219,871.5078 5540.7188,871.3047 Q5540.5156,871.1172 5540.4063,870.6016 Q5540.3594,870.2422 5540.1719,870.0547 Q5539.8438,869.6797 5539.2344,869.4609 Q5538.625,869.2422 5538,869.2422 Q5537.2344,869.2422 5536.5938,869.5703 Q5535.9688,869.8984 5535.4688,870.6484 Q5534.9844,871.3984 5534.9844,872.4297 L5534.9844,873.5234 Q5534.9844,874.7578 5535.875,875.5859 Q5536.7656,876.3984 5538.3594,876.3984 Q5539.2969,876.3984 5539.9531,876.1484 Q5540.3438,875.9922 5540.7656,875.5547 Q5541.0313,875.2891 5541.1719,875.2109 Q5541.3281,875.1328 5541.5313,875.1328 Q5541.8594,875.1328 5542.1094,875.3984 Q5542.375,875.6484 5542.375,875.9922 Q5542.375,876.3359 5542.0313,876.7422 Q5541.5313,877.3203 5540.7344,877.6484 Q5539.6563,878.1016 5538.3594,878.1016 Q5536.8438,878.1016 5535.6406,877.4766 Q5534.6563,876.9766 5533.9688,875.9141 Q5533.2813,874.8359 5533.2813,873.5547 L5533.2813,872.3984 Q5533.2813,871.0703 5533.8906,869.9297 Q5534.5156,868.7734 5535.6094,868.1641 Q5536.7031,867.5391 5537.9375,867.5391 Q5538.6719,867.5391 5539.3125,867.7109 Q5539.9688,867.8672 5540.5156,868.2266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="21" x="5587.75" y="868.457">«T»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="5558.25" y="885.627">GenericTree</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="5327.5" x2="5836.5" y1="893.7031" y2="893.7031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="926.6172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="167" x="5346.5" y="933.8457">GenericTreeNode&lt;T&gt; root</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="944.2266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="94" x="5346.5" y="951.4551">String delimiter</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5346.5" y="969.0645"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5327.5" x2="5547.5" y1="910.5078" y2="910.5078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="5547.5" y="915.7363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5616.5" x2="5836.5" y1="910.5078" y2="910.5078"/>
+            <ellipse cx="5337.5" cy="1004.0547" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143" x="5346.5" y="1008.2832">GenericTree(delimiter)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5346.5" y="1025.8926"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5327.5" x2="5536.5" y1="984.9453" y2="984.9453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="5536.5" y="990.1738">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5627.5" x2="5836.5" y1="984.9453" y2="984.9453"/>
+            <ellipse cx="5337.5" cy="1060.8828" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="5346.5" y="1065.1113">GenericTreeNode&lt;T&gt; getRoot()</text>
+            <ellipse cx="5337.5" cy="1078.4922" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="5346.5" y="1082.7207">void addChild(String, T )</text>
+            <ellipse cx="5337.5" cy="1096.1016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="280" x="5346.5" y="1100.3301">GenericTreeNode&lt;T&gt; findByAddress(String)</text>
+            <ellipse cx="5337.5" cy="1113.7109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="184" x="5346.5" y="1117.9395">T getDataForAddress(String)</text>
+            <ellipse cx="5337.5" cy="1131.3203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="217" x="5346.5" y="1135.5488">boolean removeByAddress(String)</text>
+            <ellipse cx="5337.5" cy="1148.9297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="415" x="5346.5" y="1153.1582">Map&lt;String, GenericTreeNode&lt;T&gt;&gt; getChildrenAtAddress(String)</text>
+            <ellipse cx="5337.5" cy="1166.5391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="361" x="5346.5" y="1170.7676">Map&lt;String, T&gt; getChildrenDataAtAddress(String, String)</text>
+            <ellipse cx="5337.5" cy="1184.1484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="230" x="5346.5" y="1188.377">GenericTreeNode&lt;T&gt; findByData(T)</text>
+            <ellipse cx="5337.5" cy="1201.7578" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="5346.5" y="1205.9863">boolean containsData(T)</text>
+            <ellipse cx="5337.5" cy="1219.3672" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="5346.5" y="1223.5957">int size()</text>
+            <ellipse cx="5337.5" cy="1236.9766" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="267" x="5346.5" y="1241.2051">String subStringPathToFlag(String, String)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5346.5" y="1258.8145"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5327.5" x2="5530" y1="1041.7734" y2="1041.7734"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="5530" y="1047.002">Class Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5634" x2="5836.5" y1="1041.7734" y2="1041.7734"/>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="1290.8047"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="424" x="5346.5" y="1298.0332">List&lt;GenericTreeNode&lt;T&gt;&gt; getPathToRoot(GenericTreeNode&lt;T&gt;)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="1308.4141"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="232" x="5346.5" y="1315.6426">Map&lt;String, T&gt; toAddressDataMap()</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="1326.0234"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="485" x="5346.5" y="1333.252">void collectAddressData(GenericTreeNode&lt;T&gt; current, Map&lt;String, T&gt; map)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="1343.6328"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="303" x="5346.5" y="1350.8613">int sizeRecursive(GenericTreeNode&lt;T&gt; current)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="1361.2422"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="439" x="5346.5" y="1368.4707">GenericTreeNode&lt;T&gt; recursiveFindByData(GenericTreeNode&lt;T&gt;, T)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="1378.8516"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="366" x="5346.5" y="1386.0801">boolean recursiveRemove(GenericTreeNode&lt;T&gt;, String[])</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="1396.4609"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="484" x="5346.5" y="1403.6895">GenericTreeNode&lt;T&gt; recursiveGetByAddress(GenericTreeNode&lt;T&gt;, String)</text>
+            <rect fill="#F24D5C" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5334.5" y="1414.0703"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="323" x="5346.5" y="1421.2988">void recursiveAdd(GenericTreeNode&lt;T&gt;, String, T)</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5327.5" x2="5504.5" y1="1274.6953" y2="1274.6953"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="155" x="5504.5" y="1279.9238">Recursive processing</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5659.5" x2="5836.5" y1="1274.6953" y2="1274.6953"/>
+        </g>
+        <!--class GenericTreeNode-->
+        <g id="elem_GenericTreeNode">
+            <rect codeLine="431" fill="#F1F1F1" height="432.5" id="GenericTreeNode" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="339" x="5125.5" y="266.5"/>
+            <ellipse cx="5234.25" cy="287.8516" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M5237.0156,283.7266 Q5237.1719,283.5078 5237.3594,283.3984 Q5237.5469,283.2891 5237.7656,283.2891 Q5238.1406,283.2891 5238.375,283.5547 Q5238.6094,283.8047 5238.6094,284.4141 L5238.6094,285.8672 Q5238.6094,286.4766 5238.375,286.7422 Q5238.1406,287.0078 5237.7656,287.0078 Q5237.4219,287.0078 5237.2188,286.8047 Q5237.0156,286.6172 5236.9063,286.1016 Q5236.8594,285.7422 5236.6719,285.5547 Q5236.3438,285.1797 5235.7344,284.9609 Q5235.125,284.7422 5234.5,284.7422 Q5233.7344,284.7422 5233.0938,285.0703 Q5232.4688,285.3984 5231.9688,286.1484 Q5231.4844,286.8984 5231.4844,287.9297 L5231.4844,289.0234 Q5231.4844,290.2578 5232.375,291.0859 Q5233.2656,291.8984 5234.8594,291.8984 Q5235.7969,291.8984 5236.4531,291.6484 Q5236.8438,291.4922 5237.2656,291.0547 Q5237.5313,290.7891 5237.6719,290.7109 Q5237.8281,290.6328 5238.0313,290.6328 Q5238.3594,290.6328 5238.6094,290.8984 Q5238.875,291.1484 5238.875,291.4922 Q5238.875,291.8359 5238.5313,292.2422 Q5238.0313,292.8203 5237.2344,293.1484 Q5236.1563,293.6016 5234.8594,293.6016 Q5233.3438,293.6016 5232.1406,292.9766 Q5231.1563,292.4766 5230.4688,291.4141 Q5229.7813,290.3359 5229.7813,289.0547 L5229.7813,287.8984 Q5229.7813,286.5703 5230.3906,285.4297 Q5231.0156,284.2734 5232.1094,283.6641 Q5233.2031,283.0391 5234.4375,283.0391 Q5235.1719,283.0391 5235.8125,283.2109 Q5236.4688,283.3672 5237.0156,283.7266 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="21" x="5300.75" y="283.957">«T»</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="113" x="5254.75" y="301.127">GenericTreeNode</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="5126.5" x2="5463.5" y1="309.2031" y2="309.2031"/>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5133.5" y="342.1172"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="5145.5" y="349.3457">T data</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5133.5" y="359.7266"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="122" x="5145.5" y="366.9551">final String address</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5133.5" y="377.3359"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="183" x="5145.5" y="384.5645">GenericTreeNode&lt;T&gt; parent</text>
+            <rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="5133.5" y="394.9453"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="280" x="5145.5" y="402.1738">Map&lt;String, GenericTreeNode&lt;T&gt;&gt; children</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5145.5" y="419.7832"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5126.5" x2="5260.5" y1="326.0078" y2="326.0078"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="69" x="5260.5" y="331.2363">Attributes</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5329.5" x2="5463.5" y1="326.0078" y2="326.0078"/>
+            <ellipse cx="5136.5" cy="454.7734" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="177" x="5145.5" y="459.002">GenericTreeNode(T, String)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="4" x="5145.5" y="476.6113"> </text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5126.5" x2="5249.5" y1="435.6641" y2="435.6641"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="91" x="5249.5" y="440.8926">Construction</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5340.5" x2="5463.5" y1="435.6641" y2="435.6641"/>
+            <ellipse cx="5136.5" cy="511.6016" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="5145.5" y="515.8301">String getAddress()</text>
+            <ellipse cx="5136.5" cy="529.2109" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="5145.5" y="533.4395">T getData()</text>
+            <ellipse cx="5136.5" cy="546.8203" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="5145.5" y="551.0488">void setData(T data)</text>
+            <ellipse cx="5136.5" cy="564.4297" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="313" x="5145.5" y="568.6582">Map&lt;String, GenericTreeNode&lt;T&gt;&gt; getChildren()</text>
+            <ellipse cx="5136.5" cy="582.0391" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="214" x="5145.5" y="586.2676">GenericTreeNode&lt;T&gt; getParent()</text>
+            <ellipse cx="5136.5" cy="599.6484" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="284" x="5145.5" y="603.877">void setParent(GenericTreeNode&lt;T&gt; parent)</text>
+            <ellipse cx="5136.5" cy="617.2578" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="5145.5" y="621.4863">boolean isLeaf()</text>
+            <ellipse cx="5136.5" cy="634.8672" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="157" x="5145.5" y="639.0957">boolean hasChild(String)</text>
+            <ellipse cx="5136.5" cy="652.4766" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="158" x="5145.5" y="656.7051">Set&lt;String&gt; listChildren()</text>
+            <ellipse cx="5136.5" cy="670.0859" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="181" x="5145.5" y="674.3145">boolean removeChild(String)</text>
+            <ellipse cx="5136.5" cy="687.6953" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="124" x="5145.5" y="691.9238">void clearChildren()</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5126.5" x2="5243" y1="492.4922" y2="492.4922"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="104" x="5243" y="497.7207">Class Methods</text>
+            <line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:1.0,2.0;" x1="5347" x2="5463.5" y1="492.4922" y2="492.4922"/>
+        </g>
+        <!--class TaskTideServiceManager-->
+        <g id="elem_TaskTideServiceManager">
+            <rect codeLine="30" fill="#F1F1F1" height="48" id="TaskTideServiceManager" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="194" x="7683" y="1115.5"/>
+            <ellipse cx="7698" cy="1131.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M7700.7656,1127.375 Q7700.9219,1127.1563 7701.1094,1127.0469 Q7701.2969,1126.9375 7701.5156,1126.9375 Q7701.8906,1126.9375 7702.125,1127.2031 Q7702.3594,1127.4531 7702.3594,1128.0625 L7702.3594,1129.5156 Q7702.3594,1130.125 7702.125,1130.3906 Q7701.8906,1130.6563 7701.5156,1130.6563 Q7701.1719,1130.6563 7700.9688,1130.4531 Q7700.7656,1130.2656 7700.6563,1129.75 Q7700.6094,1129.3906 7700.4219,1129.2031 Q7700.0938,1128.8281 7699.4844,1128.6094 Q7698.875,1128.3906 7698.25,1128.3906 Q7697.4844,1128.3906 7696.8438,1128.7188 Q7696.2188,1129.0469 7695.7188,1129.7969 Q7695.2344,1130.5469 7695.2344,1131.5781 L7695.2344,1132.6719 Q7695.2344,1133.9063 7696.125,1134.7344 Q7697.0156,1135.5469 7698.6094,1135.5469 Q7699.5469,1135.5469 7700.2031,1135.2969 Q7700.5938,1135.1406 7701.0156,1134.7031 Q7701.2813,1134.4375 7701.4219,1134.3594 Q7701.5781,1134.2813 7701.7813,1134.2813 Q7702.1094,1134.2813 7702.3594,1134.5469 Q7702.625,1134.7969 7702.625,1135.1406 Q7702.625,1135.4844 7702.2813,1135.8906 Q7701.7813,1136.4688 7700.9844,1136.7969 Q7699.9063,1137.25 7698.6094,1137.25 Q7697.0938,1137.25 7695.8906,1136.625 Q7694.9063,1136.125 7694.2188,1135.0625 Q7693.5313,1133.9844 7693.5313,1132.7031 L7693.5313,1131.5469 Q7693.5313,1130.2188 7694.1406,1129.0781 Q7694.7656,1127.9219 7695.8594,1127.3125 Q7696.9531,1126.6875 7698.1875,1126.6875 Q7698.9219,1126.6875 7699.5625,1126.8594 Q7700.2188,1127.0156 7700.7656,1127.375 Z " fill="#000000"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="7712" y="1137.2285">TaskTideServiceManager</text>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="7684" x2="7876" y1="1147.5" y2="1147.5"/>
+            <line style="stroke:#181818;stroke-width:0.5;" x1="7684" x2="7876" y1="1155.5" y2="1155.5"/>
+        </g>
+        <!--link TaskTide to TaskTideClient-->
+        <g id="link_TaskTide_TaskTideClient">
+            <path codeLine="27" d="M3216.15,602.19 C3174.65,663.47 3118.68,736.58 3057,791 C2936.65,897.18 2784.1877,983.8791 2659.8977,1045.3791 " fill="none" id="TaskTide-to-TaskTideClient" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="2654.52,1048.04,2664.3605,1047.6337,2659.0014,1045.8226,2660.8126,1040.4635,2654.52,1048.04" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link TaskTide to CdiContainerProvider-->
+        <g id="link_TaskTide_CdiContainerProvider">
+            <path codeLine="28" d="M3369.83,602.03 C3412.35,661.17 3466.99,732.4 3522,791 C3607.04,881.59 3709.2961,969.1477 3791.6361,1035.4277 " fill="none" id="TaskTide-to-CdiContainerProvider" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="3796.31,1039.19,3791.8073,1030.4307,3792.4151,1036.0548,3786.791,1036.6625,3796.31,1039.19" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link TaskTide to TaskTideServiceManager-->
+        <g id="link_TaskTide_TaskTideServiceManager">
+            <path codeLine="29" d="M3344.74,602.33 C3383.86,670.87 3443.26,751.15 3522,791 C3723.91,893.2 7397.15,741.14 7595,851 C7701.12,909.92 7753.9789,1052.4373 7771.6689,1109.6973 " fill="none" id="TaskTide-to-TaskTideServiceManager" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="7773.44,1115.43,7774.6052,1105.6503,7771.9641,1110.6528,7766.9616,1108.0117,7773.44,1115.43" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link TaskTideEngineClient to TaskTideClient-->
+        <g id="link_TaskTideEngineClient_TaskTideClient">
+            <path codeLine="171" d="M2278.69,791.34 C2311.84,857.76 2337.5002,909.1553 2366.2602,966.7653 " fill="none" id="TaskTideEngineClient-to-TaskTideClient" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="2374.3,982.87,2371.6285,964.0854,2360.892,969.4452,2374.3,982.87" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link TaskTideManagerClient to TaskTideClient-->
+        <g id="link_TaskTideManagerClient_TaskTideClient">
+            <path codeLine="172" d="M444.38,674.66 C480.58,719.03 523.95,761.77 573,791 C855.03,959.1 1806.3453,1073.1504 2231.4953,1117.0704 " fill="none" id="TaskTideManagerClient-to-TaskTideClient" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="2249.4,1118.92,2232.1118,1111.1021,2230.8787,1123.0386,2249.4,1118.92" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--reverse link ClientConfigMap to TaskTideClient-->
+        <g id="link_ClientConfigMap_TaskTideClient">
+            <path codeLine="173" d="M2709.237,624.8099 C2656.067,730.9899 2586.27,870.36 2529.98,982.79 " fill="none" id="ClientConfigMap-backto-TaskTideClient" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="2714.61,614.08,2708.3469,617.6539,2709.237,624.8099,2715.5001,621.236,2714.61,614.08" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link AbstractConfigurer to TaskTideConfigurer-->
+        <g id="link_AbstractConfigurer_TaskTideConfigurer">
+            <path codeLine="276" d="M7010,1311.84 C7010,1396.13 7010,1476.28 7010,1545.79 " fill="none" id="AbstractConfigurer-to-TaskTideConfigurer" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
+            <polygon fill="none" points="7010,1563.79,7016,1545.79,7004,1545.79,7010,1563.79" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link GlobalConfig to AbstractConfigurer-->
+        <g id="link_GlobalConfig_AbstractConfigurer">
+            <path codeLine="277" d="M7290.61,648.36 C7234.85,745.76 7173.3138,853.2492 7116.9338,951.7192 " fill="none" id="GlobalConfig-to-AbstractConfigurer" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="7107.99,967.34,7122.1407,954.7005,7111.7269,948.738,7107.99,967.34" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link EngineConfig to AbstractConfigurer-->
+        <g id="link_EngineConfig_AbstractConfigurer">
+            <path codeLine="278" d="M7010,681.35 C7010,772.49 7010,861.61 7010,949.23 " fill="none" id="EngineConfig-to-AbstractConfigurer" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="7010,967.23,7016,949.23,7004,949.23,7010,967.23" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link ManagerConfig to AbstractConfigurer-->
+        <g id="link_ManagerConfig_AbstractConfigurer">
+            <path codeLine="279" d="M6755.81,630.9 C6805.78,730.69 6863.9009,846.7449 6916.2009,951.1949 " fill="none" id="ManagerConfig-to-AbstractConfigurer" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="6924.26,967.29,6921.5659,948.5086,6910.8359,953.8813,6924.26,967.29" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link GenericTreeNode to GenericTree-->
+        <g id="link_GenericTreeNode_GenericTree">
+            <path codeLine="456" d="M5389.37,698.88 C5410.65,747.44 5428.7534,788.7591 5451.1034,839.7591 " fill="none" id="GenericTreeNode-to-GenericTree" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="5455.92,850.75,5457.1753,843.649,5451.1034,839.7591,5449.8481,846.8601,5455.92,850.75" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link ArgumentMap to ArgumentTree-->
+        <g id="link_ArgumentMap_ArgumentTree">
+            <path codeLine="457" d="M6067.42,1262.52 C6031.23,1329.85 5991.4515,1403.8602 5952.0515,1477.1602 " fill="none" id="ArgumentMap-to-ArgumentTree" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="5946.37,1487.73,5952.734,1484.3389,5952.0515,1477.1602,5945.6875,1480.5513,5946.37,1487.73" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link Argument to ArgumentMap-->
+        <g id="link_Argument_ArgumentMap">
+            <path codeLine="458" d="M6202.11,690.3 C6185.58,797.52 6167.778,912.94 6153.678,1004.42 " fill="none" id="Argument-to-ArgumentMap" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="6151.85,1016.28,6156.7173,1010.9594,6153.678,1004.42,6148.8107,1009.7407,6151.85,1016.28" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--reverse link GenericTree to ArgumentTree-->
+        <g id="link_GenericTree_ArgumentTree">
+            <path codeLine="459" d="M5741.6432,1438.5996 C5752.5632,1458.9996 5757.69,1468.55 5768.05,1487.9 " fill="none" id="GenericTree-backto-ArgumentTree" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="5735.98,1428.02,5735.2851,1435.1975,5741.6432,1438.5996,5742.3381,1431.4221,5735.98,1428.02" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--reverse link ArgumentTree to CliParser-->
+        <g id="link_ArgumentTree_CliParser">
+            <path codeLine="460" d="M5857,1834.17 C5857,1854.01 5857,1862.18 5857,1881.75 " fill="none" id="ArgumentTree-backto-CliParser" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="5857,1822.17,5853,1828.17,5857,1834.17,5861,1828.17,5857,1822.17" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link WeldContainerProvider to CdiContainerProvider-->
+        <g id="link_WeldContainerProvider_CdiContainerProvider">
+            <path codeLine="556" d="M4450.6,626.87 C4416.67,680.76 4375.01,741.03 4331,791 C4249.29,883.78 4156.8276,963.0296 4073.3376,1028.3396 " fill="none" id="WeldContainerProvider-to-CdiContainerProvider" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="4059.16,1039.43,4077.0344,1033.0655,4069.6408,1023.6138,4059.16,1039.43" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link SeContainerProvider to CdiContainerProvider-->
+        <g id="link_SeContainerProvider_CdiContainerProvider">
+            <path codeLine="557" d="M3767.2,626.84 C3805.7,751.65 3855.1858,912.1293 3889.0358,1021.8993 " fill="none" id="SeContainerProvider-to-CdiContainerProvider" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="3894.34,1039.1,3894.7694,1020.1312,3883.3022,1023.6673,3894.34,1039.1" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link QuarkusContainerProvider to CdiContainerProvider-->
+        <g id="link_QuarkusContainerProvider_CdiContainerProvider">
+            <path codeLine="558" d="M4086.43,617.63 C4047.6,742.92 3995.8694,909.8371 3961.0094,1022.2971 " fill="none" id="QuarkusContainerProvider-to-CdiContainerProvider" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="none" points="3955.68,1039.49,3966.7404,1024.0735,3955.2784,1020.5206,3955.68,1039.49" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--SRC=[tHjhRnkvyRj-1O7xS58YAItGDWKiwA3Oii-9Opks7ACu70fgbxQsNYrLahBZU_pt3fzBxbFhk0xk10FU9OV3uRmuC-I- -RxttLV-dWC1_A6_3iPeWVdT8ea9sayJaWaqsspI9C8YeLdlUMRwIWJVl-drUb6AEKUKtOu5q2k0tlp1hM0oyOYVJj6lFGI_yHYzUZKJWYNBhI3yrIjeKHqZn0M0HkY4tjuIXaxEZexc5xryqELsiw5C9Daj-aZ4YiRUuDTsy2KW1e0R8gBLvGR8NEcM_Y24kwT9Z3RG8pHKiNy_JlPf9d2I4NREw3qiYA68PZV9xPOHw3tE03ABI1-UBG0VUEHwYpVqLf2ho5Z3B7rDvay_3tg_ztejd1sDfZNCZvJME4YjH5-1ph9WOrOuhk9BP_mHPMIynXa6EJkmIyBkauXyrCrLAhRBi5xlpLCCklTaeyLbe-qz5T-JZ14lkM0u4gZ9A2lr0YpK6onRm4g_EtWxVtluLbbhZQsEK3NpaJ3DvdrFmUgvzfNfVCGROqHxFOiVUe26RIGDnSxm6eMKzgid71QH3npMu_Kc9MleqmPupV1cGrYENnaUssO6lpSm4uJTu8WKZFOr-jKowtSzElS65aSL5CnwGzbQmyXbrC15AS7PrQQlxB_NGPRpx1QCqKcKV14aYxadqFr_7CpQ11hwN5_4rvJT4NQL9SAvmQttecKCRXGz0E2n8El5YX4Syo5Av8l4eXi2GDd6LpIDXrffxEjUC3TC4X7EAPjS6-HJyDccBGITVo7HLWIGSXxPN01Kx3fRSj0aueFJ9TzLANsMTrVDWX66cjgWeQwnMl4QjQsWOZMa711miHYuw6c6PQnP7aWm4GbEar_8B8ltBIK5AAwctO7fRYcsAOJSNycjST0cwJ8M0zDl8s3Ggcybt0weNrZqi874dEK_aXI4L8nWZ8GUS2BECZjy0Uu1RCyYwOFn38sbQgbAQuheDXEdLCn0L-z9_oJXOd9iB6zQ0ijyi80BXW8LE6a2G1iNoHfa6U8CIQWRv8WEPme7cs1jZJSB-fxJp8HgPyl_a4XqTeJ6yfxT4yxOxLRQfzoyC9EslAkV22ZwipiA8ymDPfmS9YavnsBLDukSAGPfOmiL0YLh6THBwPiGk05AeaLYnUW3HyTdyoyHsQZ4I0vGXAzm5gVaM06RdPHastMNe6Znk26WAV0xFCmrPIwnA67ZJF1S54KxFZevUpSxWOVvwT7nwHmUFivEPoQFqLaCRFg2t3wMFO2BnVQLpjyIenFgrOZ7mHG4iiPtdVUZ0D-IKYbqb7239XT64rIPTxdEA9wLLcaI7-cJaYmcNyvkAf7KW1ggaDzlYLfX_cbBs6D0ke6fa37mrq5sz3GQovL8qaGyekyEuJV_IxDRgSnjlGvf04lq_lBizD_d5_F5ub_LdOwvHmGICEYoHDJnkSN5Ef8JwIWhdLaz1ulknJhA1IEX12_8Xl84tCMZ6gUs2zact_gLUbcOj91dA0JcfL-LaGuBKtP6kY1WuM2dEwj6CSjfL0O0c9JvcSSFBgnYDlvGcuw_6KaUozr8_j_p_EzFFyjMVforxL45WZrVx-ByaawLwTFkNh_p6b7KcRVos3YEcqOFAf91fKCFgoHQkMrD2gbxiZGQ_VOSTPJ6CEHvvoXgsQlHg1Fo5w-EB8FgY5ERbwsG92wbhwro6Rh65He-cUX-6K0U_lDW_dQkZBkSmOCgBwYqntwLaPQoVZ-iXBt8U-tNmhxR9gcqJ0_UD9N76CyFe2eIA_Nh9UPXHXd2Rgp6njThYAvEm7pirDmLBOUexFizH39dD9E4SD9kTwjVvIAQ6VX0H8aDoFZ8azRX_E_l_jRiYil1VHZCYbK0PWK0eEPHrxWqB_NKBOwtJByBGqhHThx4nk2_MlE272jKWrRTsrdXQhJewQhJkj_ccd2KqYLE3GLvlcSLojE4NH8_moZjE8UgUdIJGgPnYjUmDND1Dlh9rhdacp-G1H774DsO76Y8Cih_cyf67rmrvfjayAeYVji6Zp1bN1fxnTsu7oa7YcE8LmuXfyF2bTe4lIFP_CicOKfj3l0ZRz5EdwVzfskaP_4vaez9nEY6KScPoXJI99_UfhwZ9fXj_PaqGN8kfT6TB6JKbpVz1bMxTA25mkSuQ0X11KpnWH38na_8FKbLkxMTlEyCmdRCn3xE3d5I3sGgKw0XRP3pBFP1GagkSIBCqfjrnUTwDrqPesTH5IiaKo7K9RHGJjtqoCPkp-jIacopLRMB8Q9RuPvZaYPhK0qMc3O1JnCVsAuXMgiWV8n00S39Ne8RQh7WO0tVneJTWdt1v4jl3jWRT_hn-BVfKwAuNhVDf2bgRwAlryrJ_V-c2HNvoVEyVC8GXGc32Xn6Cd9mOG8wbp752wSGJVv3nJZ0FZ_eRtGBfdOZ0ITUw3L50bhQeaTl5XD3QKUIswWk7vQIzzfPmQqeRAQgLeWDjLtaSLjr0AceB0Pt6bHLSdN3588aJjDxek5LG9hVUyYZLGSEg3yJjgISo6EJVWL2Hs43W9vD0TGI5e8DV9Tyes8gsIxraBiOU_B3j7rpCSe1-RTMszso4Jznh2hkk2gIRizZQA1fgeFk69fuUmr8KnNa3KEKowH5fvf9yBs_FXPWT2rp34zx1ddKP4gy0Nlz00Q44AqM5Fhx5NE68bCLHlpm6QTR8i_DTXRKce8rZNtrRgtaLJ90ocblHriEoszTMQrJipnrSwdNrgLiHPw-zZ7ukLrW7oqpUgG_YRUJoS9S2gk_PeBkfG3DDHB03qF0XToevo1gqZdQIfuHfHZeJMbsgvzYmYEMvET4JjDb5L6QcCpBckHKu8srZl9_7_F07xYe7rCrTkZMsgeKkMbfJVV55opK4vagkXTh0oU6NwMEIylJKiz1pjXIdyoDRO70oWsQBupeJDT2-NT5k5SHvhPjqNg0LwbNfGCyVIO7FDvV79-TFarPRHrabt1_DsNSgzN6FPrulNc3pXGaJkMb5qZCH4AuEUACWNLgEyTf-XXuoOT4h3uxgz7dF2Kp-i4p8xiYjKIWl-oVxE8bQYNPAZNpWNAbQODqUjS6w6jR6-nCyx5VDCZNIEfXrGYZS5MMfy1odlWOvFDITdTrWNuerku5FUXJ6Avy8AN2LxaybMofxkIe-cvCbyZH4Y2D6MZe5qvoLf8PrgSjqA1k-0rizkyUPt4CyM0OBIgVS805FgIigj-gEIDhUa-gSVWRLtboHRoYb95i9jeGB09uILbnZFNYBQkLGwLFyrTXxjTolq_6GZpvfU2Z-NQfdsJGlA2UpUJJMp5Ua6ZBU79Fx6KvpwhDpOeQjcZaIh9bY44fue6r2MgO8PTWWn1RoQDf2jx70wZ0Ye1MfYgk1SnhFpYK377BQi0ogBKOE_Wm5qOP32OEOqutx4BfM-KGFuDfdlk8Y5nZwr5vB7H3OLJ324NtKrsGmhLBC1O3qzGZA3HiIaOpiLvFtU9XLddoM5ITAWMCZ97jxiJaq3oyQdLaUO1YXL1mEeKuH9kbMdTdpz8VDFZESyMKmcociPQ7eUj8-0d1DuMOVuMvxuED1o5vcfk2yHSe33rgURYx4SQyWVNrkoOjGwCHxQYSlOxPMkiCVgRR1Vckj7l4TEHGmsb-Pzg3Ga8hNbS7-0O5lxXmGq3V_q3ksv8NBVCrNHQi-XJ6VVXJSsDGnPNE0RsVVPXTB6RmT3q_EO1_dwvc5n-kBdUu6-YVsrTSav41VSG83BOjzQVv2NSmlfatGvO-Skfsmw_YHfxV7MBlUBKl44FnKjykTpzs-C99Ec5r3qGtbww2k0CJVJC-SEpov2veM6r5J1yoV-zn4vh62RgQeYlPymwMtzTPoPMftKm-Jrt4BRjrIgrXFa_7ut4Px1n7T_YML04XUyOrb_-v_5JF3NDDuS0T3jGAFBqaPPPwRTFI3GwFppjSul1G7JiXC4yWh0Y6t1pUAQSx3kEU8tBV0rKSZtMNjaz2bTnrUE09VV775VerIUEos8FMhnMyH5OISp33jn9qICIVNTIVjfZTRNbPsZCMFPkmVLmlAqn_vZ-WBB_AO5iEZv_-UV1EkyGBpbwdmyz0mly0]-->
+    </g>
+</svg>

@@ -1,0 +1,561 @@
+@startuml
+
+
+/'
+################################################################
+################################################################
+##
+## 1). TaskTide Client Application
+##
+################################################################
+################################################################
+'/
+
+
+class org.tasktide.tasktide.TaskTide <<Application>> {
+    .. **Attributes** ..
+    - static Logger LOGGER
+
+    .. **Supporting Methods** ..
+    + static String fetchSplashString()
+    + static void printSplash()
+    + static CdiContainerProvider configureCdiInstance(CdiProviders)
+
+    .. **Application Method** ..
+    + static void main(String[])
+}
+
+org.tasktide.tasktide.TaskTide --> org.tasktide.tasktide.client.TaskTideClient
+org.tasktide.tasktide.TaskTide --> org.tasktide.tasktide.containerprovider.CdiContainerProvider
+org.tasktide.tasktide.TaskTide --> org.tasktide.core.manager.TaskTideServiceManager
+class org.tasktide.core.manager.TaskTideServiceManager
+
+
+/'
+##################################################
+##################################################
+##
+## a). TaskTide Client
+##
+##################################################
+##################################################
+'/
+
+abstract class org.tasktide.tasktide.client.TaskTideClient <<abstract client>> #D7E7F7 {
+  .. **Attributes** ..
+  - TaskTideServiceManager taskTideManager;
+  - ClientConfigMap config;
+
+  .. **Construction** ..
+  + TaskTideClient(TaskTideServiceManager, ClientConfigMap)
+
+  .. **Implementation Wrapper** ..
+  + void runClient()
+
+  .. **Interface Method** ..
+  + {abstract} void configureClient()
+  + {abstract} void performClientTask()
+  + {abstract} void cleanUp()
+}
+
+
+class org.tasktide.tasktide.client.TaskTideEngineClient <<extends client>> #C6DAF7 {
+  .. **Attributes** ..
+  - Logger LOGGER
+  - TaskTideWorkerUnitProvider unitProvider;
+  - int workItemThreads, itemTaskThreads
+  - int workThreshold, taskThreshold;
+  - TaskTideProcessor<WorkItem> processor;
+  - TaskTideExecutor<WorkItem> workExec;
+  - TaskTideEngineObserver<WorkItem> obs;
+
+  .. **Construction** ..
+  + TaskTideEngineClient(TaskTideServiceManager, ClientConfigMap)
+
+  .. **TaskTideClient Implementation** ..
+  + void runClient()
+  + void configureClient()
+  + void performClientTask()
+  + void cleanUp()
+
+  .. **TaskTideClient Decorators** ..
+  - ExecutorService initializeAndConfigureExecutorServices()
+  - TaskTideEngineObserver<WorkItem> configureWorkItemEngineObserverChain()
+  - TaskTideExecutor<WorkItem> configureWorkItemExecutor(TaskTideEngineObserver<WorkItem>)
+  - TaskTideProcessor<WorkItem> configureWorkItemProcessor(ExecutorService, TaskTideExecutor<WorkItem>)
+
+  .. **Helper Methods** ..
+  + void waitOnExecutorTrackerWorkItem(int, Logger)
+  + int countNotActive(List<ItemTask>)
+  + int countNonActive(List<WorkItem>)
+  + void fetchExecutionTimes(List<ItemTask>, Logger)
+  + void fetchExecutionTimesWorkItem(List<WorkItem>, Logger)
+  + String mapToJsonString(Object)
+}
+
+
+class org.tasktide.tasktide.client.TaskTideManagerClient <<extends client>> #C6DAF7 {
+  .. **Attributes** ..
+  - Logger LOGGER
+  - ArgumentMap argMap;
+
+  .. **Construction** ..
+  + TaskTideManagerClient(TaskTideServiceManager, ClientConfigMap)
+
+  .. **TaskTideClient Implementation** ..
+  + void runClient()
+  + void configureClient()
+  + void performClientTask()
+  + void cleanUp()
+
+  .. **TaskTideClient Decorators** ..
+  - String parseFilePath(ManagerAction)
+  - List<WorkItem> importJson(String)
+  - List<WorkItem> importFile throws IOException
+  - void handleImport()
+}
+
+
+enum org.tasktide.tasktide.client.TaskTideClientType #CCCCFF {
+  .. **Enum Constants Implement Methods** ..
+  GLOBAL
+  ENGINE
+  MANAGER
+
+  .. **Strategy Methods** ..
+  + abstract Class getConfigClass()
+  + abstract TaskTideClient makeClient(TaskTideServiceManager, ClientConfigMap)
+  + abstract boolean isClient(String)
+  + abstract boolean isClient(TaskTideClientType)
+
+  .. **Enum Methods** ..
+  + static int indexOf(TaskTideClientType)
+  + static int indexOf(String) 
+  + static boolean hasQuery(String)
+  + static TaskTideClientType get(String)
+}
+
+
+class org.tasktide.tasktide.client.TaskTideClientUtility #FFFFE0 {
+  .. **Attributes** ..
+  - static Logger LOGGER
+  - static Jsonb JSON_PRETTY
+  - static Jsonb JSON
+
+  .. **Generic Utility Methods** ..
+  + static String mapToJsonString(Object)
+
+  .. **Aids construction** ..
+  + static TaskTideClientType configureClient(ArgumentTree)
+  + static RepositoryType fetchRepoType(ClientConfigMap)
+  + static TaskTideServiceManager fetchManager(CdiContainerProvider, RepositoryType)
+  + static TaskTideServiceManager fetchManager(Template)
+}
+
+
+class org.tasktide.tasktide.client.ClientConfigMap {
+  .. **Attributes** ..
+  - Map<TaskTideClientType, TaskTideConfigurer> configMap;
+  - ArgumentTree argTree;
+  - String[] argsIn;
+
+  .. **Construction** ..
+  + ClientConfigMap()
+
+  .. **Provider Methods** ..
+  + TaskTideConfigurer parseConfigs(CdiContainerProvider, TaskTideClientType)
+  + void addConfigs(CdiContainerProvider)
+  + TaskTideClientType whichClient()
+}
+
+
+org.tasktide.tasktide.client.TaskTideEngineClient --|> org.tasktide.tasktide.client.TaskTideClient
+org.tasktide.tasktide.client.TaskTideManagerClient --|> org.tasktide.tasktide.client.TaskTideClient
+org.tasktide.tasktide.client.ClientConfigMap *-- org.tasktide.tasktide.client.TaskTideClient
+
+
+/'
+##################################################
+##################################################
+##
+## b). TaskTide Configurer
+##
+##################################################
+##################################################
+'/
+
+interface org.tasktide.tasktide.configurer.TaskTideConfigurer <<config>> #F8DE7E {
+  + {abstract} void addToTree(ArgumentTree argTree)
+  + {abstract} ArgumentMap getArgumentMap()
+  + {abstract} ArgumentBuilder getArgumentBuilder()
+  + {abstract} String getPath()
+  + {abstract} Config getConfig()
+  + {abstract} boolean parseCommandLineArguments(String[], ArgumentTree)
+  + {abstract} initConfig(ArgumentTree)
+}
+
+
+abstract class org.tasktide.tasktide.configurer.AbstractConfigurer <<implements-config>> #FFE5B4 {
+  .. **Attributes** ..
+  - ArgumentMap argMap
+  - String path
+  - ArgumentBuilder argBuilder
+  - Config config
+
+  .. **Construction** ..
+  + AbstractConfigurer(String)
+
+  .. **TaskTideConfigurer Implementation** ..
+  + void addToTree(ArgumentTree)
+  + String getPath()
+  + ArgumentMap getArgumentMap()
+  + ArgumentBuilder getArgumentBuilder()
+  + Config getConfig()
+  + boolean parseCommandLineArguments(String[], ArgumentTree)
+}
+
+
+class org.tasktide.tasktide.configurer.GlobalConfig <<extends abstract-config>> #C6DAF7 {
+  .. **Attributes** ..
+  - String client, workflowsName, stepName, workItemName
+  - String repositoryType, filePath, nosqlType
+  - String nosqlProvider, nosqlProviderClass, nosqlPassword
+  - String nosqlUser, nosqlHost, dateFormat
+  - int tokenExpirationDays
+
+  .. **Construction** ..
+  + GlobalConfig()
+
+  .. **TaskTideConfigurer Implementation** ..
+  + void initConfig()
+
+  .. **Microprofile Decorators** ..
+  - void client()
+}
+
+
+class org.tasktide.tasktide.configurer.EngineConfig <<extends abstract-config>> #C6DAF7 {
+  .. **Attributes** ..
+  - int lockTime
+  - int workItemThreads, workItemThreshold
+  - int itemTaskThreads. itemTaskThreshold
+  - int timeKeeperLevel
+  - boolean timeKeeperOnStartCanFail
+  - boolean timeKeeperOnProcessingCanFail
+  - boolean timeKeeperOnEndCanFail
+  - int timeKeeperWaitTime
+  
+  .. **Construction** ..
+  + EngineConfig()
+
+  .. **TaskTideConfigurer Implementation**. 
+  + void initConfig()
+
+  .. **Microprofile Decorators** ..
+  - void lockTime()
+  - void workItemThreads()
+}
+
+
+class org.tasktide.tasktide.configurer.ManagerConfig <<extends abstract-config>> #C6DAF7 {
+  .. **Attributes** ..
+  - String inputFile, outputFile, delimiter
+  - String nestedDelimiter, method. targetStep
+
+  .. **Construction** ..
+  + ManagerConfig()
+
+  .. **TaskTideConfigurer Implementation** ..
+  + void initConfig()
+
+  .. **Microprofile Decorators** ..
+  - void inputFile()
+  - void outputFile()
+}
+
+
+org.tasktide.tasktide.configurer.AbstractConfigurer ..|> org.tasktide.tasktide.configurer.TaskTideConfigurer
+org.tasktide.tasktide.configurer.GlobalConfig --|> org.tasktide.tasktide.configurer.AbstractConfigurer
+org.tasktide.tasktide.configurer.EngineConfig --|> org.tasktide.tasktide.configurer.AbstractConfigurer
+org.tasktide.tasktide.configurer.ManagerConfig --|> org.tasktide.tasktide.configurer.AbstractConfigurer
+
+
+
+/'
+##################################################
+##################################################
+##
+## c). TaskTide Command-Line Argument Parser
+##
+##################################################
+##################################################
+'/
+
+class org.tasktide.tasktide.parser.ArgumentTree {
+  .. **Attributes** ..
+  - GenericTree<ArgumentMap> tree
+
+  .. **Construction** ..
+  + ArgumentTree(String delim)
+
+  .. **Class Methods** ..
+  + GenericTree<ArgumentMap> getTree() 
+  + ArgumentMap getGlobalArguments()
+  + ArgumentMap getActionArguments(String)
+  + List<String> resolveActionPath(String[])
+  + String<String> getVerboseHelp()
+  + List<String> getGlobalHelp()
+  + List<String> getActionHelp(String)
+  + List<String> getActionHelp()
+  - String formatHelpLines(Argument<?>)
+}
+
+
+class org.tasktide.tasktide.parser.CliParser {
+  .. **Attributes** ..
+  - ArgumentTree argTree
+  - String[] argsIn
+  - Map<String, Argument<?>> parsedArgs
+
+  .. **Construction** ..
+  + CliParser(ArgumentTree, String[])
+
+  .. **Class Methods** ..
+  + Map<String, Argument<?>> parse()
+  - void parseFromMap(ArgumentMap)
+  - int indexOf(Argument<?>)
+  - boolean matchToArg(String, Argument<?>)
+  - String fetchRawValue(int)
+}
+
+
+class org.tasktide.tasktide.parser.model.ArgumentMap {
+  .. **Attributes** ..
+  - Map<String, Argument<?>> args;
+
+  .. **Construction** ..
+  + ArgumentMap()
+
+  .. **Class Methods** ..
+  + Map<String, Argument<?>> getArgMap()
+  + boolean putArgument(Argument<?>)
+  + Argument<?> getArgument(String)
+  + Map<String, Argument<?>> getArgumentMap()
+}
+
+
+class org.tasktide.tasktide.parser.model.Argument<<T>> {
+  .. **Attributes** ..
+  - T value
+  - Class<T> refClass
+  - String name, shortFlag, longFlag, description
+  - ArgumentType argType
+
+  .. **Construction** ..
+  Argument(String, String, String, String, ArgumentType)
+  Argument(T, String, String, String, String, ArgumentType, Class<T>)
+
+  .. **Class Methods** ..
+  + void parseValue(String)
+  + ArgumentType getArgumentType()
+  + String getLongFlag()
+  + String getShortFlag()
+  + String getDescription()
+  + String getName()
+  + Class<T> getRefClass()
+  + T getValue()
+  + void setValue(T)
+}
+
+
+enum org.tasktide.tasktide.parser.model.ArgumentType #CCCCFF {
+  GLOBAL, ACTION
+}
+
+
+class org.tasktide.tasktide.parser.model.ArgumentBuilder {
+  .. **Attributes** ..
+  - String name, shortFlag, longFlag, description;
+  - ArgumentType argType;
+  
+  // Optional properties handled generically
+  - boolean withValue
+  - Object value
+  - Class<?> refClass
+
+  .. **Building** ..
+  + ArgumentBuilder withName(String)
+  + ArgumentBuilder withShortFlag(String)
+  + ArgumentBuilder withLongFlag(String)
+  + ArgumentBuilder withDescription(String)
+  + ArgumentBuilder withArgType(ArgumentType)
+  + <T> ArgumentBuilder withValue(T, Class<T>)
+
+  .. **Build** ..
+  + <T> Argument<T> build()
+}
+
+
+class org.tasktide.tasktide.parser.model.GenericTree<<T>> {
+  .. **Attributes** ..
+  - GenericTreeNode<T> root
+  - String delimiter
+
+  .. **Construction** ..
+  + GenericTree(delimiter)
+
+  .. **Class Methods** ..
+  + GenericTreeNode<T> getRoot()
+  + void addChild(String, T )
+  + GenericTreeNode<T> findByAddress(String)
+  + T getDataForAddress(String)
+  + boolean removeByAddress(String)
+  + Map<String, GenericTreeNode<T>> getChildrenAtAddress(String)
+  + Map<String, T> getChildrenDataAtAddress(String, String)
+  + GenericTreeNode<T> findByData(T)
+  + boolean containsData(T)
+  + int size()
+  + String subStringPathToFlag(String, String)
+
+  .. **Recursive processing** ..
+  - List<GenericTreeNode<T>> getPathToRoot(GenericTreeNode<T>)
+  - Map<String, T> toAddressDataMap()
+  - void collectAddressData(GenericTreeNode<T> current, Map<String, T> map)
+  - int sizeRecursive(GenericTreeNode<T> current)
+  - GenericTreeNode<T> recursiveFindByData(GenericTreeNode<T>, T)
+  - boolean recursiveRemove(GenericTreeNode<T>, String[])
+  - GenericTreeNode<T> recursiveGetByAddress(GenericTreeNode<T>, String)
+  - void recursiveAdd(GenericTreeNode<T>, String, T)
+}
+
+
+class org.tasktide.tasktide.parser.model.GenericTreeNode<<T>> {
+  .. **Attributes** ..
+  - T data
+  - final String address
+  - GenericTreeNode<T> parent
+  - Map<String, GenericTreeNode<T>> children
+
+  .. **Construction** ..
+  + GenericTreeNode(T, String)
+
+  .. **Class Methods** ..
+  + String getAddress()
+  + T getData()
+  + void setData(T data)
+  + Map<String, GenericTreeNode<T>> getChildren()
+  + GenericTreeNode<T> getParent()
+  + void setParent(GenericTreeNode<T> parent)
+  + boolean isLeaf()
+  + boolean hasChild(String)
+  + Set<String> listChildren()
+  + boolean removeChild(String)
+  + void clearChildren()
+}
+
+
+org.tasktide.tasktide.parser.model.GenericTreeNode --o org.tasktide.tasktide.parser.model.GenericTree
+org.tasktide.tasktide.parser.model.ArgumentMap --o org.tasktide.tasktide.parser.ArgumentTree
+org.tasktide.tasktide.parser.model.Argument --o org.tasktide.tasktide.parser.model.ArgumentMap
+org.tasktide.tasktide.parser.model.GenericTree *-- org.tasktide.tasktide.parser.ArgumentTree
+org.tasktide.tasktide.parser.ArgumentTree *-- org.tasktide.tasktide.parser.CliParser
+
+
+
+/'
+##################################################
+##################################################
+##
+## d). TaskTide Container Provider
+##
+##################################################
+##################################################
+'/
+
+enum org.tasktide.tasktide.containerprovider.CdiProviders #CCCCFF {
+  .. **Enum Values** ..
+  JAKARTA
+  WELD
+  QUARKUS
+
+  .. **Strategy Methods** ..
+  + {abstract} CdiContainerProvider<?> createProvider()
+  + {abstract} boolean isProvider(String)
+  + {abstract} boolean isProvider(CdiProviders)
+
+  .. **Enum Methods** ..
+  + static int indexOf(String)
+  + static int indexOf(CdiProviders)
+  + static boolean hasQuery(String)
+  + static CdiProviders get(String)
+}
+
+
+
+interface org.tasktide.tasktide.containerprovider.CdiContainerProvider<T> <<container>> #F8DE7E {
+  + void initialize()
+  + void start()
+  + void shutdown()
+  + T getContainer()
+  + < U> U getBean(Class<U>)
+  + <V> void addBeanClass(Class<V>...)
+  + <V> void addPackage(Class<V>...)
+  + <V extends Extension> void addExtension(Class<V>...)
+}
+
+
+class org.tasktide.tasktide.containerprovider.SeContainerProvider<SeContainer> <<implements-container>> #FFE5B4 {
+  .. **Attributes** ..
+  - SeContainerInitializer initializer
+  - SeContainer container
+  
+  .. **Implements Container Interface** ..
+  + void initialize()
+  + void start()
+  + void shutdown()
+  + SeContainer getContainer()
+  + <T> getBean(Class<T>)
+  + <V> void addBeanClass(Class<V>...)
+  + <V> void addPackage(Class<V>...)
+  + <V extends Extension> void addExtension(Class<V>...)
+}
+
+
+class org.tasktide.tasktide.containerprovider.WeldContainerProvider<WeldContainer> <<implements-container>> #FFE5B4 {
+  .. **Attributes** ..
+  - Weld initializer
+  - WeldContainer container
+  
+  .. **Implements Container Interface** ..
+  + void initialize()
+  + void start()
+  + void shutdown()
+  + WeldContainer getContainer()
+  + <T> getBean(Class<T>)
+  + <V> void addBeanClass(Class<V>...)
+  + <V> void addPackage(Class<V>...)
+  + <V extends Extension> void addExtension(Class<V>...)
+}
+
+
+class org.tasktide.tasktide.containerprovider.QuarkusContainerProvider<ArcContainer> <<implements-container>> #FFE5B4 {
+  .. **Attributes** ..
+  - ArcContainer
+  
+  .. **Implements Container Interface** ..
+  + void initialize()
+  + void start()
+  + void shutdown()
+  + ArcContainer getContainer()
+  + <T> getBean(Class<T>)
+  + <V> void addBeanClass(Class<V>...)
+  + <V> void addPackage(Class<V>...)
+  + <V extends Extension> void addExtension(Class<V>...)
+}
+
+
+org.tasktide.tasktide.containerprovider.WeldContainerProvider --|> org.tasktide.tasktide.containerprovider.CdiContainerProvider
+org.tasktide.tasktide.containerprovider.SeContainerProvider --|> org.tasktide.tasktide.containerprovider.CdiContainerProvider
+org.tasktide.tasktide.containerprovider.QuarkusContainerProvider --|> org.tasktide.tasktide.containerprovider.CdiContainerProvider
+
+@enduml

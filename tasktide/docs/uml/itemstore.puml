@@ -36,17 +36,13 @@ interface org.tasktide.itemstore.ItemStore <<itemstore>> #F8DE7E {
   + {abstract} String getFilePath()
   + {abstract} String getDbDirectory()
 
-  + {abstract} void saveItem(Item) throws Exception
-  + {abstract} void saveItems(List<Item>) throws Exception
-  + {abstract} void saveItemToMaster(Item) throws Exception
-  + {abstract} void saveItemsToMaster(List<Item>) throws Exception
-  + {abstract} List<Item> getAll(boolean)
-  + {abstract} Item getById(String) throws Exception
-  + {abstract} Item getByIdFromMaster(String) throws Exception
-  + {abstract} List<Item> getItemsByState(String) throws Exception
-  + {abstract} List<Item> getItemsByStateFromMaster(String) throws Exception;
-  + {abstract} String getPayloadById(String)
-  + {abstract} String getPayloadFromMaster(String)
+  + {abstract} void saveItem(DbTarget, Item) throws Exception
+  + {abstract} void saveItems(DbTarget, List<Item>) throws Exception
+  + {abstract} List<Item> getAll(DbTarget)
+  + {abstract} Item getById(DbTarget, String) throws Exception
+  + {abstract} List<Item> getItemsByState(DbTarget, String) throws Exception
+  + {abstract} String getPayloadById(DbTarget, String)
+  + {abstract} boolean delete(DbTarget, Item) throws Exception
   + {abstract} void syncToMaster(Item) throws Exception
   + {abstract} void syncToMaster(List<Item>) throws Exception
   + {abstract} void syncToMaster() throws Exception
@@ -54,28 +50,43 @@ interface org.tasktide.itemstore.ItemStore <<itemstore>> #F8DE7E {
   + {abstract} boolean clearPrototype()
   + {abstract} boolean closeConn(DbTarget)
   + {abstract} boolean openConn(DbTarget)
-  + {abstract} boolean delete(Item) throws Exception
-  + {abstract} boolean deleteFromMaster(Item) throws Exception
 }
 
 
-abstract class org.tasktide.itemstore.stores.AbstractItemStore <<implements itemstore>> #FFE5B4 {
+abstract class org.tasktide.itemstore.AbstractItemStore <<implements itemstore>> #FFE5B4 {
   - String storeName
   - Path dbDirectory, masterDB
   - Path protoDB, masterLock
   - FileChannel fileChannel
   - FileLock fileLock
   - Random RANDOM
+
+  .. **ItemStore Implementation** ..
+  + String getStoreName()
+  + String getMasterFilePath()
+  + String getDbDirectory()
+  + void syncToMaster(Item) throws Exception
+  + void syncToMaster(List<Item>) throws Exception
+  + void syncToMaster() throws Exception
+  + boolean cacheMaster()
+  + boolean clearPrototype()
+
+  .. **Decorator Methods** ..
+  - boolean tryLock() throws IOException
+  - boolean makeMasterLockFile()
+  # void waitForLock() throws InterruptedException, IOException
+  # boolean releaseLock()
+  - void deleteRecursively(Path) throws IOException
 }
 
 
-enum org.tasktide.itemstore.stores.DbTarget #CCCCFF {
+enum org.tasktide.itemstore.DbTarget #CCCCFF {
     .. **Enum Values** ..
     MASTER, PROTOTYPE, BOTH
 }
 
 
-class org.tasktide.itemstore.stores.RocksDBStore << extends itemstore >> #C6DAF7 {
+class org.tasktide.itemstore.RocksDBStore << extends itemstore >> #C6DAF7 {
     .. **Attributes** ..
     - RocksDB master, proto
     - Options options
@@ -85,30 +96,59 @@ class org.tasktide.itemstore.stores.RocksDBStore << extends itemstore >> #C6DAF7
     + RocksDBStore(String, String, String, String)
 
     .. **Decorator Methods** ..
-    + Item fetchIteratorValue(RocksIterator);
+    + RocksIterator fetchIter(RocksDB)
+    + Item fetchIteratorValue(RocksIterator)
+    + void putItem(RocksDB, byte[], byte[])
     
     .. **ItemStore Implementation** ..
-    + List<Item> getAll(boolean)
-    + void saveItemToMaster(Item)
-    + void saveItemsToMaster(List<Item>)
-    + void saveItem(Item)
-    + void saveItems(List<Item>)
-    + Item getById(String)
-    + Item getByIdFromMaster(String)
-    + List<Item> getItemsByState(String)
-    + List<Item> getItemsByStateFromMaster(String)
-    + String getPayloadById(String)
-    + String getPayloadById(String)
+    + List<Item> getAll(DbTarget)
+    + void saveItem(DbTarget, Item)
+    + void saveItems(DbTarget, List<Item>)
+    + boolean delete(DbTarget, Item)
+    + Item getById(DbTarget, String)
+    + List<Item> getItemsByState(DbTarget, String)
+    + String getPayloadById(DbTarget, String)
     + boolean closeConn(DbTarget)
     + boolean openConn(DbTarget)
-    + boolean delete(Item)
-    + boolean deleteFromMaster(Item)
 }
 
 
-org.tasktide.itemstore.stores.AbstractItemStore ..|> org.tasktide.itemstore.ItemStore
-org.tasktide.itemstore.stores.RocksDBStore --|> org.tasktide.itemstore.stores.AbstractItemStore
+class org.tasktide.itemstore.SqliteStore << extends itemstore >> #C6DAF7 {
+    .. **Attributes** ..
+    - Connection master, proto
+    - Logger LOGGER
+
+    .. **Construction** ..
+    + SqliteStore(String, String, String, String)
+
+    .. **Decorator Methods** ..
+    - void initItemStore()
+    - boolean iniDatabase(Connection)
+    - boolean putItem(Connection, Item)
+    - Item parseItem(ResultSet)
+    - List<Item> consumeResultSet(ResultSet)
+    - List<Item> selectAll(Connection)
+    - List<Item> selectQuery(Connection, String, String)
+    - boolean deleteItem(Connection, Item)
+    
+    .. **ItemStore Implementation** ..
+    + List<Item> getAll(DbTarget)
+    + void saveItem(DbTarget, Item)
+    + void saveItems(DbTarget, List<Item>)
+    + boolean delete(DbTarget, Item)
+    + Item getById(DbTarget, String)
+    + List<Item> getItemsByState(DbTarget, String)
+    + String getPayloadById(DbTarget, String)
+    + boolean closeConn(DbTarget)
+    + boolean openConn(DbTarget)
+}
+
+
+org.tasktide.itemstore.AbstractItemStore ..|> org.tasktide.itemstore.ItemStore
+org.tasktide.itemstore.RocksDBStore --|> org.tasktide.itemstore.AbstractItemStore
+org.tasktide.itemstore.SqliteStore --|> org.tasktide.itemstore.AbstractItemStore
 org.tasktide.itemstore.ItemStore --o org.tasktide.itemstore.Item
-org.tasktide.itemstore.stores.AbstractItemStore --> org.tasktide.itemstore.stores.DbTarget
+org.tasktide.itemstore.ItemStore --> org.tasktide.itemstore.DbTarget
+
 
 @enduml

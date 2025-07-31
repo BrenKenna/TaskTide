@@ -1,0 +1,826 @@
+@startuml
+
+
+/'
+################################################################
+################################################################
+##
+## 3). TaskTide Engine
+##
+################################################################
+################################################################
+'/
+
+
+/'
+##################################################
+##################################################
+##
+## a). TaskTideProcessor
+##
+##################################################
+##################################################
+'/
+
+
+interface org.tasktide.engine.worker.TaskTideWorkerUnit #F8DE7E {
+    .. **Marker Interface**..
+}
+
+
+
+abstract class org.tasktide.engine.worker.processor.TaskTideProcessor<T extends TaskTideModel> <<implements TaskTideWorkerUnit>> #D7E7F7 {
+    .. **Attributes** ..
+    - List<T> workload
+    # Logger logger
+    # int threshold
+    # ExecutorService executorService
+
+    .. **Construction**..
+    + TaskTideProcessor(< All Attributes >)
+
+    .. **Abstraction Processing**..
+    + void process()
+    # Future<?> submitSubTask(List<T>)
+    + void processChunks(List<T>)
+    # Future<?> submitParallelSubTask(List<T>)
+    - void waitForAll(List<Future<?>>)
+    - void submitParallelChunks(List<T>
+
+    .. **Interface Methods** ..
+    # {abstract} List<List<T>> parallelChunks(List<T>)
+    # {abstract} void addTasksToTracker(List<T>, Future)
+    # {abstract} TaskTideProcessor<T> newSubProcessor(List<T>)
+    # {abstract} TaskTideExecutor<T> getExecutor()
+}
+
+
+
+class org.tasktide.engine.worker.processor.WorkItemProcessor <<extends TaskTideProcessor<WorkItem>>> #C6DAF7 {
+    .. **Attributes** ..
+    - WorkItemExecutor worker
+
+    .. **Construction** ..
+    WorkItemProcessor(< All Attributes >)
+
+    .. **Interface Implementation** ..
+    # TaskTideProcessor<WorkItem> newSubProcessor(List<WorkItem>)
+    # TaskTideExecutor<WorkItem> getExecutor()
+    # void addTasksToTracker(List<WorkItem>, Future)
+    # List<List<WorkItem>> parallelChunks(List<WorkItem>)
+}
+
+
+class org.tasktide.engine.worker.processor.ItemTaskProcessor <<extends TaskTideProcessor<ItemTask>>> #C6DAF7 {
+    .. **Attributes** ..
+    - ItemTaskExecutor worker
+
+    .. **Construction** ..
+    ItemTaskProcessor(< All Attributes >)
+
+    .. **Interface Implementation** ..
+    # TaskTideProcessor<ItemTask> newSubProcessor(List<ItemTask>)
+    # TaskTideExecutor<ItemTask> getExecutor()
+    # void addTasksToTracker(List<ItemTaskItemTask>, Future)
+    # List<List<ItemTask>> parallelChunks(List<ItemTask>)
+}
+
+
+
+org.tasktide.engine.worker.processor.TaskTideProcessor ..|> org.tasktide.engine.worker.TaskTideWorkerUnit
+org.tasktide.engine.worker.processor.WorkItemProcessor --|> org.tasktide.engine.worker.processor.TaskTideProcessor
+org.tasktide.engine.worker.processor.ItemTaskProcessor --|> org.tasktide.engine.worker.processor.TaskTideProcessor
+
+org.tasktide.engine.worker.processor.WorkItemProcessor --> org.tasktide.engine.worker.executor.WorkItemExecutor
+org.tasktide.engine.worker.processor.ItemTaskProcessor --> org.tasktide.engine.worker.executor.ItemTaskExecutor
+
+
+/'
+##################################################
+##################################################
+##
+## b). Executor
+##
+##################################################
+##################################################
+'/
+
+
+abstract class org.tasktide.engine.worker.executor.TaskTideExecutor<T extends TaskTideModel<T>> <<implements TaskTideWorkerUnit>> #D7E7F7 {
+    .. **Attributes** ..
+    # Logger logger
+    # AtomeInteger sharedCounter
+    # ProcessExecutor processExecutor
+    # int processCount
+    # TaskTideEngineObserver<T> observer
+
+    .. **Construction** ..
+    TaskTideExecutor(< All Attributes >)
+
+    .. **Abstraction Processing** ..
+    + void runTasks(List<T>)
+    + void handleFailure(T, Exception)
+    + int getProcessCount()
+    + void incrementCount()
+    + void decrementCout()
+    + static int globalCount()
+
+    .. **Interface Methods** ..
+    # boolean executeTask(T) throws IOException, InterruptException
+}
+
+
+
+class org.tasktide.engine.worker.executor.WorkItemExecutor<< extends TaskTideExecutor<WorkItem>> #C6DAF7 {
+    .. **Attributes** ..
+    - int nThreads, taskThreshold
+    - TaskTideWorkerUnitProvider unitProvider
+
+    .. **Construction** ..
+    WorkItemExecutor(< All Attributes >)
+
+    .. **Class Methods** ..
+    + int getnThreads()
+    + int getTaskThreshold()
+    + TaskTideProcessor<ItemTask> provideProcessor(WorkItem)
+
+    .. **Interface Implementation** ..
+    # executeTask(WorkItem) throws IOException, InterruptException
+}
+
+
+class org.tasktide.engine.worker.executor.ItemTaskExecutor<< extends TaskTideExecutor<ItemTask>> #C6DAF7 {
+    .. **Construction** ..
+    ItemTaskExecutor(< All Attributes >)
+
+    .. **Interface Implementation** ..
+    # executeTask(WorkItem) throws IOException, InterruptException
+}
+
+
+class org.tasktide.engine.worker.executor.ProcessExecutor {
+    .. **Attributes** ..
+    - Logger logger
+    - DateUtility dateUtils
+
+    .. **Construction** ..
+    ProcessExecutor(String dateFormat, int expirationDays)
+
+    .. **Class Methods** ..
+    + TaskLogging execute(String) throws IOException, InterruptException
+    + String[] readStream(InputStream) throws IOException
+    + ProcessLog buildProcessLog(Process) throws IOException
+    + TaskLogging buildTaskLogging(Process, ProcessLog, long, long)
+}
+
+
+org.tasktide.engine.worker.executor.TaskTideExecutor ..|> org.tasktide.engine.worker.TaskTideWorkerUnit
+org.tasktide.engine.worker.executor.WorkItemExecutor --|> org.tasktide.engine.worker.executor.TaskTideExecutor
+org.tasktide.engine.worker.executor.ItemTaskExecutor --|> org.tasktide.engine.worker.executor.TaskTideExecutor
+org.tasktide.engine.worker.executor.TaskTideExecutor *-- org.tasktide.engine.worker.executor.ProcessExecutor
+
+org.tasktide.engine.worker.executor.WorkItemExecutor --> org.tasktide.engine.worker.executor.ItemTaskExecutor
+
+
+/'
+##################################################
+##################################################
+##
+## c). Observer
+##
+##################################################
+##################################################
+'/
+
+
+interface org.tasktide.engine.observer.TaskTideEngineObserver<<T extends TaskTideModel<T>>> <<engine-observer>> #F8DE7E {
+    .. **Interface Methods** ..
+    + {abstract} boolean onTaskStart(T)
+    + {abstract} boolean onTaskProcessing(T)
+    + {abstract} boolean onTaskEnd(T)
+    + {abstract} List<WorkerObserver<T>> getObserver()
+    + {abstract} WorkerObserver<T> getObserver(String)
+}
+
+
+abstract org.tasktide.engine.observer.ObserverChain<T extends TaskTideModel<T>> <<implements engine-observer>> #FFE5B4 {
+    .. **Attributes** ..
+    # List<WorkerObserver<T>> observers
+
+    .. **Construction** ..
+    ObserverChain(<Observers>)
+
+    .. **Interface Implementation** ..
+    + boolean onTaskStart(T)
+    + boolean onTaskProcessing(T)
+    + boolean onTaskEnd(T)
+}
+
+
+class org.tasktide.engine.observer.chain.ItemTaskObserver <<extends ObserverChain>> #C6DAF7 {
+    .. **Construction**..
+    + ItemTaskObserver()
+    + ItemTaskObserver(int timeKeeperTimeOut)
+
+    .. **Interface Implementation** ..
+    + List<WorkerObserver<ItemTask>> getObservers()
+    + WorkerObserver<ItemTask> getObserver(String)
+}
+
+
+class org.tasktide.engine.observer.chain.WorkItemObserver <<extends ObserverChain>> #C6DAF7 {
+    .. **Construction**..
+    + WorkItemObserver()
+    + WorkItemObserver(int timeKeeperTimeOut)
+
+    .. **Interface Implementation** ..
+    + List<WorkerObserver<WorkItem>> getObservers()
+    + WorkerObserver<WorkItem> getObserver(String)
+}
+
+
+org.tasktide.engine.observer.ObserverChain ..|> org.tasktide.engine.observer.TaskTideEngineObserver
+org.tasktide.engine.observer.chain.WorkItemObserver --|> org.tasktide.engine.observer.ObserverChain
+org.tasktide.engine.observer.chain.ItemTaskObserver --|> org.tasktide.engine.observer.ObserverChain
+
+org.tasktide.engine.observer.ObserverChain --> org.tasktide.engine.observer.ObserverResult
+org.tasktide.engine.observer.TaskTideEngineObserver o-- org.tasktide.engine.observer.WorkerObserver
+org.tasktide.engine.worker.executor.TaskTideExecutor --> org.tasktide.engine.observer.ObserverChain
+
+
+
+/'
+##################################################
+##################################################
+##
+## d). Worker Observers
+##
+##################################################
+##################################################
+'/
+
+
+interface org.tasktide.engine.observer.WorkerObserver<T extends TaskTideModel<T>> << worker-observer>> #F8DE7E {
+    + ObserverResult onTaskStart(T)
+    + ObserverResult onTaskProcessing(T)
+    + ObserverResult onTaskEnd(T)
+    + boolean isOptional()
+    + ObserverType getType()
+    + String getName()
+}
+
+
+class org.tasktide.engine.observer.ObserverResult {
+    .. **Attributes** ..
+    - boolean success
+    - String failedObserver
+    - ObserverType observerType
+    - boolean canIgnore
+
+    .. **Construction** ..
+    ObserverResult(< All Attributes>)
+
+    .. **Class Methods** ..
+    + boolean isSuccess()
+    + String getFailedObserver()
+    + ObserverType getType()
+    + boolean canIgnore()
+    + static ObserverResult success()
+    + static Observer failure(WorkerObserver)
+    + staic Observer failure(WorkerObserver, boolean)
+}
+
+
+enum org.tasktide.engine.observer.worker.ObserverType #CCCCFF {
+    .. **Enum Values** ..
+    OPTIONAL, CRITICAL
+
+    .. **Value Methods** ..
+    + {abstract} boolean isType(ObserverType)
+    + {abstract} boolean isType(String)
+    + {abstract} boolean isOptional()
+}
+
+
+org.tasktide.engine.observer.WorkerObserver --> org.tasktide.engine.observer.ObserverResult
+org.tasktide.engine.observer.WorkerObserver --> org.tasktide.engine.observer.worker.ObserverType
+org.tasktide.engine.observer.WorkerObserver *-- org.tasktide.engine.observer.ObserverResult
+
+
+
+/'
+##############################
+##############################
+##
+## i). State Observer
+##
+##############################
+##############################
+'/
+
+
+abstract org.tasktide.engine.observer.worker.StateObserver<T extends TaskTideModel> <<implements WorkerObserver>> #FFE5B4{
+    .. **Attributes** ..
+    - ObserverType type
+
+    .. **Construction** ..
+    StateObserver()
+
+    .. **Partial Interface Implementation**..
+    + boolean isOptional()
+    + ObserverType getType()
+}
+
+
+class org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver<WorkItem> <<extends StateObserver>> #C6DAF7 {
+    .. **Construction** ..
+    + WorkItemStateObserver()
+    + WorkItemStateObserver(List<WorkItem>)
+
+    .. **Interface Implementation** ..
+    + ObserverResult onTaskStart(WorkItem)
+    + ObserverResult onTaskProcessing(WorkItem)
+    + ObserverResult onTaskEnd(WorkItem)
+    + String getName()
+
+    .. **Interface Decorators** ..
+    - boolean verifyItem(WorkItem)
+}
+
+
+class org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver<ItemTask> <<extends StateObserver>> #C6DAF7 {
+    .. **Construction** ..
+    + ItemTaskStateObserver()
+    + ItemTaskStateObserver(List<ItemTask>)
+
+    .. **Interface Implementation** ..
+    + ObserverResult onTaskStart(ItemTask)
+    + ObserverResult onTaskProcessing(ItemTask)
+    + ObserverResult onTaskEnd(ItemTask)
+    + String getName()
+}
+
+
+org.tasktide.engine.observer.worker.StateObserver ..|> org.tasktide.engine.observer.WorkerObserver
+org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver --|> org.tasktide.engine.observer.worker.StateObserver
+org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver --|> org.tasktide.engine.observer.worker.StateObserver
+
+
+/'
+##############################
+##############################
+##
+## ii). Executor Observer
+##
+##############################
+##############################
+'/
+
+
+abstract org.tasktide.engine.observer.worker.ExecutorObserver<T extends TaskTideModel<T>, U extends TaskTideModel<U>> #FFE5B4 {
+    .. **Attributes** ..
+    - ObserverType type
+    # Logger logger
+
+    .. **Construction** ..
+    ExecutorObserver()
+
+    .. **Partial Interface Implementation**..
+    + boolean isOptional()
+    + ObserverType getType()
+}
+
+
+class org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver <<extends ExecutorObserver<WorkItem, ItemTask>> #C6DAF7 {
+    .. **Construction** ..
+    WorkItemExecutorObserver()
+
+    .. **Interface Implementation**..
+    + ObserverResult onTaskStart(WorkItem)
+    + ObserverResult onTaskProcessing(WorkItem)
+    + ObserverResult onTaskEnd(WorkItem)
+    + String getName()
+
+    .. **Interface Decorators**..
+    + int handleUnlocks(WorkItem)
+    + boolean pollUnitilDone(WorkItem)
+    
+}
+
+
+org.tasktide.engine.observer.worker.ExecutorObserver ..|> org.tasktide.engine.observer.WorkerObserver
+org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver --|> org.tasktide.engine.observer.worker.ExecutorObserver
+
+
+
+/'
+##############################
+##############################
+##
+## iii). TimeKeeper Observer
+##
+##############################
+##############################
+'/
+
+
+abstract org.tasktide.engine.observer.worker.TimeKeeper<T extends TaskTideModel> <<implements WorkerObserver>> #FFE5B4 {
+    .. **Attributes** ..
+    # Logger logger
+    - ObserverType type
+    # AtomicBoolean abort
+    # AtomicLong startTime
+    # List<Long> executionTimes
+    - long meanDuration
+
+    .. **Construction** ..
+    TimeKeeperObserver(long, Logger)
+
+    .. **Interface Implementation**..
+    + boolean isOptional()
+    + ObserverType getType()
+    + ObserverResult onTaskStart(T)
+    + ObserverResult onTaskProcessing(T)
+    + ObserverResult onTaskEnd(T)
+
+    .. **Interface Decorator**..
+    + {abstract} void handleTaskState(T, boolean)
+    - boolean measureTime(long now, long startStamp)
+    - void updateAbortFlag(boolean)
+    - boolean evaluateStart(T, long now, long startStamp, long elpased)
+    - boolean evaluateDuration(long now, long duration)
+}
+
+
+class org.tasktide.engine.observer.worker.timekeeper.WorkItemTimeKeeper<WorkItem> << extends TimeKeeperObserver >> #C6DAF7 {
+    .. **Construction** ..
+    + WorkItemTimeKeeper(long maxTime)
+
+    .. **Interface Implementation**..
+    + void handleTaskState(WorkItem, boolean)
+    + String getName()
+}
+
+
+class org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper<ItemTask> << extends TimeKeeperObserver >> #C6DAF7 {
+    .. **Construction** ..
+    + ItemTaskTimeKeeper(long maxTime)
+
+    .. **Interface Implementation**..
+    + void handleTaskState(ItemTask, boolean)
+    + String getName()
+}
+
+
+org.tasktide.engine.observer.worker.TimeKeeper ..|> org.tasktide.engine.observer.WorkerObserver
+org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper --|> org.tasktide.engine.observer.worker.TimeKeeper
+org.tasktide.engine.observer.worker.timekeeper.WorkItemTimeKeeper --|> org.tasktide.engine.observer.worker.TimeKeeper
+
+
+
+
+/'
+##################################################
+##################################################
+##
+## h). Trackers
+##
+##################################################
+##################################################
+'/
+
+
+class org.tasktide.engine.trackers.TaskTracker<T extends TaskTideModel<T>> {
+    .. **Attributes** ..
+    - ConcurrentMap<String, ExecutionState> taskStates
+
+    .. **Construction** ..
+    TasskTracker()
+
+    .. **Class Methods** ..
+    + void markTask(String, ExecutionState)
+    + ExecutionState get(String)
+    + boolean isDone(String)
+    + boolean isActive(String)
+    + boolean isRunning(String)
+    + boolean isHeld(String)
+    + boolean isPresent(String)
+    + int taskCount()
+}
+
+
+class org.tasktide.engine.trackers.ExecutorServiceTracker<T extends TaskTideModel<T>> {
+    .. **Attributes** ..
+    - ConcurrentMap<String, ExecutorServiceItem<T>> taskStates
+
+    .. **Construction** ..
+    ExecutorServiceTracker()
+
+    .. **Class Methods** ..
+    + void clearMap()
+    + List<String> fetchDone()
+    + void markTask(String, ExecutorServiceItem<T>)
+    + ExecutorServiceItem<T> get(String)
+    + boolean isDone(String)
+    + boolean isActive(String)
+    + boolean isComplete(String)
+    + boolean isPresent(String)
+    + int taskCount()
+    + int countActive()
+    + int countComplete()
+    + int countDone()
+    + Set<String> getIds()
+}
+
+
+class org.tasktide.engine.trackers.ExecutorServiceItem<T extends TaskTideModel<T>> {
+    .. **Attributes** ..
+    - TaskTideModel<T> task
+    - Future<?> future
+
+    .. **Construction** ..
+    ExecutorServiceItem(TaskTideModel<T>, Future<?>)
+
+    .. **Class Methods** ..
+    + TaskTideModel<T> getModel()
+    + Future<?> getFuture()
+}
+
+
+enum org.tasktide.engine.trackers.ExecutionState #CCCCFF {
+    .. **Enum Values** ..
+    QUEUED, PREPARE, LOCKED, RUNNING, COMPLETED, FAILED, ABORTED, SKIPPED
+
+    .. **Value Methods** ..
+    + {abstract} boolean isState(String)
+    + {abstract} boolean isState(ExecutionState)
+
+    .. **Static Methods** ..
+    + static int indexOf(String)
+    + static boolean hasType(String)
+} 
+
+
+class org.tasktide.engine.trackers.TaskTrackers << final >> {
+    .. **Attributes** ..
+    + static final TaskTracker ITEM_TASK_TRACKER = new TaskTracker<ItemTask>()
+    + static final TaskTracker WORK_ITEM_TASKTRACKER = new TaskTracker<WorkItem>()
+
+    .. **Construction** ..
+    - TaskTrackers()
+}
+
+
+class org.tasktide.engine.trackers.FutureTrackers << final >> {
+    .. **Attributes** ..
+    + static final ExecutorServiceTracker ITEM_TASK_TRACKER = new ExecutorServiceTracker<ItemTask>()
+    + static final ExecutorServiceTracker WORK_ITEM_TASKTRACKER = new ExecutorServiceTracker<WorkItem>()
+
+    .. **Construction** ..
+    - TaskTrackers()
+}
+
+
+org.tasktide.engine.trackers.FutureTrackers o-- org.tasktide.engine.trackers.ExecutorServiceTracker
+org.tasktide.engine.trackers.ExecutorServiceTracker o-- org.tasktide.engine.trackers.ExecutorServiceItem
+org.tasktide.engine.trackers.ExecutorServiceItem --> org.tasktide.engine.trackers.ExecutionState
+
+org.tasktide.engine.trackers.TaskTrackers o-- org.tasktide.engine.trackers.TaskTracker
+org.tasktide.engine.trackers.TaskTracker --> org.tasktide.engine.trackers.ExecutionState
+
+
+
+/'
+##################################################
+##################################################
+##
+## i). Worker Unit Provider
+##
+##################################################
+##################################################
+'/
+
+
+
+/'
+##############################
+##############################
+##
+## i). Observer Builder
+##
+##############################
+##############################
+'/
+
+
+class org.tasktide.engine.workerunitprovider.ItemTaskObserverBuilder {
+    .. **Attributes** ..
+    - List<ItemTask> workload
+    - int maxTime
+
+    .. **Builder Methods** ..
+    + ItemTaskObserverBuilder withWorkload(List<ItemTask>)
+    + ItemTaskObserverBuilder withMaxTime(int)
+
+    .. **Building** ..
+    + TaskTideEngineObserver<ItemTask> build()
+}
+
+
+class org.tasktide.engine.workerunitprovider.WorkItemObserverBuilder {
+    .. **Attributes** ..
+    - List<WorkItem> workload
+    - int maxTime
+
+    .. **Builder Methods** ..
+    + WorkItemObserverBuilder withWorkload(List<WorkItem>)
+    + WorkItemObserverBuilder withMaxTime(int)
+
+    .. **Building** ..
+    + TaskTideEngineObserver<WorkItem> build()
+}
+
+org.tasktide.engine.workerunitprovider.WorkItemObserverBuilder --> org.tasktide.engine.observer.TaskTideEngineObserver
+org.tasktide.engine.workerunitprovider.ItemTaskObserverBuilder --> org.tasktide.engine.observer.TaskTideEngineObserver
+
+
+
+/'
+##############################
+##############################
+##
+## ii). Executor Builder
+##
+##############################
+##############################
+'/
+
+
+class org.tasktide.engine.workerunitprovider.WorkItemExecutorBuilder {
+    .. **Attributes** ..
+    - TaskTideEngineObserver<WorkItem> observer
+    - int threshold, nThreads
+
+    .. **Builder Methods** ..
+    + WorkItemExecutorBuilder withWorkItemObserver(List<WorkItem>, int)
+    + WorkItemExecutorBuilder withWorkItemObserver(int)
+    + WorkItemExecutorBuilder withWorkItemObserver(TaskTideEngineObserver<WorkItem> obs)
+
+    + WorkItemExecutorBuilder withSubTaskThreshold(int)
+    + WorkItemExecutorBuilder withThreads(int)
+
+    .. **Build Executor** ..
+    + TaskTideExecutor<WorkItem> build()
+}
+
+
+class org.tasktide.engine.workerunitprovider.ItemTaskExecutorBuilder {
+    .. **Attributes** ..
+    - TaskTideEngineObserver<ItemTask> observer
+
+    .. **Builder Methods** ..
+    + ItemTaskExecutorBuilder withWorkItemObserver(List<ItemTask>, int)
+    + ItemTaskExecutorBuilder withWorkItemObserver(int)
+    + ItemTaskExecutorBuilder withWorkItemObserver(TaskTideEngineObserver<ItemTask> obs)
+
+    .. **Build Executor** ..
+    + TaskTideExecutor<ItemTask> build()
+}
+
+org.tasktide.engine.workerunitprovider.ItemTaskExecutorBuilder --> org.tasktide.engine.worker.executor.TaskTideExecutor
+org.tasktide.engine.workerunitprovider.WorkItemExecutorBuilder --> org.tasktide.engine.worker.executor.TaskTideExecutor
+
+
+
+/'
+##############################
+##############################
+##
+## iii). Processor Builder
+##
+##############################
+##############################
+'/
+
+
+class org.tasktide.engine.workerunitprovider.ItemTaskProcessorBuilder {
+    .. **Attributes** ..
+    - List<ItemTask> workload
+    - int threshold
+    - ExecutorService executorService
+    - TaskTideExecutor<ItemTask> executor
+
+    .. **Builder Methods** ..
+    + ItemTaskProcessorBuilder withWorkload(List<ItemTask>)
+    + ItemTaskProcessorBuilder withExecutorServiceBuilder(ExecutorService)
+    + ItemTaskProcessorBuilder withSubExecutor(TaskTideExecutor<ItemTask>)
+
+    .. **Build Processor** ..
+    + TaskTideProcessor<ItemTask> build()
+}
+
+
+class org.tasktide.engine.workerunitprovider.WorkItemProcessorBuilder {
+    .. **Attributes** ..
+    - List<WorkItem> workload
+    - int threshold
+    - ExecutorService executorService
+    - TaskTideExecutor<WorkItem> executor
+
+    .. **Builder Methods** ..
+    + WorkItemProcessorBuilder withWorkload(List<WorkItem>)
+    + WorkItemProcessorBuilder withExecutorServiceBuilder(ExecutorService)
+    + WorkItemProcessorBuilder withSubExecutor(TaskTideExecutor<WorkItem>)
+
+    .. **Build Processor** ..
+    + TaskTideProcessor<WorkItem> build()
+}
+
+
+org.tasktide.engine.workerunitprovider.WorkItemProcessorBuilder --> org.tasktide.engine.worker.processor.TaskTideProcessor
+org.tasktide.engine.workerunitprovider.ItemTaskProcessorBuilder --> org.tasktide.engine.worker.processor.TaskTideProcessor
+
+
+/'
+##################################################
+##################################################
+##
+## j). TaskTide Engine
+##
+##################################################
+##################################################
+'/
+
+
+class org.tasktide.engine.TaskTideWorkerUnitProvider {
+    .. **Attributes** ..
+    - WorkItemObserverBuilder workItemObserverBuilder
+    - WorkItemProcessorBuilder workItemProcessorBuilder
+    - WorkItemExecutorBuilder workItemExecutorBuilder
+
+    - ItemTaskObserverBuilder itemTaskObserverBuilder
+    - ItemTaskProcessorBuilder itemTaskProcessorBuilder
+    - ItemTaskExecutorBuilder itemTaskExecutorBuilder
+
+    .. **Construction** ..
+    TaskTideWorkerUnitProvider()
+
+    .. **Class Methods** ..
+    + WorkItemObserverBuilder workItemObserverBuilder()
+    + WorkItemProcessorBuilder workItemProcessorBuilder()
+    + WorkItemExecutorBuilder workItemExecutorBuilder()
+
+    + ItemTaskObserverBuilder itemTaskObserverBuilder()
+    + ItemTaskProcessorBuilder itemTaskProcessorBuilder()
+    + ItemTaskExecutorBuilder itemTaskExecutorBuilder()
+}
+
+
+class org.tasktide.engine.TaskTideExecutorServiceProvider<<singleton>>  {
+    .. **Attributes** ..
+    - static volatile TaskTideExecutorServiceProvider instance
+    - int workItemThreads, itemTaskThreads
+    - ExecutorService workItemService
+    - ExecutorService itemTaskService
+
+    .. **Construction** ..
+    TaskTideExecutorServiceProvider(int, int)
+
+    .. **Initialization Methods** ..
+    + static synchronized void initialize(int, int)
+    + static TaskTideExecutorServiceProvider getInstance()
+
+    .. **Post Init Methods** ..
+    + ExecutorService getItemTaskExecutorService()
+    + ExecutorService getWorkItemExecutorService()
+    + int getItemTaskThreads()
+    + int getWorkItemThreads()
+}
+
+
+class org.tasktide.engine.Engine {
+    .. **Attributes** ..
+    - TaskTideExecutorServiceProvider execProv
+    - TaskTideWorkerUnitProvider workerProv
+
+    .. **Construction** ..
+    + Engine(int, int)
+
+    .. **Class Methods** ..
+    + TaskTideExecutorServiceProvider getExecutorProvider()
+    + TaskTideWorkerUnitProvider getWorkerUnitProvider()
+}
+
+
+
+org.tasktide.engine.TaskTideWorkerUnitProvider --> org.tasktide.engine.workerunitprovider.WorkItemObserverBuilder
+org.tasktide.engine.TaskTideWorkerUnitProvider --> org.tasktide.engine.workerunitprovider.WorkItemProcessorBuilder
+org.tasktide.engine.TaskTideWorkerUnitProvider --> org.tasktide.engine.workerunitprovider.WorkItemExecutorBuilder
+org.tasktide.engine.TaskTideWorkerUnitProvider --> org.tasktide.engine.workerunitprovider.ItemTaskObserverBuilder
+org.tasktide.engine.TaskTideWorkerUnitProvider --> org.tasktide.engine.workerunitprovider.ItemTaskProcessorBuilder
+org.tasktide.engine.TaskTideWorkerUnitProvider --> org.tasktide.engine.workerunitprovider.ItemTaskExecutorBuilder
+
+org.tasktide.engine.Engine --> org.tasktide.engine.TaskTideWorkerUnitProvider
+org.tasktide.engine.Engine --> org.tasktide.engine.TaskTideExecutorServiceProvider
+
+@enduml
