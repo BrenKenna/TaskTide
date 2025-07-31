@@ -1,8 +1,9 @@
 # TaskTide - ItemStore
+<p>
 The purpose of this Library is to offer support for File based Databases like SQLite, and RocksDB, locking coordination system so that different instances of TaskTide can read/write to the "backend".
+</p>
 
-Currently this is branch is only developed with RocksDB & SQLite in mind, and RocksDB is the only one implemented. However, given an Item is stored, these will be implemented to cover both SQLite, and SQL backends.
-
+<p>
 |Class|Purpose  |
 |--|--|
 | Item  | Data class that model is converted to for storage |
@@ -10,6 +11,7 @@ Currently this is branch is only developed with RocksDB & SQLite in mind, and Ro
 | AbstractItemStore | Caches masterDB into a prototype, decorating implementation |
 | RocksDBStore | Implements the AbstractItemStore |
 | DbTarget | Supports Master vs Prototype actions |
+</p>
 
 
 <p align="center">

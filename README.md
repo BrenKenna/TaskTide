@@ -7,7 +7,7 @@
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)  
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue)  
 
-**TaskTide** is a modular, **Pilot Job System** designed for modern **HPC**, **Grid**, and **Edge Computing** workloads. It enables execution of **ETL-style workflows** using dynamic tasks, and supports both NoSQL (ex MongoDB, CouchDB, Cassandra, RocksDB etc), and SQL (ex MySQL, Postgres, Microsoft SQL Server etc) database backends.
+**TaskTide** is a modular, **Pilot Job System** designed for modern **HPC**, **Grid**, and **Edge Computing** workloads. It enables execution of **ETL-style workflows** using dynamic tasks, and supports both NoSQL (ex MongoDB, CouchDB, Cassandra, RocksDB etc), and SQL (ex MySQL, Postgres, Microsoft SQL Server etc) database backends. The unit of work being a script/executable allows TaskTide to support scale out of any provided workload such as arbitrary or pipelined shell/R/Python/Spark scripts, and decouples environment configuration from TaskTide deployment.
 
 ---
 
@@ -24,9 +24,10 @@
 
 ## 🧱 Architecture
 
-- **Core Model**  – Defines the stateful task and workflow data structure.
-- **Engine**      – Processes and tracks WorkItems and their tasks.
-- **Manager**     – Provides access and services for workflows and persistence.
+- **Core Model**             – Defines the stateful task and workflow data structure, described <a href="/tasktide/core/README.md">here</a>.
+- **Engine Lib**             – Processes and tracks WorkItems and their tasks, described <a href="/tasktide/engine/README.md">here</a>.
+- **Client Application**     – Provides access and services for workflows and persistence, described <a href="/tasktide/engine/README.md">here</a>.
+
 
 <p align="center">
   <img src="/tasktide/docs/assets/tasktide-arch.png" alt="TaskTide Architecture"/>

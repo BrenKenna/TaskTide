@@ -24,7 +24,6 @@ import org.tasktide.core.TaskTideModel;
 
 
 /**
- *
  * TaskTideModel class for Work Items
  * 
  * @author bkenna
