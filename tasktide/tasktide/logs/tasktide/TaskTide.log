@@ -1,0 +1,1457 @@
+2025-07-31 20:28:01 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:28:01 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:28:11 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:28:11 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:28:11 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:28:11 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:28:11 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.RuntimeException: Failed to load driver class com.mysql.cj.jdbc.Driver in either of HikariConfig class loader or Thread context classloader'
+2025-07-31 20:29:18 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:29:18 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:29:29 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:29:30 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:29:30 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:29:30 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:29:31 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-31 20:29:31 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-31 20:29:31 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-31 20:29:32 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-31 20:29:32 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata ]: HHH000342: Could not obtain connection to query metadata
+org.hibernate.HibernateException: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:191) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentWithDefaults(JdbcEnvironmentInitiator.java:143) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:338) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:277) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:58) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:276) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:107) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:223) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:170) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:55) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:80) [jakarta.persistence-api-3.1.0.jar:3.1.0]
+	at org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility.fetchEntityManagerFactory(JpaRepositoryUtility.java:190) [tasktide-core-0.0.1.jar:?]
+	at org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility.fetchEntityManager(JpaRepositoryUtility.java:206) [tasktide-core-0.0.1.jar:?]
+	at org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility.initServiceManager(JpaRepositoryUtility.java:123) [tasktide-core-0.0.1.jar:?]
+	at org.tasktide.tasktide.client.TaskTideClientUtility.initSqlServiceManager(TaskTideClientUtility.java:196) [main/:?]
+	at org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager(TaskTideClientUtility.java:169) [main/:?]
+	at org.tasktide.tasktide.TaskTide.main(TaskTide.java:61) [main/:?]
+2025-07-31 20:29:32 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)'
+2025-07-31 20:30:50 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:30:50 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:30:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:30:59 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:30:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:30:59 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:31:01 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-31 20:31:01 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-31 20:31:01 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-31 20:31:01 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-31 20:31:01 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata ]: HHH000342: Could not obtain connection to query metadata
+org.hibernate.HibernateException: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:191) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentWithDefaults(JdbcEnvironmentInitiator.java:143) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:338) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute(JdbcEnvironmentInitiator.java:277) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jdbc.WorkExecutor.executeReturningWork(WorkExecutor.java:58) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jdbc.AbstractReturningWork.accept(AbstractReturningWork.java:34) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:70) ~[hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:276) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:107) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:223) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:191) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:170) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1432) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1503) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:55) [hibernate-core-6.4.4.Final.jar:6.4.4.Final]
+	at jakarta.persistence.Persistence.createEntityManagerFactory(Persistence.java:80) [jakarta.persistence-api-3.1.0.jar:3.1.0]
+	at org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility.fetchEntityManagerFactory(JpaRepositoryUtility.java:190) [tasktide-core-0.0.1.jar:?]
+	at org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility.fetchEntityManager(JpaRepositoryUtility.java:206) [tasktide-core-0.0.1.jar:?]
+	at org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility.initServiceManager(JpaRepositoryUtility.java:123) [tasktide-core-0.0.1.jar:?]
+	at org.tasktide.tasktide.client.TaskTideClientUtility.initSqlServiceManager(TaskTideClientUtility.java:196) [main/:?]
+	at org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager(TaskTideClientUtility.java:169) [main/:?]
+	at org.tasktide.tasktide.TaskTide.main(TaskTide.java:61) [main/:?]
+2025-07-31 20:31:01 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)'
+2025-07-31 20:32:09 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:32:09 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:32:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:32:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:32:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:32:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:32:20 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-31 20:32:20 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-31 20:32:20 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-31 20:32:21 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-31 20:32:21 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-31 20:32:21 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-31 20:32:23 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-31 20:32:23 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-07-31 20:32:23 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-07-31 20:32:23 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-07-31 20:32:24 WARN  [ main -> org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions ]: SQL Error: 1146, SQLState: 42S02
+2025-07-31 20:32:24 ERROR [ main -> org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions ]: Table 'tasktide_database.WorkItem' doesn't exist
+2025-07-31 20:32:24 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'jakarta.persistence.RollbackException: Error while committing the transaction'
+2025-07-31 20:36:28 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:36:28 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:36:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:36:38 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:36:38 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:36:38 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:36:38 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-31 20:36:39 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-31 20:36:39 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-31 20:36:39 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-31 20:36:39 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-31 20:36:40 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-31 20:36:42 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-31 20:36:42 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-07-31 20:36:42 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-07-31 20:36:42 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-07-31 20:36:42 WARN  [ main -> org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions ]: SQL Error: 1146, SQLState: 42S02
+2025-07-31 20:36:42 ERROR [ main -> org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions ]: Table 'tasktide_database.WorkItem' doesn't exist
+2025-07-31 20:36:42 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'jakarta.persistence.RollbackException: Error while committing the transaction'
+2025-07-31 20:37:10 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:37:10 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:37:18 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:37:18 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:37:18 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:37:18 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:37:19 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-31 20:37:19 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-31 20:37:19 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-31 20:37:20 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-31 20:37:20 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-31 20:37:20 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-31 20:37:22 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-31 20:37:23 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-07-31 20:37:23 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-07-31 20:37:23 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-07-31 20:37:24 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-07-31 20:37:24 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-07-31 20:37:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:37:39 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:37:49 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:37:49 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:37:49 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:37:49 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:37:50 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-31 20:37:50 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-31 20:37:50 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-31 20:37:51 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-31 20:37:51 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-31 20:37:51 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-31 20:37:53 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-31 20:37:54 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-07-31 20:37:54 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Engine'
+2025-07-31 20:37:55 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.performClientTask ]: Processing workload of size:	'5'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:37:55 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Begining state monitoring of ExecutorServiceTracker:	N tasks = '5'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43' set on thread 'pool-2-thread-1'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:37:55 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf' set on thread 'pool-2-thread-2'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '2' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='2', First ItemId = 'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-1', Size='1', First ItemId = 'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610'
+2025-07-31 20:37:55 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '2' < threshold '2' at start-up. Enqueing all tasks
+2025-07-31 20:37:55 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '1' < threshold '2' at start-up. Enqueing all tasks
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:37:55 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:37:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582' set on thread 'pool-3-thread-1'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:37:55 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping rte.ie
+2025-07-31 20:37:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610' set on thread 'pool-3-thread-2'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610'
+2025-07-31 20:37:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping google.com
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping rte.ie
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2-0' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582', global count: 1
+2025-07-31 20:37:58 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping google.com
+2025-07-31 20:37:58 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:37:58 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610', global count: 2
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582',
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582' completed in 3572ms
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-98874056-3d2d-463a-bc0a-a5b9e4fb9582'
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '2', Failed = '0', Skipped = '0'
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-facd5b22-98ee-4804-8f99-c37cbe5cd3e3'
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-facd5b22-98ee-4804-8f99-c37cbe5cd3e3'
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-facd5b22-98ee-4804-8f99-c37cbe5cd3e3' set on thread 'pool-3-thread-1'
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-facd5b22-98ee-4804-8f99-c37cbe5cd3e3'
+2025-07-31 20:37:58 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping bbc.com
+2025-07-31 20:37:58 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610',
+2025-07-31 20:37:58 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610' completed in 3605ms
+2025-07-31 20:37:58 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:37:58 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-2b856b62-6f59-4d5b-9963-075b4baa5610'
+2025-07-31 20:37:58 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '2', Failed = '0', Skipped = '0'
+2025-07-31 20:38:02 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping bbc.com
+2025-07-31 20:38:02 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2-1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:38:02 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-facd5b22-98ee-4804-8f99-c37cbe5cd3e3', global count: 3
+2025-07-31 20:38:02 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-facd5b22-98ee-4804-8f99-c37cbe5cd3e3',
+2025-07-31 20:38:02 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-facd5b22-98ee-4804-8f99-c37cbe5cd3e3' completed in 3303ms
+2025-07-31 20:38:02 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:02 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-facd5b22-98ee-4804-8f99-c37cbe5cd3e3'
+2025-07-31 20:38:02 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '3', Failed = '0', Skipped = '0'
+2025-07-31 20:38:05 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'0' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='5', Done='0', Expected='5'
+2025-07-31 20:38:05 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+
+{
+    "State Summary": {
+        "LOCKED": 0,
+        "DONE": 2,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+
+{
+    "State Summary": {
+        "LOCKED": 0,
+        "DONE": 1,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '1' WorkItems with '1'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '2' WorkItems with '2'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43', global count: 4
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43',
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf', global count: 5
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43' completed in 10185ms
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf',
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf' completed in 10185ms
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '5', Failed = '0', Skipped = '0'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397' set on thread 'pool-2-thread-2'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '5', Failed = '0', Skipped = '0'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c' set on thread 'pool-2-thread-1'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='1', First ItemId = 'ItemTask-a572424c-d149-4b69-aece-224f3df89934'
+2025-07-31 20:38:05 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '1' < threshold '2' at start-up. Enqueing all tasks
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-a572424c-d149-4b69-aece-224f3df89934'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:05 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-a572424c-d149-4b69-aece-224f3df89934'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-a572424c-d149-4b69-aece-224f3df89934' set on thread 'pool-3-thread-2'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-a572424c-d149-4b69-aece-224f3df89934'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping tudublin.ie
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '5' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-ea8f8571-74b3-42eb-8f95-fc65ebbc3eed'
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-31 20:38:05 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-ea8f8571-74b3-42eb-8f95-fc65ebbc3eed'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-ea8f8571-74b3-42eb-8f95-fc65ebbc3eed' set on thread 'pool-3-thread-1'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-ea8f8571-74b3-42eb-8f95-fc65ebbc3eed'
+2025-07-31 20:38:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping github.com
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping github.com
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-2' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-ea8f8571-74b3-42eb-8f95-fc65ebbc3eed', global count: 6
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping tudublin.ie
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_5' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-a572424c-d149-4b69-aece-224f3df89934', global count: 7
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-ea8f8571-74b3-42eb-8f95-fc65ebbc3eed',
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-ea8f8571-74b3-42eb-8f95-fc65ebbc3eed' completed in 3351ms
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-ea8f8571-74b3-42eb-8f95-fc65ebbc3eed'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-ef09de8e-49f8-44ad-b89d-365b5a094faa'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-ef09de8e-49f8-44ad-b89d-365b5a094faa'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-ef09de8e-49f8-44ad-b89d-365b5a094faa'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-ef09de8e-49f8-44ad-b89d-365b5a094faa'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping medium.com
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-a572424c-d149-4b69-aece-224f3df89934',
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-a572424c-d149-4b69-aece-224f3df89934' completed in 3450ms
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-a572424c-d149-4b69-aece-224f3df89934'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '7', Failed = '0', Skipped = '0'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-4f5a87cc-4673-4af7-987b-765d59e8bb12'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-4f5a87cc-4673-4af7-987b-765d59e8bb12'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-4f5a87cc-4673-4af7-987b-765d59e8bb12' set on thread 'pool-3-thread-2'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-4f5a87cc-4673-4af7-987b-765d59e8bb12'
+2025-07-31 20:38:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping gmail.com
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping medium.com
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-ef09de8e-49f8-44ad-b89d-365b5a094faa', global count: 8
+2025-07-31 20:38:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping gmail.com
+2025-07-31 20:38:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-4' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:38:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-4f5a87cc-4673-4af7-987b-765d59e8bb12', global count: 9
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-ef09de8e-49f8-44ad-b89d-365b5a094faa',
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-ef09de8e-49f8-44ad-b89d-365b5a094faa' completed in 3371ms
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-ef09de8e-49f8-44ad-b89d-365b5a094faa'
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '9', Failed = '0', Skipped = '0'
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93'
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93'
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93' set on thread 'pool-3-thread-1'
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93'
+2025-07-31 20:38:12 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping slack.com
+2025-07-31 20:38:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-4f5a87cc-4673-4af7-987b-765d59e8bb12',
+2025-07-31 20:38:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-4f5a87cc-4673-4af7-987b-765d59e8bb12' completed in 3380ms
+2025-07-31 20:38:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-4f5a87cc-4673-4af7-987b-765d59e8bb12'
+2025-07-31 20:38:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '9', Failed = '0', Skipped = '0'
+2025-07-31 20:38:15 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'1' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='3', Done='2', Expected='5'
+2025-07-31 20:38:15 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+
+{
+    "State Summary": {
+        "LOCKED": 0,
+        "DONE": 1,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '1' WorkItems with '1'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397', global count: 10
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397',
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397' completed in 10090ms
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '10', Failed = '0', Skipped = '0'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1' set on thread 'pool-2-thread-2'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+
+{
+    "State Summary": {
+        "LOCKED": 1,
+        "DONE": 3,
+        "TODO": 1,
+        "FOR_UNLOCK": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:38:15 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '4' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:15 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:15 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-4b633b7c-163a-4572-a14e-102f9a47feb6'
+2025-07-31 20:38:15 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-31 20:38:15 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-4b633b7c-163a-4572-a14e-102f9a47feb6'
+2025-07-31 20:38:15 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-4b633b7c-163a-4572-a14e-102f9a47feb6' set on thread 'pool-3-thread-2'
+2025-07-31 20:38:15 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-4b633b7c-163a-4572-a14e-102f9a47feb6'
+2025-07-31 20:38:15 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping dcu.ie
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping dcu.ie
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-3' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-4b633b7c-163a-4572-a14e-102f9a47feb6', global count: 11
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-4b633b7c-163a-4572-a14e-102f9a47feb6',
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-4b633b7c-163a-4572-a14e-102f9a47feb6' completed in 3325ms
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-4b633b7c-163a-4572-a14e-102f9a47feb6'
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841'
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841'
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841'
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841'
+2025-07-31 20:38:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping ucd.ie
+2025-07-31 20:38:25 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'2' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='2', Done='3', Expected='5'
+2025-07-31 20:38:25 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:38:25 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'1' StateSummary of WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+
+{
+    "State Summary": {
+        "LOCKED": 1,
+        "DONE": 3,
+        "TODO": 1,
+        "FOR_UNLOCK": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:38:25 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+
+{
+    "State Summary": {
+        "LOCKED": 1,
+        "DONE": 1,
+        "TODO": 2,
+        "FOR_UNLOCK": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:38:25 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:31 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping slack.com
+2025-07-31 20:38:31 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1753990692338,
+    "Exit Code": 1,
+    "Process Id": 84132,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging slack.com [34.248.150.55] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 34.248.150.55:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-aa6047c8-8583-4281-8911-9fc3d82c8a5e"
+    },
+    "Start Time": 1753990692327,
+    "Thread Name": "pool-3-thread-1",
+    "id": "TaskLogging-95133ed2-e495-4bd5-8193-308de85d8dc6"
+}
+2025-07-31 20:38:31 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-3' failed on thread 'pool-3-thread-1' with exit code 1
+
+2025-07-31 20:38:31 WARN  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93'
+2025-07-31 20:38:31 WARN  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93'
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93',
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93' completed in 18822ms
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-d0b4c6fd-0dbd-4e49-a5d5-845a3c049a93'
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-982730d9-4130-44a7-a5fd-5143576be8e3'
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-982730d9-4130-44a7-a5fd-5143576be8e3'
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-982730d9-4130-44a7-a5fd-5143576be8e3'
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-982730d9-4130-44a7-a5fd-5143576be8e3'
+2025-07-31 20:38:31 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping chatgpt.com
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping chatgpt.com
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-0' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-982730d9-4130-44a7-a5fd-5143576be8e3', global count: 12
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-982730d9-4130-44a7-a5fd-5143576be8e3',
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-982730d9-4130-44a7-a5fd-5143576be8e3' completed in 3740ms
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-982730d9-4130-44a7-a5fd-5143576be8e3'
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '12', Failed = '0', Skipped = '0'
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-0f079d41-06fb-48f4-8afc-3d8ddcdd544b'
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-0f079d41-06fb-48f4-8afc-3d8ddcdd544b'
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-0f079d41-06fb-48f4-8afc-3d8ddcdd544b' set on thread 'pool-3-thread-1'
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-0f079d41-06fb-48f4-8afc-3d8ddcdd544b'
+2025-07-31 20:38:34 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping amazon.ie
+2025-07-31 20:38:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'3' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='2', Done='3', Expected='5'
+2025-07-31 20:38:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '8000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'2' StateSummary of WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+
+{
+    "State Summary": {
+        "LOCKED": 0,
+        "DONE": 4,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "ERROR": 1
+    }
+}
+
+
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '5' WorkItems with '5'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c', global count: 13
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c',
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c' completed in 30148ms
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'1' StateSummary of WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+
+{
+    "State Summary": {
+        "LOCKED": 2,
+        "DONE": 1,
+        "TODO": 1,
+        "FOR_UNLOCK": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:38:35 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '13', Failed = '0', Skipped = '0'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43' set on thread 'pool-2-thread-1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:35 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '13', Failed = '0', Skipped = '1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf' set on thread 'pool-2-thread-1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:35 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '13', Failed = '0', Skipped = '1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397' set on thread 'pool-2-thread-1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:35 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '13', Failed = '0', Skipped = '1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c' set on thread 'pool-2-thread-1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:35 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '13', Failed = '0', Skipped = '1'
+2025-07-31 20:38:35 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:38 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping ucd.ie
+2025-07-31 20:38:38 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1753990699000,
+    "Exit Code": 1,
+    "Process Id": 65656,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging ucd.ie [18.200.33.200] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 18.200.33.200:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-d1690ef4-aab5-45b6-92e2-3d6c250eb4c8"
+    },
+    "Start Time": 1753990698988,
+    "Thread Name": "pool-3-thread-2",
+    "id": "TaskLogging-c68e76ad-66c4-467c-9153-b476454592e6"
+}
+2025-07-31 20:38:38 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-2' failed on thread 'pool-3-thread-2' with exit code 1
+
+2025-07-31 20:38:38 WARN  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841'
+2025-07-31 20:38:38 WARN  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841'
+2025-07-31 20:38:38 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841',
+2025-07-31 20:38:38 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841' completed in 19142ms
+2025-07-31 20:38:38 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:38 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-9b2ec083-24d6-4928-8e39-8946da76c841'
+2025-07-31 20:38:38 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '13', Failed = '0', Skipped = '0'
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping amazon.ie
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-0f079d41-06fb-48f4-8afc-3d8ddcdd544b', global count: 14
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-0f079d41-06fb-48f4-8afc-3d8ddcdd544b',
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-0f079d41-06fb-48f4-8afc-3d8ddcdd544b' completed in 3541ms
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-0f079d41-06fb-48f4-8afc-3d8ddcdd544b'
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-79d887f8-5a0d-426f-a106-874bb28443c5'
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-79d887f8-5a0d-426f-a106-874bb28443c5'
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-79d887f8-5a0d-426f-a106-874bb28443c5'
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-79d887f8-5a0d-426f-a106-874bb28443c5'
+2025-07-31 20:38:38 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping youtube.com
+2025-07-31 20:38:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping youtube.com
+2025-07-31 20:38:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-0' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:38:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-79d887f8-5a0d-426f-a106-874bb28443c5', global count: 15
+2025-07-31 20:38:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-79d887f8-5a0d-426f-a106-874bb28443c5',
+2025-07-31 20:38:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-79d887f8-5a0d-426f-a106-874bb28443c5' completed in 3581ms
+2025-07-31 20:38:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-79d887f8-5a0d-426f-a106-874bb28443c5'
+2025-07-31 20:38:41 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '15', Failed = '0', Skipped = '0'
+2025-07-31 20:38:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'4' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='1', Done='4', Expected='5'
+2025-07-31 20:38:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '16000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'2' StateSummary of WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+
+{
+    "State Summary": {
+        "LOCKED": 0,
+        "DONE": 3,
+        "TODO": 0,
+        "FOR_UNLOCK": 0,
+        "ERROR": 1
+    }
+}
+
+
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '4' WorkItems with '4'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1', global count: 16
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1',
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1' completed in 30092ms
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '0'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1' set on thread 'pool-2-thread-1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43' set on thread 'pool-2-thread-2'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-3eb454f2-f7b4-43ca-8692-ee444fb92d43'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:38:45 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf' set on thread 'pool-2-thread-2'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:45 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-58bb975e-f492-4b97-936e-e102924adfdf'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397' set on thread 'pool-2-thread-1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:45 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-5cfe73a4-6bce-4bb8-9bfb-135aa0eef397'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c' set on thread 'pool-2-thread-2'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1' set on thread 'pool-2-thread-1'
+2025-07-31 20:38:45 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-b2addb8f-de3e-4727-8ffc-896c77b7bf5c'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:38:45 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-e14fb7bf-d1f6-40c1-bc55-5e008b72eec1'
+2025-07-31 20:38:45 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:38:59 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'5' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='0', Done='5', Expected='5'
+2025-07-31 20:38:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-07-31 20:44:54 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:44:54 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:45:05 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:45:05 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:45:05 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:45:05 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:45:06 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-31 20:45:06 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-31 20:45:07 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-31 20:45:07 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-31 20:45:07 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-31 20:45:08 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-31 20:45:11 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-31 20:45:11 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-07-31 20:45:11 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-07-31 20:45:11 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-07-31 20:45:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-07-31 20:45:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-07-31 20:46:20 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-07-31 20:46:20 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-07-31 20:46:30 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-07-31 20:46:31 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-07-31 20:46:31 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-07-31 20:46:31 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-07-31 20:46:32 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-07-31 20:46:32 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-07-31 20:46:32 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-07-31 20:46:33 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-07-31 20:46:33 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-31 20:46:33 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-07-31 20:46:36 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-31 20:46:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-07-31 20:46:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Engine'
+2025-07-31 20:46:38 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.performClientTask ]: Processing workload of size:	'5'
+2025-07-31 20:46:38 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:46:38 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:38 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f' set on thread 'pool-2-thread-1'
+2025-07-31 20:46:38 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:38 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Begining state monitoring of ExecutorServiceTracker:	N tasks = '5'
+2025-07-31 20:46:38 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:46:38 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:46:38 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:38 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911' set on thread 'pool-2-thread-2'
+2025-07-31 20:46:38 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '4' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '2' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='2', First ItemId = 'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd'
+2025-07-31 20:46:39 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '2' < threshold '2' at start-up. Enqueing all tasks
+2025-07-31 20:46:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-49c6dba7-1330-431a-a5a4-4f9dcad1cc72'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:46:39 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-31 20:46:39 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-49c6dba7-1330-431a-a5a4-4f9dcad1cc72'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd' set on thread 'pool-3-thread-2'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-49c6dba7-1330-431a-a5a4-4f9dcad1cc72' set on thread 'pool-3-thread-1'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-49c6dba7-1330-431a-a5a4-4f9dcad1cc72'
+2025-07-31 20:46:39 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping rte.ie
+2025-07-31 20:46:39 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping dcu.ie
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping dcu.ie
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-3' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-49c6dba7-1330-431a-a5a4-4f9dcad1cc72', global count: 1
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping rte.ie
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd', global count: 2
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-49c6dba7-1330-431a-a5a4-4f9dcad1cc72',
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-49c6dba7-1330-431a-a5a4-4f9dcad1cc72' completed in 3426ms
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-49c6dba7-1330-431a-a5a4-4f9dcad1cc72'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping ucd.ie
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd',
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd' completed in 3552ms
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-3c90d212-2e85-4a87-9b90-e4513e8182bd'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '2', Failed = '0', Skipped = '0'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-a126339e-54fc-47b2-933b-b59ab7a8e87d'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-a126339e-54fc-47b2-933b-b59ab7a8e87d'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-a126339e-54fc-47b2-933b-b59ab7a8e87d' set on thread 'pool-3-thread-2'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-a126339e-54fc-47b2-933b-b59ab7a8e87d'
+2025-07-31 20:46:42 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping amazon.ie
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping amazon.ie
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-a126339e-54fc-47b2-933b-b59ab7a8e87d', global count: 3
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-a126339e-54fc-47b2-933b-b59ab7a8e87d',
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-a126339e-54fc-47b2-933b-b59ab7a8e87d' completed in 3567ms
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-a126339e-54fc-47b2-933b-b59ab7a8e87d'
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-414ca216-1d55-4805-b560-b1879356d16f'
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-414ca216-1d55-4805-b560-b1879356d16f'
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-414ca216-1d55-4805-b560-b1879356d16f'
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-414ca216-1d55-4805-b560-b1879356d16f'
+2025-07-31 20:46:46 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping youtube.com
+2025-07-31 20:46:48 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'0' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='5', Done='0', Expected='5'
+2025-07-31 20:46:48 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:46:49 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 2,
+        "DONE": 2,
+        "TODO": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:46:49 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0,
+        "DONE": 1,
+        "TODO": 1,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:46:49 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:49 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping youtube.com
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-414ca216-1d55-4805-b560-b1879356d16f', global count: 4
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-414ca216-1d55-4805-b560-b1879356d16f',
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-414ca216-1d55-4805-b560-b1879356d16f' completed in 3674ms
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-414ca216-1d55-4805-b560-b1879356d16f'
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '4', Failed = '0', Skipped = '0'
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-bc3baebe-0e1c-46dd-a4c9-284de3eb5f78'
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-bc3baebe-0e1c-46dd-a4c9-284de3eb5f78'
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-bc3baebe-0e1c-46dd-a4c9-284de3eb5f78' set on thread 'pool-3-thread-2'
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-bc3baebe-0e1c-46dd-a4c9-284de3eb5f78'
+2025-07-31 20:46:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping bbc.com
+2025-07-31 20:46:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping bbc.com
+2025-07-31 20:46:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2-1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:46:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-bc3baebe-0e1c-46dd-a4c9-284de3eb5f78', global count: 5
+2025-07-31 20:46:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-bc3baebe-0e1c-46dd-a4c9-284de3eb5f78',
+2025-07-31 20:46:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-bc3baebe-0e1c-46dd-a4c9-284de3eb5f78' completed in 3720ms
+2025-07-31 20:46:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:46:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-bc3baebe-0e1c-46dd-a4c9-284de3eb5f78'
+2025-07-31 20:46:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '5', Failed = '0', Skipped = '0'
+2025-07-31 20:46:58 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'1' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='5', Done='0', Expected='5'
+2025-07-31 20:46:58 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'1' StateSummary of WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1,
+        "DONE": 3,
+        "TODO": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:46:59 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'1' StateSummary of WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0,
+        "DONE": 2,
+        "TODO": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '2' WorkItems with '2'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911', global count: 6
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911',
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911' completed in 20279ms
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '6', Failed = '0', Skipped = '0'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd' set on thread 'pool-2-thread-2'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='1', First ItemId = 'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7'
+2025-07-31 20:46:59 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '1' < threshold '2' at start-up. Enqueing all tasks
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:46:59 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7'
+2025-07-31 20:46:59 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:46:59 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:46:59 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7'
+2025-07-31 20:46:59 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7' set on thread 'pool-3-thread-2'
+2025-07-31 20:46:59 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7'
+2025-07-31 20:46:59 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping tudublin.ie
+2025-07-31 20:47:01 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping ucd.ie
+2025-07-31 20:47:01 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1753991202746,
+    "Exit Code": 1,
+    "Process Id": 3084,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging ucd.ie [18.200.33.200] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 18.200.33.200:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-c824f613-018a-4988-a529-8d6d7fc78ea2"
+    },
+    "Start Time": 1753991202720,
+    "Thread Name": "pool-3-thread-1",
+    "id": "TaskLogging-3d36837b-bebb-4e4d-bfb7-b3548cc55497"
+}
+2025-07-31 20:47:01 ERROR [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-2' failed on thread 'pool-3-thread-1' with exit code 1
+
+2025-07-31 20:47:01 WARN  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa'
+2025-07-31 20:47:01 WARN  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa'
+2025-07-31 20:47:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa',
+2025-07-31 20:47:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa' completed in 19120ms
+2025-07-31 20:47:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-f48b0970-5fab-4b93-9c3a-99e1119c18aa'
+2025-07-31 20:47:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '6', Failed = '0', Skipped = '0'
+2025-07-31 20:47:02 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping tudublin.ie
+2025-07-31 20:47:02 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_5' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:47:02 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7', global count: 7
+2025-07-31 20:47:02 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7',
+2025-07-31 20:47:02 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7' completed in 3330ms
+2025-07-31 20:47:02 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:02 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-ef22573f-38a4-4212-ac63-0dd69d8ed7d7'
+2025-07-31 20:47:02 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '7', Failed = '0', Skipped = '0'
+2025-07-31 20:47:08 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'2' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='4', Done='1', Expected='5'
+2025-07-31 20:47:08 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'2' StateSummary of WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0,
+        "DONE": 3,
+        "TODO": 0,
+        "ERROR": 1
+    }
+}
+
+
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '4' WorkItems with '4'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f', global count: 8
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f',
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f' completed in 30296ms
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '8', Failed = '0', Skipped = '0'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639' set on thread 'pool-2-thread-1'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0,
+        "DONE": 1,
+        "TODO": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '1' WorkItems with '1'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd', global count: 9
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd',
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd' completed in 10091ms
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '5' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '9', Failed = '0', Skipped = '0'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94' set on thread 'pool-2-thread-2'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-86e6258b-2b90-452a-8491-f6d93580f1e8'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-6161ff60-d6d5-4b86-af51-106a066a0129'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-31 20:47:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-6161ff60-d6d5-4b86-af51-106a066a0129'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-6161ff60-d6d5-4b86-af51-106a066a0129' set on thread 'pool-3-thread-1'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-86e6258b-2b90-452a-8491-f6d93580f1e8'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-6161ff60-d6d5-4b86-af51-106a066a0129'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-86e6258b-2b90-452a-8491-f6d93580f1e8' set on thread 'pool-3-thread-2'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping github.com
+2025-07-31 20:47:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-86e6258b-2b90-452a-8491-f6d93580f1e8'
+2025-07-31 20:47:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping gmail.com
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='1', First ItemId = 'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3'
+2025-07-31 20:47:09 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '1' < threshold '2' at start-up. Enqueing all tasks
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:09 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping gmail.com
+2025-07-31 20:47:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-4' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:47:12 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-86e6258b-2b90-452a-8491-f6d93580f1e8', global count: 10
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping github.com
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-2' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-6161ff60-d6d5-4b86-af51-106a066a0129', global count: 11
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-86e6258b-2b90-452a-8491-f6d93580f1e8',
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-86e6258b-2b90-452a-8491-f6d93580f1e8' completed in 3629ms
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-86e6258b-2b90-452a-8491-f6d93580f1e8'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '11', Failed = '0', Skipped = '0'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8' set on thread 'pool-3-thread-2'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping slack.com
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-6161ff60-d6d5-4b86-af51-106a066a0129',
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-6161ff60-d6d5-4b86-af51-106a066a0129' completed in 3782ms
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-6161ff60-d6d5-4b86-af51-106a066a0129'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-2170795a-1813-4339-8f16-089e3c8c9bb8'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-2170795a-1813-4339-8f16-089e3c8c9bb8'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-2170795a-1813-4339-8f16-089e3c8c9bb8'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-2170795a-1813-4339-8f16-089e3c8c9bb8'
+2025-07-31 20:47:13 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping medium.com
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping medium.com
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-2170795a-1813-4339-8f16-089e3c8c9bb8', global count: 12
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-2170795a-1813-4339-8f16-089e3c8c9bb8',
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-2170795a-1813-4339-8f16-089e3c8c9bb8' completed in 3639ms
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-2170795a-1813-4339-8f16-089e3c8c9bb8'
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '12', Failed = '0', Skipped = '0'
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3'
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3'
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3' set on thread 'pool-3-thread-1'
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3'
+2025-07-31 20:47:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping google.com
+2025-07-31 20:47:18 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'3' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='2', Done='3', Expected='5'
+2025-07-31 20:47:18 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '8000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:47:19 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1,
+        "DONE": 3,
+        "TODO": 1,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:47:19 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:19 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1,
+        "DONE": 0,
+        "TODO": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:47:19 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping google.com
+2025-07-31 20:47:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-07-31 20:47:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3', global count: 13
+2025-07-31 20:47:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3',
+2025-07-31 20:47:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3' completed in 3429ms
+2025-07-31 20:47:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-ac9802cb-7870-49ad-9357-c2b841a7b2c3'
+2025-07-31 20:47:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '13', Failed = '0', Skipped = '0'
+2025-07-31 20:47:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'4' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='2', Done='3', Expected='5'
+2025-07-31 20:47:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '16000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'1' StateSummary of WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 1,
+        "DONE": 3,
+        "TODO": 1,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:47:29 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'1' StateSummary of WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0,
+        "DONE": 1,
+        "TODO": 0,
+        "ERROR": 0
+    }
+}
+
+
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '1' WorkItems with '1'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94', global count: 14
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94',
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94' completed in 20388ms
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '14', Failed = '0', Skipped = '0'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f' set on thread 'pool-2-thread-2'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:29 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '14', Failed = '0', Skipped = '1'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911' set on thread 'pool-2-thread-2'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:47:29 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '14', Failed = '0', Skipped = '1'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd' set on thread 'pool-2-thread-2'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:29 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '14', Failed = '0', Skipped = '1'
+2025-07-31 20:47:29 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:32 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing of task:	ping slack.com
+2025-07-31 20:47:32 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1753991233353,
+    "Exit Code": 1,
+    "Process Id": 52288,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging slack.com [34.248.150.55] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 34.248.150.55:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-74626437-e052-46e1-8a49-ad06ca64deb6"
+    },
+    "Start Time": 1753991233319,
+    "Thread Name": "pool-3-thread-2",
+    "id": "TaskLogging-6b6ed92f-2473-4180-9fca-e66fce57904e"
+}
+2025-07-31 20:47:32 ERROR [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-3' failed on thread 'pool-3-thread-2' with exit code 1
+
+2025-07-31 20:47:32 WARN  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, execution completed with error for task:	'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8'
+2025-07-31 20:47:32 WARN  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8'
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8',
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8' completed in 19555ms
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-181e3b2d-7d1f-42ef-8142-7be5d1a56fb8'
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-0bfd8666-cefe-4ec7-bb6b-7057a62d1ffd'
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-0bfd8666-cefe-4ec7-bb6b-7057a62d1ffd'
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-0bfd8666-cefe-4ec7-bb6b-7057a62d1ffd'
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-0bfd8666-cefe-4ec7-bb6b-7057a62d1ffd'
+2025-07-31 20:47:32 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping chatgpt.com
+2025-07-31 20:47:35 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping chatgpt.com
+2025-07-31 20:47:35 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-07-31 20:47:35 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-0bfd8666-cefe-4ec7-bb6b-7057a62d1ffd', global count: 15
+2025-07-31 20:47:36 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-0bfd8666-cefe-4ec7-bb6b-7057a62d1ffd',
+2025-07-31 20:47:36 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-0bfd8666-cefe-4ec7-bb6b-7057a62d1ffd' completed in 3459ms
+2025-07-31 20:47:36 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:36 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-0bfd8666-cefe-4ec7-bb6b-7057a62d1ffd'
+2025-07-31 20:47:36 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '15', Failed = '0', Skipped = '0'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'2' StateSummary of WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+
+{
+    "State Summary": {
+        "FOR_UNLOCK": 0,
+        "LOCKED": 0,
+        "DONE": 4,
+        "TODO": 0,
+        "ERROR": 1
+    }
+}
+
+
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '5' WorkItems with '5'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639', global count: 16
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639',
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639' completed in 30232ms
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '0'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639' set on thread 'pool-2-thread-2'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94' set on thread 'pool-2-thread-1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:39 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f' set on thread 'pool-2-thread-1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:39 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-1bda70df-87b5-4117-bbc7-1c4a07e6654f'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd' set on thread 'pool-2-thread-1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:39 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-a36b05f1-1736-48ad-affc-3b0cd69c21dd'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639' set on thread 'pool-2-thread-1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-ba4855a6-0535-4d75-92a4-9e390395a639'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911' set on thread 'pool-2-thread-2'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:47:39 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-3ab931d3-f53e-4817-901f-ab3f3366a911'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94' set on thread 'pool-2-thread-1'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:39 WARN  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer checks for task:	'WorkItem-ec4a9f1f-b078-4d8a-8f20-02d5334f5e94'
+2025-07-31 20:47:39 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
+2025-07-31 20:47:42 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'5' StateSummary of ExecutorServiceTracker:
+
+Total='5', Remaining='0', Done='5', Expected='5'
+2025-07-31 20:47:42 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container

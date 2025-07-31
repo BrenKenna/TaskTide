@@ -4,7 +4,6 @@
  */
 package org.tasktide.tasktide.configurer.dependent;
 
-import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.tasktide.configurer.AbstractConfigurer;
@@ -24,19 +23,15 @@ public class JpaConfigurer extends AbstractConfigurer {
     /**
      * JDBC Config from HikariCP
      */
-    @Inject
     @ConfigProperty(name = "datasource.url", defaultValue = "")
     private String dbURL;
     
-    @Inject
     @ConfigProperty(name = "datasource.user", defaultValue = "")
     private String dbUser;
     
-    @Inject
     @ConfigProperty(name = "datasource.password", defaultValue = "")
     private String dbPassword;
     
-    @Inject
     @ConfigProperty(name = "datasource.driver", defaultValue = "")
     private String dbDriver;
     
@@ -44,17 +39,14 @@ public class JpaConfigurer extends AbstractConfigurer {
     /**
      * Config from Hibernate
      */
-    @Inject
-    @ConfigProperty(name = "hibernate.dialect", defaultValue = "false")
+    @ConfigProperty(name = "hibernate.dialect", defaultValue = "")
     private String dialectDriver;
     
-    @Inject
     @ConfigProperty(name = "hibernate.hbm2ddl.auto", defaultValue = "")
     private String ddlUpdate;
     
-    @Inject
-    @ConfigProperty(name = "hibernate.show_sql", defaultValue = "")
-    private String showSql;
+    @ConfigProperty(name = "hibernate.show_sql", defaultValue = "false")
+    private boolean showSql;
     
     
     /**
@@ -300,14 +292,14 @@ public class JpaConfigurer extends AbstractConfigurer {
     public void showSql() {
         
         // Initialize vars
-        Argument<String> arg;
+        Argument<Boolean> arg;
         
         // Fetch value if present
         try {
-            this.showSql = this.getConfig().getValue("hibernate.show_sql", String.class);
+            this.showSql = this.getConfig().getValue("hibernate.show_sql", boolean.class);
         }
         catch (Exception ex) {
-            this.showSql = "";
+            this.showSql = false;
         }
         
         // Build argument
@@ -318,10 +310,10 @@ public class JpaConfigurer extends AbstractConfigurer {
             .withShortFlag("-dbsq")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(String.class);
+        arg.setRefClass(boolean.class);
         
         // Handle setting value
-        if (!this.showSql.isEmpty()) arg.setValue(this.showSql);
+        arg.setValue(this.showSql);
         this.getArgumentMap().putArgument(arg);
     }
 }

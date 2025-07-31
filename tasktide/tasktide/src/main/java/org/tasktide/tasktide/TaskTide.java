@@ -45,7 +45,7 @@ public class TaskTide {
             // Configure provider and argument tree
             TaskTideClientUtility.printSplash();
             LOGGER.info("Configuring the CDI Container Provider");
-            Config config = ConfigProvider.getConfig(); // Boots SmallRye before Weld
+            // Config config = ConfigProvider.getConfig(); // Boots SmallRye before Weld
             CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD);
 
             // Fetch config map

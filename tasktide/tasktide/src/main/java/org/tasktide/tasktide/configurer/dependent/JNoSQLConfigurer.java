@@ -4,7 +4,6 @@
  */
 package org.tasktide.tasktide.configurer.dependent;
 
-import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.tasktide.configurer.AbstractConfigurer;
@@ -20,11 +19,9 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
  */
 public class JNoSQLConfigurer extends AbstractConfigurer {
     
-    @Inject
     @ConfigProperty(name = "tasktide.core.repository.jnosql.type", defaultValue = "document") // e.g., "document", "keyvalue", "column", "graph"
     private String dbType;
 
-    @Inject
     @ConfigProperty(name = "tasktide.core.repository.jnosql.provider", defaultValue = "mongo") // e.g., "mongo", "redis", "cassandra", "couchdb"
     private String provider;
     

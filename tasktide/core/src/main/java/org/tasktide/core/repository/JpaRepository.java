@@ -150,7 +150,6 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
             "SELECT e FROM %s e WHERE e.%s = :value",
             COLLECTION_CLASS.getSimpleName(), field
         );
-        System.out.println("DEBUG >>\nDisplaying query " + query);
         return entityManager
             .createQuery(query, COLLECTION_CLASS)
             .setParameter("value", value)

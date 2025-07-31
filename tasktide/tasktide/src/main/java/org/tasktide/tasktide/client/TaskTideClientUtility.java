@@ -103,13 +103,15 @@ public class TaskTideClientUtility {
         provider.initialize();
         
         // Add packages, and extensions
-        //  Required with Netbeans, not with in linux shell?
+        //  Required with Netbeans, not in linux shell?
         if ( !cdiProvider.isProvider(CdiProviders.QUARKUS) ) {
             provider.addExtension(ReflectionEntityMetadataExtension.class, DocumentExtension.class);
+            /*
             provider.addBeanClass(
             GlobalConfig.class, ManagerConfig.class, EngineConfig.class,
             WorkItem.class, ItemTask.class, Step.class, Workflow.class
             );
+            */
         }
         
         // Return

@@ -48,6 +48,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     @JsonbProperty("ItemType")
     private ItemType itemType;
     
+    @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)
     @jakarta.persistence.Column(name = "ItemState")
     @jakarta.nosql.Column("ItemState")
     @JsonbProperty("ItemState")
