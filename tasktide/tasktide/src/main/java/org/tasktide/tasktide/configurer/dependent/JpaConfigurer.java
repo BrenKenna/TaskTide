@@ -45,7 +45,7 @@ public class JpaConfigurer extends AbstractConfigurer {
      * Config from Hibernate
      */
     @Inject
-    @ConfigProperty(name = "hibernate.dialect", defaultValue = "")
+    @ConfigProperty(name = "hibernate.dialect", defaultValue = "false")
     private String dialectDriver;
     
     @Inject

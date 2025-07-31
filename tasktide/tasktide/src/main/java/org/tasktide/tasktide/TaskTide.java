@@ -6,6 +6,8 @@ package org.tasktide.tasktide;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.ConfigProvider;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.repository.RepositoryType;
@@ -43,6 +45,7 @@ public class TaskTide {
             // Configure provider and argument tree
             TaskTideClientUtility.printSplash();
             LOGGER.info("Configuring the CDI Container Provider");
+            Config config = ConfigProvider.getConfig(); // Boots SmallRye before Weld
             CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD);
 
             // Fetch config map
