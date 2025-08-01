@@ -3,7 +3,7 @@
 The purpose of this Library is to offer support for File based Databases like SQLite, and RocksDB, locking coordination system so that different instances of TaskTide can read/write to the "backend".
 </p>
 
-<p>
+
 |Class|Purpose  |
 |--|--|
 | Item  | Data class that model is converted to for storage |
@@ -11,7 +11,7 @@ The purpose of this Library is to offer support for File based Databases like SQ
 | AbstractItemStore | Caches masterDB into a prototype, decorating implementation |
 | RocksDBStore | Implements the AbstractItemStore |
 | DbTarget | Supports Master vs Prototype actions |
-</p>
+
 
 
 <p align="center">

@@ -8,7 +8,7 @@ Orchestrates the TaskTide-ItemStore, TaskTide-CoreLib, and TaskTide-Engine into 
 
 #### x). Core Componements
 <p>
-TaskTide is designed to run as a configurable command-line program. Meaning that how to run the program is dictated by the arguments supplied at runtime, or the use of a "<a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html" MicroProfile-Configuration (MPC)>". This design choice was to allow users of different familiarities to be able to run the program. Though not recommended to use both where not required, command-line arguments overwrite the MPC values.
+TaskTide is designed to run as a configurable command-line program. Meaning that how to run the program is dictated by the arguments supplied at runtime, or the use of a "<a href="https://download.eclipse.org/microprofile/microprofile-config-2.0/microprofile-config-spec-2.0.html" >MicroProfile-Configuration (MPC)</a>". This design choice was to allow users of different familiarities to be able to run the program. Though not recommended to use both where not required, command-line arguments overwrite the MPC values.
 </p>
 
 
