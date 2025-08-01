@@ -1455,3 +1455,916 @@ Thread Total = '1', Thread Done = '0', Done = '16', Failed = '0', Skipped = '1'
 
 Total='5', Remaining='0', Done='5', Expected='5'
 2025-07-31 20:47:42 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:19:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:19:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:19:24 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:19:24 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:19:24 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:19:24 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:19:25 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:19:25 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:19:25 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:19:25 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:19:25 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:19:25 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:19:26 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:19:26 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:19:26 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:19:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 11:19:27 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 11:19:27 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:21:26 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:21:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:21:30 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:21:30 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:21:30 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:21:30 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:21:30 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:21:30 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:21:30 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:21:31 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:21:31 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:21:31 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:21:32 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:21:32 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:21:32 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:21:32 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 11:21:32 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 11:21:32 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:21:45 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:21:45 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:21:49 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:21:49 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:21:49 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:21:49 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:21:50 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:21:50 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:21:50 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:21:50 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:21:50 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:21:50 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:21:51 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:21:51 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:21:51 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Engine'
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing in pipeline mode:	'["derps","flerps","berps"]'
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing step:	'derps'
+2025-08-01 11:21:52 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'derps'
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing step:	'flerps'
+2025-08-01 11:21:52 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'flerps'
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing step:	'berps'
+2025-08-01 11:21:52 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'berps'
+2025-08-01 11:21:52 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:22:33 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:22:33 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:22:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:22:37 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:22:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:22:37 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:22:38 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:22:38 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:22:38 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:22:38 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:22:38 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:22:38 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:22:39 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:22:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:22:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Engine'
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing in pipeline mode:	'["derps","flerps","berps","myStep"]'
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing step:	'derps'
+2025-08-01 11:22:40 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'derps'
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing step:	'flerps'
+2025-08-01 11:22:40 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'flerps'
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing step:	'berps'
+2025-08-01 11:22:40 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'berps'
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing step:	'myStep'
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Processing workload of size:	'10'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9' set on thread 'pool-2-thread-1'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Begining state monitoring of ExecutorServiceTracker:	N tasks = '10'
+2025-08-01 11:22:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2' set on thread 'pool-2-thread-2'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '4' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '5' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+2025-08-01 11:22:40 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-f1dda162-df19-4d36-a6be-868291abd61d'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-631281f0-6f70-4a81-b555-527f834c706f'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-01 11:22:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-01 11:22:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-f1dda162-df19-4d36-a6be-868291abd61d'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-631281f0-6f70-4a81-b555-527f834c706f'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-f1dda162-df19-4d36-a6be-868291abd61d' set on thread 'pool-3-thread-1'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-631281f0-6f70-4a81-b555-527f834c706f' set on thread 'pool-3-thread-2'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-f1dda162-df19-4d36-a6be-868291abd61d'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-631281f0-6f70-4a81-b555-527f834c706f'
+2025-08-01 11:22:40 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping dcu.ie
+2025-08-01 11:22:40 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping github.com
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping github.com
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-2' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-631281f0-6f70-4a81-b555-527f834c706f', global count: 1
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping dcu.ie
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-3' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-f1dda162-df19-4d36-a6be-868291abd61d', global count: 2
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-631281f0-6f70-4a81-b555-527f834c706f',
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-631281f0-6f70-4a81-b555-527f834c706f' completed in 3664ms
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-631281f0-6f70-4a81-b555-527f834c706f'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-fc6f3226-920e-4b28-ba15-53ba06b57223'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-fc6f3226-920e-4b28-ba15-53ba06b57223'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-fc6f3226-920e-4b28-ba15-53ba06b57223'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-fc6f3226-920e-4b28-ba15-53ba06b57223'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping medium.com
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-f1dda162-df19-4d36-a6be-868291abd61d',
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-f1dda162-df19-4d36-a6be-868291abd61d' completed in 3690ms
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-f1dda162-df19-4d36-a6be-868291abd61d'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-465d5ef6-8cf9-43d1-9d84-7d3020bd8969'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-465d5ef6-8cf9-43d1-9d84-7d3020bd8969'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-465d5ef6-8cf9-43d1-9d84-7d3020bd8969'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-465d5ef6-8cf9-43d1-9d84-7d3020bd8969'
+2025-08-01 11:22:43 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping ucd.ie
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping medium.com
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-fc6f3226-920e-4b28-ba15-53ba06b57223', global count: 3
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-fc6f3226-920e-4b28-ba15-53ba06b57223',
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-fc6f3226-920e-4b28-ba15-53ba06b57223' completed in 3246ms
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-fc6f3226-920e-4b28-ba15-53ba06b57223'
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '3', Failed = '0', Skipped = '0'
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-b5a36c9a-8e2f-4811-bba8-72f59e7dd9cc'
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-b5a36c9a-8e2f-4811-bba8-72f59e7dd9cc'
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-b5a36c9a-8e2f-4811-bba8-72f59e7dd9cc' set on thread 'pool-3-thread-2'
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-b5a36c9a-8e2f-4811-bba8-72f59e7dd9cc'
+2025-08-01 11:22:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping amazon.ie
+2025-08-01 11:22:50 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'0' StateSummary of ExecutorServiceTracker:
+
+Total='10', Remaining='10', Done='0', Expected='10'
+2025-08-01 11:22:50 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-08-01 11:22:50 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+
+{
+    "State Summary": {
+        "DONE": 2,
+        "ERROR": 0,
+        "FOR_UNLOCK": 0,
+        "TODO": 3,
+        "LOCKED": 0
+    }
+}
+
+
+2025-08-01 11:22:50 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+
+{
+    "State Summary": {
+        "DONE": 1,
+        "ERROR": 0,
+        "FOR_UNLOCK": 0,
+        "TODO": 1,
+        "LOCKED": 2
+    }
+}
+
+
+2025-08-01 11:22:50 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-390ad04a-2d9f-4bf2-9471-a0479dc30ac9'
+2025-08-01 11:22:50 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-4f6ddf90-f7d5-4fdf-8f2a-0f7cf55471f2'
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping amazon.ie
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-b5a36c9a-8e2f-4811-bba8-72f59e7dd9cc', global count: 4
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-b5a36c9a-8e2f-4811-bba8-72f59e7dd9cc',
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-b5a36c9a-8e2f-4811-bba8-72f59e7dd9cc' completed in 3232ms
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-b5a36c9a-8e2f-4811-bba8-72f59e7dd9cc'
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-484c8d5b-c883-41ec-9686-3e838b30f474'
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-484c8d5b-c883-41ec-9686-3e838b30f474'
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-484c8d5b-c883-41ec-9686-3e838b30f474'
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-484c8d5b-c883-41ec-9686-3e838b30f474'
+2025-08-01 11:22:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping youtube.com
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping youtube.com
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-484c8d5b-c883-41ec-9686-3e838b30f474', global count: 5
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-484c8d5b-c883-41ec-9686-3e838b30f474',
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-484c8d5b-c883-41ec-9686-3e838b30f474' completed in 3205ms
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-484c8d5b-c883-41ec-9686-3e838b30f474'
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '5', Failed = '0', Skipped = '0'
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-53680a03-6220-4e2e-b27b-db8bd5ad4c33'
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-53680a03-6220-4e2e-b27b-db8bd5ad4c33'
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-53680a03-6220-4e2e-b27b-db8bd5ad4c33' set on thread 'pool-3-thread-2'
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-53680a03-6220-4e2e-b27b-db8bd5ad4c33'
+2025-08-01 11:22:53 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping gmail.com
+2025-08-01 11:23:10 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:23:10 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:23:14 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:23:14 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:23:14 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:23:14 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:23:15 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:23:15 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:23:15 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:23:15 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:23:15 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:23:15 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:23:16 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:23:16 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:23:16 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Engine'
+2025-08-01 11:23:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-08-01 11:23:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: No step detected, processing all data
+2025-08-01 11:23:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Processing workload of size:	'8'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+2025-08-01 11:23:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Begining state monitoring of ExecutorServiceTracker:	N tasks = '8'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1' set on thread 'pool-2-thread-1'
+2025-08-01 11:23:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-73144c37-589a-4244-81ee-672b92d3037b' set on thread 'pool-2-thread-2'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '5' on thread 'pool-2-thread-1' for WorkItem:	'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '2' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='2', First ItemId = 'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5'
+2025-08-01 11:23:17 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '2' < threshold '2' at start-up. Enqueing all tasks
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+2025-08-01 11:23:17 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='2', First ItemId = 'ItemTask-1e7bb394-866b-4e5b-92d9-ba329f4ee579'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:23:17 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-01 11:23:17 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-1e7bb394-866b-4e5b-92d9-ba329f4ee579'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-1e7bb394-866b-4e5b-92d9-ba329f4ee579' set on thread 'pool-3-thread-1'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5' set on thread 'pool-3-thread-2'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-1e7bb394-866b-4e5b-92d9-ba329f4ee579'
+2025-08-01 11:23:17 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping rte.ie
+2025-08-01 11:23:17 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping github.com
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping github.com
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-2' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-1e7bb394-866b-4e5b-92d9-ba329f4ee579', global count: 1
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping rte.ie
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5', global count: 2
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-1e7bb394-866b-4e5b-92d9-ba329f4ee579',
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-1e7bb394-866b-4e5b-92d9-ba329f4ee579' completed in 3214ms
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-1e7bb394-866b-4e5b-92d9-ba329f4ee579'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-e29cf02a-724a-4afa-8327-67723b09f0a8'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-e29cf02a-724a-4afa-8327-67723b09f0a8'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-e29cf02a-724a-4afa-8327-67723b09f0a8'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-e29cf02a-724a-4afa-8327-67723b09f0a8'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping medium.com
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5',
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5' completed in 3247ms
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-aa107d71-2921-42ad-9a7c-c2f1313bd7b5'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '2', Failed = '0', Skipped = '0'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='1', First ItemId = 'ItemTask-33335511-df82-4b7b-adb6-097c3185d5cc'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-33335511-df82-4b7b-adb6-097c3185d5cc'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-33335511-df82-4b7b-adb6-097c3185d5cc' set on thread 'pool-3-thread-2'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-33335511-df82-4b7b-adb6-097c3185d5cc'
+2025-08-01 11:23:20 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping bbc.com
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping medium.com
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-e29cf02a-724a-4afa-8327-67723b09f0a8', global count: 3
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping bbc.com
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2-1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-33335511-df82-4b7b-adb6-097c3185d5cc', global count: 4
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-e29cf02a-724a-4afa-8327-67723b09f0a8',
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-e29cf02a-724a-4afa-8327-67723b09f0a8' completed in 3201ms
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-e29cf02a-724a-4afa-8327-67723b09f0a8'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '4', Failed = '0', Skipped = '0'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-ecc8f062-ffd9-4c0a-b532-1ad1208e7e57'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-ecc8f062-ffd9-4c0a-b532-1ad1208e7e57'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-ecc8f062-ffd9-4c0a-b532-1ad1208e7e57' set on thread 'pool-3-thread-1'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-ecc8f062-ffd9-4c0a-b532-1ad1208e7e57'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping gmail.com
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-33335511-df82-4b7b-adb6-097c3185d5cc',
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-33335511-df82-4b7b-adb6-097c3185d5cc' completed in 3202ms
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-33335511-df82-4b7b-adb6-097c3185d5cc'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '4', Failed = '0', Skipped = '0'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-2', Size='2', First ItemId = 'ItemTask-66b38121-649e-467f-8bec-02cedb033279'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-66b38121-649e-467f-8bec-02cedb033279'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-66b38121-649e-467f-8bec-02cedb033279' set on thread 'pool-3-thread-2'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-66b38121-649e-467f-8bec-02cedb033279'
+2025-08-01 11:23:23 INFO  [ pool-3-thread-2 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':ping slack.com
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping gmail.com
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4-4' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-ecc8f062-ffd9-4c0a-b532-1ad1208e7e57', global count: 5
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-ecc8f062-ffd9-4c0a-b532-1ad1208e7e57',
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-ecc8f062-ffd9-4c0a-b532-1ad1208e7e57' completed in 3278ms
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-ecc8f062-ffd9-4c0a-b532-1ad1208e7e57'
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '5', Failed = '0', Skipped = '0'
+2025-08-01 11:23:27 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Displaying Iter-'0' StateSummary of ExecutorServiceTracker:
+
+Total='8', Remaining='8', Done='0', Expected='8'
+2025-08-01 11:23:27 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.waitOnExecutorTrackerWorkItem ]: Letting '10000'ms elapse for state monitoring of ExecutorServiceTracker:	'{}'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "TODO": 1,
+        "DONE": 3,
+        "LOCKED": 1,
+        "FOR_UNLOCK": 0
+    }
+}
+
+
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Displaying Iter-'0' StateSummary of WorkItem:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+
+{
+    "State Summary": {
+        "ERROR": 0,
+        "TODO": 0,
+        "DONE": 2,
+        "LOCKED": 0,
+        "FOR_UNLOCK": 0
+    }
+}
+
+
+2025-08-01 11:23:27 INFO  [ pool-2-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-6028375c-c53d-4648-829d-1ec6c89d77f1'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Completed processing of '2' WorkItems with '2'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Task processing complete on WorkItem:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'WorkItem-73144c37-589a-4244-81ee-672b92d3037b', global count: 6
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-73144c37-589a-4244-81ee-672b92d3037b',
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-73144c37-589a-4244-81ee-672b92d3037b' completed in 10105ms
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-73144c37-589a-4244-81ee-672b92d3037b'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '6', Failed = '0', Skipped = '0'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-8294ef82-ed7b-4d51-97e8-eae2fdd476c0'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-8294ef82-ed7b-4d51-97e8-eae2fdd476c0' set on thread 'pool-2-thread-2'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-8294ef82-ed7b-4d51-97e8-eae2fdd476c0'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-2-thread-2' for WorkItem:	'WorkItem-8294ef82-ed7b-4d51-97e8-eae2fdd476c0'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: Processor configured, processing workload for WorkItem:	'WorkItem-8294ef82-ed7b-4d51-97e8-eae2fdd476c0'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-2-thread-2', Size='1', First ItemId = 'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483'
+2025-08-01 11:23:27 WARN  [ pool-2-thread-2 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Warning, workload size '1' < threshold '2' at start-up. Enqueing all tasks
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.worker.executor.WorkItemExecutor.executeTask ]: ExecutorObserver polling ItemTaskStateSummary for WorkItem:	'WorkItem-8294ef82-ed7b-4d51-97e8-eae2fdd476c0'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Begining state monitoring of WorkItem:	'WorkItem-8294ef82-ed7b-4d51-97e8-eae2fdd476c0'
+2025-08-01 11:23:27 INFO  [ pool-2-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.pollUntilDone ]: Letting '10000'ms elapse for state monitoring of WorkItem:	'WorkItem-8294ef82-ed7b-4d51-97e8-eae2fdd476c0'
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-3-thread-1', Size='1', First ItemId = 'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483'
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483'
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483' set on thread 'pool-3-thread-1'
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483'
+2025-08-01 11:23:27 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':ping tudublin.ie
+2025-08-01 11:23:30 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Successful execution of task:	ping tudublin.ie
+2025-08-01 11:23:30 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_5' successful on thread 'pool-3-thread-1' with exit code 0
+
+2025-08-01 11:23:30 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Completed task 'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483', global count: 7
+2025-08-01 11:23:30 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483',
+2025-08-01 11:23:30 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483' completed in 3220ms
+2025-08-01 11:23:30 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2025-08-01 11:23:30 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-04bd0260-ed7b-4c2b-8ada-1d7f010f7483'
+2025-08-01 11:23:30 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '1', Thread Done = '0', Done = '7', Failed = '0', Skipped = '0'
+2025-08-01 11:38:43 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:38:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:38:48 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:38:48 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.util.NoSuchElementException: SRCFG00014: The config property tasktide.manager.targetStep is required but it could not be found in any config source'
+2025-08-01 11:40:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:40:13 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:40:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:40:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:40:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:40:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:40:17 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:40:17 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:40:17 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:40:18 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:40:18 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:40:18 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:40:19 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:40:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:40:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Engine'
+2025-08-01 11:40:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-08-01 11:40:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: No step detected, unassigned
+2025-08-01 11:40:19 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:40:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete
+2025-08-01 11:40:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:42:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:42:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:42:23 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:42:23 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:42:23 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:42:23 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:42:23 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:42:23 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:42:23 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:42:24 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:42:24 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:42:24 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:42:25 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:42:25 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:42:25 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Engine'
+2025-08-01 11:42:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-08-01 11:42:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing single step:	'Arbitrary'
+2025-08-01 11:42:26 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:42:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'Arbitrary'
+2025-08-01 11:42:26 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:43:00 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:43:00 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:43:04 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:43:04 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:43:04 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:43:04 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:44:33 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:44:33 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:44:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:44:37 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:44:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:44:37 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:44:37 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:44:37 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:44:37 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:44:38 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:44:38 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:44:38 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:44:39 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:44:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:44:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Engine'
+2025-08-01 11:44:39 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-08-01 11:44:39 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing single step:	'Arbitrary'
+2025-08-01 11:44:39 WARN  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=SQL}
+
+
+2025-08-01 11:44:39 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'Arbitrary'
+2025-08-01 11:44:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:44:54 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:44:54 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:44:57 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:44:58 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:44:58 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:44:58 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:44:58 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:44:58 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:44:58 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:44:58 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:44:58 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:44:58 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:44:59 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:44:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:44:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:45:00 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.IllegalArgumentException: org.hibernate.query.sqm.UnknownPathException: Could not resolve attribute 'StepName' of 'org.tasktide.core.model.collection.Step' [SELECT e FROM Step e WHERE e.StepName = :value]'
+2025-08-01 11:45:52 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:45:52 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:45:56 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:45:56 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:45:56 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:45:56 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:45:57 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:45:57 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:45:57 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:45:57 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:45:57 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:45:57 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:45:58 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:45:58 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:45:58 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:45:58 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0'
+2025-08-01 11:47:13 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:47:13 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:47:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:47:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:47:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:47:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:47:18 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:47:18 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:47:18 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:47:18 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:47:18 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:47:18 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:47:19 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:47:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:47:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:47:20 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0'
+2025-08-01 11:48:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:48:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:48:16 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:48:16 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:48:16 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:48:16 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:48:16 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:48:17 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:48:17 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:48:17 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:48:17 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:48:17 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:48:18 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:48:18 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:48:18 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:48:18 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0'
+2025-08-01 11:49:06 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:49:06 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:49:10 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:49:10 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:49:10 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:49:10 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:49:10 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:49:10 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:49:10 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:49:10 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:49:10 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:49:11 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:49:12 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:49:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:49:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:49:12 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0'
+2025-08-01 11:50:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:50:39 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:50:43 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:50:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:50:43 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:50:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:50:43 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:50:44 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:50:44 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:50:44 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:50:44 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:50:44 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:50:45 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:50:45 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:50:45 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:50:46 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0'
+2025-08-01 11:51:42 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:51:42 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:51:46 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:51:46 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:51:46 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:51:46 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:51:47 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:51:47 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:51:47 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:51:47 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:51:47 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:51:47 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:51:48 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:51:48 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:51:48 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:51:49 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 11:51:49 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 11:51:49 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:52:13 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:52:13 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:52:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:52:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:52:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:52:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:52:18 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:52:18 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:52:18 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:52:18 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:52:18 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:52:18 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:52:19 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:52:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:52:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:52:20 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 11:52:20 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 11:52:20 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 11:54:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 11:54:37 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 11:54:41 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 11:54:41 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 11:54:41 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 11:54:41 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 11:54:41 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 11:54:41 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 11:54:41 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 11:54:42 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 11:54:42 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 11:54:42 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 11:54:43 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 11:54:43 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 11:54:43 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 11:54:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 11:54:44 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 11:54:44 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 12:00:30 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:00:30 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:00:34 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:00:34 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:00:34 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:00:34 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:00:34 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:00:34 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:00:34 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:00:35 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:00:35 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:00:35 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:00:36 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:00:36 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:00:36 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:00:37 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 12:00:37 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 12:00:37 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 12:01:04 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:01:04 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:01:08 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:01:08 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:01:08 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:01:08 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:01:09 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:01:09 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:01:09 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:01:09 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:01:09 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:01:09 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:01:10 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:01:10 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:01:10 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:01:11 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 12:01:11 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 12:01:11 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 12:21:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:21:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:21:16 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:21:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:21:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:21:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:21:17 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:21:17 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:21:17 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:21:17 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:21:17 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:21:18 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:21:19 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:21:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:21:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:21:20 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.NullPointerException: Cannot invoke "java.util.Map.put(Object, Object)" because "this.workflowSteps" is null'
+2025-08-01 12:22:35 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:22:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:22:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:22:39 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:22:39 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:22:39 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:22:40 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:22:40 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:22:40 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:22:40 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:22:40 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:22:40 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:22:41 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:22:41 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:22:41 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:22:42 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.NullPointerException: Cannot invoke "java.util.Map.put(Object, Object)" because "this.workflowSteps" is null'
+2025-08-01 12:24:30 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:24:30 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:24:34 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:24:34 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:24:34 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:24:34 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:24:34 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:24:34 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:24:34 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:24:34 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:24:34 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:24:34 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:24:36 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:24:36 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:24:36 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:24:36 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.UnsupportedOperationException'
+2025-08-01 12:25:51 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:25:51 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:25:55 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:25:55 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:25:55 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:25:55 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:25:56 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:25:56 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:25:56 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:25:56 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:25:56 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:25:56 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:25:57 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:25:57 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:25:57 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:25:57 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'jakarta.persistence.RollbackException: Error while committing the transaction'
+2025-08-01 12:27:01 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:27:01 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:27:05 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:27:05 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:27:05 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:27:05 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:27:05 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:27:05 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:27:05 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:27:06 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:27:06 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:27:06 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:27:07 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:27:07 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:27:07 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:27:07 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 12:27:07 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 12:27:07 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 12:27:56 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:27:56 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:28:00 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:28:00 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:28:00 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:28:00 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:28:00 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:28:00 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:28:00 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:28:01 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:28:01 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:28:01 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:28:02 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:28:02 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:28:02 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:28:03 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'jakarta.persistence.EntityExistsException: A different object with the same identifier value was already associated with the session : [org.tasktide.core.model.collection.Workflow#Workflow-MDEvMDgvMjUgMTI6Mjg6MDItYTgxN2MyZmQtYzQ5OC00NjQ3LTk4OTQtMWMzYTVkM2JiYmEx]'
+2025-08-01 12:34:10 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:34:10 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:34:14 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:34:14 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:34:14 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:34:14 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:34:15 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:34:15 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:34:15 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:34:15 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:34:15 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:34:15 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:34:16 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:34:16 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:34:16 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:34:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 12:34:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 12:34:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 12:35:21 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:35:21 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:35:25 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:35:25 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:35:25 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:35:25 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:35:26 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:35:26 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:35:26 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:35:26 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:35:26 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:35:26 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:35:28 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:35:28 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:35:28 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:35:29 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 12:35:29 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 12:35:29 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 12:38:56 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:38:56 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:39:01 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:39:01 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:39:01 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:39:01 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:39:01 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:39:01 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:39:01 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:39:02 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:39:02 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:39:02 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:39:03 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:39:03 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:39:03 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:39:04 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 12:39:04 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 12:39:04 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 12:39:53 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:39:53 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:39:57 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:39:57 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:39:57 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:39:57 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:39:58 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:39:58 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:39:58 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:39:58 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:39:58 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:39:58 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:39:59 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:40:00 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:40:00 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:40:00 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 12:40:00 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 12:40:00 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-01 12:40:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-01 12:40:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-01 12:40:22 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-01 12:40:22 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sql'
+2025-08-01 12:40:22 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'SQL' Repository
+2025-08-01 12:40:22 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring SQL ServiceManager
+2025-08-01 12:40:23 INFO  [ main -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-01 12:40:23 INFO  [ main -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-01 12:40:23 INFO  [ main -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-01 12:40:23 WARN  [ main -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-01 12:40:23 WARN  [ main -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-01 12:40:23 INFO  [ main -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-01 12:40:24 INFO  [ main -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-01 12:40:24 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-01 12:40:24 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-01 12:40:25 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import '5' workitems
+2025-08-01 12:40:25 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import complete displaying first item for referece
+2025-08-01 12:40:25 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container

@@ -12,12 +12,17 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+
 
 
 
@@ -28,6 +33,10 @@ import org.tasktide.core.model.workitem.Workload;
  */
 public class TaskTideManagerUtility {
      
+    private static final String STEP_ID = "Step-" + BuilderUtility.fetchRandomId();
+    private static final String WORKFLOW_ID = "Workflow-" + BuilderUtility.fetchRandomId();
+    
+    
     /**
      * Handle delimiters
      * 
@@ -122,7 +131,7 @@ public class TaskTideManagerUtility {
         if ( parts.length == 2) {
             ItemTask task = new ManagerTask(parts[0], parts[1]).asItemTask();
             Workload workload = BuilderUtility.buildWorkload(task);
-            String stepId = "Step-" + BuilderUtility.fetchRandomToken();
+            String stepId = TaskTideManagerUtility.fetchStepId(stepName);
             return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
         }
         throw new IllegalArgumentException(
@@ -160,7 +169,7 @@ public class TaskTideManagerUtility {
             }
             Workload workload = BuilderUtility.buildWorkload(nestedTasks);
             System.out.println("\n\nDisplaying created workload:\n" + workload.toJsonDoc());
-            String stepId = "Step-" + BuilderUtility.fetchRandomToken();
+            String stepId = TaskTideManagerUtility.fetchStepId(stepName);
             return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
         }
         
@@ -280,5 +289,62 @@ public class TaskTideManagerUtility {
 
         // Return results
         return results;
+    }
+    
+    
+    /**
+     * Fetch stepId for provided step, or register as new
+     * 
+     * @param stepName
+     * @return String
+     */
+    public static String fetchStepId(String stepName) {
+        List<Step> steps = TaskTideServiceManager.fetchStepService().viewByField("stepName", stepName);
+        if ( steps.isEmpty() ) {
+            TaskTideManagerUtility.configureNewStep(stepName);
+            return STEP_ID;
+        }
+        else {
+            return steps.get(0).getId();
+        }
+    }
+    
+    
+    /**
+     * Configures a new step
+     * 
+     * @param stepName 
+     */
+    public static void configureNewStep(String stepName) {
+        Step step = BuilderUtility.buildStep(STEP_ID, stepName);
+        
+        Workflow workflow = BuilderUtility.buildEmptyWorkflow();
+        workflow.setWorkflowName(stepName);
+        workflow.setWorkflowId(WORKFLOW_ID);
+        workflow.setWorkflowSteps(Map.of(stepName, step));
+        
+        step.setWorkflowId(WORKFLOW_ID);
+        step.setWorkflowId(workflow);
+        
+        TaskTideServiceManager.fetchWorkflowService().appendModel(workflow);
+        TaskTideServiceManager.fetchStepService().appendModel(step);
+    }
+    
+    
+    /**
+     * Fetch workflowId for provided step
+     * 
+     * @param workflowName
+     * @return String
+     */
+    public static String fetchWorkflowId(String workflowName) {
+        List<Workflow> workflows = TaskTideServiceManager.fetchWorkflowService().viewByField("WorkflowName", workflowName);
+        if ( !workflows.isEmpty() ) {
+            configureNewStep(workflowName);
+            return WORKFLOW_ID;
+        }
+        else {
+            return workflows.get(0).getId();
+        }
     }
 }

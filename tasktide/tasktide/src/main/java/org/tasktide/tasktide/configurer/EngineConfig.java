@@ -49,6 +49,9 @@ public class EngineConfig extends AbstractConfigurer {
     @ConfigProperty(name = "tasktide.engine.worker.processor.itemTask.threshold", defaultValue = "-1")
     int itemTaskThreshold;
     
+    @ConfigProperty(name = "tasktide.engine.step", defaultValue = "NA")
+    String step;
+    
     
     /**
      *
@@ -102,6 +105,7 @@ public class EngineConfig extends AbstractConfigurer {
         this.itemTaskThreads();
         this.itemTaskSubTaskThreshold();
         this.timeKeeperMaxWallTime();
+        this.step();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -382,6 +386,30 @@ public class EngineConfig extends AbstractConfigurer {
             this.timeKeeperOnEndCanFail = true;
         }
         arg.setValue(this.timeKeeperOnEndCanFail);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Sets step, defaulting to Arbitrary
+     */
+    public void step() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Step")
+            .withDescription("Step(s) to process")
+            .withShortFlag("-st")
+            .withLongFlag("--step")
+            .withArgType(ArgumentType.ACTION)
+        .build();
+        arg.setRefClass(String.class);
+        try {
+            this.step = this.getConfig().getValue("tasktide.engine.step", String.class);
+        }
+        catch (Exception ex) {
+            this.step = "Arbitrary";
+        }
+        arg.setValue(this.step);
         this.getArgumentMap().putArgument(arg);
     }
 }

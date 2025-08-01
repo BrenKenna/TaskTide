@@ -105,7 +105,7 @@ public class ManagerConfig extends AbstractConfigurer {
             this.target = this.getConfig().getValue("tasktide.manager.target", String.class);
         }
         catch (Exception ex) {
-            this.target = "";
+            this.target = "Arbitrary";
         }
         if ( !target.isEmpty() ) {arg.setValue(target);}
         this.getArgumentMap().putArgument(arg);
@@ -200,7 +200,6 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void nestedDelimiter() {
         Argument<String> arg;
-        this.nestedDelimiter = this.getConfig().getValue("tasktide.manager.nestedDelimiter", String.class);
         arg = this.getArgumentBuilder()
             .withName("Nested Delimiter")
             .withDescription("Defines the ItemTask delimiter if required")
@@ -253,7 +252,6 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     public void targetStep() {
         Argument<String> arg;
-        this.targetStep = this.getConfig().getValue("tasktide.manager.targetStep", String.class);
         arg = this.getArgumentBuilder()
             .withName("Target Step")
             .withDescription("Defines the target step for import")

@@ -23,6 +23,7 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.TaskTideWorkerUnitProvider;
@@ -50,6 +51,7 @@ public class TaskTideEngineClient extends TaskTideClient {
     private TaskTideProcessor<WorkItem> processor;
     private TaskTideExecutor<WorkItem> workExec;
     private TaskTideEngineObserver<WorkItem> obs;
+    private String step;
     
     
     /**
@@ -60,6 +62,7 @@ public class TaskTideEngineClient extends TaskTideClient {
     public TaskTideEngineClient(ClientConfigMap configMap) {
         super(configMap);
         this.unitProvider = new TaskTideWorkerUnitProvider();
+        this.step = (String) this.getArgTree().getTree().getDataForAddress("engine").getArgument("Step").getValue();
     }
     
     
@@ -111,8 +114,66 @@ public class TaskTideEngineClient extends TaskTideClient {
     @Override
     protected void performClientTask() {
         
-        //Fetch to do work
-        List<WorkItem> workload = this.fetchToDoWork();
+        // Fetch and run processing
+        this.fetchAndRun();
+        
+        // Clean up - close connections etc
+        this.cleanUp();
+    }
+    
+    
+    /**
+     * Performs required cleanup actions
+     * 
+     */
+    @Override
+    protected void cleanUp() {
+        
+    }
+    
+    
+    /**
+     * Fetch and run worklaod(s)
+     */
+    private void fetchAndRun() {
+        
+        // Process each step in order provided
+        LOGGER.info("Determing how to process workload");
+        if ( this.step.contains(",") ) {
+            String[] steps = this.step.split(",");
+            LOGGER.info("Processing in pipeline mode:\t'{}'", JsonUtils.toJson(false, steps));
+            for ( String elm : steps ) {
+                LOGGER.info("Processing step:\t'{}'", elm);
+                List<WorkItem> workload = this.fetchToDoWorkTarget(elm);
+                this.processWorkload(workload);
+                LOGGER.info("Processing complete for step:\t'{}'", elm);
+            }
+        }
+        
+        // Process target step
+        else if ( !this.step.equalsIgnoreCase("na") ) {
+            LOGGER.info("Processing single step:\t'{}'", step);
+            List<WorkItem> workload = this.fetchToDoWorkTarget(step);
+            this.processWorkload(workload);
+            LOGGER.info("Processing complete for step:\t'{}'", step);
+        }
+        
+        // Process all, perhaps check a force as it could be a mistake?
+        else {
+            LOGGER.info("No step detected, processing unassigned under '{}'", step);
+            List<WorkItem> workload = this.fetchToDoWorkTarget(step);
+            this.processWorkload(workload);
+            LOGGER.info("Processing complete");
+        }
+    }
+    
+    
+    /**
+     * Processes provided workload
+     * 
+     * @param workload 
+     */
+    private void processWorkload(List<WorkItem> workload) {
         
         // Process if available
         if ( !workload.isEmpty() ) {
@@ -126,19 +187,6 @@ public class TaskTideEngineClient extends TaskTideClient {
              TaskTideServiceManager.fetchWorkItemService().getRepo().getRepositoryMetaData()
             );
         }
-        
-        // Clean up - close connections etc
-        this.cleanUp();
-    }
-    
-    
-    /**
-     * Performs required cleanup actions
-     * 
-     */
-    @Override
-    protected void cleanUp() {
-    
     }
     
     

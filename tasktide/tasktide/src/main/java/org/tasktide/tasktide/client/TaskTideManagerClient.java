@@ -25,6 +25,7 @@ import org.tasktide.core.manager.ManagerAction;
 import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.tasktide.parser.model.ArgumentMap;
