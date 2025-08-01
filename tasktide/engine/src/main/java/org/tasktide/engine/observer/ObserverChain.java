@@ -5,6 +5,8 @@
 package org.tasktide.engine.observer;
 
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -22,6 +24,7 @@ import org.tasktide.core.model.task.ItemTask;
 public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskTideEngineObserver<T>{
 
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(TaskTideEngineObserver.class);
     protected final List<WorkerObserver<T>> observers;
     
     
@@ -48,6 +51,7 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
             ObserverResult result = obs.onTaskStart(task);
             if ( !result.isSuccess() && !result.getType().isOptional() ) {
                 if ( !result.canIgnore() ) {
+                    LOGGER.warn("Task '{}' failed Observer '{}' check", task.getId(), obs.getName());
                     return false;
                 }
             }

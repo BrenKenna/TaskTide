@@ -9,7 +9,6 @@ import org.eclipse.microprofile.config.ConfigProvider;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import jakarta.inject.Inject;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -19,7 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import javax.sql.DataSource;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;

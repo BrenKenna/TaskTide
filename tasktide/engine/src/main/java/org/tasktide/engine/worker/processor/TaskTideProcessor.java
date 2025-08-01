@@ -12,7 +12,9 @@ import java.util.concurrent.ExecutorService;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
@@ -36,6 +38,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     protected final Logger logger;
     protected final int threshold;
     protected final ExecutorService executorService;
+    private final Random RAND = new Random();
     
     
     /**
@@ -72,6 +75,8 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
              Thread.currentThread().getName(), workload.size(), workload.get(0).getId()
             );
             if ( this.getExecutor() != null ) {
+                try {TimeUnit.MILLISECONDS.sleep(RAND.nextInt(5+1));}
+                catch(InterruptedException ex) {}
                 this.getExecutor().runTasks(workload);
             }
             else {

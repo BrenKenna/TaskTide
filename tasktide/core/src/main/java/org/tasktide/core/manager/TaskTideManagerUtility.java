@@ -12,7 +12,6 @@ import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -156,7 +155,6 @@ public class TaskTideManagerUtility {
         if ( parts[2].split(nestedDelim).length >= 2 ) {
             
             // Create a new line for each seq value
-            System.out.println("Analysing nested task");
             List<ItemTask> nestedTasks = new ArrayList<>();
             int counter = 0;
             for ( String taskArg : parts[2].split(nestedDelim)) {
@@ -168,7 +166,6 @@ public class TaskTideManagerUtility {
                 counter++;
             }
             Workload workload = BuilderUtility.buildWorkload(nestedTasks);
-            System.out.println("\n\nDisplaying created workload:\n" + workload.toJsonDoc());
             String stepId = TaskTideManagerUtility.fetchStepId(stepName);
             return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
         }

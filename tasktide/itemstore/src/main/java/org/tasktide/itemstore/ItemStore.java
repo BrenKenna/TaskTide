@@ -105,6 +105,28 @@ public interface ItemStore {
      * @return String
      */
     String getPayloadById(DbTarget target, String id);
+    
+    
+    /**
+     * Drop {@link Item} from cache for {@link DbTarget}
+     * 
+     * @param target
+     * @param item
+     * @return boolean
+     * @throws java.lang.Exception
+     */
+    boolean delete(DbTarget target, Item item) throws Exception;
+    
+    
+    /**
+     * Updates {@link Item} from cache for {@link DbTarget}
+     * 
+     * @param target
+     * @param item
+     * @return boolean
+     * @throws java.lang.Exception
+     */
+    boolean update(DbTarget target, Item item) throws Exception;
 
     
     /**
@@ -166,15 +188,4 @@ public interface ItemStore {
      * @return boolean
      */
     boolean openConn(DbTarget target);
-    
-    
-    /**
-     * Drop {@link Item} from cache for {@link DbTarget}
-     * 
-     * @param target
-     * @param item
-     * @return boolean
-     * @throws java.lang.Exception
-     */
-    boolean delete(DbTarget target, Item item) throws Exception ;
 }

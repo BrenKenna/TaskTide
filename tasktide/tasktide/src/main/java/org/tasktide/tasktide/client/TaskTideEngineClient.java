@@ -133,7 +133,8 @@ public class TaskTideEngineClient extends TaskTideClient {
     
     
     /**
-     * Fetch and run worklaod(s)
+     * Fetch and run workloads
+     * 
      */
     private void fetchAndRun() {
         

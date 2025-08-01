@@ -25,7 +25,6 @@ import org.tasktide.core.manager.ManagerAction;
 import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
-import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.tasktide.parser.model.ArgumentMap;
@@ -201,12 +200,12 @@ public class TaskTideManagerClient extends TaskTideClient {
     
         try {
             List<WorkItem> workload = this.importFile();
-            LOGGER.info("Import '{}' workitems", workload.size());
+            LOGGER.info("Importing '{}' workitems", workload.size());
 
-            TaskTideServiceManager.fetchWorkItemService().extendModel(workload);
+            boolean status = TaskTideServiceManager.fetchWorkItemService().extendModel(workload);
             LOGGER.info(
-          "Import complete displaying first item for referece",
-             TaskTideServiceManager.fetchWorkItemService().fetchById(workload.get(0).getId())
+          "Import status '{}'",
+                status
             );
         } catch (IOException ex) {
             LOGGER.error(

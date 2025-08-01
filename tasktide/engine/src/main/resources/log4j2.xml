@@ -7,7 +7,7 @@
         </Console>
 
         <!-- File Appender -->
-        <File name="LOGFILE" fileName="logs/test/engine/TestLog-Engine.log">
+        <File name="LOGFILE" fileName="logs/tasktide/TaskTide.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p [ %t -> %C.%M ]: %m%n"/>
         </File>
     </Appenders>

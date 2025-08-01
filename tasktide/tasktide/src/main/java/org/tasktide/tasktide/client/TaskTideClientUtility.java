@@ -106,12 +106,10 @@ public class TaskTideClientUtility {
         //  Required with Netbeans, not in linux shell?
         if ( !cdiProvider.isProvider(CdiProviders.QUARKUS) ) {
             provider.addExtension(ReflectionEntityMetadataExtension.class, DocumentExtension.class);
-            
             provider.addBeanClass(
-            GlobalConfig.class, ManagerConfig.class, EngineConfig.class,
-            WorkItem.class, ItemTask.class, Step.class, Workflow.class
+                GlobalConfig.class, ManagerConfig.class, EngineConfig.class,
+                WorkItem.class, ItemTask.class, Step.class, Workflow.class
             );
-            
         }
         
         // Return
@@ -186,7 +184,7 @@ public class TaskTideClientUtility {
     public static void initNoSqlServiceManager(ClientConfigMap configMap) {
         String dbType = (String) configMap.getArgTree().getGlobalArguments().getArgMap().get("NoSQL Database Type").getValue();
         NoSqlTemplateUtility.initialize(dbType);
-        NoSqlTemplateUtility.get().initServiceManager();;
+        NoSqlTemplateUtility.get().initServiceManager();
     }
     
     

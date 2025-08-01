@@ -6,6 +6,7 @@ package org.tasktide.tasktide.client;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.tasktide.tasktide.configurer.TaskTideConfigurer;
 import org.tasktide.tasktide.parser.ArgumentTree;
 

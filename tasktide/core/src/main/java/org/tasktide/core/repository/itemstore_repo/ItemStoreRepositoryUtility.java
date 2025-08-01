@@ -44,8 +44,8 @@ public class ItemStoreRepositoryUtility {
     
     // Attributes
     private static ItemStoreRepositoryUtility INSTANCE;
-    private ItemStoreType storeType;
-    private String storeName;
+    private final ItemStoreType storeType;
+    private final String storeName;
     
     
     /**
@@ -93,20 +93,20 @@ public class ItemStoreRepositoryUtility {
     public void initServiceManager() {
         
         // Initialize vars
-        Map<ManagerTarget, TaskTideRepository> repoMap;
+        Map<ManagerTarget, ItemStore> itemStoreMap;
         TaskTideService<WorkItem> workItemService;
         TaskTideService<Step> stepService;
         TaskTideService<Workflow> workflowService;
         
-        // 
-        repoMap = fetchItemStoreRepoMap(this.storeType, this.storeName);
+        // Fetch item store map
+        itemStoreMap = fetchItemStoreMap(this.storeType, this.storeName);
         
-        // Make services
-        workItemService = ServiceFactory.makeWorkItemService(RepositoryType.ITEMSTORE, repoMap.get(ManagerTarget.WORKITEM), "WorkItem-Service");
-        stepService = ServiceFactory.makeStepService(RepositoryType.ITEMSTORE, repoMap.get(ManagerTarget.STEP), "Step-Service");
-        workflowService = ServiceFactory.makeWorkflowService(RepositoryType.ITEMSTORE, repoMap.get(ManagerTarget.WORKFLOW), "Workflow-Service");
+        // Construct services
+        workItemService = ServiceFactory.makeWorkItemService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.WORKITEM), "WorkItem-Service");
+        stepService = ServiceFactory.makeStepService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.STEP), "Step-Service");
+        workflowService = ServiceFactory.makeWorkflowService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.WORKFLOW), "Workflow-Service");
         
-        // Return manager
+        // Initialize manager with these services
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
     }
     

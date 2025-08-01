@@ -10,6 +10,9 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksIterator;
@@ -26,6 +29,7 @@ import org.rocksdb.WriteOptions;
 public class RocksDBStore extends AbstractItemStore {
     
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(RocksDBStore.class);
     private RocksDB master, proto;
     private final Options options;
     private final ObjectMapper MAPPER = new ObjectMapper();
@@ -80,11 +84,14 @@ public class RocksDBStore extends AbstractItemStore {
      * @param key
      * @param value 
      */
-    public void putItem(RocksDB db, byte[] key, byte[] value) {
+    public void putItem(RocksDB db, byte[] key, byte[] value) {        
         try {
             db.put(key, value);
         }
-        catch (RocksDBException ex) {}
+        catch (RocksDBException ex) {
+            LOGGER.error("Unable to insert record into ItemStore: '{}'", db.getName());
+            ex.printStackTrace();
+        }
     }
     
     
@@ -139,15 +146,38 @@ public class RocksDBStore extends AbstractItemStore {
         this.openConn(target);
         switch ( target ) {
             case PROTOTYPE -> {
-                putItem(this.proto, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+                this.putItem(this.proto, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
             }
             
-            case MASTER -> {
-                putItem(this.master, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
-                putItem(this.proto, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+            default -> {
+                LOGGER.info("Saving record to master:\t'{}'\n'{}'", this.getMasterFilePath(), item);
+                this.putItem(this.master, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+                LOGGER.info("Saving record to prototype:\t'{}'", this.getDbDirectory());
+                this.putItem(this.proto, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
             }
         }
         this.closeConn(target);
+    }
+    
+    
+    /**
+     * Update by dropping and inserting
+     * 
+     * @param target
+     * @param item
+     * @return boolean
+     */
+    @Override
+    public boolean update(DbTarget target, Item item) {
+        try {
+            this.saveItem(target, item);
+            return true;
+        }
+        catch (Exception ex) {
+            LOGGER.error("Unable to update Item, displaying stack trace\n", ex);
+            ex.printStackTrace();
+            return false;
+        }
     }
     
 
@@ -175,8 +205,16 @@ public class RocksDBStore extends AbstractItemStore {
                     proto.write(writeOptions, batch);
                 }
                 default -> {
-                    proto.write(writeOptions, batch);
-                    master.write(writeOptions, batch);
+                    if ( proto == null || master == null ) {
+                        LOGGER.error("Master or prototype is null");
+                    }
+                    else {
+                        LOGGER.info("Saving records to Master");
+                        master.write(writeOptions, batch);
+                        LOGGER.info("Saving records to Prototype");
+                        proto.write(writeOptions, batch);
+                    }
+                   
                 }
             }
         }
@@ -285,6 +323,8 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public boolean delete(DbTarget target, Item item) throws Exception {
+        this.openConn(target);
+        boolean status;
         try {
             switch (target) {
                 case PROTOTYPE -> {
@@ -295,11 +335,15 @@ public class RocksDBStore extends AbstractItemStore {
                     this.proto.delete(item.getId().getBytes());
                 }
             }
-            return true;
+            status = true;
         }
-        catch ( RocksDBException ex ) {
-            return false;
+        catch ( Exception ex ) {
+            LOGGER.error("Unable to delete record printing stack trace\n{}", ex);
+            ex.printStackTrace();
+            status = false;
         }
+        this.closeConn(target);
+        return status;
     }
 
     
@@ -311,15 +355,22 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public boolean closeConn(DbTarget target) {
+        LOGGER.debug("Closing connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {
                 this.releaseLock();
+                if ( this.master == null ) {
+                    return true;
+                }
                 if ( !this.master.isClosed() ) {
                     this.master.close();
                 }
                 return true;
             }
             case PROTOTYPE -> {
+                if ( this.proto == null ) {
+                    return true;
+                }
                 if ( !this.proto.isClosed() ) {
                     this.proto.close();
                 }
@@ -327,11 +378,16 @@ public class RocksDBStore extends AbstractItemStore {
             }
             default -> {
                 this.releaseLock();
-                if ( !this.master.isClosed() ) {
-                    this.master.close();
+                if ( this.master != null ) {
+                    if ( !this.master.isClosed() ) {
+                        this.master.close();
+                    }
                 }
-                if ( !this.proto.isClosed() ) {
-                    this.proto.close();
+                
+                if ( this.proto != null ) {
+                    if ( !this.proto.isClosed() ) {
+                        this.proto.close();
+                    }
                 }
                 return true;
             }
@@ -347,6 +403,7 @@ public class RocksDBStore extends AbstractItemStore {
      */
     @Override
     public boolean openConn(DbTarget target) {
+        LOGGER.debug("Openning connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {
                 try {

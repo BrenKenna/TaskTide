@@ -78,7 +78,7 @@ public class SqliteStore extends AbstractItemStore {
             return stmt.execute(query);
         }
         catch ( SQLException ex) {
-            LOGGER.error("Error initializing ItemStore displaying statck trace: '{}'", ex);
+            LOGGER.error("Error initializing ItemStore displaying statck trace", ex);
             ex.printStackTrace();
             throw new RuntimeException("Sqlite-ItemStore initialization failed", ex);
         }
@@ -204,6 +204,8 @@ public class SqliteStore extends AbstractItemStore {
             return ps.execute();
         }
         catch (SQLException ex) {
+            LOGGER.error("Error deleting item displaying statck trace", ex);
+            ex.printStackTrace();
             return false;
         }
     }
@@ -224,9 +226,7 @@ public class SqliteStore extends AbstractItemStore {
             }
             default -> {
                 this.putItem(this.master, item);
-                this.openConn(DbTarget.PROTOTYPE);
                 this.putItem(this.proto, item);
-                this.closeConn(DbTarget.PROTOTYPE);
             }
         }
         this.closeConn(target);
@@ -353,18 +353,40 @@ public class SqliteStore extends AbstractItemStore {
      */
     @Override
     public boolean delete(DbTarget target, Item item) {
+        boolean status;
+        this.openConn(target);
         switch (target) {
             case PROTOTYPE -> {
-                return this.deleteItem(this.proto, item);
+                status = this.deleteItem(this.proto, item);
             }
             
             default -> {
                 int counter = 0;
                 if ( this.deleteItem(this.proto, item) ) counter++;
                 if ( this.deleteItem(this.master, item) ) counter++;
-                return counter == 2;
+                status = counter == 2;
             }
         }
+        this.closeConn(target);
+        return status;
+    }
+    
+    
+    /**
+     * Update Item by dropping, then inserting
+     * 
+     * @param target
+     * @param item
+     * @return boolean
+     */
+    @Override
+    public boolean update(DbTarget target, Item item) {
+        try {
+            this.delete(target, item);
+            this.saveItem(target, item);
+            return true;
+        }
+        catch (Exception ex) {return false;}
     }
     
     

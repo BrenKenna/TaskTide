@@ -114,7 +114,6 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         // Fetch and convert to model
         try {
             queried = repo.getById(DbTarget.BOTH, id);
-            System.out.println(queried);
             result = this.toModel(queried);
             return Optional.ofNullable(result);
         }
@@ -138,7 +137,7 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         // Insert record
         try {
             Item item = this.toItem(model);
-            this.repo.saveItem(DbTarget.MASTER, item);
+            this.repo.saveItem(DbTarget.BOTH, item);
             return this.findById(model.getId()).get();
         }
         
@@ -162,7 +161,7 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         try {
             
             // Save and sync to master
-            this.insertModel(model);
+            this.repo.update(DbTarget.BOTH, item);
             
             // Fetch inserted record
             return this.findById(model.getId()).get();
@@ -182,7 +181,7 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
     @Override
     public boolean deleteModel(String id) {
         try {
-            return this.repo.delete(DbTarget.MASTER, this.repo.getById(DbTarget.MASTER, id));
+            return this.repo.delete(DbTarget.BOTH, this.repo.getById(DbTarget.MASTER, id));
         }
         catch (Exception ex) {
             return false;
@@ -307,10 +306,12 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         
         // Import
         try {
-            this.repo.saveItems(DbTarget.MASTER, forImport);
+            this.repo.saveItems(DbTarget.BOTH, forImport);
             return true;
         }
         catch ( Exception ex ) {
+            //System.out.println("Debug >>>\nDisplaying stack trace");
+            //ex.printStackTrace();
             return false;
         }
     }

@@ -9,10 +9,13 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.engine.observer.ObserverResult;
 import org.tasktide.engine.observer.worker.StateObserver;
@@ -28,6 +31,7 @@ import org.tasktide.engine.trackers.TaskTrackers;
  */
 public class WorkItemStateObserver extends StateObserver<WorkItem> {
 
+    private final Logger LOGGER = LogManager.getLogger(WorkItemStateObserver.class);
     private final Random RAND = new Random();
     
     
@@ -78,11 +82,13 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             
             // Mark task as skipped if marked running on another thread
             if ( !TaskTrackers.WORK_ITEM_TRACKER.isRunning(taskId) ) {
+                LOGGER.warn("Item locked already running");
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
                 return ObserverResult.failure(this);
             }
             
-            // Mark as skipped if running on another thread within JVM
+            // Mark as skipped if running on another thread within other JVM
+            LOGGER.warn("Item could not be verified");
             return ObserverResult.failure(this);
         }
         
@@ -91,6 +97,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             if ( !TaskTrackers.WORK_ITEM_TRACKER.isRunning(taskId) ) {
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
             }
+            LOGGER.warn("Item not to do state. Displaying for reference:\n'{}'", JsonUtils.toJson(true, task));
             return ObserverResult.failure(this);
         }
     }

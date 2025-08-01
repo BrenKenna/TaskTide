@@ -19,18 +19,32 @@
             <AppenderRef ref="LOGFILE"/>
         </Logger>
 
-        <!-- Enable detailed config loading info -->
+        <!-- CDI & MicroProfile -->
         <Logger name="io.smallrye.config" level="WARN" additivity="false">
             <AppenderRef ref="STDOUT"/>
             <AppenderRef ref="LOGFILE"/>
         </Logger>
-
-        <!-- Enable CDI injection debug (Weld, etc) -->
         <Logger name="org.jboss.weld" level="WARN" additivity="false">
             <AppenderRef ref="STDOUT"/>
             <AppenderRef ref="LOGFILE"/>
         </Logger>
+        
+        <!-- JPA Stuff -->
+        <Logger name="org.hibernate" level="WARN" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="LOGFILE"/>
+        </Logger>
+        <Logger name="jakarta.persistence" level="WARN" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="LOGFILE"/>
+        </Logger>
+        <Logger name="org.eclipse.persistence" level="WARN" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="LOGFILE"/>
+        </Logger>
 
+
+        
         <!-- Root fallback -->
         <Root level="INFO">
             <AppenderRef ref="STDOUT"/>
