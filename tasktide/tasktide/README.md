@@ -87,10 +87,10 @@ The engine client brings in parallel task processing over the configured backend
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
 |--|--|--|--|--|
 | Step | Defines which Step(s) to process | StepA,ThenStepB,ThenStepC | tasktide.engine.step | -st/--step
-| WorkItem Threads | Defines the number of threads to recruit for WorkItem processing | 2 | -w/--work-item-threads
-| WorkItem Threshold | Defines the processing threshold for WorkItem | 2 | -ws/--work-item-sub-task-threshold
-| ItemTask Threads | Defines the number of threads to recruit for ItemTask processing | 2 | -i/--item-task-threads
-| ItemTask Threshold | Defines the processing threshold for ItemTask | 2 | -is/--item-task-sub-task-threshold
+| WorkItem Threads | Defines the number of threads to recruit for WorkItem processing | 2 | tasktide.engine.worker.processor.threads.workitem | -w/--work-item-threads
+| WorkItem Threshold | Defines the processing threshold for WorkItem | 2 | tasktide.engine.worker.processor.threshold.workitem | -ws/--work-item-sub-task-threshold
+| ItemTask Threads | Defines the number of threads to recruit for ItemTask processing | 2 | tasktide.engine.worker.processor.threads.itemtask | -i/--item-task-threads
+| ItemTask Threshold | Defines the processing threshold for ItemTask | 2 | tasktide.engine.worker.processor.threshold.itemtask | -is/--item-task-sub-task-threshold
 | TimeKeeper Level | Configures whether TimeKeeper Observer is optional | 1/0 | tasktide.engine.observer.timekeeper | -tk/--time-keeper
 | TimeKeeper onStart | Configures whether TimeKeeper's onStart method can fail | true/false | tasktide.engine.observer.timekeeper.onStart | -tks/--time-keeper-onStart
 | TimeKeeper onProcessing | Configures whether TimeKeeper's onProcessing method can fail | true/false | tasktide.engine.observer.timekeeper.onProcessing | -tkp/--time-keeper-onProcessing
@@ -109,8 +109,8 @@ The manager client brings in task scheduling using the configured backend. Opera
 | Method | Defines manager method to run | Import/Export | tasktide.method | -m/--method
 | Input File | Defines the full input file path for import | ~/myData.txt | tasktide.manager.inputFile | -i/--input-file
 | Delimiter | Defines field delimiter of the input file | ','/'\t' | tasktide.manager.delimiter | -d/--delimiter
-| Nested Delimiter | Defines delimiter of tasks if provided | ':'/'|' | tasktide.manager.nestedDelimiter | -nd/--nested-delimiter
-| Output File | Defines full file path for export JSON formatted | ~/myExport.txt
+| Nested Delimiter | Defines delimiter of tasks if provided | ':'/' | tasktide.manager.nestedDelimiter | -nd/--nested-delimiter
+| Output File | Defines full file path for export JSON formatted | ~/myExport.txt | tasktide.manager.outputFile | -of/--output-file
 
 ---
 ### 3). Client Arcitecture
