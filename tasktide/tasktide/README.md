@@ -1,6 +1,6 @@
 # TaskTide - ClientApp
 <p>
-Orchestrates the TaskTide-ItemStore, TaskTide-CoreLib, and TaskTide-Engine into a runnable command-line application. Whose design caters for the development of future clients (ex REST-API) through the TaskTide-Client interface (<a href="/tasktide/tasktide/README.md#3-client-arcitecture">shown here</a>).
+Orchestrates the TaskTide-ItemStore, TaskTide-CoreLib, and TaskTide-Engine into a configurable command-line application. Whose design caters for the development of future clients (ex REST-API) through the TaskTide-Client interface (<a href="/tasktide/tasktide/README.md#3-client-arcitecture">shown here</a>).
 </p>
 
 ---
