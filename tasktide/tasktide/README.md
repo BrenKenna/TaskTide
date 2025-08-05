@@ -48,7 +48,7 @@ The table below maps TaskTide configuration parameters from config file, to comm
 | Date Format | Format to use for Date strings, defaulted | dd/MM/yy HH:mm:ss | tasktide.utils.date-format | -df/--date-format
 
 ---
-#### NoSQL Backend Configurations
+#### i). NoSQL Backend Configurations
 <p>
 Note that the following is a minimal example for "<i><a href="https://couchdb.apache.org/">couchDB</a></i>", and should not be present in the "<i><a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a></i>" if either an SQL, or ItemStore backend are being used. Full NoSQL configurations can be found at the corresponding project "<i><a href="https://github.com/eclipse-jnosql/jnosql-databases">linked here</a></i>". Lastly, the following guide describes how to incorporate NoSQL database into TaskTide (need a build & install for that GH repo).
 </p>
@@ -63,7 +63,7 @@ Note that the following is a minimal example for "<i><a href="https://couchdb.ap
 | Password | Password to use for authenticating user | canBeSetAsAnEnvironemtalVariable | jnosql.couchdb.password | "<i><b>NA</b></i>"
 
 ---
-#### Relational Backend Configurations
+#### ii). Relational Backend Configurations
 <p>
 Relational database management system/SQL support is provided through <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a>. Where a single "<i><a href="https://jakarta.ee/specifications/persistence/2.2/apidocs/javax/persistence/entitymanager">Entity Manager</a></i>" per instance provides "<i>Workflows, Steps, and WorkItems</i>" persistence. In order to use this interface, the implementations must be configured being "<i>Hikari CP</i>", and "<i>Hibernate</i>". As with the <a href="/tasktide/tasktide/README.md#nosql-backend-configurations">NoSQL Configurations</a>, if a relational backend is being used. Then neither the ItemStore, nor the JNoSQL configurations need to be defined. The configurations provided below are a minimal parameters for use with <a href="https://mariadb.org/">MariaDB</a>. 
 </p>
@@ -79,7 +79,7 @@ Relational database management system/SQL support is provided through <a href="h
 
 
 ---
-#### b). Engine Client Configurations
+### b). Engine Client Configurations
 <p>
 The engine client brings in parallel task processing over the configured backend, with real-time updates being applied to throughout the life-cycle of a task. The below parameters can be used to adjust how TaskTide processes these tasks, such as which task collection, level of parallelism, its monitoring componenets etc. The only mandatory property is the Step property, which when a comma separated list is provided processes tasks from those workflow steps.
 </p>
@@ -97,7 +97,7 @@ The engine client brings in parallel task processing over the configured backend
 | TimeKeeper onEnd | Configures whether TimeKeeper's onEnd method can fail | true/false | tasktide.engine.observer.timekeeper.onEnd | -tkse/--time-keeper-onEnd
 
 ---
-#### b). Manager Client Configurations
+### c). Manager Client Configurations
 <p>
 The manager client brings in task scheduling using the configured backend. Operations performed the Manager open these CURD actions via the configurable properties described below. While the TaskTide-ManagerClient can be used within ETL scripts to enqueue the next step for an active item, it's recommended to import through the file import (<a href="/tasktide/tasktide/src/main/resources/nestedTaskImports.txt">example provided here</a>). 
 </p>
