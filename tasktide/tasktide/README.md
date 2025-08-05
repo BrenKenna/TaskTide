@@ -43,8 +43,8 @@ The table below maps TaskTide configuration parameters from config file, to comm
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
 |--|--|--|--|--|
 | Client | Defines which client to use | Manager/Engine | tasktide.client | -c/--client
-| Repository Type | Defines which backend repository to use | NoSQL/SQL/RocksDB/SQLite | -rt--repository-type
-| File Path | Used in conjuction with Repository Type for ItemStore databases (RocksDB/SQLite) for directory where data is stored | -fp/--file-path
+| Repository Type | Defines which backend repository to use | NoSQL/SQL/RocksDB/SQLite | tasktide.core.repository.type | -rt--repository-type
+| File Path | Used in conjuction with Repository Type for ItemStore databases (RocksDB/SQLite) for directory where data is stored | ~/path/To/My/ItemStore | tasktide.core.repository.file-path | -fp/--file-path
 | Date Format | Format to use for Date strings, defaulted | dd/MM/yy HH:mm:ss | tasktide.utils.date-format | -df/--date-format
 
 ---
@@ -58,7 +58,7 @@ Note that the following is a minimal example for "<i><a href="https://couchdb.ap
 | Database | Defines which database to use for persisting "<i>Workflows, Steps, and WorkItems</i>" | tasktide | jnosql.document.database | "<i><b>NA</b></i>"
 | Provider | Defines which database driver to use | org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentConfiguration | jnosql.document.provider | "<i><b>NA</b></i>"
 | Host | Database host | localhost | jnosql.couchdb.host | "<i><b>NA</b></i>"
-| Port | The port on the configured host listening for client connections | jnosql.couchdb.port | "<i><b>NA</b></i>"
+| Port | The port on the configured host listening for client connections | 5439 | jnosql.couchdb.port | "<i><b>NA</b></i>"
 | Username | Username to use for authenticating requests | canBeSetAsAnEnvironemtalVariable | jnosql.couchdb.username | "<i><b>NA</b></i>"
 | Password | Password to use for authenticating user | canBeSetAsAnEnvironemtalVariable | jnosql.couchdb.password | "<i><b>NA</b></i>"
 
@@ -108,8 +108,8 @@ The manager client brings in task scheduling using the configured backend. Opera
 | Target Step | Defines the target step | myStep | tasktide.manager.targetStep | -ts/--target-step
 | Method | Defines manager method to run | Import/Export | tasktide.method | -m/--method
 | Input File | Defines the full input file path for import | ~/myData.txt | tasktide.manager.inputFile | -i/--input-file
-| Delimiter | Defines field delimiter of the input file | ','/'\t' | tasktide.manager.delimiter | -d/--delimiter
-| Nested Delimiter | Defines delimiter of tasks if provided | ':'/' | tasktide.manager.nestedDelimiter | -nd/--nested-delimiter
+| Delimiter | Defines field delimiter of the input file | ',' OR '\t' | tasktide.manager.delimiter | -d/--delimiter
+| Nested Delimiter | Defines delimiter of tasks if provided | ':' OR '/' | tasktide.manager.nestedDelimiter | -nd/--nested-delimiter
 | Output File | Defines full file path for export JSON formatted | ~/myExport.txt | tasktide.manager.outputFile | -of/--output-file
 
 ---
