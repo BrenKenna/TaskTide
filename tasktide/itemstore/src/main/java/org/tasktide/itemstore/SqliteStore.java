@@ -224,9 +224,12 @@ public class SqliteStore extends AbstractItemStore {
             case PROTOTYPE -> {
                 this.putItem(this.proto, item);
             }
-            default -> {
+            case MASTER -> {
                 this.putItem(this.master, item);
+            }
+            case BOTH -> {
                 this.putItem(this.proto, item);
+                this.putItem(this.master, item);
             }
         }
         this.closeConn(target);
@@ -258,11 +261,11 @@ public class SqliteStore extends AbstractItemStore {
         List<Item> output;
         this.openConn(target);
         switch ( target ) {
-            case MASTER -> {
-                output = this.selectAll(this.master);
+            case PROTOTYPE -> {
+                output = this.selectAll(this.proto);
             }
             default -> {
-                output = this.selectAll(this.proto);
+                output = this.selectAll(this.master);
             }
         }
         this.closeConn(target);
@@ -360,11 +363,19 @@ public class SqliteStore extends AbstractItemStore {
                 status = this.deleteItem(this.proto, item);
             }
             
-            default -> {
+            case MASTER -> {
+                status = this.deleteItem(this.master, item);
+            }
+            
+            case BOTH -> {
                 int counter = 0;
                 if ( this.deleteItem(this.proto, item) ) counter++;
                 if ( this.deleteItem(this.master, item) ) counter++;
                 status = counter == 2;
+            }
+            
+            default -> {
+                status = false;
             }
         }
         this.closeConn(target);
@@ -447,7 +458,6 @@ public class SqliteStore extends AbstractItemStore {
             case PROTOTYPE -> {
                 try {
                     if ( this.proto == null ) {
-                        
                         this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
                         return true;
                     }

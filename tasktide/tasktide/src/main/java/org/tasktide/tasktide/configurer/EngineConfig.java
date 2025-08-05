@@ -291,8 +291,8 @@ public class EngineConfig extends AbstractConfigurer {
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer Level")
             .withDescription("Configure whether TimeKeeper is optional")
-            .withShortFlag("-to")
-            .withLongFlag("--timeKeeper-observer")
+            .withShortFlag("-tk")
+            .withLongFlag("--time-keeper")
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(int.class);
@@ -318,8 +318,8 @@ public class EngineConfig extends AbstractConfigurer {
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onStart")
             .withDescription("Configure whether TimeKeeper onStart method can fail")
-            .withShortFlag("-tos")
-            .withLongFlag("--timeKeeper-onStart")
+            .withShortFlag("-tks")
+            .withLongFlag("--time-keeper-onStart")
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(boolean.class);
@@ -345,8 +345,8 @@ public class EngineConfig extends AbstractConfigurer {
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onProcessing")
             .withDescription("Configure whether TimeKeeper onProcessing method can fail")
-            .withShortFlag("-top")
-            .withLongFlag("--timeKeeper-onProcessing")
+            .withShortFlag("-tkp")
+            .withLongFlag("--time-keeper-onProcessing")
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(boolean.class);
@@ -372,8 +372,8 @@ public class EngineConfig extends AbstractConfigurer {
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Observer onEnd")
             .withDescription("Configure whether TimeKeeper onEnd method can fail")
-            .withShortFlag("-toe")
-            .withLongFlag("--timeKeeper-onEnd")
+            .withShortFlag("-tke")
+            .withLongFlag("--time-keeper-onEnd")
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(boolean.class);

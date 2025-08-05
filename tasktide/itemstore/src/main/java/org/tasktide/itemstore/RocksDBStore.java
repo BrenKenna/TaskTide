@@ -82,10 +82,19 @@ public class RocksDBStore extends AbstractItemStore {
      * 
      * @param db
      * @param key
-     * @param value 
+     * @param value
      */
-    public void putItem(RocksDB db, byte[] key, byte[] value) {        
+    public void putItem(RocksDB db, byte[] key, byte[] value) {
+        if ( db == null ) {
+            throw new IllegalStateException("Error, the provided database is null");
+        }
+        
+        if ( key == null || value == null ) {
+            throw new IllegalStateException("Error, both the key and value must be non-null");
+        }
+        
         try {
+            LOGGER.debug("Attempting insertion into ItemStrep: '{}'", db.getName());
             db.put(key, value);
         }
         catch (RocksDBException ex) {
@@ -112,9 +121,11 @@ public class RocksDBStore extends AbstractItemStore {
         this.openConn(target);
         switch (target) {
             case MASTER -> {
+                LOGGER.debug("Fetching master iter from:\t'{}'", this.getFilePath());
                 iter = this.fetchIter(this.master);
             }
             default -> {
+                LOGGER.debug("Fetching prototype iter from:\t'{}'", this.getFilePath());
                 iter = this.fetchIter(this.proto);
             }
         }
@@ -149,10 +160,12 @@ public class RocksDBStore extends AbstractItemStore {
                 this.putItem(this.proto, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
             }
             
-            default -> {
-                LOGGER.info("Saving record to master:\t'{}'\n'{}'", this.getMasterFilePath(), item);
+            case MASTER -> {
                 this.putItem(this.master, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
-                LOGGER.info("Saving record to prototype:\t'{}'", this.getDbDirectory());
+            }
+            
+            case BOTH -> {
+                this.putItem(this.master, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
                 this.putItem(this.proto, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
             }
         }
@@ -202,19 +215,19 @@ public class RocksDBStore extends AbstractItemStore {
             
             switch ( target ) {
                 case PROTOTYPE -> {
+                    LOGGER.debug("Attempting batch write into prototype");
                     proto.write(writeOptions, batch);
                 }
-                default -> {
-                    if ( proto == null || master == null ) {
-                        LOGGER.error("Master or prototype is null");
-                    }
-                    else {
-                        LOGGER.info("Saving records to Master");
-                        master.write(writeOptions, batch);
-                        LOGGER.info("Saving records to Prototype");
-                        proto.write(writeOptions, batch);
-                    }
-                   
+                
+                case MASTER -> {
+                    LOGGER.debug("Attempting batch write into prototype");
+                    master.write(writeOptions, batch);
+                }
+                
+                case BOTH -> {
+                    LOGGER.debug("Attempting batch write into master & prototype");
+                    master.write(writeOptions, batch);
+                    proto.write(writeOptions, batch);
                 }
             }
         }
@@ -235,9 +248,11 @@ public class RocksDBStore extends AbstractItemStore {
         byte[] data;
         switch ( target ) {
             case PROTOTYPE -> {
+                LOGGER.debug("Fetching record matching Id from Prototype:\t'{}'", id);
                 data = proto.get(id.getBytes());
             }
             default -> {
+                LOGGER.debug("Fetching record matching Id from Master:\t'{}'", id);
                 data = master.get(id.getBytes());
             }
         }
@@ -328,9 +343,15 @@ public class RocksDBStore extends AbstractItemStore {
         try {
             switch (target) {
                 case PROTOTYPE -> {
+                    LOGGER.debug("Deleting record matching Id from Prototype");
                     this.proto.delete(item.getId().getBytes());
                 }
-                default -> {
+                case MASTER -> {
+                    LOGGER.debug("Deleting record matching Id from Master");
+                    this.master.delete(item.getId().getBytes());
+                }
+                
+                case BOTH -> {
                     this.master.delete(item.getId().getBytes());
                     this.proto.delete(item.getId().getBytes());
                 }

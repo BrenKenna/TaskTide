@@ -29,7 +29,6 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
-;
 import org.tasktide.TestCaseBuilderUtility;
 
 

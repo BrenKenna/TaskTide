@@ -22,6 +22,36 @@
 
 ---
 
+## 🧑‍💻 Getting Started
+<p>
+It is recommended to download & unpack TaskTide releases, and install them into standard directories depending on OS (is ```bash /usr/lib```, or ```cmd C:\Program Files```). Backend database configurations should follow providers recommendation, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, these are acknowledged <a href="/tasktide/core/README.md">here</a>. The documentation is focused on the client app TaskTide.
+</p>
+
+
+#### a). Fetch & Unpack release
+```bash
+# 1). Fetch zips
+curl -so tasktide.zip https://github.com/BrenKenna/TaskTide/releases/download/v0.9.0/tasktide.zip
+
+# 2). Unpack
+unzip tasktide.zip && rm -f tasktide.zip
+```
+
+#### b). Running TaskTide
+<p>
+How TaskTide should run can be configured based on parameters in a <a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">config file</a>, or command-line arguments. This was to simplify the use case of the Engine and Manager clients, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type is recommended, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) <a href="/tasktide/core/README.md">described here</a>. 
+</p>
+
+```bash
+# 3). Run TaskTide
+./tasktide/bin/tasktide
+
+# --- OR ---
+./tasktide/bin/tasktide <client: Manager | Engine> <client args: -h/--help>
+```
+
+---
+
 ## 🧱 Architecture
 
 - **Core Model**             – Defines the stateful task and workflow data structure, described <a href="/tasktide/core/README.md">here</a>.

@@ -1,0 +1,303 @@
+2025/08/05-11:36:50.083711 ecc8 RocksDB version: 10.1.3
+2025/08/05-11:36:50.083800 ecc8 Git sha 5823cf08d69e4d9cba6953d51fb7d6996c72df94
+2025/08/05-11:36:50.083855 ecc8 Compile date 2025-05-12 17:54:01
+2025/08/05-11:36:50.083874 ecc8 DB SUMMARY
+2025/08/05-11:36:50.083888 ecc8 Host name (Env):  BKENNA-XPS
+2025/08/05-11:36:50.083901 ecc8 DB Session ID:  PQQU18HXMHTBTV764AG1
+2025/08/05-11:36:50.084404 ecc8 CURRENT file:  CURRENT
+2025/08/05-11:36:50.084428 ecc8 IDENTITY file:  IDENTITY
+2025/08/05-11:36:50.084496 ecc8 MANIFEST file:  MANIFEST-000005 size: 116 Bytes
+2025/08/05-11:36:50.084515 ecc8 SST files in C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master dir, Total Num: 0, files: 
+2025/08/05-11:36:50.084530 ecc8 Write Ahead Log file in C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master: 000004.log size: 83 ; 
+2025/08/05-11:36:50.084626 ecc8                         Options.error_if_exists: 0
+2025/08/05-11:36:50.084636 ecc8                       Options.create_if_missing: 1
+2025/08/05-11:36:50.084642 ecc8                         Options.paranoid_checks: 1
+2025/08/05-11:36:50.084648 ecc8             Options.flush_verify_memtable_count: 1
+2025/08/05-11:36:50.084654 ecc8          Options.compaction_verify_record_count: 1
+2025/08/05-11:36:50.084660 ecc8                               Options.track_and_verify_wals_in_manifest: 0
+2025/08/05-11:36:50.084666 ecc8                               Options.track_and_verify_wals: 0
+2025/08/05-11:36:50.084673 ecc8        Options.verify_sst_unique_id_in_manifest: 1
+2025/08/05-11:36:50.084679 ecc8                                     Options.env: 00000242F6AED3C0
+2025/08/05-11:36:50.084685 ecc8                                      Options.fs: WinFS
+2025/08/05-11:36:50.084691 ecc8                                Options.info_log: 00000242F6AC9840
+2025/08/05-11:36:50.084697 ecc8                Options.max_file_opening_threads: 16
+2025/08/05-11:36:50.084704 ecc8                              Options.statistics: 0000000000000000
+2025/08/05-11:36:50.084710 ecc8                               Options.use_fsync: 0
+2025/08/05-11:36:50.084719 ecc8                       Options.max_log_file_size: 0
+2025/08/05-11:36:50.084725 ecc8                  Options.max_manifest_file_size: 1073741824
+2025/08/05-11:36:50.084731 ecc8                   Options.log_file_time_to_roll: 0
+2025/08/05-11:36:50.084737 ecc8                       Options.keep_log_file_num: 1000
+2025/08/05-11:36:50.084743 ecc8                    Options.recycle_log_file_num: 0
+2025/08/05-11:36:50.084749 ecc8                         Options.allow_fallocate: 1
+2025/08/05-11:36:50.084755 ecc8                        Options.allow_mmap_reads: 0
+2025/08/05-11:36:50.084761 ecc8                       Options.allow_mmap_writes: 0
+2025/08/05-11:36:50.084767 ecc8                        Options.use_direct_reads: 0
+2025/08/05-11:36:50.084773 ecc8                        Options.use_direct_io_for_flush_and_compaction: 0
+2025/08/05-11:36:50.084779 ecc8          Options.create_missing_column_families: 0
+2025/08/05-11:36:50.084785 ecc8                              Options.db_log_dir: 
+2025/08/05-11:36:50.084791 ecc8                                 Options.wal_dir: 
+2025/08/05-11:36:50.084797 ecc8                Options.table_cache_numshardbits: 6
+2025/08/05-11:36:50.084803 ecc8                         Options.WAL_ttl_seconds: 0
+2025/08/05-11:36:50.084809 ecc8                       Options.WAL_size_limit_MB: 0
+2025/08/05-11:36:50.084816 ecc8                        Options.max_write_batch_group_size_bytes: 1048576
+2025/08/05-11:36:50.084822 ecc8             Options.manifest_preallocation_size: 4194304
+2025/08/05-11:36:50.084828 ecc8                     Options.is_fd_close_on_exec: 1
+2025/08/05-11:36:50.084834 ecc8                   Options.advise_random_on_open: 1
+2025/08/05-11:36:50.084840 ecc8                    Options.db_write_buffer_size: 0
+2025/08/05-11:36:50.084846 ecc8                    Options.write_buffer_manager: 00000242F6AED1E0
+2025/08/05-11:36:50.084852 ecc8                      Options.use_adaptive_mutex: 0
+2025/08/05-11:36:50.084883 ecc8                            Options.rate_limiter: 0000000000000000
+2025/08/05-11:36:50.084895 ecc8     Options.sst_file_manager.rate_bytes_per_sec: 0
+2025/08/05-11:36:50.084901 ecc8                       Options.wal_recovery_mode: 2
+2025/08/05-11:36:50.084908 ecc8                  Options.enable_thread_tracking: 0
+2025/08/05-11:36:50.084914 ecc8                  Options.enable_pipelined_write: 0
+2025/08/05-11:36:50.084920 ecc8                  Options.unordered_write: 0
+2025/08/05-11:36:50.084926 ecc8         Options.allow_concurrent_memtable_write: 1
+2025/08/05-11:36:50.084932 ecc8      Options.enable_write_thread_adaptive_yield: 1
+2025/08/05-11:36:50.084938 ecc8             Options.write_thread_max_yield_usec: 100
+2025/08/05-11:36:50.084944 ecc8            Options.write_thread_slow_yield_usec: 3
+2025/08/05-11:36:50.084950 ecc8                               Options.row_cache: None
+2025/08/05-11:36:50.084956 ecc8                              Options.wal_filter: None
+2025/08/05-11:36:50.084962 ecc8             Options.avoid_flush_during_recovery: 0
+2025/08/05-11:36:50.084968 ecc8             Options.allow_ingest_behind: 0
+2025/08/05-11:36:50.084974 ecc8             Options.two_write_queues: 0
+2025/08/05-11:36:50.084980 ecc8             Options.manual_wal_flush: 0
+2025/08/05-11:36:50.084986 ecc8             Options.wal_compression: 0
+2025/08/05-11:36:50.084992 ecc8             Options.background_close_inactive_wals: 0
+2025/08/05-11:36:50.084998 ecc8             Options.atomic_flush: 0
+2025/08/05-11:36:50.085004 ecc8             Options.avoid_unnecessary_blocking_io: 0
+2025/08/05-11:36:50.085010 ecc8             Options.prefix_seek_opt_in_only: 0
+2025/08/05-11:36:50.085016 ecc8                 Options.persist_stats_to_disk: 0
+2025/08/05-11:36:50.085022 ecc8                 Options.write_dbid_to_manifest: 1
+2025/08/05-11:36:50.085028 ecc8                 Options.write_identity_file: 1
+2025/08/05-11:36:50.085033 ecc8                 Options.log_readahead_size: 0
+2025/08/05-11:36:50.085039 ecc8                 Options.file_checksum_gen_factory: Unknown
+2025/08/05-11:36:50.085046 ecc8                 Options.best_efforts_recovery: 0
+2025/08/05-11:36:50.085052 ecc8                Options.max_bgerror_resume_count: 2147483647
+2025/08/05-11:36:50.085058 ecc8            Options.bgerror_resume_retry_interval: 1000000
+2025/08/05-11:36:50.085064 ecc8             Options.allow_data_in_errors: 0
+2025/08/05-11:36:50.085070 ecc8             Options.db_host_id: __hostname__
+2025/08/05-11:36:50.085076 ecc8             Options.enforce_single_del_contracts: true
+2025/08/05-11:36:50.085082 ecc8             Options.metadata_write_temperature: kUnknown
+2025/08/05-11:36:50.085088 ecc8             Options.wal_write_temperature: kUnknown
+2025/08/05-11:36:50.085094 ecc8             Options.max_background_jobs: 2
+2025/08/05-11:36:50.085100 ecc8             Options.max_background_compactions: -1
+2025/08/05-11:36:50.085107 ecc8             Options.max_subcompactions: 1
+2025/08/05-11:36:50.085113 ecc8             Options.avoid_flush_during_shutdown: 0
+2025/08/05-11:36:50.085119 ecc8           Options.writable_file_max_buffer_size: 1048576
+2025/08/05-11:36:50.085125 ecc8             Options.delayed_write_rate : 16777216
+2025/08/05-11:36:50.085131 ecc8             Options.max_total_wal_size: 0
+2025/08/05-11:36:50.085137 ecc8             Options.delete_obsolete_files_period_micros: 21600000000
+2025/08/05-11:36:50.085143 ecc8                   Options.stats_dump_period_sec: 600
+2025/08/05-11:36:50.085149 ecc8                 Options.stats_persist_period_sec: 600
+2025/08/05-11:36:50.085155 ecc8                 Options.stats_history_buffer_size: 1048576
+2025/08/05-11:36:50.085161 ecc8                          Options.max_open_files: -1
+2025/08/05-11:36:50.085167 ecc8                          Options.bytes_per_sync: 0
+2025/08/05-11:36:50.085173 ecc8                      Options.wal_bytes_per_sync: 0
+2025/08/05-11:36:50.085179 ecc8                   Options.strict_bytes_per_sync: 0
+2025/08/05-11:36:50.085185 ecc8       Options.compaction_readahead_size: 2097152
+2025/08/05-11:36:50.085206 ecc8                  Options.max_background_flushes: -1
+2025/08/05-11:36:50.085213 ecc8 Options.daily_offpeak_time_utc: 
+2025/08/05-11:36:50.085219 ecc8 Compression algorithms supported:
+2025/08/05-11:36:50.085226 ecc8 	kZSTD supported: 1
+2025/08/05-11:36:50.085232 ecc8 	kSnappyCompression supported: 1
+2025/08/05-11:36:50.085238 ecc8 	kBZip2Compression supported: 0
+2025/08/05-11:36:50.085244 ecc8 	kZlibCompression supported: 1
+2025/08/05-11:36:50.085250 ecc8 	kLZ4Compression supported: 1
+2025/08/05-11:36:50.085256 ecc8 	kXpressCompression supported: 0
+2025/08/05-11:36:50.085262 ecc8 	kLZ4HCCompression supported: 1
+2025/08/05-11:36:50.085272 ecc8 Fast CRC32 supported: Not supported on x86
+2025/08/05-11:36:50.085279 ecc8 DMutex implementation: std::mutex
+2025/08/05-11:36:50.085285 ecc8 Jemalloc supported: 0
+2025/08/05-11:36:50.100555 ecc8 [db\version_set.cc:6116] Recovering from manifest file: C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master/MANIFEST-000005
+2025/08/05-11:36:50.102109 ecc8 [db\column_family.cc:658] --------------- Options for column family [default]:
+2025/08/05-11:36:50.102132 ecc8               Options.comparator: leveldb.BytewiseComparator
+2025/08/05-11:36:50.102137 ecc8           Options.merge_operator: None
+2025/08/05-11:36:50.102142 ecc8        Options.compaction_filter: None
+2025/08/05-11:36:50.102147 ecc8        Options.compaction_filter_factory: None
+2025/08/05-11:36:50.102151 ecc8  Options.sst_partitioner_factory: None
+2025/08/05-11:36:50.102156 ecc8         Options.memtable_factory: SkipListFactory
+2025/08/05-11:36:50.102160 ecc8            Options.table_factory: BlockBasedTable
+2025/08/05-11:36:50.102178 ecc8            table_factory options:   flush_block_policy_factory: FlushBlockBySizePolicyFactory (00000242F6186D40)
+  cache_index_and_filter_blocks: 0
+  cache_index_and_filter_blocks_with_high_priority: 1
+  pin_l0_filter_and_index_blocks_in_cache: 0
+  pin_top_level_index_and_filter: 1
+  index_type: 0
+  data_block_index_type: 0
+  index_shortening: 1
+  data_block_hash_table_util_ratio: 0.750000
+  checksum: 4
+  no_block_cache: 0
+  block_cache: 00000242F6B7B430
+  block_cache_name: LRUCache
+  block_cache_options:
+    capacity : 33554432
+    num_shard_bits : 6
+    strict_capacity_limit : 0
+    memory_allocator : None
+    high_pri_pool_ratio: 0.500
+    low_pri_pool_ratio: 0.000
+  persistent_cache: 0000000000000000
+  block_size: 4096
+  block_size_deviation: 10
+  block_restart_interval: 16
+  index_block_restart_interval: 1
+  metadata_block_size: 4096
+  partition_filters: 0
+  use_delta_encoding: 1
+  filter_policy: nullptr
+  whole_key_filtering: 1
+  verify_compression: 0
+  read_amp_bytes_per_bit: 0
+  format_version: 6
+  enable_index_compression: 1
+  block_align: 0
+  max_auto_readahead_size: 262144
+  prepopulate_block_cache: 0
+  initial_auto_readahead_size: 8192
+  num_file_reads_for_auto_readahead: 2
+2025/08/05-11:36:50.102183 ecc8        Options.write_buffer_size: 67108864
+2025/08/05-11:36:50.102188 ecc8  Options.max_write_buffer_number: 2
+2025/08/05-11:36:50.102192 ecc8          Options.compression: Snappy
+2025/08/05-11:36:50.102197 ecc8                  Options.bottommost_compression: Disabled
+2025/08/05-11:36:50.102201 ecc8       Options.prefix_extractor: nullptr
+2025/08/05-11:36:50.102205 ecc8   Options.memtable_insert_with_hint_prefix_extractor: nullptr
+2025/08/05-11:36:50.102210 ecc8             Options.num_levels: 7
+2025/08/05-11:36:50.102214 ecc8        Options.min_write_buffer_number_to_merge: 1
+2025/08/05-11:36:50.102218 ecc8     Options.max_write_buffer_number_to_maintain: 0
+2025/08/05-11:36:50.102223 ecc8     Options.max_write_buffer_size_to_maintain: 0
+2025/08/05-11:36:50.102227 ecc8            Options.bottommost_compression_opts.window_bits: -14
+2025/08/05-11:36:50.102232 ecc8                  Options.bottommost_compression_opts.level: 32767
+2025/08/05-11:36:50.102236 ecc8               Options.bottommost_compression_opts.strategy: 0
+2025/08/05-11:36:50.102241 ecc8         Options.bottommost_compression_opts.max_dict_bytes: 0
+2025/08/05-11:36:50.102247 ecc8         Options.bottommost_compression_opts.zstd_max_train_bytes: 0
+2025/08/05-11:36:50.102252 ecc8         Options.bottommost_compression_opts.parallel_threads: 1
+2025/08/05-11:36:50.102257 ecc8                  Options.bottommost_compression_opts.enabled: false
+2025/08/05-11:36:50.102262 ecc8         Options.bottommost_compression_opts.max_dict_buffer_bytes: 0
+2025/08/05-11:36:50.102266 ecc8         Options.bottommost_compression_opts.use_zstd_dict_trainer: true
+2025/08/05-11:36:50.102271 ecc8            Options.compression_opts.window_bits: -14
+2025/08/05-11:36:50.102275 ecc8                  Options.compression_opts.level: 32767
+2025/08/05-11:36:50.102279 ecc8               Options.compression_opts.strategy: 0
+2025/08/05-11:36:50.102284 ecc8         Options.compression_opts.max_dict_bytes: 0
+2025/08/05-11:36:50.102288 ecc8         Options.compression_opts.zstd_max_train_bytes: 0
+2025/08/05-11:36:50.102292 ecc8         Options.compression_opts.use_zstd_dict_trainer: true
+2025/08/05-11:36:50.102297 ecc8         Options.compression_opts.parallel_threads: 1
+2025/08/05-11:36:50.102302 ecc8                  Options.compression_opts.enabled: false
+2025/08/05-11:36:50.102306 ecc8         Options.compression_opts.max_dict_buffer_bytes: 0
+2025/08/05-11:36:50.102310 ecc8      Options.level0_file_num_compaction_trigger: 4
+2025/08/05-11:36:50.102314 ecc8          Options.level0_slowdown_writes_trigger: 20
+2025/08/05-11:36:50.102319 ecc8              Options.level0_stop_writes_trigger: 36
+2025/08/05-11:36:50.102323 ecc8                   Options.target_file_size_base: 67108864
+2025/08/05-11:36:50.102328 ecc8             Options.target_file_size_multiplier: 1
+2025/08/05-11:36:50.102332 ecc8                Options.max_bytes_for_level_base: 268435456
+2025/08/05-11:36:50.102337 ecc8 Options.level_compaction_dynamic_level_bytes: 1
+2025/08/05-11:36:50.102341 ecc8          Options.max_bytes_for_level_multiplier: 10.000000
+2025/08/05-11:36:50.102346 ecc8 Options.max_bytes_for_level_multiplier_addtl[0]: 1
+2025/08/05-11:36:50.102353 ecc8 Options.max_bytes_for_level_multiplier_addtl[1]: 1
+2025/08/05-11:36:50.102357 ecc8 Options.max_bytes_for_level_multiplier_addtl[2]: 1
+2025/08/05-11:36:50.102361 ecc8 Options.max_bytes_for_level_multiplier_addtl[3]: 1
+2025/08/05-11:36:50.102366 ecc8 Options.max_bytes_for_level_multiplier_addtl[4]: 1
+2025/08/05-11:36:50.102370 ecc8 Options.max_bytes_for_level_multiplier_addtl[5]: 1
+2025/08/05-11:36:50.102375 ecc8 Options.max_bytes_for_level_multiplier_addtl[6]: 1
+2025/08/05-11:36:50.102379 ecc8       Options.max_sequential_skip_in_iterations: 8
+2025/08/05-11:36:50.102384 ecc8                    Options.max_compaction_bytes: 1677721600
+2025/08/05-11:36:50.102388 ecc8                        Options.arena_block_size: 1048576
+2025/08/05-11:36:50.102392 ecc8   Options.soft_pending_compaction_bytes_limit: 68719476736
+2025/08/05-11:36:50.102397 ecc8   Options.hard_pending_compaction_bytes_limit: 274877906944
+2025/08/05-11:36:50.102402 ecc8                Options.disable_auto_compactions: 0
+2025/08/05-11:36:50.102406 ecc8                        Options.compaction_style: kCompactionStyleLevel
+2025/08/05-11:36:50.102411 ecc8                          Options.compaction_pri: kMinOverlappingRatio
+2025/08/05-11:36:50.102416 ecc8 Options.compaction_options_universal.size_ratio: 1
+2025/08/05-11:36:50.102420 ecc8 Options.compaction_options_universal.min_merge_width: 2
+2025/08/05-11:36:50.102424 ecc8 Options.compaction_options_universal.max_merge_width: 4294967295
+2025/08/05-11:36:50.102429 ecc8 Options.compaction_options_universal.max_size_amplification_percent: 200
+2025/08/05-11:36:50.102433 ecc8 Options.compaction_options_universal.compression_size_percent: -1
+2025/08/05-11:36:50.102438 ecc8 Options.compaction_options_universal.stop_style: kCompactionStopStyleTotalSize
+2025/08/05-11:36:50.102442 ecc8 Options.compaction_options_universal.max_read_amp: -1
+2025/08/05-11:36:50.102447 ecc8 Options.compaction_options_fifo.max_table_files_size: 1073741824
+2025/08/05-11:36:50.102488 ecc8 Options.compaction_options_fifo.allow_compaction: 0
+2025/08/05-11:36:50.102494 ecc8                   Options.table_properties_collectors: 
+2025/08/05-11:36:50.102499 ecc8                   Options.inplace_update_support: 0
+2025/08/05-11:36:50.102503 ecc8                 Options.inplace_update_num_locks: 10000
+2025/08/05-11:36:50.102507 ecc8               Options.memtable_prefix_bloom_size_ratio: 0.000000
+2025/08/05-11:36:50.102511 ecc8               Options.memtable_whole_key_filtering: 0
+2025/08/05-11:36:50.102516 ecc8   Options.memtable_huge_page_size: 0
+2025/08/05-11:36:50.102520 ecc8                           Options.bloom_locality: 0
+2025/08/05-11:36:50.102524 ecc8                    Options.max_successive_merges: 0
+2025/08/05-11:36:50.102528 ecc8             Options.strict_max_successive_merges: 0
+2025/08/05-11:36:50.102532 ecc8                Options.optimize_filters_for_hits: 0
+2025/08/05-11:36:50.102537 ecc8                Options.paranoid_file_checks: 0
+2025/08/05-11:36:50.102541 ecc8                Options.force_consistency_checks: 1
+2025/08/05-11:36:50.102545 ecc8                Options.report_bg_io_stats: 0
+2025/08/05-11:36:50.102549 ecc8                Options.disallow_memtable_writes: 0
+2025/08/05-11:36:50.102553 ecc8                               Options.ttl: 2592000
+2025/08/05-11:36:50.102558 ecc8          Options.periodic_compaction_seconds: 0
+2025/08/05-11:36:50.102562 ecc8                        Options.default_temperature: kUnknown
+2025/08/05-11:36:50.102566 ecc8  Options.preclude_last_level_data_seconds: 0
+2025/08/05-11:36:50.102571 ecc8    Options.preserve_internal_time_seconds: 0
+2025/08/05-11:36:50.102575 ecc8                       Options.enable_blob_files: false
+2025/08/05-11:36:50.102579 ecc8                           Options.min_blob_size: 0
+2025/08/05-11:36:50.102583 ecc8                          Options.blob_file_size: 268435456
+2025/08/05-11:36:50.102588 ecc8                   Options.blob_compression_type: NoCompression
+2025/08/05-11:36:50.102592 ecc8          Options.enable_blob_garbage_collection: false
+2025/08/05-11:36:50.102596 ecc8      Options.blob_garbage_collection_age_cutoff: 0.250000
+2025/08/05-11:36:50.102601 ecc8 Options.blob_garbage_collection_force_threshold: 1.000000
+2025/08/05-11:36:50.102606 ecc8          Options.blob_compaction_readahead_size: 0
+2025/08/05-11:36:50.102610 ecc8                Options.blob_file_starting_level: 0
+2025/08/05-11:36:50.102614 ecc8         Options.experimental_mempurge_threshold: 0.000000
+2025/08/05-11:36:50.102618 ecc8            Options.memtable_max_range_deletions: 0
+2025/08/05-11:36:50.104070 ecc8 [db\version_set.cc:6174] Recovered from manifest file:C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master/MANIFEST-000005 succeeded,manifest_file_number is 5, next_file_number is 7, last_sequence is 0, log_number is 0,prev_log_number is 0,max_column_family is 0,min_log_number_to_keep is 0
+2025/08/05-11:36:50.104085 ecc8 [db\version_set.cc:6183] Column family [default] (ID 0), log number is 0
+2025/08/05-11:36:50.113341 ecc8 [db\db_impl\db_impl_open.cc:692] DB ID: feab4ae5-71e7-11f0-b83d-04e8b9717388
+2025/08/05-11:36:50.114095 ecc8 EVENT_LOG_v1 {"time_micros": 1754390210114061, "job": 1, "event": "recovery_started", "wal_files": [4]}
+2025/08/05-11:36:50.114142 ecc8 [db\db_impl\db_impl_open.cc:1379] Recovering log #4 mode 2
+2025/08/05-11:36:50.115879 ecc8 [db\db_impl\db_impl_open.cc:1353] Recovered to log #4 next seq #2
+2025/08/05-11:36:50.128566 ecc8 EVENT_LOG_v1 {"time_micros": 1754390210128481, "cf_name": "default", "job": 1, "event": "table_file_creation", "file_number": 8, "file_size": 1112, "file_checksum": "", "file_checksum_func_name": "Unknown", "smallest_seqno": 1, "largest_seqno": 1, "table_properties": {"data_size": 72, "index_size": 23, "index_partitions": 0, "top_level_index_size": 0, "index_key_is_user_key": 1, "index_value_is_delta_encoded": 1, "filter_size": 0, "raw_key_size": 14, "raw_average_key_size": 14, "raw_value_size": 55, "raw_average_value_size": 55, "num_data_blocks": 1, "num_entries": 1, "num_filter_entries": 0, "num_deletions": 0, "num_merge_operands": 0, "num_range_deletions": 0, "format_version": 6, "fixed_key_len": 0, "filter_policy": "", "column_family_name": "default", "column_family_id": 0, "comparator": "leveldb.BytewiseComparator", "user_defined_timestamps_persisted": 1, "key_largest_seqno": 1, "merge_operator": "nullptr", "prefix_extractor_name": "nullptr", "property_collectors": "[]", "compression": "Snappy", "compression_options": "window_bits=-14; level=32767; strategy=0; max_dict_bytes=0; zstd_max_train_bytes=0; enabled=0; max_dict_buffer_bytes=0; use_zstd_dict_trainer=1; ", "creation_time": 1754390210, "oldest_key_time": 1754390210, "newest_key_time": 0, "file_creation_time": 0, "slow_compression_estimated_data_size": 0, "fast_compression_estimated_data_size": 0, "db_id": "feab4ae5-71e7-11f0-b83d-04e8b9717388", "db_session_id": "PQQU18HXMHTBTV764AG1", "orig_file_number": 8, "seqno_to_time_mapping": "N/A"}}
+2025/08/05-11:36:50.132777 ecc8 EVENT_LOG_v1 {"time_micros": 1754390210132771, "job": 1, "event": "recovery_finished", "status": "OK"}
+2025/08/05-11:36:50.134319 ecc8 [db\version_set.cc:5624] Creating manifest 10
+2025/08/05-11:36:50.172540 ecc8 [db\db_impl\db_impl_open.cc:2607] SstFileManager instance 00000242F6607760
+2025/08/05-11:36:50.176287 ecc8 [file\delete_scheduler.cc:77] Deleted file C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master/000004.log immediately, rate_bytes_per_sec 0, total_trash_size 0, total_size 1112, max_trash_db_ratio 0.250000
+2025/08/05-11:36:50.178958 ecc8 DB pointer 00000242F6B4B780
+2025/08/05-11:36:50.179504 89f0 [db\db_impl\db_impl.cc:1138] ------- DUMPING STATS -------
+2025/08/05-11:36:50.179526 89f0 [db\db_impl\db_impl.cc:1139] 
+** DB Stats **
+Uptime(secs): 0.1 total, 0.1 interval
+Cumulative writes: 0 writes, 0 keys, 0 commit groups, 0.0 writes per commit group, ingest: 0.00 GB, 0.00 MB/s
+Cumulative WAL: 0 writes, 0 syncs, 0.00 writes per sync, written: 0.00 GB, 0.00 MB/s
+Cumulative stall: 00:00:0.000 H:M:S, 0.0 percent
+Interval writes: 0 writes, 0 keys, 0 commit groups, 0.0 writes per commit group, ingest: 0.00 MB, 0.00 MB/s
+Interval WAL: 0 writes, 0 syncs, 0.00 writes per sync, written: 0.00 GB, 0.00 MB/s
+Interval stall: 00:00:0.000 H:M:S, 0.0 percent
+Write Stall (count): write-buffer-manager-limit-stops: 0
+
+** Compaction Stats [default] **
+Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop Rblob(GB) Wblob(GB)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  L0      1/0    1.09 KB   0.2      0.0     0.0      0.0       0.0      0.0       0.0   1.0      0.0      0.1      0.01              0.00         1    0.013       0      0       0.0       0.0
+ Sum      1/0    1.09 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   1.0      0.0      0.1      0.01              0.00         1    0.013       0      0       0.0       0.0
+ Int      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   1.0      0.0      0.1      0.01              0.00         1    0.013       0      0       0.0       0.0
+
+** Compaction Stats [default] **
+Priority    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop Rblob(GB) Wblob(GB)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+User      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.1      0.01              0.00         1    0.013       0      0       0.0       0.0
+
+Blob file count: 0, total size: 0.0 GB, garbage size: 0.0 GB, space amp: 0.0
+
+Uptime(secs): 0.1 total, 0.1 interval
+Flush(GB): cumulative 0.000, interval 0.000
+AddFile(GB): cumulative 0.000, interval 0.000
+AddFile(Total Files): cumulative 0, interval 0
+AddFile(L0 Files): cumulative 0, interval 0
+AddFile(Keys): cumulative 0, interval 0
+Cumulative compaction: 0.00 GB write, 0.01 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Interval compaction: 0.00 GB write, 0.01 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Estimated pending compaction bytes: 0
+Write Stall (count): cf-l0-file-count-limit-delays-with-ongoing-compaction: 0, cf-l0-file-count-limit-stops-with-ongoing-compaction: 0, l0-file-count-limit-delays: 0, l0-file-count-limit-stops: 0, memtable-limit-delays: 0, memtable-limit-stops: 0, pending-compaction-bytes-delays: 0, pending-compaction-bytes-stops: 0, total-delays: 0, total-stops: 0
+Block cache LRUCache@00000242F6B7B430#17148 capacity: 32.00 MB seed: 945724603 usage: 0.08 KB table_size: 1024 occupancy: 1 collections: 1 last_copies: 0 last_secs: 4e-05 secs_since: 0
+Block cache entry stats(count,size,portion): Misc(1,0.00 KB,0%)
+
+** File Read Latency Histogram By Level [default] **
+2025/08/05-11:36:50.280930 ecc8 [db\db_impl\db_impl.cc:498] Shutdown: canceling all background work
+2025/08/05-11:36:50.284067 ecc8 [db\db_impl\db_impl.cc:712] Shutdown complete

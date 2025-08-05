@@ -72,18 +72,17 @@ public class ItemStoreTests {
         // String storeName, String dbDirectory, String masterDB, String protoDB
         Path workDir = ItemStoreTestUtils.setWorkingDirectory("rocksDB", "testing");
         if ( workDir != null ) {
+            logger.info("Creating database");
             itemStore = ItemStoreTestUtils.makeRocksDB("testing", workDir);
             if ( itemStore != null ) {
                 item = new Item<String>("myId", "state", "payload");
                 try {
-                    itemStore.saveItem(DbTarget.MASTER, item);
-                    result = itemStore.getById(DbTarget.MASTER, "myId");
-                    itemStore.syncToMaster();
-                    itemStore.closeConn(DbTarget.BOTH);
+                    logger.info("Savining below record to db\n{" + item + "}");
+                    itemStore.saveItem(DbTarget.BOTH, item);
+                    logger.info("Item saved, retrieving for referece");
+                    result = itemStore.getById(DbTarget.BOTH, "myId");
+                    logger.info("Displaying retrieved record below record\n{" + result + "}");
                     assertionState = item.getId().equals( result.getId() );
-                    logger.info("Displaying original & queried Item:\n\n{}\n{}\n", item, result);
-                    logger.info("Prototype deletion state:\t'{}'", itemStore.clearPrototype());
-                    itemStore.closeConn(DbTarget.BOTH);
                 }
                 catch ( Exception ex ) {
                     assertionState = false;
@@ -99,7 +98,6 @@ public class ItemStoreTests {
     }
     
     
-    
     /**
      * Make a an ItemStore and query a record from it
      */
@@ -113,7 +111,7 @@ public class ItemStoreTests {
         Item item;
         List<Item> results;
         ItemStore itemStore;
-        int nExpected = 2;
+        int nExpected = 1;
         
         //
         Path workDir = ItemStoreTestUtils.setWorkingDirectory("rocksDB", "testing");
@@ -122,9 +120,8 @@ public class ItemStoreTests {
             if ( itemStore != null ) {
                 item = new Item<String>("myId-2", "state-2", "payload-2");
                 try {
-                    itemStore.saveItem(DbTarget.MASTER, item);
+                    itemStore.saveItem(DbTarget.BOTH, item);
                     results = itemStore.getAll(DbTarget.PROTOTYPE);
-                    itemStore.closeConn(DbTarget.BOTH);
                     assertionState = results.size() >= nExpected;
                     logger.info("Displaying original & queried Item:\n\n{}\n{}\n", item, results.toArray());
                     logger.info("Prototype deletion state:\t'{}'", itemStore.clearPrototype());

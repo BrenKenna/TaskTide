@@ -1518,3 +1518,288 @@ Item{id=e171d358-afb4-4f85-85f6-36d7a480b286, state=State, payload=a7d9863d-e93c
 
 ---------------- Terminating ItemStore Tests ----------------
 
+2025-08-05 11:18:28 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Creating database
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Savining below record to db
+{Item{id=myId, state=state, payload=payload}}
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to master:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master'
+'Item{id=myId, state=state, payload=payload}'
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to prototype:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing'
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Item saved, retrieving for referece
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying retrieved record below record
+{Item{id=myId, state=state, payload=payload}}
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:18:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-05 11:18:30 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to master:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master'
+'Item{id=myId-2, state=state-2, payload=payload-2}'
+2025-08-05 11:18:30 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to prototype:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing'
+2025-08-05 11:18:30 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:18:30 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-05 11:22:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-05 11:22:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:22:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-05 11:22:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Creating database
+2025-08-05 11:22:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Savining below record to db
+{Item{id=myId, state=state, payload=payload}}
+2025-08-05 11:22:34 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to master:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master'
+'Item{id=myId, state=state, payload=payload}'
+2025-08-05 11:22:34 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to prototype:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing'
+2025-08-05 11:22:34 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Item saved, retrieving for referece
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying retrieved record below record
+{Item{id=myId, state=state, payload=payload}}
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to master:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master'
+'Item{id=myId-2, state=state-2, payload=payload-2}'
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to prototype:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing'
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:22:35 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-05 11:24:28 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-05 11:24:28 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:24:28 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-05 11:24:28 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Creating database
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Savining below record to db
+{Item{id=myId, state=state, payload=payload}}
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to master:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master'
+'Item{id=myId, state=state, payload=payload}'
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to prototype:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing'
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Item saved, retrieving for referece
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying retrieved record below record
+{Item{id=myId, state=state, payload=payload}}
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to master:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master'
+'Item{id=myId-2, state=state-2, payload=payload-2}'
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to prototype:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing'
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:24:29 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Creating database
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Savining below record to db
+{Item{id=myId, state=state, payload=payload}}
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to master:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing\master'
+'Item{id=myId, state=state, payload=payload}'
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItem ]: Saving record to prototype:	'C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\rocksDB\testing'
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Item saved, retrieving for referece
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying retrieved record below record
+{Item{id=myId, state=state, payload=payload}}
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:25:12 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-05 11:35:22 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-05 11:35:22 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:35:22 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-05 11:35:23 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
+
+Item{id=myId-2, state=state-2, payload=payload-2}
+[]
+
+2025-08-05 11:35:23 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
+2025-08-05 11:35:23 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:35:23 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-05 11:35:42 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-05 11:35:42 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:35:42 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-05 11:35:42 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
+
+Item{id=myId-2, state=state-2, payload=payload-2}
+[Item{id=myId-2, state=state-2, payload=payload-2}]
+
+2025-08-05 11:35:42 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
+2025-08-05 11:35:42 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:35:42 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-05 11:36:07 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-05 11:36:07 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:36:07 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-05 11:36:08 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
+
+Item{id=myId-2, state=state-2, payload=payload-2}
+[Item{id=myId-2, state=state-2, payload=payload-2}]
+
+2025-08-05 11:36:08 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
+2025-08-05 11:36:08 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:36:08 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-05 11:36:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-05 11:36:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-05 11:36:49 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-05 11:36:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
+
+Item{id=myId-2, state=state-2, payload=payload-2}
+[Item{id=myId-2, state=state-2, payload=payload-2}]
+
+2025-08-05 11:36:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
+2025-08-05 11:36:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-05 11:36:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-05 11:36:50 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
