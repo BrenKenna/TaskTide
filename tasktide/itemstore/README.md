@@ -9,7 +9,8 @@ The purpose of this Library is to offer support for File based Databases like SQ
 | Item  | Data class that model is converted to for storage |
 | ItemStore | Interface providing CRUD logic |
 | AbstractItemStore | Caches masterDB into a prototype, decorating implementation |
-| RocksDBStore | Implements the AbstractItemStore |
+| RocksDBStore | Implements the ItemStore with <a href="https://github.com/fusesource/rocksdbjni">RocksDB JNI</a> |
+| SqliteStore | Implements the ItemStore with <a href="https://github.com/xerial/sqlite-jdbc">SQLite JDBC</a> |
 | DbTarget | Supports Master vs Prototype actions |
 
 

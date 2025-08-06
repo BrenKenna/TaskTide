@@ -47,8 +47,8 @@ Note that the following is a minimal example for "<i><a href="https://couchdb.ap
 | Provider | Defines which database driver to use | org.eclipse.jnosql.databases.couchdb.communication.CouchDBDocumentConfiguration | jnosql.document.provider | "<i><b>NA</b></i>" |
 | Host | Database host | localhost | jnosql.couchdb.host | "<i><b>NA</b></i>" |
 | Port | The port on the configured host listening for client connections | 5439 | jnosql.couchdb.port | "<i><b>NA</b></i>" |
-| Username | Username to use for authenticating requests | canBeSetAsAnEnvironemtalVariable | jnosql.couchdb.username | "<i><b>NA</b></i>" |
-| Password | Password to use for authenticating user | canBeSetAsAnEnvironemtalVariable | jnosql.couchdb.password | "<i><b>NA</b></i>" |
+| Username | Username to use for authenticating requests | canBeSetAsAnEnvironmentalVariable | jnosql.couchdb.username | "<i><b>NA</b></i>" |
+| Password | Password to use for authenticating user | canBeSetAsAnEnvironmentalVariable | jnosql.couchdb.password | "<i><b>NA</b></i>" |
 
 ---
 #### ii). Relational Backend Configurations
@@ -60,8 +60,8 @@ Relational database management system/SQL support is provided through <a href="h
 |--|--|--|--|--|
 | Database URL | Defines the database to use for persisting "<i>Workflows, Steps, and WorkItems</i>" | jdbc:mysql://localhost:3306/tasktide_database | datasource.user | "<i><b>NA</b></i>" |
 | Provider | Defines which database driver to use | com.mysql.cj.jdbc.Driver | datasource.driver | "<i><b>NA</b></i>" |
-| Username | Username to use for authenticating requests | canBeSetAsAnEnvironemtalVariable | datasource.user | "<i><b>NA</b></i>" |
-| Password | Password to use for authenticating user requests | canBeSetAsAnEnvironemtalVariable | datasource.password | "<i><b>NA</b></i>" |
+| Username | Username to use for authenticating requests | canBeSetAsAnEnvironmentalVariable | datasource.user | "<i><b>NA</b></i>" |
+| Password | Password to use for authenticating user requests | canBeSetAsAnEnvironmentalVariable | datasource.password | "<i><b>NA</b></i>" |
 | Dialect | SQL-JDBC bridge | org.hibernate.dialect.MariaDBDialect | hibernate.dialect | "<i><b>NA</b></i>" |
 | DDL Auto | Schema generation tool see hibernate documentation <a href="https://docs.jboss.org/hibernate/orm/5.0/manual/en-US/html/ch03.html#configuration-misc-properties">linked here</a> | update | hibernate.hbm2ddl.auto | "<i><b>NA</b></i>" |
 
