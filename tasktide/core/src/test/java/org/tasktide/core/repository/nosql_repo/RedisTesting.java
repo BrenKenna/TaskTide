@@ -21,6 +21,7 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 
 import jakarta.nosql.Template;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jnosql.mapping.core.Converters;
 import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
@@ -32,11 +33,11 @@ import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
+import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
-
-import org.tasktide.core.repository.Tunes;
-
+import org.tasktide.TestEnvironment;
+import org.testcontainers.containers.GenericContainer;
 
 
 /**
@@ -53,9 +54,14 @@ public class RedisTesting {
     // Logger for tests
     private static final Logger logger = LogManager.getLogger(RedisTesting.class);
     
-    private SeContainer container;
+    // Redis container
+    @Rule
+    public GenericContainer<?> redis = TestEnvironment.redisContainer();
     
+    // Container for fetch nosql template
+    private SeContainer container;
     private Template template;
+    
     
     public RedisTesting() {
     }
@@ -63,25 +69,24 @@ public class RedisTesting {
     
     @BeforeAll
     public void setUpClass() {        
-        String msg = "\n\n---------------- Initiating JNoSQL-MongoDB Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating JNoSQL-Redis Tests ----------------\n";
         logger.info(msg);
         
-        // Initialize CDI
-        container = SeContainerInitializer.newInstance().initialize();
-        logger.info(container.isRunning());
-        //new DocumentTemplate();
-        template = (Template) container.select(KeyValueTemplate.class).get();
-        logger.info("MongoDB template state" + template == null);
+        // Fetch config
+        container = TestEnvironment.startWeldContainer("redis-config.properties", getClass());
+        template = TestEnvironment.fetchKeyValueTemplate(container);
     }
+    
     
     @AfterAll
     public void tearDownClass() {
-        String msg = "\n\n---------------- Terminating JNoSQL-MongoDB Tests ----------------\n";
+        String msg = "\n\n---------------- Terminating JNoSQL-Redis Tests ----------------\n";
         logger.info(msg);
         if (container != null && container.isRunning()) {
             container.close();
             logger.info("CDI container shut down.");
         }
+        redis.stop();
     }
     
     
@@ -95,11 +100,35 @@ public class RedisTesting {
         logger.info("\n\n================ Terminating Test ================\n");
     }
 
-        
+    
+    public boolean waiter() {
+        try {TimeUnit.SECONDS.sleep(30);return true;}
+        catch(InterruptedException ex) {return false;}
+    }
+    
+    
+    /**
+     * Tests fetch redis backed template
+     */
     @Test
     @Order(0)
-    public void shouldInjectCouchDBTemplate() {
+    public void shouldInjectRedisTemplate() {
+        logger.info("\n\n================ Tests Redis Template Injection ================\n");
         Assertions.assertNotNull(template);
+        logger.info("\n\n================ Tests Redis Template Injection ================\n");
+    }
+    
+    
+    /**
+     * Tests fetch redis backed template
+     */
+    @Test
+    @Order(1)
+    public void containerShouldBeRunning() {
+        logger.info("\n\n================ Tests Redis Container Spinup ================\n");
+        Assertions.assertTrue(redis.isRunning());
+        logger.info("Displaying Redis Container status:\t'{}'", redis.getContainerInfo());
+        logger.info("\n\n================ Tests Redis Container Spinup ================\n");
     }
     
     
@@ -111,8 +140,8 @@ public class RedisTesting {
     public void shouldInsertRecord() {
     
         // Fetch document template
-        logger.info("\n\n================ Injected Connection Test ================\n");
-        boolean assertionState = true;
+        logger.info("\n\n================ Tests Redis Insertion ================\n");
+        boolean assertionState;
         logger.info("\n\nCreated template:\n" + template);
         
         // Make a music record
@@ -122,7 +151,7 @@ public class RedisTesting {
         song.setArtist("John Lennon");
         logger.info("\n\nDisplaying record for import:\n" + song);
         
-        // Insert record DocumentEntity.of("Tunes");
+        // Insert record
         Tunes inserted = template.insert(song);
         logger.info("\n\nRetrieved import:\n");
         assertionState = inserted.getName().length() > 0;
@@ -136,6 +165,6 @@ public class RedisTesting {
             assertTrue(assertionState);
             logger.error("\n\nTest failed music model recieved from inster:\n" + inserted);
         }
-        logger.info("\n\n================ Injected Connection Test ================\n");
+        logger.info("\n\n================ Tests Redis Insertiont ================\n");
     }
 }

@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.repository;
 
+import org.tasktide.core.repository.nosql_repo.Tunes;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;

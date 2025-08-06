@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.repository;
 
+import org.tasktide.core.repository.nosql_repo.Tunes;
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 import java.util.List;

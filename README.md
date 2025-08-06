@@ -24,7 +24,7 @@
 
 ## 🧑‍💻 Getting Started
 <p>
-It is recommended to download & unpack TaskTide releases, and install them into standard directories depending on OS (is ```bash /usr/lib```, or ```cmd C:\Program Files```). Backend database configurations should follow providers recommendation, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, these are acknowledged <a href="/tasktide/core/README.md">here</a>. The documentation is focused on the client app TaskTide.
+It is recommended to download & unpack TaskTide releases, and install them into standard directories depending on OS (ex '/usr/lib'). Backend database configurations should follow providers recommendation, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, these are acknowledged <a href="/tasktide/core/README.md">here</a>. The documentation is focused on the client app TaskTide.
 </p>
 
 
