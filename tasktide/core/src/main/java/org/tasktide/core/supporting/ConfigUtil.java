@@ -7,9 +7,7 @@ package org.tasktide.core.supporting;
 import io.smallrye.config.PropertiesConfigSource;
 import org.eclipse.microprofile.config.Config;
 import io.smallrye.config.SmallRyeConfigBuilder;
-import io.smallrye.config.common.utils.ConfigSourceUtil;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.HashMap;

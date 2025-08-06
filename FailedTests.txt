@@ -1,0 +1,280 @@
+JAVA_HOME="C:\Program Files\Java\jdk-17"
+cd C:\Users\ithel\Documents\GitHub\TaskTide\tasktide; .\gradlew.bat --configure-on-demand --rerun-tasks -x check test
+Configuration on demand is an incubating feature.
+> Task :compileJava NO-SOURCE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :itemstore:compileJava
+> Task :itemstore:processResources
+> Task :itemstore:classes
+> Task :itemstore:jar
+> Task :core:compileJava
+> Task :core:processResources
+> Task :core:classes
+> Task :core:jar
+
+> Task :core:compileTestJava
+Note: C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\core\src\test\java\org\tasktide\TestEnvironment.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :core:processTestResources
+> Task :core:testClasses
+
+> Task :core:test
+
+ManagerUtilityTests > canImportDelimitedTasks() FAILED
+    org.opentest4j.AssertionFailedError at ManagerUtilityTests.java:236
+
+ManagerUtilityTests > canImportNestedTasks() FAILED
+    org.opentest4j.AssertionFailedError at ManagerUtilityTests.java:267
+
+StepRepositoryFactoryTests > canConstructStepNoSqlRepository() FAILED
+    org.eclipse.jnosql.mapping.metadata.ClassInformationNotFoundException at StepRepositoryFactoryTests.java:249
+
+StepRepositoryFactoryTests > canConstructStepSqlRepository() FAILED
+    java.lang.IllegalArgumentException at StepRepositoryFactoryTests.java:285
+
+WorkItemRepositoryFactoryTests > canConstructWorkItemNoSqlRepository() FAILED
+    java.lang.IllegalStateException at WorkItemRepositoryFactoryTests.java:314
+
+WorkItemRepositoryFactoryTests > canConstructWorkItemSqlRepository() FAILED
+    java.lang.IllegalArgumentException at WorkItemRepositoryFactoryTests.java:356
+
+WorkflowRepositoryFactoryTests > canConstructWorkflowNoSqlRepository() FAILED
+    java.lang.IllegalStateException at WorkflowRepositoryFactoryTests.java:288
+
+WorkflowRepositoryFactoryTests > canConstructWorkflowSqlRepository() FAILED
+    java.lang.IllegalArgumentException at WorkflowRepositoryFactoryTests.java:326
+
+CouchDBTesting > shouldInsertRecord() FAILED
+    java.lang.IllegalStateException at CouchDBTesting.java:144
+
+MongoDbTesting > shouldInsertRecord() FAILED
+    java.lang.IllegalStateException at MongoDbTesting.java:145
+
+RedisTesting > shouldInsertRecord() FAILED
+    jakarta.data.exceptions.MappingException at RedisTesting.java:146
+
+StepServiceFactoryTests > canConstructStepSqlService() FAILED
+    java.lang.IllegalArgumentException at StepServiceFactoryTests.java:243
+
+StepServiceFactoryTests > canConstructStepNoSqlService() FAILED
+    java.lang.IllegalStateException at StepServiceFactoryTests.java:203
+
+WorkItemServiceFactoryTests > canConstructWorkItemSqlService() FAILED
+    java.lang.IllegalArgumentException at WorkItemServiceFactoryTests.java:254
+
+WorkItemServiceFactoryTests > canConstructWorkItemNoSqlService() FAILED
+    java.lang.IllegalStateException at WorkItemServiceFactoryTests.java:213
+
+WorkflowServiceFactoryTests > canConstructWorkflowSqlService() FAILED
+    java.lang.IllegalArgumentException at WorkflowServiceFactoryTests.java:237
+
+WorkflowServiceFactoryTests > canConstructWorkflowNoSqlService() FAILED
+    java.lang.IllegalStateException at WorkflowServiceFactoryTests.java:201
+
+SupplementalTests > testSplash() FAILED
+    java.lang.NullPointerException at SupplementalTests.java:89
+
+Weld SE container dcf21df1-11a3-4d9e-b3d0-3b51dad8e48c shut down by shutdown hook
+Weld SE container 9dc51403-8ded-45f0-b036-8743ed95b1cc shut down by shutdown hook
+Weld SE container 3286fc74-0be0-4b7c-8a08-abf73488aa79 shut down by shutdown hook
+
+> Task :core:test FAILED
+Test results: file://C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\core\build/reports/tests/test/index.html
+
+68 tests completed, 18 failed
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':core:test'.
+> There were failing tests. See the report at: file:///C:/Users/ithel/Documents/GitHub/TaskTide/tasktide/core/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.3-rc-1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 35s
+9 actionable tasks: 9 executed
+
+
+
+
+
+JAVA_HOME="C:\Program Files\Java\jdk-17"
+cd C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\engine; ..\gradlew.bat --configure-on-demand --rerun-tasks -x check test
+Configuration on demand is an incubating feature.
+> Task :itemstore:compileJava
+> Task :itemstore:processResources
+> Task :itemstore:classes
+> Task :itemstore:jar
+> Task :core:compileJava
+> Task :core:processResources
+> Task :core:classes
+> Task :core:jar
+
+> Task :engine:compileJava
+warning: unknown enum constant EnumType.STRING
+  reason: class file for jakarta.persistence.EnumType not found
+warning: unknown enum constant EnumType.STRING
+warning: unknown enum constant EnumType.STRING
+3 warnings
+
+> Task :engine:processResources
+> Task :engine:classes
+> Task :engine:compileTestJava
+> Task :engine:processTestResources
+> Task :engine:testClasses
+
+> Task :engine:test
+
+InitialEngineTests > canWaitWithThresholdToWorkloadImbalance() FAILED
+    java.lang.IllegalStateException at InitialEngineTests.java:283
+
+InitialEngineTests > canRunThroughProviders() FAILED
+    java.lang.IllegalStateException at InitialEngineTests.java:93
+
+InitialEngineTests > canWaitWithMultipleItemTaskLarger() FAILED
+    java.lang.IllegalStateException at InitialEngineTests.java:423
+
+InitialEngineTests > canWaitWithExecutorServiceTracker() FAILED
+    java.lang.IllegalStateException at InitialEngineTests.java:171
+
+InitialEngineTests > canWaitWithMultipleWorkItems() FAILED
+    java.lang.IllegalStateException at InitialEngineTests.java:340
+
+ItemTaskExecutorTests > canProcessSingleTaskWorkload() FAILED
+    java.lang.IllegalStateException at ItemTaskExecutorTests.java:129
+
+ItemTaskExecutorTests > test_InterruptExceptionHandling() FAILED
+    org.opentest4j.AssertionFailedError at ItemTaskExecutorTests.java:320
+
+ItemTaskExecutorTests > canRunTask() FAILED
+    java.lang.IllegalStateException at ItemTaskExecutorTests.java:87
+
+ItemTaskExecutorTests > canSkipNonPending() FAILED
+    java.lang.IllegalStateException at ItemTaskExecutorTests.java:171
+
+WorkItemExecutorTests > canRunTasks() FAILED
+    java.lang.IllegalStateException at WorkItemExecutorTests.java:84
+
+
+
+JAVA_HOME="C:\Program Files\Java\jdk-17"
+cd C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore; ..\gradlew.bat --configure-on-demand --rerun-tasks -x check test
+Configuration on demand is an incubating feature.
+> Task :itemstore:compileJava
+> Task :itemstore:processResources
+> Task :itemstore:classes
+> Task :itemstore:compileTestJava
+> Task :itemstore:processTestResources
+> Task :itemstore:testClasses
+
+> Task :itemstore:test
+
+AbstractItemStoreTests > multipleJvmsCanUse() FAILED
+    org.opentest4j.AssertionFailedError at AbstractItemStoreTests.java:158
+
+AbstractItemStoreTests > crossJvmFileLockFinishes() FAILED
+    org.opentest4j.AssertionFailedError at AbstractItemStoreTests.java:121
+Test results: file://C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\itemstore\build/reports/tests/test/index.html
+
+8 tests completed, 2 failed
+
+> Task :itemstore:test FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':itemstore:test'.
+> There were failing tests. See the report at: file:///C:/Users/ithel/Documents/GitHub/TaskTide/tasktide/itemstore/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.3-rc-1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 9s
+5 actionable tasks: 5 executed
+
+
+
+JAVA_HOME="C:\Program Files\Java\jdk-17"
+cd C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\tasktide; ..\gradlew.bat --configure-on-demand --rerun-tasks -x check test
+Configuration on demand is an incubating feature.
+> Task :itemstore:compileJava
+> Task :itemstore:processResources
+> Task :itemstore:classes
+> Task :itemstore:jar
+> Task :core:compileJava
+> Task :core:processResources
+> Task :core:classes
+> Task :core:jar
+
+> Task :engine:compileJava
+warning: unknown enum constant EnumType.STRING
+  reason: class file for jakarta.persistence.EnumType not found
+warning: unknown enum constant EnumType.STRING
+warning: unknown enum constant EnumType.STRING
+3 warnings
+
+> Task :engine:processResources
+> Task :engine:classes
+> Task :engine:jar
+> Task :tasktide:compileJava
+> Task :tasktide:processResources
+> Task :tasktide:classes
+> Task :tasktide:compileTestJava
+> Task :tasktide:processTestResources
+> Task :tasktide:testClasses
+
+> Task :tasktide:test
+
+ConfigureTaskTideTest > canConfigureEngineClient() FAILED
+    org.opentest4j.AssertionFailedError at ConfigureTaskTideTest.java:383
+
+ConfigureTaskTideTest > canConfigurerManagerClient() FAILED
+    java.lang.NullPointerException at ConfigureTaskTideTest.java:411
+
+TaskTideClientTests > canImportThroughManagerClient() FAILED
+    org.jboss.weld.exceptions.UnsatisfiedResolutionException at TaskTideClientTests.java:78
+
+TaskTideClientTests > canProcessThroughEngineClient() FAILED
+    org.jboss.weld.exceptions.UnsatisfiedResolutionException at TaskTideClientTests.java:114
+Test results: file://C:\Users\ithel\Documents\GitHub\TaskTide\tasktide\tasktide\build/reports/tests/test/index.html
+
+12 tests completed, 4 failed
+
+> Task :tasktide:test FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':tasktide:test'.
+> There were failing tests. See the report at: file:///C:/Users/ithel/Documents/GitHub/TaskTide/tasktide/tasktide/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.3-rc-1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 27s
+14 actionable tasks: 14 executed

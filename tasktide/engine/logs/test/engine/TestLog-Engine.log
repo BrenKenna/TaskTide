@@ -43772,3 +43772,3043 @@ Task 'ItemTask-38d7addc-1513-4131-a2f3-d4653006b282' started on Thread 'pool-3-t
 
 ---------------- Terminating WorkItemProcessor Tests ----------------
 
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.setUpClass ]: 
+
+---------------- Initiating WorkItemProcessor Tests ----------------
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithThresholdToWorkloadImbalance ]: 
+
+================ Threshold to Workload Imbalance Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'Test worker', Size='1', First ItemId = 'WorkItem-bf2bbfa7-d68e-4ad2-8d29-e02412349428'
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-bf2bbfa7-d68e-4ad2-8d29-e02412349428'
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-bf2bbfa7-d68e-4ad2-8d29-e02412349428' set on thread 'Test worker'
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-bf2bbfa7-d68e-4ad2-8d29-e02412349428'
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canRunThroughProviders ]: 
+
+================ Can Run Through Providers Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleItemTaskLarger ]: 
+
+================ Multiple WorkItems Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithExecutorServiceTracker ]: 
+
+================ Can Run Through Providers Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.canWaitWithMultipleWorkItems ]: 
+
+================ Multiple WorkItems Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.InitialEngineTests.tearDownClass ]: 
+
+---------------- Terminating WorkItemProcessor Tests ----------------
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.setUpClass ]: 
+
+---------------- Initiating Concurrency Tests ----------------
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+================ Process Tasks Test ================
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Creating 4 test ping tasks
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying first element of workload:
+
+{
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-059fa376-50ea-43a4-bd65-f9d5ccbf5d98"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-e28e7bcc-ef33-4bbd-a70e-39f8a0e17884"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+
+
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Configuring the ParallelItemTaskExecutor
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Processing workload
+2025-08-06 17:57:44 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload left on thread:	Test worker
+2025-08-06 17:57:44 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on left:	Test worker
+2025-08-06 17:57:44 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload right on thread:	Test worker
+2025-08-06 17:57:44 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on right:	Test worker
+2025-08-06 17:57:44 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload left on thread:	Test worker
+2025-08-06 17:57:44 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload right on thread:	Test worker
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload left on thread:	pool-4-thread-1
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Waiting until tasks are done
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on left:	pool-4-thread-1
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload left on thread:	pool-4-thread-2
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload right on thread:	pool-4-thread-1
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on left:	pool-4-thread-2
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on right:	pool-4-thread-1
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload left on thread:	pool-4-thread-1
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Sub-tasking workload right on thread:	pool-4-thread-2
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.subTasks ]: Subetting workload on right:	pool-4-thread-2
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload right on thread:	pool-4-thread-1
+2025-08-06 17:57:44 INFO  [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Processing tasks of workload thread:	pool-4-thread-3
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload left on thread:	pool-4-thread-2
+2025-08-06 17:57:44 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'0'. Task done count:	'0'
+2025-08-06 17:57:44 INFO  [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Processing tasks of workload thread:	pool-4-thread-1
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Executing workload right on thread:	pool-4-thread-2
+2025-08-06 17:57:44 INFO  [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Processing tasks of workload thread:	pool-4-thread-4
+2025-08-06 17:57:44 INFO  [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.execute ]: Processing tasks of workload thread:	pool-4-thread-2
+2025-08-06 17:57:44 INFO  [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-06 17:57:44 INFO  [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-06 17:57:44 INFO  [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-06 17:57:44 INFO  [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-06 17:57:44 INFO  [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Executing task on thread 'pool-4-thread-3':ping twitter.com
+2025-08-06 17:57:44 INFO  [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Executing task on thread 'pool-4-thread-1':ping netflix.com
+2025-08-06 17:57:44 INFO  [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Executing task on thread 'pool-4-thread-2':ping instagram.com
+2025-08-06 17:57:44 INFO  [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Executing task on thread 'pool-4-thread-4':ping google.com
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Beginging execution of task:	ping twitter.com
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Beginging execution of task:	ping netflix.com
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Beginging execution of task:	ping instagram.com
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Beginging execution of task:	ping google.com
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Execution complete for task:	ping netflix.com
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Building ProcessLog for task:	ping netflix.com
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Execution complete for task:	ping instagram.com
+2025-08-06 17:57:44 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Building ProcessLog for task:	ping instagram.com
+2025-08-06 17:57:45 DEBUG [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Execution complete for task:	ping google.com
+2025-08-06 17:57:45 DEBUG [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Building ProcessLog for task:	ping google.com
+2025-08-06 17:57:45 DEBUG [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Execution complete for task:	ping twitter.com
+2025-08-06 17:57:45 DEBUG [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Building ProcessLog for task:	ping twitter.com
+2025-08-06 17:57:47 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-08-06 17:57:47 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:57:47 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-059fa376-50ea-43a4-bd65-f9d5ccbf5d98"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-e28e7bcc-ef33-4bbd-a70e-39f8a0e17884"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:57:47 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-15e3ce27-0594-4cf3-8377-bb3d05b01e15"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-65e989f3-da6b-481f-9a26-f97bacdcaeae"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+2025-08-06 17:57:47 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-08bee986-1abd-4ba8-9a8b-652d6e6a4c20"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-3bfe9923-aafe-47b2-a61d-6872a8a8f1a9"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:57:47 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-75b37163-6061-4596-873f-efc48bd53074"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-7eb0548d-42c5-4ea4-9080-3b09719490b9"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+2025-08-06 17:57:47 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'1'. Task done count:	'0'
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+        "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+        "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+        "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+        "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+        "",
+        "Ping statistics for 209.85.203.100:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+    ],
+    "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+}
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+        "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+        "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+        "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+        "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+        "",
+        "Ping statistics for 209.85.203.100:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+    ],
+    "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+}
+2025-08-06 17:57:48 INFO  [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Successful execution of task:	ping google.com
+2025-08-06 17:57:48 INFO  [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Completed task 'Ping google.com-1', global count: 1
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+        "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+        "",
+        "Ping statistics for 31.13.73.174:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+    ],
+    "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+}
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+        "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+        "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+        "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+        "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+        "",
+        "Ping statistics for 162.159.140.229:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+    ],
+    "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+}
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+        "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+        "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+        "",
+        "Ping statistics for 31.13.73.174:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+    ],
+    "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+}
+2025-08-06 17:57:48 INFO  [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Successful execution of task:	ping instagram.com
+2025-08-06 17:57:48 INFO  [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Completed task 'Ping instagram.com-3', global count: 2
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+        "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+        "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+        "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+        "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+        "",
+        "Ping statistics for 162.159.140.229:",
+        "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+        "Approximate round trip times in milli-seconds:",
+        "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+    ],
+    "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+}
+2025-08-06 17:57:48 INFO  [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Successful execution of task:	ping twitter.com
+2025-08-06 17:57:48 INFO  [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Completed task 'Ping twitter.com-0', global count: 3
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task after execution:
+{
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465005,
+        "Exit Code": 0,
+        "Process Id": 86180,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+                "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+                "",
+                "Ping statistics for 209.85.203.100:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+            ],
+            "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-4",
+        "id": "TaskLogging-2c34b203-a3d5-4d70-a524-b52fcb48a84f"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+
+
+2025-08-06 17:57:48 INFO  [ pool-4-thread-4 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Total = '1', Done = '1', Failed = '0', Skipped = '0'
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task after execution:
+{
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464990,
+        "Exit Code": 0,
+        "Process Id": 75708,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+            ],
+            "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-2",
+        "id": "TaskLogging-90856395-7a91-4222-92fb-ae88f37edbf3"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+
+
+2025-08-06 17:57:48 INFO  [ pool-4-thread-2 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Total = '1', Done = '1', Failed = '0', Skipped = '0'
+2025-08-06 17:57:48 DEBUG [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task after execution:
+{
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465024,
+        "Exit Code": 0,
+        "Process Id": 91552,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+                "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+                "",
+                "Ping statistics for 162.159.140.229:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+            ],
+            "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-3",
+        "id": "TaskLogging-73ed12d0-8917-4a91-9601-8b1ed9e2a5b9"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+
+
+2025-08-06 17:57:48 INFO  [ pool-4-thread-3 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Total = '1', Done = '1', Failed = '0', Skipped = '0'
+2025-08-06 17:57:50 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-08-06 17:57:50 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:57:50 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465024,
+        "Exit Code": 0,
+        "Process Id": 91552,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+                "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+                "",
+                "Ping statistics for 162.159.140.229:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+            ],
+            "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-3",
+        "id": "TaskLogging-73ed12d0-8917-4a91-9601-8b1ed9e2a5b9"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:57:50 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465005,
+        "Exit Code": 0,
+        "Process Id": 86180,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+                "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+                "",
+                "Ping statistics for 209.85.203.100:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+            ],
+            "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-4",
+        "id": "TaskLogging-2c34b203-a3d5-4d70-a524-b52fcb48a84f"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+2025-08-06 17:57:50 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-08bee986-1abd-4ba8-9a8b-652d6e6a4c20"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-3bfe9923-aafe-47b2-a61d-6872a8a8f1a9"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:57:50 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464990,
+        "Exit Code": 0,
+        "Process Id": 75708,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+            ],
+            "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-2",
+        "id": "TaskLogging-90856395-7a91-4222-92fb-ae88f37edbf3"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+2025-08-06 17:57:50 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'2'. Task done count:	'3'
+2025-08-06 17:57:53 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-08-06 17:57:53 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:57:53 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465024,
+        "Exit Code": 0,
+        "Process Id": 91552,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+                "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+                "",
+                "Ping statistics for 162.159.140.229:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+            ],
+            "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-3",
+        "id": "TaskLogging-73ed12d0-8917-4a91-9601-8b1ed9e2a5b9"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:57:53 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465005,
+        "Exit Code": 0,
+        "Process Id": 86180,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+                "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+                "",
+                "Ping statistics for 209.85.203.100:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+            ],
+            "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-4",
+        "id": "TaskLogging-2c34b203-a3d5-4d70-a524-b52fcb48a84f"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+2025-08-06 17:57:53 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-08bee986-1abd-4ba8-9a8b-652d6e6a4c20"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-3bfe9923-aafe-47b2-a61d-6872a8a8f1a9"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:57:54 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464990,
+        "Exit Code": 0,
+        "Process Id": 75708,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+            ],
+            "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-2",
+        "id": "TaskLogging-90856395-7a91-4222-92fb-ae88f37edbf3"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+2025-08-06 17:57:54 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'3'. Task done count:	'3'
+2025-08-06 17:57:57 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-08-06 17:57:57 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:57:57 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465024,
+        "Exit Code": 0,
+        "Process Id": 91552,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+                "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+                "",
+                "Ping statistics for 162.159.140.229:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+            ],
+            "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-3",
+        "id": "TaskLogging-73ed12d0-8917-4a91-9601-8b1ed9e2a5b9"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:57:57 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465005,
+        "Exit Code": 0,
+        "Process Id": 86180,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+                "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+                "",
+                "Ping statistics for 209.85.203.100:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+            ],
+            "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-4",
+        "id": "TaskLogging-2c34b203-a3d5-4d70-a524-b52fcb48a84f"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+2025-08-06 17:57:57 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-08bee986-1abd-4ba8-9a8b-652d6e6a4c20"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-3bfe9923-aafe-47b2-a61d-6872a8a8f1a9"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:57:57 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464990,
+        "Exit Code": 0,
+        "Process Id": 75708,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+            ],
+            "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-2",
+        "id": "TaskLogging-90856395-7a91-4222-92fb-ae88f37edbf3"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+2025-08-06 17:57:57 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'4'. Task done count:	'3'
+2025-08-06 17:58:00 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-08-06 17:58:00 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:58:00 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465024,
+        "Exit Code": 0,
+        "Process Id": 91552,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+                "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+                "",
+                "Ping statistics for 162.159.140.229:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+            ],
+            "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-3",
+        "id": "TaskLogging-73ed12d0-8917-4a91-9601-8b1ed9e2a5b9"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:58:00 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465005,
+        "Exit Code": 0,
+        "Process Id": 86180,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+                "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+                "",
+                "Ping statistics for 209.85.203.100:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+            ],
+            "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-4",
+        "id": "TaskLogging-2c34b203-a3d5-4d70-a524-b52fcb48a84f"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+2025-08-06 17:58:00 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-08bee986-1abd-4ba8-9a8b-652d6e6a4c20"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-3bfe9923-aafe-47b2-a61d-6872a8a8f1a9"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:58:00 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464990,
+        "Exit Code": 0,
+        "Process Id": 75708,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+            ],
+            "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-2",
+        "id": "TaskLogging-90856395-7a91-4222-92fb-ae88f37edbf3"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+2025-08-06 17:58:00 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'5'. Task done count:	'3'
+2025-08-06 17:58:03 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 3 ===============
+
+
+2025-08-06 17:58:03 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:58:03 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465024,
+        "Exit Code": 0,
+        "Process Id": 91552,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+                "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+                "",
+                "Ping statistics for 162.159.140.229:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+            ],
+            "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-3",
+        "id": "TaskLogging-73ed12d0-8917-4a91-9601-8b1ed9e2a5b9"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:58:03 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465005,
+        "Exit Code": 0,
+        "Process Id": 86180,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+                "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+                "",
+                "Ping statistics for 209.85.203.100:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+            ],
+            "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-4",
+        "id": "TaskLogging-2c34b203-a3d5-4d70-a524-b52fcb48a84f"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+2025-08-06 17:58:03 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-08bee986-1abd-4ba8-9a8b-652d6e6a4c20"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-3bfe9923-aafe-47b2-a61d-6872a8a8f1a9"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:58:03 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464990,
+        "Exit Code": 0,
+        "Process Id": 75708,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+            ],
+            "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-2",
+        "id": "TaskLogging-90856395-7a91-4222-92fb-ae88f37edbf3"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+2025-08-06 17:58:03 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Oberserving tasks iteration:	'6'. Task done count:	'3'
+2025-08-06 17:58:03 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging netflix.com [54.170.196.176] with 32 bytes of data:",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "",
+        "Ping statistics for 54.170.196.176:",
+        "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+    ],
+    "id": "ProcessLog-b0c8a33e-e4ff-42e8-9798-a9ea3fef6fd0"
+}
+2025-08-06 17:58:03 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying TaskLogging:
+{
+    "Stderr": [
+    ],
+    "Stdout": [
+        "",
+        "Pinging netflix.com [54.170.196.176] with 32 bytes of data:",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "",
+        "Ping statistics for 54.170.196.176:",
+        "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+    ],
+    "id": "ProcessLog-b0c8a33e-e4ff-42e8-9798-a9ea3fef6fd0"
+}
+2025-08-06 17:58:03 ERROR [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Error executing of task:	ping netflix.com
+2025-08-06 17:58:03 ERROR [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ProcessRunner.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1754499464984,
+    "Exit Code": 1,
+    "Process Id": 88124,
+    "Process Log": {
+        "Stderr": [
+        ],
+        "Stdout": [
+            "",
+            "Pinging netflix.com [54.170.196.176] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 54.170.196.176:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-b0c8a33e-e4ff-42e8-9798-a9ea3fef6fd0"
+    },
+    "Start Time": 1754499464881,
+    "Thread Name": "pool-4-thread-1",
+    "id": "TaskLogging-d1f7f687-af1b-48c6-ad99-a1d6ac4004c0"
+}
+2025-08-06 17:58:03 ERROR [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task 'Ping netflix.com-2' failed on thread 'pool-4-thread-1' with exit code 1
+
+2025-08-06 17:58:03 DEBUG [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.executeTask ]: Task after execution:
+{
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464984,
+        "Exit Code": 1,
+        "Process Id": 88124,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging netflix.com [54.170.196.176] with 32 bytes of data:",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "",
+                "Ping statistics for 54.170.196.176:",
+                "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+            ],
+            "id": "ProcessLog-b0c8a33e-e4ff-42e8-9798-a9ea3fef6fd0"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-1",
+        "id": "TaskLogging-d1f7f687-af1b-48c6-ad99-a1d6ac4004c0"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ERROR",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+
+
+2025-08-06 17:58:03 INFO  [ pool-4-thread-1 -> org.tasktide.engine.concurrency.ParallelItemTaskExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Total = '1', Done = '1', Failed = '0', Skipped = '0'
+2025-08-06 17:58:06 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 4 ===============
+
+
+2025-08-06 17:58:06 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:58:06 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465024,
+        "Exit Code": 0,
+        "Process Id": 91552,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+                "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+                "",
+                "Ping statistics for 162.159.140.229:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+            ],
+            "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-3",
+        "id": "TaskLogging-73ed12d0-8917-4a91-9601-8b1ed9e2a5b9"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:58:06 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465005,
+        "Exit Code": 0,
+        "Process Id": 86180,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+                "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+                "",
+                "Ping statistics for 209.85.203.100:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+            ],
+            "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-4",
+        "id": "TaskLogging-2c34b203-a3d5-4d70-a524-b52fcb48a84f"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+2025-08-06 17:58:06 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464984,
+        "Exit Code": 1,
+        "Process Id": 88124,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging netflix.com [54.170.196.176] with 32 bytes of data:",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "",
+                "Ping statistics for 54.170.196.176:",
+                "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+            ],
+            "id": "ProcessLog-b0c8a33e-e4ff-42e8-9798-a9ea3fef6fd0"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-1",
+        "id": "TaskLogging-d1f7f687-af1b-48c6-ad99-a1d6ac4004c0"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ERROR",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:58:06 DEBUG [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464990,
+        "Exit Code": 0,
+        "Process Id": 75708,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+            ],
+            "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-2",
+        "id": "TaskLogging-90856395-7a91-4222-92fb-ae88f37edbf3"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.waitUntilDoneTarget ]: Workload processing completed
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Workload complete, evaluating if all tasks were successfully completed
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying processed task '1' of '4':
+
+{
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465024,
+        "Exit Code": 0,
+        "Process Id": 91552,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging twitter.com [162.159.140.229] with 32 bytes of data:",
+                "Reply from 162.159.140.229: bytes=32 time=29ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=17ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=44ms TTL=56",
+                "Reply from 162.159.140.229: bytes=32 time=33ms TTL=56",
+                "",
+                "Ping statistics for 162.159.140.229:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 17ms, Maximum = 44ms, Average = 30ms"
+            ],
+            "id": "ProcessLog-ef570bd3-66af-455c-a365-fed159663b0f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-3",
+        "id": "TaskLogging-73ed12d0-8917-4a91-9601-8b1ed9e2a5b9"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-75fea2bd-d062-4ece-84f2-345f190693f2",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying processed task '2' of '4':
+
+{
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499465005,
+        "Exit Code": 0,
+        "Process Id": 86180,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging google.com [209.85.203.100] with 32 bytes of data:",
+                "Reply from 209.85.203.100: bytes=32 time=23ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=22ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=59ms TTL=107",
+                "Reply from 209.85.203.100: bytes=32 time=41ms TTL=107",
+                "",
+                "Ping statistics for 209.85.203.100:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 22ms, Maximum = 59ms, Average = 36ms"
+            ],
+            "id": "ProcessLog-7f6e0ff1-cb1e-4fbd-80a2-0b40a5668106"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-4",
+        "id": "TaskLogging-2c34b203-a3d5-4d70-a524-b52fcb48a84f"
+    },
+    "Task Name": "Ping google.com-1",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-c02c62b6-955a-4676-9a50-445369b02dae",
+    "state": "ping google.com"
+}
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying processed task '3' of '4':
+
+{
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464984,
+        "Exit Code": 1,
+        "Process Id": 88124,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging netflix.com [54.170.196.176] with 32 bytes of data:",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "Request timed out.",
+                "",
+                "Ping statistics for 54.170.196.176:",
+                "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+            ],
+            "id": "ProcessLog-b0c8a33e-e4ff-42e8-9798-a9ea3fef6fd0"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-1",
+        "id": "TaskLogging-d1f7f687-af1b-48c6-ad99-a1d6ac4004c0"
+    },
+    "Task Name": "Ping netflix.com-2",
+    "Task State": "ERROR",
+    "id": "ItemTask-ea60e37a-2651-4400-ba1c-4fed32f3c7ad",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+Displaying processed task '4' of '4':
+
+{
+    "Task": "ping instagram.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 1754499464990,
+        "Exit Code": 0,
+        "Process Id": 75708,
+        "Process Log": {
+            "Stderr": [
+            ],
+            "Stdout": [
+                "",
+                "Pinging instagram.com [31.13.73.174] with 32 bytes of data:",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=20ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=42ms TTL=55",
+                "Reply from 31.13.73.174: bytes=32 time=33ms TTL=55",
+                "",
+                "Ping statistics for 31.13.73.174:",
+                "    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),",
+                "Approximate round trip times in milli-seconds:",
+                "    Minimum = 20ms, Maximum = 42ms, Average = 28ms"
+            ],
+            "id": "ProcessLog-b61c9810-be4f-4439-8975-89c569dc2f5f"
+        },
+        "Start Time": 1754499464881,
+        "Thread Name": "pool-4-thread-2",
+        "id": "TaskLogging-90856395-7a91-4222-92fb-ae88f37edbf3"
+    },
+    "Task Name": "Ping instagram.com-3",
+    "Task State": "COMPLETE",
+    "id": "ItemTask-b1c9b3af-4270-4c25-acbd-a65bcf6340ef",
+    "state": "ping instagram.com"
+}
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: Logging execution times of N successful tasks = 3
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.fetchExecutionTimes ]: 
+
+Task 'Ping twitter.com-0' started '1754499464881' finished '1754499465024'
+
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.fetchExecutionTimes ]: 
+
+Task 'Ping google.com-1' started '1754499464881' finished '1754499465005'
+
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.fetchExecutionTimes ]: 
+
+Task 'Ping netflix.com-2' started '1754499464881' finished '1754499464984'
+
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.fetchExecutionTimes ]: 
+
+Task 'Ping instagram.com-3' started '1754499464881' finished '1754499464990'
+
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.canProcessTasks_Executor ]: 
+
+================ Process Log Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.concurrency.ConcurrencyTests.tearDownClass ]: 
+
+---------------- Terminating Concurrency Tests ----------------
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.TaskTideWorkerObserverTests.setUpClass ]: 
+
+---------------- Initiating TaskTideObserver Tests ----------------
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.TaskTideWorkerObserverTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.TaskTideWorkerObserverTests.canObserve ]: 
+
+================ TaskTideObserver Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.TaskTideWorkerObserverTests.canObserve ]: 
+
+================ TaskTideObserver Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.TaskTideWorkerObserverTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.TaskTideWorkerObserverTests.tearDownClass ]: 
+
+---------------- Terminating TaskTideObserver Tests ----------------
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.setUpClass ]: 
+
+---------------- Initiating TimeKeeper Tests ----------------
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateEndEvents ]: 
+
+================ Evaluating End Events Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-7a2c1eaf-5d22-4c0c-b6db-d44100798efb',
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-7a2c1eaf-5d22-4c0c-b6db-d44100798efb' completed in 1001ms
+2025-08-06 17:58:06 DEBUG [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.measureTime ]: Mean duration = '7925ms', Expected Next = '1754499494084ms', Max End '1754499490158ms', Is time = 'false'
+2025-08-06 17:58:06 WARN  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: Warning not enough estimated time for next task to run
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'false' with ItemTask:	'ItemTask-7a2c1eaf-5d22-4c0c-b6db-d44100798efb'
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateEndEvents ]: 
+
+================ Evaluating End Events Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateStartEvents ]: 
+
+================ Evaluating Start Events Test ================
+
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateStartEvents ]: Displaying task for ItemTaskTimeKeeper evaluation:
+
+{
+    "Task": "ping spotify.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-fc592c61-5e83-4392-816e-59321d754c64"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-7814b6a5-c8a5-4377-a1ca-0c6322631ea9"
+    },
+    "Task Name": "Ping spotify.com",
+    "Task State": "PENDING",
+    "id": "ItemTask-960e6075-2809-4315-a847-126c5811373c",
+    "state": "ping spotify.com"
+}
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateStartEvents ]: Evaluating first run
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-960e6075-2809-4315-a847-126c5811373c'
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-960e6075-2809-4315-a847-126c5811373c' set on thread 'Test worker'
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-960e6075-2809-4315-a847-126c5811373c'
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateStartEvents ]: Configuration successful
+2025-08-06 17:58:06 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateStartEvents ]: Letting time elapse for evaluating enough time for re-running the same task
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.wait ]: Waited time '20000'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-960e6075-2809-4315-a847-126c5811373c'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-960e6075-2809-4315-a847-126c5811373c'
+2025-08-06 17:58:26 DEBUG [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Now = '1754499506170ms', Start Time = '1754499506170ms', Elapsed Time = '20003ms'
+2025-08-06 17:58:26 DEBUG [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating elapsed time '20003ms' > '2'
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Warning, TimeKeeper max time of '2ms' breached by '20001'ms
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'false' for ItemTask:	'ItemTask-960e6075-2809-4315-a847-126c5811373c'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateStartEvents ]: Measuring time elapsed successful
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.canEvaluateStartEvents ]: 
+
+================ Evaluating Start Events Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.ItemTaskTimeKeeperTests.tearDownClass ]: 
+
+---------------- Terminating TimeKeeper Tests ----------------
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUpClass ]: 
+
+---------------- Initiating ItemTaskExecutor Tests ----------------
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: 
+
+================ Execute Task IO-Exception Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: Creating '2' tasks for testing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: 
+Displaying first task for reference:
+{
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-a221b1f1-88d0-47f6-a9a8-25c61d07f21f"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f1038a79-de68-4be6-9250-b1c42c1271eb"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-022e7381-1ae4-4893-b086-ae1c0d2133ea",
+    "state": "ping google.com"
+}
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: Configuring ItemTaskExecutor for processing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskStart ]: Skipping non pending ItemTask:	'ItemTask-022e7381-1ae4-4893-b086-ae1c0d2133ea' with 'ping google.com'
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Task 'ItemTask-022e7381-1ae4-4893-b086-ae1c0d2133ea' failed Observer 'ItemTaskStateObserver' check
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer Preprocessing checks for task:	'ItemTask-022e7381-1ae4-4893-b086-ae1c0d2133ea'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-2f9e2e0c-a64c-4084-be64-8d4ea36a98d1'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-2f9e2e0c-a64c-4084-be64-8d4ea36a98d1' set on thread 'Test worker'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-2f9e2e0c-a64c-4084-be64-8d4ea36a98d1'
+2025-08-06 17:58:26 ERROR [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.handleFailure ]: Exception while executing task 'ItemTask-2f9e2e0c-a64c-4084-be64-8d4ea36a98d1' on thread 'Test worker': IO Failed
+java.io.IOException: IO Failed
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests$1.executeTask(ItemTaskExecutorTests.java:254) ~[test/:?]
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests$1.executeTask(ItemTaskExecutorTests.java:251) ~[test/:?]
+	at org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks(TaskTideExecutor.java:70) ~[main/:?]
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling(ItemTaskExecutorTests.java:257) ~[test/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:118) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:93) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:88) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.3.jar:8.3]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.3.jar:8.3]
+	at jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.3.jar:8.3]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '0', Failed = '1', Skipped = '1'
+2025-08-06 17:58:26 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: Processed task count '0', does not match expected '2'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: 
+
+================ Execute Task IO-Exception Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: 
+
+================ Single Task Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: Creating '1' tasks for testing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: 
+Displaying first task for reference:
+{
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-40b2f830-9727-4875-889f-d68472a25714"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f01cf305-1c15-420d-bc1e-3aad3a5a3d9a"
+    },
+    "Task Name": "Ping facebook.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-6af3102a-9a83-4ac2-98d6-3dd6d3e6b3b8",
+    "state": "ping facebook.com"
+}
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: Configuring ItemTaskExecutor for processing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '1' tasks
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-6af3102a-9a83-4ac2-98d6-3dd6d3e6b3b8'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-6af3102a-9a83-4ac2-98d6-3dd6d3e6b3b8' set on thread 'Test worker'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-6af3102a-9a83-4ac2-98d6-3dd6d3e6b3b8'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping facebook.com
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: 
+
+================ Execute Task Interrupted-Exception Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: Creating '2' tasks for testing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: 
+Displaying first task for reference:
+{
+    "Task": "ping spotify.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-cf024ac2-b689-49de-9460-b8945c8a5ae2"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-41475de8-b42d-4984-b464-a9edcb268c41"
+    },
+    "Task Name": "Ping spotify.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-2c14bfd5-05db-4c3f-b914-5a88d0b64831",
+    "state": "ping spotify.com"
+}
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: Configuring ItemTaskExecutor for processing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskStart ]: Skipping non pending ItemTask:	'ItemTask-2c14bfd5-05db-4c3f-b914-5a88d0b64831' with 'ping spotify.com'
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Task 'ItemTask-2c14bfd5-05db-4c3f-b914-5a88d0b64831' failed Observer 'ItemTaskStateObserver' check
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer Preprocessing checks for task:	'ItemTask-2c14bfd5-05db-4c3f-b914-5a88d0b64831'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-4a669882-7c93-463b-82a6-4ecb139587a5'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-4a669882-7c93-463b-82a6-4ecb139587a5' set on thread 'Test worker'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-4a669882-7c93-463b-82a6-4ecb139587a5'
+2025-08-06 17:58:26 ERROR [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.handleFailure ]: Exception while executing task 'ItemTask-4a669882-7c93-463b-82a6-4ecb139587a5' on thread 'Test worker': IO Failed
+java.lang.InterruptedException: IO Failed
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests$2.executeTask(ItemTaskExecutorTests.java:302) ~[test/:?]
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests$2.executeTask(ItemTaskExecutorTests.java:299) ~[test/:?]
+	at org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks(TaskTideExecutor.java:70) ~[main/:?]
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling(ItemTaskExecutorTests.java:305) ~[test/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:118) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:93) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:88) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.3.jar:8.3]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.3.jar:8.3]
+	at jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.3.jar:8.3]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '0', Failed = '1', Skipped = '1'
+2025-08-06 17:58:26 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: Processed task count '0', does not match expected '2'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: 
+
+================ Can Process Task Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Creating '2' tasks for testing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: 
+Displaying first task for reference:
+{
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-2944024e-bc34-424a-8bc6-7079c1fe3c8c"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-32dfb086-8f94-4cd2-836f-df48009b53b4"
+    },
+    "Task Name": "Ping twitter.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-15ab3217-789a-4831-a348-5c38c73c6152",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Configuring ItemTaskExecutor for processing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-15ab3217-789a-4831-a348-5c38c73c6152'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-15ab3217-789a-4831-a348-5c38c73c6152' set on thread 'Test worker'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-15ab3217-789a-4831-a348-5c38c73c6152'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping twitter.com
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: 
+
+================ Skip Processed Task Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: Creating '2' tasks for testing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: 
+Displaying first task for reference:
+{
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-b0a7ece1-b6a0-4f89-8722-bbafcf0ac5d7"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-045bd7f2-fa6e-4984-8e36-152581ce51e3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-38ee7e3b-374b-423c-af48-3aeee8f93775",
+    "state": "ping google.com"
+}
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: Configuring ItemTaskExecutor for processing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskStart ]: Skipping non pending ItemTask:	'ItemTask-38ee7e3b-374b-423c-af48-3aeee8f93775' with 'ping google.com'
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Task 'ItemTask-38ee7e3b-374b-423c-af48-3aeee8f93775' failed Observer 'ItemTaskStateObserver' check
+2025-08-06 17:58:26 WARN  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer Preprocessing checks for task:	'ItemTask-38ee7e3b-374b-423c-af48-3aeee8f93775'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-7b171c5b-1476-43fb-be53-f69460eff9fc'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-7b171c5b-1476-43fb-be53-f69460eff9fc' set on thread 'Test worker'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-7b171c5b-1476-43fb-be53-f69460eff9fc'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping facebook.com
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: 
+
+================ Empty List Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: Creating '2' tasks for testing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: Configuring ItemTaskExecutor for processing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '0' tasks
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '0', Thread Done = '0', Done = '0', Failed = '0', Skipped = '0'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: Processed task count '0', matches expected '2'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: 
+
+================ Empty List Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ItemTaskExecutor Tests ----------------
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.WorkItemExecutorTests.setUpClass ]: 
+
+---------------- Initiating WorkItemExecutor Tests ----------------
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.WorkItemExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.WorkItemExecutorTests.canRunTasks ]: 
+
+================ Can Execute WorkItems Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.WorkItemExecutorTests.canRunTasks ]: Configuring workload and WorkItemExecutor
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.WorkItemExecutorTests.canRunTasks ]: Process workload
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-9beeef49-e07f-4caf-96c7-37ddbb10ba42'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-9beeef49-e07f-4caf-96c7-37ddbb10ba42' set on thread 'Test worker'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-9beeef49-e07f-4caf-96c7-37ddbb10ba42'
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.WorkItemExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.WorkItemExecutorTests.tearDownClass ]: 
+
+---------------- Terminating WorkItemExecutor Tests ----------------
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.processor.ItemTaskProcessorTests.setUpClass ]: 
+
+---------------- Initiating ItemTaskProcessor Tests ----------------
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.processor.ItemTaskProcessorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.processor.ItemTaskProcessorTests.canRunTasks ]: 
+
+================ Can Process Tasks Test ================
+
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.processor.ItemTaskProcessorTests.canRunTasks ]: Creating '4' tasks for testing
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.processor.ItemTaskProcessorTests.canRunTasks ]: 
+Displaying first task for reference:
+{
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-90fd6be4-1536-416d-aeb9-755fb538dcd4"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f274348e-5950-4ee5-8be7-5a7311d389a3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76",
+    "state": "ping google.com"
+}
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.worker.processor.ItemTaskProcessorTests.canRunTasks ]: Configuring task processor
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-5-thread-1', Size='2', First ItemId = 'ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76' set on thread 'pool-5-thread-1'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':ping google.com
+2025-08-06 17:58:26 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: Oberserving tasks iteration:	'0'. Task done count:	'0'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.worker.processor.TaskTideProcessor.process ]: Processing tasks of workload thread:	'pool-5-thread-1', Size='2', First ItemId = 'ItemTask-4486528d-cf29-4819-b745-e97a94a7443b'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-4486528d-cf29-4819-b745-e97a94a7443b'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-4486528d-cf29-4819-b745-e97a94a7443b' set on thread 'pool-5-thread-1'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-4486528d-cf29-4819-b745-e97a94a7443b'
+2025-08-06 17:58:26 INFO  [ pool-5-thread-1 -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':ping amazon.com
+2025-08-06 17:58:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-08-06 17:58:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:58:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-90fd6be4-1536-416d-aeb9-755fb538dcd4"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f274348e-5950-4ee5-8be7-5a7311d389a3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76",
+    "state": "ping google.com"
+}
+2025-08-06 17:58:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-f05f1d28-19f1-4f35-997c-81a0fe5f3d6a"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-36186b96-5c6b-4657-976c-a803cd0f6e91"
+    },
+    "Task Name": "Ping twitter.com-1",
+    "Task State": "PENDING",
+    "id": "ItemTask-d9ae3bb9-dfb5-4b96-95af-421bb602d7e0",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:58:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-50749f8d-2640-45b7-8697-1ce6fcad6bb2"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-03c5bd5e-1aac-4cdf-bf25-dd375f91cec1"
+    },
+    "Task Name": "Ping amazon.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-4486528d-cf29-4819-b745-e97a94a7443b",
+    "state": "ping amazon.com"
+}
+2025-08-06 17:58:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-e35b70af-1e83-46cf-a66f-0793fa56ce38"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-50142b9a-47f6-48c7-9ed9-9fcd72a83b3d"
+    },
+    "Task Name": "Ping netflix.com-3",
+    "Task State": "PENDING",
+    "id": "ItemTask-392f13b9-3512-451b-95fe-7d7d93a1889d",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:58:56 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: Oberserving tasks iteration:	'1'. Task done count:	'0'
+2025-08-06 17:59:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-08-06 17:59:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:59:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-90fd6be4-1536-416d-aeb9-755fb538dcd4"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f274348e-5950-4ee5-8be7-5a7311d389a3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76",
+    "state": "ping google.com"
+}
+2025-08-06 17:59:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-f05f1d28-19f1-4f35-997c-81a0fe5f3d6a"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-36186b96-5c6b-4657-976c-a803cd0f6e91"
+    },
+    "Task Name": "Ping twitter.com-1",
+    "Task State": "PENDING",
+    "id": "ItemTask-d9ae3bb9-dfb5-4b96-95af-421bb602d7e0",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:59:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-50749f8d-2640-45b7-8697-1ce6fcad6bb2"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-03c5bd5e-1aac-4cdf-bf25-dd375f91cec1"
+    },
+    "Task Name": "Ping amazon.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-4486528d-cf29-4819-b745-e97a94a7443b",
+    "state": "ping amazon.com"
+}
+2025-08-06 17:59:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-e35b70af-1e83-46cf-a66f-0793fa56ce38"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-50142b9a-47f6-48c7-9ed9-9fcd72a83b3d"
+    },
+    "Task Name": "Ping netflix.com-3",
+    "Task State": "PENDING",
+    "id": "ItemTask-392f13b9-3512-451b-95fe-7d7d93a1889d",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:59:26 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: Oberserving tasks iteration:	'2'. Task done count:	'0'
+2025-08-06 17:59:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-08-06 17:59:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 17:59:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-90fd6be4-1536-416d-aeb9-755fb538dcd4"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f274348e-5950-4ee5-8be7-5a7311d389a3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76",
+    "state": "ping google.com"
+}
+2025-08-06 17:59:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-f05f1d28-19f1-4f35-997c-81a0fe5f3d6a"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-36186b96-5c6b-4657-976c-a803cd0f6e91"
+    },
+    "Task Name": "Ping twitter.com-1",
+    "Task State": "PENDING",
+    "id": "ItemTask-d9ae3bb9-dfb5-4b96-95af-421bb602d7e0",
+    "state": "ping twitter.com"
+}
+2025-08-06 17:59:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-50749f8d-2640-45b7-8697-1ce6fcad6bb2"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-03c5bd5e-1aac-4cdf-bf25-dd375f91cec1"
+    },
+    "Task Name": "Ping amazon.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-4486528d-cf29-4819-b745-e97a94a7443b",
+    "state": "ping amazon.com"
+}
+2025-08-06 17:59:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-e35b70af-1e83-46cf-a66f-0793fa56ce38"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-50142b9a-47f6-48c7-9ed9-9fcd72a83b3d"
+    },
+    "Task Name": "Ping netflix.com-3",
+    "Task State": "PENDING",
+    "id": "ItemTask-392f13b9-3512-451b-95fe-7d7d93a1889d",
+    "state": "ping netflix.com"
+}
+2025-08-06 17:59:56 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: Oberserving tasks iteration:	'3'. Task done count:	'0'
+2025-08-06 18:00:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-08-06 18:00:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 18:00:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-90fd6be4-1536-416d-aeb9-755fb538dcd4"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f274348e-5950-4ee5-8be7-5a7311d389a3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76",
+    "state": "ping google.com"
+}
+2025-08-06 18:00:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-f05f1d28-19f1-4f35-997c-81a0fe5f3d6a"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-36186b96-5c6b-4657-976c-a803cd0f6e91"
+    },
+    "Task Name": "Ping twitter.com-1",
+    "Task State": "PENDING",
+    "id": "ItemTask-d9ae3bb9-dfb5-4b96-95af-421bb602d7e0",
+    "state": "ping twitter.com"
+}
+2025-08-06 18:00:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-50749f8d-2640-45b7-8697-1ce6fcad6bb2"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-03c5bd5e-1aac-4cdf-bf25-dd375f91cec1"
+    },
+    "Task Name": "Ping amazon.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-4486528d-cf29-4819-b745-e97a94a7443b",
+    "state": "ping amazon.com"
+}
+2025-08-06 18:00:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-e35b70af-1e83-46cf-a66f-0793fa56ce38"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-50142b9a-47f6-48c7-9ed9-9fcd72a83b3d"
+    },
+    "Task Name": "Ping netflix.com-3",
+    "Task State": "PENDING",
+    "id": "ItemTask-392f13b9-3512-451b-95fe-7d7d93a1889d",
+    "state": "ping netflix.com"
+}
+2025-08-06 18:00:26 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: Oberserving tasks iteration:	'4'. Task done count:	'0'
+2025-08-06 18:00:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-08-06 18:00:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 18:00:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-90fd6be4-1536-416d-aeb9-755fb538dcd4"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f274348e-5950-4ee5-8be7-5a7311d389a3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76",
+    "state": "ping google.com"
+}
+2025-08-06 18:00:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-f05f1d28-19f1-4f35-997c-81a0fe5f3d6a"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-36186b96-5c6b-4657-976c-a803cd0f6e91"
+    },
+    "Task Name": "Ping twitter.com-1",
+    "Task State": "PENDING",
+    "id": "ItemTask-d9ae3bb9-dfb5-4b96-95af-421bb602d7e0",
+    "state": "ping twitter.com"
+}
+2025-08-06 18:00:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-50749f8d-2640-45b7-8697-1ce6fcad6bb2"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-03c5bd5e-1aac-4cdf-bf25-dd375f91cec1"
+    },
+    "Task Name": "Ping amazon.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-4486528d-cf29-4819-b745-e97a94a7443b",
+    "state": "ping amazon.com"
+}
+2025-08-06 18:00:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-e35b70af-1e83-46cf-a66f-0793fa56ce38"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-50142b9a-47f6-48c7-9ed9-9fcd72a83b3d"
+    },
+    "Task Name": "Ping netflix.com-3",
+    "Task State": "PENDING",
+    "id": "ItemTask-392f13b9-3512-451b-95fe-7d7d93a1889d",
+    "state": "ping netflix.com"
+}
+2025-08-06 18:00:56 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: Oberserving tasks iteration:	'5'. Task done count:	'0'
+2025-08-06 18:01:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-08-06 18:01:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 18:01:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-90fd6be4-1536-416d-aeb9-755fb538dcd4"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f274348e-5950-4ee5-8be7-5a7311d389a3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76",
+    "state": "ping google.com"
+}
+2025-08-06 18:01:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-f05f1d28-19f1-4f35-997c-81a0fe5f3d6a"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-36186b96-5c6b-4657-976c-a803cd0f6e91"
+    },
+    "Task Name": "Ping twitter.com-1",
+    "Task State": "PENDING",
+    "id": "ItemTask-d9ae3bb9-dfb5-4b96-95af-421bb602d7e0",
+    "state": "ping twitter.com"
+}
+2025-08-06 18:01:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-50749f8d-2640-45b7-8697-1ce6fcad6bb2"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-03c5bd5e-1aac-4cdf-bf25-dd375f91cec1"
+    },
+    "Task Name": "Ping amazon.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-4486528d-cf29-4819-b745-e97a94a7443b",
+    "state": "ping amazon.com"
+}
+2025-08-06 18:01:26 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-e35b70af-1e83-46cf-a66f-0793fa56ce38"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-50142b9a-47f6-48c7-9ed9-9fcd72a83b3d"
+    },
+    "Task Name": "Ping netflix.com-3",
+    "Task State": "PENDING",
+    "id": "ItemTask-392f13b9-3512-451b-95fe-7d7d93a1889d",
+    "state": "ping netflix.com"
+}
+2025-08-06 18:01:26 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: Oberserving tasks iteration:	'6'. Task done count:	'0'
+2025-08-06 18:01:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+=========== Count of Tasks Done = 0 ===============
+
+
+2025-08-06 18:01:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: 
+
+======== Displaying Workload From Main Thread ========
+2025-08-06 18:01:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping google.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-90fd6be4-1536-416d-aeb9-755fb538dcd4"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-f274348e-5950-4ee5-8be7-5a7311d389a3"
+    },
+    "Task Name": "Ping google.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-9ecf0e5c-ff3c-401a-a207-2d4b5079db76",
+    "state": "ping google.com"
+}
+2025-08-06 18:01:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping twitter.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-f05f1d28-19f1-4f35-997c-81a0fe5f3d6a"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-36186b96-5c6b-4657-976c-a803cd0f6e91"
+    },
+    "Task Name": "Ping twitter.com-1",
+    "Task State": "PENDING",
+    "id": "ItemTask-d9ae3bb9-dfb5-4b96-95af-421bb602d7e0",
+    "state": "ping twitter.com"
+}
+2025-08-06 18:01:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-50749f8d-2640-45b7-8697-1ce6fcad6bb2"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-03c5bd5e-1aac-4cdf-bf25-dd375f91cec1"
+    },
+    "Task Name": "Ping amazon.com-2",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-4486528d-cf29-4819-b745-e97a94a7443b",
+    "state": "ping amazon.com"
+}
+2025-08-06 18:01:56 DEBUG [ Test worker -> org.tasktide.engine.EngineTestUtils.lambda$waitUntilDoneTarget$0 ]: {
+    "Task": "ping netflix.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-e35b70af-1e83-46cf-a66f-0793fa56ce38"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-50142b9a-47f6-48c7-9ed9-9fcd72a83b3d"
+    },
+    "Task Name": "Ping netflix.com-3",
+    "Task State": "PENDING",
+    "id": "ItemTask-392f13b9-3512-451b-95fe-7d7d93a1889d",
+    "state": "ping netflix.com"
+}
+2025-08-06 18:01:56 INFO  [ Test worker -> org.tasktide.engine.EngineTestUtils.waitUntilDoneTarget ]: Oberserving tasks iteration:	'7'. Task done count:	'0'

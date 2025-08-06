@@ -1803,3 +1803,823 @@ Item{id=myId-2, state=state-2, payload=payload-2}
 
 ---------------- Terminating ItemStore Tests ----------------
 
+2025-08-06 18:02:33 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.setUpClass ]: 
+
+---------------- Initiating AbstractItemStore Tests ----------------
+
+2025-08-06 18:02:33 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 18:02:33 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.multipleJvmsCanUse ]: 
+
+================ Can Multiple JVMs Concurrently AbstractItemStore Test ================
+
+2025-08-06 18:02:33 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.multipleJvmsCanUse ]: Configuring process builder for cross JVM DB access test
+2025-08-06 18:02:33 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.multipleJvmsCanUse ]: Running processes
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.multipleJvmsCanUse ]: Waiting until processes have completed
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting proceses to complete
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'33420'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'91856'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'89096'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'23108'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'88580'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'90116'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'5472'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'21640'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'79392'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'38072'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'82720'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'20388'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'87192'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'73380'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'37340'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'89724'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'12548'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'74300'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'90824'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'90996'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'83832'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'91972'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'91036'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'66048'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'91156'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'33316'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'29556'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'78512'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'89280'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'3176'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'89364'
+2025-08-06 18:02:36 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'82608'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'89896'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'82528'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'91456'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'20908'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'13472'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'89708'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'78432'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'87620'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'80016'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'88280'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'86644'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'85992'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'90396'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'6420'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'88492'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'92388'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'23512'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'91676'
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.multipleJvmsCanUse ]: Summarizing processes
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'33420'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'91856'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'89096'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'23108'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'88580'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'90116'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'5472'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'21640'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'79392'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'38072'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'82720'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'20388'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'87192'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'73380'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'37340'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'89724'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'12548'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'74300'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'90824'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'90996'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'83832'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'91972'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'91036'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'66048'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'91156'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'33316'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'29556'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'78512'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'89280'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'3176'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'89364'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'82608'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'89896'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'82528'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'91456'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'20908'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'13472'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'89708'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'78432'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'87620'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'80016'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'88280'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'86644'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'85992'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'90396'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'6420'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'88492'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'92388'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'23512'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'91676'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.multipleJvmsCanUse ]: Processes completed '0'/50 passed
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.crossJvmFileLockFinishes ]: 
+
+================ Can Multiple JVMs Serially AbstractItemStore Test ================
+
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Configuring process builder for cross JVM DB access test
+2025-08-06 18:02:37 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Running processes
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Waiting until processes have completed
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting proceses to complete
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'54800'
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.waitUntilDone ]: Waiting on process:	'78408'
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.crossJvmFileLockFinishes ]: Summarizing processes
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'54800'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTestUtils.summarizeProcesses ]: 
+Displaying process data:
+Process ID:	'78408'
+Exit Value:	'1'
+Stdout:
+
+''
+
+Stderr:
+
+
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 18:02:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.canSummarize ]: 
+
+================ Can Summarize AbstractItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.canSummarize ]: Displaying AbstractItemStore properties:
+
+{
+    "Master": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore\\master",
+    "Prototype": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore\\0e977011-4657-47ef-9bea-4c423d7d81a6",
+    "Store Name": "AbstractItemStore",
+    "DB Directory": "C:\\Users\\ithel\\Documents\\GitHub\\TaskTide\\tasktide\\itemstore\\rocksDB\\AbstractItemStore"
+}
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.canSummarize ]: 
+
+================ Can Summarize AbstractItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating AbstractItemStore Tests ----------------
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Creating database
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Savining below record to db
+{Item{id=myId, state=state, payload=payload}}
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Item saved, retrieving for referece
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying retrieved record below record
+{Item{id=myId, state=state, payload=payload}}
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
+
+Item{id=myId-2, state=state-2, payload=payload-2}
+[Item{id=myId-2, state=state-2, payload=payload-2}]
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUpClass ]: 
+
+---------------- Initiating Item Tests ----------------
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+
+================ Can make Item Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: Verifying attributes of created Item:
+
+Item{id=myId, state=todo, payload=my cool payload}
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+
+================ Can make Item Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDownClass ]: 
+
+---------------- Terminating Item Tests ----------------
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUpClass ]: 
+
+---------------- Initiating SQLite-Store Tests ----------------
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Creating SQLite ItemStore
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: ItemStore created
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Evaluating ItemStore
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: 
+
+================ Can Insert ItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying record for import:
+Item{id=351e30a8-0ce0-4bb9-babe-eb489ef0b8c7, state=State, payload=c13d8e57-c81d-4ece-9384-9a2d5ec83b7b}
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Record inserted, verifying get
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying queried result:
+Item{id=351e30a8-0ce0-4bb9-babe-eb489ef0b8c7, state=State, payload=c13d8e57-c81d-4ece-9384-9a2d5ec83b7b}
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: 
+
+================ Can Insert ItemStore Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-06 18:02:39 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating SQLite-Store Tests ----------------
+

@@ -1,0 +1,109 @@
+= ChangeLog
+:toc: auto
+
+# Notice
+<p id="notice">
+All changes to this project for versions beyond v1.0.0 will be reflected here. For the initial release currently is a checklist, then feature summary.
+</p>
+
+== [0.9.9] - 2025-10-01
+
+=== Bugs
+<ul id="bugs">
+<li>
+[] - Bean injection quirk between NetBeans & command-line
+</li>
+</ul>
+
+
+=== Main Checklist
+
+[] 1). Wrap-up code, repoistory and documentation for v1
+[] 2). Use-cases General, Bioinformatics, and AI with Super Mario Bros (after ConfigUtil handling).
+[] 3). Paper write-up (initialize with repo docs, review after use-cases).
+[] 4). Drop database files & old workflow engine from repo.
+[] 5). Repository structured for JOSS.
+[] 6). Docker compose.
+[] 7). Kubectl config.
+
+
+
+=== Code Checklist
+
+<p>
+A lot of the major aspects are done, or covered. These push towards a minimally functional v0.9.9, where a "once over" covers the v1. This push is neatness thing anticipating problems coming from use-case deployment.
+</p>
+
+<ul id="todo">
+<li>
+[] - Docker Compose
+</li>
+<li>
+[] - Logger messages DRY view on Degbug, Info, Warn, Error
+</li>
+<li>
+[] - Apply ConfigUtil to TaskTideClient
+</li>
+<li>
+[] - Way to include "config" folder into zip.
+</li>
+<li>
+[] - Install helper script for TaskTide
+</li>
+<li>
+[] - Apply container support to all required integration tests.
+</li>
+<li>
+[X] - Support unit tests with docker container
+</li>
+<li>
+[X] - Load a target Microprofile config
+</li>
+<li>
+[X] - Update ItemStore to use DbTarget instead of overloading with master/prootype methods
+</li>
+<li>
+[X] - Fix RocksDB bug
+</li>
+<li>
+[X] - Initial Documentation
+</li>
+<li>
+[X] - UML & diagram per project (initial good until version hit).
+</li>
+<li>
+[] - Check over unit failed unit tests as they work independantly
+    <ul>
+    <li>
+        - Singleton not set for "container Id".
+    </li>
+    <li>
+        - Engine error messages, and old unit tests missing SOA.
+    </li>
+    <li>
+        - Background jobs from ItemStore
+    </li>
+    <li>
+        - TaskTideClient needs TestContainers.
+    </li>
+    </ul>
+</li>
+<li>
+[] - Process Workflow as StepList is fine
+</li>
+<li>
+[X] - Process list of Steps
+</li>
+<li>
+[X] - Functional client in NetBeans-IDE and command-line
+</li>
+<li>
+[X] - SQLite ItemStore
+</li>
+<li>
+[X] - JPA Repository
+</li>
+<li>
+[X] - TaskTide Architecture Diagrams
+</li>
+</ul>
