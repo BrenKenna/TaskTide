@@ -33,12 +33,12 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
 - [] Install helper script for TaskTide.
 - [] Apply container support to all required integration tests.
 - [] Check over unit failed unit tests as they work independantly
-----
+....
         - [] Singleton not set for "container Id".
         - [] Engine error messages, and old unit tests missing SOA.
         - [] Background jobs from ItemStore.
         - [] TaskTideClient needs TestContainers.
-----
+....
 - [] Process Workflow as StepList is fine.
 - [X] Support unit tests with docker container.
 - [X] Load a target Microprofile config.
