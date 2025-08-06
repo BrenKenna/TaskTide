@@ -31,8 +31,8 @@ import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
+import org.junit.Rule;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -42,6 +42,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestInstance;
 
 import org.tasktide.TestCaseBuilderUtility;
+import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
@@ -50,6 +51,7 @@ import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDBStore;
+import org.testcontainers.containers.GenericContainer;
 
 
 /**
@@ -64,30 +66,46 @@ import org.tasktide.itemstore.RocksDBStore;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowRepositoryFactoryTests {
     
+    // Logger for tests
     private static final Logger logger = LogManager.getLogger(WorkflowRepositoryFactoryTests.class);
     
-    public WorkflowRepositoryFactoryTests() {}
+    
+    // CouchDB container
+    @Rule
+    public GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    
+    
+    // Container for fetch nosql template
+    private SeContainer container;
+    private Template template;
+    
+    
+    public WorkflowRepositoryFactoryTests() {
+    }
+    
     
     @BeforeAll
-    public static void setUpClass() {        
-        String msg = "\n\n---------------- Initiating Repository Tests ----------------\n";
+    public void setUpClass() {        
+        String msg = "\n\n---------------- Initiating Workflow-Repository Tests ----------------\n";
         logger.info(msg);
+        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        template = TestEnvironment.fetchDocumentTemplate(container);
     }
     
     @AfterAll
-    public static void tearDownClass() {
-        String msg = "\n\n---------------- Terminating Repository Tests ----------------\n";
+    public void tearDownClass() {
+        String msg = "\n\n---------------- Terminating Workflow-Repository Tests ----------------\n";
         logger.info(msg);
+        if (container != null && container.isRunning()) {
+            container.close();
+            logger.info("CDI container shut down");
+        }
+        couchDB.stop();
     }
     
     @BeforeEach
     public void setUp() {
         logger.info("\n\n================ Initiating Next Test ================\n");
-    }
-    
-    @AfterEach
-    public void tearDown() {
-        logger.info("\n\n================ Terminating Test ================\n");
     }
     
     
@@ -235,7 +253,7 @@ public class WorkflowRepositoryFactoryTests {
     
     
     /**
-     * Test that a work item can be fetched 
+     * Test that a work item can be fetched JNoSQL backend
      */
     @Test
     @Order(2)
@@ -243,6 +261,55 @@ public class WorkflowRepositoryFactoryTests {
     
         // Initialize data
         logger.info("\n\n================ Construct NoSQL Repositories From Factory Test ================\n");
+        TaskTideRepository<Workflow> workflowRepo;
+        RepositoryFactory<Workflow> workflowRepoFactory;
+        RepositoryType repoType;
+        List<Workflow> data;
+        boolean assertionState;
+        
+        // Generate data
+        logger.info("Generating data for testing");
+        data = TestCaseBuilderUtility.makeTestWorkflows();
+        
+        // Fetch backend instance
+        repoType = RepositoryType.NOSQL;
+        logger.info("Backend template:\t'{}'", template);
+        
+        // Configure repository
+        logger.info("\nConfiguring repository");
+        workflowRepoFactory = new RepositoryFactory<>("Test-Template-Workflow", Workflow.class, template, repoType);
+        workflowRepo = workflowRepoFactory.make();
+        Map<String, String> map = workflowRepo.getRepositoryMetaData();
+        logger.info("\nDisplaying meta data for WorkflowRepository:\n'{}'", JsonUtils.toJson(true, map));
+        
+        // Add records
+        logger.info("Displaying first record prior to import:\n{}", data.get(0).toJsonDoc());
+        data.stream()
+            .forEach( elm -> workflowRepo.insertModel(elm));
+        
+        // Check that records can be queried
+        logger.info("\nVerifying records can be retrieved");
+        TaskTideModel<Workflow> ref, res;
+        ref = data.get(0);
+        res = workflowRepo.findById(ref.getId()).get();
+        assertionState = res != null;
+        logger.info("\nDisplayling retrieved records:\n\n{}", JsonUtils.toJson(true, res));
+        
+        // Log test state
+        logger.info("\n\n================ Construct NoSQL Repositories From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
+    }
+    
+    
+    /**
+     * Test that a work item can be fetched from JPA backend
+     */
+    @Test
+    @Order(3)
+    public void canConstructWorkflowSqlRepository() {
+    
+        // Initialize data
+        logger.info("\n\n================ Construct SQL Repositories From Factory Test ================\n");
         TaskTideRepository<Workflow> workflowRepo;
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType;

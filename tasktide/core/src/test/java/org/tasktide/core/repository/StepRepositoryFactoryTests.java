@@ -4,7 +4,8 @@
  */
 package org.tasktide.core.repository;
 
-import org.tasktide.core.repository.nosql_repo.Tunes;
+import jakarta.enterprise.inject.se.SeContainer;
+
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 import java.util.List;
@@ -23,6 +24,7 @@ import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
+import org.junit.Rule;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -34,6 +36,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestInstance;
 
 import org.tasktide.TestCaseBuilderUtility;
+import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
@@ -41,6 +44,7 @@ import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
+import org.testcontainers.containers.GenericContainer;
 
 
 /**
@@ -51,25 +55,46 @@ import org.tasktide.itemstore.ItemStore;
  */
 @EnableAutoWeld
 @AddPackages(value = {Converters.class, EntityConverter.class, Template.class, DocumentTemplate.class})
-@AddPackages(value = {Tunes.class, Reflections.class})
+@AddPackages(value = {Step.class, Reflections.class})
 @AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class StepRepositoryFactoryTests {
     
+    // Logger for tests
     private static final Logger logger = LogManager.getLogger(StepRepositoryFactoryTests.class);
     
-    public StepRepositoryFactoryTests() {}
+    
+    // CouchDB container
+    @Rule
+    public GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    
+    
+    // Container for fetch nosql template
+    private SeContainer container;
+    private Template template;
+    
+    
+    public StepRepositoryFactoryTests() {
+    }
+    
     
     @BeforeAll
-    public static void setUpClass() {        
-        String msg = "\n\n---------------- Initiating Repository Tests ----------------\n";
+    public void setUpClass() {        
+        String msg = "\n\n---------------- Initiating Step-Repository Tests ----------------\n";
         logger.info(msg);
+        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        template = TestEnvironment.fetchDocumentTemplate(container);
     }
     
     @AfterAll
-    public static void tearDownClass() {
-        String msg = "\n\n---------------- Terminating Repository Tests ----------------\n";
+    public void tearDownClass() {
+        String msg = "\n\n---------------- Terminating Step-Repository Tests ----------------\n";
         logger.info(msg);
+        if (container != null && container.isRunning()) {
+            container.close();
+            logger.info("CDI container shut down");
+        }
+        couchDB.stop();
     }
     
     @BeforeEach
@@ -96,7 +121,6 @@ public class StepRepositoryFactoryTests {
         RepositoryFactory<Step> stepRepoFactory;
         RepositoryType repoType;
         List<Step> backend;
-        Step record;
         boolean assertionState;
         
         // Generate data
@@ -192,10 +216,8 @@ public class StepRepositoryFactoryTests {
         TaskTideRepository<Step> stepRepo;
         RepositoryFactory<Step> stepRepoFactory;
         RepositoryType repoType;
-        Template backend;
         List<Step> data;
-        Step record;
-        boolean assertionState = false;
+        boolean assertionState;
         
         // Generate data
         logger.info("Generating data for testing");
@@ -207,26 +229,26 @@ public class StepRepositoryFactoryTests {
         
         // Fetch backend instance
         repoType = RepositoryType.NOSQL;
-        backend = TestUtils.fetchTemplate();
-        logger.info("Backend template:\t'{}'", backend);
+        logger.info("Backend template:\t'{}'", template);
         
         // Configure repository
         logger.info("\nConfiguring repository");
-        stepRepoFactory = new RepositoryFactory<>("Test-Template-Step", Step.class, backend, repoType);
+        stepRepoFactory = new RepositoryFactory<>("Test-Template-Step", Step.class, template, repoType);
         stepRepo = stepRepoFactory.make();
         Map<String, String> map = stepRepo.getRepositoryMetaData();
         logger.info("\nDisplaying meta data for StepRepository:\n'{}'", TestUtils.mapToJsonString(map));
         
         // Add records
+        logger.info("\nInserting records");
         data.stream()
             .forEach( elm -> stepRepo.insertModel(elm));
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
         TaskTideModel<Step> ref = data.get(0);
-        assertionState = !stepRepo.findById(ref.getId()).isEmpty();
-        List<Step> steps = stepRepo.findAll();
-        logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(steps));
+        TaskTideModel<Step> result = stepRepo.findById(ref.getId()).get();
+        assertionState = result != null;
+        logger.info("\nDisplayling all records:\n\n{}", JsonUtils.toJson(true, result));
         
         // Log test state
         logger.info("\n\n================ Construct NoSQL Repositories From Factory Test ================\n");

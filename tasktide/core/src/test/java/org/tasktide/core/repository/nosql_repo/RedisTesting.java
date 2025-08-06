@@ -16,12 +16,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
 import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
-
 import jakarta.nosql.Template;
-import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jnosql.mapping.core.Converters;
 import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
@@ -41,7 +37,8 @@ import org.testcontainers.containers.GenericContainer;
 
 
 /**
- *
+ * Test module for reading/writing records to redis docker container
+ * 
  * @author bkenna
  */
 @EnableAutoWeld
@@ -99,12 +96,6 @@ public class RedisTesting {
     public void tearDown() {
         logger.info("\n\n================ Terminating Test ================\n");
     }
-
-    
-    public boolean waiter() {
-        try {TimeUnit.SECONDS.sleep(30);return true;}
-        catch(InterruptedException ex) {return false;}
-    }
     
     
     /**
@@ -113,9 +104,9 @@ public class RedisTesting {
     @Test
     @Order(0)
     public void shouldInjectRedisTemplate() {
-        logger.info("\n\n================ Tests Redis Template Injection ================\n");
+        logger.info("\n\n================ Tests KeyValueTemplate Injection ================\n");
         Assertions.assertNotNull(template);
-        logger.info("\n\n================ Tests Redis Template Injection ================\n");
+        logger.info("\n\n================ Tests KeyValueTemplate Injection ================\n");
     }
     
     
@@ -165,6 +156,6 @@ public class RedisTesting {
             assertTrue(assertionState);
             logger.error("\n\nTest failed music model recieved from inster:\n" + inserted);
         }
-        logger.info("\n\n================ Tests Redis Insertiont ================\n");
+        logger.info("\n\n================ Tests Redis Insertion ================\n");
     }
 }

@@ -15,9 +15,13 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Base64;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.eclipse.jnosql.mapping.column.ColumnTemplate;
+import org.eclipse.jnosql.mapping.document.DocumentTemplate;
+import org.eclipse.jnosql.mapping.graph.GraphTemplate;
 
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.InternetProtocol;
@@ -70,11 +74,15 @@ public class TestEnvironment {
             .withEnv("COUCHDB_USER", "admin")
             .withEnv("COUCHDB_PASSWORD", "password")
         .waitingFor(Wait.forHttp("/_up").forStatusCode(200));
+        container.start();
         
         // Create database, and provide container if successful
         String uri = TestEnvironment.fetchCouchDbUri(container, dbName, secured);
-        if ( TestEnvironment.createDbHttp(uri) ) {
-            container.start();
+	String authHeader = TestEnvironment.createDbAuthHeader(
+		container.getEnvMap().get("COUCHDB_USER"),
+		container.getEnvMap().get("COUCHDB_PASSWORD")
+	);
+        if ( TestEnvironment.createDbHttp(uri, authHeader) ) {
             return container;
         }
         
@@ -180,6 +188,39 @@ public class TestEnvironment {
     
     
     /**
+     * Fetches template from configured container
+     * 
+     * @param container
+     * @return Template
+     */
+    public static Template fetchDocumentTemplate(SeContainer container) {
+        return container.select(DocumentTemplate.class).get();
+    }
+    
+    
+    /**
+     * Fetches template from configured container
+     * 
+     * @param container
+     * @return Template
+     */
+    public static Template fetchColumnTemplate(SeContainer container) {
+        return container.select(ColumnTemplate.class).get();
+    }
+    
+    
+    /**
+     * Fetches template from configured container
+     * 
+     * @param container
+     * @return Template
+     */
+    public static Template fetchGraphTemplate(SeContainer container) {
+        return container.select(GraphTemplate.class).get();
+    }
+    
+    
+    /**
      * Fetch connection URI for couchDB container
      * 
      * @param container
@@ -191,13 +232,14 @@ public class TestEnvironment {
     
         // Parse authentication
         String host = container.getHost();
-        int port = container.getMappedPort(5489);
+        int port = container.getFirstMappedPort();
         String user = container.getEnvMap().get("COUCHDB_USER");
         String password = container.getEnvMap().get("COUCHDB_PASSWORD");
         String uri = String.format(
 		"http://%s:%s@%s:%d/%s",
 		user, password, host, port, dbName
         );
+        //LOGGER.info("Request URI:\n'{}'", uri);
         
         // Handle request context
         if ( secured ) {
@@ -206,20 +248,36 @@ public class TestEnvironment {
         return uri;
     }
     
+    
+    /**
+     * Fetch auth header
+     * 
+     * @param username
+     * @param password
+     * @return String
+     */
+    public static String createDbAuthHeader(String username, String password) {
+        String auth = username + ":" + password;
+        String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
+        return "Basic " + encodedAuth;
+    }
+    
 
     /**
      * Fires create database request against uri
      * 
      * @param uri
+     * @param authHeader
      * @return boolean
      */
-    public static boolean createDbHttp(String uri) {
+    public static boolean createDbHttp(String uri, String authHeader) {
         
         // Initialize HTTP request
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest req = HttpRequest.newBuilder()
                 .uri(new URI(uri))
+                .header("Authorization", authHeader)
                 .PUT(HttpRequest.BodyPublishers.noBody())
             .build();
 

@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.repository;
 
-import org.tasktide.core.repository.nosql_repo.Tunes;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
@@ -32,6 +31,7 @@ import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
+import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,14 +42,17 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestInstance;
 
 import org.tasktide.TestCaseBuilderUtility;
+import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDBStore;
+import org.testcontainers.containers.GenericContainer;
 
 
 /**
@@ -59,29 +62,46 @@ import org.tasktide.itemstore.RocksDBStore;
  * @author bkenna
  */
 @EnableAutoWeld
-@AddPackages(value = {
-    Converters.class, EntityConverter.class, Template.class, DocumentTemplate.class,
-    EntityManager.class
-})
-@AddPackages(value = {Tunes.class, Reflections.class})
+@AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
 @AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemRepositoryFactoryTests {
     
+    // Logger for tests
     private static final Logger logger = LogManager.getLogger(WorkItemRepositoryFactoryTests.class);
     
-    public WorkItemRepositoryFactoryTests() {}
+    
+    // CouchDB container
+    @Rule
+    public GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    
+    
+    // Container for fetch nosql template
+    private SeContainer container;
+    private Template template;
+    
+    
+    public WorkItemRepositoryFactoryTests() {
+    }
+    
     
     @BeforeAll
-    public static void setUpClass() {        
-        String msg = "\n\n---------------- Initiating Repository Tests ----------------\n";
+    public void setUpClass() {        
+        String msg = "\n\n---------------- Initiating WorkItem-Repository Tests ----------------\n";
         logger.info(msg);
+        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        template = TestEnvironment.fetchDocumentTemplate(container);
     }
     
     @AfterAll
-    public static void tearDownClass() {
-        String msg = "\n\n---------------- Terminating Repository Tests ----------------\n";
+    public void tearDownClass() {
+        String msg = "\n\n---------------- Terminating WorkItem-Repository Tests ----------------\n";
         logger.info(msg);
+        if (container != null && container.isRunning()) {
+            container.close();
+            logger.info("CDI container shut down");
+        }
+        couchDB.stop();
     }
     
     @BeforeEach
@@ -93,6 +113,7 @@ public class WorkItemRepositoryFactoryTests {
     public void tearDown() {
         logger.info("\n\n================ Terminating Test ================\n");
     }
+    
     
     
     /**
@@ -265,10 +286,8 @@ public class WorkItemRepositoryFactoryTests {
         TaskTideRepository<WorkItem> workItemRepo;
         RepositoryFactory<WorkItem> workItemRepoFactory;
         RepositoryType repoType;
-        Template backend;
         List<WorkItem> data;
-        WorkItem record;
-        boolean assertionState = false;
+        boolean assertionState;
         
         // Generate data
         logger.info("Generating data for testing");
@@ -280,25 +299,26 @@ public class WorkItemRepositoryFactoryTests {
         
         // Fetch backend instance
         repoType = RepositoryType.NOSQL;
-        backend = this.fetchTemplate();
-        logger.info("Backend template:\t'{}'", backend);
+        logger.info("Backend template:\t'{}'", template);
         
         // Configure repository
         logger.info("\nConfiguring repository");
-        workItemRepoFactory = new RepositoryFactory<>("Test-Template-WorkItem", WorkItem.class, backend, repoType);
+        workItemRepoFactory = new RepositoryFactory<>("Test-Template-WorkItem", WorkItem.class, template, repoType);
         workItemRepo = workItemRepoFactory.make();
         Map<String, String> map = workItemRepo.getRepositoryMetaData();
         logger.info("\nDisplaying meta data for WorkItemRepository:\n'{}'", TestUtils.mapToJsonString(map));
         
         // Add records
+        logger.info("Inserting records");
         data.stream()
             .forEach( elm -> workItemRepo.insertModel(elm));
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
         TaskTideModel<WorkItem> ref = data.get(0);
-        assertionState = !workItemRepo.findById(ref.getId()).isEmpty();
-        logger.info("\nDisplayling all records:\n\n{}", TestUtils.modelToJsonString(workItemRepo.findAll()));
+        TaskTideModel<WorkItem> result = workItemRepo.findById(ref.getId()).get();
+        assertionState = result != null;
+        logger.info("\nDisplayling all records:\n\n{}", JsonUtils.toJson(true, result));
         
         // Log test state
         logger.info("\n\n================ Construct Template WorkItem Repository From Factory Test ================\n");

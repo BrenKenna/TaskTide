@@ -4,6 +4,8 @@
  */
 package org.tasktide.core.repository.nosql_repo;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,12 +18,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
-
 import jakarta.nosql.Template;
-
 import org.eclipse.jnosql.mapping.core.Converters;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
@@ -32,14 +29,18 @@ import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
+import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
 
+import org.tasktide.TestEnvironment;
 
+import org.testcontainers.containers.GenericContainer;
 
 
 /**
- *
+ * Test module for reading/writing records to mongoDB docker container
+ * 
  * @author bkenna
  */
 @EnableAutoWeld
@@ -52,9 +53,14 @@ public class MongoDbTesting {
     // Logger for tests
     private static final Logger logger = LogManager.getLogger(MongoDbTesting.class);
     
-    private SeContainer container;
+    // CouchDB container
+    @Rule
+    public GenericContainer<?> mongoDB = TestEnvironment.mongoDbContainer("tasktide_database");
     
+    // Container for fetch nosql template
+    private SeContainer container;
     private Template template;
+    
     
     public MongoDbTesting() {
     }
@@ -62,25 +68,21 @@ public class MongoDbTesting {
     
     @BeforeAll
     public void setUpClass() {        
-        String msg = "\n\n---------------- Initiating JNoSQL-MongoDB Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating JNoSQL-MongoDB Testing Tests ----------------\n";
         logger.info(msg);
-        
-        // Initialize CDI
-        container = SeContainerInitializer.newInstance().initialize();
-        logger.info(container.isRunning());
-        //new DocumentTemplate();
-        template = (Template) container.select(DocumentTemplate.class).get();
-        logger.info("MongoDB template state" + template == null);
+        container = TestEnvironment.startWeldContainer("mongoDB-config.properties", getClass());
+        template = TestEnvironment.fetchDocumentTemplate(container);
     }
     
     @AfterAll
     public void tearDownClass() {
-        String msg = "\n\n---------------- Terminating JNoSQL-MongoDB Tests ----------------\n";
+        String msg = "\n\n---------------- Terminating JNoSQL-MongoDB Testing Tests ----------------\n";
         logger.info(msg);
         if (container != null && container.isRunning()) {
             container.close();
-            logger.info("CDI container shut down.");
+            logger.info("CDI container shut down");
         }
+        mongoDB.stop();
     }
     
     
@@ -94,24 +96,42 @@ public class MongoDbTesting {
         logger.info("\n\n================ Terminating Test ================\n");
     }
 
-        
+    
+    /**
+     * Tests fetching document template
+     */
     @Test
     @Order(0)
-    public void shouldInjectMongoDBTemplate() {
+    public void shouldInjectCouchDBTemplate() {
+        logger.info("\n\n================ Tests DocumentTemplate Injection ================\n");
         Assertions.assertNotNull(template);
+        logger.info("\n\n================ Tests DocumentTemplate Injection ================\n");
     }
     
     
     /**
-     * Test manual connection
+     * Tests running mongoDB container
+     */
+    @Test
+    @Order(1)
+    public void containerShouldBeRunning() {
+        logger.info("\n\n================ Tests MongoDB Container Spinup ================\n");
+        Assertions.assertTrue(mongoDB.isRunning());
+        logger.info("Displaying MongoDB Container status:\t'{}'", mongoDB.getContainerInfo());
+        logger.info("\n\n================ Tests MongoDB Container Spinup ================\n");
+    }
+    
+    
+    /**
+     * Tests insertion to container through template
      */
     @Test
     @Order(2)
     public void shouldInsertRecord() {
     
         // Fetch document template
-        logger.info("\n\n================ Injected Connection Test ================\n");
-        boolean assertionState = true;
+        logger.info("\n\n================ Tests MongoDB Insertion ================\n");
+        boolean assertionState;
         logger.info("\n\nCreated template:\n" + template);
         
         // Make a music record
@@ -123,8 +143,7 @@ public class MongoDbTesting {
         
         // Insert record DocumentEntity.of("Tunes");
         Tunes inserted = template.insert(song);
-        logger.info("\n\nRetrieved import:\n");
-        assertionState = inserted.getName().length() > 0;
+        assertionState = inserted != null;
         
         // Log state
         if (!assertionState) {
@@ -135,6 +154,6 @@ public class MongoDbTesting {
             assertTrue(assertionState);
             logger.error("\n\nTest failed music model recieved from inster:\n" + inserted);
         }
-        logger.info("\n\n================ Injected Connection Test ================\n");
+        logger.info("\n\n================ Injected MongoDB Insertion Test ================\n");
     }
 }

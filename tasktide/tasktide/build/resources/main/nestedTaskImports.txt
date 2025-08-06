@@ -1,5 +1,0 @@
-Ping_Test_1|ping|google.com
-Ping_Test_2|ping|rte.ie,bbc.com
-Ping_Test_3|ping|youtube.com,amazon.ie,ucd.ie,dcu.ie
-Ping_Test_4|ping|chatgpt.com,medium.com,github.com,slack.com,gmail.com
-Ping_Test_5|ping|tudublin.ie
