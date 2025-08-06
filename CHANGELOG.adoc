@@ -13,13 +13,13 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 === Main Checklist
 
-[] 1). Wrap-up code, repoistory and documentation for v1/
-[] 2). Use-cases General, Bioinformatics, and AI with Super Mario Bros (after ConfigUtil handling).
-[] 3). Paper write-up (initialize with repo docs, review after use-cases).
-[] 4). Drop database files & old workflow engine from repo.
-[] 5). Repository structured for JOSS.
-[] 6). Docker compose.
-[] 7). Kubectl config.
+- [] 1). Wrap-up code, repoistory and documentation for v1.
+- [] 2). Use-cases General, Bioinformatics, and AI with Super Mario Bros (after ConfigUtil handling).
+- [] 3). Paper write-up (initialize with repo docs, review after use-cases).
+- [] 4). Drop database files & old workflow engine from repo.
+- [] 5). Repository structured for JOSS.
+- [] 6). Docker compose.
+- [] 7). Kubectl config.
 
 
 === Code Checklist
@@ -33,10 +33,12 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
 - [] Install helper script for TaskTide.
 - [] Apply container support to all required integration tests.
 - [] Check over unit failed unit tests as they work independantly
-        - Singleton not set for "container Id".
-        - Engine error messages, and old unit tests missing SOA.
-        - Background jobs from ItemStore.
-        - TaskTideClient needs TestContainers.
+----
+        - [] Singleton not set for "container Id".
+        - [] Engine error messages, and old unit tests missing SOA.
+        - [] Background jobs from ItemStore.
+        - [] TaskTideClient needs TestContainers.
+----
 - [] Process Workflow as StepList is fine.
 - [X] Support unit tests with docker container.
 - [X] Load a target Microprofile config.
