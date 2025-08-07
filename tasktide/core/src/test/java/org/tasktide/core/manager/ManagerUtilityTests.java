@@ -208,7 +208,7 @@ public class ManagerUtilityTests {
         // Import pipe delimiter
         try {
             // Import tasks
-            List<WorkItem> data = TaskTideManagerUtility.importTasks("TestData", "singleTaskImports.txt", "|");
+            List<WorkItem> data = TaskTideManagerUtility.importTasksForTesting("TestData", "singleTaskImports.txt", "|");
             
             // Display
             logger.info("\n\nDisplaying 'singleTaskImports.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
@@ -221,7 +221,7 @@ public class ManagerUtilityTests {
         // Import csv delimiter
         try {
             // Import tasks
-            List<WorkItem> data = TaskTideManagerUtility.importTasks("TestData", "singleTaskImports-Delim2.txt", ",");
+            List<WorkItem> data = TaskTideManagerUtility.importTasksForTesting("TestData", "singleTaskImports-Delim2.txt", ",");
             
             // Display
             logger.info("\n\nDisplaying 'singleTaskImports-Delim2.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
@@ -253,7 +253,7 @@ public class ManagerUtilityTests {
         try {
             
             // Display work itemsL TestUtils.workload not taking in full list?
-            List<WorkItem> data = TaskTideManagerUtility.importTasks("TestData", "nestedTaskImports.txt", "|", ",");
+            List<WorkItem> data = TaskTideManagerUtility.importTasksForTesting("TestData", "nestedTaskImports.txt", "|", ",");
             logger.info("\n\nDisplaying 'nestedTaskImports.txt' WorkItems:\n\n" + TestUtils.mapToJsonString(data));
             if (data.get(0).getItemType() == ItemType.SINGLE) {countsMatching++;}
             if (data.get(1).getItemType() == ItemType.NESTED) {countsMatching++;}

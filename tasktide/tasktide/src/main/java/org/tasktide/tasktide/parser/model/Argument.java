@@ -181,6 +181,8 @@ public class Argument<T> {
             val = raw;
         } else if (refClass == Character.class) {
             val = raw.charAt(0);
+        } else if (refClass == Boolean.class || refClass == boolean.class)  {
+            val = true;
         } else {
             throw new IllegalArgumentException("Unsupported Type:\t" + refClass);
         }

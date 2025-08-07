@@ -70,6 +70,7 @@ public class ManagerConfig extends AbstractConfigurer {
      */
     @Override
     public void initConfig(ArgumentTree argTree) {
+        this.help();
         this.inputFile();
         this.delimiter();
         this.outputFile();
@@ -84,6 +85,23 @@ public class ManagerConfig extends AbstractConfigurer {
         else {
             argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
         }
+    }
+    
+    
+    /**
+     * Configure help
+     */
+    public void help() {
+        Argument<Boolean> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Help")
+            .withDescription("Displays command-line documentation")
+            .withShortFlag("-h")
+            .withLongFlag("--help")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(false, Boolean.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
     }
     
     

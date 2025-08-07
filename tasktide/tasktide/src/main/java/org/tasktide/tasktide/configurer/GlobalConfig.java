@@ -102,6 +102,7 @@ public class GlobalConfig extends AbstractConfigurer {
     public void initConfig(ArgumentTree argTree) {
         
         // Configure repo properties
+        this.help();
         this.client();
         this.workflowName();
         this.stepName();
@@ -119,6 +120,23 @@ public class GlobalConfig extends AbstractConfigurer {
 
         // Put argument map into tree
         argTree.getTree().getRoot().getData().extend(this.getArgumentMap());
+    }
+    
+    
+    /**
+     * Configure help
+     */
+    public void help() {
+        Argument<Boolean> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Help")
+            .withDescription("Displays command-line documentation")
+            .withShortFlag("-h")
+            .withLongFlag("--help")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(false, Boolean.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
     }
     
     

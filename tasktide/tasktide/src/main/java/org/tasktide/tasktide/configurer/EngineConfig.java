@@ -100,6 +100,7 @@ public class EngineConfig extends AbstractConfigurer {
      */
     @Override
     public void initConfig(ArgumentTree argTree) {
+        this.help();
         this.workItemThreads();
         this.workItemSubTaskThreshold();
         this.itemTaskThreads();
@@ -117,6 +118,23 @@ public class EngineConfig extends AbstractConfigurer {
     
     
     /**
+     * Configure help
+     */
+    public void help() {
+        Argument<Boolean> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Help")
+            .withDescription("Displays command-line documentation")
+            .withShortFlag("-h")
+            .withLongFlag("--help")
+            .withArgType(ArgumentType.ACTION)
+            .withValue(false, Boolean.class)
+        .build();
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
      * Configures the wait time in seconds for locking an item
      * 
      */
@@ -129,7 +147,7 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--max-wall-time")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(int.class);
+        arg.setRefClass(Integer.class);
         
         // Set lock time
         try {
@@ -156,7 +174,7 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--work-item-threads")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(int.class);
+        arg.setRefClass(Integer.class);
         
         // Set work item threads
         try {
@@ -183,7 +201,7 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--work-item-sub-task-threshold")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(int.class);
+        arg.setRefClass(Integer.class);
         
         // Set work item sub tasking threshold
         try {
@@ -212,7 +230,7 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--item-task-sub-task-threshold")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(int.class);
+        arg.setRefClass(Integer.class);
         
         // Set item task threshold
         try {
@@ -241,7 +259,7 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--item-task-threads")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(int.class);
+        arg.setRefClass(Integer.class);
 
         // Set item task threads
         try {
@@ -268,7 +286,7 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--max-wall-time")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(int.class);
+        arg.setRefClass(Integer.class);
         
         // Set wait time
         try {
@@ -295,7 +313,7 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--time-keeper")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(int.class);
+        arg.setRefClass(Integer.class);
         
         // Set observer level
         try {

@@ -12,6 +12,7 @@ import org.tasktide.tasktide.configurer.TaskTideConfigurer;
 
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.parser.ArgumentTree;
+import org.tasktide.tasktide.parser.CliParser;
 
 
 /**
@@ -25,6 +26,7 @@ public class ClientConfigMap {
     private final Map<TaskTideClientType, TaskTideConfigurer> configMap;
     private final ArgumentTree argTree;
     private String[] argsIn;
+    private CliParser parser;
     
     
     /**
@@ -125,5 +127,30 @@ public class ClientConfigMap {
      */
     public ArgumentTree getArgTree() {
         return argTree;
+    }
+
+    public CliParser getParser() {
+        return parser;
+    }
+
+    public void setParser(CliParser parser) {
+        this.parser = parser;
+    }
+    
+    public void setParser(String[] args) {
+        this.setArgsIn(argsIn);
+        this.parser = new CliParser(this.argTree, args);
+    }
+    
+    
+    public boolean parseCommandLineArguments(String[] args) {
+        this.setParser(args);
+        this.parser.parse();
+        return parser.hasHelp();
+    }
+    
+    
+    public boolean shouldDisplayHelp() {
+        return this.parser.hasHelp();
     }
 }

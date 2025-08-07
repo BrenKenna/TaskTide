@@ -101,3 +101,15 @@ tasks.named('startScripts').configure {
         )
     }
 }
+
+
+// For testing command-line arguments in netbeans
+tasks.register('runWithArgs', JavaExec) {
+    group = 'application'
+    description = 'Runs the app with predefined args for testing.'
+
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide') // or use application.mainClass if preferred
+    args = ["--help"]
+    // args = ["engine", "--item-task-threads", "5"] // Value got picked up
+}

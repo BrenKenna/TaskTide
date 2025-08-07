@@ -4,9 +4,9 @@
  */
 package org.tasktide.tasktide.parser;
 
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.tasktide.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.parser.model.ArgumentMap;
@@ -23,6 +23,7 @@ public class CliParser {
     private final ArgumentTree argTree;
     private final String[] argsIn;
     private final Map<String, Argument<?>> parsedArgs;
+    private boolean hasHelp;
     
     
     /**
@@ -39,12 +40,41 @@ public class CliParser {
     
     
     /**
+     * Scan for help flag in argument tree
+     * 
+     * @return 
+     */
+    private boolean scanForHelp() {
+        for ( String elm : this.argsIn ) {
+            if ( elm.equalsIgnoreCase("-h") || elm.equalsIgnoreCase("--help") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    /**
+     * Set whether help flag was defined in argument tree
+     */
+    public void setHasHelp() {
+        this.hasHelp = this.scanForHelp();
+    }
+    
+    public boolean hasHelp() {
+        return this.hasHelp;
+    }
+    
+    /**
      * Parse command-line arguments into {@link ArgumentTree}, and resulting map
      * 
      * @return Map-String, {@link Argument}
      */
     public Map<String, Argument<?>> parse() {
-        parsedArgs.clear();;
+        parsedArgs.clear();
+        
+        // Check if help was reqeusted
+        this.setHasHelp();
         
         // Resolve command paths
         List<String> pathTokens = argTree.resolveActionPath(argsIn);

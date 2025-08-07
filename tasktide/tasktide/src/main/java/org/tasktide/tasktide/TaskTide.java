@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.tasktide.client.ClientConfigMap;
 import org.tasktide.tasktide.client.TaskTideClient;
@@ -43,13 +44,19 @@ public class TaskTide {
             // Configure provider and argument tree
             TaskTideClientUtility.printSplash();
             LOGGER.info("Configuring the CDI Container Provider");
-            CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, false);
+            CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, true);
 
             // Fetch config map
             LOGGER.info("Fetching TaskTide configs");
             ClientConfigMap configMap = new ClientConfigMap();
             configMap.addConfigs(provider);
-            configMap.setArgsIn(args);
+            configMap.parseCommandLineArguments(args);
+            if ( configMap.shouldDisplayHelp() ) {
+                LOGGER.warn("Help flag detected");
+                provider.shutdown();
+                LOGGER.warn(JsonUtils.toJson(true, configMap.getArgTree().getVerboseHelp()));
+                System.exit(0);
+            }
             TaskTideClientType clientType = configMap.whichClient();
 
             // Fetch TaskTideServiceManager

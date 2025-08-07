@@ -20,7 +20,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 
 
-
 /**
  * Testing of the AbstractItemStore class
  * 
@@ -116,9 +115,9 @@ public class AbstractItemStoreTests {
         nPassing = ItemStoreTestUtils.summarizeProcesses(processes);
         
         // End test
+        logger.info("Processes Summar:\t'{}'/'{}'", nPassing, nProcesses);
         assertionState = nPassing == nProcesses;
-        String template = String.format("Not all processes completed '%d'/%d passed", nPassing, nProcesses);
-        assertTrue(assertionState, template);
+        assertTrue(assertionState);
         logger.info("\n\n================ Can Multiple JVMs Serially AbstractItemStore Test ================\n");
     }
     

@@ -8,10 +8,13 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 === Bugs
 - [] Bean injection quirk between NetBeans & command-line.
+- [] Formatting of help splash text.
 - [X] Unit test only bug for NoSQL Template Repository queries.
 - [X] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
+
     /--> Not required, full story caught in log. Thread on token was processing, second thread eventually saw it was no longer ToDo and skipped.
 
+- [] Unit tests need to executed separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB. Maybe 
 
 === Main Checklist
 
@@ -30,7 +33,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
 
 - [] Docker Compose.
 - [] Logger messages DRY view on Degbug, Info, Warn, Error.
-- [] Apply ConfigUtil to TaskTideClient.
+- [] Apply ConfigUtil to TaskTideClient?
 - [X] Way to include "config" folder into zip.
 - [] Install helper script for TaskTide.
 - [X] Apply container support to all required integration tests.
@@ -42,6 +45,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] TaskTideClient needs TestContainers.
 ....
 - [] Process Workflow as StepList (fine for now).
+- [X] Display help message if required.
 - [X] Support unit tests with docker container.
 - [X] Load a target Microprofile config.
 - [X] Update ItemStore to use DbTarget instead of overloading with master/prootype methods.
