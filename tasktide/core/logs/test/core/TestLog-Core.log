@@ -31115,3 +31115,856 @@ Displaying uppated Workflow with new Step:
 
 2025-08-06 17:47:14 INFO  [ Thread-29 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container dcf21df1-11a3-4d9e-b3d0-3b51dad8e48c shut down
 2025-08-06 17:47:14 INFO  [ Thread-29 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9dc51403-8ded-45f0-b036-8743ed95b1cc shut down
+2025-08-07 11:39:32 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 11:39:32 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 11:39:32 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 11:39:32 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 11:39:33 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 11:39:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 11:39:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 11:39:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 11:39:33 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 11:39:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: bf17a35336ce0300aafb133a2fd3da6b41990f235cddb32d05a43ee412ebfa83
+2025-08-07 11:39:34 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.2289861S
+2025-08-07 11:39:34 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 11:39:34 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 11:39:34 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 11:39:34 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 11:39:34 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: a48104e8401f61e2896ac9f552d64426da9c0bbb0ad398f6fceecb59177b2e31
+2025-08-07 11:39:34 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /crazy_poitras: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 11:39:36 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.5494751S
+2025-08-07 11:39:36 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 11:39:36 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 11:39:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 11:39:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 11:39:36 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-08-07 11:39:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container c2777377-5554-4623-abc7-0a487b585bed initialized
+2025-08-07 11:39:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUpClass ]: 
+
+---------------- Initiating Template-Repository Tests ----------------
+
+2025-08-07 11:39:41 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 11:39:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 11:39:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 0b78017a-c845-4b08-9807-448c66d25f40 initialized
+2025-08-07 11:39:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating Template-Repository Tests ----------------
+
+2025-08-07 11:39:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 0b78017a-c845-4b08-9807-448c66d25f40 shut down
+2025-08-07 11:39:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 11:39:42 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 11:39:42 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: 
+
+================ Can Query Template WorkItem Repository ================
+
+2025-08-07 11:39:42 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: Generating data for testing
+2025-08-07 11:39:42 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: Fetching template for repository construction
+2025-08-07 11:39:42 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: 
+Displaying meta data for WorkItemRepository:
+'{
+    "Collection Name": "WorkItem",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-08-07 11:39:42 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: Inserting records
+2025-08-07 11:39:42 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 11:39:42 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container c2777377-5554-4623-abc7-0a487b585bed shut down
+2025-08-07 11:42:32 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 11:42:32 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 11:42:32 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 11:42:32 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: e7f2d0f87e19a150867da6b614fa0841845099a0d623da8ffb2360fb0395276c
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.7057581S
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 11:42:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: c3a3947900f68596a2763c1c39c2dac5804fcdca7e1234fcd305e505c4f70eef
+2025-08-07 11:42:34 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /crazy_lichterman: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 11:42:35 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.4983011S
+2025-08-07 11:42:35 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 11:42:35 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 11:42:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 11:42:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 11:42:36 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-08-07 11:42:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1a06e67a-7a04-455c-a1ff-e845421c1339 initialized
+2025-08-07 11:42:39 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUpClass ]: 
+
+---------------- Initiating Template-Repository Tests ----------------
+
+2025-08-07 11:42:39 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 61a6a94d-fbc3-47a9-a166-b30325dfa7ce initialized
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: 
+
+================ Can Query Template WorkItem Repository ================
+
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: Generating data for testing
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: Fetching template for repository construction
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1a06e67a-7a04-455c-a1ff-e845421c1339, 61a6a94d-fbc3-47a9-a166-b30325dfa7ce]
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1a06e67a-7a04-455c-a1ff-e845421c1339, 61a6a94d-fbc3-47a9-a166-b30325dfa7ce]
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1a06e67a-7a04-455c-a1ff-e845421c1339, 61a6a94d-fbc3-47a9-a166-b30325dfa7ce]
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1a06e67a-7a04-455c-a1ff-e845421c1339, 61a6a94d-fbc3-47a9-a166-b30325dfa7ce]
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: 
+Displaying meta data for WorkItemRepository:
+'{
+    "Collection Name": "WorkItem",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: Inserting records
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1a06e67a-7a04-455c-a1ff-e845421c1339, 61a6a94d-fbc3-47a9-a166-b30325dfa7ce]
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1a06e67a-7a04-455c-a1ff-e845421c1339, 61a6a94d-fbc3-47a9-a166-b30325dfa7ce]
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1a06e67a-7a04-455c-a1ff-e845421c1339, 61a6a94d-fbc3-47a9-a166-b30325dfa7ce]
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1a06e67a-7a04-455c-a1ff-e845421c1339, 61a6a94d-fbc3-47a9-a166-b30325dfa7ce]
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkItem ]: 
+Verifying records can be retrieved
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating Template-Repository Tests ----------------
+
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 61a6a94d-fbc3-47a9-a166-b30325dfa7ce shut down
+2025-08-07 11:42:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 11:42:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1a06e67a-7a04-455c-a1ff-e845421c1339 shut down
+2025-08-07 11:46:33 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 11:46:33 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 11:46:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 11:46:34 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 11:46:34 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 11:46:34 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 11:46:34 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 11:46:34 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 11:46:34 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 11:46:34 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 64c6cbfaad9228e7011e0c207e2ad5d520dff1952d93218e131e0d2a13d27b1f
+2025-08-07 11:46:35 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.745628S
+2025-08-07 11:46:35 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 11:46:35 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 11:46:35 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 11:46:35 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 11:46:35 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 6f23e9f5f4f7a2bc6704b18a4def7935498349633fcc5d3ec0aea9cc07e6c0cd
+2025-08-07 11:46:35 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /magical_heyrovsky: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 11:46:36 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.4291146S
+2025-08-07 11:46:36 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 11:46:36 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 11:46:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 11:46:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 11:46:36 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-08-07 11:46:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 480927b7-958d-49d9-bea3-0d95412794ce initialized
+2025-08-07 11:46:40 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUpClass ]: 
+
+---------------- Initiating Template-Repository Tests ----------------
+
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 0e00f57e-0c12-41e2-a325-17f6aaa53845 initialized
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryStep ]: 
+
+================ Can Query Template Step Repository ================
+
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryStep ]: Generating data for testing
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryStep ]: Fetching template for repository construction
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [480927b7-958d-49d9-bea3-0d95412794ce, 0e00f57e-0c12-41e2-a325-17f6aaa53845]
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [480927b7-958d-49d9-bea3-0d95412794ce, 0e00f57e-0c12-41e2-a325-17f6aaa53845]
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [480927b7-958d-49d9-bea3-0d95412794ce, 0e00f57e-0c12-41e2-a325-17f6aaa53845]
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [480927b7-958d-49d9-bea3-0d95412794ce, 0e00f57e-0c12-41e2-a325-17f6aaa53845]
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryStep ]: 
+Displaying meta data for StepRepository:
+'{
+    "Collection Name": "Step",
+    "Model Class": "Step",
+    "Repository Type": "NoSQL"
+}'
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryStep ]: Inserting records
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [480927b7-958d-49d9-bea3-0d95412794ce, 0e00f57e-0c12-41e2-a325-17f6aaa53845]
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [480927b7-958d-49d9-bea3-0d95412794ce, 0e00f57e-0c12-41e2-a325-17f6aaa53845]
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [480927b7-958d-49d9-bea3-0d95412794ce, 0e00f57e-0c12-41e2-a325-17f6aaa53845]
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [480927b7-958d-49d9-bea3-0d95412794ce, 0e00f57e-0c12-41e2-a325-17f6aaa53845]
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryStep ]: 
+Verifying records can be retrieved
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating Template-Repository Tests ----------------
+
+2025-08-07 11:46:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 0e00f57e-0c12-41e2-a325-17f6aaa53845 shut down
+2025-08-07 11:46:41 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 11:46:42 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 480927b7-958d-49d9-bea3-0d95412794ce shut down
+2025-08-07 11:49:39 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 11:49:39 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 11:49:39 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 11:49:39 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 30f6eb01915f341e98538139e0f83a1456a052e2d5266f7a469607cc69fcbafc
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.7212554S
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 11:49:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 11:49:41 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 10fe44f8717f16e9cc7ac063375446c41c7268746b1d65405d6ed3ee0bef607c
+2025-08-07 11:49:41 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /silly_joliot: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 11:49:42 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.4334978S
+2025-08-07 11:49:42 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 11:49:42 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 11:49:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 11:49:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 11:49:42 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-08-07 11:49:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 348c0a2e-ca4f-4504-baae-4b2da9c34236 initialized
+2025-08-07 11:49:46 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUpClass ]: 
+
+---------------- Initiating Template-Repository Tests ----------------
+
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 67c4f934-531c-44fd-99a5-5a9f48cae45b initialized
+2025-08-07 11:49:47 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 11:49:47 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkflow ]: 
+
+================ Can Query Template Workflow Repository ================
+
+2025-08-07 11:49:47 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkflow ]: Generating data for testing
+2025-08-07 11:49:47 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkflow ]: Fetching template for repository construction
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [348c0a2e-ca4f-4504-baae-4b2da9c34236, 67c4f934-531c-44fd-99a5-5a9f48cae45b]
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [348c0a2e-ca4f-4504-baae-4b2da9c34236, 67c4f934-531c-44fd-99a5-5a9f48cae45b]
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [348c0a2e-ca4f-4504-baae-4b2da9c34236, 67c4f934-531c-44fd-99a5-5a9f48cae45b]
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [348c0a2e-ca4f-4504-baae-4b2da9c34236, 67c4f934-531c-44fd-99a5-5a9f48cae45b]
+2025-08-07 11:49:47 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkflow ]: 
+Displaying meta data for Workflow Repository:
+'{
+    "Collection Name": "Workflow",
+    "Model Class": "Workflow",
+    "Repository Type": "NoSQL"
+}'
+2025-08-07 11:49:47 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkflow ]: Inserting records
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [348c0a2e-ca4f-4504-baae-4b2da9c34236, 67c4f934-531c-44fd-99a5-5a9f48cae45b]
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [348c0a2e-ca4f-4504-baae-4b2da9c34236, 67c4f934-531c-44fd-99a5-5a9f48cae45b]
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [348c0a2e-ca4f-4504-baae-4b2da9c34236, 67c4f934-531c-44fd-99a5-5a9f48cae45b]
+2025-08-07 11:49:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [348c0a2e-ca4f-4504-baae-4b2da9c34236, 67c4f934-531c-44fd-99a5-5a9f48cae45b]
+2025-08-07 11:49:47 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkflow ]: 
+Verifying records can be retrieved
+2025-08-07 11:49:48 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkflow ]: 
+Displayling retrieved record:
+
+{
+    "WorkflowId": "edf10189-04f8-4992-adb0-fc0eb86147e3",
+    "WorkflowName": "myFirstWorkflow",
+    "WorkflowSteps": {
+        "myFirstStep": {
+            "StepCount": 10,
+            "StepId": "step1",
+            "StepName": "myFirstStep",
+            "StepState": "PENDING",
+            "StepsDone": 2,
+            "StepsError": 1,
+            "StepsLocked": 2,
+            "StepsToDo": 5,
+            "WorkflowId": "b5d7b248-e934-47b2-9eb2-186d8b86bec9"
+        },
+        "mySecondStep": {
+            "StepCount": 10,
+            "StepId": "step2",
+            "StepName": "mySecondStep",
+            "StepState": "PENDING",
+            "StepsDone": 2,
+            "StepsError": 1,
+            "StepsLocked": 2,
+            "StepsToDo": 5,
+            "WorkflowId": "7f30e4ae-3de6-4e09-9ad3-24cc94a58cdc"
+        }
+    },
+    "id": "edf10189-04f8-4992-adb0-fc0eb86147e3",
+    "state": ""
+}
+2025-08-07 11:49:48 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canInsertQueryWorkflow ]: 
+
+================ Can Query Template Workflow Repository ================
+
+2025-08-07 11:49:48 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 11:49:48 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating Template-Repository Tests ----------------
+
+2025-08-07 11:49:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 67c4f934-531c-44fd-99a5-5a9f48cae45b shut down
+2025-08-07 11:49:48 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 11:49:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 348c0a2e-ca4f-4504-baae-4b2da9c34236 shut down
+2025-08-07 12:03:18 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 12:03:18 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 12:03:18 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 12:03:18 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: efe52eab22dda65795f43cad9a6382805bf323170b8eea81fb2bb808e1e73c15
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.687333S
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-08-07 12:03:19 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 4f3bced7bb73bbe5c5e2f1a36cc45580c5921f85871a39c7be101f149ebef8bb
+2025-08-07 12:03:26 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT6.3600212S
+2025-08-07 12:03:26 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JPA-Repository Tests ----------------
+
+2025-08-07 12:03:26 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 12:03:26 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 12:03:26 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 12:03:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container c3d74539-bfb5-4452-bf36-fec7d56f5c3f initialized
+2025-08-07 12:03:30 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-08-07 12:03:31 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f2a1ff0
+2025-08-07 12:03:31 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-08-07 12:03:31 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-07 12:03:31 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-07 12:03:31 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-07 12:03:31 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-07 12:03:31 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-07 12:03:31 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-07 12:03:32 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryWorkItem ]: 
+
+================ Can Query JPA WorkItem Repository ================
+
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryWorkItem ]: Generating data for testing
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryWorkItem ]: Fetching JPA for repository construction
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryWorkItem ]: 
+Displaying meta data for WorkItemRepository:
+'{
+    "Collection Name": "WorkItem",
+    "Model Class": "WorkItem",
+    "Repository Type": "SQL"
+}'
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryWorkItem ]: Inserting records
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryWorkItem ]: 
+Verifying records can be retrieved
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryWorkItem ]: 
+Displayling retrieved record:
+
+{
+    "DoneDate": 0,
+    "Id": "33ae51fc-aefc-493c-8836-81796a6ce4cb",
+    "ItemName": "My WorkItem Name",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "LockId": "2b2af316-376e-40ea-9287-6f4b0921bf75",
+    "StepName": "Arbitrary",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "83ee5636-76aa-4013-ba3b-e2d2d99e4e90"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "c4c7a1f8-06a6-4fc3-9b56-459664a42792"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "b88e7738-0c42-40d1-8253-c73bcf1cd7a5",
+                "state": "My Task"
+            }
+        },
+        "earliestDone": -3,
+        "id": "My Workload",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryWorkItem ]: 
+
+================ Can Query JPA WorkItem Repository ================
+
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JPA-Repository Tests ----------------
+
+2025-08-07 12:03:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container c3d74539-bfb5-4452-bf36-fec7d56f5c3f shut down
+2025-08-07 12:03:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 12:03:46 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 12:03:47 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: c762f200059846c8c720a8091f89fab03ad9e741c6242c00fd20e4faa79de335
+2025-08-07 12:03:47 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.7812879S
+2025-08-07 12:03:47 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 12:03:47 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 12:03:47 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 12:03:47 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-08-07 12:03:47 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 6a43848c8c4b7b870f3bd04cc979c496ebb182894f8dfb5da7c8938d5b846f71
+2025-08-07 12:03:52 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT5.0623673S
+2025-08-07 12:03:52 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JPA-Repository Tests ----------------
+
+2025-08-07 12:03:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 12:03:52 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 12:03:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 12:03:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4d8b2c61-f138-42db-8b42-d109f7a474a5 initialized
+2025-08-07 12:03:57 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-08-07 12:03:57 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7a600e21
+2025-08-07 12:03:57 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-08-07 12:03:57 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-07 12:03:57 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-07 12:03:57 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-07 12:03:57 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-07 12:03:57 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-07 12:03:57 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-07 12:03:58 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-07 12:03:58 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:03:58 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryStep ]: 
+
+================ Can Query JPA Step Repository ================
+
+2025-08-07 12:03:58 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryStep ]: Generating data for testing
+2025-08-07 12:03:58 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryStep ]: Fetching JPA for repository construction
+2025-08-07 12:03:59 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryStep ]: 
+Displaying meta data for StepRepository:
+'{
+    "Collection Name": "Step",
+    "Model Class": "Step",
+    "Repository Type": "SQL"
+}'
+2025-08-07 12:03:59 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryStep ]: Inserting records
+2025-08-07 12:03:59 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryStep ]: 
+Verifying records can be retrieved
+2025-08-07 12:03:59 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryStep ]: 
+Displayling retrieved record:
+
+{
+    "StepCount": 10,
+    "StepId": "step1",
+    "StepName": "myFirstStep",
+    "StepState": "PENDING",
+    "StepsDone": 2,
+    "StepsError": 1,
+    "StepsLocked": 2,
+    "StepsToDo": 5,
+    "WorkflowId": "d9400ee6-d030-43b5-8a09-dde7712cde7b"
+}
+2025-08-07 12:03:59 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canInsertQueryStep ]: 
+
+================ Can Query JPA Step Repository ================
+
+2025-08-07 12:03:59 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:03:59 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JPA-Repository Tests ----------------
+
+2025-08-07 12:03:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4d8b2c61-f138-42db-8b42-d109f7a474a5 shut down
+2025-08-07 12:03:59 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 12:04:26 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 12:04:26 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 12:04:26 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 12:04:26 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 49f6c5f6fd78cee97047a9389634a677d8547b8dccdebf4769db5a57aa0733a4
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.6413466S
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-08-07 12:04:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: e03e73e62bb54937b3b0c43ba913d458048a977b7f3aab8c9ecc1b714e43b0d6
+2025-08-07 12:04:32 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT4.8680921S
+2025-08-07 12:04:32 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.setUpClass ]: 
+
+---------------- Initiating JPA-Repository Tests ----------------
+
+2025-08-07 12:04:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 12:04:32 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 12:04:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 12:04:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 5661665b-46c2-4260-a03f-a642e3e12253 initialized
+2025-08-07 12:04:37 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-08-07 12:04:37 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@488b46da
+2025-08-07 12:04:37 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-08-07 12:04:37 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-08-07 12:04:37 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-08-07 12:04:37 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-08-07 12:04:37 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-08-07 12:04:37 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-07 12:04:37 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-08-07 12:04:38 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canQueryInsertWorkflow ]: 
+
+================ Can Query JPA Workflow Repository ================
+
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canQueryInsertWorkflow ]: Generating data for testing
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canQueryInsertWorkflow ]: Fetching JPA for repository construction
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canQueryInsertWorkflow ]: 
+Displaying meta data for Workflow Repository:
+'{
+    "Collection Name": "Workflow",
+    "Model Class": "Workflow",
+    "Repository Type": "SQL"
+}'
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canQueryInsertWorkflow ]: Inserting records
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canQueryInsertWorkflow ]: 
+Verifying records can be retrieved
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canQueryInsertWorkflow ]: 
+Displayling retrieved record:
+
+{
+    "WorkflowId": "b06f09e5-d9a5-4eef-bec6-9878ece2b222",
+    "WorkflowName": "myFirstWorkflow",
+    "WorkflowSteps": {
+        "myFirstStep": {
+            "StepCount": 10,
+            "StepId": "step1",
+            "StepName": "myFirstStep",
+            "StepState": "PENDING",
+            "StepsDone": 2,
+            "StepsError": 1,
+            "StepsLocked": 2,
+            "StepsToDo": 5,
+            "WorkflowId": "d4e42ea1-92bb-4f36-96d1-8bd0b28e6dde"
+        },
+        "mySecondStep": {
+            "StepCount": 10,
+            "StepId": "step2",
+            "StepName": "mySecondStep",
+            "StepState": "PENDING",
+            "StepsDone": 2,
+            "StepsError": 1,
+            "StepsLocked": 2,
+            "StepsToDo": 5,
+            "WorkflowId": "e918ec51-ece9-4d29-8303-273c7c6f7a58"
+        }
+    },
+    "id": "b06f09e5-d9a5-4eef-bec6-9878ece2b222",
+    "state": ""
+}
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.canQueryInsertWorkflow ]: 
+
+================ Can Query JPA Workflow Repository ================
+
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating JPA-Repository Tests ----------------
+
+2025-08-07 12:04:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 5661665b-46c2-4260-a03f-a642e3e12253 shut down
+2025-08-07 12:04:39 INFO  [ Test worker -> org.tasktide.core.repository.JpaRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 12:15:58 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.setUpClass ]: 
+
+---------------- Initiating RocksDbItemStore-Repository Tests ----------------
+
+2025-08-07 12:15:58 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'TaskTideRepository/RocksDB'
+2025-08-07 12:15:59 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:15:59 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkItem ]: 
+
+================ Can Query RocksDbItemStore WorkItem Repository ================
+
+2025-08-07 12:15:59 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkItem ]: Generating data for testing
+2025-08-07 12:15:59 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkItem ]: Fetching RocksDbItemStore for repository construction
+2025-08-07 12:15:59 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkItem ]: 
+Displaying meta data for WorkItemRepository:
+'{
+    "Collection Name": "WorkItem",
+    "Model Class": "WorkItem",
+    "Repository Type": "Item Store"
+}'
+2025-08-07 12:15:59 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkItem ]: Inserting records
+2025-08-07 12:16:00 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkItem ]: 
+Verifying records can be retrieved
+2025-08-07 12:16:00 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkItem ]: 
+Displayling retrieved record:
+
+{
+    "DoneDate": 0,
+    "Id": "21f49f9c-94c6-418b-8286-80e35d867073",
+    "ItemName": "My WorkItem Name",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "LockId": "165484f1-2f32-4254-ab02-21d1ec15132c",
+    "StepName": "Arbitrary",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "122b0f00-b9c1-4151-9717-2eaee44065b0"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "13c8d4dc-323b-4eb1-8cf3-f6a4045a4029"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "54312e9c-3549-45ad-8943-5af70e689bce",
+                "state": "My Task"
+            }
+        },
+        "earliestDone": -3,
+        "id": "My Workload",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+2025-08-07 12:16:00 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkItem ]: 
+
+================ Can Query RocksDbItemStore WorkItem Repository ================
+
+2025-08-07 12:16:00 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:16:00 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating RocksDbItemStore-Repository Tests ----------------
+
+2025-08-07 12:16:11 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.setUpClass ]: 
+
+---------------- Initiating RocksDbItemStore-Repository Tests ----------------
+
+2025-08-07 12:16:11 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'TaskTideRepository/RocksDB'
+2025-08-07 12:16:11 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:16:11 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertStep ]: 
+
+================ Can Query RocksDbItemStore Step Repository ================
+
+2025-08-07 12:16:11 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertStep ]: Generating data for testing
+2025-08-07 12:16:11 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertStep ]: Fetching RocksDbItemStore for repository construction
+2025-08-07 12:16:11 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertStep ]: 
+Displaying meta data for StepRepository:
+'{
+    "Collection Name": "Step",
+    "Model Class": "Step",
+    "Repository Type": "Item Store"
+}'
+2025-08-07 12:16:11 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertStep ]: Inserting records
+2025-08-07 12:16:12 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertStep ]: 
+Verifying records can be retrieved
+2025-08-07 12:16:12 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertStep ]: 
+Displayling retrieved record:
+
+{
+    "StepCount": 10,
+    "StepId": "step1",
+    "StepName": "myFirstStep",
+    "StepState": "PENDING",
+    "StepsDone": 2,
+    "StepsError": 1,
+    "StepsLocked": 2,
+    "StepsToDo": 5,
+    "WorkflowId": "997515dd-7d67-4c6f-9f5d-39707a30fd00"
+}
+2025-08-07 12:16:12 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertStep ]: 
+
+================ Can Query RocksDbItemStore Step Repository ================
+
+2025-08-07 12:16:12 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:16:12 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating RocksDbItemStore-Repository Tests ----------------
+
+2025-08-07 12:16:22 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.setUpClass ]: 
+
+---------------- Initiating RocksDbItemStore-Repository Tests ----------------
+
+2025-08-07 12:16:22 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'TaskTideRepository/RocksDB'
+2025-08-07 12:16:22 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:16:22 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkflow ]: 
+
+================ Can Query RocksDbItemStore Workflow Repository ================
+
+2025-08-07 12:16:22 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkflow ]: Generating data for testing
+2025-08-07 12:16:22 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkflow ]: Fetching JPA for repository construction
+2025-08-07 12:16:22 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkflow ]: 
+Displaying meta data for Workflow Repository:
+'{
+    "Collection Name": "Workflow",
+    "Model Class": "Workflow",
+    "Repository Type": "Item Store"
+}'
+2025-08-07 12:16:22 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkflow ]: Inserting records
+2025-08-07 12:16:23 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkflow ]: 
+Verifying records can be retrieved
+2025-08-07 12:16:23 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkflow ]: 
+Displayling retrieved record:
+
+{
+    "WorkflowId": "e4d69fa6-b9e0-4bda-9e51-23e437b4db72",
+    "WorkflowName": "myFirstWorkflow",
+    "WorkflowSteps": {
+        "myFirstStep": {
+            "StepCount": 10,
+            "StepId": "step1",
+            "StepName": "myFirstStep",
+            "StepState": "PENDING",
+            "StepsDone": 2,
+            "StepsError": 1,
+            "StepsLocked": 2,
+            "StepsToDo": 5,
+            "WorkflowId": "a0026903-e36a-4fa1-8cc8-0158dd18e909"
+        },
+        "mySecondStep": {
+            "StepCount": 10,
+            "StepId": "step2",
+            "StepName": "mySecondStep",
+            "StepState": "PENDING",
+            "StepsDone": 2,
+            "StepsError": 1,
+            "StepsLocked": 2,
+            "StepsToDo": 5,
+            "WorkflowId": "2c98a0ae-c988-4b25-80ae-617ec433e82f"
+        }
+    },
+    "id": "e4d69fa6-b9e0-4bda-9e51-23e437b4db72",
+    "state": ""
+}
+2025-08-07 12:16:23 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.canQueryInsertWorkflow ]: 
+
+================ Can Query RocksDbItemStore Workflow Repository ================
+
+2025-08-07 12:16:23 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:16:23 INFO  [ Test worker -> org.tasktide.core.repository.RocksDbItemStoreRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating RocksDbItemStore-Repository Tests ----------------
+

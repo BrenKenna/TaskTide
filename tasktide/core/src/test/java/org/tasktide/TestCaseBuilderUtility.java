@@ -134,6 +134,7 @@ public class TestCaseBuilderUtility {
             .taskDone(0)
             .itemState(ItemState.TODO)
             .itemType(ItemType.SINGLE)
+            .stepName("Arbitrary")
         .build();
     }
     

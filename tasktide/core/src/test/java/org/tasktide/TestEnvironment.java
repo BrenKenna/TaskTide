@@ -9,6 +9,7 @@ import jakarta.enterprise.inject.se.SeContainerInitializer;
 import org.eclipse.microprofile.config.Config;
 
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
 import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
 
 import java.net.URI;
