@@ -93,10 +93,11 @@ public class TaskTideClientUtility {
      * Configures {@link CdiContainerProvider} for provided {@link CdiProviders} type
      * 
      * @param cdiProvider
+     * @param flag
      * @return {@link CdiContainerProvider}
      */
     @SuppressWarnings("unchecked")
-    public static CdiContainerProvider configureCdiInstance(CdiProviders cdiProvider) {
+    public static CdiContainerProvider configureCdiInstance(CdiProviders cdiProvider, boolean flag) {
         
         // Initialize
         CdiContainerProvider provider = cdiProvider.createProvider();
@@ -106,12 +107,13 @@ public class TaskTideClientUtility {
         //  Required with Netbeans, not in linux shell?
         if ( !cdiProvider.isProvider(CdiProviders.QUARKUS) ) {
             provider.addExtension(ReflectionEntityMetadataExtension.class, DocumentExtension.class);
-            /*
-            provider.addBeanClass(
-                GlobalConfig.class, ManagerConfig.class, EngineConfig.class,
-                WorkItem.class, ItemTask.class, Step.class, Workflow.class
-            );
-            */
+            
+            if ( flag ) {
+                provider.addBeanClass(
+                GlobalConfig.class, ManagerConfig.class, EngineConfig.class
+                );
+            }
+            
         }
         
         // Return

@@ -43,7 +43,7 @@ public class TaskTide {
             // Configure provider and argument tree
             TaskTideClientUtility.printSplash();
             LOGGER.info("Configuring the CDI Container Provider");
-            CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD);
+            CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, false);
 
             // Fetch config map
             LOGGER.info("Fetching TaskTide configs");

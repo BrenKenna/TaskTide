@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide.tasktide;
+package org.tasktide.tasktide.client;
 
+import org.tasktide.tasktide.configurer.ConfigureTaskTideTest;
 import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,13 +19,13 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.tasktide.client.ClientConfigMap;
-import org.tasktide.tasktide.client.TaskTideClient;
-import org.tasktide.tasktide.client.TaskTideClientType;
-import org.tasktide.tasktide.client.TaskTideClientUtility;
+import org.tasktide.tasktide.TestEnvironment;
+
 
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
+
+import org.testcontainers.containers.GenericContainer;
 
 
 /**
@@ -36,21 +38,27 @@ public class TaskTideClientTests {
     private static final Logger logger = LogManager.getLogger(ConfigureTaskTideTest.class);
     private static CdiContainerProvider provider;
     
+    @Rule
+    private static final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    
     public TaskTideClientTests() {
     }
+    
     
     @BeforeAll
     public static void setUpClass() {
         String msg = "\n\n---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------\n";
-        provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD);
+        provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, true);
         logger.info(msg);
     }
+    
     
     @AfterAll
     public static void tearDownClass() {
         String msg = "\n\n---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------\n";
         provider.shutdown();
         logger.info(msg);
+        couchDB.stop();
     }
     
     @BeforeEach
@@ -116,7 +124,12 @@ public class TaskTideClientTests {
         // Fetch service manager
         logger.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-        TaskTideClientUtility.initServiceManager(repoType, configMap);
+        try {
+            TaskTideClientUtility.initServiceManager(repoType, configMap);
+        }
+        catch (IllegalStateException ex) {
+            logger.info("Proceeding to Engine with previously iniatied engine");
+        }
         
         // Fetch client
         logger.info("Fetching Client");

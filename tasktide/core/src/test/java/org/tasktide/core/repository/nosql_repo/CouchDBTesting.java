@@ -6,6 +6,8 @@ package org.tasktide.core.repository.nosql_repo;
 
 import jakarta.enterprise.inject.se.SeContainer;
 
+import jakarta.nosql.Template;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,17 +19,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import jakarta.nosql.Template;
-import org.eclipse.jnosql.mapping.core.Converters;
-import org.eclipse.jnosql.mapping.document.DocumentTemplate;
-import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
-import org.eclipse.jnosql.mapping.reflection.Reflections;
-import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
-import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
-
-import org.jboss.weld.junit5.auto.AddExtensions;
-import org.jboss.weld.junit5.auto.AddPackages;
-import org.jboss.weld.junit5.auto.EnableAutoWeld;
 import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.TestInstance;
@@ -42,10 +33,6 @@ import org.testcontainers.containers.GenericContainer;
  * 
  * @author bkenna
  */
-@EnableAutoWeld
-@AddPackages(value = {Converters.class, EntityConverter.class, Template.class, DocumentTemplate.class})
-@AddPackages(value = {Tunes.class, Reflections.class})
-@AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CouchDBTesting {
     

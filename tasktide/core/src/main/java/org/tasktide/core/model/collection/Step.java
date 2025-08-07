@@ -28,7 +28,7 @@ import org.tasktide.core.TaskTideModel;
  * 
  * @author bkenna
  */
-@jakarta.nosql.Embeddable
+@jakarta.nosql.Entity
 @jakarta.persistence.Entity
 @jakarta.persistence.Table(name = "Step")
 public class Step implements TaskTideModel<Step> {

@@ -27,7 +27,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.TestInstance;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
 
@@ -39,7 +38,6 @@ import org.tasktide.tasktide.parser.ArgumentTree;
  */
 @EnableAutoWeld
 @AddBeanClasses( {GlobalConfig.class, ManagerConfig.class, EngineConfig.class} )
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ProfileConfigureTests {
     
     private static final Logger logger = LogManager.getLogger(ProfileConfigureTests.class);

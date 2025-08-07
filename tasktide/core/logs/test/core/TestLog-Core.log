@@ -31968,3 +31968,466 @@ Displayling retrieved record:
 
 ---------------- Terminating RocksDbItemStore-Repository Tests ----------------
 
+2025-08-07 12:37:27 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 12:37:27 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 12:37:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 12:37:28 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 12:37:28 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 12:37:28 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 12:37:28 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 12:37:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 12:37:28 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 12:37:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: fb9d53b9cf88d5b9ae6dc9575136f45d073f84f6e7a6944799f17458f19d53a5
+2025-08-07 12:37:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.9475967S
+2025-08-07 12:37:29 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 12:37:29 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 12:37:29 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 12:37:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 12:37:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 0c12644551cb57fcd4dfaf4c68990feba3deb0fcd7e515a964f5ac453a3172d9
+2025-08-07 12:37:29 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /thirsty_nobel: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 12:37:31 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT2.5308793S
+2025-08-07 12:37:32 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 12:37:32 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 12:37:32 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.setUpClass ]: 
+
+---------------- Initiating JNoSQL-CouchDB Tests ----------------
+
+2025-08-07 12:37:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 12:37:32 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 12:37:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 12:37:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4f3a1a19-7a0b-4ea9-85a6-3e2719e31c7b initialized
+2025-08-07 12:37:36 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:37:36 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.shouldInjectCouchDBTemplate ]: 
+
+================ Tests DocumentTemplate Injection ================
+
+2025-08-07 12:37:36 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.shouldInjectCouchDBTemplate ]: 
+
+================ Tests DocumentTemplate Injection ================
+
+2025-08-07 12:37:36 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:37:36 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDownClass ]: 
+
+---------------- Terminating JNoSQL-CouchDB Tests ----------------
+
+2025-08-07 12:37:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4f3a1a19-7a0b-4ea9-85a6-3e2719e31c7b shut down
+2025-08-07 12:37:36 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDownClass ]: CDI container shut down
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 12:37:45 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 8ea38584b69a9e021db3bb8501c0b76b1bb02e7ecd134538c15ebaa7f3ff8f0e
+2025-08-07 12:37:46 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.6869536S
+2025-08-07 12:37:46 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 12:37:46 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 12:37:46 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 12:37:46 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 12:37:46 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: a997462bdf2bc16e714184c957343ea5cfd9e88b1b4d856f020f23df4ec06f96
+2025-08-07 12:37:46 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /great_banach: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 12:37:47 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.4423492S
+2025-08-07 12:37:48 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 12:37:48 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 12:37:48 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.setUpClass ]: 
+
+---------------- Initiating JNoSQL-CouchDB Tests ----------------
+
+2025-08-07 12:37:48 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 12:37:48 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 12:37:48 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 12:37:52 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 397a231a-c00e-43dd-8174-cba66e5bec9a initialized
+2025-08-07 12:37:52 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:37:52 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.containerShouldBeRunning ]: 
+
+================ Tests CouchDB Container Spinup ================
+
+2025-08-07 12:37:52 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.containerShouldBeRunning ]: Displaying CouchDB Container status:	'InspectContainerResponse(args=[--, /docker-entrypoint.sh, /opt/couchdb/bin/couchdb], config=ContainerConfig(attachStderr=false, attachStdin=false, attachStdout=false, cmd=[/opt/couchdb/bin/couchdb], domainName=, entrypoint=[tini, --, /docker-entrypoint.sh], env=[COUCHDB_USER=admin, COUCHDB_PASSWORD=password, PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin, GPG_COUCH_KEY=390EF70BB1EA12B2773962950EE62FB37A00258D, COUCHDB_VERSION=3.4.3], exposedPorts=[4369/tcp, 5984/tcp, 9100/tcp], hostName=a997462bdf2b, image=couchdb:latest, labels={maintainer=CouchDB Developers dev@couchdb.apache.org, org.testcontainers=true, org.testcontainers.lang=java, org.testcontainers.sessionId=6f08b169-0d25-46c8-a87f-a3afa1421980, org.testcontainers.version=1.21.3}, macAddress=null, networkDisabled=null, onBuild=null, stdinOpen=false, portSpecs=null, stdInOnce=false, tty=false, user=, volumes={/opt/couchdb/data={}}, workingDir=, healthCheck=null), created=2025-08-07T11:37:46.38355538Z, driver=overlay2, execDriver=null, hostConfig=HostConfig(binds=[], blkioWeight=0, blkioWeightDevice=null, blkioDeviceReadBps=null, blkioDeviceWriteBps=null, blkioDeviceReadIOps=null, blkioDeviceWriteIOps=null, memorySwappiness=null, nanoCPUs=0, capAdd=null, capDrop=null, containerIDFile=, cpuPeriod=0, cpuRealtimePeriod=0, cpuRealtimeRuntime=0, cpuShares=0, cpuQuota=0, cpusetCpus=, cpusetMems=, devices=null, deviceCgroupRules=null, deviceRequests=null, diskQuota=null, dns=null, dnsOptions=null, dnsSearch=null, extraHosts=[], groupAdd=null, ipcMode=shareable, cgroup=, links=[], logConfig=LogConfig(type=json-file, config={}), lxcConf=null, memory=0, memorySwap=0, memoryReservation=0, kernelMemory=null, networkMode=default, oomKillDisable=false, init=null, autoRemove=false, oomScoreAdj=0, portBindings={5984/tcp=[Lcom.github.dockerjava.api.model.Ports$Binding;@795131d6}, privileged=false, publishAllPorts=false, readonlyRootfs=false, restartPolicy=no, ulimits=null, cpuCount=0, cpuPercent=0, ioMaximumIOps=0, ioMaximumBandwidth=0, volumesFrom=[], mounts=null, pidMode=, isolation=null, securityOpts=null, storageOpt=null, cgroupParent=, volumeDriver=, shmSize=67108864, pidsLimit=null, runtime=runc, tmpFs=null, utSMode=, usernsMode=, sysctls=null, consoleSize=[0, 0], cgroupnsMode=host), hostnamePath=/var/lib/docker/containers/a997462bdf2bc16e714184c957343ea5cfd9e88b1b4d856f020f23df4ec06f96/hostname, hostsPath=/var/lib/docker/containers/a997462bdf2bc16e714184c957343ea5cfd9e88b1b4d856f020f23df4ec06f96/hosts, logPath=/var/lib/docker/containers/a997462bdf2bc16e714184c957343ea5cfd9e88b1b4d856f020f23df4ec06f96/a997462bdf2bc16e714184c957343ea5cfd9e88b1b4d856f020f23df4ec06f96-json.log, id=a997462bdf2bc16e714184c957343ea5cfd9e88b1b4d856f020f23df4ec06f96, sizeRootFs=null, sizeRw=null, imageId=sha256:6589c872ddf8a0b2d92d7c3e1d53e2eb5731536979e25a985ad163ead766a178, mountLabel=, name=/great_banach, restartCount=0, networkSettings=NetworkSettings(bridge=, sandboxId=0f9adf2fbd1cc2f8c61f299ae4d03dd256d8a5d657087ec285a33bdc8f71916e, hairpinMode=false, linkLocalIPv6Address=, linkLocalIPv6PrefixLen=0, ports={4369/tcp=null, 5984/tcp=[Lcom.github.dockerjava.api.model.Ports$Binding;@7d7a8d23, 9100/tcp=null}, sandboxKey=/var/run/docker/netns/0f9adf2fbd1c, secondaryIPAddresses=null, secondaryIPv6Addresses=null, endpointID=7ad53cdb25510f9fed74d5ce381aaeeec795af5383213ae5be233536813fec2b, gateway=172.17.0.1, portMapping=null, globalIPv6Address=, globalIPv6PrefixLen=0, ipAddress=172.17.0.4, ipPrefixLen=16, ipV6Gateway=, macAddress=02:42:ac:11:00:04, networks={bridge=ContainerNetwork(ipamConfig=null, links=[], aliases=null, networkID=181043310a28481f5309b3aae56d87d90cae2dd168ea98aebc480b9b61270983, endpointId=7ad53cdb25510f9fed74d5ce381aaeeec795af5383213ae5be233536813fec2b, gateway=172.17.0.1, ipAddress=172.17.0.4, ipPrefixLen=16, ipV6Gateway=, globalIPv6Address=, globalIPv6PrefixLen=0, macAddress=02:42:ac:11:00:04)}), path=tini, processLabel=, resolvConfPath=/var/lib/docker/containers/a997462bdf2bc16e714184c957343ea5cfd9e88b1b4d856f020f23df4ec06f96/resolv.conf, execIds=null, state=InspectContainerResponse.ContainerState(status=running, running=true, paused=false, restarting=false, oomKilled=false, dead=false, pid=6708, exitCode=0, error=, startedAt=2025-08-07T11:37:46.727278506Z, finishedAt=0001-01-01T00:00:00Z, health=null), volumes=null, volumesRW=null, node=null, mounts=[InspectContainerResponse.Mount(name=203e90c5e9d5edac91144891a748fd6335e18682dbfb842a77fb1d3c7cae927b, source=/var/lib/docker/volumes/203e90c5e9d5edac91144891a748fd6335e18682dbfb842a77fb1d3c7cae927b/_data, destination=/opt/couchdb/data, driver=local, mode=, rw=true)], graphDriver=GraphDriver(name=overlay2, data=GraphData(rootDir=null, deviceId=null, deviceName=null, deviceSize=null, dir=null)), platform=linux)'
+2025-08-07 12:37:52 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.containerShouldBeRunning ]: 
+
+================ Tests CouchDB Container Spinup ================
+
+2025-08-07 12:37:52 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:37:52 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDownClass ]: 
+
+---------------- Terminating JNoSQL-CouchDB Tests ----------------
+
+2025-08-07 12:37:52 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 397a231a-c00e-43dd-8174-cba66e5bec9a shut down
+2025-08-07 12:37:52 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDownClass ]: CDI container shut down
+2025-08-07 12:37:57 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 12:37:57 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 12:37:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 12:37:57 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 12:37:57 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 12:37:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 12:37:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 3c9939f5d609879b142cba28152c17685877d055132cf46f43c82b3661177dce
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.6150018S
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 12:37:58 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 518db924783defd5f1ad167f3d817b26513ad9069fa1c19e7bd785b5fa0560e3
+2025-08-07 12:37:59 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /nervous_kare: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 12:38:00 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.4761455S
+2025-08-07 12:38:00 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 12:38:00 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 12:38:00 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.setUpClass ]: 
+
+---------------- Initiating JNoSQL-CouchDB Tests ----------------
+
+2025-08-07 12:38:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 12:38:00 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 12:38:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 12:38:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1640460c-ce1a-4a41-b6bf-d44f4b980966 initialized
+2025-08-07 12:38:05 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 12:38:05 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.shouldInsertRecord ]: 
+
+================ Tests CouchDB Insertion ================
+
+2025-08-07 12:38:05 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.shouldInsertRecord ]: 
+
+Created template:
+org.eclipse.jnosql.mapping.document.DefaultDocumentTemplate@374ba492
+2025-08-07 12:38:05 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.shouldInsertRecord ]: 
+
+Displaying record for import:
+Music{id=Id, name=Imagine, artist=John Lennon}
+2025-08-07 12:38:05 ERROR [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.shouldInsertRecord ]: 
+
+Test failed music model recieved from inster:
+Music{id=Id, name=Imagine, artist=John Lennon}
+2025-08-07 12:38:05 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.shouldInsertRecord ]: 
+
+================ Injected CouchDB Insertion Test ================
+
+2025-08-07 12:38:05 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 12:38:05 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDownClass ]: 
+
+---------------- Terminating JNoSQL-CouchDB Tests ----------------
+
+2025-08-07 12:38:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1640460c-ce1a-4a41-b6bf-d44f4b980966 shut down
+2025-08-07 12:38:05 INFO  [ Test worker -> org.tasktide.core.repository.nosql_repo.CouchDBTesting.tearDownClass ]: CDI container shut down
+2025-08-07 13:33:17 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 13:33:17 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 13:33:17 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 13:33:17 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 13:33:17 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 13:33:17 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 13:33:17 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 13:33:17 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 13:33:18 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 13:33:18 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 2d62245ae3a6e21e235e82ff060bb809d9fc9df18767ec42909eb6959a7c469a
+2025-08-07 13:33:19 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.4294589S
+2025-08-07 13:33:19 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 13:33:19 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 13:33:19 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 13:33:19 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 13:33:19 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 32adfe5f7e15761049bec487cdf6f9a33205bfad3532812376b2fbacd1024b6d
+2025-08-07 13:33:19 ERROR [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Could not start container
+com.github.dockerjava.api.exception.InternalServerErrorException: Status 500: {"message":"driver failed programming external connectivity on endpoint dreamy_wu (5b251c3ebe0f5ca04e92b2339cc9f353d018f91add1dd01c9f0fd13e99f32e28): Bind for 0.0.0.0:5984 failed: port is already allocated"}
+
+	at org.testcontainers.shaded.com.github.dockerjava.core.DefaultInvocationBuilder.execute(DefaultInvocationBuilder.java:247) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.shaded.com.github.dockerjava.core.DefaultInvocationBuilder.post(DefaultInvocationBuilder.java:102) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.shaded.com.github.dockerjava.core.exec.StartContainerCmdExec.execute(StartContainerCmdExec.java:31) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.shaded.com.github.dockerjava.core.exec.StartContainerCmdExec.execute(StartContainerCmdExec.java:13) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.shaded.com.github.dockerjava.core.exec.AbstrSyncDockerCmdExec.exec(AbstrSyncDockerCmdExec.java:21) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.shaded.com.github.dockerjava.core.command.AbstrDockerCmd.exec(AbstrDockerCmd.java:33) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.shaded.com.github.dockerjava.core.command.StartContainerCmdImpl.exec(StartContainerCmdImpl.java:42) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.containers.GenericContainer.tryStart(GenericContainer.java:444) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.containers.GenericContainer.lambda$doStart$0(GenericContainer.java:346) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.rnorth.ducttape.unreliables.Unreliables.retryUntilSuccess(Unreliables.java:81) ~[duct-tape-1.0.8.jar:?]
+	at org.testcontainers.containers.GenericContainer.doStart(GenericContainer.java:336) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.testcontainers.containers.GenericContainer.start(GenericContainer.java:322) ~[testcontainers-1.21.3.jar:1.21.3]
+	at org.tasktide.TestEnvironment.couchDbContainer(TestEnvironment.java:77) ~[test/:?]
+	at org.tasktide.core.repository.TemplateRepositoryTests.<init>(TemplateRepositoryTests.java:67) ~[test/:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.newInstance(ReflectionUtils.java:553) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.ConstructorInvocation.proceed(ConstructorInvocation.java:56) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.api.extension.InvocationInterceptor.interceptTestClassConstructor(InvocationInterceptor.java:74) ~[junit-jupiter-api-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:62) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestClassConstructor(ClassBasedTestDescriptor.java:364) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateTestClass(ClassBasedTestDescriptor.java:311) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.ClassTestDescriptor.instantiateTestClass(ClassTestDescriptor.java:79) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:287) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$4(ClassBasedTestDescriptor.java:279) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at java.util.Optional.orElseGet(Optional.java:364) ~[?:?]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$5(ClassBasedTestDescriptor.java:278) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$before$2(ClassBasedTestDescriptor.java:204) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.before(ClassBasedTestDescriptor.java:203) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.before(ClassBasedTestDescriptor.java:85) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:148) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:118) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:93) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:88) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.3.jar:8.3]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.3.jar:8.3]
+	at jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.3.jar:8.3]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
+2025-08-07 13:33:19 ERROR [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: There are no stdout/stderr logs available for the failed container
+2025-08-07 13:33:49 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 13:33:49 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 13:33:49 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 13:33:49 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 13:33:49 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 13:33:49 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 13:33:49 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 13:33:49 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 13:33:50 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 13:33:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 03a4ffb45a8e8bbc0507ab08a5f6446b4912968ad5c108c6f2af9f73255f032a
+2025-08-07 13:33:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.7687666S
+2025-08-07 13:33:50 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 13:33:50 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 13:33:50 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 13:33:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 13:33:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 9c6077bbc443b6a9880d0c26731478d5a7d6de74f46dbdbe976f5fb8d55efef9
+2025-08-07 13:33:51 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /laughing_goldwasser: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 13:33:53 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT2.6835953S
+2025-08-07 13:33:53 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 13:33:53 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 13:33:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 13:33:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 13:33:53 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-08-07 13:33:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f7201746-38ce-46ab-b763-ba8300ded25f initialized
+2025-08-07 13:33:58 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUpClass ]: 
+
+---------------- Initiating Template-Repository Tests ----------------
+
+2025-08-07 13:33:58 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 13:33:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b723aae3-e6b2-4f75-b8bf-446ed18c852e initialized
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+
+================ Can Query Template Step Repository ================
+
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: Generating data for testing
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: Fetching template for repository construction
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [f7201746-38ce-46ab-b763-ba8300ded25f, b723aae3-e6b2-4f75-b8bf-446ed18c852e]
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [f7201746-38ce-46ab-b763-ba8300ded25f, b723aae3-e6b2-4f75-b8bf-446ed18c852e]
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [f7201746-38ce-46ab-b763-ba8300ded25f, b723aae3-e6b2-4f75-b8bf-446ed18c852e]
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [f7201746-38ce-46ab-b763-ba8300ded25f, b723aae3-e6b2-4f75-b8bf-446ed18c852e]
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+Displaying meta data for StepRepository:
+'{
+    "Collection Name": "Step",
+    "Model Class": "Step",
+    "Repository Type": "NoSQL"
+}'
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: Inserting records
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [f7201746-38ce-46ab-b763-ba8300ded25f, b723aae3-e6b2-4f75-b8bf-446ed18c852e]
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [f7201746-38ce-46ab-b763-ba8300ded25f, b723aae3-e6b2-4f75-b8bf-446ed18c852e]
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [f7201746-38ce-46ab-b763-ba8300ded25f, b723aae3-e6b2-4f75-b8bf-446ed18c852e]
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [f7201746-38ce-46ab-b763-ba8300ded25f, b723aae3-e6b2-4f75-b8bf-446ed18c852e]
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+Verifying records can be retrieved
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+Displayling retrieved record:
+
+{
+    "StepCount": 10,
+    "StepId": "step1",
+    "StepName": "myFirstStep",
+    "StepState": "PENDING",
+    "StepsDone": 2,
+    "StepsError": 1,
+    "StepsLocked": 2,
+    "StepsToDo": 5,
+    "WorkflowId": "80dd8ccf-d992-4e4d-91b2-cfe8469c2484"
+}
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+
+================ Can Query Template Step Repository ================
+
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating Template-Repository Tests ----------------
+
+2025-08-07 13:33:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b723aae3-e6b2-4f75-b8bf-446ed18c852e shut down
+2025-08-07 13:33:59 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 13:34:00 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container f7201746-38ce-46ab-b763-ba8300ded25f shut down
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 24.0.6
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7765 MB
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2025-08-07 13:34:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 3fef9883b061f9a8d7984dc3c2e306cece7be5b01c4598d54d5a93d2647a946c
+2025-08-07 13:34:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.7820978S
+2025-08-07 13:34:29 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-08-07 13:34:29 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-08-07 13:34:29 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ?? Docker server version should be at least 1.6.0
+2025-08-07 13:34:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-08-07 13:34:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: eea886e3e7c66da150fe9ff62a1c8e7d70881a848db9d7f148786f8623b84a8b
+2025-08-07 13:34:29 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /upbeat_visvesvaraya: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-08-07 13:34:30 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.5338425S
+2025-08-07 13:34:31 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-08-07 13:34:31 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-08-07 13:34:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-08-07 13:34:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 13:34:31 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 44d08148-83e0-42d1-99fd-e151ccc1d9a4 initialized
+2025-08-07 13:34:36 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUpClass ]: 
+
+---------------- Initiating Template-Repository Tests ----------------
+
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a3a05517-8015-43de-8d88-70f12a222f19 initialized
+2025-08-07 13:34:36 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-07 13:34:36 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
+
+================ Can Query Template WorkItem Repository ================
+
+2025-08-07 13:34:36 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: Generating data for testing
+2025-08-07 13:34:36 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: Fetching template for repository construction
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [44d08148-83e0-42d1-99fd-e151ccc1d9a4, a3a05517-8015-43de-8d88-70f12a222f19]
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [44d08148-83e0-42d1-99fd-e151ccc1d9a4, a3a05517-8015-43de-8d88-70f12a222f19]
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [44d08148-83e0-42d1-99fd-e151ccc1d9a4, a3a05517-8015-43de-8d88-70f12a222f19]
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [44d08148-83e0-42d1-99fd-e151ccc1d9a4, a3a05517-8015-43de-8d88-70f12a222f19]
+2025-08-07 13:34:36 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
+Displaying meta data for WorkItemRepository:
+'{
+    "Collection Name": "WorkItem",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-08-07 13:34:36 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: Inserting records
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [44d08148-83e0-42d1-99fd-e151ccc1d9a4, a3a05517-8015-43de-8d88-70f12a222f19]
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [44d08148-83e0-42d1-99fd-e151ccc1d9a4, a3a05517-8015-43de-8d88-70f12a222f19]
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [44d08148-83e0-42d1-99fd-e151ccc1d9a4, a3a05517-8015-43de-8d88-70f12a222f19]
+2025-08-07 13:34:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [44d08148-83e0-42d1-99fd-e151ccc1d9a4, a3a05517-8015-43de-8d88-70f12a222f19]
+2025-08-07 13:34:37 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
+Verifying records can be retrieved
+2025-08-07 13:34:37 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-07 13:34:37 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: 
+
+---------------- Terminating Template-Repository Tests ----------------
+
+2025-08-07 13:34:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a3a05517-8015-43de-8d88-70f12a222f19 shut down
+2025-08-07 13:34:37 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: CDI container shut down
+2025-08-07 13:34:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 44d08148-83e0-42d1-99fd-e151ccc1d9a4 shut down

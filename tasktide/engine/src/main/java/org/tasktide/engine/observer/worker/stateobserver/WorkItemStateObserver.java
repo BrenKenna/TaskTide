@@ -120,7 +120,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         
         // Update item
         TaskTideServiceManager.fetchWorkItemService().updateModel(task);
-        try {TimeUnit.MILLISECONDS.sleep(RAND.nextInt(4+1));}
+        try {TimeUnit.SECONDS.sleep(RAND.nextInt(4+1));}
         catch(InterruptedException ex) {return false;}
         
         // Fetch and verify active locked the task

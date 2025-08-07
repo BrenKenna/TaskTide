@@ -1,15 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide;
+package org.tasktide.tasktide;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
-import org.eclipse.microprofile.config.Config;
-
-import jakarta.nosql.Template;
-import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -19,16 +15,25 @@ import java.util.Base64;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import jakarta.nosql.Template;
 import org.eclipse.jnosql.mapping.column.ColumnTemplate;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
+import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
 
+import org.eclipse.microprofile.config.Config;
+
+import org.testcontainers.containers.FixedHostPortGenericContainer;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.InternetProtocol;
 import org.testcontainers.containers.wait.strategy.Wait;
 
 import org.tasktide.core.supporting.ConfigUtil;
-import org.testcontainers.containers.FixedHostPortGenericContainer;
+
+import org.tasktide.tasktide.configurer.EngineConfig;
+import org.tasktide.tasktide.configurer.GlobalConfig;
+import org.tasktide.tasktide.configurer.ManagerConfig;
 
 
 /**
@@ -172,6 +177,7 @@ public class TestEnvironment {
         Config conf = ConfigUtil.loadFrom(filePath);
         ConfigUtil.register(conf, clazz);
         return SeContainerInitializer.newInstance()
+            .addBeanClasses(EngineConfig.class, GlobalConfig.class, ManagerConfig.class)
             .initialize();
     }
     
