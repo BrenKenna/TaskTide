@@ -31,7 +31,6 @@ public class TaskTideConfigurerTests {
     
     private static final Logger logger = LogManager.getLogger(TaskTideConfigurerTests.class);
     private static final Jsonb PRETTY_JSON = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
-    private static final Jsonb JSON = JsonbBuilder.create(new JsonbConfig());
     
     public TaskTideConfigurerTests() {}
     
