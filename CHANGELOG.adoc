@@ -36,6 +36,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
 - [] Apply ConfigUtil to TaskTideClient?
 - [X] Way to include "config" folder into zip.
 - [] Install helper script for TaskTide.
+- [] Drop superfluous configs like collection names.
 - [X] Apply container support to all required integration tests.
 - [] Check over unit failed unit tests as they work independantly
 ....
