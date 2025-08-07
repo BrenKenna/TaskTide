@@ -9,7 +9,8 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 === Bugs
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Unit test only bug for NoSQL Template Repository queries.
-- [] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
+- [X] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
+    /--> Not required, full story caught in log. Thread on token was processing, second thread eventually saw it was no longer ToDo and skipped.
 
 
 === Main Checklist
