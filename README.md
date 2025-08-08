@@ -24,7 +24,7 @@
 
 ## 🧑‍💻 Getting Started
 <p>
-It is recommended to download & unpack TaskTide releases, and install them into standard directories depending on OS (ex '/usr/lib'). Backend database configurations should follow providers recommendation, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, which are <a href="/tasktide/tasktide/README.md#a-global-configurations">documented here</a>.
+It is recommended to download & unpack TaskTide releases, and install them into standard directories depending on OS (ex '/usr/lib'). Backend database configurations should follow provider recommendations, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, which are <a href="/tasktide/tasktide/README.md#a-global-configurations">documented here</a>.
 </p>
 
 
@@ -37,9 +37,11 @@ curl -so tasktide.zip https://github.com/BrenKenna/TaskTide/releases/download/v0
 unzip tasktide.zip && rm -f tasktide.zip
 ```
 
+---
+
 #### b). Running TaskTide
 <p>
-How TaskTide should run can be configured based on parameters in a <a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a>, or command-line arguments. This was to simplify the use case of the Engine and Manager clients, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type is recommended, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) <a href="/tasktide/tasktide/README.md#a-global-configurations">described here</a>. 
+How TaskTide should run can be configured based on parameters in a <a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a>, or command-line arguments. This was to simplify the use case of the Engine and Manager clients, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) <a href="/tasktide/tasktide/README.md#a-global-configurations">described here</a>. 
 </p>
 
 ```bash

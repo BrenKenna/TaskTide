@@ -3,6 +3,7 @@
 The purpose of this Library is to offer support for File based Databases like SQLite, and RocksDB, locking coordination system so that different instances of TaskTide can read/write to the "backend".
 </p>
 
+---
 
 |Class|Purpose  |
 |--|--|
@@ -13,7 +14,7 @@ The purpose of this Library is to offer support for File based Databases like SQ
 | SqliteStore | Implements the ItemStore with <a href="https://github.com/xerial/sqlite-jdbc">SQLite JDBC</a> |
 | DbTarget | Supports Master vs Prototype actions |
 
-
+---
 
 <p align="center">
   <img src="/tasktide/docs/uml/itemstore-uml.svg" alt="ItemStore-UML"/>

@@ -7,9 +7,14 @@ package org.tasktide.engine.worker.executor;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,6 +24,7 @@ import org.tasktide.core.model.task.TaskLogging;
 
 import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.supporting.DateUtility;
+import org.tasktide.engine.worker.executor.streamhandler.StreamHandler;
 
 
 /**
@@ -30,8 +36,11 @@ import org.tasktide.core.supporting.DateUtility;
 public class ProcessExecutor {
     
     // Attributes
+    private final String id;
+    private final Path logDir;
     private final Logger logger = LogManager.getLogger(ProcessExecutor.class);
     private final DateUtility dateUtils;
+    private final StreamHandler streamHandler;
     
     
     /**
@@ -44,7 +53,13 @@ public class ProcessExecutor {
        @ConfigProperty(name = "task-tide.core.utils.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
        @ConfigProperty(name = "task-tide.core.utils.expiration", defaultValue = "2") int expiration
     ) {
+        this.id = UUID.randomUUID().toString();
+        this.logDir = Paths.get("logs", this.id);
         this.dateUtils = new DateUtility(dateFormat, expiration);
+        this.streamHandler = new StreamHandler(
+            this.logDir.resolve("stdout.log").toFile(),
+            this.logDir.resolve("stderr.log").toFile()
+        );
     }
     
     
@@ -52,9 +67,74 @@ public class ProcessExecutor {
      * Default constructor
      */
     public ProcessExecutor() {
+        this.id = UUID.randomUUID().toString();
+        this.logDir = Paths.get("logs", this.id);
         this.dateUtils = new DateUtility("dd/MM/yy HH:mm:ss", 2);
+        this.streamHandler = new StreamHandler(
+            this.logDir.resolve("stdout.log").toFile(),
+            this.logDir.resolve("stderr.log").toFile()
+        );
     }
 
+    
+    /**
+     * Fetch stdout log file
+     * 
+     * @return
+     * @throws IOException 
+     */
+    public Path fetchStdoutLog() throws IOException {
+
+        // Create log directory
+        Files.createDirectories(this.logDir);
+        return this.logDir.resolve("stdout.log");
+    }
+    
+    
+    /**
+     * Fetch stdout log file
+     * 
+     * @return
+     * @throws IOException 
+     */
+    public Path fetchStderrLog() throws IOException {
+
+        // Create log directory
+        Files.createDirectories(this.logDir);
+        return this.logDir.resolve("stderr.log");
+    }
+    
+    
+    /**
+     * Executes the provided script through Java Lang ProcessBuilder
+     * 
+     * @param script
+     * @return Process
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public Process executeScript(String script) throws IOException, InterruptedException {
+        
+        // Initialize vars
+        Process proc;
+        File stdout, stderr;
+        ProcessBuilder procBuild;
+        
+        // Fetch output logs
+        stdout = this.fetchStdoutLog().toFile();
+        stderr = this.fetchStderrLog().toFile();
+        
+        // Build process
+        procBuild = new ProcessBuilder(script);
+        procBuild.redirectError(stderr);
+        procBuild.redirectOutput(stdout);
+        
+        // Start and wait for completion
+        proc = procBuild.start();
+        proc.waitFor();
+        return proc;
+    }
+    
     
     /**
      * Run provided command returning {@link TaskLogging} 
@@ -68,7 +148,7 @@ public class ProcessExecutor {
     public TaskLogging execute(String command) throws IOException, InterruptedException {
         
         // Intialize vars
-        logger.debug("Beginging execution of task:\t" + command);
+        logger.debug("Beginning execution of task:\t" + command);
         long startTime, doneTime;
         Process process;
         ProcessLog procLog;
@@ -85,14 +165,14 @@ public class ProcessExecutor {
         procLog = buildProcessLog(process);
         logger.debug("Displaying ProcessLog:\n" + procLog.toJsonDoc());
         result = buildTaskLogging(process, procLog, startTime, doneTime);
-        logger.debug("Displaying TaskLogging:\n" + procLog.toJsonDoc());
+        logger.debug("Displaying TaskLogging:\n" + result.toJsonDoc());
 
         // Handle exit code: perhaps log
         if ( result.getExitCode() == 0 ) {
             logger.info("Successful execution of task:\t" + command);
         }
         else {
-            logger.error("Error executing of task:\t" + command);
+            logger.error("Error executing task:\t" + command);
             logger.error("Displaying failed TaskLogging:\n" + result.toJsonDoc());
         }
         
