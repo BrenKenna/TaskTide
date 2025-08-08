@@ -35,14 +35,14 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
 - [] Logger messages DRY view on Degbug, Info, Warn, Error.
 - [] Apply ConfigUtil to TaskTideClient?
 - [X] Way to include "config" folder into zip.
-- [] Install helper script for TaskTide.
-- [] Drop superfluous configs like collection names.
+- [X] Install helper script for TaskTide.
+- [/] Drop superfluous configs like collection names.
 - [X] Apply container support to all required integration tests.
 - [] Check over unit failed unit tests as they work independantly
 ....
         - [] Singleton not set for "container Id".
         - [] Engine error messages, and old unit tests missing SOA.
-        - [] Background jobs from ItemStore.
+        - [/] Background jobs from ItemStore.
         - [X] TaskTideClient needs TestContainers.
 ....
 - [] Process Workflow as StepList (fine for now).
