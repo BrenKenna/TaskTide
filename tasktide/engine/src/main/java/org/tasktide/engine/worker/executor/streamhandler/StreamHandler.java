@@ -4,7 +4,6 @@
  */
 package org.tasktide.engine.worker.executor.streamhandler;
 
-
 import java.io.File;
 import java.nio.file.Files;
 import java.io.OutputStream;
