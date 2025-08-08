@@ -2,216 +2,216 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.tasktide.engine.worker.executor.streamhandler;
+package org.tasktide.engine.worker.executor;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import java.io.BufferedReader;
 import java.io.File;
-import java.nio.file.Files;
-import java.io.OutputStream;
-import java.nio.file.Path;
-
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import org.tasktide.core.model.task.ProcessLog;
+import org.tasktide.core.model.task.TaskLogging;
+
+import org.tasktide.core.manager.BuilderUtility;
+import org.tasktide.core.supporting.DateUtility;
+import org.tasktide.engine.worker.executor.streamhandler.StreamHandler;
 
 
 /**
- *
+ * 
+ * Class responsible for spawning OS process for the command of {@ItemTask}
+ * 
  * @author bkenna
  */
-public class StreamHandler {
+public class ProcessExecutor {
     
     // Attributes
+    private final String id;
     private final Path logDir;
-    private final File stdout, stderr;
-    private String[] stderrArr, stdoutArr;
+    private final Logger logger = LogManager.getLogger(ProcessExecutor.class);
+    private final DateUtility dateUtils;
+    private final StreamHandler streamHandler;
     
     
     /**
-     * Construct with log files
+     * Construct with specific constants
+     * 
+     * @param dateFormat
+     * @param expiration 
+     */
+    public ProcessExecutor(
+       @ConfigProperty(name = "task-tide.core.utils.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
+       @ConfigProperty(name = "task-tide.core.utils.expiration", defaultValue = "2") int expiration
+    ) {
+        this.id = UUID.randomUUID().toString();
+        this.logDir = Paths.get("logs", this.id);
+        this.dateUtils = new DateUtility(dateFormat, expiration);
+        this.streamHandler = new StreamHandler(
+            this.logDir.resolve("stdout.log").toFile(),
+            this.logDir.resolve("stderr.log").toFile()
+        );
+    }
+    
+    
+    /**
+     * Default constructor
+     */
+    public ProcessExecutor() {
+        this.id = UUID.randomUUID().toString();
+        this.logDir = Paths.get("logs", this.id);
+        this.dateUtils = new DateUtility("dd/MM/yy HH:mm:ss", 2);
+        this.streamHandler = new StreamHandler(
+            this.logDir.resolve("stdout.log").toFile(),
+            this.logDir.resolve("stderr.log").toFile()
+        );
+    }
+
+    
+    /**
+     * Fetch stdout log file
+     * 
+     * @return
+     * @throws IOException 
+     */
+    public Path fetchStdoutLog() throws IOException {
+
+        // Create log directory
+        Files.createDirectories(this.logDir);
+        return this.logDir.resolve("stdout.log");
+    }
+    
+    
+    /**
+     * Fetch stdout log file
+     * 
+     * @return
+     * @throws IOException 
+     */
+    public Path fetchStderrLog() throws IOException {
+
+        // Create log directory
+        Files.createDirectories(this.logDir);
+        return this.logDir.resolve("stderr.log");
+    }
+    
+    
+    /**
+     * Executes the provided script through Java Lang ProcessBuilder
+     * 
+     * @param script
+     * @return Process
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public Process executeScript(String script) throws IOException, InterruptedException {
+        
+        // Initialize vars
+        Process proc;
+        File stdout, stderr;
+        ProcessBuilder procBuild;
+        
+        // Fetch output log sinks
+        stdout = this.fetchStdoutLog().toFile();
+        stderr = this.fetchStderrLog().toFile();
+        
+        // Build process
+        procBuild = new ProcessBuilder(script);
+        procBuild.redirectError(stderr);
+        procBuild.redirectOutput(stdout);
+        
+        // Start and wait for completion
+        proc = procBuild.start();
+        proc.waitFor();
+        return proc;
+    }
+    
+    
+    /**
+     * Run provided command returning {@link TaskLogging} 
+     * 
+     * @param command
+     * @return {@link TaskLogging}
+     * <br><br>
+     * @throws IOException
+     * @throws InterruptedException 
+     */
+    public TaskLogging execute(String command) throws IOException, InterruptedException {
+        
+        // Intialize vars
+        logger.debug("Beginning execution of task:\t" + command);
+        long startTime, doneTime;
+        Process process;
+        ProcessLog procLog;
+        TaskLogging result;
+        
+        // Run process
+        startTime = dateUtils.getDateLong();
+        process = this.executeScript(command);
+        doneTime = dateUtils.getDateLong();
+        logger.debug("Execution complete for task:\t" + command);
+        
+        // Build process log from logs
+        logger.debug("Building ProcessLog for task:\t" + command);
+        procLog = this.buildProcessLog(process);
+        logger.debug("Displaying ProcessLog:\n" + procLog.toJsonDoc());
+        result = this.buildTaskLogging(process, procLog, startTime, doneTime);
+        logger.debug("Displaying TaskLogging:\n" + result.toJsonDoc());
+
+        // Handle exit code: perhaps log
+        if ( result.getExitCode() == 0 ) {
+            logger.info("Successful execution of task:\t" + command);
+        }
+        else {
+            logger.error("Error executing task:\t" + command);
+            logger.error("Displaying failed TaskLogging:\n" + result.toJsonDoc());
+        }
+        
+        // Return results
+        return result;
+    }
+    
+
+    /**
+     * Build {@link ProcessLog} from Process
      * 
      * @param stdout
-     * @param stderr 
+     * @param stderr
+     * @return {@link ProcessLog}
      */
-    public StreamHandler(File stdout, File stderr) {
-        this.stdout = stdout;
-        this.stderr = stderr;
-        this.logDir = stdout.toPath().getParent();
-    }
-
-    
-    public void handleLogs() throws IOException {
-    
-        // Measure file sizes
-        long size = measureSizes();
-        
-        // Place into array if <1MB
-        if ( size < 1_000_000 ) {
-            String[] log;
-            
-            // Read in stderr
-            log = this.readStderr();
-            this.setStderrArr(log);
-            
-            // Read in stdout
-            log = this.readStdout();
-            this.setStdoutArr(log);
-        }
-        
-        // Otherwise zip and report on token
-        else {
-            Path zipFile = this.zipFiles();
-            String msg = String.format("stderr saved to ", zipFile.toFile().getAbsolutePath());
-            String[] logArr = { msg };
-            this.setStderrArr(logArr);
-            this.setStdoutArr(logArr);
-        }
+    private ProcessLog buildProcessLog(Process process) throws IOException {
+        String[] stdout, stderr;
+        this.streamHandler.handleLogs();
+        stdout = this.streamHandler.getStdoutArr();
+        stderr = this.streamHandler.getStdoutArr();
+        return BuilderUtility.buildProcessLog(stdout, stderr);
     }
 
     
     /**
-     * Measure size of both stdout, and stderr
+     * Build {@link TaskLogging TaskLogging} from process
      * 
-     * @return long
-     * @throws IOException 
+     * @param process
+     * @param procLog
+     * @param startTime
+     * @param endTime
+     * @return {@link TaskLogging}
      */
-    public long measureSizes() throws IOException {
-        long output = Files.size(stdout.toPath());
-        output += Files.size(stderr.toPath());
-        return output;
-    }
-    
-    
-    /**
-     * Zip the stdour/stderr logs
-     * 
-     * @return Zip Size
-     * @throws IOException 
-     */
-    public Path zipFiles() throws IOException {
-        Path zipFile = this.logDir.resolve("logs.zip");
-        
-        ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(zipFile));
-        this.addToZip(zos, stdout.toPath(), "stdout.log");
-        this.addToZip(zos, stderr.toPath(), "stderr.log");
-        zos.close();
-        
-        return zipFile;
-    }
-    
-    
-    /**
-     * Adds an entry to the zip
-     * 
-     * @param zos
-     * @param file
-     * @param entryName
-     * @throws IOException 
-     */
-    private void addToZip(ZipOutputStream zos, Path file, String entryName) throws IOException {
-        zos.putNextEntry( new ZipEntry(entryName) );
-        Files.copy(file, zos);
-        zos.closeEntry();
-    }
-    
-    
-    /**
-     * Unpacks zip file
-     * 
-     * @param zipFile
-     * @throws IOException 
-     */
-    public void unpackZip(Path zipFile) throws IOException {
-        ZipInputStream zis = new ZipInputStream(Files.newInputStream(zipFile));
-        ZipEntry entry;
-        while ( ( entry = zis.getNextEntry()) != null ) {
-            OutputStream os = Files.newOutputStream(this.logDir);
-            zis.transferTo(os);
-            os.close();
-        }
-        zis.close();
-    }
-
-    
-    /**
-     * Read stderr file
-     * 
-     * @return String[]
-     * @throws IOException 
-     */
-    public String[] readStderr() throws IOException {
-        return Files.readAllLines(this.stderr.toPath()).toArray(new String[0]);
-    }
-    
-    
-    /**
-     * Read stdout file
-     * 
-     * @return String[]
-     * @throws IOException 
-     */
-    public String[] readStdout() throws IOException {
-        return Files.readAllLines(this.stdout.toPath()).toArray(new String[0]);
-    }
-    
-    
-    /**
-     * Gets stdout file
-     * 
-     * @return File
-     */
-    public File getStdout() {
-        return stdout;
-    }
-
-    
-    /**
-     * Gets stderr file
-     * 
-     * @return File
-     */
-    public File getStderr() {
-        return stderr;
-    }
-    
-    
-    /**
-     * Gets stderr arr
-     * 
-     * @return 
-     */
-    public String[] getStderrArr() {
-        return stderrArr;
-    }
-
-    
-    /**
-     * Sets stderr arr
-     * 
-     * @param stderrArr 
-     */
-    public void setStderrArr(String[] stderrArr) {
-        this.stderrArr = stderrArr;
-    }
-
-    
-    /**
-     * Get stdout arr
-     * 
-     * @return 
-     */
-    public String[] getStdoutArr() {
-        return stdoutArr;
-    }
-
-    
-    /**
-     * Sets stdout arr
-     * 
-     * @param stdoutArr 
-     */
-    public void setStdoutArr(String[] stdoutArr) {
-        this.stdoutArr = stdoutArr;
+    private TaskLogging buildTaskLogging(Process process, ProcessLog procLog, long startTime, long endTime) {
+        TaskLogging taskLog = BuilderUtility.buildTaskLogging(procLog, process);
+        taskLog.setThreadName(Thread.currentThread().getName());
+        taskLog.setStartTime(startTime);
+        taskLog.setEndTime(endTime);
+        taskLog.setExitCode(process.exitValue());
+        return taskLog;
     }
 }
