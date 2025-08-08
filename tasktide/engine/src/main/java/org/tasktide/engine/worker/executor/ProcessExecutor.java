@@ -120,7 +120,7 @@ public class ProcessExecutor {
         File stdout, stderr;
         ProcessBuilder procBuild;
         
-        // Fetch output logs
+        // Fetch output log sinks
         stdout = this.fetchStdoutLog().toFile();
         stderr = this.fetchStderrLog().toFile();
         
@@ -156,15 +156,15 @@ public class ProcessExecutor {
         
         // Run process
         startTime = dateUtils.getDateLong();
-        process = Runtime.getRuntime().exec(command);
+        process = this.executeScript(command);
         doneTime = dateUtils.getDateLong();
         logger.debug("Execution complete for task:\t" + command);
         
         // Build process log from logs
         logger.debug("Building ProcessLog for task:\t" + command);
-        procLog = buildProcessLog(process);
+        procLog = this.buildProcessLog(process);
         logger.debug("Displaying ProcessLog:\n" + procLog.toJsonDoc());
-        result = buildTaskLogging(process, procLog, startTime, doneTime);
+        result = this.buildTaskLogging(process, procLog, startTime, doneTime);
         logger.debug("Displaying TaskLogging:\n" + result.toJsonDoc());
 
         // Handle exit code: perhaps log
@@ -180,22 +180,7 @@ public class ProcessExecutor {
         return result;
     }
     
-    
-    /**
-     * Process input stream to stdout/err string array
-     * 
-     * @param inputStream
-     * @return String[]
-     * <br><br>
-     * @throws IOException 
-     */
-    public String[] readStream(InputStream inputStream) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            return reader.lines().toArray(String[]::new);
-        }
-    }
-    
-    
+
     /**
      * Build {@link ProcessLog} from Process
      * 
@@ -205,8 +190,9 @@ public class ProcessExecutor {
      */
     private ProcessLog buildProcessLog(Process process) throws IOException {
         String[] stdout, stderr;
-        stdout = this.readStream(process.getInputStream());
-        stderr = this.readStream(process.getErrorStream());
+        this.streamHandler.handleLogs();
+        stdout = this.streamHandler.getStdoutArr();
+        stderr = this.streamHandler.getStdoutArr();
         return BuilderUtility.buildProcessLog(stdout, stderr);
     }
 
