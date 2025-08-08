@@ -9,12 +9,14 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 === Bugs
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Formatting of help splash text.
-- [X] Unit test only bug for NoSQL Template Repository queries.
+- [/] Unit test only bug for NoSQL Template Repository queries. Use manager instead test utility.
 - [X] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
 
     /--> Not required, full story caught in log. Thread on token was processing, second thread eventually saw it was no longer ToDo and skipped.
 
-- [] Unit tests need to executed separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB. Maybe 
+- [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB. Maybe 
+
+- [/] Deprecated process executor
 
 === Main Checklist
 
