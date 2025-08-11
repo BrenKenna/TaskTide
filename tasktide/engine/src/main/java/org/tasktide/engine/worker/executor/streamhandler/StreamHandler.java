@@ -53,10 +53,12 @@ public class StreamHandler {
             // Read in stderr
             log = this.readStderr();
             this.setStderrArr(log);
+            this.stderr.delete();
             
             // Read in stdout
             log = this.readStdout();
             this.setStdoutArr(log);
+            this.stdout.delete();
         }
         
         // Otherwise zip and report on token

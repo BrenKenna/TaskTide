@@ -16,7 +16,8 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 - [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB. Maybe 
 
-- [/] Deprecated process executor
+- [X] Deprecated process executor
+
 
 === Main Checklist
 
@@ -48,6 +49,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] TaskTideClient needs TestContainers.
 ....
 - [] Process Workflow as StepList (fine for now).
+- [] Engine cleanup - Logs, Service Shutdowns
 - [X] Display help message if required.
 - [X] Support unit tests with docker container.
 - [X] Load a target Microprofile config.

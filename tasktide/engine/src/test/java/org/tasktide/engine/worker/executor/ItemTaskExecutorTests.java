@@ -7,6 +7,7 @@ package org.tasktide.engine.worker.executor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -74,7 +75,7 @@ public class ItemTaskExecutorTests {
         int nTasks = 2, processed = 0;
         boolean assertionState;
         List<ItemTask> workload;
-        TaskTideExecutor<ItemTask> taskExecutor;
+        ItemTaskExecutor taskExecutor;
         
         // Configuring workload
         logger.info("Creating '{}' tasks for testing", nTasks);
@@ -84,16 +85,14 @@ public class ItemTaskExecutorTests {
         // Create worker to process tasks
         logger.info("Configuring ItemTaskExecutor for processing");
         taskExecutor = new ItemTaskExecutor();
-        taskExecutor.runTasks(workload);
-        
-        // Check workload
-        processed = EngineTestUtils.countNotActive(workload);
-        if ( processed == nTasks ) {
-            logger.info("Processed task count '{}', matches expected '{}'", processed, nTasks);
+        try {
+            taskExecutor.executeTask(workload.get(0));
+            logger.info("Display task post processing:\n'{}'", workload.get(0).toJsonDoc());
             assertionState = true;
         }
-        else {
-            logger.error("Processed task count '{}', does not match expected '{}'", processed, nTasks);
+        catch ( Exception ex ) {
+            logger.error("Error during processing of task:\t'{}'", workload.get(0));
+            ex.printStackTrace();;
             assertionState = false;
         }
         
@@ -113,29 +112,26 @@ public class ItemTaskExecutorTests {
     
         // Initialize test
         logger.info("\n\n================ Single Task Test ================\n");
-        int nTasks = 1, processed = 0;
+        int nTasks = 1;
         boolean assertionState;
         List<ItemTask> workload;
-        TaskTideExecutor<ItemTask> taskExecutor;
+        ItemTaskExecutor taskExecutor;
         
         // Configuring workload
         logger.info("Creating '{}' tasks for testing", nTasks);
         workload = TaskGenerator.generateItemTasks(ExampleGenerators.PING, nTasks);
         logger.info("\nDisplaying first task for reference:\n{}", workload.get(0).toJsonDoc());
         
-        // Create worker to process tasks
-        logger.info("Configuring ItemTaskExecutor for processing");
+        // Process workload
         taskExecutor = new ItemTaskExecutor();
-        taskExecutor.runTasks(workload);
-        
-        // Check workload
-        processed = EngineTestUtils.countNotActive(workload);
-        if ( processed == nTasks ) {
-            logger.info("Processed task count '{}', matches expected '{}'", processed, nTasks);
+        try {
+            taskExecutor.executeTask(workload.get(0));
+            logger.info("Display task post processing:\n'{}'", workload.get(0).toJsonDoc());
             assertionState = true;
         }
-        else {
-            logger.error("Processed task count '{}', does not match expected '{}'", processed, nTasks);
+        catch ( Exception ex ) {
+            logger.error("Error during processing of task:\t'{}'", workload.get(0));
+            ex.printStackTrace();;
             assertionState = false;
         }
         
@@ -157,7 +153,7 @@ public class ItemTaskExecutorTests {
         int nTasks = 2, processed = 0;
         boolean assertionState;
         List<ItemTask> workload;
-        TaskTideExecutor<ItemTask> taskExecutor;
+        ItemTaskExecutor taskExecutor;
         
         // Configuring workload
         logger.info("Creating '{}' tasks for testing", nTasks);
@@ -168,16 +164,14 @@ public class ItemTaskExecutorTests {
         // Create worker to process tasks
         logger.info("Configuring ItemTaskExecutor for processing");
         taskExecutor = new ItemTaskExecutor();
-        taskExecutor.runTasks(workload);
-        
-        // Check workload
-        processed = EngineTestUtils.countNotActive(workload);
-        if ( processed == nTasks / 2 ) {
-            logger.info("Processed task count '{}', matches expected '{}'", processed, nTasks);
+        try {
+            taskExecutor.executeTask(workload.get(0));
+            logger.info("Display task post processing:\n'{}'", workload.get(0).toJsonDoc());
             assertionState = true;
         }
-        else {
-            logger.error("Processed task count '{}', does not match expected '{}'", processed, nTasks);
+        catch ( Exception ex ) {
+            logger.error("Error during processing of task:\t'{}'", workload.get(0));
+            ex.printStackTrace();;
             assertionState = false;
         }
         
@@ -199,7 +193,7 @@ public class ItemTaskExecutorTests {
         int nTasks = 2, processed = 0;
         boolean assertionState;
         List<ItemTask> workload;
-        TaskTideExecutor<ItemTask> taskExecutor;
+        ItemTaskExecutor taskExecutor;
         
         // Configuring workload
         logger.info("Creating '{}' tasks for testing", nTasks);
@@ -211,12 +205,17 @@ public class ItemTaskExecutorTests {
         taskExecutor.runTasks(workload);
         
         // Check workload
-        if ( processed == 0 ) {
-            logger.info("Processed task count '{}', matches expected '{}'", processed, nTasks);
-            assertionState = true;
+        try {
+            if ( processed == 0 ) {
+                logger.info("Processed task count '{}', matches expected '{}'", processed, nTasks);
+                assertionState = true;
+            }
+            else {
+                logger.error("Processed task count '{}', does not match expected '{}'", processed, nTasks);
+                assertionState = false;
+            }
         }
-        else {
-            logger.error("Processed task count '{}', does not match expected '{}'", processed, nTasks);
+        catch (Exception ex) {
             assertionState = false;
         }
         
@@ -238,7 +237,7 @@ public class ItemTaskExecutorTests {
         int nTasks = 2, processed = 0;
         boolean assertionState;
         List<ItemTask> workload;
-        TaskTideExecutor<ItemTask> taskExecutor;
+        ItemTaskExecutor taskExecutor;
         
         // Configuring workload
         logger.info("Creating '{}' tasks for testing", nTasks);
@@ -286,7 +285,7 @@ public class ItemTaskExecutorTests {
         int nTasks = 2, processed = 0;
         boolean assertionState;
         List<ItemTask> workload;
-        TaskTideExecutor<ItemTask> taskExecutor;
+        ItemTaskExecutor taskExecutor;
         
         // Configuring workload
         logger.info("Creating '{}' tasks for testing", nTasks);

@@ -1,0 +1,1280 @@
+2025-08-11 10:44:54 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:44:54 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:44:54 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: 
+
+================ Can Process Task Test ================
+
+2025-08-11 10:44:54 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Configuring process executor
+2025-08-11 10:44:54 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Processing task:	'date'
+2025-08-11 10:44:54 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Unable to process task:
+'Cannot run program "date": CreateProcess error=2, The system cannot find the file specified'
+2025-08-11 10:44:54 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:44:54 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:46:09 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:46:09 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:46:09 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: 
+
+================ Can Process Task Test ================
+
+2025-08-11 10:46:09 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Configuring process executor
+2025-08-11 10:46:09 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Processing task:	'ping google.com'
+2025-08-11 10:46:09 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Unable to process task:
+'Cannot run program "ping google.com": CreateProcess error=2, The system cannot find the file specified'
+2025-08-11 10:46:09 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:46:09 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:50:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:50:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:50:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: 
+
+================ Can Process Task Test ================
+
+2025-08-11 10:50:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Configuring process executor
+2025-08-11 10:50:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Processing task:	'ping google.com'
+2025-08-11 10:50:24 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: Task processing complete with exit code '1'
+2025-08-11 10:50:24 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunProcess ]: 
+
+================ Can Process Task Test ================
+
+2025-08-11 10:50:24 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:50:24 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:52:01 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:52:01 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:52:01 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: 
+
+================ Can Run Ping Test ================
+
+2025-08-11 10:52:01 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Configuring process executor
+2025-08-11 10:52:01 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Processing task:	'ping google.com'
+2025-08-11 10:52:21 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Task processing complete with exit code '1'
+2025-08-11 10:52:21 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: 
+
+================ Can Run Ping Test ================
+
+2025-08-11 10:52:21 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:52:21 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:52:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:52:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:52:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunDateProcess ]: 
+
+================ Can Run Date Test ================
+
+2025-08-11 10:52:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunDateProcess ]: Configuring process executor
+2025-08-11 10:52:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunDateProcess ]: Processing task:	'date'
+2025-08-11 10:52:39 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunDateProcess ]: Unable to process task:
+'Cannot run program "date": CreateProcess error=2, The system cannot find the file specified'
+2025-08-11 10:52:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:52:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:53:25 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:53:25 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:53:25 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunDateProcess ]: 
+
+================ Can Run Date Test ================
+
+2025-08-11 10:53:25 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunDateProcess ]: Configuring process executor
+2025-08-11 10:53:25 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunDateProcess ]: Processing task:	'date'
+2025-08-11 10:53:25 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunDateProcess ]: Unable to process task:
+'Cannot run program "date": CreateProcess error=2, The system cannot find the file specified'
+2025-08-11 10:53:25 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:53:25 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:55:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:55:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:55:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: 
+
+================ Can Run Ping Test ================
+
+2025-08-11 10:55:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Configuring process executor
+2025-08-11 10:55:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Processing task:	'ping google.com'
+2025-08-11 10:55:47 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Unable to process task:
+'Cannot run program "ping google.com": CreateProcess error=2, The system cannot find the file specified'
+2025-08-11 10:55:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:55:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:56:44 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:56:44 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:56:44 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: 
+
+================ Can Run Ping Test ================
+
+2025-08-11 10:56:44 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Configuring process executor
+2025-08-11 10:56:45 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Processing task:	'ping google.com'
+2025-08-11 10:57:04 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: Task processing complete with exit code '1'
+2025-08-11 10:57:04 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunPingProcess ]: 
+
+================ Can Run Ping Test ================
+
+2025-08-11 10:57:04 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:57:04 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: 
+
+================ Can Run Date Test ================
+
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Configuring process executor
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Processing task:	'hostname '
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Task processing complete with exit code '1'
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: 
+
+================ Can Run Date Test ================
+
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:57:46 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: 
+
+================ Can Run HostName Test ================
+
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Configuring process executor
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Processing task:	'hostname'
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Task processing complete with exit code '1'
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: 
+
+================ Can Run HostName Test ================
+
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:58:11 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: 
+
+================ Can Run HostName Test ================
+
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Configuring process executor
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Processing task:	'hostname'
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Task processing complete with exit code '1'
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: 
+
+================ Can Run HostName Test ================
+
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:58:48 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: 
+
+================ Can Run HostName Test ================
+
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Configuring process executor
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Processing task:	'hostname'
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: Task processing complete with exit code '1'
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canRunHostNameProcess ]: 
+
+================ Can Run HostName Test ================
+
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 10:59:12 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 11:05:22 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 11:05:22 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 11:05:22 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: 
+
+================ Can Process Into TaskLogging Test ================
+
+2025-08-11 11:05:22 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Configuring process executor
+2025-08-11 11:05:22 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Processing task:	'ping google.com'
+2025-08-11 11:05:22 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginning execution of task:	ping google.com
+2025-08-11 11:05:41 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping google.com
+2025-08-11 11:05:41 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping google.com
+2025-08-11 11:05:41 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+        "",
+        "Pinging google.com [172.253.116.138] with 32 bytes of data:",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "",
+        "Ping statistics for 172.253.116.138:",
+        "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+    ],
+    "Stdout": [
+        "",
+        "Pinging google.com [172.253.116.138] with 32 bytes of data:",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "",
+        "Ping statistics for 172.253.116.138:",
+        "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+    ],
+    "id": "ProcessLog-3442750c-7db0-4d7e-9a1c-0226bf4093e3"
+}
+2025-08-11 11:05:41 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1754906741020,
+    "Exit Code": 1,
+    "Process Id": 8972,
+    "Process Log": {
+        "Stderr": [
+            "",
+            "Pinging google.com [172.253.116.138] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.138:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "Stdout": [
+            "",
+            "Pinging google.com [172.253.116.138] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.138:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-3442750c-7db0-4d7e-9a1c-0226bf4093e3"
+    },
+    "Start Time": 1754906722229,
+    "Thread Name": "Test worker",
+    "id": "TaskLogging-6dd43c4a-20f8-4132-a351-a10b2d1fb54e"
+}
+2025-08-11 11:05:41 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing task:	ping google.com
+2025-08-11 11:05:41 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1754906741020,
+    "Exit Code": 1,
+    "Process Id": 8972,
+    "Process Log": {
+        "Stderr": [
+            "",
+            "Pinging google.com [172.253.116.138] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.138:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "Stdout": [
+            "",
+            "Pinging google.com [172.253.116.138] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.138:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-3442750c-7db0-4d7e-9a1c-0226bf4093e3"
+    },
+    "Start Time": 1754906722229,
+    "Thread Name": "Test worker",
+    "id": "TaskLogging-6dd43c4a-20f8-4132-a351-a10b2d1fb54e"
+}
+2025-08-11 11:05:41 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Task processing complete with exit code '{
+    "CPU Duration": 0,
+    "End Time": 1754906741020,
+    "Exit Code": 1,
+    "Process Id": 8972,
+    "Process Log": {
+        "Stderr": [
+            "",
+            "Pinging google.com [172.253.116.138] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.138:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "Stdout": [
+            "",
+            "Pinging google.com [172.253.116.138] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.138:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-3442750c-7db0-4d7e-9a1c-0226bf4093e3"
+    },
+    "Start Time": 1754906722229,
+    "Thread Name": "Test worker",
+    "id": "TaskLogging-6dd43c4a-20f8-4132-a351-a10b2d1fb54e"
+}'
+2025-08-11 11:05:41 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: 
+
+================ Can Process Into TaskLogging Test ================
+
+2025-08-11 11:05:41 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 11:05:41 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 11:09:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 11:09:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 11:09:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: 
+
+================ Can Process Into TaskLogging Test ================
+
+2025-08-11 11:09:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Configuring process executor
+2025-08-11 11:09:39 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Processing task:	'ping google.com'
+2025-08-11 11:09:39 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginning execution of task:	ping google.com
+2025-08-11 11:09:58 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping google.com
+2025-08-11 11:09:58 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping google.com
+2025-08-11 11:09:58 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Unable to process task:
+'logs\5d55061d-8c17-4053-a3cb-4b31f59b625f\stdout.log'
+2025-08-11 11:09:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 11:09:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 11:11:59 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 11:11:59 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 11:11:59 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: 
+
+================ Can Process Into TaskLogging Test ================
+
+2025-08-11 11:11:59 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Configuring process executor
+2025-08-11 11:11:59 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Processing task:	'ping google.com'
+2025-08-11 11:11:59 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginning execution of task:	ping google.com
+2025-08-11 11:12:18 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping google.com
+2025-08-11 11:12:18 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping google.com
+2025-08-11 11:12:18 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Unable to process task:
+'logs\0cbd1757-432f-4c77-b088-f068342b5ad0\stdout.log'
+2025-08-11 11:12:18 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 11:12:18 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 11:13:07 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUpClass ]: 
+
+---------------- Initiating ProcessExecutor Tests ----------------
+
+2025-08-11 11:13:07 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 11:13:07 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: 
+
+================ Can Process Into TaskLogging Test ================
+
+2025-08-11 11:13:07 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Configuring process executor
+2025-08-11 11:13:07 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Processing task:	'ping google.com'
+2025-08-11 11:13:07 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Beginning execution of task:	ping google.com
+2025-08-11 11:13:26 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Execution complete for task:	ping google.com
+2025-08-11 11:13:26 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Building ProcessLog for task:	ping google.com
+2025-08-11 11:13:26 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying ProcessLog:
+{
+    "Stderr": [
+        "",
+        "Pinging google.com [172.253.116.113] with 32 bytes of data:",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "",
+        "Ping statistics for 172.253.116.113:",
+        "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+    ],
+    "Stdout": [
+        "",
+        "Pinging google.com [172.253.116.113] with 32 bytes of data:",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "Request timed out.",
+        "",
+        "Ping statistics for 172.253.116.113:",
+        "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+    ],
+    "id": "ProcessLog-370a4339-5d31-40ec-8578-03c92268029d"
+}
+2025-08-11 11:13:26 DEBUG [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1754907206504,
+    "Exit Code": 1,
+    "Process Id": 21268,
+    "Process Log": {
+        "Stderr": [
+            "",
+            "Pinging google.com [172.253.116.113] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.113:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "Stdout": [
+            "",
+            "Pinging google.com [172.253.116.113] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.113:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-370a4339-5d31-40ec-8578-03c92268029d"
+    },
+    "Start Time": 1754907187628,
+    "Thread Name": "Test worker",
+    "id": "TaskLogging-d5763f72-2499-40ce-82d3-485e6433125b"
+}
+2025-08-11 11:13:26 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Error executing task:	ping google.com
+2025-08-11 11:13:26 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1754907206504,
+    "Exit Code": 1,
+    "Process Id": 21268,
+    "Process Log": {
+        "Stderr": [
+            "",
+            "Pinging google.com [172.253.116.113] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.113:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "Stdout": [
+            "",
+            "Pinging google.com [172.253.116.113] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.113:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-370a4339-5d31-40ec-8578-03c92268029d"
+    },
+    "Start Time": 1754907187628,
+    "Thread Name": "Test worker",
+    "id": "TaskLogging-d5763f72-2499-40ce-82d3-485e6433125b"
+}
+2025-08-11 11:13:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: Task processing complete with exit code '{
+    "CPU Duration": 0,
+    "End Time": 1754907206504,
+    "Exit Code": 1,
+    "Process Id": 21268,
+    "Process Log": {
+        "Stderr": [
+            "",
+            "Pinging google.com [172.253.116.113] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.113:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "Stdout": [
+            "",
+            "Pinging google.com [172.253.116.113] with 32 bytes of data:",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "Request timed out.",
+            "",
+            "Ping statistics for 172.253.116.113:",
+            "    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),"
+        ],
+        "id": "ProcessLog-370a4339-5d31-40ec-8578-03c92268029d"
+    },
+    "Start Time": 1754907187628,
+    "Thread Name": "Test worker",
+    "id": "TaskLogging-d5763f72-2499-40ce-82d3-485e6433125b"
+}'
+2025-08-11 11:13:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.canMakeTaskLogging ]: 
+
+================ Can Process Into TaskLogging Test ================
+
+2025-08-11 11:13:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDown ]: 
+
+================ Terminating Next Test ================
+
+2025-08-11 11:13:26 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ProcessExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ProcessExecutor Tests ----------------
+
+2025-08-11 12:20:32 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUpClass ]: 
+
+---------------- Initiating ItemTaskExecutor Tests ----------------
+
+2025-08-11 12:20:32 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:20:32 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: 
+
+================ Can Process Task Test ================
+
+2025-08-11 12:20:32 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Creating '2' tasks for testing
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: 
+Displaying first task for reference:
+{
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-71e60458-19b7-43c5-aea4-9b55871a1f02"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-118e3756-a02c-40e3-8def-ef596fe41ee1"
+    },
+    "Task Name": "Ping amazon.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-5aa4e835-46df-4f9e-8996-000e608cbe98",
+    "state": "ping amazon.com"
+}
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Configuring ItemTaskExecutor for processing
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-5aa4e835-46df-4f9e-8996-000e608cbe98'
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-5aa4e835-46df-4f9e-8996-000e608cbe98' set on thread 'Test worker'
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-5aa4e835-46df-4f9e-8996-000e608cbe98'
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping amazon.com
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:20:33 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ItemTaskExecutor Tests ----------------
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUpClass ]: 
+
+---------------- Initiating ItemTaskExecutor Tests ----------------
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: 
+
+================ Execute Task IO-Exception Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: Creating '2' tasks for testing
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: 
+Displaying first task for reference:
+{
+    "Task": "ping rte.ie",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-47b55909-6ae6-4717-808e-56e8da8ec480"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-fe408380-1687-4b8a-848b-5c8ce4107155"
+    },
+    "Task Name": "Ping rte.ie-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-957456f4-e424-400c-896d-42775c1bf4ca",
+    "state": "ping rte.ie"
+}
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: Configuring ItemTaskExecutor for processing
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-11 12:31:05 WARN  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskStart ]: Skipping non pending ItemTask:	'ItemTask-957456f4-e424-400c-896d-42775c1bf4ca' with 'ping rte.ie'
+2025-08-11 12:31:05 WARN  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Task 'ItemTask-957456f4-e424-400c-896d-42775c1bf4ca' failed Observer 'ItemTaskStateObserver' check
+2025-08-11 12:31:05 WARN  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer Preprocessing checks for task:	'ItemTask-957456f4-e424-400c-896d-42775c1bf4ca'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-c066aae1-3695-4394-bd56-5244f1201a70'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-c066aae1-3695-4394-bd56-5244f1201a70' set on thread 'Test worker'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-c066aae1-3695-4394-bd56-5244f1201a70'
+2025-08-11 12:31:05 ERROR [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.handleFailure ]: Exception while executing task 'ItemTask-c066aae1-3695-4394-bd56-5244f1201a70' on thread 'Test worker': IO Failed
+java.io.IOException: IO Failed
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests$1.executeTask(ItemTaskExecutorTests.java:253) ~[test/:?]
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests$1.executeTask(ItemTaskExecutorTests.java:250) ~[test/:?]
+	at org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks(TaskTideExecutor.java:70) ~[main/:?]
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling(ItemTaskExecutorTests.java:256) ~[test/:?]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:118) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:93) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:88) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.3.jar:8.3]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.3.jar:8.3]
+	at jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.3.jar:8.3]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '0', Failed = '1', Skipped = '1'
+2025-08-11 12:31:05 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: Processed task count '0', does not match expected '2'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_IO_ExceptionHandling ]: 
+
+================ Execute Task IO-Exception Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: 
+
+================ Single Task Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: Creating '1' tasks for testing
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: 
+Displaying first task for reference:
+{
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-4155fa86-906a-4411-9a74-57e2f57cfdd8"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-b84cf268-2488-40b1-b8ef-cf7c4744772c"
+    },
+    "Task Name": "Ping bbc.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-69205b73-5350-405e-9260-b4865fc02f44",
+    "state": "ping bbc.com"
+}
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping bbc.com
+2025-08-11 12:31:05 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: Error during processing of task:	'ItemTask{itemTaskId=ItemTask-69205b73-5350-405e-9260-b4865fc02f44, taskName=Ping bbc.com-0, taskState=Active, taskLog=TaskLogging{taskLogId=TaskLog-b84cf268-2488-40b1-b8ef-cf7c4744772c, procId=0, procLog=ProcessLog{procLogId=ProcessLog-4155fa86-906a-4411-9a74-57e2f57cfdd8, stdout=[Ljava.lang.String;@2b97cc1f, stderr=[Ljava.lang.String;@2b97cc1f}, startTime=0, endTime=0, threadName=NA, cpuDuration=0}, task=ping bbc.com, workItemId=null}'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: 
+
+================ Execute Task Interrupted-Exception Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: Creating '2' tasks for testing
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: 
+Displaying first task for reference:
+{
+    "Task": "ping spotify.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-f0c25ac0-38a0-4ad5-a9ca-94d9b7e56f21"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-fd352f3e-637e-4428-9e18-66c6993728eb"
+    },
+    "Task Name": "Ping spotify.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-6830ff82-a5c9-4297-8eaf-04810297ee75",
+    "state": "ping spotify.com"
+}
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: Configuring ItemTaskExecutor for processing
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-08-11 12:31:05 WARN  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskStart ]: Skipping non pending ItemTask:	'ItemTask-6830ff82-a5c9-4297-8eaf-04810297ee75' with 'ping spotify.com'
+2025-08-11 12:31:05 WARN  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Task 'ItemTask-6830ff82-a5c9-4297-8eaf-04810297ee75' failed Observer 'ItemTaskStateObserver' check
+2025-08-11 12:31:05 WARN  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Warning, skipping task failing Observer Preprocessing checks for task:	'ItemTask-6830ff82-a5c9-4297-8eaf-04810297ee75'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-0072660e-d20d-4a4f-9aaa-e602393ae9c0'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-0072660e-d20d-4a4f-9aaa-e602393ae9c0' set on thread 'Test worker'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-0072660e-d20d-4a4f-9aaa-e602393ae9c0'
+2025-08-11 12:31:05 ERROR [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.handleFailure ]: Exception while executing task 'ItemTask-0072660e-d20d-4a4f-9aaa-e602393ae9c0' on thread 'Test worker': IO Failed
+java.lang.InterruptedException: IO Failed
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests$2.executeTask(ItemTaskExecutorTests.java:301) ~[test/:?]
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests$2.executeTask(ItemTaskExecutorTests.java:298) ~[test/:?]
+	at org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks(TaskTideExecutor.java:70) ~[main/:?]
+	at org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling(ItemTaskExecutorTests.java:304) ~[test/:?]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:118) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:93) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:88) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.3.jar:8.3]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.3.jar:8.3]
+	at jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.3.jar:8.3]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '2', Thread Done = '0', Done = '0', Failed = '1', Skipped = '1'
+2025-08-11 12:31:05 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.test_InterruptExceptionHandling ]: Processed task count '0', does not match expected '2'
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: 
+
+================ Can Process Task Test ================
+
+2025-08-11 12:31:05 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Creating '2' tasks for testing
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: 
+Displaying first task for reference:
+{
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-e8534d90-b6d9-4c17-80e8-1910685356d8"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-48fcf037-a3fc-4f23-b51e-dbc4bf814098"
+    },
+    "Task Name": "Ping amazon.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-dd93239f-5c0c-45ec-bc34-7e48edb4e47c",
+    "state": "ping amazon.com"
+}
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Configuring ItemTaskExecutor for processing
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping amazon.com
+2025-08-11 12:31:06 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Error during processing of task:	'ItemTask{itemTaskId=ItemTask-dd93239f-5c0c-45ec-bc34-7e48edb4e47c, taskName=Ping amazon.com-0, taskState=Active, taskLog=TaskLogging{taskLogId=TaskLog-48fcf037-a3fc-4f23-b51e-dbc4bf814098, procId=0, procLog=ProcessLog{procLogId=ProcessLog-e8534d90-b6d9-4c17-80e8-1910685356d8, stdout=[Ljava.lang.String;@198ef2ce, stderr=[Ljava.lang.String;@198ef2ce}, startTime=0, endTime=0, threadName=NA, cpuDuration=0}, task=ping amazon.com, workItemId=null}'
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: 
+
+================ Skip Processed Task Test ================
+
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: Creating '2' tasks for testing
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: 
+Displaying first task for reference:
+{
+    "Task": "ping amazon.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-a20d2d6b-5984-4819-b82b-c32e4d1f4aa9"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-2519dab5-3f33-4de7-b1ef-c902c01523ee"
+    },
+    "Task Name": "Ping amazon.com-0",
+    "Task State": "ACTIVE",
+    "id": "ItemTask-4075833e-2772-401d-aeeb-9f41ee8e5346",
+    "state": "ping amazon.com"
+}
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: Configuring ItemTaskExecutor for processing
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping amazon.com
+2025-08-11 12:31:06 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canSkipNonPending ]: Error during processing of task:	'ItemTask{itemTaskId=ItemTask-4075833e-2772-401d-aeeb-9f41ee8e5346, taskName=Ping amazon.com-0, taskState=Active, taskLog=TaskLogging{taskLogId=TaskLog-2519dab5-3f33-4de7-b1ef-c902c01523ee, procId=0, procLog=ProcessLog{procLogId=ProcessLog-a20d2d6b-5984-4819-b82b-c32e4d1f4aa9, stdout=[Ljava.lang.String;@4a29f290, stderr=[Ljava.lang.String;@4a29f290}, startTime=0, endTime=0, threadName=NA, cpuDuration=0}, task=ping amazon.com, workItemId=null}'
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: 
+
+================ Empty List Test ================
+
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: Creating '2' tasks for testing
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: Configuring ItemTaskExecutor for processing
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '0' tasks
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: 
+
+Workload processing complete, displaying summary:
+Thread Total = '0', Thread Done = '0', Done = '0', Failed = '0', Skipped = '0'
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: Processed task count '0', matches expected '2'
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.emptyListDoesNotBreak ]: 
+
+================ Empty List Test ================
+
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:31:06 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ItemTaskExecutor Tests ----------------
+
+2025-08-11 12:32:56 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUpClass ]: 
+
+---------------- Initiating ItemTaskExecutor Tests ----------------
+
+2025-08-11 12:32:56 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:32:56 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: 
+
+================ Single Task Test ================
+
+2025-08-11 12:32:56 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: Creating '1' tasks for testing
+2025-08-11 12:32:56 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: 
+Displaying first task for reference:
+{
+    "Task": "ping bbc.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-badc1129-7a74-4392-a469-973587cf9fc9"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-bb555606-a119-4938-be2c-269ddd5f1a83"
+    },
+    "Task Name": "Ping bbc.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-46c1cd69-6830-4c70-87b0-538955fb3f68",
+    "state": "ping bbc.com"
+}
+2025-08-11 12:32:56 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping bbc.com
+2025-08-11 12:32:56 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canProcessSingleTaskWorkload ]: Error during processing of task:	'ItemTask{itemTaskId=ItemTask-46c1cd69-6830-4c70-87b0-538955fb3f68, taskName=Ping bbc.com-0, taskState=Active, taskLog=TaskLogging{taskLogId=TaskLog-bb555606-a119-4938-be2c-269ddd5f1a83, procId=0, procLog=ProcessLog{procLogId=ProcessLog-badc1129-7a74-4392-a469-973587cf9fc9, stdout=[Ljava.lang.String;@67ec8477, stderr=[Ljava.lang.String;@67ec8477}, startTime=0, endTime=0, threadName=NA, cpuDuration=0}, task=ping bbc.com, workItemId=null}'
+2025-08-11 12:32:57 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:32:57 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ItemTaskExecutor Tests ----------------
+
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUpClass ]: 
+
+---------------- Initiating ItemTaskExecutor Tests ----------------
+
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: 
+
+================ Can Process Task Test ================
+
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Creating '2' tasks for testing
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: 
+Displaying first task for reference:
+{
+    "Task": "ping facebook.com",
+    "Task Log": {
+        "CPU Duration": 0,
+        "End Time": 0,
+        "Exit Code": -1,
+        "Process Id": 0,
+        "Process Log": {
+            "Stderr": [
+                ""
+            ],
+            "Stdout": [
+                ""
+            ],
+            "id": "ProcessLog-1f62c844-ceb7-4878-a75d-8b469f8b95f9"
+        },
+        "Start Time": 0,
+        "Thread Name": "NA",
+        "id": "TaskLog-6eb53be1-2230-4c95-826f-0e93f28d3153"
+    },
+    "Task Name": "Ping facebook.com-0",
+    "Task State": "PENDING",
+    "id": "ItemTask-34e7feb6-feb9-43c8-8bfa-1242338dfed5",
+    "state": "ping facebook.com"
+}
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Configuring ItemTaskExecutor for processing
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping facebook.com
+2025-08-11 12:33:58 ERROR [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.canRunTask ]: Error during processing of task:	'ItemTask{itemTaskId=ItemTask-34e7feb6-feb9-43c8-8bfa-1242338dfed5, taskName=Ping facebook.com-0, taskState=Active, taskLog=TaskLogging{taskLogId=TaskLog-6eb53be1-2230-4c95-826f-0e93f28d3153, procId=0, procLog=ProcessLog{procLogId=ProcessLog-1f62c844-ceb7-4878-a75d-8b469f8b95f9, stdout=[Ljava.lang.String;@67ec8477, stderr=[Ljava.lang.String;@67ec8477}, startTime=0, endTime=0, threadName=NA, cpuDuration=0}, task=ping facebook.com, workItemId=null}'
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-11 12:33:58 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.tearDownClass ]: 
+
+---------------- Terminating ItemTaskExecutor Tests ----------------
+

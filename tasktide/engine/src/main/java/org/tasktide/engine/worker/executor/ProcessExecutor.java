@@ -6,14 +6,12 @@ package org.tasktide.engine.worker.executor;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
@@ -125,7 +123,13 @@ public class ProcessExecutor {
         stderr = this.fetchStderrLog().toFile();
         
         // Build process
-        procBuild = new ProcessBuilder(script);
+        String[] taskArr = script.split(" ");
+        if ( taskArr.length > 1 ) {
+            procBuild = new ProcessBuilder(taskArr[0], taskArr[1]);
+        }
+        else {
+            procBuild = new ProcessBuilder(taskArr[0], " ");
+        }
         procBuild.redirectError(stderr);
         procBuild.redirectOutput(stdout);
         

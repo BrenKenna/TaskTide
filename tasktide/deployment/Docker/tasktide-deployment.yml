@@ -1,0 +1,116 @@
+#####################################################################
+#####################################################################
+##
+##
+##
+#####################################################################
+#####################################################################
+
+
+#######################################
+#######################################
+## 
+## 1). Global Configs
+## 
+#######################################
+#######################################
+
+# Component networks
+networks:
+  db_net:
+    external: false
+
+  taskTide_engineNet:
+    external: false
+
+
+secretes:
+  couchDbPass:
+    file: ./couchDB-pass.txt
+
+
+services:
+
+#######################################
+#######################################
+## 
+## 2). CouchDB Service
+## 
+#######################################
+#######################################
+
+# CouchDB
+  couchDB:
+    networks:
+      - db_net
+
+    ports:
+      - "5984:5984"
+
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD_FILE=/run/secretes/couchDB-pass.txt
+
+    secretes:
+      - couchDbPass
+
+    volumes:
+      - ./couchdb_data:/opt/couchdb/data
+
+
+# Creates database
+  initCouchDB:
+    image: curlimages/curl:8.7.1
+    depends_on:
+      - couchdb
+    entrypoint: >
+      sh -c "
+        echo 'Waiting for CouchDB...' &&
+        until curl -s http://couchdb:5984/ >/dev/null; do sleep 1; done &&
+        echo 'Creating tasktide_database...' &&
+        curl -u admin:$(cat /run/secrets/couchdb_password) -X PUT http://couchdb:5984/tasktide_database
+      "
+    secrets:
+      - couchDbPass
+
+
+#######################################
+#######################################
+## 
+## 2). TaskTide Engine Service
+##
+##  => Consider log files
+## 
+#######################################
+#######################################
+
+
+# Spins-up 30 containers all staggered
+  tasktide:
+    image: tasktide:latest
+    networks:
+      - taskTide_engineNet
+      - db_net
+
+    user: "1000:1000"
+
+    volumes:
+      - ./microprofile-config.properties:/opt/tasktide/config/META-INF/microprofile-config.properties
+
+    working_dir: /opt/tasktide
+
+    entrypoint: >
+      sh -c "
+        delay=$$(( ( RANDOM % 5 ) + 1 ));
+        echo 'Delaying startup by' $$delay 'seconds...';
+        sleep $$delay;
+        ./bin/tasktide
+      "
+
+    deploy:
+      replicas: 30
+      restart_policy:
+        condition: on-feature
+
+    depends_on:
+      - initCouchDB

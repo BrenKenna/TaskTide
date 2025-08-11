@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '8.1.1' // Apply Shadow plugin for Fat JAR
 }
 
 description = 'tasktide:itemstore'
@@ -23,13 +22,3 @@ jar {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)
 }
-
-tasks.register('fatJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
-    archiveBaseName.set("tasktide-${project.name}")
-    archiveVersion.set(version)
-    archiveClassifier.set('all')
-    configurations = [project.configurations.runtimeClasspath]
-    from sourceSets.main.output
-}
-
-build.dependsOn fatJar
