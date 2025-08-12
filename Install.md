@@ -35,5 +35,5 @@ docker image build -t latest -f deployment/Docker/Dockerfile .
 
 ## Building from Source
 <p>
-The following describes building TaskTide from source using Gradle, different gradle installation scripts have been supplied which download and install gradle if necessary. Linux distributions should "<a href="/tasktide/gradlew">run this script</a>", Windows should "<a href="/tasktide/gradlew.bat">should run this script</a>".
+The following describes building TaskTide from source using Gradle, different gradle installation scripts have been supplied which download and install gradle if necessary. Linux distributions should "<a href="/tasktide/gradlew">run this script</a>", and Windows should "<a href="/tasktide/gradlew.bat">should run this script</a>".
 </p>
