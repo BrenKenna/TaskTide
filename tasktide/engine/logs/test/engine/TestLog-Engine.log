@@ -681,6 +681,7 @@
 
 ---------------- Terminating ProcessExecutor Tests ----------------
 
+<<<<<<< Updated upstream
 2025-08-11 12:20:32 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutorTests.setUpClass ]: 
 
 ---------------- Initiating ItemTaskExecutor Tests ----------------
@@ -1278,3 +1279,5 @@ Displaying first task for reference:
 
 ---------------- Terminating ItemTaskExecutor Tests ----------------
 
+=======
+>>>>>>> Stashed changes

@@ -22,6 +22,7 @@ import org.tasktide.core.model.task.TaskLogging;
 /**
  * Test class for the process execution package
  * 
+ *
  * @author bkenna
  */
 public class ProcessExecutorTests {
@@ -125,7 +126,7 @@ public class ProcessExecutorTests {
         LOGGER.info("\n\n================ Can Run HostName Test ================\n");
     }
     
-    
+
     /**
      * Tests the process of getting a task log from process execution
      */
