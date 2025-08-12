@@ -5,17 +5,18 @@ The repository is packaged with a pre-compiled version of TaskTide, and it is hi
 
 ---
 
-## Building from Source
-<p>
-The following describes building TaskTide from source using Gradle, different gradle installation scripts have been supplied which download and install gradle if necessary. Linux distributions should "<a href="/tasktide/gradlew">run this script</a>", Windows should "<a href="/tasktide/gradlew.bat">should run this script</a>".
-</p>
-
----
-
 ## Pre-compiled Binary
 <p>
 The <a href="https://github.com/BrenKenna/TaskTide/releases/edit/v0.9.0">release section</a> of this repository contains a zip which contains all TaskTide dependancies, wrapper scripts for running on linux/windows and configuration files which can be adjusted for the "<a href="/Database-Driver-Installation.md">target deployment strategy</a>".
 </p>
+
+``` bash
+# 1). Fetch zip
+curl -so tasktide.zip https://github.com/BrenKenna/TaskTide/releases/download/v0.9.0/tasktide.zip
+
+# 2). Unpack
+unzip tasktide.zip && rm -f tasktide.zip
+```
 
 ---
 
@@ -29,3 +30,10 @@ To support deployment onto <a href="/tasktide/deployment/Docker/Dockerfile">cont
 docker image build -t latest -f deployment/Docker/Dockerfile .
 
 ```
+
+---
+
+## Building from Source
+<p>
+The following describes building TaskTide from source using Gradle, different gradle installation scripts have been supplied which download and install gradle if necessary. Linux distributions should "<a href="/tasktide/gradlew">run this script</a>", Windows should "<a href="/tasktide/gradlew.bat">should run this script</a>".
+</p>
