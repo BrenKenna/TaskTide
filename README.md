@@ -35,7 +35,7 @@ How TaskTide should run can be configured based on parameters in a <a href="/tas
 </p>
 
 ```bash
-# 3). Run TaskTide
+# Run using parameters from TaskTide config file
 ./tasktide/bin/tasktide
 
 # --- OR ---
