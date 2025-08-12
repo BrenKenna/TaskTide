@@ -4,8 +4,8 @@
 
 # TaskTide
 
-![Build] (https://img.shields.io/badge/build-passing-brightgreen)  
-![License] (https://img.shields.io/badge/license-Apache%202.0-blue)  
+![build](https://img.shields.io/badge/build-passing-brightgreen)  
+![license](https://img.shields.io/badge/license-Apache%202.0-blue)  
 
 **TaskTide** is a modular, **Pilot Job System** designed for modern **HPC**, **Grid**, and **Edge Computing** workloads. It enables execution of **ETL-style workflows** using dynamic tasks, and supports both NoSQL (ex MongoDB, CouchDB, Cassandra, RocksDB etc), and SQL (ex MySQL, Postgres, Microsoft SQL Server etc) database backends. The unit of work being a script/executable allows TaskTide to support scale out of any provided workload such as arbitrary or pipelined shell/R/Python/Spark scripts, and decouples environment configuration from TaskTide deployment.
 
