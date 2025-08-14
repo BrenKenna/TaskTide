@@ -51,7 +51,7 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
             ObserverResult result = obs.onTaskStart(task);
             if ( !result.isSuccess() && !result.getType().isOptional() ) {
                 if ( !result.canIgnore() ) {
-                    LOGGER.warn("Task '{}' failed Observer '{}' check", task.getId(), obs.getName());
+                    LOGGER.warn("Task '{}' failed onTaskStart Observation '{}' check", task.getId(), obs.getName());
                     return false;
                 }
             }
@@ -73,6 +73,7 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
             ObserverResult result = obs.onTaskProcessing(task);
             if ( !result.isSuccess() && !result.getType().isOptional() ) {
                 if ( !result.canIgnore() ) {
+                    LOGGER.warn("Task '{}' failed onTaskProcessing Observation '{}' check", task.getId(), obs.getName());
                     return false;
                 }
             }
@@ -94,6 +95,7 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
             ObserverResult result = obs.onTaskEnd(task);
             if ( !result.isSuccess() && !result.getType().isOptional() ) {
                 if ( !result.canIgnore() ) {
+                    LOGGER.warn("Task '{}' failed onTaskEnd Observation '{}' check", task.getId(), obs.getName());
                     return false;
                 }
             }
