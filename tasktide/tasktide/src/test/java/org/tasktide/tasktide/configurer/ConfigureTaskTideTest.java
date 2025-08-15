@@ -7,10 +7,8 @@ package org.tasktide.tasktide.configurer;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
-import jakarta.nosql.Template;
 
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,17 +27,13 @@ import org.junit.jupiter.api.Test;
 
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.repository.RepositoryFactory;
-import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
-import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.engine.EngineUtility;
 
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
@@ -47,13 +41,8 @@ import org.tasktide.engine.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
-import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.ItemStoreType;
 
-import org.tasktide.tasktide.configurer.EngineConfig;
-import org.tasktide.tasktide.configurer.GlobalConfig;
-import org.tasktide.tasktide.configurer.ManagerConfig;
-import org.tasktide.tasktide.configurer.TaskTideConfigurer;
+import org.tasktide.itemstore.ItemStoreType;
 import org.tasktide.tasktide.parser.ArgumentTree;
 
 

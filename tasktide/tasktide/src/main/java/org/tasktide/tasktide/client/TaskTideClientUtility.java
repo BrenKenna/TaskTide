@@ -17,10 +17,6 @@ import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtensi
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.manager.TaskTideServiceManager;
-import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.collection.Workflow;
-import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
