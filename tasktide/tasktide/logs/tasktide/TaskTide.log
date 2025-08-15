@@ -4307,3 +4307,87 @@ Total='5', Remaining='0', Done='5', Expected='5'
 
 2025-08-15 10:53:32 INFO  [ main -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'berp'
 2025-08-15 10:53:32 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-15 16:35:29 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-15 16:35:29 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-15 16:35:34 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-15 16:35:34 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.jboss.weld.exceptions.UnsatisfiedResolutionException: WELD-001334: Unsatisfied dependencies for type GlobalConfig with qualifiers  '
+2025-08-15 16:36:10 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-15 16:36:10 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-15 16:36:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-15 16:36:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-15 16:36:17 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-15 16:36:17 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-15 16:36:17 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-08-15 16:36:18 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-08-15 16:36:18 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-08-15 16:36:18 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-15 16:36:18 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-15 16:36:18 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.NullPointerException: Cannot invoke "String.equalsIgnoreCase(String)" because "nestedDelimiter" is null'
+2025-08-15 16:37:54 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-15 16:37:54 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-15 16:38:00 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-15 16:38:00 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-15 16:38:00 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-15 16:38:00 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-15 16:38:00 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-08-15 16:38:01 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-08-15 16:38:01 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-08-15 16:38:01 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-15 16:38:01 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-15 16:38:01 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.importFile ]: Evaluating nested delimiter of value '""'
+2025-08-15 16:38:01 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2'
+2025-08-15 16:40:24 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-15 16:40:24 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-15 16:40:31 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-15 16:40:31 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-15 16:40:31 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-15 16:40:31 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-15 16:40:31 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-08-15 16:40:31 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-08-15 16:40:31 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-08-15 16:40:32 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-15 16:40:32 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-15 16:40:32 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.importFile ]: Evaluating nested delimiter of value '""'
+2025-08-15 16:40:32 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.ArrayIndexOutOfBoundsException: Index 2 out of bounds for length 2'
+2025-08-15 16:41:19 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-15 16:41:19 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-15 16:41:26 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-15 16:41:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-15 16:41:26 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-15 16:41:26 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-15 16:41:26 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-08-15 16:41:27 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-08-15 16:41:27 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-08-15 16:41:27 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-15 16:41:27 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-15 16:41:27 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "workload" is null'
+2025-08-15 16:43:33 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-15 16:43:33 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-15 16:43:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.importFile ]: Evaluating nested delimiter of value 'null'
+2025-08-15 16:43:41 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Importing '4' workitems
+2025-08-15 16:43:41 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import status 'true'
+2025-08-15 16:43:41 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-15 16:43:56 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-15 16:43:56 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.importFile ]: Evaluating nested delimiter of value 'null'
+2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Importing '4' workitems
+2025-08-15 16:44:04 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import status 'true'
+2025-08-15 16:44:04 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container

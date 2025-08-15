@@ -16,7 +16,6 @@ import org.tasktide.tasktide.client.TaskTideClient;
 import org.tasktide.tasktide.client.TaskTideClientUtility;
 import org.tasktide.tasktide.client.TaskTideClientType;
 
-
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
 

@@ -1,4 +1,4 @@
-Seq_Test_1,seq 10
-Seq_Test_2,seq 12
-Seq_Test_3,seq 4
-Seq_Test_4,seq 8
+Ping_Test_1,ping google.com
+Ping_Test_2,ping dcu.ie
+Ping_Test_3,ping ucd.ie
+Ping_Test_4,ping tcd.ie

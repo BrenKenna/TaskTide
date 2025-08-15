@@ -170,8 +170,8 @@ public class TaskTideManagerClient extends TaskTideClient {
         String nestedDelimiter = (String) this.argMap.getArgument("Nested Delimiter").getValue();
         String stepName = (String) this.argMap.getArgument("Target Step").getValue();
         
-        // Import workload from JSON
-        if (delimiter.equalsIgnoreCase("json") || nestedDelimiter.equalsIgnoreCase("json")) {
+        // Import workload from JSON: Format argument instead
+        if (delimiter.equalsIgnoreCase("json")) {
             return this.importJson(file);
         }
         
@@ -179,7 +179,8 @@ public class TaskTideManagerClient extends TaskTideClient {
         else {
             
             // With no nested delimiter
-            if (nestedDelimiter.isEmpty()) {
+            LOGGER.info("Evaluating nested delimiter of value '{}'", nestedDelimiter);
+            if (nestedDelimiter == null) {
                 return TaskTideManagerUtility.importTasks(stepName, file, delimiter);
             }
             

@@ -123,13 +123,7 @@ public class ProcessExecutor {
         stderr = this.fetchStderrLog().toFile();
         
         // Build process
-        String[] taskArr = script.split(" ");
-        if ( taskArr.length > 1 ) {
-            procBuild = new ProcessBuilder(taskArr[0], taskArr[1]);
-        }
-        else {
-            procBuild = new ProcessBuilder(taskArr[0], " ");
-        }
+        procBuild = new ProcessBuilder(script.split(" "));
         procBuild.redirectError(stderr);
         procBuild.redirectOutput(stdout);
         
