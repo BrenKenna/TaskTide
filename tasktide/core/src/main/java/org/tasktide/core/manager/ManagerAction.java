@@ -5,6 +5,9 @@
 
 package org.tasktide.core.manager;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 
 /**
  * Enum to support valid actions covered by the Manager
@@ -46,16 +49,57 @@ public enum ManagerAction {
         public String toString() {
             return name();
         }
-    };
+    },
+    
+    ADD {
+
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+    
+    },
+    
+    
+    APPEND {
+    
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+    }
+    ;
 
     public abstract boolean isManagerAction(String query);
     public abstract boolean isManagerAction(ManagerAction query);
 
 
-    public static int indexOf(ManagerAction manageraction) {
-        return manageraction.ordinal();
-    }
-
+    /**
+     * Fetch index of query
+     * 
+     * @param name
+     * @return >0/-1
+     */
     public static int indexOf(String name) {
         for (ManagerAction manageraction : values() ) {
             if (manageraction.isManagerAction(name)) {
@@ -64,15 +108,14 @@ public enum ManagerAction {
         }
         return -1;
     }
-
     
-    public static boolean hasQuery(ManagerAction manageraction, String query) {
-        if (manageraction == null || query == null) {
-            return false;
-        }
-        return manageraction.isManagerAction(query);
-    }
-
+    
+    /**
+     * Check if query is a valid action
+     * 
+     * @param query
+     * @return 
+     */
     public static boolean hasQuery(String query) {
         if (query == null) {
             return false;
@@ -85,6 +128,13 @@ public enum ManagerAction {
         return false;
     }
 
+    
+    /**
+     * Get manager action matching query
+     * 
+     * @param query
+     * @return 
+     */
     public static ManagerAction get(String query) {
         int ind = indexOf(query);
         if (ind >= 0) {
@@ -92,12 +142,16 @@ public enum ManagerAction {
         }
         return null;
     }
-
-    public static ManagerAction get(ManagerAction query) {
-        int ind = indexOf(query);
-        if (ind >= 0) {
-            return values()[ind];
-        }
-        return null;
+    
+    
+    /**
+     * Represent enum as string
+     * 
+     * @return String
+     */
+    public static String valuesString() {
+        return Arrays.stream(values())
+            .map(elm -> elm.name())
+            .collect(Collectors.joining(","));
     }
 }

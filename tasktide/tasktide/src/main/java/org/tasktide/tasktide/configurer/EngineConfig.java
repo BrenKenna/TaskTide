@@ -49,16 +49,13 @@ public class EngineConfig extends AbstractConfigurer {
     @ConfigProperty(name = "tasktide.engine.worker.processor.itemTask.threshold", defaultValue = "-1")
     int itemTaskThreshold;
     
-    @ConfigProperty(name = "tasktide.engine.step", defaultValue = "NA")
-    String step;
-    
     
     /**
      *
      * TimeKeeper Params
      * 
      */
-    @ConfigProperty(name = "tasktide.engine.observer.timekeeper.level", defaultValue = "Optional")
+    @ConfigProperty(name = "tasktide.engine.observer.timekeeper.level", defaultValue = "0")
     int timeKeeperLevel;
     
     @ConfigProperty(name = "tasktide.engine.observer.timekeeper.onStart.canFail", defaultValue = "true")
@@ -106,7 +103,6 @@ public class EngineConfig extends AbstractConfigurer {
         this.itemTaskThreads();
         this.itemTaskSubTaskThreshold();
         this.timeKeeperMaxWallTime();
-        this.step();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -149,13 +145,7 @@ public class EngineConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(Integer.class);
         
-        // Set lock time
-        try {
-            this.lockTime = this.getConfig().getValue("tasktide.engine.worker.lock-wait-time", int.class);
-        }
-        catch ( Exception ex ) {
-            this.lockTime = (new Random()).nextInt(4)+1;
-        }
+        this.lockTime = this.getConfigValue("tasktide.engine.worker.lock-wait-time", Integer.class, (new Random()).nextInt(4)+1);
         arg.setValue(lockTime);
         this.getArgumentMap().putArgument(arg);
     }
@@ -176,13 +166,9 @@ public class EngineConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(Integer.class);
         
-        // Set work item threads
-        try {
-            this.workItemThreads = this.getConfig().getValue("tasktide.engine.worker.processor.threads.workitem", int.class);
-        }
-        catch ( Exception ex ) {
-            this.workItemThreads = 1;
-        }
+        this.workItemThreads = this.getConfigValue("tasktide.engine.worker.processor.threads.workitem", Integer.class, 1);
+        int value = this.workItemThreads <= 0 ? 1 : this.workItemThreads;
+        this.workItemThreads = value;
         arg.setValue(workItemThreads);
         this.getArgumentMap().putArgument(arg);
     }
@@ -203,15 +189,9 @@ public class EngineConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(Integer.class);
         
-        // Set work item sub tasking threshold
-        try {
-            this.workItemThreshold = this.getConfig().getValue("tasktide.engine.worker.processor.threshold.workitem", int.class);
-            int value = this.workItemThreshold <= 0 ? this.workItemThreads : this.workItemThreshold;
-            this.workItemThreshold = value;
-        }
-        catch ( Exception ex ) {
-            this.workItemThreshold = workItemThreads;
-        }
+        this.workItemThreshold = this.getConfigValue("tasktide.engine.worker.processor.treshold.workitem", Integer.class, 1);
+        int value = this.workItemThreshold <= 0 ? this.workItemThreshold : this.workItemThreshold;
+        this.workItemThreshold = value;
         arg.setValue(workItemThreshold);
         this.getArgumentMap().putArgument(arg);
     }
@@ -232,15 +212,9 @@ public class EngineConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(Integer.class);
         
-        // Set item task threshold
-        try {
-            this.itemTaskThreshold = this.getConfig().getValue("tasktide.engine.worker.processor.threshold.itemtask", int.class);
-            int value = this.itemTaskThreshold <= 0 ? this.itemTaskThreads : this.itemTaskThreshold;
-            this.itemTaskThreshold = value;
-        }
-        catch ( Exception ex ) {
-            this.itemTaskThreshold = itemTaskThreads;
-        }
+        this.itemTaskThreshold = this.getConfigValue("tasktide.engine.worker.processor.threshold.itemtask", Integer.class, this.itemTaskThreads);
+        int value = this.itemTaskThreshold <= 0 ? this.itemTaskThreads : this.itemTaskThreshold;
+        this.itemTaskThreshold = value;
         arg.setValue(itemTaskThreshold);
         this.getArgumentMap().putArgument(arg);
     }
@@ -260,14 +234,10 @@ public class EngineConfig extends AbstractConfigurer {
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(Integer.class);
-
-        // Set item task threads
-        try {
-            this.itemTaskThreads = this.getConfig().getValue("tasktide.engine.worker.processor.threads.itemtask", int.class);
-        }
-        catch ( Exception ex ) {
-            this.itemTaskThreads = 1;
-        }
+        
+        this.itemTaskThreads = this.getConfigValue("tasktide.engine.worker.processor.threads.itemtask", Integer.class, 1);
+        int value = this.itemTaskThreads <= 0 ? 1 : this.itemTaskThreads;
+        this.itemTaskThreads = value;
         arg.setValue(itemTaskThreads);
         this.getArgumentMap().putArgument(arg);
     }
@@ -288,13 +258,7 @@ public class EngineConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(Integer.class);
         
-        // Set wait time
-        try {
-            this.timeKeeperWaitTime = this.getConfig().getValue("tasktide.engine.observer.timekeeper.waitTime", int.class);
-        }
-        catch (Exception ex) {
-            this.timeKeeperWaitTime = 10000;
-        }
+        this.timeKeeperWaitTime = this.getConfigValue("tasktide.engine.observer.timekeeper.waitTime", Integer.class, 10000);
         arg.setValue(this.timeKeeperWaitTime);
         this.getArgumentMap().putArgument(arg);
     }
@@ -314,14 +278,8 @@ public class EngineConfig extends AbstractConfigurer {
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(Integer.class);
-        
-        // Set observer level
-        try {
-            this.timeKeeperLevel = this.getConfig().getValue("tasktide.engine.observer.timekeeper.level", int.class);
-        }
-        catch (Exception ex) {
-            this.timeKeeperLevel = 10000;
-        }
+
+        this.timeKeeperLevel = this.getConfigValue("tasktide.engine.observer.timekeeper.level", Integer.class, 0);
         arg.setValue(this.timeKeeperLevel);
         this.getArgumentMap().putArgument(arg);
     }
@@ -340,15 +298,9 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--time-keeper-onStart")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(boolean.class);
+        arg.setRefClass(Boolean.class);
         
-        // Set whether on start can fail
-        try {
-            this.timeKeeperOnStartCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onStart.canFail", boolean.class);
-        }
-        catch (Exception ex) {
-            this.timeKeeperOnStartCanFail = true;
-        }
+        this.timeKeeperOnStartCanFail = this.getConfigValue("tasktide.engine.observer.timekeeper.onStart.canFail", Boolean.class, true);
         arg.setValue(this.timeKeeperOnStartCanFail);
         this.getArgumentMap().putArgument(arg);
     }
@@ -367,15 +319,9 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--time-keeper-onProcessing")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(boolean.class);
+        arg.setRefClass(Boolean.class);
         
-        // Set whether on processing can fail
-        try {
-            this.timeKeeperOnProcessingCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onProcessing.canFail", boolean.class);
-        }
-        catch (Exception ex) {
-            this.timeKeeperOnProcessingCanFail = true;
-        }
+        this.timeKeeperOnProcessingCanFail = this.getConfigValue("tasktide.engine.observer.timekeeper.onProcessing.canFail", Boolean.class, true);
         arg.setValue(this.timeKeeperOnProcessingCanFail);
         this.getArgumentMap().putArgument(arg);
     }
@@ -394,40 +340,10 @@ public class EngineConfig extends AbstractConfigurer {
             .withLongFlag("--time-keeper-onEnd")
             .withArgType(ArgumentType.ACTION)
         .build();
-        arg.setRefClass(boolean.class);
+        arg.setRefClass(Boolean.class);
         
-        // Set whether 
-        try {
-            this.timeKeeperOnEndCanFail = this.getConfig().getValue("tasktide.engine.observer.timekeeper.onEnd.canFail", boolean.class);
-        }
-        catch (Exception ex) {
-            this.timeKeeperOnEndCanFail = true;
-        }
+        this.timeKeeperOnEndCanFail = this.getConfigValue("tasktide.engine.observer.timekeeper.onEnd.canFail", Boolean.class, true);
         arg.setValue(this.timeKeeperOnEndCanFail);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Sets step, defaulting to Arbitrary
-     */
-    public void step() {
-        Argument<String> arg;
-        arg = this.getArgumentBuilder()
-            .withName("Step")
-            .withDescription("Step(s) to process")
-            .withShortFlag("-st")
-            .withLongFlag("--step")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(String.class);
-        try {
-            this.step = this.getConfig().getValue("tasktide.engine.step", String.class);
-        }
-        catch (Exception ex) {
-            this.step = "Arbitrary";
-        }
-        arg.setValue(this.step);
         this.getArgumentMap().putArgument(arg);
     }
 }

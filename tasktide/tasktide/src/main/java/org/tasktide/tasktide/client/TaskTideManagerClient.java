@@ -4,6 +4,8 @@
  */
 package org.tasktide.tasktide.client;
 
+import jakarta.json.JsonObject;
+import jakarta.json.JsonValue;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 
@@ -22,10 +24,13 @@ import org.apache.logging.log4j.Logger;
 import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.manager.ManagerAction;
+import static org.tasktide.core.manager.ManagerAction.ADD;
 import org.tasktide.core.manager.ManagerTarget;
+import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.tasktide.parser.model.ArgumentMap;
 
@@ -84,19 +89,70 @@ public class TaskTideManagerClient extends TaskTideClient {
         // Handle action to perform
         switch ( action ) {
             case IMPORT -> {
+                LOGGER.info("Manager client configured for import");
                 this.handleImport();
             }
         
             case EXPORT -> {
+                LOGGER.info("Manager client configured for export");
                 this.handleExport();
             }
             
+            case ADD -> {
+                LOGGER.info("Manager client configured for adding workitem");
+                this.addWorkItem();
+            }
+            
+            
+            case APPEND -> {
+                LOGGER.info("Manager client configured for workitem appending");
+                this.appendToWorkItem();
+            }
+            
             default -> {
-                throw new IllegalStateException("Manager method must be one of Import/Export");
+                LOGGER.error("Error, unable to determine Manager Client action to take");
+                String template = String.format(
+                    "Manager method must be one of:\t'%s'",
+                    ManagerAction.valuesString()
+                );
+                throw new IllegalStateException(template);
             }
         }
     }
 
+    
+    /**
+     * Imports a task supplied as a json string, for SingleTsak {@link WorkItem}/initiating
+     * 
+     * @return {@link WorkItem}
+     */
+    public WorkItem addWorkItem() {
+        String step = (String) this.globalArgs.getArgument("Step Name").getValue();
+        String data = (String) this.managerArgs.getArgument("Import String").getValue();
+        
+        JsonObject json = JsonUtils.stringToJson(data);
+        ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
+        return TaskTideManagerUtility.importTask(task, json.getString("Task Name"), step);
+    }
+    
+    
+    /**
+     * Add a task to a {@link WorkItem}
+     * 
+     * @return {@link WorkItem}
+     */
+    public WorkItem appendToWorkItem() {
+        String data = (String) this.managerArgs.getArgument("Import String").getValue();
+        
+        JsonObject json = JsonUtils.stringToJson(data);
+        ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
+        String workItemId = JsonUtils.fetchStringFieldFromJson("WorkItemId", json);
+        
+        return TaskTideManagerUtility.appendTask(task, workItemId);
+    }
+    
+    
+    
     
     /**
      * Export the {@link TaskTideModel} list to specified file

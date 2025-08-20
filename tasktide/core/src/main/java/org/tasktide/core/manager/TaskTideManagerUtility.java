@@ -72,12 +72,12 @@ public class TaskTideManagerUtility {
      * 
      * @param task
      * @param workItemId
-     * @return boolean
+     * @return {@link WorkItem}
      */
-    public static boolean appendTask(ManagerTask task, String workItemId) {
+    public static WorkItem appendTask(ManagerTask task, String workItemId) {
         WorkItem workItem = TaskTideServiceManager.fetchWorkItemService().fetchById(workItemId);
         workItem.addTask(task.asItemTask());
-        return TaskTideServiceManager.fetchWorkItemService().updateModel(workItem) != null;
+        return TaskTideServiceManager.fetchWorkItemService().updateModel(workItem);
     }
     
     

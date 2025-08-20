@@ -154,13 +154,7 @@ public class GlobalConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(String.class);
         
-        // Fetch value if present
-        try {
-            this.client = this.getConfig().getValue("tasktide.client", String.class);
-        }
-        catch (Exception ex) {
-            this.client = "";
-        }
+        this.client = this.getConfigValue("tasktide.client", String.class, "");
         arg.setValue(this.client);
         this.getArgumentMap().putArgument(arg);
     }
@@ -181,13 +175,7 @@ public class GlobalConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(String.class);
         
-        // Fetch value if present
-        try {
-            this.workflowName = this.getConfig().getValue("tasktide.core.collection.workflow.name", String.class);
-        }
-        catch (Exception ex) {
-            this.workflowName = "";
-        }
+        this.workflowName = this.getConfigValue("tasktide.core.collection.workflow.name", String.class, "");
         arg.setValue(this.workflowName);
         this.getArgumentMap().putArgument(arg);
     }
@@ -208,13 +196,7 @@ public class GlobalConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(String.class);
         
-        // Fetch value if present
-        try {
-            this.stepName = this.getConfig().getValue("tasktide.core.collection.step.name", String.class);
-        }
-        catch (Exception ex) {
-            this.stepName = "";
-        }
+        this.stepName = this.getConfigValue("tasktide.core.collection.step.name", String.class, "");
         arg.setValue(this.stepName);
         this.getArgumentMap().putArgument(arg);
     }
@@ -235,13 +217,7 @@ public class GlobalConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(String.class);
         
-        // Fetch value if present
-        try {
-            this.workItemName = this.getConfig().getValue("tasktide.core.collection.workitem.name", String.class);
-        }
-        catch (Exception ex) {
-            this.workItemName = "";
-        }
+        this.workItemName = this.getConfigValue("tasktide.core.collection.workitem.name", String.class, "");
         arg.setValue(this.workItemName);
         this.getArgumentMap().putArgument(arg);
     }
@@ -261,14 +237,8 @@ public class GlobalConfig extends AbstractConfigurer {
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(String.class);
-        
-        // Fetch value if present
-        try {
-            this.dateFormat = this.getConfig().getValue("tasktide.utils.date-format", String.class);
-        }
-        catch (Exception ex) {
-            this.dateFormat = "dd/MM/yy HH:mm:ss";
-        }
+
+        this.dateFormat = this.getConfigValue("tasktide.utils.date-format", String.class, "dd/MM/yy HH:mm:ss");
         arg.setValue(this.dateFormat);
         this.getArgumentMap().putArgument(arg);
     }
@@ -288,13 +258,7 @@ public class GlobalConfig extends AbstractConfigurer {
             .withArgType(ArgumentType.ACTION)
         .build();
         
-        // Fetch value if present
-        try {
-            this.tokenExpirationDays = this.getConfig().getValue("tasktide.utils.token-expiration-days", int.class);
-        }
-        catch (Exception ex) {
-            this.tokenExpirationDays = 4;
-        }
+        this.tokenExpirationDays = this.getConfigValue("tasktide.utils.token-expiration-days", Integer.class, 4);
         arg.setValue(this.tokenExpirationDays);
         this.getArgumentMap().putArgument(arg);
     }
@@ -315,13 +279,7 @@ public class GlobalConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(String.class);
         
-        // Fetch value if present
-        try {
-            this.repositoryType = this.getConfig().getValue("tasktide.core.repository.type", String.class);
-        }
-        catch (Exception ex) {
-            this.repositoryType = "";
-        }
+        this.repositoryType = this.getConfigValue("tasktide.core.repository.type", String.class, "");
         arg.setValue(this.repositoryType);
         this.getArgumentMap().putArgument(arg);
     }
@@ -341,13 +299,7 @@ public class GlobalConfig extends AbstractConfigurer {
             .withArgType(ArgumentType.ACTION)
         .build();
         
-        // Fetch value if present
-        try {
-            this.filePath = this.getConfig().getValue("tasktide.core.repository.file-path", String.class);
-        }
-        catch (Exception ex) {
-            this.filePath = "";
-        }
+        this.filePath = this.getConfigValue("tasktide.core.repository.file-path", String.class, "");
         arg.setValue(this.filePath);
         this.getArgumentMap().putArgument(arg);
     }

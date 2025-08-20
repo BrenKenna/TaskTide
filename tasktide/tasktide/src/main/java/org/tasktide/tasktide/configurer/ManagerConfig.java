@@ -34,8 +34,8 @@ public class ManagerConfig extends AbstractConfigurer {
     @ConfigProperty(name = "tasktide.manager.method", defaultValue = "Import/Export")
     String method;
     
-    @ConfigProperty(name = "tasktide.manager.targetStep", defaultValue = "myStep")
-    String targetStep;
+    @ConfigProperty(name = "tasktide.manager.importString", defaultValue = "")
+    String importString;
     
     
     /**
@@ -69,6 +69,7 @@ public class ManagerConfig extends AbstractConfigurer {
         this.delimiter();
         this.nestedDelimiter();
         this.method();
+        this.importString();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -111,14 +112,9 @@ public class ManagerConfig extends AbstractConfigurer {
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(String.class);
-        
-        try {
-            this.targetFile = this.getConfig().getValue("tasktide.manager.targetFile", String.class);
-        }
-        catch (Exception ex) {
-            this.targetFile = "";
-        }
-        arg.setValue(targetFile);
+
+        this.targetFile = this.getConfigValue("tasktide.manager.targetFile", String.class, "");
+        arg.setValue(this.targetFile);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -139,13 +135,8 @@ public class ManagerConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(String.class);
         
-        try {
-            this.delimiter = this.getConfig().getValue("tasktide.manager.delimiter", String.class);
-        }
-        catch (Exception ex) {
-            this.delimiter = "";
-        }
-        arg.setValue(delimiter);
+        this.delimiter = this.getConfigValue("tasktide.manager.delimiter", String.class, "");
+        arg.setValue(this.delimiter);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -167,13 +158,8 @@ public class ManagerConfig extends AbstractConfigurer {
         .build();
         arg.setRefClass(String.class);
         
-        try {
-            this.nestedDelimiter = this.getConfig().getValue("tasktide.manager.nestedDelimiter", String.class);
-        }
-        catch (Exception ex) {
-            this.nestedDelimiter = "";
-        }
-        arg.setValue(nestedDelimiter);
+        this.nestedDelimiter = this.getConfigValue("tasktide.manager.nestedDelimiter", String.class, "");
+        arg.setValue(this.nestedDelimiter);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -192,13 +178,24 @@ public class ManagerConfig extends AbstractConfigurer {
             .withArgType(ArgumentType.ACTION)
         .build();
         
-        try {
-            this.method = this.getConfig().getValue("tasktide.manager.method", String.class);
-        }
-        catch (Exception ex) {
-            this.method = "";
-        }
+        this.method = this.getConfigValue("tasktide.manager.method", String.class, "");
         arg.setValue(method);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    public void importString() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Import String")
+            .withDescription("JSON formatted string:\t '{'Field': 'Value'}'")
+            .withShortFlag("-is")
+            .withLongFlag("--import-string")
+            .withArgType(ArgumentType.ACTION)
+        .build();
+        
+        this.importString = this.getConfigValue("tasktide.manager.importString", String.class, "");
+        arg.setValue(this.importString);
         this.getArgumentMap().putArgument(arg);
     }
 }

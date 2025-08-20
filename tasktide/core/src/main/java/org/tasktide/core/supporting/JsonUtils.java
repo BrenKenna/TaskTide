@@ -4,9 +4,16 @@
  */
 package org.tasktide.core.supporting;
 
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
+import jakarta.json.JsonValue;
+
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
+
+import java.io.StringReader;
 
 import java.lang.reflect.Type;
 
@@ -61,5 +68,39 @@ public class JsonUtils {
      */
     public static <T> T fromJson(String json, Type type) {
         return JSON.fromJson(json, type);
+    }
+    
+    
+    /**
+     * Convert string to json
+     * 
+     * @param jsonString
+     * @return JsonObject
+     */
+    public static JsonObject stringToJson(String jsonString) {
+        JsonReader reader = Json.createReader( new StringReader(jsonString) );
+        return reader.readObject();
+    }
+    
+    
+    /**
+     * Fetch normalized field from JsonObject. Normalization sets to lowercase
+     *  , drops trailing whitespaces, and then drops spaces.
+     * 
+     * @param field
+     * @param data
+     * @return JsonValue
+     */
+    public static String fetchStringFieldFromJson(String field, JsonObject data) {
+        field = field.toLowerCase().trim().replace(" ", "");
+        field = field.replace("-", "").replace("_", "");
+        return data.getString(field);
+    }
+    
+    
+    public static JsonValue fetchObjectFromJson(String field, JsonObject data) {
+        field = field.toLowerCase().trim().replace(" ", "");
+        field = field.replace("-", "").replace("_", "");
+        return data.get(field);
     }
 }

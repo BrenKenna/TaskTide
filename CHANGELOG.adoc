@@ -44,6 +44,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
 - [] Logger messages DRY view on Degbug, Info, Warn, Error.
 - [] Apply ConfigUtil to TaskTideClient?
 - [] Config validator
+- [/] Enqueue a task, and append a task to a workitem.
 - [X] Open collection name onto Item (ie Step on WorkItem).
 - [X] Way to include "config" folder into zip.
 - [X] Install helper script for TaskTide.

@@ -110,4 +110,24 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
         CliParser output = new CliParser(argTree, argsIn);
         return !output.parse().isEmpty();
     }
+    
+    
+    /**
+     * Fetch config, or default value
+     * 
+     * @param <T>
+     * @param configKey
+     * @param type
+     * @param defaultValue
+     * 
+     * @return value 
+     */
+    public <T> T getConfigValue(String configKey, Class<T> type, T defaultValue) {
+        try {
+            return this.config.getValue(path, type);
+        }
+        catch (Exception ex) {
+            return defaultValue;
+        }
+    } 
 }
