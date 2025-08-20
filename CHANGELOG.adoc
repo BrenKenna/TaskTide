@@ -100,6 +100,7 @@ java.util.NoSuchElementException: SRCFG00014: The config property tasktide.core.
 A lot of the major aspects are done, or covered. These push towards a minimally functional v0.9.9, where a "once over" covers the v1. This push is neatness thing anticipating problems coming from use-case deployment.
 
 - [/] Docker Compose.
+- []  Test new ManagerActions.
 - [] Logger messages DRY view on Debug, Info, Warn, Error.
 - [] Apply ConfigUtil to TaskTideClient?
 - [] Config validator
