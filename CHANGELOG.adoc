@@ -9,7 +9,54 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 === Bugs
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Formatting of help splash text.
-- [] Manager client only imports with command-line arguments
+- [] Specifiy file path on command-line yields below, parsing is changing this somehow. Have this a parameter
+....
+
+2025-08-20 19:22:19 DEBUG [ main -> org.tasktide.tasktide.configurer.GlobalConfig.filePath ]: Value for file path is '/scratch/bkenna/TaskTide/itemStore/client-args'
+2025-08-20 18:28:34 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-20 18:28:34 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:      'java.lang.ClassCastException: class java.lang.Boolean cannot be cast to class java.lang.String (java.lang.Boolean and java.lang.String are in module java.base of loader 'bootstrap')'
+java.lang.ClassCastException: class java.lang.Boolean cannot be cast to class java.lang.String (java.lang.Boolean and java.lang.String are in module java.base of loader 'bootstrap')
+        at org.tasktide.tasktide.client.TaskTideClientUtility.initItemStoreServiceManager(TaskTideClientUtility.java:207)
+        at org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager(TaskTideClientUtility.java:164)
+        at org.tasktide.tasktide.TaskTide.main(TaskTide.java:64)
+
+// Thinks boolean is defined here, somehow it is changing?
+org.tasktide.tasktide.client.TaskTideClientUtility.initItemStoreServiceManager
+    /-> storeName = (String) configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue();
+
+
+org.tasktide.tasktide.configurer.GlobalConfig{
+
+    @ConfigProperty(name = "tasktide.core.repository.file-path", defaultValue = "myData")// RocksDB or Json
+    private String filePath;
+
+    public void filePath() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("File Path")
+            .withDescription("Specifies the file path for RocksDB/Json repository")
+            .withShortFlag("-fp")
+            .withLongFlag("--file-path")
+            .withArgType(ArgumentType.ACTION)
+        .build();
+        
+        this.filePath = this.getConfigValue("tasktide.core.repository.file-path", String.class, "");
+        arg.setValue(this.filePath);
+        this.getArgumentMap().putArgument(arg);
+    }
+}
+....
+
+
+- [] Client now hangs at initializing TaskTideServiceManager? And the DB path is not correct?
+....
+2025-08-20 18:32:28 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-20 18:32:28 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:  'sqlite'
+2025-08-20 18:32:28 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-20 18:32:28 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-20 18:32:28 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStoreDirectory already exists under:   '/WORKITEM' 
+....
+
 - [] Stray target step being use on command-line arguments
 - [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB. Maybe 
 - [/] Unit test only bug for NoSQL Template Repository queries. Use manager instead test utility.
@@ -20,6 +67,22 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X] Deprecated process executor
 - [X] In/output file must be in class path.
 
+- [X] Internal config property for JNoSQL, host value pulled twice.
+
+....
+2025-08-20 18:39:25 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:      'java.util.NoSuchElementException: SRCFG00014: The config property tasktide.core.repository.jnosql.host is required but it could not be found in any config source'
+java.util.NoSuchElementException: SRCFG00014: The config property tasktide.core.repository.jnosql.host is required but it could not be found in any config source
+        at io.smallrye.config.SmallRyeConfig.convertValue(SmallRyeConfig.java:446)
+        at io.smallrye.config.SmallRyeConfig.getValue(SmallRyeConfig.java:391)
+        at io.smallrye.config.SmallRyeConfig.getValue(SmallRyeConfig.java:370)
+        at org.tasktide.tasktide.configurer.dependent.JNoSQLConfigurer.nosqlHost(JNoSQLConfigurer.java:231)
+        at org.tasktide.tasktide.configurer.dependent.JNoSQLConfigurer.initConfig(JNoSQLConfigurer.java:77)
+        at org.tasktide.tasktide.configurer.GlobalConfig.initConfig(GlobalConfig.java:116)
+        at org.tasktide.tasktide.configurer.GlobalConfig$Proxy$_$$_WeldClientProxy.initConfig(Unknown Source)
+        at org.tasktide.tasktide.client.ClientConfigMap.parseConfigs(ClientConfigMap.java:52)
+        at org.tasktide.tasktide.client.ClientConfigMap.addConfigs(ClientConfigMap.java:63)
+        at org.tasktide.tasktide.TaskTide.main(TaskTide.java:51)
+....
 
 === Main Checklist
 

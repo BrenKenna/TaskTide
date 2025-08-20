@@ -5,6 +5,8 @@
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.tasktide.configurer.dependent.JNoSQLConfigurer;
@@ -25,6 +27,7 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
 public class GlobalConfig extends AbstractConfigurer {
     
     // Delgate Jakarta and JPA
+    private final Logger LOGGER = LogManager.getLogger(GlobalConfig.class);
     private final JpaConfigurer jpaConf;
     private final JNoSQLConfigurer jnosqlConf;
     
@@ -301,6 +304,7 @@ public class GlobalConfig extends AbstractConfigurer {
         
         this.filePath = this.getConfigValue("tasktide.core.repository.file-path", String.class, "");
         arg.setValue(this.filePath);
+        LOGGER.debug("Value for file path is '{}'", this.filePath);
         this.getArgumentMap().putArgument(arg);
     }
 }

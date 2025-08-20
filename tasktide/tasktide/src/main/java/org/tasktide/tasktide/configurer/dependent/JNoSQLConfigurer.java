@@ -228,7 +228,6 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
      */
     public void nosqlHost() {
         Argument<String> arg;
-        this.nosqlHost = this.getConfig().getValue("tasktide.core.repository.jnosql.host", String.class);
         arg = this.getArgumentBuilder()
                 .withName("NoSQL Host:Port")
                 .withDescription("Specifies the backend NoSQL-DB host:port to use")

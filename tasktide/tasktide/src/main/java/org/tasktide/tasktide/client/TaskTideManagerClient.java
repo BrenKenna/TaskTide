@@ -252,6 +252,10 @@ public class TaskTideManagerClient extends TaskTideClient {
                 return TaskTideManagerUtility.importTasks(stepName, file, delimiter);
             }
             
+            if ( nestedDelimiter.isEmpty() ) {
+                return TaskTideManagerUtility.importTasks(stepName, file, delimiter);
+            }
+            
             // Use nested delimiter
             else {
                 return TaskTideManagerUtility.importTasks(stepName, file, delimiter, nestedDelimiter);

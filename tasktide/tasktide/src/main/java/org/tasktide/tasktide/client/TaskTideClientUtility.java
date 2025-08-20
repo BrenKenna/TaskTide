@@ -204,7 +204,8 @@ public class TaskTideClientUtility {
      */
     public static void initItemStoreServiceManager(ClientConfigMap configMap) {
         String storeTypeString, storeName;
-        storeName = (String) configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue();
+        LOGGER.debug("Repository FilePath is:\t'{}'", configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue());
+        storeName = (String) configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue(); // Thinks boolean
         storeTypeString = (String) configMap.getArgTree().getGlobalArguments().getArgument("Repository Type").getValue();
         ItemStoreType storeType = ItemStoreType.get(storeTypeString);
         ItemStoreRepositoryUtility.initialize(storeType, storeName);

@@ -124,7 +124,7 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
      */
     public <T> T getConfigValue(String configKey, Class<T> type, T defaultValue) {
         try {
-            return this.config.getValue(path, type);
+            return this.config.getValue(configKey, type);
         }
         catch (Exception ex) {
             return defaultValue;
