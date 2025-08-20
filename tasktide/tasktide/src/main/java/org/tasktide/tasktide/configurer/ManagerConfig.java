@@ -22,11 +22,8 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
 @ApplicationScoped
 public class ManagerConfig extends AbstractConfigurer {
     
-    @ConfigProperty(name = "tasktide.manager.inputFile", defaultValue = "")
-    String inputFile;
-    
-    @ConfigProperty(name = "tasktide.manager.outputFile", defaultValue = "")
-    String outputFile;
+    @ConfigProperty(name = "tasktide.manager.targetFile", defaultValue = "")
+    String targetFile;
     
     @ConfigProperty(name = "tasktide.manager.delimiter", defaultValue = "")
     String delimiter;
@@ -39,9 +36,6 @@ public class ManagerConfig extends AbstractConfigurer {
     
     @ConfigProperty(name = "tasktide.manager.targetStep", defaultValue = "myStep")
     String targetStep;
-    
-    @ConfigProperty(name = "tasktide.manager.target", defaultValue = "WorkItem")
-    String target;
     
     
     /**
@@ -71,13 +65,10 @@ public class ManagerConfig extends AbstractConfigurer {
     @Override
     public void initConfig(ArgumentTree argTree) {
         this.help();
-        this.inputFile();
+        this.targetFile();
         this.delimiter();
-        this.outputFile();
         this.nestedDelimiter();
         this.method();
-        this.targetStep();
-        this.target();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -106,53 +97,28 @@ public class ManagerConfig extends AbstractConfigurer {
     
     
     /**
-     * Sets target for manager
-     */
-    public void target() {
-        Argument<String> arg;
-        arg = this.getArgumentBuilder()
-            .withName("Target")
-            .withDescription("Defines the Import/Export target")
-            .withShortFlag("-tgt")
-            .withLongFlag("--target")
-        .build();
-        arg.setRefClass(String.class);
-        
-        // Try set target
-        try {
-            this.target = this.getConfig().getValue("tasktide.manager.target", String.class);
-        }
-        catch (Exception ex) {
-            this.target = "Arbitrary";
-        }
-        if ( !target.isEmpty() ) {arg.setValue(target);}
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
      * Configure the input file for the {@link TaskTideServiceManager} to use
      *  for any of its relevant operations
      * 
      */
-    public void inputFile() {
+    public void targetFile() {
         Argument<String> arg;
         arg = this.getArgumentBuilder()
-            .withName("Input File")
+            .withName("Target File")
             .withDescription("Defines the full file path for import")
-            .withShortFlag("-i")
-            .withLongFlag("--input-file")
+            .withShortFlag("-f")
+            .withLongFlag("--target-file")
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(String.class);
         
         try {
-            this.inputFile = this.getConfig().getValue("tasktide.manager.inputFile", String.class);
+            this.targetFile = this.getConfig().getValue("tasktide.manager.targetFile", String.class);
         }
         catch (Exception ex) {
-            this.inputFile = "";
+            this.targetFile = "";
         }
-        if ( !this.inputFile.isEmpty() ) arg.setValue(inputFile);
+        arg.setValue(targetFile);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -179,34 +145,7 @@ public class ManagerConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.delimiter = "";
         }
-        if ( !this.delimiter.isEmpty() ) arg.setValue(delimiter);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Configure the output file for the {@link TaskTideServiceManager} to use
-     *  for any of its relevant operations
-     * 
-     */
-    public void outputFile() {
-        Argument<String> arg;
-        arg = this.getArgumentBuilder()
-            .withName("Output File")
-            .withDescription("Defines the full JSON formatted file path for export")
-            .withShortFlag("-o")
-            .withLongFlag("--output-file")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(String.class);
-        
-        try {
-            this.outputFile = this.getConfig().getValue("tasktide.manager.outputFile", String.class);
-        }
-        catch (Exception ex) {
-            this.outputFile = "";
-        }
-        if ( !this.outputFile.isEmpty() ) arg.setValue(outputFile);
+        arg.setValue(delimiter);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -234,7 +173,7 @@ public class ManagerConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.nestedDelimiter = "";
         }
-        if ( !this.nestedDelimiter.isEmpty() ) arg.setValue(nestedDelimiter);
+        arg.setValue(nestedDelimiter);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -259,32 +198,7 @@ public class ManagerConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.method = "";
         }
-        if ( !this.method.isEmpty() ) arg.setValue(method);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Configure the target step to reference for import
-     * 
-     */
-    public void targetStep() {
-        Argument<String> arg;
-        arg = this.getArgumentBuilder()
-            .withName("Target Step")
-            .withDescription("Defines the target step for import")
-            .withShortFlag("-ts")
-            .withLongFlag("--target-step")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        
-        try {
-            this.targetStep = this.getConfig().getValue("tasktide.manager.targetStep", String.class);
-        }
-        catch (Exception ex) {
-            this.targetStep = "";
-        }
-        if ( !this.targetStep.isEmpty() ) arg.setValue(targetStep);
+        arg.setValue(method);
         this.getArgumentMap().putArgument(arg);
     }
 }

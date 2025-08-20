@@ -82,7 +82,7 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
      */
     private Item<T> toItem(T model) {
         Item<T> output;
-        output = new Item<>(model.getId(), model.getState(), model.toJson());
+        output = new Item<>(model.getId(), model.getState(), model.getCollection(), model.toJson());
         return output;
     }
     

@@ -571,6 +571,17 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     
     
     /**
+     * Get step
+     * 
+     * @return 
+     */
+    @Override
+    public String getCollection() {
+        return this.stepName;
+    }
+    
+    
+    /**
      * Represent work item as string
      * 
      * @return 

@@ -103,7 +103,7 @@ public class SqliteItemStoreTests {
      * @return {@link Item}
      */
     public Item fetchRandomItem() {
-        return new Item<String>(UUID.randomUUID().toString(), "State", UUID.randomUUID().toString());
+        return new Item<String>(UUID.randomUUID().toString(), "State", "Step", UUID.randomUUID().toString());
     }
     
     

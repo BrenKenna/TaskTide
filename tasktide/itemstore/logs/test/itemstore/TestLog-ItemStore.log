@@ -873,3 +873,251 @@ Stderr:
 
 ---------------- Terminating AbstractItemStore Tests ----------------
 
+2025-08-20 12:14:07 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Tests ----------------
+
+2025-08-20 12:14:07 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:14:07 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-20 12:14:07 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Creating database
+2025-08-20 12:14:09 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Savining below record to db
+{Item{id=myId, state=state, step=null, payload=payload}}
+2025-08-20 12:14:09 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Item saved, retrieving for referece
+2025-08-20 12:14:09 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: Displaying retrieved record below record
+{Item{id=myId, state=state, step=null, payload=payload}}
+2025-08-20 12:14:09 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.makeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-20 12:14:09 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:14:09 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:14:09 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-20 12:14:10 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Displaying original & queried Item:
+
+Item{id=myId-2, state=state-2, step=null, payload=payload-2}
+[Item{id=myId-2, state=state-2, step=null, payload=payload-2}]
+
+2025-08-20 12:14:10 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: Prototype deletion state:	'true'
+2025-08-20 12:14:10 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.queryItemStore ]: 
+
+================ Can Requery ItemStore Test ================
+
+2025-08-20 12:14:10 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:14:10 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Tests ----------------
+
+2025-08-20 12:14:57 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUpClass ]: 
+
+---------------- Initiating Item Tests ----------------
+
+2025-08-20 12:14:57 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:14:57 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+
+================ Can make Item Test ================
+
+2025-08-20 12:14:57 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: Verifying attributes of created Item:
+
+Item{id=myId, state=todo, step=null, payload=my cool payload}
+2025-08-20 12:14:57 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.canMakeItem ]: 
+
+================ Can make Item Test ================
+
+2025-08-20 12:14:57 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:14:57 INFO  [ Test worker -> org.tasktide.itemstore.ItemTests.tearDownClass ]: 
+
+---------------- Terminating Item Tests ----------------
+
+2025-08-20 12:15:07 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUpClass ]: 
+
+---------------- Initiating SQLite-Store Tests ----------------
+
+2025-08-20 12:15:07 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:15:07 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-20 12:15:07 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Creating SQLite ItemStore
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: ItemStore created
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Evaluating ItemStore
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: 
+
+================ Can Insert ItemStore Test ================
+
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying record for import:
+Item{id=e642eef7-e2d0-4d73-87ba-c2bbdc3fae91, state=State, step=null, payload=2e6e57f1-bee0-442f-929c-f59e1568324e}
+
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Record inserted, verifying get
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying queried result:
+null
+
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:15:08 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating SQLite-Store Tests ----------------
+
+2025-08-20 12:16:54 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUpClass ]: 
+
+---------------- Initiating SQLite-Store Tests ----------------
+
+2025-08-20 12:16:54 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:16:54 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-20 12:16:54 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Creating SQLite ItemStore
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: ItemStore created
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Evaluating ItemStore
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: 
+
+================ Can Insert ItemStore Test ================
+
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying record for import:
+Item{id=208ebd0b-ede9-411c-a305-17d1a6160dae, state=State, step=null, payload=9b8c21ab-2f85-4365-83dc-8ede4ee5cef7}
+
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Record inserted, verifying get
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying queried result:
+null
+
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:16:55 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating SQLite-Store Tests ----------------
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUpClass ]: 
+
+---------------- Initiating SQLite-Store Tests ----------------
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Creating SQLite ItemStore
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: ItemStore created
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Evaluating ItemStore
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: 
+
+================ Can Insert ItemStore Test ================
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying record for import:
+Item{id=944064dc-d6f7-40e8-b2de-c3ef003e96e4, state=State, step=null, payload=7c42cdc4-e98b-4312-8abe-cf4d4d2d3e14}
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Record inserted, verifying get
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying queried result:
+null
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:18:09 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating SQLite-Store Tests ----------------
+
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUpClass ]: 
+
+---------------- Initiating SQLite-Store Tests ----------------
+
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: 
+
+================ Can Insert ItemStore Test ================
+
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying record for import:
+Item{id=eae3f88f-7a39-4ba9-9cae-191a6eb9620c, state=State, step=Step, payload=df78e41b-f3d0-484d-b24d-6493d1e9801f}
+
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Record inserted, verifying get
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: Displaying queried result:
+Item{id=eae3f88f-7a39-4ba9-9cae-191a6eb9620c, state=State, step=Step, payload=df78e41b-f3d0-484d-b24d-6493d1e9801f}
+
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canInsertIntoItemStore ]: 
+
+================ Can Insert ItemStore Test ================
+
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-20 12:21:20 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating SQLite-Store Tests ----------------
+

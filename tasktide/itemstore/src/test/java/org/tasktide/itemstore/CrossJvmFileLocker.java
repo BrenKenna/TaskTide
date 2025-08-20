@@ -72,14 +72,15 @@ public class CrossJvmFileLocker {
     private static Item getRandomItem() {
         
         // Initialize vars
-        String id, state, payload;
+        String id, state, step, payload;
         Item output;
         
         // Create item
         id = UUID.randomUUID().toString();
         state = UUID.randomUUID().toString();
+        step = UUID.randomUUID().toString();
         payload = UUID.randomUUID().toString();
-        output = new Item(id, state, payload);
+        output = new Item(id, state, step, payload);
         
         // Return results
         return output;

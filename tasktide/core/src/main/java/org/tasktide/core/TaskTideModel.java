@@ -49,4 +49,12 @@ public interface TaskTideModel<T extends TaskTideModel<T>> {
      * @return Object
      */
     public Object getValueFromField(String field);
+    
+    
+    /**
+     * Fetch collection model is, or is part of
+     * 
+     * @return String
+     */
+    public String getCollection();
 }

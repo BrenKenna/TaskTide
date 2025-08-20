@@ -40,7 +40,8 @@ public class TaskTideManagerClient extends TaskTideClient {
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(TaskTideEngineClient.class);
-    private final ArgumentMap argMap;
+    private final ArgumentMap managerArgs;
+    private final ArgumentMap globalArgs;
 
 
     /**
@@ -50,7 +51,8 @@ public class TaskTideManagerClient extends TaskTideClient {
      */
     public TaskTideManagerClient(ClientConfigMap configMap) {
         super(configMap);
-        argMap = this.getArgTree().getTree().getDataForAddress("manager");
+        managerArgs = this.getArgTree().getTree().getDataForAddress("manager");
+        globalArgs = this.getArgTree().getTree().getDataForAddress("");
     }
 
     
@@ -61,12 +63,11 @@ public class TaskTideManagerClient extends TaskTideClient {
      */
     @Override
     protected boolean configureClient() {
-        if ( ((String) this.argMap.getArgument("Method").getValue()).isEmpty() ) {
+        if ( ((String) this.managerArgs.getArgument("Method").getValue()).isEmpty() ) {
             return false;
         }
-        String inFile = ((String) this.argMap.getArgument("Input File").getValue());
-        String outFile = ((String) this.argMap.getArgument("Output File").getValue());
-        return !(inFile.isEmpty() && outFile.isEmpty());
+        String inFile = ((String) this.managerArgs.getArgument("Target File").getValue());
+        return !inFile.isEmpty();
     }
     
 
@@ -77,7 +78,7 @@ public class TaskTideManagerClient extends TaskTideClient {
     protected void performClientTask() {
         
         // Fetch task to perform
-        String actVal = (String) this.argMap.getArgument("Method").getValue();
+        String actVal = (String) this.managerArgs.getArgument("Method").getValue();
         ManagerAction action = ManagerAction.get(actVal);
         
         // Handle action to perform
@@ -95,30 +96,7 @@ public class TaskTideManagerClient extends TaskTideClient {
             }
         }
     }
-    
-    
-    /**
-     * Parse file to use based on the manager action 
-     * 
-     * @param action
-     * @return {@link ManagerAction}
-     */
-    private String parseFile(ManagerAction action) {
-        switch ( action ) {
-            case IMPORT -> {
-                return (String) this.argMap.getArgument("Input File").getValue();
-            }
-            
-            case EXPORT -> {
-                return (String) this.argMap.getArgument("Output File").getValue();
-            }
-            
-            default -> {
-                return null;
-            }
-        }
-    }
-    
+
     
     /**
      * Export the {@link TaskTideModel} list to specified file
@@ -165,10 +143,10 @@ public class TaskTideManagerClient extends TaskTideClient {
     private List<WorkItem> importFile() throws IOException {
     
         // Fetch arguments
-        String file = this.parseFile(ManagerAction.IMPORT);
-        String delimiter = (String) this.argMap.getArgument("Delimiter").getValue();
-        String nestedDelimiter = (String) this.argMap.getArgument("Nested Delimiter").getValue();
-        String stepName = (String) this.argMap.getArgument("Target Step").getValue();
+        String file = (String) this.managerArgs.getArgument("Target File").getValue();
+        String delimiter = (String) this.managerArgs.getArgument("Delimiter").getValue();
+        String nestedDelimiter = (String) this.managerArgs.getArgument("Nested Delimiter").getValue();
+        String stepName = (String) this.globalArgs.getArgument("Step Name").getValue();
         
         // Import workload from JSON: Format argument instead
         if (delimiter.equalsIgnoreCase("json")) {
@@ -222,13 +200,13 @@ public class TaskTideManagerClient extends TaskTideClient {
      * Handle exporting target data to output file
      */
     private void handleExport() {
-        String outFile = parseFile(ManagerAction.EXPORT);
-        String target = (String) this.argMap.getArgument("Target").getValue();
-        if ( !outFile.isEmpty() && !target.isEmpty() ) {
+        String targetFile = (String) this.managerArgs.getArgument("Target File").getValue();
+        String target = (String) this.globalArgs.getArgument("Step Name").getValue();
+        if ( !targetFile.isEmpty() && !target.isEmpty() ) {
             ManagerTarget tgt = ManagerTarget.get(target);
             if ( tgt != null ) {
                 List<TaskTideModel> data = tgt.fetchModels();
-                this.exportJson(data, outFile);
+                this.exportJson(data, targetFile);
             }
             else {
                 throw new IllegalStateException(String.format("Target must be one of: %s", ManagerTarget.valuesString()));

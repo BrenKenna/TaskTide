@@ -58,11 +58,11 @@ public class ItemTests {
         logger.info("\n\n================ Can make Item Test ================\n");
         boolean assertionState = true;
         int passed = 0, expected = 3;
-        String id = "myId", state = "todo", payload = "my cool payload";
+        String id = "myId", state = "todo", step = "my-step", payload = "my cool payload";
         Item testUnit;
         
         // Create an example ItemStore Item
-        testUnit = new Item<String>(id, state, payload);
+        testUnit = new Item<String>(id, state, step, payload);
         
         // Verifying attributes
         logger.info("Verifying attributes of created Item:\n\n{}", testUnit.toString());

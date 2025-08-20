@@ -75,7 +75,7 @@ public class ItemStoreTests {
             logger.info("Creating database");
             itemStore = ItemStoreTestUtils.makeRocksDB("testing", workDir);
             if ( itemStore != null ) {
-                item = new Item<String>("myId", "state", "payload");
+                item = new Item<String>("myId", "state", "step", "payload");
                 try {
                     logger.info("Savining below record to db\n{" + item + "}");
                     itemStore.saveItem(DbTarget.BOTH, item);
@@ -118,7 +118,7 @@ public class ItemStoreTests {
         if ( workDir != null ) {
             itemStore = ItemStoreTestUtils.makeRocksDB("testing", workDir);
             if ( itemStore != null ) {
-                item = new Item<String>("myId-2", "state-2", "payload-2");
+                item = new Item<String>("myId-2", "state-2", "step-2", "payload-2");
                 try {
                     itemStore.saveItem(DbTarget.BOTH, item);
                     results = itemStore.getAll(DbTarget.PROTOTYPE);

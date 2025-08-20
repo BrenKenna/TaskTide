@@ -95,6 +95,17 @@ public class Workflow implements TaskTideModel<Workflow> {
     }
     
     
+     /**
+     * Return workflow id
+     * 
+     * @return 
+     */
+    @Override
+    public String getCollection() {
+        return this.workflowName;
+    }
+    
+    
     /**
      * Get workflow Id
      * 

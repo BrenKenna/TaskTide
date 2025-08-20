@@ -42,6 +42,7 @@ public class TaskTideEngineClient extends TaskTideClient {
     private TaskTideProcessor<WorkItem> processor;
     private TaskTideExecutor<WorkItem> workExec;
     private TaskTideEngineObserver<WorkItem> obs;
+    private ArgumentMap engineArgs, globalArgs;
     private String step;
     
     
@@ -53,7 +54,9 @@ public class TaskTideEngineClient extends TaskTideClient {
     public TaskTideEngineClient(ClientConfigMap configMap) {
         super(configMap);
         this.unitProvider = new TaskTideWorkerUnitProvider();
-        this.step = (String) this.getArgTree().getTree().getDataForAddress("engine").getArgument("Step").getValue();
+        this.engineArgs = this.getArgTree().getTree().getDataForAddress("engine");
+        this.globalArgs = this.getArgTree().getTree().getDataForAddress("");
+        this.step = (String) engineArgs.getArgument("Step").getValue();
     }
     
     
@@ -190,11 +193,10 @@ public class TaskTideEngineClient extends TaskTideClient {
      * @return {@link ExecutorService}
      */
     private ExecutorService initializeAndConfigureExecutorServices() {
-        ArgumentMap engineConf = this.getArgTree().getTree().getDataForAddress("engine");
-        this.workItemThreads = (int) engineConf.getArgument("WorkItem Threads").getValue();
-        this.workThreshold = (int) engineConf.getArgument("WorkItem SubTasking Threshold").getValue();
-        this.itemTaskThreads = (int) engineConf.getArgument("ItemTask Threads").getValue();
-        this.taskThreshold = (int) engineConf.getArgument("ItemTask SubTasking Threshold").getValue();
+        this.workItemThreads = (int) this.engineArgs.getArgument("WorkItem Threads").getValue();
+        this.workThreshold = (int) this.engineArgs.getArgument("WorkItem SubTasking Threshold").getValue();
+        this.itemTaskThreads = (int) this.engineArgs.getArgument("ItemTask Threads").getValue();
+        this.taskThreshold = (int) this.engineArgs.getArgument("ItemTask SubTasking Threshold").getValue();
         TaskTideExecutorServiceProvider.initialize(this.workItemThreads, this.itemTaskThreads);
         return TaskTideExecutorServiceProvider.workItemExecutorService();
     }
@@ -206,7 +208,7 @@ public class TaskTideEngineClient extends TaskTideClient {
      * @return {@link TaskTideEngineObserver}
      */
     private TaskTideEngineObserver<WorkItem> configureWorkItemEngineObserverChain() {
-        int timeKeeperObserverMaxTime = (int) this.getArgTree().getTree().getDataForAddress("engine").getArgument("TimeKeeper Wall Time").getValue();
+        int timeKeeperObserverMaxTime = (int) this.engineArgs.getArgument("TimeKeeper Wall Time").getValue();
         return unitProvider.getWorkItemObsBuilder()
             .withMaxTime(timeKeeperObserverMaxTime)
         .build();

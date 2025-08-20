@@ -121,7 +121,6 @@ public class Step implements TaskTideModel<Step> {
         this.stepsDone = stepsDone;
         this.stepsError = stepsError;
         this.stepsToDo = stepsToDo;
-        this.workflowId = workflowId;
     }
     
     
@@ -219,6 +218,17 @@ public class Step implements TaskTideModel<Step> {
      */
     public void setWorkflowId(Workflow workflow) {
         this.workflow = workflow;
+    }
+    
+    
+    /**
+     * Return workflow id
+     * 
+     * @return 
+     */
+    @Override
+    public String getCollection() {
+        return this.workflowId;
     }
     
     

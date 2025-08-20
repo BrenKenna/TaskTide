@@ -14,7 +14,7 @@ package org.tasktide.itemstore;
 public class Item<T> {
     
     // Attributes
-    private String id, state, payload;
+    private String id, state, step, payload;
     
     
     /**
@@ -28,11 +28,13 @@ public class Item<T> {
      * 
      * @param id
      * @param state
+     * @param step
      * @param payload 
      */
-    public Item(String id, String state, String payload) {
+    public Item(String id, String state, String step, String payload) {
         this.id = id;
         this.state = state;
+        this.step = step;
         this.payload = payload;
     }
     
@@ -98,6 +100,26 @@ public class Item<T> {
 
     
     /**
+     * Get step name
+     * 
+     * @return 
+     */
+    public String getStep() {
+        return step;
+    }
+
+    
+    /**
+     * Set step name
+     * 
+     * @param step 
+     */
+    public void setStep(String step) {
+        this.step = step;
+    }
+
+    
+    /**
      * Represent as string
      * 
      * @return String
@@ -107,6 +129,7 @@ public class Item<T> {
         return "Item{" +
             "id=" + id +
             ", state=" + state +
+            ", step=" + step +
             ", payload=" + payload +
         '}';
     }

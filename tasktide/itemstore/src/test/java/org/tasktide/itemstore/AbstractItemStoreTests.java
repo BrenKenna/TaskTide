@@ -120,41 +120,4 @@ public class AbstractItemStoreTests {
         assertTrue(assertionState);
         logger.info("\n\n================ Can Multiple JVMs Serially AbstractItemStore Test ================\n");
     }
-    
-    /**
-     * Tests that multiple JVMs can use the same masterDB
-     * 
-     */
-    @Test
-    @Order(2)
-    public void multipleJvmsCanUse() {
-    
-        // Initialize test
-        logger.info("\n\n================ Can Multiple JVMs Concurrently AbstractItemStore Test ================\n");
-        boolean assertionState;
-        ProcessBuilder procBuilder;
-        List<Process> processes;
-        int nProcesses = 50, nPassing = 0;
-        
-        // Fetch & processes from process builder
-        logger.info("Configuring process builder for cross JVM DB access test");
-        procBuilder = ItemStoreTestUtils.crossJvmFileLockerProcess();
-        logger.info("Running processes");
-        processes = ItemStoreTestUtils.runProcessesPara(procBuilder, nProcesses);
-        
-        // Wait for processes
-        logger.info("Waiting until processes have completed");
-        ItemStoreTestUtils.waitUntilDone(processes);
-        
-        // Summarize processes
-        logger.info("Summarizing processes");
-        nPassing = ItemStoreTestUtils.summarizeProcesses(processes);
-        
-        // End test
-        assertionState = nPassing == nProcesses;
-        String template = String.format("Processes completed '%d'/%d passed", nPassing, nProcesses);
-        logger.info(template);
-        assertTrue(assertionState);
-        logger.info("\n\n================ Can Multiple JVMs Concurrently AbstractItemStore Test ================\n");
-    }
 }

@@ -161,7 +161,7 @@ public class GlobalConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.client = "";
         }
-        if (!this.client.isEmpty()) arg.setValue(this.client);
+        arg.setValue(this.client);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -188,7 +188,7 @@ public class GlobalConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.workflowName = "";
         }
-        if (!this.workflowName.isEmpty()) arg.setValue(this.workflowName);
+        arg.setValue(this.workflowName);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -215,7 +215,7 @@ public class GlobalConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.stepName = "";
         }
-        if (!this.stepName.isEmpty()) arg.setValue(this.stepName);
+        arg.setValue(this.stepName);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -242,7 +242,7 @@ public class GlobalConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.workItemName = "";
         }
-        if (!this.workItemName.isEmpty()) arg.setValue(this.workItemName);
+        arg.setValue(this.workItemName);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -267,9 +267,9 @@ public class GlobalConfig extends AbstractConfigurer {
             this.dateFormat = this.getConfig().getValue("tasktide.utils.date-format", String.class);
         }
         catch (Exception ex) {
-            this.dateFormat = "";
+            this.dateFormat = "dd/MM/yy HH:mm:ss";
         }
-        if (!this.dateFormat.isEmpty()) arg.setValue(this.dateFormat);
+        arg.setValue(this.dateFormat);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -283,10 +283,9 @@ public class GlobalConfig extends AbstractConfigurer {
         arg = this.getArgumentBuilder()
             .withName("Token Expiration")
             .withDescription("Specifies the token expiration limit, default is 4 days")
-            .withShortFlag("-df")
-            .withLongFlag("--date-format")
+            .withShortFlag("-te")
+            .withLongFlag("--token-expiration")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.tokenExpirationDays, int.class)
         .build();
         
         // Fetch value if present
@@ -323,7 +322,7 @@ public class GlobalConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.repositoryType = "";
         }
-        if (!this.repositoryType.isEmpty()) arg.setValue(this.repositoryType);
+        arg.setValue(this.repositoryType);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -349,8 +348,7 @@ public class GlobalConfig extends AbstractConfigurer {
         catch (Exception ex) {
             this.filePath = "";
         }
-        if (!this.filePath.isEmpty()) arg.setValue(this.filePath);
-        this.getArgumentMap().putArgument(arg);
+        arg.setValue(this.filePath);
         this.getArgumentMap().putArgument(arg);
     }
 }

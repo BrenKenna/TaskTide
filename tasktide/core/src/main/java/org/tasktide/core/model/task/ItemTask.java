@@ -54,6 +54,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     @JsonbProperty("Work Item Id")
     private String workItemId;
     
+    
     /**
      * Empty constructor
      */
@@ -254,6 +255,17 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      */
     public void setTask(String task) {
         this.task = task;
+    }
+    
+    
+    /**
+     * Returns work item id
+     * 
+     * @return String
+     */
+    @Override
+    public String getCollection() {
+        return this.workItemId;
     }
     
     
