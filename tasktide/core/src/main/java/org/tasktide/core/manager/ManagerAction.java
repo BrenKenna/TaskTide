@@ -70,7 +70,6 @@ public enum ManagerAction {
     
     },
     
-    
     APPEND {
     
         @Override
@@ -87,8 +86,41 @@ public enum ManagerAction {
         public String toString() {
             return name();
         }
-    }
-    ;
+    },
+    
+    RESET_ITEM {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+    },
+    
+    RESET_ITEMS {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+    };
 
     public abstract boolean isManagerAction(String query);
     public abstract boolean isManagerAction(ManagerAction query);

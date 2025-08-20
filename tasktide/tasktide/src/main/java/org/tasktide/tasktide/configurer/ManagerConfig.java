@@ -31,12 +31,15 @@ public class ManagerConfig extends AbstractConfigurer {
     @ConfigProperty(name = "tasktide.manager.nestedDelimiter", defaultValue = "")
     String nestedDelimiter;
     
-    @ConfigProperty(name = "tasktide.manager.method", defaultValue = "Import/Export")
+    @ConfigProperty(name = "tasktide.manager.method", defaultValue = "")
     String method;
     
     @ConfigProperty(name = "tasktide.manager.importString", defaultValue = "")
     String importString;
     
+    @ConfigProperty(name = "tasktide.manager.itemId", defaultValue = "")
+    String itemId;
+
     
     /**
      * Defaults config path to 'tasktide engine'
@@ -70,6 +73,7 @@ public class ManagerConfig extends AbstractConfigurer {
         this.nestedDelimiter();
         this.method();
         this.importString();
+        this.itemId();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -184,6 +188,9 @@ public class ManagerConfig extends AbstractConfigurer {
     }
     
     
+    /**
+     * JSON Import string
+     */
     public void importString() {
         Argument<String> arg;
         arg = this.getArgumentBuilder()
@@ -195,6 +202,25 @@ public class ManagerConfig extends AbstractConfigurer {
         .build();
         
         this.importString = this.getConfigValue("tasktide.manager.importString", String.class, "");
+        arg.setValue(this.importString);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configures ItemId of ManagerTarget for ManagerAction
+     */
+    public void itemId() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("ItemId")
+            .withDescription("ItemId over which the required ManagerAction is taken")
+            .withShortFlag("-ii")
+            .withLongFlag("--itemId")
+            .withArgType(ArgumentType.ACTION)
+        .build();
+        
+        this.importString = this.getConfigValue("tasktide.manager.itemId", String.class, "");
         arg.setValue(this.importString);
         this.getArgumentMap().putArgument(arg);
     }

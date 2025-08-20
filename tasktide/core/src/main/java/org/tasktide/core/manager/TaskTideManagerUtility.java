@@ -14,8 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
@@ -33,7 +36,8 @@ import org.tasktide.core.model.workitem.Workload;
  * @author bkenna
  */
 public class TaskTideManagerUtility {
-     
+    
+    private static final Logger LOGGER = LogManager.getLogger(TaskTideManagerUtility.class);
     private static final String STEP_ID = "Step-" + BuilderUtility.fetchRandomId();
     private static final String WORKFLOW_ID = "Workflow-" + BuilderUtility.fetchRandomId();
     
@@ -49,6 +53,56 @@ public class TaskTideManagerUtility {
         Path path = Paths.get(resourcePath);
         return Files.newBufferedReader(path);
     }
+    
+    
+    /**
+     * Reset the items listed in provided file, a delimiter can be
+     *  used to specify that only targetted itemTask is reset. Returns
+     *  count of updates performed.
+     * 
+     * @param resourcePath
+     * @param delimiter
+     * @return int
+     */
+    public static int resetItems(String resourcePath, String delimiter) {
+        try (BufferedReader reader = fetchReaderStream(resourcePath)) {
+        
+            // Parse lines
+            int counter = 0;
+            String line;
+            while ( (line = reader.readLine()) != null ) {
+                String[] arr = line.split(delimiter);
+                switch ( arr.length ) {
+                    case 2 -> {
+                        String workItemId = arr[0];
+                        String itemTaskId = arr[1];
+                        
+                        WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(workItemId);
+                        item.resetTask(itemTaskId);
+                        TaskTideServiceManager.fetchWorkItemService().updateModel(item);
+                    }
+                    
+                    case 1 -> {
+                        WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(arr[0]);
+                        item.resetModel();
+                        TaskTideServiceManager.fetchWorkItemService().updateModel(item);
+                    }
+                    
+                    default -> {
+                        LOGGER.warn("Skipping malformed line:\t'{}'", line);
+                    }
+                }
+                counter++;
+            }
+            
+            return counter;
+        }
+        
+        catch (IOException ex) {
+            return -1;
+        }
+    }
+    
     
     
     /**

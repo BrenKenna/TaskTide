@@ -24,7 +24,6 @@ import org.apache.logging.log4j.Logger;
 import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.manager.ManagerAction;
-import static org.tasktide.core.manager.ManagerAction.ADD;
 import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.manager.TaskTideManagerUtility;
@@ -103,10 +102,20 @@ public class TaskTideManagerClient extends TaskTideClient {
                 this.addWorkItem();
             }
             
-            
             case APPEND -> {
                 LOGGER.info("Manager client configured for workitem appending");
                 this.appendToWorkItem();
+            }
+            
+            case RESET_ITEM -> {
+                LOGGER.info("Manager client configured for workitem reset");
+                this.resetWorkItem();
+            }
+            
+            case RESET_ITEMS -> {
+                LOGGER.info("Manager client configured for collection of resets");
+                int counter = this.resetWorkItems();
+                LOGGER.info("'{}' WorkItems reset", counter);
             }
             
             default -> {
@@ -120,6 +129,31 @@ public class TaskTideManagerClient extends TaskTideClient {
         }
     }
 
+    
+    /**
+     * Reset {@link WorkItem}
+     * 
+     * @return {@link WorkItem}
+     */
+    public int resetWorkItems() {
+        String targetFile = (String) this.managerArgs.getArgument("Target File").getValue();
+        String delimiter = (String) this.managerArgs.getArgument("Delimiter").getValue();
+        return TaskTideManagerUtility.resetItems(targetFile, delimiter);
+    }
+    
+    
+    /**
+     * Reset {@link WorkItem}
+     * 
+     * @return {@link WorkItem}
+     */
+    public WorkItem resetWorkItem() {
+        String itemId = (String) this.managerArgs.getArgument("Item Id").getValue();
+        WorkItem workItem = TaskTideServiceManager.fetchWorkItemService().fetchById(itemId);
+        workItem.resetModel();
+        return TaskTideServiceManager.fetchWorkItemService().updateModel(workItem);
+    }
+    
     
     /**
      * Imports a task supplied as a json string, for SingleTsak {@link WorkItem}/initiating

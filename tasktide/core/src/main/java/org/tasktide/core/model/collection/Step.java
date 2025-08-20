@@ -162,6 +162,18 @@ public class Step implements TaskTideModel<Step> {
 
     
     /**
+     * Reset model
+     */
+    @Override
+    public void resetModel() {
+        this.stepState = TaskState.PENDING;
+        this.stepsLocked = 0;
+        this.stepsError = 0;
+        this.stepsToDo = this.stepCount;
+    }
+    
+    
+    /**
      * Get step Id
      * 
      * @return String

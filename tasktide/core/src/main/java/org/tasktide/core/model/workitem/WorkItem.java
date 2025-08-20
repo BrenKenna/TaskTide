@@ -190,6 +190,34 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     
     
     /**
+     * Reset model
+     */
+    @Override
+    public void resetModel() {
+        this.itemState = ItemState.TODO;
+        this.lockDate = 0l;
+        this.lockId = "";
+        this.taskDone = 0;
+        this.workload.resetModel();
+        this.setTaskCounts();
+    }
+    
+    
+    /**
+     * Unlock {@link ItemTask} associated with provided Id
+     * 
+     * @param id 
+     */
+    public void resetTask(String id) {
+        this.itemState = ItemState.TODO;
+        this.lockDate = 0L;
+        this.lockId = "";
+        this.workload.resetTask(id);
+        this.setTaskCounts();
+    }
+    
+    
+    /**
      * Add task
      * 
      * @param task

@@ -2,27 +2,23 @@
 :toc: auto
 
 # Notice
-All changes to this project for versions beyond v1.0.0 will be reflected here. For the initial release currently is a checklist, then feature summary.
+All changes to this project for versions beyond v1.0.0 will be reflected here. For the initial release currently is a checklist, and bug catches + fixes from use cases.
 
 == [0.9.9] - 2025-10-01
 
 === Bugs
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Formatting of help splash text.
+- [] Manager client only imports with command-line arguments
+- [] Stray target step being use on command-line arguments
+- [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB. Maybe 
 - [/] Unit test only bug for NoSQL Template Repository queries. Use manager instead test utility.
 - [X] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
 
     /--> Not required, full story caught in log. Thread on token was processing, second thread eventually saw it was no longer ToDo and skipped.
 
-- [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB. Maybe 
-
 - [X] Deprecated process executor
-
 - [X] In/output file must be in class path.
-
-- [] Manager client only imports with command-line arguments
-
-- [] Stray target step being use on command-line arguments
 
 
 === Main Checklist
@@ -41,20 +37,16 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 A lot of the major aspects are done, or covered. These push towards a minimally functional v0.9.9, where a "once over" covers the v1. This push is neatness thing anticipating problems coming from use-case deployment.
 
 - [/] Docker Compose.
-- [] Logger messages DRY view on Degbug, Info, Warn, Error.
+- [] Logger messages DRY view on Debug, Info, Warn, Error.
 - [] Apply ConfigUtil to TaskTideClient?
 - [] Config validator
-- [/] Enqueue a task, and append a task to a workitem.
-- [X] Open collection name onto Item (ie Step on WorkItem).
-- [X] Way to include "config" folder into zip.
-- [X] Install helper script for TaskTide.
+- [] Engine cleanup - Logs, Service Shutdowns
 - [/] Config cleanup:
 ....
         - [/] Drop superfluous configs.
         - [X] Engine & Manager share model names.
         - [X] Input and Output file merged into Target File.
 ....
-- [X] Apply container support to all required integration tests.
 - [] Check over unit failed unit tests as they work independantly
 ....
         - [] Singleton not set for "container Id".
@@ -63,7 +55,12 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] TaskTideClient needs TestContainers.
 ....
 - [X] Process Workflow as StepList (fine for now).
-- [] Engine cleanup - Logs, Service Shutdowns
+- [X] Apply container support to all required integration tests.
+- [X] Reset WorkItem, and Task of WorkItem
+- [X] Enqueue a task, and append a task to a workitem.
+- [X] Open collection name onto Item (ie Step on WorkItem).
+- [X] Way to include "config" folder into zip.
+- [X] Install helper script for TaskTide.
 - [X] Display help message if required.
 - [X] Support unit tests with docker container.
 - [X] Load a target Microprofile config.

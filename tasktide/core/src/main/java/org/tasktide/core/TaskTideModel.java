@@ -57,4 +57,10 @@ public interface TaskTideModel<T extends TaskTideModel<T>> {
      * @return String
      */
     public String getCollection();
+    
+    
+    /**
+     * Reset model state
+     */
+    public void resetModel();
 }

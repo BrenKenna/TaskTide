@@ -15,6 +15,7 @@ import jakarta.nosql.Embeddable;
 import java.lang.reflect.Field;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.manager.BuilderUtility;
 
 
 /**
@@ -125,6 +126,16 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.workItemId = workItemId;
     }
 
+    
+    /**
+     * Set ItemTask to pending state
+     */
+    @Override
+    public void resetModel() {
+        this.taskState = TaskState.PENDING;
+        this.taskLog = BuilderUtility.buildEmptyTaskLogging();
+    }
+    
     
     /**
      * See if task names match

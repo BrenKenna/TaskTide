@@ -95,7 +95,18 @@ public class Workflow implements TaskTideModel<Workflow> {
     }
     
     
-     /**
+    /**
+     * Reset workload
+     */
+    @Override
+    public void resetModel() {
+        for ( Step elm : this.workflowSteps.values() ) {
+            elm.resetModel();
+        }
+    }
+    
+    
+    /**
      * Return workflow id
      * 
      * @return 

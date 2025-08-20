@@ -75,6 +75,43 @@ public class Workload {
 
     
     /**
+     * Reset ItemTasks
+     * 
+     */
+    public void resetModel() {
+        for ( ItemTask elm : workload.values() ) {
+            elm.resetModel();
+        }
+    }
+    
+    
+    /**
+     * Unlock provided task
+     * 
+     * @param id 
+     */
+    public void resetTask(String id) {
+        ItemTask task = this.getById(id);
+        task.resetModel();
+    }
+    
+    /**
+     * Fetch {@link ItemTask} having Id
+     * 
+     * @param id
+     * @return {@link ItemTask}
+     */
+    public ItemTask getById(String id) {
+        for ( ItemTask elm : workload.values() ) {
+            if ( elm.getId().equals(id) ) {
+                return elm;
+            }
+        }
+        return null;
+    }
+    
+    
+    /**
      * Add a new work item to workload
      * 
      * @param work

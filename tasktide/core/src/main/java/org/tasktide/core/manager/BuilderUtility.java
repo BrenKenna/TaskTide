@@ -66,6 +66,8 @@ public class BuilderUtility {
     public static ProcessLog makeEmptyProcessLog() {
         return new ProcessLogBuilder()
             .id("ProcessLog-" + utils.generateSalt())
+            .stdout(new String[0])
+            .stderr(new String[0])
         .build();
     }
 
@@ -111,6 +113,13 @@ public class BuilderUtility {
     public static TaskLogging buildEmptyTaskLogging() {
         return new TaskLoggingBuilder()
             .id("TaskLogging-" + utils.generateSalt())
+            .processLog(makeEmptyProcessLog())
+            .cpuDuration(0L)
+            .endTime(0L)
+            .exitCode(-1)
+            .procId(0L)
+            .startTime(0L)
+            .threadName("")
         .build();
     }
     
