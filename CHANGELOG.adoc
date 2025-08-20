@@ -9,7 +9,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 === Bugs
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Formatting of help splash text.
-- [] Specifiy file path on command-line yields below, parsing is changing this somehow. Have this a parameter
+- [] Specifiy file path on command-line yields below, parsing is changing this somehow. Have this a parameter. What does CliParser see?
 ....
 
 2025-08-20 19:22:19 DEBUG [ main -> org.tasktide.tasktide.configurer.GlobalConfig.filePath ]: Value for file path is '/scratch/bkenna/TaskTide/itemStore/client-args'
