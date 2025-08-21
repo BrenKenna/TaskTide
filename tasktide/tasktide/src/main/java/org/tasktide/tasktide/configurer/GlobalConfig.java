@@ -32,11 +32,6 @@ public class GlobalConfig extends AbstractConfigurer {
     private final JNoSQLConfigurer jnosqlConf;
     
     
-    // Which client to use
-    @ConfigProperty(name = "tasktide.client", defaultValue = "Manager")
-    private String client;
-    
-    
     /**
      * Collection Params
      * 
@@ -106,7 +101,6 @@ public class GlobalConfig extends AbstractConfigurer {
         
         // Configure repo properties
         this.help();
-        this.client();
         this.workflowName();
         this.stepName();
         this.workItemName();
@@ -136,32 +130,13 @@ public class GlobalConfig extends AbstractConfigurer {
             .withDescription("Displays command-line documentation")
             .withShortFlag("-h")
             .withLongFlag("--help")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
             .withValue(false, Boolean.class)
         .build();
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Configures client to use
-     */
-    public void client() {
-        Argument<String> arg;
-        arg = this.getArgumentBuilder()
-            .withName("Client")
-            .withDescription("Specifies which client is being configuerd")
-            .withShortFlag("-c")
-            .withLongFlag("--client")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(String.class);
         
-        this.client = this.getConfigValue("tasktide.client", String.class, "");
-        arg.setValue(this.client);
         this.getArgumentMap().putArgument(arg);
     }
-    
+
     
     /**
      * Configures the workflow name to use
@@ -174,9 +149,9 @@ public class GlobalConfig extends AbstractConfigurer {
             .withDescription("Specifies the workflow name to use")
             .withShortFlag("-wn")
             .withLongFlag("--workflow-name")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(String.class)
         .build();
-        arg.setRefClass(String.class);
         
         this.workflowName = this.getConfigValue("tasktide.core.collection.workflow.name", String.class, "");
         arg.setValue(this.workflowName);
@@ -195,9 +170,9 @@ public class GlobalConfig extends AbstractConfigurer {
             .withDescription("Specifies the step name to use")
             .withShortFlag("-sn")
             .withLongFlag("--step-name")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(String.class)
         .build();
-        arg.setRefClass(String.class);
         
         this.stepName = this.getConfigValue("tasktide.core.collection.step.name", String.class, "");
         arg.setValue(this.stepName);
@@ -216,9 +191,9 @@ public class GlobalConfig extends AbstractConfigurer {
             .withDescription("Specifies the WorkItem Collection Name to use")
             .withShortFlag("-win")
             .withLongFlag("--work-item-collection-name")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(String.class)
         .build();
-        arg.setRefClass(String.class);
         
         this.workItemName = this.getConfigValue("tasktide.core.collection.workitem.name", String.class, "");
         arg.setValue(this.workItemName);
@@ -237,9 +212,9 @@ public class GlobalConfig extends AbstractConfigurer {
             .withDescription("Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss'")
             .withShortFlag("-df")
             .withLongFlag("--date-format")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(String.class)
         .build();
-        arg.setRefClass(String.class);
 
         this.dateFormat = this.getConfigValue("tasktide.utils.date-format", String.class, "dd/MM/yy HH:mm:ss");
         arg.setValue(this.dateFormat);
@@ -258,7 +233,8 @@ public class GlobalConfig extends AbstractConfigurer {
             .withDescription("Specifies the token expiration limit, default is 4 days")
             .withShortFlag("-te")
             .withLongFlag("--token-expiration")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(Integer.class)
         .build();
         
         this.tokenExpirationDays = this.getConfigValue("tasktide.utils.token-expiration-days", Integer.class, 4);
@@ -278,9 +254,9 @@ public class GlobalConfig extends AbstractConfigurer {
             .withDescription("Specifies the backend repository type: RocksDB, NoSQL, Json")
             .withShortFlag("-rt")
             .withLongFlag("--repository-type")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(String.class)
         .build();
-        arg.setRefClass(String.class);
         
         this.repositoryType = this.getConfigValue("tasktide.core.repository.type", String.class, "");
         arg.setValue(this.repositoryType);
@@ -299,12 +275,13 @@ public class GlobalConfig extends AbstractConfigurer {
             .withDescription("Specifies the file path for RocksDB/Json repository")
             .withShortFlag("-fp")
             .withLongFlag("--file-path")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(String.class)
         .build();
         
         this.filePath = this.getConfigValue("tasktide.core.repository.file-path", String.class, "");
         arg.setValue(this.filePath);
-        LOGGER.debug("Value for file path is '{}'", this.filePath);
+        LOGGER.debug("Argument is configured as:\n'{}'", arg);
         this.getArgumentMap().putArgument(arg);
     }
 }

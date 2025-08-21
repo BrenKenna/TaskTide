@@ -5,12 +5,16 @@
 package org.tasktide.tasktide.client;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import org.tasktide.tasktide.configurer.GlobalConfig;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.tasktide.tasktide.configurer.TaskTideConfigurer;
 
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
+
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.CliParser;
 
@@ -23,6 +27,7 @@ import org.tasktide.tasktide.parser.CliParser;
 public class ClientConfigMap {
     
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(ClientConfigMap.class);
     private final Map<TaskTideClientType, TaskTideConfigurer> configMap;
     private final ArgumentTree argTree;
     private String[] argsIn;
@@ -72,10 +77,12 @@ public class ClientConfigMap {
      * @return {@link TaskTideClientType}
      */
     public TaskTideClientType whichClient() {
-        GlobalConfig key = (GlobalConfig) configMap.get(TaskTideClientType.GLOBAL);
-        String client = (String) key.getArgumentMap().getArgument("Client").getValue();
-        if ( client != null ) {
-            return TaskTideClientType.get(client);
+        List<String> pathTokens = argTree.resolveActionPath(argsIn);
+        String actionPath = String.join(" ", pathTokens);
+        
+        LOGGER.debug("Evaluating client module for:\t'{}'", actionPath);
+        if ( actionPath != null ) {
+            return TaskTideClientType.get(actionPath);
         }
         return null;
     }
@@ -138,7 +145,7 @@ public class ClientConfigMap {
     }
     
     public void setParser(String[] args) {
-        this.setArgsIn(argsIn);
+        this.setArgsIn(args);
         this.parser = new CliParser(this.argTree, args);
     }
     

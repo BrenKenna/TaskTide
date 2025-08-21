@@ -70,25 +70,30 @@ public class TaskTideManagerUtility {
             int counter = 0;
             String line;
             while ( (line = reader.readLine()) != null ) {
-                String[] arr = line.split(delimiter);
-                switch ( arr.length ) {
-                    case 2 -> {
-                        String workItemId = arr[0];
-                        String itemTaskId = arr[1];
-                        
-                        WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(workItemId);
-                        item.resetTask(itemTaskId);
-                        TaskTideServiceManager.fetchWorkItemService().updateModel(item);
-                    }
-                    
-                    case 1 -> {
-                        WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(arr[0]);
-                        item.resetModel();
-                        TaskTideServiceManager.fetchWorkItemService().updateModel(item);
-                    }
-                    
-                    default -> {
-                        LOGGER.warn("Skipping malformed line:\t'{}'", line);
+                
+                // No delimiter is treated as list
+                if ( delimiter == null ) {
+                    WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(line);
+                    item.resetModel();
+                    TaskTideServiceManager.fetchWorkItemService().updateModel(item);
+                }
+                
+                // Otherwise acknowledge tanle
+                else {
+                    String[] arr = line.split(delimiter);
+                    switch ( arr.length ) {
+                        case 2 -> {
+                            String workItemId = arr[0];
+                            String itemTaskId = arr[1];
+
+                            WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(workItemId);
+                            item.resetTask(itemTaskId);
+                            TaskTideServiceManager.fetchWorkItemService().updateModel(item);
+                        }
+
+                        default -> {
+                            LOGGER.warn("Skipping malformed line:\t'{}'", line);
+                        }
                     }
                 }
                 counter++;

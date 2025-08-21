@@ -4,6 +4,9 @@
  */
 package org.tasktide.tasktide.parser;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +23,7 @@ import org.tasktide.tasktide.parser.model.ArgumentMap;
 public class CliParser {
     
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(CliParser.class);
     private final ArgumentTree argTree;
     private final String[] argsIn;
     private final Map<String, Argument<?>> parsedArgs;
@@ -83,10 +87,12 @@ public class CliParser {
         // Parse global arguments
         ArgumentMap globalArgs = argTree.getGlobalArguments();
         if ( globalArgs != null ) {
+            LOGGER.debug("Parsing global arguments:\tN = '{}'", globalArgs.getArgMap().size());
             this.parseFromMap(globalArgs);
         }
         
         // Parse command specific arguments
+        LOGGER.debug("Parsing action arguments for:\t'{}'", actionPath);
         ArgumentMap actionArgs = argTree.getActionArguments(actionPath);
         if ( actionArgs != null ) {
             this.parseFromMap(actionArgs);
@@ -104,8 +110,10 @@ public class CliParser {
      */
     private void parseFromMap(ArgumentMap map) {
         for ( Argument<?> arg : map.getArgMap().values() ) {
+            LOGGER.debug("Parsing argument data:\n'{}'", arg);
             int index = this.indexOf(arg);
             String raw = this.fetchRawValue(index);
+            LOGGER.debug("Fetched raw value of '{}'", raw);
             if ( raw != null ) {
                 arg.parseValue(raw);
                 this.parsedArgs.put(arg.getName(), arg);
@@ -156,16 +164,19 @@ public class CliParser {
         
         // Support --key=value
         if (this.argsIn[index].contains("=")) {
+            LOGGER.debug("Parsing on an eguals");
             return this.argsIn[index].split("=", 2)[1];
         }
 
         // Support --key value
         if (index + 1 < this.argsIn.length && !this.argsIn[index + 1].startsWith("-")) {
+            LOGGER.debug("Parsing on next recod is data");
             return this.argsIn[index + 1];
         }
 
         // Support --keyOfInterest --nextKey
         // Treat as boolean flag
+        LOGGER.debug("Parsed as boolean flag");
         return "true";
     }
 }

@@ -56,7 +56,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         this.unitProvider = new TaskTideWorkerUnitProvider();
         this.engineArgs = this.getArgTree().getTree().getDataForAddress("engine");
         this.globalArgs = this.getArgTree().getTree().getDataForAddress("");
-        this.step = (String) engineArgs.getArgument("Step").getValue();
+        this.step = (String) globalArgs.getArgument("Step Name").getValue();
     }
     
     

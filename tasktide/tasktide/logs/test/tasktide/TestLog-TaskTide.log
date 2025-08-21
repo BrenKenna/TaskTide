@@ -1,0 +1,100 @@
+2025-08-21 11:39:16 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
+
+---------------- Argument Parsing Tests ----------------
+
+2025-08-21 11:39:16 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-21 11:39:16 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+================ Can EmulateDockerCommand Test ================
+
+2025-08-21 11:39:16 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+Displaying tree data:
+
+[
+    "",
+    "Global Options:",
+    "",
+    "  debug      --debug    Enable debug mode",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tdocker container",
+    "",
+    "  help       --help     Show help for container actions",
+    "\n\n",
+    "",
+    "Options for Action:\tdocker container run",
+    "",
+    "  name       --name     Set container name",
+    "\n\n"
+]
+
+
+2025-08-21 11:39:16 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+================ Can Setup Tree Test ================
+
+2025-08-21 11:39:16 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-21 11:39:16 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
+
+---------------- Argument Parsing Tests ----------------
+
+2025-08-21 11:40:09 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUpClass ]: 
+
+---------------- Argument Parsing Tests ----------------
+
+2025-08-21 11:40:09 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-08-21 11:40:09 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+================ Can EmulateDockerCommand Test ================
+
+2025-08-21 11:40:09 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+Displaying tree data:
+
+[
+    "",
+    "Global Options:",
+    "",
+    "  debug      --debug    Enable debug mode",
+    "",
+    "",
+    "Action Arguments:",
+    "",
+    "",
+    "Options for Action:\tdocker container",
+    "",
+    "  help       --help     Show help for container actions",
+    "\n\n",
+    "",
+    "Options for Action:\tdocker container run",
+    "",
+    "  name       --name     Set container name",
+    "\n\n"
+]
+
+
+2025-08-21 11:40:09 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.canEmulateDocker ]: 
+
+================ Can Setup Tree Test ================
+
+2025-08-21 11:40:09 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-08-21 11:40:09 INFO  [ Test worker -> org.tasktide.tasktide.parser.ArgumentParsing.tearDownClass ]: 
+
+---------------- Argument Parsing Tests ----------------
+

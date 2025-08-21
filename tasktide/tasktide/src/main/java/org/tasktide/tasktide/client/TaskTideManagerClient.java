@@ -5,7 +5,6 @@
 package org.tasktide.tasktide.client;
 
 import jakarta.json.JsonObject;
-import jakarta.json.JsonValue;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 
@@ -148,7 +147,7 @@ public class TaskTideManagerClient extends TaskTideClient {
      * @return {@link WorkItem}
      */
     public WorkItem resetWorkItem() {
-        String itemId = (String) this.managerArgs.getArgument("Item Id").getValue();
+        String itemId = (String) this.managerArgs.getArgument("ItemId").getValue();
         WorkItem workItem = TaskTideServiceManager.fetchWorkItemService().fetchById(itemId);
         workItem.resetModel();
         return TaskTideServiceManager.fetchWorkItemService().updateModel(workItem);

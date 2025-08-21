@@ -4391,3 +4391,603 @@ Total='5', Remaining='0', Done='5', Expected='5'
 2025-08-15 16:44:03 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Importing '4' workitems
 2025-08-15 16:44:04 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: Import status 'true'
 2025-08-15 16:44:04 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-21 10:28:02 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-21 10:28:02 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-21 10:28:06 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-21 10:28:06 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlute'
+2025-08-21 10:28:06 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.ArrayIndexOutOfBoundsException: Index 4 out of bounds for length 4'
+2025-08-21 10:28:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-21 10:28:59 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-21 10:29:03 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-21 10:29:03 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-21 10:29:03 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-21 10:29:03 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-21 10:29:03 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.ClassCastException: class java.lang.Boolean cannot be cast to class java.lang.String (java.lang.Boolean and java.lang.String are in module java.base of loader 'bootstrap')'
+2025-08-21 10:29:53 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-21 10:29:53 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-21 10:29:57 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.configurer.GlobalConfig.filePath ]: Argument is configured as
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Boolean, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.Boolean, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Boolean, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 10:29:57 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-21 10:29:57 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-21 10:29:57 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-21 10:29:57 DEBUG [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initItemStoreServiceManager ]: Repository FilePath is:	'false'
+2025-08-21 10:29:57 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.ClassCastException: class java.lang.Boolean cannot be cast to class java.lang.String (java.lang.Boolean and java.lang.String are in module java.base of loader 'bootstrap')'
+2025-08-21 10:31:40 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-21 10:31:40 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-21 10:31:43 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.configurer.GlobalConfig.filePath ]: Argument is configured as:
+'Argument{value=, refClass=class java.lang.Boolean, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Boolean, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.Boolean, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Boolean, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 10:31:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-21 10:31:43 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-21 10:31:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-21 10:31:43 DEBUG [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initItemStoreServiceManager ]: Repository FilePath is:	'false'
+2025-08-21 10:31:43 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'java.lang.ClassCastException: class java.lang.Boolean cannot be cast to class java.lang.String (java.lang.Boolean and java.lang.String are in module java.base of loader 'bootstrap')'
+2025-08-21 10:57:23 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-21 10:57:23 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.configurer.GlobalConfig.filePath ]: Argument is configured as:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=ACTION}'
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-21 10:57:27 DEBUG [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initItemStoreServiceManager ]: Repository FilePath is:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/WORKITEM'
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/STEP'
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/WORKFLOW'
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask ]: Manager client configured for import
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.importFile ]: Evaluating nested delimiter of value ''
+2025-08-21 10:57:27 ERROR [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: IOException encountered during import. Please review provided arguments, diaplying stack trace for reference
+java.nio.file.NoSuchFileException: singleTaskImports.txt
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236) ~[?:?]
+	at java.nio.file.Files.newByteChannel(Files.java:380) ~[?:?]
+	at java.nio.file.Files.newByteChannel(Files.java:432) ~[?:?]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:422) ~[?:?]
+	at java.nio.file.Files.newInputStream(Files.java:160) ~[?:?]
+	at java.nio.file.Files.newBufferedReader(Files.java:2922) ~[?:?]
+	at java.nio.file.Files.newBufferedReader(Files.java:2955) ~[?:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.fetchReaderStream(TaskTideManagerUtility.java:53) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkItems(TaskTideManagerUtility.java:302) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.importTasks(TaskTideManagerUtility.java:177) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.importFile(TaskTideManagerClient.java:256) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.handleImport(TaskTideManagerClient.java:275) [main/:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask(TaskTideManagerClient.java:92) [main/:?]
+	at org.tasktide.tasktide.client.TaskTideClient.runClient(TaskTideClient.java:47) [main/:?]
+	at org.tasktide.tasktide.TaskTide.main(TaskTide.java:70) [main/:?]
+2025-08-21 10:57:27 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-21 11:47:54 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-21 11:47:55 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-21 11:47:58 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.configurer.GlobalConfig.filePath ]: Argument is configured as:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parse ]: Parsing global arguments:	N = '15'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parse ]: Parsing action arguments for:	''
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=GLOBAL}'
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 11:47:58 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-21 11:47:58 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-21 11:47:58 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-21 11:47:58 DEBUG [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initItemStoreServiceManager ]: Repository FilePath is:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 11:47:58 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/WORKITEM'
+2025-08-21 11:47:59 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/STEP'
+2025-08-21 11:47:59 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/WORKFLOW'
+2025-08-21 11:47:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-21 11:47:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-21 11:47:59 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask ]: Manager client configured for import
+2025-08-21 11:47:59 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.importFile ]: Evaluating nested delimiter of value ''
+2025-08-21 11:47:59 ERROR [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: IOException encountered during import. Please review provided arguments, diaplying stack trace for reference
+java.nio.file.NoSuchFileException: singleTaskImports.txt
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236) ~[?:?]
+	at java.nio.file.Files.newByteChannel(Files.java:380) ~[?:?]
+	at java.nio.file.Files.newByteChannel(Files.java:432) ~[?:?]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:422) ~[?:?]
+	at java.nio.file.Files.newInputStream(Files.java:160) ~[?:?]
+	at java.nio.file.Files.newBufferedReader(Files.java:2922) ~[?:?]
+	at java.nio.file.Files.newBufferedReader(Files.java:2955) ~[?:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.fetchReaderStream(TaskTideManagerUtility.java:53) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkItems(TaskTideManagerUtility.java:302) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.importTasks(TaskTideManagerUtility.java:177) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.importFile(TaskTideManagerClient.java:256) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.handleImport(TaskTideManagerClient.java:275) [main/:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask(TaskTideManagerClient.java:92) [main/:?]
+	at org.tasktide.tasktide.client.TaskTideClient.runClient(TaskTideClient.java:47) [main/:?]
+	at org.tasktide.tasktide.TaskTide.main(TaskTide.java:70) [main/:?]
+2025-08-21 11:47:59 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container
+2025-08-21 11:50:04 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2025-08-21 11:50:04 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.configurer.GlobalConfig.filePath ]: Argument is configured as:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parse ]: Parsing global arguments:	N = '15'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=localhost:5884, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=couchDB, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-step, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=password, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=org.eclipse.jnosql.databases.couchdb.communicate.CouchDBDocumentationConfiguration, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=admin, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=manager, refClass=class java.lang.String, name=Client, shortFlag=-c, longFlag=--client, description=Specifies which client is being configuerd, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'manager'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=GLOBAL}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'sqlite'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parse ]: Parsing action arguments for:	'manager'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=|, refClass=class java.lang.String, name=Delimiter, shortFlag=-d, longFlag=--delimiter, description=Defines the delimiter to use for im/export, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=Import String, shortFlag=-is, longFlag=--import-string, description=JSON formatted string:	 '{'Field': 'Value'}', argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=singleTaskImports.txt, refClass=class java.lang.String, name=Target File, shortFlag=-f, longFlag=--target-file, description=Defines the full file path for import, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\src\main\resources\singleTaskImports.txt'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=import, refClass=class java.lang.String, name=Method, shortFlag=-m, longFlag=--method, description=Whether to run import or export, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=ItemId, shortFlag=-ii, longFlag=--itemId, description=ItemId over which the required ManagerAction is taken, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=Nested Delimiter, shortFlag=-nd, longFlag=--nested-delimiter, description=Defines the ItemTask delimiter if required, argType=ACTION}'
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-08-21 11:50:07 DEBUG [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initItemStoreServiceManager ]: Repository FilePath is:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore'
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/WORKITEM'
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/STEP'
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\itemStore/WORKFLOW'
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'Manager'
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask ]: Manager client configured for import
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.importFile ]: Evaluating nested delimiter of value ''
+2025-08-21 11:50:07 ERROR [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.handleImport ]: IOException encountered during import. Please review provided arguments, diaplying stack trace for reference
+java.nio.file.NoSuchFileException: C:\Users\Brendan Kenna\Documents\GitHub\TaskTide\tasktide\src\main\resources\singleTaskImports.txt
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at sun.nio.fs.WindowsFileSystemProvider.newByteChannel(WindowsFileSystemProvider.java:236) ~[?:?]
+	at java.nio.file.Files.newByteChannel(Files.java:380) ~[?:?]
+	at java.nio.file.Files.newByteChannel(Files.java:432) ~[?:?]
+	at java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:422) ~[?:?]
+	at java.nio.file.Files.newInputStream(Files.java:160) ~[?:?]
+	at java.nio.file.Files.newBufferedReader(Files.java:2922) ~[?:?]
+	at java.nio.file.Files.newBufferedReader(Files.java:2955) ~[?:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.fetchReaderStream(TaskTideManagerUtility.java:53) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkItems(TaskTideManagerUtility.java:302) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.core.manager.TaskTideManagerUtility.importTasks(TaskTideManagerUtility.java:177) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.importFile(TaskTideManagerClient.java:256) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.handleImport(TaskTideManagerClient.java:275) [main/:?]
+	at org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask(TaskTideManagerClient.java:92) [main/:?]
+	at org.tasktide.tasktide.client.TaskTideClient.runClient(TaskTideClient.java:47) [main/:?]
+	at org.tasktide.tasktide.TaskTide.main(TaskTide.java:70) [main/:?]
+2025-08-21 11:50:07 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: TaskTideClient completed, tearing down container

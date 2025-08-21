@@ -4,6 +4,8 @@
  */
 package org.tasktide.tasktide.client;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.tasktide.configurer.ManagerConfig;
@@ -43,6 +45,11 @@ public enum TaskTideClientType {
         public TaskTideClient makeClient(ClientConfigMap configMap) {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
+        
+        @Override
+        public String pathInTree() {
+            return "engine";
+        }
     },
     
     ENGINE {
@@ -69,6 +76,11 @@ public enum TaskTideClientType {
         @Override
         public Class getConfigClass() {
             return EngineConfig.class;
+        }
+        
+        @Override
+        public String pathInTree() {
+            return "engine";
         }
     },
     
@@ -97,12 +109,18 @@ public enum TaskTideClientType {
         public Class getConfigClass() {
             return ManagerConfig.class;
         }
+        
+        @Override
+        public String pathInTree() {
+            return "manager";
+        }
     };
 
     public abstract Class getConfigClass();
     public abstract TaskTideClient makeClient(ClientConfigMap configMap);
     public abstract boolean isClient(String s);
     public abstract boolean isClient(TaskTideClientType other);
+    public abstract String pathInTree();
     
     public static int indexOf(TaskTideClientType client) {
         return client.ordinal();
@@ -152,5 +170,14 @@ public enum TaskTideClientType {
             return values()[ind];
         }
         return null;
+    }
+    
+    
+    public static List<String> treePaths() {
+        List<String> output = new ArrayList<>();
+        for ( TaskTideClientType elm : values() ) {
+            output.add(elm.pathInTree());
+        }
+        return output;
     }
 }

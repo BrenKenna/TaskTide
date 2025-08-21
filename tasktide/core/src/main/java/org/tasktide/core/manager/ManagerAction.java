@@ -91,7 +91,8 @@ public enum ManagerAction {
     RESET_ITEM {
         @Override
         public boolean isManagerAction(String query) {
-            return this.toString().equalsIgnoreCase(query);
+            query = query.trim().replace(" ", "").replace("-", "").replace("_", "").toLowerCase();
+            return "resetitem".equalsIgnoreCase(query);
         }
 
         @Override
@@ -108,7 +109,8 @@ public enum ManagerAction {
     RESET_ITEMS {
         @Override
         public boolean isManagerAction(String query) {
-            return this.toString().equalsIgnoreCase(query);
+            query = query.trim().replace(" ", "").replace("-", "").replace("_", "").toLowerCase();
+            return "resetitems".equalsIgnoreCase(query);
         }
 
         @Override

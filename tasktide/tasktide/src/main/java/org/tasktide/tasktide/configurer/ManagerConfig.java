@@ -114,8 +114,8 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-f")
             .withLongFlag("--target-file")
             .withArgType(ArgumentType.ACTION)
+            .withRefClass(String.class)
         .build();
-        arg.setRefClass(String.class);
 
         this.targetFile = this.getConfigValue("tasktide.manager.targetFile", String.class, "");
         arg.setValue(this.targetFile);
@@ -136,8 +136,8 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-d")
             .withLongFlag("--delimiter")
             .withArgType(ArgumentType.ACTION)
+            .withRefClass(String.class)
         .build();
-        arg.setRefClass(String.class);
         
         this.delimiter = this.getConfigValue("tasktide.manager.delimiter", String.class, "");
         arg.setValue(this.delimiter);
@@ -158,9 +158,8 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-nd")
             .withLongFlag("--nested-delimiter")
             .withArgType(ArgumentType.ACTION)
-            .withValue(this.nestedDelimiter, String.class)
+            .withRefClass(String.class)
         .build();
-        arg.setRefClass(String.class);
         
         this.nestedDelimiter = this.getConfigValue("tasktide.manager.nestedDelimiter", String.class, "");
         arg.setValue(this.nestedDelimiter);
@@ -180,6 +179,7 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-m")
             .withLongFlag("--method")
             .withArgType(ArgumentType.ACTION)
+            .withRefClass(String.class)
         .build();
         
         this.method = this.getConfigValue("tasktide.manager.method", String.class, "");
@@ -199,6 +199,7 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-is")
             .withLongFlag("--import-string")
             .withArgType(ArgumentType.ACTION)
+            .withRefClass(String.class)
         .build();
         
         this.importString = this.getConfigValue("tasktide.manager.importString", String.class, "");
@@ -218,10 +219,11 @@ public class ManagerConfig extends AbstractConfigurer {
             .withShortFlag("-ii")
             .withLongFlag("--itemId")
             .withArgType(ArgumentType.ACTION)
+            .withRefClass(String.class)
         .build();
         
-        this.importString = this.getConfigValue("tasktide.manager.itemId", String.class, "");
-        arg.setValue(this.importString);
+        this.itemId = this.getConfigValue("tasktide.manager.itemId", String.class, "");
+        arg.setValue(this.itemId);
         this.getArgumentMap().putArgument(arg);
     }
 }

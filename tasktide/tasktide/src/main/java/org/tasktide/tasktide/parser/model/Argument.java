@@ -41,6 +41,31 @@ public class Argument<T> {
         this.argType = argType;
     }
 
+    /**
+     * Construct with reference class
+     *
+     * @param name
+     * @param description
+     * @param shortFlag
+     * @param longFlag
+     * @param argType
+     * @param clazz
+     */
+    public Argument(
+        String name,
+        String description,
+        String shortFlag,
+        String longFlag,
+        ArgumentType argType,
+        Class<T> clazz
+    ) {
+        this.name = name;
+        this.description = description;
+        this.shortFlag = shortFlag;
+        this.longFlag = longFlag;
+        this.argType = argType;
+        this.refClass = clazz;
+    }
     
     /**
      * Construct with value

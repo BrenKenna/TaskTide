@@ -97,6 +97,19 @@ public class ArgumentBuilder {
     
     
     /**
+     * Build with reference class
+     * 
+     * @param <T>
+     * @param refClass
+     * @return {@link ArgumentBuilder}
+     */
+    public <T> ArgumentBuilder withRefClass(Class<T> refClass) {
+        this.refClass = refClass;
+        return this;
+    }
+    
+    
+    /**
      * Build {@link Argument} of required type
      * 
      * @param <T>
@@ -106,6 +119,10 @@ public class ArgumentBuilder {
     public <T> Argument<T> build() {
         if ( this.withValue ) {
             return new Argument<>((T) value, name, description, shortFlag, longFlag, argType, (Class<T>) refClass);
+        }
+        
+        else if ( this.refClass != null ) {
+            return new Argument<>(name, description, shortFlag, longFlag, argType);
         }
         return new Argument<>(name, description, shortFlag, longFlag, argType);
     }
