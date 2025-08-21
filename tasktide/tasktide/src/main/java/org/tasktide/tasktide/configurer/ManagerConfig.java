@@ -39,6 +39,9 @@ public class ManagerConfig extends AbstractConfigurer {
     
     @ConfigProperty(name = "tasktide.manager.itemId", defaultValue = "")
     String itemId;
+    
+    @ConfigProperty(name = "tasktide.manager.target", defaultValue = "")
+    String target;
 
     
     /**
@@ -74,6 +77,7 @@ public class ManagerConfig extends AbstractConfigurer {
         this.method();
         this.importString();
         this.itemId();
+        this.target();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -210,6 +214,7 @@ public class ManagerConfig extends AbstractConfigurer {
     
     /**
      * Configures ItemId of ManagerTarget for ManagerAction
+     * 
      */
     public void itemId() {
         Argument<String> arg;
@@ -224,6 +229,27 @@ public class ManagerConfig extends AbstractConfigurer {
         
         this.itemId = this.getConfigValue("tasktide.manager.itemId", String.class, "");
         arg.setValue(this.itemId);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configures target for {@link ManagerAction}
+     * 
+     */
+    public void target() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Target")
+            .withDescription("Target for manager action")
+            .withShortFlag("-tgt")
+            .withLongFlag("--target")
+            .withArgType(ArgumentType.ACTION)
+            .withRefClass(String.class)
+        .build();
+        
+        this.target = this.getConfigValue("tasktide.manager.target", String.class, "");
+        arg.setValue(this.target);
         this.getArgumentMap().putArgument(arg);
     }
 }

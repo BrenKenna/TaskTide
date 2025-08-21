@@ -69,10 +69,11 @@ public class TaskTideManagerUtility {
             // Parse lines
             int counter = 0;
             String line;
+            LOGGER.debug("Splitting file on delimiter:\t'{}'", delimiter);
             while ( (line = reader.readLine()) != null ) {
                 
                 // No delimiter is treated as list
-                if ( delimiter == null ) {
+                if ( delimiter.isEmpty() ) {
                     WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(line);
                     item.resetModel();
                     TaskTideServiceManager.fetchWorkItemService().updateModel(item);
@@ -85,14 +86,13 @@ public class TaskTideManagerUtility {
                         case 2 -> {
                             String workItemId = arr[0];
                             String itemTaskId = arr[1];
-
                             WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(workItemId);
                             item.resetTask(itemTaskId);
                             TaskTideServiceManager.fetchWorkItemService().updateModel(item);
                         }
 
                         default -> {
-                            LOGGER.warn("Skipping malformed line:\t'{}'", line);
+                            LOGGER.warn("Skipping malformed line:\t'{}', array length = '{}'", line, arr.length);
                         }
                     }
                 }

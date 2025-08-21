@@ -179,7 +179,8 @@ public class TaskTideManagerClient extends TaskTideClient {
         
         JsonObject json = JsonUtils.stringToJson(data);
         ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
-        String workItemId = JsonUtils.fetchStringFieldFromJson("WorkItemId", json);
+        // String workItemId = JsonUtils.fetchStringFieldFromJson("WorkItemId", json);
+        String workItemId = json.getString("WorkItemId");
         
         return TaskTideManagerUtility.appendTask(task, workItemId);
     }
@@ -213,11 +214,17 @@ public class TaskTideManagerClient extends TaskTideClient {
      * @return List of {@link WorkItem}
      */
     private List<WorkItem> importJson(String file){
+        LOGGER.info("Attempting to read JSON file:\t'{}'", file);
         try ( Reader inpStream = new FileReader(file) ) {
             Jsonb jsonb = JsonbBuilder.create();
-            return Arrays.asList(jsonb.fromJson(inpStream, WorkItem[].class));
+            LOGGER.info("Streaming JSON data into WorkItem list");
+            List<WorkItem> output = Arrays.asList(jsonb.fromJson(inpStream, WorkItem[].class));
+            LOGGER.info("Streamed JSON data into WorkItem list");
+            return output;
         }
         catch ( IOException ex ) {
+            LOGGER.error("Error encountered during read '{}', displaying full stack trace", ex);
+            ex.printStackTrace();
             return null;
         }
     }
@@ -239,6 +246,7 @@ public class TaskTideManagerClient extends TaskTideClient {
         
         // Import workload from JSON: Format argument instead
         if (delimiter.equalsIgnoreCase("json")) {
+            LOGGER.info("Importing JSON file");
             return this.importJson(file);
         }
         
@@ -294,8 +302,9 @@ public class TaskTideManagerClient extends TaskTideClient {
      */
     private void handleExport() {
         String targetFile = (String) this.managerArgs.getArgument("Target File").getValue();
-        String target = (String) this.globalArgs.getArgument("Step Name").getValue();
-        if ( !targetFile.isEmpty() && !target.isEmpty() ) {
+        String collection = (String) this.globalArgs.getArgument("Step Name").getValue();
+        if ( !targetFile.isEmpty() && !collection.isEmpty() ) {
+            String target = (String) this.managerArgs.getArgument("Target").getValue();
             ManagerTarget tgt = ManagerTarget.get(target);
             if ( tgt != null ) {
                 List<TaskTideModel> data = tgt.fetchModels();

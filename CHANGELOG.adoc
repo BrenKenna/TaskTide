@@ -11,7 +11,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Formatting of help splash text.
-- [] Hangs if a folder is not writable - at least repository file path.
+- [/] Hangs if a folder is not writable - at least repository file path.
 
 - [X] Casting error from specifiying file path on command-line.
         - Parsing saw argument this as boolean.
@@ -47,7 +47,15 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 A lot of the major aspects are done, or covered. These push towards a minimally functional v0.9.9, where a "once over" covers the v1. This push is neatness thing anticipating problems coming from use-case deployment.
 
 - [/] Docker Compose.
-- []  Test new ManagerActions.
+- [/]  Test new ManagerActions
+....
+        - [X] Import
+        - [X] Export
+        - [X] Add
+        - [X] Append
+        - [X] Reset
+        - [] Reset collection <- Set of skipping malformed.
+....
 - [] Logger messages DRY view on Debug, Info, Warn, Error.
 - [] Apply ConfigUtil to TaskTideClient?
 - [] Config validator.

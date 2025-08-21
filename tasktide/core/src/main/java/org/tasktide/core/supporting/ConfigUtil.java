@@ -9,13 +9,14 @@ import org.eclipse.microprofile.config.Config;
 import io.smallrye.config.SmallRyeConfigBuilder;
 
 import java.io.InputStream;
-import java.nio.file.Paths;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import java.util.Properties;
 import org.eclipse.microprofile.config.spi.ConfigProviderResolver;
+import org.tasktide.itemstore.FileUtility;
 
 
 /**
@@ -26,7 +27,7 @@ public class ConfigUtil {
     
     public static Config loadFrom(String filePath) {
         try ( InputStream input = ConfigUtil.class.getClassLoader().getResourceAsStream(filePath) ) {
-            String fileName = getBaseName(filePath);
+            String fileName = FileUtility.getBaseName(filePath);
             Properties props = new Properties();
             props.load(input);
             Map<String, String> propMap = new HashMap<>();
@@ -63,18 +64,5 @@ public class ConfigUtil {
         
         // Register config for the provided class' class loader
         resolver.registerConfig(config, clazz.getClassLoader());
-    }
-    
-    
-    /**
-     * Get base file name for provided filepath using Paths API
-     * 
-     * @param filePath
-     * @return String
-     */
-    private static String getBaseName(String filePath) {
-        String fileName = Paths.get(filePath).getFileName().toString();
-        int suffixInd = fileName.lastIndexOf(".");
-        return fileName.substring(0, suffixInd);
     }
 }
