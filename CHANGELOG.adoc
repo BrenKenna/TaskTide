@@ -11,41 +11,17 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Formatting of help splash text.
-<<<<<<< HEAD
-- [] Hangs if folder is not writable
-=======
-- [] Specifiy file path on command-line yields below, parsing is changing this somehow. Have this a parameter. What does CliParser see?
->>>>>>> c452fada49019ec6b0240244676a70cc96ac6984
-....
-2025-08-21 14:37:48 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
-2025-08-21 14:37:48 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
-2025-08-21 14:37:48 DEBUG [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initItemStoreServiceManager ]: Repository FilePath is:   ''
-2025-08-21 14:37:48 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStoreDirectory already exists under:   '/WORKITEM'
-....
-<<<<<<< HEAD
+- [] Hangs if a folder is not writable - at least repository file path.
+
 - [X] Casting error from specifiying file path on command-line.
         - Parsing saw argument this as boolean.
         - Reference class not set in configurer class, null get used must be boolean.
         - Resolving caught similar bugs across all config classes, decided to adjust builder.
+
 - [] Hitting the skipping malformed line error for a list of work items in text file reset.
 - [X] Client now hanging at initializing TaskTideServiceManager - typo in Configurer.
 - [X] Stray target step being use on command-line arguments.
 - [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB.
-=======
-
-
-- [X] Client now hangs at initializing TaskTideServiceManager? And the DB path is not correct?
-....
-2025-08-20 18:32:28 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
-2025-08-20 18:32:28 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:  'sqlite'
-2025-08-20 18:32:28 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'Item Store' Repository
-2025-08-20 18:32:28 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
-2025-08-20 18:32:28 INFO  [ main -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStoreDirectory already exists under:   '/WORKITEM' 
-....
-
-- [] Stray target step being use on command-line arguments
-- [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB. Maybe 
->>>>>>> c452fada49019ec6b0240244676a70cc96ac6984
 - [/] Unit test only bug for NoSQL Template Repository queries. Use manager instead test utility.
 - [X] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
         /--> Not required, full story caught in log. Thread on token was processing, second thread eventually saw it was no longer ToDo and skipped.
