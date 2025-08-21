@@ -49,6 +49,29 @@ public enum JobType {
             return new JobIdentifier(this, jobId, 0l);
         }
     },
+    
+    GLITE {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isJobType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isJobType(JobType query) {
+            return this == query;
+        }
+        
+        @Override
+        public JobIdentifier makeJobIdentifier() {
+            String jobId = System.getenv("GLITE_WMS_JOBID");
+            return new JobIdentifier(this, jobId, 0l);
+        }
+    },
 
     LSF {
         @Override

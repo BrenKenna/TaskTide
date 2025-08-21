@@ -47,7 +47,16 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 A lot of the major aspects are done, or covered. These push towards a minimally functional v0.9.9, where a "once over" covers the v1. This push is neatness thing anticipating problems coming from use-case deployment.
 
 - [/] Docker Compose.
-- [/]  Test new ManagerActions
+- [] Custom annotations on TaskTideModels?
+- [] JobEnvironment property on ItemTask gives identifiers for tracking, pull out on ItemStore.
+....
+        - [] AWS Batch
+        - [] SLURM
+        - [] Docker
+        - [] K8s
+        - [] gLite
+....
+- [/] Test new ManagerActions
 ....
         - [X] Import
         - [X] Export
