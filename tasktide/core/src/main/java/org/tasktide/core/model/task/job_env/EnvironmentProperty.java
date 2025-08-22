@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-package org.tasktide.engine.worker.executor.JobEnv;
+package org.tasktide.core.model.task.job_env;
 
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+import org.tasktide.core.model.task.JobEnvironment;
+
+
 /**
- *
+ * Enum which fetches host data, and apply to {@link JobEnvironment}
+ * 
  * @author Brendan Kenna
  */
-public enum EnvironmentProperties {
+enum EnvironmentProperty {
 
     HOST_OS {
         @Override
@@ -37,8 +42,19 @@ public enum EnvironmentProperties {
         }
 
         @Override
-        public boolean isEnvironmentProperites(EnvironmentProperties query) {
+        public boolean isEnvironmentProperites(EnvironmentProperty query) {
             return this == query;
+        }
+        
+        @Override
+        public String getProperty() {
+            return System.getProperties().getProperty("os.name");
+        }
+        
+        @Override
+        public void addToEnvironment(JobEnvironment jobEnv) {
+            String prop = getProperty() + "-" + EnvironmentProperty.OS_ARCH.getProperty();
+            jobEnv.setHostname(prop);
         }
     },
 
@@ -54,11 +70,21 @@ public enum EnvironmentProperties {
         }
 
         @Override
-        public boolean isEnvironmentProperites(EnvironmentProperties query) {
+        public boolean isEnvironmentProperites(EnvironmentProperty query) {
             return this == query;
         }
+        
+        @Override
+        public String getProperty() {
+            return System.getProperties().getProperty("java.vm.version");
+        }
+        
+        @Override
+        public void addToEnvironment(JobEnvironment jobEnv) {
+            String prop = getProperty();
+            jobEnv.setHostname(prop);
+        }
     },
-    
     
     OS_ARCH {
         @Override
@@ -67,7 +93,7 @@ public enum EnvironmentProperties {
         }
 
         @Override
-        public boolean isEnvironmentProperites(EnvironmentProperties query) {
+        public boolean isEnvironmentProperites(EnvironmentProperty query) {
             return this == query;
         }
     
@@ -75,8 +101,18 @@ public enum EnvironmentProperties {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public String getProperty() {
+            return System.getProperties().getProperty("os.arch");
+        }
+        
+        @Override
+        public void addToEnvironment(JobEnvironment jobEnv) {
+            String prop = EnvironmentProperty.HOST_OS.getProperty() + "-" + getProperty();
+            jobEnv.setHostname(prop);
+        }
     },
-    
     
     HOSTNAME {
         @Override
@@ -85,7 +121,7 @@ public enum EnvironmentProperties {
         }
 
         @Override
-        public boolean isEnvironmentProperites(EnvironmentProperties query) {
+        public boolean isEnvironmentProperites(EnvironmentProperty query) {
             return this == query;
         }
     
@@ -93,12 +129,46 @@ public enum EnvironmentProperties {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public String getProperty() {
+            try {
+                return EnvironmentUtil.getHostname();
+            }
+            catch (UnknownHostException ex) {
+                return "";
+            }
+        }
+        
+        @Override
+        public void addToEnvironment(JobEnvironment jobEnv) {
+            String prop = getProperty();
+            jobEnv.setHostname(prop);
+        }
     };
 
 
     /**
+     * Abstract method which values implement for
+     *  fetching associated property
+     * 
+     * @return String
+     */
+    public abstract String getProperty();
+    
+    
+    /**
+     * Add properties to {@link JobEnvironment}
+     * 
+     * @param jobEnv 
+     */
+    public abstract void addToEnvironment(JobEnvironment jobEnv);
+    
+    
+    /**
      * Abstract method check if query is enum value
      *
+     * @param query
      * @return boolean
      */
     public abstract boolean isEnvironmentProperites(String query);
@@ -107,18 +177,20 @@ public enum EnvironmentProperties {
     /**
      * Abstract method check if query is enum value
      *
+     * @param query
      * @return boolean
      */
-    public abstract boolean isEnvironmentProperites(EnvironmentProperties query);
+    public abstract boolean isEnvironmentProperites(EnvironmentProperty query);
 
 
     /**
      * Fetch the index for mapped query string
      *
+     * @param query
      * @return >0/-1
      */
     public static int indexOf(String query) {
-        for ( EnvironmentProperties elm : values() ) {
+        for ( EnvironmentProperty elm : values() ) {
             if ( elm.isEnvironmentProperites(query) ) {
                 return elm.ordinal();
             }
@@ -130,6 +202,7 @@ public enum EnvironmentProperties {
     /**
      * Check if query maps to enum value
      *
+     * @param query
      * @return boolean
      */
     public static boolean hasQuery(String query) {
@@ -137,7 +210,7 @@ public enum EnvironmentProperties {
             return false;
         }
 
-        for ( EnvironmentProperties elm : values() ) {
+        for ( EnvironmentProperty elm : values() ) {
             if ( elm.isEnvironmentProperites(query) ) {
                 return true;
             }
@@ -149,9 +222,10 @@ public enum EnvironmentProperties {
     /**
      * Map query to enum value
      *
+     * @param query
      * @return EnvironmentProperites
      */
-    public static EnvironmentProperties get(String query) {
+    public static EnvironmentProperty get(String query) {
         int ind = indexOf(query);
         if ( ind >= 0 ) {
             return values()[ind];
@@ -169,5 +243,17 @@ public enum EnvironmentProperties {
         return Arrays.stream(values())
             .map( elm -> elm.name() )
         .collect(Collectors.joining(","));
+    }
+    
+    
+    /**
+     * Applies host data scoped by enum to {@link JobEnvironment}
+     * 
+     * @param jobEnv 
+     */
+    public static void applyData(JobEnvironment jobEnv) {
+        for ( EnvironmentProperty elm : EnvironmentProperty.values() ) {
+            elm.addToEnvironment(jobEnv);
+        }
     }
 }

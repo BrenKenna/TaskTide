@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker.executor.JobEnv;
+package org.tasktide.core.model.task.job_env;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -26,7 +26,7 @@ import java.util.Properties;
  *
  * @author Brendan Kenna
  */
-public class EnvironmentUtil {
+class EnvironmentUtil {
     
     public static Map<String, String> getEnv() {
         return System.getenv();
@@ -38,7 +38,7 @@ public class EnvironmentUtil {
         Properties props = System.getProperties();
         
         for ( String key : props.stringPropertyNames() ) {
-            EnvironmentProperties envProp = EnvironmentProperties.get(key);
+            EnvironmentProperty envProp = EnvironmentProperty.get(key);
             if ( envProp != null ) {
                 output.put(envProp.name(), props.getProperty(key));
             }

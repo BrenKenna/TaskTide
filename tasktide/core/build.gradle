@@ -33,6 +33,9 @@ dependencies {
     implementation "com.zaxxer:HikariCP:5.1.0"
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:2.19.2"
     testImplementation 'mysql:mysql-connector-java:8.0.33'
+    
+    // Host metrics
+    implementation "com.github.oshi:oshi-core:6.8.3"
 }
 
 jar {
