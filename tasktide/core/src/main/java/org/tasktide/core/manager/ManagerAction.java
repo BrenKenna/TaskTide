@@ -122,6 +122,41 @@ public enum ManagerAction {
         public String toString() {
             return name();
         }
+    },
+    
+    
+    SUMMARIZE_EACH {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+    },
+    
+    SUMMARIZE {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
     };
 
     public abstract boolean isManagerAction(String query);

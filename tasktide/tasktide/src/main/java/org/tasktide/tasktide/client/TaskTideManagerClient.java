@@ -15,7 +15,10 @@ import java.io.Reader;
 import java.io.Writer;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,7 +30,10 @@ import org.tasktide.core.manager.ManagerTarget;
 import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
+
+import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.tasktide.parser.model.ArgumentMap;
@@ -116,6 +122,20 @@ public class TaskTideManagerClient extends TaskTideClient {
                 int counter = this.resetWorkItems();
                 LOGGER.info("'{}' WorkItems reset", counter);
             }
+             
+            case SUMMARIZE -> {
+                LOGGER.info("Manager client configured to summarize the target collection");
+                Map<ItemState, Integer> results = summarize();
+                String jsonDoc = JsonUtils.toJson(true, results);
+                LOGGER.info("Displaying summary:\n{}", jsonDoc);
+            }
+            
+            case SUMMARIZE_EACH -> {
+                LOGGER.info("Manager client configured to summarize each unit target collection");
+                List<Map<ItemState, Integer>> results = summarizeEach();
+                String jsonDoc = JsonUtils.toJson(true, results);
+                LOGGER.info("Displaying summary:\n{}", jsonDoc);
+            }
             
             default -> {
                 LOGGER.error("Error, unable to determine Manager Client action to take");
@@ -127,7 +147,63 @@ public class TaskTideManagerClient extends TaskTideClient {
             }
         }
     }
+    
+    
+    /**
+     * Collapses counts of {@link ItemState} across all collection units
+     * 
+     * @return Map-{@link ItemState}, Integer
+     */
+    public Map<ItemState, Integer> summarize() {
+        
+        // Fetch coordinating arguments
+        String step = (String) this.globalArgs.getArgument("Step Name").getValue();
+        String stepId = TaskTideServiceManager.fetchStepService().viewByField("StepName", step).get(0).getId();
+        
+        // Collect into concurrent map
+        Map<ItemState, Integer> results = TaskTideServiceManager
+            .fetchWorkItemService()
+            .viewByField("StepId", stepId)
+            .parallelStream()
+                .map( elm -> elm.summarizeByState() )
+                .flatMap( map -> map.entrySet().stream() )
+        .collect(Collectors.toConcurrentMap(
+            Map.Entry::getKey,
+            Map.Entry::getValue,
+            Integer::sum
+        ));
+        
+        // Provide as hash map
+        return new HashMap<>(results);
+    }
 
+    
+    /**
+     * Fetches count of {@link ItemTask} {@link ItemState} per {@link WorkItem}
+     * 
+     * @return List-Map-{@link ItemState}, Integer
+     */
+    public Map<String, Map<ItemState, Integer>> summarizeEach() {
+        
+        // Fetch coordinating arguments
+        String step = (String) this.globalArgs.getArgument("Step Name").getValue();
+        String stepId = TaskTideServiceManager.fetchStepService().viewByField("StepName", step).get(0).getId();
+        
+        // Calculate results
+        Map<String, Map<ItemState, Integer>> results =
+            TaskTideServiceManager
+            .fetchWorkItemService()
+            .viewByField("StepId", stepId)
+            .parallelStream()
+        .collect(Collectors.toConcurrentMap(
+            elm -> elm.getId(),
+            elm -> elm.summarizeByState()
+        ));
+        
+        // Provide as hash map
+        return new HashMap<>(results);
+    }
+    
     
     /**
      * Reset {@link WorkItem}
