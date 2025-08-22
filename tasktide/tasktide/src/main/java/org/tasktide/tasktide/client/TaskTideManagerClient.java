@@ -132,7 +132,7 @@ public class TaskTideManagerClient extends TaskTideClient {
             
             case SUMMARIZE_EACH -> {
                 LOGGER.info("Manager client configured to summarize each unit target collection");
-                List<Map<ItemState, Integer>> results = summarizeEach();
+                Map<String, Map<ItemState, Integer>> results = summarizeEach();
                 String jsonDoc = JsonUtils.toJson(true, results);
                 LOGGER.info("Displaying summary:\n{}", jsonDoc);
             }

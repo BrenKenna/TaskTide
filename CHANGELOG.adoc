@@ -63,6 +63,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [] K8s
         - [] gLite
 ...
+
 - [/] Test new ManagerActions
 ...
         - [X] Import
@@ -70,7 +71,9 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] Add
         - [X] Append
         - [X] Reset
-        - [] Reset collection <- Set of skipping malformed.
+        - [/] Reset collection <- Set of skipping malformed.
+        - [/] Summarize job states.
+        - []  Fetch by state <- Is ImportString reusable here?
 ...
 - [] Logger messages DRY view on Debug, Info, Warn, Error.
 - [] Apply ConfigUtil to TaskTideClient?
