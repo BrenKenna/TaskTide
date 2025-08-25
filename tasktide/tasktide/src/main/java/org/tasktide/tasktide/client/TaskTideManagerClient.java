@@ -25,8 +25,8 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 
-import org.tasktide.core.manager.ManagerAction;
-import org.tasktide.core.manager.ManagerTarget;
+import org.tasktide.core.manager.command.ManagerAction;
+import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;

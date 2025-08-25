@@ -17,7 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideService;
-import org.tasktide.core.manager.ManagerTarget;
+import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;

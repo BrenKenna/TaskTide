@@ -5,6 +5,7 @@
 package org.tasktide.core.manager;
 
 
+import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
@@ -113,6 +114,34 @@ public final class TaskTideServiceManager {
             return INSTANCE.getWorkflowService();
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");
+    }
+    
+    
+    /**
+     * Get {@link TaskTideService} mapping to {@link ManagerTarget}
+     * 
+     * @param tgt
+     * @return TaskTideService
+     */
+    public static TaskTideService getService(ManagerTarget tgt) {
+        switch (tgt) {
+            case WORKITEM -> {
+                return fetchWorkItemService();
+            }
+            
+            case STEP -> {
+                return fetchStepService();
+            }
+            
+            case WORKFLOW -> {
+                return fetchWorkflowService();
+            }
+            
+            default -> {
+                String msg = String.format("Error target must be on of:\t'%s'", ManagerTarget.valuesString());
+                throw new IllegalArgumentException(msg);
+            }
+        }
     }
     
     

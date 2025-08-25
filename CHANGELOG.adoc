@@ -104,7 +104,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
 - [X] Support unit tests with docker container.
 - [X] Load a target Microprofile config.
 - [X] Update ItemStore to use DbTarget instead of overloading with master/prootype methods.
-- [X] Fix RocksDB bug.
+- [X] Fix RocksDB bug <- Switching to queries via DbTarget had typos causing null DB to be provided. 
 - [X] Initial Documentation.
 - [X] UML & diagram per project (initial good until version hit).
 - [X] Process list of Steps.

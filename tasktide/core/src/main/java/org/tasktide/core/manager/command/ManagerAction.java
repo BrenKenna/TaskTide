@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
  */
 
-package org.tasktide.core.manager;
+package org.tasktide.core.manager.command;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
-import org.tasktide.core.manager.ManagerTarget;
+import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.collection.Step;
