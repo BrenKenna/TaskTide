@@ -72,6 +72,22 @@ public class JsonUtils {
     
     
     /**
+     * Provide JSON Binding to either (un)indented binder
+     * 
+     * @param prettyPrint
+     * @return {@link Jsonb}
+     */
+    public static Jsonb getJsonb(boolean prettyPrint) {
+        if ( prettyPrint ) {
+            return PRETTY_JSON;
+        }
+        else {
+            return JSON;
+        }
+    }
+    
+    
+    /**
      * Convert string to json
      * 
      * @param jsonString

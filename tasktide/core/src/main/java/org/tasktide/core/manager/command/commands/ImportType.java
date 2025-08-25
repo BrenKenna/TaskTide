@@ -78,7 +78,6 @@ public enum ImportType {
         }
     },
     
-    
     STRING {
         @Override
         public String toString() {
