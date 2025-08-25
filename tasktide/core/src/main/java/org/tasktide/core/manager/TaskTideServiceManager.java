@@ -4,9 +4,10 @@
  */
 package org.tasktide.core.manager;
 
-
+import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.TaskTideService;
+
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -120,21 +121,26 @@ public final class TaskTideServiceManager {
     /**
      * Get {@link TaskTideService} mapping to {@link ManagerTarget}
      * 
+     * @param <T> of {@link TaskTideModel}
      * @param tgt
-     * @return TaskTideService
+     * @return TaskTideService of {@link WorkItem}, {@link Step}, or {@link Workflow}
      */
-    public static TaskTideService getService(ManagerTarget tgt) {
+    @SuppressWarnings("unchecked")
+    public static <T extends TaskTideModel<T>> TaskTideService<T> getService(ManagerTarget tgt) {
         switch (tgt) {
             case WORKITEM -> {
-                return fetchWorkItemService();
+                TaskTideService<T> output = (TaskTideService<T>) fetchWorkItemService();
+                return output;
             }
             
             case STEP -> {
-                return fetchStepService();
+                TaskTideService<T> output = (TaskTideService<T>) fetchStepService();
+                return output;
             }
             
             case WORKFLOW -> {
-                return fetchWorkflowService();
+                TaskTideService<T> output = (TaskTideService<T>) fetchWorkflowService();
+                return output;
             }
             
             default -> {

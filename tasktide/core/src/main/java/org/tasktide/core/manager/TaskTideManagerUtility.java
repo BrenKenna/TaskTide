@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,6 +37,7 @@ import org.tasktide.core.model.workitem.Workload;
  */
 public class TaskTideManagerUtility {
     
+    // Attributes
     private static final Logger LOGGER = LogManager.getLogger(TaskTideManagerUtility.class);
     private static final String STEP_ID = "Step-" + BuilderUtility.fetchRandomId();
     private static final String WORKFLOW_ID = "Workflow-" + BuilderUtility.fetchRandomId();

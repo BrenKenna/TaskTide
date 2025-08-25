@@ -104,7 +104,7 @@ public abstract class AbstractCommand implements ManagerCommand {
      * @return boolean
      */
     public abstract boolean validateCommand();
-    
+
     
     /**
      * Get configured action for command
