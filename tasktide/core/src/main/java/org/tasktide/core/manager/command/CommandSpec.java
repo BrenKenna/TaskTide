@@ -117,7 +117,40 @@ public class CommandSpec {
     public Optional<Map<String, Object>> getOptions() {
         return options;
     }
+    
+    
+    /**
+     * Fetch options key from options map as castable object
+     * 
+     * @param key
+     * @return Optional-Object
+     */
+    public Optional<Object> getOptionsKey(String key) {
+        if ( this.options.isPresent() ) {
+            Object val = this.options.get().get(key);
+            return Optional.ofNullable(val);
+        }
+        else {
+            return Optional.empty();
+        }
+    }
 
+    
+    /**
+     * Returns whether options key is present in map
+     * 
+     * @param key
+     * @return boolean
+     */
+    public boolean hasOptionsKey(String key) {
+        if ( this.options.isPresent() ) {
+            return this.options.get().containsKey(key);
+        }
+        else {
+            return false;
+        }
+    }
+    
     
     /**
      * Sets option map for {@link ManagerCommand}

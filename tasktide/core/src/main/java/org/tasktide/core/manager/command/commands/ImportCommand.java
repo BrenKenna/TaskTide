@@ -29,8 +29,10 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.manager.BuilderUtility;
@@ -41,8 +43,8 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
-
 import org.tasktide.core.manager.command.ManagerTarget;
+
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
@@ -115,9 +117,19 @@ public class ImportCommand extends AbstractCommand{
             case ADD -> {
                 return this.addWorkItem() != null;
             }
+            
+            // Append
+            case APPEND -> {
+                return this.appendToWorkItem() != null;
+            }
+            
+            // Otherwise error
+            default -> {
+                ManagerAction[] actions = { ManagerAction.IMPORT, ManagerAction.ADD, ManagerAction.APPEND };
+                LOGGER.error("Error import action must be one of '{}'", actions);
+                return false;
+            }
         }
-        
-        return true;
     }
     
     
@@ -127,7 +139,7 @@ public class ImportCommand extends AbstractCommand{
      * @return {@link WorkItem}
      */
     public WorkItem appendToWorkItem() {
-        String data = (String) this.cmdSpec.getOptions().get().get("Import String");
+        String data = (String) this.cmdSpec.getOptionsKey("Import String").get();
         
         JsonObject json = JsonUtils.stringToJson(data);
         ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
@@ -399,5 +411,15 @@ public class ImportCommand extends AbstractCommand{
         throw new IllegalArgumentException(
             "Invalid format: Expected 3 fields but got " + parts.length
         );
+    }
+
+    
+    /**
+     * Provides {@link ImportType}
+     * 
+     * @return {@link ImportType}
+     */
+    public ImportType getImportType() {
+        return importType;
     }
 }
