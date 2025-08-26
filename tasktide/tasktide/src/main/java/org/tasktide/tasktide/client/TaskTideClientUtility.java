@@ -35,7 +35,6 @@ import org.tasktide.tasktide.containerprovider.CdiProviders;
 import org.tasktide.tasktide.parser.ArgumentTree;
 
 
-
 /**
  * Utility class for {@link TaskTideClient} interface
  * 
