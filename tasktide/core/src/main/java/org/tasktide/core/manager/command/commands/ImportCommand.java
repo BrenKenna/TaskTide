@@ -66,7 +66,24 @@ public class ImportCommand extends AbstractCommand{
     
     // Whether import is via query or file
     @JsonbProperty("Import Type")
-    private final ImportType importType;
+    private ImportType importType;
+    
+    
+    /**
+     * Construct import command
+     * 
+     * @param action
+     * @param target
+     * @param cmdSpec
+     */
+    public ImportCommand(
+        @JsonbProperty("Manager Action") ManagerAction action,
+        @JsonbProperty("Manager Target") ManagerTarget target,
+        @JsonbProperty("Command Spec") CommandSpec cmdSpec
+    ) {
+        super(action, target, cmdSpec);
+        this.importType = null;
+    }
     
     
     /**
@@ -140,12 +157,9 @@ public class ImportCommand extends AbstractCommand{
      */
     public WorkItem appendToWorkItem() {
         String data = (String) this.cmdSpec.getOptionsKey("Import String").get();
-        
         JsonObject json = JsonUtils.stringToJson(data);
         ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
-        // String workItemId = JsonUtils.fetchStringFieldFromJson("WorkItemId", json);
         String workItemId = json.getString("WorkItemId");
-        
         return TaskTideManagerUtility.appendTask(task, workItemId);
     }
     

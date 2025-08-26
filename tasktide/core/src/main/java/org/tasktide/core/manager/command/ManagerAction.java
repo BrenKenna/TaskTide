@@ -1,12 +1,29 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
+ * Copyright 2025 Brendan Kenna.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-
 package org.tasktide.core.manager.command;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
+import org.tasktide.core.manager.command.commands.AbstractCommand;
+
+import org.tasktide.core.manager.command.commands.ExportCommand;
+import org.tasktide.core.manager.command.commands.ImportCommand;
+import org.tasktide.core.manager.command.commands.ResetCommand;
+import org.tasktide.core.manager.command.commands.SummarizeCommand;
 
 
 /**
@@ -17,7 +34,6 @@ import java.util.stream.Collectors;
 public enum ManagerAction {
 
     IMPORT {
-
         @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
@@ -31,6 +47,12 @@ public enum ManagerAction {
         @Override
         public String toString() {
             return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd =  new ImportCommand(ManagerAction.IMPORT, target, cmdSpec);
+            return cmd;
         }
     },
 
@@ -49,10 +71,15 @@ public enum ManagerAction {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd =  new ExportCommand(ManagerAction.EXPORT, target, cmdSpec);
+            return cmd;
+        }
     },
     
     ADD {
-
         @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
@@ -68,10 +95,14 @@ public enum ManagerAction {
             return name();
         }
     
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd =  new ImportCommand(ManagerAction.ADD, target, cmdSpec);
+            return cmd;
+        }
     },
     
     APPEND {
-    
         @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
@@ -85,6 +116,12 @@ public enum ManagerAction {
         @Override
         public String toString() {
             return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd =  new ImportCommand(ManagerAction.APPEND, target, cmdSpec);
+            return cmd;
         }
     },
     
@@ -104,6 +141,12 @@ public enum ManagerAction {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd =  new ResetCommand(ManagerAction.RESET_ITEM, target, cmdSpec);
+            return cmd;
+        }
     },
     
     RESET_ITEMS {
@@ -121,6 +164,12 @@ public enum ManagerAction {
         @Override
         public String toString() {
             return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd =  new ResetCommand(ManagerAction.RESET_ITEMS, target, cmdSpec);
+            return cmd;
         }
     },
     
@@ -140,6 +189,12 @@ public enum ManagerAction {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd =  new SummarizeCommand(ManagerAction.SUMMARIZE_EACH, target, cmdSpec);
+            return cmd;
+        }
     },
     
     SUMMARIZE {
@@ -157,8 +212,24 @@ public enum ManagerAction {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd =  new SummarizeCommand(ManagerAction.SUMMARIZE, target, cmdSpec);
+            return cmd;
+        }
     };
 
+    
+    /**
+     * Abstract method for values to create their corresponding {@link AbstractCommand}
+     * 
+     * @param target
+     * @param cmdSpec
+     * @return {@link ManagerCommand}
+     */
+    public abstract ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec);
+    
     public abstract boolean isManagerAction(String query);
     public abstract boolean isManagerAction(ManagerAction query);
 
