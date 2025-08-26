@@ -160,7 +160,21 @@ public class ImportCommand extends AbstractCommand{
         JsonObject json = JsonUtils.stringToJson(data);
         ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
         String workItemId = json.getString("WorkItemId");
-        return TaskTideManagerUtility.appendTask(task, workItemId);
+        return appendTask(task, workItemId);
+    }
+    
+    
+    /**
+     * Append task to target {@link WorkItem}
+     * 
+     * @param task
+     * @param workItemId
+     * @return {@link WorkItem}
+     */
+    public WorkItem appendTask(ManagerTask task, String workItemId) {
+        WorkItem workItem = TaskTideServiceManager.fetchWorkItemService().fetchById(workItemId);
+        workItem.addTask(task.asItemTask());
+        return TaskTideServiceManager.fetchWorkItemService().updateModel(workItem);
     }
     
     
@@ -175,7 +189,23 @@ public class ImportCommand extends AbstractCommand{
         
         JsonObject json = JsonUtils.stringToJson(data);
         ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
-        return TaskTideManagerUtility.importTask(task, json.getString("Task Name"), step);
+        return importTask(task, json.getString("Task Name"), step);
+    }
+    
+    
+    /**
+     * Import task providing updated {@link WorkItem}
+     * 
+     * @param task
+     * @param workItemName
+     * @param stepName
+     * @return {@link WorkItem}
+     */
+    public WorkItem importTask(ManagerTask task, String workItemName, String stepName) {
+        Workload workload = BuilderUtility.buildWorkload(task.asItemTask());
+        String stepId = TaskTideManagerUtility.fetchStepId(stepName);
+        WorkItem item = BuilderUtility.buildWorkItem(workItemName, workload, stepId);
+        return TaskTideServiceManager.fetchWorkItemService().appendModel(item);
     }
     
     
