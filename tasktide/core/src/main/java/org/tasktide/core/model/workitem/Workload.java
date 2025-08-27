@@ -207,6 +207,25 @@ public class Workload {
     
     
     /**
+     * Drop task by Id if present in workload
+     * 
+     * @param taskId
+     * @return boolean
+     */
+    public boolean dropTaskById(String taskId) {
+    
+        // Handle whether to add task
+        ItemTask task = this.getById(taskId);
+        if ( task == null ) {
+            return false;
+        }
+        
+        // Add task
+        return this.dropTask(task);
+    }
+    
+    
+    /**
      * Drop provided task if present from workload
      * 
      * @param task
