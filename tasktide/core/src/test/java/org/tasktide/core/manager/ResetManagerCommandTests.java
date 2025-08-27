@@ -17,14 +17,15 @@ package org.tasktide.core.manager;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.persistence.EntityManager;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.testcontainers.containers.GenericContainer;
 import org.junit.Rule;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,50 +35,45 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import org.testcontainers.containers.GenericContainer;
-
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
-
-import org.tasktide.core.model.workitem.ItemState;
-import org.tasktide.core.repository.JpaRepository;
-import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
-
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
-import org.tasktide.core.manager.command.commands.SummarizeCommand;
-import org.tasktide.core.model.state_summary.StateSummary;
-import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.core.manager.command.commands.ResetCommand;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.JpaRepository;
+
+import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 
 
 /**
- * Tests {@link SummarizeCommand} {@link ManagerCommand} via
+ * Tests the {@link ResetCommand} {@link ManagerCommand} via
  *  {@link JpaRepository} using {@link GenericContainer}
  * 
  * @author Brendan Kenna
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class SummarizeManagerCommandTests {
+public class ResetManagerCommandTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(SummarizeManagerCommandTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(ResetManagerCommandTests.class);
     
     // Backend repo
     @Rule
     public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
-    // Container for fetch nosql template
+    // Container for fetch template/entity manager
     private SeContainer container;
     private EntityManager entityManager;
     
-    public SummarizeManagerCommandTests() {
+    public ResetManagerCommandTests() {
     }
     
     @BeforeAll
     public void setUpClass() {        
-        String msg = "\n\n---------------- Initiating Summarize Manager Command Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating Reset Manager Command Tests ----------------\n";
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
@@ -86,7 +82,7 @@ public class SummarizeManagerCommandTests {
     
     @AfterAll
     public void tearDownClass() {
-        String msg = "\n\n---------------- Terminating Summarize Manager Command Tests ----------------\n";
+        String msg = "\n\n---------------- Terminating Rest Manager Command Tests ----------------\n";
         LOGGER.info(msg);
         if (container != null && container.isRunning()) {
             container.close();
@@ -107,109 +103,110 @@ public class SummarizeManagerCommandTests {
     
     
     /**
-     * Tests fetching {@link StateSummary} of the 'import-docs.json' workload {@link ItemState}
+     * Print each work item from Id list
+     * 
+     * @param ids 
+     */
+    public void printEach(String[] ids) {
+        for ( String elm : ids ) {
+            WorkItem preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(elm);
+            LOGGER.info("Displaying WorkItem:\n'{}'", preCmd.toJsonDoc());
+        }
+    }
+    
+    
+    /**
+     * Teste resetting specific {@link WorkItem}
      */
     @Test
     @Order(0)
-    public void canSummarize() {
-        
+    public void canResetWorkItem() {
+    
         // Construct work item
-        LOGGER.info("\n\n================ Can Summarize ManagerCommand Test ================\n");
+        LOGGER.info("\n\n================ Can Reset ManagerCommand Test ================\n");
+        String forUnlock = "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811";
         ManagerTarget target = ManagerTarget.WORKITEM;
-        ManagerAction action = ManagerAction.SUMMARIZE;
+        ManagerAction action = ManagerAction.RESET_ITEM;
         CommandSpec cmdSpec;
-        SummarizeCommand cmd;
-        StateSummary<ItemState> results;
+        ResetCommand cmd;
         boolean assertionState;
         
         // Import test records
         LOGGER.info("Importing test records");
-        TestUtils.importTestRecords("singleTaskImports", "Arbitrary", "|");
-        TestUtils.viewSteps();
-        TestUtils.viewWorkItems();
+        TestUtils.importTestRecords("import-docs.json", "SequenceAlignment", "JSON");
+        WorkItem preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(forUnlock);
+        LOGGER.info("Displaying WorkItem for reset:\n'{}'", preCmd.toJsonDoc());
         
         // Construct command spec
         LOGGER.info("Constructing command spec");
         Map<String, Object> opts = new HashMap<>();
-        opts.put("Step Name", "Arbitrary");
+        opts.put("Item Id", forUnlock);
         cmdSpec = new CommandSpec(null, null, opts);
         LOGGER.info("Displaying configured command spec:\n'{}'", cmdSpec.toJsonDoc());
         
-        // Create and run command
-        LOGGER.info("Constructing, and executing configured SummarizeCommd");
-        cmd = (SummarizeCommand) action.makeCommand(target, cmdSpec);
-        Object output = cmd.execute();
-        
-        // Display results if retrieved
-        if ( output != null ) {
-            LOGGER.info("Casting ManagerCommand output to StateSummary-Map");
-            results = (StateSummary<ItemState>) output;
-            LOGGER.info("Displaying results:\n'{}'", JsonUtils.toJson(true, output));
-            assertionState = true;
-        }
-        
-        // Otherwise log failure
-        else {
-            LOGGER.error("Unable to retrieve StateSummary-Map");
-            assertionState = false;
-        }
+        // Run command
+        LOGGER.info("Constructing, and executing configured ResetCommand");
+        cmd = (ResetCommand) action.makeCommand(target, cmdSpec);
+        assertionState = (boolean) cmd.execute();
+        preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(forUnlock);
+        LOGGER.info("Displaying WorkItem post reset:\n'{}'", preCmd.toJsonDoc());
         
         // Log state
-        LOGGER.info("\n\n================ Can Summarize ManagerCommand Test ================\n");
+        LOGGER.info("\n\n================ Can Reset ManagerCommand Test ================\n");
         assertTrue(assertionState);
     }
     
     
     /**
-     * Tests fetching {@link StateSummary} of the 'import-docs.json' workload {@link ItemState}
+     * Tests dynamic resetting of a collection of WorkItems
+     * 
      */
     @Test
     @Order(1)
-    public void canSummarizeEach() {
+    public void canResetList() {
         
         // Construct work item
-        LOGGER.info("\n\n================ Can SummarizeEach ManagerCommand Test ================\n");
+        LOGGER.info("\n\n================ Can Reset List ManagerCommand Test ================\n");
+        String resetList = TestUtils.fetchResourcePath("For-Reset.txt").toString();
+        String[] forUnlock = { 
+            "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811",
+            "WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98",
+            "WorkItem-50a47baf-0ea6-43e8-ae2c-4fcc21f9f6a5",
+            "WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249"
+        };
         ManagerTarget target = ManagerTarget.WORKITEM;
-        ManagerAction action = ManagerAction.SUMMARIZE_EACH;
+        ManagerAction action = ManagerAction.RESET_ITEMS;
         CommandSpec cmdSpec;
-        SummarizeCommand cmd;
-        Map<String, StateSummary<ItemState>> results;
+        ResetCommand cmd;
         boolean assertionState;
         
         // Import test records
-        LOGGER.info("Importing test records");
-        TestUtils.importTestRecords("singleTaskImports", "Arbitrary", "|");
-        TestUtils.viewSteps();
-        TestUtils.viewWorkItems();
+        LOGGER.info("Importing test records, displaying WorkItems for unlocking");
+        TestUtils.importTestRecords("import-docs.json", "SequenceAlignment", "JSON");
+        this.printEach(forUnlock);
         
         // Construct command spec
         LOGGER.info("Constructing command spec");
         Map<String, Object> opts = new HashMap<>();
-        opts.put("Step Name", "Arbitrary");
-        cmdSpec = new CommandSpec(null, null, opts);
+        opts.put("Delimiter", ",");
+        cmdSpec = new CommandSpec(resetList, null, opts);
         LOGGER.info("Displaying configured command spec:\n'{}'", cmdSpec.toJsonDoc());
         
         // Create and run command
-        LOGGER.info("Constructing, and executing configured SummarizeCommd");
-        cmd = (SummarizeCommand) action.makeCommand(target, cmdSpec);
-        Object output = cmd.execute();
+        LOGGER.info("Constructing, and executing configured ResetCommand");
+        cmd = (ResetCommand) action.makeCommand(target, cmdSpec);
+        assertionState = (boolean) cmd.execute();
         
-        // Display results if retrieved
-        if ( output != null ) {
-            LOGGER.info("Casting ManagerCommand output to StateSummary-Map");
-            results = (Map<String, StateSummary<ItemState>>) output;
-            LOGGER.info("Displaying results:\n'{}'", JsonUtils.toJson(true, output));
-            assertionState = true;
+        // Evaluate test
+        if ( assertionState ) {
+            this.printEach(forUnlock);
         }
-        
-        // Otherwise log failure
         else {
-            LOGGER.error("Unable to retrieve StateSummary-Map");
-            assertionState = false;
+            LOGGER.error("Unable to reset test tokens");
         }
         
         // Log state
-        LOGGER.info("\n\n================ Can SummarizeEach ManagerCommand Test ================\n");
+        LOGGER.info("\n\n================ Can Reset List ManagerCommand Test ================\n");
         assertTrue(assertionState);
     }
 }

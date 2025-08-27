@@ -248,7 +248,7 @@ public class ImportCommand extends AbstractCommand{
             // With no nested delimiter
             LOGGER.info("Evaluating nested delimiter of value '{}'", nestedDelimiter);
             String stepName = (String) this.cmdSpec.getOptions().get().get("Step Name");
-            delimiter = this.handleDelim(delimiter);
+            delimiter = TaskTideManagerUtility.handleDelim(delimiter);
             if (nestedDelimiter == null) {
                 LOGGER.info("No nested delimiter detected, importing as single tasks");
                 return this.fetchWorkItems(file, stepName, delimiter);
@@ -261,7 +261,7 @@ public class ImportCommand extends AbstractCommand{
             
             // Use nested delimiter
             else {
-                nestedDelimiter = this.handleDelim(nestedDelimiter);
+                nestedDelimiter = TaskTideManagerUtility.handleDelim(nestedDelimiter);
                 LOGGER.info("Importing using nested delimiter of:'{}'", nestedDelimiter);
                 return this.fetchWorkItems(file, stepName, delimiter, nestedDelimiter);
             }
@@ -282,6 +282,7 @@ public class ImportCommand extends AbstractCommand{
             LOGGER.info("Streaming JSON data into WorkItem list");
             List<WorkItem> output = Arrays.asList(jsonb.fromJson(inpStream, WorkItem[].class));
             LOGGER.info("Streamed JSON data into WorkItem list");
+            inpStream.close();
             return output;
         }
         catch ( IOException ex ) {
@@ -291,27 +292,6 @@ public class ImportCommand extends AbstractCommand{
         }
     }
 
-    
-    /**
-     * Validate delimiter
-     * 
-     * @param delim
-     * @return
-     * @throws IllegalArgumentException 
-     */
-    public String handleDelim(String delim) throws IllegalArgumentException {
-    
-        // Handle delimiter
-        if ( delim == null || delim.isBlank() || delim.isEmpty() ) {
-            throw new IllegalArgumentException("Delimiter cannot be null or empty");
-        }
-        
-        if ( delim.equals("|") ) {
-            delim = "\\|";
-        }
-        return delim;
-    }
-    
     
     /**
      * Fetch nested {@link WorkItem} collection
@@ -390,6 +370,7 @@ public class ImportCommand extends AbstractCommand{
             results.add(data);
             lineNumber++;
         }
+        reader.close();
 
         // Return results
         return results;

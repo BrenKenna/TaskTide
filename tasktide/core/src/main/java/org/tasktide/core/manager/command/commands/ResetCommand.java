@@ -25,6 +25,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideService;
+import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.command.CommandSpec;
@@ -115,7 +116,7 @@ public class ResetCommand extends AbstractCommand {
             
             case RESET_ITEMS -> {
                 return
-                    this.cmdSpec.hasOptionsKey("Target File")
+                    this.cmdSpec.getFilePath().isPresent()
                     && this.cmdSpec.hasOptionsKey("Delimiter");
             }
             
@@ -154,9 +155,11 @@ public class ResetCommand extends AbstractCommand {
     public int resetItems() {
         
         // Fetch required args
-        String targetFile = (String) this.cmdSpec.getOptionsKey("Target File").get();
+        String targetFile = (String) this.cmdSpec.getFilePath().get();
         String delimiter  = (String) this.cmdSpec.getOptionsKey("Delimiter").get();
+        delimiter = TaskTideManagerUtility.handleDelim(delimiter);
         
+        LOGGER.info("Resetting tokens with delimiter '{}' in file '{}'", delimiter, targetFile);
         try ( BufferedReader reader = FileIO.fetchBufferedReader(targetFile) ) {
         
             // Init vars
@@ -180,17 +183,24 @@ public class ResetCommand extends AbstractCommand {
                     if ( arr.length == 2 ) {
                         
                         // Fetch work item, and item task Ids
-                        String workItemId = arr[0];
-                        String itemTaskId = arr[1];
+                        String workItemId = arr[0].strip();
+                        String itemTaskId = arr[1].strip();
                         
                         // Reset
                         WorkItem item = serv.fetchById(workItemId);
-                        item.resetTask(itemTaskId);
+                        if ( itemTaskId != null ) {
+                            LOGGER.info("Unlocking task '{}' in '{}'", itemTaskId, workItemId);
+                            item.resetTask(itemTaskId);
+                        }
+                        else {
+                            LOGGER.info("Unlocking all tasks in '{}'", item.getId());
+                            item.resetModel();
+                        }
                         serv.updateModel(item);
                     }
                     
                     else {
-                        LOGGER.warn("Skipping malformed line:\t'{}', array length = '{}'", line, arr.length);
+                        LOGGER.warn("Skipping malformed line:\t'{}', array length = '{}', arr = '{}'", line, arr.length, arr);
                     }
                 }
                 counter++;
@@ -201,6 +211,8 @@ public class ResetCommand extends AbstractCommand {
         }
         
         catch (IOException ex) {
+            LOGGER.error("Unable to read target file, displaying stack trace:\t'{}'", targetFile);
+            ex.printStackTrace();
             return -1;
         }
     }

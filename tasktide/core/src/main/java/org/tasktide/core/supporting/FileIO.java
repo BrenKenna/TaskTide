@@ -107,7 +107,8 @@ public class FileIO {
     public static <T> boolean exportJson(boolean prettyPrint, T data, String outFile) {
         try ( FileWriter writer = fetchFileWriter(outFile) ) {
             Jsonb json = JsonUtils.getJsonb(prettyPrint);
-            json.toJson(json, writer);
+            json.toJson(data, writer);
+            writer.close();
             return true;
         }
         catch (IOException ex) {
@@ -128,6 +129,7 @@ public class FileIO {
         try ( FileReader reader = fetchFileReader(outFile) ) {
             Jsonb jsonb = JsonUtils.getJsonb(true);
             List<T> output = Arrays.asList(jsonb.fromJson(reader, refClass));
+            reader.close();
             return output;
         }
         

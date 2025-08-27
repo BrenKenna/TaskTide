@@ -92,7 +92,9 @@ public class Workload {
      */
     public void resetTask(String id) {
         ItemTask task = this.getById(id);
-        task.resetModel();
+        if ( task != null ) {
+            task.resetModel();
+        }
     }
     
     /**

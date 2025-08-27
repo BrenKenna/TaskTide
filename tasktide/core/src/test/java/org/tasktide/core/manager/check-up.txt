@@ -1,8 +1,0 @@
-
-
-TaskTideServiceManager
-            .fetchWorkItemService()
-            .viewByField("StepName", "Arbitrary")
-        .get(0);
-
-

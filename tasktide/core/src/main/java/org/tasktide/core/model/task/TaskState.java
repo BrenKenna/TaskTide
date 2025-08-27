@@ -82,7 +82,7 @@ public enum TaskState implements StateSummaryType {
         }
     },
     
-    TIME_KEEPER{
+    TIME_KEEPER {
         @Override
         public String toString() {
             return "Time Keeper";

@@ -17,13 +17,15 @@ package org.tasktide.core.manager.command.commands;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.supporting.FileIO;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
-
-import org.tasktide.core.supporting.FileIO;
 
 
 /**
@@ -32,6 +34,8 @@ import org.tasktide.core.supporting.FileIO;
  * @author Brendan Kenna
  */
 public class ExportCommand extends AbstractCommand {
+    
+    private final Logger LOGGER = LogManager.getLogger(ExportCommand.class);
     
     
     /**
@@ -65,7 +69,7 @@ public class ExportCommand extends AbstractCommand {
      */
     @Override
     public boolean validateCommand() {
-        if ( !this.cmdSpec.hasOptionsKey("Target File") ) {
+        if ( this.cmdSpec.getFilePath().isEmpty() ) {
             return false;
         }
         
@@ -83,8 +87,9 @@ public class ExportCommand extends AbstractCommand {
      * @return boolean
      */
     public boolean exportToJson() {
-        String targetFile = (String) this.cmdSpec.getOptionsKey("Target File").get();
+        String targetFile = (String) this.cmdSpec.getFilePath().get();
         List<TaskTideModel> data = this.target.fetchModels();
+        LOGGER.info("Retrieved '{}' records for export to:\t'{}'", data.size(), targetFile);
         return FileIO.exportJson(true, data, targetFile);
     }
 }

@@ -38,6 +38,27 @@ public class TaskTideManagerUtility {
     private static final Logger LOGGER = LogManager.getLogger(TaskTideManagerUtility.class);
     private static final String STEP_ID = "Step-" + BuilderUtility.fetchRandomId();
     private static final String WORKFLOW_ID = "Workflow-" + BuilderUtility.fetchRandomId();
+
+    
+    /**
+     * Validate delimiter
+     * 
+     * @param delim
+     * @return
+     * @throws IllegalArgumentException 
+     */
+    public static String handleDelim(String delim) throws IllegalArgumentException {
+    
+        // Handle delimiter
+        if ( delim == null || delim.isBlank() || delim.isEmpty() ) {
+            throw new IllegalArgumentException("Delimiter cannot be null or empty");
+        }
+        
+        if ( delim.equals("|") ) {
+            delim = "\\|";
+        }
+        return delim;
+    }
     
     
     /**

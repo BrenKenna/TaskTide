@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
 import org.tasktide.core.TaskTideModel;
@@ -35,6 +37,7 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
+import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDBStore;
 
@@ -47,13 +50,31 @@ import org.tasktide.itemstore.RocksDBStore;
  */
 public class TestUtils {
     
+    private static Logger LOGGER = LogManager.getLogger(TestUtils.class);
+    
+    
+    public static void viewSteps() {
+        List<Step> steps = TaskTideServiceManager.fetchStepService().viewAll();
+        LOGGER.info("Displaying Steps:\t'{}'", JsonUtils.toJson(true, steps));
+    }
+    
+    
+    public static void viewWorkItems() {
+        List<WorkItem> items = TaskTideServiceManager.fetchWorkItemService().viewAll();
+        LOGGER.info("Displaying WorkItems:\t'{}'", JsonUtils.toJson(true, items));
+    }
+    
     
     /**
      * Import test json doc via {@link ManagerCommand},
      *  requires {@link TaskTideServiceManager} to be
      *  iniialized.
+     * 
+     * @param resourcePath
+     * @param stepName
+     * @param delimiter 
      */
-    public static void importTestRecords() {
+    public static void importTestRecords(String resourcePath, String stepName, String delimiter) {
     
         // Initialize vars
         ManagerTarget target = ManagerTarget.WORKITEM;
@@ -62,13 +83,13 @@ public class TestUtils {
         ManagerCommand cmd;
         
         // Fetch json doc
-        Path path = TestUtils.fetchResourcePath("singleTaskImports.txt");
+        Path path = TestUtils.fetchResourcePath(resourcePath);
         String targetFile = path.toString();
         
         // Construct command spec
         Map<String, Object> opts = new HashMap<>();
-        opts.put("Delimiter", "|");
-        opts.put("Step Name", "Arbitrary");
+        opts.put("Delimiter", delimiter);
+        opts.put("Step Name", stepName);
         cmdSpec = new CommandSpec(targetFile, null, opts);
         
         // Make and run import
