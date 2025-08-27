@@ -52,7 +52,7 @@ public class ExportCommand extends AbstractCommand {
      * @return boolean
      */
     @Override
-    public boolean runCommand() {
+    public Object runCommand() {
         return this.exportToJson();
     }
 

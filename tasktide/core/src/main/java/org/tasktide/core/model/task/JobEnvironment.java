@@ -22,9 +22,6 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Embeddable;
-import jakarta.nosql.Column;
-
 import org.tasktide.core.model.task.job_env.JobType;
 
 
@@ -34,31 +31,31 @@ import org.tasktide.core.model.task.job_env.JobType;
  *
  * @author Brendan Kenna
  */
-@Embeddable
+// @Embeddable
 public class JobEnvironment {
  
     // Attributes
-    @Column("Job Type")
+    // @Column("Job Type")
     @JsonbProperty("Job Type")
     private final JobType type;
     
-    @Column("Job Id")
+    // @Column("Job Id")
     @JsonbProperty("Job Id")
     private final String jobId;
     
-    @Column("Array Index")
+    // @Column("Array Index")
     @JsonbProperty("Array Index")
     private final int arrayInd;
 
-    @Column("Hostname")
+    // @Column("Hostname")
     @JsonbProperty("Hostname")
     private String hostname;
     
-    @Column("Host OS")
+    // @Column("Host OS")
     @JsonbProperty("Host OS")
     private String hostOS;
     
-    @Column("Jave Version")
+    // @Column("Jave Version")
     @JsonbProperty("Java Version")
     private String javaVersion;
     

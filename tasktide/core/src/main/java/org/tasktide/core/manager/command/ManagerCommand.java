@@ -27,9 +27,9 @@ public interface ManagerCommand {
     
     
     /**
-     * Interface method which executes configured against {@link TaskTideService}
+     * Interface method which executes configured command against {@link TaskTideService}
      * 
-     * @return boolean
+     * @return Object
      */
-    public boolean execute();
+    public Object execute();
 }

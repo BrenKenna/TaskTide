@@ -61,20 +61,20 @@ public class SummarizeCommand extends AbstractCommand {
      * @return boolean
      */
     @Override
-    public boolean runCommand() {
+    public Object runCommand() {
         
         switch ( this.action ) {
         
             case SUMMARIZE -> {
                 LOGGER.info("Summarizing collection");
                 StateSummary<ItemState> summary = this.summarize();
-                return summary != null;
+                return summary;
             }
             
             case SUMMARIZE_EACH -> {
                 LOGGER.info("Summarizing each element in collection");
                 Map<String, StateSummary<ItemState>> summaries = this.summarizeEach();
-                return summaries != null;
+                return summaries;
             }
             
             default -> {
@@ -112,12 +112,12 @@ public class SummarizeCommand extends AbstractCommand {
         // Fetch coordinating arguments
         StateSummary<ItemState> output;
         String step = (String) this.cmdSpec.getOptionsKey("Step Name").get();
-        String stepId = TaskTideServiceManager.fetchStepService().viewByField("StepName", step).get(0).getId();
+        String stepId = TaskTideServiceManager.fetchStepService().viewByField("stepName", step).get(0).getId();
         
         // Collect into concurrent map
         Map<ItemState, Integer> results = TaskTideServiceManager
             .fetchWorkItemService()
-            .viewByField("StepId", stepId)
+            .viewByField("stepId", stepId)
             .parallelStream()
                 .map( elm -> elm.summarizeByState() )
                 .flatMap( map -> map.entrySet().stream() )
@@ -142,13 +142,13 @@ public class SummarizeCommand extends AbstractCommand {
         
         // Fetch coordinating arguments
         String step = (String) this.cmdSpec.getOptionsKey("Step Name").get();
-        String stepId = TaskTideServiceManager.fetchStepService().viewByField("StepName", step).get(0).getId();
+        String stepId = TaskTideServiceManager.fetchStepService().viewByField("stepName", step).get(0).getId();
         
         // Calculate results
         Map<String, StateSummary<ItemState>> results =
             TaskTideServiceManager
             .fetchWorkItemService()
-            .viewByField("StepId", stepId)
+            .viewByField("stepId", stepId)
             .parallelStream()
         .collect(Collectors.toConcurrentMap(
             elm -> elm.getId(),

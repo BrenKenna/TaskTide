@@ -190,7 +190,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
     public List<T> findAll() {
         return entityManager
             .createQuery(
-                String.format("SELECT e FROM %s s", COLLECTION_CLASS.getSimpleName()),
+                String.format("SELECT e FROM %s e", COLLECTION_CLASS.getSimpleName()),
                     COLLECTION_CLASS
             )
         .getResultList();

@@ -22,9 +22,6 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Embeddable;
-import jakarta.nosql.Column;
-
 import java.util.Map;
 
 
@@ -35,27 +32,27 @@ import java.util.Map;
  * 
  * @author Brendan Kenna
  */
-@Embeddable
+// @Embeddable
 public class HostMetrics {
     
     // Attributes
-    @Column("Processor Count")
+    // @Column("Processor Count")
     @JsonbProperty("Processor Count")
     private int procCount;
     
-    @Column("Thread Count")
+    // @Column("Thread Count")
     @JsonbProperty("Thread Count")
     private int threadCount;
     
-    @Column("Thread Count")
+    // @Column("Thread Count")
     @JsonbProperty("Total Memory")
     private long totalMemory;
     
-    @Column("Free Memory")
+    // @Column("Free Memory")
     @JsonbProperty("Free Memory")
     private long freeMemory;
     
-    @Column("Storage Summary")
+    // @Column("Storage Summary")
     @JsonbProperty("Storage Summary")
     private Map<String, Map<String, Long>> storage;
     

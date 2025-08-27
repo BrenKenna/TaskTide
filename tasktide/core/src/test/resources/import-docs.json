@@ -1,0 +1,652 @@
+[
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249",
+    "ItemName": "NA11892-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA11892-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA11892 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA11892/exome_alignment/NA11892.mapped.illumina.mosaik.CEU.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-7f6b9147-3486-49af-bae6-0af0978c0c55"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-41c0d222-b52e-4b10-aa58-982e5fc2b560"
+          },
+          "Task Name": "NA11892-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249",
+          "collection": "WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249",
+          "id": "ItemTask-dea3381a-c446-4510-b26d-a941aef06f07",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA11892 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA11892/exome_alignment/NA11892.mapped.illumina.mosaik.CEU.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-a1aa92a3-26e9-4589-99ee-ccbc7694f101",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-b30dc32b-ca06-48db-af53-d80584edd545",
+    "ItemName": "HG00689-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "HG00689-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh HG00689 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/HG00689/exome_alignment/HG00689.mapped.illumina.mosaik.CHS.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-5dae26e8-b6f9-4b30-81a8-eb12d485e84c"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-5be08c9b-d6aa-4030-ba70-c5302cae19de"
+          },
+          "Task Name": "HG00689-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-b30dc32b-ca06-48db-af53-d80584edd545",
+          "collection": "WorkItem-b30dc32b-ca06-48db-af53-d80584edd545",
+          "id": "ItemTask-e010076e-37b2-47d6-88d1-e3ded2d77f67",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh HG00689 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/HG00689/exome_alignment/HG00689.mapped.illumina.mosaik.CHS.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-b8dd0ef6-8947-4597-ba0a-0057501de3ab",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-df87a3e9-ce6b-456f-bdf2-662c5824d939",
+    "ItemName": "HG00737-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "HG00737-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh HG00737 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/HG00737/exome_alignment/HG00737.mapped.illumina.mosaik.PUR.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-d79d5c49-2945-4a11-b1b0-3e3e74180032"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-8872bf18-cdcd-41b5-8b8d-408b5411ba56"
+          },
+          "Task Name": "HG00737-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-df87a3e9-ce6b-456f-bdf2-662c5824d939",
+          "collection": "WorkItem-df87a3e9-ce6b-456f-bdf2-662c5824d939",
+          "id": "ItemTask-54380125-c65d-4e74-85fe-cdc0c1ab0ccc",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh HG00737 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/HG00737/exome_alignment/HG00737.mapped.illumina.mosaik.PUR.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-6f4f2fc0-d72f-488a-b5e0-d0f4cc34d192",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-afb129f2-03d4-48d5-bcab-3448e3fc583e",
+    "ItemName": "HG01686-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "HG01686-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh HG01686 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/HG01686/exome_alignment/HG01686.mapped.illumina.mosaik.IBS.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-36749c49-9613-40b8-b665-2ae29cd6bc30"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-2be9521f-a8e3-444e-b55c-94798804d0aa"
+          },
+          "Task Name": "HG01686-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-afb129f2-03d4-48d5-bcab-3448e3fc583e",
+          "collection": "WorkItem-afb129f2-03d4-48d5-bcab-3448e3fc583e",
+          "id": "ItemTask-bc9f45c0-f2dc-4152-a1b3-cddb55b3ce9c",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh HG01686 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/HG01686/exome_alignment/HG01686.mapped.illumina.mosaik.IBS.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-874959da-cde9-44ef-9835-badc3c9e9715",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-50a47baf-0ea6-43e8-ae2c-4fcc21f9f6a5",
+    "ItemName": "NA19247-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA19247-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA19247 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA19247/exome_alignment/NA19247.mapped.illumina.mosaik.YRI.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-7405199f-f35a-41bb-a043-73c6efc50428"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-5c2295be-254c-4724-88ec-f085219303ac"
+          },
+          "Task Name": "NA19247-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-50a47baf-0ea6-43e8-ae2c-4fcc21f9f6a5",
+          "collection": "WorkItem-50a47baf-0ea6-43e8-ae2c-4fcc21f9f6a5",
+          "id": "ItemTask-49c059b7-e0c1-42a0-8039-1d1ee5aac7fa",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA19247 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA19247/exome_alignment/NA19247.mapped.illumina.mosaik.YRI.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-93d65438-9778-4121-8824-12d9da4c9d3b",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98",
+    "ItemName": "NA18740-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA18740-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA18740 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA18740/exome_alignment/NA18740.mapped.solid.mosaik.CHB.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-5d4a70a1-90b8-4901-b1c5-1b919073fbe8"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-476b1f91-dbaa-4c1b-8978-f2b058dfb53d"
+          },
+          "Task Name": "NA18740-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98",
+          "collection": "WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98",
+          "id": "ItemTask-7f4fa635-17ed-4387-a9d4-0b61f168ee0d",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA18740 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA18740/exome_alignment/NA18740.mapped.solid.mosaik.CHB.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-428607f7-86ce-4bb8-9b1e-550ad9155e80",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811",
+    "ItemName": "NA20786-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA20786-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA20786 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA20786/exome_alignment/NA20786.mapped.illumina.mosaik.TSI.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-f0d86cda-51e2-416a-8fc0-23613e69eb7c"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-5d584877-48f6-40da-ab34-50f2b366936b"
+          },
+          "Task Name": "NA20786-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811",
+          "collection": "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811",
+          "id": "ItemTask-2808cad2-6048-40e8-94cc-7a2af860a7a6",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA20786 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA20786/exome_alignment/NA20786.mapped.illumina.mosaik.TSI.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-3c05d3cd-7836-49c9-a473-6c24a9f993ca",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-0c737edd-86c2-4f29-a935-f4b6fb4f3568",
+    "ItemName": "NA20859-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA20859-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA20859 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA20859/exome_alignment/NA20859.mapped.illumina.mosaik.GIH.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-474d2b22-bb61-4a52-96c2-770da097af15"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-27b2ea09-b182-44fe-b213-7faec41ae318"
+          },
+          "Task Name": "NA20859-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-0c737edd-86c2-4f29-a935-f4b6fb4f3568",
+          "collection": "WorkItem-0c737edd-86c2-4f29-a935-f4b6fb4f3568",
+          "id": "ItemTask-2d947494-1485-494a-bf96-f97e33f73ebe",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA20859 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA20859/exome_alignment/NA20859.mapped.illumina.mosaik.GIH.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-cf83d6c1-5bbc-4efb-bd5f-c43cf70a6bdc",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-afc474b2-b8b4-4f73-83cd-b2bcf2cf1d64",
+    "ItemName": "NA12829-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA12829-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA12829 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA12829/exome_alignment/NA12829.mapped.illumina.mosaik.CEU.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-ecf72943-16eb-438c-832a-24b09782d109"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-1c416b26-cb12-4bcd-a69d-e183bba2fda8"
+          },
+          "Task Name": "NA12829-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-afc474b2-b8b4-4f73-83cd-b2bcf2cf1d64",
+          "collection": "WorkItem-afc474b2-b8b4-4f73-83cd-b2bcf2cf1d64",
+          "id": "ItemTask-f85d38e1-ffff-4bc2-a007-875202684682",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA12829 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA12829/exome_alignment/NA12829.mapped.illumina.mosaik.CEU.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-b3ff58e9-54d6-4f19-b135-7fafa70dfcf7",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-c002f180-8197-40b2-bb30-b96a4a5bd9eb",
+    "ItemName": "NA19041-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA19041-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA19041 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA19041/exome_alignment/NA19041.mapped.solid.mosaik.LWK.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-5a66d207-906b-4c75-a12e-30c34172e676"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-beae6e86-5774-4b49-b43d-5153b5d4d96d"
+          },
+          "Task Name": "NA19041-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-c002f180-8197-40b2-bb30-b96a4a5bd9eb",
+          "collection": "WorkItem-c002f180-8197-40b2-bb30-b96a4a5bd9eb",
+          "id": "ItemTask-b0abb88a-f864-498e-8432-e4331fcf8367",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA19041 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA19041/exome_alignment/NA19041.mapped.solid.mosaik.LWK.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-e4213127-1a03-4573-b6d2-bbd5083f190e",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-46096f11-2286-4af2-afb9-6ae21c9c5573",
+    "ItemName": "HG00274-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "HG00274-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh HG00274 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/HG00274/exome_alignment/HG00274.mapped.illumina.mosaik.FIN.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-d325a5fb-43f7-48a7-b9f5-2eef32f8a393"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-55308b04-798e-4951-846b-0d484703ddd5"
+          },
+          "Task Name": "HG00274-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-46096f11-2286-4af2-afb9-6ae21c9c5573",
+          "collection": "WorkItem-46096f11-2286-4af2-afb9-6ae21c9c5573",
+          "id": "ItemTask-f675d649-7491-44f0-96ab-3ab7780988ac",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh HG00274 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/HG00274/exome_alignment/HG00274.mapped.illumina.mosaik.FIN.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-5c72dc9c-4b8e-4978-ab8a-5a5e526b8bf0",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-96641bc3-3682-433a-bac1-9caf61a5c7c8",
+    "ItemName": "NA18856-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA18856-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA18856 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA18856/exome_alignment/NA18856.mapped.illumina.mosaik.YRI.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-fdc76eb8-7b4d-4434-9ba7-33f88f7dc487"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-825f455b-a206-47c4-a8d6-86ebd53fd383"
+          },
+          "Task Name": "NA18856-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-96641bc3-3682-433a-bac1-9caf61a5c7c8",
+          "collection": "WorkItem-96641bc3-3682-433a-bac1-9caf61a5c7c8",
+          "id": "ItemTask-d2e934e1-75d3-41d0-84a1-c714ca1357d9",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA18856 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA18856/exome_alignment/NA18856.mapped.illumina.mosaik.YRI.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-2e098e35-fafe-4b01-bb50-4ea35d04a89c",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  },
+  {
+    "DoneDate": 0,
+    "Id": "WorkItem-e744d304-8faa-4193-9562-39f17cb21d09",
+    "ItemName": "NA20796-Alignment",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "StepId": "Step-beb4946f-8ce0-440d-8713-b7cd820e2c54",
+    "StepName": "SequenceAlignment",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+      "Workload": {
+        "NA20796-Alignment": {
+          "Task": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA20796 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA20796/exome_alignment/NA20796.mapped.illumina.mosaik.TSI.exome.20111114.bam",
+          "Task Log": {
+            "CPU Duration": 0,
+            "End Time": 0,
+            "Exit Code": -1,
+            "Process Id": 0,
+            "Process Log": {
+              "Stderr": [
+                ""
+              ],
+              "Stdout": [
+                ""
+              ],
+              "id": "ProcessLog-e508d334-4e7e-4eaf-a24e-c538325f50bd"
+            },
+            "Start Time": 0,
+            "Thread Name": "NA",
+            "id": "TaskLog-7d4aab46-cf2f-4f3a-a662-5aa9a1cdbc9c"
+          },
+          "Task Name": "NA20796-Alignment",
+          "Task State": "PENDING",
+          "Work Item Id": "WorkItem-e744d304-8faa-4193-9562-39f17cb21d09",
+          "collection": "WorkItem-e744d304-8faa-4193-9562-39f17cb21d09",
+          "id": "ItemTask-42b6050e-dcf9-4e7e-b60d-a29221f2ed1b",
+          "state": "bash /home/people/bkenna/software/bin/alignment-scripts/Alignment.sh NA20796 https://ftp-trace.ncbi.nih.gov/1000genomes/ftp/technical/other_exome_alignments/NA20796/exome_alignment/NA20796.mapped.illumina.mosaik.TSI.exome.20111114.bam"
+        }
+      },
+      "WorkloadType": "SINGLE",
+      "earliestDone": -1,
+      "id": "Workload-ecc19d10-28ec-4160-8b55-eb776363c1d5",
+      "latestDone": 0,
+      "workloadSize": 1
+    },
+    "collection": "SequenceAlignment",
+    "workloadSize": 1
+  }
+]

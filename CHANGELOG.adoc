@@ -9,6 +9,8 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 === Bugs
 
+- [] Review TaskTideService, and TaskTideRepository unit-tests.
+
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Formatting of help splash text.
 - [/] Hangs if a folder is not writable - at least repository file path.
@@ -64,7 +66,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [] gLite
 ...
 
-- [/] Test new ManagerActions
+- [/] Test new ManagerActions - Moved to ManagerCommand pattern
 ...
         - [X] Import
         - [X] Export

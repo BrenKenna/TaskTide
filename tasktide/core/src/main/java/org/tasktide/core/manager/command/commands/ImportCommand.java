@@ -109,10 +109,10 @@ public class ImportCommand extends AbstractCommand{
     /**
      * Performs import command
      * 
-     * @return boolean
+     * @return Object
      */
     @Override
-    public boolean runCommand() {
+    public Object runCommand() {
         
         // Handle how to import
         switch (this.action) {
@@ -126,6 +126,8 @@ public class ImportCommand extends AbstractCommand{
                     return true;
                 }
                 catch (IOException ex) {
+                    LOGGER.error("Error during importing process, displaying stack trace:\t'{}'", ex);
+                    ex.printStackTrace();
                     return false;
                 }
             }
@@ -156,7 +158,7 @@ public class ImportCommand extends AbstractCommand{
      * @return {@link WorkItem}
      */
     public WorkItem appendToWorkItem() {
-        String data = (String) this.cmdSpec.getOptionsKey("Import String").get();
+        String data = this.cmdSpec.getQueryString().get();
         JsonObject json = JsonUtils.stringToJson(data);
         ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
         String workItemId = json.getString("WorkItemId");
@@ -185,11 +187,12 @@ public class ImportCommand extends AbstractCommand{
      */
     public WorkItem addWorkItem() {
         String step = (String) this.cmdSpec.getOptions().get().get("Step Name");
-        String data = (String) this.cmdSpec.getOptions().get().get("Import String");
+        String data = this.cmdSpec.getQueryString().get();
         
+        LOGGER.debug("Creating json object from:\t'{}'", data);
         JsonObject json = JsonUtils.stringToJson(data);
         ManagerTask task = new ManagerTask(json.getString("Task Name"), json.getString("Task Script"));
-        return importTask(task, json.getString("Task Name"), step);
+        return this.importTask(task, json.getString("Task Name"), step);
     }
     
     
@@ -232,7 +235,6 @@ public class ImportCommand extends AbstractCommand{
         String file = this.cmdSpec.getFilePath().get();
         String delimiter = (String) this.cmdSpec.getOptions().get().get("Delimiter");
         String nestedDelimiter = (String) this.cmdSpec.getOptions().get().get("Nested Delimiter");
-        String stepName = (String) (String) this.cmdSpec.getOptions().get().get("Step Name");
         
         // Import workload from JSON: Format argument instead
         if (delimiter.equalsIgnoreCase("json")) {
@@ -245,17 +247,23 @@ public class ImportCommand extends AbstractCommand{
             
             // With no nested delimiter
             LOGGER.info("Evaluating nested delimiter of value '{}'", nestedDelimiter);
+            String stepName = (String) this.cmdSpec.getOptions().get().get("Step Name");
+            delimiter = this.handleDelim(delimiter);
             if (nestedDelimiter == null) {
-                return fetchWorkItems(stepName, file, delimiter);
+                LOGGER.info("No nested delimiter detected, importing as single tasks");
+                return this.fetchWorkItems(file, stepName, delimiter);
             }
             
             if ( nestedDelimiter.isEmpty() ) {
-                return fetchWorkItems(stepName, file, delimiter);
+                LOGGER.info("No nested delimiter detected, importing as single tasks");
+                return this.fetchWorkItems(file, stepName, delimiter);
             }
             
             // Use nested delimiter
             else {
-                return fetchWorkItems(stepName, file, delimiter, nestedDelimiter);
+                nestedDelimiter = this.handleDelim(nestedDelimiter);
+                LOGGER.info("Importing using nested delimiter of:'{}'", nestedDelimiter);
+                return this.fetchWorkItems(file, stepName, delimiter, nestedDelimiter);
             }
         }
     }
@@ -426,6 +434,7 @@ public class ImportCommand extends AbstractCommand{
     private WorkItem parseWorkItem(String[] parts, String stepName, String nestedDelim) throws IllegalArgumentException {
     
         // Handle as nested task
+        String stepId = TaskTideManagerUtility.fetchStepId(stepName);
         if ( parts[2].split(nestedDelim).length >= 2 ) {
             
             // Create a new line for each seq value
@@ -439,7 +448,6 @@ public class ImportCommand extends AbstractCommand{
                 counter++;
             }
             Workload workload = BuilderUtility.buildWorkload(nestedTasks);
-            String stepId = TaskTideManagerUtility.fetchStepId(stepName);
             return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
         }
         
@@ -448,7 +456,7 @@ public class ImportCommand extends AbstractCommand{
             String[] newParts = Arrays.copyOfRange(parts, 0, parts.length - 2);
             newParts = Arrays.copyOf(newParts, newParts.length + 1);
             newParts[newParts.length - 1] = parts[parts.length - 2] + " " + parts[parts.length - 1];
-            return parseWorkItem(newParts, stepName);
+            return parseWorkItem(newParts, stepId);
         }
         
         // Otherwise raise exception

@@ -24,7 +24,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import static org.tasktide.core.manager.TaskTideManagerUtility.handleDelim;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
@@ -47,9 +46,6 @@ public class TestSpecificImplementation {
      * @throws IllegalArgumentException 
      */
     public static List<WorkItem> importTasksForTesting(String stepName, String resourcePath, String delim) throws IOException, IllegalArgumentException {
-        
-        // Handle delimiter
-        delim = handleDelim(delim);
         
         // Try read test resource
         try {
@@ -77,10 +73,7 @@ public class TestSpecificImplementation {
      * @throws IllegalArgumentException 
      */
     public static List<WorkItem> importTasksForTesting(String stepName, String resourcePath, String delim, String nestedDelim) throws IOException, IllegalArgumentException {
-        
-        // Intialize results
-        delim = handleDelim(delim);
-        
+
         // Try read test resource
         try {
             String stepId = UUID.randomUUID().toString();        

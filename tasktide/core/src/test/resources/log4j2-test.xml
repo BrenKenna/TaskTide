@@ -14,7 +14,7 @@
 
     <Loggers>
         <!-- Logger for specific package/class -->
-        <Logger name="org.tasktide" level="INFO" additivity="false">
+        <Logger name="org.tasktide" level="DEBUG" additivity="false">
             <AppenderRef ref="STDOUT"/>
             <AppenderRef ref="LOGFILE"/>
         </Logger>

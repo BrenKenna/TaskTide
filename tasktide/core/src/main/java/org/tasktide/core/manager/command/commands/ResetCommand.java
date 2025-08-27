@@ -73,7 +73,7 @@ public class ResetCommand extends AbstractCommand {
      * @return 
      */
     @Override
-    public boolean runCommand() {
+    public Object runCommand() {
         
         // Handle whether to reset single or collection
         switch ( this.action ) {

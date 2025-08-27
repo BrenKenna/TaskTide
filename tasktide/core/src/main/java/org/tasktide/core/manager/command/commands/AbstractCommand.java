@@ -81,7 +81,7 @@ public abstract class AbstractCommand implements ManagerCommand {
      * @return boolean
      */
     @Override
-    public boolean execute() {
+    public Object execute() {
         if ( this.validateCommand() ) {
             return this.runCommand();
         }
@@ -93,9 +93,9 @@ public abstract class AbstractCommand implements ManagerCommand {
      * Defines how a concrete {@link ManagerCommand}
      *  executes a validated command
      * 
-     * @return boolean
+     * @return Object
      */
-    public abstract boolean runCommand();
+    public abstract Object runCommand();
     
     
     /**

@@ -10,9 +10,12 @@ import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.nosql.Template;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +24,17 @@ import java.util.stream.Collectors;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideService;
+import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.manager.command.CommandSpec;
+import org.tasktide.core.manager.command.ManagerAction;
+import org.tasktide.core.manager.command.ManagerCommand;
+import org.tasktide.core.manager.command.ManagerTarget;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDBStore;
 
@@ -32,6 +46,85 @@ import org.tasktide.itemstore.RocksDBStore;
  * @author bkenna
  */
 public class TestUtils {
+    
+    
+    /**
+     * Import test json doc via {@link ManagerCommand},
+     *  requires {@link TaskTideServiceManager} to be
+     *  iniialized.
+     */
+    public static void importTestRecords() {
+    
+        // Initialize vars
+        ManagerTarget target = ManagerTarget.WORKITEM;
+        ManagerAction action = ManagerAction.IMPORT;
+        CommandSpec cmdSpec;
+        ManagerCommand cmd;
+        
+        // Fetch json doc
+        Path path = TestUtils.fetchResourcePath("singleTaskImports.txt");
+        String targetFile = path.toString();
+        
+        // Construct command spec
+        Map<String, Object> opts = new HashMap<>();
+        opts.put("Delimiter", "|");
+        opts.put("Step Name", "Arbitrary");
+        cmdSpec = new CommandSpec(targetFile, null, opts);
+        
+        // Make and run import
+        cmd = action.makeCommand(target, cmdSpec);
+        cmd.execute();
+    }
+    
+    
+    /**
+     * Initializes {@link TaskTideServiceManager} using
+     *  required bakend
+     * 
+     * @param repoType
+     * @param backend 
+     */
+    public static void initServiceManager(RepositoryType repoType, Object backend) {
+        
+        // Fetch services
+        TaskTideService<Workflow> workflowServ = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow");
+        TaskTideService<Step> repoStep = ServiceFactory.makeStepService(repoType, backend, "Step");
+        TaskTideService<WorkItem> repoWorkItem = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem");
+        
+        // Initialize service manager with services
+        TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ);
+    }
+    
+    
+    /**
+     * Fetch path for provided resource, masking error
+     *  from TestUtils.fetchResource 
+     * 
+     * @param resource
+     * @return Path
+     */
+    public static Path fetchResourcePath(String resource) {
+        try {
+            return TestUtils.fetchResource(resource);
+        }
+        catch (Exception ex) {
+            throw new IllegalArgumentException("Unable to read provided resource;\t" + resource);
+        }
+    }
+    
+    
+    /**
+     * Fetch resolved path for a resource file
+     * 
+     * @param resource
+     * @return Path
+     * 
+     * @throws URISyntaxException 
+     */
+    public static Path fetchResource(String resource) throws URISyntaxException {
+        URL url = TestUtils.class.getClassLoader().getResource(resource);
+        return Paths.get(url.toURI());
+    }
     
     
     /**
