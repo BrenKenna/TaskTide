@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.supporting.file_processor;
+package org.tasktide.core.manager.file_handler;
 
 import org.apache.logging.log4j.Logger;
 import org.tasktide.core.TaskTideService;

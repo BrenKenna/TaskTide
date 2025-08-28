@@ -18,23 +18,17 @@ package org.tasktide.core.manager.command.commands;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.core.TaskTideService;
-import org.tasktide.core.manager.TaskTideManagerUtility;
+import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 
-import org.tasktide.core.model.workitem.WorkItem;
-
-import org.tasktide.core.supporting.FileIO;
+import org.tasktide.core.manager.file_handler.WorkItemFileProcessor;
 
 
 
@@ -157,63 +151,8 @@ public class ResetCommand extends AbstractCommand {
         // Fetch required args
         String targetFile = (String) this.cmdSpec.getFilePath().get();
         String delimiter  = (String) this.cmdSpec.getOptionsKey("Delimiter").get();
-        delimiter = TaskTideManagerUtility.handleDelim(delimiter);
         
-        LOGGER.info("Resetting tokens with delimiter '{}' in file '{}'", delimiter, targetFile);
-        try ( BufferedReader reader = FileIO.fetchBufferedReader(targetFile) ) {
-        
-            // Init vars
-            TaskTideService<WorkItem> serv = TaskTideServiceManager.fetchWorkItemService();
-            int counter = 0;
-            String line;
-            
-            // Parse lines
-            while ( ( line = reader.readLine()) != null ) {
-                
-                // No delimiter treat a list
-                if ( delimiter.isEmpty() ) {
-                    WorkItem item = serv.fetchById(line);
-                    item.resetModel();
-                    serv.updateModel(item);
-                }
-                
-                // Otherwise handle as item task for work item
-                else {
-                    String[] arr = line.split(delimiter);
-                    if ( arr.length == 2 ) {
-                        
-                        // Fetch work item, and item task Ids
-                        String workItemId = arr[0].strip();
-                        String itemTaskId = arr[1].strip();
-                        
-                        // Reset
-                        WorkItem item = serv.fetchById(workItemId);
-                        if ( itemTaskId != null ) {
-                            LOGGER.info("Unlocking task '{}' in '{}'", itemTaskId, workItemId);
-                            item.resetTask(itemTaskId);
-                        }
-                        else {
-                            LOGGER.info("Unlocking all tasks in '{}'", item.getId());
-                            item.resetModel();
-                        }
-                        serv.updateModel(item);
-                    }
-                    
-                    else {
-                        LOGGER.warn("Skipping malformed line:\t'{}', array length = '{}', arr = '{}'", line, arr.length, arr);
-                    }
-                }
-                counter++;
-            }
-            
-            // Return count
-            return counter;
-        }
-        
-        catch (IOException ex) {
-            LOGGER.error("Unable to read target file, displaying stack trace:\t'{}'", targetFile);
-            ex.printStackTrace();
-            return -1;
-        }
+        // Pass processing to processor
+        return WorkItemFileProcessor.resetItems(targetFile, delimiter, LOGGER);
     }
 }

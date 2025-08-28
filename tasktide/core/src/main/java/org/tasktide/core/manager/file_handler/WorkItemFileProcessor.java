@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.supporting.file_processor;
+package org.tasktide.core.manager.file_handler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -141,6 +141,7 @@ public class WorkItemFileProcessor {
             if (parts.length == 1) {
                 WorkItem item = serv.fetchById(parts[0].strip());
                 item.getWorkload().setWorkload(new HashMap<String, ItemTask>());
+                item.setTaskCounts();
                 serv.updateModel(item);
             } else if (parts.length == 2) {
                 String workItemId = parts[0].strip();
@@ -154,6 +155,7 @@ public class WorkItemFileProcessor {
                     log.info("Resetting all tasks in '{}'", workItemId);
                     item.getWorkload().setWorkload(new HashMap<String, ItemTask>());
                 }
+                item.setTaskCounts();
                 serv.updateModel(item);
             } else {
                 log.warn("Skipping malformed line: '{}'", Arrays.toString(parts));

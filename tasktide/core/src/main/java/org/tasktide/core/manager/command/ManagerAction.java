@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 import org.tasktide.core.manager.command.commands.AbstractCommand;
 
+import org.tasktide.core.manager.command.commands.DeleteCommand;
 import org.tasktide.core.manager.command.commands.ExportCommand;
 import org.tasktide.core.manager.command.commands.ImportCommand;
 import org.tasktide.core.manager.command.commands.ResetCommand;
@@ -51,7 +52,7 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd =  new ImportCommand(ManagerAction.IMPORT, target, cmdSpec);
+            AbstractCommand cmd = new ImportCommand(ManagerAction.IMPORT, target, cmdSpec);
             return cmd;
         }
     },
@@ -74,7 +75,7 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd =  new ExportCommand(ManagerAction.EXPORT, target, cmdSpec);
+            AbstractCommand cmd = new ExportCommand(ManagerAction.EXPORT, target, cmdSpec);
             return cmd;
         }
     },
@@ -97,7 +98,7 @@ public enum ManagerAction {
     
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd =  new ImportCommand(ManagerAction.ADD, target, cmdSpec);
+            AbstractCommand cmd = new ImportCommand(ManagerAction.ADD, target, cmdSpec);
             return cmd;
         }
     },
@@ -120,7 +121,7 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd =  new ImportCommand(ManagerAction.APPEND, target, cmdSpec);
+            AbstractCommand cmd = new ImportCommand(ManagerAction.APPEND, target, cmdSpec);
             return cmd;
         }
     },
@@ -144,7 +145,7 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd =  new ResetCommand(ManagerAction.RESET_ITEM, target, cmdSpec);
+            AbstractCommand cmd = new ResetCommand(ManagerAction.RESET_ITEM, target, cmdSpec);
             return cmd;
         }
     },
@@ -168,7 +169,7 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd =  new ResetCommand(ManagerAction.RESET_ITEMS, target, cmdSpec);
+            AbstractCommand cmd = new ResetCommand(ManagerAction.RESET_ITEMS, target, cmdSpec);
             return cmd;
         }
     },
@@ -192,7 +193,7 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd =  new SummarizeCommand(ManagerAction.SUMMARIZE_EACH, target, cmdSpec);
+            AbstractCommand cmd = new SummarizeCommand(ManagerAction.SUMMARIZE_EACH, target, cmdSpec);
             return cmd;
         }
     },
@@ -215,7 +216,53 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd =  new SummarizeCommand(ManagerAction.SUMMARIZE, target, cmdSpec);
+            AbstractCommand cmd = new SummarizeCommand(ManagerAction.SUMMARIZE, target, cmdSpec);
+            return cmd;
+        }
+    },
+    
+    DELETE {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd = new DeleteCommand(ManagerAction.DELETE, target, cmdSpec);
+            return cmd;
+        }
+    },
+    
+    DELETE_LIST {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd = new DeleteCommand(ManagerAction.DELETE_LIST, target, cmdSpec);
             return cmd;
         }
     };

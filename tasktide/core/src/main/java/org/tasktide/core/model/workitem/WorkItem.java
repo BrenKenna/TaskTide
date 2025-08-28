@@ -232,6 +232,8 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         else {
             output = false;
         }
+        
+        this.setTaskCounts();
         return output;
     }
     
@@ -251,6 +253,8 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         else {
             output = false;
         }
+        
+        this.setTaskCounts();
         return output;
     }
     
@@ -314,6 +318,12 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     public void setTaskCounts() {
         this.setTaskCount();
         this.setTaskDone();
+        if ( this.taskCount == this.taskDone ) {
+            this.itemState = ItemState.DONE;
+        }
+        this.itemState = ItemState.TODO;
+        this.lockDate = 0L;
+        this.lockId = "";
     }
     
     

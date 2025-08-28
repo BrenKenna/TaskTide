@@ -24,43 +24,39 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.testcontainers.containers.GenericContainer;
 import org.junit.Rule;
+import org.testcontainers.containers.GenericContainer;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestInstance;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 
-import org.tasktide.core.manager.command.CommandSpec;
-import org.tasktide.core.manager.command.ManagerAction;
-import org.tasktide.core.manager.command.ManagerCommand;
-import org.tasktide.core.manager.command.ManagerTarget;
-import org.tasktide.core.manager.command.commands.ResetCommand;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.repository.JpaRepository;
-
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 
+import org.tasktide.core.manager.command.CommandSpec;
+import org.tasktide.core.manager.command.ManagerAction;
+import org.tasktide.core.manager.command.ManagerTarget;
+import org.tasktide.core.manager.command.commands.DeleteCommand;
+
 
 /**
- * Tests the {@link ResetCommand} {@link ManagerCommand} via
- *  {@link JpaRepository} using {@link GenericContainer}
- * 
+ *
  * @author Brendan Kenna
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class ResetManagerCommandTests {
+public class DeleteManagerCommandTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(ResetManagerCommandTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(DeleteManagerCommandTests.class);
     
     // Backend repo
     @Rule
@@ -70,12 +66,12 @@ public class ResetManagerCommandTests {
     private SeContainer container;
     private EntityManager entityManager;
     
-    public ResetManagerCommandTests() {
+    public DeleteManagerCommandTests() {
     }
     
     @BeforeAll
     public void setUpClass() {        
-        String msg = "\n\n---------------- Initiating Reset Manager Command Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating Delete Manager Command Tests ----------------\n";
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
@@ -84,7 +80,7 @@ public class ResetManagerCommandTests {
     
     @AfterAll
     public void tearDownClass() {
-        String msg = "\n\n---------------- Terminating Reset Manager Command Tests ----------------\n";
+        String msg = "\n\n---------------- Terminating Delete Manager Command Tests ----------------\n";
         LOGGER.info(msg);
         if (container != null && container.isRunning()) {
             container.close();
@@ -105,57 +101,104 @@ public class ResetManagerCommandTests {
     
     
     /**
-     * Teste resetting specific {@link WorkItem}
+     * Tests deletion of {@link WorkItem}
      */
     @Test
     @Order(0)
-    public void canResetWorkItem() {
+    public void canDeleteWorkItem() {
     
         // Construct work item
-        LOGGER.info("\n\n================ Can Reset ManagerCommand Test ================\n");
-        String forUnlock = "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811";
+        LOGGER.info("\n\n================ Can Delete WorkItem ManagerCommand Test ================\n");
+        String forDeletion = "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811";
         ManagerTarget target = ManagerTarget.WORKITEM;
-        ManagerAction action = ManagerAction.RESET_ITEM;
+        ManagerAction action = ManagerAction.DELETE;
         CommandSpec cmdSpec;
-        ResetCommand cmd;
+        DeleteCommand cmd;
         boolean assertionState;
         
         // Import test records
         LOGGER.info("Importing test records");
         TestUtils.importTestRecords("import-docs.json", "SequenceAlignment", "JSON");
-        WorkItem preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(forUnlock);
-        LOGGER.info("Displaying WorkItem for reset:\n'{}'", preCmd.toJsonDoc());
+        WorkItem preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(forDeletion);
+        LOGGER.info("Displaying WorkItem for deletion:\n'{}'", preCmd.toJsonDoc());
         
         // Construct command spec
         LOGGER.info("Constructing command spec");
         Map<String, Object> opts = new HashMap<>();
-        opts.put("Item Id", forUnlock);
+        opts.put("Item Id", forDeletion);
         cmdSpec = new CommandSpec(null, null, opts);
         LOGGER.info("Displaying configured command spec:\n'{}'", cmdSpec.toJsonDoc());
         
         // Run command
-        LOGGER.info("Constructing, and executing configured ResetCommand");
-        cmd = (ResetCommand) action.makeCommand(target, cmdSpec);
+        LOGGER.info("Constructing, and executing configured DeleteCommand:\t'{}'", action);
+        cmd = (DeleteCommand) action.makeCommand(target, cmdSpec);
         assertionState = (boolean) cmd.execute();
-        preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(forUnlock);
-        LOGGER.info("Displaying WorkItem post reset:\n'{}'", preCmd.toJsonDoc());
+        LOGGER.info("Execution completed with status:\t'{}'", assertionState);
+        preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(forDeletion);
+        LOGGER.info("Displaying WorkItem post deletion:\n'{}'", preCmd);
         
         // Log state
-        LOGGER.info("\n\n================ Can Reset ManagerCommand Test ================\n");
+        LOGGER.info("\n\n================ Can Delete WorkItem ManagerCommand Test ================\n");
         assertTrue(assertionState);
     }
     
     
     /**
-     * Tests dynamic resetting of a collection of WorkItems
-     * 
+     * Tests deletion of {@link WorkItem}
      */
     @Test
     @Order(1)
-    public void canResetList() {
-        
+    public void canDeleteWorkItemTask() {
+    
         // Construct work item
-        LOGGER.info("\n\n================ Can Reset List ManagerCommand Test ================\n");
+        LOGGER.info("\n\n================ Can Delete WorkItem Task ManagerCommand Test ================\n");
+        String itemId = "WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98";
+        String taskId = "ItemTask-7f4fa635-17ed-4387-a9d4-0b61f168ee0d";
+        String queryStr = 
+            "{\"Item Id\": \"WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98\", \"Task Id\": \"ItemTask-7f4fa635-17ed-4387-a9d4-0b61f168ee0d\"}"
+        ;
+        WorkItem deleted;
+        ManagerTarget target = ManagerTarget.WORKITEM;
+        ManagerAction action = ManagerAction.DELETE;
+        CommandSpec cmdSpec;
+        DeleteCommand cmd;
+        boolean assertionState;
+        
+        // Import test records
+        LOGGER.info("Importing test records");
+        TestUtils.importTestRecords("import-docs.json", "SequenceAlignment", "JSON");
+        WorkItem preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(itemId);
+        LOGGER.info("Displaying WorkItem for deletion:\n'{}'", preCmd.toJsonDoc());
+        
+        // Construct command spec
+        LOGGER.info("Constructing command spec");
+        cmdSpec = new CommandSpec(null, queryStr, null);
+        LOGGER.info("Displaying configured command spec:\n'{}'", cmdSpec.toJsonDoc());
+        
+        // Run command
+        LOGGER.info("Constructing, and executing configured DeleteCommand:\t'{}'", action);
+        cmd = (DeleteCommand) action.makeCommand(target, cmdSpec);
+        deleted = (WorkItem) cmd.execute();
+        assertionState = deleted != null;
+        LOGGER.info("Execution completed with status:\t'{}'", assertionState);
+        LOGGER.info("Displaying WorkItem post deletion:\n'{}'", deleted.toJsonDoc());
+        
+        // Log state
+        LOGGER.info("\n\n================ Can Delete WorkItem Task ManagerCommand Test ================\n");
+        assertTrue(assertionState);
+    }
+    
+    
+    /**
+     * Tests dynamic deletion of a collection of WorkItems
+     * 
+     */
+    @Test
+    @Order(2)
+    public void canDeleteList() {
+    
+        // Construct work item
+        LOGGER.info("\n\n================ Can Delete List ManagerCommand Test ================\n");
         String resetList = TestUtils.fetchResourcePath("For-Reset.txt").toString();
         String[] forUnlock = { 
             "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811",
@@ -164,9 +207,9 @@ public class ResetManagerCommandTests {
             "WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249"
         };
         ManagerTarget target = ManagerTarget.WORKITEM;
-        ManagerAction action = ManagerAction.RESET_ITEMS;
+        ManagerAction action = ManagerAction.DELETE_LIST;
         CommandSpec cmdSpec;
-        ResetCommand cmd;
+        DeleteCommand cmd;
         boolean assertionState;
         
         // Import test records
@@ -182,20 +225,22 @@ public class ResetManagerCommandTests {
         LOGGER.info("Displaying configured command spec:\n'{}'", cmdSpec.toJsonDoc());
         
         // Create and run command
-        LOGGER.info("Constructing, and executing configured ResetCommand");
-        cmd = (ResetCommand) action.makeCommand(target, cmdSpec);
-        assertionState = (boolean) cmd.execute();
+        LOGGER.info("Constructing, and executing configured DeleteCommand");
+        cmd = (DeleteCommand) action.makeCommand(target, cmdSpec);
+        LOGGER.info("Display DeleteCommand for reference:\n" + cmd.toJsonDoc());
+        int counter = (int) cmd.execute();
+        assertionState = counter >= 0;
         
         // Evaluate test
         if ( assertionState ) {
             TestUtils.printEach(forUnlock);
         }
         else {
-            LOGGER.error("Unable to reset test tokens");
+            LOGGER.error("Unable to delete test tokens");
         }
         
         // Log state
-        LOGGER.info("\n\n================ Can Reset List ManagerCommand Test ================\n");
+        LOGGER.info("\n\n================ Can Delete List ManagerCommand Test ================\n");
         assertTrue(assertionState);
     }
 }

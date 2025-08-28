@@ -7,6 +7,7 @@ package org.tasktide.core.services;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideRepository;
@@ -126,7 +127,13 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      */
     @Override
     public synchronized WorkItem fetchById(String id) {
-        return repo.findById(id).get();
+        Optional<WorkItem> res = repo.findById(id);
+        if ( res.isPresent() ) {
+            return res.get();
+        }
+        else {
+            return null;
+        }
     }
     
     

@@ -6,10 +6,11 @@ package org.tasktide;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
-import jakarta.nosql.Template;
+
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -21,29 +22,35 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import jakarta.nosql.Template;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideService;
+
 import org.tasktide.core.manager.TaskTideServiceManager;
+
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
+
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
+
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDBStore;
 
 
 /**
- *
  * Various static methods to support development & use of TaskTide
  * 
  * @author bkenna
@@ -53,12 +60,32 @@ public class TestUtils {
     private static Logger LOGGER = LogManager.getLogger(TestUtils.class);
     
     
+    /**
+     * Print each work item from Id list
+     * 
+     * @param ids 
+     */
+    public static void printEach(String[] ids) {
+        for ( String elm : ids ) {
+            WorkItem preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(elm);
+            LOGGER.info("Displaying WorkItem:\n'{}'", preCmd.toJsonDoc());
+        }
+    }
+    
+    
+    /**
+     * Displays all {@link Step} through Logger
+     * 
+     */
     public static void viewSteps() {
         List<Step> steps = TaskTideServiceManager.fetchStepService().viewAll();
         LOGGER.info("Displaying Steps:\t'{}'", JsonUtils.toJson(true, steps));
     }
     
     
+    /**
+     * Displays all {@link WorkItem} through Logger
+     */
     public static void viewWorkItems() {
         List<WorkItem> items = TaskTideServiceManager.fetchWorkItemService().viewAll();
         LOGGER.info("Displaying WorkItems:\t'{}'", JsonUtils.toJson(true, items));
