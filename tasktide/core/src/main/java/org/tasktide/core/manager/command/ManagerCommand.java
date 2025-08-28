@@ -32,4 +32,28 @@ public interface ManagerCommand {
      * @return Object
      */
     public Object execute();
+    
+    
+    /**
+     * Interface method to validate if command can occur
+     * 
+     * @return boolean
+     */
+    public boolean validateCommand();
+    
+    
+    /**
+     * Represent as json string
+     * 
+     * @return String
+     */
+    public String toJsonString();
+    
+    
+    /**
+     * Represent as json document
+     * 
+     * @return String
+     */
+    public String toJsonDoc();
 }

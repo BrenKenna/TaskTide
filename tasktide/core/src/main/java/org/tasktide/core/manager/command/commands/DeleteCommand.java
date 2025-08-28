@@ -161,7 +161,7 @@ public class DeleteCommand extends AbstractCommand {
             
             default -> {
                 ManagerAction[] actions = { ManagerAction.RESET_ITEM, ManagerAction.RESET_ITEMS };
-                String msg = String.format("Reset command must be one of:\t'%s'", actions);
+                String msg = String.format("Reset command must be one of:\t'%s'", (Object[]) actions);
                 throw new IllegalArgumentException(msg);
             }
         }

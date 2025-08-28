@@ -4,6 +4,8 @@
  */
 package org.tasktide.core.model.workitem;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import org.tasktide.core.model.state_summary.StateSummaryType;
 import org.tasktide.core.model.task.TaskState;
 
@@ -200,5 +202,32 @@ public enum ItemState implements StateSummaryType {
      */
     public static boolean hasType(String query) {
         return indexOf(query) >= 0;
+    }
+    
+    
+    /**
+     * Map queried string to an {@link ItemState}
+     * 
+     * @param query
+     * @return {@link ItemState}
+     */
+    public static ItemState get(String query) {
+        int ind = indexOf(query);
+        if ( ind >= 0 ) {
+            return ItemState.values()[ind];
+        }
+        return null;
+    }
+    
+    
+    /**
+     * Represent enum as string
+     * 
+     * @return String
+     */
+    public static String valuesString() {
+        return Arrays.stream(values())
+            .map(elm -> elm.name())
+            .collect(Collectors.joining(","));
     }
 }

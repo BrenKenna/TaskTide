@@ -23,18 +23,16 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
-
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerCommand;
 
+import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.ArgumentMap;
 
 
 /**
  * Manager client for providing IO functionality for 
  *  Workloads, Steps, and WorkItems
- * 
- * --> ConfigMap -> CommandSpec method
  * 
  * @author bkenna
  */
@@ -44,6 +42,8 @@ public class TaskTideManagerClient extends TaskTideClient {
     private final Logger LOGGER = LogManager.getLogger(TaskTideEngineClient.class);
     private final ArgumentMap managerArgs;
     private final ArgumentMap globalArgs;
+    private ManagerTarget target;
+    private ManagerAction action;
 
 
     /**
@@ -55,6 +55,19 @@ public class TaskTideManagerClient extends TaskTideClient {
         super(configMap);
         managerArgs = this.getArgTree().getTree().getDataForAddress("manager");
         globalArgs = this.getArgTree().getTree().getDataForAddress("");
+    }
+    
+    
+    /**
+     * Constructor for unit-tests, uses null {@link ClientConfigMap},
+     *   and {@link ArgumentTree}
+     * 
+     * @param argTree 
+     */
+    public TaskTideManagerClient(ArgumentTree argTree) {
+        super(null);
+        managerArgs = argTree.getTree().getDataForAddress("manager");
+        globalArgs = argTree.getTree().getDataForAddress("");
     }
 
     
@@ -88,15 +101,20 @@ public class TaskTideManagerClient extends TaskTideClient {
     @Override
     protected void performClientTask() {
         
+        // Initialize vars
+        ManagerCommand cmd;
+        Object result;
+        
         // Fetch command to run
         LOGGER.info("Determining ManagerCommand to run");
-        ManagerCommand cmd = this.getManagerCommand();
+        cmd = this.getManagerCommand();
         
         // Run command
         LOGGER.info("Executing ManagerCommand:\t'{}'", cmd);
-        boolean status;
-        status = cmd.execute();
-        LOGGER.info("ManagerCommand execution completed with status:\t'{}'", status);
+        result = cmd.execute();
+        
+        // Handle logging based on action
+        LOGGER.info("Displaying results:\t'{}'", result);
     }
     
     
@@ -116,7 +134,7 @@ public class TaskTideManagerClient extends TaskTideClient {
         opts.put("Step Name", (String) this.globalArgs.getArgument("Step Name").getValue());
         opts.put("Delimiter", (String) this.managerArgs.getArgument("Delimiter").getValue());
         opts.put("Nested Delimiter", (String) this.managerArgs.getArgument("Nested Delimiter").getValue());
-        opts.put("Item Id", (String) this.managerArgs.getArgument("Item Id").getValue());
+        opts.put("Item Id", (String) this.managerArgs.getArgument("ItemId").getValue());
         
         // Return command spec
         return new CommandSpec(targetFile, queryString, opts);
@@ -135,15 +153,37 @@ public class TaskTideManagerClient extends TaskTideClient {
         // Fetch task to perform
         String actVal = (String) this.managerArgs.getArgument("Method").getValue();
         ManagerAction action = ManagerAction.get(actVal);
+        this.setAction(action);
         
         // Fetch target of action
         String tgtVal = (String) this.managerArgs.getArgument("Target").getValue();
         ManagerTarget target = ManagerTarget.get(tgtVal);
+        this.setTarget(target);
         
         // Fetch command spec
         CommandSpec cmdSpec = this.mapToCommandSpec();
         
         // Provide manager command
         return action.makeCommand(target, cmdSpec);
+    }
+    
+    
+    /**
+     * Sets {@link ManagerTarget}
+     * 
+     * @param target 
+     */
+    public void setTarget(ManagerTarget target) {
+        this.target = target;
+    }
+    
+    
+    /**
+     * Sets {@link ManagerAction}
+     * 
+     * @param action 
+     */
+    public void setAction(ManagerAction action) {
+        this.action = action;
     }
 }

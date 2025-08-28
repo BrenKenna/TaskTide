@@ -96,14 +96,6 @@ public abstract class AbstractCommand implements ManagerCommand {
      * @return Object
      */
     public abstract Object runCommand();
-    
-    
-    /**
-     * Validates whether command can be performed
-     * 
-     * @return boolean
-     */
-    public abstract boolean validateCommand();
 
     
     /**
@@ -141,6 +133,7 @@ public abstract class AbstractCommand implements ManagerCommand {
      * 
      * @return String
      */
+    @Override
     public String toJsonString() {
         Jsonb json = JsonbBuilder.create();
         return json.toJson(this);
@@ -152,6 +145,7 @@ public abstract class AbstractCommand implements ManagerCommand {
      * 
      * @return String
      */
+    @Override
     public String toJsonDoc() {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);

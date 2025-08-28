@@ -15,12 +15,19 @@
  */
 package org.tasktide.core.manager.command.commands;
 
+import jakarta.json.JsonObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.core.supporting.FileIO;
 
 import org.tasktide.core.manager.command.CommandSpec;
@@ -51,13 +58,99 @@ public class ExportCommand extends AbstractCommand {
 
     
     /**
+     * Export dataset to target file
+     * 
+     * @return boolean
+     */
+    public boolean exportToJson() {
+        String targetFile = (String) this.cmdSpec.getFilePath().get();
+        List<TaskTideModel> data = this.target.fetchModels();
+        LOGGER.info("Retrieved '{}' records for export to:\t'{}'", data.size(), targetFile);
+        return FileIO.exportJson(true, data, targetFile);
+    }
+    
+    
+    /**
+     * Export to json file based on query string
+     * <br>
+     * '{ "Parameter": "ALL" | "STATE", "Value": "TODO" | "LOCKED" }'
+     * 
+     * @return boolean
+     */
+    public boolean exportOnQuery() {
+        
+        // Fetch parameters
+        String targetFile = (String) this.cmdSpec.getFilePath().get();
+        String queryString = (String) this.cmdSpec.getQueryString().get();
+        JsonObject json = JsonUtils.stringToJson(queryString);
+        
+        // Fetch subject
+        String subject;
+        if ( this.cmdSpec.getOptionsKey("Target").isPresent() ) {
+            subject = (String) this.cmdSpec.getOptionsKey("Target").get();
+        }
+        else {
+            subject = (String) this.cmdSpec.getOptionsKey("Step Name").get();
+        }
+        
+        // Determine type
+        String param = json.getString("Parameter");
+        ExportType type = ExportType.get(param);
+        
+        // Handle query
+        List<WorkItem> data = new ArrayList<>();
+        switch ( type ) {
+        
+            case ALL -> {
+                data = TaskTideServiceManager.fetchWorkItemService().viewByField("StepName", subject);
+            }
+            
+            case STATE -> {
+                String val = json.getString("Value");
+                ItemState state = ItemState.get(val);
+                if ( state != null ) {
+                    data = TaskTideServiceManager.fetchWorkItemService().viewByFieldForGroup("StepName", subject, "ItemState", state);
+                }
+            }
+            
+            default -> {
+                String msg = String.format("Error Parameter must be one of:\t'%s'", ExportType.valuesString());
+                LOGGER.error(msg);
+                throw new IllegalArgumentException(msg);
+            }
+        }
+        
+        // Dump to file
+        LOGGER.info("Retrieved '{}' records for export to:\t'{}'", data.size(), targetFile);
+        return FileIO.exportJson(true, data, targetFile);
+    }
+    
+    
+    /**
      * Handles running the export of data collection to JSON format
      * 
      * @return boolean
      */
     @Override
     public Object runCommand() {
-        return this.exportToJson();
+        switch ( this.action ) {
+        
+            case EXPORT -> {
+                LOGGER.info("Exporting full target to json file");
+                return this.exportToJson();
+            }
+            
+            case EXPORT_QUERY -> {
+                LOGGER.info("Exporting to json file based on json query string");
+                return this.exportOnQuery();
+            }
+            
+            default -> {
+                ManagerAction[] actions = { ManagerAction.EXPORT, ManagerAction.EXPORT_QUERY };
+                String msg = String.format("Reset command must be one of:\t'%s'", (Object[]) actions);
+                throw new IllegalArgumentException(msg);
+            }
+        }
     }
 
     
@@ -69,27 +162,44 @@ public class ExportCommand extends AbstractCommand {
      */
     @Override
     public boolean validateCommand() {
-        if ( this.cmdSpec.getFilePath().isEmpty() ) {
-            return false;
-        }
+        switch ( this.action ) {
         
-        if ( !this.cmdSpec.hasOptionsKey("Target") && !this.cmdSpec.hasOptionsKey("Step Name")) {
-            return false;
+            case EXPORT -> {
+                if ( this.cmdSpec.getFilePath().isEmpty() ) {
+                    LOGGER.error("Error, an output file must be provided");
+                    return false;
+                }
+                if ( !this.cmdSpec.hasOptionsKey("Target") && !this.cmdSpec.hasOptionsKey("Step Name")) {
+                    LOGGER.error("Error, a subject must be provided either as a Target or Step Name");
+                    return false;
+                }
+                return true;
+            }
+            
+            case EXPORT_QUERY -> {
+                if ( this.cmdSpec.getFilePath().isEmpty() || this.cmdSpec.getQueryString().isEmpty() ) {
+                    LOGGER.error("Error, an output file and query string must be provided");
+                    return false;
+                }
+                
+                if ( !this.cmdSpec.hasOptionsKey("Target") && !this.cmdSpec.hasOptionsKey("Step Name")) {
+                    LOGGER.error("Error, a subject must be provided either as a Target or Step Name");
+                    return false;
+                }
+                
+                if ( !this.cmdSpec.hasOptionsKey("Parameter") ) {
+                    LOGGER.error("Export on query must have paramter");
+                    return false;
+                }
+                
+                return true;
+            }
+            
+            default -> {
+                ManagerAction[] actions = { ManagerAction.RESET_ITEM, ManagerAction.RESET_ITEMS };
+                String msg = String.format("Reset command must be one of:\t'%s'", (Object[]) actions);
+                throw new IllegalArgumentException(msg);
+            }
         }
-        
-        return true;
-    }
-    
-    
-    /**
-     * Export dataset to target file
-     * 
-     * @return boolean
-     */
-    public boolean exportToJson() {
-        String targetFile = (String) this.cmdSpec.getFilePath().get();
-        List<TaskTideModel> data = this.target.fetchModels();
-        LOGGER.info("Retrieved '{}' records for export to:\t'{}'", data.size(), targetFile);
-        return FileIO.exportJson(true, data, targetFile);
     }
 }

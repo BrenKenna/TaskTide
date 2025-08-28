@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
 
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -24,11 +23,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.tasktide.core.manager.command.ManagerCommand;
 
-
-import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.manager.TaskTideServiceManager;
-import org.tasktide.core.manager.TaskTideManagerUtility;
+import org.tasktide.core.manager.command.commands.AbstractCommand;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 
@@ -43,6 +40,7 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
 import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.tasktide.client.TaskTideManagerClient;
 import org.tasktide.tasktide.parser.ArgumentTree;
 
 
@@ -188,14 +186,12 @@ public class ConfigureTaskTideTest {
      */
     @Test
     @Order(1)
-    public void canConfigurerManagerClient() {
+    public void canConfigureManagerCommand() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Running ManagerClient Through Config  ================\n");
+        logger.info("\n\n================ Tests ManagerCommand Can be Configured  ================\n");
         ArgumentTree argTree;
         TaskTideConfigurer globalConfig, managerConfig;
-        List<WorkItem> workload;
-        TaskTideModel<WorkItem> result;
         boolean assertionState;
         
         // Initialize configuration
@@ -205,21 +201,17 @@ public class ConfigureTaskTideTest {
         managerConfig = CDI.current().select(ManagerConfig.class).get();
         managerConfig.initConfig(argTree);
         
+        // Construct config map
+        TaskTideManagerClient client = new TaskTideManagerClient(argTree);
+        ManagerCommand cmd = client.getManagerCommand();
+        
         // Add records
-        logger.info("Verifying that records can be added");
-        try {
-            workload = TaskTideManagerUtility.importTasks("TestData", "nestedTaskImports.txt", "|", ",");
-            assertionState = TaskTideServiceManager.fetchWorkItemService().extendModel(workload);
-            result = TaskTideServiceManager.fetchWorkItemService().fetchById( workload.get(0).getId());
-            logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
-        }
-        catch (Exception ex) {
-            logger.error("Unable to parse the 'nestedTaskImports.txt' from test resources");
-            assertionState = false;
-        }
+        logger.info("Performing validation on ManagerCommand:\n\n'{}'", cmd.toJsonDoc());
+        assertionState = cmd.validateCommand();
+        logger.info("Validation status:\t'{}'", assertionState);
         
         // Log test state
-        logger.info("\n\n================ Tests Running ManagerClient Through Config ================\n");
+        logger.info("\n\n================ Tests ManagerCommand Can be Configured  ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

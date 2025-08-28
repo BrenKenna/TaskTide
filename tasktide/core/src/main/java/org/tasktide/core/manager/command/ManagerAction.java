@@ -17,6 +17,7 @@ package org.tasktide.core.manager.command;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.command.commands.AbstractCommand;
 
@@ -76,6 +77,29 @@ public enum ManagerAction {
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
             AbstractCommand cmd = new ExportCommand(ManagerAction.EXPORT, target, cmdSpec);
+            return cmd;
+        }
+    },
+    
+    EXPORT_QUERY {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd = new ExportCommand(ManagerAction.EXPORT_QUERY, target, cmdSpec);
             return cmd;
         }
     },
@@ -174,7 +198,6 @@ public enum ManagerAction {
         }
     },
     
-    
     SUMMARIZE_EACH {
         @Override
         public boolean isManagerAction(String query) {
@@ -266,7 +289,7 @@ public enum ManagerAction {
             return cmd;
         }
     };
-
+    
     
     /**
      * Abstract method for values to create their corresponding {@link AbstractCommand}
