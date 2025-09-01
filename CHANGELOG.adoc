@@ -7,24 +7,31 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 == [0.9.9] - 2025-10-01
 
 
+
 === Bugs
 
 - [] Review TaskTideService, and TaskTideRepository unit-tests.
-
 - [] Bean injection quirk between NetBeans & command-line.
-- [] Formatting of help splash text.
+- [X] Formatting of help splash text.
 - [/] Hangs if a folder is not writable - at least repository file path.
+...
+        - Added throwing of runtime exception if repo path is not writable.
+...
 
-- [X] Casting error from specifiying file path on command-line.
+- [X] Casting error from specifiying file path on command-line:
+...
         - Parsing saw argument this as boolean.
         - Reference class not set in configurer class, null get used must be boolean.
         - Resolving caught similar bugs across all config classes, decided to adjust builder.
+...
 
-- [] Hitting the skipping malformed line error for a list of work items in text file reset.
+- [X] Hitting the skipping malformed line error for a list of work items in text file reset.
+...
+        - How the delimiter was parsed basically
+...
 - [X] Client now hanging at initializing TaskTideServiceManager - typo in Configurer.
 - [X] Stray target step being use on command-line arguments.
 - [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB.
-- [/] Unit test only bug for NoSQL Template Repository queries. Use manager instead test utility.
 - [X] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
         /--> Not required, full story caught in log. Thread on token was processing, second thread eventually saw it was no longer ToDo and skipped.
 - [X] Deprecated process executor.
@@ -33,6 +40,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X] Mapping discordance of ItemId-Item Id between ManagerClient, and ManagerConfig.
 - [X] ManagerAction query comparison too restrictive for what user would import.
 
+
 === Main Checklist
 
 - []    1). Wrap-up code, repoistory and documentation for v1.
@@ -40,7 +48,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - []    3). Paper write-up (initialize with repo docs, review after use-cases).
 - []    4). Drop database files & old workflow engine from repo.
 - []    5). Repository structured for JOSS.
-- [/]   6). Docker compose.
+- []   6). Docker compose.
 - []    7). Kubectl config.
 
 
@@ -48,6 +56,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 A lot of the major aspects are done, or covered. These push towards a minimally functional v0.9.9, where a "once over" covers the v1. This push is neatness thing anticipating problems coming from use-case deployment.
 
+- [] Update UMLs 
 - [/] Docker Compose.
 - [] Custom annotations on TaskTideModels?
 - [/] Incorporate host metrics:
@@ -66,7 +75,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [] gLite
 ...
 
-- [/] Test new ManagerActions - Moved to ManagerCommand pattern
+- [X] Test new ManagerActions - Moved to ManagerCommand pattern
 ...
         - [X] Import
         - [X] Export
@@ -76,15 +85,14 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] Reset collection
         - [X] Summarize job states.
         - [X] Delete
-        - [/] Fetch by state <- requires testing
+        - [X] Fetch by state
 ...
+
 - [] Logger messages DRY view on Debug, Info, Warn, Error.
-- [] Apply ConfigUtil to TaskTideClient?
-- [] Config validator.
 - [] Engine cleanup - Logs, Service Shutdowns.
 - [/] Config cleanup:
 ...
-        - [/] Drop superfluous configs.
+        - [X] Drop superfluous configs.
         - [X] Verify that --client can be dropped.
         - [X] Engine & Manager share model names.
         - [X] Input and Output file merged into Target File.

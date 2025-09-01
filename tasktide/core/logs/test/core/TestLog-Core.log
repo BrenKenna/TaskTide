@@ -4132,3 +4132,1317 @@
 
 2025-08-28 14:34:20 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container c1e754fd-5b45-4313-af62-5b33d93a815a shut down
 2025-08-28 14:34:20 INFO  [ Test worker -> org.tasktide.core.manager.DeleteManagerCommandTests.tearDownClass ]: CDI container shut down
+2025-09-01 09:49:26 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-01 09:49:26 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-01 09:49:26 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-01 09:49:26 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-01 09:49:26 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerMachineClientProviderStrategy.isApplicable ]: docker-machine executable was not found on PATH ([C:\Program Files\Common Files\Oracle\Java\javapath, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0\, C:\Windows\System32\OpenSSH\, C:\Program Files\dotnet\, C:\Program Files\PowerShell\7\, C:\Program Files\Git\cmd, C:\Program Files\Docker\Docker\resources\bin, C:\Users\Brendan Kenna\scoop\apps\maven\current\bin, C:\Users\Brendan Kenna\scoop\shims, C:\Users\Brendan Kenna\AppData\Local\Microsoft\WindowsApps, C:\Users\Brendan Kenna\AppData\Local\GitHubDesktop\bin, C:\Users\Brendan Kenna\AppData\Local\Programs\Microsoft VS Code\bin])
+2025-09-01 09:49:26 ERROR [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$getFirstValidStrategy$7 ]: Could not find a valid Docker environment. Please check configuration. Attempted configurations were:
+As no valid configuration was found, execution cannot continue.
+See https://java.testcontainers.org/on_failure.html for more details.
+2025-09-01 09:54:41 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-01 09:54:41 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-01 09:54:41 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-01 09:54:41 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-01 09:54:42 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-01 09:54:42 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-01 09:54:42 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-01 09:54:42 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-01 09:54:42 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: da7d5889c122872f79e4fba6b03b74d9a248d2850e2e4b89a27e9bbaa5e34021
+2025-09-01 09:54:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.1006216S
+2025-09-01 09:54:43 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-01 09:54:43 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-01 09:54:43 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-01 09:54:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-01 09:54:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 7e16e717ccdee14723345c97b333e69516d8bd3c254172676bdd61d57576051c
+2025-09-01 09:54:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT7.6687659S
+2025-09-01 09:54:51 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.setUpClass ]: 
+
+---------------- Initiating Summarize Manager Command Tests ----------------
+
+2025-09-01 09:54:51 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-01 09:54:51 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-01 09:54:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-01 09:55:40 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-01 09:55:40 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-01 09:55:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-01 09:55:40 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-01 09:55:40 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-01 09:55:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-01 09:55:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-01 09:55:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-01 09:55:41 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 15f35748019698210b92d88c179bcf20d7f32ba42a9829e17bdb00a5e973b383
+2025-09-01 09:55:41 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.073501S
+2025-09-01 09:55:41 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-01 09:55:41 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-01 09:55:41 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-01 09:55:41 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-01 09:55:41 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 812ee2beffa98def6471fecc16ac5b2a2eaa266b21b693e29a4cbd2c0fb44ae6
+2025-09-01 09:55:49 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT7.2811575S
+2025-09-01 09:55:49 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.setUpClass ]: 
+
+---------------- Initiating Summarize Manager Command Tests ----------------
+
+2025-09-01 09:55:49 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-01 09:55:49 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-01 09:55:49 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-01 09:55:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9226c021-ba41-4438-bba4-4925bfb0ca19 initialized
+2025-09-01 09:55:58 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-01 09:55:59 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12dc702b
+2025-09-01 09:55:59 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-01 09:55:59 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-01 09:55:59 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-01 09:55:59 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-01 09:55:59 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-01 09:55:59 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-01 09:55:59 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-01 09:56:02 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-01 09:56:02 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:56:02 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarize ]: 
+
+================ Can Summarize ManagerCommand Test ================
+
+2025-09-01 09:56:02 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarize ]: Importing test records
+2025-09-01 09:56:02 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value 'null'
+2025-09-01 09:56:02 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: No nested delimiter detected, importing as single tasks
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.TestUtils.viewSteps ]: Displaying Steps:	'[
+    {
+        "StepCount": 0,
+        "StepId": "Step-0399aaeb-ada7-4f28-b300-37f01f0c218f",
+        "StepName": "Arbitrary",
+        "StepState": "PENDING",
+        "StepsDone": 0,
+        "StepsError": 0,
+        "StepsLocked": 0,
+        "StepsToDo": 0,
+        "WorkflowId": "Workflow-4ac03a90-e242-48b9-8888-6bf2386f77e4",
+        "collection": "Workflow-4ac03a90-e242-48b9-8888-6bf2386f77e4"
+    }
+]'
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.TestUtils.viewWorkItems ]: Displaying WorkItems:	'[
+    {
+        "DoneDate": 0,
+        "Id": "WorkItem-381d1880-5d36-45ed-aa82-1ce0651c59e1",
+        "ItemName": "Seq_Test_2",
+        "ItemState": "TODO",
+        "ItemType": "SINGLE",
+        "LockDate": 0,
+        "StepId": "Step-0399aaeb-ada7-4f28-b300-37f01f0c218f",
+        "StepName": "Arbitrary",
+        "TaskCount": 1,
+        "TaskDone": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_2": {
+                    "Task": "seq 12",
+                    "Task Log": {
+                        "CPU Duration": 0,
+                        "End Time": 0,
+                        "Exit Code": -1,
+                        "Process Id": 0,
+                        "Process Log": {
+                            "Stderr": [
+                                ""
+                            ],
+                            "Stdout": [
+                                ""
+                            ],
+                            "id": "ProcessLog-a1396831-267c-49a8-adb1-8ebd4411435c"
+                        },
+                        "Start Time": 0,
+                        "Thread Name": "NA",
+                        "id": "TaskLog-5c43bdc7-32ec-4641-81d4-c000b2dd5493"
+                    },
+                    "Task Name": "Seq_Test_2",
+                    "Task State": "PENDING",
+                    "Work Item Id": "WorkItem-381d1880-5d36-45ed-aa82-1ce0651c59e1",
+                    "collection": "WorkItem-381d1880-5d36-45ed-aa82-1ce0651c59e1",
+                    "id": "ItemTask-687ac154-8996-474e-9ba5-7b082b84f8f9",
+                    "state": "seq 12"
+                }
+            },
+            "WorkloadType": "SINGLE",
+            "earliestDone": -1,
+            "id": "Workload-4d575aa4-afb5-435e-8289-e7ffc1eaabe6",
+            "latestDone": 0,
+            "workloadSize": 1
+        },
+        "collection": "Arbitrary",
+        "workloadSize": 1
+    },
+    {
+        "DoneDate": 0,
+        "Id": "WorkItem-789764a7-c8d7-4051-a6a4-2de29441ff22",
+        "ItemName": "Seq_Test_4",
+        "ItemState": "TODO",
+        "ItemType": "SINGLE",
+        "LockDate": 0,
+        "StepId": "Step-0399aaeb-ada7-4f28-b300-37f01f0c218f",
+        "StepName": "Arbitrary",
+        "TaskCount": 1,
+        "TaskDone": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_4": {
+                    "Task": "seq 8",
+                    "Task Log": {
+                        "CPU Duration": 0,
+                        "End Time": 0,
+                        "Exit Code": -1,
+                        "Process Id": 0,
+                        "Process Log": {
+                            "Stderr": [
+                                ""
+                            ],
+                            "Stdout": [
+                                ""
+                            ],
+                            "id": "ProcessLog-00650529-96c0-40cf-b486-750f1e063037"
+                        },
+                        "Start Time": 0,
+                        "Thread Name": "NA",
+                        "id": "TaskLog-623033c4-6085-40ad-a10a-add0323bcd9a"
+                    },
+                    "Task Name": "Seq_Test_4",
+                    "Task State": "PENDING",
+                    "Work Item Id": "WorkItem-789764a7-c8d7-4051-a6a4-2de29441ff22",
+                    "collection": "WorkItem-789764a7-c8d7-4051-a6a4-2de29441ff22",
+                    "id": "ItemTask-98f8e23e-85ff-4511-a571-354d3cafd5f0",
+                    "state": "seq 8"
+                }
+            },
+            "WorkloadType": "SINGLE",
+            "earliestDone": -1,
+            "id": "Workload-da373c49-07d5-4df3-97e1-8a09a56072d5",
+            "latestDone": 0,
+            "workloadSize": 1
+        },
+        "collection": "Arbitrary",
+        "workloadSize": 1
+    },
+    {
+        "DoneDate": 0,
+        "Id": "WorkItem-7f933e7d-9399-448d-93ce-d274fa344b9d",
+        "ItemName": "Seq_Test_3",
+        "ItemState": "TODO",
+        "ItemType": "SINGLE",
+        "LockDate": 0,
+        "StepId": "Step-0399aaeb-ada7-4f28-b300-37f01f0c218f",
+        "StepName": "Arbitrary",
+        "TaskCount": 1,
+        "TaskDone": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_3": {
+                    "Task": "seq 4",
+                    "Task Log": {
+                        "CPU Duration": 0,
+                        "End Time": 0,
+                        "Exit Code": -1,
+                        "Process Id": 0,
+                        "Process Log": {
+                            "Stderr": [
+                                ""
+                            ],
+                            "Stdout": [
+                                ""
+                            ],
+                            "id": "ProcessLog-b0229239-8c14-436b-bb8d-59b4f3a04724"
+                        },
+                        "Start Time": 0,
+                        "Thread Name": "NA",
+                        "id": "TaskLog-77b2bfe1-7e49-4a8d-b3bd-9af996f1a2d5"
+                    },
+                    "Task Name": "Seq_Test_3",
+                    "Task State": "PENDING",
+                    "Work Item Id": "WorkItem-7f933e7d-9399-448d-93ce-d274fa344b9d",
+                    "collection": "WorkItem-7f933e7d-9399-448d-93ce-d274fa344b9d",
+                    "id": "ItemTask-238ac196-2577-4400-8731-9db5dc0fe59f",
+                    "state": "seq 4"
+                }
+            },
+            "WorkloadType": "SINGLE",
+            "earliestDone": -1,
+            "id": "Workload-7653b2ac-4707-49e0-bc91-56238c3350c7",
+            "latestDone": 0,
+            "workloadSize": 1
+        },
+        "collection": "Arbitrary",
+        "workloadSize": 1
+    },
+    {
+        "DoneDate": 0,
+        "Id": "WorkItem-981a3e3f-5d3f-4e77-b330-bdd767dd1d15",
+        "ItemName": "Seq_Test_1",
+        "ItemState": "TODO",
+        "ItemType": "SINGLE",
+        "LockDate": 0,
+        "StepId": "Step-0399aaeb-ada7-4f28-b300-37f01f0c218f",
+        "StepName": "Arbitrary",
+        "TaskCount": 1,
+        "TaskDone": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_1": {
+                    "Task": "seq 10",
+                    "Task Log": {
+                        "CPU Duration": 0,
+                        "End Time": 0,
+                        "Exit Code": -1,
+                        "Process Id": 0,
+                        "Process Log": {
+                            "Stderr": [
+                                ""
+                            ],
+                            "Stdout": [
+                                ""
+                            ],
+                            "id": "ProcessLog-854c894e-f774-4fa6-a929-12785a746c7a"
+                        },
+                        "Start Time": 0,
+                        "Thread Name": "NA",
+                        "id": "TaskLog-d15ed5fa-4e00-4078-a3c7-8d64685555a7"
+                    },
+                    "Task Name": "Seq_Test_1",
+                    "Task State": "PENDING",
+                    "Work Item Id": "WorkItem-981a3e3f-5d3f-4e77-b330-bdd767dd1d15",
+                    "collection": "WorkItem-981a3e3f-5d3f-4e77-b330-bdd767dd1d15",
+                    "id": "ItemTask-b5424c7d-6324-49e7-921f-47ae05a57d97",
+                    "state": "seq 10"
+                }
+            },
+            "WorkloadType": "SINGLE",
+            "earliestDone": -1,
+            "id": "Workload-9c5c335d-b954-4115-983a-f791fec2e966",
+            "latestDone": 0,
+            "workloadSize": 1
+        },
+        "collection": "Arbitrary",
+        "workloadSize": 1
+    }
+]'
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarize ]: Constructing command spec
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarize ]: Displaying configured command spec:
+'{
+    "Options": {
+        "Step Name": "Arbitrary"
+    }
+}'
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarize ]: Constructing, and executing configured SummarizeCommd
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.SummarizeCommand.runCommand ]: Summarizing collection
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarize ]: Casting ManagerCommand output to StateSummary-Map
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarize ]: Displaying results:
+'{
+    "State Summary": {
+        "TODO": 4,
+        "ERROR": 0,
+        "LOCKED": 0,
+        "FOR_UNLOCK": 0,
+        "DONE": 0
+    }
+}'
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarize ]: 
+
+================ Can Summarize ManagerCommand Test ================
+
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.tearDownClass ]: 
+
+---------------- Terminating Summarize Manager Command Tests ----------------
+
+2025-09-01 09:56:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9226c021-ba41-4438-bba4-4925bfb0ca19 shut down
+2025-09-01 09:56:03 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.tearDownClass ]: CDI container shut down
+2025-09-01 09:56:42 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-01 09:56:42 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-01 09:56:42 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-01 09:56:42 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-01 09:56:43 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-01 09:56:43 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-01 09:56:43 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-01 09:56:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-01 09:56:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: e995a08903f9c7ce7ab8e4f9231e048c10ce6e6bbdfc278c658dfd0ebc5fc1e3
+2025-09-01 09:56:44 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.0902891S
+2025-09-01 09:56:44 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-01 09:56:44 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-01 09:56:44 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-01 09:56:44 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-01 09:56:44 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 679929e0b1c7993d342132c378bee56e49395674b81653c9848e240e7d6b56ea
+2025-09-01 09:56:52 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT7.5366955S
+2025-09-01 09:56:52 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.setUpClass ]: 
+
+---------------- Initiating Summarize Manager Command Tests ----------------
+
+2025-09-01 09:56:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-01 09:56:52 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-01 09:56:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-01 09:57:01 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 813a8743-82ce-47da-901d-c33fd21d7bff initialized
+2025-09-01 09:57:01 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-01 09:57:02 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@510e6b93
+2025-09-01 09:57:02 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-01 09:57:02 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-01 09:57:02 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-01 09:57:02 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-01 09:57:03 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-01 09:57:03 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-01 09:57:03 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-01 09:57:04 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-01 09:57:04 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:57:04 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarizeEach ]: 
+
+================ Can SummarizeEach ManagerCommand Test ================
+
+2025-09-01 09:57:04 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarizeEach ]: Importing test records
+2025-09-01 09:57:04 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value 'null'
+2025-09-01 09:57:04 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: No nested delimiter detected, importing as single tasks
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.TestUtils.viewSteps ]: Displaying Steps:	'[
+    {
+        "StepCount": 0,
+        "StepId": "Step-a65271ff-1dfe-488f-8bb4-224fedb9b0f7",
+        "StepName": "Arbitrary",
+        "StepState": "PENDING",
+        "StepsDone": 0,
+        "StepsError": 0,
+        "StepsLocked": 0,
+        "StepsToDo": 0,
+        "WorkflowId": "Workflow-79864594-e172-4d11-81d3-077196216242",
+        "collection": "Workflow-79864594-e172-4d11-81d3-077196216242"
+    }
+]'
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.TestUtils.viewWorkItems ]: Displaying WorkItems:	'[
+    {
+        "DoneDate": 0,
+        "Id": "WorkItem-817f63dd-6a38-40bb-bfa1-acf2fe78a008",
+        "ItemName": "Seq_Test_3",
+        "ItemState": "TODO",
+        "ItemType": "SINGLE",
+        "LockDate": 0,
+        "StepId": "Step-a65271ff-1dfe-488f-8bb4-224fedb9b0f7",
+        "StepName": "Arbitrary",
+        "TaskCount": 1,
+        "TaskDone": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_3": {
+                    "Task": "seq 4",
+                    "Task Log": {
+                        "CPU Duration": 0,
+                        "End Time": 0,
+                        "Exit Code": -1,
+                        "Process Id": 0,
+                        "Process Log": {
+                            "Stderr": [
+                                ""
+                            ],
+                            "Stdout": [
+                                ""
+                            ],
+                            "id": "ProcessLog-916a1e7d-2118-4dad-b90e-c3f9a4bf64f7"
+                        },
+                        "Start Time": 0,
+                        "Thread Name": "NA",
+                        "id": "TaskLog-f26545d3-3863-4203-8fef-c810e1f7a5e6"
+                    },
+                    "Task Name": "Seq_Test_3",
+                    "Task State": "PENDING",
+                    "Work Item Id": "WorkItem-817f63dd-6a38-40bb-bfa1-acf2fe78a008",
+                    "collection": "WorkItem-817f63dd-6a38-40bb-bfa1-acf2fe78a008",
+                    "id": "ItemTask-1ebde7c8-cb50-463f-b87d-7ef014bd3675",
+                    "state": "seq 4"
+                }
+            },
+            "WorkloadType": "SINGLE",
+            "earliestDone": -1,
+            "id": "Workload-b70fe5a6-cf57-43c8-a213-76d362a8feb2",
+            "latestDone": 0,
+            "workloadSize": 1
+        },
+        "collection": "Arbitrary",
+        "workloadSize": 1
+    },
+    {
+        "DoneDate": 0,
+        "Id": "WorkItem-b4a33f25-8ff9-4f76-a794-b141d966d209",
+        "ItemName": "Seq_Test_1",
+        "ItemState": "TODO",
+        "ItemType": "SINGLE",
+        "LockDate": 0,
+        "StepId": "Step-a65271ff-1dfe-488f-8bb4-224fedb9b0f7",
+        "StepName": "Arbitrary",
+        "TaskCount": 1,
+        "TaskDone": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_1": {
+                    "Task": "seq 10",
+                    "Task Log": {
+                        "CPU Duration": 0,
+                        "End Time": 0,
+                        "Exit Code": -1,
+                        "Process Id": 0,
+                        "Process Log": {
+                            "Stderr": [
+                                ""
+                            ],
+                            "Stdout": [
+                                ""
+                            ],
+                            "id": "ProcessLog-433bda17-58db-4d03-aa65-ff523d6ef0ea"
+                        },
+                        "Start Time": 0,
+                        "Thread Name": "NA",
+                        "id": "TaskLog-07011b64-112a-40b4-b7f3-d89981cc3f91"
+                    },
+                    "Task Name": "Seq_Test_1",
+                    "Task State": "PENDING",
+                    "Work Item Id": "WorkItem-b4a33f25-8ff9-4f76-a794-b141d966d209",
+                    "collection": "WorkItem-b4a33f25-8ff9-4f76-a794-b141d966d209",
+                    "id": "ItemTask-2be83859-e0e4-4876-b29b-81fdcb8065ea",
+                    "state": "seq 10"
+                }
+            },
+            "WorkloadType": "SINGLE",
+            "earliestDone": -1,
+            "id": "Workload-bec5c90c-7102-40cd-86c4-ab0185f1c6b2",
+            "latestDone": 0,
+            "workloadSize": 1
+        },
+        "collection": "Arbitrary",
+        "workloadSize": 1
+    },
+    {
+        "DoneDate": 0,
+        "Id": "WorkItem-c289aa99-4c8b-436b-a224-1195694ddcc0",
+        "ItemName": "Seq_Test_2",
+        "ItemState": "TODO",
+        "ItemType": "SINGLE",
+        "LockDate": 0,
+        "StepId": "Step-a65271ff-1dfe-488f-8bb4-224fedb9b0f7",
+        "StepName": "Arbitrary",
+        "TaskCount": 1,
+        "TaskDone": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_2": {
+                    "Task": "seq 12",
+                    "Task Log": {
+                        "CPU Duration": 0,
+                        "End Time": 0,
+                        "Exit Code": -1,
+                        "Process Id": 0,
+                        "Process Log": {
+                            "Stderr": [
+                                ""
+                            ],
+                            "Stdout": [
+                                ""
+                            ],
+                            "id": "ProcessLog-c2bb50fb-322d-42a2-88aa-e6bc4353c776"
+                        },
+                        "Start Time": 0,
+                        "Thread Name": "NA",
+                        "id": "TaskLog-aaf9aa65-761a-491d-bcb7-955d96320172"
+                    },
+                    "Task Name": "Seq_Test_2",
+                    "Task State": "PENDING",
+                    "Work Item Id": "WorkItem-c289aa99-4c8b-436b-a224-1195694ddcc0",
+                    "collection": "WorkItem-c289aa99-4c8b-436b-a224-1195694ddcc0",
+                    "id": "ItemTask-93d73e0e-4c63-46f3-a9f8-e5a43ff633b8",
+                    "state": "seq 12"
+                }
+            },
+            "WorkloadType": "SINGLE",
+            "earliestDone": -1,
+            "id": "Workload-c81679b7-c83d-46a0-9c1f-0f4769a15d43",
+            "latestDone": 0,
+            "workloadSize": 1
+        },
+        "collection": "Arbitrary",
+        "workloadSize": 1
+    },
+    {
+        "DoneDate": 0,
+        "Id": "WorkItem-d25cbf97-6a81-4924-8ddd-319445782663",
+        "ItemName": "Seq_Test_4",
+        "ItemState": "TODO",
+        "ItemType": "SINGLE",
+        "LockDate": 0,
+        "StepId": "Step-a65271ff-1dfe-488f-8bb4-224fedb9b0f7",
+        "StepName": "Arbitrary",
+        "TaskCount": 1,
+        "TaskDone": 0,
+        "Workload": {
+            "Workload": {
+                "Seq_Test_4": {
+                    "Task": "seq 8",
+                    "Task Log": {
+                        "CPU Duration": 0,
+                        "End Time": 0,
+                        "Exit Code": -1,
+                        "Process Id": 0,
+                        "Process Log": {
+                            "Stderr": [
+                                ""
+                            ],
+                            "Stdout": [
+                                ""
+                            ],
+                            "id": "ProcessLog-c5ac989a-6f28-45b6-baa2-5e4ed53d03ea"
+                        },
+                        "Start Time": 0,
+                        "Thread Name": "NA",
+                        "id": "TaskLog-361967cc-8f25-4cbf-bebd-e279aa2741ed"
+                    },
+                    "Task Name": "Seq_Test_4",
+                    "Task State": "PENDING",
+                    "Work Item Id": "WorkItem-d25cbf97-6a81-4924-8ddd-319445782663",
+                    "collection": "WorkItem-d25cbf97-6a81-4924-8ddd-319445782663",
+                    "id": "ItemTask-eac20b3e-b985-4d14-b690-1d9e55b247dc",
+                    "state": "seq 8"
+                }
+            },
+            "WorkloadType": "SINGLE",
+            "earliestDone": -1,
+            "id": "Workload-892ee2b4-1f6d-4f5c-8c87-f926d4bead38",
+            "latestDone": 0,
+            "workloadSize": 1
+        },
+        "collection": "Arbitrary",
+        "workloadSize": 1
+    }
+]'
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarizeEach ]: Constructing command spec
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarizeEach ]: Displaying configured command spec:
+'{
+    "Options": {
+        "Step Name": "Arbitrary"
+    }
+}'
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarizeEach ]: Constructing, and executing configured SummarizeCommd
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.SummarizeCommand.runCommand ]: Summarizing each element in collection
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarizeEach ]: Casting ManagerCommand output to StateSummary-Map
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarizeEach ]: Displaying results:
+'{
+    "WorkItem-b4a33f25-8ff9-4f76-a794-b141d966d209": {
+        "State Summary": {
+            "LOCKED": 0,
+            "ERROR": 0,
+            "TODO": 1,
+            "FOR_UNLOCK": 0,
+            "DONE": 0
+        }
+    },
+    "WorkItem-c289aa99-4c8b-436b-a224-1195694ddcc0": {
+        "State Summary": {
+            "LOCKED": 0,
+            "ERROR": 0,
+            "TODO": 1,
+            "FOR_UNLOCK": 0,
+            "DONE": 0
+        }
+    },
+    "WorkItem-817f63dd-6a38-40bb-bfa1-acf2fe78a008": {
+        "State Summary": {
+            "LOCKED": 0,
+            "ERROR": 0,
+            "TODO": 1,
+            "FOR_UNLOCK": 0,
+            "DONE": 0
+        }
+    },
+    "WorkItem-d25cbf97-6a81-4924-8ddd-319445782663": {
+        "State Summary": {
+            "LOCKED": 0,
+            "ERROR": 0,
+            "TODO": 1,
+            "FOR_UNLOCK": 0,
+            "DONE": 0
+        }
+    }
+}'
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.canSummarizeEach ]: 
+
+================ Can SummarizeEach ManagerCommand Test ================
+
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.tearDownClass ]: 
+
+---------------- Terminating Summarize Manager Command Tests ----------------
+
+2025-09-01 09:57:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 813a8743-82ce-47da-901d-c33fd21d7bff shut down
+2025-09-01 09:57:05 INFO  [ Test worker -> org.tasktide.core.manager.SummarizeManagerCommandTests.tearDownClass ]: CDI container shut down
+2025-09-01 09:57:38 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUpClass ]: 
+
+---------------- Initiating Model Tests ----------------
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+================ Task Logging Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+Displaying TaskLogging json:
+{
+    "CPU Duration": -1,
+    "End Time": 0,
+    "Exit Code": 0,
+    "Process Id": -4,
+    "Process Log": {
+        "Stderr": [
+            "pears",
+            "pineapples"
+        ],
+        "Stdout": [
+            "apples",
+            "oragnes"
+        ],
+        "id": "51d9e9c6-a4b6-441c-80d8-f2fd288f7474"
+    },
+    "Start Time": -3,
+    "Thread Name": "thread"
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+Attempting to construct TaskLogging from JSON string
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+Displaying results
+{
+    "CPU Duration": -1,
+    "End Time": 0,
+    "Exit Code": 0,
+    "Process Id": -4,
+    "Process Log": {
+        "Stderr": [
+            "pears",
+            "pineapples"
+        ],
+        "Stdout": [
+            "apples",
+            "oragnes"
+        ],
+        "id": "51d9e9c6-a4b6-441c-80d8-f2fd288f7474"
+    },
+    "Start Time": -3,
+    "Thread Name": "thread"
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogTest ]: 
+
+================ Task Logging Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+================ Process Log Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+Displaying ProcessLog string:
+ProcessLog{procLogId=null, stdout=[Ljava.lang.String;@7923f5b3, stderr=[Ljava.lang.String;@6b63d445}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+Displaying ProcessLog json:
+{
+    "Stderr": [
+        "pears",
+        "pineapples"
+    ],
+    "Stdout": [
+        "apples",
+        "oragnes"
+    ]
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+Attempting to construct ProcessLog from JSON string
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+Displaying results
+{
+    "Stderr": [
+        "pears",
+        "pineapples"
+    ],
+    "Stdout": [
+        "apples",
+        "oragnes"
+    ]
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.processLogTest ]: 
+
+================ Process Log Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+================ Task Log Builder Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Attempting to build Task Log
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Displaying Built Task Log string:
+TaskLogging{taskLogId=af410520-69b6-498b-95a9-fee2ca30856d, procId=-4, procLog=ProcessLog{procLogId=c3f897df-67ac-454b-ac50-4f597ca73ccb, stdout=[Ljava.lang.String;@3005db4a, stderr=[Ljava.lang.String;@425d5d46}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+Displaying Built Task Log json:
+{
+    "CPU Duration": -1,
+    "End Time": -3,
+    "Exit Code": 0,
+    "Process Id": -4,
+    "Process Log": {
+        "Stderr": [
+            "pears",
+            "pineapples"
+        ],
+        "Stdout": [
+            "apples",
+            "oragnes"
+        ],
+        "id": "c3f897df-67ac-454b-ac50-4f597ca73ccb"
+    },
+    "Start Time": -2,
+    "Thread Name": "myThread",
+    "id": "af410520-69b6-498b-95a9-fee2ca30856d"
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.taskLogBuilderTest ]: 
+
+================ Task Log Builder Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+================ Work Item Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Attempting to build Work Item
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Displaying Built Work Item string:
+WorkItem{id=My WorkItem, itemName=My WorkItem Name, itemType=null, itemState=null, lockId=Some random hexadecimal string, lockDate=0, doneDate=0, taskCount=2, taskDone=0, workload=Workload{workloadId=My Workload, workload={My Task Name=ItemTask{itemTaskId=e1f1a288-1978-49cf-857e-584d87da4c42, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=fa00a907-0d97-427e-b1b6-86866767ffd3, procId=-4, procLog=ProcessLog{procLogId=4d162a29-cb16-431f-a7cd-818c3c98bdc5, stdout=[Ljava.lang.String;@f14e5bf, stderr=[Ljava.lang.String;@d176a31}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task, workItemId=null}}, workloadType=null}, stepName=null, stepId=null}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Displaying Built Work Item json:
+{
+    "DoneDate": 0,
+    "Id": "My WorkItem",
+    "ItemName": "My WorkItem Name",
+    "LockDate": 0,
+    "LockId": "Some random hexadecimal string",
+    "TaskCount": 2,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "4d162a29-cb16-431f-a7cd-818c3c98bdc5"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "fa00a907-0d97-427e-b1b6-86866767ffd3"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "e1f1a288-1978-49cf-857e-584d87da4c42",
+                "state": "My Task"
+            }
+        },
+        "earliestDone": -3,
+        "id": "My Workload",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Attempting to construct Work Item from JSON string
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+Displaying results
+{
+    "DoneDate": 0,
+    "Id": "My WorkItem",
+    "ItemName": "My WorkItem Name",
+    "LockDate": 0,
+    "LockId": "Some random hexadecimal string",
+    "TaskCount": 2,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "4d162a29-cb16-431f-a7cd-818c3c98bdc5"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "fa00a907-0d97-427e-b1b6-86866767ffd3"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "e1f1a288-1978-49cf-857e-584d87da4c42",
+                "state": "My Task"
+            }
+        },
+        "earliestDone": -3,
+        "id": "My Workload",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkItem ]: 
+
+================ Work Item Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+================ Workload Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Attempting to build ItemTasks
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Attempting to build Workload
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Displaying Built Workload string:
+Workload{workloadId=MyWorklaod, workload={My Task Name=ItemTask{itemTaskId=8823d579-8048-4b5e-ae8b-f5f9db0e1a57, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=2bcd4dcf-63d5-43a0-b402-60dc00678de1, procId=-4, procLog=ProcessLog{procLogId=16830022-d1ee-4bd4-a939-507601b672a6, stdout=[Ljava.lang.String;@26f96b85, stderr=[Ljava.lang.String;@46d8f407}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task, workItemId=null}}, workloadType=null}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Displaying Built Workload json:
+{
+    "Workload": {
+        "My Task Name": {
+            "Task": "My Task",
+            "Task Log": {
+                "CPU Duration": -1,
+                "End Time": -3,
+                "Exit Code": 0,
+                "Process Id": -4,
+                "Process Log": {
+                    "Stderr": [
+                        "pears",
+                        "pineapples"
+                    ],
+                    "Stdout": [
+                        "apples",
+                        "oragnes"
+                    ],
+                    "id": "16830022-d1ee-4bd4-a939-507601b672a6"
+                },
+                "Start Time": -2,
+                "Thread Name": "myThread",
+                "id": "2bcd4dcf-63d5-43a0-b402-60dc00678de1"
+            },
+            "Task Name": "My Task Name",
+            "Task State": "COMPLETE",
+            "id": "8823d579-8048-4b5e-ae8b-f5f9db0e1a57",
+            "state": "My Task"
+        }
+    },
+    "earliestDone": -3,
+    "id": "MyWorklaod",
+    "latestDone": 0,
+    "workloadSize": 1
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Attempting to construct Workload from JSON string
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+Displaying results
+{
+    "Workload": {
+        "My Task Name": {
+            "Task": "My Task",
+            "Task Log": {
+                "CPU Duration": -1,
+                "End Time": -3,
+                "Exit Code": 0,
+                "Process Id": -4,
+                "Process Log": {
+                    "Stderr": [
+                        "pears",
+                        "pineapples"
+                    ],
+                    "Stdout": [
+                        "apples",
+                        "oragnes"
+                    ],
+                    "id": "16830022-d1ee-4bd4-a939-507601b672a6"
+                },
+                "Start Time": -2,
+                "Thread Name": "myThread",
+                "id": "2bcd4dcf-63d5-43a0-b402-60dc00678de1"
+            },
+            "Task Name": "My Task Name",
+            "Task State": "COMPLETE",
+            "id": "8823d579-8048-4b5e-ae8b-f5f9db0e1a57",
+            "state": "My Task"
+        }
+    },
+    "earliestDone": -3,
+    "id": "MyWorklaod",
+    "latestDone": 0,
+    "workloadSize": 1
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testWorkload ]: 
+
+================ Workload Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+================ Item Task Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Attempting to build Item Task
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Displaying Built Item Task string:
+ItemTask{itemTaskId=gamma, taskName=My Task Name, taskState=Complete, taskLog=TaskLogging{taskLogId=307cf512-aced-4b6c-9c6d-6757b9c9a293, procId=-4, procLog=ProcessLog{procLogId=885cca6d-6455-42cb-ab8f-8855cb4efa2f, stdout=[Ljava.lang.String;@7573e12f, stderr=[Ljava.lang.String;@51b1a8f6}, startTime=-2, endTime=-3, threadName=myThread, cpuDuration=-1}, task=My Task, workItemId=null}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Displaying Built Item Task json:
+{
+    "Task": "My Task",
+    "Task Log": {
+        "CPU Duration": -1,
+        "End Time": -3,
+        "Exit Code": 0,
+        "Process Id": -4,
+        "Process Log": {
+            "Stderr": [
+                "pears",
+                "pineapples"
+            ],
+            "Stdout": [
+                "apples",
+                "oragnes"
+            ],
+            "id": "885cca6d-6455-42cb-ab8f-8855cb4efa2f"
+        },
+        "Start Time": -2,
+        "Thread Name": "myThread",
+        "id": "307cf512-aced-4b6c-9c6d-6757b9c9a293"
+    },
+    "Task Name": "My Task Name",
+    "Task State": "COMPLETE",
+    "id": "gamma",
+    "state": "My Task"
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Attempting to construct Item Task from JSON string
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+Displaying results
+{
+    "Task": "My Task",
+    "Task Log": {
+        "CPU Duration": -1,
+        "End Time": -3,
+        "Exit Code": 0,
+        "Process Id": -4,
+        "Process Log": {
+            "Stderr": [
+                "pears",
+                "pineapples"
+            ],
+            "Stdout": [
+                "apples",
+                "oragnes"
+            ],
+            "id": "885cca6d-6455-42cb-ab8f-8855cb4efa2f"
+        },
+        "Start Time": -2,
+        "Thread Name": "myThread",
+        "id": "307cf512-aced-4b6c-9c6d-6757b9c9a293"
+    },
+    "Task Name": "My Task Name",
+    "Task State": "COMPLETE",
+    "id": "gamma",
+    "state": "My Task"
+}
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.testItemTask ]: 
+
+================ Item Task Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:57:39 INFO  [ Test worker -> org.tasktide.core.model.ModelTests.tearDownClass ]: 
+
+---------------- Terminating Model Tests ----------------
+
+2025-09-01 09:58:37 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUpClass ]: 
+
+---------------- Initiating TaskTide Model Interface Tests ----------------
+
+2025-09-01 09:58:37 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:58:37 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+
+================ Casting Model Test ================
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+Displaying WorkItem:
+{
+    "DoneDate": 0,
+    "Id": "My WorkItem",
+    "ItemName": "My WorkItem Name",
+    "LockDate": 0,
+    "LockId": "Some random hexadecimal string",
+    "TaskCount": 2,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "ecef66e2-8e68-49f1-8b4f-91c35f5d4687"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "029207cc-a35b-4cb2-8378-1ade551940da"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "50d46c2b-20d5-4550-b992-f3356a2ed289",
+                "state": "My Task"
+            }
+        },
+        "earliestDone": -3,
+        "id": "My Workload",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+Displaying casted JSON doc:
+{
+    "DoneDate": 0,
+    "Id": "My WorkItem",
+    "ItemName": "My WorkItem Name",
+    "LockDate": 0,
+    "LockId": "Some random hexadecimal string",
+    "TaskCount": 2,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "ecef66e2-8e68-49f1-8b4f-91c35f5d4687"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "029207cc-a35b-4cb2-8378-1ade551940da"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "id": "50d46c2b-20d5-4550-b992-f3356a2ed289",
+                "state": "My Task"
+            }
+        },
+        "earliestDone": -3,
+        "id": "My Workload",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
+    "workloadSize": 1
+}
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+Test successful with state:	true
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.castedDocShouldEqualDoc ]: 
+
+================ Casting Model Test ================
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
+
+================ Fetch Value for Field Model Test ================
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Comparing reference to retrieved value
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: Fetch value for field test successful, state:	true
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.canFetchValueByField ]: 
+
+================ Fetch Value for Field Model Test ================
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 09:58:38 INFO  [ Test worker -> org.tasktide.core.model.TaskTideModelTests.tearDownClass ]: 
+
+---------------- Terminating TaskTide Model Interface Tests ----------------
+

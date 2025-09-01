@@ -145,7 +145,7 @@ public class ImportCommand extends AbstractCommand{
             // Otherwise error
             default -> {
                 ManagerAction[] actions = { ManagerAction.IMPORT, ManagerAction.ADD, ManagerAction.APPEND };
-                LOGGER.error("Error import action must be one of '{}'", actions);
+                LOGGER.error("Error import action must be one of '{}'", (Object[]) actions);
                 return false;
             }
         }

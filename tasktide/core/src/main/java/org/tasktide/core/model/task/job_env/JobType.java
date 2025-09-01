@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.tasktide.core.model.task.job_env;
 
 
@@ -24,6 +23,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.tasktide.core.model.task.JobEnvironment;
+import org.tasktide.core.supporting.Utils;
 
 
 /**
@@ -63,7 +63,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     },
     
@@ -95,7 +96,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     },
 
@@ -128,7 +130,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     },
     
@@ -161,7 +164,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     },
     
@@ -194,7 +198,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     },
     
@@ -226,7 +231,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     },
     
@@ -258,7 +264,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     },
     
@@ -295,7 +302,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     },
     
@@ -327,7 +335,8 @@ public enum JobType {
         
         @Override
         public JobEnvironment makeJobEnvironment() {
-            return JobEnvironment.makeJobEnvironment(this, getJobId(), getArrayIndex(), null, null, null);
+            String id = Utils.generateSalt();
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
         }
     };
     

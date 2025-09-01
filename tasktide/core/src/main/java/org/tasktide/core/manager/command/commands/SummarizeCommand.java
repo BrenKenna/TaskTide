@@ -79,7 +79,7 @@ public class SummarizeCommand extends AbstractCommand {
             
             default -> {
                 ManagerAction[] actions = {ManagerAction.SUMMARIZE, ManagerAction.SUMMARIZE_EACH};
-                String msg = String.format("Summarize command must be one of:\t'%s'", actions);
+                String msg = String.format("Summarize command must be one of:\t'%s'", (Object[]) actions);
                 LOGGER.error("Unable to determine summary action");
                 throw new IllegalArgumentException(msg);
             }

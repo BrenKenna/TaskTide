@@ -124,7 +124,7 @@ public class SummarizeManagerCommandTests {
         
         // Import test records
         LOGGER.info("Importing test records");
-        TestUtils.importTestRecords("singleTaskImports", "Arbitrary", "|");
+        TestUtils.importTestRecords("singleTaskImports.txt", "Arbitrary", "|");
         TestUtils.viewSteps();
         TestUtils.viewWorkItems();
         
@@ -178,7 +178,7 @@ public class SummarizeManagerCommandTests {
         
         // Import test records
         LOGGER.info("Importing test records");
-        TestUtils.importTestRecords("singleTaskImports", "Arbitrary", "|");
+        TestUtils.importTestRecords("singleTaskImports.txt", "Arbitrary", "|");
         TestUtils.viewSteps();
         TestUtils.viewWorkItems();
         

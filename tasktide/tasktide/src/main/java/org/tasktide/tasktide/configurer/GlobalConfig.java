@@ -1,13 +1,25 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Copyright 2025 Brendan Kenna.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.tasktide.configurer.dependent.JNoSQLConfigurer;
 import org.tasktide.tasktide.configurer.dependent.JpaConfigurer;
@@ -30,6 +42,10 @@ public class GlobalConfig extends AbstractConfigurer {
     private final Logger LOGGER = LogManager.getLogger(GlobalConfig.class);
     private final JpaConfigurer jpaConf;
     private final JNoSQLConfigurer jnosqlConf;
+    
+    // Which client to use
+    @ConfigProperty(name = "tasktide.client", defaultValue = "Manager")
+    private String client;
     
     
     /**
@@ -134,6 +150,27 @@ public class GlobalConfig extends AbstractConfigurer {
             .withValue(false, Boolean.class)
         .build();
         
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configures the {@link TaskTideClient} to use
+     * 
+     */
+    public void client() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Client")
+            .withDescription("Specifies which client to use")
+            .withShortFlag("-c")
+            .withLongFlag("--client")
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(String.class)
+        .build();
+        
+        this.client = this.getConfigValue("tasktide.client", String.class, "");
+        arg.setValue(this.client);
         this.getArgumentMap().putArgument(arg);
     }
 

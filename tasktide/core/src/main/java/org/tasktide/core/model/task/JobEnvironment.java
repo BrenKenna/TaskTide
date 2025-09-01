@@ -22,40 +22,52 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
+import jakarta.nosql.Entity;
+import jakarta.nosql.Column;
+import jakarta.nosql.Id;
+
 import org.tasktide.core.model.task.job_env.JobType;
+import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
  * Data class to hold collection of host meta-data running job
- *  such as where Hostname/Environment etc, job Id, OS, and 
+ *  such as where Hostname/Environment etc, job Id, OS, and.
+ * <br><br>
+ * A single JobEnviroment can relate to multiple {@link WorkItem},
+ *  but a single {@link WorkItem} does not relate to multiple JobEnvs.
  *
  * @author Brendan Kenna
  */
-// @Embeddable
+@Entity
 public class JobEnvironment {
- 
+    
     // Attributes
-    // @Column("Job Type")
+    @Id
+    @JsonbProperty("Id")
+    private String id;
+    
+    @Column("Job Type")
     @JsonbProperty("Job Type")
     private final JobType type;
     
-    // @Column("Job Id")
+    @Column("Job Id")
     @JsonbProperty("Job Id")
     private final String jobId;
     
-    // @Column("Array Index")
+    @Column("Array Index")
     @JsonbProperty("Array Index")
     private final int arrayInd;
 
-    // @Column("Hostname")
+    @Column("Hostname")
     @JsonbProperty("Hostname")
     private String hostname;
     
-    // @Column("Host OS")
+    @Column("Host OS")
     @JsonbProperty("Host OS")
     private String hostOS;
     
-    // @Column("Jave Version")
+    @Column("Jave Version")
     @JsonbProperty("Java Version")
     private String javaVersion;
     
@@ -63,11 +75,13 @@ public class JobEnvironment {
     /**
      * Construct
      * 
+     * @param id
      * @param type
      * @param jobId
      * @param arrayInd 
      */
-    private JobEnvironment(JobType type, String jobId, int arrayInd) {
+    public JobEnvironment(String id, JobType type, String jobId, int arrayInd) {
+        this.id = id;
         this.type = type;
         this.jobId = jobId;
         this.arrayInd = arrayInd;
@@ -77,6 +91,7 @@ public class JobEnvironment {
     /**
      * Construct with all arguments
      * 
+     * @param id
      * @param type
      * @param jobId
      * @param hostname
@@ -84,7 +99,8 @@ public class JobEnvironment {
      * @param javaVersion
      * @param arrayInd 
      */
-    private JobEnvironment(JobType type, String jobId, String hostname, String hostOS, String javaVersion, int arrayInd) {
+    public JobEnvironment(String id, JobType type, String jobId, String hostname, String hostOS, String javaVersion, int arrayInd) {
+        this.id = id;
         this.type = type;
         this.jobId = jobId;
         this.hostname = hostname;
@@ -98,6 +114,7 @@ public class JobEnvironment {
      * Static method supporting json deserialization through
      *  which makeJobEnvironment is created
      * 
+     * @param id
      * @param type
      * @param jobId
      * @param arrayInd
@@ -108,6 +125,7 @@ public class JobEnvironment {
      */
     @JsonbCreator
     public static JobEnvironment makeJobEnvironment(
+        @JsonbProperty("Id") String id,
         @JsonbProperty("Job Type") JobType type,
         @JsonbProperty("Job Id") String jobId,
         @JsonbProperty("Array Index") int arrayInd,
@@ -118,12 +136,12 @@ public class JobEnvironment {
         
         // Define basic if hostname etc is not defined
         if ( hostname == null && hostOS == null && javaVersion == null ) {
-            return new JobEnvironment(type, jobId, arrayInd);
+            return new JobEnvironment(id, type, jobId, arrayInd);
         }
         
         // Otherwise use
         else {
-            return new JobEnvironment(type, jobId, hostname, hostOS, javaVersion, arrayInd);
+            return new JobEnvironment(id, type, jobId, hostname, hostOS, javaVersion, arrayInd);
         }
     }
     
@@ -219,6 +237,26 @@ public class JobEnvironment {
     
     
     /**
+     * Get Id for job environment
+     * 
+     * @return String
+     */
+    public String getId() {
+        return this.id;
+    }
+    
+    
+    /**
+     * Set Id
+     * 
+     * @param id 
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    
+    /**
      * Represent as json string
      * 
      * @return string
@@ -242,13 +280,14 @@ public class JobEnvironment {
 
     
     /**
-     * Represet as string
+     * Represent as string
      * 
      * @return String
      */
     @Override
     public String toString() {
-        return "JobIdentifier{" + 
+        return "JobIdentifier{" +
+            "id=" + id +
             "type=" + type +
             ", jobId=" + jobId +
             ", arrayInd=" + arrayInd +
