@@ -30,7 +30,7 @@ import org.tasktide.tasktide.parser.model.ArgumentMap;
  * 
  * @author bkenna
  */
-public abstract class AbstractConfigurer implements TaskTideConfigurer {
+public abstract class AbstractConfig implements TaskTideConfig {
     
     // Attributes
     private final ArgumentMap argMap;
@@ -44,7 +44,7 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
      * 
      * @param path
      */
-    public AbstractConfigurer(String path) {
+    public AbstractConfig(String path) {
         this.argMap = new ArgumentMap();
         this.path = path;
         this.argBuilder = new ArgumentBuilder();
@@ -140,5 +140,5 @@ public abstract class AbstractConfigurer implements TaskTideConfigurer {
         catch (Exception ex) {
             return defaultValue;
         }
-    } 
+    }
 }

@@ -22,16 +22,16 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.tasktide.configurer.TaskTideConfigurer;
 
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.CliParser;
+import org.tasktide.tasktide.configurer.TaskTideConfig;
 
 
 /**
- * Gathers {@link TaskTideConfigurer} into map, entry-point
+ * Gathers {@link TaskTideConfig} into map, entry-point
  *  for both their configuration, and application of command-line
  *  arguments.
  * 
@@ -41,7 +41,7 @@ public class ClientConfigMap {
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(ClientConfigMap.class);
-    private final Map<TaskTideClientType, TaskTideConfigurer> configMap;
+    private final Map<TaskTideClientType, TaskTideConfig> configMap;
     private final ArgumentTree argTree;
     private String[] argsIn;
     private CliParser parser;
@@ -61,12 +61,12 @@ public class ClientConfigMap {
      * 
      * @param provider
      * @param clientType
-     * @return {@link TaskTideConfigurer}
+     * @return {@link TaskTideConfig}
      */
     @SuppressWarnings("unchecked")
-    private TaskTideConfigurer parseConfigs(CdiContainerProvider provider, TaskTideClientType clientType) {
-        TaskTideConfigurer config;
-        config = (TaskTideConfigurer) provider.getBean( clientType.getConfigClass());
+    private TaskTideConfig parseConfigs(CdiContainerProvider provider, TaskTideClientType clientType) {
+        TaskTideConfig config;
+        config = (TaskTideConfig) provider.getBean( clientType.getConfigClass());
         config.initConfig(this.argTree);
         return config;
     }
@@ -78,7 +78,7 @@ public class ClientConfigMap {
      */
     public void addConfigs(CdiContainerProvider provider) {
         for ( TaskTideClientType elm : TaskTideClientType.values() ) {
-            TaskTideConfigurer config = this.parseConfigs(provider, elm);
+            TaskTideConfig config = this.parseConfigs(provider, elm);
             this.configMap.put(elm, config);
         }
     }    
@@ -122,9 +122,9 @@ public class ClientConfigMap {
     
     /**
      * 
-     * @return Map-{@link TaskTideClientType}, {@link TaskTideConfigurer}
+     * @return Map-{@link TaskTideClientType}, {@link TaskTideConfig}
      */
-    public Map<TaskTideClientType, TaskTideConfigurer> getConfigMap() {
+    public Map<TaskTideClientType, TaskTideConfig> getConfigMap() {
         return configMap;
     }
 
@@ -133,9 +133,9 @@ public class ClientConfigMap {
      * 
      * 
      * @param clientType
-     * @return {@link TaskTideConfigurer}
+     * @return {@link TaskTideConfig}
      */
-    public TaskTideConfigurer getConfig(TaskTideClientType clientType) {
+    public TaskTideConfig getConfig(TaskTideClientType clientType) {
         return this.configMap.get(clientType);
     }
     

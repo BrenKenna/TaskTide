@@ -65,7 +65,7 @@ public class TaskTideConfigurerTests {
         // Initialize data
         logger.info("\n\n================ Tests Displaying TaskTide Config  ================\n");
         ArgumentTree argTree;
-        TaskTideConfigurer engineConfig, globalConfig, managerConfig;
+        TaskTideConfig engineConfig, globalConfig, managerConfig;
         boolean assertionState;
         
         // Setup global config

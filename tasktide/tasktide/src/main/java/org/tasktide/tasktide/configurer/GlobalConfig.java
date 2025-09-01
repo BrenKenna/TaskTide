@@ -36,7 +36,7 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
  * @author bkenna
  */
 @ApplicationScoped
-public class GlobalConfig extends AbstractConfigurer {
+public class GlobalConfig extends AbstractConfig {
     
     // Delgate Jakarta and JPA
     private final Logger LOGGER = LogManager.getLogger(GlobalConfig.class);
@@ -139,6 +139,7 @@ public class GlobalConfig extends AbstractConfigurer {
     /**
      * Configure help
      */
+    @Override
     public void help() {
         Argument<Boolean> arg;
         arg = this.getArgumentBuilder()

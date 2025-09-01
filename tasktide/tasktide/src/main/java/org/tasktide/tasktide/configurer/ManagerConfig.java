@@ -31,7 +31,7 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
  * @author bkenna
  */
 @ApplicationScoped
-public class ManagerConfig extends AbstractConfigurer {
+public class ManagerConfig extends AbstractConfig {
     
     @ConfigProperty(name = "tasktide.manager.targetFile", defaultValue = "")
     String targetFile;
@@ -102,6 +102,7 @@ public class ManagerConfig extends AbstractConfigurer {
     /**
      * Configure help
      */
+    @Override
     public void help() {
         Argument<Boolean> arg;
         arg = this.getArgumentBuilder()

@@ -84,7 +84,7 @@ public class ProfileConfigureTests {
         // Initialize data
         logger.info("\n\n================ Tests Displaying TaskTide Config  ================\n");
         ArgumentTree argTree;
-        TaskTideConfigurer engineConfig, globalConfig, managerConfig;
+        TaskTideConfig engineConfig, globalConfig, managerConfig;
         argTree = new ArgumentTree(" ");
         
         
@@ -135,7 +135,7 @@ public class ProfileConfigureTests {
         // Initialize data
         logger.info("\n\n================ Tests Applying Command-Line Config  ================\n");
         ArgumentTree argTree;
-        TaskTideConfigurer engineConfig, globalConfig, managerConfig;
+        TaskTideConfig engineConfig, globalConfig, managerConfig;
         argTree = new ArgumentTree(" ");
         
         // Configure

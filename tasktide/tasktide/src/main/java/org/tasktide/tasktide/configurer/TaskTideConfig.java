@@ -26,7 +26,7 @@ import org.tasktide.tasktide.parser.model.ArgumentMap;
  * 
  * @author bkenna
  */
-public interface TaskTideConfigurer {
+public interface TaskTideConfig {
  
     public void addToTree(ArgumentTree argTree);
     public ArgumentMap getArgumentMap();
@@ -34,5 +34,6 @@ public interface TaskTideConfigurer {
     public String getPath();
     public Config getConfig();
     public boolean parseCommandLineArguments(String[] argsIn, ArgumentTree argTree);
-    public void initConfig(ArgumentTree argTree); // Separate methods used for config, this just runs them
+    public void initConfig(ArgumentTree argTree);
+    public void help();
 }

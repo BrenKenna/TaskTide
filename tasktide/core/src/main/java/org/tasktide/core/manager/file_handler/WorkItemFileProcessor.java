@@ -46,6 +46,7 @@ import org.tasktide.core.supporting.FileIO;
  */
 public class WorkItemFileProcessor {
     
+    
     /**
      * Standardized processing of {@link WorkItem} record lines 
      * 
@@ -53,6 +54,7 @@ public class WorkItemFileProcessor {
      * @param delimiter
      * @param handler
      * @param LOGGER
+     * 
      * @return int
      */
     public static int processFile(String targetFile, String delimiter, WorkItemLineHandler handler, Logger LOGGER) {
@@ -99,29 +101,46 @@ public class WorkItemFileProcessor {
      * @param file
      * @param delimiter
      * @param logger
+     * 
      * @return int
      */
     public static int resetItems(String file, String delimiter, Logger logger) {
         return processFile(file, delimiter, (parts, serv, log) -> {
-            if (parts.length == 1) {
-                WorkItem item = serv.fetchById(parts[0].strip());
-                item.resetModel();
-                serv.updateModel(item);
-            } else if (parts.length == 2) {
-                String workItemId = parts[0].strip();
-                String itemTaskId = parts[1].strip();
-                WorkItem item = serv.fetchById(workItemId);
-
-                if (itemTaskId != null && !itemTaskId.isBlank()) {
-                    log.info("Resetting task '{}' in '{}'", itemTaskId, workItemId);
-                    item.resetTask(itemTaskId);
-                } else {
-                    log.info("Resetting all tasks in '{}'", workItemId);
+            
+            if ( parts.length < 1 || parts.length > 2 ) {
+                logger.error("Error passing on malformed line:\t'{}'", (Object[]) parts);
+                return;
+            }
+            
+            WorkItem item = serv.fetchById(parts[0].strip());
+            if ( item == null ) {
+                logger.error("Error passing on line with no record matching:\t'{}'", parts[0]);
+                return;
+            }
+            
+            switch (parts.length) {
+                case 1 -> {
+                    String i = parts[0].strip();
                     item.resetModel();
+                    serv.updateModel(item);
                 }
-                serv.updateModel(item);
-            } else {
-                log.warn("Skipping malformed line: '{}'", Arrays.toString(parts));
+                    
+                case 2 -> {
+                    String workItemId = parts[0].strip();
+                    String itemTaskId = parts[1].strip();
+                    if (itemTaskId != null && !itemTaskId.isBlank()) {
+                        log.info("Resetting task '{}' in '{}'", itemTaskId, workItemId);
+                        item.resetTask(itemTaskId);
+                    } else {
+                        log.info("Resetting all tasks in '{}'", workItemId);
+                        item.resetModel();
+                    }   serv.updateModel(item);
+                }
+
+                default -> {
+                    String val = Arrays.toString(parts);
+                    log.warn("Skipping malformed line: '{}'", val);
+                }
             }
         }, logger);
     }
@@ -134,26 +153,37 @@ public class WorkItemFileProcessor {
      * @param file
      * @param delimiter
      * @param logger
+     * 
      * @return int
      */
     public static int deleteTasks(String file, String delimiter, Logger logger) {
         return processFile(file, delimiter, (parts, serv, log) -> {
+            
+            if ( parts.length < 1 || parts.length > 2 ) {
+                return;
+            }
+            
+            WorkItem item = serv.fetchById(parts[0].strip());
+            if ( item == null ) {
+                return;
+            }
+            
             if (parts.length == 1) {
-                WorkItem item = serv.fetchById(parts[0].strip());
-                item.getWorkload().setWorkload(new HashMap<String, ItemTask>());
+                item = serv.fetchById(parts[0].strip());
+                item.getWorkload().setWorkload(new HashMap<>());
                 item.setTaskCounts();
                 serv.updateModel(item);
             } else if (parts.length == 2) {
                 String workItemId = parts[0].strip();
                 String itemTaskId = parts[1].strip();
-                WorkItem item = serv.fetchById(workItemId);
+                item = serv.fetchById(workItemId);
 
                 if (itemTaskId != null && !itemTaskId.isBlank()) {
                     log.info("Resetting task '{}' in '{}'", itemTaskId, workItemId);
                     item.getWorkload().dropTaskById(itemTaskId);
                 } else {
                     log.info("Resetting all tasks in '{}'", workItemId);
-                    item.getWorkload().setWorkload(new HashMap<String, ItemTask>());
+                    item.getWorkload().setWorkload(new HashMap<>());
                 }
                 item.setTaskCounts();
                 serv.updateModel(item);

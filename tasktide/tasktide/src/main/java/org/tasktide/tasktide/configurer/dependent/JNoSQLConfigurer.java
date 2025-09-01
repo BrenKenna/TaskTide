@@ -17,7 +17,7 @@ package org.tasktide.tasktide.configurer.dependent;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import org.tasktide.tasktide.configurer.AbstractConfigurer;
+import org.tasktide.tasktide.configurer.AbstractConfig;
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.parser.model.ArgumentType;
@@ -28,7 +28,7 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
  * 
  * @author bkenna
  */
-public class JNoSQLConfigurer extends AbstractConfigurer {
+public class JNoSQLConfigurer extends AbstractConfig {
     
     @ConfigProperty(name = "tasktide.core.repository.jnosql.type", defaultValue = "document") // e.g., "document", "keyvalue", "column", "graph"
     private String dbType;
@@ -258,4 +258,9 @@ public class JNoSQLConfigurer extends AbstractConfigurer {
         if (!this.nosqlHost.isEmpty()) arg.setValue(this.nosqlHost);
         this.getArgumentMap().putArgument(arg);
     }
+    
+    
+    
+    @Override
+    public void help() {}
 }

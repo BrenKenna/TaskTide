@@ -37,7 +37,7 @@ import org.tasktide.engine.Engine;
  * @author bkenna
  */
 @ApplicationScoped
-public class EngineConfig extends AbstractConfigurer {
+public class EngineConfig extends AbstractConfig {
     
     
     /**
@@ -127,6 +127,7 @@ public class EngineConfig extends AbstractConfigurer {
     /**
      * Configure help
      */
+    @Override
     public void help() {
         Argument<Boolean> arg;
         arg = this.getArgumentBuilder()

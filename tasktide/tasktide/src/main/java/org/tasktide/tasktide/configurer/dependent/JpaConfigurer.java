@@ -17,7 +17,7 @@ package org.tasktide.tasktide.configurer.dependent;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import org.tasktide.tasktide.configurer.AbstractConfigurer;
+import org.tasktide.tasktide.configurer.AbstractConfig;
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.parser.model.ArgumentType;
@@ -28,7 +28,7 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
  * 
  * @author bkenna
  */
-public class JpaConfigurer extends AbstractConfigurer {
+public class JpaConfigurer extends AbstractConfig {
 
     
     /**
@@ -327,4 +327,8 @@ public class JpaConfigurer extends AbstractConfigurer {
         arg.setValue(this.showSql);
         this.getArgumentMap().putArgument(arg);
     }
+    
+    
+    @Override
+    public void help() {}
 }

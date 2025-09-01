@@ -127,3 +127,24 @@ Item{id=f5684595-03f9-47a8-873f-ec8dddad07a5, state=State, step=Step, payload=ea
 
 ---------------- Terminating SQLite-Store Tests ----------------
 
+2025-09-01 11:36:05 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUpClass ]: 
+
+---------------- Initiating SQLite-Store Tests ----------------
+
+2025-09-01 11:36:05 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-01 11:36:05 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: 
+
+================ Can make ItemStore Test ================
+
+2025-09-01 11:36:05 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.canMakeItemStore ]: Creating SQLite ItemStore
+2025-09-01 11:36:05 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-01 11:36:05 INFO  [ Test worker -> org.tasktide.itemstore.SqliteItemStoreTests.tearDownClass ]: 
+
+---------------- Terminating SQLite-Store Tests ----------------
+

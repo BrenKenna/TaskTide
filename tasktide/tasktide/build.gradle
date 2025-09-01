@@ -112,7 +112,6 @@ tasks.register('runWithArgs', JavaExec) {
     mainClass.set('org.tasktide.tasktide.TaskTide') // or use application.mainClass if preferred
     args = [\
             "manager",
-            "--client", "manager",
             "--repository-type", "sqlite",
             "--file-path", "C:\\Users\\Brendan Kenna\\Documents\\GitHub\\TaskTide\\tasktide\\itemStore",
             "--target-file", "C:\\Users\\Brendan Kenna\\Documents\\GitHub\\TaskTide\\tasktide\\src\\main\\resources\\singleTaskImports.txt"

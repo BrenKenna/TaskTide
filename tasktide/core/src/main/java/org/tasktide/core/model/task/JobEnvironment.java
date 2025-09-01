@@ -49,15 +49,15 @@ public class JobEnvironment {
     
     @Column("Job Type")
     @JsonbProperty("Job Type")
-    private final JobType type;
+    private JobType type;
     
     @Column("Job Id")
     @JsonbProperty("Job Id")
-    private final String jobId;
+    private String jobId;
     
     @Column("Array Index")
     @JsonbProperty("Array Index")
-    private final int arrayInd;
+    private int arrayInd;
 
     @Column("Hostname")
     @JsonbProperty("Hostname")
@@ -70,6 +70,12 @@ public class JobEnvironment {
     @Column("Jave Version")
     @JsonbProperty("Java Version")
     private String javaVersion;
+    
+    
+    /**
+     * For Jakarta compatibility
+     */
+    public JobEnvironment() {}
     
     
     /**
@@ -253,6 +259,36 @@ public class JobEnvironment {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    
+    /**
+     * Set {@link JobType}
+     * 
+     * @param type 
+     */
+    public void setType(JobType type) {
+        this.type = type;
+    }
+
+    
+    /**
+     * Sets job Id
+     * 
+     * @param jobId 
+     */
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
+    }
+
+    
+    /**
+     * Sets job arrray index
+     * 
+     * @param arrayInd 
+     */
+    public void setArrayInd(int arrayInd) {
+        this.arrayInd = arrayInd;
     }
     
     

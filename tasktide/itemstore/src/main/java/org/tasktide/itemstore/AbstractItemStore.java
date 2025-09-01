@@ -88,14 +88,22 @@ public abstract class AbstractItemStore implements ItemStore {
      * @return boolean
      */
     public boolean verifyDirectory() {
-        if ( this.masterLock.toFile().canWrite() ) {
-            return true;
+        try {
+
+            // Creates directory if not exists
+            if (!Files.exists(this.dbDirectory)) {
+                Files.createDirectories(this.dbDirectory);
+            }
+
+            // Returns whether directory is writable
+            return Files.isDirectory(this.dbDirectory) && Files.isWritable(this.dbDirectory);
         }
-        else {
+        
+        // Return false if directory is not usable
+        catch (IOException | SecurityException e) {
             return false;
-        }
     }
-    
+}
     /**
      * Return store name
      * 

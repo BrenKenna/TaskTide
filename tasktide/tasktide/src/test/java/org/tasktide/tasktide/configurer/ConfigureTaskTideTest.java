@@ -102,7 +102,7 @@ public class ConfigureTaskTideTest {
         // Initialize data
         logger.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
         ArgumentTree argTree;
-        TaskTideConfigurer engineConfig;
+        TaskTideConfig engineConfig;
         
         TaskTideWorkerUnitProvider unitProvider;
         ExecutorService executorService;
@@ -191,7 +191,7 @@ public class ConfigureTaskTideTest {
         // Initialize data
         logger.info("\n\n================ Tests ManagerCommand Can be Configured  ================\n");
         ArgumentTree argTree;
-        TaskTideConfigurer globalConfig, managerConfig;
+        TaskTideConfig globalConfig, managerConfig;
         boolean assertionState;
         
         // Initialize configuration
