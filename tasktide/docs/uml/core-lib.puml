@@ -1,5 +1,6 @@
 @startuml
 
+
 /'
 ################################################################
 ################################################################
@@ -114,7 +115,7 @@ class org.tasktide.core.repository.json_repo.JsonWorkItemRepository<WorkItem> <<
 }
 
 
-abstract class org.tasktide.core.repository.ItemStoreRepository<TaskTideModel> <<implements repo>> #FFE5B4 {
+abstract class org.tasktide.core.repository.RocksDbRepository<TaskTideModel> <<implements repo>> #FFE5B4 {
   .. **Attributes** ..
   - ItemStore data
   - Class<T> COLLECTION_CLASS
@@ -145,60 +146,15 @@ abstract class org.tasktide.core.repository.ItemStoreRepository<TaskTideModel> <
   - T toModel(Item)
 }
 
-class org.tasktide.core.repository.itemstore_repo.ItemStoreWorkflowRepository<Workflow> << extends rocks-repo >> #C6DAF7 {
-  + ItemStoreWorkflowRepository(ItemStore, String)
+class org.tasktide.core.repository.rocksdb.RocksDbWorkflowRepository<Workflow> << extends rocks-repo >> #C6DAF7 {
+  + RocksDbWorkflowRepository(ItemStore, String)
 }
-class org.tasktide.core.repository.itemstore_repo.ItemStoreStepRepository<Step> << extends rocks-repo >> #C6DAF7 {
-  + ItemStoreStepRepository(ItemStore, String)
+class org.tasktide.core.repository.rocksdb.RocksDbStepRepository<Step> << extends rocks-repo >> #C6DAF7 {
+  + RocksDbStepRepository(ItemStore, String)
 }
-class org.tasktide.core.repository.itemstore_repo.ItemStoreWorkItemRepository<WorkItem> << extends rocks-repo >> #C6DAF7 {
-  + ItemStoreWorkItemRepository(ItemStore, String)
+class org.tasktide.core.repository.rocksdb.RocksDbWorkItemRepository<WorkItem> << extends rocks-repo >> #C6DAF7 {
+  + RocksDbWorkItemRepository(ItemStore, String)
 }
-
-
-
-abstract class org.tasktide.core.repository.JpaRepository<TaskTideModel> <<implements repo>> #FFE5B4 {
-  .. **Attributes** ..
-  - EntityManager data
-  - Class<T> COLLECTION_CLASS
-  - String collectionName
-  - RepositoryType repoType
-  - Jsonb JSON_BUILDER
-
-  .. **Construction** ..
-  + JpaRepository(EntityManager, Class<T>, String)
-
-  .. **TaskTideRepository Implementation** ..
-  + Map<String, String> getRepositoryMetaData()
-  + Optional<T> findById(String)
-  + T insertModel(T)
-  + T updateModel(T)
-  + boolean deleteModel(String)
-  + List<T> findByField(String, Object)
-  + List<T> findAll()
-  + int save()
-  + List<T> load()
-
-  .. **Class Methods** ..
-  + Class<T> getCollectionClass()
-  + String getCollectionName()
-  + RepositoryType getRepoType()
-
-  - Item<T> toItem(T)
-  - T toModel(Item)
-}
-
-class org.tasktide.core.repository.jpa_repo.JpaWorkflowRepository<Workflow> << extends jpa-repo >> #C6DAF7 {
-  + ItemStoreWorkflowRepository(EntityManager, String)
-}
-class org.tasktide.core.repository.jpa_repo.JpaStepRepository<Step> << extends jpa-repo >> #C6DAF7 {
-  + ItemStoreStepRepository(EntityManager, String)
-}
-class org.tasktide.core.repository.jpa_repo.JpaWorkItemRepository<WorkItem> << extends jpa-repo >> #C6DAF7 {
-  + ItemStoreWorkItemRepository(EntityManager, String)
-}
-
-
 
 
 enum org.tasktide.core.repository.RepositoryType #CCCCFF {
@@ -219,8 +175,7 @@ enum org.tasktide.core.repository.RepositoryType #CCCCFF {
 
 
 org.tasktide.core.repository.TemplateRepository ..|> org.tasktide.core.TaskTideRepository
-org.tasktide.core.repository.ItemStoreRepository ..|> org.tasktide.core.TaskTideRepository
-org.tasktide.core.repository.JpaRepository ..|> org.tasktide.core.TaskTideRepository
+org.tasktide.core.repository.RocksDbRepository ..|> org.tasktide.core.TaskTideRepository
 org.tasktide.core.repository.JsonRepository ..|> org.tasktide.core.TaskTideRepository
 
 
@@ -229,19 +184,15 @@ org.tasktide.core.repository.nosql_repo.TemplateStepRepository --|> org.tasktide
 org.tasktide.core.repository.nosql_repo.TemplateWorkItemRepository --|> org.tasktide.core.repository.TemplateRepository
 
 
-org.tasktide.core.repository.itemstore_repo.ItemStoreWorkflowRepository --|> org.tasktide.core.repository.ItemStoreRepository
-org.tasktide.core.repository.itemstore_repo.ItemStoreStepRepository --|> org.tasktide.core.repository.ItemStoreRepository
-org.tasktide.core.repository.itemstore_repo.ItemStoreWorkItemRepository --|> org.tasktide.core.repository.ItemStoreRepository
+org.tasktide.core.repository.rocksdb.RocksDbWorkflowRepository --|> org.tasktide.core.repository.RocksDbRepository
+org.tasktide.core.repository.rocksdb.RocksDbStepRepository --|> org.tasktide.core.repository.RocksDbRepository
+org.tasktide.core.repository.rocksdb.RocksDbWorkItemRepository --|> org.tasktide.core.repository.RocksDbRepository
 
 
 org.tasktide.core.repository.json_repo.JsonWorkflowRepository --|> org.tasktide.core.repository.JsonRepository
 org.tasktide.core.repository.json_repo.JsonStepRepository --|> org.tasktide.core.repository.JsonRepository
 org.tasktide.core.repository.json_repo.JsonWorkItemRepository --|> org.tasktide.core.repository.JsonRepository
 
-
-org.tasktide.core.repository.jpa_repo.JpaWorkflowRepository --|> org.tasktide.core.repository.JpaRepository
-org.tasktide.core.repository.jpa_repo.JpaStepRepository --|> org.tasktide.core.repository.JpaRepository
-org.tasktide.core.repository.jpa_repo.JpaWorkItemRepository --|> org.tasktide.core.repository.JpaRepository
 
 
 /'
@@ -372,6 +323,7 @@ org.tasktide.core.TaskTideRepository --> org.tasktide.core.TaskTideModel
 ##################################################
 '/
 
+
 interface org.tasktide.core.TaskTideModel<TaskTideModel> #F8DE7E {
   + String toJson()
   + String getId()
@@ -382,7 +334,7 @@ interface org.tasktide.core.TaskTideModel<TaskTideModel> #F8DE7E {
 
 entity org.tasktide.core.model.workitem.WorkItem <<implements TaskTideModel >> #FFE5B4 {
   .. **Attributes** ..
-  - String id, itemName, lockId, stepName, stepId
+  - String id, itemName, lockId, stepName
   - long lockDate, doneDate
   - int taskCount, taskDone
   - ItemType itemType
@@ -409,7 +361,6 @@ entity org.tasktide.core.model.workitem.WorkItem <<implements TaskTideModel >> #
 
   .. **// Getters & Setters //** ..
 }
-
 
 
 entity org.tasktide.core.model.workitem.Workload<<Embedded>> {
@@ -439,7 +390,6 @@ entity org.tasktide.core.model.workitem.Workload<<Embedded>> {
 }
 
 
-
 entity org.tasktide.core.model.task.ItemTask <<Embedded implements TaskTideModel >> #FFE5B4 {
     .. **Attributes ** ..
     - String itemTaskId, taskName, task
@@ -464,7 +414,6 @@ entity org.tasktide.core.model.task.ItemTask <<Embedded implements TaskTideModel
 }
 
 
-
 entity org.tasktide.core.model.task.ProcessLog<<Embedded>> {
     .. **Attributes** ..
     - String procId
@@ -480,7 +429,6 @@ entity org.tasktide.core.model.task.ProcessLog<<Embedded>> {
 
     .. **//Getters & Setters//** ..
 }
-
 
 
 entity org.tasktide.core.model.task.TaskLogging<<Embedded>> {
@@ -504,7 +452,6 @@ entity org.tasktide.core.model.task.TaskLogging<<Embedded>> {
 }
 
 
-
 entity org.tasktide.core.model.task.TaskState #CCCCFF {
     .. **Enum Values** ..
     PENDING
@@ -524,15 +471,12 @@ entity org.tasktide.core.model.task.TaskState #CCCCFF {
 }
 
 
-
 entity org.tasktide.core.model.collection.Step<<Entity Implements TaskTideModel>> #FFE5B4 {
     .. **Attributes** ..
     - String stepId, stepName
     - TaskState taskState
     - int stepCount, stepsLocked, stepsDone
     - int stepsError, stepsToDo
-    - String workloadId
-    - Workflow workflow // For JPA Join
 
     .. **Construction** ..
     + Step()
@@ -554,20 +498,14 @@ entity org.tasktide.core.model.collection.Step<<Entity Implements TaskTideModel>
 }
 
 
-
 entity org.tasktide.core.model.collection.Workflow<<Entity Implements TaskTideModel>> #FFE5B4 {
     .. **Attributes** ..
     - String workflowId, workflowName
     - Map<String, Step> worklowSteps
-    = List<Step> stepList // For JPA Mapping
 
     .. **Construction** ..
     + Workflow()
     + Workflow(< All Attributes >)
-
-    .. **JPA Persitence** ..
-    @jakarta.persistence.PostLoad
-    + void populateStepMap()
 
     .. **Class Methods** ..
     + StateSummary<ItemState> summarizeByState()
@@ -626,55 +564,24 @@ class org.tasktide.core.manager.TaskTideServiceManager {
 }
 
 
-enum org.tasktide.core.manager.ManagerAction #CCCCFF {
+class org.tasktide.core.manager.ManagerTask {
     .. **Attributes** ..
-    IMPORT
-    EXPORT
+    - String taskName, taskScript
+    - ItemTaskBuilder itemTaskBuilder
+    - ProcessLogBuilder procLogBuilder;
+    - TaskLoggingBuilder taskLogBuilder
+    - Utils utils
 
-    .. **Value Methods**..
-    + {abstract} boolean isManagerAction(String)
-    + {abstract} boolean isMAnagerAction(ManagerAction)
+    .. **Class Methods** ..
+    + Map<String, String> asMap()
+    + ItemTask asItemTask()
+    
+    .. **Represent as JSON** ..
+    + String toJsonString()
+    + String toJsonDoc();
 
-    .. **Enum Methods** ..
-    + static boolean hasQuery(String)
-    + static int indexOf(String)
-    + static ManagerAction get(String)
+    .. **//Getters & Setters//** ..
 }
-
-
-enum org.tasktide.core.manager.ManagerAction #CCCCFF {
-    .. **Attributes** ..
-    IMPORT
-    EXPORT
-
-    .. **Value Methods**..
-    + {abstract} boolean isManagerAction(String)
-    + {abstract} boolean isManagerAction(ManagerAction)
-
-    .. **Enum Methods** ..
-    + static boolean hasQuery(String)
-    + static int indexOf(String)
-    + static ManagerAction get(String)
-} 
-
-
-enum org.tasktide.core.manager.ManagerTarget #CCCCFF {
-    .. **Attributes** ..
-    WORKITEM
-    STEP
-    WORKFLOW
-
-    .. **Value Methods**..
-    + {abstract} boolean isManagerTarget(String)
-    + {abstract} boolean isManagerTarget(ManagerTarget)
-    + {abstract} List<TaskTideModel> fetchModels()
-
-    .. **Enum Methods** ..
-    + static boolean hasQuery(String)
-    + static int indexOf(String)
-    + static ManagerTarget get(String)
-    + static String valuesString()
-} 
 
 
 class org.tasktide.core.manager.BuilderUtility #FFFFE0 {
@@ -709,7 +616,237 @@ org.tasktide.core.manager.TaskTideServiceManager --> org.tasktide.core.services.
 ##################################################
 ##################################################
 ##
-## d). Supporting
+## d). ManagerCommand Interfaces
+##
+##################################################
+##################################################
+'/
+
+
+interface org.tasktide.core.manager.command.ManagerCommand #F8DE7E {
+  + {abstract} Object execute()
+  + {abstract} boolean validateCommand()
+  + {abstract} String toJsonString()
+  + {abstract} String toJsonDoc()
+}
+
+
+interface org.tasktide.core.manager.file_handler.WorkItemLineHandler #F8DE7E {
+    + void handleLine(String[], TaskTideService<WorkItem>, Logger);
+}
+
+
+class org.tasktide.core.manager.file_handler.WorkItemFileProcessor #FFE5B4 {
+    
+    .. **Functional Interface Implementation** ..
+    + static void processFile(String, String, WorkItemLineHandler, Logger)
+
+    .. **Lambdas** ..
+    + static int resetItems(String, String, Logger)
+    + static int deleteTasks(String, String, Logger)
+}
+
+
+enum org.tasktide.core.manager.command.ManagerAction #CCCCFF {
+    .. **Attributes** ..
+    IMPORT, EXPORT, EXPORT_QUERY, ADD, APPEND,
+    RESET_ITEM, RESET_ITEMS, SUMMARIZE, DELETE,
+    DELETE_LIST, SUMMARIZE_EACH
+
+    .. **Value Methods**..
+    + {abstract} ManagerCommand makeCommand(ManagerTarget, CommandSpec)
+    + {abstract} boolean isManagerAction(String)
+    + {abstract} boolean isMAnagerAction(ManagerAction)
+
+    .. **Enum Methods** ..
+    + static boolean hasQuery(String)
+    + static int indexOf(String)
+    + static ManagerAction get(String)
+    + static String valuesString();
+}
+
+
+enum org.tasktide.core.manager.command.ManagerTarget #CCCCFF {
+    .. **Attributes** ..
+    WORKFLOW, STEP, WORKITEM
+
+    .. **Value Methods**..
+    + {abstract} List<TaskTideModel> fetchModels()
+    + {abstract} boolean isManagerTarget(String)
+    + {abstract} boolean isManagerTarget(ManagerTarget)
+
+    .. **Enum Methods** ..
+    + static boolean hasQuery(String)
+    + static int indexOf(String)
+    + static ManagerAction get(String)
+    + static String valuesString();
+}
+
+
+class org.tasktide.core.manager.command.CommandSpec {
+    .. **Attributes** ..
+    - Optional<String> filePath, queryString
+    - Optional<Map<String, Object>> options
+
+    .. **Construction** ..
+    + CommandSpec(<Attributes>)
+
+    .. **Getters/Setters** ..
+    + Optional<String>/void getFilePath()
+    + Optional<String>/void getQueryString()
+    + Optional<String>/void getOptions()
+
+    .. **Options Key** ..
+    + Optional<Object> getOptions(String)
+    + boolean hasOptionsKey(String)
+
+    .. **Representation** ..
+    + String toJsonString()
+    + String toJsonDoc()
+    + String toString()
+}
+
+
+abstract class org.tasktide.core.manager.command.commands.AbstractCommand <<implements cmd>> #FFE5B4 {
+    .. **Attributes** ..
+    # Logger LOGGER
+    # ManagerAction action
+    # ManagerTarget target
+    # CommandSpec cmdSpec
+
+    .. **Construction** ..
+    + AbstractCommand(<Attributes>)
+
+    .. **Interface Implementation** ..
+    + Object execute()
+    + {abstract} Object runCommand()
+    + String toJsonString()
+    + String toJsonDoc()
+    + String toString()
+
+    .. **Getters/Setters** ..
+    + ManagerAction/void get/setAction()
+    + ManagerTarget/void get/setTarget()
+    + CommandSpec/void get/setCmdSpec()
+}
+
+
+class org.tasktide.core.manager.command.commands.ImportCommand <<implements cmd>> #FFE5B4 {
+    .. **Attributes** ..
+    - Logger LOGGER
+    - ImportType importType
+
+    .. **Construction** ..
+    + ImportCommand(<Attributes>)
+
+    .. **Interface Implementation** ..
+    + Object runCommand()
+    + boolean validateCommand()
+
+    .. **Decorator Methods** ..
+    + WorkItem appendToWorkItem()
+    + WorkItem appendToTask(ManagerTask, String)
+    + WorkItem addWorkItem()
+    + WorkItem importTask(ManagerTask, String, String)
+    + WorkItem importFile() throws IOException
+    - WorkItem importJson(String file)
+    - List<WorkItem> fetchWorkItems(String, String, String, String) throws IOException
+    - List<WorkItem> fetchWorkItems(String, String, String) throws IOException
+    - WorkItem parseWorkItem(String[], String)
+    - WorkItem parseWorkItem(String[], String, String)
+}
+
+
+class org.tasktide.core.manager.command.commands.DeleteCommand <<implements cmd>> #FFE5B4 {
+    .. **Attributes** ..
+    - Logger LOGGER
+
+    .. **Construction** ..
+    + DeleteCommand(<Attributes>)
+
+    .. **Interface Implementation** ..
+    + Object runCommand()
+    + boolean validateCommand()
+
+    .. **Decorator Methods** ..
+    + WorkItem deleteWorkItem()
+    + WorkItem deleteTask()
+    + int deleteTasks()
+}
+
+
+class org.tasktide.core.manager.command.commands.ExportCommand <<implements cmd>> #FFE5B4 {
+    .. **Attributes** ..
+    - Logger LOGGER
+
+    .. **Construction** ..
+    + ExportCommand(<Attributes>)
+
+    .. **Interface Implementation** ..
+    + Object runCommand*(
+    + boolean validateCommand()
+
+    .. **Decorator Methods** ..
+    + boolean exportOnQuery()
+    + boolean exportToJson()
+}
+
+
+class org.tasktide.core.manager.command.commands.ResetCommand <<implements cmd>> #FFE5B4 {
+    .. **Attributes** ..
+    - Logger LOGGER
+
+    .. **Construction** ..
+    + ResetCommand(<Attributes>)
+
+    .. **Interface Implementation** ..
+    + Object runCommand*(
+    + boolean validateCommand()
+
+    .. **Decorator Methods** ..
+    + WorkItem resetWorkItem()
+    + int resetItems()
+}
+
+
+class org.tasktide.core.manager.command.commands.SummarizeCommand <<implements cmd>> #FFE5B4 {
+    .. **Attributes** ..
+    - Logger LOGGER
+
+    .. **Construction** ..
+    + SummarizeCommand(<Attributes>)
+
+    .. **Interface Implementation** ..
+    + Object runCommand*(
+    + boolean validateCommand()
+
+    .. **Decorator Methods** ..
+    + StateSummary<ItemState> summarize()
+    + Map<String, StateSummary<ItemState>> summarizeEach()
+}
+
+
+org.tasktide.core.manager.command.commands.AbstractCommand ..|> org.tasktide.core.manager.command.ManagerCommand
+org.tasktide.core.manager.command.commands.AbstractCommand *-- org.tasktide.core.manager.command.ManagerAction
+org.tasktide.core.manager.command.commands.AbstractCommand *-- org.tasktide.core.manager.command.ManagerTarget
+org.tasktide.core.manager.command.commands.AbstractCommand *-- org.tasktide.core.manager.command.CommandSpec
+
+
+org.tasktide.core.manager.command.commands.SummarizeCommand ..|> org.tasktide.core.manager.command.commands.AbstractCommand
+org.tasktide.core.manager.command.commands.SummarizeCommand *-- org.tasktide.core.mode.state_summary.StateSumary
+org.tasktide.core.manager.command.commands.DeleteCommand ..|> org.tasktide.core.manager.command.commands.AbstractCommand
+org.tasktide.core.manager.command.commands.ImportCommand ..|> org.tasktide.core.manager.command.commands.AbstractCommand
+org.tasktide.core.manager.command.commands.ResetCommand ..|> org.tasktide.core.manager.command.commands.AbstractCommand
+org.tasktide.core.manager.command.commands.ExportCommand ..|> org.tasktide.core.manager.command.commands.AbstractCommand
+
+
+
+
+/'
+##################################################
+##################################################
+##
+## e). Supporting
 ##
 ##################################################
 ##################################################
@@ -755,17 +892,5 @@ class org.tasktide.core.supporting.Utils #FFFFE0 {
     + DateUtility getDateUtility()
 }
 
-
-class org.tasktide.core.supporting.JsonUtils #FFFFE0 {
-    .. **Attributes** ..
-    - static JsonbConfig PRETTY_CONFIG
-    - static Jsonb PRETTY_JSON
-    - static Jsonb JSON
-
-    .. **Utility Methods** ..
-    + static String toJson(boolean, Object)
-    + static <T> T fromJson(String, Class<T>)
-    + static <T> T fromJson(String, Type)
-}
 
 @enduml

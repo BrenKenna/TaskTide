@@ -16,11 +16,6 @@ class org.tasktide.tasktide.TaskTide <<Application>> {
     .. **Attributes** ..
     - static Logger LOGGER
 
-    .. **Supporting Methods** ..
-    + static String fetchSplashString()
-    + static void printSplash()
-    + static CdiContainerProvider configureCdiInstance(CdiProviders)
-
     .. **Application Method** ..
     + static void main(String[])
 }
@@ -43,14 +38,15 @@ class org.tasktide.core.manager.TaskTideServiceManager
 
 abstract class org.tasktide.tasktide.client.TaskTideClient <<abstract client>> #D7E7F7 {
   .. **Attributes** ..
-  - TaskTideServiceManager taskTideManager;
   - ClientConfigMap config;
 
   .. **Construction** ..
-  + TaskTideClient(TaskTideServiceManager, ClientConfigMap)
+  + TaskTideClient(ClientConfigMap)
 
   .. **Implementation Wrapper** ..
   + void runClient()
+  + ClientConfigMap getClientConf()
+  + ArgumentTree getArgTree()
 
   .. **Interface Method** ..
   + {abstract} void configureClient()
@@ -70,7 +66,7 @@ class org.tasktide.tasktide.client.TaskTideEngineClient <<extends client>> #C6DA
   - TaskTideEngineObserver<WorkItem> obs;
 
   .. **Construction** ..
-  + TaskTideEngineClient(TaskTideServiceManager, ClientConfigMap)
+  + TaskTideEngineClient(ClientConfigMap)
 
   .. **TaskTideClient Implementation** ..
   + void runClient()
@@ -97,10 +93,12 @@ class org.tasktide.tasktide.client.TaskTideEngineClient <<extends client>> #C6DA
 class org.tasktide.tasktide.client.TaskTideManagerClient <<extends client>> #C6DAF7 {
   .. **Attributes** ..
   - Logger LOGGER
-  - ArgumentMap argMap;
+  - ArgumentMap globalArgs, managerArgs
+  - ManagerTarget target
+  - ManagerAction action;
 
   .. **Construction** ..
-  + TaskTideManagerClient(TaskTideServiceManager, ClientConfigMap)
+  + TaskTideManagerClient(ClientConfigMap)
 
   .. **TaskTideClient Implementation** ..
   + void runClient()
@@ -110,8 +108,10 @@ class org.tasktide.tasktide.client.TaskTideManagerClient <<extends client>> #C6D
 
   .. **TaskTideClient Decorators** ..
   - String parseFilePath(ManagerAction)
-  - List<WorkItem> importJson(String)
-  - List<WorkItem> importFile throws IOException
+  - CommandSpec mapToCoammndSpec()
+  - ManagerCommand getManagerCommand()
+  - void setTarget(ManagerTarget)
+  - void setAction(ManagerAction)
   - void handleImport()
 }
 
@@ -124,38 +124,46 @@ enum org.tasktide.tasktide.client.TaskTideClientType #CCCCFF {
 
   .. **Strategy Methods** ..
   + abstract Class getConfigClass()
-  + abstract TaskTideClient makeClient(TaskTideServiceManager, ClientConfigMap)
+  + abstract TaskTideClient makeClient(ClientConfigMap)
   + abstract boolean isClient(String)
   + abstract boolean isClient(TaskTideClientType)
+  + {abstract} String pathInTree()
 
   .. **Enum Methods** ..
   + static int indexOf(TaskTideClientType)
   + static int indexOf(String) 
   + static boolean hasQuery(String)
   + static TaskTideClientType get(String)
+  + static List<String> treePath()
 }
 
 
 class org.tasktide.tasktide.client.TaskTideClientUtility #FFFFE0 {
   .. **Attributes** ..
   - static Logger LOGGER
-  - static Jsonb JSON_PRETTY
-  - static Jsonb JSON
 
-  .. **Generic Utility Methods** ..
-  + static String mapToJsonString(Object)
+  .. **Fetch TaskTide Splash** ..
+  + static String fetchSplashString()
+  + static String printSplash()
 
-  .. **Aids construction** ..
+  .. **Configure CDI Container** ..
+  + static CdiContainerProvider configreCdiInstance(CdiProvider, boolean)
+
+  .. **Fetch Client to Configure** ..
   + static TaskTideClientType configureClient(ArgumentTree)
+
+  .. **Repository & Service Configuration** ..
   + static RepositoryType fetchRepoType(ClientConfigMap)
-  + static TaskTideServiceManager fetchManager(CdiContainerProvider, RepositoryType)
-  + static TaskTideServiceManager fetchManager(Template)
+  + static void initServiceManager(RepositoryType, ClientConfigMap)
+  + static void initNoSqkServiceManager(ClientConfigMap)
+  + static initSqlServiceManager()
+  + static initItemStoreServiceManager()
 }
 
 
 class org.tasktide.tasktide.client.ClientConfigMap {
   .. **Attributes** ..
-  - Map<TaskTideClientType, TaskTideConfigurer> configMap;
+  - Map<TaskTideClientType, TaskTideConfig> configMap;
   - ArgumentTree argTree;
   - String[] argsIn;
 
@@ -171,7 +179,10 @@ class org.tasktide.tasktide.client.ClientConfigMap {
 
 org.tasktide.tasktide.client.TaskTideEngineClient --|> org.tasktide.tasktide.client.TaskTideClient
 org.tasktide.tasktide.client.TaskTideManagerClient --|> org.tasktide.tasktide.client.TaskTideClient
+org.tasktide.tasktide.client.TaskTideManagerClient --> org.tasktide.core.manager.ManagerAction
 org.tasktide.tasktide.client.ClientConfigMap *-- org.tasktide.tasktide.client.TaskTideClient
+
+org.tasktide.tasktide.client.TaskTideManagerClient --|> org.tasktide.core.manager.command.ManagerCommand
 
 
 /'
@@ -184,7 +195,7 @@ org.tasktide.tasktide.client.ClientConfigMap *-- org.tasktide.tasktide.client.Ta
 ##################################################
 '/
 
-interface org.tasktide.tasktide.configurer.TaskTideConfigurer <<config>> #F8DE7E {
+interface org.tasktide.tasktide.configurer.TaskTideConfig <<config>> #F8DE7E {
   + {abstract} void addToTree(ArgumentTree argTree)
   + {abstract} ArgumentMap getArgumentMap()
   + {abstract} ArgumentBuilder getArgumentBuilder()
@@ -192,10 +203,11 @@ interface org.tasktide.tasktide.configurer.TaskTideConfigurer <<config>> #F8DE7E
   + {abstract} Config getConfig()
   + {abstract} boolean parseCommandLineArguments(String[], ArgumentTree)
   + {abstract} initConfig(ArgumentTree)
+  + {abstract} void help()
 }
 
 
-abstract class org.tasktide.tasktide.configurer.AbstractConfigurer <<implements-config>> #FFE5B4 {
+abstract class org.tasktide.tasktide.configurer.AbstractConfig <<implements-config>> #FFE5B4 {
   .. **Attributes** ..
   - ArgumentMap argMap
   - String path
@@ -217,10 +229,11 @@ abstract class org.tasktide.tasktide.configurer.AbstractConfigurer <<implements-
 
 class org.tasktide.tasktide.configurer.GlobalConfig <<extends abstract-config>> #C6DAF7 {
   .. **Attributes** ..
-  - String client, workflowsName, stepName, workItemName
-  - String repositoryType, filePath, nosqlType
-  - String nosqlProvider, nosqlProviderClass, nosqlPassword
-  - String nosqlUser, nosqlHost, dateFormat
+  - Logger LOGGER
+  - JpaConfigurer jpaConf
+  - JNoSQLConfigurer jnosqlConf
+  - String client workflowName, stepName, workItemName
+  - String repositoryType, filePath, dateFormat
   - int tokenExpirationDays
 
   .. **Construction** ..
@@ -274,11 +287,10 @@ class org.tasktide.tasktide.configurer.ManagerConfig <<extends abstract-config>>
 }
 
 
-org.tasktide.tasktide.configurer.AbstractConfigurer ..|> org.tasktide.tasktide.configurer.TaskTideConfigurer
-org.tasktide.tasktide.configurer.GlobalConfig --|> org.tasktide.tasktide.configurer.AbstractConfigurer
-org.tasktide.tasktide.configurer.EngineConfig --|> org.tasktide.tasktide.configurer.AbstractConfigurer
-org.tasktide.tasktide.configurer.ManagerConfig --|> org.tasktide.tasktide.configurer.AbstractConfigurer
-
+org.tasktide.tasktide.configurer.AbstractConfig ..|> org.tasktide.tasktide.configurer.TaskTideConfig
+org.tasktide.tasktide.configurer.GlobalConfig --|> org.tasktide.tasktide.configurer.AbstractConfig
+org.tasktide.tasktide.configurer.EngineConfig --|> org.tasktide.tasktide.configurer.AbstractConfig
+org.tasktide.tasktide.configurer.ManagerConfig --|> org.tasktide.tasktide.configurer.AbstractConfig
 
 
 /'
