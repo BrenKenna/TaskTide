@@ -26,7 +26,7 @@ import jakarta.nosql.Entity;
 import jakarta.nosql.Column;
 import jakarta.nosql.Id;
 
-import org.tasktide.core.model.task.job_env.JobType;
+import org.tasktide.core.model.job_env.JobType;
 import org.tasktide.core.model.workitem.WorkItem;
 
 

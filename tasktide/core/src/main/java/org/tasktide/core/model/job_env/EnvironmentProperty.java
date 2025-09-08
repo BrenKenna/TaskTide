@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tasktide.core.model.task.job_env;
+package org.tasktide.core.model.job_env;
 
 import java.net.UnknownHostException;
 import java.util.Arrays;

@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.model.workitem;
 
+import org.tasktide.core.model.CustomAnnotation;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -94,6 +95,11 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     @jakarta.persistence.Column(name = "StepId")
     @JsonbProperty("StepId")
     private String stepId;
+    
+    @jakarta.nosql.Column("Annotations")
+    @jakarta.persistence.Column(name = "Annotations")
+    @JsonbProperty("Annotations")
+    private CustomAnnotation anno;
     
     
     /**
@@ -370,6 +376,26 @@ public class WorkItem implements TaskTideModel<WorkItem> {
 
     
     /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    public CustomAnnotation getAnntations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set annotation provided
+     * 
+     * @param anno 
+     */
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+    
+    
+    /**
      * Get item type
      * 
      * @return {@link ItemType}
@@ -640,6 +666,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
            ", workload=" + workload +
            ", stepName=" + stepName +
            ", stepId=" + stepId +
+           ", anno=" + anno +
         '}';
     }
 

@@ -5446,3 +5446,588 @@ Test successful with state:	true
 
 ---------------- Terminating TaskTide Model Interface Tests ----------------
 
+2025-09-08 15:03:32 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 15:03:32 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 15:03:32 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 15:03:32 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 15:03:32 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerMachineClientProviderStrategy.isApplicable ]: docker-machine executable was not found on PATH ([C:\Program Files\Common Files\Oracle\Java\javapath, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0\, C:\Windows\System32\OpenSSH\, C:\Program Files\dotnet\, C:\Program Files\PowerShell\7\, C:\Program Files\Git\cmd, C:\Program Files\Docker\Docker\resources\bin, C:\Users\Brendan Kenna\scoop\apps\maven\current\bin, C:\Users\Brendan Kenna\scoop\shims, C:\Users\Brendan Kenna\AppData\Local\Microsoft\WindowsApps, C:\Users\Brendan Kenna\AppData\Local\GitHubDesktop\bin, C:\Users\Brendan Kenna\AppData\Local\Programs\Microsoft VS Code\bin])
+2025-09-08 15:03:32 ERROR [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$getFirstValidStrategy$7 ]: Could not find a valid Docker environment. Please check configuration. Attempted configurations were:
+As no valid configuration was found, execution cannot continue.
+See https://java.testcontainers.org/on_failure.html for more details.
+2025-09-08 16:14:55 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 16:14:55 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 16:14:55 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 16:14:55 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 16:14:55 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-08 16:14:55 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-08 16:14:55 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-08 16:14:55 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-08 16:14:56 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: b0e43386fda51135b08390457ea7fb220396d687895b7adfaec85db3c08c1de1
+2025-09-08 16:14:57 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.2593195S
+2025-09-08 16:14:57 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-08 16:14:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-08 16:14:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-08 16:14:57 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-08 16:14:57 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 688b455a6f8aca54b57b445b3daba1e03da1e1c685bacc92bdf06ed8a5a48476
+2025-09-08 16:15:07 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT10.6781161S
+2025-09-08 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations JPA Command Tests ----------------
+
+2025-09-08 16:15:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-08 16:15:08 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-08 16:15:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-08 16:15:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 46374bb0-475f-4afe-8aaf-765810cf83df initialized
+2025-09-08 16:15:13 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-08 16:15:13 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2190508d
+2025-09-08 16:15:13 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-08 16:15:13 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-08 16:15:13 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-08 16:15:13 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-08 16:15:14 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-08 16:15:14 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08 16:15:14 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-08 16:15:15 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08 16:15:15 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: 
+
+================ Load Simple Annotations Test ================
+
+2025-09-08 16:15:16 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:15:16 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:16:25 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 16:16:25 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 16:16:25 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 16:16:26 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 16:16:26 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-08 16:16:26 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-08 16:16:26 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-08 16:16:26 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-08 16:16:26 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 910f9131b37a9557b39a73f9d8ca20d069f388501e0ee08fc469957e4bfe919b
+2025-09-08 16:16:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.1050633S
+2025-09-08 16:16:27 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-08 16:16:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-08 16:16:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-08 16:16:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-08 16:16:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 1c5011863496633ade1916deb57c9923127d123e385e346339a4ab1764f9ded8
+2025-09-08 16:16:35 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT7.7555312S
+2025-09-08 16:16:35 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations JPA Command Tests ----------------
+
+2025-09-08 16:16:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-08 16:16:35 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-08 16:16:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-08 16:16:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container abebebe0-f3d2-4b5f-85df-30cd2b0841ba initialized
+2025-09-08 16:16:40 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-08 16:16:40 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@328bc067
+2025-09-08 16:16:40 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-08 16:16:41 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-08 16:16:41 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-08 16:16:41 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-08 16:16:41 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-08 16:16:41 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08 16:16:41 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-08 16:16:42 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08 16:16:43 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: 
+
+================ Load Simple Annotations Test ================
+
+2025-09-08 16:16:43 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:16:43 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:18:14 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 16:18:14 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 16:18:14 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 16:18:14 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 16:18:15 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-08 16:18:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-08 16:18:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-08 16:18:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-08 16:18:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: c1126324f6295bc354ddccadd8805313db98cf2ebebd581ced96b7d4d0802958
+2025-09-08 16:18:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.1904221S
+2025-09-08 16:18:16 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-08 16:18:16 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-08 16:18:16 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-08 16:18:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-08 16:18:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 33435efe507beb4fbb400c4b94c5b7ae570edd111e31399fe51fe33662c855a1
+2025-09-08 16:18:25 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT8.746547S
+2025-09-08 16:18:25 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations JPA Command Tests ----------------
+
+2025-09-08 16:18:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-08 16:18:25 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-08 16:18:26 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-08 16:18:33 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b9e5e2b0-8e70-494a-ac0b-8b3eb4af6a61 initialized
+2025-09-08 16:18:33 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-08 16:18:34 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@35277c6c
+2025-09-08 16:18:34 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-08 16:18:34 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-08 16:18:34 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-08 16:18:34 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-08 16:18:34 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-08 16:18:35 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08 16:18:35 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-08 16:18:36 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08 16:18:37 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: 
+
+================ Load Simple Annotations Test ================
+
+2025-09-08 16:18:37 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:18:37 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:18:38 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Execution result:
+'true'
+2025-09-08 16:20:27 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 16:20:27 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 16:20:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 16:20:27 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 16:20:27 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-08 16:20:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-08 16:20:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-08 16:20:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-08 16:20:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 9e0ee59137d5def397f5aa6119da0937b6658a040bb1550336f93fe80530cf83
+2025-09-08 16:20:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.995452S
+2025-09-08 16:20:28 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-08 16:20:28 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-08 16:20:28 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-08 16:20:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-08 16:20:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: fc7118b7c91244bd5f27d2ba62e50bda54e080ba1df3a123e3ddcb0dbb14c045
+2025-09-08 16:20:38 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT9.3771462S
+2025-09-08 16:20:38 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations JPA Command Tests ----------------
+
+2025-09-08 16:20:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-08 16:20:38 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-08 16:20:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-08 16:20:43 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container de8cdb52-05d9-468a-bf5a-30d050e6cd15 initialized
+2025-09-08 16:20:43 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-08 16:20:43 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c108c05
+2025-09-08 16:20:43 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-08 16:20:43 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-08 16:20:44 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-08 16:20:44 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-08 16:20:44 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-08 16:20:44 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08 16:20:44 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-08 16:20:45 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08 16:20:45 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: 
+
+================ Load Simple Annotations Test ================
+
+2025-09-08 16:20:45 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:20:45 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:20:46 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Execution result:
+'true'
+2025-09-08 16:20:46 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Displaying records:
+'[WorkItem{id=WorkItem-3386f9ba-a570-4539-9f2a-6128d879a3cb, itemName=MyTestTask, itemType=Single, itemState=ToDo, lockId=null, lockDate=0, doneDate=0, taskCount=1, taskDone=0, workload=Workload{workloadId=Workload-5f7f6b71-3cff-4f62-94b2-e24b28b1fa3b, workload={MyTestTask=ItemTask{itemTaskId=ItemTask-3670f11f-4895-49b2-acbc-bf0e82b9391a, taskName=MyTestTask, taskState=Pending, taskLog=TaskLogging{taskLogId=TaskLog-2c24a066-c2fa-49b6-a3a0-1f2505f7a7ba, procId=0, procLog=ProcessLog{procLogId=ProcessLog-298ebbbf-f28d-4c7d-81a5-607ff51830d4, stdout=[Ljava.lang.String;@4d696bac, stderr=[Ljava.lang.String;@4d696bac}, startTime=0, endTime=0, threadName=NA, cpuDuration=0}, task=ping google.com, workItemId=WorkItem-3386f9ba-a570-4539-9f2a-6128d879a3cb}}, workloadType=Single}, stepName=Step-6b025d81-4352-4d51-8bc3-8b7c25403e55, stepId=null, anno=null}]'
+2025-09-08 16:20:46 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Applying custom annotations to record:	'WorkItem-3386f9ba-a570-4539-9f2a-6128d879a3cb'
+2025-09-08 16:22:48 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 16:22:48 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 16:22:48 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 16:22:48 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 16:22:48 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-08 16:22:48 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-08 16:22:48 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-08 16:22:49 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-08 16:22:49 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 3ad9047343443b1fd93d568070435083d80ef264845f1f385e4a2d76b50060b7
+2025-09-08 16:22:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.0549972S
+2025-09-08 16:22:50 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-08 16:22:50 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-08 16:22:50 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-08 16:22:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-08 16:22:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 559b696735791e994df528b6de7e8f7c8b1ee155cb043ad4500b881905b0c3f2
+2025-09-08 16:22:58 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT7.8927199S
+2025-09-08 16:22:58 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations JPA Command Tests ----------------
+
+2025-09-08 16:22:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-08 16:22:58 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-08 16:22:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-08 16:23:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 58c1474e-342d-43ce-b72b-70805da9d51e initialized
+2025-09-08 16:23:02 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-08 16:23:03 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@af57949
+2025-09-08 16:23:03 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-08 16:23:03 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-08 16:23:03 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-08 16:23:03 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-08 16:23:03 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-08 16:23:03 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08 16:23:03 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-08 16:23:04 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08 16:23:04 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: 
+
+================ Load Simple Annotations Test ================
+
+2025-09-08 16:23:04 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:23:04 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:23:05 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Execution result:
+'true'
+2025-09-08 16:23:05 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Displaying records:
+'[WorkItem{id=WorkItem-82a42217-1a22-4153-b96d-9db17588dbc1, itemName=MyTestTask, itemType=Single, itemState=ToDo, lockId=null, lockDate=0, doneDate=0, taskCount=1, taskDone=0, workload=Workload{workloadId=Workload-a7d3518b-6640-4f54-a2f2-8f592ad34ee1, workload={MyTestTask=ItemTask{itemTaskId=ItemTask-310d61d7-0933-48f5-8d99-e8582c4bd658, taskName=MyTestTask, taskState=Pending, taskLog=TaskLogging{taskLogId=TaskLog-674afcbf-8eda-4443-bf0c-ada676306a83, procId=0, procLog=ProcessLog{procLogId=ProcessLog-70d366d4-6aa3-41c6-afce-2bd0713d0c6c, stdout=[Ljava.lang.String;@70385eb1, stderr=[Ljava.lang.String;@70385eb1}, startTime=0, endTime=0, threadName=NA, cpuDuration=0}, task=ping google.com, workItemId=WorkItem-82a42217-1a22-4153-b96d-9db17588dbc1}}, workloadType=Single}, stepName=Step-97e3c228-8d7f-42a4-bc35-6f00a979edaa, stepId=null, anno=null}]'
+2025-09-08 16:23:05 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Applying custom annotations to record:	'WorkItem-82a42217-1a22-4153-b96d-9db17588dbc1'
+2025-09-08 16:25:43 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 16:25:43 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 16:25:43 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 16:25:44 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 16:25:44 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-08 16:25:44 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-08 16:25:44 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-08 16:25:44 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-08 16:25:44 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 92ff7c5eeb2062f83182ab4ca1b3c7779754ae7eb77105d252e9b12a312c2698
+2025-09-08 16:25:45 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.2190713S
+2025-09-08 16:25:45 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-08 16:25:45 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-08 16:25:45 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-08 16:25:45 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-08 16:25:45 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 97c92ce7b254950b3d2f37ab3d833e2235c8518b0e119ab3f1ea0bf48e357b9c
+2025-09-08 16:25:54 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT8.437193S
+2025-09-08 16:25:54 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations JPA Command Tests ----------------
+
+2025-09-08 16:25:54 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-08 16:25:54 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-08 16:25:54 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-08 16:25:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 05213b2f-c9dd-41ce-b8f9-adb57c8880f8 initialized
+2025-09-08 16:25:59 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-08 16:25:59 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@430f0c63
+2025-09-08 16:25:59 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-08 16:25:59 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-08 16:26:00 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-08 16:26:00 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-08 16:26:00 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-08 16:26:00 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08 16:26:00 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-08 16:26:01 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08 16:26:01 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: 
+
+================ Load Simple Annotations Test ================
+
+2025-09-08 16:26:01 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:26:01 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:26:02 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Execution result:
+'true'
+2025-09-08 16:27:53 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 16:27:53 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 16:27:53 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 16:27:53 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 16:27:53 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-08 16:27:53 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-08 16:27:53 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-08 16:27:53 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-08 16:27:54 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: b2401a1d242a6707ef070b8a115adb72b066c5fd3e1a3d145104a5dfcb023632
+2025-09-08 16:27:54 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.1670259S
+2025-09-08 16:27:54 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-08 16:27:54 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-08 16:27:54 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-08 16:27:54 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-08 16:27:54 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: aed666bd3b00b9409c3465f87b0cfe984dc550274c392ec73a6d2e8caf985fe6
+2025-09-08 16:28:04 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT9.1124099S
+2025-09-08 16:28:04 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations JPA Command Tests ----------------
+
+2025-09-08 16:28:04 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-08 16:28:04 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-08 16:28:04 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-08 16:28:11 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f1c5b82e-8147-4daf-ae32-5decbcbf9b71 initialized
+2025-09-08 16:28:11 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-08 16:28:11 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1add3e03
+2025-09-08 16:28:11 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-08 16:28:11 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-08 16:28:11 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-08 16:28:12 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-08 16:28:12 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-08 16:28:12 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-08 16:28:12 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-08 16:28:14 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-08 16:28:14 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: 
+
+================ Load Simple Annotations Test ================
+
+2025-09-08 16:28:14 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:28:14 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:28:15 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Execution result:
+'true'
+2025-09-08 16:28:15 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Applying custom annotations to record:	'WorkItem-c9787278-6b6e-4e9d-87b5-40cfba4d4cf5'
+2025-09-08 16:28:15 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: Displaying custom annotations:
+'{
+    "Annotations": {
+        "Pilot Label": "RunsOnInstanceWithThisArg",
+        "Internal Id": "Some Internal Identifier"
+    }
+}'
+2025-09-08 16:28:15 INFO  [ Test worker -> org.tasktide.core.services.PilotLabelAnnotationJPATests.canLoadWithSimpleAnnotation ]: 
+
+================ Can Load Without Annotations Test ================
+
+2025-09-08 16:40:42 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-08 16:40:42 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-08 16:40:42 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-08 16:40:42 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-08 16:40:42 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-08 16:40:42 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-08 16:40:42 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-08 16:40:42 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-08 16:40:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 9ede5cebcb243655e7e56cb1ec1c21040c099b2b5a87c00994e5375394a33605
+2025-09-08 16:40:44 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.4116278S
+2025-09-08 16:40:44 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-08 16:40:44 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-08 16:40:44 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-08 16:40:44 INFO  [ Test worker -> org.testcontainers.images.RemoteDockerImage.resolve ]: Pulling docker image: mongo:latest. Please be patient; this may take some time but only needs to be done once.
+2025-09-08 16:40:45 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onStart ]: Starting to pull image
+2025-09-08 16:40:45 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  0 pending,  0 downloaded,  0 extracted, (0 bytes/0 bytes)
+2025-09-08 16:40:46 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  7 pending,  1 downloaded,  0 extracted, (0 bytes/? MB)
+2025-09-08 16:40:46 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  6 pending,  2 downloaded,  0 extracted, (0 bytes/? MB)
+2025-09-08 16:40:46 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  5 pending,  3 downloaded,  0 extracted, (0 bytes/? MB)
+2025-09-08 16:40:46 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  4 pending,  4 downloaded,  0 extracted, (0 bytes/? MB)
+2025-09-08 16:40:46 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  3 pending,  5 downloaded,  0 extracted, (0 bytes/? MB)
+2025-09-08 16:40:46 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  2 pending,  6 downloaded,  0 extracted, (0 bytes/? MB)
+2025-09-08 16:40:49 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  1 pending,  7 downloaded,  0 extracted, (29 MB/? MB)
+2025-09-08 16:40:49 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  1 pending,  7 downloaded,  1 extracted, (31 MB/? MB)
+2025-09-08 16:40:49 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  1 pending,  7 downloaded,  2 extracted, (32 MB/? MB)
+2025-09-08 16:40:49 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  1 pending,  7 downloaded,  3 extracted, (32 MB/? MB)
+2025-09-08 16:40:50 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  1 pending,  7 downloaded,  4 extracted, (32 MB/? MB)
+2025-09-08 16:40:50 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  1 pending,  7 downloaded,  5 extracted, (32 MB/? MB)
+2025-09-08 16:40:50 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  1 pending,  7 downloaded,  6 extracted, (32 MB/? MB)
+2025-09-08 16:44:09 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  0 pending,  8 downloaded,  6 extracted, (281 MB/282 MB)
+2025-09-08 16:44:11 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  0 pending,  8 downloaded,  7 extracted, (281 MB/282 MB)
+2025-09-08 16:44:12 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onNext ]: Pulling image layers:  0 pending,  8 downloaded,  8 extracted, (281 MB/282 MB)
+2025-09-08 16:44:12 INFO  [ docker-java-stream--424202509 -> org.testcontainers.images.LoggedPullImageResultCallback.onComplete ]: Pull complete. 8 layers, pulled in 206s (downloaded 281 MB at 1 MB/s)
+2025-09-08 16:44:12 INFO  [ Test worker -> org.testcontainers.images.RemoteDockerImage.resolve ]: Image mongo:latest pull took PT3M27.8780333S
+2025-09-08 16:44:12 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mongo:latest
+2025-09-08 16:44:12 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mongo:latest is starting: 9932cc66d9a22a42d3c0d6c633bfa45d40815396b20a32b9bc394cda02f74a16
+2025-09-08 16:44:13 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mongo:latest started in PT1.3032155S
+2025-09-08 16:44:13 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationTemplateTests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations Template Tests ----------------
+
+2025-09-08 16:44:13 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-08 16:44:13 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-08 16:44:13 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-08 16:44:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a8142366-8b48-4d5c-b845-0df861c12039 initialized
+2025-09-08 16:44:18 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationTemplateTests.canLoadWithSimpleAnnotation ]: 
+
+================ Can Load Custom PilotLabels into Template Test ================
+
+2025-09-08 16:44:18 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationTemplateTests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:44:18 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:44:19 INFO  [ Test worker -> com.mongodb.internal.diagnostics.logging.SLF4JLogger.info ]: MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync", "version": "5.2.1"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.16+12-LTS-247"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@792b9dd3, com.mongodb.Jep395RecordCodecProvider@cbc3bf3, com.mongodb.KotlinCodecProvider@31f9f9b3]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2025-09-08 16:44:19 INFO  [ cluster-ClusterId{value='68bef9d3e5bff0082b35345b', description='null'}-localhost:27017 -> com.mongodb.internal.diagnostics.logging.SLF4JLogger.info ]: Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=41223200, minRoundTripTimeNanos=0}
+2025-09-08 16:44:19 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationTemplateTests.canLoadWithSimpleAnnotation ]: Execution result:
+'true'
+2025-09-08 16:44:19 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationTemplateTests.canLoadWithSimpleAnnotation ]: Applying custom annotations to record:	'WorkItem-bac96dfa-cc1a-4cdb-a8bc-8c299407180e'
+2025-09-08 16:44:19 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationTemplateTests.canLoadWithSimpleAnnotation ]: Displaying custom annotations:
+'{
+    "Annotations": {
+        "Pilot Label": "RunsOnInstanceWithThisArg",
+        "Internal Id": "Some Internal Identifier"
+    }
+}'
+2025-09-08 16:44:19 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationTemplateTests.tearDownClass ]: 
+
+---------------- Initiating Pilot Label Annotations Template Tests ----------------
+
+2025-09-08 16:44:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a8142366-8b48-4d5c-b845-0df861c12039 shut down
+2025-09-08 16:44:19 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationTemplateTests.tearDownClass ]: CDI container shut down
+2025-09-08 16:44:19 INFO  [ cluster-ClusterId{value='68bef9d3e5bff0082b35345b', description='null'}-localhost:27017 -> com.mongodb.internal.diagnostics.logging.SLF4JLogger.info ]: Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketReadException: Prematurely reached end of stream
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:184) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:829) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:517) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:469) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.lookupServerDescription(DefaultServerMonitor.java:249) [mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.run(DefaultServerMonitor.java:176) [mongodb-driver-core-5.2.1.jar:?]
+2025-09-08 16:44:19 INFO  [ cluster-ClusterId{value='68bef9d3e5bff0082b35345b', description='null'}-localhost:27017 -> com.mongodb.internal.diagnostics.logging.SLF4JLogger.info ]: Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketReadException: Exception receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:814) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:862) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:517) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceiveInternal(InternalStreamConnection.java:448) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.lambda$sendAndReceive$0(InternalStreamConnection.java:375) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:378) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:100) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:49) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.initializeConnectionDescription(InternalStreamConnectionInitializer.java:144) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnectionInitializer.startHandshake(InternalStreamConnectionInitializer.java:79) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:235) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.lookupServerDescription(DefaultServerMonitor.java:219) [mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.run(DefaultServerMonitor.java:176) [mongodb-driver-core-5.2.1.jar:?]
+Caused by: java.net.SocketException: Connection reset
+	at sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:328) ~[?:?]
+	at sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355) ~[?:?]
+	at sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808) ~[?:?]
+	at java.net.Socket$SocketInputStream.read(Socket.java:966) ~[?:?]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:182) ~[mongodb-driver-core-5.2.1.jar:?]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:829) ~[mongodb-driver-core-5.2.1.jar:?]
+	... 11 more
+2025-09-08 16:57:23 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationItemStoreTests.setUpClass ]: 
+
+---------------- Initiating Pilot Label Annotations ItemStore Tests ----------------
+
+2025-09-08 16:57:23 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqlitePilotLabel/WORKITEM'
+2025-09-08 16:57:23 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqlitePilotLabel/STEP'
+2025-09-08 16:57:23 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqlitePilotLabel/WORKFLOW'
+2025-09-08 16:57:23 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationItemStoreTests.canLoadWithSimpleAnnotation ]: 
+
+================ Can Load Custom PilotLabels into ItemStore Test ================
+
+2025-09-08 16:57:24 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationItemStoreTests.canLoadWithSimpleAnnotation ]: Executing command:
+'{
+    "Command Spec": {
+        "Options": {
+            "Step Name": "Arbitrary"
+        },
+        "Query String": "{\"Task Name\": \"MyTestTask\", \"Task Script\": \"ping google.com\"}"
+    },
+    "Manager Action": "ADD",
+    "Manager Target": "WORKITEM"
+}'
+2025-09-08 16:57:24 DEBUG [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkItem ]: Creating json object from:	'{"Task Name": "MyTestTask", "Task Script": "ping google.com"}'
+2025-09-08 16:57:24 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationItemStoreTests.canLoadWithSimpleAnnotation ]: Execution result:
+'true'
+2025-09-08 16:57:24 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationItemStoreTests.canLoadWithSimpleAnnotation ]: Applying custom annotations to record:	'WorkItem-951c5ee8-554a-4ec0-9f1c-cfc304f9133f'
+2025-09-08 16:57:24 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationItemStoreTests.canLoadWithSimpleAnnotation ]: Displaying custom annotations:
+'{
+    "Annotations": {
+        "Internal Id": "Some Internal Identifier",
+        "Pilot Label": "RunsOnInstanceWithThisArg"
+    }
+}'
+2025-09-08 16:57:24 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationItemStoreTests.canLoadWithSimpleAnnotation ]: 
+
+================ Can Load Custom PilotLabels into ItemStore Test ================
+
+2025-09-08 16:57:24 INFO  [ Test worker -> org.tasktide.core.model.workitem.PilotLabelAnnotationItemStoreTests.tearDownClass ]: 
+
+---------------- Initiating Pilot Label Annotations ItemStore Tests ----------------
+
