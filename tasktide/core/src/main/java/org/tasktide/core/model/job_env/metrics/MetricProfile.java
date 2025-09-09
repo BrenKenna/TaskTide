@@ -60,19 +60,19 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
     @JsonbProperty("Mean Total")
     @jakarta.nosql.Column("MeanTotal")
     @jakarta.persistence.Column(name = "MeanTotal")
-    private double meanTotal;
+    private float meanTotal;
     
     // Mean available
     @JsonbProperty("Mean Available")
     @jakarta.nosql.Column("MeanAvailable")
     @jakarta.persistence.Column(name = "MeanAvailable")
-    private double meanAvailable;
+    private float meanAvailable;
     
     // Mean used
     @JsonbProperty("Mean Used")
     @jakarta.nosql.Column("MeanUsed")
     @jakarta.persistence.Column(name = "MeanUsed")
-    private double meanUsed;
+    private float meanUsed;
     
     // Dataset supporting mean metrics
     @JsonbProperty("Profile Data")
@@ -127,9 +127,9 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
         @JsonbProperty("Label") String label,
         @JsonbProperty("Timestamp") long timestamp,
         @JsonbProperty("Units") String units,
-        @JsonbProperty("Mean Total") double meanTotal,
-        @JsonbProperty("Mean Available") double meanAvailable,
-        @JsonbProperty("Mean Used") double meanUsed,
+        @JsonbProperty("Mean Total") float meanTotal,
+        @JsonbProperty("Mean Available") float meanAvailable,
+        @JsonbProperty("Mean Used") float meanUsed,
         @JsonbProperty("Metric Profile") ProfileData profile,
         @JsonbProperty("Metric Type") MetricType type,
         @JsonbProperty("Job Environment Id") String jobEnvId
@@ -281,9 +281,9 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
     /**
      * Get mean total
      * 
-     * @return double
+     * @return float
      */
-    public double getMeanTotal() {
+    public float getMeanTotal() {
         return meanTotal;
     }
 
@@ -293,7 +293,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
      * 
      * @param meanTotal 
      */
-    public void setMeanTotal(double meanTotal) {
+    public void setMeanTotal(float meanTotal) {
         this.meanTotal = meanTotal;
     }
     
@@ -301,9 +301,9 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
     /**
      * Get mean available
      * 
-     * @return double
+     * @return float
      */
-    public double getMeanAvailable() {
+    public float getMeanAvailable() {
         return meanAvailable;
     }
 
@@ -313,7 +313,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
      * 
      * @param meanAvailable 
      */
-    public void setMeanAvailable(double meanAvailable) {
+    public void setMeanAvailable(float meanAvailable) {
         this.meanAvailable = meanAvailable;
     }
 
@@ -321,9 +321,9 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
     /**
      * Get mean used
      * 
-     * @return double
+     * @return float
      */
-    public double getMeanUsed() {
+    public float getMeanUsed() {
         return meanUsed;
     }
 
@@ -333,7 +333,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
      * 
      * @param meanUsed 
      */
-    public void setMeanUsed(double meanUsed) {
+    public void setMeanUsed(float meanUsed) {
         this.meanUsed = meanUsed;
     }
     
@@ -357,6 +357,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
         this.profile = profile;
     }
 
+    
     /**
      * Get {@link MetricType}
      * 
