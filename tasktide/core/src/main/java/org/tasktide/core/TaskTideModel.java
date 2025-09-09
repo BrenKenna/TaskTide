@@ -27,6 +27,14 @@ public interface TaskTideModel<T extends TaskTideModel<T>> {
     
     
     /**
+     * Represent model as JsonDoc
+     * 
+     * @return String
+     */
+    public String toJsonDoc();
+    
+    
+    /**
      * Get Id from model
      * 
      * @return String

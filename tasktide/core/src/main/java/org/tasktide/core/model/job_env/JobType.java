@@ -15,14 +15,12 @@
  */
 package org.tasktide.core.model.job_env;
 
-
 import java.net.UnknownHostException;
 
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.tasktide.core.model.task.JobEnvironment;
 import org.tasktide.core.supporting.Utils;
 
 
@@ -64,7 +62,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     },
     
@@ -97,7 +95,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     },
 
@@ -131,7 +129,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     },
     
@@ -165,7 +163,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     },
     
@@ -199,7 +197,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     },
     
@@ -232,7 +230,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     },
     
@@ -265,7 +263,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     },
     
@@ -303,7 +301,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     },
     
@@ -336,7 +334,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
         }
     };
     

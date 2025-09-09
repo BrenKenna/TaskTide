@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.model.task;
+package org.tasktide.core.model.job_env;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -22,11 +22,9 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Entity;
-import jakarta.nosql.Column;
-import jakarta.nosql.Id;
+import java.lang.reflect.Field;
 
-import org.tasktide.core.model.job_env.JobType;
+import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.workitem.WorkItem;
 
 
@@ -39,37 +37,58 @@ import org.tasktide.core.model.workitem.WorkItem;
  *
  * @author Brendan Kenna
  */
-@Entity
-public class JobEnvironment {
+@jakarta.nosql.Entity("JobEnvironment")
+@jakarta.persistence.Entity
+@jakarta.persistence.Table(name = "JobEnvironment")
+public class JobEnvironment implements TaskTideModel<JobEnvironment> {
     
-    // Attributes
-    @Id
+    // Environment identifier
+    @jakarta.nosql.Id
+    @jakarta.persistence.Id
     @JsonbProperty("Id")
     private String id;
     
-    @Column("Job Type")
+    // Type of Job - SLURM, gLITE etc
+    @jakarta.nosql.Column("JobType")
+    @jakarta.persistence.Column(name = "JobType")
     @JsonbProperty("Job Type")
     private JobType type;
     
-    @Column("Job Id")
+    // Job Id under JobType
+    @jakarta.nosql.Column("JobId")
+    @jakarta.persistence.Column(name = "JobId")
     @JsonbProperty("Job Id")
     private String jobId;
     
-    @Column("Array Index")
+    // Index in array if present
+    @jakarta.nosql.Column("ArrayIndex")
+    @jakarta.persistence.Column(name = "ArrayIndex")
     @JsonbProperty("Array Index")
     private int arrayInd;
 
-    @Column("Hostname")
+    // Host job was running on
+    @jakarta.nosql.Column("Hostname")
+    @jakarta.persistence.Column(name = "Hostname")
     @JsonbProperty("Hostname")
     private String hostname;
     
-    @Column("Host OS")
+    // Operating system of host
+    @jakarta.nosql.Column("HostOs")
+    @jakarta.persistence.Column(name = "HostOs")
     @JsonbProperty("Host OS")
     private String hostOS;
     
-    @Column("Jave Version")
+    // Version of Java running on host
+    @jakarta.nosql.Column("JavaVersion")
+    @jakarta.persistence.Column(name = "JavaVersion")
     @JsonbProperty("Java Version")
     private String javaVersion;
+    
+    // State of the job
+    @jakarta.nosql.Column("JobState")
+    @jakarta.persistence.Column(name = "JobState")
+    @JsonbProperty("Job State")
+    private JobState state;
     
     
     /**
@@ -104,8 +123,9 @@ public class JobEnvironment {
      * @param hostOS
      * @param javaVersion
      * @param arrayInd 
+     * @param jobState
      */
-    public JobEnvironment(String id, JobType type, String jobId, String hostname, String hostOS, String javaVersion, int arrayInd) {
+    public JobEnvironment(String id, JobType type, String jobId, String hostname, String hostOS, String javaVersion, int arrayInd, JobState jobState) {
         this.id = id;
         this.type = type;
         this.jobId = jobId;
@@ -127,6 +147,7 @@ public class JobEnvironment {
      * @param hostname
      * @param hostOS
      * @param javaVersion
+     * @param jobState
      * @return {@link JobEnvironment}
      */
     @JsonbCreator
@@ -137,7 +158,8 @@ public class JobEnvironment {
         @JsonbProperty("Array Index") int arrayInd,
         @JsonbProperty("Hostname") String hostname,
         @JsonbProperty("Host OS") String hostOS,
-        @JsonbProperty("Java Version") String javaVersion
+        @JsonbProperty("Java Version") String javaVersion,
+        @JsonbProperty("Job State") JobState jobState
     ) {
         
         // Define basic if hostname etc is not defined
@@ -147,7 +169,7 @@ public class JobEnvironment {
         
         // Otherwise use
         else {
-            return new JobEnvironment(id, type, jobId, hostname, hostOS, javaVersion, arrayInd);
+            return new JobEnvironment(id, type, jobId, hostname, hostOS, javaVersion, arrayInd, jobState);
         }
     }
     
@@ -247,6 +269,7 @@ public class JobEnvironment {
      * 
      * @return String
      */
+    @Override
     public String getId() {
         return this.id;
     }
@@ -293,25 +316,67 @@ public class JobEnvironment {
     
     
     /**
-     * Represent as json string
+     * Represent as JSON-B string
      * 
-     * @return string
+     * @return String
      */
-    public String toJsonString() {
+    @Override
+    public String toJson() {
         Jsonb json = JsonbBuilder.create();
         return json.toJson(this);
     }
     
     
     /**
-     * Represent as json document
+     * Represent as JSON-B Document
      * 
      * @return String
      */
+    @Override
     public String toJsonDoc() {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);
+    }
+    
+
+    /**
+     * Gets current {@link JobState}
+     * 
+     * @return String 
+     */
+    @Override
+    public String getState() {
+        return this.state.name();
+    }
+
+    
+    /**
+     * Sets a new {@link JobState}
+     * @param state 
+     */
+    public void setState(JobState state) {
+        this.state = state;
+    }
+    
+    
+    /**
+     * Returns the {@link JobType}
+     * 
+     * @return String
+     */
+    @Override
+    public String getCollection() {
+        return this.type.name();
+    }
+
+    
+    /**
+     * Not implemented
+     */
+    @Override
+    public void resetModel() {
+        
     }
 
     
@@ -322,14 +387,38 @@ public class JobEnvironment {
      */
     @Override
     public String toString() {
-        return "JobIdentifier{" +
+        return "JobEnvironment{" +
             "id=" + id +
-            "type=" + type +
+            ", type=" + type +
             ", jobId=" + jobId +
             ", arrayInd=" + arrayInd +
             ", hostname=" + hostname +
             ", hostOS=" + hostOS +
             ", javaVersion=" + javaVersion +
         '}';
+    }
+    
+    
+    /**
+     * Fetches value for queried field
+     * 
+     * @param field
+     * @return Object
+     */
+    @Override
+    public Object getValueFromField(String field) {
+        try {
+            // Use reflection to get the declared field from this class
+            Field declaredField = this.getClass().getDeclaredField(field);
+            declaredField.setAccessible(true); // In case the field is private
+            Object fieldValue = declaredField.get(this);
+
+            return fieldValue;
+
+        }
+        catch (Exception ex) {
+            // Optional: Log or rethrow if needed
+            return null;
+        }
     }
 }

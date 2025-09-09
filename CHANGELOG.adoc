@@ -61,7 +61,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
 - [/] Docker Compose.
 - [X] Custom annotations on TaskTideModels
 ...
-        - [X] Pilot Label
+        - [X] Pilot Label, NB LinkedHashMap not usable with JNoSQL-Templates
         - [X] Any kind of internal notes
         - [] Unit test coverage for Step
         - [] Unit test coverage for Workflow

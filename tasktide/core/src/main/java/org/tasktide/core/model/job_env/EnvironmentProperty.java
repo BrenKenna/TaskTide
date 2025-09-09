@@ -20,7 +20,6 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import org.tasktide.core.model.task.JobEnvironment;
 
 
 /**
