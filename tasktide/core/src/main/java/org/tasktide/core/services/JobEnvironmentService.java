@@ -63,7 +63,7 @@ public class JobEnvironmentService implements TaskTideMapper<JobEnvironment, Met
      */
     @Override
     public List<MetricProfile> getThroughLink(TaskTideService<MetricProfile> mappingServ, JobEnvironment model) {
-        return null;
+        return mappingServ.viewByField("jobEnvId", model.getId());
     }
 
     
