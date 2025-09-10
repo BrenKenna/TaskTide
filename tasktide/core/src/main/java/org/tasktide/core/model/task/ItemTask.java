@@ -29,6 +29,7 @@ import java.lang.reflect.Field;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.BuilderUtility;
+import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -67,6 +68,12 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     @Column
     @JsonbProperty("Work Item Id")
     private String workItemId;
+    
+    
+    // Custom annotations
+    @Column("CustomAnnotation")
+    @JsonbProperty("Custom Annotation")
+    private CustomAnnotation anno;
     
     
     /**
@@ -121,6 +128,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      * @param taskState
      * @param taskLog
      * @param workItemId
+     * @param anno
      */    
     @JsonbCreator
     public ItemTask(
@@ -129,7 +137,8 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         @JsonbProperty("Task") String task,
         @JsonbProperty("Task State") TaskState taskState,
         @JsonbProperty("Task Log") TaskLogging taskLog,
-        @JsonbProperty("Work Item Id") String workItemId
+        @JsonbProperty("Work Item Id") String workItemId,
+        @JsonbProperty("Custom Annotation") CustomAnnotation anno
     ) {
         this.itemTaskId = itemTaskId;
         this.taskName = taskName;
@@ -137,8 +146,31 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskState = taskState;
         this.taskLog = taskLog;
         this.workItemId = workItemId;
+        this.anno = anno;
     }
 
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set provided {@link CustomAnnotation}
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+    
     
     /**
      * Set ItemTask to pending state

@@ -4,7 +4,6 @@
  */
 package org.tasktide.core.model.workitem;
 
-import org.tasktide.core.model.CustomAnnotation;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -20,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.TaskTideModel;
@@ -380,7 +380,8 @@ public class WorkItem implements TaskTideModel<WorkItem> {
      * 
      * @return {@link CustomAnnotation}
      */
-    public CustomAnnotation getAnntations() {
+    @Override
+    public CustomAnnotation getAnnotations() {
         return this.anno;
     }
     
@@ -390,6 +391,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
      * 
      * @param anno 
      */
+    @Override
     public void setAnnotations(CustomAnnotation anno) {
         this.anno = anno;
     }

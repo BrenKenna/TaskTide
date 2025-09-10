@@ -4,6 +4,7 @@
  */
 package org.tasktide.core;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
@@ -71,4 +72,20 @@ public interface TaskTideModel<T extends TaskTideModel<T>> {
      * Reset model state
      */
     public void resetModel();
+    
+    
+    /**
+     * Get {@link CustomAnnotation} property
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    public CustomAnnotation getAnnotations();
+    
+    
+    /**
+     * Sets {@link CustomAnnotation} property
+     * 
+     * @param anno 
+     */
+    public void setAnnotations(CustomAnnotation anno);
 }

@@ -153,7 +153,7 @@ public class ModelTests {
         logger.info("\n\n================ Task Log Builder Test ================\n");
         
         // Construct process log
-        logger.info("\n\nAttempting to build Task Log" + "\n");
+        logger.info("\n\nAttempting to build Task Log\n");
         TaskLogging taskLog = TestCaseBuilderUtility.makeTestTaskLog();
         logger.info("\n\nDisplaying Built Task Log string:\n" + taskLog.toString() + "\n");
         logger.info("\n\nDisplaying Built Task Log json:\n" + taskLog.toJsonDoc() + "\n");
@@ -176,18 +176,17 @@ public class ModelTests {
         logger.info("\n\n================ Item Task Test ================\n");
         
         // Build dependant objects
-        logger.info("\n\nAttempting to build Item Task" + "\n");
+        logger.info("\n\nAttempting to build Item Task\n");
         ProcessLog procLog = TestCaseBuilderUtility.makeTestProcessLog();
         TaskLogging taskLog = TestCaseBuilderUtility.makeTestTaskLog();
         
         // Build item task
         ItemTask itemTask = new ItemTaskBuilder()
-                                .id("gamma")
-                                .taskName("My Task Name")
-                                .task("My Task")
-                                .taskState(TaskState.COMPLETE)
-                                .taskLog(taskLog)
-                                .build();
+            .withId("gamma")
+            .withTaskName("My Task Name")
+            .withTask("My Task")
+            .withTaskLog(taskLog)
+        .build();
         
         // Display item task
         logger.info("\n\nDisplaying Built Item Task string:\n" + itemTask.toString() + "\n");
@@ -219,18 +218,18 @@ public class ModelTests {
         logger.info("\n\n================ Workload Test ================\n");
         
         // Build dependant objects
-        logger.info("\n\nAttempting to build ItemTasks" + "\n");
+        logger.info("\n\nAttempting to build ItemTasks\n");
         ItemTask itemTask = TestCaseBuilderUtility.makeTestItemTask();
         ItemTask itemTaskB = TestCaseBuilderUtility.makeTestItemTask();
         List<ItemTask> itemTasks = new ArrayList<>();
         itemTasks.add(itemTask); itemTasks.add(itemTaskB);
         
         // Build workload
-        logger.info("\n\nAttempting to build Workload" + "\n");
+        logger.info("\n\nAttempting to build Workload\n");
         Workload workload = new WorkloadBuilder()
-                                .id("MyWorklaod")
-                                .workload(itemTasks)
-                                .build();
+            .withId("MyWorklaod")
+            .withWorkload(itemTasks)
+        .build();
         
         // Display item task
         logger.info("\n\nDisplaying Built Workload string:\n" + workload.toString() + "\n");
@@ -259,19 +258,18 @@ public class ModelTests {
         boolean assertionState = true;
         logger.info("\n\n================ Work Item Test ================\n");
         
-        
         // Build workload
-        logger.info("\n\nAttempting to build Work Item" + "\n");
+        logger.info("\n\nAttempting to build Work Item\n");
         WorkItem workItem = new WorkItemBuilder()
-                                .id("My WorkItem")
-                                .itemName("My WorkItem Name")
-                                .workload(TestCaseBuilderUtility.makeTestWorkload())
-                                .lockId("Some random hexadecimal string")
-                                .lockDate(0L)
-                                .doneDate(0L)
-                                .taskCount(2)
-                                .taskDone(0)
-                                .build();
+            .withId("My WorkItem")
+            .withItemName("My WorkItem Name")
+            .withWorkload(TestCaseBuilderUtility.makeTestWorkload())
+            .withLockId("Some random hexadecimal string")
+            .withLockDate(0L)
+            .withDoneDate(0L)
+            .withTaskCount(2)
+            .withTaskDone(0)
+        .build();
         
         // Display item task
         logger.info("\n\nDisplaying Built Work Item string:\n" + workItem.toString() + "\n");

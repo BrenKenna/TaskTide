@@ -25,6 +25,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import java.lang.reflect.Field;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.workitem.WorkItem;
 
 
@@ -90,6 +91,12 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
     @JsonbProperty("Job State")
     private JobState state;
     
+    // Custom annotations
+    @jakarta.nosql.Column("CustomAnnotation")
+    @jakarta.persistence.Column(name = "CustomAnnotation")
+    @JsonbProperty("Custom Annotation")
+    private CustomAnnotation anno;
+    
     
     /**
      * For Jakarta compatibility
@@ -110,6 +117,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
         this.type = type;
         this.jobId = jobId;
         this.arrayInd = arrayInd;
+        this.anno = new CustomAnnotation();
     }
 
     
@@ -125,7 +133,16 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
      * @param arrayInd 
      * @param jobState
      */
-    public JobEnvironment(String id, JobType type, String jobId, String hostname, String hostOS, String javaVersion, int arrayInd, JobState jobState) {
+    public JobEnvironment(
+        String id,
+        JobType type,
+        String jobId,
+        String hostname,
+        String hostOS,
+        String javaVersion,
+        int arrayInd,
+        JobState jobState
+    ) {
         this.id = id;
         this.type = type;
         this.jobId = jobId;
@@ -133,6 +150,42 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
         this.hostOS = hostOS;
         this.javaVersion = javaVersion;
         this.arrayInd = arrayInd;
+        this.anno = new CustomAnnotation();
+    }
+    
+    
+    /**
+     * Construct with all arguments
+     * 
+     * @param id
+     * @param type
+     * @param jobId
+     * @param hostname
+     * @param hostOS
+     * @param javaVersion
+     * @param arrayInd 
+     * @param jobState
+     * @param anno
+     */
+    public JobEnvironment(
+        String id,
+        JobType type,
+        String jobId,
+        String hostname,
+        String hostOS,
+        String javaVersion,
+        int arrayInd,
+        JobState jobState,
+        CustomAnnotation anno
+    ) {
+        this.id = id;
+        this.type = type;
+        this.jobId = jobId;
+        this.hostname = hostname;
+        this.hostOS = hostOS;
+        this.javaVersion = javaVersion;
+        this.arrayInd = arrayInd;
+        this.anno = anno;
     }
     
     
@@ -148,6 +201,8 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
      * @param hostOS
      * @param javaVersion
      * @param jobState
+     * @param anno
+     * 
      * @return {@link JobEnvironment}
      */
     @JsonbCreator
@@ -159,7 +214,8 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
         @JsonbProperty("Hostname") String hostname,
         @JsonbProperty("Host OS") String hostOS,
         @JsonbProperty("Java Version") String javaVersion,
-        @JsonbProperty("Job State") JobState jobState
+        @JsonbProperty("Job State") JobState jobState,
+        @JsonbProperty("Custom Annotation") CustomAnnotation anno
     ) {
         
         // Define basic if hostname etc is not defined
@@ -169,7 +225,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
         
         // Otherwise use
         else {
-            return new JobEnvironment(id, type, jobId, hostname, hostOS, javaVersion, arrayInd, jobState);
+            return new JobEnvironment(id, type, jobId, hostname, hostOS, javaVersion, arrayInd, jobState, anno);
         }
     }
     
@@ -312,6 +368,28 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
      */
     public void setArrayInd(int arrayInd) {
         this.arrayInd = arrayInd;
+    }
+    
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set annotation provided
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
     }
     
     

@@ -62,7 +62,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     },
     
@@ -95,7 +95,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     },
 
@@ -129,7 +129,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     },
     
@@ -163,7 +163,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     },
     
@@ -197,7 +197,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     },
     
@@ -230,7 +230,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     },
     
@@ -263,7 +263,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     },
     
@@ -301,7 +301,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     },
     
@@ -334,7 +334,7 @@ public enum JobType {
         @Override
         public JobEnvironment makeJobEnvironment() {
             String id = Utils.generateSalt();
-            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING);
+            return JobEnvironment.makeJobEnvironment(id, this, getJobId(), getArrayIndex(), null, null, null, JobState.RUNNING, null);
         }
     };
     

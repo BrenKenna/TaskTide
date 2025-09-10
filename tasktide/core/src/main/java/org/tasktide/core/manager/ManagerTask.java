@@ -27,6 +27,7 @@ import java.util.Map;
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.TaskLoggingBuilder;
+
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
@@ -103,27 +104,27 @@ public class ManagerTask {
         
         String[] emptyArr = {""};
         ProcessLog procLog = this.procLogBuilder
-            .id("ProcessLog-" + utils.generateSalt())
-            .stderr(emptyArr)
-            .stdout(emptyArr)
+            .withId("ProcessLog-" + utils.generateSalt())
+            .withStderr(emptyArr)
+            .withStdout(emptyArr)
         .build();
         TaskLogging taskLog = this.taskLogBuilder
-            .id("TaskLog-" + utils.generateSalt())
-            .processLog(procLog)
-            .endTime(0L)
-            .exitCode(-1)
-            .startTime(0L)
-            .procId(0L)
-            .cpuDuration(0L)
-            .threadName("NA")
+            .withId("TaskLog-" + utils.generateSalt())
+            .withProcessLog(procLog)
+            .withEndTime(0L)
+            .withExitCode(-1)
+            .withStartTime(0L)
+            .withProcId(0L)
+            .withCpuDuration(0L)
+            .withThreadName("NA")
         .build();
         
         return itemTaskBuilder
-            .id( "ItemTask-" + utils.generateSalt() )
-            .taskName(taskName)
-            .task(taskScript)
-            .taskState(TaskState.PENDING)
-            .taskLog(taskLog)
+            .withId( "ItemTask-" + utils.generateSalt() )
+            .withTaskName(taskName)
+            .withTask(taskScript)
+            .withTaskState(TaskState.PENDING)
+            .withTaskLog(taskLog)
         .build();
     }
     

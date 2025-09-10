@@ -45,7 +45,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * @param id
      * @return {@link TaskLoggingBuilder}
      */
-    public TaskLoggingBuilder id(String id) {
+    public TaskLoggingBuilder withId(String id) {
         this.id = id;
         return this;
     }
@@ -57,7 +57,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * @param procId
      * @return {@link TaskLoggingBuilder}
      */
-    public TaskLoggingBuilder procId(long procId) {
+    public TaskLoggingBuilder withProcId(long procId) {
         this.procId = procId;
         return this;
     }
@@ -69,7 +69,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * @param procLog
      * @return {@link TaskLoggingBuilder}
      */
-    public TaskLoggingBuilder processLog(ProcessLog procLog) {
+    public TaskLoggingBuilder withProcessLog(ProcessLog procLog) {
         this.procLog = procLog;
         return this;
     }
@@ -81,7 +81,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * @param startTime
      * @return {@link TaskLoggingBuilder}
      */
-    public TaskLoggingBuilder startTime(long startTime) {
+    public TaskLoggingBuilder withStartTime(long startTime) {
         this.startTime = startTime;
         return this;
     }
@@ -93,7 +93,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * @param endTime
      * @return {@link TaskLoggingBuilder}
      */
-    public TaskLoggingBuilder endTime(long endTime) {
+    public TaskLoggingBuilder withEndTime(long endTime) {
         this.endTime = endTime;
         return this;
     }
@@ -105,7 +105,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * @param threadName
      * @return {@link TaskLoggingBuilder}
      */
-    public TaskLoggingBuilder threadName(String threadName) {
+    public TaskLoggingBuilder withThreadName(String threadName) {
         this.threadName = threadName;
         return this;
     }
@@ -117,7 +117,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * @param cpuDuration
      * @return {@link TaskLoggingBuilder}
      */
-    public TaskLoggingBuilder cpuDuration(long cpuDuration) {
+    public TaskLoggingBuilder withCpuDuration(long cpuDuration) {
         this.cpuDuration = cpuDuration;
         return this;
     }
@@ -129,7 +129,7 @@ public class TaskLoggingBuilder extends ModelBuilder {
      * @param exitCode
      * @return {@link TaskLoggingBuilder}
      */
-    public TaskLoggingBuilder exitCode(int exitCode) {
+    public TaskLoggingBuilder withExitCode(int exitCode) {
         this.exitCode = exitCode;
         return this;
     }

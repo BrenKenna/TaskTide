@@ -18,9 +18,12 @@ package org.tasktide.core.model.collection;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
+
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
+
+import jakarta.nosql.Column;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
@@ -33,6 +36,7 @@ import java.util.ArrayList;
 import java.util.Map.Entry;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.state_summary.StateSummary;
 import org.tasktide.core.model.workitem.ItemState;
 
@@ -66,6 +70,12 @@ public class Workflow implements TaskTideModel<Workflow> {
     private final List<Step> stepList = new ArrayList<>();
     
     
+    // Custom annotations
+    @Column("CustomAnnotation")
+    @JsonbProperty("Custom Annotation")
+    private CustomAnnotation anno;
+    
+    
     /**
      * Null constructor
      */
@@ -79,17 +89,20 @@ public class Workflow implements TaskTideModel<Workflow> {
      * 
      * @param workflowId
      * @param workflowName
-     * @param workflowSteps 
+     * @param workflowSteps
+     * @param anno
      */
     @JsonbCreator
     public Workflow(
         @JsonbProperty("WorkflowId") String workflowId,
         @JsonbProperty("WorkflowName") String workflowName,
-        @JsonbProperty("WorkflowSteps") Map<String, Step> workflowSteps
+        @JsonbProperty("WorkflowSteps") Map<String, Step> workflowSteps,
+        @JsonbProperty("Custom Annotation") CustomAnnotation anno
     ) {
         this.workflowId = workflowId;
         this.workflowName = workflowName;
         this.workflowSteps = workflowSteps;
+        this.anno = anno;
     }
 
     
@@ -103,6 +116,28 @@ public class Workflow implements TaskTideModel<Workflow> {
         for ( Step elm : stepList ) {
             workflowSteps.put(elm.getStepName(), elm);
         }
+    }
+    
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set provided {@link CustomAnnotation}
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
     }
     
     

@@ -25,6 +25,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import java.lang.reflect.Field;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -88,6 +89,12 @@ public class MetricData implements TaskTideModel<MetricData> {
     @JsonbProperty("Metric Type")
     private MetricType metricType;
     
+    // Custom annotations
+    @jakarta.nosql.Column("CustomAnnotation")
+    @jakarta.persistence.Column(name = "CustomAnnotation")
+    @JsonbProperty("Custom Annotation")
+    private CustomAnnotation anno;
+    
     
     /**
      * Null constructor
@@ -105,7 +112,8 @@ public class MetricData implements TaskTideModel<MetricData> {
      * @param available
      * @param used
      * @param units
-     * @param metricType 
+     * @param metricType
+     * @param anno
      */
     @JsonbCreator
     public MetricData(
@@ -116,7 +124,8 @@ public class MetricData implements TaskTideModel<MetricData> {
         @JsonbProperty("Available") double available,
         @JsonbProperty("Used") double used,
         @JsonbProperty("Units") String units,
-        @JsonbProperty("Metric Type") MetricType metricType
+        @JsonbProperty("Metric Type") MetricType metricType,
+        @JsonbProperty("Custom Annotations") CustomAnnotation anno
     ) {
         this.id = id;
         this.label = label;
@@ -126,8 +135,31 @@ public class MetricData implements TaskTideModel<MetricData> {
         this.used = used;
         this.units = units;
         this.metricType = metricType;
+        this.anno = anno;
     }
 
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set annotation provided
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+    
     
     /**
      * Get Id

@@ -25,6 +25,7 @@ import jakarta.json.bind.JsonbConfig;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.tasktide.core.TaskTideModel;
 
 
 /**
@@ -35,7 +36,7 @@ import java.util.Map;
  */
 @jakarta.nosql.Embeddable
 @jakarta.persistence.Embeddable
-public class CustomAnnotation {
+public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
     
     // Id for annotation collection
     @jakarta.nosql.Column("Id")
@@ -109,11 +110,22 @@ public class CustomAnnotation {
     
     
     /**
+     * Sets annotation field to empty hash map
+     * 
+     */
+    @Override
+    public void resetModel() {
+        this.anno = new HashMap<>();
+    }
+    
+    
+    /**
      * Get annotation Id
      * 
      * @return String
      */
-    public String getAnnoId() {
+    @Override
+    public String getId() {
         return annoId;
     }
 
@@ -129,7 +141,7 @@ public class CustomAnnotation {
 
     
     /**
-     * Get annotation proeprty
+     * Get annotation property
      * 
      * @return 
      */
@@ -143,17 +155,30 @@ public class CustomAnnotation {
      * 
      * @param anno 
      */
-    public void setAnno(HashMap<String, Object> anno) {
+    public void setAnnotations(HashMap<String, Object> anno) {
         this.anno = anno;
     }
 
+    
+    /**
+     * Delegates to the getKey method
+     * 
+     * @param field
+     * @return Object
+     */
+    @Override
+    public Object getValueFromField(String field) {
+        return this.getKey(field);
+    }
+    
     
     /**
      * Serialize to JSON string
      * 
      * @return String
      */
-    public String toJsonString() {
+    @Override
+    public String toJson() {
         Jsonb json = JsonbBuilder.create();
         return json.toJson(this);
     }
@@ -164,12 +189,56 @@ public class CustomAnnotation {
      * 
      * @return String
      */
+    @Override
     public String toJsonDoc() {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);
     }
+
     
+    /**
+     * Not implemented, throws UnsupportedOperationException
+     * 
+     * @return 
+     */
+    @Override
+    public String getState() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    
+    /**
+     * Not implemented, throws UnsupportedOperationException
+     * 
+     * @return 
+     */
+    @Override
+    public String getCollection() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    
+    /**
+     * Not implemented, throws UnsupportedOperationException
+     * 
+     * @return 
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    
+    /**
+     * Not implemented, throws UnsupportedOperationException
+     *  
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     
     /**
      * Represent as String

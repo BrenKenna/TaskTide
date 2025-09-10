@@ -25,6 +25,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 import java.lang.reflect.Field;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -98,6 +99,12 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
     @jakarta.persistence.Column(name = "JobEnvironmentId")
     private String jobEnvId;
 
+    // Custom annotations
+    @jakarta.nosql.Column("CustomAnnotation")
+    @jakarta.persistence.Column(name = "CustomAnnotation")
+    @JsonbProperty("Custom Annotation")
+    private CustomAnnotation anno;
+    
     
     /**
      * Empty constructor
@@ -120,6 +127,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
      * @param profile
      * @param type
      * @param jobEnvId
+     * @param anno
      */
     @JsonbCreator
     public MetricProfile(
@@ -132,7 +140,8 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
         @JsonbProperty("Mean Used") float meanUsed,
         @JsonbProperty("Metric Profile") ProfileData profile,
         @JsonbProperty("Metric Type") MetricType type,
-        @JsonbProperty("Job Environment Id") String jobEnvId
+        @JsonbProperty("Job Environment Id") String jobEnvId,
+        @JsonbProperty("Custom Annotation") CustomAnnotation anno
     ) {
         this.id = id;
         this.label = label;
@@ -144,8 +153,31 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
         this.profile = profile;
         this.type = type;
         this.jobEnvId = jobEnvId;
+        this.anno = anno;
     }
 
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set annotation provided
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+    
     
     /**
      * Represent as JSON-B string

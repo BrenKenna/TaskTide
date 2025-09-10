@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.model.job_env;
+package org.tasktide.core.model.job_env.metrics;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,9 +82,9 @@ class MetricsFetcher {
      * Helper method for scaling to GigaBytes
      * @param data
      * 
-     * @return long 
+     * @return double 
      */
-    public long scaleToTeraBytes(long data) {
+    public double scaleToTeraBytes(long data) {
         return data / ( 1024 * 1024 * 1024 * 1024);
     }
     
@@ -123,9 +123,9 @@ class MetricsFetcher {
     /**
      * Get total memory in GN
      * 
-     * @return long
+     * @return double
      */
-    public long getTotalMemory() {
+    public double getTotalMemory() {
         return scaleToGigaBytes(SYS_INFO.getHardware().getMemory().getTotal());
     }
     
@@ -133,9 +133,9 @@ class MetricsFetcher {
     /**
      * Get total memory in GN
      * 
-     * @return long
+     * @return double
      */
-    public long getAvailableMemory() {
+    public double getAvailableMemory() {
         return scaleToGigaBytes(SYS_INFO.getHardware().getMemory().getAvailable());
     }
     

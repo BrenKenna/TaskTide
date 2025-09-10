@@ -51,7 +51,7 @@ public class WorkloadBuilder extends ModelBuilder {
      * @param id
      * @return WorkloadBuilder 
      */
-    public WorkloadBuilder id(String id) {
+    public WorkloadBuilder withId(String id) {
         this.id = id;
         return this;
     }
@@ -63,7 +63,7 @@ public class WorkloadBuilder extends ModelBuilder {
      * @param workload
      * @return WorkloadBuilder
      */
-    public WorkloadBuilder workload(Map<String, ItemTask> workload) {
+    public WorkloadBuilder withWorkload(Map<String, ItemTask> workload) {
         this.workload = workload;
         return this;
     }
@@ -75,7 +75,7 @@ public class WorkloadBuilder extends ModelBuilder {
      * @param tasks
      * @return WorkloadBuilder
      */
-    public WorkloadBuilder workload(List<ItemTask> tasks) {
+    public WorkloadBuilder withWorkload(List<ItemTask> tasks) {
         this.workload = new HashMap<>();
         for ( ItemTask task : tasks ) {
             this.workload.put(task.getTaskName(), task);
@@ -90,7 +90,7 @@ public class WorkloadBuilder extends ModelBuilder {
      * @param task
      * @return {@link WorkloadBuilder WorkloadBuilder}
      */
-    public WorkloadBuilder workload(ItemTask task) {
+    public WorkloadBuilder withWorkload(ItemTask task) {
         this.workload = new HashMap<>();
         this.workload.put(task.getTaskName(), task);
         return this;
@@ -103,7 +103,7 @@ public class WorkloadBuilder extends ModelBuilder {
      * @param workloadState
      * @return WorkloadBuilder
      */
-    public WorkloadBuilder workloadState(ItemState workloadState) {
+    public WorkloadBuilder withWorkloadState(ItemState workloadState) {
         this.workloadState = workloadState;
         return this;
     }
@@ -115,7 +115,7 @@ public class WorkloadBuilder extends ModelBuilder {
      * @param workloadType
      * @return WorkloadBuilder
      */
-    public WorkloadBuilder workloadType(ItemType workloadType) {
+    public WorkloadBuilder withWorkloadType(ItemType workloadType) {
         this.workloadType = workloadType;
         return this;
     }

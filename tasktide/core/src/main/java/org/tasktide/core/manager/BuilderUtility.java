@@ -76,9 +76,9 @@ public class BuilderUtility {
      */
     public static ProcessLog makeEmptyProcessLog() {
         return new ProcessLogBuilder()
-            .id("ProcessLog-" + utils.generateSalt())
-            .stdout(new String[0])
-            .stderr(new String[0])
+            .withId("ProcessLog-" + utils.generateSalt())
+            .withStdout(new String[0])
+            .withStderr(new String[0])
         .build();
     }
 
@@ -92,9 +92,9 @@ public class BuilderUtility {
      */
     public static ProcessLog buildProcessLog(String[] stdout, String[] stderr) {
         return new ProcessLogBuilder()
-            .id("ProcessLog-" + utils.generateSalt())
-            .stdout(stdout)
-            .stderr(stderr)
+            .withId("ProcessLog-" + utils.generateSalt())
+            .withStdout(stdout)
+            .withStderr(stderr)
         .build();
     }
     
@@ -109,9 +109,9 @@ public class BuilderUtility {
      */
     public static ProcessLog buildProcessLog(String procLogId, String[] stdout, String[] stderr) {
         return new ProcessLogBuilder()
-            .id(procLogId)
-            .stdout(stdout)
-            .stderr(stderr)
+            .withId(procLogId)
+            .withStdout(stdout)
+            .withStderr(stderr)
         .build();
     }
     
@@ -123,14 +123,14 @@ public class BuilderUtility {
      */
     public static TaskLogging buildEmptyTaskLogging() {
         return new TaskLoggingBuilder()
-            .id("TaskLogging-" + utils.generateSalt())
-            .processLog(makeEmptyProcessLog())
-            .cpuDuration(0L)
-            .endTime(0L)
-            .exitCode(-1)
-            .procId(0L)
-            .startTime(0L)
-            .threadName("")
+            .withId("TaskLogging-" + utils.generateSalt())
+            .withProcessLog(makeEmptyProcessLog())
+            .withCpuDuration(0L)
+            .withEndTime(0L)
+            .withExitCode(-1)
+            .withProcId(0L)
+            .withStartTime(0L)
+            .withThreadName("")
         .build();
     }
     
@@ -143,8 +143,8 @@ public class BuilderUtility {
      */
     public static TaskLogging buildTaskLogging(ProcessLog procLog) {
         return new TaskLoggingBuilder()
-            .id("TaskLogging-" + utils.generateSalt())
-            .processLog(procLog)
+            .withId("TaskLogging-" + utils.generateSalt())
+            .withProcessLog(procLog)
         .build();
     }
     
@@ -158,10 +158,10 @@ public class BuilderUtility {
      */
     public static TaskLogging buildTaskLogging(ProcessLog procLog, Process proc) {
         return new TaskLoggingBuilder()
-             .id("TaskLogging-" + utils.generateSalt())
-             .processLog(procLog)
-             .cpuDuration(0L)
-             .procId(proc.pid())
+             .withId("TaskLogging-" + utils.generateSalt())
+             .withProcessLog(procLog)
+             .withCpuDuration(0L)
+             .withProcId(proc.pid())
         .build();
              
     }
@@ -176,8 +176,8 @@ public class BuilderUtility {
      */
     public static TaskLogging buildTaskLogging(String taskLogId, ProcessLog procLog) {
         return new TaskLoggingBuilder()
-            .id(taskLogId)
-            .processLog(procLog)
+            .withId(taskLogId)
+            .withProcessLog(procLog)
         .build();
     }
     
@@ -189,8 +189,8 @@ public class BuilderUtility {
      */
     public static Workload buildEmptyWorkload() {
         return new WorkloadBuilder()
-            .id( "Workload-" + utils.generateSalt() )
-            .workloadState(ItemState.TODO)
+            .withId( "Workload-" + utils.generateSalt() )
+            .withWorkloadState(ItemState.TODO)
         .build();
     }
     
@@ -203,10 +203,10 @@ public class BuilderUtility {
      */
     public static Workload buildWorkload(ItemTask itemTask) {
         return new WorkloadBuilder()
-            .id( "Workload-" + utils.generateSalt() )
-            .workload(itemTask)
-            .workloadState(ItemState.TODO)
-            .workloadType(ItemType.SINGLE)
+            .withId( "Workload-" + utils.generateSalt() )
+            .withWorkload(itemTask)
+            .withWorkloadState(ItemState.TODO)
+            .withWorkloadType(ItemType.SINGLE)
         .build();
     }
     
@@ -220,10 +220,10 @@ public class BuilderUtility {
      */
     public static Workload buildWorkload(String workloadId, ItemTask itemTask) {
         return new WorkloadBuilder()
-            .id(workloadId)
-            .workload(itemTask)
-            .workloadState(ItemState.TODO)
-            .workloadType(ItemType.SINGLE)
+            .withId(workloadId)
+            .withWorkload(itemTask)
+            .withWorkloadState(ItemState.TODO)
+            .withWorkloadType(ItemType.SINGLE)
         .build();
     }
     
@@ -236,10 +236,10 @@ public class BuilderUtility {
      */
     public static Workload buildWorkload(List<ItemTask> tasks) {
         return new WorkloadBuilder()
-            .id( "Workload-" + utils.generateSalt() )
-            .workload(tasks)
-            .workloadState(ItemState.TODO)
-            .workloadType(ItemType.NESTED)
+            .withId( "Workload-" + utils.generateSalt() )
+            .withWorkload(tasks)
+            .withWorkloadState(ItemState.TODO)
+            .withWorkloadType(ItemType.NESTED)
         .build();
     }
     
@@ -252,10 +252,10 @@ public class BuilderUtility {
      */
     public static Workload buildWorkload(String workloadId, List<ItemTask> tasks) {
         return new WorkloadBuilder()
-            .id(workloadId)
-            .workload(tasks)
-            .workloadState(ItemState.TODO)
-            .workloadType(ItemType.NESTED)
+            .withId(workloadId)
+            .withWorkload(tasks)
+            .withWorkloadState(ItemState.TODO)
+            .withWorkloadType(ItemType.NESTED)
         .build();
     }
     
@@ -270,13 +270,13 @@ public class BuilderUtility {
      */
     public static WorkItem buildWorkItem(String itemName, Workload workload, String stepName) {
         WorkItem output = new WorkItemBuilder()
-            .id( "WorkItem-" + utils.generateSalt() )
-            .itemName(itemName)
-            .workload(workload)
-            .itemState(ItemState.TODO)
-            .taskCount(workload.getWorkloadSize())
-            .itemType(workload.getWorkloadType())
-            .stepName(stepName)
+            .withId( "WorkItem-" + utils.generateSalt() )
+            .withItemName(itemName)
+            .withWorkload(workload)
+            .withItemState(ItemState.TODO)
+            .withTaskCount(workload.getWorkloadSize())
+            .withItemType(workload.getWorkloadType())
+            .withStepName(stepName)
         .build();
         output.getWorkload()
             .getWorkload().values().stream()
@@ -298,14 +298,14 @@ public class BuilderUtility {
      */
     public static WorkItem buildWorkItem(String itemName, Workload workload, String stepName, String stepId) {
         WorkItem output = new WorkItemBuilder()
-            .id( "WorkItem-" + utils.generateSalt() )
-            .itemName(itemName)
-            .workload(workload)
-            .itemState(ItemState.TODO)
-            .taskCount(workload.getWorkloadSize())
-            .itemType(workload.getWorkloadType())
-            .stepName(stepName)
-            .stepId(stepId)
+            .withId( "WorkItem-" + utils.generateSalt() )
+            .withItemName(itemName)
+            .withWorkload(workload)
+            .withItemState(ItemState.TODO)
+            .withTaskCount(workload.getWorkloadSize())
+            .withItemType(workload.getWorkloadType())
+            .withStepName(stepName)
+            .withStepId(stepId)
         .build();
         output.getWorkload()
             .getWorkload().values().stream()
@@ -327,13 +327,13 @@ public class BuilderUtility {
      */
     public static WorkItem buildWorkItem(String itemId, String itemName, Workload workload, String stepName) {
         WorkItem output = new WorkItemBuilder()
-            .id(itemId)
-            .itemName(itemName)
-            .workload(workload)
-            .itemState(ItemState.TODO)
-            .taskCount(workload.getWorkloadSize())
-            .itemType(workload.getWorkloadType())
-            .stepName(stepName)
+            .withId(itemId)
+            .withItemName(itemName)
+            .withWorkload(workload)
+            .withItemState(ItemState.TODO)
+            .withTaskCount(workload.getWorkloadSize())
+            .withItemType(workload.getWorkloadType())
+            .withStepName(stepName)
         .build();
         
         output.getWorkload()
@@ -358,14 +358,14 @@ public class BuilderUtility {
      */
     public static WorkItem buildWorkItem(String itemId, String itemName, Workload workload, String stepName, String stepId) {
         WorkItem output = new WorkItemBuilder()
-            .id(itemId)
-            .itemName(itemName)
-            .workload(workload)
-            .itemState(ItemState.TODO)
-            .taskCount(workload.getWorkloadSize())
-            .itemType(workload.getWorkloadType())
-            .stepName(stepName)
-            .stepId(stepId)
+            .withId(itemId)
+            .withItemName(itemName)
+            .withWorkload(workload)
+            .withItemState(ItemState.TODO)
+            .withTaskCount(workload.getWorkloadSize())
+            .withItemType(workload.getWorkloadType())
+            .withStepName(stepName)
+            .withStepId(stepId)
         .build();
         
         output.getWorkload()
@@ -384,8 +384,8 @@ public class BuilderUtility {
      */
     public static Step buildEmptyStep() {
         return new StepBuilder()
-            .stepId( "Step-" + utils.generateSalt() )
-            .stepState(TaskState.PENDING)
+            .withStepId( "Step-" + utils.generateSalt() )
+            .withStepState(TaskState.PENDING)
         .build();
     }
     
@@ -398,9 +398,9 @@ public class BuilderUtility {
      */
     public static Step buildStep(String stepName) {
         return new StepBuilder()
-            .stepId( "Step-" + utils.generateSalt() )
-            .stepName(stepName)
-            .stepState(TaskState.PENDING)
+            .withStepId( "Step-" + utils.generateSalt() )
+            .withStepName(stepName)
+            .withStepState(TaskState.PENDING)
         .build();
     }
     
@@ -414,9 +414,9 @@ public class BuilderUtility {
      */
     public static Step buildStep(String stepId, String stepName) {
         return new StepBuilder()
-            .stepId(stepId)
-            .stepName(stepName)
-            .stepState(TaskState.PENDING)
+            .withStepId(stepId)
+            .withStepName(stepName)
+            .withStepState(TaskState.PENDING)
         .build();
     }
     
@@ -428,7 +428,7 @@ public class BuilderUtility {
      */
     public static Workflow buildEmptyWorkflow() {
         return new WorkflowBuilder()
-            .id("Workflow-" + utils.generateSalt())
+            .withId("Workflow-" + utils.generateSalt())
         .build();
     }
     
@@ -442,9 +442,9 @@ public class BuilderUtility {
      */
     public static Workflow buildWorkflow(List<Step> steps, String workflowName) {
         return new WorkflowBuilder()
-            .id("Workflow-" + utils.generateSalt())
-            .workflowName(workflowName)
-            .steps( steps )
+            .withId("Workflow-" + utils.generateSalt())
+            .withWorkflowName(workflowName)
+            .withSteps( steps )
         .build();
     }
     
@@ -459,9 +459,9 @@ public class BuilderUtility {
      */
     public static Workflow buildWorkflow(List<Step> steps, String workflowId, String workflowName) {
         return new WorkflowBuilder()
-            .id("Workflow-" + utils.generateSalt())
-            .workflowName(workflowName)
-            .steps( steps )
+            .withId("Workflow-" + utils.generateSalt())
+            .withWorkflowName(workflowName)
+            .withSteps( steps )
         .build();
     }
     

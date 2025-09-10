@@ -176,7 +176,7 @@ public class PilotLabelAnnotationJPATests {
         anno.add("Pilot Label", "RunsOnInstanceWithThisArg");
         anno.add("Internal Id", "Some Internal Identifier");
         record.setAnnotations(anno);
-        LOGGER.info("Displaying custom annotations:\n'{}'", record.getAnntations().toJsonDoc());
+        LOGGER.info("Displaying custom annotations:\n'{}'", record.getAnnotations().toJsonDoc());
         assertionState = TaskTideServiceManager.fetchWorkItemService().updateModel(record) != null;
         
         // Evaluate test

@@ -50,7 +50,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param id 
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder id(String id) {
+    public WorkItemBuilder withId(String id) {
         this.id = id;
         return this;
     }
@@ -62,7 +62,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param itemName
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder itemName(String itemName) {
+    public WorkItemBuilder withItemName(String itemName) {
         this.itemName = itemName;
         return this;
     }
@@ -74,7 +74,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param lockId
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder lockId(String lockId) {
+    public WorkItemBuilder withLockId(String lockId) {
         this.lockId = lockId;
         return this;
     }
@@ -86,7 +86,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param stepId
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder stepId(String stepId) {
+    public WorkItemBuilder withStepId(String stepId) {
         this.stepId = stepId;
         return this;
     }
@@ -97,7 +97,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param itemType
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder itemType(ItemType itemType) {
+    public WorkItemBuilder withItemType(ItemType itemType) {
         this.itemType = itemType;
         return this;
     }
@@ -109,7 +109,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param itemState
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder itemState(ItemState itemState) {
+    public WorkItemBuilder withItemState(ItemState itemState) {
         this.itemState = itemState;
         return this;
     }
@@ -121,7 +121,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param lockDate
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder lockDate(long lockDate) {
+    public WorkItemBuilder withLockDate(long lockDate) {
         this.lockDate = lockDate;
         return this;
     }
@@ -133,7 +133,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param doneDate
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder doneDate(long doneDate) {
+    public WorkItemBuilder withDoneDate(long doneDate) {
         this.doneDate = doneDate;
         return this;
     }
@@ -145,7 +145,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param taskCount
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder taskCount(int taskCount) {
+    public WorkItemBuilder withTaskCount(int taskCount) {
         this.taskCount = taskCount;
         return this;
     }
@@ -157,7 +157,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param taskDone
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder taskDone(int taskDone) {
+    public WorkItemBuilder withTaskDone(int taskDone) {
         this.taskDone = taskDone;
         return this;
     }
@@ -169,7 +169,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param workload
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder workload(Workload workload) {
+    public WorkItemBuilder withWorkload(Workload workload) {
         this.workload = workload;
         return this;
     }
@@ -181,9 +181,9 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param itemTask
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder workload(ItemTask itemTask) {
+    public WorkItemBuilder withWorkload(ItemTask itemTask) {
         WorkloadBuilder builder = new WorkloadBuilder();
-        this.workload = builder.workload(itemTask).build();
+        this.workload = builder.withWorkload(itemTask).build();
         return this;
     }
     
@@ -194,7 +194,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param stepName
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder stepName(String stepName) {
+    public WorkItemBuilder withStepName(String stepName) {
         this.stepName = stepName;
         return this;
     }

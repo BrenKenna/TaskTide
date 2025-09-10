@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -55,6 +56,12 @@ public class ProfileData implements TaskTideModel<ProfileData> {
     @jakarta.persistence.Column(name = "MetricType")
     private MetricType type;
     
+    // Custom annotations
+    @jakarta.nosql.Column("CustomAnnotation")
+    @jakarta.persistence.Column(name = "CustomAnnotation")
+    @JsonbProperty("Custom Annotation")
+    private CustomAnnotation anno;
+    
     
     /**
      * Null constructor
@@ -69,19 +76,44 @@ public class ProfileData implements TaskTideModel<ProfileData> {
      * 
      * @param id
      * @param metricProfile
-     * @param type 
+     * @param type
+     * @param anno
      */
     @JsonbCreator
     public ProfileData(
         @JsonbProperty("Id") String id,
         @JsonbProperty("Metric Profile") Map<String, MetricData> metricProfile,
-        @JsonbProperty("Metric Type") MetricType type
+        @JsonbProperty("Metric Type") MetricType type,
+        @JsonbProperty("Custom Annotation") CustomAnnotation anno
     ) {
         this.id = id;
         this.metricProfile = metricProfile;
         this.type = type;
+        this.anno = anno;
     }
 
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set annotation provided
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+    
     
     /**
      * Represent as JSON-B string
@@ -150,6 +182,7 @@ public class ProfileData implements TaskTideModel<ProfileData> {
         return id;
     }
 
+    
     /**
      * Set profile Id
      * 
