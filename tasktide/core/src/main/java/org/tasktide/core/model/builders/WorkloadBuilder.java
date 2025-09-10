@@ -31,7 +31,7 @@ import org.tasktide.core.model.workitem.Workload;
  * 
  * @author bkenna
  */
-public class WorkloadBuilder extends ModelBuilder {
+public class WorkloadBuilder extends ModelBuilder<Workload> {
     
     // Attributes
     private String id;

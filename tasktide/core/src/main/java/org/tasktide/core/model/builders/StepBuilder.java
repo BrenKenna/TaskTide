@@ -26,7 +26,7 @@ import org.tasktide.core.model.task.TaskState;
  * 
  * @author bkenna
  */
-public class StepBuilder extends ModelBuilder {
+public class StepBuilder extends ModelBuilder<Step> {
     
     // Attributes
     private String stepId, stepName, workflowId;

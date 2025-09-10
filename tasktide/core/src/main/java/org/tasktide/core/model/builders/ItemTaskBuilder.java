@@ -26,7 +26,7 @@ import org.tasktide.core.model.task.TaskLogging;
  * 
  * @author bkenna
  */
-public class ItemTaskBuilder extends ModelBuilder {
+public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
     
     // Attributes
     private String id, taskName, task, workItemId;

@@ -25,7 +25,7 @@ import org.tasktide.core.model.task.TaskLogging;
  * 
  * @author bkenna
  */
-public class TaskLoggingBuilder extends ModelBuilder {
+public class TaskLoggingBuilder extends ModelBuilder<TaskLogging> {
     
     // Attributes
     private String id, threadName = "";

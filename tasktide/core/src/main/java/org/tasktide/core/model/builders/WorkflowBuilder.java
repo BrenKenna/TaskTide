@@ -30,7 +30,7 @@ import org.tasktide.core.model.collection.Workflow;
  * 
  * @author bkenna
  */
-public class WorkflowBuilder extends ModelBuilder {
+public class WorkflowBuilder extends ModelBuilder<Workflow> {
     
     // Attributes
     private String workflowId, workflowName;

@@ -24,7 +24,7 @@ import org.tasktide.core.model.task.ProcessLog;
  *
  * @author bkenna
  */
-public class ProcessLogBuilder extends ModelBuilder {
+public class ProcessLogBuilder extends ModelBuilder<ProcessLog> {
     
     // Attributes
     private String id = "";

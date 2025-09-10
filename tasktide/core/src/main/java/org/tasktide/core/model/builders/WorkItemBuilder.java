@@ -28,7 +28,7 @@ import org.tasktide.core.model.workitem.WorkItem;
  * 
  * @author bkenna
  */
-public class WorkItemBuilder extends ModelBuilder {
+public class WorkItemBuilder extends ModelBuilder<WorkItem> {
     
     // Attributes
     private String id, itemName, lockId, stepName, stepId;
