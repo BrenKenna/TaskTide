@@ -125,7 +125,7 @@ public class MetricData implements TaskTideModel<MetricData> {
         @JsonbProperty("Used") double used,
         @JsonbProperty("Units") String units,
         @JsonbProperty("Metric Type") MetricType metricType,
-        @JsonbProperty("Custom Annotations") CustomAnnotation anno
+        @JsonbProperty("Custom Annotation") CustomAnnotation anno
     ) {
         this.id = id;
         this.label = label;

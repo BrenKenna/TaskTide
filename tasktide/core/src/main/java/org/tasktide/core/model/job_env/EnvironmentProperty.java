@@ -53,7 +53,7 @@ enum EnvironmentProperty {
         @Override
         public void addToEnvironment(JobEnvironment jobEnv) {
             String prop = getProperty() + "-" + EnvironmentProperty.OS_ARCH.getProperty();
-            jobEnv.setHostname(prop);
+            jobEnv.setHostOS(prop);
         }
     },
 
@@ -81,7 +81,7 @@ enum EnvironmentProperty {
         @Override
         public void addToEnvironment(JobEnvironment jobEnv) {
             String prop = getProperty();
-            jobEnv.setHostname(prop);
+            jobEnv.setJavaVersion(prop);
         }
     },
     
@@ -109,7 +109,7 @@ enum EnvironmentProperty {
         @Override
         public void addToEnvironment(JobEnvironment jobEnv) {
             String prop = EnvironmentProperty.HOST_OS.getProperty() + "-" + getProperty();
-            jobEnv.setHostname(prop);
+            jobEnv.setHostOS(prop);
         }
     },
     

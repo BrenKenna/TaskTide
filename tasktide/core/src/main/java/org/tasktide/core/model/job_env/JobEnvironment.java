@@ -21,6 +21,7 @@ import jakarta.json.bind.JsonbConfig;
 
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 import java.lang.reflect.Field;
 
@@ -89,7 +90,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
     @jakarta.nosql.Column("JobState")
     @jakarta.persistence.Column(name = "JobState")
     @JsonbProperty("Job State")
-    private JobState state;
+    private JobState jobState;
     
     // Custom annotations
     @jakarta.nosql.Column("CustomAnnotation")
@@ -151,6 +152,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
         this.javaVersion = javaVersion;
         this.arrayInd = arrayInd;
         this.anno = new CustomAnnotation();
+        this.jobState = jobState;
     }
     
     
@@ -185,6 +187,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
         this.hostOS = hostOS;
         this.javaVersion = javaVersion;
         this.arrayInd = arrayInd;
+        this.jobState = jobState;
         this.anno = anno;
     }
     
@@ -423,18 +426,29 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
      * 
      * @return String 
      */
+    @JsonbTransient
     @Override
     public String getState() {
-        return this.state.name();
+        return this.jobState.name();
     }
 
     
     /**
-     * Sets a new {@link JobState}
-     * @param state 
+     * Gets current {@link JobState}
+     * 
+     * @return {@link JobState} 
      */
-    public void setState(JobState state) {
-        this.state = state;
+    public JobState getJobState() {
+        return this.jobState;
+    }
+    
+    
+    /**
+     * Sets a new {@link JobState}
+     * @param jobState 
+     */
+    public void setJobState(JobState jobState) {
+        this.jobState = jobState;
     }
     
     

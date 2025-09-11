@@ -15,6 +15,8 @@
  */
 package org.tasktide.core.model.builders;
 
+import org.tasktide.core.model.CustomAnnotation;
+
 
 /**
  * Enumeration fo valid builder types
@@ -263,6 +265,28 @@ public enum BuilderType {
         @Override
         public ModelBuilder makeBuilder() {
             return new MetricProfileBuilder();
+        }
+    },
+    
+    CUSTOMANNOTATION {
+        @Override
+        public String toString() {
+            return this.name();
+        }
+
+        @Override
+        public boolean isType(String query) {
+            return this.name().equalsIgnoreCase(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isType(BuilderType builderType) {
+            return this == builderType;
+        }
+
+        @Override
+        public ModelBuilder makeBuilder() {
+            return new CustomAnnotationBuilder();
         }
     };
     

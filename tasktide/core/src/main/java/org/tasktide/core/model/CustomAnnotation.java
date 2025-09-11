@@ -22,9 +22,13 @@ import jakarta.json.bind.annotation.JsonbProperty;
 
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.UUID;
+
 import org.tasktide.core.TaskTideModel;
 
 
@@ -50,11 +54,12 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
     @JsonbProperty("Annotations")
     private Map<String, Object> anno;
 
-    
+
     /**
      * Simplifies Jakarta (de)serailization
      */
     public CustomAnnotation() {
+        this.annoId = "CustomAnnotation-" + UUID.randomUUID().toString();
         this.anno = new HashMap<>();
     }
     
@@ -68,7 +73,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
     @JsonbCreator
     public CustomAnnotation(
        @JsonbProperty("Id") String annoId,
-       @JsonbProperty("Annotations") HashMap<String, Object> anno
+       @JsonbProperty("Annotations") Map<String, Object> anno
     ) {
         this.annoId = annoId;
         this.anno = anno;
@@ -155,7 +160,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * 
      * @param anno 
      */
-    public void setAnnotations(HashMap<String, Object> anno) {
+    public void setAnnotations(Map<String, Object> anno) {
         this.anno = anno;
     }
 
@@ -202,6 +207,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * 
      * @return 
      */
+    @JsonbTransient
     @Override
     public String getState() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -213,6 +219,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * 
      * @return 
      */
+    @JsonbTransient
     @Override
     public String getCollection() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -224,6 +231,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * 
      * @return 
      */
+    @JsonbTransient
     @Override
     public CustomAnnotation getAnnotations() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -234,6 +242,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * Not implemented, throws UnsupportedOperationException
      *  
      */
+    @JsonbTransient
     @Override
     public void setAnnotations(CustomAnnotation anno) {
         throw new UnsupportedOperationException("Not supported yet.");
