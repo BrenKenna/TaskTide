@@ -97,8 +97,8 @@ public class Step implements TaskTideModel<Step> {
     private Workflow workflow;
     
     // Custom annotations
-    @Column("CustomAnnotation")
-    @JsonbProperty("Custom Annotation")
+    @Column("Annotations")
+    @JsonbProperty("Annotations")
     private CustomAnnotation anno;
     
     
@@ -106,7 +106,9 @@ public class Step implements TaskTideModel<Step> {
      * Null value constructor
      * 
      */
-    public Step(){}
+    public Step() {
+        this.anno = new CustomAnnotation();
+    }
     
     
     /**
@@ -139,6 +141,7 @@ public class Step implements TaskTideModel<Step> {
         this.stepsDone = stepsDone;
         this.stepsError = stepsError;
         this.stepsToDo = stepsToDo;
+        this.anno = new CustomAnnotation();
     }
     
     

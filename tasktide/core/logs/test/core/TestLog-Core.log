@@ -1,232 +1,348 @@
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.setUpClass ]: 
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-11 18:58:14 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: bb5f083e115593a07ba6a71ecbb807853686f2495b62597e21897e057c7fafc6
+2025-09-11 18:58:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.9713782S
+2025-09-11 18:58:15 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-11 18:58:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-11 18:58:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-11 18:58:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-11 18:58:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 046a3d2b8703d06c431359d66118e024213d5ab6fa961ac7fab3520bac7f02fe
+2025-09-11 18:58:16 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /determined_goldwasser: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-11 18:58:17 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.7017706S
+2025-09-11 18:58:17 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-11 18:58:17 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-11 18:58:17 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-11 18:58:17 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-11 18:58:17 INFO  [ Test worker -> org.jboss.weld.event.ExtensionObserverMethodImpl.checkRequiredTypeAnnotations ]: WELD-000411: Observer method [BackedAnnotatedMethod] org.jboss.weld.junit5.auto.TestInstanceInjectionExtension.rewriteTestClassScope(@Observes ProcessAnnotatedType<T>) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.
+2025-09-11 18:58:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container febacaa6-fd91-4a39-bde5-9d064a85aa2a initialized
+2025-09-11 18:58:21 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUpClass ]: 
 
----------------- Initiating JobEnv Builder Tests ----------------
+---------------- Initiating Template-Repository Tests ----------------
 
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.setUp ]: 
+2025-09-11 18:58:21 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 85c8dbff-5a87-4724-b53c-47881634c055 initialized
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
 
-================ Starting Next Test ================
+================ Initiating Next Test ================
 
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildMetricProfile ]: Tests building profile of metric profile
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildMetricProfile ]: Configuring ProfileData
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildMetricProfile ]: Displaying record for reference:
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+
+================ Can Query Template Step Repository ================
+
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: Generating data for testing
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: Fetching template for repository construction
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [febacaa6-fd91-4a39-bde5-9d064a85aa2a, 85c8dbff-5a87-4724-b53c-47881634c055]
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [febacaa6-fd91-4a39-bde5-9d064a85aa2a, 85c8dbff-5a87-4724-b53c-47881634c055]
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [febacaa6-fd91-4a39-bde5-9d064a85aa2a, 85c8dbff-5a87-4724-b53c-47881634c055]
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [febacaa6-fd91-4a39-bde5-9d064a85aa2a, 85c8dbff-5a87-4724-b53c-47881634c055]
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+Displaying meta data for StepRepository:
 '{
-    "Id": "64ba3bb4-9e0a-47c1-b05d-277c83304914",
-    "Label": "Metric-Profile-Label",
-    "Mean Available": 0.0,
-    "Mean Total": 0.0,
-    "Mean Used": 0.0,
-    "Metric Type": "MEMORY",
-    "Profile Data": {
-        "Id": "9713e7e6-02d7-4651-b60d-90dde2fc654c",
-        "Metric Profile": {
-            "Metric-2": {
-                "Available": 0.0,
-                "Id": "MetricData6a81d73c-f1ad-4b2d-8ad9-827aecd34084",
-                "Label": "Label",
-                "Metric Type": "MEMORY",
-                "Timestamp": 1757604519155,
-                "Total": 0.0,
-                "Units": "GB",
-                "Used": 0.0,
+    "Collection Name": "Step",
+    "Model Class": "Step",
+    "Repository Type": "NoSQL"
+}'
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: Inserting records
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [febacaa6-fd91-4a39-bde5-9d064a85aa2a, 85c8dbff-5a87-4724-b53c-47881634c055]
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [febacaa6-fd91-4a39-bde5-9d064a85aa2a, 85c8dbff-5a87-4724-b53c-47881634c055]
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [febacaa6-fd91-4a39-bde5-9d064a85aa2a, 85c8dbff-5a87-4724-b53c-47881634c055]
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [febacaa6-fd91-4a39-bde5-9d064a85aa2a, 85c8dbff-5a87-4724-b53c-47881634c055]
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+Verifying records can be retrieved
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+Displayling retrieved record:
+
+{
+    "StepCount": 10,
+    "StepId": "step1",
+    "StepName": "myFirstStep",
+    "StepState": "PENDING",
+    "StepsDone": 2,
+    "StepsError": 1,
+    "StepsLocked": 2,
+    "StepsToDo": 5,
+    "WorkflowId": "d0fc9db8-cda1-4083-805c-dcfd2eca6321",
+    "annotations": {
+        "Annotations": {
+            "Unit Test": "TemplateRepository-UnitTests",
+            "Pilot Label": "SomePilotJobLabel"
+        },
+        "id": "CustomAnnotation-80671d16-1568-4192-9a1f-e5f255ea7d4d"
+    },
+    "collection": "d0fc9db8-cda1-4083-805c-dcfd2eca6321"
+}
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertStep ]: 
+
+================ Can Query Template Step Repository ================
+
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
+
+================ Can Query Template WorkItem Repository ================
+
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: Generating data for testing
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: Fetching template for repository construction
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
+Displaying meta data for WorkItemRepository:
+'{
+    "Collection Name": "WorkItem",
+    "Model Class": "WorkItem",
+    "Repository Type": "NoSQL"
+}'
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: Inserting records
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
+Verifying records can be retrieved
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
+Displaying first record:
+'{
+    "DoneDate": 0,
+    "Id": "ab2a1dcf-841d-4a04-bfea-3ef8e49cf8ee",
+    "ItemName": "My WorkItem Name",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "LockId": "16e8048a-7681-47a1-b1cd-8d57b0e384db",
+    "StepName": "Arbitrary",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "8537da42-363f-4cd1-9904-c64b898cc703"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "ae43aba0-6538-4b52-94a4-53c0c024d747"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "Work Item Id": "",
                 "annotations": {
                     "Annotations": {
+                        "Unit Test": "TemplateRepository-UnitTests",
+                        "Pilot Label": "SomePilotJobLabel"
                     },
-                    "id": "CustomAnnotation-aede2d69-c5fb-4dac-9ec9-da2e161ba98a"
+                    "id": "CustomAnnotation-e455bd1e-a3e6-4e86-aad7-f51d98e1da9f"
                 },
-                "collection": "MEMORY",
-                "state": "GB"
-            },
-            "Metric-1": {
-                "Available": 0.0,
-                "Id": "MetricData35596480-ba37-44bc-bec9-a912dc2ece59",
-                "Label": "Label",
-                "Metric Type": "MEMORY",
-                "Timestamp": 1757604519081,
-                "Total": 0.0,
-                "Units": "GB",
-                "Used": 0.0,
-                "annotations": {
-                    "Annotations": {
-                    },
-                    "id": "CustomAnnotation-5b0424f7-1106-433c-8f21-cf57935712b6"
-                },
-                "collection": "MEMORY",
-                "state": "GB"
-            },
-            "Metric-3": {
-                "Available": 0.0,
-                "Id": "MetricData82222768-cc7b-43f4-bf2f-cbbbea6e9f15",
-                "Label": "Label",
-                "Metric Type": "MEMORY",
-                "Timestamp": 1757604519155,
-                "Total": 0.0,
-                "Units": "GB",
-                "Used": 0.0,
-                "annotations": {
-                    "Annotations": {
-                    },
-                    "id": "CustomAnnotation-09410eb4-9458-4bf5-8e63-fe0e583de961"
-                },
-                "collection": "MEMORY",
-                "state": "GB"
+                "collection": "",
+                "id": "430461a6-0127-4b42-a3a8-091694443535",
+                "state": "My Task"
             }
         },
-        "Metric Type": "MEMORY",
-        "annotations": {
-            "Annotations": {
-            },
-            "id": "CustomAnnotation-cccedabc-df6b-48c7-9477-bb8aff670d45"
-        },
-        "collection": "MEMORY",
-        "state": "MEMORY"
+        "WorkloadType": "SINGLE",
+        "earliestDone": -3,
+        "id": "CustomAnnotation-755d9881-b994-4d6f-883f-024c2a64a58e",
+        "latestDone": 0,
+        "workloadSize": 1
     },
-    "Timestamp": 1757604519155,
-    "Units": "GB",
     "annotations": {
         "Annotations": {
+            "Unit Test": "TemplateRepository-UnitTests",
+            "Pilot Label": "SomePilotJobLabel"
         },
-        "id": "CustomAnnotation-bde0f660-a5fc-4a38-898b-c76904b82718"
+        "id": "CustomAnnotation-755d9881-b994-4d6f-883f-024c2a64a58e"
     },
-    "collection": "MEMORY",
-    "state": "GB"
+    "collection": "Arbitrary",
+    "workloadSize": 1
 }'
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildMetricProfile ]: Tests building metric profile
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.tearDown ]: 
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
+Displayling retrieved record:
 
-================ Terminating Active Test ================
-
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.setUp ]: 
-
-================ Starting Next Test ================
-
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildJobEnvironment ]: Tests building profile of Job Environment
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildJobEnvironment ]: Displaying record for reference:
-'{
-    "Array Index": -1,
-    "Host OS": "Windows 11-amd64",
-    "Hostname": "DESKTOP-57RHCJ2",
-    "Id": "e7651c54-e51a-4d03-9141-b4939c271124",
-    "Java Version": "17.0.16+12-LTS-247",
-    "Job Id": "11324",
-    "Job Type": "LOCAL",
+{
+    "DoneDate": 0,
+    "Id": "ab2a1dcf-841d-4a04-bfea-3ef8e49cf8ee",
+    "ItemName": "My WorkItem Name",
+    "ItemState": "TODO",
+    "ItemType": "SINGLE",
+    "LockDate": 0,
+    "LockId": "16e8048a-7681-47a1-b1cd-8d57b0e384db",
+    "StepName": "Arbitrary",
+    "TaskCount": 1,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "My Task Name": {
+                "Task": "My Task",
+                "Task Log": {
+                    "CPU Duration": -1,
+                    "End Time": -3,
+                    "Exit Code": 0,
+                    "Process Id": -4,
+                    "Process Log": {
+                        "Stderr": [
+                            "pears",
+                            "pineapples"
+                        ],
+                        "Stdout": [
+                            "apples",
+                            "oragnes"
+                        ],
+                        "id": "8537da42-363f-4cd1-9904-c64b898cc703"
+                    },
+                    "Start Time": -2,
+                    "Thread Name": "myThread",
+                    "id": "ae43aba0-6538-4b52-94a4-53c0c024d747"
+                },
+                "Task Name": "My Task Name",
+                "Task State": "COMPLETE",
+                "Work Item Id": "",
+                "annotations": {
+                    "Annotations": {
+                        "Unit Test": "TemplateRepository-UnitTests",
+                        "Pilot Label": "SomePilotJobLabel"
+                    },
+                    "id": "CustomAnnotation-e455bd1e-a3e6-4e86-aad7-f51d98e1da9f"
+                },
+                "collection": "",
+                "id": "430461a6-0127-4b42-a3a8-091694443535",
+                "state": "My Task"
+            }
+        },
+        "WorkloadType": "SINGLE",
+        "earliestDone": -3,
+        "id": "CustomAnnotation-755d9881-b994-4d6f-883f-024c2a64a58e",
+        "latestDone": 0,
+        "workloadSize": 1
+    },
     "annotations": {
         "Annotations": {
+            "Unit Test": "TemplateRepository-UnitTests",
+            "Pilot Label": "SomePilotJobLabel"
         },
-        "id": "CustomAnnotation-f1b8cde7-431b-4d4c-9307-280bc6369cb5"
+        "id": "CustomAnnotation-755d9881-b994-4d6f-883f-024c2a64a58e"
     },
-    "collection": "LOCAL"
-}'
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildJobEnvironment ]: Tests building Job Environment
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.tearDown ]: 
+    "collection": "Arbitrary",
+    "workloadSize": 1
+}
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkItem ]: 
 
-================ Terminating Active Test ================
+================ Can Query Template WorkItem Repository ================
 
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.setUp ]: 
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
 
-================ Starting Next Test ================
+================ Terminating Test ================
 
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildProfileData ]: Tests building profile of metric profile
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildProfileData ]: Configuring data map
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildProfileData ]: Displaying record for reference:
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkflow ]: 
+
+================ Can Query Template Workflow Repository ================
+
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkflow ]: Generating data for testing
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkflow ]: Fetching template for repository construction
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkflow ]: 
+Displaying meta data for Workflow Repository:
 '{
-    "Id": "57dd8174-1373-4499-8f92-d135dbefe112",
-    "Metric Profile": {
-        "Metric-2": {
-            "Available": 0.0,
-            "Id": "MetricData241633f7-e891-4ce7-ba0d-72bb7a14d566",
-            "Label": "Label",
-            "Metric Type": "MEMORY",
-            "Timestamp": 1757604519344,
-            "Total": 0.0,
-            "Units": "GB",
-            "Used": 0.0,
+    "Collection Name": "Workflow",
+    "Model Class": "Workflow",
+    "Repository Type": "NoSQL"
+}'
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkflow ]: Inserting records
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkflow ]: 
+Verifying records can be retrieved
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkflow ]: 
+Displayling retrieved record:
+
+{
+    "WorkflowId": "7fc03fbd-7aa2-471f-807d-0744f2604137",
+    "WorkflowName": "myFirstWorkflow",
+    "WorkflowSteps": {
+        "myFirstStep": {
+            "StepCount": 10,
+            "StepId": "step1",
+            "StepName": "myFirstStep",
+            "StepState": "PENDING",
+            "StepsDone": 2,
+            "StepsError": 1,
+            "StepsLocked": 2,
+            "StepsToDo": 5,
+            "WorkflowId": "2d3baf5e-3fc6-4312-b4e7-3c9d6a9f7a38",
             "annotations": {
                 "Annotations": {
                 },
-                "id": "CustomAnnotation-2601b074-a3ac-4b6d-8e09-897d5614ec15"
+                "id": "CustomAnnotation-c711f67a-ee9e-4831-9ea5-408f48122ff2"
             },
-            "collection": "MEMORY",
-            "state": "GB"
+            "collection": "2d3baf5e-3fc6-4312-b4e7-3c9d6a9f7a38"
         },
-        "Metric-1": {
-            "Available": 0.0,
-            "Id": "MetricData2d806bc2-d63d-49e3-be1c-f19ad743c167",
-            "Label": "Label",
-            "Metric Type": "MEMORY",
-            "Timestamp": 1757604519344,
-            "Total": 0.0,
-            "Units": "GB",
-            "Used": 0.0,
+        "mySecondStep": {
+            "StepCount": 10,
+            "StepId": "step2",
+            "StepName": "mySecondStep",
+            "StepState": "PENDING",
+            "StepsDone": 2,
+            "StepsError": 1,
+            "StepsLocked": 2,
+            "StepsToDo": 5,
+            "WorkflowId": "0fadba74-cfa5-4611-aa19-b2b1e4ba8ee9",
             "annotations": {
                 "Annotations": {
                 },
-                "id": "CustomAnnotation-68cf183d-385d-4940-b65d-793482853ff6"
+                "id": "CustomAnnotation-4b50dfce-3301-4728-a817-3ae15e61cd92"
             },
-            "collection": "MEMORY",
-            "state": "GB"
-        },
-        "Metric-3": {
-            "Available": 0.0,
-            "Id": "MetricData38600ae2-3714-4660-8bc1-33a7bcdf762d",
-            "Label": "Label",
-            "Metric Type": "MEMORY",
-            "Timestamp": 1757604519344,
-            "Total": 0.0,
-            "Units": "GB",
-            "Used": 0.0,
-            "annotations": {
-                "Annotations": {
-                },
-                "id": "CustomAnnotation-fbc6f4e5-4b3d-4854-b75a-234335c85512"
-            },
-            "collection": "MEMORY",
-            "state": "GB"
+            "collection": "0fadba74-cfa5-4611-aa19-b2b1e4ba8ee9"
         }
     },
-    "Metric Type": "MEMORY",
     "annotations": {
         "Annotations": {
+            "Unit Test": "TemplateRepository-UnitTests",
+            "Pilot Label": "SomePilotJobLabel"
         },
-        "id": "CustomAnnotation-ce5f56bd-d7a2-4fc1-a659-1602c6c04644"
+        "id": "CustomAnnotation-b40ef9c9-62c6-44e6-81b9-3a62a5af0792"
     },
-    "collection": "MEMORY",
-    "state": "MEMORY"
-}'
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildProfileData ]: Tests building metric profile
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.tearDown ]: 
+    "collection": "myFirstWorkflow",
+    "id": "7fc03fbd-7aa2-471f-807d-0744f2604137",
+    "state": ""
+}
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.canQueryInsertWorkflow ]: 
 
-================ Terminating Active Test ================
+================ Can Query Template Workflow Repository ================
 
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.setUp ]: 
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDown ]: 
 
-================ Starting Next Test ================
+================ Terminating Test ================
 
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildMetricData ]: Tests building metric data
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildMetricData ]: Building metric datapoint
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildMetricData ]: Displaying record for reference:
-'{
-    "Available": 0.0,
-    "Id": "MetricDatad467bd1a-778e-4d92-86b9-9f5e64b931bb",
-    "Label": "Label",
-    "Metric Type": "MEMORY",
-    "Timestamp": 1757604519356,
-    "Total": 0.0,
-    "Units": "GB",
-    "Used": 0.0,
-    "annotations": {
-        "Annotations": {
-        },
-        "id": "CustomAnnotation-dfd9dbd7-dc01-4e5f-aaa2-57e02a806f75"
-    },
-    "collection": "MEMORY",
-    "state": "GB"
-}'
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.canBuildMetricData ]: Tests building metric data
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.tearDown ]: 
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: 
 
-================ Terminating Active Test ================
+---------------- Terminating Template-Repository Tests ----------------
 
-2025-09-11 16:28:39 INFO  [ Test worker -> org.tasktide.core.model.JobEnvBuilderTests.tearDownClass ]: 
-
----------------- Terminating JobEnv Builder Tests ----------------
-
+2025-09-11 18:58:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 85c8dbff-5a87-4724-b53c-47881634c055 shut down
+2025-09-11 18:58:22 INFO  [ Test worker -> org.tasktide.core.repository.TemplateRepositoryTests.tearDownClass ]: CDI container shut down
+2025-09-11 18:58:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container febacaa6-fd91-4a39-bde5-9d064a85aa2a shut down

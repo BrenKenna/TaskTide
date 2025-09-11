@@ -71,8 +71,8 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     
     
     // Custom annotations
-    @Column("CustomAnnotation")
-    @JsonbProperty("Custom Annotation")
+    @Column("Annotations")
+    @JsonbProperty("Annotations")
     private CustomAnnotation anno;
     
     
@@ -82,6 +82,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     public ItemTask() {
         this.taskState = TaskState.PENDING;
         this.taskLog = new TaskLogging();
+        this.anno = new CustomAnnotation();
     }
 
 
@@ -99,6 +100,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskLog = taskLog;
         this.task = task;
         this.workItemId = "";
+        this.anno = new CustomAnnotation();
     }
     
     
@@ -117,7 +119,29 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskState = taskState;
         this.taskLog = taskLog;
         this.task = task;
+        this.anno = new CustomAnnotation();
     }
+    
+    
+    /**
+     * Construct with all fields
+     * 
+     * @param itemTaskId
+     * @param taskName
+     * @param task
+     * @param taskState
+     * @param taskLog 
+     * @param anno
+     */
+    public ItemTask(String itemTaskId, String taskName, String task, TaskState taskState, TaskLogging taskLog, CustomAnnotation anno) {
+        this.itemTaskId = itemTaskId;
+        this.taskName = taskName;
+        this.taskState = taskState;
+        this.taskLog = taskLog;
+        this.task = task;
+        this.anno = anno;
+    }
+    
     
     /**
      * Constructor for JSON Deserialization
@@ -138,7 +162,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         @JsonbProperty("Task State") TaskState taskState,
         @JsonbProperty("Task Log") TaskLogging taskLog,
         @JsonbProperty("Work Item Id") String workItemId,
-        @JsonbProperty("Custom Annotation") CustomAnnotation anno
+        @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.itemTaskId = itemTaskId;
         this.taskName = taskName;

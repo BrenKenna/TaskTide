@@ -105,7 +105,9 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     /**
      * Null constructor
      */
-    public WorkItem(){}
+    public WorkItem() {
+        this.anno = new CustomAnnotation();
+    }
 
     
     /**
@@ -147,6 +149,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         this.taskDone = taskDone;
         this.workload = workload;
         this.stepName = stepName;
+        this.anno = new CustomAnnotation();
     }
     
     
@@ -165,6 +168,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
      * @param workload 
      * @param stepName
      * @param stepId
+     * @param anno
      */
     @JsonbCreator
     public WorkItem(
@@ -179,7 +183,8 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         @JsonbProperty("Task Done") int taskDone,
         @JsonbProperty("Workload") Workload workload,
         @JsonbProperty("Step Name") String stepName,
-        @JsonbProperty("Step Id") String stepId
+        @JsonbProperty("Step Id") String stepId,
+        @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.id = id;
         this.itemName = itemName;
@@ -193,6 +198,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         this.workload = workload;
         this.stepName = stepName;
         this.stepId = stepId;
+        this.anno = anno;
     }
     
     

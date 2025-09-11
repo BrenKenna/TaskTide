@@ -49,6 +49,7 @@ import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
+import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
@@ -69,6 +70,22 @@ import org.tasktide.itemstore.RocksDBStore;
 public class TestUtils {
     
     private static Logger LOGGER = LogManager.getLogger(TestUtils.class);
+    
+    
+    /**
+     * Creates an annotation providing an early-binding
+     *  pilot label, and unit-test label
+     * 
+     * @param pilotLabel
+     * @param unitTestLabel
+     * @return {@link CustomAnnotation}
+     */
+    public static CustomAnnotation makeAnnotation(String pilotLabel, String unitTestLabel) {
+        CustomAnnotation anno = new CustomAnnotation();
+        anno.add("Pilot Label", pilotLabel);
+        anno.add("Unit Test", unitTestLabel);
+        return anno;
+    }
     
     
     /**

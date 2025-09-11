@@ -23,6 +23,7 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.jnosql.mapping.core.Converters;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
@@ -48,9 +49,11 @@ import org.tasktide.TestCaseBuilderUtility;
 import org.testcontainers.containers.GenericContainer;
 
 import org.tasktide.TestEnvironment;
+import org.tasktide.TestUtils;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -127,6 +130,7 @@ public class TemplateRepositoryTests {
         RepositoryFactory<WorkItem> workItemRepoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
         List<WorkItem> data;
+        CustomAnnotation anno;
         boolean assertionState;
         
         // Generate data for insert
@@ -147,12 +151,17 @@ public class TemplateRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
+        anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         data.stream()
-            .forEach( elm -> workItemRepo.insertModel(elm));
+            .forEach( elm -> {
+                elm.setAnnotations(anno);
+                workItemRepo.insertModel(elm);
+        });
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
         TaskTideModel<WorkItem> ref = data.get(0);
+        logger.info("\nDisplaying first record:\n'{}'", JsonUtils.toJson(true, ref));
         TaskTideModel<WorkItem> result = workItemRepo.findById(ref.getId()).get();
         assertionState = result != null;
         logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
@@ -177,6 +186,7 @@ public class TemplateRepositoryTests {
         RepositoryFactory<Step> stepRepoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
         List<Step> data;
+        CustomAnnotation anno;
         boolean assertionState;
         
         // Generate data for insert
@@ -193,8 +203,12 @@ public class TemplateRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
+        anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         data.stream()
-            .forEach( elm -> stepRepo.insertModel(elm));
+            .forEach( elm -> {
+                elm.setAnnotations(anno);
+                stepRepo.insertModel(elm);
+        });
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
@@ -223,6 +237,7 @@ public class TemplateRepositoryTests {
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
         List<Workflow> data;
+        CustomAnnotation anno;
         boolean assertionState;
         
         // Generate data for insert
@@ -239,8 +254,12 @@ public class TemplateRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
+        anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         data.stream()
-            .forEach( elm -> workflowRepo.insertModel(elm));
+            .forEach( elm -> {
+                elm.setAnnotations(anno);
+                workflowRepo.insertModel(elm);
+        });
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");

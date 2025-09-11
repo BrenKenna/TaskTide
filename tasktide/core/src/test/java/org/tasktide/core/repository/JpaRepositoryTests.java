@@ -38,9 +38,11 @@ import org.testcontainers.containers.GenericContainer;
 
 import org.tasktide.TestCaseBuilderUtility;
 import org.tasktide.TestEnvironment;
+import org.tasktide.TestUtils;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -115,6 +117,7 @@ public class JpaRepositoryTests {
         RepositoryFactory<WorkItem> workItemRepoFactory;
         RepositoryType repoType = RepositoryType.SQL;
         List<WorkItem> data;
+        CustomAnnotation anno;
         boolean assertionState;
         
         // Generate data for insert
@@ -134,8 +137,12 @@ public class JpaRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
+        anno = TestUtils.makeAnnotation("SomePilotJobLabel", "JpaRepository-UnitTests");
         data.stream()
-            .forEach( elm -> workItemRepo.insertModel(elm));
+            .forEach( elm -> {
+                elm.setAnnotations(anno);
+                workItemRepo.insertModel(elm);
+        });
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
@@ -164,6 +171,7 @@ public class JpaRepositoryTests {
         RepositoryFactory<Step> stepRepoFactory;
         RepositoryType repoType = RepositoryType.SQL;
         List<Step> data;
+        CustomAnnotation anno;
         boolean assertionState;
         
         // Generate data for insert
@@ -179,8 +187,12 @@ public class JpaRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
+        anno = TestUtils.makeAnnotation("SomePilotJobLabel", "JpaRepository-UnitTests");
         data.stream()
-            .forEach( elm -> stepRepo.insertModel(elm));
+            .forEach( elm -> {
+                elm.setAnnotations(anno);
+                stepRepo.insertModel(elm);
+        });
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
@@ -209,6 +221,7 @@ public class JpaRepositoryTests {
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType = RepositoryType.SQL;
         List<Workflow> data;
+        CustomAnnotation anno;
         boolean assertionState;
         
         // Generate data for insert
@@ -224,8 +237,12 @@ public class JpaRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
+        anno = TestUtils.makeAnnotation("SomePilotJobLabel", "JpaRepository-UnitTests");
         data.stream()
-            .forEach( elm -> workflowRepo.insertModel(elm));
+            .forEach( elm -> {
+                elm.setAnnotations(anno);
+                workflowRepo.insertModel(elm);
+        });
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");

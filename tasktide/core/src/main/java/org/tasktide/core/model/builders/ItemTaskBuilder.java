@@ -118,7 +118,7 @@ public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
      * @param anno
      * @return {@ilnk ItemTaskBuilder}
      */
-    public ItemTaskBuilder withCustomAnnotation(CustomAnnotation anno) {
+    public ItemTaskBuilder withAnnotation(CustomAnnotation anno) {
         this.anno = anno;
         return this;
     }
@@ -134,6 +134,6 @@ public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
         if ( workItemId != null ) {
             return new ItemTask(id, taskName, task, taskState, taskLog, workItemId, anno);
         }
-        return new ItemTask(id, taskName, task, taskState, taskLog);
+        return new ItemTask(id, taskName, task, taskState, taskLog, anno);
     }
 }

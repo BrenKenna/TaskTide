@@ -49,6 +49,7 @@ import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import static org.tasktide.core.manager.generator.TaskGenerator.generateSeqTask;
+import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -101,12 +102,15 @@ public class TestCaseBuilderUtility {
      * @return {@link ItemTask ItemTask}
      */
     public static ItemTask makeTestItemTask() {
+        CustomAnnotation anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         return new ItemTaskBuilder()
             .withId(UUID.randomUUID().toString())
             .withTaskName("My Task Name")
             .withTask("My Task")
             .withTaskState(TaskState.COMPLETE)
             .withTaskLog(makeTestTaskLog())
+            .withAnnotation(anno)
+            .withWorkItemId("")
         .build();
     }
     
@@ -124,6 +128,8 @@ public class TestCaseBuilderUtility {
         return new WorkloadBuilder()
             .withId("My Workload")
             .withWorkload(itemTasks)
+            .withWorkloadState(ItemState.LOCKED)
+            .withWorkloadType(ItemType.SINGLE)
         .build();
     }
     
@@ -134,6 +140,7 @@ public class TestCaseBuilderUtility {
      * @return {@link WorkItem WorkItem}
      */
     public static WorkItem makeTestWorkItem() {
+        CustomAnnotation anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         return new WorkItemBuilder()
             .withId(UUID.randomUUID().toString())
             .withItemName("My WorkItem Name")
@@ -146,6 +153,7 @@ public class TestCaseBuilderUtility {
             .withItemState(ItemState.TODO)
             .withItemType(ItemType.SINGLE)
             .withStepName("Arbitrary")
+            .withAnnotation(anno)
         .build();
     }
     
@@ -169,6 +177,7 @@ public class TestCaseBuilderUtility {
             .withItemState(ItemState.TODO)
             .withItemType(ItemType.SINGLE)
             .withStepName(stepName)
+            .withAnnotation(new CustomAnnotation())
         .build();
     }
     
@@ -189,6 +198,7 @@ public class TestCaseBuilderUtility {
             .withStepsDone(2)
             .withStepsError(1)
             .withWorkflowId(UUID.randomUUID().toString())
+            .withCustomAnnotation(new CustomAnnotation())
         .build();
     }
     
@@ -211,6 +221,7 @@ public class TestCaseBuilderUtility {
             .withStepsDone(2)
             .withStepsError(1)
             .withWorkflowId(UUID.randomUUID().toString())
+            .withCustomAnnotation(new CustomAnnotation())
         .build();
     }
     
@@ -240,6 +251,7 @@ public class TestCaseBuilderUtility {
             .withId(UUID.randomUUID().toString())
             .withWorkflowName(workflowName)
             .withSteps( steps )
+            .withCustomAnnotation(new CustomAnnotation())
         .build();
     }
     

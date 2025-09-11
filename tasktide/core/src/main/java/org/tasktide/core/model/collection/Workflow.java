@@ -71,8 +71,9 @@ public class Workflow implements TaskTideModel<Workflow> {
     
     
     // Custom annotations
-    @Column("CustomAnnotation")
-    @JsonbProperty("Custom Annotation")
+    @jakarta.nosql.Column("Annotations")
+    @jakarta.persistence.Column(name = "Annotations")
+    @JsonbProperty("Annotations")
     private CustomAnnotation anno;
     
     
@@ -81,6 +82,7 @@ public class Workflow implements TaskTideModel<Workflow> {
      */
     public Workflow() {
         this.workflowSteps = new HashMap<>();
+        this.anno = new CustomAnnotation();
     }
     
     

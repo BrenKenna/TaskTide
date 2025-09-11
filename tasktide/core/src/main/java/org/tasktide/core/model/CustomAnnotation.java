@@ -50,7 +50,8 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
     
     // Annotations field
     @jakarta.nosql.Column("Annotations")
-    @jakarta.persistence.Column(name = "Annotations")
+    @jakarta.persistence.Column(name = "Annotations", columnDefinition = "BLOB")
+    @jakarta.persistence.Convert(converter = CustomAnnotationJpaConverter.class)
     @JsonbProperty("Annotations")
     private Map<String, Object> anno;
 

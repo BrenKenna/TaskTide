@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.model.builders;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
@@ -37,6 +38,7 @@ public class WorkItemBuilder extends ModelBuilder<WorkItem> {
     private long lockDate, doneDate;
     private int taskCount, taskDone;
     private Workload workload;
+    private CustomAnnotation anno;
     
     
     public WorkItemBuilder() {
@@ -201,23 +203,45 @@ public class WorkItemBuilder extends ModelBuilder<WorkItem> {
     
     
     /**
+     * Adds {@link CustomAnnotation} field
+     * 
+     * @param anno
+     * @return {@link WorkItemBuilder}
+     */
+    public WorkItemBuilder withAnnotation(CustomAnnotation anno) {
+        this.anno = anno;
+        return this;
+    }
+    
+    
+    /**
      * Build {@link WorkItem} from provided fields
      * 
      * @return {@link WorkItem}
      */
     @Override
     public WorkItem build() {
+        WorkItem result;
+        
+        if ( anno == null ) {
+            anno = new CustomAnnotation();
+        }
+        
         if ( stepId != null ) {
-            return new WorkItem(
+            result = new WorkItem(
                 id, itemName, itemType, itemState,
                 lockId, lockDate, doneDate, taskCount,
-                taskDone, workload, stepName, stepId
+                taskDone, workload, stepName, stepId, anno
             );
         }
-        return new WorkItem(
-            id, itemName, itemType, itemState,
-            lockId, lockDate, doneDate, taskCount,
-            taskDone, workload, stepName
-        );
+        else {
+            result = new WorkItem(
+                id, itemName, itemType, itemState,
+                lockId, lockDate, doneDate, taskCount,
+                taskDone, workload, stepName
+            );
+        }
+        
+        return result;
     }
 }

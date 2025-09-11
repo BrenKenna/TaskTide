@@ -15,7 +15,6 @@
  */
 package org.tasktide.core.model.builders;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.tasktide.core.model.CustomAnnotation;
