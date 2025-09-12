@@ -32,7 +32,6 @@ import org.junit.jupiter.api.TestInstance;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.tasktide.core.model.builders.BuilderType;
-import org.tasktide.core.model.builders.JobEnvironmentBuilder;
 import org.tasktide.core.model.builders.MetricDataBuilder;
 import org.tasktide.core.model.builders.MetricProfileBuilder;
 import org.tasktide.core.model.builders.ModelBuilder;
@@ -133,8 +132,6 @@ public class JobEnvBuilderTests {
         return builder
             .withId(UUID.randomUUID().toString())
             .withMetricProfile(dataMap)
-            .withType(MetricType.MEMORY)
-            .withAnnotation(new CustomAnnotation())
         .build();
     }
     
@@ -202,13 +199,11 @@ public class JobEnvBuilderTests {
         metricProfile = builder
             .withId(UUID.randomUUID().toString())
             .withMetricProfile(dataMap)
-            .withType(MetricType.MEMORY)
-            .withAnnotation(new CustomAnnotation())
         .build();
         
         // Display record for reference
         LOGGER.info("Displaying record for reference:\n'{}'", metricProfile.toJsonDoc());
-        assertionState = metricProfile.getType() == MetricType.MEMORY;
+        assertionState = metricProfile.getId() != null;
         assertTrue(assertionState, "Test failed to build metric data");
         LOGGER.info("Tests building metric profile");
     }

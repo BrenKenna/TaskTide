@@ -16,7 +16,9 @@
 package org.tasktide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.tasktide.core.model.builders.ProcessLogBuilder;
@@ -49,7 +51,18 @@ import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import static org.tasktide.core.manager.generator.TaskGenerator.generateSeqTask;
+
 import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.model.builders.MetricDataBuilder;
+import org.tasktide.core.model.builders.MetricProfileBuilder;
+import org.tasktide.core.model.builders.ProfileDataBuilder;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.JobState;
+import org.tasktide.core.model.job_env.JobType;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
+import org.tasktide.core.model.job_env.metrics.MetricType;
+import org.tasktide.core.model.job_env.metrics.ProfileData;
 
 
 /**
@@ -61,6 +74,105 @@ public class TestCaseBuilderUtility {
     
     // Task Generator
     public static TaskGenerator taskGenerator = new TaskGenerator();
+    
+    
+    /**
+     * Fetches a {@link JobEnvironment} for active host
+     * 
+     * @return {@link JobEnvironment}
+     */
+    public static JobEnvironment makeTestJobEnvironment() {
+        
+        // Initialize vars
+        CustomAnnotation anno;
+        JobEnvironment jobEnv;
+        
+        // Fetch JobEnv with annotation
+        anno = TestUtils.makeAnnotation("SomePilotLabel", "TemplateRepository-UnitTests");
+        jobEnv = JobType.fetchJobEnvironment().get();
+        jobEnv.setAnnotations(anno);
+        jobEnv.setJobState(JobState.RUNNING);
+        
+        // Return record
+        return jobEnv;
+    }
+    
+    
+    /**
+     * Make a blank test {@link MetricProfile}
+     * 
+     * @return {@link MetricProfile}
+     */
+    public static MetricProfile makeTestMetricProfile() {
+        
+        // Initialize vars
+        CustomAnnotation anno;
+        ProfileData profile;
+        
+        // Make metric profile dataset
+        anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
+        profile = makeTestProfileData();
+        
+        // Make metric profile
+        return new MetricProfileBuilder()
+            .withId("MetricProfile-" + UUID.randomUUID().toString())
+            .withLabel("Test-Profile")
+            .withTimestamp(0L)
+            .withMeanAvailable(0)
+            .withMeanTotal(0)
+            .withMeanUsed(0)
+            .withAnnotation(anno)
+            .withUnits("GB")
+            .withJobEnvId("JobEnvironment-" + UUID.randomUUID().toString())
+            .withType(MetricType.MEMORY)
+            .withProfile(profile)
+        .build();
+    }
+    
+    
+    /**
+     * Make a blank test {@link ProfileData}
+     * 
+     * @return {@link ProfileData}
+     */
+    public static ProfileData makeTestProfileData() {
+        
+        // Initialize vars
+        MetricData record;
+        Map<String, MetricData> profile = new HashMap<>();
+        
+        // Make metric data profile
+        record = makeTestMetricData(); profile.put(record.getId(), record);
+        record = makeTestMetricData(); profile.put(record.getId(), record);
+        
+        // Build profile
+        return new ProfileDataBuilder()
+            .withId("ProfileData-" + UUID.randomUUID().toString())
+            .withMetricProfile(profile)
+        .build();
+    }
+    
+    
+    /**
+     * Builds {@link MetricData}
+     * 
+     * @return {@link MetricData}
+     */
+    public static MetricData makeTestMetricData() {
+        CustomAnnotation anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
+        return new MetricDataBuilder()
+            .withId("MetricData-" + UUID.randomUUID().toString())
+            .withTimestamp(System.currentTimeMillis())
+            .withMetricType(MetricType.MEMORY)
+            .withLabel("Test-Profile")
+            .withTotal(0.0)
+            .withAvailable(0.0)
+            .withUsed(0.0)
+            .withAnnotation(anno)
+            .withUnits("GB")
+        .build();
+    }
+    
     
     /**
      * Make {@link ProcessLog ProcessLog} for testing

@@ -146,7 +146,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
             .stream()
             .parallel()
             .map(elm -> (TaskTideModel<Step>) elm)
-            .collect(Collectors.toList());
+        .collect(Collectors.toList());
     }
     
         

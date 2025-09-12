@@ -22,13 +22,15 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import java.lang.reflect.Field;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+
+import java.util.ArrayList;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -39,28 +41,21 @@ import org.tasktide.core.model.CustomAnnotation;
  */
 @jakarta.nosql.Embeddable
 @jakarta.persistence.Embeddable
-public class ProfileData implements TaskTideModel<ProfileData> {
+public class ProfileData {
     
     @JsonbProperty("Id")
     @jakarta.nosql.Column("Id")
-    @jakarta.persistence.Column(name = "Id")
+    @jakarta.persistence.Column(name = "ProfileId")
     private String id;
     
     @JsonbProperty("Metric Profile")
     @jakarta.nosql.Column("MetricProfile")
-    @jakarta.persistence.Column(name = "MetricProfile")
+    @jakarta.persistence.Transient
     private Map<String, MetricData> metricProfile;
     
-    @JsonbProperty("Metric Type")
-    @jakarta.nosql.Column("MetricType")
-    @jakarta.persistence.Column(name = "MetricType")
-    private MetricType type;
-    
-    // Custom annotations
-    @jakarta.nosql.Column("CustomAnnotation")
-    @jakarta.persistence.Column(name = "CustomAnnotation")
-    @JsonbProperty("Custom Annotation")
-    private CustomAnnotation anno;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "ProfileDataId")
+    private final List<MetricData> metricList = new ArrayList<>();
     
     
     /**
@@ -76,51 +71,35 @@ public class ProfileData implements TaskTideModel<ProfileData> {
      * 
      * @param id
      * @param metricProfile
-     * @param type
-     * @param anno
      */
     @JsonbCreator
     public ProfileData(
         @JsonbProperty("Id") String id,
-        @JsonbProperty("Metric Profile") Map<String, MetricData> metricProfile,
-        @JsonbProperty("Metric Type") MetricType type,
-        @JsonbProperty("Custom Annotation") CustomAnnotation anno
+        @JsonbProperty("Metric Profile") Map<String, MetricData> metricProfile
     ) {
         this.id = id;
         this.metricProfile = metricProfile;
-        this.type = type;
-        this.anno = anno;
+    }
+    
+
+    /**
+     * JPA PostLoad method for populating {@link MetricData}
+     * 
+     */
+    @jakarta.persistence.PostLoad
+    public void populateStateMap() {
+        metricProfile = new HashMap<>();
+        for ( MetricData elm : metricList ) {
+            metricProfile.put(elm.getId(), elm);
+        }
     }
 
-    
-    /**
-     * Get annotations
-     * 
-     * @return {@link CustomAnnotation}
-     */
-    @Override
-    public CustomAnnotation getAnnotations() {
-        return this.anno;
-    }
-    
-    
-    /**
-     * Set annotation provided
-     * 
-     * @param anno 
-     */
-    @Override
-    public void setAnnotations(CustomAnnotation anno) {
-        this.anno = anno;
-    }
-    
-    
+        
     /**
      * Represent as JSON-B string
      * 
      * @return String
      */
-    @Override
     public String toJson() {
         Jsonb json = JsonbBuilder.create();
         return json.toJson(this);
@@ -132,7 +111,6 @@ public class ProfileData implements TaskTideModel<ProfileData> {
      * 
      * @return String
      */
-    @Override
     public String toJsonDoc() {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
@@ -141,43 +119,10 @@ public class ProfileData implements TaskTideModel<ProfileData> {
 
     
     /**
-     * Returns {@link MetricType}
-     * 
-     * @return String
-     */
-    @Override
-    public String getState() {
-        return this.type.name();
-    }
-    
-    
-    /**
-     * Return {@link MetricType}
-     * 
-     * @return String
-     */
-    @Override
-    public String getCollection() {
-        return this.type.name();
-    }
-
-    
-    /**
-     * Reset model to empty
-     * 
-     */
-    @Override
-    public void resetModel() {
-        this.metricProfile = new HashMap<>();
-    }
-
-    
-    /**
      * Get profile id
      * 
      * @return String
      */
-    @Override
     public String getId() {
         return id;
     }
@@ -214,26 +159,6 @@ public class ProfileData implements TaskTideModel<ProfileData> {
 
     
     /**
-     * Get {@link MetricType}
-     * 
-     * @return {@link MetricType}
-     */
-    public MetricType getType() {
-        return type;
-    }
-
-    
-    /**
-     * Sets {@link MetricType}
-     * 
-     * @param type 
-     */
-    public void setType(MetricType type) {
-        this.type = type;
-    }
-
-    
-    /**
      * Represent as String
      * 
      * @return String
@@ -243,31 +168,6 @@ public class ProfileData implements TaskTideModel<ProfileData> {
         return "MetricProfile{" +
             "id=" + id +
             ", metricProfile=" + metricProfile +
-            ", type=" + type +
         '}';
-    }
-
-    
-    /**
-     * Get value of queried field
-     * 
-     * @param field
-     * @return Object
-     */
-    @Override
-    public Object getValueFromField(String field) {
-        try {
-            // Use reflection to get the declared field from this class
-            Field declaredField = this.getClass().getDeclaredField(field);
-            declaredField.setAccessible(true); // In case the field is private
-            Object fieldValue = declaredField.get(this);
-
-            return fieldValue;
-
-        }
-        catch (Exception ex) {
-            // Optional: Log or rethrow if needed
-            return null;
-        }
     }
 }

@@ -18,52 +18,33 @@ package org.tasktide.core.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.tasktide.core.TaskTideMapper;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 
-import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 
 
 /**
- * Service to provide {@link MetricProfile} interactions to backend DB ({@link TaskTideRepository}).
+ * Service to provide {@link MetricData} interactions to backend DB ({@link TaskTideRepository}).
  * <br><br>
- * A {@link MetricProfile} has a single {@link JobEnvironment} associated with it.
- * <br><br>
- * Service methods include providing MetricProfile, list of them. Getting list of JobEnvironments be useful, means composing repo though.
- * <br><br>
- * Implementing the {@link TaskTideMapper} allows mapping of {@link MetricProfile} to {@link JobEnvironment}
+ * Service methods include providing MetricData, list of them. Getting list of JobEnvironments be useful, means composing repo though.
  * 
  * @author Brendan Kenna
  */
-public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEnvironment>, TaskTideService<MetricProfile> {
-    
+public class MetricDataService implements TaskTideService<MetricData> {
+ 
     // Attributes
-    private final TaskTideRepository<MetricProfile> repo;
+    private final TaskTideRepository<MetricData> repo;
 
-    
     /**
      * Constucted with {@link TaskTideRepository}
      * 
      * @param repo 
      */
-    public MetricProfileService(TaskTideRepository<MetricProfile> repo) {
+    public MetricDataService(TaskTideRepository<MetricData> repo) {
         this.repo = repo;
-    }
-
-    
-    /**
-     * Get {@link JobEnvironment} collection through provided {@link TaskTideService} link
-     * 
-     * @param mappingServ
-     * @param model
-     * @return List-{@link JobEnvironment}
-     */
-    @Override
-    public List<JobEnvironment> getThroughLink(TaskTideService<JobEnvironment> mappingServ, MetricProfile model) {
-        return List.of(mappingServ.fetchById(model.getJobEnvId()));
     }
 
     
@@ -71,39 +52,39 @@ public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEn
      * Inserts provided record
      * 
      * @param model
-     * @return {@link MetricProfile}
+     * @return {@link MetricData}
      */
     @Override
-    public MetricProfile appendModel(MetricProfile model) {
+    public MetricData appendModel(MetricData model) {
         return this.repo.insertModel(model);
     }
 
     
     /**
-     * Fetch {@link MetricProfile} with provided field, matching input
+     * Fetch {@link MetricData} with provided field, matching input
      * 
      * @param field
      * @param value
-     * @return List-{@link MetricProfile}
+     * @return List-{@link MetricData}
      */
     @Override
-    public List<MetricProfile> viewByField(String field, Object value) {
+    public List<MetricData> viewByField(String field, Object value) {
         return this.repo.findByField(field, value);
     }
 
     
     /**
-     * Fetch {@link MetricProfile} with provided field, matching input,
+     * Fetch {@link MetricData} with provided field, matching input,
      *  and second condition
      * 
      * @param field
      * @param value
      * @param group
      * @param groupVal
-     * @return List-{@link MetricProfile}
+     * @return List-{@link MetricData}
      */
     @Override
-    public List<MetricProfile> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
+    public List<MetricData> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
         return this.repo.findByFieldForGroup(field, value, group, groupVal);
     }
 
@@ -114,7 +95,7 @@ public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEn
      * @return List-{@link MetricProfile}
      */
     @Override
-    public List<MetricProfile> viewAll() {
+    public List<MetricData> viewAll() {
         return this.repo.findAll();
     }
 
@@ -130,7 +111,7 @@ public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEn
             .stream()
             .parallel()
             .map(
-                elm -> (TaskTideModel<MetricProfile>) elm
+                elm -> (TaskTideModel<MetricData>) elm
             )
         .collect(Collectors.toList());
     }
@@ -139,10 +120,10 @@ public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEn
     /**
      * Fetch record matching queried Id
      * 
-     * @return {@link MetricProfile}
+     * @return {@link MetricData}
      */
     @Override
-    public MetricProfile fetchById(String id) {
+    public MetricData fetchById(String id) {
         return this.repo.findById(id).orElse(null);
     }
 
@@ -160,25 +141,25 @@ public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEn
 
     
     /**
-     * Update {@link MetricProfile}
+     * Update {@link MetricData}
      * 
      * @param model
-     * @return {@link MetricProfile}
+     * @return {@link MetricData}
      */
     @Override
-    public synchronized MetricProfile updateModel(MetricProfile model) {
+    public synchronized MetricData updateModel(MetricData model) {
         return this.repo.updateModel(model);
     }
 
     
     /**
-     * Extend provided {@link MetricProfile} list to backend
+     * Extend provided {@link MetricData} list to backend
      * 
      * @param toAdd
      * @return boolean
      */
     @Override
-    public synchronized boolean extendModel(List<MetricProfile> toAdd) {
+    public synchronized boolean extendModel(List<MetricData> toAdd) {
         return this.repo.extendModel(toAdd);
     }
 
@@ -197,10 +178,10 @@ public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEn
     /**
      * Provide repository
      * 
-     * @return {@link TaskTideRepository}-{@link MetricProfile}
+     * @return {@link TaskTideRepository}-{@link MetricData}
      */
     @Override
-    public TaskTideRepository<MetricProfile> getRepo() {
+    public TaskTideRepository<MetricData> getRepo() {
         return this.repo;
     }
 }

@@ -15,29 +15,28 @@
  */
 package org.tasktide.core.repository.itemstore_repo;
 
-import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.itemstore.ItemStore;
 
 
 /**
- * {@link Step} {@link TaskTideRepository} backed by RocksDB/SQLite
+ * {@link MetricProfile} {@link TaskTideRepository} backed by RocksDB/SQLite
  * 
- * @author bkenna
+ * @author Brendan Kenna
  */
-public class ItemStoreStepRepository extends ItemStoreRepository<Step> {
+public class ItemStoreMetricProfileRepository extends ItemStoreRepository<MetricProfile> {
     
     /**
-     * Construct {@link Step} repository with {@link ItemStore}
+     * Construct {@link MetricProfile} repository with {@link ItemStore}
      * 
      * @param itemStore
      * @param collectionName
      */
-    public ItemStoreStepRepository(
+    public ItemStoreMetricProfileRepository(
        ItemStore itemStore,
        String collectionName
     ) {
-        super(itemStore, Step.class, collectionName);
+        super(itemStore, MetricProfile.class, collectionName);
     }
 }

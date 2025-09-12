@@ -90,9 +90,9 @@ public class MetricData implements TaskTideModel<MetricData> {
     private MetricType metricType;
     
     // Custom annotations
-    @jakarta.nosql.Column("CustomAnnotation")
-    @jakarta.persistence.Column(name = "CustomAnnotation")
-    @JsonbProperty("Custom Annotation")
+    @jakarta.nosql.Column("Annotations")
+    @jakarta.persistence.Column(name = "Annotations")
+    @JsonbProperty("Annotations")
     private CustomAnnotation anno;
     
     
@@ -125,7 +125,7 @@ public class MetricData implements TaskTideModel<MetricData> {
         @JsonbProperty("Used") double used,
         @JsonbProperty("Units") String units,
         @JsonbProperty("Metric Type") MetricType metricType,
-        @JsonbProperty("Custom Annotation") CustomAnnotation anno
+        @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.id = id;
         this.label = label;

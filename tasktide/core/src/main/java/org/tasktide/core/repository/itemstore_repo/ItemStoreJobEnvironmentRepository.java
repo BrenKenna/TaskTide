@@ -15,29 +15,29 @@
  */
 package org.tasktide.core.repository.itemstore_repo;
 
-import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.itemstore.ItemStore;
 
 
 /**
- * {@link Step} {@link TaskTideRepository} backed by RocksDB/SQLite
+ * {@link JobEnvironment} {@link TaskTideRepository} backed by RocksDB/SQLite
  * 
- * @author bkenna
+ * @author Brendan Kenna
  */
-public class ItemStoreStepRepository extends ItemStoreRepository<Step> {
+public class ItemStoreJobEnvironmentRepository extends ItemStoreRepository<JobEnvironment> {
+    
     
     /**
-     * Construct {@link Step} repository with {@link ItemStore}
+     * Construct {@link JobEnvironment} repository with {@link ItemStore}
      * 
      * @param itemStore
      * @param collectionName
      */
-    public ItemStoreStepRepository(
+    public ItemStoreJobEnvironmentRepository(
        ItemStore itemStore,
        String collectionName
     ) {
-        super(itemStore, Step.class, collectionName);
+        super(itemStore, JobEnvironment.class, collectionName);
     }
 }

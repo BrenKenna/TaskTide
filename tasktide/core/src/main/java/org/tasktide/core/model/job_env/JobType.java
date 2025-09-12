@@ -299,12 +299,7 @@ public enum JobType {
         
         @Override
         public String getJobId() {
-            try {
-                return EnvironmentUtil.getHostname();
-            }
-            catch (UnknownHostException ex) {
-                return "";
-            }
+            return null;
         }
         
         @Override

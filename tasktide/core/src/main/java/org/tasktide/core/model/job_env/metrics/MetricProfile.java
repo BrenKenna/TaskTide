@@ -78,7 +78,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
     // Dataset supporting mean metrics
     @JsonbProperty("Profile Data")
     @jakarta.nosql.Column("ProfileData")
-    @jakarta.persistence.Column(name = "ProfileData")
+    @jakarta.persistence.Embedded
     private ProfileData profile;
     
     // Units for metric
@@ -100,9 +100,9 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
     private String jobEnvId;
 
     // Custom annotations
-    @jakarta.nosql.Column("CustomAnnotation")
-    @jakarta.persistence.Column(name = "CustomAnnotation")
-    @JsonbProperty("Custom Annotation")
+    @jakarta.nosql.Column("Annotations")
+    @jakarta.persistence.Column(name = "Annotations")
+    @JsonbProperty("Annotations")
     private CustomAnnotation anno;
     
     
@@ -141,7 +141,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
         @JsonbProperty("Metric Profile") ProfileData profile,
         @JsonbProperty("Metric Type") MetricType type,
         @JsonbProperty("Job Environment Id") String jobEnvId,
-        @JsonbProperty("Custom Annotation") CustomAnnotation anno
+        @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.id = id;
         this.label = label;

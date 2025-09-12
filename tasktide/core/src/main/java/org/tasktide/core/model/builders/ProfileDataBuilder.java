@@ -18,7 +18,6 @@ package org.tasktide.core.model.builders;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.core.model.job_env.metrics.ProfileData;
@@ -35,8 +34,6 @@ public class ProfileDataBuilder extends ModelBuilder<ProfileData> {
     // Attributes
     private String id;
     private Map<String, MetricData> metricProfile = new HashMap<>();
-    private MetricType type;
-    private CustomAnnotation anno;
 
     
     /**
@@ -70,30 +67,6 @@ public class ProfileDataBuilder extends ModelBuilder<ProfileData> {
         return this;
     }
 
-
-    /**
-     * Adds {@link MetricType} field
-     * 
-     * @param type
-     * @return {@link MetricDataBuilder}
-     */
-    public ProfileDataBuilder withType(MetricType type) {
-        this.type = type;
-        return this;
-    }
-
-    
-    /**
-     * Adds {@link CustomAnnotation} field
-     * 
-     * @param anno
-     * @return {@link MetricDataBuilder}
-     */
-    public ProfileDataBuilder withAnnotation(CustomAnnotation anno) {
-        this.anno = anno;
-        return this;
-    }
-
     
     /**
      * Build {@link ProfileData}
@@ -102,6 +75,6 @@ public class ProfileDataBuilder extends ModelBuilder<ProfileData> {
      */
     @Override
     public ProfileData build() {
-        return new ProfileData(id, metricProfile, type, anno);
+        return new ProfileData(id, metricProfile);
     }
 }
