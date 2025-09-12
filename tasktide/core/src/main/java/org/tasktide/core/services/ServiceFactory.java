@@ -20,6 +20,9 @@ import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.repository.RepositoryType;
@@ -125,7 +128,7 @@ public class ServiceFactory {
     
     
     /**
-     * Make required {@link StepService}
+     * Make required {@link WorkflowService}
      * 
      * @param repoType
      * @param backend
@@ -135,5 +138,47 @@ public class ServiceFactory {
     public static TaskTideService<Workflow> makeWorkflowService(RepositoryType repoType, Object backend, String collectionName) {
         TaskTideRepository<Workflow> repo = repoType.createRepository(Workflow.class, backend, collectionName);
         return new WorkflowService(repo);
+    }
+    
+    
+    /**
+     * Make required {@link JobEnvironmentService}
+     * 
+     * @param repoType
+     * @param backend
+     * @param collectionName
+     * @return {@link TaskTideService}
+     */
+    public static TaskTideService<JobEnvironment> makeJobEnvironmentService(RepositoryType repoType, Object backend, String collectionName) {
+        TaskTideRepository<JobEnvironment> repo = repoType.createRepository(JobEnvironment.class, backend, collectionName);
+        return new JobEnvironmentService(repo);
+    }
+    
+    
+    /**
+     * Make required {@link MetricDataService}
+     * 
+     * @param repoType
+     * @param backend
+     * @param collectionName
+     * @return {@link TaskTideService}
+     */
+    public static TaskTideService<MetricData> makeMetricDataService(RepositoryType repoType, Object backend, String collectionName) {
+        TaskTideRepository<MetricData> repo = repoType.createRepository(MetricData.class, backend, collectionName);
+        return new MetricDataService(repo);
+    }
+    
+    
+    /**
+     * Make required {@link MetricProfileService}
+     * 
+     * @param repoType
+     * @param backend
+     * @param collectionName
+     * @return {@link TaskTideService}
+     */
+    public static TaskTideService<MetricProfile> makeMetricProfileService(RepositoryType repoType, Object backend, String collectionName) {
+        TaskTideRepository<MetricProfile> repo = repoType.createRepository(MetricProfile.class, backend, collectionName);
+        return new MetricProfileService(repo);
     }
 }

@@ -2650,3 +2650,601 @@ Displayling retrieved record:
 
 ---------------- Terminating SQLiteItemStore-Repository Tests ----------------
 
+2025-09-12 16:07:38 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-12 16:07:38 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-12 16:07:38 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-12 16:07:39 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-12 16:07:39 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-12 16:07:39 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-12 16:07:39 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-12 16:07:39 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-12 16:07:39 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: df48326f4143d454fff410ced242f45fc71d5bb7d500c40eb0c717c55fb3fb5a
+2025-09-12 16:07:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.2166956S
+2025-09-12 16:07:40 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-12 16:07:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-12 16:07:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-12 16:07:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-12 16:07:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: a2224cea782b43e6eaa8c398cdb6a1d18e2fe9388c8b6227955edeb6bbace51c
+2025-09-12 16:07:41 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /friendly_torvalds: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-12 16:07:42 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.6989863S
+2025-09-12 16:07:42 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-12 16:07:42 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-12 16:07:42 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-12 16:07:42 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: be20e298a7caf82e37c7da7a5f1e2dbebb2d427af61e8edb6a7d916ca43ed684
+2025-09-12 16:07:47 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT4.7526366S
+2025-09-12 16:07:47 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment Service Tests ----------------
+
+2025-09-12 16:07:47 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-12 16:07:47 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-12 16:07:47 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-12 16:07:52 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container dda26c4d-e5f9-43da-83a4-0069e88727f0 initialized
+2025-09-12 16:07:52 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-12 16:07:52 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@703a2bc9
+2025-09-12 16:07:52 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-12 16:07:52 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-12 16:07:52 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-12 16:07:52 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-12 16:07:53 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-12 16:07:53 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-12 16:07:53 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-12 16:07:54 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: 
+
+================ Construct JobEnvironment Service-Template From Factory Test ================
+
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: Generating data for testing
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: Configuring Service
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: Displaying meta data for NoSQL JobEnvironment Service:
+'{
+    "Collection Name": "JobEnvuronment-Template",
+    "Model Class": "JobEnvironment",
+    "Repository Type": "NoSQL"
+}'
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: Verifying records can be retrieved
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: 
+
+Displaying retreieved JobEnvironment:
+'{"Array Index":-1,"Host OS":"Windows 11-amd64","Hostname":"DESKTOP-57RHCJ2","Id":"f39db899-3a35-461b-8bff-1a9bac570188","Java Version":"17.0.16+12-LTS-247","Job Id":"37460","Job State":"RUNNING","Job Type":"LOCAL","annotations":{"Annotations":{"Unit Test":"TemplateRepository-UnitTests","Pilot Label":"SomePilotLabel"},"id":"CustomAnnotation-26852ffd-e203-4406-8313-bad2254446a3"},"collection":"LOCAL"}'
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: 
+
+================ Construct JobEnvironmentService-Template From Factory Test ================
+
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating JobEnvironment Service Tests ----------------
+
+2025-09-12 16:07:54 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container dda26c4d-e5f9-43da-83a4-0069e88727f0 shut down
+2025-09-12 16:07:54 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.tearDownClass ]: CDI container shut down
+2025-09-12 16:09:23 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-12 16:09:23 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-12 16:09:23 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-12 16:09:23 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-12 16:09:23 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-12 16:09:23 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-12 16:09:23 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-12 16:09:23 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-12 16:09:24 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 50bc448a0ceca55f73bb9a19873f7f2448c1411547963e343c5a300e79cd709f
+2025-09-12 16:09:24 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.0181968S
+2025-09-12 16:09:24 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-12 16:09:24 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-12 16:09:24 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-12 16:09:24 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-12 16:09:24 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 508ef0a60ae4e354075f8b7beb00388ef2bd989a00df59de0852af167c0cf9fa
+2025-09-12 16:09:25 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /distracted_elion: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-12 16:09:26 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.6457205S
+2025-09-12 16:09:26 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-12 16:09:26 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-12 16:09:26 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-12 16:09:26 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 6657fc173d49898d9deceedb9a34c270bdbf75de1eded52ed02556cb27e05ab2
+2025-09-12 16:09:34 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT7.5271131S
+2025-09-12 16:09:34 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment Service Tests ----------------
+
+2025-09-12 16:09:34 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-12 16:09:34 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-12 16:09:34 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-12 16:09:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 7b5560b5-4004-408e-b4e7-afa36f0bd016 initialized
+2025-09-12 16:09:39 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-12 16:09:39 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70b630d
+2025-09-12 16:09:39 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-12 16:09:39 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-12 16:09:39 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-12 16:09:39 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-12 16:09:39 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-12 16:09:39 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-12 16:09:40 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-12 16:09:41 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: 
+
+================ Construct JobEnvironment Service-Template From Factory Test ================
+
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: Generating data for testing
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: Configuring Service
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: Displaying meta data for NoSQL JobEnvironment Service:
+'{
+    "Collection Name": "JobEnvuronment-Template",
+    "Model Class": "JobEnvironment",
+    "Repository Type": "NoSQL"
+}'
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: Verifying records can be retrieved
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: 
+
+Displaying retreieved JobEnvironment:
+'{
+    "Array Index": -1,
+    "Host OS": "Windows 11-amd64",
+    "Hostname": "DESKTOP-57RHCJ2",
+    "Id": "3806d9fc-8ee3-4cd5-ad54-fe607d38469a",
+    "Java Version": "17.0.16+12-LTS-247",
+    "Job Id": "32572",
+    "Job State": "RUNNING",
+    "Job Type": "LOCAL",
+    "annotations": {
+        "Annotations": {
+            "Unit Test": "TemplateRepository-UnitTests",
+            "Pilot Label": "SomePilotLabel"
+        },
+        "id": "CustomAnnotation-cb7c1b2c-e6aa-45da-9c95-a4b625dd51b4"
+    },
+    "collection": "LOCAL"
+}'
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.canQueryThroughNoSqlJobEnvService ]: 
+
+================ Construct JobEnvironmentService-Template From Factory Test ================
+
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating JobEnvironment Service Tests ----------------
+
+2025-09-12 16:09:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 7b5560b5-4004-408e-b4e7-afa36f0bd016 shut down
+2025-09-12 16:09:41 INFO  [ Test worker -> org.tasktide.core.services.JobEnvironmentServiceFactoryTests.tearDownClass ]: CDI container shut down
+2025-09-12 16:14:49 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-12 16:14:49 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-12 16:14:49 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-12 16:14:49 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-12 16:14:50 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-12 16:14:50 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-12 16:14:50 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-12 16:14:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-12 16:14:50 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 98b1256ff7c94ef2d6701cde523f3a6af1ba2c32b16b38d045a22d3efefa4fbe
+2025-09-12 16:14:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.9904257S
+2025-09-12 16:14:51 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-12 16:14:51 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-12 16:14:51 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-12 16:14:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-12 16:14:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: b71f178155997014cfc8952cf606fba0e4346004c299ae11a8b00faa47d317b2
+2025-09-12 16:14:51 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /kind_solomon: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-12 16:14:52 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.7309708S
+2025-09-12 16:14:53 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-12 16:14:53 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-12 16:14:53 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-12 16:14:53 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 5b07fe37ea155710f3b5f21502f90b54a960d366495717cba3bf886577f305b7
+2025-09-12 16:15:00 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT7.0457554S
+2025-09-12 16:15:00 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating MetricData Service Tests ----------------
+
+2025-09-12 16:15:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-12 16:15:00 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-12 16:15:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-12 16:15:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6fadb386-a225-4d0a-87ed-06c9bb85ad92 initialized
+2025-09-12 16:15:05 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-12 16:15:05 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@8b1bfdf
+2025-09-12 16:15:05 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-12 16:15:05 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-12 16:15:05 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-12 16:15:05 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-12 16:15:06 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-12 16:15:06 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-12 16:15:06 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-12 16:15:07 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughNoSqlMetricDataService ]: 
+
+================ Construct MetricData Service-Template From Factory Test ================
+
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughNoSqlMetricDataService ]: Generating data for testing
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughNoSqlMetricDataService ]: Configuring Service
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughNoSqlMetricDataService ]: Displaying meta data for NoSQL MetricData Service:
+'{
+    "Collection Name": "JobEnvuronment-Template",
+    "Model Class": "MetricData",
+    "Repository Type": "NoSQL"
+}'
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughNoSqlMetricDataService ]: Verifying records can be retrieved
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughNoSqlMetricDataService ]: 
+
+Displaying retreieved MetricData:
+'{
+    "Available": 0.0,
+    "Id": "MetricData-c8994b72-b83f-4f3b-965e-fb6352674fff",
+    "Label": "Test-Profile",
+    "Metric Type": "MEMORY",
+    "Timestamp": 1757690107588,
+    "Total": 0.0,
+    "Units": "GB",
+    "Used": 0.0,
+    "annotations": {
+        "Annotations": {
+            "Unit Test": "TemplateRepository-UnitTests",
+            "Pilot Label": "SomePilotJobLabel"
+        },
+        "id": "CustomAnnotation-ec4f96ee-024f-4280-b52c-fc713431a1dc"
+    },
+    "collection": "MEMORY",
+    "state": "GB"
+}'
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughNoSqlMetricDataService ]: 
+
+================ Construct MetricDataService-Template From Factory Test ================
+
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating MetricData Service Tests ----------------
+
+2025-09-12 16:15:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6fadb386-a225-4d0a-87ed-06c9bb85ad92 shut down
+2025-09-12 16:15:07 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.tearDownClass ]: CDI container shut down
+2025-09-12 16:15:48 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-12 16:15:48 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-12 16:15:48 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-12 16:15:48 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-12 16:15:48 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-12 16:15:48 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-12 16:15:48 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-12 16:15:48 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-12 16:15:49 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 5777459115ffe1583122739e8929bb37dcf9a2a37d26cea77e44d19736f87ab7
+2025-09-12 16:15:49 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.9626517S
+2025-09-12 16:15:49 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-12 16:15:49 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-12 16:15:49 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-12 16:15:49 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-12 16:15:49 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 5a4d6f6d83ad0a9d3a3ea38fd702dbc6e810e1a34ace4954a6180efa7b058b26
+2025-09-12 16:15:50 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /eloquent_lederberg: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-12 16:15:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.7023546S
+2025-09-12 16:15:51 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-12 16:15:51 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-12 16:15:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-12 16:15:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: 6360fde1678c9294b3238281f931774e7ab7e8dbd40c91557eeb5330dca3da64
+2025-09-12 16:15:57 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT6.1207988S
+2025-09-12 16:15:57 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating MetricData Service Tests ----------------
+
+2025-09-12 16:15:57 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-12 16:15:57 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-12 16:15:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-12 16:16:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 635cf64a-df33-449a-9f9c-151169f2bb79 initialized
+2025-09-12 16:16:02 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-12 16:16:03 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@337eeceb
+2025-09-12 16:16:03 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-12 16:16:03 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-12 16:16:03 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-12 16:16:03 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-12 16:16:03 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-12 16:16:03 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-12 16:16:03 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-12 16:16:04 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-12 16:16:04 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-12 16:16:04 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughJpaMetricDataService ]: 
+
+================ Construct MetricData Service-JpaRepository From Factory Test ================
+
+2025-09-12 16:16:04 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughJpaMetricDataService ]: Generating data for testing
+2025-09-12 16:16:04 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughJpaMetricDataService ]: Configuring Service
+2025-09-12 16:16:04 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughJpaMetricDataService ]: Displaying meta data for SQL MetricData Service:
+'{
+    "Collection Name": "JobEnvuronment-JpaRepository",
+    "Model Class": "MetricData",
+    "Repository Type": "SQL"
+}'
+2025-09-12 16:16:04 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughJpaMetricDataService ]: Verifying records can be retrieved
+2025-09-12 16:16:05 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughJpaMetricDataService ]: 
+
+Displaying retreieved MetricData:
+'{"Available":0.0,"Id":"MetricData-0422c91e-0803-4f8b-92a3-06469e26aeca","Label":"Test-Profile","Metric Type":"MEMORY","Timestamp":1757690164878,"Total":0.0,"Units":"GB","Used":0.0,"annotations":{"Annotations":{"Unit Test":"TemplateRepository-UnitTests","Pilot Label":"SomePilotJobLabel"},"id":"CustomAnnotation-46bdbdd9-6594-415f-a84f-cc16517ba2d2"},"collection":"MEMORY","state":"GB"}'
+2025-09-12 16:16:05 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.canQueryThroughJpaMetricDataService ]: 
+
+================ Construct MetricDataService-JPARepository From Factory Test ================
+
+2025-09-12 16:16:05 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-12 16:16:05 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating MetricData Service Tests ----------------
+
+2025-09-12 16:16:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 635cf64a-df33-449a-9f9c-151169f2bb79 shut down
+2025-09-12 16:16:05 INFO  [ Test worker -> org.tasktide.core.services.MetricDataServiceFactoryTests.tearDownClass ]: CDI container shut down
+2025-09-12 16:20:50 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-12 16:20:50 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-12 16:20:50 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-12 16:20:51 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-12 16:20:51 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-12 16:20:51 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-12 16:20:51 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-12 16:20:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-12 16:20:51 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: a5860c8907d75453621daeaf0f8494f1982f82516952d758d78d3a1decf6717f
+2025-09-12 16:20:52 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.0101239S
+2025-09-12 16:20:52 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-12 16:20:52 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-12 16:20:52 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-12 16:20:52 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-12 16:20:52 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 437c4c28f8ef44679aaf254eecf5aeab17cfa605998153b255a26ba47c86f81e
+2025-09-12 16:20:53 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /gallant_euler: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-12 16:20:54 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.671091S
+2025-09-12 16:20:54 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-12 16:20:54 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-12 16:20:54 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-12 16:20:54 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: cfe4e65ce89eebba0ab4ba08b411ce11abc721c949cd09813c0e54c6acda8e7b
+2025-09-12 16:21:00 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT6.1860044S
+2025-09-12 16:21:00 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.setUpClass ]: 
+
+---------------- Initiating MetricProfile Service Tests ----------------
+
+2025-09-12 16:21:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-12 16:21:00 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-12 16:21:01 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-12 16:21:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9248982d-c67c-443d-a8e5-d6af002853f3 initialized
+2025-09-12 16:21:07 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-12 16:21:07 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@647ce968
+2025-09-12 16:21:07 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-12 16:21:07 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-12 16:21:07 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-12 16:21:07 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-12 16:21:08 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-12 16:21:08 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-12 16:21:08 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-12 16:21:10 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughNoSqlMetricProfileService ]: 
+
+================ Construct MetricProfile Service-Template From Factory Test ================
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughNoSqlMetricProfileService ]: Generating data for testing
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughNoSqlMetricProfileService ]: Configuring Service
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughNoSqlMetricProfileService ]: Displaying meta data for NoSQL MetricProfile Service:
+'{
+    "Collection Name": "MetricProfile-Template",
+    "Model Class": "MetricProfile",
+    "Repository Type": "NoSQL"
+}'
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughNoSqlMetricProfileService ]: Verifying records can be retrieved
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughNoSqlMetricProfileService ]: 
+
+Displaying retreieved MetricProfile:
+'{
+    "Id": "MetricProfile-c8b91d69-53b8-4ce8-b391-b4988def5812",
+    "Job Environment Id": "JobEnvironment-c5500c29-7bf9-4704-bbd6-b683ae1d69b2",
+    "Label": "Test-Profile",
+    "Mean Available": 0.0,
+    "Mean Total": 0.0,
+    "Mean Used": 0.0,
+    "Metric Type": "MEMORY",
+    "Profile Data": {
+        "Id": "CustomAnnotation-ac5a411f-10e1-45a2-933c-03527ec8ed6e",
+        "Metric Profile": {
+            "MetricData-4d8450c7-c514-4d94-a81d-147652ddbda6": {
+                "Available": 0.0,
+                "Id": "MetricData-4d8450c7-c514-4d94-a81d-147652ddbda6",
+                "Label": "Test-Profile",
+                "Metric Type": "MEMORY",
+                "Timestamp": 1757690470307,
+                "Total": 0.0,
+                "Units": "GB",
+                "Used": 0.0,
+                "annotations": {
+                    "Annotations": {
+                        "Unit Test": "TemplateRepository-UnitTests",
+                        "Pilot Label": "SomePilotJobLabel"
+                    },
+                    "id": "CustomAnnotation-b07bcfb6-e1b9-4c3a-bce1-3579a4d59675"
+                },
+                "collection": "MEMORY",
+                "state": "GB"
+            },
+            "MetricData-59154b6c-937d-4072-addc-cf73f9c1ba52": {
+                "Available": 0.0,
+                "Id": "MetricData-59154b6c-937d-4072-addc-cf73f9c1ba52",
+                "Label": "Test-Profile",
+                "Metric Type": "MEMORY",
+                "Timestamp": 1757690470307,
+                "Total": 0.0,
+                "Units": "GB",
+                "Used": 0.0,
+                "annotations": {
+                    "Annotations": {
+                        "Unit Test": "TemplateRepository-UnitTests",
+                        "Pilot Label": "SomePilotJobLabel"
+                    },
+                    "id": "CustomAnnotation-fd719576-4e5d-40c9-9c2d-896e50bb3988"
+                },
+                "collection": "MEMORY",
+                "state": "GB"
+            }
+        }
+    },
+    "Timestamp": 0,
+    "Units": "GB",
+    "annotations": {
+        "Annotations": {
+            "Unit Test": "TemplateRepository-UnitTests",
+            "Pilot Label": "SomePilotJobLabel"
+        },
+        "id": "CustomAnnotation-ac5a411f-10e1-45a2-933c-03527ec8ed6e"
+    },
+    "collection": "MEMORY",
+    "state": "GB"
+}'
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughNoSqlMetricProfileService ]: 
+
+================ Construct MetricProfileService-Template From Factory Test ================
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughJpaMetricProfileService ]: 
+
+================ Construct MetricProfile Service-JpaRepository From Factory Test ================
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughJpaMetricProfileService ]: Generating data for testing
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughJpaMetricProfileService ]: Configuring Service
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughJpaMetricProfileService ]: Displaying meta data for SQL MetricProfile Service:
+'{
+    "Collection Name": "MetricProfile-JpaRepository",
+    "Model Class": "MetricProfile",
+    "Repository Type": "SQL"
+}'
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughJpaMetricProfileService ]: Verifying records can be retrieved
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughJpaMetricProfileService ]: 
+
+Displaying retreieved MetricProfile:
+'{
+    "Id": "MetricProfile-20272bcb-7e57-4c74-901d-adf18b59641a",
+    "Job Environment Id": "JobEnvironment-bd3a49ce-e353-4c5c-b7c6-c8c8de8441c5",
+    "Label": "Test-Profile",
+    "Mean Available": 0.0,
+    "Mean Total": 0.0,
+    "Mean Used": 0.0,
+    "Metric Type": "MEMORY",
+    "Profile Data": {
+        "Id": "ProfileData-d20541f6-7d81-4f5a-8ce4-d580f90e914b",
+        "Metric Profile": {
+            "MetricData-0a92bc2f-5d1a-40be-922c-d76936d1e784": {
+                "Available": 0.0,
+                "Id": "MetricData-0a92bc2f-5d1a-40be-922c-d76936d1e784",
+                "Label": "Test-Profile",
+                "Metric Type": "MEMORY",
+                "Timestamp": 1757690470810,
+                "Total": 0.0,
+                "Units": "GB",
+                "Used": 0.0,
+                "annotations": {
+                    "Annotations": {
+                        "Unit Test": "TemplateRepository-UnitTests",
+                        "Pilot Label": "SomePilotJobLabel"
+                    },
+                    "id": "CustomAnnotation-5af1d1aa-81ff-4b21-9d2c-a8c4ac0d429c"
+                },
+                "collection": "MEMORY",
+                "state": "GB"
+            },
+            "MetricData-1481709e-b53e-4089-8753-b23469994b6f": {
+                "Available": 0.0,
+                "Id": "MetricData-1481709e-b53e-4089-8753-b23469994b6f",
+                "Label": "Test-Profile",
+                "Metric Type": "MEMORY",
+                "Timestamp": 1757690470810,
+                "Total": 0.0,
+                "Units": "GB",
+                "Used": 0.0,
+                "annotations": {
+                    "Annotations": {
+                        "Unit Test": "TemplateRepository-UnitTests",
+                        "Pilot Label": "SomePilotJobLabel"
+                    },
+                    "id": "CustomAnnotation-a0a3a10f-1128-438f-acd1-a74df85b7764"
+                },
+                "collection": "MEMORY",
+                "state": "GB"
+            }
+        }
+    },
+    "Timestamp": 0,
+    "Units": "GB",
+    "annotations": {
+        "Annotations": {
+            "Unit Test": "TemplateRepository-UnitTests",
+            "Pilot Label": "SomePilotJobLabel"
+        },
+        "id": "CustomAnnotation-b8f8ea21-7055-475b-a4d0-3e43b2c04132"
+    },
+    "collection": "MEMORY",
+    "state": "GB"
+}'
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.canQueryThroughJpaMetricProfileService ]: 
+
+================ Construct MetricProfileService-JpaRepository From Factory Test ================
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.tearDownClass ]: 
+
+---------------- Terminating MetricProfile Service Tests ----------------
+
+2025-09-12 16:21:10 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9248982d-c67c-443d-a8e5-d6af002853f3 shut down
+2025-09-12 16:21:10 INFO  [ Test worker -> org.tasktide.core.services.MetricProfileServiceFactoryTests.tearDownClass ]: CDI container shut down
