@@ -32,8 +32,9 @@ import org.tasktide.core.services.WorkflowService;
 
 
 /**
- * Container class {@link TaskTideService} for {@link Workflow},
- *   {@link Step}, and {@link Workflow}
+ * Container class {@link TaskTideService} for {@link WorkItem},
+ *   {@link Step}, {@link Workflow}, {@link JobEnvironment},
+ *   {@link MetricProfile}, and {@link JobEnvironment}
  *
  * @author bkenna
  */
