@@ -21,6 +21,9 @@ import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.services.WorkItemService;
@@ -43,6 +46,9 @@ public final class TaskTideServiceManager {
     private final TaskTideService<WorkItem> workItemServ;
     private final TaskTideService<Step> stepServ;
     private final TaskTideService<Workflow> workflowServ;
+    private final TaskTideService<MetricData> metricDataServ;
+    private final TaskTideService<MetricProfile> metricProfileServ;
+    private final TaskTideService<JobEnvironment> jobEnvServ;
     
     
     /**
@@ -52,6 +58,7 @@ public final class TaskTideServiceManager {
      * @param stepServ
      * @param workflowServ
      */
+    @Deprecated(forRemoval = true)
     private TaskTideServiceManager(
         TaskTideService<WorkItem> workItemServ,
         TaskTideService<Step> stepServ,
@@ -60,6 +67,36 @@ public final class TaskTideServiceManager {
         this.workItemServ = workItemServ;
         this.stepServ = stepServ;
         this.workflowServ = workflowServ;
+        this.metricDataServ = null;
+        this.metricProfileServ = null;
+        this.jobEnvServ = null;
+    }
+    
+    
+    /**
+     * Package private construction with the {@link TaskTideService}
+     * 
+     * @param workItemServ
+     * @param stepServ
+     * @param workflowServ
+     * @param metricDataServ
+     * @param metricProfileServ
+     * @param jobEnvServ
+     */
+    private TaskTideServiceManager(
+        TaskTideService<WorkItem> workItemServ,
+        TaskTideService<Step> stepServ,
+        TaskTideService<Workflow> workflowServ,
+        TaskTideService<MetricData> metricDataServ,
+        TaskTideService<MetricProfile> metricProfileServ,
+        TaskTideService<JobEnvironment> jobEnvServ
+    ) {
+        this.workItemServ = workItemServ;
+        this.stepServ = stepServ;
+        this.workflowServ = workflowServ;
+        this.metricDataServ = metricDataServ;
+        this.metricProfileServ = metricProfileServ;
+        this.jobEnvServ = jobEnvServ;
     }
 
     /**
@@ -79,7 +116,9 @@ public final class TaskTideServiceManager {
      * @param stepServ
      * @param workflowServ 
      */
-    public static synchronized void initialize(TaskTideService<WorkItem> workItemServ,
+    @Deprecated(forRemoval = true)
+    public static synchronized void initialize(
+        TaskTideService<WorkItem> workItemServ,
         TaskTideService<Step> stepServ,
         TaskTideService<Workflow> workflowServ
     ) {
@@ -87,6 +126,31 @@ public final class TaskTideServiceManager {
             throw new IllegalStateException("TaskTideServiceManager already initialized");
         }
         INSTANCE = new TaskTideServiceManager(workItemServ, stepServ, workflowServ);
+    }
+    
+    
+    /**
+     * Initialize service manager, throws error if already initialized
+     * 
+     * @param workItemServ
+     * @param stepServ
+     * @param workflowServ 
+     * @param metricDataServ 
+     * @param metricProfileServ 
+     * @param jobEnvServ 
+     */
+    public static synchronized void initialize(
+        TaskTideService<WorkItem> workItemServ,
+        TaskTideService<Step> stepServ,
+        TaskTideService<Workflow> workflowServ,
+        TaskTideService<MetricData> metricDataServ,
+        TaskTideService<MetricProfile> metricProfileServ,
+        TaskTideService<JobEnvironment> jobEnvServ
+    ) {
+        if ( INSTANCE != null ) {
+            throw new IllegalStateException("TaskTideServiceManager already initialized");
+        }
+        INSTANCE = new TaskTideServiceManager(workItemServ, stepServ, workflowServ, metricDataServ, metricProfileServ, jobEnvServ);
     }
     
 
@@ -130,11 +194,51 @@ public final class TaskTideServiceManager {
     
     
     /**
+     * Fetches {@link MetricDataService} if initialized
+     * 
+     * @return {@link TaskTideService}-{@link MetricData}
+     */
+    public static TaskTideService<MetricData> fetchMetricDataService() {
+        if ( INSTANCE != null ) {
+            return INSTANCE.getMetricDataService();
+        }
+        throw new IllegalStateException("TaskTideServiceManager must be initialized first");
+    }
+    
+    
+    /**
+     * Fetches {@link MetricProfileService} if initialized
+     * 
+     * @return {@link TaskTideService}-{@link MetricProfile}
+     */
+    public static TaskTideService<MetricProfile> fetchMetricProfileService() {
+        if ( INSTANCE != null ) {
+            return INSTANCE.getMetricProfileService();
+        }
+        throw new IllegalStateException("TaskTideServiceManager must be initialized first");
+    }
+    
+    
+    /**
+     * Fetches {@link JobEnvironmentService} if initialized
+     * 
+     * @return {@link TaskTideService}-{@link JobEnvironment}
+     */
+    public static TaskTideService<JobEnvironment> fetchJobEnvironmentService() {
+        if ( INSTANCE != null ) {
+            return INSTANCE.getJobEnvironmentService();
+        }
+        throw new IllegalStateException("TaskTideServiceManager must be initialized first");
+    }
+    
+    
+    /**
      * Get {@link TaskTideService} mapping to {@link ManagerTarget}
      * 
      * @param <T> of {@link TaskTideModel}
      * @param tgt
-     * @return TaskTideService of {@link WorkItem}, {@link Step}, or {@link Workflow}
+     * @return TaskTideService of {@link WorkItem}, {@link Step}, {@link Workflow},
+     *      {@link JobEnvironment}, {@link MetricData}, {@link MetricProfile}
      */
     @SuppressWarnings("unchecked")
     public static <T extends TaskTideModel<T>> TaskTideService<T> getService(ManagerTarget tgt) {
@@ -151,6 +255,21 @@ public final class TaskTideServiceManager {
             
             case WORKFLOW -> {
                 TaskTideService<T> output = (TaskTideService<T>) fetchWorkflowService();
+                return output;
+            }
+            
+            case JOB_ENVIRONMENT -> {
+                TaskTideService<T> output = (TaskTideService<T>) fetchJobEnvironmentService();
+                return output;
+            }
+            
+            case METRIC_DATA -> {
+                TaskTideService<T> output = (TaskTideService<T>) fetchMetricDataService();
+                return output;
+            }
+            
+            case METRIC_PROFILE -> {
+                TaskTideService<T> output = (TaskTideService<T>) fetchMetricProfileService();
                 return output;
             }
             
@@ -189,5 +308,35 @@ public final class TaskTideServiceManager {
      */
     public TaskTideService<Workflow> getWorkflowService() {
         return this.workflowServ;
+    }
+    
+    
+    /**
+     * Get {@link MetricDataService}
+     * 
+     * @return {@link TaskTideService} of {@link MetricData}
+     */
+    public TaskTideService<MetricData> getMetricDataService() {
+        return this.metricDataServ;
+    }
+    
+    
+    /**
+     * Get {@link MetricProfileService}
+     * 
+     * @return {@link TaskTideService} of {@link MetricProfile}
+     */
+    public TaskTideService<MetricProfile> getMetricProfileService() {
+        return this.metricProfileServ;
+    }
+    
+    
+    /**
+     * Get {@link JobEnvironmentService}
+     * 
+     * @return {@link TaskTideService} of {@link JobEnvironment}
+     */
+    public TaskTideService<JobEnvironment> getJobEnvironmentService() {
+        return this.jobEnvServ;
     }
 }

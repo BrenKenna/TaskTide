@@ -38,6 +38,7 @@ public class TaskTideManagerUtility {
     private static final Logger LOGGER = LogManager.getLogger(TaskTideManagerUtility.class);
     private static final String STEP_ID = "Step-" + BuilderUtility.fetchRandomId();
     private static final String WORKFLOW_ID = "Workflow-" + BuilderUtility.fetchRandomId();
+    private static final String JOB_ENVIRONMENT_ID = "JobEnvironment-" + BuilderUtility.fetchRandomId();
 
     
     /**
