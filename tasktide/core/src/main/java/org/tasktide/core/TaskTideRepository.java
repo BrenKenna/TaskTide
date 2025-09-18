@@ -7,6 +7,7 @@ package org.tasktide.core;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
@@ -81,6 +82,70 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      */
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal);
     
+    
+    /**
+     * Filters records with provided {@link CustomAnnotation}
+     * 
+     * @param anno
+     * @return List-{@link TaskTideModel}
+     */
+    public List<T> filterByAnnotation(CustomAnnotation anno);
+    
+    
+    /**
+     * Retrieve records with annotation key matching value
+     * 
+     * @param key
+     * @param value
+     * @return List-{@link TaskTideModel}
+     */
+    public List<T> filterByAnnotation(String key, Object value);
+    
+    
+    /**
+     * Retrieve records which have provided annotation key
+     * 
+     * @param key
+     * @return List-{@link TaskTideModel}
+     */
+    public List<T> hasAnnotationField(String key);
+    
+    
+    /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value with provided annotation.
+     * <br>
+     * Use case is for early task binding, using pre-defined pilot label
+     * <br>
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @param annoKey
+     * @param annoValue
+     * @return List-{@link TaskTideModel}
+     */
+    public List<T> findByFieldForGroupWithAnno(String field, Object value, String group, Object groupVal, String annoKey, Object annoValue);
+    
+    
+    /**
+     * Find {@link TaskTideModel} from backend with field and group
+     *  having specified value with provided annotation.
+     * <br>
+     * Use case is for early task binding, using pre-defined {@link CustomAnnotation}
+     *  where all values for the keys provided in annotation must match record.
+     *  Allowing for an annotation profile
+     * <br>
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @param anno
+     * @return List-{@link TaskTideModel}
+     */
+    public List<T> findByFieldForGroupWithAnno(String field, Object value, String group, Object groupVal, CustomAnnotation anno);
     
     
     /**

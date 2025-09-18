@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.manager;
 
+import java.util.concurrent.ConcurrentHashMap;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.TaskTideService;
@@ -25,6 +26,9 @@ import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.services.JobEnvironmentService;
+import org.tasktide.core.services.MetricDataService;
+import org.tasktide.core.services.MetricProfileService;
 
 import org.tasktide.core.services.WorkItemService;
 import org.tasktide.core.services.StepService;
@@ -42,13 +46,20 @@ public final class TaskTideServiceManager {
     
     // There can be only one
     private static volatile TaskTideServiceManager INSTANCE;
+    private final ConcurrentHashMap<ManagerTarget, TaskTideService> serviceMap;
     
     // Attributes
+    @Deprecated(forRemoval = true)
     private final TaskTideService<WorkItem> workItemServ;
+    @Deprecated(forRemoval = true)
     private final TaskTideService<Step> stepServ;
+    @Deprecated(forRemoval = true)
     private final TaskTideService<Workflow> workflowServ;
+    @Deprecated(forRemoval = true)
     private final TaskTideService<MetricData> metricDataServ;
+    @Deprecated(forRemoval = true)
     private final TaskTideService<MetricProfile> metricProfileServ;
+    @Deprecated(forRemoval = true)
     private final TaskTideService<JobEnvironment> jobEnvServ;
     
     
@@ -71,6 +82,7 @@ public final class TaskTideServiceManager {
         this.metricDataServ = null;
         this.metricProfileServ = null;
         this.jobEnvServ = null;
+        this.serviceMap = null;
     }
     
     
@@ -92,14 +104,22 @@ public final class TaskTideServiceManager {
         TaskTideService<MetricProfile> metricProfileServ,
         TaskTideService<JobEnvironment> jobEnvServ
     ) {
+        this.serviceMap = new ConcurrentHashMap<>();
         this.workItemServ = workItemServ;
+        this.serviceMap.put(ManagerTarget.WORKITEM, workItemServ);
         this.stepServ = stepServ;
+        this.serviceMap.put(ManagerTarget.STEP, stepServ);
         this.workflowServ = workflowServ;
+        this.serviceMap.put(ManagerTarget.WORKFLOW, workflowServ);
         this.metricDataServ = metricDataServ;
+        this.serviceMap.put(ManagerTarget.METRIC_DATA, metricDataServ);
         this.metricProfileServ = metricProfileServ;
+        this.serviceMap.put(ManagerTarget.METRIC_PROFILE, metricProfileServ);
         this.jobEnvServ = jobEnvServ;
+        this.serviceMap.put(ManagerTarget.JOB_ENVIRONMENT, jobEnvServ);
     }
 
+    
     /**
      * Returns whether the service manager is initialized
      * 
@@ -234,51 +254,31 @@ public final class TaskTideServiceManager {
     
     
     /**
-     * Get {@link TaskTideService} mapping to {@link ManagerTarget}
+     * Get {@link TaskTideService} for {@link ManagerTarget}
      * 
      * @param <T> of {@link TaskTideModel}
      * @param tgt
      * @return TaskTideService of {@link WorkItem}, {@link Step}, {@link Workflow},
      *      {@link JobEnvironment}, {@link MetricData}, {@link MetricProfile}
      */
-    @SuppressWarnings("unchecked")
     public static <T extends TaskTideModel<T>> TaskTideService<T> getService(ManagerTarget tgt) {
-        switch (tgt) {
-            case WORKITEM -> {
-                TaskTideService<T> output = (TaskTideService<T>) fetchWorkItemService();
-                return output;
-            }
-            
-            case STEP -> {
-                TaskTideService<T> output = (TaskTideService<T>) fetchStepService();
-                return output;
-            }
-            
-            case WORKFLOW -> {
-                TaskTideService<T> output = (TaskTideService<T>) fetchWorkflowService();
-                return output;
-            }
-            
-            case JOB_ENVIRONMENT -> {
-                TaskTideService<T> output = (TaskTideService<T>) fetchJobEnvironmentService();
-                return output;
-            }
-            
-            case METRIC_DATA -> {
-                TaskTideService<T> output = (TaskTideService<T>) fetchMetricDataService();
-                return output;
-            }
-            
-            case METRIC_PROFILE -> {
-                TaskTideService<T> output = (TaskTideService<T>) fetchMetricProfileService();
-                return output;
-            }
-            
-            default -> {
-                String msg = String.format("Error target must be on of:\t'%s'", ManagerTarget.valuesString());
-                throw new IllegalArgumentException(msg);
-            }
+        if ( INSTANCE != null ) {
+             return INSTANCE.getServiceFor(tgt);
         }
+        throw new IllegalStateException("TaskTideServiceManager must be initialized first");      
+    }
+    
+    
+    /**
+     * Get {@link TaskTideService} for {@link ManagerTarget}
+     * 
+     * @param <T>
+     * @param tgt
+     * @return {@link TaskTideService}
+     */
+    @SuppressWarnings("unchecked")
+    public <T extends TaskTideModel<T>> TaskTideService<T> getServiceFor(ManagerTarget tgt) {
+        return INSTANCE.serviceMap.get(tgt);   
     }
     
     

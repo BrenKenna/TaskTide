@@ -101,7 +101,7 @@ public enum ManagerTarget {
         public boolean isManagerTarget(String query) {
             String tmp = this.toString().replace("_", query);
             query = query.strip().replace(" ", "");
-            return this.toString().equalsIgnoreCase(query);
+            return tmp.equalsIgnoreCase(query);
         }
 
         @Override
@@ -125,7 +125,7 @@ public enum ManagerTarget {
         public boolean isManagerTarget(String query) {
             String tmp = this.toString().replace("_", query);
             query = query.strip().replace(" ", "");
-            return this.toString().equalsIgnoreCase(query);
+            return tmp.equalsIgnoreCase(query);
         }
 
         @Override
@@ -149,7 +149,7 @@ public enum ManagerTarget {
         public boolean isManagerTarget(String query) {
             String tmp = this.toString().replace("_", query);
             query = query.strip().replace(" ", "");
-            return this.toString().equalsIgnoreCase(query);
+            return tmp.equalsIgnoreCase(query);
         }
 
         @Override

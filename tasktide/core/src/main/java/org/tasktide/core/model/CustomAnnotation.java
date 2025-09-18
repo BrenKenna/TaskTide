@@ -27,6 +27,7 @@ import jakarta.json.bind.annotation.JsonbTransient;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.UUID;
 
 import org.tasktide.core.TaskTideModel;
@@ -249,6 +250,25 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    
+    /**
+     * Checks if all queried annotations match active
+     * 
+     * @param query
+     * @return boolean
+     */
+    public boolean queriedFieldsMatch(CustomAnnotation query) {
+        int count = 0;
+        for ( Entry<String, Object> elm : query.getAnno().entrySet() ) {
+            if ( this.hasKey(elm.getKey()) ) {
+                if ( this.getKey(elm.getKey()).equals(elm.getValue()) ) {
+                    count++;
+                }
+            }
+        }
+        return count == query.getAnno().size();
+    }
+    
     
     /**
      * Represent as String

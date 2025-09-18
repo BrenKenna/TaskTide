@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -137,6 +138,98 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
         return modelCollection.get( modelCollection.size() -1 );
     }
     
+    
+    /**
+     * Filters records with provided {@link CustomAnnotation}
+     * 
+     * @param anno
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<T> filterByAnnotation(CustomAnnotation anno) {
+        return this.findAll()
+            .stream()
+            .parallel()
+            .filter( elm -> elm.getAnnotations().queriedFieldsMatch(anno) )
+        .collect(Collectors.toList());
+    }
+    
+    
+    /**
+     * Filters records with provided annotation key and value
+     * 
+     * @param key
+     * @param value
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<T> filterByAnnotation(String key, Object value) {
+        return this.findAll()
+            .stream()
+            .parallel()
+            .filter( elm -> elm.getAnnotations().getKey(key).equals(value) )
+        .collect(Collectors.toList());
+    }
+    
+    
+    /**
+     * Filter records which have provided annotation key
+     * 
+     * @param key
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<T> hasAnnotationField(String key) {
+        return this.findAll()
+            .stream()
+            .parallel()
+            .filter( elm -> elm.getAnnotations().hasKey(key) )
+        .collect(Collectors.toList());
+    }
+    
+    
+    /**
+     * Extends collection, state query with annotation filtering
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @param annoKey
+     * @param annoValue
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<T> findByFieldForGroupWithAnno(
+            String field, Object value, String group,
+            Object groupVal, String annoKey, Object annoValue
+    ) {
+        return this.findByFieldForGroup(field, value, group, groupVal)
+            .stream()
+            .parallel()
+            .filter( elm -> elm.getAnnotations().getKey(annoKey).equals(annoValue) )
+        .collect(Collectors.toList());
+    }
+    
+    
+    /**
+     * Extends collection, state query with annotation filtering
+     * 
+     * @param field
+     * @param value
+     * @param group
+     * @param groupVal
+     * @param anno
+     * @return List-{@link TaskTideModel}
+     */
+    @Override
+    public List<T> findByFieldForGroupWithAnno(String field, Object value, String group, Object groupVal, CustomAnnotation anno) {
+        return this.findByFieldForGroup(field, value, group, groupVal)
+            .stream()
+            .parallel()
+            .filter( elm -> elm.getAnnotations().queriedFieldsMatch(anno) )
+        .collect(Collectors.toList());
+    }
     
     
     /**

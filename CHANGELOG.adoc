@@ -72,7 +72,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] Job Env Entity
         - [] Place Id on ItemTask or WorkItem?
         - [] Store under job_env
-        - [] A job can have a set of host metrics over it's lifecycle.
+        - [] A job can have a MetricProfiles over its lifecycle.
 ...
 
 - [/] JobEnvironment property on ItemTask gives identifiers for tracking, pull out on ItemStore.
@@ -106,7 +106,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] Engine & Manager share model names.
         - [X] Input and Output file merged into Target File.
 ...
-- [] Check over unit failed unit tests as they work independantly
+- [] Check over failed unit tests as they work independantly
 ...
         - [] Singleton not set for "container Id".
         - [] Engine error messages, and old unit tests missing SOA.
