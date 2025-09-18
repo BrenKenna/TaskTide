@@ -22,6 +22,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.supporting.JsonUtils;
@@ -138,6 +139,63 @@ public class TaskTideEngineClient extends TaskTideClient {
     
     
     /**
+     * Determines whether pilot label is configured
+     * 
+     * @return boolean 
+     */
+    private boolean hasPilotLabel() {
+        return
+            (this.engineArgs.getArgument("Pilot Label Key").getValue() != "" &&
+            this.engineArgs.getArgument("Pilot Label Value").getValue() != "")
+            || 
+            this.engineArgs.getArgument("Pilot Label Annotation").getValue() != ""
+        ;
+    }
+    
+    
+    /**
+     * Fetches available work based on pilot label annotation
+     * 
+     * @param step
+     * @return List-{@link WorkItem}
+     */
+    private List<WorkItem> handlePilotLabel(String step) {
+    
+        if ( this.engineArgs.getArgument("Pilot Label Key").getValue() != "" &&
+            this.engineArgs.getArgument("Pilot Label Value").getValue() != "" )
+        {
+            String key = (String) this.engineArgs.getArgument("Pilot Label Key").getValue();
+            Object value = this.engineArgs.getArgument("Pilot Label Value").getValue();
+            return EngineUtility.fetchToDoWorkTargetPilotLabel(step, key, value);
+        }
+        
+        else {
+            String json = (String) this.engineArgs.getArgument("Pilot Label Annotation").getValue();
+            CustomAnnotation anno = JsonUtils.fromJson(json, CustomAnnotation.class);
+            return EngineUtility.fetchToDoWorkTargetPilotLabel(step, anno);
+        }
+    }
+    
+    
+    /**
+     * Fetches engine workload, checking if pilot label
+     *  was used
+     * 
+     * @param step
+     * @return List-{@link WorkItem}
+     */
+    private List<WorkItem> fetchWorkload(String step) {
+        if ( this.hasPilotLabel() ) {
+            LOGGER.info("Pilot label detected");
+            return this.handlePilotLabel(step);
+        }
+        else {
+            return EngineUtility.fetchToDoWorkTarget(step);
+        }
+    }
+    
+    
+    /**
      * Fetch and run workloads
      * 
      */
@@ -150,7 +208,7 @@ public class TaskTideEngineClient extends TaskTideClient {
             LOGGER.info("Processing in pipeline mode:\t'{}'", JsonUtils.toJson(false, steps));
             for ( String elm : steps ) {
                 LOGGER.info("Processing step:\t'{}'", elm);
-                List<WorkItem> workload = EngineUtility.fetchToDoWorkTarget(elm);
+                List<WorkItem> workload = this.fetchWorkload(elm);
                 this.processWorkload(workload);
                 LOGGER.info("Processing complete for step:\t'{}'", elm);
             }
