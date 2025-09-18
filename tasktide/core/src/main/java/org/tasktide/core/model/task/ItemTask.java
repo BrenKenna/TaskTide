@@ -69,6 +69,10 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     @JsonbProperty("Work Item Id")
     private String workItemId;
     
+    @Column
+    @JsonbProperty("Job Environment Id")
+    private String jobEnvId;
+    
     
     // Custom annotations
     @Column("Annotations")
@@ -162,6 +166,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         @JsonbProperty("Task State") TaskState taskState,
         @JsonbProperty("Task Log") TaskLogging taskLog,
         @JsonbProperty("Work Item Id") String workItemId,
+        @JsonbProperty("Job Environment Id") String jobEnvId,
         @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.itemTaskId = itemTaskId;
@@ -170,6 +175,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskState = taskState;
         this.taskLog = taskLog;
         this.workItemId = workItemId;
+        this.jobEnvId = jobEnvId;
         this.anno = anno;
     }
 
@@ -255,6 +261,26 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      */
     public String getWorkItemId() {
         return this.workItemId;
+    }
+    
+    
+    /**
+     * Get job environment Id
+     * 
+     * @return String
+     */
+    public String getJobEnvId() {
+        return this.jobEnvId;
+    }
+    
+    
+    /**
+     * Sets job environment Id
+     * 
+     * @param jobEnvId 
+     */
+    public void setJobEnvId(String jobEnvId) {
+        this.jobEnvId = jobEnvId;
     }
     
     

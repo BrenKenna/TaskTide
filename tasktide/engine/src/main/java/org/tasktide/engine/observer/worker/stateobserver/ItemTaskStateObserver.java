@@ -43,6 +43,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
     // Logger
     private final Logger logger;
     
+    
     /**
      * Construct with state tracker
      * 
@@ -80,6 +81,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
     public ObserverResult onTaskStart(ItemTask task) {
         if ( task.getTaskState() == TaskState.PENDING ) {
             TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.PREPARE);
+            task.setJobEnvId(this.JOB_ENV_ID);
             return ObserverResult.success();
         }
         else {

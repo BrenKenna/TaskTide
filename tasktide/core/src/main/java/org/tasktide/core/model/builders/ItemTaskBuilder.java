@@ -29,7 +29,7 @@ import org.tasktide.core.model.task.TaskLogging;
 public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
     
     // Attributes
-    private String id, taskName, task, workItemId;
+    private String id, taskName, task, workItemId, jobEnvId;
     private TaskLogging taskLog;
     private TaskState taskState;
     private CustomAnnotation anno;
@@ -125,6 +125,18 @@ public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
     
     
     /**
+     * Add jobEnvId field
+     * 
+     * @param jobEnvId
+     * @return ItemTaskBuilder
+     */
+    public ItemTaskBuilder withJobEnvId(String jobEnvId) {
+        this.jobEnvId = jobEnvId;
+        return this;
+    }
+    
+    
+    /**
      * Construct {@link ItemTask} from provided fields
      * 
      * @return {@link ItemTask} 
@@ -132,7 +144,7 @@ public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
     @Override
     public ItemTask build() {
         if ( workItemId != null ) {
-            return new ItemTask(id, taskName, task, taskState, taskLog, workItemId, anno);
+            return new ItemTask(id, taskName, task, taskState, taskLog, workItemId, jobEnvId, anno);
         }
         return new ItemTask(id, taskName, task, taskState, taskLog, anno);
     }

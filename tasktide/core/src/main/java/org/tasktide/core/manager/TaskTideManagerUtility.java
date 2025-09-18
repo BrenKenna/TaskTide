@@ -17,6 +17,7 @@ package org.tasktide.core.manager;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,6 +26,8 @@ import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.JobType;
 
 
 /**
@@ -38,6 +41,8 @@ public class TaskTideManagerUtility {
     private static final Logger LOGGER = LogManager.getLogger(TaskTideManagerUtility.class);
     private static final String STEP_ID = "Step-" + BuilderUtility.fetchRandomId();
     private static final String WORKFLOW_ID = "Workflow-" + BuilderUtility.fetchRandomId();
+    
+    // Perhaps written to a file instead?
     private static final String JOB_ENVIRONMENT_ID = "JobEnvironment-" + BuilderUtility.fetchRandomId();
 
     
@@ -116,5 +121,38 @@ public class TaskTideManagerUtility {
         else {
             return workflows.get(0).getId();
         }
+    }
+    
+    
+    /**
+     * Fetch {@link JobEnvironmentId}
+     * 
+     * @return String
+     */
+    public static String fetchJobEnvironmentId() {
+        
+        // Fetch job env
+        Optional<JobEnvironment> result = JobType.fetchJobEnvironment();
+        if ( !result.isPresent() ) {
+            return null;
+        }
+        
+        // Set standard id
+        JobEnvironment jobEnv = result.get();
+        jobEnv.setId(JOB_ENVIRONMENT_ID);
+        
+        // Push if not in db
+        List<JobEnvironment> jobEnvs = TaskTideServiceManager
+            .fetchJobEnvironmentService()
+            .viewByField("HostOS", jobEnv.getHostOS());
+        if ( !jobEnvs.isEmpty()) {
+            return jobEnvs.get(0).getId();
+        }
+        
+        // Otherwise push and return
+        TaskTideServiceManager
+            .fetchJobEnvironmentService()
+        .appendModel(jobEnv);
+        return jobEnv.getId();
     }
 }

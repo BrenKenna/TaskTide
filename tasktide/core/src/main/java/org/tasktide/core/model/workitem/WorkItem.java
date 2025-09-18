@@ -96,6 +96,11 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     @JsonbProperty("StepId")
     private String stepId;
     
+    @jakarta.nosql.Column("JobEnvironmentId")
+    @jakarta.persistence.Column(name = "JobEnvironmentId")
+    @JsonbProperty("Job Environment Id")
+    private String jobEnvId;
+    
     @jakarta.nosql.Column("Annotations")
     @jakarta.persistence.Column(name = "Annotations")
     @JsonbProperty("Annotations")
@@ -168,6 +173,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
      * @param workload 
      * @param stepName
      * @param stepId
+     * @param jobEnvId
      * @param anno
      */
     @JsonbCreator
@@ -184,6 +190,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         @JsonbProperty("Workload") Workload workload,
         @JsonbProperty("Step Name") String stepName,
         @JsonbProperty("Step Id") String stepId,
+        @JsonbProperty("Job Environment Id") String jobEnvId,
         @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.id = id;
@@ -198,6 +205,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         this.workload = workload;
         this.stepName = stepName;
         this.stepId = stepId;
+        this.jobEnvId = jobEnvId;
         this.anno = anno;
     }
     
@@ -360,6 +368,26 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         this.id = id;
     }
 
+    
+    /**
+     * Get job environment Id
+     * 
+     * @return String
+     */
+    public String getJobEnvId() {
+        return this.jobEnvId;
+    }
+    
+    
+    /**
+     * Sets job environment Id
+     * 
+     * @param jobEnvId 
+     */
+    public void setJobEnvId(String jobEnvId) {
+        this.jobEnvId = jobEnvId;
+    }
+    
     
     /**
      * Get item name

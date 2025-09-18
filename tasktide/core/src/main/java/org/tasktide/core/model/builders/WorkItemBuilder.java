@@ -32,7 +32,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 public class WorkItemBuilder extends ModelBuilder<WorkItem> {
     
     // Attributes
-    private String id, itemName, lockId, stepName, stepId;
+    private String id, itemName, lockId, stepName, stepId, jobEnvId;
     private ItemType itemType;
     private ItemState itemState;
     private long lockDate, doneDate;
@@ -215,6 +215,18 @@ public class WorkItemBuilder extends ModelBuilder<WorkItem> {
     
     
     /**
+     * Add jobEnvId field
+     * 
+     * @param jobEnvId
+     * @return {@link WorkItemBuilder}
+     */
+    public WorkItemBuilder withJobEnvId(String jobEnvId) {
+        this.jobEnvId = jobEnvId;
+        return this;
+    }
+    
+    
+    /**
      * Build {@link WorkItem} from provided fields
      * 
      * @return {@link WorkItem}
@@ -231,7 +243,7 @@ public class WorkItemBuilder extends ModelBuilder<WorkItem> {
             result = new WorkItem(
                 id, itemName, itemType, itemState,
                 lockId, lockDate, doneDate, taskCount,
-                taskDone, workload, stepName, stepId, anno
+                taskDone, workload, stepName, stepId, jobEnvId, anno
             );
         }
         else {
