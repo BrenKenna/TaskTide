@@ -16,17 +16,14 @@
 package org.tasktide.core.manager.command.commands;
 
 import jakarta.json.bind.annotation.JsonbProperty;
-import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.tasktide.core.manager.BuilderUtility;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
-import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.core.manager.file_handler.AnnotationCommandProcessor;
 
 
 
@@ -57,37 +54,42 @@ public class AnnotateCommand extends AbstractCommand {
     
     
     /**
-     * Performs annotation command
+     * Performs annotation command, throws IllegalArgumentException
+     *  if not either Annotation, Annotate_Job {@link ManagerAction}
      * 
      * @return Object
      */
     @Override
     public Object runCommand() {
         
-        // Fetch args
-        String file = this.cmdSpec.getFilePath().get();
-        String delimiter = (String) this.cmdSpec.getOptions().get().get("Delimiter");
-        CustomAnnotation anno = this.fetchAnnoFromCmdSpec();
         
-        return null;
+        // Run configured annotation
+        switch ( action ) {
+        
+            case ANNOTATION -> {
+                LOGGER.info("Applying configured annotation field to targeted collection");
+                return AnnotationCommandProcessor.setCustomAnnotation(this, LOGGER);
+            }
+            
+            case ANNOTATE_JOB -> {
+                LOGGER.info("Applying JobEnvironmentId to targeted collection");
+                return AnnotationCommandProcessor.setJobEnvironment(this, LOGGER);
+            }
+            
+            default -> {
+                throw new IllegalArgumentException("Error, annotation action must be one of:\tAnnotation, Annotate_Job");
+            }
+        }
     }
-    
+
     
     /**
-     * Fetches {@link CustomAnnotation} from {@link CommandSpec} 
+     * Validates whether annotation arguments are valid
      * 
-     * @return {@link CustomAnnotation}
+     * @return boolean
      */
-    public CustomAnnotation fetchAnnoFromCmdSpec() {
-        String query = this.cmdSpec.getQueryString().get();
-        Map<String, Object> map = JsonUtils.mapFromJson(query);
-        return BuilderUtility.makeAnnotation(map);
-    }
-    
-    
     @Override
     public boolean validateCommand() {
-        
         if ( this.cmdSpec.getQueryString().isPresent() ) {
             if ( this.cmdSpec.getFilePath().isEmpty() ) {
                 return false;
@@ -96,8 +98,6 @@ public class AnnotateCommand extends AbstractCommand {
                 return false;
             }
         }
-        
-        
         return false;
     } 
 }

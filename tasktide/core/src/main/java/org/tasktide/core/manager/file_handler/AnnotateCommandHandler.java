@@ -17,9 +17,7 @@ package org.tasktide.core.manager.file_handler;
 
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.commands.AbstractCommand;
-import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -31,13 +29,12 @@ public interface AnnotateCommandHandler {
     
     
     /**
-     * Parsing files from {@link ManagerCommand} requiring
-     *  iterations over them
+     * Apply annotation to data line
      * 
      * @param parts
      * @param cmd
      * @param LOGGER 
-     * @return {@link CustomAnnotation}
+     * @return boolean
      */
-    public CustomAnnotation parseRecord(String[] parts, AbstractCommand cmd, Logger LOGGER);
+    public boolean parseRecord(String[] parts, AbstractCommand cmd, Logger LOGGER);
 }

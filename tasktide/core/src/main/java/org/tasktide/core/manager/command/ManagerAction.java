@@ -17,9 +17,9 @@ package org.tasktide.core.manager.command;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.command.commands.AbstractCommand;
+import org.tasktide.core.manager.command.commands.AnnotateCommand;
 
 import org.tasktide.core.manager.command.commands.DeleteCommand;
 import org.tasktide.core.manager.command.commands.ExportCommand;
@@ -286,6 +286,52 @@ public enum ManagerAction {
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
             AbstractCommand cmd = new DeleteCommand(ManagerAction.DELETE_LIST, target, cmdSpec);
+            return cmd;
+        }
+    },
+   
+    ANNOTATE_JOB {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd = new AnnotateCommand(ManagerAction.ANNOTATE_JOB, target, cmdSpec);
+            return cmd;
+        }
+    },
+    
+    ANNOTATION {
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd = new AnnotateCommand(ManagerAction.ANNOTATION, target, cmdSpec);
             return cmd;
         }
     };
