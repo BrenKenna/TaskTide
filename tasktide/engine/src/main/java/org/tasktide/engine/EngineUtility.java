@@ -222,4 +222,16 @@ public class EngineUtility {
             .getRepo()
         .findByFieldForGroupWithAnno("itemState", ItemState.TODO, "stepName", stepName, anno);
     }
+    
+    
+    /**
+     * Wait required number of seconds
+     * 
+     * @param seconds
+     * @return boolean
+     */
+    public static boolean waitSeconds(int seconds) {
+        try {TimeUnit.SECONDS.sleep(seconds); return true;}
+        catch(InterruptedException ex) {return false;}
+    }
 }

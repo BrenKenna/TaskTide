@@ -43,14 +43,21 @@ public class EngineConfig extends AbstractConfig {
      * Task binding
      * 
      */
-    @ConfigProperty(name = "tasktide.engine.pillot-label.key", defaultValue = "")
+    @ConfigProperty(name = "tasktide.engine.pilot-label.key", defaultValue = "")
     String pilotLabelKey;
     
-    @ConfigProperty(name = "tasktide.engine.pillot-label.value", defaultValue = "")
+    @ConfigProperty(name = "tasktide.engine.pilot-label.value", defaultValue = "")
     String pilotLabelValue;
     
-    @ConfigProperty(name = "tasktide.engine.pillot-label.annotation", defaultValue = "")
+    @ConfigProperty(name = "tasktide.engine.pilot-label.annotation", defaultValue = "")
     String pilotLabelAnnotation;
+    
+    
+    /**
+     * Engine execution policy
+     */
+    @ConfigProperty(name = "tasktide.engine.execution-policy", defaultValue = "batch")
+    String executionPolicy;
     
     
     /**
@@ -129,6 +136,7 @@ public class EngineConfig extends AbstractConfig {
         this.pilotLabelKey();
         this.pilotLabelValue();
         this.pilotLabelAnnotation();
+        this.executionPolicy();
         
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -434,6 +442,27 @@ public class EngineConfig extends AbstractConfig {
         
         this.pilotLabelAnnotation = this.getConfigValue("tasktide.engine.pilot.label.annotation", String.class, "");
         arg.setValue(this.pilotLabelAnnotation);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Execution policy of engine
+     * 
+     */
+    public void executionPolicy() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Engine Mode")
+            .withDescription("Execution policy of engine:\tBatch (Default), Service")
+            .withShortFlag("-ep")
+            .withLongFlag("--execution-policy")
+            .withArgType(ArgumentType.ACTION)
+            .withRefClass(String.class)
+        .build();
+        
+        this.executionPolicy = this.getConfigValue("tasktide.engine.execution-policy", String.class, "batch");
+        arg.setValue(this.executionPolicy);
         this.getArgumentMap().putArgument(arg);
     }
 }

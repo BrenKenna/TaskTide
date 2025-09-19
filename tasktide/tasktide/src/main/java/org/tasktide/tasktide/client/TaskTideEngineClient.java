@@ -16,6 +16,7 @@
 package org.tasktide.tasktide.client;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 
 import org.apache.logging.log4j.LogManager;
@@ -54,8 +55,9 @@ public class TaskTideEngineClient extends TaskTideClient {
     private TaskTideProcessor<WorkItem> processor;
     private TaskTideExecutor<WorkItem> workExec;
     private TaskTideEngineObserver<WorkItem> obs;
-    private ArgumentMap engineArgs, globalArgs;
-    private String step;
+    private final ArgumentMap engineArgs, globalArgs;
+    private final String step;
+    private final Random RAND = new Random(); 
     
     
     /**
@@ -120,13 +122,46 @@ public class TaskTideEngineClient extends TaskTideClient {
     @Override
     protected void performClientTask() {
         
-        // Fetch and run processing
-        this.fetchAndRun();
+        // Determine eexecution policy
+        LOGGER.info("Determining engine execution policy");
+        String pol = (String) this.engineArgs.getArgument("Execution Policy").getValue();
+        EngineExecutionPolicy execPol = EngineExecutionPolicy.get(pol);
+        
+        // Process based on mode
+        switch ( execPol ) {
+            
+            // Fetch and run processing
+            case BATCH -> {
+                LOGGER.info("Operating in batch mode");
+                this.fetchAndRun();
+            }
+            
+            // Run as service
+            case SERVICE -> {
+                LOGGER.info("Operating as a service");
+                this.serviceOperation();
+            }
+        }
         
         // Clean up - close connections etc
         this.cleanUp();
     }
     
+    
+    /**
+     * Continuously scans {@link TaskTideRepository} for
+     *  work
+     */
+    private void serviceOperation() {
+    
+        // Perhaps allow a queue like a file being written?
+        int counter = 0;
+        while ( true ) {
+            this.fetchAndRun();
+            EngineUtility.waitSeconds(RAND.nextInt(0, 11));
+            counter++;
+        }
+    }
     
     /**
      * Performs required cleanup actions

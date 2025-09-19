@@ -16,6 +16,7 @@
 package org.tasktide.core.manager;
 
 import java.util.List;
+import java.util.Map;
 
 import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.StepBuilder;
@@ -41,6 +42,8 @@ import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.supporting.Utils;
 import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.manager.generator.ExampleGenerators;
+import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.model.builders.CustomAnnotationBuilder;
 
 
 /**
@@ -66,6 +69,32 @@ public class BuilderUtility {
     
     public static String fetchRandomToken() {
         return utils.generateBase64Token();
+    }
+    
+    
+    /**
+     * Make {@link CustomAnnotation} from data map
+     * 
+     * @param data
+     * @return {@link CustomAnnotation}
+     */
+    public static CustomAnnotation makeAnnotation(Map<String, Object> data) {
+        return new CustomAnnotationBuilder()
+            .withId("CustomAnnotation-" + utils.generateToken())
+            .withAnno(data)
+        .build();
+    }
+    
+    
+    /**
+     * Build an empty {@link CustomAnnotation}
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    public static CustomAnnotation makeEmptyAnnotation() {
+        return new CustomAnnotationBuilder()
+            .withId("CustomAnnotation-" + utils.generateSalt())
+        .build();
     }
     
     

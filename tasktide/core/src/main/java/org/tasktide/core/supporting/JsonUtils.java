@@ -27,6 +27,8 @@ import jakarta.json.bind.JsonbConfig;
 import java.io.StringReader;
 
 import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -78,6 +80,18 @@ public class JsonUtils {
      * @return T
      */
     public static <T> T fromJson(String json, Type type) {
+        return JSON.fromJson(json, type);
+    }
+    
+    
+    /**
+     * Fetch map from json string
+     * 
+     * @param json
+     * @return Map-String, Object
+     */
+    public static Map<String, Object> mapFromJson(String json) {
+        Type type = new HashMap<String, Object>() {}.getClass().getGenericSuperclass();
         return JSON.fromJson(json, type);
     }
     
