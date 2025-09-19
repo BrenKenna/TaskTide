@@ -28,6 +28,7 @@ import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.JobType;
+import org.tasktide.core.supporting.Utils;
 
 
 /**
@@ -39,11 +40,11 @@ public class TaskTideManagerUtility {
     
     // Attributes
     private static final Logger LOGGER = LogManager.getLogger(TaskTideManagerUtility.class);
-    private static final String STEP_ID = "Step-" + BuilderUtility.fetchRandomId();
-    private static final String WORKFLOW_ID = "Workflow-" + BuilderUtility.fetchRandomId();
+    private static final String STEP_ID = "Step-" + Utils.generateSalt();
+    private static final String WORKFLOW_ID = "Workflow-" + Utils.generateSalt();
     
     // Perhaps written to a file instead?
-    private static final String JOB_ENVIRONMENT_ID = "JobEnvironment-" + BuilderUtility.fetchRandomId();
+    private static final String JOB_ENVIRONMENT_ID = "JobEnvironment-" + Utils.generateSalt();
 
     
     /**
@@ -86,23 +87,19 @@ public class TaskTideManagerUtility {
     
     
     /**
-     * Configures a new step
+     * Configures a new {@link Step}
      * 
      * @param stepName 
      */
     public static void configureNewStep(String stepName) {
         Step step = BuilderUtility.buildStep(STEP_ID, stepName);
         
-        Workflow workflow = BuilderUtility.buildEmptyWorkflow();
-        workflow.setWorkflowName(stepName);
-        workflow.setWorkflowId(WORKFLOW_ID);
-        workflow.setWorkflowSteps(Map.of(stepName, step));
-        
-        step.setWorkflowId(WORKFLOW_ID);
-        step.setWorkflowId(workflow);
-        
-        TaskTideServiceManager.fetchWorkflowService().appendModel(workflow);
-        TaskTideServiceManager.fetchStepService().appendModel(step);
+        try {
+            TaskTideServiceManager.fetchStepService().appendModel(step);
+        }
+        catch (Exception ex) {
+            LOGGER.warn("Unable to append step. Displaying exception\n", ex);
+        }
     }
     
     
@@ -115,11 +112,34 @@ public class TaskTideManagerUtility {
     public static String fetchWorkflowId(String workflowName) {
         List<Workflow> workflows = TaskTideServiceManager.fetchWorkflowService().viewByField("WorkflowName", workflowName);
         if ( !workflows.isEmpty() ) {
-            configureNewStep(workflowName);
+            configureNewWorkflow(workflowName);
             return WORKFLOW_ID;
         }
         else {
             return workflows.get(0).getId();
+        }
+    }
+    
+    
+    /**
+     * Configures and imports {@link Workflow}
+     * 
+     * @param workflowName 
+     */
+    public static void configureNewWorkflow(String workflowName) {
+        
+        // Configure workflow
+        Workflow workflow = BuilderUtility.buildEmptyWorkflow();
+        workflow.setWorkflowName(workflowName);
+        workflow.setWorkflowId(WORKFLOW_ID);
+        workflow.setWorkflowSteps(Map.of("", BuilderUtility.buildEmptyStep()));
+        
+        // Upload
+        try {
+            TaskTideServiceManager.fetchWorkflowService().appendModel(workflow);
+        }
+        catch (Exception ex) {
+            LOGGER.warn("Unable to append workflow. Displaying exception\n", ex);
         }
     }
     

@@ -95,7 +95,7 @@ public class WorkflowBuilder extends ModelBuilder<Workflow> {
      * @param anno
      * @return {@ilnk WorkflowBuilder}
      */
-    public WorkflowBuilder withCustomAnnotation(CustomAnnotation anno) {
+    public WorkflowBuilder withAnnotation(CustomAnnotation anno) {
         this.anno = anno;
         return this;
     }

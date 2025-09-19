@@ -238,7 +238,12 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         return this.findAll()
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().hasKey(key) )
+            .filter( elm -> {
+                if ( elm.getAnnotations()!= null ) {
+                    elm.getAnnotations().hasKey(key);
+                }
+                return false;
+            })
         .collect(Collectors.toList());
     }
     

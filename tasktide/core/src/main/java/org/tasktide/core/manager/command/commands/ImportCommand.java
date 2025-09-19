@@ -237,7 +237,7 @@ public class ImportCommand extends AbstractCommand{
         // Fetch arguments
         String file = this.cmdSpec.getFilePath().get();
         String delimiter = (String) this.cmdSpec.getOptionsKey("Delimiter").get();
-        String nestedDelimiter = (String) this.cmdSpec.getOptionsKey("Nested Delimiter").get();
+        String nestedDelimiter = (String) this.cmdSpec.getOptionsKey("Nested Delimiter").orElse("");
         
         // Import workload from JSON: Format argument instead
         if (delimiter.equalsIgnoreCase("json")) {
@@ -250,11 +250,6 @@ public class ImportCommand extends AbstractCommand{
             
             // With no nested delimiter
             LOGGER.info("Evaluating nested delimiter of value '{}'", nestedDelimiter);
-            if (nestedDelimiter == null) {
-                LOGGER.info("No nested delimiter detected, importing as single tasks");
-                return ImportCommandRecordProcessor.parseSingleTaskWorkItem(this, LOGGER);
-            }
-            
             if ( nestedDelimiter.isEmpty() ) {
                 LOGGER.info("No nested delimiter detected, importing as single tasks");
                 return ImportCommandRecordProcessor.parseSingleTaskWorkItem(this, LOGGER);

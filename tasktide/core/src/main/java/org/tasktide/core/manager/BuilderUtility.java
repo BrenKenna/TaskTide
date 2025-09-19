@@ -52,25 +52,7 @@ import org.tasktide.core.model.builders.CustomAnnotationBuilder;
  * @author bkenna
  */
 public class BuilderUtility {
-    
-    // Task Generator
-    private static final Utils utils = new Utils("dd/MM/yy HH:mm:ss", 4);
 
-    
-    /**
-     * Fetch a random Id
-     * 
-     * @return String
-     */
-    public static String fetchRandomId() {
-        return utils.generateSalt();
-    }
-    
-    
-    public static String fetchRandomToken() {
-        return utils.generateBase64Token();
-    }
-    
     
     /**
      * Make {@link CustomAnnotation} from data map
@@ -80,7 +62,7 @@ public class BuilderUtility {
      */
     public static CustomAnnotation makeAnnotation(Map<String, Object> data) {
         return new CustomAnnotationBuilder()
-            .withId("CustomAnnotation-" + utils.generateToken())
+            .withId("CustomAnnotation-" + Utils.generateSalt())
             .withAnno(data)
         .build();
     }
@@ -93,7 +75,7 @@ public class BuilderUtility {
      */
     public static CustomAnnotation makeEmptyAnnotation() {
         return new CustomAnnotationBuilder()
-            .withId("CustomAnnotation-" + utils.generateSalt())
+            .withId("CustomAnnotation-" + Utils.generateSalt())
         .build();
     }
     
@@ -105,7 +87,7 @@ public class BuilderUtility {
      */
     public static ProcessLog makeEmptyProcessLog() {
         return new ProcessLogBuilder()
-            .withId("ProcessLog-" + utils.generateSalt())
+            .withId("ProcessLog-" + Utils.generateSalt())
             .withStdout(new String[0])
             .withStderr(new String[0])
         .build();
@@ -121,7 +103,7 @@ public class BuilderUtility {
      */
     public static ProcessLog buildProcessLog(String[] stdout, String[] stderr) {
         return new ProcessLogBuilder()
-            .withId("ProcessLog-" + utils.generateSalt())
+            .withId("ProcessLog-" + Utils.generateSalt())
             .withStdout(stdout)
             .withStderr(stderr)
         .build();
@@ -152,7 +134,7 @@ public class BuilderUtility {
      */
     public static TaskLogging buildEmptyTaskLogging() {
         return new TaskLoggingBuilder()
-            .withId("TaskLogging-" + utils.generateSalt())
+            .withId("TaskLogging-" + Utils.generateSalt())
             .withProcessLog(makeEmptyProcessLog())
             .withCpuDuration(0L)
             .withEndTime(0L)
@@ -172,7 +154,7 @@ public class BuilderUtility {
      */
     public static TaskLogging buildTaskLogging(ProcessLog procLog) {
         return new TaskLoggingBuilder()
-            .withId("TaskLogging-" + utils.generateSalt())
+            .withId("TaskLogging-" + Utils.generateSalt())
             .withProcessLog(procLog)
         .build();
     }
@@ -187,7 +169,7 @@ public class BuilderUtility {
      */
     public static TaskLogging buildTaskLogging(ProcessLog procLog, Process proc) {
         return new TaskLoggingBuilder()
-             .withId("TaskLogging-" + utils.generateSalt())
+             .withId("TaskLogging-" + Utils.generateSalt())
              .withProcessLog(procLog)
              .withCpuDuration(0L)
              .withProcId(proc.pid())
@@ -218,7 +200,7 @@ public class BuilderUtility {
      */
     public static Workload buildEmptyWorkload() {
         return new WorkloadBuilder()
-            .withId( "Workload-" + utils.generateSalt() )
+            .withId( "Workload-" + Utils.generateSalt() )
             .withWorkloadState(ItemState.TODO)
         .build();
     }
@@ -232,7 +214,7 @@ public class BuilderUtility {
      */
     public static Workload buildWorkload(ItemTask itemTask) {
         return new WorkloadBuilder()
-            .withId( "Workload-" + utils.generateSalt() )
+            .withId( "Workload-" + Utils.generateSalt() )
             .withWorkload(itemTask)
             .withWorkloadState(ItemState.TODO)
             .withWorkloadType(ItemType.SINGLE)
@@ -265,7 +247,7 @@ public class BuilderUtility {
      */
     public static Workload buildWorkload(List<ItemTask> tasks) {
         return new WorkloadBuilder()
-            .withId( "Workload-" + utils.generateSalt() )
+            .withId( "Workload-" + Utils.generateSalt() )
             .withWorkload(tasks)
             .withWorkloadState(ItemState.TODO)
             .withWorkloadType(ItemType.NESTED)
@@ -299,13 +281,15 @@ public class BuilderUtility {
      */
     public static WorkItem buildWorkItem(String itemName, Workload workload, String stepName) {
         WorkItem output = new WorkItemBuilder()
-            .withId( "WorkItem-" + utils.generateSalt() )
+            .withId( "WorkItem-" + Utils.generateSalt() )
             .withItemName(itemName)
             .withWorkload(workload)
             .withItemState(ItemState.TODO)
             .withTaskCount(workload.getWorkloadSize())
             .withItemType(workload.getWorkloadType())
             .withStepName(stepName)
+            .withAnnotation( makeEmptyAnnotation() )
+            .withJobEnvId("")
         .build();
         output.getWorkload()
             .getWorkload().values().stream()
@@ -327,7 +311,7 @@ public class BuilderUtility {
      */
     public static WorkItem buildWorkItem(String itemName, Workload workload, String stepName, String stepId) {
         WorkItem output = new WorkItemBuilder()
-            .withId( "WorkItem-" + utils.generateSalt() )
+            .withId( "WorkItem-" + Utils.generateSalt() )
             .withItemName(itemName)
             .withWorkload(workload)
             .withItemState(ItemState.TODO)
@@ -335,6 +319,8 @@ public class BuilderUtility {
             .withItemType(workload.getWorkloadType())
             .withStepName(stepName)
             .withStepId(stepId)
+            .withAnnotation( makeEmptyAnnotation() )
+            .withJobEnvId("")
         .build();
         output.getWorkload()
             .getWorkload().values().stream()
@@ -363,6 +349,8 @@ public class BuilderUtility {
             .withTaskCount(workload.getWorkloadSize())
             .withItemType(workload.getWorkloadType())
             .withStepName(stepName)
+            .withAnnotation( makeEmptyAnnotation() )
+            .withJobEnvId("")
         .build();
         
         output.getWorkload()
@@ -395,6 +383,8 @@ public class BuilderUtility {
             .withItemType(workload.getWorkloadType())
             .withStepName(stepName)
             .withStepId(stepId)
+            .withAnnotation( makeEmptyAnnotation() )
+            .withJobEnvId("")
         .build();
         
         output.getWorkload()
@@ -413,8 +403,9 @@ public class BuilderUtility {
      */
     public static Step buildEmptyStep() {
         return new StepBuilder()
-            .withStepId( "Step-" + utils.generateSalt() )
+            .withStepId( "Step-" + Utils.generateSalt() )
             .withStepState(TaskState.PENDING)
+            .withAnnotation( makeEmptyAnnotation() )
         .build();
     }
     
@@ -427,9 +418,10 @@ public class BuilderUtility {
      */
     public static Step buildStep(String stepName) {
         return new StepBuilder()
-            .withStepId( "Step-" + utils.generateSalt() )
+            .withStepId( "Step-" + Utils.generateSalt() )
             .withStepName(stepName)
             .withStepState(TaskState.PENDING)
+            .withAnnotation( makeEmptyAnnotation() )
         .build();
     }
     
@@ -446,6 +438,7 @@ public class BuilderUtility {
             .withStepId(stepId)
             .withStepName(stepName)
             .withStepState(TaskState.PENDING)
+            .withAnnotation( makeEmptyAnnotation() )
         .build();
     }
     
@@ -457,7 +450,8 @@ public class BuilderUtility {
      */
     public static Workflow buildEmptyWorkflow() {
         return new WorkflowBuilder()
-            .withId("Workflow-" + utils.generateSalt())
+            .withId("Workflow-" + Utils.generateSalt())
+            .withAnnotation( makeEmptyAnnotation() )
         .build();
     }
     
@@ -471,9 +465,10 @@ public class BuilderUtility {
      */
     public static Workflow buildWorkflow(List<Step> steps, String workflowName) {
         return new WorkflowBuilder()
-            .withId("Workflow-" + utils.generateSalt())
+            .withId("Workflow-" + Utils.generateSalt())
             .withWorkflowName(workflowName)
             .withSteps( steps )
+            .withAnnotation( makeEmptyAnnotation() )
         .build();
     }
     
@@ -488,9 +483,10 @@ public class BuilderUtility {
      */
     public static Workflow buildWorkflow(List<Step> steps, String workflowId, String workflowName) {
         return new WorkflowBuilder()
-            .withId("Workflow-" + utils.generateSalt())
+            .withId("Workflow-" + Utils.generateSalt())
             .withWorkflowName(workflowName)
             .withSteps( steps )
+            .withAnnotation( makeEmptyAnnotation() )
         .build();
     }
     

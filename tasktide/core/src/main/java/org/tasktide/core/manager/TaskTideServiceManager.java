@@ -47,21 +47,7 @@ public final class TaskTideServiceManager {
     // There can be only one
     private static volatile TaskTideServiceManager INSTANCE;
     private final ConcurrentHashMap<ManagerTarget, TaskTideService> serviceMap;
-    
-    // Attributes
-    @Deprecated(forRemoval = true)
-    private final TaskTideService<WorkItem> workItemServ;
-    @Deprecated(forRemoval = true)
-    private final TaskTideService<Step> stepServ;
-    @Deprecated(forRemoval = true)
-    private final TaskTideService<Workflow> workflowServ;
-    @Deprecated(forRemoval = true)
-    private final TaskTideService<MetricData> metricDataServ;
-    @Deprecated(forRemoval = true)
-    private final TaskTideService<MetricProfile> metricProfileServ;
-    @Deprecated(forRemoval = true)
-    private final TaskTideService<JobEnvironment> jobEnvServ;
-    
+
     
     /**
      * Package private construction with the {@link TaskTideService}
@@ -70,19 +56,15 @@ public final class TaskTideServiceManager {
      * @param stepServ
      * @param workflowServ
      */
-    @Deprecated(forRemoval = true)
     private TaskTideServiceManager(
         TaskTideService<WorkItem> workItemServ,
         TaskTideService<Step> stepServ,
         TaskTideService<Workflow> workflowServ
     ) {
-        this.workItemServ = workItemServ;
-        this.stepServ = stepServ;
-        this.workflowServ = workflowServ;
-        this.metricDataServ = null;
-        this.metricProfileServ = null;
-        this.jobEnvServ = null;
-        this.serviceMap = null;
+        this.serviceMap = new ConcurrentHashMap<>();
+        this.serviceMap.put(ManagerTarget.WORKITEM, workItemServ);
+        this.serviceMap.put(ManagerTarget.STEP, stepServ);
+        this.serviceMap.put(ManagerTarget.WORKFLOW, workflowServ);
     }
     
     
@@ -105,17 +87,11 @@ public final class TaskTideServiceManager {
         TaskTideService<JobEnvironment> jobEnvServ
     ) {
         this.serviceMap = new ConcurrentHashMap<>();
-        this.workItemServ = workItemServ;
         this.serviceMap.put(ManagerTarget.WORKITEM, workItemServ);
-        this.stepServ = stepServ;
         this.serviceMap.put(ManagerTarget.STEP, stepServ);
-        this.workflowServ = workflowServ;
         this.serviceMap.put(ManagerTarget.WORKFLOW, workflowServ);
-        this.metricDataServ = metricDataServ;
         this.serviceMap.put(ManagerTarget.METRIC_DATA, metricDataServ);
-        this.metricProfileServ = metricProfileServ;
         this.serviceMap.put(ManagerTarget.METRIC_PROFILE, metricProfileServ);
-        this.jobEnvServ = jobEnvServ;
         this.serviceMap.put(ManagerTarget.JOB_ENVIRONMENT, jobEnvServ);
     }
 
@@ -135,9 +111,8 @@ public final class TaskTideServiceManager {
      * 
      * @param workItemServ
      * @param stepServ
-     * @param workflowServ 
+     * @param workflowServ
      */
-    @Deprecated(forRemoval = true)
     public static synchronized void initialize(
         TaskTideService<WorkItem> workItemServ,
         TaskTideService<Step> stepServ,
@@ -182,7 +157,7 @@ public final class TaskTideServiceManager {
      */
     public static TaskTideService<WorkItem> fetchWorkItemService() {
         if ( INSTANCE != null ) {
-            return INSTANCE.getWorkItemService();
+            return INSTANCE.getServiceFor(ManagerTarget.WORKITEM);
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");
     }
@@ -195,7 +170,7 @@ public final class TaskTideServiceManager {
      */
     public static TaskTideService<Step> fetchStepService() {
         if ( INSTANCE != null ) {
-            return INSTANCE.getStepService();
+            return INSTANCE.getServiceFor(ManagerTarget.STEP);
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");
     }
@@ -208,7 +183,7 @@ public final class TaskTideServiceManager {
      */
     public static TaskTideService<Workflow> fetchWorkflowService() {
         if ( INSTANCE != null ) {
-            return INSTANCE.getWorkflowService();
+            return INSTANCE.getServiceFor(ManagerTarget.WORKFLOW);
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");
     }
@@ -221,7 +196,7 @@ public final class TaskTideServiceManager {
      */
     public static TaskTideService<MetricData> fetchMetricDataService() {
         if ( INSTANCE != null ) {
-            return INSTANCE.getMetricDataService();
+            return INSTANCE.getServiceFor(ManagerTarget.METRIC_DATA);
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");
     }
@@ -234,7 +209,7 @@ public final class TaskTideServiceManager {
      */
     public static TaskTideService<MetricProfile> fetchMetricProfileService() {
         if ( INSTANCE != null ) {
-            return INSTANCE.getMetricProfileService();
+            return INSTANCE.getServiceFor(ManagerTarget.METRIC_PROFILE);
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");
     }
@@ -247,7 +222,7 @@ public final class TaskTideServiceManager {
      */
     public static TaskTideService<JobEnvironment> fetchJobEnvironmentService() {
         if ( INSTANCE != null ) {
-            return INSTANCE.getJobEnvironmentService();
+            return INSTANCE.getServiceFor(ManagerTarget.JOB_ENVIRONMENT);
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");
     }
@@ -279,65 +254,5 @@ public final class TaskTideServiceManager {
     @SuppressWarnings("unchecked")
     public <T extends TaskTideModel<T>> TaskTideService<T> getServiceFor(ManagerTarget tgt) {
         return INSTANCE.serviceMap.get(tgt);   
-    }
-    
-    
-    /**
-     * Get {@link WorkItemService}
-     * 
-     * @return {@link TaskTideService} of {@link WorkItem}
-     */
-    public TaskTideService<WorkItem> getWorkItemService() {
-        return this.workItemServ;
-    }
-    
-    
-    /**
-     * Get {@link StepService}
-     * 
-     * @return {@link TaskTideService} of {@link Step}
-     */
-    public TaskTideService<Step> getStepService() {
-        return this.stepServ;
-    }
-    
-    
-    /**
-     * Get {@link WorkflowService}
-     * 
-     * @return {@link TaskTideService} of {@link Workflow}
-     */
-    public TaskTideService<Workflow> getWorkflowService() {
-        return this.workflowServ;
-    }
-    
-    
-    /**
-     * Get {@link MetricDataService}
-     * 
-     * @return {@link TaskTideService} of {@link MetricData}
-     */
-    public TaskTideService<MetricData> getMetricDataService() {
-        return this.metricDataServ;
-    }
-    
-    
-    /**
-     * Get {@link MetricProfileService}
-     * 
-     * @return {@link TaskTideService} of {@link MetricProfile}
-     */
-    public TaskTideService<MetricProfile> getMetricProfileService() {
-        return this.metricProfileServ;
-    }
-    
-    
-    /**
-     * Get {@link JobEnvironmentService}
-     * 
-     * @return {@link TaskTideService} of {@link JobEnvironment}
-     */
-    public TaskTideService<JobEnvironment> getJobEnvironmentService() {
-        return this.jobEnvServ;
     }
 }

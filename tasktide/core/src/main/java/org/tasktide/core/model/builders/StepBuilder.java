@@ -157,7 +157,7 @@ public class StepBuilder extends ModelBuilder<Step> {
      * @param anno
      * @return {@ilnk StepBuilder}
      */
-    public StepBuilder withCustomAnnotation(CustomAnnotation anno) {
+    public StepBuilder withAnnotation(CustomAnnotation anno) {
         this.anno = anno;
         return this;
     }

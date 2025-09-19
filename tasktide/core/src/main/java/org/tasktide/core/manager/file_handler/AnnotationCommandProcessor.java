@@ -60,7 +60,6 @@ public class AnnotationCommandProcessor {
         String delim = (String) cmd.getCmdSpec().getOptionsKey("Delimiter").get();
         delim = TaskTideManagerUtility.handleDelim(delim);
         
-        
         // Process line
         try {
             BufferedReader reader = FileIO.fetchBufferedReader(targetFile);

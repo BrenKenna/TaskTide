@@ -310,7 +310,7 @@ public class TestCaseBuilderUtility {
             .withStepsDone(2)
             .withStepsError(1)
             .withWorkflowId(UUID.randomUUID().toString())
-            .withCustomAnnotation(new CustomAnnotation())
+            .withAnnotation(new CustomAnnotation())
         .build();
     }
     
@@ -333,7 +333,7 @@ public class TestCaseBuilderUtility {
             .withStepsDone(2)
             .withStepsError(1)
             .withWorkflowId(UUID.randomUUID().toString())
-            .withCustomAnnotation(new CustomAnnotation())
+            .withAnnotation(new CustomAnnotation())
         .build();
     }
     
@@ -363,7 +363,7 @@ public class TestCaseBuilderUtility {
             .withId(UUID.randomUUID().toString())
             .withWorkflowName(workflowName)
             .withSteps( steps )
-            .withCustomAnnotation(new CustomAnnotation())
+            .withAnnotation(new CustomAnnotation())
         .build();
     }
     
