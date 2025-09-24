@@ -37,6 +37,9 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
@@ -136,8 +139,13 @@ public class JpaRepositoryUtility {
         stepService = ServiceFactory.makeStepService(RepositoryType.SQL, backend, "Step-Service");
         workflowService = ServiceFactory.makeWorkflowService(RepositoryType.SQL, backend, "Workflow-Service");
         
-        // Return manager
-        TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
+        // Fetch additional
+        TaskTideService<MetricData> metricServ = ServiceFactory.makeMetricDataService(RepositoryType.SQL, backend, "MetricData");
+        TaskTideService<MetricProfile> profileServ = ServiceFactory.makeMetricProfileService(RepositoryType.SQL, backend, "MetricProfile");
+        TaskTideService<JobEnvironment> jobEnvServ = ServiceFactory.makeJobEnvironmentService(RepositoryType.SQL, backend, "JobEnvironment");
+        
+        // Initialize service manager with services
+        TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
     }
     
     

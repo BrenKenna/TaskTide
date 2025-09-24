@@ -328,3 +328,356 @@ java.nio.file.NoSuchFileException: singleTaskImports.txt
 
 ---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
 
+2025-09-24 15:29:12 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 15:29:12 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 15:29:12 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 15:29:13 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 15:29:13 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 15:29:13 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 15:29:13 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 15:29:13 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 15:29:13 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: f5ec26168d17b2eb46040c8900d99fe305c8a9c32aaef23591462667aea048fe
+2025-09-24 15:29:14 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.9190758S
+2025-09-24 15:29:14 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 15:29:14 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 15:29:14 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 15:29:14 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 15:29:14 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: fa4b777069fe2b1d3c96ed796fbad38044e1a15cfb35b53a830f51fb3e6261f1
+2025-09-24 15:29:14 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /wonderful_solomon: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 15:29:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.6476457S
+2025-09-24 15:29:16 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 15:29:16 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 15:29:16 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-09-24 15:29:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 15:29:16 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 15:29:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 15:29:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4297fdba-eaeb-488f-9cac-1c13e2e63331 initialized
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Constructing ClientConfigMap
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Initializing TaskTideServiceManager
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/JOB_ENVIRONMENT'
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/METRIC_DATA'
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/METRIC_PROFILE'
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Fetching Client
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Running the 'Engine'
+2025-09-24 15:29:21 ERROR [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.configureClient ]: Error during client configuration, displaying stack trace:
+{}
+java.lang.NullPointerException: Cannot invoke "org.tasktide.core.TaskTideService.viewByField(String, Object)" because the return value of "org.tasktide.core.manager.TaskTideServiceManager.fetchJobEnvironmentService()" is null
+	at org.tasktide.core.manager.TaskTideManagerUtility.fetchJobEnvironmentId(TaskTideManagerUtility.java:167) ~[tasktide-core-0.9.0.jar:?]
+	at org.tasktide.engine.observer.worker.StateObserver.<init>(StateObserver.java:50) ~[tasktide-engine-0.9.0.jar:?]
+	at org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.<init>(WorkItemStateObserver.java:55) ~[tasktide-engine-0.9.0.jar:?]
+	at org.tasktide.engine.observer.chain.WorkItemObserver.<init>(WorkItemObserver.java:64) ~[tasktide-engine-0.9.0.jar:?]
+	at org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder.build(WorkItemObserverBuilder.java:70) ~[tasktide-engine-0.9.0.jar:?]
+	at org.tasktide.tasktide.client.TaskTideEngineClient.configureWorkItemEngineObserverChain(TaskTideEngineClient.java:318) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideEngineClient.configureClient(TaskTideEngineClient.java:99) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideClient.runClient(TaskTideClient.java:56) ~[main/:?]
+	at org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient(TaskTideClientTests.java:141) ~[test/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728) ~[junit-platform-commons-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69) ~[junit-jupiter-engine-5.10.2.jar:5.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at java.util.ArrayList.forEach(ArrayList.java:1511) ~[?:?]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54) ~[junit-platform-engine-1.10.2.jar:1.10.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54) ~[junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86) [junit-platform-launcher-1.8.2.jar:1.8.2]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:118) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:93) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:88) [gradle-testing-junit-platform-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:62) [gradle-testing-base-8.3.jar:8.3]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33) [gradle-messaging-8.3.jar:8.3]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94) [gradle-messaging-8.3.jar:8.3]
+	at jdk.proxy1.$Proxy2.stop(Unknown Source) [?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60) [gradle-testing-base-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113) [gradle-worker-processes-8.3.jar:8.3]
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65) [gradle-worker-processes-8.3.jar:8.3]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69) [gradle-worker.jar:?]
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74) [gradle-worker.jar:?]
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClient.runClient ]: Displaying help for TaskTideClient:
+'[, Global Options:, ,   NoSQL Host:Port --nosql-host Specifies the backend NoSQL-DB host:port to use,   Token Expiration --token-expiration Specifies the token expiration limit, default is 4 days,   Help       --help     Displays command-line documentation,   NoSQL Database Type --nosql-database-type Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph,   WorkItem Name --work-item-collection-name Specifies the WorkItem Collection Name to use,   NoSQL Database Provider --nosql-database-provider Specifies the NoSQL Software Name: Mongo, CouchDB etc,   Workflow Name --workflow-name Specifies the workflow name to use,   Step Name  --step-name Specifies the step name to use,   Date Format --date-format Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss',   NoSQL Password --nosql-password Specifies the backend NoSQL-DB password to use,   NoSQL Provider Class --nosql-provider-class Specifies the backend NoSQL-DB Provider Class,   NoSQL User --nosql-user Specifies the backend NoSQL-DB Username to use,   File Path  --file-path Specifies the file path for RocksDB/Json repository,   Repository Type --repository-type Specifies the backend repository type: RocksDB, NoSQL, Json, , , Action Arguments:, , , Options for Action:	manager, ,   Target     --target   Target for manager action,   Help       --help     Displays command-line documentation,   Delimiter  --delimiter Defines the delimiter to use for im/export,   Import String --import-string JSON formatted string:	 '{'Field': 'Value'}',   Target File --target-file Defines the full file path for import,   Method     --method   Whether to run import or export,   ItemId     --itemId   ItemId over which the required ManagerAction is taken,   Nested Delimiter --nested-delimiter Defines the ItemTask delimiter if required, 
+
+, , Options for Action:	engine, ,   Help       --help     Displays command-line documentation,   Pilot Label Annotation --pilot-label-annotation For early task binding to pilot job,   Engine Mode --execution-policy Execution policy of engine:	Batch (Default), Service,   WorkItem SubTasking Threshold --work-item-sub-task-threshold Defines the numbers of WorkItems which are processed as a workload by its ThreadPool,   ItemTask Threads --item-task-threads Defines the number of threads that item task processing can be distributed to,   TimeKeeper Wall Time --max-wall-time Configures the max wall-time for task processing in __,   WorkItem Threads --work-item-threads Defines the number of threads that work item processing can be distributed to,   ItemTask SubTasking Threshold --item-task-sub-task-threshold Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool,   Pilot Label Key --pilot-label-key For early task binding to pilot job,   Pilot Label Value --pilot-label-value For early task binding to pilot job, 
+
+]'
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-09-24 15:29:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4297fdba-eaeb-488f-9cac-1c13e2e63331 shut down
+2025-09-24 15:29:21 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 15:35:37 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 241999f03dc740afa607076e2b7000ae1f963b456260844381281e9efb2dea0d
+2025-09-24 15:35:38 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.9577591S
+2025-09-24 15:35:38 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 15:35:38 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 15:35:38 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 15:35:38 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 15:35:38 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: b8d37361db737a77ee7432a5d27400c6b42aa8e5dd4a4a64b3ad6426402d06a7
+2025-09-24 15:35:39 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /pensive_fermi: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 15:35:40 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.6544184S
+2025-09-24 15:35:40 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 15:35:40 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 15:35:40 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-09-24 15:35:40 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 15:35:40 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 15:35:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 15:35:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 940c4e1f-349b-477e-8be2-a7794639b458 initialized
+2025-09-24 15:35:45 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-09-24 15:35:45 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-09-24 15:35:45 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Constructing ClientConfigMap
+2025-09-24 15:35:45 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Initializing TaskTideServiceManager
+2025-09-24 15:35:45 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-09-24 15:35:45 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-09-24 15:35:45 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/JOB_ENVIRONMENT'
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/METRIC_DATA'
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/METRIC_PROFILE'
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Fetching Client
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Running the 'Engine'
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.performClientTask ]: Determining engine execution policy
+2025-09-24 15:35:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 940c4e1f-349b-477e-8be2-a7794639b458 shut down
+2025-09-24 15:35:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 15:39:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 75a2585e9d39601e617cae6bf3dd246e112184f2f70bc62265b1b575ee015653
+2025-09-24 15:39:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.0053032S
+2025-09-24 15:39:16 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 15:39:16 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 15:39:16 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 15:39:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 15:39:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 371cf22b31f3bb398e01aa9e90e017fedd77770945ea5947ff64fb2cffc4fba0
+2025-09-24 15:39:17 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /priceless_cannon: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 15:39:18 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.6509088S
+2025-09-24 15:39:18 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 15:39:18 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 15:39:18 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-09-24 15:39:18 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 15:39:18 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 15:39:19 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 15:39:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e9c97e8a-f74d-46eb-be3d-0b137091703b initialized
+2025-09-24 15:39:23 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-09-24 15:39:23 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-09-24 15:39:23 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Constructing ClientConfigMap
+2025-09-24 15:39:23 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Initializing TaskTideServiceManager
+2025-09-24 15:39:23 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-09-24 15:39:23 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-09-24 15:39:23 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/JOB_ENVIRONMENT'
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/METRIC_DATA'
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/METRIC_PROFILE'
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Fetching Client
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Running the 'Engine'
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.performClientTask ]: Determining engine execution policy
+2025-09-24 15:39:24 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e9c97e8a-f74d-46eb-be3d-0b137091703b shut down
+2025-09-24 15:39:24 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-09-24 15:40:30 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 15:40:30 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 15:40:30 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 15:40:30 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 15:40:30 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 15:40:30 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 15:40:30 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 15:40:30 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 15:40:31 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: e7acd57cc05653f85d02572384138cc6400e1ae53291ee11509a7df8f5a76789
+2025-09-24 15:40:31 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT0.9764558S
+2025-09-24 15:40:31 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 15:40:31 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 15:40:31 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 15:40:31 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 15:40:31 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 8d3272af70b00db683ab40fe6cf22a46179364d2663654f704f8a51f1bd6d0ff
+2025-09-24 15:40:32 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /sweet_poitras: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 15:40:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.6690947S
+2025-09-24 15:40:33 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 15:40:33 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 15:40:33 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2025-09-24 15:40:33 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 15:40:34 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 15:40:34 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 15:40:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e055a224-e38b-436d-9c4d-04ccf6aad5df initialized
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: 
+
+================ Tests EngineClient  ================
+
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Constructing ClientConfigMap
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Initializing TaskTideServiceManager
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKITEM'
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/STEP'
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/WORKFLOW'
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/JOB_ENVIRONMENT'
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/METRIC_DATA'
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStore ]: ItemStore Directory created under:	'sqliteDbStore/METRIC_PROFILE'
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Fetching Client
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canProcessThroughEngineClient ]: Running the 'Engine'
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.performClientTask ]: Determining engine execution policy
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.performClientTask ]: Operating as a service
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing single step:	'profiled-step'
+2025-09-24 15:40:39 WARN  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=Item Store}
+
+
+2025-09-24 15:40:39 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'profiled-step'
+2025-09-24 15:40:43 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-09-24 15:40:43 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing single step:	'profiled-step'
+2025-09-24 15:40:43 WARN  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=Item Store}
+
+
+2025-09-24 15:40:43 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'profiled-step'
+2025-09-24 15:40:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Determing how to process workload
+2025-09-24 15:40:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing single step:	'profiled-step'
+2025-09-24 15:40:46 WARN  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.processWorkload ]: Warning, no ToDo tasks available for processing. Query below backend for more information
+
+{Collection Name=WorkItem-Service, Model Class=WorkItem, Repository Type=Item Store}
+
+
+2025-09-24 15:40:46 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideEngineClient.fetchAndRun ]: Processing complete for step:	'profiled-step'

@@ -175,7 +175,6 @@ public class TestUtils {
         TaskTideService<MetricProfile> profileServ = ServiceFactory.makeMetricProfileService(repoType, backend, "MetricProfile");
         TaskTideService<JobEnvironment> jobEnvServ = ServiceFactory.makeJobEnvironmentService(repoType, backend, "JobEnvironment");
         
-        
         // Initialize service manager with services
         TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
     }

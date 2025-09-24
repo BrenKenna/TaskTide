@@ -30,6 +30,9 @@ import org.tasktide.core.services.ServiceFactory;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.workitem.WorkItem;
 
 
@@ -148,7 +151,12 @@ public class NoSqlTemplateUtility {
         stepService = ServiceFactory.makeStepService(RepositoryType.NOSQL, backend, "Step-Service");
         workflowService = ServiceFactory.makeWorkflowService(RepositoryType.NOSQL, backend, "Workflow-Service");
         
-        // Return manager
-        TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
+        // Fetch additional
+        TaskTideService<MetricData> metricServ = ServiceFactory.makeMetricDataService(RepositoryType.NOSQL, backend, "MetricData");
+        TaskTideService<MetricProfile> profileServ = ServiceFactory.makeMetricProfileService(RepositoryType.NOSQL, backend, "MetricProfile");
+        TaskTideService<JobEnvironment> jobEnvServ = ServiceFactory.makeJobEnvironmentService(RepositoryType.NOSQL, backend, "JobEnvironment");
+        
+        // Initialize service manager with services
+        TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
     }
 }

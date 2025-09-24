@@ -35,6 +35,9 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 
@@ -108,6 +111,10 @@ public class ItemStoreRepositoryUtility {
         TaskTideService<WorkItem> workItemService;
         TaskTideService<Step> stepService;
         TaskTideService<Workflow> workflowService;
+        TaskTideService<MetricData> metricServ;
+        TaskTideService<MetricProfile> profileServ;
+        TaskTideService<JobEnvironment> jobEnvServ;
+        
         
         // Fetch item store map
         itemStoreMap = fetchItemStoreMap(this.storeType, this.storeName);
@@ -117,8 +124,14 @@ public class ItemStoreRepositoryUtility {
         stepService = ServiceFactory.makeStepService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.STEP), "Step-Service");
         workflowService = ServiceFactory.makeWorkflowService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.WORKFLOW), "Workflow-Service");
         
-        // Initialize manager with these services
-        TaskTideServiceManager.initialize(workItemService, stepService, workflowService);
+        // Construct additional services
+        metricServ = ServiceFactory.makeMetricDataService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.METRIC_DATA), "MetricData");
+        profileServ = ServiceFactory.makeMetricProfileService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.METRIC_PROFILE), "MetricProfile");
+        jobEnvServ = ServiceFactory.makeJobEnvironmentService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.JOB_ENVIRONMENT), "JobEnvironment");
+        
+        
+        // Initialize service manager with services
+        TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
     }
     
     

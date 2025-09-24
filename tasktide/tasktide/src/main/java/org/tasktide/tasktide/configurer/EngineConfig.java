@@ -453,7 +453,7 @@ public class EngineConfig extends AbstractConfig {
     public void executionPolicy() {
         Argument<String> arg;
         arg = this.getArgumentBuilder()
-            .withName("Engine Mode")
+            .withName("Execution Policy")
             .withDescription("Execution policy of engine:\tBatch (Default), Service")
             .withShortFlag("-ep")
             .withLongFlag("--execution-policy")
