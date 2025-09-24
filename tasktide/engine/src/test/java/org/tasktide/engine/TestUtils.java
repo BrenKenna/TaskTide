@@ -170,15 +170,14 @@ public class TestUtils {
         TaskTideService<Step> repoStep = ServiceFactory.makeStepService(repoType, backend, "Step");
         TaskTideService<WorkItem> repoWorkItem = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem");
         
-        TaskTideService<JobEnvironment> repoJobEnv = ServiceFactory.makeJobEnvironmentService(repoType, backend, "JobEnvironment");
-        TaskTideService<MetricData> repoMetricData = ServiceFactory.makeMetricDataService(repoType, backend, "MetricData");
-        TaskTideService<MetricProfile> repoMetricProfile = ServiceFactory.makeMetricProfileService(repoType, backend, "MetricProfile");
+        // Fetch additional
+        TaskTideService<MetricData> metricServ = ServiceFactory.makeMetricDataService(repoType, backend, "MetricData");
+        TaskTideService<MetricProfile> profileServ = ServiceFactory.makeMetricProfileService(repoType, backend, "MetricProfile");
+        TaskTideService<JobEnvironment> jobEnvServ = ServiceFactory.makeJobEnvironmentService(repoType, backend, "JobEnvironment");
+        
         
         // Initialize service manager with services
-        TaskTideServiceManager.initialize(
-            repoWorkItem, repoStep, workflowServ,
-            repoJobEnv, repoMetricData, repoMetricProfile    
-        );
+        TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
     }
     
     

@@ -1,165 +1,93 @@
-2025-09-24 14:11:00 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
-2025-09-24 14:11:00 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
-2025-09-24 14:11:00 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
-2025-09-24 14:11:00 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
-2025-09-24 14:11:00 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
-2025-09-24 14:11:00 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
-2025-09-24 14:11:00 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+2025-09-24 14:20:14 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 14:20:14 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 14:20:14 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 14:20:14 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 14:20:15 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 14:20:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 14:20:15 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
   Server Version: 28.3.2
   API Version: 1.51
   Operating System: Docker Desktop
   Total Memory: 7759 MB
   Labels: 
     com.docker.desktop.address=npipe://\\.\pipe\docker_cli
-2025-09-24 14:11:00 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
-2025-09-24 14:11:01 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: ebb3f82e8c73b14cbe670b83f9ef7eba5261ab95556f36a26817f75b3d94cff9
-2025-09-24 14:11:01 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.0258611S
-2025-09-24 14:11:01 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
-2025-09-24 14:11:01 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
-2025-09-24 14:11:01 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
-2025-09-24 14:11:01 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
-2025-09-24 14:11:01 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: cf1608fde9ceca2c2f188ce2372930945dc89a901c1140b6529300c1c3f4a1ad
-2025-09-24 14:11:07 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT6.1737535S
-2025-09-24 14:11:07 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.setUpClass ]: 
+2025-09-24 14:20:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 14:20:15 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: fbadb2cbb0fc5fafa4d974c3f5671b73719259ee6ce976e55c3b6a34da8df1cb
+2025-09-24 14:20:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.0224247S
+2025-09-24 14:20:16 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 14:20:16 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 14:20:16 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 14:20:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 14:20:16 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 89869f34a74055aa075621acc7648d16f0885a3778c893cd22f7b3d663d9066a
+2025-09-24 14:20:17 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /eager_jang: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 14:20:18 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.7072058S
+2025-09-24 14:20:18 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 14:20:18 INFO  [ Test worker -> org.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 14:20:18 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: mariadb:latest
+2025-09-24 14:20:18 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest is starting: f3b5e9b881304f0780d3eb35675fac36073706df3547b11e7e937f09508465f6
+2025-09-24 14:20:25 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container mariadb:latest started in PT6.9724457S
+2025-09-24 14:20:25 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.setUpClass ]: 
 
 ---------------- Initiating WorkItem Service Tests ----------------
 
-2025-09-24 14:11:07 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
-2025-09-24 14:11:08 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
-2025-09-24 14:11:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-09-24 14:11:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2552daab-e86b-417e-a5ce-e0c6c53652c0 initialized
-2025-09-24 14:11:13 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
-2025-09-24 14:11:14 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3321fb65
-2025-09-24 14:11:14 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
-2025-09-24 14:11:14 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
-2025-09-24 14:11:14 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
-2025-09-24 14:11:14 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
-2025-09-24 14:11:14 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
-2025-09-24 14:11:14 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-09-24 14:11:14 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
-2025-09-24 14:11:17 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-24 14:11:17 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.setUp ]: 
+2025-09-24 14:20:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 14:20:25 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 14:20:25 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 14:20:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 887c5f67-7114-4e7f-bd87-b4603ca404d6 initialized
+2025-09-24 14:20:30 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Starting...
+2025-09-24 14:20:30 INFO  [ Test worker -> com.zaxxer.hikari.pool.HikariPool.checkFailFast ]: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68f1b89
+2025-09-24 14:20:30 INFO  [ Test worker -> com.zaxxer.hikari.HikariDataSource.<init> ]: HikariPool-1 - Start completed.
+2025-09-24 14:20:30 INFO  [ Test worker -> org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation ]: HHH000204: Processing PersistenceUnitInfo [name: TaskTide]
+2025-09-24 14:20:30 INFO  [ Test worker -> org.hibernate.Version.logVersion ]: HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-09-24 14:20:30 INFO  [ Test worker -> org.hibernate.cache.internal.RegionFactoryInitiator.initiateService ]: HHH000026: Second-level cache disabled
+2025-09-24 14:20:31 WARN  [ Test worker -> org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$1.execute ]: HHH000339: Could not obtain connection metadata: java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+2025-09-24 14:20:31 WARN  [ Test worker -> org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.constructDialect ]: HHH90000025: MariaDBDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-09-24 14:20:31 INFO  [ Test worker -> org.hibernate.resource.beans.spi.ManagedBeanRegistryInitiator.resolveBeanContainer ]: HHH10005002: No explicit CDI BeanManager reference was passed to Hibernate, but CDI is available on the Hibernate ClassLoader.
+2025-09-24 14:20:32 INFO  [ Test worker -> org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService ]: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-24 14:20:32 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2025-09-24 14:11:17 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemNoSqlService ]: 
+2025-09-24 14:20:32 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemRocksDbService ]: 
 
-================ Construct WorkItemService-Template From Factory Test ================
+================ Construct WorkItemService-RocksDB From Factory Test ================
 
-2025-09-24 14:11:17 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemNoSqlService ]: Generating data for testing
-2025-09-24 14:11:17 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
-2025-09-24 14:11:17 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
-2025-09-24 14:11:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e2b131bd-5602-4250-aaae-eaee10df8048 initialized
-2025-09-24 14:11:17 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemNoSqlService ]: Configuring Service
-2025-09-24 14:11:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:17 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemNoSqlService ]: Displaying meta data for Template WorkItem Service:
+2025-09-24 14:20:32 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemRocksDbService ]: Generating data for testing
+2025-09-24 14:20:33 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemRocksDbService ]: Configuring Service
+2025-09-24 14:20:33 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemRocksDbService ]: Displaying meta data for RocksDB-WorkItem Service:
 '{
     "Collection Name": "WorkItem-Service",
     "Model Class": "WorkItem",
-    "Repository Type": "NoSQL"
+    "Repository Type": "Item Store"
 }'
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemNoSqlService ]: Verifying records can be retrieved
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemNoSqlService ]: 
-
-Displaying first record for reference:
-'{
-    "DoneDate": 0,
-    "Id": "WorkItem-11b8ce22-900d-461b-92dd-0f05729a2cc6",
-    "ItemName": "My WorkItem Name",
-    "ItemState": "TODO",
-    "ItemType": "SINGLE",
-    "Job Environment Id": "JobEnv-0c580e13-bce3-491c-8c4c-0becb44d2ab8",
-    "LockDate": 0,
-    "LockId": "7031937f-da6a-4753-8c8e-7681e83daebf",
-    "StepId": "Step-6a1150ce-260f-43e3-945e-68b637147846",
-    "StepName": "Arbitrary",
-    "TaskCount": 1,
-    "TaskDone": 0,
-    "Workload": {
-        "TaskMap": {
-            "My Task Name": {
-                "Job Environment Id": "JobEnv-ca492b68-7ea3-4434-992d-e0bfbf0f99dd",
-                "Task": "My Task",
-                "Task Log": {
-                    "CPU Duration": -1,
-                    "End Time": -3,
-                    "Exit Code": 0,
-                    "Process Id": -4,
-                    "Process Log": {
-                        "Stderr": [
-                            "pears",
-                            "pineapples"
-                        ],
-                        "Stdout": [
-                            "apples",
-                            "oragnes"
-                        ],
-                        "id": "ProcessLog1506fc67-8c51-47b2-9798-70e2cb9bda5f"
-                    },
-                    "Start Time": -2,
-                    "Thread Name": "myThread",
-                    "id": "TaskLogging-e57f2ffc-7021-43ab-9442-433eae8b7bce"
-                },
-                "Task Name": "My Task Name",
-                "Task State": "COMPLETE",
-                "Work Item Id": "WorkItem-0004c262-5647-4ea1-90fd-dfa637f831d6",
-                "annotations": {
-                    "Annotations": {
-                        "Unit Test": "TemplateRepository-UnitTests",
-                        "Pilot Label": "SomePilotJobLabel"
-                    },
-                    "id": "CustomAnnotation-ad3be8a6-3faa-4bd0-a210-fcc409751b64"
-                },
-                "id": "ItemTask-e9ae9a7d-4337-4c46-920a-393137d68f8f"
-            }
-        },
-        "WorkloadType": "SINGLE",
-        "earliestDone": -3,
-        "id": "Workload-4dbceb99-1eed-49ed-aa5c-415a5e59c37e",
-        "latestDone": 0,
-        "workloadSize": 1
-    },
-    "annotations": {
-        "Annotations": {
-            "Unit Test": "TemplateRepository-UnitTests",
-            "Pilot Label": "SomePilotJobLabel"
-        },
-        "id": "CustomAnnotation-a886faeb-dd47-453c-96fd-e65b8bda5dc5"
-    },
-    "collection": "Arbitrary",
-    "workloadSize": 1
-}'
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [2552daab-e86b-417e-a5ce-e0c6c53652c0, e2b131bd-5602-4250-aaae-eaee10df8048]
-2025-09-24 14:11:18 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemNoSqlService ]: 
+2025-09-24 14:20:33 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDBStore.openConn ]: Openning connection to:	'MASTER'
+2025-09-24 14:20:33 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDBStore.saveItems ]: Attempting batch write into prototype
+2025-09-24 14:20:33 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDBStore.closeConn ]: Closing connection to:	'MASTER'
+2025-09-24 14:20:33 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemRocksDbService ]: Verifying records can be retrieved
+2025-09-24 14:20:33 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDBStore.openConn ]: Openning connection to:	'MASTER'
+2025-09-24 14:20:33 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDBStore.getById ]: Fetching record matching Id from Master:	'WorkItem-1c63b090-6f57-4dc3-9838-de769256df76'
+2025-09-24 14:20:33 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDBStore.closeConn ]: Closing connection to:	'MASTER'
+2025-09-24 14:20:33 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemRocksDbService ]: 
 
 Displaying retreieved WorkItem:
 '{
     "DoneDate": 0,
-    "Id": "WorkItem-11b8ce22-900d-461b-92dd-0f05729a2cc6",
+    "Id": "WorkItem-1c63b090-6f57-4dc3-9838-de769256df76",
     "ItemName": "My WorkItem Name",
     "ItemState": "TODO",
     "ItemType": "SINGLE",
-    "Job Environment Id": "JobEnv-0c580e13-bce3-491c-8c4c-0becb44d2ab8",
+    "Job Environment Id": "JobEnv-b8320a33-c743-41c0-a3cc-98796699ae9c",
     "LockDate": 0,
-    "LockId": "7031937f-da6a-4753-8c8e-7681e83daebf",
-    "StepId": "Step-6a1150ce-260f-43e3-945e-68b637147846",
+    "LockId": "abae65e7-47f1-47a3-a6df-58d959bb9df1",
+    "StepId": "Step-e12213c4-9b30-4dd0-a342-6f708600ba2b",
     "StepName": "Arbitrary",
     "TaskCount": 1,
     "TaskDone": 0,
     "Workload": {
         "TaskMap": {
             "My Task Name": {
-                "Job Environment Id": "JobEnv-ca492b68-7ea3-4434-992d-e0bfbf0f99dd",
+                "Job Environment Id": "JobEnv-f01a7379-8770-4c2b-9424-dfc3fed67f1b",
                 "Task": "My Task",
                 "Task Log": {
                     "CPU Duration": -1,
@@ -175,28 +103,27 @@ Displaying retreieved WorkItem:
                             "apples",
                             "oragnes"
                         ],
-                        "id": "ProcessLog1506fc67-8c51-47b2-9798-70e2cb9bda5f"
+                        "id": "ProcessLog-caf63828-d257-43d1-8805-54ce9e46fbdf"
                     },
                     "Start Time": -2,
                     "Thread Name": "myThread",
-                    "id": "TaskLogging-e57f2ffc-7021-43ab-9442-433eae8b7bce"
+                    "id": "TaskLogging-9bc6ddf5-a0c3-401b-81b0-ccc5b0453679"
                 },
                 "Task Name": "My Task Name",
                 "Task State": "COMPLETE",
-                "Work Item Id": "WorkItem-0004c262-5647-4ea1-90fd-dfa637f831d6",
+                "Work Item Id": "WorkItem-e88d5397-4cb1-4239-a659-f8d9290289bb",
                 "annotations": {
                     "Annotations": {
                         "Unit Test": "TemplateRepository-UnitTests",
                         "Pilot Label": "SomePilotJobLabel"
-                    },
-                    "id": "CustomAnnotation-ad3be8a6-3faa-4bd0-a210-fcc409751b64"
+                    }
                 },
-                "id": "ItemTask-e9ae9a7d-4337-4c46-920a-393137d68f8f"
+                "id": "ItemTask-71a47355-807b-409a-a77b-a1b0accb6308"
             }
         },
         "WorkloadType": "SINGLE",
         "earliestDone": -3,
-        "id": "Workload-4dbceb99-1eed-49ed-aa5c-415a5e59c37e",
+        "id": "Workload-58f6a7e4-b4ef-432f-ab5e-4b03bbd61a81",
         "latestDone": 0,
         "workloadSize": 1
     },
@@ -204,23 +131,22 @@ Displaying retreieved WorkItem:
         "Annotations": {
             "Unit Test": "TemplateRepository-UnitTests",
             "Pilot Label": "SomePilotJobLabel"
-        },
-        "id": "CustomAnnotation-a886faeb-dd47-453c-96fd-e65b8bda5dc5"
+        }
     },
     "collection": "Arbitrary",
     "workloadSize": 1
 }'
-2025-09-24 14:11:18 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemNoSqlService ]: 
+2025-09-24 14:20:33 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.canConstructWorkItemRocksDbService ]: 
 
-================ Construct WorkItemService-Template From Factory Test ================
+================ Construct WorkItemService-RocksDB From Factory Test ================
 
-2025-09-24 14:11:18 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.tearDown ]: 
+2025-09-24 14:20:33 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2025-09-24 14:11:18 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.tearDownClass ]: 
+2025-09-24 14:20:33 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.tearDownClass ]: 
 
 ---------------- Terminating WorkItem Service Tests ----------------
 
-2025-09-24 14:11:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 2552daab-e86b-417e-a5ce-e0c6c53652c0 shut down
-2025-09-24 14:11:18 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.tearDownClass ]: CDI container shut down
+2025-09-24 14:20:33 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 887c5f67-7114-4e7f-bd87-b4603ca404d6 shut down
+2025-09-24 14:20:33 INFO  [ Test worker -> org.tasktide.core.services.WorkItemServiceTests.tearDownClass ]: CDI container shut down

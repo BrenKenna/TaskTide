@@ -29,6 +29,7 @@ import java.util.Base64;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
 import org.testcontainers.containers.GenericContainer;
@@ -182,7 +183,7 @@ public class TestEnvironment {
         return SeContainerInitializer.newInstance()
             .initialize();
     }
-    
+
     
     /**
      * Fetches template from configured container
