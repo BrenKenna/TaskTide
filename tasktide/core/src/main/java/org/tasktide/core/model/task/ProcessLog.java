@@ -22,9 +22,6 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import jakarta.nosql.Column;
-import jakarta.nosql.Embeddable;
-
 
 /**
  * 
@@ -32,19 +29,22 @@ import jakarta.nosql.Embeddable;
  * 
  * @author bkenna
  */
-@Embeddable
+@jakarta.nosql.Embeddable
+@jakarta.persistence.Embeddable
 public class ProcessLog {
     
-    @Column
-    @JsonbProperty("Id")
+    @jakarta.nosql.Column("ProcessLogId")
+    @jakarta.persistence.Column(name = "ProcessLogId")
+    @JsonbProperty("Process Log Id")
     private String procLogId;
     
-    
-    @Column
+    @jakarta.nosql.Column("Stdout")
+    @jakarta.persistence.Column(name = "Stdout")
     @JsonbProperty("Stdout")
     private String[] stdout;
     
-    @Column
+    @jakarta.nosql.Column("Stderr")
+    @jakarta.persistence.Column(name = "Stderr")
     @JsonbProperty("Stderr")
     private String[] stderr;
     
@@ -76,7 +76,7 @@ public class ProcessLog {
      */
     @JsonbCreator
     public ProcessLog(
-        @JsonbProperty("Id") String procLogId,
+        @JsonbProperty("Process Log Id") String procLogId,
         @JsonbProperty("Stdout") String[] stdout,
         @JsonbProperty("Stderr") String[] stderr
     ) {

@@ -41,9 +41,9 @@ import org.tasktide.core.model.workitem.WorkItem;
 @jakarta.persistence.Embeddable
 public class ItemTask implements TaskTideModel<ItemTask> {
     
-    @jakarta.nosql.Column("Id")
+    @jakarta.nosql.Column("ItemTaskId")
     @jakarta.persistence.Column(name = "ItemTaskId")
-    @JsonbProperty("Id")
+    @JsonbProperty("ItemTaskId")
     private String itemTaskId;
     
     @jakarta.nosql.Column("TaskName")
@@ -163,7 +163,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      */    
     @JsonbCreator
     public ItemTask(
-        @JsonbProperty("Id") String itemTaskId,
+        @JsonbProperty("ItemTaskId") String itemTaskId,
         @JsonbProperty("Task Name") String taskName,
         @JsonbProperty("Task") String task,
         @JsonbProperty("Task State") TaskState taskState,

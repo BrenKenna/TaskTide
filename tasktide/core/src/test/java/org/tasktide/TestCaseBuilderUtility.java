@@ -183,7 +183,7 @@ public class TestCaseBuilderUtility {
         String[] stdout = {"apples", "oragnes"};
         String[] stderr = {"pears", "pineapples"};
         return new ProcessLogBuilder()
-            .withId(UUID.randomUUID().toString())
+            .withId("ProcessLog-" + UUID.randomUUID().toString())
             .withStdout(stdout)
             .withStderr(stderr)
         .build();
@@ -197,7 +197,7 @@ public class TestCaseBuilderUtility {
      */
     public static TaskLogging makeTestTaskLog() {
         return new TaskLoggingBuilder()
-            .withId(UUID.randomUUID().toString())
+            .withId("TaskLogging-" + UUID.randomUUID().toString())
             .withProcessLog(makeTestProcessLog())
             .withThreadName("myThread")
             .withCpuDuration(-1L)
@@ -216,13 +216,14 @@ public class TestCaseBuilderUtility {
     public static ItemTask makeTestItemTask() {
         CustomAnnotation anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         return new ItemTaskBuilder()
-            .withId(UUID.randomUUID().toString())
+            .withId("ItemTask-" + UUID.randomUUID().toString())
             .withTaskName("My Task Name")
             .withTask("My Task")
             .withTaskState(TaskState.COMPLETE)
             .withTaskLog(makeTestTaskLog())
             .withAnnotation(anno)
-            .withWorkItemId("")
+            .withWorkItemId("WorkItem-" + UUID.randomUUID().toString())
+            .withJobEnvId("JobEnv-" + UUID.randomUUID().toString())
         .build();
     }
     
@@ -238,7 +239,7 @@ public class TestCaseBuilderUtility {
         itemTasks.add(makeTestItemTask());
         
         return new WorkloadBuilder()
-            .withId("My Workload")
+            .withId("Workload-" + UUID.randomUUID().toString())
             .withWorkload(itemTasks)
             .withWorkloadState(ItemState.LOCKED)
             .withWorkloadType(ItemType.SINGLE)
@@ -254,7 +255,7 @@ public class TestCaseBuilderUtility {
     public static WorkItem makeTestWorkItem() {
         CustomAnnotation anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         return new WorkItemBuilder()
-            .withId(UUID.randomUUID().toString())
+            .withId("WorkItem-" + UUID.randomUUID().toString())
             .withItemName("My WorkItem Name")
             .withWorkload(makeTestWorkload())
             .withLockId(UUID.randomUUID().toString())
@@ -266,6 +267,8 @@ public class TestCaseBuilderUtility {
             .withItemType(ItemType.SINGLE)
             .withStepName("Arbitrary")
             .withAnnotation(anno)
+            .withStepId("Step-" + UUID.randomUUID().toString())
+            .withJobEnvId("JobEnv-" + UUID.randomUUID().toString())
         .build();
     }
     
@@ -278,7 +281,7 @@ public class TestCaseBuilderUtility {
      */
     public static WorkItem makeTestWorkItem(String stepName) {
         return new WorkItemBuilder()
-            .withId(UUID.randomUUID().toString())
+            .withId("WorkItem-" + UUID.randomUUID().toString())
             .withItemName("My WorkItem Name")
             .withWorkload(makeTestWorkload())
             .withLockId(UUID.randomUUID().toString())
@@ -290,6 +293,8 @@ public class TestCaseBuilderUtility {
             .withItemType(ItemType.SINGLE)
             .withStepName(stepName)
             .withAnnotation(new CustomAnnotation())
+            .withStepId("Step-" + UUID.randomUUID().toString())
+            .withJobEnvId("JobEnv-" + UUID.randomUUID().toString())
         .build();
     }
     

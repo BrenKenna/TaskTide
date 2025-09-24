@@ -25,16 +25,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.eclipse.jnosql.mapping.core.Converters;
-import org.eclipse.jnosql.mapping.document.DocumentTemplate;
-import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
-import org.eclipse.jnosql.mapping.reflection.Reflections;
-import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
-import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
-
-import org.jboss.weld.junit5.auto.AddExtensions;
-import org.jboss.weld.junit5.auto.AddPackages;
-import org.jboss.weld.junit5.auto.EnableAutoWeld;
+import org.testcontainers.containers.GenericContainer;
 import org.junit.Rule;
 
 import org.junit.jupiter.api.AfterEach;
@@ -58,7 +49,6 @@ import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
-import org.testcontainers.containers.GenericContainer;
 
 
 /**
@@ -67,9 +57,6 @@ import org.testcontainers.containers.GenericContainer;
  *
  * @author bkenna
  */
-@EnableAutoWeld
-@AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
-@AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class StepServiceTests {
     

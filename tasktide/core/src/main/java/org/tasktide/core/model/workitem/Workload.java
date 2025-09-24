@@ -40,9 +40,9 @@ import org.tasktide.core.model.task.TaskState;
 @jakarta.persistence.Embeddable
 public class Workload {
     
-    @jakarta.nosql.Column("Id")
+    @jakarta.nosql.Column("WorkloadId")
     @jakarta.persistence.Column(name = "WorkloadId")
-    @JsonbProperty("Id")
+    @JsonbProperty("WorkloadId")
     private String workloadId;
     
     @jakarta.nosql.Column("TaskMap")
@@ -75,7 +75,7 @@ public class Workload {
      */
     @JsonbCreator
     public Workload(
-        @JsonbProperty("Id") String workloadId,
+        @JsonbProperty("WorkloadId") String workloadId,
         @JsonbProperty("Workload") Map<String, ItemTask> workload,
         @JsonbProperty("WorkloadType") ItemType workloadType
     ) {
@@ -107,6 +107,7 @@ public class Workload {
             task.resetModel();
         }
     }
+    
     
     /**
      * Fetch {@link ItemTask} having Id

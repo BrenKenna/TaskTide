@@ -24,15 +24,7 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.eclipse.jnosql.mapping.core.Converters;
-import org.eclipse.jnosql.mapping.document.DocumentTemplate;
-import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
-import org.eclipse.jnosql.mapping.reflection.Reflections;
-import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
-import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
-import org.jboss.weld.junit5.auto.AddExtensions;
-import org.jboss.weld.junit5.auto.AddPackages;
-import org.jboss.weld.junit5.auto.EnableAutoWeld;
+import org.testcontainers.containers.GenericContainer;
 import org.junit.Rule;
 
 import org.junit.jupiter.api.AfterEach;
@@ -56,7 +48,6 @@ import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.itemstore.ItemStore;
-import org.testcontainers.containers.GenericContainer;
 
 
 /**
@@ -65,9 +56,6 @@ import org.testcontainers.containers.GenericContainer;
  *
  * @author bkenna
  */
-@EnableAutoWeld
-@AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
-@AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemServiceTests {
     
@@ -77,8 +65,8 @@ public class WorkItemServiceTests {
     private Template template;
     
     // Backend repos
-    @Rule
-    private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    //@Rule
+    //private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     @Rule
     private final GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
@@ -103,7 +91,7 @@ public class WorkItemServiceTests {
             container.close();
             logger.info("CDI container shut down");
         }
-        couchDB.stop();
+        //couchDB.stop();
         mariaDB.stop();
     }
     
@@ -249,6 +237,7 @@ public class WorkItemServiceTests {
         
         // Check that records can be queried
         logger.info("Verifying records can be retrieved");
+        logger.info("\n\nDisplaying first record for reference:\n'{}'", JsonUtils.toJson(true, data.get(0)));
         TaskTideModel<WorkItem> ref = data.get(0);
         TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
         logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());

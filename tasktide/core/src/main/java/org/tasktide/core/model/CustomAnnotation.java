@@ -44,9 +44,9 @@ import org.tasktide.core.TaskTideModel;
 public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
     
     // Id for annotation collection
-    @jakarta.nosql.Column("Id")
+    @jakarta.nosql.Column("AnnotationId")
     @jakarta.persistence.Column(name = "AnnotationId")
-    @JsonbProperty("Id")
+    @JsonbProperty("AnnotationId")
     private String annoId;
     
     // Annotations field
@@ -74,7 +74,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      */
     @JsonbCreator
     public CustomAnnotation(
-       @JsonbProperty("Id") String annoId,
+       @JsonbProperty("AnnotationId") String annoId,
        @JsonbProperty("Annotations") Map<String, Object> anno
     ) {
         this.annoId = annoId;
