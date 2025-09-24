@@ -1281,3 +1281,750 @@ Displaying first task for reference:
 
 =======
 >>>>>>> Stashed changes
+2025-09-24 09:30:14 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUpClass ]: 
+
+---------------- Initiating ExecutorBuilder Tests ----------------
+
+2025-09-24 09:30:14 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-24 09:30:14 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: 
+
+================ Evaluate Building ItemTaskExecutor ================
+
+2025-09-24 09:30:14 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-24 09:30:14 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: 
+
+---------------- Terminating ExecutorBuilder Tests ----------------
+
+2025-09-24 09:33:05 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUpClass ]: 
+
+---------------- Initiating ExecutorBuilder Tests ----------------
+
+2025-09-24 09:33:05 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-24 09:33:05 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: 
+
+================ Evaluate Building ItemTaskExecutor ================
+
+2025-09-24 09:33:05 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-24 09:33:05 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: 
+
+---------------- Terminating ExecutorBuilder Tests ----------------
+
+2025-09-24 10:40:27 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 10:40:27 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 10:40:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 10:40:27 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 10:40:27 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerMachineClientProviderStrategy.isApplicable ]: docker-machine executable was not found on PATH ([C:\Program Files\Common Files\Oracle\Java\javapath, C:\Windows\system32, C:\Windows, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0\, %GRADLE_HOME%\bin, C:\Windows\System32\OpenSSH\, C:\Program Files\dotnet\, C:\Program Files\Git\cmd, C:\Program Files\Docker\Docker\resources\bin, C:\Program Files\PowerShell\7\, C:\Gradle\gradle-9.1.0-rc\bin, C:\Users\Brendan Kenna\scoop\apps\maven\current\bin, C:\Users\Brendan Kenna\scoop\shims, C:\Users\Brendan Kenna\AppData\Local\Microsoft\WindowsApps, C:\Users\Brendan Kenna\AppData\Local\GitHubDesktop\bin, C:\Users\Brendan Kenna\AppData\Local\Programs\Microsoft VS Code\bin])
+2025-09-24 10:40:27 ERROR [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$getFirstValidStrategy$7 ]: Could not find a valid Docker environment. Please check configuration. Attempted configurations were:
+As no valid configuration was found, execution cannot continue.
+See https://java.testcontainers.org/on_failure.html for more details.
+2025-09-24 10:43:37 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 10:43:37 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 10:43:37 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 10:43:38 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 10:43:38 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 10:43:38 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 10:43:38 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 10:43:38 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 10:43:38 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 30e36f8d2e66db4b2696afce4fb3969c1b710da405e384f0c9c0b536b9e5d311
+2025-09-24 10:43:39 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.0142612S
+2025-09-24 10:43:39 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 10:43:39 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 10:43:39 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 10:43:39 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 10:43:39 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: ddfe05b9f618e1ce05fcb5826a6c7a36133fcd1f29fdec4dfb1d18591fa1809b
+2025-09-24 10:43:40 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /upbeat_haibt: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 10:43:41 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.7685018S
+2025-09-24 10:43:41 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 10:43:41 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 10:43:41 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUpClass ]: 
+
+---------------- Initiating ExecutorBuilder Tests ----------------
+
+2025-09-24 10:43:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 10:43:41 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 10:43:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 10:43:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 0a4acf42-512e-43a9-9660-5786563c38ad initialized
+2025-09-24 10:43:47 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-24 10:43:47 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: 
+
+================ Evaluate Building ItemTaskExecutor ================
+
+2025-09-24 10:43:47 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-24 10:43:47 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: 
+
+---------------- Terminating ExecutorBuilder Tests ----------------
+
+2025-09-24 10:43:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 0a4acf42-512e-43a9-9660-5786563c38ad shut down
+2025-09-24 10:43:47 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: CDI container shut down
+2025-09-24 10:58:26 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 10:58:26 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 10:58:26 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 10:58:26 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 10:58:27 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 10:58:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 10:58:27 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 10:58:27 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 10:58:28 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 6ea266b15e5df2d80a0e4a502e8a730ac9e35c136e97259163ee1b8382d6205e
+2025-09-24 10:58:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.5551013S
+2025-09-24 10:58:29 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 10:58:29 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 10:58:29 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 10:58:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 10:58:29 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 46c89996e216e15bc1fa64277e60e109fcb4db24e80d143863c32b97cfc44c8d
+2025-09-24 10:58:29 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /clever_napier: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 10:58:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT4.0028989S
+2025-09-24 10:58:33 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 10:58:33 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 10:58:33 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUpClass ]: 
+
+---------------- Initiating ExecutorBuilder Tests ----------------
+
+2025-09-24 10:58:34 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 10:58:34 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 10:58:34 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 10:58:44 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 4c3ba191-e92e-4275-8ad5-07af5d2ff319 initialized
+2025-09-24 10:58:45 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-24 10:58:45 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: 
+
+================ Evaluate Building ItemTaskExecutor ================
+
+2025-09-24 10:58:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-09-24 10:58:47 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-af7fb87a-f59d-433a-94bb-50c6c6538222'
+2025-09-24 10:58:47 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-af7fb87a-f59d-433a-94bb-50c6c6538222' set on thread 'Test worker'
+2025-09-24 10:58:47 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-af7fb87a-f59d-433a-94bb-50c6c6538222'
+2025-09-24 10:58:47 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping google.com
+2025-09-24 10:58:47 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-24 10:58:47 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: 
+
+---------------- Terminating ExecutorBuilder Tests ----------------
+
+2025-09-24 10:58:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 4c3ba191-e92e-4275-8ad5-07af5d2ff319 shut down
+2025-09-24 10:58:47 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: CDI container shut down
+2025-09-24 11:14:43 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 11:14:43 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 11:14:43 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 11:14:44 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 11:14:45 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 11:14:45 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 11:14:45 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 11:14:46 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 11:14:46 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: e66325f6938c9df694a875697ecf9c4be326d911ac44cc2ad43b4dc8104488ea
+2025-09-24 11:14:48 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT2.3266968S
+2025-09-24 11:14:48 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 11:14:48 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 11:14:48 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 11:14:48 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 11:14:48 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: f6885a28bc37dc5053be3c448e41fd9dc540271a296c5e6b0101682ed679276d
+2025-09-24 11:14:49 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /eloquent_engelbart: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 11:14:53 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT5.4130039S
+2025-09-24 11:14:54 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 11:14:54 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 11:14:54 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUpClass ]: 
+
+---------------- Initiating ExecutorBuilder Tests ----------------
+
+2025-09-24 11:14:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 11:14:55 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 11:14:57 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 11:15:13 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2b900f90-96f8-4e21-97ee-b78228116829 initialized
+2025-09-24 11:15:13 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-24 11:15:13 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: 
+
+================ Evaluate Building ItemTaskExecutor ================
+
+2025-09-24 11:15:13 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: Displaying reference record:
+'{
+    "DoneDate": 0,
+    "Id": "WorkItem-ad0a4172-2647-4c98-8d68-1b6547f9e6cc",
+    "ItemName": "PING",
+    "ItemState": "TODO",
+    "ItemType": "NESTED",
+    "LockDate": 0,
+    "LockId": "asdfg",
+    "StepName": "PING",
+    "TaskCount": 2,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "Ping youtube.com-1": {
+                "Task": "ping youtube.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 0,
+                    "Exit Code": -1,
+                    "Process Id": 0,
+                    "Process Log": {
+                        "Stderr": [
+                            ""
+                        ],
+                        "Stdout": [
+                            ""
+                        ],
+                        "id": "ProcessLog-deff17b0-2fe0-4789-8b5c-ec3263c0243a"
+                    },
+                    "Start Time": 0,
+                    "Thread Name": "NA",
+                    "id": "TaskLog-8d6c7cd8-5a0f-4a79-b6fa-05a4d43b24f9"
+                },
+                "Task Name": "Ping youtube.com-1",
+                "Task State": "PENDING",
+                "Work Item Id": "WorkItem-ad0a4172-2647-4c98-8d68-1b6547f9e6cc",
+                "collection": "WorkItem-ad0a4172-2647-4c98-8d68-1b6547f9e6cc",
+                "id": "ItemTask-934d36e0-686a-4b85-aba8-4e0dbd8d3ef2",
+                "state": "ping youtube.com"
+            },
+            "Ping twitter.com-0": {
+                "Task": "ping twitter.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 0,
+                    "Exit Code": -1,
+                    "Process Id": 0,
+                    "Process Log": {
+                        "Stderr": [
+                            ""
+                        ],
+                        "Stdout": [
+                            ""
+                        ],
+                        "id": "ProcessLog-ec162869-83b7-40c3-b13d-cddb4d1c3f4a"
+                    },
+                    "Start Time": 0,
+                    "Thread Name": "NA",
+                    "id": "TaskLog-375cf10f-664c-42fe-af11-cb628d4299fe"
+                },
+                "Task Name": "Ping twitter.com-0",
+                "Task State": "PENDING",
+                "Work Item Id": "WorkItem-ad0a4172-2647-4c98-8d68-1b6547f9e6cc",
+                "collection": "WorkItem-ad0a4172-2647-4c98-8d68-1b6547f9e6cc",
+                "id": "ItemTask-02c14c32-6304-4123-959e-e0aaded510f2",
+                "state": "ping twitter.com"
+            }
+        },
+        "WorkloadType": "NESTED",
+        "earliestDone": -1,
+        "id": "Workload-5e799b47-85de-481b-bb13-ee791cb232e4",
+        "latestDone": 0,
+        "workloadSize": 2
+    },
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-2d255fd7-02c8-47b2-96f8-12f44a3de339"
+    },
+    "collection": "PING",
+    "workloadSize": 2
+}'
+2025-09-24 11:15:14 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-09-24 11:15:14 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-934d36e0-686a-4b85-aba8-4e0dbd8d3ef2'
+2025-09-24 11:15:14 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-934d36e0-686a-4b85-aba8-4e0dbd8d3ef2' set on thread 'Test worker'
+2025-09-24 11:15:14 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-934d36e0-686a-4b85-aba8-4e0dbd8d3ef2'
+2025-09-24 11:15:14 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping youtube.com
+2025-09-24 11:15:14 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-24 11:15:14 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: 
+
+---------------- Terminating ExecutorBuilder Tests ----------------
+
+2025-09-24 11:15:14 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 2b900f90-96f8-4e21-97ee-b78228116829 shut down
+2025-09-24 11:15:14 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: CDI container shut down
+2025-09-24 11:19:39 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 11:19:39 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 11:19:39 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 11:19:40 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 11:19:40 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 11:19:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 11:19:40 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 11:19:41 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 11:19:41 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: da549c626042a6eea2e40581f29159357726c25153fe2cfe0f6e6259c234ce0d
+2025-09-24 11:19:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT2.0802148S
+2025-09-24 11:19:43 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 11:19:43 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 11:19:43 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 11:19:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 11:19:43 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: bc20235b5d6d47e4dcd090b99aac3ce6d4b3ddd207126a871b0c7925d910d85f
+2025-09-24 11:19:44 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /heuristic_herschel: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 11:19:47 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT4.3771474S
+2025-09-24 11:19:48 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 11:19:48 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 11:19:48 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUpClass ]: 
+
+---------------- Initiating ExecutorBuilder Tests ----------------
+
+2025-09-24 11:19:48 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 11:19:49 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 11:19:50 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 11:20:04 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9fc9d85e-72e7-4431-b5c4-a09f5fc708ec initialized
+2025-09-24 11:20:04 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-24 11:20:04 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: 
+
+================ Evaluate Building ItemTaskExecutor ================
+
+2025-09-24 11:20:05 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: Displaying reference record:
+'{
+    "DoneDate": 0,
+    "Id": "WorkItem-1d87a1bb-aeb0-44d5-8bc1-22f14f5787f1",
+    "ItemName": "PING",
+    "ItemState": "TODO",
+    "ItemType": "NESTED",
+    "LockDate": 0,
+    "LockId": "",
+    "StepName": "PING",
+    "TaskCount": 2,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "Ping spotify.com-1": {
+                "Task": "ping spotify.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 0,
+                    "Exit Code": -1,
+                    "Process Id": 0,
+                    "Process Log": {
+                        "Stderr": [
+                            ""
+                        ],
+                        "Stdout": [
+                            ""
+                        ],
+                        "id": "ProcessLog-b8893b54-3b3d-4082-8ddd-9d9046bdf64d"
+                    },
+                    "Start Time": 0,
+                    "Thread Name": "NA",
+                    "id": "TaskLog-eb5fde6f-1349-4a29-92e7-eb387f7e20cc"
+                },
+                "Task Name": "Ping spotify.com-1",
+                "Task State": "PENDING",
+                "Work Item Id": "WorkItem-1d87a1bb-aeb0-44d5-8bc1-22f14f5787f1",
+                "annotations": {
+                    "Annotations": {
+                    },
+                    "id": "CustomAnnotation-2bd2cc21-aef7-46a8-a889-d1c14b6d6d0c"
+                },
+                "collection": "WorkItem-1d87a1bb-aeb0-44d5-8bc1-22f14f5787f1",
+                "id": "ItemTask-00bbb78b-af81-485d-a57a-6246391dcbd5",
+                "state": "ping spotify.com"
+            },
+            "Ping twitter.com-0": {
+                "Task": "ping twitter.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 0,
+                    "Exit Code": -1,
+                    "Process Id": 0,
+                    "Process Log": {
+                        "Stderr": [
+                            ""
+                        ],
+                        "Stdout": [
+                            ""
+                        ],
+                        "id": "ProcessLog-5862cd5a-92c3-4dec-9bed-6b9cce63c80f"
+                    },
+                    "Start Time": 0,
+                    "Thread Name": "NA",
+                    "id": "TaskLog-f8995820-15ee-48f4-b1f2-66c6c3bdbd96"
+                },
+                "Task Name": "Ping twitter.com-0",
+                "Task State": "PENDING",
+                "Work Item Id": "WorkItem-1d87a1bb-aeb0-44d5-8bc1-22f14f5787f1",
+                "annotations": {
+                    "Annotations": {
+                    },
+                    "id": "CustomAnnotation-0f783bb0-4a11-4c92-92b7-f251215f83eb"
+                },
+                "collection": "WorkItem-1d87a1bb-aeb0-44d5-8bc1-22f14f5787f1",
+                "id": "ItemTask-2139e6e5-669f-4d23-aa4e-394f0e9ac7ab",
+                "state": "ping twitter.com"
+            }
+        },
+        "WorkloadType": "NESTED",
+        "earliestDone": -1,
+        "id": "Workload-0e22170f-4b5e-4a94-93f0-f2a7055b463d",
+        "latestDone": 0,
+        "workloadSize": 2
+    },
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-7e9f7f38-1f24-433d-a105-41bd21f395b7"
+    },
+    "collection": "PING",
+    "workloadSize": 2
+}'
+2025-09-24 11:20:07 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-09-24 11:20:07 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-00bbb78b-af81-485d-a57a-6246391dcbd5'
+2025-09-24 11:20:07 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-00bbb78b-af81-485d-a57a-6246391dcbd5' set on thread 'Test worker'
+2025-09-24 11:20:07 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-00bbb78b-af81-485d-a57a-6246391dcbd5'
+2025-09-24 11:20:07 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping spotify.com
+2025-09-24 11:20:07 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-24 11:20:07 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: 
+
+---------------- Terminating ExecutorBuilder Tests ----------------
+
+2025-09-24 11:20:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9fc9d85e-72e7-4431-b5c4-a09f5fc708ec shut down
+2025-09-24 11:20:07 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: CDI container shut down
+2025-09-24 11:26:56 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 11:26:56 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 11:26:56 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 11:26:56 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 11:26:57 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 11:26:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 11:26:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 11:26:57 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 11:26:58 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 99a0079e2fcf2ddb40fd998181473cc02ab44b44b3b04150b87b0c5fcfe4979a
+2025-09-24 11:26:59 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.8709853S
+2025-09-24 11:26:59 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 11:26:59 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 11:26:59 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 11:26:59 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 11:27:00 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: 2ded63b27ac32a8a8acb2765ff9dda69e5ff38b9e2b46c25f51d4659b22c752d
+2025-09-24 11:27:00 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /goofy_mirzakhani: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 11:27:04 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT4.325755S
+2025-09-24 11:27:05 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 11:27:05 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 11:27:05 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUpClass ]: 
+
+---------------- Initiating ExecutorBuilder Tests ----------------
+
+2025-09-24 11:27:05 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 11:27:05 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 11:27:06 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 11:27:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1eab915c-0152-4b6a-b0d7-8bbebd496aa0 initialized
+2025-09-24 11:27:21 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-24 11:27:21 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: 
+
+================ Evaluate Building ItemTaskExecutor ================
+
+2025-09-24 11:27:21 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: Displaying reference record:
+'{
+    "DoneDate": 0,
+    "Id": "WorkItem-732ec00b-95e2-4868-9ef6-ea411809b999",
+    "ItemName": "PING",
+    "ItemState": "TODO",
+    "ItemType": "NESTED",
+    "LockDate": 0,
+    "LockId": "",
+    "StepName": "PING",
+    "TaskCount": 2,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "Ping twitter.com-1": {
+                "Task": "ping twitter.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 0,
+                    "Exit Code": -1,
+                    "Process Id": 0,
+                    "Process Log": {
+                        "Stderr": [
+                            ""
+                        ],
+                        "Stdout": [
+                            ""
+                        ],
+                        "id": "ProcessLog-d472d43c-c03c-4087-b4eb-6cceecb6b7c9"
+                    },
+                    "Start Time": 0,
+                    "Thread Name": "NA",
+                    "id": "TaskLog-bd79b94c-b37b-4b81-94d1-f9980039dc84"
+                },
+                "Task Name": "Ping twitter.com-1",
+                "Task State": "PENDING",
+                "Work Item Id": "WorkItem-732ec00b-95e2-4868-9ef6-ea411809b999",
+                "annotations": {
+                    "Annotations": {
+                    },
+                    "id": "CustomAnnotation-0fe9aeee-5f94-4308-b37a-4a3b271d35c9"
+                },
+                "collection": "WorkItem-732ec00b-95e2-4868-9ef6-ea411809b999",
+                "id": "ItemTask-3c7254a6-83e6-4b3b-8644-b2b3f8110cfd",
+                "state": "PENDING"
+            },
+            "Ping netflix.com-0": {
+                "Task": "ping netflix.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 0,
+                    "Exit Code": -1,
+                    "Process Id": 0,
+                    "Process Log": {
+                        "Stderr": [
+                            ""
+                        ],
+                        "Stdout": [
+                            ""
+                        ],
+                        "id": "ProcessLog-3d6b655e-ce98-4408-badf-f7b0cf814192"
+                    },
+                    "Start Time": 0,
+                    "Thread Name": "NA",
+                    "id": "TaskLog-181943d5-31f4-4e25-a61f-7e3989230d2e"
+                },
+                "Task Name": "Ping netflix.com-0",
+                "Task State": "PENDING",
+                "Work Item Id": "WorkItem-732ec00b-95e2-4868-9ef6-ea411809b999",
+                "annotations": {
+                    "Annotations": {
+                    },
+                    "id": "CustomAnnotation-b2679e0a-f6ae-4705-a5c6-713701d7b176"
+                },
+                "collection": "WorkItem-732ec00b-95e2-4868-9ef6-ea411809b999",
+                "id": "ItemTask-cc1b44b3-f62b-4b1b-983b-476b158750c0",
+                "state": "PENDING"
+            }
+        },
+        "WorkloadType": "NESTED",
+        "earliestDone": -1,
+        "id": "Workload-145a0a78-2394-497c-973b-7975aa0e0ab6",
+        "latestDone": 0,
+        "workloadSize": 2
+    },
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-d3edecc7-aadf-4464-885e-3bc8896a8a8d"
+    },
+    "collection": "PING",
+    "workloadSize": 2
+}'
+2025-09-24 11:27:23 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-09-24 11:27:23 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-3c7254a6-83e6-4b3b-8644-b2b3f8110cfd'
+2025-09-24 11:27:23 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-3c7254a6-83e6-4b3b-8644-b2b3f8110cfd' set on thread 'Test worker'
+2025-09-24 11:27:23 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-3c7254a6-83e6-4b3b-8644-b2b3f8110cfd'
+2025-09-24 11:27:23 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping twitter.com
+2025-09-24 11:27:23 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-24 11:27:23 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: 
+
+---------------- Terminating ExecutorBuilder Tests ----------------
+
+2025-09-24 11:27:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1eab915c-0152-4b6a-b0d7-8bbebd496aa0 shut down
+2025-09-24 11:27:23 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: CDI container shut down
+2025-09-24 11:42:30 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2025-09-24 11:42:30 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2025-09-24 11:42:30 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2025-09-24 11:42:30 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2025-09-24 11:42:31 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2025-09-24 11:42:31 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2025-09-24 11:42:31 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.3.2
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2025-09-24 11:42:31 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2025-09-24 11:42:32 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: 76e83e4a7a6601d681782e8544a694c9905d21ca417cc5dda8a9df614fe98b52
+2025-09-24 11:42:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.9914964S
+2025-09-24 11:42:33 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2025-09-24 11:42:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2025-09-24 11:42:33 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2025-09-24 11:42:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2025-09-24 11:42:33 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: e62122248859c6401b6c917054a231c1882fa327ad60deafd44de415cd788fb3
+2025-09-24 11:42:34 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /admiring_tu: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2025-09-24 11:42:37 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT4.1968462S
+2025-09-24 11:42:38 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Status code:	'201'
+2025-09-24 11:42:38 INFO  [ Test worker -> org.tasktide.engine.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2025-09-24 11:42:38 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUpClass ]: 
+
+---------------- Initiating ExecutorBuilder Tests ----------------
+
+2025-09-24 11:42:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2025-09-24 11:42:38 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2025-09-24 11:42:39 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2025-09-24 11:42:51 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b59b14ff-dfb4-4994-8aac-87d12a143f46 initialized
+2025-09-24 11:42:51 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-09-24 11:42:51 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: 
+
+================ Evaluate Building ItemTaskExecutor ================
+
+2025-09-24 11:42:52 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.canBuildItemTaskExecutor ]: Displaying reference record:
+'{
+    "DoneDate": 0,
+    "Id": "WorkItem-026bc390-e144-458a-bc48-53ecad8bfae1",
+    "ItemName": "PING",
+    "ItemState": "TODO",
+    "ItemType": "NESTED",
+    "LockDate": 0,
+    "LockId": "",
+    "StepName": "PING",
+    "TaskCount": 2,
+    "TaskDone": 0,
+    "Workload": {
+        "Workload": {
+            "Ping facebook.com-1": {
+                "Task": "ping facebook.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 0,
+                    "Exit Code": -1,
+                    "Process Id": 0,
+                    "Process Log": {
+                        "Stderr": [
+                            ""
+                        ],
+                        "Stdout": [
+                            ""
+                        ],
+                        "id": "ProcessLog-e1ee3c59-ffb6-4f11-984a-3d63079c080e"
+                    },
+                    "Start Time": 0,
+                    "Thread Name": "NA",
+                    "id": "TaskLog-5311b4c4-55ff-4110-8557-256cb867d6e1"
+                },
+                "Task Name": "Ping facebook.com-1",
+                "Task State": "PENDING",
+                "Work Item Id": "WorkItem-026bc390-e144-458a-bc48-53ecad8bfae1",
+                "annotations": {
+                    "Annotations": {
+                    },
+                    "id": "CustomAnnotation-b466a88c-1f8f-4500-91de-1b25f323c088"
+                },
+                "collection": "WorkItem-026bc390-e144-458a-bc48-53ecad8bfae1",
+                "id": "ItemTask-c423167c-4178-466d-b524-1d885f9bd4d5",
+                "state": "PENDING"
+            },
+            "Ping netflix.com-0": {
+                "Task": "ping netflix.com",
+                "Task Log": {
+                    "CPU Duration": 0,
+                    "End Time": 0,
+                    "Exit Code": -1,
+                    "Process Id": 0,
+                    "Process Log": {
+                        "Stderr": [
+                            ""
+                        ],
+                        "Stdout": [
+                            ""
+                        ],
+                        "id": "ProcessLog-1b1b4715-0a38-44f4-8041-3dd54c7c8fe4"
+                    },
+                    "Start Time": 0,
+                    "Thread Name": "NA",
+                    "id": "TaskLog-fda5bd13-9ada-4bab-9563-cc6acac393aa"
+                },
+                "Task Name": "Ping netflix.com-0",
+                "Task State": "PENDING",
+                "Work Item Id": "WorkItem-026bc390-e144-458a-bc48-53ecad8bfae1",
+                "annotations": {
+                    "Annotations": {
+                    },
+                    "id": "CustomAnnotation-3a002750-9b15-4189-b228-50ccf7ef96a0"
+                },
+                "collection": "WorkItem-026bc390-e144-458a-bc48-53ecad8bfae1",
+                "id": "ItemTask-0ac4f1d0-fa01-42e9-ab5b-c3d541b3090b",
+                "state": "PENDING"
+            }
+        },
+        "WorkloadType": "NESTED",
+        "earliestDone": -1,
+        "id": "Workload-636425fb-8454-41c1-abc2-3aa47070c0a9",
+        "latestDone": 0,
+        "workloadSize": 2
+    },
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-d657a3fb-1ced-4e0d-8804-7eeadfa12813"
+    },
+    "collection": "PING",
+    "workloadSize": 2
+}'
+2025-09-24 11:42:53 INFO  [ Test worker -> org.tasktide.engine.worker.executor.TaskTideExecutor.runTasks ]: Begining workload processing of N = '2' tasks
+2025-09-24 11:42:53 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-c423167c-4178-466d-b524-1d885f9bd4d5'
+2025-09-24 11:42:53 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-c423167c-4178-466d-b524-1d885f9bd4d5' set on thread 'Test worker'
+2025-09-24 11:42:53 INFO  [ Test worker -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-c423167c-4178-466d-b524-1d885f9bd4d5'
+2025-09-24 11:42:53 INFO  [ Test worker -> org.tasktide.engine.worker.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'Test worker':ping facebook.com
+2025-09-24 11:42:53 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-09-24 11:42:53 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: 
+
+---------------- Terminating ExecutorBuilder Tests ----------------
+
+2025-09-24 11:42:53 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b59b14ff-dfb4-4994-8aac-87d12a143f46 shut down
+2025-09-24 11:42:53 INFO  [ Test worker -> org.tasktide.engine.workerunitprovider.ExecutorBuilderTests.tearDownClass ]: CDI container shut down

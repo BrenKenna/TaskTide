@@ -74,17 +74,17 @@ public final class TaskTideServiceManager {
      * @param workItemServ
      * @param stepServ
      * @param workflowServ
+     * @param jobEnvServ
      * @param metricDataServ
      * @param metricProfileServ
-     * @param jobEnvServ
      */
     private TaskTideServiceManager(
         TaskTideService<WorkItem> workItemServ,
         TaskTideService<Step> stepServ,
         TaskTideService<Workflow> workflowServ,
+        TaskTideService<JobEnvironment> jobEnvServ,
         TaskTideService<MetricData> metricDataServ,
-        TaskTideService<MetricProfile> metricProfileServ,
-        TaskTideService<JobEnvironment> jobEnvServ
+        TaskTideService<MetricProfile> metricProfileServ
     ) {
         this.serviceMap = new ConcurrentHashMap<>();
         this.serviceMap.put(ManagerTarget.WORKITEM, workItemServ);
@@ -130,23 +130,23 @@ public final class TaskTideServiceManager {
      * 
      * @param workItemServ
      * @param stepServ
-     * @param workflowServ 
+     * @param workflowServ
+     * @param jobEnvServ 
      * @param metricDataServ 
      * @param metricProfileServ 
-     * @param jobEnvServ 
      */
     public static synchronized void initialize(
         TaskTideService<WorkItem> workItemServ,
         TaskTideService<Step> stepServ,
         TaskTideService<Workflow> workflowServ,
+        TaskTideService<JobEnvironment> jobEnvServ,
         TaskTideService<MetricData> metricDataServ,
-        TaskTideService<MetricProfile> metricProfileServ,
-        TaskTideService<JobEnvironment> jobEnvServ
+        TaskTideService<MetricProfile> metricProfileServ
     ) {
         if ( INSTANCE != null ) {
             throw new IllegalStateException("TaskTideServiceManager already initialized");
         }
-        INSTANCE = new TaskTideServiceManager(workItemServ, stepServ, workflowServ, metricDataServ, metricProfileServ, jobEnvServ);
+        INSTANCE = new TaskTideServiceManager(workItemServ, stepServ, workflowServ, jobEnvServ, metricDataServ, metricProfileServ);
     }
     
 

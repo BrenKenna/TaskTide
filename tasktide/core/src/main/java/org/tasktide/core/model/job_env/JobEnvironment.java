@@ -102,7 +102,9 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
     /**
      * For Jakarta compatibility
      */
-    public JobEnvironment() {}
+    public JobEnvironment() {
+        this.anno = new CustomAnnotation();
+    }
     
     
     /**

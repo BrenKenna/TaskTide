@@ -56,10 +56,10 @@ import org.tasktide.core.supporting.JsonUtils;
  * @author Brendan Kenna
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class MetricProfileServiceFactoryTests {
+public class MetricProfileServiceTests {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(MetricProfileServiceFactoryTests.class);
+    private final Logger LOGGER = LogManager.getLogger(MetricProfileServiceTests.class);
     private SeContainer container;
     private EntityManager entityManager;
     private Template template;
@@ -73,7 +73,7 @@ public class MetricProfileServiceFactoryTests {
     private final GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     
-    public MetricProfileServiceFactoryTests() {
+    public MetricProfileServiceTests() {
     }
     
     

@@ -117,7 +117,7 @@ public class ObserverBuilderTests {
         // Configure builder requirements
         obsBuilder = new ItemTaskObserverBuilder();
         task = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4);
-        workload = new ArrayList<>(task.getWorkload().getWorkload().values());
+        workload = new ArrayList<>(task.getWorkload().getTaskMap().values());
         
         // Build ItemTask Observer
         obs = obsBuilder

@@ -292,7 +292,7 @@ public class BuilderUtility {
             .withJobEnvId("")
         .build();
         output.getWorkload()
-            .getWorkload().values().stream()
+            .getTaskMap().values().stream()
             .forEach(
                elm -> elm.setWorkItemId(output.getId())
         );
@@ -323,7 +323,7 @@ public class BuilderUtility {
             .withJobEnvId("")
         .build();
         output.getWorkload()
-            .getWorkload().values().stream()
+            .getTaskMap().values().stream()
             .forEach(
                elm -> elm.setWorkItemId(output.getId())
         );
@@ -354,7 +354,7 @@ public class BuilderUtility {
         .build();
         
         output.getWorkload()
-            .getWorkload().values().stream()
+            .getTaskMap().values().stream()
             .forEach(
                elm -> elm.setWorkItemId(output.getId())
         );
@@ -388,7 +388,7 @@ public class BuilderUtility {
         .build();
         
         output.getWorkload()
-            .getWorkload().values().stream()
+            .getTaskMap().values().stream()
             .forEach(
                elm -> elm.setWorkItemId(output.getId())
         );

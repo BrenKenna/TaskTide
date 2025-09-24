@@ -164,7 +164,7 @@ public class TemplateRepositoryTests {
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
         TaskTideModel<WorkItem> ref = data.get(0);
-        logger.info("\nDisplaying first record:\n'{}'", JsonUtils.toJson(true, ref));
+        logger.info("\nDisplaying first record:\n'{}'\n'{}'", JsonUtils.toJson(true, ref), ref.toString());
         TaskTideModel<WorkItem> result = workItemRepo.findById(ref.getId()).get();
         assertionState = result != null;
         logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));

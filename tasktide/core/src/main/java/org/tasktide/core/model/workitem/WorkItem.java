@@ -681,29 +681,30 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     public String getCollection() {
         return this.stepName;
     }
-    
+
     
     /**
-     * Represent work item as string
+     * Represent as string
      * 
-     * @return 
+     * @return String
      */
     @Override
     public String toString() {
         return "WorkItem{" +
-           "id=" + id +
-           ", itemName=" + itemName +
-           ", itemType=" + itemType +
-           ", itemState=" + itemState +
-           ", lockId=" + lockId +
-           ", lockDate=" + lockDate +
-           ", doneDate=" + doneDate +
-           ", taskCount=" + taskCount +
-           ", taskDone=" + taskDone +
-           ", workload=" + workload +
-           ", stepName=" + stepName +
-           ", stepId=" + stepId +
-           ", anno=" + anno +
+            "id=" + id +
+            ", itemName=" + itemName +
+            ", itemType=" + itemType +
+            ", itemState=" + itemState +
+            ", lockId=" + lockId +
+            ", lockDate=" + lockDate +
+            ", doneDate=" + doneDate +
+            ", taskCount=" + taskCount +
+            ", taskDone=" + taskDone +
+            ", workload=" + workload +
+            ", stepName=" + stepName +
+            ", stepId=" + stepId +
+            ", jobEnvId=" + jobEnvId +
+            ", anno=" + anno +
         '}';
     }
 

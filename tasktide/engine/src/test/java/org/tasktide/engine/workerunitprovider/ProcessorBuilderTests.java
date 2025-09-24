@@ -101,7 +101,7 @@ public class ProcessorBuilderTests {
         execBuilder = new ItemTaskExecutorBuilder();
         procBuilder = new ItemTaskProcessorBuilder();
         task = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 6);
-        workload = new ArrayList<>(task.getWorkload().getWorkload().values());
+        workload = new ArrayList<>(task.getWorkload().getTaskMap().values());
         
         // Configure ItemTaskObserver + SubExecutor
         obs = obsBuilder.withWorkload(workload).withMaxTime(1000000).build();

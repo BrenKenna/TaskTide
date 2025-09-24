@@ -170,7 +170,7 @@ public class WorkItemFileProcessor {
             
             if (parts.length == 1) {
                 item = serv.fetchById(parts[0].strip());
-                item.getWorkload().setWorkload(new HashMap<>());
+                item.getWorkload().setTaskMap(new HashMap<>());
                 item.setTaskCounts();
                 serv.updateModel(item);
             } else if (parts.length == 2) {
@@ -183,7 +183,7 @@ public class WorkItemFileProcessor {
                     item.getWorkload().dropTaskById(itemTaskId);
                 } else {
                     log.info("Resetting all tasks in '{}'", workItemId);
-                    item.getWorkload().setWorkload(new HashMap<>());
+                    item.getWorkload().setTaskMap(new HashMap<>());
                 }
                 item.setTaskCounts();
                 serv.updateModel(item);

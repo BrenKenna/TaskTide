@@ -23,6 +23,7 @@ import jakarta.json.bind.annotation.JsonbProperty;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.ProcessLogBuilder;
@@ -125,6 +126,8 @@ public class ManagerTask {
             .withTask(taskScript)
             .withTaskState(TaskState.PENDING)
             .withTaskLog(taskLog)
+            .withAnnotation(new CustomAnnotation())
+            .withJobEnvId("")
         .build();
     }
     

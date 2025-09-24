@@ -107,7 +107,7 @@ public class ParallelItemTaskProcessor extends RecursiveAction {
             try {
                 TaskLogging taskLog = runner.execute(task.getTask());
                 task.setTaskLog(taskLog);
-                processCount++; // logger.info("Thread %s — Executing task %d of %d%n", threadName, processCount, workload.size());
+                processCount++;
                 sharedCounter.incrementAndGet(); // Fetched
                 
             }

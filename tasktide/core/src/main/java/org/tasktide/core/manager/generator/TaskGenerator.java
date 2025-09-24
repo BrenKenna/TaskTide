@@ -96,7 +96,7 @@ public class TaskGenerator {
         for ( int i = 0; i < nTasks; i++ ) {
             ManagerTask elm = generateTask(taskType);
             ItemTask task = elm.asItemTask();
-            task.setTaskName( task.getTaskName() + "-" + i );            
+            task.setTaskName( task.getTaskName() + "-" + i );   
             output.add(task);
         }
         return output;
@@ -114,7 +114,7 @@ public class TaskGenerator {
     public static WorkItem generateExampleWorkItem(ExampleGenerators taskType, int nTasks) {
         Workload workload = BuilderUtility.buildWorkload(generateItemTasks(taskType, nTasks));
         WorkItem output = BuilderUtility.buildWorkItem(taskType.toString(), workload, taskType.name());
-        output.setLockId("asdfg");
+        output.setLockId("");
         return output;
     }
     

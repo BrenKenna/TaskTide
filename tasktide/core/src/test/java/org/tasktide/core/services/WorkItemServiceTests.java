@@ -15,8 +15,25 @@
  */
 package org.tasktide.core.services;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import org.eclipse.jnosql.mapping.core.Converters;
+import org.eclipse.jnosql.mapping.document.DocumentTemplate;
+import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
+import org.eclipse.jnosql.mapping.reflection.Reflections;
+import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
+import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
+import org.jboss.weld.junit5.auto.AddExtensions;
+import org.jboss.weld.junit5.auto.AddPackages;
+import org.jboss.weld.junit5.auto.EnableAutoWeld;
+import org.junit.Rule;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -25,51 +42,69 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestInstance;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.TaskTideService;
-import org.tasktide.core.repository.JsonRepository;
-import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
-
-import org.tasktide.core.model.state_summary.StateSummary;
-
-import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
-import org.tasktide.core.model.workitem.ItemState;
-import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.TestCaseBuilderUtility;
+import org.tasktide.TestEnvironment;
+import org.tasktide.TestUtils;
+
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideService;
+
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.itemstore.ItemStore;
+import org.testcontainers.containers.GenericContainer;
 
 
 /**
- * Test module for {@link WorkItemService WorkItemService}. Focuses on the {@link JsonRepository JsonRepository}
- * 
- * <ul>
- *  <li>TestUtils shows what can go into different classes.</li>
- *  <li>Builder pattern adds varied means of constructing model classes.</li>
- *  <li>Adjusted StateSummary to be generic, with type as enum. Should consider validation.</li>
- * </ul>
- * 
+ * Test cases for {@link TaskTideService} of {@link WorkItem} for each
+ *  repository type
+ *
  * @author bkenna
  */
+@EnableAutoWeld
+@AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
+@AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemServiceTests {
     
     private static final Logger logger = LogManager.getLogger(WorkItemServiceTests.class);
+    private SeContainer container;
+    private EntityManager entityManager;
+    private Template template;
+    
+    // Backend repos
+    @Rule
+    private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    
+    @Rule
+    private final GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    
     
     public WorkItemServiceTests() {}
     
     @BeforeAll
-    public static void setUpClass() {        
+    public void setUpClass() {        
         String msg = "\n\n---------------- Initiating WorkItem Service Tests ----------------\n";
         logger.info(msg);
+        container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
+        entityManager = JpaRepositoryUtility.get().fetchEntityManager();
+        template = TestEnvironment.fetchDocumentTemplate(container);
     }
     
     @AfterAll
-    public static void tearDownClass() {
+    public void tearDownClass() {
         String msg = "\n\n---------------- Terminating WorkItem Service Tests ----------------\n";
         logger.info(msg);
+        if (container != null && container.isRunning()) {
+            container.close();
+            logger.info("CDI container shut down");
+        }
+        couchDB.stop();
+        mariaDB.stop();
     }
     
     @BeforeEach
@@ -83,208 +118,194 @@ public class WorkItemServiceTests {
     }
 
     
+    
     /**
-     * Test whether WorkItem service can be constructed
+     * Test that a work item can be fetched 
      */
     @Test
     @Order(0)
-    public void canConstructWorkItemService() {
+    public void canConstructWorkItemJsonService() {
     
-        // Setup repository
-        logger.info("\n\n================ Service Setup Test ================\n");
+        // Initialize data
+        logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
+        TaskTideService<WorkItem> workItemService;
+        RepositoryType repoType;
+        List<WorkItem> backend;
         boolean assertionState;
-        JsonRepository<WorkItem> repo;
-        List<WorkItem> data = new ArrayList<>();
         
         // Generate data
         logger.info("Generating data for testing");
-        data.add(TestCaseBuilderUtility.makeTestWorkItem());
-        data.add(TestCaseBuilderUtility.makeTestWorkItem());
-        data.add(TestCaseBuilderUtility.makeTestWorkItem());
-        repo = new JsonWorkItemRepository(data, "myData");
+        repoType = RepositoryType.JSON;
+        backend = List.of(
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem()
+        );
         
-        // Construct work item service
-        TaskTideService<WorkItem> serv = new WorkItemService(repo, 4);
-        assertionState = serv.toString() != null;
+        // Setup requirements
+        logger.info("Configuring Service");
+        workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
+        Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for JSON WorkItem Service:\n'{}'", TestUtils.mapToJsonString(map));
         
-        // Handle test state
-        if (assertionState) {
-            logger.info("\n\nDisplaying WorkItemService as String:\n" + serv.toString() + "\n");
-        }
-        else {
-            logger.error("\n\nError WorkItemService as String:\n" + serv.toString() + "\n");
-        }
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<WorkItem> ref = backend.get(0);
+        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
         
         // Log test state
-        logger.info("\n\n================ Service Setup Test ================\n");
-        assertTrue(assertionState);
+        logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
     
     /**
-     * Test whether duplicate task can be added
+     * Test that a work item can be fetched 
      */
     @Test
     @Order(1)
-    public void cannotAddDuplicateTask() {
+    public void canConstructWorkItemRocksDbService() {
     
-        // Fetch service
-        logger.info("\n\n================ Duplicate WorkItem Test ================\n");
-        boolean assertionState = true;
-        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
-        WorkItemService serv = new WorkItemService(repo, 4);
+        // Initialize data
+        logger.info("\n\n================ Construct WorkItemService-RocksDB From Factory Test ================\n");
+        TaskTideService<WorkItem> workItemService;
+        RepositoryType repoType;
+        ItemStore backend;
+        List<WorkItem> data;
+        boolean assertionState ;
         
-        // Append task to a work item
-        ItemTask task = TestCaseBuilderUtility.makeTestItemTask();
-        WorkItem item = serv.appendTask(serv.viewAll().get(0), task);
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem()
+        );
         
-        // Check data
-        if ( item == null ) {
-            logger.info("Test successful cannot add duplicate task");
-            assertionState = true;
-        }
-        else {
-            assertionState = false;
-            logger.warn("Test unsuccessful duplicate task added");
-        }
+        // Configure requirements
+        repoType = RepositoryType.ITEMSTORE;
+        String collectionName = TestUtils.resolveRocksRepoPath();
+        backend = TestUtils.fetchItemStore(collectionName);
         
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ Duplicate WorkItem Test ================\n");
+        // Setup requirements
+        logger.info("Configuring Service");
+        workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
+        Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for RocksDB-WorkItem Service:\n'{}'", TestUtils.mapToJsonString(map));
+        
+        // Add records
+        workItemService.extendModel(data);
+        
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<WorkItem> ref = data.get(0);
+        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
+        
+        // Log test state
+        logger.info("\n\n================ Construct WorkItemService-RocksDB From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
     
     /**
-     * Test locking a work item
+     * Test that a work item can be fetched 
      */
     @Test
     @Order(2)
-    public void canLockItem() {
+    public void canConstructWorkItemNoSqlService() {
     
-        // Fetch service
-        logger.info("\n\n================ Locking WorkItem Test ================\n");
-        boolean assertionState;
-        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
-        WorkItemService serv = new WorkItemService(repo, 4);
+        // Initialize data
+        logger.info("\n\n================ Construct WorkItemService-Template From Factory Test ================\n");
+        TaskTideService<WorkItem> workItemService;
+        RepositoryType repoType;
+        Template backend;
+        List<WorkItem> data;
+        boolean assertionState ;
         
-        // Lock work Item
-        logger.info("\n\nLocking first WorkItem\n");
-        WorkItem toLock = serv.viewAll().get(0);
-        WorkItem locked = serv.lockItem(toLock);
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem()
+        );
         
-        // Handle process output
-        if ( locked != null ) {
-            assertionState = true;
-            logger.info("\n\nDisplaying locked item:\n" + locked.getLockId() + "\n");
-        }
-        else {
-            assertionState = false;
-            logger.warn("\n\nUnable to lock item:\n" + toLock.toJsonDoc() + "\n");
-        }
+        // Configure requirements
+        repoType = RepositoryType.NOSQL;
+        backend = TestUtils.fetchTemplate();
         
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ Locking WorkItem Test ================\n");
+        // Setup requirements
+        logger.info("Configuring Service");
+        workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
+        Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for Template WorkItem Service:\n'{}'", TestUtils.mapToJsonString(map));
+        
+        // Add records
+        workItemService.extendModel(data);
+        
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<WorkItem> ref = data.get(0);
+        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
+        
+        // Log test state
+        logger.info("\n\n================ Construct WorkItemService-Template From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
     
+    
     /**
-     * Test whether WorkItem can be marked as done
+     * Test that a work item can be fetched 
      */
     @Test
     @Order(3)
-    public void canMarkAsDone() {
+    public void canConstructWorkItemSqlService() {
     
-        // Fetch service
-        logger.info("\n\n================ Marking as Done Test ================\n");
-        boolean assertionState;
-        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
-        WorkItemService serv = new WorkItemService(repo, 4);
+        // Initialize data
+        logger.info("\n\n================ Construct WorkItemService-JPA From Factory Test ================\n");
+        TaskTideService<WorkItem> workItemService;
+        RepositoryType repoType;
+        EntityManager backend;
+        List<WorkItem> data;
+        boolean assertionState ;
         
-        // Lock work Item
-        logger.info("\n\nCompleting first WorkItem\n");
-        WorkItem pendDone = serv.viewAll().get(0);
-        pendDone.getWorkload().getWorkload().values().stream()
-                  .forEach(elm -> elm.setTaskState(TaskState.COMPLETE));
-        WorkItem done = serv.markAsDone(pendDone);
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem(),
+            TestCaseBuilderUtility.makeTestWorkItem()
+        );
         
-        // Handle process output
-        if ( done != null ) {
-            assertionState = true;
-            logger.info("\n\nDisplaying completed item:\n" + done.toJsonDoc() + "\n");
-        }
-        else {
-            assertionState = false;
-            logger.warn("\n\nUnable to mark as done item:\n" + pendDone.toJsonDoc() + "\n");
-        }
+        // Configure requirements
+        repoType = RepositoryType.SQL;
+        backend = JpaRepositoryUtility.get().fetchEntityManager();
         
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ Marking as Done Test ================\n");
-    }
-    
-    
-    /**
-     * Test finding an item by field value
-     */
-    @Test
-    @Order(4)
-    public void canFindByField() {
+        // Setup requirements
+        logger.info("Configuring Service");
+        workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
+        Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for JPA WorkItem Service:\n'{}'", JsonUtils.toJson(true, map));
         
-        // Fetch service
-        logger.info("\n\n================ View by Field Test ================\n");
-        boolean assertionState;
-        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
-        WorkItemService serv = new WorkItemService(repo, 4);
+        // Add records
+        workItemService.extendModel(data);
         
-        // Fetch 
-        List<WorkItem> results = serv.viewByField("itemState", ItemState.TODO);
-        if ( results != null ) {
-            assertionState = true;
-            logger.info("\n\nDisplaying first queried item:\n" + results.get(0).toJsonDoc() + "\n");
-        }
-        else {
-            assertionState = false;
-            logger.warn("\n\nUnable query via service:\n" + results + "\n");
-        }
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<WorkItem> ref = data.get(0);
+        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
         
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ View by Field Test ================\n");
-    }
-    
-    
-    /**
-     * Test summarizing work items by state, using WorkItem & Workload summary methods
-     */
-    @Test
-    @Order(5)
-    public void canSummarizeByState() {
-        
-        // Fetch service
-        logger.info("\n\n================ Summarize By State Test ================\n");
-        boolean assertionState;
-        TaskTideRepository<WorkItem> repo = TestCaseBuilderUtility.createWorkItemJsonRepo();
-        WorkItemService serv = new WorkItemService(repo, 4);
-    
-        // Fetch
-        logger.info("Fetching summary count of item states");
-        StateSummary<ItemState> stateSummary = serv.fetchCountByState(true);
-        assertionState = stateSummary.getCounts().get(ItemState.TODO) == serv.viewItemsByState(ItemState.TODO).size();
-        if ( assertionState ) {
-            logger.info("\n\nTest successful displaying retreived StateSummary:\n\n" + stateSummary.toJsonDoc() + "\n");
-        }
-        else {
-            logger.warn(
-               "\n\nTest failed displaying retreived StateSummary:\n" 
-                   + stateSummary.toJsonDoc() +
-               "\n\nExpected TODO count = " + serv.viewItemsByState(ItemState.TODO).size() +
-               "\n"
-            );
-        }
-
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ Summarize By State Test ================\n");
+        // Log test state
+        logger.info("\n\n================ Construct WorkItemService-JPA From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

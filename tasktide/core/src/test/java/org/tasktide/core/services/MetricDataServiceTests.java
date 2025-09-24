@@ -39,10 +39,10 @@ import org.junit.jupiter.api.TestInstance;
 import org.tasktide.TestCaseBuilderUtility;
 
 import org.tasktide.TestEnvironment;
-import org.tasktide.TestUtils;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideService;
-import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.repository.JpaRepository;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.TemplateRepository;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
@@ -51,15 +51,15 @@ import org.tasktide.core.supporting.JsonUtils;
 
 
 /**
- * Tests {@link JobEnvironment} through {@link JpaRepository} and {@link TemplateRepository}
+ * Tests {@link MetricData} through {@link JpaRepository} and {@link TemplateRepository}
  *
  * @author Brendan Kenna
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class JobEnvironmentServiceFactoryTests {
+public class MetricDataServiceTests {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(JobEnvironmentServiceFactoryTests.class);
+    private final Logger LOGGER = LogManager.getLogger(MetricDataServiceTests.class);
     private SeContainer container;
     private EntityManager entityManager;
     private Template template;
@@ -73,13 +73,13 @@ public class JobEnvironmentServiceFactoryTests {
     private final GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     
-    public JobEnvironmentServiceFactoryTests() {
+    public MetricDataServiceTests() {
     }
     
     
     @BeforeAll
     public void setUpClass() {
-        String msg = "\n\n---------------- Initiating JobEnvironment Service Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating MetricData Service Tests ----------------\n";
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
@@ -89,7 +89,7 @@ public class JobEnvironmentServiceFactoryTests {
     
     @AfterAll
     public void tearDownClass() {
-        String msg = "\n\n---------------- Terminating JobEnvironment Service Tests ----------------\n";
+        String msg = "\n\n---------------- Terminating MetricData Service Tests ----------------\n";
         LOGGER.info(msg);
         if (container != null && container.isRunning()) {
             container.close();
@@ -111,93 +111,93 @@ public class JobEnvironmentServiceFactoryTests {
 
     
     /**
-     * Tests querying {@link JobEnvironment} through {@link TaskTideService}
+     * Tests querying {@link MetricData} through {@link TaskTideService}
      *  using a {@link TemplateRepository} backend
      * 
      */
     @Test
     @Order(0)
-    public void canQueryThroughNoSqlJobEnvService() {
+    public void canQueryThroughNoSqlMetricDataService() {
     
         // Initialize data
-        LOGGER.info("\n\n================ Construct JobEnvironment Service-Template From Factory Test ================\n");
-        TaskTideService<JobEnvironment> service;
+        LOGGER.info("\n\n================ Construct MetricData Service-Template From Factory Test ================\n");
+        TaskTideService<MetricData> service;
         RepositoryType repoType = RepositoryType.NOSQL;
-        List<JobEnvironment> data;
+        List<MetricData> data;
         boolean assertionState ;
         
         // Generate data
         LOGGER.info("Generating data for testing");
         data = List.of(
-            TestCaseBuilderUtility.makeTestJobEnvironment(),
-            TestCaseBuilderUtility.makeTestJobEnvironment(),
-            TestCaseBuilderUtility.makeTestJobEnvironment()
+            TestCaseBuilderUtility.makeTestMetricData(),
+            TestCaseBuilderUtility.makeTestMetricData(),
+            TestCaseBuilderUtility.makeTestMetricData()
         );
         
         // Setup requirements
         LOGGER.info("Configuring Service");
-        service = ServiceFactory.makeJobEnvironmentService(repoType, template, "JobEnvironment-Template");
+        service = ServiceFactory.makeMetricDataService(repoType, template, "MetricData-Template");
         Map<String, String> map = service.getRepo().getRepositoryMetaData();
-        LOGGER.info("Displaying meta data for NoSQL JobEnvironment Service:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info("Displaying meta data for NoSQL MetricData Service:\n'{}'", JsonUtils.toJson(true, map));
         
         // Add records
         service.extendModel(data);
         
         // Check that records can be queried
         LOGGER.info("Verifying records can be retrieved");
-        TaskTideModel<JobEnvironment> ref = data.get(0);
-        TaskTideModel<JobEnvironment> result = service.fetchById(ref.getId());
-        LOGGER.info("\n\nDisplaying retreieved JobEnvironment:\n'{}'", result.toJsonDoc());
+        TaskTideModel<MetricData> ref = data.get(0);
+        TaskTideModel<MetricData> result = service.fetchById(ref.getId());
+        LOGGER.info("\n\nDisplaying retreieved MetricData:\n'{}'", result.toJsonDoc());
         assertionState = ref.getId().equals(result.getId());
         
         // Log test state
-        LOGGER.info("\n\n================ Construct JobEnvironmentService-Template From Factory Test ================\n");
+        LOGGER.info("\n\n================ Construct MetricDataService-Template From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
     
     /**
-     * Tests querying {@link JobEnvironment} through {@link TaskTideService}
-     *  using a {@link TemplateRepository} backend
+     * Tests querying {@link MetricData} through {@link TaskTideService}
+     *  using a {@link JpaRepository} backend
      * 
      */
     @Test
     @Order(1)
-    public void canQueryThroughJpaJobEnvService() {
+    public void canQueryThroughJpaMetricDataService() {
     
         // Initialize data
-        LOGGER.info("\n\n================ Construct JobEnvironment Service-JpaRepository From Factory Test ================\n");
-        TaskTideService<JobEnvironment> service;
+        LOGGER.info("\n\n================ Construct MetricData Service-JpaRepository From Factory Test ================\n");
+        TaskTideService<MetricData> service;
         RepositoryType repoType = RepositoryType.SQL;
-        List<JobEnvironment> data;
+        List<MetricData> data;
         boolean assertionState ;
         
         // Generate data
         LOGGER.info("Generating data for testing");
         data = List.of(
-            TestCaseBuilderUtility.makeTestJobEnvironment(),
-            TestCaseBuilderUtility.makeTestJobEnvironment(),
-            TestCaseBuilderUtility.makeTestJobEnvironment()
+            TestCaseBuilderUtility.makeTestMetricData(),
+            TestCaseBuilderUtility.makeTestMetricData(),
+            TestCaseBuilderUtility.makeTestMetricData()
         );
         
         // Setup requirements
         LOGGER.info("Configuring Service");
-        service = ServiceFactory.makeJobEnvironmentService(repoType, entityManager, "JobEnvironment-JpaRepository");
+        service = ServiceFactory.makeMetricDataService(repoType, entityManager, "MetricData-JpaRepository");
         Map<String, String> map = service.getRepo().getRepositoryMetaData();
-        LOGGER.info("Displaying meta data for SQL JobEnvironment Service:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info("Displaying meta data for SQL MetricData Service:\n'{}'", JsonUtils.toJson(true, map));
         
         // Add records
         service.extendModel(data);
         
         // Check that records can be queried
         LOGGER.info("Verifying records can be retrieved");
-        TaskTideModel<JobEnvironment> ref = data.get(0);
-        TaskTideModel<JobEnvironment> result = service.fetchById(ref.getId());
-        LOGGER.info("\n\nDisplaying retreieved JobEnvironment:\n'{}'", result.toJson());
+        TaskTideModel<MetricData> ref = data.get(0);
+        TaskTideModel<MetricData> result = service.fetchById(ref.getId());
+        LOGGER.info("\n\nDisplaying retreieved MetricData:\n'{}'", result.toJsonDoc());
         assertionState = ref.getId().equals(result.getId());
         
         // Log test state
-        LOGGER.info("\n\n================ Construct JobEnvironmentService-JPARepository From Factory Test ================\n");
+        LOGGER.info("\n\n================ Construct MetricDataService-JpaRepository From Factory Test ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

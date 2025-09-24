@@ -125,7 +125,7 @@ public class EngineUtility {
             .stream()
             .parallel()
             .mapToInt( elm -> {
-                    Collection<ItemTask> itemTasks = elm.getWorkload().getWorkload().values();
+                    Collection<ItemTask> itemTasks = elm.getWorkload().getTaskMap().values();
                     return countNotActive(new ArrayList<>(itemTasks));
             })
             .sum();
