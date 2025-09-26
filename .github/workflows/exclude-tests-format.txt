@@ -1,0 +1,15 @@
+Pattern	Matches
+**/*                            Skips all tests
+com/example/MyClass.class       Skips target class
+**/SomeTest 			        Any class named SomeTest in any package
+com/example/*EndingWith		    Any class ending with Test in com.example package only
+com/example/**/StartingWith*	Any class under com.example (any subpackage) starting with Slow
+**/skipped/**			        Any class under any package folder named skipped
+
+
+For pushing JavaDocs
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v7
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: build/docs/javadoc

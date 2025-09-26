@@ -103,18 +103,76 @@ tasks.named('startScripts').configure {
 }
 
 
-// For testing command-line arguments in netbeans
-tasks.register('runWithArgs', JavaExec) {
+// Testing single task imports
+tasks.register('singleTaskImport', JavaExec) {
     group = 'application'
-    description = 'Runs the app with predefined args for testing.'
-
+    description = 'Import single tasks'
     classpath = sourceSets.main.runtimeClasspath
-    mainClass.set('org.tasktide.tasktide.TaskTide') // or use application.mainClass if preferred
-    args = [\
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
             "manager",
-            "--repository-type", "sqlite",
-            "--file-path", "C:\\Users\\Brendan Kenna\\Documents\\GitHub\\TaskTide\\tasktide\\itemStore",
-            "--target-file", "C:\\Users\\Brendan Kenna\\Documents\\GitHub\\TaskTide\\tasktide\\src\\main\\resources\\singleTaskImports.txt"
+            "--repository-type", "sql",
+            "--target-file", "src/test/resources/singleTaskImports.txt",
+            "--method", "import",
+            "--delimiter", "|",
+            "--target", "WORKITEM"
     ]
-    // args = ["engine", "--item-task-threads", "5"] // Value got picked up
+}
+
+
+// Import json tasks for annotation
+tasks.register('jsonImport', JavaExec) {
+    group = 'application'
+    description = 'Import JSON tasks'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+            "manager",
+            "--repository-type", "sql",
+            "--target-file", "src/test/resources/import-docs.json",
+            "--method", "import",
+            "--delimiter", "JSON",
+            "--target", "WORKITEM"
+    ]
+}
+
+
+// Testing annotations
+tasks.register('annotations', JavaExec) {
+    dependsOn(tasks.named("jsonImport"))
+    group = 'application'
+    description = 'Annotating collection'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+            "manager",
+            "--repository-type", "sql",
+            "--method", "Annotation",
+            "--import-string", """{""Pilot Label"": ""Gradle Build""}""",
+            "--target-file", "src/test/resources/forAnno.txt",
+            "--delimiter", ",",
+            "--target", "WORKITEM"
+    ]
+}
+
+
+// Test batch execution
+tasks.register('pilotLabelExecution', JavaExec) {
+    dependsOn(tasks.named("annotations"))
+    group = 'application'
+    description = 'Run engine in batch mode using pilot label'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+            "engine",
+            "--repository-type", "sql",
+            "--step-name", "SequenceAlignment",
+            "--pilot-label-key", "Pilot Label",
+            "--pilot-label-value", "Gradle Build",
+            "--execution-policy", "batch"
+    ]
 }

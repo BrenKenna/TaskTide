@@ -35,45 +35,47 @@ import java.time.Duration;
  * 
  * @author bkenna
  */
-@Embeddable
+@jakarta.nosql.Embeddable
+@jakarta.persistence.Embeddable
 public class TaskLogging {
     
-    @Column
-    @JsonbProperty("Id")
+    @jakarta.nosql.Column("TaskLogggingId")
+    @jakarta.persistence.Column(name = "TaskLogggingId")
+    @JsonbProperty("Task Loggging Id")
     private String taskLogId;
     
-    
-    @Column
+    @jakarta.nosql.Column("ProcessId")
+    @jakarta.persistence.Column(name = "ProcessId")
     @JsonbProperty("Process Id")
     private long procId;
     
-    
-    @Column
+    @jakarta.nosql.Column("ProcessLog")
+    @jakarta.persistence.Column(name = "ProcessLog")
     @JsonbProperty("Process Log")
     private ProcessLog procLog;
     
-    
-    @Column
+    @jakarta.nosql.Column("StartTime")
+    @jakarta.persistence.Column(name = "StartTime")
     @JsonbProperty("Start Time")
     private long startTime;
     
-    
-    @Column
+    @jakarta.nosql.Column("EndTime")
+    @jakarta.persistence.Column(name = "EndTime")
     @JsonbProperty("End Time")
     private long endTime;
     
-    
-    @Column
+    @jakarta.nosql.Column("ThreadName")
+    @jakarta.persistence.Column(name = "ThreadName")
     @JsonbProperty("Thread Name")
     private String threadName;
     
-    
-    @Column
+    @jakarta.nosql.Column("CpuDuration")
+    @jakarta.persistence.Column(name = "CpuDuration")
     @JsonbProperty("CPU Duration")
     private long cpuDuration;
 
-    
-    @Column
+    @jakarta.nosql.Column("ExitCode")
+    @jakarta.persistence.Column(name = "ExitCode")
     @JsonbProperty("Exit Code")
     private int exitCode;
     
@@ -121,7 +123,7 @@ public class TaskLogging {
      */
     @JsonbCreator
     public TaskLogging(
-        @JsonbProperty("Id") String taskLogId,
+        @JsonbProperty("Task Loggging Id") String taskLogId,
         @JsonbProperty("Process Id") long procId,
         @JsonbProperty("Process Log") ProcessLog procLog,
         @JsonbProperty("Start Time") long startTime,

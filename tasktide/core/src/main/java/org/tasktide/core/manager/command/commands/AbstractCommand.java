@@ -25,6 +25,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.command.CommandSpec;
+import org.tasktide.core.manager.command.CommandType;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
@@ -55,6 +56,9 @@ public abstract class AbstractCommand implements ManagerCommand {
     @JsonbProperty("Command Spec")
     protected final CommandSpec cmdSpec;
     
+    @JsonbProperty("Command Type")
+    protected final CommandType cmdType;
+    
     
     /**
      * Construct with requriements
@@ -62,16 +66,19 @@ public abstract class AbstractCommand implements ManagerCommand {
      * @param action
      * @param target
      * @param cmdSpec 
+     * @param cmdType 
      */
     @JsonbCreator
     public AbstractCommand(
         @JsonbProperty("Manager Action") ManagerAction action,
         @JsonbProperty("Manager Target") ManagerTarget target,
-        @JsonbProperty("Command Spec") CommandSpec cmdSpec
+        @JsonbProperty("Command Spec") CommandSpec cmdSpec,
+        @JsonbProperty("Command Type") CommandType cmdType
     ) {
         this.action = action;
         this.target = target;
         this.cmdSpec = cmdSpec;
+        this.cmdType = cmdType;
     }
 
     
@@ -104,7 +111,7 @@ public abstract class AbstractCommand implements ManagerCommand {
      * @return {@link ManagerAction}
      */
     public ManagerAction getAction() {
-        return action;
+        return this.action;
     }
 
     
@@ -114,7 +121,7 @@ public abstract class AbstractCommand implements ManagerCommand {
      * @return {@link ManagerTarget}
      */
     public ManagerTarget getTarget() {
-        return target;
+        return this.target;
     }
 
     
@@ -124,9 +131,20 @@ public abstract class AbstractCommand implements ManagerCommand {
      * @return {@link CommandSpec}
      */
     public CommandSpec getCmdSpec() {
-        return cmdSpec;
+        return this.cmdSpec;
     }
 
+    
+    /**
+     * Get {@link CommandType} of {@link ManagerAction}
+     *  taken against the {@link TaskTideRepository}
+     * 
+     * @return {@link CommandType}
+     */
+    public CommandType getCmdType() {
+        return this.cmdType;
+    }
+    
     
     /**
      * Represent as JSON string
@@ -156,14 +174,15 @@ public abstract class AbstractCommand implements ManagerCommand {
     /**
      * Represent as string
      * 
-     * @return 
+     * @return String
      */
     @Override
     public String toString() {
         return "AbstractCommand{" +
-            "action=" + action +
-            ", target=" + target +
-            ", cmdSpec=" + cmdSpec +
+            "action="    + this.action +
+            ", target="  + this.target +
+            ", cmdSpec=" + this.cmdSpec +
+            ", cmdType=" + this.cmdType +
         '}';
     }
 }

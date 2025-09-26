@@ -18,6 +18,7 @@ package org.tasktide.engine.observer.worker;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideService;
+import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
@@ -37,6 +38,7 @@ public abstract class StateObserver<T extends TaskTideModel<T>> implements Worke
 
     // Tracker attribute
     private final ObserverType type;
+    protected final String JOB_ENV_ID;
             
     
     /**
@@ -45,6 +47,7 @@ public abstract class StateObserver<T extends TaskTideModel<T>> implements Worke
      */
     public StateObserver() {
         this.type = ObserverType.CRITICAL;
+        this.JOB_ENV_ID = TaskTideManagerUtility.fetchJobEnvironmentId();
     }
 
         

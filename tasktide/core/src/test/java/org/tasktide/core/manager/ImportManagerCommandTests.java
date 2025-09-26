@@ -89,6 +89,7 @@ public class ImportManagerCommandTests {
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
         this.initServiceManager();
+        //this.initRecord();
     }
     
     @AfterAll
@@ -146,7 +147,6 @@ public class ImportManagerCommandTests {
     }
     
     
-    
     /**
      * Initialize record for test purposes
      * 
@@ -170,7 +170,8 @@ public class ImportManagerCommandTests {
         cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
         
         // Run and fetch workitem
-        cmd.execute();
+        Object result = cmd.execute();
+        LOGGER.info("Displaying output from DB init:\n'{}'\n'{}'", cmd.toJsonDoc(), result);
         
         // Fetch first work item
         WorkItem output = TaskTideServiceManager

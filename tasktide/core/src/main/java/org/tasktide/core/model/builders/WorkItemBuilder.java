@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.model.builders;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
@@ -28,15 +29,16 @@ import org.tasktide.core.model.workitem.WorkItem;
  * 
  * @author bkenna
  */
-public class WorkItemBuilder extends ModelBuilder {
+public class WorkItemBuilder extends ModelBuilder<WorkItem> {
     
     // Attributes
-    private String id, itemName, lockId, stepName, stepId;
+    private String id, itemName, lockId, stepName, stepId, jobEnvId;
     private ItemType itemType;
     private ItemState itemState;
     private long lockDate, doneDate;
     private int taskCount, taskDone;
     private Workload workload;
+    private CustomAnnotation anno;
     
     
     public WorkItemBuilder() {
@@ -50,7 +52,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param id 
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder id(String id) {
+    public WorkItemBuilder withId(String id) {
         this.id = id;
         return this;
     }
@@ -62,7 +64,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param itemName
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder itemName(String itemName) {
+    public WorkItemBuilder withItemName(String itemName) {
         this.itemName = itemName;
         return this;
     }
@@ -74,7 +76,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param lockId
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder lockId(String lockId) {
+    public WorkItemBuilder withLockId(String lockId) {
         this.lockId = lockId;
         return this;
     }
@@ -86,7 +88,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param stepId
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder stepId(String stepId) {
+    public WorkItemBuilder withStepId(String stepId) {
         this.stepId = stepId;
         return this;
     }
@@ -97,7 +99,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param itemType
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder itemType(ItemType itemType) {
+    public WorkItemBuilder withItemType(ItemType itemType) {
         this.itemType = itemType;
         return this;
     }
@@ -109,7 +111,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param itemState
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder itemState(ItemState itemState) {
+    public WorkItemBuilder withItemState(ItemState itemState) {
         this.itemState = itemState;
         return this;
     }
@@ -121,7 +123,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param lockDate
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder lockDate(long lockDate) {
+    public WorkItemBuilder withLockDate(long lockDate) {
         this.lockDate = lockDate;
         return this;
     }
@@ -133,7 +135,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param doneDate
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder doneDate(long doneDate) {
+    public WorkItemBuilder withDoneDate(long doneDate) {
         this.doneDate = doneDate;
         return this;
     }
@@ -145,7 +147,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param taskCount
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder taskCount(int taskCount) {
+    public WorkItemBuilder withTaskCount(int taskCount) {
         this.taskCount = taskCount;
         return this;
     }
@@ -157,7 +159,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param taskDone
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder taskDone(int taskDone) {
+    public WorkItemBuilder withTaskDone(int taskDone) {
         this.taskDone = taskDone;
         return this;
     }
@@ -169,7 +171,7 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param workload
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder workload(Workload workload) {
+    public WorkItemBuilder withWorkload(Workload workload) {
         this.workload = workload;
         return this;
     }
@@ -181,9 +183,9 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param itemTask
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder workload(ItemTask itemTask) {
+    public WorkItemBuilder withWorkload(ItemTask itemTask) {
         WorkloadBuilder builder = new WorkloadBuilder();
-        this.workload = builder.workload(itemTask).build();
+        this.workload = builder.withWorkload(itemTask).build();
         return this;
     }
     
@@ -194,8 +196,32 @@ public class WorkItemBuilder extends ModelBuilder {
      * @param stepName
      * @return {@link WorkItemBuilder}
      */
-    public WorkItemBuilder stepName(String stepName) {
+    public WorkItemBuilder withStepName(String stepName) {
         this.stepName = stepName;
+        return this;
+    }
+    
+    
+    /**
+     * Adds {@link CustomAnnotation} field
+     * 
+     * @param anno
+     * @return {@link WorkItemBuilder}
+     */
+    public WorkItemBuilder withAnnotation(CustomAnnotation anno) {
+        this.anno = anno;
+        return this;
+    }
+    
+    
+    /**
+     * Add jobEnvId field
+     * 
+     * @param jobEnvId
+     * @return {@link WorkItemBuilder}
+     */
+    public WorkItemBuilder withJobEnvId(String jobEnvId) {
+        this.jobEnvId = jobEnvId;
         return this;
     }
     
@@ -207,17 +233,27 @@ public class WorkItemBuilder extends ModelBuilder {
      */
     @Override
     public WorkItem build() {
+        WorkItem result;
+        
+        if ( anno == null ) {
+            anno = new CustomAnnotation();
+        }
+        
         if ( stepId != null ) {
-            return new WorkItem(
+            result = new WorkItem(
                 id, itemName, itemType, itemState,
                 lockId, lockDate, doneDate, taskCount,
-                taskDone, workload, stepName, stepId
+                taskDone, workload, stepName, stepId, jobEnvId, anno
             );
         }
-        return new WorkItem(
-            id, itemName, itemType, itemState,
-            lockId, lockDate, doneDate, taskCount,
-            taskDone, workload, stepName
-        );
+        else {
+            result = new WorkItem(
+                id, itemName, itemType, itemState,
+                lockId, lockDate, doneDate, taskCount,
+                taskDone, workload, stepName
+            );
+        }
+        
+        return result;
     }
 }

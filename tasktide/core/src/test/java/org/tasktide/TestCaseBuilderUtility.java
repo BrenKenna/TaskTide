@@ -16,7 +16,9 @@
 package org.tasktide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.tasktide.core.model.builders.ProcessLogBuilder;
@@ -50,6 +52,18 @@ import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import static org.tasktide.core.manager.generator.TaskGenerator.generateSeqTask;
 
+import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.model.builders.MetricDataBuilder;
+import org.tasktide.core.model.builders.MetricProfileBuilder;
+import org.tasktide.core.model.builders.ProfileDataBuilder;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.JobState;
+import org.tasktide.core.model.job_env.JobType;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
+import org.tasktide.core.model.job_env.metrics.MetricType;
+import org.tasktide.core.model.job_env.metrics.ProfileData;
+
 
 /**
  * Various static methods to support test cases
@@ -61,6 +75,105 @@ public class TestCaseBuilderUtility {
     // Task Generator
     public static TaskGenerator taskGenerator = new TaskGenerator();
     
+    
+    /**
+     * Fetches a {@link JobEnvironment} for active host
+     * 
+     * @return {@link JobEnvironment}
+     */
+    public static JobEnvironment makeTestJobEnvironment() {
+        
+        // Initialize vars
+        CustomAnnotation anno;
+        JobEnvironment jobEnv;
+        
+        // Fetch JobEnv with annotation
+        anno = TestUtils.makeAnnotation("SomePilotLabel", "TemplateRepository-UnitTests");
+        jobEnv = JobType.fetchJobEnvironment().get();
+        jobEnv.setAnnotations(anno);
+        jobEnv.setJobState(JobState.RUNNING);
+        
+        // Return record
+        return jobEnv;
+    }
+    
+    
+    /**
+     * Make a blank test {@link MetricProfile}
+     * 
+     * @return {@link MetricProfile}
+     */
+    public static MetricProfile makeTestMetricProfile() {
+        
+        // Initialize vars
+        CustomAnnotation anno;
+        ProfileData profile;
+        
+        // Make metric profile dataset
+        anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
+        profile = makeTestProfileData();
+        
+        // Make metric profile
+        return new MetricProfileBuilder()
+            .withId("MetricProfile-" + UUID.randomUUID().toString())
+            .withLabel("Test-Profile")
+            .withTimestamp(0L)
+            .withMeanAvailable(0)
+            .withMeanTotal(0)
+            .withMeanUsed(0)
+            .withAnnotation(anno)
+            .withUnits("GB")
+            .withJobEnvId("JobEnvironment-" + UUID.randomUUID().toString())
+            .withType(MetricType.MEMORY)
+            .withProfile(profile)
+        .build();
+    }
+    
+    
+    /**
+     * Make a blank test {@link ProfileData}
+     * 
+     * @return {@link ProfileData}
+     */
+    public static ProfileData makeTestProfileData() {
+        
+        // Initialize vars
+        MetricData record;
+        Map<String, MetricData> profile = new HashMap<>();
+        
+        // Make metric data profile
+        record = makeTestMetricData(); profile.put(record.getId(), record);
+        record = makeTestMetricData(); profile.put(record.getId(), record);
+        
+        // Build profile
+        return new ProfileDataBuilder()
+            .withId("ProfileData-" + UUID.randomUUID().toString())
+            .withMetricProfile(profile)
+        .build();
+    }
+    
+    
+    /**
+     * Builds {@link MetricData}
+     * 
+     * @return {@link MetricData}
+     */
+    public static MetricData makeTestMetricData() {
+        CustomAnnotation anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
+        return new MetricDataBuilder()
+            .withId("MetricData-" + UUID.randomUUID().toString())
+            .withTimestamp(System.currentTimeMillis())
+            .withMetricType(MetricType.MEMORY)
+            .withLabel("Test-Profile")
+            .withTotal(0.0)
+            .withAvailable(0.0)
+            .withUsed(0.0)
+            .withAnnotation(anno)
+            .withUnits("GB")
+        .build();
+    }
+    
+    
     /**
      * Make {@link ProcessLog ProcessLog} for testing
      * 
@@ -70,9 +183,9 @@ public class TestCaseBuilderUtility {
         String[] stdout = {"apples", "oragnes"};
         String[] stderr = {"pears", "pineapples"};
         return new ProcessLogBuilder()
-            .id(UUID.randomUUID().toString())
-            .stdout(stdout)
-            .stderr(stderr)
+            .withId("ProcessLog-" + UUID.randomUUID().toString())
+            .withStdout(stdout)
+            .withStderr(stderr)
         .build();
     }
     
@@ -84,13 +197,13 @@ public class TestCaseBuilderUtility {
      */
     public static TaskLogging makeTestTaskLog() {
         return new TaskLoggingBuilder()
-            .id(UUID.randomUUID().toString())
-            .processLog(makeTestProcessLog())
-            .threadName("myThread")
-            .cpuDuration(-1L)
-            .startTime(-2L)
-            .endTime(-3L)
-            .procId(-4L)
+            .withId("TaskLogging-" + UUID.randomUUID().toString())
+            .withProcessLog(makeTestProcessLog())
+            .withThreadName("myThread")
+            .withCpuDuration(-1L)
+            .withStartTime(-2L)
+            .withEndTime(-3L)
+            .withProcId(-4L)
         .build();
     }
     
@@ -101,12 +214,16 @@ public class TestCaseBuilderUtility {
      * @return {@link ItemTask ItemTask}
      */
     public static ItemTask makeTestItemTask() {
+        CustomAnnotation anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         return new ItemTaskBuilder()
-            .id(UUID.randomUUID().toString())
-            .taskName("My Task Name")
-            .task("My Task")
-            .taskState(TaskState.COMPLETE)
-            .taskLog(makeTestTaskLog())
+            .withId("ItemTask-" + UUID.randomUUID().toString())
+            .withTaskName("My Task Name")
+            .withTask("My Task")
+            .withTaskState(TaskState.COMPLETE)
+            .withTaskLog(makeTestTaskLog())
+            .withAnnotation(anno)
+            .withWorkItemId("WorkItem-" + UUID.randomUUID().toString())
+            .withJobEnvId("JobEnv-" + UUID.randomUUID().toString())
         .build();
     }
     
@@ -122,8 +239,10 @@ public class TestCaseBuilderUtility {
         itemTasks.add(makeTestItemTask());
         
         return new WorkloadBuilder()
-            .id("My Workload")
-            .workload(itemTasks)
+            .withId("Workload-" + UUID.randomUUID().toString())
+            .withWorkload(itemTasks)
+            .withWorkloadState(ItemState.LOCKED)
+            .withWorkloadType(ItemType.SINGLE)
         .build();
     }
     
@@ -134,18 +253,22 @@ public class TestCaseBuilderUtility {
      * @return {@link WorkItem WorkItem}
      */
     public static WorkItem makeTestWorkItem() {
+        CustomAnnotation anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         return new WorkItemBuilder()
-            .id(UUID.randomUUID().toString())
-            .itemName("My WorkItem Name")
-            .workload(makeTestWorkload())
-            .lockId(UUID.randomUUID().toString())
-            .lockDate(0L)
-            .doneDate(0L)
-            .taskCount(1)
-            .taskDone(0)
-            .itemState(ItemState.TODO)
-            .itemType(ItemType.SINGLE)
-            .stepName("Arbitrary")
+            .withId("WorkItem-" + UUID.randomUUID().toString())
+            .withItemName("My WorkItem Name")
+            .withWorkload(makeTestWorkload())
+            .withLockId(UUID.randomUUID().toString())
+            .withLockDate(0L)
+            .withDoneDate(0L)
+            .withTaskCount(1)
+            .withTaskDone(0)
+            .withItemState(ItemState.TODO)
+            .withItemType(ItemType.SINGLE)
+            .withStepName("Arbitrary")
+            .withAnnotation(anno)
+            .withStepId("Step-" + UUID.randomUUID().toString())
+            .withJobEnvId("JobEnv-" + UUID.randomUUID().toString())
         .build();
     }
     
@@ -158,17 +281,20 @@ public class TestCaseBuilderUtility {
      */
     public static WorkItem makeTestWorkItem(String stepName) {
         return new WorkItemBuilder()
-            .id(UUID.randomUUID().toString())
-            .itemName("My WorkItem Name")
-            .workload(makeTestWorkload())
-            .lockId(UUID.randomUUID().toString())
-            .lockDate(0L)
-            .doneDate(0L)
-            .taskCount(1)
-            .taskDone(0)
-            .itemState(ItemState.TODO)
-            .itemType(ItemType.SINGLE)
-            .stepName(stepName)
+            .withId("WorkItem-" + UUID.randomUUID().toString())
+            .withItemName("My WorkItem Name")
+            .withWorkload(makeTestWorkload())
+            .withLockId(UUID.randomUUID().toString())
+            .withLockDate(0L)
+            .withDoneDate(0L)
+            .withTaskCount(1)
+            .withTaskDone(0)
+            .withItemState(ItemState.TODO)
+            .withItemType(ItemType.SINGLE)
+            .withStepName(stepName)
+            .withAnnotation(new CustomAnnotation())
+            .withStepId("Step-" + UUID.randomUUID().toString())
+            .withJobEnvId("JobEnv-" + UUID.randomUUID().toString())
         .build();
     }
     
@@ -180,15 +306,16 @@ public class TestCaseBuilderUtility {
      */
     public static Step makeTestStep() {
         return new StepBuilder()
-            .stepId(UUID.randomUUID().toString())
-            .stepName("My step name")
-            .stepState(TaskState.PENDING)
-            .stepCount(10)
-            .stepsToDo(5)
-            .stepsLocked(2)
-            .stepsDone(2)
-            .stepsError(1)
-            .workflowId(UUID.randomUUID().toString())
+            .withStepId(UUID.randomUUID().toString())
+            .withStepName("My step name")
+            .withStepState(TaskState.PENDING)
+            .withStepCount(10)
+            .withStepsToDo(5)
+            .withStepsLocked(2)
+            .withStepsDone(2)
+            .withStepsError(1)
+            .withWorkflowId(UUID.randomUUID().toString())
+            .withAnnotation(new CustomAnnotation())
         .build();
     }
     
@@ -202,15 +329,16 @@ public class TestCaseBuilderUtility {
      */
     public static Step makeTestStep(String stepId, String stepName) {
         return new StepBuilder()
-            .stepId(stepId)
-            .stepName(stepName)
-            .stepState(TaskState.PENDING)
-            .stepCount(10)
-            .stepsToDo(5)
-            .stepsLocked(2)
-            .stepsDone(2)
-            .stepsError(1)
-            .workflowId(UUID.randomUUID().toString())
+            .withStepId(stepId)
+            .withStepName(stepName)
+            .withStepState(TaskState.PENDING)
+            .withStepCount(10)
+            .withStepsToDo(5)
+            .withStepsLocked(2)
+            .withStepsDone(2)
+            .withStepsError(1)
+            .withWorkflowId(UUID.randomUUID().toString())
+            .withAnnotation(new CustomAnnotation())
         .build();
     }
     
@@ -237,9 +365,10 @@ public class TestCaseBuilderUtility {
      */
     public static Workflow makeTestWorkflow(List<Step> steps, String workflowName) {
         return new WorkflowBuilder()
-            .id(UUID.randomUUID().toString())
-            .workflowName(workflowName)
-            .steps( steps )
+            .withId(UUID.randomUUID().toString())
+            .withWorkflowName(workflowName)
+            .withSteps( steps )
+            .withAnnotation(new CustomAnnotation())
         .build();
     }
     

@@ -40,16 +40,16 @@ import org.tasktide.core.model.task.TaskState;
 @jakarta.persistence.Embeddable
 public class Workload {
     
-    @jakarta.nosql.Column("Id")
+    @jakarta.nosql.Column("WorkloadId")
     @jakarta.persistence.Column(name = "WorkloadId")
-    @JsonbProperty("Id")
+    @JsonbProperty("WorkloadId")
     private String workloadId;
     
-    @jakarta.nosql.Column("Workload")
-    @jakarta.persistence.Column(name = "Workload", columnDefinition = "BLOB")
+    @jakarta.nosql.Column("TaskMap")
+    @jakarta.persistence.Column(name = "TaskMap", columnDefinition = "BLOB")
     @jakarta.persistence.Convert(converter = WorkloadJpaConverter.class)
-    @JsonbProperty("Workload")
-    private Map<String, ItemTask> workload;
+    @JsonbProperty("TaskMap")
+    private Map<String, ItemTask> taskMap;
     
     @jakarta.nosql.Column("WorkloadType")
     @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)
@@ -61,7 +61,7 @@ public class Workload {
      * Null constructor
      */
     public Workload() {
-        this.workload = new HashMap<>();
+        this.taskMap = new HashMap<>();
         this.workloadType = ItemType.SINGLE;
     }
     
@@ -75,12 +75,12 @@ public class Workload {
      */
     @JsonbCreator
     public Workload(
-        @JsonbProperty("Id") String workloadId,
+        @JsonbProperty("WorkloadId") String workloadId,
         @JsonbProperty("Workload") Map<String, ItemTask> workload,
         @JsonbProperty("WorkloadType") ItemType workloadType
     ) {
         this.workloadId = workloadId;
-        this.workload = workload;
+        this.taskMap = workload;
         this.workloadType = workloadType;
     }
 
@@ -90,7 +90,7 @@ public class Workload {
      * 
      */
     public void resetModel() {
-        for ( ItemTask elm : workload.values() ) {
+        for ( ItemTask elm : taskMap.values() ) {
             elm.resetModel();
         }
     }
@@ -108,6 +108,7 @@ public class Workload {
         }
     }
     
+    
     /**
      * Fetch {@link ItemTask} having Id
      * 
@@ -115,7 +116,7 @@ public class Workload {
      * @return {@link ItemTask}
      */
     public ItemTask getById(String id) {
-        for ( ItemTask elm : workload.values() ) {
+        for ( ItemTask elm : taskMap.values() ) {
             if ( elm.getId().equals(id) ) {
                 return elm;
             }
@@ -125,7 +126,7 @@ public class Workload {
     
     
     /**
-     * Add a new work item to workload
+     * Add a new work item to taskMap
      * 
      * @param work
      * @param taskName
@@ -134,13 +135,13 @@ public class Workload {
     public boolean addTask(String taskName, ItemTask work) {
         
         // Handle whether to add task
-        if ( workload.containsKey(taskName) ) {
+        if ( taskMap.containsKey(taskName) ) {
             return false;
         }
         
         // Otherwise add task
-        this.workload.put(taskName, work);
-        if ( this.workload.size() >= 2 ) {
+        this.taskMap.put(taskName, work);
+        if ( this.taskMap.size() >= 2 ) {
             this.workloadType = ItemType.NESTED;
         }
         else {
@@ -161,13 +162,13 @@ public class Workload {
     public boolean addTask(ItemTask task) {
         
         // Handle whether to add task
-        if ( workload.containsKey(task.getTaskName()) ) {
+        if ( taskMap.containsKey(task.getTaskName()) ) {
             return false;
         }
         
         // Otherwise add task
-        this.workload.put(task.getTaskName(), task);
-        if ( this.workload.size() >= 2 ) {
+        this.taskMap.put(task.getTaskName(), task);
+        if ( this.taskMap.size() >= 2 ) {
             this.workloadType = ItemType.NESTED;
         }
         else {
@@ -186,12 +187,12 @@ public class Workload {
      * @return {@link ItemTask}
      */
     public ItemTask getTask(String taskName) {
-        return workload.get(taskName);
+        return taskMap.get(taskName);
     }
     
     
     /**
-     * Drop named task if present in workload
+     * Drop named task if present in taskMap
      * 
      * @param taskName
      * @return boolean
@@ -199,13 +200,13 @@ public class Workload {
     public boolean dropTask(String taskName) {
     
         // Handle whether to add task
-        if ( !this.workload.containsKey(taskName) ) {
+        if ( !this.taskMap.containsKey(taskName) ) {
             return false;
         }
         
         // Add task
-        this.workload.remove(taskName);
-        if ( this.workload.size() >= 2 ) {
+        this.taskMap.remove(taskName);
+        if ( this.taskMap.size() >= 2 ) {
             this.workloadType = ItemType.NESTED;
         }
         else {
@@ -218,7 +219,7 @@ public class Workload {
     
     
     /**
-     * Drop task by Id if present in workload
+     * Drop task by Id if present in taskMap
      * 
      * @param taskId
      * @return boolean
@@ -237,7 +238,7 @@ public class Workload {
     
     
     /**
-     * Drop provided task if present from workload
+     * Drop provided task if present from taskMap
      * 
      * @param task
      * @return boolean
@@ -245,15 +246,15 @@ public class Workload {
     public boolean dropTask(ItemTask task) {
         
         // Handle whether to drop task
-        if ( !this.workload.containsKey(task.getTaskName()) ) {
+        if ( !this.taskMap.containsKey(task.getTaskName()) ) {
             return false;
         }
         
         // Drop task
-        this.workload.remove(task.getTaskName());
+        this.taskMap.remove(task.getTaskName());
         
         // Handle task type
-        if ( this.workload.size() >= 2 ) {
+        if ( this.taskMap.size() >= 2 ) {
             this.workloadType = ItemType.NESTED;
         }
         else {
@@ -278,7 +279,7 @@ public class Workload {
         // Fetch count of tasks for state
         for( TaskState taskState : TaskState.values() ) {
             int count = 0;
-            for ( ItemTask task : this.workload.values() ) {
+            for ( ItemTask task : this.taskMap.values() ) {
                 if ( task.getTaskState().equals(taskState) ) {
                     count++;
                 }
@@ -304,7 +305,7 @@ public class Workload {
         // Fetch tasks by their state
         for( TaskState taskState : TaskState.values() ) {
             List<ItemTask> tasks = new ArrayList<>();
-            for ( ItemTask task : this.workload.values() ) {
+            for ( ItemTask task : this.taskMap.values() ) {
                 if ( task.getTaskState().equals(taskState) ) {
                     tasks.add(task);
                 }
@@ -324,7 +325,7 @@ public class Workload {
      */
     public long getLatestDone() {
         long output = 0L;
-        for ( ItemTask task : workload.values() ) {
+        for ( ItemTask task : taskMap.values() ) {
             if ( task.getTaskState() == TaskState.COMPLETE ) {
                 if ( task.getTaskLog().getEndTime() > output ) {
                     output = task.getTaskLog().getEndTime();
@@ -346,7 +347,7 @@ public class Workload {
         long output = Long.MAX_VALUE;
         
         // Fetch smallest done time
-        for ( ItemTask task : workload.values() ) {
+        for ( ItemTask task : taskMap.values() ) {
             if ( task.getTaskState() == TaskState.COMPLETE ) {
                 if ( task.getTaskLog().getEndTime() < output ) {
                     output = task.getTaskLog().getEndTime();
@@ -360,17 +361,17 @@ public class Workload {
     
     
     /**
-     * Get workload size
+     * Get taskMap size
      * 
      * @return int
      */
     public int getWorkloadSize() {
-        return this.workload.size();
+        return this.taskMap.size();
     }
     
     
     /**
-     * Get workload Id
+     * Get taskMap Id
      * 
      * @return String
      */
@@ -380,7 +381,7 @@ public class Workload {
 
     
     /**
-     * Set workload Id
+     * Set taskMap Id
      * 
      * @param workloadId 
      */
@@ -390,23 +391,23 @@ public class Workload {
 
     
     /**
-     * Get workload
+     * Get taskMap
      * 
      * @return Map-TaskName, {@link ItemTask}
      */
-    public Map<String, ItemTask> getWorkload() {
-        return workload;
+    public Map<String, ItemTask> getTaskMap() {
+        return taskMap;
     }
 
     
     /**
-     * Set workload
+     * Set taskMap
      * 
-     * @param workload 
+     * @param taskMap 
      */
-    public void setWorkload(Map<String, ItemTask> workload) {
-        this.workload = workload;
-        if( this.workload.size() >= 2 ) {
+    public void setTaskMap(Map<String, ItemTask> taskMap) {
+        this.taskMap = taskMap;
+        if( this.taskMap.size() >= 2 ) {
             this.workloadType = ItemType.NESTED;
         }
         else {
@@ -416,7 +417,7 @@ public class Workload {
 
     
     /**
-     * Get workload type
+     * Get taskMap type
      * 
      * @return {@link ItemType}
      */
@@ -426,7 +427,7 @@ public class Workload {
 
     
     /**
-     * Set workload type
+     * Set taskMap type
      * 
      * @param workloadType 
      */
@@ -436,7 +437,7 @@ public class Workload {
 
     
     /**
-     * Represent workload as string
+     * Represent as string
      * 
      * @return String
      */
@@ -444,7 +445,7 @@ public class Workload {
     public String toString() {
         return "Workload{" +
             "workloadId=" + workloadId +
-            ", workload=" + workload +
+            ", taskMap=" + taskMap +
             ", workloadType=" + workloadType +
         '}';
     }

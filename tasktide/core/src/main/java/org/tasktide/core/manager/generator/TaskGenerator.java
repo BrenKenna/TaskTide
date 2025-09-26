@@ -25,6 +25,7 @@ import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+import org.tasktide.core.supporting.Utils;
 
 
 /**
@@ -96,7 +97,8 @@ public class TaskGenerator {
         for ( int i = 0; i < nTasks; i++ ) {
             ManagerTask elm = generateTask(taskType);
             ItemTask task = elm.asItemTask();
-            task.setTaskName( task.getTaskName() + "-" + i );            
+            task.setTaskName( task.getTaskName() + "-" + i );
+            task.setJobEnvId("");
             output.add(task);
         }
         return output;
@@ -114,7 +116,10 @@ public class TaskGenerator {
     public static WorkItem generateExampleWorkItem(ExampleGenerators taskType, int nTasks) {
         Workload workload = BuilderUtility.buildWorkload(generateItemTasks(taskType, nTasks));
         WorkItem output = BuilderUtility.buildWorkItem(taskType.toString(), workload, taskType.name());
-        output.setLockId("asdfg");
+        output.setLockId("");
+        output.setJobEnvId("");
+        output.setStepId("");
+        output.setStepName("");
         return output;
     }
     

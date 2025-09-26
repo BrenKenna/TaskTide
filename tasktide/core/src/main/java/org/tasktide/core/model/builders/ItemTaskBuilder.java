@@ -15,23 +15,24 @@
  */
 package org.tasktide.core.model.builders;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.task.TaskLogging;
 
 
 /**
- * 
  * Allow ProcessLog objects to be built where all fields are optional
  * 
  * @author bkenna
  */
-public class ItemTaskBuilder extends ModelBuilder {
+public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
     
     // Attributes
-    private String id, taskName, task, workItemId;
+    private String id, taskName, task, workItemId, jobEnvId;
     private TaskLogging taskLog;
     private TaskState taskState;
+    private CustomAnnotation anno;
     
     
     public ItemTaskBuilder() {
@@ -45,7 +46,7 @@ public class ItemTaskBuilder extends ModelBuilder {
      * @param id 
      * @return ItemTaskBuilder
      */
-    public ItemTaskBuilder id(String id) {
+    public ItemTaskBuilder withId(String id) {
         this.id = id;
         return this;
     }
@@ -57,7 +58,7 @@ public class ItemTaskBuilder extends ModelBuilder {
      * @param workItemId
      * @return {@link ItemTaskBuilder}
      */
-    public ItemTaskBuilder workItemId(String workItemId) {
+    public ItemTaskBuilder withWorkItemId(String workItemId) {
         this.workItemId = workItemId;
         return this;
     }
@@ -69,7 +70,7 @@ public class ItemTaskBuilder extends ModelBuilder {
      * @param taskName
      * @return {@link ItemTaskBuilder}
      */
-    public ItemTaskBuilder taskName(String taskName) {
+    public ItemTaskBuilder withTaskName(String taskName) {
         this.taskName = taskName;
         return this;
     }
@@ -81,46 +82,70 @@ public class ItemTaskBuilder extends ModelBuilder {
      * @param task
      * @return {@link ItemTaskBuilder}
      */
-    public ItemTaskBuilder task(String task) {
+    public ItemTaskBuilder withTask(String task) {
         this.task = task;
         return this;
     }
     
     
     /**
-     * Add task state field
+     * Add {@link TaskState} field
      * 
      * @param taskState
      * @return {@link ItemTaskBuilder}
      */
-    public ItemTaskBuilder taskState(TaskState taskState) {
+    public ItemTaskBuilder withTaskState(TaskState taskState) {
         this.taskState = taskState;
         return this;
     }
     
     
     /**
-     * Add task logging field
+     * Add {@link TaskLogging} field
      * 
      * @param taskLog
      * @return {@link ItemTaskBuilder}
      */
-    public ItemTaskBuilder taskLog(TaskLogging taskLog) {
+    public ItemTaskBuilder withTaskLog(TaskLogging taskLog) {
         this.taskLog = taskLog;
         return this;
     }
     
     
     /**
-     * Construct ItemTask from provided fields
+     * Adds {@link CustomAnnotation}
+     * 
+     * @param anno
+     * @return {@ilnk ItemTaskBuilder}
+     */
+    public ItemTaskBuilder withAnnotation(CustomAnnotation anno) {
+        this.anno = anno;
+        return this;
+    }
+    
+    
+    /**
+     * Add jobEnvId field
+     * 
+     * @param jobEnvId
+     * @return ItemTaskBuilder
+     */
+    public ItemTaskBuilder withJobEnvId(String jobEnvId) {
+        this.jobEnvId = jobEnvId;
+        return this;
+    }
+    
+    
+    /**
+     * Construct {@link ItemTask} from provided fields
      * 
      * @return {@link ItemTask} 
      */
     @Override
     public ItemTask build() {
         if ( workItemId != null ) {
-            return new ItemTask(id, taskName, task, taskState, taskLog, workItemId);
+            return new ItemTask(id, taskName, task, taskState, taskLog, workItemId, jobEnvId, anno);
         }
-        return new ItemTask(id, taskName, task, taskState, taskLog);
+        return new ItemTask(id, taskName, task, taskState, taskLog, anno);
     }
 }

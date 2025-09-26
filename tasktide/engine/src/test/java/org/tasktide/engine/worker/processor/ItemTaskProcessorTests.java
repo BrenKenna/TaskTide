@@ -4,12 +4,15 @@
  */
 package org.tasktide.engine.worker.processor;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.nosql.Template;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import org.junit.Rule;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -18,12 +21,18 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestInstance;
 
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.engine.EngineTestUtils;
+import org.tasktide.engine.TestEnvironment;
+import org.tasktide.engine.TestUtils;
+import org.tasktide.engine.worker.TaskTideWorkerUnit;
+import org.testcontainers.containers.GenericContainer;
 
 
 /**
@@ -31,23 +40,39 @@ import org.tasktide.engine.EngineTestUtils;
  * 
  * @author bkenna
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ItemTaskProcessorTests {
     
     private static final Logger logger = LogManager.getLogger(ItemTaskProcessorTests.class);
+    private SeContainer container;
+    private Template template;
+    
+    // CouchDB container
+    @Rule
+    public GenericContainer<?> couchDB = (GenericContainer<?>) TestEnvironment.couchDbContainer("tasktide_database", false);
     
     public ItemTaskProcessorTests() {}
     
     
     @BeforeAll
-    public static void setUpClass() {        
-        String msg = "\n\n---------------- Initiating ItemTaskProcessor Tests ----------------\n";
+    public void setUpClass() {        
+        String msg = "\n\n---------------- Initiating ItemTask Processor Tests ----------------\n";
         logger.info(msg);
+        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
     }
     
+    
     @AfterAll
-    public static void tearDownClass() {
-        String msg = "\n\n---------------- Terminating ItemTaskProcessor Tests ----------------\n";
+    public void tearDownClass() {
+        String msg = "\n\n---------------- Terminating ItemTask Processor Tests ----------------\n";
         logger.info(msg);
+        if (container != null && container.isRunning()) {
+            container.close();
+            logger.info("CDI container shut down");
+        }
+        couchDB.stop();
     }
     
     

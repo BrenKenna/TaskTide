@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.model.builders;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.task.TaskState;
 
@@ -25,12 +26,13 @@ import org.tasktide.core.model.task.TaskState;
  * 
  * @author bkenna
  */
-public class StepBuilder extends ModelBuilder {
+public class StepBuilder extends ModelBuilder<Step> {
     
     // Attributes
     private String stepId, stepName, workflowId;
     private TaskState stepState;
     private int stepCount, stepsLocked, stepsDone, stepsToDo, stepsError;
+    private CustomAnnotation anno;
     
     
     /**
@@ -47,7 +49,7 @@ public class StepBuilder extends ModelBuilder {
      * @param stepId
      * @return {@link StepBuilder}
      */
-    public StepBuilder stepId(String stepId) {
+    public StepBuilder withStepId(String stepId) {
         this.stepId = stepId;
         return this;
     }
@@ -59,7 +61,7 @@ public class StepBuilder extends ModelBuilder {
      * @param stepName
      * @return {@link StepBuilder}
      */
-    public StepBuilder stepName(String stepName) {
+    public StepBuilder withStepName(String stepName) {
         this.stepName = stepName;
         return this;
     }
@@ -71,7 +73,7 @@ public class StepBuilder extends ModelBuilder {
      * @param workflowId
      * @return {@link StepBuilder}
      */
-    public StepBuilder workflowId(String workflowId) {
+    public StepBuilder withWorkflowId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
@@ -83,7 +85,7 @@ public class StepBuilder extends ModelBuilder {
      * @param stepState
      * @return {@link StepBuilder}
      */
-    public StepBuilder stepState(TaskState stepState) {
+    public StepBuilder withStepState(TaskState stepState) {
         this.stepState = stepState;
         return this;
     }
@@ -95,7 +97,7 @@ public class StepBuilder extends ModelBuilder {
      * @param stepCount
      * @return {@link StepBuilder}
      */
-    public StepBuilder stepCount(int stepCount) {
+    public StepBuilder withStepCount(int stepCount) {
         this.stepCount = stepCount;
         return this;
     }
@@ -107,7 +109,7 @@ public class StepBuilder extends ModelBuilder {
      * @param stepsLocked
      * @return {@link StepBuilder}
      */
-    public StepBuilder stepsLocked(int stepsLocked) {
+    public StepBuilder withStepsLocked(int stepsLocked) {
         this.stepsLocked = stepsLocked;
         return this;
     }
@@ -119,7 +121,7 @@ public class StepBuilder extends ModelBuilder {
      * @param stepsDone
      * @return {@link StepBuilder}
      */
-    public StepBuilder stepsDone(int stepsDone) {
+    public StepBuilder withStepsDone(int stepsDone) {
         this.stepsDone = stepsDone;
         return this;
     }
@@ -131,7 +133,7 @@ public class StepBuilder extends ModelBuilder {
      * @param stepsToDo
      * @return {@link StepBuilder}
      */
-    public StepBuilder stepsToDo(int stepsToDo) {
+    public StepBuilder withStepsToDo(int stepsToDo) {
         this.stepsToDo = stepsToDo;
         return this;
     }
@@ -143,8 +145,20 @@ public class StepBuilder extends ModelBuilder {
      * @param stepsError
      * @return {@link StepBuilder}
      */
-    public StepBuilder stepsError(int stepsError) {
+    public StepBuilder withStepsError(int stepsError) {
         this.stepsError = stepsError;
+        return this;
+    }
+    
+    
+    /**
+     * Adds {@link CustomAnnotation}
+     * 
+     * @param anno
+     * @return {@ilnk StepBuilder}
+     */
+    public StepBuilder withAnnotation(CustomAnnotation anno) {
+        this.anno = anno;
         return this;
     }
     
@@ -159,6 +173,6 @@ public class StepBuilder extends ModelBuilder {
         if ( workflowId == null ) {
             return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone, stepsToDo, stepsError);
         }
-        return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone, stepsToDo, stepsError, workflowId);
+        return new Step(stepId, stepName, stepState, stepCount, stepsLocked, stepsDone, stepsToDo, stepsError, workflowId, anno);
     }
 }

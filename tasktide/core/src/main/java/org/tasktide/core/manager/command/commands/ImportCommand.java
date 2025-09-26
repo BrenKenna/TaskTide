@@ -15,18 +15,16 @@
  */
 package org.tasktide.core.manager.command.commands;
 
+import org.tasktide.core.manager.command.CommandType;
 import jakarta.json.JsonObject;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
-import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,11 +43,10 @@ import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
 
-import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 
-import org.tasktide.core.supporting.FileIO;
 import org.tasktide.core.supporting.JsonUtils;
 
 
@@ -63,11 +60,7 @@ public class ImportCommand extends AbstractCommand{
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(ImportCommand.class);
-    
-    // Whether import is via query or file
-    @JsonbProperty("Import Type")
-    private ImportType importType;
-    
+
     
     /**
      * Construct import command
@@ -75,34 +68,15 @@ public class ImportCommand extends AbstractCommand{
      * @param action
      * @param target
      * @param cmdSpec
+     * @param cmdType
      */
-    public ImportCommand(
-        @JsonbProperty("Manager Action") ManagerAction action,
-        @JsonbProperty("Manager Target") ManagerTarget target,
-        @JsonbProperty("Command Spec") CommandSpec cmdSpec
-    ) {
-        super(action, target, cmdSpec);
-        this.importType = null;
-    }
-    
-    
-    /**
-     * Construct import command
-     * 
-     * @param action
-     * @param target
-     * @param cmdSpec
-     * @param importType 
-     */
-    @JsonbCreator
     public ImportCommand(
         @JsonbProperty("Manager Action") ManagerAction action,
         @JsonbProperty("Manager Target") ManagerTarget target,
         @JsonbProperty("Command Spec") CommandSpec cmdSpec,
-        @JsonbProperty("Import Type") ImportType importType
+        @JsonbProperty("Command Type") CommandType cmdType
     ) {
-        super(action, target, cmdSpec);
-        this.importType = importType;
+        super(action, target, cmdSpec, cmdType);
     }
     
     
@@ -219,7 +193,10 @@ public class ImportCommand extends AbstractCommand{
      */
     @Override
     public boolean validateCommand() {
-        return true;
+        if ( this.cmdSpec.getFilePath().isEmpty() ) {
+            return false;
+        }
+        return !this.cmdSpec.getOptionsKey("Delimiter").isEmpty();
     }
     
     
@@ -233,8 +210,8 @@ public class ImportCommand extends AbstractCommand{
         
         // Fetch arguments
         String file = this.cmdSpec.getFilePath().get();
-        String delimiter = (String) this.cmdSpec.getOptions().get().get("Delimiter");
-        String nestedDelimiter = (String) this.cmdSpec.getOptions().get().get("Nested Delimiter");
+        String delimiter = (String) this.cmdSpec.getOptionsKey("Delimiter").get();
+        String nestedDelimiter = (String) this.cmdSpec.getOptionsKey("Nested Delimiter").orElse("");
         
         // Import workload from JSON: Format argument instead
         if (delimiter.equalsIgnoreCase("json")) {
@@ -247,23 +224,16 @@ public class ImportCommand extends AbstractCommand{
             
             // With no nested delimiter
             LOGGER.info("Evaluating nested delimiter of value '{}'", nestedDelimiter);
-            String stepName = (String) this.cmdSpec.getOptions().get().get("Step Name");
-            delimiter = TaskTideManagerUtility.handleDelim(delimiter);
-            if (nestedDelimiter == null) {
-                LOGGER.info("No nested delimiter detected, importing as single tasks");
-                return this.fetchWorkItems(file, stepName, delimiter);
-            }
-            
             if ( nestedDelimiter.isEmpty() ) {
                 LOGGER.info("No nested delimiter detected, importing as single tasks");
-                return this.fetchWorkItems(file, stepName, delimiter);
+                return ImportCommandRecordProcessor.parseSingleTaskWorkItem(this, LOGGER);
             }
             
             // Use nested delimiter
             else {
                 nestedDelimiter = TaskTideManagerUtility.handleDelim(nestedDelimiter);
                 LOGGER.info("Importing using nested delimiter of:'{}'", nestedDelimiter);
-                return this.fetchWorkItems(file, stepName, delimiter, nestedDelimiter);
+                return ImportCommandRecordProcessor.parseNestedTaskWorkItem(this, LOGGER);
             }
         }
     }
@@ -290,169 +260,5 @@ public class ImportCommand extends AbstractCommand{
             ex.printStackTrace();
             return null;
         }
-    }
-
-    
-    /**
-     * Fetch nested {@link WorkItem} collection
-     * 
-     * @param resourcePath
-     * @param stepName
-     * @param delim
-     * @param nestedDelim
-     * @return List-{@link WorkItem}
-     * 
-     * @throws IOException
-     * @throws IllegalArgumentException 
-     */
-    private List<WorkItem> fetchWorkItems(String resourcePath, String stepName, String delim, String nestedDelim) throws IOException, IllegalArgumentException {
-    
-        // Fetch reader
-        List<WorkItem> results = new ArrayList<>();
-        String line;
-        int lineNumber = 1;
-        BufferedReader reader = FileIO.fetchBufferedReader(resourcePath);
-        while ((line = reader.readLine()) != null) {
-
-            // Parse data
-            String[] parts = line.split(delim);
-            WorkItem data = parseWorkItem(parts, stepName, nestedDelim);
-
-            // Throw error if null output
-            if (data == null) {
-                throw new IllegalArgumentException(
-                    "Invalid format at line " + lineNumber + ": Expected 4 fields but got " + parts.length
-                );
-            }
-
-            // Otherwise proceed
-            results.add(data);
-            lineNumber++;
-        }
-
-        // Return results
-        return results;
-    }
-    
-    
-    /**
-     * Fetch un-nested {@link WorkItem} collection
-     * 
-     * @param resourcePath
-     * @param stepName
-     * @param delim
-     * @return List-{@link WorkItem}
-     * 
-     * @throws IOException
-     * @throws IllegalArgumentException 
-     */
-    private List<WorkItem> fetchWorkItems(String resourcePath, String stepName, String delim) throws IOException, IllegalArgumentException {
-    
-        // Fetch reader
-        List<WorkItem> results = new ArrayList<>();
-        String line;
-        int lineNumber = 1;
-        BufferedReader reader = FileIO.fetchBufferedReader(resourcePath);
-        while ((line = reader.readLine()) != null) {
-
-            // Parse data
-            String[] parts = line.split(delim);
-            WorkItem data = parseWorkItem(parts, stepName);
-
-            // Throw error if null output
-            if (data == null) {
-                throw new IllegalArgumentException(
-                    "Invalid format at line " + lineNumber + ": Expected 3 fields but got " + parts.length
-                );
-            }
-
-            // Otherwise proceed
-            results.add(data);
-            lineNumber++;
-        }
-        reader.close();
-
-        // Return results
-        return results;
-    }
-    
-    
-    /**
-     * Parse {@link WorkItem} from input arguments
-     * 
-     * @param parts
-     * @param stepName
-     * @return{@link WorkIten}
-     * 
-     * @throws IllegalArgumentException 
-     */
-    private WorkItem parseWorkItem(String[] parts, String stepName) throws IllegalArgumentException {
-    
-        // Split by delimiter, expecting 3 fields
-        if ( parts.length == 2) {
-            ItemTask task = new ManagerTask(parts[0], parts[1]).asItemTask();
-            Workload workload = BuilderUtility.buildWorkload(task);
-            String stepId = TaskTideManagerUtility.fetchStepId(stepName);
-            return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
-        }
-        throw new IllegalArgumentException(
-            "Invalid format: Expected 2 fields but got " + parts.length
-        );
-    }
-    
-    
-    /**
-     * Parse {@link WorkIten} from input arguments, splitting on provided
-     *  nested delimiter
-     * 
-     * @param parts
-     * @param stepName
-     * @param nestedDelim
-     * @return {@link WorkItem}
-     * 
-     * @throws IllegalArgumentException 
-     */
-    private WorkItem parseWorkItem(String[] parts, String stepName, String nestedDelim) throws IllegalArgumentException {
-    
-        // Handle as nested task
-        String stepId = TaskTideManagerUtility.fetchStepId(stepName);
-        if ( parts[2].split(nestedDelim).length >= 2 ) {
-            
-            // Create a new line for each seq value
-            List<ItemTask> nestedTasks = new ArrayList<>();
-            int counter = 0;
-            for ( String taskArg : parts[2].split(nestedDelim)) {
-                String taskScript = parts[1] + " " + taskArg;
-                String taskName = parts[0] + "-" + counter;
-                ItemTask task = new ManagerTask(taskName, taskScript).asItemTask();
-                nestedTasks.add(task);
-                counter++;
-            }
-            Workload workload = BuilderUtility.buildWorkload(nestedTasks);
-            return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
-        }
-        
-        // Handle single task
-        else if ( parts[2].split(nestedDelim).length == 1 ) {
-            String[] newParts = Arrays.copyOfRange(parts, 0, parts.length - 2);
-            newParts = Arrays.copyOf(newParts, newParts.length + 1);
-            newParts[newParts.length - 1] = parts[parts.length - 2] + " " + parts[parts.length - 1];
-            return parseWorkItem(newParts, stepId);
-        }
-        
-        // Otherwise raise exception
-        throw new IllegalArgumentException(
-            "Invalid format: Expected 3 fields but got " + parts.length
-        );
-    }
-
-    
-    /**
-     * Provides {@link ImportType}
-     * 
-     * @return {@link ImportType}
-     */
-    public ImportType getImportType() {
-        return importType;
     }
 }

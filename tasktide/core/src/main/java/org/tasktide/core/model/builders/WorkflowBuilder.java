@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 
@@ -29,11 +30,12 @@ import org.tasktide.core.model.collection.Workflow;
  * 
  * @author bkenna
  */
-public class WorkflowBuilder extends ModelBuilder {
+public class WorkflowBuilder extends ModelBuilder<Workflow> {
     
     // Attributes
     private String workflowId, workflowName;
     private Map<String, Step> steps;
+    private CustomAnnotation anno;
     
     
     /**
@@ -42,7 +44,7 @@ public class WorkflowBuilder extends ModelBuilder {
      * @param workflowId
      * @return {@link WorkflowBuilder}
      */
-    public WorkflowBuilder id(String workflowId) {
+    public WorkflowBuilder withId(String workflowId) {
         this.workflowId = workflowId;
         return this;
     }
@@ -54,7 +56,7 @@ public class WorkflowBuilder extends ModelBuilder {
      * @param workflowName
      * @return String
      */
-    public WorkflowBuilder workflowName(String workflowName) {
+    public WorkflowBuilder withWorkflowName(String workflowName) {
         this.workflowName = workflowName;
         return this;
     }
@@ -66,10 +68,11 @@ public class WorkflowBuilder extends ModelBuilder {
      * @param steps
      * @return {@link WorkflowBuilder}
      */
-    public WorkflowBuilder steps(Map<String, Step> steps) {
+    public WorkflowBuilder withSteps(Map<String, Step> steps) {
         this.steps = steps;
         return this;
     }
+    
     
     /**
      * Add {@link Workflow} steps field
@@ -77,11 +80,23 @@ public class WorkflowBuilder extends ModelBuilder {
      * @param stepList
      * @return {@link WorkflowBuilder}
      */
-    public WorkflowBuilder steps(List<Step> stepList) {
+    public WorkflowBuilder withSteps(List<Step> stepList) {
         this.steps = new HashMap<>();
         for (Step step : stepList) {
             this.steps.put(step.getStepName(), step);
         }
+        return this;
+    }
+    
+    
+    /**
+     * Adds {@link CustomAnnotation}
+     * 
+     * @param anno
+     * @return {@ilnk WorkflowBuilder}
+     */
+    public WorkflowBuilder withAnnotation(CustomAnnotation anno) {
+        this.anno = anno;
         return this;
     }
     
@@ -93,6 +108,6 @@ public class WorkflowBuilder extends ModelBuilder {
      */
     @Override
     public Workflow build() {
-        return new Workflow(workflowId, workflowName, steps);
+        return new Workflow(workflowId, workflowName, steps, anno);
     }
 }

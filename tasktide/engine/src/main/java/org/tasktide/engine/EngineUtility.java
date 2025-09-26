@@ -24,6 +24,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -124,7 +125,7 @@ public class EngineUtility {
             .stream()
             .parallel()
             .mapToInt( elm -> {
-                    Collection<ItemTask> itemTasks = elm.getWorkload().getWorkload().values();
+                    Collection<ItemTask> itemTasks = elm.getWorkload().getTaskMap().values();
                     return countNotActive(new ArrayList<>(itemTasks));
             })
             .sum();
@@ -189,5 +190,48 @@ public class EngineUtility {
         return TaskTideServiceManager
             .fetchWorkItemService()
             .viewByFieldForGroup("itemState", ItemState.TODO, "stepName", stepName);
+    }
+    
+    
+    /**
+     * Fetch todo for target step
+     * 
+     * @param stepName
+     * @param key
+     * @param value
+     * @return List-{@link WorkItem}
+     */
+    public static List<WorkItem> fetchToDoWorkTargetPilotLabel(String stepName, String key, Object value) {
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+            .getRepo()
+        .findByFieldForGroupWithAnno("itemState", ItemState.TODO, "stepName", stepName, key, value);
+    }
+    
+    
+    /**
+     * Fetch todo for target step
+     * 
+     * @param stepName
+     * @param anno
+     * @return List-{@link WorkItem}
+     */
+    public static List<WorkItem> fetchToDoWorkTargetPilotLabel(String stepName, CustomAnnotation anno) {
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+            .getRepo()
+        .findByFieldForGroupWithAnno("itemState", ItemState.TODO, "stepName", stepName, anno);
+    }
+    
+    
+    /**
+     * Wait required number of seconds
+     * 
+     * @param seconds
+     * @return boolean
+     */
+    public static boolean waitSeconds(int seconds) {
+        try {TimeUnit.SECONDS.sleep(seconds); return true;}
+        catch(InterruptedException ex) {return false;}
     }
 }

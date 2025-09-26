@@ -22,7 +22,7 @@ package org.tasktide.core.model.builders;
  * 
  * @author bkenna
  */
-public abstract class ModelBuilder {
+public abstract class ModelBuilder<T> {
     
     public ModelBuilder() {}
     
@@ -31,5 +31,5 @@ public abstract class ModelBuilder {
      * 
      * @return Object
      */
-    public abstract Object build(); 
+    public abstract T build(); 
 }

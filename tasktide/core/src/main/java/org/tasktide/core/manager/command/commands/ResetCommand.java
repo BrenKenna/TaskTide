@@ -25,6 +25,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.command.CommandSpec;
+import org.tasktide.core.manager.command.CommandType;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 
@@ -49,14 +50,16 @@ public class ResetCommand extends AbstractCommand {
      * @param action
      * @param target
      * @param cmdSpec
+     * @param cmdType
      */
     @JsonbCreator
     public ResetCommand(
         @JsonbProperty("Manager Action") ManagerAction action,
         @JsonbProperty("Manager Target") ManagerTarget target,
-        @JsonbProperty("Command Spec") CommandSpec cmdSpec
+        @JsonbProperty("Command Spec") CommandSpec cmdSpec,
+        @JsonbProperty("Command Type") CommandType cmdType
     ) {
-        super(action, target, cmdSpec);
+        super(action, target, cmdSpec, cmdType);
     }
 
     

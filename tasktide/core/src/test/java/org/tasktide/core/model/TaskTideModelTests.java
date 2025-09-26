@@ -83,15 +83,15 @@ public class TaskTideModelTests {
         
         // Build work item
         workItem = new WorkItemBuilder()
-                                .id("My WorkItem")
-                                .itemName("My WorkItem Name")
-                                .workload(TestCaseBuilderUtility.makeTestWorkload())
-                                .lockId("Some random hexadecimal string")
-                                .lockDate(0L)
-                                .doneDate(0L)
-                                .taskCount(2)
-                                .taskDone(0)
-                                .build();
+            .withId("My WorkItem")
+            .withItemName("My WorkItem Name")
+            .withWorkload(TestCaseBuilderUtility.makeTestWorkload())
+            .withLockId("Some random hexadecimal string")
+            .withLockDate(0L)
+            .withDoneDate(0L)
+            .withTaskCount(2)
+            .withTaskDone(0)
+        .build();
         logger.info("\nDisplaying WorkItem:\n" + workItem.toJsonDoc() + "\n");
         
         // Convert work item to json docs

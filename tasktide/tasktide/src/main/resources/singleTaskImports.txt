@@ -1,4 +1,0 @@
-Ping_Test_1|ping google.com
-Ping_Test_2|ping dcu.ie
-Ping_Test_3|ping ucd.ie
-Ping_Test_4|ping tcd.ie

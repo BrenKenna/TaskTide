@@ -48,22 +48,31 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - []    3). Paper write-up (initialize with repo docs, review after use-cases).
 - []    4). Drop database files & old workflow engine from repo.
 - []    5). Repository structured for JOSS.
-- []   6). Docker compose.
+- []    6). Docker compose.
 - []    7). Kubectl config.
+- []    8). Early & Late binding semantics.
 
 
 === Code Checklist
 
 A lot of the major aspects are done, or covered. These push towards a minimally functional v0.9.9, where a "once over" covers the v1. This push is neatness thing anticipating problems coming from use-case deployment.
 
-- [] Update UMLs 
+- [/] Update UMLs 
 - [/] Docker Compose.
-- [] Custom annotations on TaskTideModels?
+- [X] Custom annotations on TaskTideModels
+...
+        - [X] Pilot Label, NB LinkedHashMap not usable with JNoSQL-Templates
+        - [X] Any kind of internal notes
+        - [X] Unit test coverage for Step
+        - [X] Unit test coverage for Workflow
+        - [] Code clean on builder
+...
 - [/] Incorporate host metrics:
 ...
-        - [] Place Id on ItemTask
+        - [X] Job Env Entity
+        - [] Place Id on ItemTask or WorkItem?
         - [] Store under job_env
-        - [] A job can have a set of host metrics over it's lifecycle.
+        - [] A job can have a MetricProfiles over its lifecycle.
 ...
 
 - [/] JobEnvironment property on ItemTask gives identifiers for tracking, pull out on ItemStore.
@@ -97,7 +106,7 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] Engine & Manager share model names.
         - [X] Input and Output file merged into Target File.
 ...
-- [] Check over unit failed unit tests as they work independantly
+- [] Check over failed unit tests as they work independantly
 ...
         - [] Singleton not set for "container Id".
         - [] Engine error messages, and old unit tests missing SOA.

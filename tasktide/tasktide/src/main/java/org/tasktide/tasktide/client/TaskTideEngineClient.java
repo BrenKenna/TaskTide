@@ -16,12 +16,14 @@
 package org.tasktide.tasktide.client;
 
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.supporting.JsonUtils;
@@ -53,8 +55,9 @@ public class TaskTideEngineClient extends TaskTideClient {
     private TaskTideProcessor<WorkItem> processor;
     private TaskTideExecutor<WorkItem> workExec;
     private TaskTideEngineObserver<WorkItem> obs;
-    private ArgumentMap engineArgs, globalArgs;
-    private String step;
+    private final ArgumentMap engineArgs, globalArgs;
+    private final String step;
+    private final Random RAND = new Random(); 
     
     
     /**
@@ -119,13 +122,46 @@ public class TaskTideEngineClient extends TaskTideClient {
     @Override
     protected void performClientTask() {
         
-        // Fetch and run processing
-        this.fetchAndRun();
+        // Determine eexecution policy
+        LOGGER.info("Determining engine execution policy");
+        String pol = (String) this.engineArgs.getArgument("Execution Policy").getValue();
+        EngineExecutionPolicy execPol = EngineExecutionPolicy.get(pol);
+        
+        // Process based on mode
+        switch ( execPol ) {
+            
+            // Fetch and run processing
+            case BATCH -> {
+                LOGGER.info("Operating in batch mode");
+                this.fetchAndRun();
+            }
+            
+            // Run as service
+            case SERVICE -> {
+                LOGGER.info("Operating as a service");
+                this.serviceOperation();
+            }
+        }
         
         // Clean up - close connections etc
         this.cleanUp();
     }
     
+    
+    /**
+     * Continuously scans {@link TaskTideRepository} for
+     *  work
+     */
+    private void serviceOperation() {
+    
+        // Perhaps allow a queue like a file being written?
+        int counter = 0;
+        while ( true ) {
+            this.fetchAndRun();
+            EngineUtility.waitSeconds(RAND.nextInt(0, 11));
+            counter++;
+        }
+    }
     
     /**
      * Performs required cleanup actions
@@ -134,6 +170,64 @@ public class TaskTideEngineClient extends TaskTideClient {
     @Override
     protected void cleanUp() {
         
+    }
+    
+    
+    /**
+     * Determines whether pilot label is configured
+     * 
+     * @return boolean 
+     */
+    private boolean hasPilotLabel() {
+        return
+            (this.engineArgs.getArgument("Pilot Label Key").getValue() != "" &&
+            this.engineArgs.getArgument("Pilot Label Value").getValue() != "")
+            || 
+            this.engineArgs.getArgument("Pilot Label Annotation").getValue() != ""
+        ;
+    }
+    
+    
+    /**
+     * Fetches available work based on pilot label annotation
+     * 
+     * @param step
+     * @return List-{@link WorkItem}
+     */
+    private List<WorkItem> handlePilotLabel(String step) {
+    
+        if ( this.engineArgs.getArgument("Pilot Label Key").getValue() != "" &&
+            this.engineArgs.getArgument("Pilot Label Value").getValue() != "" )
+        {
+            String key = (String) this.engineArgs.getArgument("Pilot Label Key").getValue();
+            Object value = this.engineArgs.getArgument("Pilot Label Value").getValue();
+            return EngineUtility.fetchToDoWorkTargetPilotLabel(step, key, value);
+        }
+        
+        else {
+            String json = (String) this.engineArgs.getArgument("Pilot Label Annotation").getValue();
+            CustomAnnotation anno = JsonUtils.fromJson(json, CustomAnnotation.class);
+            return EngineUtility.fetchToDoWorkTargetPilotLabel(step, anno);
+        }
+    }
+    
+    
+    /**
+     * Fetches engine workload, checking if pilot label
+     *  was used
+     * 
+     * @param step
+     * @return List-{@link WorkItem}
+     */
+    private List<WorkItem> fetchWorkload(String step) {
+        if ( this.hasPilotLabel() ) {
+            LOGGER.info("Pilot label provided");
+            return this.handlePilotLabel(step);
+        }
+        else {
+            LOGGER.info("No pilot label provided, processing all tasks");
+            return EngineUtility.fetchToDoWorkTarget(step);
+        }
     }
     
     
@@ -150,7 +244,7 @@ public class TaskTideEngineClient extends TaskTideClient {
             LOGGER.info("Processing in pipeline mode:\t'{}'", JsonUtils.toJson(false, steps));
             for ( String elm : steps ) {
                 LOGGER.info("Processing step:\t'{}'", elm);
-                List<WorkItem> workload = EngineUtility.fetchToDoWorkTarget(elm);
+                List<WorkItem> workload = this.fetchWorkload(elm);
                 this.processWorkload(workload);
                 LOGGER.info("Processing complete for step:\t'{}'", elm);
             }
@@ -159,7 +253,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         // Process target step
         else if ( !this.step.equalsIgnoreCase("na") ) {
             LOGGER.info("Processing single step:\t'{}'", step);
-            List<WorkItem> workload = EngineUtility.fetchToDoWorkTarget(step);
+            List<WorkItem> workload = this.fetchWorkload(step);
             this.processWorkload(workload);
             LOGGER.info("Processing complete for step:\t'{}'", step);
         }

@@ -15,57 +15,84 @@
  */
 package org.tasktide.core.services;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
+
+import java.util.List;
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import org.testcontainers.containers.GenericContainer;
+import org.junit.Rule;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestInstance;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.tasktide.core.TaskTideService;
-import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.repository.JsonRepository;
-import org.tasktide.core.repository.json_repo.JsonStepRepository;
-import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
-
-import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.workitem.ItemState;
-import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.model.state_summary.StateSummary;
-
-import org.tasktide.TestUtils;
 import org.tasktide.TestCaseBuilderUtility;
+import org.tasktide.TestEnvironment;
+import org.tasktide.TestUtils;
+
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideService;
+import org.tasktide.core.model.collection.Step;
+
+import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.itemstore.ItemStore;
 
 
 /**
- * Test module for {@link StepService StepService} through {@link JsonRepository JsonRepository}
- * 
+ * Test cases for {@link TaskTideService} of {@link Step} for each
+ *  repository type
+ *
  * @author bkenna
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class StepServiceTests {
     
     private static final Logger logger = LogManager.getLogger(StepServiceTests.class);
+    private SeContainer container;
+    private EntityManager entityManager;
+    private Template template;
+    
+    // Backend repos
+    @Rule
+    private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    
+    @Rule
+    private final GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     public StepServiceTests() {}
     
     @BeforeAll
-    public static void setUpClass() {        
+    public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Step Service Tests ----------------\n";
         logger.info(msg);
+        container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
+        entityManager = JpaRepositoryUtility.get().fetchEntityManager();
+        template = TestEnvironment.fetchDocumentTemplate(container);
     }
     
     @AfterAll
-    public static void tearDownClass() {
+    public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Step Service Tests ----------------\n";
         logger.info(msg);
+        if (container != null && container.isRunning()) {
+            container.close();
+            logger.info("CDI container shut down");
+        }
+        couchDB.stop();
+        mariaDB.stop();
     }
     
     @BeforeEach
@@ -79,200 +106,181 @@ public class StepServiceTests {
     }
 
     
+    
     /**
-     * Test construction of {@link StepService StepService}
+     * Test that a work item can be fetched 
      */
     @Test
     @Order(0)
-    public void canConstruct() {
+    public void canConstructStepJsonService() {
     
-        // Setup repository
-        logger.info("\n\n================ StepService Setup Test ================\n");
+        // Initialize data
+        logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
+        TaskTideService<Step> stepService;
+        RepositoryType repoType;
+        List<Step> backend;
         boolean assertionState;
-        JsonRepository<Step> repo;
         
-        // Generate test data
+        // Generate data
         logger.info("Generating data for testing");
-        repo = new JsonStepRepository(TestCaseBuilderUtility.makeTestStepList(), "myData");
+        repoType = RepositoryType.JSON;
+        backend = TestCaseBuilderUtility.makeTestStepList();
         
-        // Construct step service
-        TaskTideService<Step> serv = new StepService(repo);
-        assertionState = serv.toString() != null;
+        // Setup requirements
+        logger.info("Configuring Service");
+        stepService = ServiceFactory.makeStepService(repoType, backend, "Step-Service");
+        Map<String, String> map = stepService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for JSON Step Service:\n'{}'", TestUtils.mapToJsonString(map));
         
-        // Handle test state
-        if (assertionState) {
-            logger.info("\n\nDisplaying StepService as String:\n" + serv.toString() + "\n");
-        }
-        else {
-            logger.error("\n\nError StepService as String:\n" + serv.toString() + "\n");
-        }
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<Step> ref = backend.get(0);
+        TaskTideModel<Step> result = stepService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
         
         // Log test state
-        logger.info("\n\n================ StepService Setup Test ================\n");
-        assertTrue(assertionState);
+        logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
     
     /**
-     * Test finding an item by field value
+     * Test that a step can be fetched 
      */
     @Test
     @Order(1)
-    public void canFindByField() {
+    public void canConstructStepRocksDbService() {
     
-        // Fetch service
-        logger.info("\n\n================ StepService View by Field Test ================\n");
-        boolean assertionState;
-        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
-        TaskTideService<Step> serv = new StepService(repo);
+        // Initialize data
+        logger.info("\n\n================ Construct StepService-RocksDB From Factory Test ================\n");
+        TaskTideService<Step> stepService;
+        RepositoryType repoType;
+        ItemStore backend;
+        List<Step> data;
+        boolean assertionState ;
         
-        // Fetch 
-        List<Step> results = serv.viewByField("stepName", "myFirstStep");
-        if ( results != null ) {
-            assertionState = true;
-            logger.info("\n\nDisplaying first queried item:\n" + TestUtils.modelToJsonString(results) + "\n");
-        }
-        else {
-            assertionState = false;
-            logger.warn("\n\nUnable query via service:\n" + TestUtils.modelToJsonString(results) + "\n");
-        }
+        // Generate data
+        logger.info("Generating data for testing");
+        data = TestCaseBuilderUtility.makeTestStepList();
         
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ StepService View by Field Test ================\n");
+        // Configure requirements
+        repoType = RepositoryType.ITEMSTORE;
+        String collectionName = TestUtils.resolveRocksRepoPath();
+        backend = TestUtils.fetchItemStore(collectionName);
+        
+        // Setup requirements
+        logger.info("Configuring Service");
+        stepService = ServiceFactory.makeStepService(repoType, backend, "Step-Service");
+        Map<String, String> map = stepService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for RocksDB Step Service:\n'{}'", TestUtils.mapToJsonString(map));
+        
+        // Add records
+        stepService.extendModel(data);
+        
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<Step> ref = data.get(0);
+        TaskTideModel<Step> result = stepService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
+        
+        // Log test state
+        logger.info("\n\n================ Construct StepService-RocksDB From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
     
     /**
-     * Test summarizing progress across all {@link StepService StepService}
+     * Test that a step can be fetched 
      */
     @Test
     @Order(2)
-    public void canSummarize() {
+    public void canConstructStepNoSqlService() {
     
-        // Fetch service
-        logger.info("\n\n================ StepService Summarize Progress Across Steps Test ================\n");
-        boolean assertionState;
-        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
-        StepService serv = new StepService(repo);
+        // Initialize data
+        logger.info("\n\n================ Construct StepService-Template From Factory Test ================\n");
+        TaskTideService<Step> stepService;
+        RepositoryType repoType;
+        Template backend;
+        List<Step> data;
+        boolean assertionState ;
         
-        // Fetch 
-        Map<String, StateSummary<ItemState>> summary = serv.viewSummary();
-        if ( summary != null ) {
-            assertionState = true;
-            logger.info("\n\nDisplaying step summary:\n" + TestUtils.mapToJsonString(summary) + "\n");
-        }
-        else {
-            assertionState = false;
-            logger.warn("\n\nUnable query step summary:\n" + summary + "\n");
-        }
+        // Generate data
+        logger.info("Generating data for testing");
+        data = TestCaseBuilderUtility.makeTestStepList();
         
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ StepService Summarize Progress Across Steps Test ================\n");
+        // Configure requirements
+        repoType = RepositoryType.NOSQL;
+        backend = TestUtils.fetchTemplate();
+        
+        // Setup requirements
+        logger.info("Configuring Service");
+        stepService = ServiceFactory.makeStepService(repoType, backend, "Step-Service");
+        Map<String, String> map = stepService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for NoSQL Step Service:\n'{}'", TestUtils.mapToJsonString(map));
+        
+        // Add records
+        stepService.extendModel(data);
+        
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<Step> ref = data.get(0);
+        TaskTideModel<Step> result = stepService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
+        
+        // Log test state
+        logger.info("\n\n================ Construct StepService-Template From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
     
     /**
-     * Test summarizing progress across all {@link StepService StepService}
+     * Test that a step can be fetched 
      */
     @Test
     @Order(3)
-    public void canSave() {
+    public void canConstructStepSqlService() {
     
-        // Fetch service
-        logger.info("\n\n================ Save Steps Test ================\n");
+        // Initialize data
+        logger.info("\n\n================ Construct StepService-JPA From Factory Test ================\n");
+        TaskTideService<Step> stepService;
+        RepositoryType repoType;
+        EntityManager backend;
+        List<Step> data;
         boolean assertionState;
-        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
-        StepService serv = new StepService(repo);
         
-        // Fetch 
-        int nRecords = serv.save();
-        if ( nRecords > 1 ) {
-            assertionState = true;
-            logger.info("Saved Step Service with new records. Displaying total saved:\t" + nRecords + "\n");
-        }
-        else {
-            assertionState = false;
-            logger.warn("Unable save Step Service, none saved:\t" + nRecords + "\n");
-        }
+        // Generate data
+        logger.info("Generating data for testing");
+        data = List.of(
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep(),
+            TestCaseBuilderUtility.makeTestStep()
+        );
         
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ Save Steps Test ================\n");
-    }
-    
-    
-    /**
-     * Test view all 
-     */
-    @Test
-    @Order(4)
-    public void canViewAll() {
-    
-        // Fetch service
-        logger.info("\n\n================ View All Steps Test ================\n");
-        boolean assertionState;
-        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
-        StepService serv = new StepService(repo);
+        // Configure requirements
+        repoType = RepositoryType.SQL;
+        backend = JpaRepositoryUtility.get().fetchEntityManager();
         
-        // View all
-        List<Step> output = serv.viewAll();
-        if ( output.size() > 0 ) {
-            assertionState = true;
-            logger.info("Displaying retrieved data count:\t" + output.size() + "\n");
-        }
-        else {
-            assertionState = false;
-            logger.warn("Unable to retrieve data count:\t" + output.size() + "\n");
-        }
+        // Setup requirements
+        logger.info("Configuring Service");
+        stepService = ServiceFactory.makeStepService(repoType, backend, "Step-Service");
+        Map<String, String> map = stepService.getRepo().getRepositoryMetaData();
+        logger.info("Displaying meta data for JPA Step Service:\n'{}'", JsonUtils.toJson(true, map));
         
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ View All Steps Test ================\n");
-    }
-    
-    
-    /**
-     * Test mapping to lower class
-     */
-    @Test
-    @Order(5)
-    public void canMapToWorkItem() {
-    
-        // Fetch service
-        logger.info("\n\n================ Map Step to WorkItem Test ================\n");
-        boolean assertionState;
-        TaskTideRepository<Step> repo = TestCaseBuilderUtility.createStepJsonRepo();
-        StepService serv = new StepService(repo);
+        // Add records
+        stepService.extendModel(data);
         
-        // Make work item repo
-        logger.info("Making JsonWorkItemRepository");
-        List<WorkItem> data = new ArrayList<>();
-        data.add(TestCaseBuilderUtility.makeTestWorkItem("myFirstStep"));
-        data.add(TestCaseBuilderUtility.makeTestWorkItem("myFirstStep"));
-        data.add(TestCaseBuilderUtility.makeTestWorkItem("myFirstStep"));
-        TaskTideRepository<WorkItem> workRepo = new JsonWorkItemRepository(data, "myData");
-        TaskTideService<WorkItem> workServ = new WorkItemService(workRepo, 4);
+        // Check that records can be queried
+        logger.info("Verifying records can be retrieved");
+        TaskTideModel<Step> ref = data.get(0);
+        TaskTideModel<Step> result = stepService.fetchById(ref.getId());
+        logger.info("\n\nDisplaying retreieved Step:\n'{}'", result.toJson());
+        assertionState = ref.getId().equals(result.getId());
         
-        // Map step to workItem
-        logger.info("Mapping 'myFirstStep' to WorkItems");
-        Step step = serv.viewByField("stepName", "myFirstStep").get(0);
-        List<WorkItem> output = serv.getThroughLink(workServ, step);
-        assertionState = output.size() == data.size();
-        
-        // Evaluate test
-        if ( assertionState ) {
-            assertionState = true;
-            logger.info("\n\nDisplaying mapped data:\n" + TestUtils.modelToJsonString(output) + "\n");
-        }
-        else {
-            assertionState = false;
-            logger.warn("\n\nUnable to map data:\n" + TestUtils.modelToJsonString(output) + "\n");
-        }
-        
-        // Log test status
-        assertTrue(assertionState);
-        logger.info("\n\n================ Map Step to WorkItem Test ================\n");
+        // Log test state
+        logger.info("\n\n================ Construct StepService-JPA From Factory Test ================\n");
+        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

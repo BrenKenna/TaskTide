@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.TaskTideModel;
@@ -95,11 +96,23 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     @JsonbProperty("StepId")
     private String stepId;
     
+    @jakarta.nosql.Column("JobEnvironmentId")
+    @jakarta.persistence.Column(name = "JobEnvironmentId")
+    @JsonbProperty("Job Environment Id")
+    private String jobEnvId;
+    
+    @jakarta.nosql.Column("Annotations")
+    @jakarta.persistence.Column(name = "Annotations")
+    @JsonbProperty("Annotations")
+    private CustomAnnotation anno;
+    
     
     /**
      * Null constructor
      */
-    public WorkItem(){}
+    public WorkItem() {
+        this.anno = new CustomAnnotation();
+    }
 
     
     /**
@@ -141,6 +154,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         this.taskDone = taskDone;
         this.workload = workload;
         this.stepName = stepName;
+        this.anno = new CustomAnnotation();
     }
     
     
@@ -159,6 +173,8 @@ public class WorkItem implements TaskTideModel<WorkItem> {
      * @param workload 
      * @param stepName
      * @param stepId
+     * @param jobEnvId
+     * @param anno
      */
     @JsonbCreator
     public WorkItem(
@@ -173,7 +189,9 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         @JsonbProperty("Task Done") int taskDone,
         @JsonbProperty("Workload") Workload workload,
         @JsonbProperty("Step Name") String stepName,
-        @JsonbProperty("Step Id") String stepId
+        @JsonbProperty("Step Id") String stepId,
+        @JsonbProperty("Job Environment Id") String jobEnvId,
+        @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.id = id;
         this.itemName = itemName;
@@ -187,6 +205,8 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         this.workload = workload;
         this.stepName = stepName;
         this.stepId = stepId;
+        this.jobEnvId = jobEnvId;
+        this.anno = anno;
     }
     
     
@@ -350,6 +370,26 @@ public class WorkItem implements TaskTideModel<WorkItem> {
 
     
     /**
+     * Get job environment Id
+     * 
+     * @return String
+     */
+    public String getJobEnvId() {
+        return this.jobEnvId;
+    }
+    
+    
+    /**
+     * Sets job environment Id
+     * 
+     * @param jobEnvId 
+     */
+    public void setJobEnvId(String jobEnvId) {
+        this.jobEnvId = jobEnvId;
+    }
+    
+    
+    /**
      * Get item name
      * 
      * @return String
@@ -368,6 +408,28 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         this.itemName = itemName;
     }
 
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set annotation provided
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+    
     
     /**
      * Get item type
@@ -602,6 +664,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
      * 
      * @return String
      */
+    @Override
     public String toJsonDoc() {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
@@ -618,28 +681,30 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     public String getCollection() {
         return this.stepName;
     }
-    
+
     
     /**
-     * Represent work item as string
+     * Represent as string
      * 
-     * @return 
+     * @return String
      */
     @Override
     public String toString() {
         return "WorkItem{" +
-           "id=" + id +
-           ", itemName=" + itemName +
-           ", itemType=" + itemType +
-           ", itemState=" + itemState +
-           ", lockId=" + lockId +
-           ", lockDate=" + lockDate +
-           ", doneDate=" + doneDate +
-           ", taskCount=" + taskCount +
-           ", taskDone=" + taskDone +
-           ", workload=" + workload +
-           ", stepName=" + stepName +
-           ", stepId=" + stepId +
+            "id=" + id +
+            ", itemName=" + itemName +
+            ", itemType=" + itemType +
+            ", itemState=" + itemState +
+            ", lockId=" + lockId +
+            ", lockDate=" + lockDate +
+            ", doneDate=" + doneDate +
+            ", taskCount=" + taskCount +
+            ", taskDone=" + taskDone +
+            ", workload=" + workload +
+            ", stepName=" + stepName +
+            ", stepId=" + stepId +
+            ", jobEnvId=" + jobEnvId +
+            ", anno=" + anno +
         '}';
     }
 

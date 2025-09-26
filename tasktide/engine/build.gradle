@@ -33,6 +33,12 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
     testImplementation 'org.apache.logging.log4j:log4j-api:2.20.0'
     testImplementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+    // Jakarta-NoSQL
+    testImplementation 'jakarta.nosql:jakarta.nosql-api:1.0.0'
+    testImplementation "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
+    testImplementation "org.eclipse.jnosql.databases:jnosql-couchdb:1.1.6"
+    testImplementation project(":itemstore")
 }
 
 

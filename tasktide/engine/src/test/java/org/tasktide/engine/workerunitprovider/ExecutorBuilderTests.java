@@ -4,8 +4,8 @@
  */
 package org.tasktide.engine.workerunitprovider;
 
-import org.tasktide.engine.wokerunitprovider.WorkItemExecutorBuilder;
-import org.tasktide.engine.wokerunitprovider.ItemTaskExecutorBuilder;
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.nosql.Template;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -20,15 +20,25 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestInstance;
+
+import org.junit.Rule;
+import org.tasktide.core.manager.TaskTideServiceManager;
+import org.testcontainers.containers.GenericContainer;
+import org.tasktide.engine.TestEnvironment;
+import org.tasktide.engine.TestUtils;
 
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
+import org.tasktide.engine.trackers.TaskTracker;
 import org.tasktide.engine.trackers.TaskTrackers;
 
 import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
@@ -36,28 +46,47 @@ import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 
+import org.tasktide.engine.wokerunitprovider.WorkItemExecutorBuilder;
+import org.tasktide.engine.wokerunitprovider.ItemTaskExecutorBuilder;
+
 
 /**
  * Test module for {@link WorkItem}/{@link ItemTask} processing through their builders
  * 
  * @author bkenna
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ExecutorBuilderTests {
     
     private static final Logger logger = LogManager.getLogger(ExecutorBuilderTests.class);
+    private SeContainer container;
+    private Template template;
+    
+    // CouchDB container
+    @Rule
+    public GenericContainer<?> couchDB = (GenericContainer<?>) TestEnvironment.couchDbContainer("tasktide_database", false);
+    
     public ExecutorBuilderTests() {}
     
     
     @BeforeAll
-    public static void setUpClass() {        
+    public void setUpClass() {        
         String msg = "\n\n---------------- Initiating ExecutorBuilder Tests ----------------\n";
         logger.info(msg);
+        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
     }
     
     @AfterAll
-    public static void tearDownClass() {
+    public void tearDownClass() {
         String msg = "\n\n---------------- Terminating ExecutorBuilder Tests ----------------\n";
         logger.info(msg);
+        if (container != null && container.isRunning()) {
+            container.close();
+            logger.info("CDI container shut down");
+        }
+        couchDB.stop();
     }
     
     
@@ -93,7 +122,9 @@ public class ExecutorBuilderTests {
         obsBuilder = new ItemTaskObserverBuilder();
         execBuilder = new ItemTaskExecutorBuilder();
         task = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 2);
-        workload = new ArrayList<>(task.getWorkload().getWorkload().values());
+        workload = new ArrayList<>(task.getWorkload().getTaskMap().values());
+        logger.info("Displaying reference record:\n'{}'", JsonUtils.toJson(true, task));
+        TaskTideServiceManager.fetchWorkItemService().appendModel(task);
         
         // Build Observer
         obs = obsBuilder

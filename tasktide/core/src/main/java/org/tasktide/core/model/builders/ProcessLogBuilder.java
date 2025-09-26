@@ -24,7 +24,7 @@ import org.tasktide.core.model.task.ProcessLog;
  *
  * @author bkenna
  */
-public class ProcessLogBuilder extends ModelBuilder {
+public class ProcessLogBuilder extends ModelBuilder<ProcessLog> {
     
     // Attributes
     private String id = "";
@@ -42,7 +42,7 @@ public class ProcessLogBuilder extends ModelBuilder {
      * @param id
      * @return {@link ProcessLogBuilder}
      */
-    public ProcessLogBuilder id(String id) {
+    public ProcessLogBuilder withId(String id) {
         this.id = id;
         return this;
     }
@@ -54,7 +54,7 @@ public class ProcessLogBuilder extends ModelBuilder {
      * @param stdout
      * @return {@link ProcessLogBuilder}
      */
-    public ProcessLogBuilder stdout(String[] stdout) {
+    public ProcessLogBuilder withStdout(String[] stdout) {
         this.stdout = stdout;
         return this;
     }
@@ -66,7 +66,7 @@ public class ProcessLogBuilder extends ModelBuilder {
      * @param stderr
      * @return {@link ProcessLogBuilder}
      */
-    public ProcessLogBuilder stderr(String[] stderr) {
+    public ProcessLogBuilder withStderr(String[] stderr) {
         this.stderr = stderr;
         return this;
     }

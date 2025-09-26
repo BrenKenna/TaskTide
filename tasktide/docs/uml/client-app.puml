@@ -22,8 +22,7 @@ class org.tasktide.tasktide.TaskTide <<Application>> {
 
 org.tasktide.tasktide.TaskTide --> org.tasktide.tasktide.client.TaskTideClient
 org.tasktide.tasktide.TaskTide --> org.tasktide.tasktide.containerprovider.CdiContainerProvider
-org.tasktide.tasktide.TaskTide --> org.tasktide.core.manager.TaskTideServiceManager
-class org.tasktide.core.manager.TaskTideServiceManager
+
 
 
 /'
@@ -179,10 +178,8 @@ class org.tasktide.tasktide.client.ClientConfigMap {
 
 org.tasktide.tasktide.client.TaskTideEngineClient --|> org.tasktide.tasktide.client.TaskTideClient
 org.tasktide.tasktide.client.TaskTideManagerClient --|> org.tasktide.tasktide.client.TaskTideClient
-org.tasktide.tasktide.client.TaskTideManagerClient --> org.tasktide.core.manager.ManagerAction
 org.tasktide.tasktide.client.ClientConfigMap *-- org.tasktide.tasktide.client.TaskTideClient
 
-org.tasktide.tasktide.client.TaskTideManagerClient --|> org.tasktide.core.manager.command.ManagerCommand
 
 
 /'
@@ -194,6 +191,7 @@ org.tasktide.tasktide.client.TaskTideManagerClient --|> org.tasktide.core.manage
 ##################################################
 ##################################################
 '/
+
 
 interface org.tasktide.tasktide.configurer.TaskTideConfig <<config>> #F8DE7E {
   + {abstract} void addToTree(ArgumentTree argTree)
@@ -293,6 +291,7 @@ org.tasktide.tasktide.configurer.EngineConfig --|> org.tasktide.tasktide.configu
 org.tasktide.tasktide.configurer.ManagerConfig --|> org.tasktide.tasktide.configurer.AbstractConfig
 
 
+
 /'
 ##################################################
 ##################################################
@@ -302,6 +301,7 @@ org.tasktide.tasktide.configurer.ManagerConfig --|> org.tasktide.tasktide.config
 ##################################################
 ##################################################
 '/
+
 
 class org.tasktide.tasktide.parser.ArgumentTree {
   .. **Attributes** ..
@@ -484,9 +484,9 @@ org.tasktide.tasktide.parser.ArgumentTree *-- org.tasktide.tasktide.parser.CliPa
 ##################################################
 '/
 
+
 enum org.tasktide.tasktide.containerprovider.CdiProviders #CCCCFF {
   .. **Enum Values** ..
-  JAKARTA
   WELD
   QUARKUS
 
@@ -501,7 +501,6 @@ enum org.tasktide.tasktide.containerprovider.CdiProviders #CCCCFF {
   + static boolean hasQuery(String)
   + static CdiProviders get(String)
 }
-
 
 
 interface org.tasktide.tasktide.containerprovider.CdiContainerProvider<T> <<container>> #F8DE7E {

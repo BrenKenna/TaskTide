@@ -16,9 +16,11 @@
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import java.nio.file.Paths;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.manager.command.ManagerAction;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
@@ -134,6 +136,7 @@ public class ManagerConfig extends AbstractConfig {
         .build();
 
         this.targetFile = this.getConfigValue("tasktide.manager.targetFile", String.class, "");
+        //this.targetFile = Paths.get(targetFile).toString();
         arg.setValue(this.targetFile);
         this.getArgumentMap().putArgument(arg);
     }

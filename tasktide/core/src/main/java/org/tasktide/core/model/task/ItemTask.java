@@ -21,14 +21,14 @@ import jakarta.json.bind.JsonbConfig;
 
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
-
-import jakarta.nosql.Column;
-import jakarta.nosql.Embeddable;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 import java.lang.reflect.Field;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.BuilderUtility;
+import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
@@ -37,36 +37,49 @@ import org.tasktide.core.manager.BuilderUtility;
  * 
  * @author bkenna
  */
-@Embeddable
+@jakarta.nosql.Embeddable
+@jakarta.persistence.Embeddable
 public class ItemTask implements TaskTideModel<ItemTask> {
     
-    @Column
-    @JsonbProperty("Id")
+    @jakarta.nosql.Column("ItemTaskId")
+    @jakarta.persistence.Column(name = "ItemTaskId")
+    @JsonbProperty("ItemTaskId")
     private String itemTaskId;
     
-    
-    @Column
+    @jakarta.nosql.Column("TaskName")
+    @jakarta.persistence.Column(name = "TaskName")
     @JsonbProperty("Task Name")
     private String taskName;
     
-    
-    @Column
+    @jakarta.nosql.Column("Task")
+    @jakarta.persistence.Column(name = "Task")
     @JsonbProperty("Task")
     private String task;
     
-    
-    @Column
+    @jakarta.nosql.Column("TaskState")
+    @jakarta.persistence.Column(name = "TaskState")
     @JsonbProperty("Task State")
     private TaskState taskState;
     
-    
-    @Column
+    @jakarta.nosql.Column("TaskLog")
+    @jakarta.persistence.Column(name = "TaskLog")
     @JsonbProperty("Task Log")
     private TaskLogging taskLog;
     
-    @Column
+    @jakarta.nosql.Column("WorkItemId")
+    @jakarta.persistence.Column(name = "WorkItemId")
     @JsonbProperty("Work Item Id")
     private String workItemId;
+    
+    @jakarta.nosql.Column("JobEnvironmentId")
+    @jakarta.persistence.Column(name = "WorkItemId")
+    @JsonbProperty("Job Environment Id")
+    private String jobEnvId;
+    
+    @jakarta.nosql.Column("Annotations")
+    @jakarta.persistence.Column(name = "Annotations")
+    @JsonbProperty("Annotations")
+    private CustomAnnotation anno;
     
     
     /**
@@ -75,6 +88,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     public ItemTask() {
         this.taskState = TaskState.PENDING;
         this.taskLog = new TaskLogging();
+        this.anno = new CustomAnnotation();
     }
 
 
@@ -92,6 +106,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskLog = taskLog;
         this.task = task;
         this.workItemId = "";
+        this.anno = new CustomAnnotation();
     }
     
     
@@ -110,7 +125,29 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskState = taskState;
         this.taskLog = taskLog;
         this.task = task;
+        this.anno = new CustomAnnotation();
     }
+    
+    
+    /**
+     * Construct with all fields
+     * 
+     * @param itemTaskId
+     * @param taskName
+     * @param task
+     * @param taskState
+     * @param taskLog 
+     * @param anno
+     */
+    public ItemTask(String itemTaskId, String taskName, String task, TaskState taskState, TaskLogging taskLog, CustomAnnotation anno) {
+        this.itemTaskId = itemTaskId;
+        this.taskName = taskName;
+        this.taskState = taskState;
+        this.taskLog = taskLog;
+        this.task = task;
+        this.anno = anno;
+    }
+    
     
     /**
      * Constructor for JSON Deserialization
@@ -121,15 +158,19 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      * @param taskState
      * @param taskLog
      * @param workItemId
+     * @param jobEnvId
+     * @param anno
      */    
     @JsonbCreator
     public ItemTask(
-        @JsonbProperty("Id") String itemTaskId,
+        @JsonbProperty("ItemTaskId") String itemTaskId,
         @JsonbProperty("Task Name") String taskName,
         @JsonbProperty("Task") String task,
         @JsonbProperty("Task State") TaskState taskState,
         @JsonbProperty("Task Log") TaskLogging taskLog,
-        @JsonbProperty("Work Item Id") String workItemId
+        @JsonbProperty("Work Item Id") String workItemId,
+        @JsonbProperty("Job Environment Id") String jobEnvId,
+        @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.itemTaskId = itemTaskId;
         this.taskName = taskName;
@@ -137,8 +178,32 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskState = taskState;
         this.taskLog = taskLog;
         this.workItemId = workItemId;
+        this.jobEnvId = jobEnvId;
+        this.anno = anno;
     }
 
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set provided {@link CustomAnnotation}
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+    
     
     /**
      * Set ItemTask to pending state
@@ -199,6 +264,26 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      */
     public String getWorkItemId() {
         return this.workItemId;
+    }
+    
+    
+    /**
+     * Get job environment Id
+     * 
+     * @return String
+     */
+    public String getJobEnvId() {
+        return this.jobEnvId;
+    }
+    
+    
+    /**
+     * Sets job environment Id
+     * 
+     * @param jobEnvId 
+     */
+    public void setJobEnvId(String jobEnvId) {
+        this.jobEnvId = jobEnvId;
     }
     
     
@@ -288,10 +373,11 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      * @return String
      */
     @Override
+    @JsonbTransient
     public String getCollection() {
         return this.workItemId;
     }
-    
+
     
     /**
      * Represent as string
@@ -300,13 +386,15 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      */
     @Override
     public String toString() {
-        return "ItemTask{" + 
+        return "ItemTask{" +
             "itemTaskId=" + itemTaskId +
             ", taskName=" + taskName +
+            ", task=" + task +
             ", taskState=" + taskState +
             ", taskLog=" + taskLog +
-            ", task=" + task +
             ", workItemId=" + workItemId +
+            ", jobEnvId=" + jobEnvId +
+            ", anno=" + anno +
         '}';
     }
     
@@ -327,6 +415,7 @@ public class ItemTask implements TaskTideModel<ItemTask> {
      * 
      * @return String
      */
+    @Override
     public String toJsonDoc() {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
@@ -339,8 +428,9 @@ public class ItemTask implements TaskTideModel<ItemTask> {
     }
     
     @Override
+    @JsonbTransient
     public String getState() {
-        return this.getTask();
+        return this.getTaskState().name();
     }
 
     @Override

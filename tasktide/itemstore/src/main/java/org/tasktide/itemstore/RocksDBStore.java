@@ -133,7 +133,7 @@ public class RocksDBStore extends AbstractItemStore {
         this.openConn(target);
         switch (target) {
             case MASTER -> {
-                LOGGER.debug("Fetching master iter from:\t'{}'", this.getFilePath());
+                LOGGER.debug("Fetching master iter '{}' from:\t'{}'", target, this.getFilePath());
                 iter = this.fetchIter(this.master);
             }
             default -> {
@@ -440,17 +440,27 @@ public class RocksDBStore extends AbstractItemStore {
         switch (target) {
             case MASTER -> {
                 try {
+                    LOGGER.debug("Waiting for lock");
                     this.waitForLock();
                     if ( this.master == null ) {
+                        LOGGER.debug("Lock acquired. Null master, openning connection");
                         this.master = RocksDB.open(this.options, this.getMasterFilePath());
+                        LOGGER.debug("Master is now '{}'", this.master);
+                        LOGGER.debug("Master state of open is '{}'", !this.master.isClosed());
                         return true;
                     }
                     if (master.isClosed()) {
+                        LOGGER.debug("Lock acquired. Closed mnaster, openning connection");
                         this.master = RocksDB.open(this.options, this.getMasterFilePath());
+                        LOGGER.debug("Master state of open is '{}'", !this.master.isClosed());
+                        return true;
                     }
-                    return true;
+                    LOGGER.debug("Lock acquired. Master is neither closed ir null");
+                    return false;
                 }
                 catch (RocksDBException | InterruptedException | IOException ex) {
+                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
+                    ex.printStackTrace();
                     return false;
                 }
             }
@@ -467,6 +477,8 @@ public class RocksDBStore extends AbstractItemStore {
                     return true;
                 }
                 catch (RocksDBException ex) {
+                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
+                    ex.printStackTrace();
                     return false;
                 }
             }
@@ -495,6 +507,8 @@ public class RocksDBStore extends AbstractItemStore {
                 }
                 
                 catch (RocksDBException | InterruptedException | IOException ex) {
+                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
+                    ex.printStackTrace();
                     return false;
                 }
             }

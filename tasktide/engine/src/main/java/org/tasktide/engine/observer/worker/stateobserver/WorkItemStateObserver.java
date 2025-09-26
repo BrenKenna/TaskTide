@@ -22,6 +22,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.workitem.ItemState;
@@ -88,6 +89,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             // Verify task is still available
             if ( verifyItem(task) ) {
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.LOCKED);
+                task.setJobEnvId(this.JOB_ENV_ID);
                 return ObserverResult.success();
             }
             

@@ -79,7 +79,6 @@ public class ModelBuilderProvider {
             case WORKITEM -> BuilderType.WORK_ITEM;
             case STEP -> BuilderType.STEP;
             case WORKFLOW -> BuilderType.WORKFLOW;
-            
         };      
     }
 }

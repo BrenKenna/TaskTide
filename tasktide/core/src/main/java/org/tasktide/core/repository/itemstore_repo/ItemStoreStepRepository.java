@@ -22,7 +22,7 @@ import org.tasktide.itemstore.ItemStore;
 
 
 /**
- * {@link Step} {@link TaskTideRepository} backed by RocksDB
+ * {@link Step} {@link TaskTideRepository} backed by RocksDB/SQLite
  * 
  * @author bkenna
  */

@@ -94,6 +94,78 @@ public enum ManagerTarget {
         public String toString() {
             return name();
         }
+    },
+    
+    JOB_ENVIRONMENT {
+        @Override
+        public boolean isManagerTarget(String query) {
+            String tmp = this.toString().replace("_", query);
+            query = query.strip().replace(" ", "");
+            return tmp.equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerTarget(ManagerTarget query) {
+            return this == query;
+        }
+        
+        @Override
+        public List<TaskTideModel> fetchModels() {
+            return TaskTideServiceManager.fetchJobEnvironmentService().viewAllToTaskTideModel();
+        }
+    
+        @Override
+        public String toString() {
+            return name();
+        }
+    },
+    
+    METRIC_DATA {
+        @Override
+        public boolean isManagerTarget(String query) {
+            String tmp = this.toString().replace("_", query);
+            query = query.strip().replace(" ", "");
+            return tmp.equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerTarget(ManagerTarget query) {
+            return this == query;
+        }
+        
+        @Override
+        public List<TaskTideModel> fetchModels() {
+            return TaskTideServiceManager.fetchMetricDataService().viewAllToTaskTideModel();
+        }
+    
+        @Override
+        public String toString() {
+            return name();
+        }
+    },
+    
+    METRIC_PROFILE {
+        @Override
+        public boolean isManagerTarget(String query) {
+            String tmp = this.toString().replace("_", query);
+            query = query.strip().replace(" ", "");
+            return tmp.equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerTarget(ManagerTarget query) {
+            return this == query;
+        }
+        
+        @Override
+        public List<TaskTideModel> fetchModels() {
+            return TaskTideServiceManager.fetchMetricProfileService().viewAllToTaskTideModel();
+        }
+    
+        @Override
+        public String toString() {
+            return name();
+        }
     };
 
     

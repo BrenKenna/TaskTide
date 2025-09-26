@@ -22,6 +22,7 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
+import jakarta.nosql.Column;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -32,6 +33,7 @@ import org.tasktide.core.model.state_summary.StateSummary;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -94,12 +96,19 @@ public class Step implements TaskTideModel<Step> {
     @JsonbTransient
     private Workflow workflow;
     
+    // Custom annotations
+    @Column("Annotations")
+    @JsonbProperty("Annotations")
+    private CustomAnnotation anno;
+    
     
     /**
      * Null value constructor
      * 
      */
-    public Step(){}
+    public Step() {
+        this.anno = new CustomAnnotation();
+    }
     
     
     /**
@@ -132,6 +141,7 @@ public class Step implements TaskTideModel<Step> {
         this.stepsDone = stepsDone;
         this.stepsError = stepsError;
         this.stepsToDo = stepsToDo;
+        this.anno = new CustomAnnotation();
     }
     
     
@@ -147,6 +157,7 @@ public class Step implements TaskTideModel<Step> {
      * @param stepsToDo
      * @param stepsError
      * @param workflowId
+     * @param anno
      */
     @JsonbCreator
     public Step(
@@ -158,7 +169,8 @@ public class Step implements TaskTideModel<Step> {
         @JsonbProperty("StepsDone") int stepsDone,
         @JsonbProperty("StepsToDo") int stepsToDo,
         @JsonbProperty("StepsError") int stepsError,
-        @JsonbProperty("WorkflowId") String workflowId
+        @JsonbProperty("WorkflowId") String workflowId,
+        @JsonbProperty("Custom Annotation") CustomAnnotation anno
     ) {
         this.stepId = stepId;
         this.stepName = stepName;
@@ -169,8 +181,31 @@ public class Step implements TaskTideModel<Step> {
         this.stepsError = stepsError;
         this.stepsToDo = stepsToDo;
         this.workflowId = workflowId;
+        this.anno = anno;
     }
 
+    
+    /**
+     * Get annotations
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
+    public CustomAnnotation getAnnotations() {
+        return this.anno;
+    }
+    
+    
+    /**
+     * Set provided {@link CustomAnnotation}
+     * 
+     * @param anno 
+     */
+    @Override
+    public void setAnnotations(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+    
     
     /**
      * Reset model
@@ -435,6 +470,7 @@ public class Step implements TaskTideModel<Step> {
      * 
      * @return String
      */
+    @Override
     public String toJsonDoc() {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);

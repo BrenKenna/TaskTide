@@ -78,6 +78,35 @@ subprojects {
     }
 }
 
+
+/**
+ * Allow list of comma-separated tests to be excluded.
+ *   /-> Tests in full class path format
+ * 
+**/
+test {
+    def excludes = System.getProperty("exclude.tests")
+    if (excludes) {
+        excludes.split(",").each { pattern ->
+            exclude pattern.trim()
+        }
+    }
+}
+
+
+// Builds Java doc
+tasks.register('generateAllJavadocs', Javadoc) {
+    group = 'documentation'
+    description = 'Generates Javadocs for all subprojects'
+
+    // Collect source from all subprojects
+    source = files(subprojects.collect { it.sourceSets.main.allJava })
+    classpath = files(subprojects.collect { it.sourceSets.main.compileClasspath })
+    destinationDir = file("$buildDir/docs/javadoc")
+    
+    options.addStringOption("Xdoclint:none", "-quiet")
+}
+
 project(":itemstore") {}
 project(":core") {}
 project(":engine") {}

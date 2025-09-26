@@ -19,13 +19,23 @@ import java.util.List;
 
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
+
 import org.tasktide.itemstore.ItemStore;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.collection.Step;
+
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.workitem.WorkItem;
+
+import org.tasktide.core.repository.itemstore_repo.ItemStoreJobEnvironmentRepository;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreMetricDataRepository;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreMetricProfileRepository;
+
 import org.tasktide.core.repository.jpa_repo.JpaStepRepository;
 import org.tasktide.core.repository.jpa_repo.JpaWorkItemRepository;
 import org.tasktide.core.repository.jpa_repo.JpaWorkflowRepository;
@@ -38,9 +48,18 @@ import org.tasktide.core.repository.itemstore_repo.ItemStoreStepRepository;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreWorkItemRepository;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreWorkflowRepository;
 
+import org.tasktide.core.repository.jpa_repo.JpaJobEnvironmentRepository;
+import org.tasktide.core.repository.jpa_repo.JpaMetricDataRepository;
+import org.tasktide.core.repository.jpa_repo.JpaMetricProfileRepository;
+
 import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
+
+import org.tasktide.core.repository.nosql_repo.TemplateJobEnvironmentRepository;
+import org.tasktide.core.repository.nosql_repo.TemplateMetricDataRepository;
+import org.tasktide.core.repository.nosql_repo.TemplateMetricProfileRepository;
+
 import org.tasktide.itemstore.ItemStoreType;
 
 
@@ -89,6 +108,12 @@ public enum RepositoryType {
                 return (TemplateRepository<T>) new TemplateStepRepository(template, collectionName);
             } else if (modelType.equals(WorkItem.class)) {
                 return (TemplateRepository<T>) new TemplateWorkItemRepository(template, collectionName);
+            } else if ( modelType.equals(MetricData.class) ) {
+                return (TemplateRepository<T>) new TemplateMetricDataRepository(template, collectionName);
+            } else if ( modelType.equals(MetricProfile.class) ) {
+                return (TemplateRepository<T>) new TemplateMetricProfileRepository(template, collectionName);
+            } else if ( modelType.equals(JobEnvironment.class) ) {
+                return (TemplateRepository<T>) new TemplateJobEnvironmentRepository(template, collectionName);
             } else {
                 throw new IllegalArgumentException("Unsupported model type for Template repository: " + modelType.getSimpleName());
             }
@@ -174,8 +199,14 @@ public enum RepositoryType {
                 return (ItemStoreRepository<T>) new ItemStoreStepRepository(data, collectionName);
             } else if (modelType.equals(WorkItem.class)) {
                 return (ItemStoreRepository<T>) new ItemStoreWorkItemRepository(data, collectionName);
+            } else if ( modelType.equals(MetricData.class) ) {
+                return (ItemStoreRepository<T>) new ItemStoreMetricDataRepository(data, collectionName);
+            } else if ( modelType.equals(MetricProfile.class) ) {
+                return (ItemStoreRepository<T>) new ItemStoreMetricProfileRepository(data, collectionName);
+            } else if ( modelType.equals(JobEnvironment.class) ) {
+                return (ItemStoreRepository<T>) new ItemStoreJobEnvironmentRepository(data, collectionName);
             } else {
-                throw new IllegalArgumentException("Unsupported model type for RocksDb repository: " + modelType.getSimpleName());
+                throw new IllegalArgumentException("Unsupported model type for Template repository: " + modelType.getSimpleName());
             }
         }
     },
@@ -218,12 +249,19 @@ public enum RepositoryType {
                 return (JpaRepository<T>) new JpaStepRepository(entityManager, collectionName);
             } else if (modelType.equals(WorkItem.class)) {
                 return (JpaRepository<T>) new JpaWorkItemRepository(entityManager, collectionName);
+            } else if ( modelType.equals(MetricData.class) ) {
+                return (JpaRepository<T>) new JpaMetricDataRepository(entityManager, collectionName);
+            } else if ( modelType.equals(MetricProfile.class) ) {
+                return (JpaRepository<T>) new JpaMetricProfileRepository(entityManager, collectionName);
+            } else if ( modelType.equals(JobEnvironment.class) ) {
+                return (JpaRepository<T>) new JpaJobEnvironmentRepository(entityManager, collectionName);
             } else {
                 throw new IllegalArgumentException("Unsupported model type for Template repository: " + modelType.getSimpleName());
             }
         }
     };
 
+    
     /**
      * Compare to queried repository string
      *
@@ -232,6 +270,7 @@ public enum RepositoryType {
      */
     public abstract boolean isRepository(String query);
 
+    
     /**
      * Compare to queried to repository
      *
@@ -240,6 +279,7 @@ public enum RepositoryType {
      */
     public abstract boolean isRepository(RepositoryType query);
 
+    
     /**
      * Represent value as a string
      *

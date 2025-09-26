@@ -33,7 +33,6 @@ import org.tasktide.core.model.state_summary.StateSummary;
 
 
 /**
- *
  * Service to provide {@link Step} interactions to backend DB ({@link TaskTideRepository}).
  * <br><br>
  * A step has a list of {@link WorkItem} associated with it.
@@ -147,7 +146,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
             .stream()
             .parallel()
             .map(elm -> (TaskTideModel<Step>) elm)
-            .collect(Collectors.toList());
+        .collect(Collectors.toList());
     }
     
         
