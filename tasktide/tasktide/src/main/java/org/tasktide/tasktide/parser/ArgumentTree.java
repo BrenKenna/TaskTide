@@ -166,7 +166,7 @@ public class ArgumentTree {
     public List<String> getActionHelp(String path) {
         List<String> results = new ArrayList<>();
         results.add("");
-        results.add("Options for Action:\t" + path);
+        results.add("\tOptions for Action:\t" + path);
         results.add("");
         ArgumentMap map = this.getActionArguments(path);
         if (map != null) {
@@ -183,7 +183,7 @@ public class ArgumentTree {
         // Initialize output
         List<String> results = new ArrayList<>();
         results.add("");
-        results.add("Action Arguments:");
+        results.add("\tAction Arguments:");
         results.add("");
         
         // Traverse tree, collating help messages
@@ -216,9 +216,10 @@ public class ArgumentTree {
      */
     private String formatHelpLine(Argument<?> arg) {
         return String.format(
-            "  %-10s %-10s %s",
+            "\t %-10s\t%-10s/%-10s\t%s",
             arg.getName(),
-            arg.getLongFlag() != null ? arg.getLongFlag() : arg.getShortFlag(),
+            arg.getShortFlag() != null ? arg.getShortFlag() : "",
+            arg.getLongFlag() != null ? arg.getLongFlag() : "",
             arg.getDescription()
         );
     }

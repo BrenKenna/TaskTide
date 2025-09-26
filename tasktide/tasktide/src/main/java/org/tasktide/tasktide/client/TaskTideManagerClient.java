@@ -25,6 +25,7 @@ import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerCommand;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.ArgumentMap;
@@ -110,7 +111,7 @@ public class TaskTideManagerClient extends TaskTideClient {
         cmd = this.getManagerCommand();
         
         // Run command
-        LOGGER.info("Executing ManagerCommand:\t'{}'", cmd);
+        LOGGER.info("Executing ManagerCommand:\n'{}'", JsonUtils.toJson(true, cmd));
         result = cmd.execute();
         
         // Handle logging based on action

@@ -82,7 +82,7 @@ public class SqliteStore extends AbstractItemStore {
                 Auto_Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Id TEXT UNIQUE NOT NULL,
                 State TEXT NOT NULL,
-                Step TEXT NOT NULL,
+                Collection TEXT NOT NULL,
                 Payload TEXT NOT NULL
             )
         """;
@@ -106,12 +106,12 @@ public class SqliteStore extends AbstractItemStore {
      */
     private boolean putItem(Connection conn, Item item) {
         String query = 
-            "INSERT INTO Items (Id, State, Step, Payload) VALUES (?, ?, ?, ?)"
+            "INSERT INTO Items (Id, State, Collection, Payload) VALUES (?, ?, ?, ?)"
         ;
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, item.getId());
             ps.setString(2, item.getState());
-            ps.setString(3, item.getStep());
+            ps.setString(3, item.getCollection());
             ps.setString(4, item.getPayload());
             return ps.execute();
         }
@@ -133,7 +133,7 @@ public class SqliteStore extends AbstractItemStore {
             return new Item(
                 rs.getString("Id"),
                 rs.getString("State"),
-                rs.getString("Step"),
+                rs.getString("Collection"),
                 rs.getString("Payload")
             );
         }

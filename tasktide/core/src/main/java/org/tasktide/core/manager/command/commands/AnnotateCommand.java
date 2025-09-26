@@ -21,14 +21,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.command.CommandSpec;
+import org.tasktide.core.manager.command.CommandType;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.file_handler.AnnotationCommandProcessor;
 
 
-
 /**
- *
+ * {@link ManagerCommand} for applying {@link CustomAnnotation}, or {@link JobEnvironment} onto
+ *  {@link TaskTideModel}
+ * 
  * @author Brendan Kenna
  */
 public class AnnotateCommand extends AbstractCommand {
@@ -43,13 +45,15 @@ public class AnnotateCommand extends AbstractCommand {
      * @param action
      * @param target
      * @param cmdSpec
+     * @param cmdType
      */
     public AnnotateCommand(
         @JsonbProperty("Manager Action") ManagerAction action,
         @JsonbProperty("Manager Target") ManagerTarget target,
-        @JsonbProperty("Command Spec") CommandSpec cmdSpec
+        @JsonbProperty("Command Spec") CommandSpec cmdSpec,
+        @JsonbProperty("Command Type") CommandType cmdType
     ) {
-        super(action, target, cmdSpec);
+        super(action, target, cmdSpec, cmdType);
     }
     
     
@@ -97,6 +101,7 @@ public class AnnotateCommand extends AbstractCommand {
             if ( this.cmdSpec.getOptions().isEmpty() ) {
                 return false;
             }
+            return true;
         }
         return false;
     } 

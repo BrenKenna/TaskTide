@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.manager.command.commands;
 
+import jakarta.json.bind.annotation.JsonbProperty;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,6 +25,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.manager.command.CommandSpec;
+import org.tasktide.core.manager.command.CommandType;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 
@@ -49,9 +51,15 @@ public class SummarizeCommand extends AbstractCommand {
      * @param action
      * @param target
      * @param cmdSpec 
+     * @param cmdType 
      */
-    public SummarizeCommand(ManagerAction action, ManagerTarget target, CommandSpec cmdSpec) {
-        super(action, target, cmdSpec);
+    public SummarizeCommand(
+        @JsonbProperty("Manager Action") ManagerAction action,
+        @JsonbProperty("Manager Target") ManagerTarget target,
+        @JsonbProperty("Command Spec") CommandSpec cmdSpec,
+        @JsonbProperty("Command Type") CommandType cmdType
+    ) {
+        super(action, target, cmdSpec, cmdType);
     }
 
     

@@ -153,27 +153,6 @@ public class GlobalConfig extends AbstractConfig {
         
         this.getArgumentMap().putArgument(arg);
     }
-    
-    
-    /**
-     * Configures the {@link TaskTideClient} to use
-     * 
-     */
-    public void client() {
-        Argument<String> arg;
-        arg = this.getArgumentBuilder()
-            .withName("Client")
-            .withDescription("Specifies which client to use")
-            .withShortFlag("-c")
-            .withLongFlag("--client")
-            .withArgType(ArgumentType.GLOBAL)
-            .withRefClass(String.class)
-        .build();
-        
-        this.client = this.getConfigValue("tasktide.client", String.class, "");
-        arg.setValue(this.client);
-        this.getArgumentMap().putArgument(arg);
-    }
 
     
     /**
@@ -191,7 +170,7 @@ public class GlobalConfig extends AbstractConfig {
             .withRefClass(String.class)
         .build();
         
-        this.workflowName = this.getConfigValue("tasktide.core.collection.workflow.name", String.class, "");
+        this.workflowName = this.getConfigValue("tasktide.core.collection.workflow.name", String.class, "Arbitrary");
         arg.setValue(this.workflowName);
         this.getArgumentMap().putArgument(arg);
     }
@@ -212,7 +191,7 @@ public class GlobalConfig extends AbstractConfig {
             .withRefClass(String.class)
         .build();
         
-        this.stepName = this.getConfigValue("tasktide.core.collection.step.name", String.class, "");
+        this.stepName = this.getConfigValue("tasktide.core.collection.step.name", String.class, "Arbitrary");
         arg.setValue(this.stepName);
         this.getArgumentMap().putArgument(arg);
     }
@@ -320,6 +299,27 @@ public class GlobalConfig extends AbstractConfig {
         this.filePath = this.getConfigValue("tasktide.core.repository.file-path", String.class, "");
         arg.setValue(this.filePath);
         LOGGER.debug("Argument is configured as:\n'{}'", arg);
+        this.getArgumentMap().putArgument(arg);
+    }
+      
+    
+    /**
+     * Configures the {@link TaskTideClient} to use
+     * 
+     */
+    public void client() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Client")
+            .withDescription("Specifies which client to use")
+            .withShortFlag("-c")
+            .withLongFlag("--client")
+            .withArgType(ArgumentType.GLOBAL)
+            .withRefClass(String.class)
+        .build();
+        
+        this.client = this.getConfigValue("tasktide.client", String.class, "");
+        arg.setValue(this.client);
         this.getArgumentMap().putArgument(arg);
     }
 }

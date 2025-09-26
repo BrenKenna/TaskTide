@@ -15,18 +15,16 @@
  */
 package org.tasktide.core.manager.command.commands;
 
+import org.tasktide.core.manager.command.CommandType;
 import jakarta.json.JsonObject;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
-import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,7 +47,6 @@ import org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 
-import org.tasktide.core.supporting.FileIO;
 import org.tasktide.core.supporting.JsonUtils;
 
 
@@ -63,11 +60,7 @@ public class ImportCommand extends AbstractCommand{
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(ImportCommand.class);
-    
-    // Whether import is via query or file
-    @JsonbProperty("Import Type")
-    private final ImportType importType;
-    
+
     
     /**
      * Construct import command
@@ -75,34 +68,15 @@ public class ImportCommand extends AbstractCommand{
      * @param action
      * @param target
      * @param cmdSpec
+     * @param cmdType
      */
-    public ImportCommand(
-        @JsonbProperty("Manager Action") ManagerAction action,
-        @JsonbProperty("Manager Target") ManagerTarget target,
-        @JsonbProperty("Command Spec") CommandSpec cmdSpec
-    ) {
-        super(action, target, cmdSpec);
-        this.importType = null;
-    }
-    
-    
-    /**
-     * Construct import command
-     * 
-     * @param action
-     * @param target
-     * @param cmdSpec
-     * @param importType 
-     */
-    @JsonbCreator
     public ImportCommand(
         @JsonbProperty("Manager Action") ManagerAction action,
         @JsonbProperty("Manager Target") ManagerTarget target,
         @JsonbProperty("Command Spec") CommandSpec cmdSpec,
-        @JsonbProperty("Import Type") ImportType importType
+        @JsonbProperty("Command Type") CommandType cmdType
     ) {
-        super(action, target, cmdSpec);
-        this.importType = importType;
+        super(action, target, cmdSpec, cmdType);
     }
     
     
@@ -286,15 +260,5 @@ public class ImportCommand extends AbstractCommand{
             ex.printStackTrace();
             return null;
         }
-    }
-
-    
-    /**
-     * Provides {@link ImportType}
-     * 
-     * @return {@link ImportType}
-     */
-    public ImportType getImportType() {
-        return importType;
     }
 }

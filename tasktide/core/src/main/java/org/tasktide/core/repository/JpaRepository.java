@@ -267,7 +267,10 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         return this.findByFieldForGroup(field, value, group, groupVal)
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().getKey(annoKey).equals(annoValue) )
+            .filter( elm -> elm.getAnnotations() != null 
+                ? elm.getAnnotations().getKey(annoKey).equals(annoValue)
+                :false
+            )
         .collect(Collectors.toList());
     }
     

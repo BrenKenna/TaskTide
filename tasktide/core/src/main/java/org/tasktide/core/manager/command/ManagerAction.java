@@ -37,6 +37,11 @@ public enum ManagerAction {
 
     IMPORT {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.BATCH_CREATE;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -53,13 +58,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new ImportCommand(ManagerAction.IMPORT, target, cmdSpec);
+            AbstractCommand cmd = new ImportCommand(ManagerAction.IMPORT, target, cmdSpec, CommandType.BATCH_CREATE);
             return cmd;
         }
     },
 
     EXPORT {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.EXPORT;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -76,13 +86,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new ExportCommand(ManagerAction.EXPORT, target, cmdSpec);
+            AbstractCommand cmd = new ExportCommand(ManagerAction.EXPORT, target, cmdSpec, CommandType.EXPORT);
             return cmd;
         }
     },
     
     EXPORT_QUERY {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.EXPORT;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -99,13 +114,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new ExportCommand(ManagerAction.EXPORT_QUERY, target, cmdSpec);
+            AbstractCommand cmd = new ExportCommand(ManagerAction.EXPORT_QUERY, target, cmdSpec, CommandType.EXPORT);
             return cmd;
         }
     },
     
     ADD {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.CREATE;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -122,12 +142,17 @@ public enum ManagerAction {
     
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new ImportCommand(ManagerAction.ADD, target, cmdSpec);
+            AbstractCommand cmd = new ImportCommand(ManagerAction.ADD, target, cmdSpec, CommandType.CREATE);
             return cmd;
         }
     },
     
     APPEND {
+        @Override
+        public CommandType getCommandType() {
+            return CommandType.UPDATE;
+        }
+        
         @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
@@ -145,12 +170,17 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new ImportCommand(ManagerAction.APPEND, target, cmdSpec);
+            AbstractCommand cmd = new ImportCommand(ManagerAction.APPEND, target, cmdSpec, CommandType.UPDATE);
             return cmd;
         }
     },
     
     RESET_ITEM {
+        @Override
+        public CommandType getCommandType() {
+            return CommandType.UPDATE;
+        }
+        
         @Override
         public boolean isManagerAction(String query) {
             query = query.trim().replace(" ", "").replace("-", "").replace("_", "").toLowerCase();
@@ -169,12 +199,17 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new ResetCommand(ManagerAction.RESET_ITEM, target, cmdSpec);
+            AbstractCommand cmd = new ResetCommand(ManagerAction.RESET_ITEM, target, cmdSpec, CommandType.UPDATE);
             return cmd;
         }
     },
     
     RESET_ITEMS {
+        @Override
+        public CommandType getCommandType() {
+            return CommandType.BATCH_UPDATE;
+        }
+        
         @Override
         public boolean isManagerAction(String query) {
             query = query.trim().replace(" ", "").replace("-", "").replace("_", "").toLowerCase();
@@ -193,13 +228,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new ResetCommand(ManagerAction.RESET_ITEMS, target, cmdSpec);
+            AbstractCommand cmd = new ResetCommand(ManagerAction.RESET_ITEMS, target, cmdSpec, CommandType.BATCH_UPDATE);
             return cmd;
         }
     },
     
     SUMMARIZE_EACH {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.SELECT;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -216,13 +256,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new SummarizeCommand(ManagerAction.SUMMARIZE_EACH, target, cmdSpec);
+            AbstractCommand cmd = new SummarizeCommand(ManagerAction.SUMMARIZE_EACH, target, cmdSpec, CommandType.SELECT);
             return cmd;
         }
     },
     
     SUMMARIZE {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.SELECT;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -239,13 +284,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new SummarizeCommand(ManagerAction.SUMMARIZE, target, cmdSpec);
+            AbstractCommand cmd = new SummarizeCommand(ManagerAction.SUMMARIZE, target, cmdSpec, CommandType.SELECT);
             return cmd;
         }
     },
     
     DELETE {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.DELETE;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -262,13 +312,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new DeleteCommand(ManagerAction.DELETE, target, cmdSpec);
+            AbstractCommand cmd = new DeleteCommand(ManagerAction.DELETE, target, cmdSpec, CommandType.DELETE);
             return cmd;
         }
     },
     
     DELETE_LIST {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.BATCH_DELETE;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -285,13 +340,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new DeleteCommand(ManagerAction.DELETE_LIST, target, cmdSpec);
+            AbstractCommand cmd = new DeleteCommand(ManagerAction.DELETE_LIST, target, cmdSpec, CommandType.BATCH_DELETE);
             return cmd;
         }
     },
    
     ANNOTATE_JOB {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.BATCH_UPDATE;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -308,13 +368,18 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new AnnotateCommand(ManagerAction.ANNOTATE_JOB, target, cmdSpec);
+            AbstractCommand cmd = new AnnotateCommand(ManagerAction.ANNOTATE_JOB, target, cmdSpec, CommandType.BATCH_UPDATE);
             return cmd;
         }
     },
     
     ANNOTATION {
         @Override
+        public CommandType getCommandType() {
+            return CommandType.BATCH_UPDATE;
+        }
+        
+        @Override
         public boolean isManagerAction(String query) {
             return this.toString().equalsIgnoreCase(query);
         }
@@ -331,7 +396,7 @@ public enum ManagerAction {
         
         @Override
         public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
-            AbstractCommand cmd = new AnnotateCommand(ManagerAction.ANNOTATION, target, cmdSpec);
+            AbstractCommand cmd = new AnnotateCommand(ManagerAction.ANNOTATION, target, cmdSpec, CommandType.BATCH_UPDATE);
             return cmd;
         }
     };
@@ -348,6 +413,7 @@ public enum ManagerAction {
     
     public abstract boolean isManagerAction(String query);
     public abstract boolean isManagerAction(ManagerAction query);
+    public abstract CommandType getCommandType();
 
 
     /**

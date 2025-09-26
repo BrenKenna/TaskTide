@@ -14,83 +14,151 @@
  * limitations under the License.
  */
 
-package org.tasktide.core.manager.command.commands;
+package org.tasktide.core.manager.command;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 
 /**
- * Valid ways {@link ManagerCommand} can import
+ * Valid ways {@link ManagerCommand} can interact with {@link TaskTideRepository}
  * 
  * @author Brendan Kenna
  */
-public enum ImportType {
-
-    DELIMITED {
+public enum CommandType {
+    
+    EXPORT {
         @Override
         public String toString() {
             return name();
         }
 
         @Override
-        public boolean isImportTypes(String query) {
+        public boolean isCommandType(String query) {
             return name().equalsIgnoreCase(query);
         }
 
         @Override
-        public boolean isImportTypes(ImportType query) {
-            return this == query;
-        }
-    },
-
-    NESTED_DELIMITED {
-        @Override
-        public String toString() {
-            return name();
-        }
-
-        @Override
-        public boolean isImportTypes(String query) {
-            return name().equalsIgnoreCase(query);
-        }
-
-        @Override
-        public boolean isImportTypes(ImportType query) {
+        public boolean isCommandType(CommandType query) {
             return this == query;
         }
     },
     
-    JSON_FILE {
+    SELECT {
         @Override
         public String toString() {
             return name();
         }
 
         @Override
-        public boolean isImportTypes(String query) {
+        public boolean isCommandType(String query) {
             return name().equalsIgnoreCase(query);
         }
 
         @Override
-        public boolean isImportTypes(ImportType query) {
+        public boolean isCommandType(CommandType query) {
+            return this == query;
+        }
+    },
+
+    CREATE {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isCommandType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isCommandType(CommandType query) {
             return this == query;
         }
     },
     
-    STRING {
+    BATCH_CREATE {
         @Override
         public String toString() {
             return name();
         }
 
         @Override
-        public boolean isImportTypes(String query) {
+        public boolean isCommandType(String query) {
             return name().equalsIgnoreCase(query);
         }
 
         @Override
-        public boolean isImportTypes(ImportType query) {
+        public boolean isCommandType(CommandType query) {
+            return this == query;
+        }
+    },
+    
+    UPDATE {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isCommandType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isCommandType(CommandType query) {
+            return this == query;
+        }
+    },
+    
+    BATCH_UPDATE {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isCommandType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isCommandType(CommandType query) {
+            return this == query;
+        }
+    },
+    
+    DELETE {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isCommandType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isCommandType(CommandType query) {
+            return this == query;
+        }
+    },
+    
+    BATCH_DELETE {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isCommandType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isCommandType(CommandType query) {
             return this == query;
         }
     };
@@ -102,7 +170,7 @@ public enum ImportType {
      * @param query
      * @return boolean
      */
-    public abstract boolean isImportTypes(String query);
+    public abstract boolean isCommandType(String query);
 
 
     /**
@@ -111,7 +179,7 @@ public enum ImportType {
      * @param query
      * @return boolean
      */
-    public abstract boolean isImportTypes(ImportType query);
+    public abstract boolean isCommandType(CommandType query);
 
 
     /**
@@ -121,8 +189,8 @@ public enum ImportType {
      * @return >0/-1
      */
     public static int indexOf(String query) {
-        for ( ImportType elm : values() ) {
-            if ( elm.isImportTypes(query) ) {
+        for ( CommandType elm : values() ) {
+            if ( elm.isCommandType(query) ) {
                 return elm.ordinal();
             }
         }
@@ -141,8 +209,8 @@ public enum ImportType {
             return false;
         }
 
-        for ( ImportType elm : values() ) {
-            if ( elm.isImportTypes(query) ) {
+        for ( CommandType elm : values() ) {
+            if ( elm.isCommandType(query) ) {
                 return true;
             }
         }
@@ -156,7 +224,7 @@ public enum ImportType {
      * @param query
      * @return ImportTypes
      */
-    public static ImportType get(String query) {
+    public static CommandType get(String query) {
         int ind = indexOf(query);
         if ( ind >= 0 ) {
             return values()[ind];

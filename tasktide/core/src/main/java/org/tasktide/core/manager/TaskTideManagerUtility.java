@@ -33,6 +33,13 @@ import org.tasktide.core.supporting.Utils;
 
 /**
  * Collection of static methods to support {@link ManagerTask} to {@link TaskTideModel}.
+ * <br><br>1). Handling {@link Step} for {@link WorkItem}
+ * <br><br>2). Handling {@link Workflow} for {@link Step}. Where workflow name defaults
+ *  to the same as that for the step. Meaning, random "Arbitrary" tasks
+ *  can still be viewed as they are, and workflows developed as individual
+ *  steps, without interfering with defined workflows (StepA, StepB, StepC)
+ * 
+ * Maybe some methods for ManagerCommand instead?
  * 
  * @author bkenna
  */
@@ -93,7 +100,7 @@ public class TaskTideManagerUtility {
      */
     public static void configureNewStep(String stepName) {
         Step step = BuilderUtility.buildStep(STEP_ID, stepName);
-        
+        handleWorkflowForStep(step);
         try {
             TaskTideServiceManager.fetchStepService().appendModel(step);
         }
@@ -104,14 +111,40 @@ public class TaskTideManagerUtility {
     
     
     /**
+     * Handle {@link Workflow} for {@link Step}. Where workflow name defaults
+     *  to the same as that for the step. Meaning, random "Arbitrary" tasks
+     *  can still be viewed as they are, and workflows developed as individual
+     *  steps, without interfering with defined workflows (StepA, StepB, StepC)
+     * 
+     * @param step 
+     */
+    public static void handleWorkflowForStep(Step step) {
+        String workflowId;
+        if (step.getCollection() == null) {
+            List<Workflow> data = TaskTideServiceManager.fetchWorkflowService().viewByField("workflowName", step.getStepName());
+            if ( data.isEmpty() ) {
+                workflowId = fetchWorkflowId(step.getStepName());
+            }
+            else {
+                workflowId = fetchWorkflowId(data.get(0).getId());
+            }
+        }
+        else {
+            workflowId = fetchWorkflowId(step.getCollection());
+        }
+        step.setWorkflowId(workflowId);
+    }
+    
+    
+    /**
      * Fetch workflowId for provided step
      * 
      * @param workflowName
      * @return String
      */
     public static String fetchWorkflowId(String workflowName) {
-        List<Workflow> workflows = TaskTideServiceManager.fetchWorkflowService().viewByField("WorkflowName", workflowName);
-        if ( !workflows.isEmpty() ) {
+        List<Workflow> workflows = TaskTideServiceManager.fetchWorkflowService().viewByField("workflowName", workflowName);
+        if ( workflows.isEmpty() ) {
             configureNewWorkflow(workflowName);
             return WORKFLOW_ID;
         }
@@ -164,7 +197,7 @@ public class TaskTideManagerUtility {
         // Push if not in db
         List<JobEnvironment> jobEnvs = TaskTideServiceManager
             .fetchJobEnvironmentService()
-            .viewByField("HostOS", jobEnv.getHostOS());
+            .viewByField("hostOS", jobEnv.getHostOS());
         if ( !jobEnvs.isEmpty()) {
             return jobEnvs.get(0).getId();
         }

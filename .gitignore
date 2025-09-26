@@ -4,3 +4,4 @@ tasktide/*/build/
 tasktide/*/bin/
 .gitignore
 .secret/
+TaskTide.tar.gz

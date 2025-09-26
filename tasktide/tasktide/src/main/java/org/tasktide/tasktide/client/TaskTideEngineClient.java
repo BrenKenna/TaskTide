@@ -221,10 +221,11 @@ public class TaskTideEngineClient extends TaskTideClient {
      */
     private List<WorkItem> fetchWorkload(String step) {
         if ( this.hasPilotLabel() ) {
-            LOGGER.info("Pilot label detected");
+            LOGGER.info("Pilot label provided");
             return this.handlePilotLabel(step);
         }
         else {
+            LOGGER.info("No pilot label provided, processing all tasks");
             return EngineUtility.fetchToDoWorkTarget(step);
         }
     }
@@ -252,7 +253,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         // Process target step
         else if ( !this.step.equalsIgnoreCase("na") ) {
             LOGGER.info("Processing single step:\t'{}'", step);
-            List<WorkItem> workload = EngineUtility.fetchToDoWorkTarget(step);
+            List<WorkItem> workload = this.fetchWorkload(step);
             this.processWorkload(workload);
             LOGGER.info("Processing complete for step:\t'{}'", step);
         }

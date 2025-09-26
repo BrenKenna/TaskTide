@@ -25,7 +25,7 @@ package org.tasktide.itemstore;
 public class Item<T> {
     
     // Attributes
-    private String id, state, step, payload;
+    private String id, state, collection, payload;
     
     
     /**
@@ -39,13 +39,13 @@ public class Item<T> {
      * 
      * @param id
      * @param state
-     * @param step
+     * @param collection
      * @param payload 
      */
-    public Item(String id, String state, String step, String payload) {
+    public Item(String id, String state, String collection, String payload) {
         this.id = id;
         this.state = state;
-        this.step = step;
+        this.collection = collection;
         this.payload = payload;
     }
     
@@ -111,22 +111,22 @@ public class Item<T> {
 
     
     /**
-     * Get step name
+     * Get collection
      * 
      * @return 
      */
-    public String getStep() {
-        return step;
+    public String getCollection() {
+        return this.collection;
     }
 
     
     /**
      * Set step name
      * 
-     * @param step 
+     * @param collection 
      */
-    public void setStep(String step) {
-        this.step = step;
+    public void setCollection(String collection) {
+        this.collection = collection;
     }
 
     
@@ -140,7 +140,7 @@ public class Item<T> {
         return "Item{" +
             "id=" + id +
             ", state=" + state +
-            ", step=" + step +
+            ", collection=" + collection +
             ", payload=" + payload +
         '}';
     }

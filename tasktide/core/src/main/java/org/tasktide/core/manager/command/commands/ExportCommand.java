@@ -16,6 +16,7 @@
 package org.tasktide.core.manager.command.commands;
 
 import jakarta.json.JsonObject;
+import jakarta.json.bind.annotation.JsonbProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.core.supporting.FileIO;
 
 import org.tasktide.core.manager.command.CommandSpec;
+import org.tasktide.core.manager.command.CommandType;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 
@@ -52,9 +54,15 @@ public class ExportCommand extends AbstractCommand {
      * @param action
      * @param target
      * @param cmdSpec 
+     * @param cmdType 
      */
-    public ExportCommand(ManagerAction action, ManagerTarget target, CommandSpec cmdSpec) {
-        super(action, target, cmdSpec);
+    public ExportCommand(
+        @JsonbProperty("Manager Action") ManagerAction action,
+        @JsonbProperty("Manager Target") ManagerTarget target,
+        @JsonbProperty("Command Spec") CommandSpec cmdSpec,
+        @JsonbProperty("Command Type") CommandType cmdType
+    ) {
+        super(action, target, cmdSpec, cmdType);
     }
 
     
