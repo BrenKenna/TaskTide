@@ -21,9 +21,11 @@ import java.util.concurrent.ExecutorService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.model.builders.CustomAnnotationBuilder;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.supporting.JsonUtils;
@@ -206,7 +208,8 @@ public class TaskTideEngineClient extends TaskTideClient {
         
         else {
             String json = (String) this.engineArgs.getArgument("Pilot Label Annotation").getValue();
-            CustomAnnotation anno = JsonUtils.fromJson(json, CustomAnnotation.class);
+            CustomAnnotation anno = CustomAnnotationBuilder.fromJsonString(json);
+            LOGGER.info("Evaluating annotation query:\n'{}'", JsonUtils.toJson(true, anno));
             return EngineUtility.fetchToDoWorkTargetPilotLabel(step, anno);
         }
     }

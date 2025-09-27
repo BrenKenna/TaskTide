@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.manager;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -76,6 +77,7 @@ public class BuilderUtility {
     public static CustomAnnotation makeEmptyAnnotation() {
         return new CustomAnnotationBuilder()
             .withId("CustomAnnotation-" + Utils.generateSalt())
+            .withAnno(new HashMap<>())
         .build();
     }
     

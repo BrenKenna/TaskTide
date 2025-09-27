@@ -143,9 +143,16 @@ public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
      */
     @Override
     public ItemTask build() {
+        ItemTask output;
         if ( workItemId != null ) {
-            return new ItemTask(id, taskName, task, taskState, taskLog, workItemId, jobEnvId, anno);
+            output = new ItemTask(id, taskName, task, taskState, taskLog, workItemId, jobEnvId, anno);
         }
-        return new ItemTask(id, taskName, task, taskState, taskLog, anno);
+        else {
+            output = new ItemTask(id, taskName, task, taskState, taskLog, anno);
+        }
+        if ( output.getJobEnvId() == null ) {
+            output.setJobEnvId("");
+        }
+        return output;
     }
 }

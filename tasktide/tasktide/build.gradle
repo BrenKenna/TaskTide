@@ -161,7 +161,7 @@ tasks.register('annotations', JavaExec) {
 
 // Test batch execution
 tasks.register('pilotLabelExecution', JavaExec) {
-    dependsOn(tasks.named("annotations"))
+    //dependsOn(tasks.named("annotations"))
     group = 'application'
     description = 'Run engine in batch mode using pilot label'
     classpath = sourceSets.main.runtimeClasspath
@@ -169,10 +169,10 @@ tasks.register('pilotLabelExecution', JavaExec) {
     
     args = [
             "engine",
-            "--repository-type", "sql",
-            "--step-name", "SequenceAlignment",
-            "--pilot-label-key", "Pilot Label",
-            "--pilot-label-value", "Gradle Build",
+            "--repository-type", "nosql",
+            "--nosql-database-type", "document",
+            "--step-name", "Arbitrary",
+            "--pilo-label-annotation", """{""Pilot Label"": ""Unit-Tests-Are-Awesome""}""",
             "--execution-policy", "batch"
     ]
 }

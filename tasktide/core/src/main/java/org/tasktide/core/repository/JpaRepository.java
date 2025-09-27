@@ -206,7 +206,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
             .stream()
             .parallel()
             .filter( elm ->
-                elm.elm.getAnnotations() != null
+                elm.getAnnotations() != null
                 ? elm.getAnnotations().queriedFieldsMatch(anno)
                 : false
             )
@@ -228,7 +228,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
             .parallel()
             .filter( elm ->
                 elm.getAnnotations() != null
-                elm.getAnnotations().getKey(key).equals(value)
+                ?elm.getAnnotations().getKey(key).equals(value)
                 : false
             )
         .collect(Collectors.toList());

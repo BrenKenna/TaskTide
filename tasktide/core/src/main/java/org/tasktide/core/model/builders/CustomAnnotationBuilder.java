@@ -15,9 +15,12 @@
  */
 package org.tasktide.core.model.builders;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.core.supporting.Utils;
 
 
 /**
@@ -71,6 +74,28 @@ public class CustomAnnotationBuilder extends ModelBuilder<CustomAnnotation> {
      */
     @Override
     public CustomAnnotation build() {
+        if ( anno == null ) {
+            anno = new HashMap<>();
+        }
         return new CustomAnnotation(id, anno);
+    }
+    
+    
+    /**
+     * Staatic building from command-line input as JSON, where an
+     *  Id would not already be present, as string is converted to Map
+     * 
+     * @param json
+     * @return {@link CustomAnnotation}
+     */
+    public static CustomAnnotation fromJsonString(String json) {
+        Map<String, Object> map = JsonUtils.mapFromJson(json);
+        CustomAnnotation anno = new CustomAnnotationBuilder()
+            .withAnno(map)
+        .build();
+        if ( anno.getId() == null ) {
+            anno.setAnnoId("CustomAnnotation-" + Utils.generateSalt());
+        }
+        return anno;
     }
 }

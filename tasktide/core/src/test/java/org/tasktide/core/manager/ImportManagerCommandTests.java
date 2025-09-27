@@ -16,6 +16,7 @@
 package org.tasktide.core.manager;
 
 import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.nosql.Template;
 
 import jakarta.persistence.EntityManager;
 import java.nio.file.Path;
@@ -70,13 +71,19 @@ public class ImportManagerCommandTests {
     
     private static final Logger LOGGER = LogManager.getLogger(ImportManagerCommandTests.class);
     
+    // Container for fetch nosql template
+    private SeContainer container;
+    private EntityManager entityManager;
+    private Template template;
+    
+    // Backend repos
+    // @Rule
+    //private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    
     // Backend repo
     @Rule
     public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
-    // Container for fetch nosql template
-    private SeContainer container;
-    private EntityManager entityManager;
     
     public ImportManagerCommandTests() {
     }
@@ -86,8 +93,9 @@ public class ImportManagerCommandTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Import Manager Command Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
+        container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
+        template = TestEnvironment.fetchDocumentTemplate(container);
         this.initServiceManager();
         //this.initRecord();
     }
@@ -101,6 +109,7 @@ public class ImportManagerCommandTests {
             LOGGER.info("CDI container shut down");
         }
         mariaDB.stop();
+        // couchDB.stop;
     }
     
     @BeforeEach
@@ -120,10 +129,10 @@ public class ImportManagerCommandTests {
     public void initServiceManager() {
         
         // Fetch services
-        RepositoryType repoType = RepositoryType.SQL;
-        TaskTideService<Workflow> workflowServ = ServiceFactory.makeWorkflowService(repoType, entityManager, "Workflow");
-        TaskTideService<Step> repoStep = ServiceFactory.makeStepService(repoType, entityManager, "Step");
-        TaskTideService<WorkItem> repoWorkItem = ServiceFactory.makeWorkItemService(repoType, entityManager, "WorkItem");
+        RepositoryType repoType = RepositoryType.NOSQL;
+        TaskTideService<Workflow> workflowServ = ServiceFactory.makeWorkflowService(repoType, template, "Workflow");
+        TaskTideService<Step> repoStep = ServiceFactory.makeStepService(repoType, template, "Step");
+        TaskTideService<WorkItem> repoWorkItem = ServiceFactory.makeWorkItemService(repoType, template, "WorkItem");
         
         // Initialize service manager with services
         TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ);

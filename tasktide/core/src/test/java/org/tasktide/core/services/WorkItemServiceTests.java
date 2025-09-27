@@ -65,8 +65,8 @@ public class WorkItemServiceTests {
     private Template template;
     
     // Backend repos
-    @Rule
-    private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    //@Rule
+    //private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     @Rule
     private final GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
@@ -91,7 +91,7 @@ public class WorkItemServiceTests {
             container.close();
             logger.info("CDI container shut down");
         }
-        couchDB.stop();
+        //couchDB.stop();
         mariaDB.stop();
     }
     
