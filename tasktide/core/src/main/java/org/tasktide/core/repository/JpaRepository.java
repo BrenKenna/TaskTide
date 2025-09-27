@@ -205,7 +205,11 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         return this.findAll()
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().queriedFieldsMatch(anno) )
+            .filter( elm ->
+                elm.elm.getAnnotations() != null
+                ? elm.getAnnotations().queriedFieldsMatch(anno)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
@@ -222,7 +226,11 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         return this.findAll()
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().getKey(key).equals(value) )
+            .filter( elm ->
+                elm.getAnnotations() != null
+                elm.getAnnotations().getKey(key).equals(value)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
@@ -238,12 +246,11 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         return this.findAll()
             .stream()
             .parallel()
-            .filter( elm -> {
-                if ( elm.getAnnotations()!= null ) {
-                    elm.getAnnotations().hasKey(key);
-                }
-                return false;
-            })
+            .filter( elm -> 
+                elm.getAnnotations() != null
+                ? elm.getAnnotations().hasKey(key)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
@@ -267,9 +274,10 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         return this.findByFieldForGroup(field, value, group, groupVal)
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations() != null 
+            .filter( elm ->
+                elm.getAnnotations() != null 
                 ? elm.getAnnotations().getKey(annoKey).equals(annoValue)
-                :false
+                : false
             )
         .collect(Collectors.toList());
     }
@@ -290,7 +298,11 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         return this.findByFieldForGroup(field, value, group, groupVal)
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().queriedFieldsMatch(anno) )
+            .filter( elm ->
+                elm.getAnnotations() != null
+                ? elm.getAnnotations().queriedFieldsMatch(anno)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
