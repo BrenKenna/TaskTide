@@ -196,7 +196,11 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         return this.findAll()
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().queriedFieldsMatch(anno) )
+            .filter( elm ->
+                elm.getAnnotations() != null
+                ? elm.getAnnotations().queriedFieldsMatch(anno)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
@@ -213,7 +217,11 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         return this.findAll()
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().getKey(key).equals(value) )
+            .filter( elm -> 
+                elm.getAnnotations() != null
+                ? elm.getAnnotations().getKey(key).equals(value)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
@@ -229,7 +237,11 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         return this.findAll()
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().hasKey(key) )
+            .filter( elm ->
+                elm.getAnnotations() != null
+                ? elm.getAnnotations().hasKey(key)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
@@ -253,7 +265,11 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         return this.findByFieldForGroup(field, value, group, groupVal)
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().getKey(annoKey).equals(annoValue) )
+            .filter( elm ->
+                elm.getAnnotations() != null
+                ? elm.getAnnotations().getKey(annoKey).equals(annoValue)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
@@ -273,7 +289,11 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         return this.findByFieldForGroup(field, value, group, groupVal)
             .stream()
             .parallel()
-            .filter( elm -> elm.getAnnotations().queriedFieldsMatch(anno) )
+            .filter( elm ->
+                elm.getAnnotations() != null
+                ? elm.getAnnotations().queriedFieldsMatch(anno)
+                : false
+            )
         .collect(Collectors.toList());
     }
     
