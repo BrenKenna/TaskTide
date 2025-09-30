@@ -112,7 +112,8 @@ tasks.register('singleTaskImport', JavaExec) {
     
     args = [
             "manager",
-            "--repository-type", "sql",
+            "--repository-type", "sqlite",
+            "--file-path", "./itemStoreRepo/sqlite",
             "--target-file", "src/test/resources/singleTaskImports.txt",
             "--method", "import",
             "--delimiter", "|",

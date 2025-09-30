@@ -135,4 +135,15 @@ public class StateSummary<T extends StateSummaryType> {
         Jsonb json = JsonbBuilder.create();
         return json.toJson(this);
     }
+
+    
+    /**
+     * Represent as String
+     * 
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "StateSummary{" + "counts=" + counts + '}';
+    }
 }

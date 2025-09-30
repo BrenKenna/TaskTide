@@ -115,7 +115,7 @@ public class TaskTideManagerClient extends TaskTideClient {
         result = cmd.execute();
         
         // Handle logging based on action
-        LOGGER.info("Displaying results:\t'{}'", result);
+        LOGGER.info("Displaying results:\t'{}'", JsonUtils.toJson(true, result));
     }
     
     

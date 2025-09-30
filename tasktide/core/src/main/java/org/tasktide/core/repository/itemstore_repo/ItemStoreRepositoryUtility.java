@@ -115,7 +115,6 @@ public class ItemStoreRepositoryUtility {
         TaskTideService<MetricProfile> profileServ;
         TaskTideService<JobEnvironment> jobEnvServ;
         
-        
         // Fetch item store map
         itemStoreMap = fetchItemStoreMap(this.storeType, this.storeName);
         
@@ -129,9 +128,9 @@ public class ItemStoreRepositoryUtility {
         profileServ = ServiceFactory.makeMetricProfileService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.METRIC_PROFILE), "MetricProfile");
         jobEnvServ = ServiceFactory.makeJobEnvironmentService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.JOB_ENVIRONMENT), "JobEnvironment");
         
-        
         // Initialize service manager with services
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
+        LOGGER.info("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
     }
     
     

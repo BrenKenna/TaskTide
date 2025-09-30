@@ -148,6 +148,7 @@ public class DeleteCommand extends AbstractCommand {
         
             case DELETE -> {
                 if ( this.cmdSpec.getQueryString().isPresent() ) {
+                    String qyertString = this.cmdSpec.getQueryString().get();
                     LOGGER.info("Deleting ItemTask from WorkItem provided as JSON");
                     return this.deleteTask();
                 }

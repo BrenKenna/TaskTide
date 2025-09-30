@@ -16,6 +16,7 @@
 package org.tasktide.core.manager;
 
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.TaskTideService;
@@ -33,6 +34,7 @@ import org.tasktide.core.services.MetricProfileService;
 import org.tasktide.core.services.WorkItemService;
 import org.tasktide.core.services.StepService;
 import org.tasktide.core.services.WorkflowService;
+import org.tasktide.core.supporting.JsonUtils;
 
 
 /**
@@ -253,6 +255,32 @@ public final class TaskTideServiceManager {
      */
     @SuppressWarnings("unchecked")
     public <T extends TaskTideModel<T>> TaskTideService<T> getServiceFor(ManagerTarget tgt) {
-        return INSTANCE.serviceMap.get(tgt);   
+        return INSTANCE.serviceMap.get(tgt);
+    }
+    
+    
+    /**
+     * Represent as String
+     * 
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "TaskTideServiceManager{" +
+            "serviceMap=" + serviceMap +
+        '}';
+    }
+    
+    
+    /**
+     * Represent as JSON string
+     * 
+     * @return String
+     */
+    public static String toJson() {
+        if ( INSTANCE != null ) {
+             return JsonUtils.toJson(true, INSTANCE.serviceMap);
+        }
+        throw new IllegalStateException("TaskTideServiceManager must be initialized first");  
     }
 }

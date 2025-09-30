@@ -31,6 +31,7 @@ import org.tasktide.core.manager.command.ManagerTarget;
 
 import org.tasktide.core.model.state_summary.StateSummary;
 import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.supporting.FileIO;
 
 
 /**
@@ -76,13 +77,25 @@ public class SummarizeCommand extends AbstractCommand {
             case SUMMARIZE -> {
                 LOGGER.info("Summarizing collection");
                 StateSummary<ItemState> summary = this.summarize();
-                return summary;
+                if ( !this.directOutput(summary) ) {
+                    LOGGER.info("Directing results to stdout");
+                    return summary;
+                }
+                else {
+                    return true;
+                }
             }
             
             case SUMMARIZE_EACH -> {
                 LOGGER.info("Summarizing each element in collection");
                 Map<String, StateSummary<ItemState>> summaries = this.summarizeEach();
-                return summaries;
+                if ( !this.directOutput(summaries) ) {
+                    LOGGER.info("Directing results to stdout");
+                    return summaries;
+                }
+                else {
+                    return true;
+                }
             }
             
             default -> {
@@ -94,6 +107,25 @@ public class SummarizeCommand extends AbstractCommand {
         }
     }
 
+    
+    /**
+     * Direct results to stdout or the the configured file path
+     *  from {@link CommandSpec}
+     * 
+     * @param results
+     * @return boolean
+     */
+    private boolean directOutput(Object results) {
+        if ( this.cmdSpec.getFilePath().isPresent() ) {
+            String filePath = this.cmdSpec.getFilePath().get();
+            if ( !filePath.isEmpty() ) {
+                LOGGER.info("Directing output to '{}'", filePath);
+                return FileIO.exportJson(true, results, filePath);
+            }
+        }
+        return false;
+    } 
+    
     
     /**
      * Validates {@link CommandSpec} for summary

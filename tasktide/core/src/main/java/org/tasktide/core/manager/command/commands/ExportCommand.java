@@ -196,11 +196,6 @@ public class ExportCommand extends AbstractCommand {
                     return false;
                 }
                 
-                if ( !this.cmdSpec.hasOptionsKey("Parameter") ) {
-                    LOGGER.error("Export on query must have paramter");
-                    return false;
-                }
-                
                 return true;
             }
             

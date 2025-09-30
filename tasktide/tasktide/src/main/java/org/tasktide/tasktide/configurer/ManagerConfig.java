@@ -16,7 +16,7 @@
 package org.tasktide.tasktide.configurer;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import java.nio.file.Paths;
+
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
