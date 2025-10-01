@@ -195,7 +195,6 @@ public class ExportCommand extends AbstractCommand {
                     LOGGER.error("Error, a subject must be provided either as a Target or Step Name");
                     return false;
                 }
-                
                 return true;
             }
             

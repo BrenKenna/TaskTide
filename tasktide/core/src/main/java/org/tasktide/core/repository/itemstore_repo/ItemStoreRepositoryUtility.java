@@ -130,7 +130,7 @@ public class ItemStoreRepositoryUtility {
         
         // Initialize service manager with services
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
-        LOGGER.info("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
+        LOGGER.debug("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
     }
     
     
@@ -147,10 +147,10 @@ public class ItemStoreRepositoryUtility {
         Path store = Paths.get(storeName);
         try {
             Files.createDirectories(store);
-            LOGGER.info("ItemStore Directory created under:\t'{}'", storeName);
+            LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
         }
         catch (IOException ex) {
-            LOGGER.info("ItemStoreDirectory already exists under:\t'{}'", storeName);
+            LOGGER.debug("ItemStoreDirectory already exists under:\t'{}'", storeName);
         }
         
         // Set vars
@@ -169,44 +169,12 @@ public class ItemStoreRepositoryUtility {
      * @return 
      */
     public Map<ManagerTarget, ItemStore> fetchItemStoreMap(ItemStoreType storeType, String storeName) {
+        LOGGER.info("Prcessing ItemStore from under:\t'{}'", storeName);
         Map<ManagerTarget, ItemStore> output = new HashMap<>();
         for ( ManagerTarget elm : ManagerTarget.values() ) {
            ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType);
            output.put(elm, store);
         }
-        return output;
-    }
-    
-    
-    /**
-     * Wrapper method to fetch {@link ItemStore} {@link TaskTideRepository} map
-     * 
-     * @param storeType
-     * @param storeName
-     * @return Map-{@link ManagerTarget}, {@link TaskTideRepository}
-     */
-    public Map<ManagerTarget, TaskTideRepository> fetchItemStoreRepoMap(ItemStoreType storeType, String storeName) {
-        
-        // Initialize output and fetch item store map
-        Map<ManagerTarget, TaskTideRepository> output = new HashMap<>();
-        Map<ManagerTarget, ItemStore> itemStoreMap = fetchItemStoreMap(storeType, storeName);
-        
-        // Add work item repo
-        ItemStore store = itemStoreMap.get(ManagerTarget.WORKITEM);
-        TaskTideRepository repo = RepositoryType.ITEMSTORE.createRepository(WorkItem.class, store, store.getDbDirectory());
-        output.put(ManagerTarget.WORKITEM, repo);
-        
-        // Add step repo
-        store = itemStoreMap.get(ManagerTarget.STEP);
-        repo = RepositoryType.ITEMSTORE.createRepository(Step.class, store, store.getDbDirectory());
-        output.put(ManagerTarget.STEP, repo);
-        
-        // Add workflow repo
-        store = itemStoreMap.get(ManagerTarget.WORKFLOW);
-        repo = RepositoryType.ITEMSTORE.createRepository(Workflow.class, store, store.getDbDirectory());
-        output.put(ManagerTarget.WORKFLOW, repo);
-        
-        // Return results
         return output;
     }
 }

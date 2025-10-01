@@ -31,7 +31,7 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
-import org.tasktide.core.repository.nosql_repo.NoSqlTemplateUtility;
+import org.tasktide.core.repository.nosql_repo.TemplateRepositoryUtility;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreType;
@@ -193,8 +193,8 @@ public class TaskTideClientUtility {
      */
     public static void initNoSqlServiceManager(ClientConfigMap configMap) {
         String dbType = (String) configMap.getArgTree().getGlobalArguments().getArgMap().get("NoSQL Database Type").getValue();
-        NoSqlTemplateUtility.initialize(dbType);
-        NoSqlTemplateUtility.get().initServiceManager();
+        TemplateRepositoryUtility.initialize(dbType);
+        TemplateRepositoryUtility.get().initServiceManager();
     }
     
     

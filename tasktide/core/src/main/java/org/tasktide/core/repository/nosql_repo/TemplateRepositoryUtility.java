@@ -18,11 +18,15 @@ package org.tasktide.core.repository.nosql_repo;
 import jakarta.enterprise.inject.spi.CDI;
 import jakarta.nosql.Template;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.eclipse.jnosql.mapping.column.ColumnTemplate;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
 import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
 
+import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.repository.RepositoryType;
@@ -42,10 +46,13 @@ import org.tasktide.core.model.workitem.WorkItem;
  * 
  * @author bkenna
  */
-public class NoSqlTemplateUtility {
+public class TemplateRepositoryUtility {
+    
+    // Logging
+    private final Logger LOGGER = LogManager.getLogger(TemplateRepositoryUtility.class);
     
     // Attributes
-    private static NoSqlTemplateUtility INSTANCE;
+    private static TemplateRepositoryUtility INSTANCE;
     private String dbType;
     
     
@@ -54,7 +61,7 @@ public class NoSqlTemplateUtility {
      * 
      * @param dbType 
      */
-    private NoSqlTemplateUtility(String dbType) {
+    private TemplateRepositoryUtility(String dbType) {
         this.dbType = dbType;
     }
     
@@ -69,7 +76,7 @@ public class NoSqlTemplateUtility {
         if ( INSTANCE != null ) {
             throw new IllegalStateException("NoSqlTemplateUtility already initialized");
         }
-        INSTANCE = new NoSqlTemplateUtility(dbType);
+        INSTANCE = new TemplateRepositoryUtility(dbType);
     }
     
     
@@ -77,9 +84,9 @@ public class NoSqlTemplateUtility {
      * Get configured utility, throwing illegal state exception
      *  if not already initialized.
      * 
-     * @return NoSqlTemplateUtility
+     * @return TemplateRepositoryUtility
      */
-    public static NoSqlTemplateUtility get() {
+    public static TemplateRepositoryUtility get() {
         if ( INSTANCE != null ) {
             return INSTANCE;
         }
@@ -158,5 +165,6 @@ public class NoSqlTemplateUtility {
         
         // Initialize service manager with services
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
+        LOGGER.debug("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
     }
 }

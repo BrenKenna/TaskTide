@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import javax.sql.DataSource;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
@@ -52,6 +54,9 @@ import org.tasktide.core.services.ServiceFactory;
  * @author bkenna
  */
 public class JpaRepositoryUtility {
+    
+    // Logging
+    private final Logger LOGGER = LogManager.getLogger(JpaRepositoryUtility.class);
     
     // There can be only one
     private static JpaRepositoryUtility INSTANCE;
@@ -146,6 +151,7 @@ public class JpaRepositoryUtility {
         
         // Initialize service manager with services
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
+        LOGGER.debug("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
     }
     
     

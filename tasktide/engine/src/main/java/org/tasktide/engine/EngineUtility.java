@@ -72,7 +72,7 @@ public class EngineUtility {
             
             // Wait
             logger.info("Letting '{}'ms elapse for state monitoring of ExecutorServiceTracker:\t'{}'", 
-                sleepTime
+                sleepTime, FutureTrackers.WORK_ITEM_TRACKER.taskCount()
             );
             try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
             

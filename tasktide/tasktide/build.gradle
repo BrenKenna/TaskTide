@@ -121,6 +121,21 @@ tasks.register('singleTaskImport', JavaExec) {
     ]
 }
 
+tasks.register('summarizeCollection', JavaExec) {
+    group = 'application'
+    description = 'Import single tasks'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    args = [
+            "manager",
+            "--repository-type", "sqlite",
+            "--file-path", "./itemStoreRepo/sqlite",
+            "--method", "Summarize",
+            "--step-name", "Arbitrary",
+            "--target", "WORKITEM"
+    ]
+}
+
 
 // Import json tasks for annotation
 tasks.register('jsonImport', JavaExec) {

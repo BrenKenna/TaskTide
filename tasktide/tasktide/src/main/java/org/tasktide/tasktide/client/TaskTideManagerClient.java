@@ -82,8 +82,9 @@ public class TaskTideManagerClient extends TaskTideClient {
         if ( ((String) this.managerArgs.getArgument("Method").getValue()).isEmpty() ) {
             return false;
         }
-        String inFile = ((String) this.managerArgs.getArgument("Target File").getValue());
-        return !inFile.isEmpty();
+        // String inFile = ((String) this.managerArgs.getArgument("Target File").getValue());
+        // return !inFile.isEmpty();
+        return true;
     }
     
     
@@ -107,7 +108,6 @@ public class TaskTideManagerClient extends TaskTideClient {
         Object result;
         
         // Fetch command to run
-        LOGGER.info("Determining ManagerCommand to run");
         cmd = this.getManagerCommand();
         
         // Run command

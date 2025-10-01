@@ -165,16 +165,41 @@ public class ProcessExecutor {
         
         // Run process
         startTime = dateUtils.getDateLong();
-        process = this.executeScript(command);
-        doneTime = dateUtils.getDateLong();
-        logger.debug("Execution complete for task:\t" + command);
-        
-        // Build process log from logs
-        logger.debug("Building ProcessLog for task:\t" + command);
-        procLog = this.buildProcessLog(process);
-        logger.debug("Displaying ProcessLog:\n" + procLog.toJsonDoc());
-        result = this.buildTaskLogging(process, procLog, startTime, doneTime);
-        logger.debug("Displaying TaskLogging:\n" + result.toJsonDoc());
+        try {
+            
+            // Execute and log completion
+            process = this.executeScript(command);
+            logger.debug("Execution complete for task:\t" + command);
+            
+            // Build process log from logs
+            logger.debug("Building ProcessLog for task:\t" + command);
+            procLog = this.buildProcessLog();
+            doneTime = dateUtils.getDateLong();
+            
+            // Build task log
+            logger.debug("Displaying ProcessLog:\n" + procLog.toJsonDoc());
+            result = this.buildTaskLogging(process, procLog, startTime, doneTime);
+            logger.debug("Displaying TaskLogging:\n" + result.toJsonDoc());
+        }
+        catch (Exception ex) {
+            logger.error(
+                "Error executing task '{}':\tDisplaying message for reference, and writing stack trace to stderr\n{}",
+                command, ex.getMessage()
+            );
+            String[] stderr = new String[ ex.getStackTrace().length ];
+            for (int i = 0; i < ex.getStackTrace().length; i++) {
+                stderr[i] = ex.getStackTrace()[i].toString();
+            }
+            String[] stdout = {"See stderr"};
+            procLog = BuilderUtility.buildProcessLog("-1", stdout, stderr);
+            
+            doneTime = dateUtils.getDateLong();
+            result = BuilderUtility.buildTaskLogging(procLog);
+            result.setExitCode(1);
+            result.setEndTime(doneTime);
+            result.setStartTime(startTime);
+            result.setCpuDuration(0L);
+        }
 
         // Handle exit code: perhaps log
         if ( result.getExitCode() == 0 ) {
@@ -197,7 +222,7 @@ public class ProcessExecutor {
      * @param stderr
      * @return {@link ProcessLog}
      */
-    private ProcessLog buildProcessLog(Process process) throws IOException {
+    private ProcessLog buildProcessLog() throws IOException {
         String[] stdout, stderr;
         this.streamHandler.handleLogs();
         stdout = this.streamHandler.getStdoutArr();
