@@ -28,11 +28,14 @@ import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.ProcessLogBuilder;
 import org.tasktide.core.model.builders.TaskLoggingBuilder;
+import org.tasktide.core.model.builders.WorkItemBuilder;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.workitem.Workload;
 
 
 /**
@@ -48,19 +51,48 @@ public class ManagerTask {
     @JsonbProperty("Task Script")
     private String taskScript;
     
+    @JsonbProperty("Step Name")
+    private String stepName;
+    
+    @JsonbProperty("Annotations")
+    private CustomAnnotation anno;
+    
     private final ItemTaskBuilder itemTaskBuilder;
     private final ProcessLogBuilder procLogBuilder;
     private final TaskLoggingBuilder taskLogBuilder;
-    private final Utils utils;
+    private final WorkItemBuilder workItemBuilder;
+
     
     /**
      * Null constructor
      */
     public ManagerTask() {
+        this.workItemBuilder = new WorkItemBuilder();
         this.itemTaskBuilder = new ItemTaskBuilder();
         this.procLogBuilder = new ProcessLogBuilder();
         this.taskLogBuilder = new TaskLoggingBuilder();
-        this.utils = new Utils("dd/MM/yy HH:mm:ss", 4);
+        
+        this.stepName = "";
+        this.anno = new CustomAnnotation();
+    }
+    
+    
+    /**
+     * Construct with task name and script
+     * 
+     * @param taskName
+     * @param taskScript 
+     */
+    public ManagerTask(String taskName, String taskScript) {
+        this.taskName = taskName;
+        this.taskScript = taskScript;
+        this.stepName = "";
+        this.anno = new CustomAnnotation();
+        
+        this.workItemBuilder = new WorkItemBuilder();
+        this.itemTaskBuilder = new ItemTaskBuilder();
+        this.procLogBuilder = new ProcessLogBuilder();
+        this.taskLogBuilder = new TaskLoggingBuilder();
     }
     
     
@@ -69,29 +101,38 @@ public class ManagerTask {
      * 
      * @param taskName
      * @param taskScript 
+     * @param stepName
+     * @param anno
      */
     public ManagerTask(
         @JsonbProperty("Task Name") String taskName,
-        @JsonbProperty("Task Script") String taskScript
+        @JsonbProperty("Task Script") String taskScript,
+        @JsonbProperty("Step Name") String stepName,
+        @JsonbProperty("Annotations") CustomAnnotation anno
     ) {
         this.taskName = taskName;
         this.taskScript = taskScript;
+        this.stepName = stepName;
+        this.anno = anno;
+        
+        this.workItemBuilder = new WorkItemBuilder();
         this.itemTaskBuilder = new ItemTaskBuilder();
         this.procLogBuilder = new ProcessLogBuilder();
         this.taskLogBuilder = new TaskLoggingBuilder();
-        this.utils = new Utils("dd/MM/yy HH:mm:ss", 4);
     }
     
     
     /**
      * Generate a command map from {@link ManagerTask}
      * 
-     * @return Map-String, String
+     * @return Map-String, Object
      */
-    public Map<String, String> asMap() {
-        Map<String, String> output = new HashMap<>();
-        output.put("Task Script", taskScript);
-        output.put("Task Name", taskName);
+    public Map<String, Object> asMap() {
+        Map<String, Object> output = new HashMap<>();
+        output.put("Task Script", this.taskScript);
+        output.put("Task Name", this.taskName);
+        output.put("Step Name", this.stepName);
+        output.put("Annotations", this.anno);
         return output;
     }
         
@@ -105,12 +146,12 @@ public class ManagerTask {
         
         String[] emptyArr = {""};
         ProcessLog procLog = this.procLogBuilder
-            .withId("ProcessLog-" + utils.generateSalt())
+            .withId("ProcessLog-" + Utils.generateSalt())
             .withStderr(emptyArr)
             .withStdout(emptyArr)
         .build();
         TaskLogging taskLog = this.taskLogBuilder
-            .withId("TaskLog-" + utils.generateSalt())
+            .withId("TaskLog-" + Utils.generateSalt())
             .withProcessLog(procLog)
             .withEndTime(0L)
             .withExitCode(-1)
@@ -120,15 +161,31 @@ public class ManagerTask {
             .withThreadName("NA")
         .build();
         
-        return itemTaskBuilder
-            .withId( "ItemTask-" + utils.generateSalt() )
+        return this.itemTaskBuilder
+            .withId( "ItemTask-" + Utils.generateSalt() )
             .withTaskName(taskName)
             .withTask(taskScript)
             .withTaskState(TaskState.PENDING)
             .withTaskLog(taskLog)
-            .withAnnotation(new CustomAnnotation())
+            .withAnnotation(this.anno)
             .withJobEnvId("")
         .build();
+    }
+    
+    
+    /**
+     * Represent as {@link WorkItem}
+     * 
+     * @return {@link WorkItem}
+     */
+    public WorkItem asWorkItem() {
+        ItemTask task = this.asItemTask();
+        Workload workload = BuilderUtility.buildWorkload(task);
+        if ( this.stepName != null ) {
+            String stepId = TaskTideManagerUtility.fetchStepId(stepName);
+            return BuilderUtility.buildWorkItem(task.getTaskName(), workload, stepName, stepId);
+        }
+        return BuilderUtility.buildWorkItem(stepName, workload, "Arbitrary");
     }
     
     
@@ -173,6 +230,46 @@ public class ManagerTask {
 
     
     /**
+     * Get step name
+     * 
+     * @return String
+     */
+    public String getStepName() {
+        return stepName;
+    }
+
+    
+    /**
+     * Set step name
+     * 
+     * @param stepName 
+     */
+    public void setStepName(String stepName) {
+        this.stepName = stepName;
+    }
+
+    
+    /**
+     * Get {@link CustomAnnotation}
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    public CustomAnnotation getAnno() {
+        return anno;
+    }
+
+    
+    /**
+     * Set {@link CustomAnnotation}
+     * 
+     * @param anno 
+     */
+    public void setAnno(CustomAnnotation anno) {
+        this.anno = anno;
+    }
+
+    
+    /**
      * Serialize to JSON string
      * 
      * @return String
@@ -205,7 +302,8 @@ public class ManagerTask {
         return "ManagerTask{" +
             "taskName=" + taskName +
             ", taskScript=" + taskScript +
-            ", itemTaskBuilder=" + itemTaskBuilder + 
+            ", stepName=" + stepName +
+            ", anno=" + anno +
         '}';
     }
 }

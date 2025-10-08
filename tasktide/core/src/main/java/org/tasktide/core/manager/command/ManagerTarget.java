@@ -24,11 +24,34 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 
 
 /**
- * Enum to suport {@link ManagerAction} over specific {@link TaskTideModel}
+ * Enum to suport {@link ManagerAction} over specific {@link TaskTideModel}.
+ *  Exception is the {@link ManagerTask} value which goes towards {@link WorkItem}
  * 
  * @author bkenna
  */
 public enum ManagerTarget {
+    
+    MANAGERTASK {
+        @Override
+        public boolean isManagerTarget(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerTarget(ManagerTarget query) {
+            return this == query;
+        }
+        
+        @Override
+        public List<TaskTideModel> fetchModels() {
+            return TaskTideServiceManager.fetchWorkItemService().viewAllToTaskTideModel();
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+    },
 
     WORKITEM {
         @Override

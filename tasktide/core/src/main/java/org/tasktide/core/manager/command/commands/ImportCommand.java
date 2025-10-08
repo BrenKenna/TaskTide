@@ -19,11 +19,14 @@ import org.tasktide.core.manager.command.CommandType;
 import jakarta.json.JsonObject;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
+import jakarta.json.bind.JsonbException;
 import jakarta.json.bind.annotation.JsonbProperty;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +37,7 @@ import org.apache.logging.log4j.Logger;
 import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.manager.BuilderUtility;
+import org.tasktide.core.manager.JsonbManagerTaskWorkItemAdapter;
 import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
@@ -216,7 +220,13 @@ public class ImportCommand extends AbstractCommand{
         // Import workload from JSON: Format argument instead
         if (delimiter.equalsIgnoreCase("json")) {
             LOGGER.info("Importing JSON file");
-            return this.importJson(file);
+            if ( this.target.isManagerTarget(ManagerTarget.MANAGERTASK) ) {
+                LOGGER.info("Importing ManagerTask for WorkItem");
+                return this.importWorkItemFromManagerTaskJson(file);
+            }
+            else {
+                return this.importJson(file);
+            }
         }
         
         // Otherwise table
@@ -256,9 +266,83 @@ public class ImportCommand extends AbstractCommand{
             return output;
         }
         catch ( IOException ex ) {
-            LOGGER.error("Error encountered during read '{}', displaying full stack trace", ex);
+            LOGGER.error("Error encountered during read '{}', displaying full stack trace", ex.getMessage());
             ex.printStackTrace();
-            return null;
+            return new ArrayList<>();
+        }
+    }
+    
+    
+    /**
+     * Import {@link ManagerTask} from json formatted file
+     * 
+     * @param file
+     * @return List-{@link ManagerTask}
+     */
+    private List<ManagerTask> importManagerTasksFromJson(String file) {
+        LOGGER.info("Attempting to read JSON file:\t'{}'", file);
+        try (Reader inpStream = new FileReader(file)) {
+            Jsonb jsonb = JsonbBuilder.create();
+            LOGGER.info("Streaming JSON data into ManagerTask list");
+            List<ManagerTask> tasks;
+            try {
+                tasks = Arrays.asList(jsonb.fromJson(inpStream, ManagerTask[].class));
+            }
+            catch (JsonbException ex) {
+                if ( ex.getMessage().contains("deserialize type") ) {
+                    ManagerTask task = jsonb.fromJson(inpStream, ManagerTask.class);
+                    tasks = List.of(task);
+                }
+                else {
+                    throw ex;
+                }
+            }
+            LOGGER.info("Streamed JSON data into ManagerTask list");
+            inpStream.close();
+            return tasks;
+        }
+        catch ( IOException ex ) {
+            LOGGER.error("Error encountered during reading of '{}', displaying full stack trace", ex);
+            ex.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    
+    
+    /**
+     * Import {@link WorkItem} from json formatted file
+     * 
+     * @param file
+     * @return List-{@link WorkItem}
+     */
+    private List<WorkItem> importWorkItemFromManagerTaskJson(String file) {
+        LOGGER.info("Attempting to read JSON file:\t'{}'", file);
+        try (Reader inpStream = new FileReader(file)) {
+            Jsonb jsonb = JsonbBuilder.create(
+                new JsonbConfig().withAdapters(new JsonbManagerTaskWorkItemAdapter())
+            );
+            LOGGER.info("Streaming JSON data into WorkItem list");
+            List<WorkItem> tasks;
+            try {
+                tasks = Arrays.asList(jsonb.fromJson(inpStream, WorkItem[].class));
+            }
+            catch (JsonbException ex) {
+                if ( ex.getMessage().contains("deserialize type") ) {
+                    WorkItem task = jsonb.fromJson(inpStream, WorkItem.class);
+                    tasks = List.of(task);
+                }
+                else {
+                    throw ex;
+                }
+            }
+            LOGGER.info("Streamed JSON data into WorkItem list");
+            inpStream.close();
+            return tasks;
+        }
+        catch ( Exception ex ) {
+            LOGGER.error("Error encountered during reading of '{}', displaying full stack trace", ex);
+            ex.printStackTrace();
+            return new ArrayList<>();
         }
     }
 }
