@@ -240,7 +240,10 @@ public final class TaskTideServiceManager {
      */
     public static <T extends TaskTideModel<T>> TaskTideService<T> getService(ManagerTarget tgt) {
         if ( INSTANCE != null ) {
-             return INSTANCE.getServiceFor(tgt);
+            if ( tgt.isManagerTarget(ManagerTarget.MANAGERTASK) ) {
+                tgt = ManagerTarget.WORKITEM;
+            }
+            return INSTANCE.getServiceFor(tgt);
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");      
     }
@@ -255,6 +258,9 @@ public final class TaskTideServiceManager {
      */
     @SuppressWarnings("unchecked")
     public <T extends TaskTideModel<T>> TaskTideService<T> getServiceFor(ManagerTarget tgt) {
+        if ( tgt.isManagerTarget(ManagerTarget.MANAGERTASK) ) {
+            tgt = ManagerTarget.WORKITEM;
+        }
         return INSTANCE.serviceMap.get(tgt);
     }
     

@@ -186,8 +186,9 @@ public class ProcessExecutor {
                 "Error executing task '{}':\tDisplaying message for reference, and writing stack trace to stderr\n{}",
                 command, ex.getMessage()
             );
-            String[] stderr = new String[ ex.getStackTrace().length ];
-            for (int i = 0; i < ex.getStackTrace().length; i++) {
+            String[] stderr = new String[ ex.getStackTrace().length + 1 ];
+            stderr[0] = ex.getMessage();
+            for (int i = 1; i < ex.getStackTrace().length; i++) {
                 stderr[i] = ex.getStackTrace()[i].toString();
             }
             String[] stdout = {"See stderr"};

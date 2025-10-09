@@ -113,7 +113,8 @@ public class ManagerTask {
         this.taskName = taskName;
         this.taskScript = taskScript;
         this.stepName = stepName;
-        this.anno = anno;
+        this.anno = new CustomAnnotation();
+        this.anno.setAnnotations(anno);
         
         this.workItemBuilder = new WorkItemBuilder();
         this.itemTaskBuilder = new ItemTaskBuilder();
