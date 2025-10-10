@@ -50,6 +50,8 @@ public class ProcessExecutor {
     private final Logger logger = LogManager.getLogger(ProcessExecutor.class);
     private final DateUtility dateUtils;
     private final StreamHandler streamHandler;
+    private String processWrapper;
+    private boolean escapeStrings;
     
     
     /**
@@ -134,6 +136,7 @@ public class ProcessExecutor {
         stderr = this.fetchStderrLog().toFile();
         
         // Build process
+        script = script.replace("\"", "");
         procBuild = new ProcessBuilder(script.split(" "));
         procBuild.redirectError(stderr);
         procBuild.redirectOutput(stdout);
@@ -177,7 +180,6 @@ public class ProcessExecutor {
             doneTime = dateUtils.getDateLong();
             
             // Build task log
-            logger.debug("Displaying ProcessLog:\n" + procLog.toJsonDoc());
             result = this.buildTaskLogging(process, procLog, startTime, doneTime);
             logger.debug("Displaying TaskLogging:\n" + result.toJsonDoc());
         }
@@ -196,7 +198,7 @@ public class ProcessExecutor {
             
             doneTime = dateUtils.getDateLong();
             result = BuilderUtility.buildTaskLogging(procLog);
-            result.setExitCode(1);
+            result.setExitCode(-11);
             result.setEndTime(doneTime);
             result.setStartTime(startTime);
             result.setCpuDuration(0L);
@@ -248,5 +250,46 @@ public class ProcessExecutor {
         taskLog.setEndTime(endTime);
         taskLog.setExitCode(process.exitValue());
         return taskLog;
+    }
+
+    
+    /**
+     * Get process wrapper
+     * 
+     * @return String
+     */
+    public String getProcessWrapper() {
+        return processWrapper;
+    }
+
+    
+    /**
+     * Process wrapper
+     * 
+     * @param processWrapper 
+     */
+    public void setProcessWrapper(String processWrapper) {
+        this.processWrapper = processWrapper;
+    }
+
+    
+    /**
+     * Get whether to escape string
+     * 
+     * @return 
+     */
+    public boolean isEscapeStrings() {
+        return escapeStrings;
+    }
+
+    
+    
+    /**
+     * Set whether to escape strings
+     * 
+     * @param escapeStrings 
+     */
+    public void setEscapeStrings(boolean escapeStrings) {
+        this.escapeStrings = escapeStrings;
     }
 }
