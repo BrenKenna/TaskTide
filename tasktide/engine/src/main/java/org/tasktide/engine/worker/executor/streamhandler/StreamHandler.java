@@ -28,7 +28,11 @@ import java.util.zip.ZipOutputStream;
 
 
 /**
- *
+ * Stdout and Stderr log stream handler for {@link ProcessExecutor}.
+ *  Logs lt 1MB stored in DB, otherwise zipped and recorded in DB.
+ *  Functional Interface and LogTarget could help with sinking
+ *   to say CloudWatch etc
+ *  
  * @author bkenna
  */
 public class StreamHandler {
@@ -70,6 +74,9 @@ public class StreamHandler {
             log = this.readStdout();
             this.setStdoutArr(log);
             this.stdout.delete();
+            
+            // Clear log directory
+            Files.delete(this.logDir);
         }
         
         // Otherwise zip and report on token
