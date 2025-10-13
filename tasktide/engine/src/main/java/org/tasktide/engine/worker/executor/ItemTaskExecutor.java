@@ -16,11 +16,18 @@
 package org.tasktide.engine.worker.executor;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.logging.log4j.LogManager;
 
+import org.tasktide.core.manager.TaskTideServiceManager;
+
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskLogging;
+import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.chain.ItemTaskObserver;
 
@@ -72,19 +79,52 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
         // Handle logging execution state
         if (taskLog.getExitCode() == 0) {
             logger.info(
-          "Task '{}' successful on thread '{}' with exit code {}\n",
-             task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
+                "Task '{}' successful on thread '{}' with exit code {}\n",
+                task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
             );
+            try {
+                logger.debug("Determining whether to apply results annotation");
+                this.annotateResults(task);
+            }
+            catch (IOException ex) {
+                logger.error("Error applying results annotation, displaying stack trace:\t'{}'", ex.getMessage());
+                ex.printStackTrace();
+            }
         }
         else {
             logger.error(
-          "Task '{}' failed on thread '{}' with exit code {}\n",
-             task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
+                "Task '{}' failed on thread '{}' with exit code {}\n",
+                task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
             );
         }
 
         // Debugger message
         // Move to Observer logger.debug("Task after execution:\n{}\n\n", task.toJsonDoc());
         return taskLog.getExitCode() == 0;
+    }
+    
+    
+    
+    /**
+     * Apply results annotation if configured on {@link ItemTask}
+     * 
+     * @param task
+     * @throws IOException 
+     */
+    public void annotateResults(ItemTask task) throws IOException {
+        if ( task.getAnnotations().hasKey("Results Path") ) {
+            logger.debug("'Results Path' annotation detected for task:\n'{}'", task.getId());
+            String path = (String) task.getAnnotations().getKey("Results Path");
+            Path resultsPath = Paths.get(path);
+            String data = Files.readString(resultsPath, StandardCharsets.UTF_8);
+            task.getAnnotations().add("Results", data);
+            WorkItem item = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getWorkItemId());
+            item.dropTask(task);
+            item.addTask(task);
+            TaskTideServiceManager.fetchWorkItemService().appendModel(item);
+        }
+        else {
+            logger.debug("No 'Results Path' annotation detected for task:\n'{}'", task.getId());
+        }
     }
 }
