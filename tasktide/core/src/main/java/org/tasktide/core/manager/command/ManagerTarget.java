@@ -51,6 +51,11 @@ public enum ManagerTarget {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public boolean hasRepository() {
+            return false;
+        }
     },
 
     WORKITEM {
@@ -72,6 +77,11 @@ public enum ManagerTarget {
         @Override
         public String toString() {
             return name();
+        }
+        
+        @Override
+        public boolean hasRepository() {
+            return false;
         }
     },
 
@@ -95,6 +105,11 @@ public enum ManagerTarget {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public boolean hasRepository() {
+            return false;
+        }
     },
 
     WORKFLOW {
@@ -116,6 +131,11 @@ public enum ManagerTarget {
         @Override
         public String toString() {
             return name();
+        }
+        
+        @Override
+        public boolean hasRepository() {
+            return false;
         }
     },
     
@@ -141,6 +161,11 @@ public enum ManagerTarget {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public boolean hasRepository() {
+            return false;
+        }
     },
     
     METRIC_DATA {
@@ -164,6 +189,11 @@ public enum ManagerTarget {
         @Override
         public String toString() {
             return name();
+        }
+        
+        @Override
+        public boolean hasRepository() {
+            return false;
         }
     },
     
@@ -189,7 +219,21 @@ public enum ManagerTarget {
         public String toString() {
             return name();
         }
+        
+        @Override
+        public boolean hasRepository() {
+            return false;
+        }
     };
+    
+    
+    /**
+     * Method to denote whether a given {@link ManagerTarget}
+     *   has a {@link TaskTideRepository} associated with it
+     * 
+     * @return boolean
+     */
+    public abstract boolean hasRepository();
 
     
     /**

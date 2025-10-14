@@ -171,9 +171,11 @@ public class ItemStoreRepositoryUtility {
     public Map<ManagerTarget, ItemStore> fetchItemStoreMap(ItemStoreType storeType, String storeName) {
         LOGGER.info("Prcessing ItemStore from under:\t'{}'", storeName);
         Map<ManagerTarget, ItemStore> output = new HashMap<>();
-        for ( ManagerTarget elm : ManagerTarget.values() ) {
-           ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType);
-           output.put(elm, store);
+        for (ManagerTarget elm : ManagerTarget.values()) {
+            if (!elm.hasRepository()) {
+                ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType);
+                output.put(elm, store);
+            }
         }
         return output;
     }

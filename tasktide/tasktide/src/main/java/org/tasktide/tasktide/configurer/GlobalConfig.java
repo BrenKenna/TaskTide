@@ -138,6 +138,7 @@ public class GlobalConfig extends AbstractConfig {
     
     /**
      * Configure help
+     * 
      */
     @Override
     public void help() {
