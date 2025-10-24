@@ -15,6 +15,7 @@
  */
 package org.tasktide.tasktide.client;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
@@ -248,6 +249,7 @@ public class TaskTideEngineClient extends TaskTideClient {
             for ( String elm : steps ) {
                 LOGGER.info("Processing step:\t'{}'", elm);
                 List<WorkItem> workload = this.fetchWorkload(elm);
+                Collections.shuffle(workload);
                 this.processWorkload(workload);
                 LOGGER.info("Processing complete for step:\t'{}'", elm);
             }
@@ -286,8 +288,8 @@ public class TaskTideEngineClient extends TaskTideClient {
         }
         else {
             LOGGER.warn(
-          "Warning, no ToDo tasks available for processing. Query below backend for more information\n\n{}\n\n",
-             TaskTideServiceManager.fetchWorkItemService().getRepo().getRepositoryMetaData()
+                "Warning, no ToDo tasks available for processing. Query below backend for more information\n\n{}\n\n",
+                TaskTideServiceManager.fetchWorkItemService().getRepo().getRepositoryMetaData()
             );
         }
     }

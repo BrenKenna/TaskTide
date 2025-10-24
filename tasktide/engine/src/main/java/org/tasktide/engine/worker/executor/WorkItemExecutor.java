@@ -104,8 +104,8 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
         
         // Configure ItemTaskProcessor
         logger.info(
-      "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
-         task.getTaskCount(), Thread.currentThread().getName(), task.getId()
+            "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
+            task.getTaskCount(), Thread.currentThread().getName(), task.getId()
         );
             
         // Execute workload of processor
@@ -119,8 +119,8 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
         // Evaluate task processing
         if ( this.observer.onTaskProcessing(task) ) {
             logger.info(
-          "Task processing complete on WorkItem:\t'{}'",
-             task.getId()
+                "Task processing complete on WorkItem:\t'{}'",
+                task.getId()
             );
             return true;
         }
@@ -128,8 +128,8 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
         // Otherwise log warning
         else {
             logger.warn(
-          "Warning, Observer checks onTaskProcessing failed for WorkItem:\t'{}'", 
-             task.getId()
+                "Warning, Observer checks onTaskProcessing failed for WorkItem:\t'{}'", 
+                task.getId()
             );
             return false;
         }

@@ -14,8 +14,4 @@ tasktide/use-cases/task-binding-use-case/Early-Task-Binding/tasktide-0.9.0/
 *def
 tasktide/use-cases/task-binding-use-case/FunctionRunner/build/
 .gitignore
-tasktide/use-cases/task-binding-use-case/FunctionRunner/*_sandbox/*
-tasktide/use-cases/task-binding-use-case/FunctionRunner/julia_depot/*
-tasktide/use-cases/task-binding-use-case/FunctionRunner/build*
-tasktide/use-cases/task-binding-use-case/FunctionRunner/FunctionRunner_sandboxv2/*
-tasktide/use-cases/task-binding-use-case/FunctionRunner/FunctionRunnerSandBox/*
+tasktide/use-cases/task-binding-use-case/FunctionRunner/Deployment/FunctionRunner*

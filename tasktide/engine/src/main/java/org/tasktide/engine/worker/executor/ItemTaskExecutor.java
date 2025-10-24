@@ -22,8 +22,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.apache.logging.log4j.LogManager;
+import org.tasktide.core.manager.BuilderUtility;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskLogging;
@@ -86,7 +88,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
                 logger.debug("Determining whether to apply results annotation");
                 this.annotateResults(task);
             }
-            catch (IOException ex) {
+            catch (Exception ex) {
                 logger.error("Error applying results annotation, displaying stack trace:\t'{}'", ex.getMessage());
                 ex.printStackTrace();
             }
@@ -109,9 +111,16 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
      * Apply results annotation if configured on {@link ItemTask}
      * 
      * @param task
-     * @throws IOException 
+     * @throws Exception 
      */
-    public void annotateResults(ItemTask task) throws IOException {
+    public void annotateResults(ItemTask task) throws Exception {
+        
+        // Apply annotation on ItemTask if none yet
+        if ( task.getAnnotations() == null ) {
+            CustomAnnotation anno = BuilderUtility.makeEmptyAnnotation();
+            task.setAnnotations(anno);
+        }
+        
         if ( task.getAnnotations().hasKey("Results Path") ) {
             logger.debug("'Results Path' annotation detected for task:\n'{}'", task.getId());
             String path = (String) task.getAnnotations().getKey("Results Path");

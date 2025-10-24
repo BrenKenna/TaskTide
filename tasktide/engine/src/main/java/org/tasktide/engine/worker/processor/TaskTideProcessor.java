@@ -16,6 +16,7 @@
 package org.tasktide.engine.worker.processor;
 
 import jakarta.inject.Inject;
+import java.util.Collections;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.ExecutorService;
@@ -153,6 +154,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
         
         // Submit
         for (List<T> chunk : chunks) {
+            Collections.shuffle(chunk);
             submitParallelChunks(chunk);
         }
     }
@@ -161,10 +163,10 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     /**
      * Wrapper method for processing chunks
      * 
-     * @param workload 
+     * @param chunk 
      */
-    private void submitParallelChunks(List<T> workload) {
-        for ( T task : this.workload ) {
+    private void submitParallelChunks(List<T> chunk) {
+        for ( T task : chunk ) {
             this.submitParallelSubTask(List.of(task));
         }
     }
