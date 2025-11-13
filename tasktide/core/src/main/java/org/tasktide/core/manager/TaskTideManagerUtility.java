@@ -197,7 +197,10 @@ public class TaskTideManagerUtility {
         // Push if not in db
         List<JobEnvironment> jobEnvs = TaskTideServiceManager
             .fetchJobEnvironmentService()
-            .viewByField("hostOS", jobEnv.getHostOS());
+            .viewByFieldForGroup(
+                "jobId", jobEnv.getJobId(),
+                "arrayInd", jobEnv.getArrayInd()
+            );
         if ( !jobEnvs.isEmpty()) {
             return jobEnvs.get(0).getId();
         }
