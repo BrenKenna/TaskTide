@@ -15,18 +15,18 @@
  */
 package org.tasktide.itemstore;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -422,7 +422,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public boolean closeConn(DbTarget target) {
+    public synchronized boolean closeConn(DbTarget target) {
         switch (target) {
             case MASTER -> {
                 this.releaseLock();
@@ -467,7 +467,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public boolean openConn(DbTarget target) {
+    public synchronized boolean openConn(DbTarget target) {
         switch (target) {
             case PROTOTYPE -> {
                 try {

@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.Logger;
+import org.tasktide.core.manager.TaskTideManagerUtility;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.CustomAnnotation;
@@ -39,7 +40,23 @@ import org.tasktide.engine.trackers.FutureTrackers;
  *
  * @author bkenna
  */
-public class EngineUtility {
+public class TaskTideEngineUtility {
+    
+    // Global var for Job Environment Id
+    public static volatile String JOB_ENV_ID;
+    
+    
+    /**
+     * Fetch {@link JobEnvironment} Id for execution context
+     * 
+     * @return String
+     */
+    public static synchronized String getJobEnvId() {
+        if ( JOB_ENV_ID == null ) {
+            JOB_ENV_ID = TaskTideManagerUtility.fetchJobEnvironmentId(true);
+        }
+        return JOB_ENV_ID;
+    }
     
     
     /**

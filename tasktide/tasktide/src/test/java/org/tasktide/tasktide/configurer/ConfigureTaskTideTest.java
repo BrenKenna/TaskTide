@@ -31,7 +31,7 @@ import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
-import org.tasktide.engine.EngineUtility;
+import org.tasktide.engine.TaskTideEngineUtility;
 
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.TaskTideWorkerUnitProvider;
@@ -155,12 +155,12 @@ public class ConfigureTaskTideTest {
         
         // Process work
         processor.process();
-        EngineUtility.waitOnExecutorTrackerWorkItem(nWorkItems, logger);
+        TaskTideEngineUtility.waitOnExecutorTrackerWorkItem(nWorkItems, logger);
         
         // Evaluate test status
         boolean assertionState;
         int expected = nWorkItems * nItemTask;
-        int nProcessed = EngineUtility.countNonActive(workload);
+        int nProcessed = TaskTideEngineUtility.countNonActive(workload);
         if ( nProcessed == expected ) {
             logger.info("Processed task count '{}', matches expected '{}'", nProcessed, expected);
             assertionState = true;
@@ -173,7 +173,7 @@ public class ConfigureTaskTideTest {
         
         // Process evaluation
         logger.info("\n-------- Displaying Execution Time Summary --------\n");
-        EngineUtility.fetchExecutionTimesWorkItem(workload, logger);
+        TaskTideEngineUtility.fetchExecutionTimesWorkItem(workload, logger);
         logger.info("\n-------- Displaying Execution Time Summary --------\n");
         String template = String.format("Not all tasks processed correctl:\tTotal = '%d', Processed = '%d'", expected, nProcessed);
         assertTrue(assertionState, template);

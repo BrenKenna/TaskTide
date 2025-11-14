@@ -150,11 +150,11 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     public void processChunks(List<T> workload) {
     
         // Initialize data
+        Collections.shuffle(workload);
         List<List<T>> chunks = parallelChunks(workload);
         
         // Submit
         for (List<T> chunk : chunks) {
-            Collections.shuffle(chunk);
             submitParallelChunks(chunk);
         }
     }

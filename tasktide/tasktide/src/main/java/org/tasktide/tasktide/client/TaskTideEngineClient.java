@@ -31,7 +31,7 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.supporting.JsonUtils;
 
-import org.tasktide.engine.EngineUtility;
+import org.tasktide.engine.TaskTideEngineUtility;
 
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.TaskTideWorkerUnitProvider;
@@ -161,7 +161,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         int counter = 0;
         while ( true ) {
             this.fetchAndRun();
-            EngineUtility.waitSeconds(RAND.nextInt(0, 11));
+            TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
             counter++;
         }
     }
@@ -204,14 +204,14 @@ public class TaskTideEngineClient extends TaskTideClient {
         {
             String key = (String) this.engineArgs.getArgument("Pilot Label Key").getValue();
             Object value = this.engineArgs.getArgument("Pilot Label Value").getValue();
-            return EngineUtility.fetchToDoWorkTargetPilotLabel(step, key, value);
+            return TaskTideEngineUtility.fetchToDoWorkTargetPilotLabel(step, key, value);
         }
         
         else {
             String json = (String) this.engineArgs.getArgument("Pilot Label Annotation").getValue();
             CustomAnnotation anno = CustomAnnotationBuilder.fromJsonString(json);
             LOGGER.info("Evaluating annotation query:\n'{}'", JsonUtils.toJson(true, anno));
-            return EngineUtility.fetchToDoWorkTargetPilotLabel(step, anno);
+            return TaskTideEngineUtility.fetchToDoWorkTargetPilotLabel(step, anno);
         }
     }
     
@@ -230,7 +230,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         }
         else {
             LOGGER.info("No pilot label provided, processing all tasks");
-            return EngineUtility.fetchToDoWorkTarget(step);
+            return TaskTideEngineUtility.fetchToDoWorkTarget(step);
         }
     }
     
@@ -266,7 +266,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         // Process all, perhaps check a force as it could be a mistake?
         else {
             LOGGER.info("No step detected, processing unassigned under '{}'", step);
-            List<WorkItem> workload = EngineUtility.fetchToDoWorkTarget(step);
+            List<WorkItem> workload = TaskTideEngineUtility.fetchToDoWorkTarget(step);
             this.processWorkload(workload);
             LOGGER.info("Processing complete");
         }
@@ -284,7 +284,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         if ( !workload.isEmpty() ) {
             LOGGER.info("Processing workload of size:\t'{}'", workload.size());
             this.processor.processChunks(workload);
-            EngineUtility.waitOnExecutorTrackerWorkItem(workload.size(), LOGGER);
+            TaskTideEngineUtility.waitOnExecutorTrackerWorkItem(workload.size(), LOGGER);
         }
         else {
             LOGGER.warn(
@@ -349,7 +349,7 @@ public class TaskTideEngineClient extends TaskTideClient {
      */
     private TaskTideProcessor<WorkItem> configureWorkItemProcessor(ExecutorService execServ, TaskTideExecutor<WorkItem> subExecutor) {
         return unitProvider.getWorkItemProcBuilder()
-            .withWorkload(EngineUtility.fetchToDoWork())
+            .withWorkload(TaskTideEngineUtility.fetchToDoWork())
             .withExecutorService(execServ)
             .withThreshold(this.workThreshold)
             .withSubExecutor(subExecutor)

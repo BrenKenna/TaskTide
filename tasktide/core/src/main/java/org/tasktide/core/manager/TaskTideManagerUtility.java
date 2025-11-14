@@ -178,7 +178,7 @@ public class TaskTideManagerUtility {
     
     
     /**
-     * Fetch {@link JobEnvironmentId}
+     * Fetch {@link JobEnvironment} Id
      * 
      * @return String
      */
@@ -197,10 +197,10 @@ public class TaskTideManagerUtility {
         // Push if not in db
         List<JobEnvironment> jobEnvs = TaskTideServiceManager
             .fetchJobEnvironmentService()
-            .viewByFieldForGroup(
-                "jobId", jobEnv.getJobId(),
-                "arrayInd", jobEnv.getArrayInd()
-            );
+            .viewByField(
+                "host", jobEnv.getHostname()
+            )
+        ;
         if ( !jobEnvs.isEmpty()) {
             return jobEnvs.get(0).getId();
         }
@@ -210,5 +210,70 @@ public class TaskTideManagerUtility {
             .fetchJobEnvironmentService()
         .appendModel(jobEnv);
         return jobEnv.getId();
+    }
+    
+    
+    
+    /**
+     * Fetch {@link JobEnvironment} Id
+     * 
+     * @param arrIndOrHost
+     * 
+     * @return String
+     */
+    public static String fetchJobEnvironmentId(boolean arrIndOrHost) {
+        
+        // Fetch job env
+        Optional<JobEnvironment> result = JobType.fetchJobEnvironment();
+        if ( !result.isPresent() ) {
+            return null;
+        }
+        
+        // Set standard id
+        JobEnvironment jobEnv = result.get();
+        jobEnv.setId(JOB_ENVIRONMENT_ID);
+        
+        // Push if not in db
+        List<JobEnvironment> jobEnvs = fetchEnvs(jobEnv, arrIndOrHost);
+        if ( !jobEnvs.isEmpty()) {
+            return jobEnvs.get(0).getId();
+        }
+        
+        // Otherwise push and return
+        TaskTideServiceManager
+            .fetchJobEnvironmentService()
+        .appendModel(jobEnv);
+        return jobEnv.getId();
+    }
+    
+    
+    /**
+     * Fetch {@link JobEnvironment} matching jobId-arrayInd, or hostname
+     * 
+     * @param jobEnv
+     * @param arrIndOrHost
+     * 
+     * @return List-{@link JobEnvironment}
+     */
+    public static List<JobEnvironment> fetchEnvs(JobEnvironment jobEnv, boolean arrIndOrHost) {
+    
+       if ( arrIndOrHost ) {
+           return TaskTideServiceManager
+                .fetchJobEnvironmentService()
+                .viewByFieldForGroup(
+                    "jobId", jobEnv.getJobId(),
+                    "arrayInd", jobEnv.getArrayInd()
+                )
+            ;
+       }
+       
+       else {
+            return TaskTideServiceManager
+                .fetchJobEnvironmentService()
+                .viewByField(
+                    "host", jobEnv.getHostname()
+                )
+            ;
+       }
     }
 }

@@ -387,7 +387,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public boolean closeConn(DbTarget target) {
+    public synchronized boolean closeConn(DbTarget target) {
         LOGGER.debug("Closing connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {
@@ -435,7 +435,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public boolean openConn(DbTarget target) {
+    public synchronized boolean openConn(DbTarget target) {
         LOGGER.debug("Openning connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {

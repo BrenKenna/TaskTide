@@ -20,9 +20,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.tasktide.core.manager.TaskTideManagerUtility;
+
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.workitem.ItemState;
