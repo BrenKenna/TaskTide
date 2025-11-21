@@ -67,16 +67,6 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 --
 
 
-===
-
-
-|Reserved Annotation Keys |Observer via Utility attaches JobEnv-Id | Optionally shuffle task list |
-| |Job Env attachments |ItemTask executor attaches results
-| |Annotate ItemTask with results |New tasks seen but processed in service mode |
-| | |Task list chunks provided to threads, over whole list |
-|===
-
-
 ==== Outstanding
 - [] Review TaskTideService, and TaskTideRepository unit-tests.
 - [] Bean injection quirk between NetBeans & command-line.
@@ -126,11 +116,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 === Code Checklist
 
 - [X] Formatting of help splash text.
-<<<<<<< Updated upstream
-- [/] Hangs if a folder is not writable - at least repository file path.
-=======
 - [X] Hangs if a folder is not writable - at least repository file path.
->>>>>>> Stashed changes
 +
 --
         - Added throwing of runtime exception if repo path is not writable.
@@ -145,14 +131,8 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 --
 
 - [X] Hitting the skipping malformed line error for a list of work items in text file reset.
-+
---
---
-
-
 - [X] Client now hanging at initializing TaskTideServiceManager - typo in Configurer.
 - [X] Stray target step being use on command-line arguments.
-
 - [X] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
 +
 --
@@ -166,8 +146,6 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X] Internal config property for JNoSQL-Host, value pulled twice.
 - [X] Mapping discordance of ItemId-Item Id between ManagerClient, and ManagerConfig.
 - [X] ManagerAction query comparison too restrictive for what user would import.
-
-
 - [X] Docker Compose.
 - [X] Custom annotations on TaskTideModels
 +
