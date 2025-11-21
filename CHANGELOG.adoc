@@ -38,6 +38,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - []  Manager command code clean?
 - []  Optionally sort results?
 
+
 ==== Client
 
 - [] Optionally sort/shuffle results config
