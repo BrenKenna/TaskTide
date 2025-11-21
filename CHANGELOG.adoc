@@ -7,7 +7,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 == [0.9.9] - 2025-11-21
 
 
-=== Main Checklist
+=== 1). Main Checklist
 
 - [X]   1). Draft documentation.
 - [X]   2). Draft paper.
@@ -19,7 +19,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - []    9). Version-1 paper.
 
 
-=== Bugs 
+=== 2). Bugs 
 
 ==== ItemStore
 
@@ -114,7 +114,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 
 
-=== Code Checklist
+=== 3). Code Resolves
 
 - [X] Formatting of help splash text.
 - [X] Hangs if a folder is not writable - at least repository file path.
