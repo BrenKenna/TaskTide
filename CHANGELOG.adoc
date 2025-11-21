@@ -4,37 +4,163 @@
 # Notice
 All changes to this project for versions beyond v1.0.0 will be reflected here. For the initial release currently is a checklist, and bug catches + fixes from use cases.
 
-== [0.9.9] - 2025-10-01
+== [0.9.9] - 2025-11-21
 
 
+=== Main Checklist
 
-=== Bugs
+- [X]   1). Draft documentation.
+- [X]   2). Draft paper.
+- [X]   4). Drop database files & old workflow engine from repo.
+- [X]   5). Early & Late binding semantics.
+- [/]   6). Docker compose.
+- [/]   7). Kubectl config.
+- []    8). Version-1 documentation
+- []    9). Version-1 paper.
 
+
+=== Bugs 
+
+==== ItemStore
+
+- [/] Multi-threading with RocksDB
++
+--
+        - Trying synchronizing the Open/Close connection methods.
+        - Confirmatory unit test like Processor/Executor?
+--
+
+
+==== Manager
+
+- [X] Reserved annotation keys
+- []  Builder code clean
+- []  Manager command code clean?
+- []  Optionally sort results?
+
+==== Client
+
+- [] Optionally sort/shuffle results config
+- [] New tasks seen but not processed in service mode
+
+
+==== Engine
+
+- [/] Attach JobEnvironment-Id to Task
++
+--
+        - ObserverChain through EngineUtility using ManagerUtility
+--
+
+- [/] Attach results to tasks
++
+--
+        - ItemTaskExecutor attaches to ItemTask
+--
+
+- [X] Replicate task iteration
++
+--
+        - While no duplicate processing occurs
+        - Each thread was given whole list, instead of chunks
+        - Slowing down productivity.
+--
+
+
+===
+
+
+|Reserved Annotation Keys |Observer via Utility attaches JobEnv-Id | Optionally shuffle task list |
+| |Job Env attachments |ItemTask executor attaches results
+| |Annotate ItemTask with results |New tasks seen but processed in service mode |
+| | |Task list chunks provided to threads, over whole list |
+|===
+
+
+==== Outstanding
 - [] Review TaskTideService, and TaskTideRepository unit-tests.
 - [] Bean injection quirk between NetBeans & command-line.
+- [] Unit tests need to be executed separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB.
+- [/] Update UMLs.
+- [/] Incorporate host metrics:
++
+--
+        - [X] Job Env Entity
+        - [X] Place Id on ItemTask or WorkItem?
+        - [] Store under job_env
+        - [] A job can have a MetricProfiles over its lifecycle.
+--
+
+- [/] JobEnvironment property on ItemTask gives identifiers for tracking, pull out on ItemStore.
++
+--
+        - [] AWS Batch
+        - [] SLURM
+        - [] Docker
+        - [] K8s
+        - [] gLite
+--
+
+- [] Logger messages DRY view on Debug, Info, Warn, Error.
+- [] Engine cleanup - Logs, Service Shutdowns.
+- [/] Config cleanup:
++
+--
+        - [X] Drop superfluous configs.
+        - [X] Verify that --client can be dropped.
+        - [X] Engine & Manager share model names.
+        - [X] Input and Output file merged into Target File.
+--
+
+- [] Check over failed unit tests as they work independantly
++
+--
+        - [] Singleton not set for "container Id".
+        - [] Engine error messages, and old unit tests missing SOA.
+        - [/] Background jobs from ItemStore.
+        - [X] TaskTideClient needs TestContainers.
+--
+
+
+
+=== Code Checklist
+
 - [X] Formatting of help splash text.
+<<<<<<< Updated upstream
 - [/] Hangs if a folder is not writable - at least repository file path.
+=======
+- [X] Hangs if a folder is not writable - at least repository file path.
+>>>>>>> Stashed changes
 +
 --
         - Added throwing of runtime exception if repo path is not writable.
 --
 
 - [X] Casting error from specifiying file path on command-line:
-...
++
+--
         - Parsing saw argument this as boolean.
         - Reference class not set in configurer class, null get used must be boolean.
         - Resolving caught similar bugs across all config classes, decided to adjust builder.
-...
+--
 
 - [X] Hitting the skipping malformed line error for a list of work items in text file reset.
-...
-        - How the delimiter was parsed basically
-...
++
+--
+--
+
+
 - [X] Client now hanging at initializing TaskTideServiceManager - typo in Configurer.
 - [X] Stray target step being use on command-line arguments.
-- [] Unit tests need to be pexecuted separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB.
+
 - [X] Sanity check from SQLiteDB that "Task Processing Follow Up" show right record in DB.
-        /--> Not required, full story caught in log. Thread on token was processing, second thread eventually saw it was no longer ToDo and skipped.
++
+--
+        - Not required, full story caught in log. 
+        - Thread on token that was processing, second thread eventually saw it too,
+        - Second thread no longer ToDo state, and skipped.
+--
+
 - [X] Deprecated process executor.
 - [X] In/output file must be in class path.
 - [X] Internal config property for JNoSQL-Host, value pulled twice.
@@ -42,51 +168,19 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X] ManagerAction query comparison too restrictive for what user would import.
 
 
-=== Main Checklist
-
-- []    1). Wrap-up code, repoistory and documentation for v1.
-- []    2). Use-cases General, Bioinformatics, and AI with Super Mario Bros (after ConfigUtil handling).
-- []    3). Paper write-up (initialize with repo docs, review after use-cases).
-- []    4). Drop database files & old workflow engine from repo.
-- []    5). Repository structured for JOSS.
-- []    6). Docker compose.
-- []    7). Kubectl config.
-- []    8). Early & Late binding semantics.
-
-
-=== Code Checklist
-
-A lot of the major aspects are done, or covered. These push towards a minimally functional v0.9.9, where a "once over" covers the v1. This push is neatness thing anticipating problems coming from use-case deployment.
-
-- [/] Update UMLs 
-- [/] Docker Compose.
+- [X] Docker Compose.
 - [X] Custom annotations on TaskTideModels
-...
++
+--
         - [X] Pilot Label, NB LinkedHashMap not usable with JNoSQL-Templates
         - [X] Any kind of internal notes
         - [X] Unit test coverage for Step
         - [X] Unit test coverage for Workflow
-        - [] Code clean on builder
-...
-- [/] Incorporate host metrics:
-...
-        - [X] Job Env Entity
-        - [] Place Id on ItemTask or WorkItem?
-        - [] Store under job_env
-        - [] A job can have a MetricProfiles over its lifecycle.
-...
-
-- [/] JobEnvironment property on ItemTask gives identifiers for tracking, pull out on ItemStore.
-...
-        - [] AWS Batch
-        - [] SLURM
-        - [] Docker
-        - [] K8s
-        - [] gLite
-...
+--
 
 - [X] Test new ManagerActions - Moved to ManagerCommand pattern
-...
++
+--
         - [X] Import
         - [X] Export
         - [X] Add
@@ -96,24 +190,8 @@ A lot of the major aspects are done, or covered. These push towards a minimally 
         - [X] Summarize job states.
         - [X] Delete
         - [X] Fetch by state
-...
+--
 
-- [] Logger messages DRY view on Debug, Info, Warn, Error.
-- [] Engine cleanup - Logs, Service Shutdowns.
-- [/] Config cleanup:
-...
-        - [X] Drop superfluous configs.
-        - [X] Verify that --client can be dropped.
-        - [X] Engine & Manager share model names.
-        - [X] Input and Output file merged into Target File.
-...
-- [] Check over failed unit tests as they work independantly
-...
-        - [] Singleton not set for "container Id".
-        - [] Engine error messages, and old unit tests missing SOA.
-        - [/] Background jobs from ItemStore.
-        - [X] TaskTideClient needs TestContainers.
-...
 - [X] Process Workflow as StepList (fine for now).
 - [X] Apply container support to all required integration tests.
 - [X] Reset WorkItem, and Task of WorkItem.
