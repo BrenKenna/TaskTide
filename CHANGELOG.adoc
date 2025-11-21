@@ -14,9 +14,10 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [] Bean injection quirk between NetBeans & command-line.
 - [X] Formatting of help splash text.
 - [/] Hangs if a folder is not writable - at least repository file path.
-...
++
+--
         - Added throwing of runtime exception if repo path is not writable.
-...
+--
 
 - [X] Casting error from specifiying file path on command-line:
 ...
