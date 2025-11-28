@@ -1,0 +1,56 @@
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.setUpClass ]: 
+
+---------------- Initiating ItemStore Concurrency Tests ----------------
+
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testRocksDbItemStoreConcurrency ]: 
+
+================ Can Cocurrently Read/Write to RocksDB ItemStore ================
+
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testRocksDbItemStoreConcurrency ]: Creating test set for each thread
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testRocksDbItemStoreConcurrency ]: Submitting concurrency tasks with SQL backend
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testRocksDbItemStoreConcurrency ]: Tasks submitted, waiting for results
+2025-11-28 18:27:20 INFO  [ pool-2-thread-3 -> org.tasktide.itemstore.ConcurrencyTests.writeData ]: Imported size = '20', Input Size = '10'
+2025-11-28 18:27:20 INFO  [ pool-2-thread-2 -> org.tasktide.itemstore.ConcurrencyTests.writeData ]: Imported size = '30', Input Size = '10'
+2025-11-28 18:27:20 INFO  [ pool-2-thread-1 -> org.tasktide.itemstore.ConcurrencyTests.writeData ]: Imported size = '30', Input Size = '10'
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.waitFor ]: N tasks = '{}' completed
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testRocksDbItemStoreConcurrency ]: RocksDB concurrency test successful
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testRocksDbItemStoreConcurrency ]: 
+
+================ Can Cocurrently Read/Write to RocksDB ItemStore ================
+
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testSqlItemStoreConcurrency ]: 
+
+================ Can Cocurrently Read/Write to SQLite ItemStore ================
+
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testSqlItemStoreConcurrency ]: Creating test set for each thread
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testSqlItemStoreConcurrency ]: Submitting concurrency tasks with SQL backend
+2025-11-28 18:27:20 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testSqlItemStoreConcurrency ]: Tasks submitted, waiting for results
+2025-11-28 18:27:20 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.ConcurrencyTests.writeData ]: Imported size = '10', Input Size = '10'
+2025-11-28 18:27:20 INFO  [ pool-3-thread-3 -> org.tasktide.itemstore.ConcurrencyTests.writeData ]: Imported size = '20', Input Size = '10'
+2025-11-28 18:27:21 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.ConcurrencyTests.writeData ]: Imported size = '30', Input Size = '10'
+2025-11-28 18:27:21 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.waitFor ]: N tasks = '{}' completed
+2025-11-28 18:27:21 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testSqlItemStoreConcurrency ]: SQLite concurrency test successful
+2025-11-28 18:27:21 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.testSqlItemStoreConcurrency ]: 
+
+================ Can Cocurrently Read/Write to SQLite ItemStore ================
+
+2025-11-28 18:27:21 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2025-11-28 18:27:21 INFO  [ Test worker -> org.tasktide.itemstore.ConcurrencyTests.tearDownClass ]: 
+
+---------------- Terminating ItemStore Concurrency Tests ----------------
+

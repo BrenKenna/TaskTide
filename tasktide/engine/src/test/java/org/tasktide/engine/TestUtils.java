@@ -62,7 +62,7 @@ import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.RocksDBStore;
+import org.tasktide.itemstore.RocksDbStore;
 
 
 /**
@@ -261,10 +261,10 @@ public class TestUtils {
     
     
     /**
-     * Fetch a {@link RocksDBStore} with name
+     * Fetch a {@link RocksDbStore} with name
      * 
      * @param storeName
-     * @return {@link ItemStore} of {@link RocksDBStore}
+     * @return {@link ItemStore} of {@link RocksDbStore}
      */
     public static ItemStore fetchItemStore(String storeName) {
     
@@ -279,7 +279,7 @@ public class TestUtils {
             String dbDirectory = targetPath.toString();
             String masterDB = "master";
             String protoDB = UUID.randomUUID().toString();
-            RocksDBStore itemStore = new RocksDBStore(storeName, dbDirectory, masterDB, protoDB);
+            RocksDbStore itemStore = new RocksDbStore(storeName, dbDirectory, masterDB, protoDB);
             
             // Return ItemStore
             return itemStore;

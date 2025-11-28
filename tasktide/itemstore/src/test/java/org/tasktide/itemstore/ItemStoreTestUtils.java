@@ -93,7 +93,7 @@ public class ItemStoreTestUtils {
     
     
     /**
-     * Set working {@link Path} for {@link RocksDBStore} under the supplied store
+     * Set working {@link Path} for {@link RocksDbStore} under the supplied store
      *  name for the supplied directory
      * 
      * @param flag
@@ -136,18 +136,18 @@ public class ItemStoreTestUtils {
     
     
     /**
-     * Make {@link RocksDBStore} under the target {@link Path}
+     * Make {@link RocksDbStore} under the target {@link Path}
      * 
      * @param storeName
      * @param workDir
-     * @return {@link RocksDBStore}
+     * @return {@link RocksDbStore}
      */
-    public static RocksDBStore makeRocksDB(String storeName, Path workDir) {
+    public static RocksDbStore makeRocksDB(String storeName, Path workDir) {
         String dbDirectory = workDir.toString();
         String masterDB = "master";
         String protoDB = UUID.randomUUID().toString();
         try {
-            RocksDBStore itemStore = new RocksDBStore(storeName, dbDirectory, masterDB, protoDB);
+            RocksDbStore itemStore = new RocksDbStore(storeName, dbDirectory, masterDB, protoDB);
             return itemStore;
         }
         catch (Exception ex) {

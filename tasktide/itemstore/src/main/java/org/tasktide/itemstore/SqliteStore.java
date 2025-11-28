@@ -232,7 +232,7 @@ public class SqliteStore extends AbstractItemStore {
      * @param item
      */
     @Override
-    public void saveItem(DbTarget target, Item item) {
+    public synchronized void saveItem(DbTarget target, Item item) {
         this.openConn(target);
         switch ( target ) {
             case PROTOTYPE -> {
@@ -251,16 +251,40 @@ public class SqliteStore extends AbstractItemStore {
 
     
     /**
+     * Save element under one commit
+     * 
+     * @param target
+     * @param item 
+     */
+    public synchronized void saveItemElm(DbTarget target, Item item) {
+        switch ( target ) {
+            case PROTOTYPE -> {
+                this.putItem(this.proto, item);
+            }
+            case MASTER -> {
+                this.putItem(this.master, item);
+            }
+            case BOTH -> {
+                this.putItem(this.proto, item);
+                this.putItem(this.master, item);
+            }
+        }
+        
+    }
+    
+    /**
      * Save all records to target database
      * 
      * @param target
      * @param items
      */
     @Override
-    public void saveItems(DbTarget target, List<Item> items) {
+    public synchronized void saveItems(DbTarget target, List<Item> items) {
+        this.openConn(target);
         for ( Item elm : items ) {
-            this.saveItem(target, elm);
+            this.saveItemElm(target, elm);
         }
+        this.closeConn(target);
     }
     
     
@@ -271,7 +295,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return List-{@link Item}
      */
     @Override
-    public List<Item> getAll(DbTarget target) {
+    public synchronized List<Item> getAll(DbTarget target) {
         List<Item> output;
         this.openConn(target);
         switch ( target ) {
@@ -295,7 +319,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return {@link Item}
      */
     @Override
-    public Item getById(DbTarget target, String id) {
+    public synchronized Item getById(DbTarget target, String id) {
         List<Item> results;
         String query = "SELECT * FROM Items WHERE Id = ?";
         
@@ -325,7 +349,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return List-{@link Item}
      */
     @Override
-    public List<Item> getItemsByState(DbTarget target, String state) {
+    public synchronized List<Item> getItemsByState(DbTarget target, String state) {
         List<Item> results;
         String query = "SELECT * FROM Items WHERE State = ?";
 
@@ -369,7 +393,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public boolean delete(DbTarget target, Item item) {
+    public synchronized boolean delete(DbTarget target, Item item) {
         boolean status;
         this.openConn(target);
         switch (target) {
@@ -405,7 +429,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public boolean update(DbTarget target, Item item) {
+    public synchronized boolean update(DbTarget target, Item item) {
         try {
             this.delete(target, item);
             this.saveItem(target, item);
@@ -422,7 +446,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public synchronized boolean closeConn(DbTarget target) {
+    public boolean closeConn(DbTarget target) {
         switch (target) {
             case MASTER -> {
                 this.releaseLock();
@@ -467,7 +491,7 @@ public class SqliteStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public synchronized boolean openConn(DbTarget target) {
+    public boolean openConn(DbTarget target) {
         switch (target) {
             case PROTOTYPE -> {
                 try {

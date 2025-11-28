@@ -73,14 +73,43 @@ public class ItemStoreUtils {
     
     
     /**
+     * Create a mock {@link Item}, Id field is random UUID
+     * 
+     * @param label
+     * @return {@link Item}-String
+     */
+    public static Item<String> makeMockItem(String label) {
+        return new Item<>(UUID.randomUUID().toString(), label, "step", "payload");
+    }
+    
+    
+    /**
      * Make a collection of mock {@link Item} of
      *  required size
      * 
      * @param amount
      * @return List-{@link Item}-String
      */
-    public static List<Item<String>> makeMockItemCollection(int amount) {
-        List<Item<String>> output = new ArrayList<>();
+    public static List<Item> makeMockItemCollection(int amount) {
+        List<Item> output = new ArrayList<>();
+        for ( int i = 0;  i < amount; i++) {
+            output.add(makeMockItem());
+        }
+        return output;
+    }
+    
+    
+    /**
+     * Make a collection of mock {@link Item} of
+     *  required size
+     * 
+     * @param amount
+     * @param label
+     * 
+     * @return List-{@link Item}-String
+     */
+    public static List<Item> makeMockItemCollection(int amount, String label) {
+        List<Item> output = new ArrayList<>();
         for ( int i = 0;  i < amount; i++) {
             output.add(makeMockItem());
         }
