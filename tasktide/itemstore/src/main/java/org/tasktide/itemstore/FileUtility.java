@@ -24,6 +24,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 
 /**
@@ -131,7 +133,7 @@ public class FileUtility {
     public static boolean tryLock(Path path, FileChannel fileChannel, FileLock fileLock) throws IOException {
         
         // Create masterDB lock file if non-existent
-        if ( ! makeFile(path) ) {return false;}
+        if ( !makeFile(path) ) {return false;}
         
         // Try create a lock
         try {
