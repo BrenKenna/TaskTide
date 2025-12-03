@@ -13,8 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.model;
 
+import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
+import org.tasktide.itemstore.mutex.utils.MutexConstants;
+import org.tasktide.itemstore.mutex.model.Mutex;
 import java.nio.file.Path;
 import java.util.UUID;
 
@@ -39,17 +42,22 @@ public class MutexFactory {
         
         // Init vars
         String id;
+        Path electionFile;
         Mutex output;
         
         // Fetch variables
         id = UUID.randomUUID().toString();
+        electionFile = MutexConstants.getElectionFile();
+                
         
         // Create mutex
         output = new Mutex(
             id,
+            System.currentTimeMillis(),
             MutexConstants.getLockDir(),
             MutexConstants.getLockFile(),
             hostFile,
+            electionFile,
             MutexConstants.getRetryInterval(),
             MutexConstants.getStaleFileThreshold(),
             MutexConstants.getStartJitter(),
@@ -72,21 +80,65 @@ public class MutexFactory {
         
         // Init vars
         String id, mutexFile;
-        Path hostFile;
+        Path hostFile, electionFile;
         Mutex output;
         
         // Fetch variables
         id = UUID.randomUUID().toString();
         mutexFile = MutexLabellingUtils.getMutexFileName();
         hostFile = MutexConstants.getHostDir().resolve(mutexFile);
+        electionFile = MutexConstants.getElectionFile();
                 
         
         // Create mutex
         output = new Mutex(
             id,
+            System.currentTimeMillis(),
             MutexConstants.getLockDir(),
             MutexConstants.getLockFile(),
             hostFile,
+            electionFile,
+            MutexConstants.getRetryInterval(),
+            MutexConstants.getStaleFileThreshold(),
+            MutexConstants.getStartJitter(),
+            MutexConstants.getEndJitter(),
+            MutexState.INITIALIZATION
+        );
+        
+        
+        // Return
+        return output;
+    }
+    
+    
+    /**
+     * Build with new lock entry generated internally
+     * 
+     * @param timestamp
+     * @return {@link Mutex}
+     */
+    public static Mutex create(long timestamp) {
+        
+        // Init vars
+        String id, mutexFile;
+        Path hostFile, electionFile;
+        Mutex output;
+        
+        // Fetch variables
+        id = UUID.randomUUID().toString();
+        mutexFile = MutexLabellingUtils.getMutexFileName();
+        hostFile = MutexConstants.getHostDir().resolve(mutexFile);
+        electionFile = MutexConstants.getElectionFile();
+                
+        
+        // Create mutex
+        output = new Mutex(
+            id,
+            timestamp,
+            MutexConstants.getLockDir(),
+            MutexConstants.getLockFile(),
+            hostFile,
+            electionFile,
             MutexConstants.getRetryInterval(),
             MutexConstants.getStaleFileThreshold(),
             MutexConstants.getStartJitter(),

@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.utils;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import java.util.UUID;
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
@@ -107,7 +108,7 @@ public class MutexLabellingUtils {
             return InetAddress.getLocalHost();
         }
         catch (UnknownHostException ex) {
-            throw new MutexRuntimeException("Unable to retrieve hosting IP address");
+            throw new MutexUncheckedException("Unable to retrieve hosting IP address");
         }
     }
     

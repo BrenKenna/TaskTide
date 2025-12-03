@@ -15,6 +15,8 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+import org.tasktide.itemstore.mutex.model.MutexState;
 import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
 
@@ -34,9 +36,9 @@ public interface InterProcessMutex {
     /**
      * Acquire a lock on composed target
      * 
-     * @throws MutexException 
+     * @throws MutexCheckedException 
      */
-    void acquire() throws MutexException;
+    void acquire() throws MutexCheckedException;
     
     
     /**
@@ -47,17 +49,17 @@ public interface InterProcessMutex {
      * @param unit
      * 
      * @return boolean
-     * @throws MutexException 
+     * @throws MutexCheckedException 
      */
-    boolean acquire(long time, TimeUnit unit) throws MutexException;
+    boolean acquire(long time, TimeUnit unit) throws MutexCheckedException;
     
     
     /**
      * Release lock
      * 
-     * @throws MutexException 
+     * @throws MutexCheckedException 
      */
-    void release() throws MutexException;
+    void release() throws MutexCheckedException;
     
     
     /**

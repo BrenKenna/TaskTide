@@ -15,6 +15,15 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+import org.tasktide.itemstore.mutex.model.MutexState;
+import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
+import org.tasktide.itemstore.mutex.model.HostLock;
+import org.tasktide.itemstore.mutex.model.Mutex;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 
@@ -27,7 +36,8 @@ public class NfsMutex implements InterProcessMutex {
     // Attributes
     private Mutex mutex;
     private final String procId, nodeProcId;
-    private long epoch;
+    private HostLock hostLock;
+    private final Random RAND;
     
     
     /**
@@ -37,6 +47,7 @@ public class NfsMutex implements InterProcessMutex {
     public NfsMutex() {
         this.procId = MutexLabellingUtils.getInstanceId();
         this.nodeProcId = MutexLabellingUtils.getNodeProcId();
+        RAND = new Random();
     }
 
     
@@ -63,17 +74,17 @@ public class NfsMutex implements InterProcessMutex {
     
     
     @Override
-    public void acquire() throws MutexException {
+    public void acquire() throws MutexCheckedException {
+        
+    }
+
+    @Override
+    public boolean acquire(long time, TimeUnit unit) throws MutexCheckedException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean acquire(long time, TimeUnit unit) throws MutexException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void release() throws MutexException {
+    public void release() throws MutexCheckedException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

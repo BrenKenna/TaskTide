@@ -13,16 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.exceptions;
+
 
 /**
  * Runtime exceptions for Mutex
  *
  * @author Brendan Kenna
  */
-public class MutexRuntimeException extends RuntimeException {
+public class MutexUncheckedException extends RuntimeException {
     
-    public MutexRuntimeException(String msg) {
+    public MutexUncheckedException(String msg) {
         super(msg);
+    }
+    
+    public MutexUncheckedException(String msg, Throwable ex) {
+        super(msg, ex);
     }
 }

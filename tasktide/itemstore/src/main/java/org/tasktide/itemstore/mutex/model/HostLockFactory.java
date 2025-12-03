@@ -13,17 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.model;
+
+import java.nio.file.Path;
 
 
 /**
- * Places exceptions under class with different messages
+ * For creating {@link HostLock}
  *
  * @author Brendan Kenna
  */
-public class MutexException extends Exception {
+public class HostLockFactory {
+ 
     
-    public MutexException(String msg) {
-        super(msg);
+    /**
+     * Create host lock
+     * 
+     * @param targetFile
+     * @return {@link HostLock}
+     */
+    public static HostLock create(Path targetFile) {
+        return new HostLock(targetFile);
     }
 }

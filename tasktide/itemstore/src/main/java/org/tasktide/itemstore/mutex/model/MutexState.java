@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.model;
 
 
 import java.util.Arrays;
@@ -80,6 +80,23 @@ public enum MutexState {
     }, 
     
     LOCKED {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isLockState(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isLockState(MutexState query) {
+            return this == query;
+        }
+    },
+    
+    RELEASED {
         @Override
         public String toString() {
             return name();

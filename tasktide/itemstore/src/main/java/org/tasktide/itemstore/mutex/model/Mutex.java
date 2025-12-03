@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.model;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -38,6 +38,9 @@ public class Mutex {
     @JsonbProperty("Id")
     private final String id;
     
+    @JsonbProperty("Timestamp")
+    private final long timestamp;
+    
     @JsonbProperty("Lock Dir")
     private final Path lockDir;
     
@@ -46,6 +49,9 @@ public class Mutex {
     
     @JsonbProperty("Host File")
     private final Path hostFile;
+    
+    @JsonbProperty("Election File")
+    private final Path electionFile;
     
     @JsonbProperty("Retry Interval")
     private final Duration retryInterval;
@@ -69,9 +75,11 @@ public class Mutex {
      * Construct with properties
      * 
      * @param id
+     * @param timestamp
      * @param lockDir
      * @param lockFile
      * @param hostFile
+     * @param electionFile
      * @param retryInterval
      * @param staleFileThreshold
      * @param startJitter
@@ -80,20 +88,25 @@ public class Mutex {
      */
     @JsonbCreator
     public Mutex(
-        String id,
-        Path lockDir,
-        Path lockFile,
-        Path hostFile,
-        Duration retryInterval,
-        Duration staleFileThreshold,
-        Duration startJitter,
-        Duration endJitter,
-        MutexState state
+        @JsonbProperty("Id") String id,
+        @JsonbProperty("Timestamp") long timestamp,
+        @JsonbProperty("Lock Directory") Path lockDir,
+        @JsonbProperty("Lock File") Path lockFile,
+        @JsonbProperty("Host File") Path hostFile,
+        @JsonbProperty("Election File") Path electionFile,
+        @JsonbProperty("Retry Interval") Duration retryInterval,
+        @JsonbProperty("Stale File Threshold") Duration staleFileThreshold,
+        @JsonbProperty("Start Jitter") Duration startJitter,
+        @JsonbProperty("End Jitter") Duration endJitter,
+        @JsonbProperty("Mutex State") MutexState state
     ) {
         this.id = id;
+        this.timestamp = timestamp;
         this.lockDir = lockDir;
         this.lockFile = lockFile;
         this.hostFile = hostFile;
+        this.electionFile = electionFile;
+        
         this.state = state;
         
         this.startJitter = startJitter;
@@ -162,19 +175,6 @@ public class Mutex {
     public Duration getStartJitter() {
         return startJitter;
     }
-
-    
-    /**
-     * Get a random millisecond duration to
-     *  to stagger process calls
-     * 
-     * @return {@link Duration}
-     */
-    public Duration getRandomJitter() {
-        long min = this.startJitter.toMillis();
-        long max = this.endJitter.toMillis();
-        return Duration.ofMillis(RAND.nextLong(min, max));
-    }
     
     
     /**
@@ -214,6 +214,26 @@ public class Mutex {
      */
     public String getId() {
         return id;
+    }
+
+    
+    /**
+     * Get mutex timestamp
+     * 
+     * @return long
+     */
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    
+    /**
+     * Get election file
+     * 
+     * @return Path
+     */
+    public Path getElectionFile() {
+        return electionFile;
     }
 
     

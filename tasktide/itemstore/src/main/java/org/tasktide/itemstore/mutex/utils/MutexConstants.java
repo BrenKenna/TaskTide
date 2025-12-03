@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.utils;
 
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Random;
+import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
@@ -37,7 +39,7 @@ public class MutexConstants {
     
     // Path properties
     private static volatile Path
-        lockDir, lockFile, hostDir, hostFile;
+        lockDir, lockFile, electionFile, hostDir, hostFile;
     
     // For random long creation 
     private final static Random RAND = new Random();
@@ -87,7 +89,7 @@ public class MutexConstants {
             return retryInterval;
         }
         else {
-            throw new MutexRuntimeException("Durations must be initialized");
+            throw new MutexUncheckedException("Durations must be initialized");
         }
     }
 
@@ -102,7 +104,7 @@ public class MutexConstants {
             return startJitter;
         }
         else {
-            throw new MutexRuntimeException("Durations must be initialized");
+            throw new MutexUncheckedException("Durations must be initialized");
         }
     }
 
@@ -117,7 +119,7 @@ public class MutexConstants {
             return endJitter;
         }
         else {
-            throw new MutexRuntimeException("Durations must be initialized");
+            throw new MutexUncheckedException("Durations must be initialized");
         }
     }
 
@@ -132,7 +134,25 @@ public class MutexConstants {
             return staleFileThreshold;
         }
         else {
-            throw new MutexRuntimeException("Durations must be initialized");
+            throw new MutexUncheckedException("Durations must be initialized");
+        }
+    }
+    
+    
+    /**
+     * Get a random millisecond duration to
+     *  to stagger process calls
+     * 
+     * @return {@link Duration}
+     */
+    public static Duration getRandomJitter() {
+        if ( durationsInitialized ) {
+            long min = startJitter.toMillis();
+            long max = endJitter.toMillis();
+            return Duration.ofMillis(RAND.nextLong(min, max));
+        }
+        else {
+            throw new MutexUncheckedException("Durations must be initialized");
         }
     }
     
@@ -144,13 +164,14 @@ public class MutexConstants {
     public static synchronized void initializePaths() {
         if ( !pathsInitialized ) {
             
+            // Fetch node, and node-proc identifiers
+            String nodeProcId = MutexLabellingUtils.getNodeProcId();
+            String nodeId = MutexLabellingUtils.getNodeId();
+            
             // Set root directory structure
             lockDir = Path.of("./ItemStore-Mutex");
             lockFile = lockDir.resolve("lock-file.lock");
-            
-            // Fetch node, and node-proc identifiers
-            String nodeProcId = MutexLabellingUtils.getNodeProcId();
-            // String nodeId = MutexLabellingUtils.getNodeId();
+            electionFile = lockDir.resolve(nodeId + ".lock");
             
             // Fetch queue directory
             // hostDir = lockDir.resolve("queue").resolve(nodeId);
@@ -168,14 +189,16 @@ public class MutexConstants {
      * 
      * @param lockingDir
      * @param lockingFile
+     * @param electFile
      * @param hostingDir
      */
-    public static synchronized void initializePaths(Path lockingDir, Path lockingFile, Path hostingDir) {
+    public static synchronized void initializePaths(Path lockingDir, Path lockingFile, Path electFile, Path hostingDir) {
         if ( !pathsInitialized ) {
         
             // Set root directory structure
             lockDir = lockingDir;
             lockFile = lockingFile;
+            electionFile = electFile;
             
             // Fetch queue directory
             hostDir = hostingDir;
@@ -196,7 +219,7 @@ public class MutexConstants {
             return lockDir;
         }
         else {
-            throw new MutexRuntimeException("Paths must be initialized");
+            throw new MutexUncheckedException("Paths must be initialized");
         }
     }
 
@@ -211,7 +234,7 @@ public class MutexConstants {
             return lockFile;
         }
         else {
-            throw new MutexRuntimeException("Paths must be initialized");
+            throw new MutexUncheckedException("Paths must be initialized");
         }
     }
 
@@ -226,7 +249,22 @@ public class MutexConstants {
             return hostDir;
         }
         else {
-            throw new MutexRuntimeException("Paths must be initialized");
+            throw new MutexUncheckedException("Paths must be initialized");
+        }
+    }
+    
+    
+    /**
+     * Get current Node_Instance.lock file beside lock file
+     * 
+     * @return {@link Path}
+     */
+    public static Path getElectionFile() {
+        if (pathsInitialized) {
+            return electionFile;
+        }
+        else {
+            throw new MutexUncheckedException("Paths must be initialized");
         }
     }
 
@@ -241,7 +279,7 @@ public class MutexConstants {
             return hostFile;
         }
         else {
-            throw new MutexRuntimeException("Paths must be initialized");
+            throw new MutexUncheckedException("Paths must be initialized");
         }
     }
     
@@ -274,5 +312,24 @@ public class MutexConstants {
      */
     public static boolean durationsConfigured() {
         return durationsInitialized;
+    }
+    
+    
+    /**
+     * Wait over jitter period
+     * 
+     */
+    public static void waitOverJitter() {
+        if ( durationsInitialized ) {
+            try {
+                Duration jitter = getRandomJitter();
+                Thread.sleep(jitter.toMillis());
+            }
+            catch (InterruptedException ex) {}
+        }
+        else {
+            throw new MutexUncheckedException("Durations must be initialized");
+        }
+        
     }
 }

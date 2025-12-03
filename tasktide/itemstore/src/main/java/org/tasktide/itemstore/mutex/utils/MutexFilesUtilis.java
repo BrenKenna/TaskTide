@@ -13,26 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.utils;
 
-import java.io.IOException;
+import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.FileUtility;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.io.IOException;
+
 import java.util.Optional;
 import java.util.stream.Stream;
 
+
 /**
+ * File utility for operations with {@link Mutex}
  *
  * @author Brendan Kenna
  */
 public class MutexFilesUtilis {
+    
     
     /**
      * Retrieve list of files under target directory
      *  under target
      * 
      * @param dir
-     * @return 
+     * @return Stream-Path
      */
     public static Stream<Path> fetchFiles(Path dir) {
         try {
@@ -63,12 +71,54 @@ public class MutexFilesUtilis {
     }
     
     
-    public static synchronized void writeQueueElement(Mutex mutex) {
-    
+    /**
+     * Enqueue lock request
+     * 
+     * 
+     * @param mutex
+     * @return boolean
+     */
+    public static boolean writeHostFile(Mutex mutex) {
+        Path path = mutex.getHostFile().getParent().toAbsolutePath();
+        if ( FileUtility.createDirectory(path) ) {
+            try {
+                Files.writeString(
+                    mutex.getHostFile(),
+                    mutex.getId(),
+                    StandardOpenOption.CREATE_NEW,
+                    StandardOpenOption.WRITE
+                );
+                return true;
+            }
+            
+            catch (IOException ex) {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
     }
     
     
-    public static synchronized void deleteQueueElement(Mutex mutex) {
-    
+    /**
+     * Remove host file
+     * 
+     * @param mutex
+     * @return boolean
+     */
+    public static boolean removeHostFile(Mutex mutex) {
+        
+        // Randomly stagger time before removing host file 
+        try {
+            Thread.sleep(MutexConstants.getRandomJitter().toMillis());
+            Files.deleteIfExists(mutex.getHostFile());
+            return true;
+        }
+
+        // Otherwise false
+        catch (Exception ex) {
+            return false;
+        }
     }
 }

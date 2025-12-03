@@ -16,16 +16,17 @@
 package org.tasktide.itemstore;
 
 import java.io.IOException;
+
 import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.file.FileAlreadyExistsException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.util.Comparator;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 
 /**
@@ -187,5 +188,30 @@ public class FileUtility {
      */
     public static boolean checkIfWritable(Path path) {
         return Files.isWritable(path);
+    }
+    
+    
+    
+    /**
+     * Create directory if not already existing,
+     *  masking any error under boolean
+     * 
+     * @param path
+     * 
+     * @return boolean 
+     */
+    public static boolean createDirectory(Path path) {
+        if ( Files.exists(path) ) {
+            return true;
+        }
+        
+        try {
+            Files.createDirectories(path);
+            return true;
+        }
+        
+        catch (IOException ex) {
+            return false;
+        }
     }
 }
