@@ -15,6 +15,9 @@
  */
 package org.tasktide.itemstore.mutex.utils;
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.FileUtility;
 
@@ -24,6 +27,8 @@ import java.nio.file.StandardOpenOption;
 import java.io.IOException;
 
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 
@@ -33,6 +38,14 @@ import java.util.stream.Stream;
  * @author Brendan Kenna
  */
 public class MutexFilesUtilis {
+    
+    
+    // JsonB formatters
+    private static final Jsonb JSON = JsonbBuilder.create();
+    private static final Jsonb PRETTY_JSON = JsonbBuilder.create(
+        new JsonbConfig().withFormatting(true)
+    );
+    
     
     
     /**
@@ -97,6 +110,53 @@ public class MutexFilesUtilis {
         }
         else {
             return false;
+        }
+    }
+    
+    
+    /**
+     * Write the election file of {@link Mutex}
+     * 
+     * @param mutex
+     * @return boolean
+     */
+    public static boolean writeElectionFile(Mutex mutex) {
+        Path path = mutex.getElectionFile().getParent().toAbsolutePath();
+        FileUtility.createDirectory(path);
+        
+        try {
+            Files.writeString(
+                mutex.getElectionFile(),
+                mutex.toJson(),
+                StandardOpenOption.CREATE_NEW,
+                StandardOpenOption.WRITE
+            );
+            return true;
+        }
+        
+        catch (IOException ex) {
+            return false;
+        }
+    }
+    
+    
+    /**
+     * Fetch nullable {@link Mutex} for provided file
+     * 
+     * @param electionFile
+     * 
+     * @return Optional-{@link Mutex}
+     */
+    public static Optional<Mutex> readElectionFile(Path electionFile) {
+        try {
+            return Optional.of(
+                JSON.fromJson(
+                    Files.readString(electionFile),
+                    Mutex.class
+                )
+            );
+        } catch (IOException ex) {
+            return Optional.empty();
         }
     }
     

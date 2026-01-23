@@ -15,76 +15,59 @@
  */
 package org.tasktide.itemstore.mutex;
 
-import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
-import org.tasktide.itemstore.mutex.model.MutexState;
-import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
-import org.tasktide.itemstore.mutex.model.HostLock;
-import org.tasktide.itemstore.mutex.model.Mutex;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-
-import java.util.Random;
+import java.nio.file.Path;
 import java.util.concurrent.TimeUnit;
+import org.tasktide.itemstore.FileUtility;
+
+import org.tasktide.itemstore.mutex.model.HostLock;
+
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+
+import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.mutex.model.MutexFactory;
+import org.tasktide.itemstore.mutex.model.MutexState;
 
 
 /**
  *
  * @author Brendan Kenna
  */
-public class NfsMutex implements InterProcessMutex {
-
-    // Attributes
-    private Mutex mutex;
-    private final String procId, nodeProcId;
-    private HostLock hostLock;
-    private final Random RAND;
-    
-    
-    /**
-     * Construct
-     * 
-     */
-    public NfsMutex() {
-        this.procId = MutexLabellingUtils.getInstanceId();
-        this.nodeProcId = MutexLabellingUtils.getNodeProcId();
-        RAND = new Random();
-    }
-
-    
-    /**
-     * Get current state
-     * 
-     * @return {@link MutexState}
-     */
-    @Override
-    public MutexState getState() {
-        return this.mutex.getState();
-    }
-
-    
-    /**
-     * Set new {@link MutexState}
-     * 
-     * @param newState 
-     */
-    @Override
-    public void setState(MutexState newState) {
-        this.mutex.setState(newState);
-    }
-    
+public class NfsMutex extends InterProcessMutex {
     
     @Override
-    public void acquire() throws MutexCheckedException {
+    public void acquire(Mutex mutex) throws MutexCheckedException {
         
     }
 
     @Override
-    public boolean acquire(long time, TimeUnit unit) throws MutexCheckedException {
+    public void acquire(Path targetFile) throws MutexCheckedException {
+        
+        // Initialize variables
+        Mutex mutex;
+        
+        // Create mutex enqueue instances election file/vote
+        mutex = MutexFactory.create(targetFile);
+        FileUtility.makeFile(targetFile);
+        
+    }
+
+    @Override
+    public boolean acquire(Path targetFile, long time, TimeUnit unit) throws MutexCheckedException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    @Override
+    public boolean acquire(Mutex mutex, long time, TimeUnit unit) throws MutexCheckedException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void release() throws MutexCheckedException {
+    public void release(HostLock hostLock) throws MutexCheckedException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    @Override
+    public void release(Mutex mutex) throws MutexCheckedException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -104,7 +87,22 @@ public class NfsMutex implements InterProcessMutex {
     }
 
     @Override
+    public Path inferLeader(HostLock hostLock) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
     public int queueSize() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public MutexState getState() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setState(MutexState newState) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

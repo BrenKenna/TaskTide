@@ -15,10 +15,10 @@
  */
 package org.tasktide.itemstore.mutex;
 
-import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
-import org.tasktide.itemstore.mutex.model.MutexState;
-import java.nio.file.Path;
-import java.util.concurrent.TimeUnit;
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
+import org.tasktide.itemstore.mutex.model.Mutex;
 
 
 /**
@@ -30,92 +30,36 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Brendan Kenna
  */
-public interface InterProcessMutex {
+public abstract class InterProcessMutex implements MutexElection {
+    
+
+    // Attributes
+    protected final Jsonb JSON, PRETTY_JSON;
     
     
     /**
-     * Acquire a lock on composed target
+     * Construct
      * 
-     * @throws MutexCheckedException 
      */
-    void acquire() throws MutexCheckedException;
+    public InterProcessMutex() {
+        JSON = JsonbBuilder.create();
+        PRETTY_JSON = JsonbBuilder.create(
+            new JsonbConfig().withFormatting(true)
+        );
+    }
     
     
     /**
-     * Acquire a lock on composed target,
-     *  constrained by time units
+     * Handle first instance of mutex
      * 
-     * @param time
-     * @param unit
-     * 
-     * @return boolean
-     * @throws MutexCheckedException 
-     */
-    boolean acquire(long time, TimeUnit unit) throws MutexCheckedException;
-    
-    
-    /**
-     * Release lock
-     * 
-     * @throws MutexCheckedException 
-     */
-    void release() throws MutexCheckedException;
-    
-    
-    /**
-     * Checks whether this host has locked
-     *  
-     * 
-     * @return boolean
-     */
-    boolean lockedByActiveHost();
-    
-    
-    /**
-     * Checks whether locked by active process
-     * 
-     * @return boolean
-     */
-    boolean lockedByActiveProcess();
-    
-    
-    /**
-     * Return {@link MutexState}
-     * 
-     * @return {@link MutexState}
-     */
-    MutexState getState();
-    
-    
-    /**
-     * Set new state
-     * 
-     * @param newState 
-     */
-    void setState(MutexState newState);
-    
-    
-    /**
-     * Given file naming scheme,
-     *  infer position of host in queue
-     * 
-     * @return int
-     */
-    int inferPosition();
-    
-    
-    /**
-     * Infer leader
-     * 
+     * @param mutex
      * @return 
      */
-    Path inferLeader();
-    
-    
-    /**
-     * Get queue size
-     * 
-     * @return int
-     */
-    int queueSize();
+    public boolean handleFirstInstance(Mutex mutex) {
+        
+        // Create files
+        
+        // Return state
+        return true;
+    }
 }

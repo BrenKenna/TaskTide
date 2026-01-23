@@ -31,9 +31,9 @@ public class MutexLabellingUtils {
     
     // Attributes
     private static boolean isConfigured = false;
-    private static volatile String NODE_ID;
-    private static volatile String INSTANCE_ID;
-    private static volatile String NODE_INSTANCE_ID;
+    private static volatile String
+        NODE_ID, INSTANCE_ID,
+        NODE_INSTANCE_ID;
     
     
     /**
@@ -148,7 +148,7 @@ public class MutexLabellingUtils {
     
     
     /**
-     * Get file name for new lock file under node-instance,
+     * Get the file name for new lock file under node-instance,
      *  to be appended onto directory path
      * 
      * @return String

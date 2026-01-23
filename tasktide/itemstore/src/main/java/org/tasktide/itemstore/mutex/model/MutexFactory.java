@@ -17,7 +17,7 @@ package org.tasktide.itemstore.mutex.model;
 
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
-import org.tasktide.itemstore.mutex.model.Mutex;
+
 import java.nio.file.Path;
 import java.util.UUID;
 

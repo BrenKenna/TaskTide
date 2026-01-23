@@ -18,7 +18,7 @@ package org.tasktide.itemstore.mutex.utils;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Random;
-import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
+
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
@@ -35,11 +35,13 @@ public class MutexConstants {
     
     // Duration properties
     private static volatile Duration
-        retryInterval, startJitter, endJitter, staleFileThreshold;
+        retryInterval, startJitter,
+        endJitter, staleFileThreshold;
     
     // Path properties
     private static volatile Path
-        lockDir, lockFile, electionFile, hostDir, hostFile;
+        lockDir, lockFile, electionFile,
+        hostDir, hostFile;
     
     // For random long creation 
     private final static Random RAND = new Random();
