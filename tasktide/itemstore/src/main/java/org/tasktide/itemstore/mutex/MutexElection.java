@@ -16,6 +16,7 @@
 package org.tasktide.itemstore.mutex;
 
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import org.tasktide.itemstore.mutex.model.MutexState;
@@ -48,34 +49,6 @@ public interface MutexElection {
      * @throws MutexCheckedException 
      */
     void acquire(Path targetFile) throws MutexCheckedException;
-    
-    
-    /**
-     * Acquire a lock on composed target,
-     *  constrained by time units
-     * 
-     * @param mutex
-     * @param time
-     * @param unit
-     * 
-     * @return boolean
-     * @throws MutexCheckedException 
-     */
-    boolean acquire(Mutex mutex, long time, TimeUnit unit) throws MutexCheckedException;
-    
-    
-    /**
-     * Acquire a lock on composed target,
-     *  constrained by time units
-     * 
-     * @param targetFile
-     * @param time
-     * @param unit
-     * 
-     * @return boolean
-     * @throws MutexCheckedException 
-     */
-    boolean acquire(Path targetFile, long time, TimeUnit unit) throws MutexCheckedException;
     
     
     /**
@@ -133,18 +106,18 @@ public interface MutexElection {
      * Given file naming scheme,
      *  infer position of host in queue
      * 
+     * @param mutex
      * @return int
      */
-    int inferPosition();
+    int inferPosition(Mutex mutex);
     
     
     /**
      * Infer leader
      * 
-     * @param hostLock
      * @return 
      */
-    Path inferLeader(HostLock hostLock);
+    Optional<Path> inferLeader();
     
     
     /**

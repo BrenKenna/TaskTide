@@ -15,16 +15,17 @@
  */
 package org.tasktide.itemstore.mutex.model;
 
+
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
-
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Random;
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
@@ -236,6 +237,36 @@ public class Mutex {
         return electionFile;
     }
 
+    
+    /**
+     * Get the path for supplied {@link MutexFileType}, or
+     *  unchecked exception
+     * 
+     * @param fileType
+     * @return Path
+     */
+    public Path getFileForType(MutexFileType fileType) {
+        
+        switch ( fileType ) {
+        
+            case LOCK_FILE -> {
+                return this.getLockFile();
+            }
+            
+            case HOST_FILE -> {
+                return this.getHostFile();
+            }
+            
+            case ELECTION_FILE -> {
+                return this.getElectionFile();
+            }
+            
+            default -> {
+                throw new MutexUncheckedException("Mutex file type must be one of:\tElection, Host, Lock");
+            }
+        }
+    }
+    
     
     /**
      * Represent as JSON document

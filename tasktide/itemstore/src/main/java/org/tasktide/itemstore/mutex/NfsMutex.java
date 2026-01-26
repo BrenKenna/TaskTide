@@ -16,59 +16,170 @@
 package org.tasktide.itemstore.mutex;
 
 import java.nio.file.Path;
-import java.util.concurrent.TimeUnit;
+
 import org.tasktide.itemstore.FileUtility;
 
 import org.tasktide.itemstore.mutex.model.HostLock;
-
-import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
-
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFactory;
+import org.tasktide.itemstore.mutex.model.MutexFileType;
 import org.tasktide.itemstore.mutex.model.MutexState;
+
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
+import org.tasktide.itemstore.mutex.utils.MutexFilesUtilis;
 
 
 /**
+ * Implements the {@link InterProcessMutex} for shared file system
  *
  * @author Brendan Kenna
  */
 public class NfsMutex extends InterProcessMutex {
     
+    
+    //
+    private volatile Mutex active;
+    
+    
+    /**
+     * Acquire lock for provided {@link Mutex}
+     * 
+     * @param mutex
+     * @throws MutexCheckedException 
+     */
     @Override
     public void acquire(Mutex mutex) throws MutexCheckedException {
         
+        // Initialize variables
+        int pos;
+        Path activeLeader;
+        
+        // Set state as initialization
+        mutex.setState(MutexState.INITIALIZATION);
+        FileUtility.makeFile(mutex.getElectionFile());
+        MutexFilesUtilis.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+        
+        // Fetch position and active leader
+        pos = this.inferPosition(mutex);
+        activeLeader = this.inferLeader().orElseThrow(
+            () -> new MutexUncheckedException("Error no election files found")
+        );
+        mutex.setState(MutexState.WAITING);
+        MutexFilesUtilis.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+        
+        // Wait until become leader
+        while( pos != 0 ) {
+            
+            // Wait
+            MutexFilesUtilis.waitJitterTime();
+
+            // Fetch position
+            pos = this.inferPosition(mutex);
+        }
+        
+        
+        // Write mutex to lock file
+        //   - Sanity check these here first?
+        mutex.setState(MutexState.HOST_LOCKED);
+        MutexFilesUtilis.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+        MutexFilesUtilis.writeHostFile(mutex);
+        active = mutex;
     }
 
+    
+    /**
+     * Acquire lock for provided target file
+     * 
+     * @param targetFile
+     * @throws MutexCheckedException 
+     */
     @Override
     public void acquire(Path targetFile) throws MutexCheckedException {
         
         // Initialize variables
+        int pos;
+        Path activeLeader;
         Mutex mutex;
         
         // Create mutex enqueue instances election file/vote
         mutex = MutexFactory.create(targetFile);
+        mutex.setState(MutexState.INITIALIZATION);
         FileUtility.makeFile(targetFile);
+        MutexFilesUtilis.writeMutex(mutex, MutexFileType.ELECTION_FILE);
         
+        // Handle first instance?
+        
+        // Fetch position and active leader
+        pos = this.inferPosition(mutex);
+        activeLeader = this.inferLeader().orElseThrow(
+            () -> new MutexUncheckedException("Error no election files found")
+        );
+        mutex.setState(MutexState.WAITING);
+        MutexFilesUtilis.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+        
+        // Wait until become leader
+        while( pos != 0 ) {
+            
+            // Wait
+            MutexFilesUtilis.waitJitterTime();
+
+            // Fetch position
+            pos = this.inferPosition(mutex);
+        }
+        
+        
+        // Write mutex to lock file
+        //   - Sanity check these here first?
+        mutex.setState(MutexState.HOST_LOCKED);
+        MutexFilesUtilis.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+        MutexFilesUtilis.writeHostFile(mutex);
+        active = mutex;
     }
 
-    @Override
-    public boolean acquire(Path targetFile, long time, TimeUnit unit) throws MutexCheckedException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    @Override
-    public boolean acquire(Mutex mutex, long time, TimeUnit unit) throws MutexCheckedException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
+    /**
+     * Release lock on {@link HostLock}
+     * 
+     * @param hostLock
+     * @throws MutexCheckedException 
+     */
     @Override
     public void release(HostLock hostLock) throws MutexCheckedException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        // Initialize variables
+        Mutex mutex = MutexFilesUtilis
+            .readMutexFromFile(hostLock.getTargetFile())
+            .orElseThrow(
+                () -> new MutexUncheckedException("Error no mutex found for host lock")
+        );
+        
+        // Remove all files
+        MutexFilesUtilis.deleteFile(mutex.getElectionFile());
+        MutexFilesUtilis.deleteFile(mutex.getHostFile());
+        MutexFilesUtilis.deleteFile(mutex.getLockFile());
+        
+        // Drop active mutex
+        active = null;
     }
     
+    
+    /**
+     * Release mutex
+     * 
+     * @param mutex
+     * @throws MutexCheckedException 
+     */
     @Override
     public void release(Mutex mutex) throws MutexCheckedException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        // Remove all files
+        MutexFilesUtilis.deleteFile(mutex.getElectionFile());
+        MutexFilesUtilis.deleteFile(mutex.getHostFile());
+        MutexFilesUtilis.deleteFile(mutex.getLockFile());
+        
+        // Drop active mutex
+        active = null;
     }
 
     @Override
@@ -78,21 +189,6 @@ public class NfsMutex extends InterProcessMutex {
 
     @Override
     public boolean lockedByActiveProcess() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public int inferPosition() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Path inferLeader(HostLock hostLock) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public int queueSize() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

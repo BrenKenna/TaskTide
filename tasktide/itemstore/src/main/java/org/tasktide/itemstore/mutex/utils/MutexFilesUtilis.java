@@ -18,8 +18,6 @@ package org.tasktide.itemstore.mutex.utils;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
-import org.tasktide.itemstore.mutex.model.Mutex;
-import org.tasktide.itemstore.FileUtility;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,9 +25,13 @@ import java.nio.file.StandardOpenOption;
 import java.io.IOException;
 
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
+
+import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.FileUtility;
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
+import org.tasktide.itemstore.mutex.model.MutexFileType;
 
 
 /**
@@ -45,7 +47,6 @@ public class MutexFilesUtilis {
     private static final Jsonb PRETTY_JSON = JsonbBuilder.create(
         new JsonbConfig().withFormatting(true)
     );
-    
     
     
     /**
@@ -97,7 +98,7 @@ public class MutexFilesUtilis {
             try {
                 Files.writeString(
                     mutex.getHostFile(),
-                    mutex.getId(),
+                    mutex.toJson(),
                     StandardOpenOption.CREATE_NEW,
                     StandardOpenOption.WRITE
                 );
@@ -141,17 +142,17 @@ public class MutexFilesUtilis {
     
     
     /**
-     * Fetch nullable {@link Mutex} for provided file
+     * Fetch nullable {@link Mutex} from provided file
      * 
-     * @param electionFile
+     * @param mutexFile
      * 
      * @return Optional-{@link Mutex}
      */
-    public static Optional<Mutex> readElectionFile(Path electionFile) {
+    public static Optional<Mutex> readMutexFromFile(Path mutexFile) {
         try {
             return Optional.of(
                 JSON.fromJson(
-                    Files.readString(electionFile),
+                    Files.readString(mutexFile),
                     Mutex.class
                 )
             );
@@ -179,6 +180,114 @@ public class MutexFilesUtilis {
         // Otherwise false
         catch (Exception ex) {
             return false;
+        }
+    }
+    
+    
+    /**
+     * Wait for random jitter time
+     * 
+     * @return boolean
+     */
+    public static boolean waitJitterTime() {
+        try {
+            TimeUnit.MILLISECONDS.sleep(MutexConstants.getRandomJitter().toMillis());
+            return true;
+        }
+        catch (Exception ex) {
+            return false;
+        } 
+    }
+    
+    
+    /**
+     * Wait for random jitter time
+     * 
+     * @param time
+     * @return boolean
+     */
+    public static boolean waitJitterTime(long time) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(time);
+            return true;
+        }
+        catch (Exception ex) {
+            return false;
+        } 
+    }
+    
+    
+    /**
+     * Delete target flie
+     * 
+     * @param target
+     * @return boolean
+     */
+    public static boolean deleteFile(Path target) {
+        try {
+            Files.deleteIfExists(target);
+            return true;
+        }
+        catch (Exception ex) {
+            return false;
+        }
+    }
+    
+    
+    /**
+     * Write {@link Mutex}
+     * 
+     * @param mutex
+     * @param targetFile
+     * @return boolean
+     */
+    public static boolean writeMutex(Mutex mutex, Path targetFile) {
+        try {
+            Files.writeString(
+                targetFile,
+                mutex.toJson(),
+                StandardOpenOption.CREATE_NEW,
+                StandardOpenOption.WRITE
+            );
+            return true;
+        }
+        
+        catch (IOException ex) {
+            return false;
+        }
+    }
+    
+    
+    /**
+     * Write mutex to required {@link MutexFileType}
+     * 
+     * @param mutex
+     * @param fileType
+     * @return boolean
+     */
+    public static void writeMutex(Mutex mutex, MutexFileType fileType) {
+        
+        // Delete file if exists
+        switch ( fileType ) {
+            
+            case LOCK_FILE -> {
+                deleteFile(mutex.getLockFile());
+                writeMutex(mutex, mutex.getLockFile()); 
+            }
+            
+            case HOST_FILE -> {
+                deleteFile(mutex.getHostFile());
+                writeMutex(mutex, mutex.getHostFile());
+            }
+            
+            case ELECTION_FILE -> {
+                deleteFile(mutex.getElectionFile());
+                writeMutex(mutex, mutex.getElectionFile());
+            }
+            
+            default -> {
+                throw new MutexUncheckedException("Mutex file type must one of:\tElection, Host, Lock");
+            }
         }
     }
 }
