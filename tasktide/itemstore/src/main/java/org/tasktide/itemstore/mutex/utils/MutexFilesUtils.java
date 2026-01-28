@@ -39,7 +39,7 @@ import org.tasktide.itemstore.mutex.model.MutexFileType;
  *
  * @author Brendan Kenna
  */
-public class MutexFilesUtilis {
+public class MutexFilesUtils {
     
     
     // JsonB formatters

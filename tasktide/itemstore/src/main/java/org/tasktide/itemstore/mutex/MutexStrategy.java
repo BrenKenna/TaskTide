@@ -24,7 +24,11 @@ import java.nio.channels.FileLock;
 import java.nio.file.Path;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import org.tasktide.itemstore.FileUtility;
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 import org.tasktide.itemstore.mutex.model.HostLock;
 import org.tasktide.itemstore.mutex.model.HostLockFactory;
@@ -32,6 +36,8 @@ import org.tasktide.itemstore.mutex.model.HostLockFactory;
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFileType;
 import org.tasktide.itemstore.mutex.model.MutexState;
+import org.tasktide.itemstore.mutex.utils.MutexConstants;
+import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 
 /**
@@ -94,7 +100,6 @@ public enum MutexStrategy {
             }
         }
         
-        
         @Override
         public synchronized boolean release(Mutex mutex, MutexFileType fileType) {
         
@@ -144,15 +149,61 @@ public enum MutexStrategy {
 
         @Override
         public boolean apply(Mutex mutex, MutexFileType fileType) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            
+            // Initialize variables
+            int pos;
+            Path activeLeader;
+        
+            // Set state as initialization
+            mutex.setState(MutexState.INITIALIZATION);
+            FileUtility.makeFile(mutex.getElectionFile());
+            MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+
+            // Fetch position and active leader
+            pos = inferPosition(mutex);
+            activeLeader = inferLeader().orElseThrow(
+                () -> new MutexUncheckedException("Error no election files found")
+            );
+            mutex.setState(MutexState.WAITING);
+            MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+
+            // Wait until become leader
+            while( pos != 0 ) {
+
+                // Wait
+                MutexFilesUtils.waitJitterTime();
+
+                // Fetch position
+                pos = inferPosition(mutex);
+            }
+
+
+            // Write mutex to lock file
+            //   - Sanity check these here first?
+            mutex.setState(MutexState.HOST_LOCKED);
+            MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+            if (MutexFilesUtils.writeHostFile(mutex)) {
+                MutexFilesUtils.writeHostFile(mutex);
+                return true;
+            }
+            
+            // Otherwise rollback
+            else {
+                MutexFilesUtils.deleteFile(mutex.getElectionFile());
+                MutexFilesUtils.deleteFile(mutex.getHostFile());
+                return false;
+            }
         }
 
         @Override
         public boolean release(Mutex mutex, MutexFileType fileType) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            return (
+                MutexFilesUtils.deleteFile(mutex.getElectionFile()) &&
+                MutexFilesUtils.deleteFile(mutex.getHostFile())
+            );
         }
     };
-
+    
     
     /**
      * Abstract method to allow implementations to handle how
@@ -165,8 +216,7 @@ public enum MutexStrategy {
      * @return boolean
      */
     public abstract boolean apply(Mutex mutex, MutexFileType fileType);
-    
-    
+
     
     /**
      * Abstract method to allow implementations to handle how
@@ -198,6 +248,63 @@ public enum MutexStrategy {
      */
     public abstract boolean isApplierStrategy(MutexStrategy query);
 
+    
+    /**
+     * Returns the full file path of the leader
+     * 
+     * @return 
+     */
+    public static Optional<Path> inferLeader() {
+        return MutexFilesUtils
+            .fetchFiles(MutexConstants.getHostDir())
+            .sorted()
+            .findFirst()
+        ;
+    }
+    
+    
+    /**
+     * Infer position of {@link Mutex} in queue
+     * 
+     * @param mutex
+     * @return int
+     */
+    public static int inferPosition(Mutex mutex) {
+        
+        // Search params
+        int counter = 0;
+        boolean found = false;
+        
+        // Fetch all election files
+        List<Path> paths = MutexFilesUtils.fetchFiles(MutexConstants.getHostDir())
+            .sorted()
+            .toList();
+        
+        // Search until found
+        while( counter < paths.size() && !found ) {
+            Path active = paths.get(counter);
+            if ( mutex.getElectionFile() == active ) {
+                found = true;
+            }
+            else {
+                counter++;
+            }
+        }
+        
+        // Return value
+        return counter;
+    }
+    
+    
+    /**
+     * Return queue size
+     * 
+     * @return queue size
+     */
+    public static int queueSize() {
+        return Math.toIntExact(MutexFilesUtils.fetchFiles(MutexConstants.getHostDir()).count());
+    }
+    
 
     /**
      * Fetch the index for mapped query string

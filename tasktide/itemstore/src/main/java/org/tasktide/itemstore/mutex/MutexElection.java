@@ -16,7 +16,6 @@
 package org.tasktide.itemstore.mutex;
 
 import java.nio.file.Path;
-import java.util.Optional;
 
 import org.tasktide.itemstore.mutex.model.MutexState;
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
@@ -107,30 +106,4 @@ public interface MutexElection {
      * @param newState 
      */
     public void setState(MutexState newState);
-    
-    
-    /**
-     * Given file naming scheme,
-     *  infer position of host in queue
-     * 
-     * @param mutex
-     * @return int
-     */
-    public int inferPosition(Mutex mutex);
-    
-    
-    /**
-     * Infer leader
-     * 
-     * @return 
-     */
-    public Optional<Path> inferLeader();
-    
-    
-    /**
-     * Get queue size
-     * 
-     * @return int
-     */
-    public int queueSize();
 }

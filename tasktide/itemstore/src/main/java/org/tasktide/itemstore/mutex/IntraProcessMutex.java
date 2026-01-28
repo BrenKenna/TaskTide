@@ -15,15 +15,7 @@
  */
 package org.tasktide.itemstore.mutex;
 
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Optional;
-
-
 import org.tasktide.itemstore.mutex.model.HostLock;
-import org.tasktide.itemstore.mutex.model.Mutex;
-import org.tasktide.itemstore.mutex.utils.MutexConstants;
-import org.tasktide.itemstore.mutex.utils.MutexFilesUtilis;
 
 
 /**
@@ -35,62 +27,5 @@ import org.tasktide.itemstore.mutex.utils.MutexFilesUtilis;
  */
 public abstract class IntraProcessMutex implements MutexElection {
 
-    /**
-     * Returns the full file path of the leader
-     * 
-     * @return 
-     */
-    @Override
-    public Optional<Path> inferLeader() {
-        return MutexFilesUtilis
-            .fetchFiles(MutexConstants.getHostDir())
-            .sorted()
-            .findFirst()
-        ;
-    }
     
-    
-    /**
-     * Infer position of {@link Mutex} in queue
-     * 
-     * @param mutex
-     * @return int
-     */
-    @Override
-    public int inferPosition(Mutex mutex) {
-        
-        // Search params
-        int counter = 0;
-        boolean found = false;
-        
-        // Fetch all election files
-        List<Path> paths = MutexFilesUtilis.fetchFiles(MutexConstants.getHostDir())
-            .sorted()
-            .toList();
-        
-        // Search until found
-        while( counter < paths.size() && !found ) {
-            Path active = paths.get(counter);
-            if ( mutex.getElectionFile() == active ) {
-                found = true;
-            }
-            else {
-                counter++;
-            }
-        }
-        
-        // Return value
-        return counter;
-    }
-    
-    
-    /**
-     * Return queue size
-     * 
-     * @return 
-     */
-    @Override
-    public int queueSize() {
-        return Math.toIntExact(MutexFilesUtilis.fetchFiles(MutexConstants.getHostDir()).count());
-    }
 }

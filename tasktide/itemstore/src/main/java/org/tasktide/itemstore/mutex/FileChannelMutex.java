@@ -21,7 +21,7 @@ import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFileType;
 import org.tasktide.itemstore.mutex.model.MutexState;
-import org.tasktide.itemstore.mutex.utils.MutexFilesUtilis;
+import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 
 /**
@@ -57,7 +57,7 @@ public class FileChannelMutex extends IntraProcessMutex {
         // Wait until acquired
         boolean locked = false;
         while (!locked) {
-            MutexFilesUtilis.waitJitterTime();
+            MutexFilesUtils.waitJitterTime();
             locked = MutexStrategy.FILE_CHANNEL.apply(mutex, MutexFileType.HOST_FILE);
         }
     }
@@ -103,7 +103,7 @@ public class FileChannelMutex extends IntraProcessMutex {
         this.ensureNoActiveLock();
         
         // Initialize mutex parameters
-        Mutex mutex = MutexFilesUtilis.readMutexFromFile(targetFile).get();
+        Mutex mutex = MutexFilesUtils.readMutexFromFile(targetFile).get();
 
         // Wait for lock
         this.waitForLock(mutex);
