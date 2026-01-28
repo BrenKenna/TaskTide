@@ -15,42 +15,78 @@
  */
 package org.tasktide.itemstore.mutex;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.io.IOException;
-
-import org.tasktide.itemstore.mutex.model.HostLock;
-import org.tasktide.itemstore.mutex.model.HostLockFactory;
-import org.tasktide.itemstore.mutex.utils.MutexConstants;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.mutex.model.MutexFileType;
+import org.tasktide.itemstore.mutex.model.MutexState;
+import org.tasktide.itemstore.mutex.utils.MutexFilesUtilis;
 
 
 /**
+ * Class for managing acquisitions and releasing of {@link FileChannel}
  *
  * @author Brendan Kenna
  */
 public class FileChannelMutex extends IntraProcessMutex {
     
+    // Attributes
+    private Mutex active;
+    
     
     /**
-     * Try acquire lock on provided {@link HostLock}
+     * Ensure no active lock
      * 
-     * @param hostLock
-     * @return boolean
-     * 
-     * @throws IOException 
+     * @throws MutexCheckedException 
      */
-    private boolean tryAcquire(HostLock hostLock) throws IOException {
+    private synchronized void ensureNoActiveLock() throws MutexCheckedException {
+        if (active != null) {
+            throw new MutexCheckedException("Lock already active");
+        }
+    }
     
-        // Pass if host lock already exists
-        if ( Files.exists(hostLock.getTargetFile()) ) {
-            return false;
+    
+    /**
+     * Wait for lock to be acquired
+     * 
+     * @param mutex 
+     */
+    private void waitForLock(Mutex mutex) {
+        
+        // Wait until acquired
+        boolean locked = false;
+        while (!locked) {
+            MutexFilesUtilis.waitJitterTime();
+            locked = MutexStrategy.FILE_CHANNEL.apply(mutex, MutexFileType.HOST_FILE);
+        }
+    }
+    
+    
+    /**
+     * Set active {@link Mutex}
+     * 
+     * @param mutex
+     * @throws MutexCheckedException 
+     */
+    private synchronized void setLock(Mutex mutex) throws MutexCheckedException {
+        
+        // Check if a lock is already active
+        if ( active != null ) {
+            throw new MutexCheckedException("Lock already active");
         }
         
         // Try lock
-        // releaseLock();
-        return hostLock.setLock();
+        try {
+            active = mutex;
+            mutex.setState(MutexState.LOCKED);
+        }
+        
+        // Otherwise rollback
+        catch (RuntimeException | Error ex) {
+            MutexStrategy.FILE_CHANNEL.release(mutex, MutexFileType.HOST_FILE);
+            throw ex;
+        }
     }
     
     
@@ -60,81 +96,135 @@ public class FileChannelMutex extends IntraProcessMutex {
      * @param targetFile
      * @throws MutexCheckedException 
      */
+    @Override
     public void acquire(Path targetFile) throws MutexCheckedException {
     
+        // Fail early if already locked
+        this.ensureNoActiveLock();
+        
         // Initialize mutex parameters
-        boolean locked;
-        HostLock hostLock = HostLockFactory.create(targetFile);
+        Mutex mutex = MutexFilesUtilis.readMutexFromFile(targetFile).get();
+
+        // Wait for lock
+        this.waitForLock(mutex);
+        this.setLock(mutex);
+    }
+    
+    
+    /**
+     * Acquire lock on provided {@link Mutex}
+     * 
+     * @param mutex
+     * @throws MutexCheckedException 
+     */
+    @Override
+    public void acquire(Mutex mutex) throws MutexCheckedException {
         
-        // Try locking until locked
-        try {
-            
-            // Fetch lock
-            locked = tryAcquire(hostLock);
+        // Fail early if already locked
+        this.ensureNoActiveLock();
         
-            // Wait until acquired
-            while (!locked) {
-                try {
-                    Thread.sleep(MutexConstants.getRandomJitter().toMillis());
-                }
-                catch (InterruptedException ex) {}
-                locked = tryAcquire(hostLock);
-            }
-        }
+        // Wait until acquired
+        this.waitForLock(mutex);
         
-        // Throw exception
-        catch (IOException ex) {
-            String msg = String.format(
-                "Failed to process a lock on target file '%s'",
-                targetFile.toString()
-            );
-            throw new MutexCheckedException(msg, ex);
-        }
+        // Set active
+        this.setLock(mutex);
     }
 
     
     /**
      * Release lock
      * 
-     * @param hostLock
+     */
+    @Override
+    public synchronized void release(Mutex mutex) throws MutexCheckedException {
+        if ( mutex.getHostLock() == null ) {
+            throw new MutexCheckedException("No host lock to release on mutex");
+        }
+        
+        if ( !active.getId().equals(mutex.getId()) ) {
+            throw new MutexCheckedException("Mutex does not equal active");
+        }
+        
+        MutexStrategy.FILE_CHANNEL.release(mutex, MutexFileType.HOST_FILE);
+        active = null;
+    }
+    
+    
+    /**
+     * Release lock on target file provided
+     * 
+     * @param targetFile
      * @throws MutexCheckedException 
      */
-    public synchronized void release(HostLock hostLock) throws MutexCheckedException {
-        if ( !hostLock.releaseLock() ) {
-            throw new MutexCheckedException("Unable to release host lock, displaying for reference");
+    @Override
+    public synchronized void release(Path targetFile) throws MutexCheckedException {
+        if ( active == null ) {
+            throw new MutexCheckedException("No host lock to release on mutex");
+        }
+        
+        if ( !active.getHostFile().equals(targetFile) ) {
+            throw new MutexCheckedException("Mutex does not equal active");
+        }
+        
+        MutexStrategy.FILE_CHANNEL.release(active, MutexFileType.HOST_FILE);
+        active = null;
+    }
+    
+    
+    /**
+     * Release lock
+     * 
+     * @throws MutexCheckedException
+     */
+    @Override
+    public synchronized void release() throws MutexCheckedException {
+        if ( active != null ) {
+            MutexStrategy.FILE_CHANNEL.release(active, MutexFileType.HOST_FILE);
+            active = null;
+        }
+        
+        else {
+            throw new MutexCheckedException("No active lock to release");
         }
     }
     
     
     /**
-     * Given file naming scheme,
-     *  infer position of host in queue
+     * Get mutex state
      * 
-     * @param hostLock
-     * @return int
+     * @return {@link MutexState}
      */
-    public int determinePosition(HostLock hostLock) {
+    @Override
+    public synchronized MutexState getState() {
+        if ( active == null ) {
+            return MutexState.OPEN;
+        }
+        else {
+            return active.getState();
+        }
+    }
+
     
+    /**
+     * Set {@link Mutex} state
+     * 
+     * @param newState 
+     */
+    @Override
+    public synchronized void setState(MutexState newState) {
+        if ( active != null ) {
+            active.setState(newState);
+        }
     }
     
     
-    /**
-     * Infer leader
-     * 
-     * @param hostLock
-     * @return 
-     */
-    public Path inferLeader(HostLock hostLock) {
-    
+    @Override
+    public boolean lockedByActiveHost() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
-    /**
-     * Get queue size
-     * 
-     * @return int
-     */
-    public int queueSize() {
-    
+
+    @Override
+    public boolean lockedByActiveProcess() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

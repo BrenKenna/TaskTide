@@ -69,6 +69,8 @@ public class Mutex {
     @JsonbProperty("Mutex State")
     private MutexState state;
     
+    private HostLock hostLock;
+    
     private final Random RAND = new Random();
     
     
@@ -265,6 +267,26 @@ public class Mutex {
                 throw new MutexUncheckedException("Mutex file type must be one of:\tElection, Host, Lock");
             }
         }
+    }
+    
+    
+    /**
+     * Get host lock
+     * 
+     * @return {@link HostLock}
+     */
+    public HostLock getHostLock() {
+        return this.hostLock;
+    }
+    
+    
+    /**
+     * Set {@link HostLock}
+     * 
+     * @param hostLock 
+     */
+    public void setHostLock(HostLock hostLock) {
+        this.hostLock = hostLock;
     }
     
     

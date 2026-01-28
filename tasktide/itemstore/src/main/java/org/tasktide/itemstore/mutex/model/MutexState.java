@@ -111,6 +111,23 @@ public enum MutexState {
         public boolean isLockState(MutexState query) {
             return this == query;
         }
+    },
+    
+    OPEN {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isLockState(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isLockState(MutexState query) {
+            return this == query;
+        }
     };
 
     

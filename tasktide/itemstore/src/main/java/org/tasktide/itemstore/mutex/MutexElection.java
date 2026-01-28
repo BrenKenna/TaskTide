@@ -17,11 +17,9 @@ package org.tasktide.itemstore.mutex;
 
 import java.nio.file.Path;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 import org.tasktide.itemstore.mutex.model.MutexState;
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
-import org.tasktide.itemstore.mutex.model.HostLock;
 import org.tasktide.itemstore.mutex.model.Mutex;
 
 
@@ -39,7 +37,7 @@ public interface MutexElection {
      * @param mutex
      * @throws MutexCheckedException 
      */
-    void acquire(Mutex mutex) throws MutexCheckedException;
+    public void acquire(Mutex mutex) throws MutexCheckedException;
     
     
     /**
@@ -48,17 +46,8 @@ public interface MutexElection {
      * @param targetFile
      * @throws MutexCheckedException 
      */
-    void acquire(Path targetFile) throws MutexCheckedException;
-    
-    
-    /**
-     * Release lock
-     * 
-     * @param hostLock
-     * @throws MutexCheckedException 
-     */
-    void release(HostLock hostLock) throws MutexCheckedException;
-    
+    public void acquire(Path targetFile) throws MutexCheckedException;
+
     
     /**
      * Release lock
@@ -66,7 +55,25 @@ public interface MutexElection {
      * @param mutex
      * @throws MutexCheckedException 
      */
-    void release(Mutex mutex) throws MutexCheckedException;
+    public void release(Mutex mutex) throws MutexCheckedException;
+    
+    
+    /**
+     * Release lock
+     * 
+     * @param targetFile
+     * @throws MutexCheckedException 
+     */
+    public void release(Path targetFile) throws MutexCheckedException;
+    
+    
+    
+    /**
+     * Release active lock
+     * 
+     * @throws MutexCheckedException 
+     */
+    public void release() throws MutexCheckedException;
     
     
     /**
@@ -75,7 +82,7 @@ public interface MutexElection {
      * 
      * @return boolean
      */
-    boolean lockedByActiveHost();
+    public boolean lockedByActiveHost();
     
     
     /**
@@ -83,7 +90,7 @@ public interface MutexElection {
      * 
      * @return boolean
      */
-    boolean lockedByActiveProcess();
+    public boolean lockedByActiveProcess();
     
     
     /**
@@ -91,7 +98,7 @@ public interface MutexElection {
      * 
      * @return {@link MutexState}
      */
-    MutexState getState();
+    public MutexState getState();
     
     
     /**
@@ -99,7 +106,7 @@ public interface MutexElection {
      * 
      * @param newState 
      */
-    void setState(MutexState newState);
+    public void setState(MutexState newState);
     
     
     /**
@@ -109,7 +116,7 @@ public interface MutexElection {
      * @param mutex
      * @return int
      */
-    int inferPosition(Mutex mutex);
+    public int inferPosition(Mutex mutex);
     
     
     /**
@@ -117,7 +124,7 @@ public interface MutexElection {
      * 
      * @return 
      */
-    Optional<Path> inferLeader();
+    public Optional<Path> inferLeader();
     
     
     /**
@@ -125,5 +132,5 @@ public interface MutexElection {
      * 
      * @return int
      */
-    int queueSize();
+    public int queueSize();
 }

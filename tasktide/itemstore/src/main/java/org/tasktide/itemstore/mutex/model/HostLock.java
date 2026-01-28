@@ -15,10 +15,6 @@
  */
 package org.tasktide.itemstore.mutex.model;
 
-import org.tasktide.itemstore.mutex.utils.MutexConstants;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.file.Path;
@@ -38,7 +34,6 @@ public class HostLock {
     private final Path targetFile;
     private FileChannel fileChannel;
     private FileLock fileLock;
-    private MutexState state;
     
     
     /**
@@ -49,58 +44,7 @@ public class HostLock {
     public HostLock(Path targetFile) {
         this.id = UUID.randomUUID().toString();
         this.targetFile = targetFile;
-        this.state = MutexState.INITIALIZATION;
     }
-    
-    
-    /**
-     * Set {@link FileLock} on 
-     * 
-     * @return boolean
-     */
-    public synchronized boolean setLock() {
-        this.setState(MutexState.WAITING);
-        try {
-            this.setFileChannel();
-            this.setFileLock();
-            this.setState(MutexState.HOST_LOCKED);
-            return true;
-        }
-        catch (IOException ex) {
-            return false;
-        }
-    }
-    
-    
-    /**
-     * Release host lock
-     * 
-     * @return boolean
-     */
-    public synchronized boolean releaseLock() {
-        MutexConstants.waitOverJitter();
-        try {
-            
-            // Release lock
-            this.setState(MutexState.RELEASED);
-            if ( this.fileLock != null && this.fileLock.isValid() ) {
-                this.fileLock.release();
-            }
-            
-            // Close file channel
-            if ( this.fileChannel != null && this.fileChannel.isOpen() ) {
-                this.fileChannel.close();
-            }
-            
-            // Return closure state
-            return true;
-        }
-        
-        catch (IOException ex) {
-            return false;
-        }
-    }
-
     
     /**
      * Get file channel
@@ -121,16 +65,6 @@ public class HostLock {
         this.fileChannel = fileChannel;
     }
     
-    
-    /**
-     * Open r/w file channel
-     * 
-     * @throws IOException 
-     */
-    public void setFileChannel() throws IOException {
-        this.fileChannel = new RandomAccessFile(this.getTargetFile().toFile(), "rw").getChannel();
-    }
-    
 
     /**
      * Get file lock
@@ -141,28 +75,32 @@ public class HostLock {
         return fileLock;
     }
 
+    
+    /**
+     * Set {@link FileLock}
+     * 
+     * @param fileLock 
+     */
     public void setFileLock(FileLock fileLock) {
         this.fileLock = fileLock;
     }
-    
-    
-    public void setFileLock() throws IOException {
-        this.fileLock = fileChannel.tryLock();
-    }
-    
 
-    public MutexState getState() {
-        return state;
-    }
 
-    public void setState(MutexState state) {
-        this.state = state;
-    }
-
+    /**
+     * Get Id for host lock
+     * 
+     * @return String 
+     */
     public String getId() {
         return id;
     }
 
+    
+    /**
+     * Get target file for host lock
+     * 
+     * @return {@link Path}
+     */
     public Path getTargetFile() {
         return targetFile;
     }
@@ -180,7 +118,6 @@ public class HostLock {
             ", targetFile=" + targetFile +
             ", fileChannel=" + fileChannel +
             ", fileLock=" + fileLock +
-            ", state=" + state +
         '}';
     }
 }

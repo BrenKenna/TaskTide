@@ -102,6 +102,12 @@ public class NfsMutex extends InterProcessMutex {
         Path activeLeader;
         Mutex mutex;
         
+        // Verify no visbily active lock
+        if ( active != null ) {
+            throw new MutexCheckedException("Visible lock already active");
+        }
+        
+        
         // Create mutex enqueue instances election file/vote
         mutex = MutexFactory.create(targetFile);
         mutex.setState(MutexState.INITIALIZATION);
@@ -139,17 +145,17 @@ public class NfsMutex extends InterProcessMutex {
 
 
     /**
-     * Release lock on {@link HostLock}
+     * Release lock on target file
      * 
-     * @param hostLock
+     * @param targetFile
      * @throws MutexCheckedException 
      */
     @Override
-    public void release(HostLock hostLock) throws MutexCheckedException {
+    public void release(Path targetFile) throws MutexCheckedException {
         
         // Initialize variables
         Mutex mutex = MutexFilesUtilis
-            .readMutexFromFile(hostLock.getTargetFile())
+            .readMutexFromFile(targetFile)
             .orElseThrow(
                 () -> new MutexUncheckedException("Error no mutex found for host lock")
         );
@@ -165,7 +171,7 @@ public class NfsMutex extends InterProcessMutex {
     
     
     /**
-     * Release mutex
+     * Release provided {@link Mutex}
      * 
      * @param mutex
      * @throws MutexCheckedException 
@@ -181,7 +187,29 @@ public class NfsMutex extends InterProcessMutex {
         // Drop active mutex
         active = null;
     }
+    
+    
+    /**
+     * Release active {@link Mutex} if present
+     * 
+     * @throws MutexCheckedException 
+     */
+    @Override
+    public void release() throws MutexCheckedException {
+        if ( active == null ) {
+            throw new MutexCheckedException("");
+        }
+        
+        // Remove all files
+        MutexFilesUtilis.deleteFile(this.active.getElectionFile());
+        MutexFilesUtilis.deleteFile(this.active.getHostFile());
+        MutexFilesUtilis.deleteFile(this.active.getLockFile());
+        
+        // Drop active mutex
+        active = null;
+    }
 
+    
     @Override
     public boolean lockedByActiveHost() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

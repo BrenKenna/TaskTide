@@ -106,7 +106,6 @@ public abstract class InterProcessMutex implements MutexElection {
     }
 
     
-    
     /**
      * Return queue size
      * 
