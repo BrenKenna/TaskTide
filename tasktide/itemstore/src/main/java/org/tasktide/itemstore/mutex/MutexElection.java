@@ -23,11 +23,11 @@ import org.tasktide.itemstore.mutex.model.Mutex;
 
 
 /**
- * Defines semantics for electing leader mutex
+ * Defines the package private semantics for electing leader mutex
  *
  * @author Brendan Kenna
  */
-public interface MutexElection {
+interface MutexElection {
     
     
     /**

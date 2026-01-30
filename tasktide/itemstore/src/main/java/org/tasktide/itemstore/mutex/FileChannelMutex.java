@@ -25,11 +25,12 @@ import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 
 /**
- * Class for managing acquisitions and releasing of {@link FileChannel}
+ * Package private class for managing the acquisitions and
+ *  releasing of {@link FileChannel}
  *
  * @author Brendan Kenna
  */
-public class FileChannelMutex extends IntraProcessMutex {
+class FileChannelMutex extends IntraProcessMutex {
     
     // Attributes
     private Mutex active;

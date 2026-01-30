@@ -15,6 +15,9 @@
  */
 package org.tasktide.itemstore.mutex.model;
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.file.Path;
@@ -105,6 +108,18 @@ public class HostLock {
         return targetFile;
     }
 
+    
+    /**
+     * Represent as JSON document
+     * 
+     * @return String
+     */
+    public String toJson() {
+        JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
+        Jsonb json = JsonbBuilder.create(conf);
+        return json.toJson(this);
+    }
+    
     
     /**
      * Represent as string

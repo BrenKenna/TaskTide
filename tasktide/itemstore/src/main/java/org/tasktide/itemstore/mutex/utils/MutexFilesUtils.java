@@ -263,7 +263,6 @@ public class MutexFilesUtils {
      * 
      * @param mutex
      * @param fileType
-     * @return boolean
      */
     public static void writeMutex(Mutex mutex, MutexFileType fileType) {
         

@@ -28,12 +28,12 @@ import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 
 /**
- * Implements the {@link InterProcessMutex} for shared file system
+ * Package private implementation of the {@link InterProcessMutex} for
+ *  shared file system
  *
  * @author Brendan Kenna
  */
-public class NfsMutex extends InterProcessMutex {
-    
+class NfsMutex extends InterProcessMutex {
     
     // Attributes
     private volatile Mutex active;

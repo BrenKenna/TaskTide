@@ -19,13 +19,12 @@ import java.nio.file.Path;
 
 
 /**
- * For creating {@link HostLock}
+ * Package private factory for creating {@link HostLock}
  *
  * @author Brendan Kenna
  */
 public class HostLockFactory {
  
-    
     /**
      * Create host lock
      * 

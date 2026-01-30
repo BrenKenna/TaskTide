@@ -16,7 +16,6 @@
 
 package org.tasktide.itemstore.mutex;
 
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
@@ -41,9 +40,9 @@ import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 
 /**
- * Enum to support strategic phsyical locking/and release
- *  method. Allows the broader implemention elements to
- *  handled distinctly from their specifics. In addition
+ * Package private num to support strategic phsyical locking/and
+ *  release method. Allows the broader implemention elements
+ *  to handled distinctly from their specifics. In addition
  *  to cleaner/digestable approach which simplifies
  *  responsibilities of testing less repetitively.
  *

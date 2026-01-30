@@ -23,7 +23,7 @@ import org.tasktide.itemstore.mutex.model.Mutex;
 
 
 /**
- * Class for coordinating locks on NSF where member
+ * Package private class for coordinating locks on NSF where member
  *  nodes are unknown and dynamic. Multi-stage process
  *  first forms host queue based on epcoh time, and host label.
  *  Once locked, base Java is for file channel lock (process level),
@@ -31,7 +31,7 @@ import org.tasktide.itemstore.mutex.model.Mutex;
  *
  * @author Brendan Kenna
  */
-public abstract class InterProcessMutex implements MutexElection {
+abstract class InterProcessMutex implements MutexElection {
     
 
     // Attributes

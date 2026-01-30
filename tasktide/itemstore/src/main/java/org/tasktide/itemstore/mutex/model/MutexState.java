@@ -16,7 +16,6 @@
 
 package org.tasktide.itemstore.mutex.model;
 
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
 

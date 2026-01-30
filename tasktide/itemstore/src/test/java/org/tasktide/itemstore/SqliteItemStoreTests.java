@@ -122,8 +122,8 @@ public class SqliteItemStoreTests {
     /**
      * Tests insertions into item store
      */
-    @Order(1)
     @Test
+    @Order(1)
     public void canInsertIntoItemStore() {
     
         // Initialize test

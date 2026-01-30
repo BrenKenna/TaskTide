@@ -60,7 +60,7 @@ public class Mutex {
     @JsonbProperty("Stale File Threshold")
     private final Duration staleFileThreshold;
    
-    @JsonbProperty("Stale File Threshold")
+    @JsonbProperty("Start Jitter")
     private final Duration startJitter;
     
     @JsonbProperty("End Jitter")

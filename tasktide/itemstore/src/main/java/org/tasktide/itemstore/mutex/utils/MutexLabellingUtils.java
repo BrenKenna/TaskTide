@@ -19,11 +19,12 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import java.util.UUID;
+
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
- * Utility for mutex labelling
+ * Utility for {@link Mutex} labelling
  *
  * @author Brendan Kenna
  */
@@ -41,7 +42,7 @@ public class MutexLabellingUtils {
      * 
      */
     private static synchronized void setInstanceId() {
-        if ( INSTANCE_ID != null ) {
+        if ( INSTANCE_ID == null ) {
             INSTANCE_ID = UUID.randomUUID().toString();
         }
     }
@@ -122,7 +123,7 @@ public class MutexLabellingUtils {
      * @return String 
      */
     public static String formatIpAddr(InetAddress addr) {
-        return addr.getHostAddress().replace("\\.", "_");
+        return addr.getHostAddress().replace(".", "-");
     }
     
     
@@ -160,5 +161,15 @@ public class MutexLabellingUtils {
         else {
             throw new IllegalStateException("Error, MutexUtility must be first configured");
         }
-    } 
+    }
+    
+    
+    /**
+     * Display whether utility is configured
+     * 
+     * @return boolean
+     */
+    public static boolean isConfigured() {
+        return isConfigured;
+    }
 }

@@ -20,12 +20,12 @@ import org.tasktide.itemstore.mutex.model.HostLock;
 
 /**
  * Uses {@link HostLock} data model to conduct
- *  OS file lock with the same semantics as the
- *  inter process mutex
+ *  package private OS file lock with the same
+ *  semantics as the inter process mutex
  * 
  * @author Brendan Kenna
  */
-public abstract class IntraProcessMutex implements MutexElection {
+abstract class IntraProcessMutex implements MutexElection {
 
     
 }

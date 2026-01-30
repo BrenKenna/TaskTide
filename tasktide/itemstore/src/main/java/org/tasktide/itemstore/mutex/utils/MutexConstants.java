@@ -16,9 +16,12 @@
 package org.tasktide.itemstore.mutex.utils;
 
 import java.nio.file.Path;
-import java.time.Duration;
+
 import java.util.Random;
 
+import java.time.Duration;
+
+import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
@@ -257,12 +260,25 @@ public class MutexConstants {
     
     
     /**
-     * Get current Node_Instance.lock file beside lock file
+     * Get current Time-Node-Instance.lock file beside lock file
      * 
      * @return {@link Path}
      */
     public static Path getElectionFile() {
         if (pathsInitialized) {
+            
+            // Fetch node process Id
+            String nodeProcId = MutexLabellingUtils.getNodeProcId();
+            
+            // Set election file
+            electionFile = lockDir.resolve(
+                System.currentTimeMillis() + 
+                "." +
+                nodeProcId +
+                ".lock"
+            );
+            
+            // Return election file
             return electionFile;
         }
         else {

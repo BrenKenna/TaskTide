@@ -54,3 +54,395 @@
 
 ---------------- Terminating ItemStore Concurrency Tests ----------------
 
+2026-01-30 13:53:47 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 13:53:47 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 13:53:47 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 13:53:47 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 13:53:47 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 13:56:10 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 13:56:10 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 13:56:10 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 13:56:10 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 13:56:10 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 13:59:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 13:59:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Display config:	'false'
+2026-01-30 13:59:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 13:59:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 13:59:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 13:59:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 14:01:52 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 14:01:52 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'false'
+2026-01-30 14:01:52 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 14:01:52 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:01:52 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 14:01:52 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 14:03:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 14:03:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'false'
+2026-01-30 14:03:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 14:03:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:03:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 14:03:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 14:04:25 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 14:04:25 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 14:04:25 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 14:04:25 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:04:25 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 14:04:25 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 14:07:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 14:07:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 14:07:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 14:07:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:07:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 14:07:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 14:11:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 14:11:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 14:11:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 14:11:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:11:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: Displaying mutex for reference:
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\176978231458410-56-75-13_b3ec7266-6a18-406a-8d00-7b3b635f1dfe.lock",
+    "End Jitter": "PT0.198S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1769782314584.10-56-75-13_b3ec7266-6a18-406a-8d00-7b3b635f1dfe.lock",
+    "Id": "2764e696-4d61-4f9c-b505-2679903018ff",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.209S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.493S",
+    "Timestamp": 1769782314586
+}'
+2026-01-30 14:11:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:11:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 14:11:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 14:13:14 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 14:13:14 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 14:13:14 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 14:13:14 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:13:14 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: Displaying mutex for reference:
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769782394795_10-56-75-13_b908f4c5-68a6-42bc-bcf5-30538eb75e33.lock",
+    "End Jitter": "PT0.28S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1769782394795.10-56-75-13_b908f4c5-68a6-42bc-bcf5-30538eb75e33.lock",
+    "Id": "06a0a1e2-a856-4f2b-90c1-0b1aeb24cc37",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.264S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.419S",
+    "Timestamp": 1769782394797
+}'
+2026-01-30 14:13:14 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:13:14 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 14:13:14 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 14:16:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 14:16:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 14:16:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 14:16:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:16:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: Displaying mutex for reference:
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769782600168.10-56-75-13_06f823a8-f037-4e03-95b2-ab64a4b513c4.lock",
+    "End Jitter": "PT0.355S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1769782600167.10-56-75-13_06f823a8-f037-4e03-95b2-ab64a4b513c4.lock",
+    "Id": "cf1508a0-f454-458c-aa73-07d83d1d52a6",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.022S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.367S",
+    "Timestamp": 1769782600169
+}'
+2026-01-30 14:16:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadMutex ]: 
+
+================ Can Make and Read Mutex Test ================
+
+2026-01-30 14:16:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 14:16:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 15:25:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 15:25:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 15:25:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 15:25:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: 
+
+================ Can Make and Display HostLock Test ================
+
+2026-01-30 15:25:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: Displaying host lock:
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769786746799.10-56-75-13_49d696be-6529-4d80-a2e5-c5ad98c1b5e4.lock",
+    "End Jitter": "PT0.25S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1769786746799.10-56-75-13_49d696be-6529-4d80-a2e5-c5ad98c1b5e4.lock",
+    "Id": "51d081cf-5614-4747-b627-f2a30c75ce04",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.187S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.356S",
+    "Timestamp": 1769786746801
+}'
+2026-01-30 15:25:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: 
+
+================ Can Make and Display HostLock Test ================
+
+2026-01-30 15:25:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 15:25:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 15:26:22 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 15:26:22 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 15:26:22 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 15:26:22 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: 
+
+================ Can Make and Display HostLock Test ================
+
+2026-01-30 15:26:22 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: Displaying host lock:
+
+'HostLock{id=7cf6d964-137c-4b64-91fc-0d34b0cba061, targetFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\1769786782405.10-56-75-13_80051319-b34f-45c7-8577-d88d7b4feab0.lock, fileChannel=null, fileLock=null}'
+2026-01-30 15:26:22 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: 
+
+================ Can Make and Display HostLock Test ================
+
+2026-01-30 15:26:22 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 15:26:22 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 15:27:01 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 15:27:01 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 15:27:01 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 15:27:01 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: 
+
+================ Can Make and Display HostLock Test ================
+
+2026-01-30 15:27:01 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: Displaying host lock:
+
+'HostLock{id=f5c2c84c-2890-415e-840b-34bccba6cb20, targetFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\1769786821080.10-56-75-13_a5d84789-f1b5-49e4-b9f3-344f7f5efc24.lock, fileChannel=null, fileLock=null}'
+2026-01-30 15:27:01 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: 
+
+================ Can Make and Display HostLock Test ================
+
+2026-01-30 15:27:01 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 15:27:01 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
+2026-01-30 15:27:32 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: 
+
+---------------- Initiating FactoryTests Tests ----------------
+
+2026-01-30 15:27:32 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUpClass ]: Displaying config state:	'true'
+2026-01-30 15:27:32 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-01-30 15:27:32 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: 
+
+================ Can Make and Display HostLock Test ================
+
+2026-01-30 15:27:32 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: Displaying host lock:
+
+'{
+    "id": "a2e4d192-2513-4dd1-b009-59bcfa1e3110",
+    "targetFile": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769786852139.10-56-75-13_d59ffd3d-7503-489d-b6a5-70de08c5b7a0.lock"
+}'
+2026-01-30 15:27:32 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.canMakeAndReadHostLock ]: 
+
+================ Can Make and Display HostLock Test ================
+
+2026-01-30 15:27:32 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-01-30 15:27:32 INFO  [ Test worker -> org.tasktide.itemstore.mutex.model.FactoryTests.tearDownClass ]: 
+
+---------------- Terminating FactoryTests Tests ----------------
+
