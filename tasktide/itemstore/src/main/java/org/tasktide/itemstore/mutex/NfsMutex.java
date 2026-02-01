@@ -19,12 +19,12 @@ import java.nio.file.Path;
 
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFactory;
-import org.tasktide.itemstore.mutex.model.MutexFileType;
 import org.tasktide.itemstore.mutex.model.MutexState;
+
+import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
-import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 
 /**
@@ -43,10 +43,11 @@ class NfsMutex extends InterProcessMutex {
      * Acquire lock for provided {@link Mutex}
      * 
      * @param mutex
+     * @returns boolean
      * @throws MutexCheckedException 
      */
     @Override
-    public void acquire(Mutex mutex) throws MutexCheckedException {
+    public boolean acquire(Mutex mutex) throws MutexCheckedException {
         
         // Verify no visbily active lock
         if ( active != null ) {
@@ -54,8 +55,9 @@ class NfsMutex extends InterProcessMutex {
         }
         
         // Set active once elected
-        if ( MutexStrategy.ELECTION.apply(mutex, MutexFileType.ELECTION_FILE) ) {
+        if ( MutexStrategy.ELECTION.apply(mutex) ) {
             active = mutex;
+            return active.getState().isLockState(MutexState.HOST_LOCKED);
         }
         
         // Otherwise throw error from rollback
@@ -72,7 +74,7 @@ class NfsMutex extends InterProcessMutex {
      * @throws MutexCheckedException 
      */
     @Override
-    public void acquire(Path targetFile) throws MutexCheckedException {
+    public boolean acquire(Path targetFile) throws MutexCheckedException {
         
         // Initialize variables
         Mutex mutex;
@@ -86,8 +88,9 @@ class NfsMutex extends InterProcessMutex {
         mutex = MutexFactory.create(targetFile);
         
         // Set active once elected
-        if ( MutexStrategy.ELECTION.apply(mutex, MutexFileType.ELECTION_FILE) ) {
+        if ( MutexStrategy.ELECTION.apply(mutex) ) {
             active = mutex;
+            return active.getState().isLockState(MutexState.HOST_LOCKED);
         }
         
         // Otherwise throw error from rollback
@@ -101,10 +104,11 @@ class NfsMutex extends InterProcessMutex {
      * Release lock on target file
      * 
      * @param targetFile
+     * @returns boolean
      * @throws MutexCheckedException 
      */
     @Override
-    public void release(Path targetFile) throws MutexCheckedException {
+    public boolean release(Path targetFile) throws MutexCheckedException {
         
         // Only leader can release
         if ( active == null ) {
@@ -119,7 +123,7 @@ class NfsMutex extends InterProcessMutex {
         );
         
         // Release if valid
-        this.release(mutex);
+        return this.release(mutex);
     }
     
     
@@ -127,10 +131,11 @@ class NfsMutex extends InterProcessMutex {
      * Release provided {@link Mutex}
      * 
      * @param mutex
+     * @return boolean
      * @throws MutexCheckedException 
      */
     @Override
-    public void release(Mutex mutex) throws MutexCheckedException {
+    public boolean release(Mutex mutex) throws MutexCheckedException {
         
         // Only leader can release
         if ( active == null ) {
@@ -143,20 +148,22 @@ class NfsMutex extends InterProcessMutex {
         }
         
         // Release election and host file
-        MutexStrategy.ELECTION.release(mutex, MutexFileType.ELECTION_FILE);
+        boolean state = MutexStrategy.ELECTION.release(mutex);
         
         // Drop active mutex
         active = null;
+        return state;
     }
     
     
     /**
      * Release active {@link Mutex} if present
      * 
+     * @returns boolean
      * @throws MutexCheckedException 
      */
     @Override
-    public void release() throws MutexCheckedException {
+    public boolean release() throws MutexCheckedException {
         
         // Only leader can release
         if ( active == null ) {
@@ -164,10 +171,11 @@ class NfsMutex extends InterProcessMutex {
         }
         
         // Release election and host file
-        MutexStrategy.ELECTION.release(this.active, MutexFileType.ELECTION_FILE);
+        boolean state = MutexStrategy.ELECTION.release(this.active);
         
         // Drop active mutex
         active = null;
+        return state;
     }
     
     
@@ -199,6 +207,17 @@ class NfsMutex extends InterProcessMutex {
         }
     }
 
+    
+    /**
+     * Provides the value for the active {@link Mutex}
+     * 
+     * @return {@link Mutex}
+     */
+    @Override
+    public Mutex fetchActiveFieldValue() {
+        return this.active;
+    }
+    
     
     @Override
     public boolean lockedByActiveHost() {

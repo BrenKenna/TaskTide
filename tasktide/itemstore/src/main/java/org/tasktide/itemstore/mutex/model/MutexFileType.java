@@ -16,8 +16,12 @@
 
 package org.tasktide.itemstore.mutex.model;
 
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
+import org.tasktide.itemstore.mutex.utils.MutexConstants;
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
@@ -42,6 +46,16 @@ public enum MutexFileType {
         public boolean isMutexFileType(MutexFileType query) {
             return this == query;
         }
+        
+        @Override
+        public Path fetchPathForFile() {
+            return MutexConstants.getElectionFile();
+        }
+        
+        @Override
+        public Path fetchPathForDir() {
+            return MutexConstants.getElectionDir();
+        }
     },
 
     HOST_FILE {
@@ -59,8 +73,17 @@ public enum MutexFileType {
         public boolean isMutexFileType(MutexFileType query) {
             return this == query;
         }
+        
+        @Override
+        public Path fetchPathForFile() {
+            return MutexConstants.getHostFile();
+        }
+        
+        @Override
+        public Path fetchPathForDir() {
+            return MutexConstants.getHostDir();
+        }
     },
-    
     
     LOCK_FILE {
         @Override
@@ -76,6 +99,16 @@ public enum MutexFileType {
         @Override
         public boolean isMutexFileType(MutexFileType query) {
             return this == query;
+        }
+        
+        @Override
+        public Path fetchPathForFile() {
+            return MutexConstants.getLockFile();
+        }
+        
+        @Override
+        public Path fetchPathForDir() {
+            return MutexConstants.getLockDir();
         }
     };
 
@@ -98,6 +131,22 @@ public enum MutexFileType {
     public abstract boolean isMutexFileType(MutexFileType query);
 
 
+    /**
+     * Fetch path for file
+     * 
+     * @return Path
+     */
+    public abstract Path fetchPathForFile();
+    
+    
+    /**
+     * Fetch path for directory
+     * 
+     * @return Path
+     */
+    public abstract Path fetchPathForDir();
+    
+    
     /**
      * Fetch the index for mapped query string
      *
@@ -138,7 +187,7 @@ public enum MutexFileType {
      * Map query to enum value
      *
      * @param query
-     * @return MutexFileType
+     * @return {@link MutexFileType}
      */
     public static MutexFileType get(String query) {
         int ind = indexOf(query);
@@ -147,8 +196,8 @@ public enum MutexFileType {
         }
         return null;
     }
-
-
+    
+    
     /**
      * Represent enum as string
      *
@@ -158,5 +207,67 @@ public enum MutexFileType {
         return Arrays.stream(values())
             .map( elm -> elm.name() )
         .collect(Collectors.joining(","));
+    }
+    
+    
+    /**
+     * Fetch {@link MutexFileType} from {@link MutexConstants}
+     * 
+     * @param fileType
+     * @return Path
+     */
+    public static Path fetchFileFromConstants(MutexFileType fileType) {
+        switch ( fileType ) {
+        
+            case ELECTION_FILE -> {
+                return MutexConstants.getElectionFile();
+            }
+            
+            case HOST_FILE -> {
+                return MutexConstants.getHostFile();
+            }
+            
+            case LOCK_FILE -> {
+                return MutexConstants.getLockFile();
+            }
+            
+            default -> {
+                throw new MutexUncheckedException(
+                    "MutexFileType must be one of:\t"
+                    + MutexFileType.valuesString()
+                );
+            }
+        }
+    }
+    
+    
+    /**
+     * Fetch {@link MutexFileType} from {@link MutexConstants}
+     * 
+     * @param fileType
+     * @return Path
+     */
+    public static Path fetchDirectoryFromConstants(MutexFileType fileType) {
+        switch ( fileType ) {
+        
+            case ELECTION_FILE -> {
+                return MutexConstants.getElectionDir();
+            }
+            
+            case HOST_FILE -> {
+                return MutexConstants.getHostFile();
+            }
+            
+            case LOCK_FILE -> {
+                return MutexConstants.getLockFile();
+            }
+            
+            default -> {
+                throw new MutexUncheckedException(
+                    "MutexFileType must be one of:\t"
+                    + MutexFileType.valuesString()
+                );
+            }
+        }
     }
 }

@@ -43,8 +43,9 @@ public class MutexConstants {
     
     // Path properties
     private static volatile Path
-        lockDir, lockFile, electionFile,
-        hostDir, hostFile;
+        lockDir, lockFile,
+        hostDir, hostFile,
+        electionDir, electionFile;
     
     // For random long creation 
     private final static Random RAND = new Random();
@@ -176,12 +177,15 @@ public class MutexConstants {
             // Set root directory structure
             lockDir = Path.of("./ItemStore-Mutex");
             lockFile = lockDir.resolve("lock-file.lock");
-            electionFile = lockDir.resolve(nodeId + ".lock");
             
             // Fetch queue directory
             // hostDir = lockDir.resolve("queue").resolve(nodeId);
-            hostDir = lockDir.resolve("queue");
+            hostDir = lockDir.resolve("host");
             hostFile = hostDir.resolve(nodeProcId);
+            
+            // Election file
+            electionDir = lockDir.resolve("queue");
+            electionFile = electionDir.resolve(nodeId + ".lock");
             
             // Update state
             pathsInitialized = true;
@@ -194,19 +198,25 @@ public class MutexConstants {
      * 
      * @param lockingDir
      * @param lockingFile
+     * @param electDir
      * @param electFile
      * @param hostingDir
      */
-    public static synchronized void initializePaths(Path lockingDir, Path lockingFile, Path electFile, Path hostingDir) {
+    public static synchronized void initializePaths(Path lockingDir, Path lockingFile, Path electDir, Path electFile, Path hostingDir) {
         if ( !pathsInitialized ) {
         
             // Set root directory structure
             lockDir = lockingDir;
             lockFile = lockingFile;
+            
+            // Set election properties
+            electionDir = electDir;
             electionFile = electFile;
+            electionDir.toFile().mkdirs();
             
             // Fetch queue directory
             hostDir = hostingDir;
+            hostDir.toFile().mkdirs();
             
             // Update state
             pathsInitialized = true;
@@ -260,6 +270,21 @@ public class MutexConstants {
     
     
     /**
+     * Get election directory under locking directory
+     * 
+     * @return {@link Path}
+     */
+    public static Path getElectionDir() {
+        if (pathsInitialized) {
+            return electionDir;
+        }
+        else {
+            throw new MutexUncheckedException("Paths must be initialized");
+        }
+    }
+    
+    
+    /**
      * Get current Time-Node-Instance.lock file beside lock file
      * 
      * @return {@link Path}
@@ -271,7 +296,7 @@ public class MutexConstants {
             String nodeProcId = MutexLabellingUtils.getNodeProcId();
             
             // Set election file
-            electionFile = lockDir.resolve(
+            electionFile = electionDir.resolve(
                 System.currentTimeMillis() + 
                 "." +
                 nodeProcId +
@@ -348,6 +373,5 @@ public class MutexConstants {
         else {
             throw new MutexUncheckedException("Durations must be initialized");
         }
-        
     }
 }

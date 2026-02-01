@@ -21,6 +21,7 @@ import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 import java.nio.file.Path;
 import java.time.Duration;
@@ -69,6 +70,7 @@ public class Mutex {
     @JsonbProperty("Mutex State")
     private MutexState state;
     
+    @JsonbTransient
     private HostLock hostLock;
     
     private final Random RAND = new Random();
@@ -295,7 +297,7 @@ public class Mutex {
      * 
      * @return String
      */
-    public String toJson() {
+    public String toJsonDoc() {
         JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);

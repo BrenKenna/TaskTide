@@ -31,12 +31,20 @@ interface MutexElection {
     
     
     /**
+     * Fetch active {@link Mutex} field value
+     * 
+     * @return {@link Mutex}
+     */
+    public Mutex fetchActiveFieldValue();
+    
+    
+    /**
      * Acquire lock on {@link Mutex}
      * 
      * @param mutex
      * @throws MutexCheckedException 
      */
-    public void acquire(Mutex mutex) throws MutexCheckedException;
+    public boolean acquire(Mutex mutex) throws MutexCheckedException;
     
     
     /**
@@ -45,7 +53,7 @@ interface MutexElection {
      * @param targetFile
      * @throws MutexCheckedException 
      */
-    public void acquire(Path targetFile) throws MutexCheckedException;
+    public boolean acquire(Path targetFile) throws MutexCheckedException;
 
     
     /**
@@ -54,7 +62,7 @@ interface MutexElection {
      * @param mutex
      * @throws MutexCheckedException 
      */
-    public void release(Mutex mutex) throws MutexCheckedException;
+    public boolean release(Mutex mutex) throws MutexCheckedException;
     
     
     /**
@@ -63,7 +71,7 @@ interface MutexElection {
      * @param targetFile
      * @throws MutexCheckedException 
      */
-    public void release(Path targetFile) throws MutexCheckedException;
+    public boolean release(Path targetFile) throws MutexCheckedException;
     
     
     
@@ -72,7 +80,7 @@ interface MutexElection {
      * 
      * @throws MutexCheckedException 
      */
-    public void release() throws MutexCheckedException;
+    public boolean release() throws MutexCheckedException;
     
     
     /**

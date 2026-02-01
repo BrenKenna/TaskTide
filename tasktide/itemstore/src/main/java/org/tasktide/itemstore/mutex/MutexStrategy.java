@@ -26,22 +26,27 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.tasktide.itemstore.FileUtility;
+
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 import org.tasktide.itemstore.mutex.model.HostLock;
 import org.tasktide.itemstore.mutex.model.HostLockFactory;
-
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFileType;
 import org.tasktide.itemstore.mutex.model.MutexState;
+
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 
 /**
- * Package private num to support strategic phsyical locking/and
- *  release method. Allows the broader implemention elements
+ * Package private enum to support strategic physical locking/and
+ *  release method. Allows the broader implementation elements
  *  to handled distinctly from their specifics. In addition
  *  to cleaner/digestable approach which simplifies
  *  responsibilities of testing less repetitively.
@@ -67,7 +72,7 @@ public enum MutexStrategy {
         }
         
         @Override
-        public synchronized boolean apply(Mutex mutex, MutexFileType fileType) {
+        public synchronized boolean apply(Mutex mutex) {
             
             // Pass if already active
             if ( mutex.getHostLock() != null ) {
@@ -75,8 +80,8 @@ public enum MutexStrategy {
             }
         
             // Fetch file
-            Path targetFile = mutex.getFileForType(fileType);
-            HostLock hostLock = HostLockFactory.create(mutex.getHostFile());
+            Path targetFile = mutex.getFileForType(MutexFileType.HOST_FILE);
+            HostLock hostLock = HostLockFactory.create(targetFile);
             mutex.setHostLock(hostLock);
         
             // Fetch channel to file and lock
@@ -100,10 +105,10 @@ public enum MutexStrategy {
         }
         
         @Override
-        public synchronized boolean release(Mutex mutex, MutexFileType fileType) {
+        public synchronized boolean release(Mutex mutex) {
         
             // Any sanity check
-            Path targetFile = mutex.getFileForType(fileType);
+            Path targetFile = mutex.getFileForType(MutexFileType.HOST_FILE);
             
             
             // Fetch path and lock
@@ -147,29 +152,33 @@ public enum MutexStrategy {
         }
 
         @Override
-        public boolean apply(Mutex mutex, MutexFileType fileType) {
+        public boolean apply(Mutex mutex) {
             
             // Initialize variables
             int pos;
             Path activeLeader;
         
             // Set state as initialization
+            LOGGER.debug("Initializing mutex");
             mutex.setState(MutexState.INITIALIZATION);
             FileUtility.makeFile(mutex.getElectionFile());
             MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
 
             // Fetch position and active leader
+            LOGGER.debug("Mutex initialized, inferring queue position");
             pos = inferPosition(mutex);
-            activeLeader = inferLeader().orElseThrow(
+            activeLeader = inferLeader( MutexFileType.ELECTION_FILE ).orElseThrow(
                 () -> new MutexUncheckedException("Error no election files found")
             );
             mutex.setState(MutexState.WAITING);
             MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+            LOGGER.debug("Queue position:\t'{}'", pos);
 
             // Wait until become leader
             while( pos != 0 ) {
 
                 // Wait
+                LOGGER.debug("Waiting to become leader");
                 MutexFilesUtils.waitJitterTime();
 
                 // Fetch position
@@ -195,7 +204,7 @@ public enum MutexStrategy {
         }
 
         @Override
-        public boolean release(Mutex mutex, MutexFileType fileType) {
+        public boolean release(Mutex mutex) {
             return (
                 MutexFilesUtils.deleteFile(mutex.getElectionFile()) &&
                 MutexFilesUtils.deleteFile(mutex.getHostFile())
@@ -211,10 +220,10 @@ public enum MutexStrategy {
      *  logic of {@link Mutex}-{@link MutexElection}
      * 
      * @param mutex
-     * @param fileType
+     * 
      * @return boolean
      */
-    public abstract boolean apply(Mutex mutex, MutexFileType fileType);
+    public abstract boolean apply(Mutex mutex);
 
     
     /**
@@ -224,10 +233,10 @@ public enum MutexStrategy {
      *  logic of {@link Mutex}-{@link MutexElection}
      * 
      * @param mutex
-     * @param fileType
+     * 
      * @return boolean
      */
-    public abstract boolean release(Mutex mutex, MutexFileType fileType);
+    public abstract boolean release(Mutex mutex);
     
 
     /**
@@ -251,11 +260,13 @@ public enum MutexStrategy {
     /**
      * Returns the full file path of the leader
      * 
-     * @return 
+     * @param fileType
+     * @return Optional-Path
      */
-    public static Optional<Path> inferLeader() {
+    public static Optional<Path> inferLeader(MutexFileType fileType) {
+        Path targetPath = fileType.fetchPathForDir();
         return MutexFilesUtils
-            .fetchFiles(MutexConstants.getHostDir())
+            .fetchFiles(targetPath)
             .sorted()
             .findFirst()
         ;
@@ -366,4 +377,7 @@ public enum MutexStrategy {
             .map( elm -> elm.name() )
         .collect(Collectors.joining(","));
     }
+    
+    // Logger mutex strategy
+    private static final Logger LOGGER = LogManager.getLogger(MutexStrategy.class);
 }

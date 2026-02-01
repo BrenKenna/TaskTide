@@ -28,10 +28,11 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
-import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.FileUtility;
-import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
+
 import org.tasktide.itemstore.mutex.model.MutexFileType;
+import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
@@ -98,7 +99,7 @@ public class MutexFilesUtils {
             try {
                 Files.writeString(
                     mutex.getHostFile(),
-                    mutex.toJson(),
+                    mutex.toJsonDoc(),
                     StandardOpenOption.CREATE_NEW,
                     StandardOpenOption.WRITE
                 );
@@ -128,7 +129,7 @@ public class MutexFilesUtils {
         try {
             Files.writeString(
                 mutex.getElectionFile(),
-                mutex.toJson(),
+                mutex.toJsonDoc(),
                 StandardOpenOption.CREATE_NEW,
                 StandardOpenOption.WRITE
             );
@@ -245,7 +246,7 @@ public class MutexFilesUtils {
         try {
             Files.writeString(
                 targetFile,
-                mutex.toJson(),
+                mutex.toJsonDoc(),
                 StandardOpenOption.CREATE_NEW,
                 StandardOpenOption.WRITE
             );

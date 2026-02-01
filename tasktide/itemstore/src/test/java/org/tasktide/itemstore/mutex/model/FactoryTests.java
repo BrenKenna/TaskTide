@@ -15,14 +15,11 @@
  */
 package org.tasktide.itemstore.mutex.model;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.itemstore.mutex.utils.MutexConstants;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
@@ -33,6 +30,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
+import org.tasktide.itemstore.mutex.MutexTestUtils;
 
 
 /**
@@ -56,7 +54,7 @@ public class FactoryTests {
         LOGGER.info(msg);
             
         // Set election file
-        configurePaths();
+        MutexTestUtils.configurePaths();
         MutexLabellingUtils.configure();
         
         // Check config
@@ -82,34 +80,6 @@ public class FactoryTests {
     
     
     /**
-     * Configure paths
-     * 
-     */
-    public static void configurePaths() {
-    
-        // Configure duration constants
-        String nodeProcId = MutexLabellingUtils.getNodeProcId();
-        MutexConstants.initializeDurations();
-        
-        // Configure paths and directories
-        Path cwd = Paths.get("").toAbsolutePath();
-        Path targetPath = cwd.resolve("ItemStore-Mutex");
-        Path hostLockDir = targetPath.resolve("Host-Lock");
-        
-        // Configure files
-        Path lockingFile = targetPath.resolve("lock-file.lock");
-        Path electionFile = hostLockDir.resolve(
-            System.currentTimeMillis() +
-            nodeProcId +
-            ".lock"
-        );
-        
-        // Initialize paths
-        MutexConstants.initializePaths(targetPath, lockingFile, electionFile, hostLockDir);
-    }
-    
-    
-    /**
      * Confirms reading/writing {@link Mutex}
      * 
      */
@@ -129,7 +99,7 @@ public class FactoryTests {
         // Display record for reference
         LOGGER.info(
             "Displaying mutex for reference:\n\n'{}'",
-            canon.toJson()
+            canon.toJsonDoc()
         );
         
         // Write & read mutex

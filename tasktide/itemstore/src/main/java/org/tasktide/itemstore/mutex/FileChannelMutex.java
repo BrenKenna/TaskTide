@@ -17,11 +17,11 @@ package org.tasktide.itemstore.mutex;
 
 import java.nio.file.Path;
 
-import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 import org.tasktide.itemstore.mutex.model.Mutex;
-import org.tasktide.itemstore.mutex.model.MutexFileType;
 import org.tasktide.itemstore.mutex.model.MutexState;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
+
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 
 
 /**
@@ -59,7 +59,7 @@ class FileChannelMutex extends IntraProcessMutex {
         boolean locked = false;
         while (!locked) {
             MutexFilesUtils.waitJitterTime();
-            locked = MutexStrategy.FILE_CHANNEL.apply(mutex, MutexFileType.HOST_FILE);
+            locked = MutexStrategy.FILE_CHANNEL.apply(mutex);
         }
     }
     
@@ -85,7 +85,7 @@ class FileChannelMutex extends IntraProcessMutex {
         
         // Otherwise rollback
         catch (RuntimeException | Error ex) {
-            MutexStrategy.FILE_CHANNEL.release(mutex, MutexFileType.HOST_FILE);
+            MutexStrategy.FILE_CHANNEL.release(mutex);
             throw ex;
         }
     }
@@ -95,10 +95,11 @@ class FileChannelMutex extends IntraProcessMutex {
      * Acquire a lock on composed target
      * 
      * @param targetFile
+     * @returns boolean
      * @throws MutexCheckedException 
      */
     @Override
-    public void acquire(Path targetFile) throws MutexCheckedException {
+    public boolean acquire(Path targetFile) throws MutexCheckedException {
     
         // Fail early if already locked
         this.ensureNoActiveLock();
@@ -109,6 +110,7 @@ class FileChannelMutex extends IntraProcessMutex {
         // Wait for lock
         this.waitForLock(mutex);
         this.setLock(mutex);
+        return active.getState().isLockState(MutexState.LOCKED);
     }
     
     
@@ -116,10 +118,11 @@ class FileChannelMutex extends IntraProcessMutex {
      * Acquire lock on provided {@link Mutex}
      * 
      * @param mutex
+     * @return boolean
      * @throws MutexCheckedException 
      */
     @Override
-    public void acquire(Mutex mutex) throws MutexCheckedException {
+    public boolean acquire(Mutex mutex) throws MutexCheckedException {
         
         // Fail early if already locked
         this.ensureNoActiveLock();
@@ -129,15 +132,20 @@ class FileChannelMutex extends IntraProcessMutex {
         
         // Set active
         this.setLock(mutex);
+        return active.getState().isLockState(MutexState.LOCKED);
     }
 
     
     /**
      * Release lock
      * 
+     * @param mutex
+     * 
+     * @returns boolean
+     * @throws MutexCheckedException
      */
     @Override
-    public synchronized void release(Mutex mutex) throws MutexCheckedException {
+    public synchronized boolean release(Mutex mutex) throws MutexCheckedException {
         if ( mutex.getHostLock() == null ) {
             throw new MutexCheckedException("No host lock to release on mutex");
         }
@@ -146,8 +154,9 @@ class FileChannelMutex extends IntraProcessMutex {
             throw new MutexCheckedException("Mutex does not equal active");
         }
         
-        MutexStrategy.FILE_CHANNEL.release(mutex, MutexFileType.HOST_FILE);
+        boolean state = MutexStrategy.FILE_CHANNEL.release(mutex);
         active = null;
+        return state;
     }
     
     
@@ -155,10 +164,12 @@ class FileChannelMutex extends IntraProcessMutex {
      * Release lock on target file provided
      * 
      * @param targetFile
+     * 
+     * @returns boolean
      * @throws MutexCheckedException 
      */
     @Override
-    public synchronized void release(Path targetFile) throws MutexCheckedException {
+    public synchronized boolean release(Path targetFile) throws MutexCheckedException {
         if ( active == null ) {
             throw new MutexCheckedException("No host lock to release on mutex");
         }
@@ -167,26 +178,41 @@ class FileChannelMutex extends IntraProcessMutex {
             throw new MutexCheckedException("Mutex does not equal active");
         }
         
-        MutexStrategy.FILE_CHANNEL.release(active, MutexFileType.HOST_FILE);
+        MutexStrategy.FILE_CHANNEL.release(active);
+        boolean state = MutexStrategy.FILE_CHANNEL.release(active);
         active = null;
+        return state;
     }
     
     
     /**
      * Release lock
      * 
+     * @returns boolean
      * @throws MutexCheckedException
      */
     @Override
-    public synchronized void release() throws MutexCheckedException {
+    public synchronized boolean release() throws MutexCheckedException {
         if ( active != null ) {
-            MutexStrategy.FILE_CHANNEL.release(active, MutexFileType.HOST_FILE);
+            boolean state = MutexStrategy.FILE_CHANNEL.release(active);
             active = null;
+            return state;
         }
         
         else {
             throw new MutexCheckedException("No active lock to release");
         }
+    }
+    
+    
+    /**
+     * Provides the value for the active {@link Mutex}
+     * 
+     * @return {@link Mutex}
+     */
+    @Override
+    public Mutex fetchActiveFieldValue() {
+        return this.active;
     }
     
     
