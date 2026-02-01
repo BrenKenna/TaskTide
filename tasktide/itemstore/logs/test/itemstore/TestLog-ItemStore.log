@@ -446,3 +446,1374 @@
 
 ---------------- Terminating FactoryTests Tests ----------------
 
+2026-02-01 21:38:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 21:38:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 21:38:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 21:38:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 21:38:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 21:38:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 21:47:02 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 21:47:02 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 21:47:02 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 21:47:02 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 21:47:02 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 21:47:03 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex created, inferring queue position
+2026-02-01 21:47:03 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 21:47:03 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 21:48:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 21:48:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 21:48:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 21:48:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 21:48:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769982508433.10-56-75-13_a0414758-933a-4b27-818a-fb1e749ec67f.lock",
+    "End Jitter": "PT0.366S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769982508431.10-56-75-13_a0414758-933a-4b27-818a-fb1e749ec67f.lock",
+    "Id": "820f2f03-071f-472f-a1d5-ba0b79a7d933",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.295S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.358S",
+    "Timestamp": 1769982508434
+}'
+2026-02-01 21:48:28 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 21:48:28 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex created, inferring queue position
+2026-02-01 21:48:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 21:48:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:12:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:12:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:12:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:12:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:12:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769983953132.10-56-75-13_0f53cb4e-bbc6-40ce-9a47-46b5eb68e68e.lock",
+    "End Jitter": "PT0.184S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769983953129.10-56-75-13_0f53cb4e-bbc6-40ce-9a47-46b5eb68e68e.lock",
+    "Id": "fe8ccf69-ed06-4445-aa5e-41a1e8c49543",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.18S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.176S",
+    "Timestamp": 1769983953133
+}'
+2026-02-01 22:12:33 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:12:33 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex created, inferring queue position
+2026-02-01 22:12:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:12:33 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:17:43 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:17:43 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:17:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:17:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:17:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769984264016.10-56-75-13_4ebf21e2-9fb5-47c1-9f8f-93d9aaadcc34.lock",
+    "End Jitter": "PT0.163S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769984264014.10-56-75-13_4ebf21e2-9fb5-47c1-9f8f-93d9aaadcc34.lock",
+    "Id": "96e1528c-1039-4a59-b106-04f632a8512a",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.175S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.162S",
+    "Timestamp": 1769984264017
+}'
+2026-02-01 22:17:44 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:17:44 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:17:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:17:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:19:37 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:19:37 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:19:37 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:19:37 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:19:37 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\1769984377528.10-56-75-13_18ad77b8-7103-463a-bf3e-1e763cd1f50f.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769984377519.10-56-75-13_18ad77b8-7103-463a-bf3e-1e763cd1f50f.lock",
+    "End Jitter": "PT0.494S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769984377518.10-56-75-13_18ad77b8-7103-463a-bf3e-1e763cd1f50f.lock",
+    "Id": "047b669d-b164-4ff2-a86d-74f9937cb6db",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.062S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.242S",
+    "Timestamp": 1769984377520
+}'''
+2026-02-01 22:19:37 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:19:37 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:19:37 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:19:37 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:21:20 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:21:20 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:21:20 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:21:20 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:21:20 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\1769984480750.10-56-75-13_9c44840f-13c3-4df9-9e89-d81f964efb09.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769984480737.10-56-75-13_9c44840f-13c3-4df9-9e89-d81f964efb09.lock",
+    "End Jitter": "PT0.423S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\1769984480735.10-56-75-13_9c44840f-13c3-4df9-9e89-d81f964efb09.lock",
+    "Id": "64c28aa5-1e6c-4a22-acab-0d43debcbf90",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.187S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.258S",
+    "Timestamp": 1769984480738
+}'
+2026-02-01 22:21:20 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:21:20 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:21:20 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:21:20 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:26:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:26:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:26:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:26:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:26:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769984802227.10-56-75-13_3a6f65d3-22d6-492b-ac75-c6c0f3a8b3b3.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769984802218.10-56-75-13_3a6f65d3-22d6-492b-ac75-c6c0f3a8b3b3.lock",
+    "End Jitter": "PT0.489S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769984802216.10-56-75-13_3a6f65d3-22d6-492b-ac75-c6c0f3a8b3b3.lock",
+    "Id": "eab2d5f2-54aa-4d16-8463-bdd026e51be6",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.161S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.219S",
+    "Timestamp": 1769984802219
+}'
+2026-02-01 22:26:42 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:26:42 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:26:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:26:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:28:05 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:28:05 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:28:05 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:28:05 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:28:06 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769984886010.10-56-75-13_483193c7-df90-4ddb-9c5e-54b96f1abefe.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769984886001.10-56-75-13_483193c7-df90-4ddb-9c5e-54b96f1abefe.lock",
+    "End Jitter": "PT0.358S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769984885999.10-56-75-13_483193c7-df90-4ddb-9c5e-54b96f1abefe.lock",
+    "Id": "6d5770a0-708c-4b9e-bf86-14b5e47d7aae",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.024S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.389S",
+    "Timestamp": 1769984886002
+}'
+2026-02-01 22:28:06 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:28:06 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:28:06 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:28:06 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:29:18 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:29:18 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:29:18 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:29:18 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:29:18 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769984958221.10-56-75-13_5cc649b7-ae3b-413d-861b-a454f3a9bbe4.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769984958204.10-56-75-13_5cc649b7-ae3b-413d-861b-a454f3a9bbe4.lock",
+    "End Jitter": "PT0.281S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769984958202.10-56-75-13_5cc649b7-ae3b-413d-861b-a454f3a9bbe4.lock",
+    "Id": "d0478f8d-9d3d-4d32-b3e7-e1c8636e0429",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.269S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.184S",
+    "Timestamp": 1769984958214
+}'
+2026-02-01 22:29:18 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:29:18 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:29:18 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:29:18 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:32:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:32:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:32:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:32:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:32:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769985164186.10-56-75-13_f6689bdd-d585-4b00-8922-0a4a85dfbb73.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769985164177.10-56-75-13_f6689bdd-d585-4b00-8922-0a4a85dfbb73.lock",
+    "End Jitter": "PT0.39S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769985164175.10-56-75-13_f6689bdd-d585-4b00-8922-0a4a85dfbb73.lock",
+    "Id": "885e96d4-958c-41b6-96bf-221411c7363f",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.09S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.38S",
+    "Timestamp": 1769985164178
+}'
+2026-02-01 22:32:44 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:32:44 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:32:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:32:44 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:34:55 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:34:55 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:34:55 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:34:55 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:34:55 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769985295688.10-56-75-13_380d55cb-ceae-42cf-9354-77249873184c.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769985295677.10-56-75-13_380d55cb-ceae-42cf-9354-77249873184c.lock",
+    "End Jitter": "PT0.212S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769985295676.10-56-75-13_380d55cb-ceae-42cf-9354-77249873184c.lock",
+    "Id": "a8decd93-e213-4bcd-8dc9-f43d030cffbf",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.012S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.163S",
+    "Timestamp": 1769985295679
+}'
+2026-02-01 22:34:55 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:34:55 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:34:55 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:34:55 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769985683412.10-56-75-13_5232276e-0dce-4704-863a-fccb50bd686a.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769985683404.10-56-75-13_5232276e-0dce-4704-863a-fccb50bd686a.lock",
+    "End Jitter": "PT0.103S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769985683402.10-56-75-13_5232276e-0dce-4704-863a-fccb50bd686a.lock",
+    "Id": "ef8a87ec-7bf2-4402-98d0-2edf38da24ee",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.084S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.338S",
+    "Timestamp": 1769985683405
+}'
+2026-02-01 22:41:23 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:41:23 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:41:23 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Lock successfully applied
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:41:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769986106693.10-56-75-13_19861aeb-09f1-49b1-a025-35d7299e8fe6.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986106681.10-56-75-13_19861aeb-09f1-49b1-a025-35d7299e8fe6.lock",
+    "End Jitter": "PT0.147S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986106680.10-56-75-13_19861aeb-09f1-49b1-a025-35d7299e8fe6.lock",
+    "Id": "cefb3516-d3d7-4c0c-a5af-eb4d117c63f8",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.168S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.129S",
+    "Timestamp": 1769986106683
+}'
+2026-02-01 22:48:26 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:48:26 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:48:26 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: Lock successfully applied
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986106681.10-56-75-13_19861aeb-09f1-49b1-a025-35d7299e8fe6.lock",
+    "End Jitter": "PT0.147S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986106680.10-56-75-13_19861aeb-09f1-49b1-a025-35d7299e8fe6.lock",
+    "Id": "cefb3516-d3d7-4c0c-a5af-eb4d117c63f8",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.168S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.129S",
+    "Timestamp": 1769986106683
+}'
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:48:26 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: 
+
+================ Tests Releasing Single Election Lock ================
+
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769986459568.10-56-75-13_b02efdb8-d656-47bc-894c-d0ca98e59edc.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986459559.10-56-75-13_b02efdb8-d656-47bc-894c-d0ca98e59edc.lock",
+    "End Jitter": "PT0.329S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986459557.10-56-75-13_b02efdb8-d656-47bc-894c-d0ca98e59edc.lock",
+    "Id": "a898373d-0654-42d5-b8a6-b2908ae3e9a1",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.037S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.286S",
+    "Timestamp": 1769986459560
+}'
+2026-02-01 22:54:19 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:54:19 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:54:19 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: Lock successfully applied
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: Released lock
+'Mutex{id=a898373d-0654-42d5-b8a6-b2908ae3e9a1, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769986459557.10-56-75-13_b02efdb8-d656-47bc-894c-d0ca98e59edc.lock, retryInterval=PT0.037S, staleFileThreshold=PT10S, startJitter=PT0.286S, endJitter=PT0.329S, state=HOST_LOCKED}'
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: 
+
+================ Tests Releasing Single Election Lock ================
+
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:54:19 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:55:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 22:55:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 22:55:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 22:55:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: 
+
+================ Tests Releasing Single Election Lock ================
+
+2026-02-01 22:55:12 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769986512891.10-56-75-13_ae3c139b-c191-4f40-b342-1092aa8ca748.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986512882.10-56-75-13_ae3c139b-c191-4f40-b342-1092aa8ca748.lock",
+    "End Jitter": "PT0.207S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986512880.10-56-75-13_ae3c139b-c191-4f40-b342-1092aa8ca748.lock",
+    "Id": "369a294c-6b08-4f86-a368-ab3f64bf4261",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.295S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.157S",
+    "Timestamp": 1769986512883
+}'
+2026-02-01 22:55:12 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 22:55:12 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 22:55:12 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 22:55:13 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: Lock successfully applied
+2026-02-01 22:55:13 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: Released lock
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986512882.10-56-75-13_ae3c139b-c191-4f40-b342-1092aa8ca748.lock",
+    "End Jitter": "PT0.207S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986512880.10-56-75-13_ae3c139b-c191-4f40-b342-1092aa8ca748.lock",
+    "Id": "369a294c-6b08-4f86-a368-ab3f64bf4261",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.295S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.157S",
+    "Timestamp": 1769986512883
+}'
+2026-02-01 22:55:13 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleElectionLock ]: 
+
+================ Tests Releasing Single Election Lock ================
+
+2026-02-01 22:55:13 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 22:55:13 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:00:48 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:00:48 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:00:49 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:00:49 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:00:49 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769986849048.10-56-75-13_5b96afd0-da82-4200-a4c4-6228a097a5a6.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986849042.10-56-75-13_5b96afd0-da82-4200-a4c4-6228a097a5a6.lock",
+    "End Jitter": "PT0.438S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769986849040.10-56-75-13_5b96afd0-da82-4200-a4c4-6228a097a5a6.lock",
+    "Id": "82885b6f-f058-4d8a-9942-a8a470ccac5d",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.25S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.227S",
+    "Timestamp": 1769986849043
+}'
+2026-02-01 23:00:49 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Lock successfully applied
+2026-02-01 23:00:49 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:00:49 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769987014761.10-56-75-13_14f3476c-3935-4cb0-927e-581e7d852c06.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987014751.10-56-75-13_14f3476c-3935-4cb0-927e-581e7d852c06.lock",
+    "End Jitter": "PT0.33S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987014750.10-56-75-13_14f3476c-3935-4cb0-927e-581e7d852c06.lock",
+    "Id": "0178e649-17fb-413e-a69d-52dc6abc4ca2",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.216S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.405S",
+    "Timestamp": 1769987014753
+}'
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Lock successfully applied
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Released lock
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987014751.10-56-75-13_14f3476c-3935-4cb0-927e-581e7d852c06.lock",
+    "End Jitter": "PT0.33S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987014750.10-56-75-13_14f3476c-3935-4cb0-927e-581e7d852c06.lock",
+    "Id": "0178e649-17fb-413e-a69d-52dc6abc4ca2",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.216S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.405S",
+    "Timestamp": 1769987014753
+}'
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:03:34 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987788314.10-56-75-13_c3087a4c-4a08-4eb4-b8b0-9788fd165346.lock",
+    "End Jitter": "PT0.351S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987788312.10-56-75-13_c3087a4c-4a08-4eb4-b8b0-9788fd165346.lock",
+    "Id": "066af393-984d-43f3-b225-65a89bab67b1",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.083S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.434S",
+    "Timestamp": 1769987788315
+}'
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Lock successfully applied
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Released lock
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987788314.10-56-75-13_c3087a4c-4a08-4eb4-b8b0-9788fd165346.lock",
+    "End Jitter": "PT0.351S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987788312.10-56-75-13_c3087a4c-4a08-4eb4-b8b0-9788fd165346.lock",
+    "Id": "066af393-984d-43f3-b225-65a89bab67b1",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.083S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.434S",
+    "Timestamp": 1769987788315
+}'
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:16:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987957237.10-56-75-13_82d6279f-19f7-4e15-8d1a-2295505ff7a4.lock",
+    "End Jitter": "PT0.431S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987957235.10-56-75-13_82d6279f-19f7-4e15-8d1a-2295505ff7a4.lock",
+    "Id": "ae217b4b-31be-471f-99ac-090dd4a16574",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.193S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.279S",
+    "Timestamp": 1769987957238
+}'
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Lock successfully applied
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: Released lock
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987957237.10-56-75-13_82d6279f-19f7-4e15-8d1a-2295505ff7a4.lock",
+    "End Jitter": "PT0.431S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769987957235.10-56-75-13_82d6279f-19f7-4e15-8d1a-2295505ff7a4.lock",
+    "Id": "ae217b4b-31be-471f-99ac-090dd4a16574",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.193S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.279S",
+    "Timestamp": 1769987957238
+}'
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:19:17 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexStrategyTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Strategy Tests ----------------
+
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769988624692.10-56-75-13_49f77bc8-4e28-490c-ab8f-9768a1ee1930.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769988624683.10-56-75-13_49f77bc8-4e28-490c-ab8f-9768a1ee1930.lock",
+    "End Jitter": "PT0.278S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769988624681.10-56-75-13_49f77bc8-4e28-490c-ab8f-9768a1ee1930.lock",
+    "Id": "63b4035e-2072-4a82-8e40-0123a77b0637",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.108S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.253S",
+    "Timestamp": 1769988624684
+}'
+2026-02-01 23:30:24 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 23:30:24 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 23:30:24 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleElectionLock ]: Lock successfully applied
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769988624683.10-56-75-13_49f77bc8-4e28-490c-ab8f-9768a1ee1930.lock",
+    "End Jitter": "PT0.278S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769988624681.10-56-75-13_49f77bc8-4e28-490c-ab8f-9768a1ee1930.lock",
+    "Id": "63b4035e-2072-4a82-8e40-0123a77b0637",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.108S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.253S",
+    "Timestamp": 1769988624684
+}'
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleElectionLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:30:24 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleElectionLock ]: 
+
+================ Tests Releasing Single Election Lock ================
+
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleElectionLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769988881501.10-56-75-13_5d20c69d-5e99-4eb0-8925-4c8f16357063.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769988881491.10-56-75-13_5d20c69d-5e99-4eb0-8925-4c8f16357063.lock",
+    "End Jitter": "PT0.488S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769988881489.10-56-75-13_5d20c69d-5e99-4eb0-8925-4c8f16357063.lock",
+    "Id": "b0ccfb14-91e4-4879-84fa-943a9fb259c3",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.281S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.466S",
+    "Timestamp": 1769988881492
+}'
+2026-02-01 23:34:41 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 23:34:41 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 23:34:41 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleElectionLock ]: Lock successfully applied-released
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769988881491.10-56-75-13_5d20c69d-5e99-4eb0-8925-4c8f16357063.lock",
+    "End Jitter": "PT0.488S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769988881489.10-56-75-13_5d20c69d-5e99-4eb0-8925-4c8f16357063.lock",
+    "Id": "b0ccfb14-91e4-4879-84fa-943a9fb259c3",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.281S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.466S",
+    "Timestamp": 1769988881492
+}'
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleElectionLock ]: 
+
+================ Tests Releasing Single Election Lock ================
+
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:34:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769989010685.10-56-75-13_42532678-a356-4c93-b1e2-bb1e3dfd557e.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989010676.10-56-75-13_42532678-a356-4c93-b1e2-bb1e3dfd557e.lock",
+    "End Jitter": "PT0.172S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989010674.10-56-75-13_42532678-a356-4c93-b1e2-bb1e3dfd557e.lock",
+    "Id": "85ce559f-b5f0-452b-8509-423ac61ecbe5",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.062S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.45S",
+    "Timestamp": 1769989010678
+}'
+2026-02-01 23:36:50 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 23:36:50 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 23:36:50 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: Lock successfully applied
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989010676.10-56-75-13_42532678-a356-4c93-b1e2-bb1e3dfd557e.lock",
+    "End Jitter": "PT0.172S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989010674.10-56-75-13_42532678-a356-4c93-b1e2-bb1e3dfd557e.lock",
+    "Id": "85ce559f-b5f0-452b-8509-423ac61ecbe5",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.062S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.45S",
+    "Timestamp": 1769989010678
+}'
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: 
+
+================ Tests Applying Single Election Lock ================
+
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:36:50 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:39:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:39:40 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:39:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:39:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: 
+
+================ Tests Releasing Single NFS Lock ================
+
+2026-02-01 23:39:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769989181029.10-56-75-13_aead6a53-2359-4321-8d16-80c1276a5565.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989181019.10-56-75-13_aead6a53-2359-4321-8d16-80c1276a5565.lock",
+    "End Jitter": "PT0.11S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989181017.10-56-75-13_aead6a53-2359-4321-8d16-80c1276a5565.lock",
+    "Id": "1a191d07-ad1e-42b8-9db6-af8643934c3a",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.219S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.122S",
+    "Timestamp": 1769989181021
+}'
+2026-02-01 23:39:41 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 23:39:41 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 23:39:41 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 23:39:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: Lock successfully applied-released
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989181019.10-56-75-13_aead6a53-2359-4321-8d16-80c1276a5565.lock",
+    "End Jitter": "PT0.11S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989181017.10-56-75-13_aead6a53-2359-4321-8d16-80c1276a5565.lock",
+    "Id": "1a191d07-ad1e-42b8-9db6-af8643934c3a",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.219S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.122S",
+    "Timestamp": 1769989181021
+}'
+2026-02-01 23:39:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: 
+
+================ Tests Releasing Single NFS Lock ================
+
+2026-02-01 23:39:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:39:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:42:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleFileChannelMutex Tests ----------------
+
+2026-02-01 23:42:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:42:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:42:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:42:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleFileChannelMutexTests Tests ----------------
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: 
+
+================ Tests Applying Single NFS Lock ================
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769989374733.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989374723.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock",
+    "End Jitter": "PT0.355S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989374721.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock",
+    "Id": "5634b566-8690-4bdb-9c44-a53469902769",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.062S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.342S",
+    "Timestamp": 1769989374725
+}'
+2026-02-01 23:42:54 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 23:42:54 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 23:42:54 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: Lock successfully applied
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989374723.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock",
+    "End Jitter": "PT0.355S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989374721.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock",
+    "Id": "5634b566-8690-4bdb-9c44-a53469902769",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.062S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.342S",
+    "Timestamp": 1769989374725
+}'
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: 
+
+================ Tests Applying Single NFS Lock ================
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: 
+
+================ Tests Releasing Single NFS Lock ================
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769989374874.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989374874.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock",
+    "End Jitter": "PT0.355S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989374874.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock",
+    "Id": "5a268026-fa09-471d-a673-1935843faa2d",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.062S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.342S",
+    "Timestamp": 1769989374874
+}'
+2026-02-01 23:42:54 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 23:42:54 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 23:42:54 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 23:42:54 ERROR [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: Unable to apply-release lock
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989374874.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock",
+    "End Jitter": "PT0.355S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989374874.10-56-75-13_1ceb65b3-a7bd-407b-be1f-68c8a3cb1eea.lock",
+    "Id": "5a268026-fa09-471d-a673-1935843faa2d",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.062S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.342S",
+    "Timestamp": 1769989374874
+}'
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:42:54 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: 
+
+================ Tests Applying Single NFS Lock ================
+
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769989482472.10-56-75-13_ff5ef22c-fb0c-420b-9d71-1cd827b206cf.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989482462.10-56-75-13_ff5ef22c-fb0c-420b-9d71-1cd827b206cf.lock",
+    "End Jitter": "PT0.435S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989482460.10-56-75-13_ff5ef22c-fb0c-420b-9d71-1cd827b206cf.lock",
+    "Id": "c3647953-276f-4dec-a609-a9fe84497a7c",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.06S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.425S",
+    "Timestamp": 1769989482463
+}'
+2026-02-01 23:44:42 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 23:44:42 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 23:44:42 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: Lock successfully applied
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989482462.10-56-75-13_ff5ef22c-fb0c-420b-9d71-1cd827b206cf.lock",
+    "End Jitter": "PT0.435S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989482460.10-56-75-13_ff5ef22c-fb0c-420b-9d71-1cd827b206cf.lock",
+    "Id": "c3647953-276f-4dec-a609-a9fe84497a7c",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.06S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.425S",
+    "Timestamp": 1769989482463
+}'
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canApplySingleNfsLock ]: 
+
+================ Tests Applying Single NFS Lock ================
+
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:44:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: 
+
+================ Tests Releasing Single NFS Lock ================
+
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769989588413.10-56-75-13_984e3754-6e53-41b6-aeb7-198e0f6390f3.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989588405.10-56-75-13_984e3754-6e53-41b6-aeb7-198e0f6390f3.lock",
+    "End Jitter": "PT0.453S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989588403.10-56-75-13_984e3754-6e53-41b6-aeb7-198e0f6390f3.lock",
+    "Id": "a5f61176-36ec-4dad-8017-2d485777f22e",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.283S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.176S",
+    "Timestamp": 1769989588406
+}'
+2026-02-01 23:46:28 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-01 23:46:28 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-01 23:46:28 DEBUG [ Test worker -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: Lock successfully applied-released
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989588405.10-56-75-13_984e3754-6e53-41b6-aeb7-198e0f6390f3.lock",
+    "End Jitter": "PT0.453S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989588403.10-56-75-13_984e3754-6e53-41b6-aeb7-198e0f6390f3.lock",
+    "Id": "a5f61176-36ec-4dad-8017-2d485777f22e",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.283S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.176S",
+    "Timestamp": 1769989588406
+}'
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.canReleaseSingleNfsLock ]: 
+
+================ Tests Releasing Single NFS Lock ================
+
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:46:28 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleNfsMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleNfsMutex Tests ----------------
+
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleFileChannelMutex Tests ----------------
+
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.canApplySingleNfsLock ]: 
+
+================ Tests Applying Single NFS Lock ================
+
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.canApplySingleNfsLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769989756091.10-56-75-13_d1e3330c-43eb-4791-afca-c35023ab2649.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989756080.10-56-75-13_d1e3330c-43eb-4791-afca-c35023ab2649.lock",
+    "End Jitter": "PT0.45S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989756078.10-56-75-13_d1e3330c-43eb-4791-afca-c35023ab2649.lock",
+    "Id": "28f2a2e0-398d-488f-87a2-41983cc385fb",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.069S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.438S",
+    "Timestamp": 1769989756082
+}'
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.canApplySingleNfsLock ]: Lock successfully applied
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989756080.10-56-75-13_d1e3330c-43eb-4791-afca-c35023ab2649.lock",
+    "End Jitter": "PT0.45S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989756078.10-56-75-13_d1e3330c-43eb-4791-afca-c35023ab2649.lock",
+    "Id": "28f2a2e0-398d-488f-87a2-41983cc385fb",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.069S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.438S",
+    "Timestamp": 1769989756082
+}'
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.canApplySingleNfsLock ]: 
+
+================ Tests Applying Single FileChannel Lock ================
+
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:49:16 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleFileChannelMutexTests Tests ----------------
+
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUpClass ]: 
+
+---------------- Initiating SimpleFileChannelMutex Tests ----------------
+
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUpClass ]: Displaying config state:	'true'
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.canReleaseSingleFileChannelLock ]: Created mutex:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Queue\1769989763612.10-56-75-13_256619c7-fcc8-4f5a-8797-5b156ee995e3.lock'
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989763603.10-56-75-13_256619c7-fcc8-4f5a-8797-5b156ee995e3.lock",
+    "End Jitter": "PT0.149S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989763601.10-56-75-13_256619c7-fcc8-4f5a-8797-5b156ee995e3.lock",
+    "Id": "0feabc99-4013-4ff2-a2dd-37be0f057619",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "INITIALIZATION",
+    "Retry Interval": "PT0.21S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.156S",
+    "Timestamp": 1769989763604
+}'
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.canReleaseSingleFileChannelLock ]: Lock successfully applied-released
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989763603.10-56-75-13_256619c7-fcc8-4f5a-8797-5b156ee995e3.lock",
+    "End Jitter": "PT0.149S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1769989763601.10-56-75-13_256619c7-fcc8-4f5a-8797-5b156ee995e3.lock",
+    "Id": "0feabc99-4013-4ff2-a2dd-37be0f057619",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.21S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.156S",
+    "Timestamp": 1769989763604
+}'
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.canReleaseSingleFileChannelLock ]: 
+
+================ Tests Releasing Single FileChannel Lock ================
+
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-01 23:49:23 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleFileChannelMutexTests.tearDownClass ]: 
+
+---------------- Terminating SimpleFileChannelMutexTests Tests ----------------
+

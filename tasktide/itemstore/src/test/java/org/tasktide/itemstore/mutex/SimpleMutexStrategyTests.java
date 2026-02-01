@@ -27,8 +27,10 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFactory;
@@ -41,6 +43,7 @@ import org.tasktide.itemstore.mutex.utils.MutexConstants;
  *
  * @author Brendan Kenna
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SimpleMutexStrategyTests {
     
     // Configure logger

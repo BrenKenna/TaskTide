@@ -15,15 +15,23 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import java.nio.file.Path;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.mutex.model.MutexFactory;
+import org.tasktide.itemstore.mutex.utils.MutexConstants;
 
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
@@ -34,6 +42,7 @@ import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
  *
  * @author Brendan Kenna
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SimpleFileChannelMutexTests {
     
     // Configure logger
@@ -78,9 +87,105 @@ public class SimpleFileChannelMutexTests {
     }
 
     
+    /**
+     * Quite a bit under this one atm?
+     * 
+     */
     @Test
     @Order(0)
-    public void canLockHost() {
+    public void canApplySingleNfsLock() {
+    
+        // Initialize test
+        LOGGER.info("\n\n================ Tests Applying Single NFS Lock ================\n");
+        Path targetDir;
+        Mutex mutex;
+        boolean assertionState;
         
+        // Create a mutex
+        targetDir = MutexConstants.getElectionFile();
+        mutex = MutexFactory.create(targetDir);
+        LOGGER.info(
+            "Created mutex:\t'{}'\n'{}'",
+            MutexConstants.getElectionFile(),
+            mutex.toJsonDoc()
+        );
+        
+        // Fetch election lock
+        try {
+            assertionState = FILE_CHANNEL_MUTEX.acquire(mutex);
+        }
+        catch ( MutexCheckedException ex ) {
+            assertionState = false;
+        }
+        
+        if ( assertionState ) {
+            LOGGER.info(
+                "Lock successfully applied\n'{}'",
+                mutex.toJsonDoc()
+            );
+        }
+        else {
+            LOGGER.error(
+                "Unable to apply lock\n'{}'",
+                mutex.toJsonDoc()
+            );
+        }
+        
+        // Evaluate test
+        assertTrue(assertionState, "Error cannot apply single FileChannel lock");
+        LOGGER.info("\n\n================ Tests Applying Single FileChannel Lock ================\n");
+    }
+    
+    
+    /**
+     * Quite a bit under this one atm?
+     * 
+     */
+    @Test
+    @Order(1)
+    public void canReleaseSingleFileChannelLock() {
+    
+        // Initialize test
+        LOGGER.info("\n\n================ Tests Releasing Single FileChannel Lock ================\n");
+        Path targetDir;
+        Mutex mutex;
+        boolean assertionState;
+        
+        // Create a mutex
+        targetDir = MutexConstants.getElectionFile();
+        mutex = MutexFactory.create(targetDir);
+        LOGGER.info(
+            "Created mutex:\t'{}'\n'{}'",
+            MutexConstants.getElectionFile(),
+            mutex.toJsonDoc()
+        );
+        
+        // Fetch election lock
+        try {
+            assertionState = FILE_CHANNEL_MUTEX.acquire(mutex);
+            if ( assertionState ) {
+                assertionState = FILE_CHANNEL_MUTEX.release();
+            }
+        }
+        catch ( MutexCheckedException ex ) {
+            assertionState = false;
+        }
+        
+        if ( assertionState ) {
+            LOGGER.info(
+                "Lock successfully applied-released\n'{}'",
+                mutex.toJsonDoc()
+            );
+        }
+        else {
+            LOGGER.error(
+                "Unable to apply-release lock\n'{}'",
+                mutex.toJsonDoc()
+            );
+        }
+        
+        // Evaluate test
+        assertTrue(assertionState, "Error cannot apply-releae single FileChannel lock");
+        LOGGER.info("\n\n================ Tests Releasing Single FileChannel Lock ================\n");
     }
 }
