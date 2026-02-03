@@ -22,6 +22,8 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFactory;
+
+import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
@@ -29,7 +31,11 @@ import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
- * Composed class
+ * Implementing {@link MutexElection} lock by composing the {@link NfsMutex},
+ *  and {@link FileChannelMutex} which collectively offer a {@link Mutex} which
+ *  can be acquired and released.
+ * <br>
+ * Currently the algorithm only runs as a waiter/holds the executing thread.
  *
  * @author Brendan Kenna
  */
@@ -74,10 +80,30 @@ public class MutexOrchestrator {
             isConfigured = true;
         }
     }
+    
+    
+    /**
+     * Configures {@link MutexOrchestrator} with provided
+     *  {@link MutexElection}
+     * 
+     * @param nfsMutex
+     * @param fileChannelMutex 
+     */
+    public static synchronized void configureForTestCases(MutexElection nfsMutex, MutexElection fileChannelMutex) {
+        if ( isConfigured ) {
+            throw new MutexUncheckedException("Mutex Orchestator already configured");
+        }
+        else {
+            NFS_MUTEX = nfsMutex;
+            FILE_CHANNEL_MUTEX = fileChannelMutex;
+            isConfigured = true;
+        }
+    }
 
     
     /**
-     * Acquire central lock
+     * Acquire central {@link MutexElection} through {@link NfsMutex} lock
+     *  then requesting {@link FileChannel} lock
      * 
      * @throws MutexCheckedException 
      */
@@ -121,7 +147,9 @@ public class MutexOrchestrator {
     
     
     /**
-     * Release central lock
+     * Releases {@link FileChannelLock} before the central {@link MutexElection}
+     *  on {@link NfsMutex} using the {@link MutexFilesUtils} jitter time
+     *  configured through {@link MutexConstants}
      * 
      * @throws MutexCheckedException 
      */
@@ -140,6 +168,7 @@ public class MutexOrchestrator {
         try {
             LOGGER.info("Releasing FileChannel mutex");
             FILE_CHANNEL_MUTEX.release(activeMutex);
+            MutexFilesUtils.waitJitterTime();
         }
         catch (MutexCheckedException ex) {
             throw new MutexCheckedException("Unable to release file channel mutex");
@@ -147,8 +176,9 @@ public class MutexOrchestrator {
         
         // Release NFS mutex
         try {
-            LOGGER.info("Releasing NFS lock");
+            LOGGER.info("Releasing NFS mutex");
             NFS_MUTEX.release(activeMutex);
+            MutexFilesUtils.waitJitterTime();
         }
         catch (MutexUncheckedException ex) {
             throw new MutexCheckedException("Unable to release NFS mutex");
