@@ -15,7 +15,6 @@
  */
 package org.tasktide.itemstore.mutex.model;
 
-
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;

@@ -18,7 +18,6 @@ package org.tasktide.itemstore.mutex.utils;
 import java.nio.file.Path;
 
 import java.util.Random;
-
 import java.time.Duration;
 
 import org.tasktide.itemstore.mutex.model.Mutex;

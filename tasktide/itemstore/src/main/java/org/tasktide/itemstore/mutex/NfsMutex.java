@@ -38,7 +38,6 @@ class NfsMutex extends InterProcessMutex {
     // Attributes
     private volatile Mutex active;
     
-    
     /**
      * Acquire lock for provided {@link Mutex}
      * 
@@ -62,6 +61,7 @@ class NfsMutex extends InterProcessMutex {
         
         // Otherwise throw error from rollback
         else {
+            System.out.println("Complete with error");
             throw new MutexCheckedException("Self as leader rollback occured");
         }
     }
@@ -143,7 +143,7 @@ class NfsMutex extends InterProcessMutex {
         }
         
         // Check that leader is query
-        if ( active.getId().equals(mutex.getId()) ) {
+        if ( !active.getId().equals(mutex.getId()) ) {
             throw new MutexCheckedException("Not active leader");
         }
         

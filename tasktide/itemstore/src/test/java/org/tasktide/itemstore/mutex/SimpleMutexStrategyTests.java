@@ -20,8 +20,6 @@ import java.nio.file.Path;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,7 +32,9 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFactory;
+
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
+import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
 
 /**
@@ -49,8 +49,7 @@ public class SimpleMutexStrategyTests {
     // Configure logger
     private static final Logger LOGGER = LogManager.getLogger(SimpleMutexStrategyTests.class);
     
-    public SimpleMutexStrategyTests() {
-    }
+    public SimpleMutexStrategyTests() { }
     
     
     @BeforeAll
@@ -103,8 +102,7 @@ public class SimpleMutexStrategyTests {
         boolean assertionState;
         
         // Create a mutex
-        targetDir = MutexConstants.getElectionFile();
-        mutex = MutexFactory.create(targetDir);
+        mutex = MutexFactory.create();
         LOGGER.info(
             "Created mutex:\t'{}'\n'{}'",
             MutexConstants.getElectionFile(),
@@ -147,8 +145,7 @@ public class SimpleMutexStrategyTests {
         boolean assertionState;
         
         // Create a mutex
-        targetDir = MutexConstants.getElectionFile();
-        mutex = MutexFactory.create(targetDir);
+        mutex = MutexFactory.create();
         LOGGER.info(
             "Created mutex:\t'{}'\n'{}'",
             MutexConstants.getElectionFile(),
@@ -194,8 +191,7 @@ public class SimpleMutexStrategyTests {
         boolean assertionState;
         
         // Create a mutex
-        targetDir = MutexConstants.getElectionFile();
-        mutex = MutexFactory.create(targetDir);
+        mutex = MutexFactory.create();
         LOGGER.info(
             "Created mutex:\t'{}'\n'{}'",
             MutexConstants.getLockFile(),

@@ -107,7 +107,7 @@ public class MutexOrchestrator {
      * 
      * @throws MutexCheckedException 
      */
-    public static void acquireLock()
+    public static synchronized void acquireLock()
       throws MutexCheckedException {
     
         // Initialize variables
@@ -122,14 +122,15 @@ public class MutexOrchestrator {
         MutexConstants.initializePaths();
         
         // Make mutex
-        targetDir = MutexConstants.getElectionFile();
-        mutex = MutexFactory.create(targetDir);
+        MutexFilesUtils.waitJitterTime();
+        mutex = MutexFactory.create();
         
         // Acquire NFS lock
         try {
             LOGGER.info("Waiting for NFS lock");
             NFS_MUTEX.acquire(mutex);
             activeMutex = mutex;
+            LOGGER.info("NFS Lock acquired");
         }
         catch (MutexUncheckedException ex) {
             throw new MutexCheckedException("Unable to acquire target mutex");
@@ -139,10 +140,12 @@ public class MutexOrchestrator {
         try {
             LOGGER.info("Waiting for FileChannel lock");
             FILE_CHANNEL_MUTEX.acquire(mutex);
+            LOGGER.info("File Channel Lock acquired");
         }
         catch (MutexCheckedException ex) {
             throw new MutexCheckedException("Unable to acquire target mutex");
         }
+        
     }
     
     
@@ -153,10 +156,11 @@ public class MutexOrchestrator {
      * 
      * @throws MutexCheckedException 
      */
-    public static void releaseLock()
+    public static synchronized void releaseLock()
       throws MutexCheckedException {
         
         // Check if the orchestrator is configured
+        System.out.println("Releasing lock");
         if ( !isConfigured ) {
             throw new MutexCheckedException("Mutex Orhcestrator must be configured");
         }
@@ -176,12 +180,22 @@ public class MutexOrchestrator {
         
         // Release NFS mutex
         try {
-            LOGGER.info("Releasing NFS mutex");
+            LOGGER.info("Releasing NFS mutex:\n'{}'", activeMutex);
             NFS_MUTEX.release(activeMutex);
             MutexFilesUtils.waitJitterTime();
         }
         catch (MutexUncheckedException ex) {
             throw new MutexCheckedException("Unable to release NFS mutex");
         }
+    }
+    
+    
+    /**
+     * Fetch active {@link Mutex}
+     * 
+     * @return {@link Mutex}
+     */
+    public static Mutex fetchActive() {
+        return activeMutex;
     }
 }

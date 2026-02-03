@@ -104,8 +104,7 @@ public class SimpleNfsMutexTests {
         boolean assertionState;
         
         // Create a mutex
-        targetDir = MutexConstants.getElectionFile();
-        mutex = MutexFactory.create(targetDir);
+        mutex = MutexFactory.create();
         LOGGER.info(
             "Created mutex:\t'{}'\n'{}'",
             MutexConstants.getElectionFile(),
@@ -154,8 +153,7 @@ public class SimpleNfsMutexTests {
         boolean assertionState;
         
         // Create a mutex
-        targetDir = MutexConstants.getElectionFile();
-        mutex = MutexFactory.create(targetDir);
+        mutex = MutexFactory.create();
         LOGGER.info(
             "Created mutex:\t'{}'\n'{}'",
             MutexConstants.getElectionFile(),

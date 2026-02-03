@@ -20,6 +20,7 @@ import org.tasktide.itemstore.mutex.utils.MutexConstants;
 
 import java.nio.file.Path;
 import java.util.UUID;
+import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
 
 /**
@@ -47,8 +48,14 @@ public class MutexFactory {
         
         // Fetch variables
         id = UUID.randomUUID().toString();
-        electionFile = MutexConstants.getElectionFile();
-                
+        electionFile = MutexConstants.getElectionDir().resolve(
+                System.currentTimeMillis() + 
+                "." +
+                MutexLabellingUtils.getNodeProcId() +
+                "_" +
+                id +
+                ".lock"
+       );      
         
         // Create mutex
         output = new Mutex(
@@ -84,11 +91,18 @@ public class MutexFactory {
         Mutex output;
         
         // Fetch variables
+        // System.out.println("I run");
         id = UUID.randomUUID().toString();
         mutexFile = MutexLabellingUtils.getMutexFileName();
         hostFile = MutexConstants.getHostDir().resolve(mutexFile);
-        electionFile = MutexConstants.getElectionFile();
-                
+        electionFile = MutexConstants.getElectionDir().resolve(
+                System.currentTimeMillis() + 
+                "." +
+                MutexLabellingUtils.getNodeProcId() +
+                "_" +
+                id +
+                ".lock"
+       ); 
         
         // Create mutex
         output = new Mutex(

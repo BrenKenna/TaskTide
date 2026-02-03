@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.tasktide.itemstore.mutex;
 
 import java.io.IOException;
@@ -32,8 +31,6 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.itemstore.FileUtility;
 
-import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
-
 import org.tasktide.itemstore.mutex.model.HostLock;
 import org.tasktide.itemstore.mutex.model.HostLockFactory;
 import org.tasktide.itemstore.mutex.model.Mutex;
@@ -42,6 +39,8 @@ import org.tasktide.itemstore.mutex.model.MutexState;
 
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
+
+import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
@@ -172,7 +171,7 @@ public enum MutexStrategy {
             );
             mutex.setState(MutexState.WAITING);
             MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
-            LOGGER.debug("Queue position:\t'{}'", pos);
+            LOGGER.debug("Queue position:\t'{}'\n\n'{}'", pos, mutex.toJsonDoc());
 
             // Wait until become leader
             while( pos != 0 ) {
@@ -185,18 +184,20 @@ public enum MutexStrategy {
                 pos = inferPosition(mutex);
             }
 
-
             // Write mutex to lock file
-            //   - Sanity check these here first?
+            LOGGER.debug("Active leader with Id:\t'{}'", mutex.getId());
             mutex.setState(MutexState.HOST_LOCKED);
+            LOGGER.debug("State set, writing mutex for:\t'{}'", mutex.getId());
             MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
-            if (MutexFilesUtils.writeHostFile(mutex)) {
-                MutexFilesUtils.writeHostFile(mutex);
+            LOGGER.debug("<utex written for:\t'{}'", mutex.getId());
+            if ( MutexFilesUtils.writeHostFile(mutex) ) {
+                LOGGER.debug("Host lock file created for:\t'{}'", mutex.getId());
                 return true;
             }
             
             // Otherwise rollback
             else {
+                LOGGER.debug("Unable to write host lock file:\t'{}'", mutex.getId());
                 MutexFilesUtils.deleteFile(mutex.getElectionFile());
                 MutexFilesUtils.deleteFile(mutex.getHostFile());
                 return false;

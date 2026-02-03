@@ -107,6 +107,7 @@ public class MutexFilesUtils {
             }
             
             catch (IOException ex) {
+                ex.printStackTrace();
                 return false;
             }
         }
@@ -137,6 +138,7 @@ public class MutexFilesUtils {
         }
         
         catch (IOException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
@@ -254,6 +256,7 @@ public class MutexFilesUtils {
         }
         
         catch (IOException ex) {
+            ex.printStackTrace();
             return false;
         }
     }

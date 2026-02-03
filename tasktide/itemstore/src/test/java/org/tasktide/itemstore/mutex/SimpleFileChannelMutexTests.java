@@ -102,8 +102,7 @@ public class SimpleFileChannelMutexTests {
         boolean assertionState;
         
         // Create a mutex
-        targetDir = MutexConstants.getElectionFile();
-        mutex = MutexFactory.create(targetDir);
+        mutex = MutexFactory.create();
         LOGGER.info(
             "Created mutex:\t'{}'\n'{}'",
             MutexConstants.getElectionFile(),
@@ -152,8 +151,7 @@ public class SimpleFileChannelMutexTests {
         boolean assertionState;
         
         // Create a mutex
-        targetDir = MutexConstants.getElectionFile();
-        mutex = MutexFactory.create(targetDir);
+        mutex = MutexFactory.create();
         LOGGER.info(
             "Created mutex:\t'{}'\n'{}'",
             MutexConstants.getElectionFile(),

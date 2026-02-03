@@ -17,9 +17,19 @@ package org.tasktide.itemstore.mutex;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
+
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 
 
 /**
@@ -27,6 +37,9 @@ import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
  * @author Brendan Kenna
  */
 public class MutexTestUtils {
+    
+    // Logger
+    private static final Logger LOGGER = LogManager.getLogger(MutexTestUtils.class);
     
     
     /**
@@ -54,6 +67,129 @@ public class MutexTestUtils {
         );
         
         // Initialize paths
-        MutexConstants.initializePaths(targetPath, lockingFile, electionDir, electionFile, hostLockDir);
+        MutexConstants.initializePaths(
+            targetPath, lockingFile,
+            electionDir, electionFile,
+            hostLockDir
+        );
+    }
+    
+    
+    /**
+     * Fetch required number of locks, each lock is spawned in separate thread
+     * 
+     * @param execServ
+     * @param nTasks
+     * 
+     * @return List-Future
+     */
+    public static List<Future<?>> fetchLockNoRelease(ExecutorService execServ, int nTasks) {
+    
+        // Initialize output
+        ArrayList<Future<?>> output = new ArrayList<>();
+        
+        // Fire attempts
+        for ( int i = 0; i < nTasks; i++ ) {
+            String val = "Lock-" + i;
+            Future<?> task = execServ.submit(() -> {
+                try {
+                    MutexOrchestrator.acquireLock();
+                    LOGGER.info("Locked by the below mutex:\n'{}'", MutexOrchestrator.fetchActive().toJsonDoc());
+                }
+                catch ( MutexCheckedException ex ) {
+                    LOGGER.error("Error acquring ", val);
+                }
+            });
+            output.add(task);
+        }
+        
+        // Let time ellapse
+        try {
+            Thread.sleep(10000);
+        }
+        catch (InterruptedException ex) { }
+        
+        // Return output
+        return output;
+    }
+    
+    
+    /**
+     * Release active lock
+     * 
+     * @param execServ
+     * @param nTasks
+     * @return List-Future
+     */
+    public static List<Future<?>> lockThenRelease(ExecutorService execServ, int nTasks) {
+    
+        // Initialize output
+        ArrayList<Future<?>> output = new ArrayList<>();
+        
+        // Fire attempts
+        for ( int i = 0; i < nTasks; i++ ) {
+            String val = "Lock-" + i;
+            Future<?> task = execServ.submit(() -> {
+                try {
+                    MutexOrchestrator.acquireLock();
+                    LOGGER.info("Locked by the below mutex:\n'{}'", MutexOrchestrator.fetchActive().toJsonDoc());
+                    MutexOrchestrator.releaseLock();
+                    LOGGER.info("Locked now by the below mutex:\n'{}'", MutexOrchestrator.fetchActive().toJsonDoc());
+                }
+                catch ( MutexCheckedException ex ) {
+                    LOGGER.error("Error acquring ", val);
+                }
+            });
+            output.add(task);
+        }
+        
+        // Let time ellapse
+        try {
+            Thread.sleep(10000);
+        }
+        catch (InterruptedException ex) { }
+        
+        // Return output
+        return output;
+    }
+    
+    
+    /**
+     * Fetch required number of locks, each lock is spawned in separate thread
+     * 
+     * @param execServ
+     * @param nTasks
+     * 
+     * @return List-Future
+     */
+    public static List<Future<?>> releaseActiveLock(ExecutorService execServ, int nTasks) {
+    
+        // Initialize output
+        ArrayList<Future<?>> output = new ArrayList<>();
+        
+        // Fire attempts
+        for ( int i = 0; i < nTasks; i++ ) {
+            String val = "Lock-" + i;
+            Future<?> task = execServ.submit(() -> {
+                try {
+                    LOGGER.info("Releasing active mutex:\n'{}'", MutexOrchestrator.fetchActive());
+                    MutexOrchestrator.releaseLock();
+                    
+                }
+                catch ( MutexCheckedException ex ) {
+                    LOGGER.error("Error releasing active mutex '{}'", val);
+                }
+            });
+            output.add(task);
+        }
+        
+        // Let time ellapse
+        try {
+            Thread.sleep(10000);
+        }
+        catch (InterruptedException ex) { }
+        
+        // Return output
+        return output;
     }
 }
