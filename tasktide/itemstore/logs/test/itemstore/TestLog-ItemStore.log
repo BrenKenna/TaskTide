@@ -3451,3 +3451,47 @@ File Channel Release:		'101041124879700'
 
 ---------------- Terminating Simple Mutex Orchestrator Tests ----------------
 
+2026-02-04 17:30:41 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Orchestrator Tests ----------------
+
+2026-02-04 17:30:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.setUpClass ]: Displaying config state:	'true'
+2026-02-04 17:30:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-04 17:30:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: 
+
+================ Scalable Multiple Threads Form Mutex Queue Test ================
+
+2026-02-04 17:30:42 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: Configuring MutexOrchestrator
+2026-02-04 17:30:45 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-04 17:30:46 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Orchestrator Tests ----------------
+
+2026-02-04 17:32:04 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.setUpClass ]: 
+
+---------------- Initiating Simple Mutex Orchestrator Tests ----------------
+
+2026-02-04 17:32:04 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.setUpClass ]: Displaying config state:	'true'
+2026-02-04 17:32:04 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-02-04 17:32:04 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: 
+
+================ Scalable Multiple Threads Form Mutex Queue Test ================
+
+2026-02-04 17:32:04 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: Configuring MutexOrchestrator
+2026-02-04 17:32:06 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-02-04 17:32:06 INFO  [ Test worker -> org.tasktide.itemstore.mutex.SimpleMutexOrchestratorTests.tearDownClass ]: 
+
+---------------- Terminating Simple Mutex Orchestrator Tests ----------------
+

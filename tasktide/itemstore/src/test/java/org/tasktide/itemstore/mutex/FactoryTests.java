@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex.model;
+package org.tasktide.itemstore.mutex;
 
 import java.util.Optional;
 
@@ -31,6 +31,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Order;
 import org.tasktide.itemstore.mutex.MutexTestUtils;
+import org.tasktide.itemstore.mutex.model.HostLock;
+import org.tasktide.itemstore.mutex.model.HostLockFactory;
+import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.mutex.model.MutexFactory;
 
 
 /**

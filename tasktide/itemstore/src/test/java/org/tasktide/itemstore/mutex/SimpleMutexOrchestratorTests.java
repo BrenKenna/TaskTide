@@ -401,7 +401,6 @@ public class SimpleMutexOrchestratorTests {
         LOGGER.info("\n\n================ Scalable Multiple Threads Form Mutex Queue Test ================\n");
         int nWorkers = 4;
         OrchestratorSpies spies;
-;
         
         // Configure mutex orchestrator
         LOGGER.info("Configuring MutexOrchestrator");
@@ -426,10 +425,12 @@ public class SimpleMutexOrchestratorTests {
             );
             
             // Verify test
-            verify(spies.getNfsMutex(), times(2)).acquire(any(Mutex.class));
-            verify(spies.getFileChannelMutex(), times(2)).acquire(any(Mutex.class));
+            verify(spies.getNfsMutex(), times(nWorkers)).acquire(any(Mutex.class));
+            verify(spies.getFileChannelMutex(), times(nWorkers)).acquire(any(Mutex.class));
         }
         catch (InterruptedException | ExecutionException | MutexCheckedException ex) {
+            LOGGER.error("Test failed with error");
+            ex.printStackTrace();
         }
         
         // Log completion
