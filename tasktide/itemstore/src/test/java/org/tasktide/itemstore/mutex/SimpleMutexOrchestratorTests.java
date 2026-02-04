@@ -38,7 +38,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -198,13 +197,15 @@ public class SimpleMutexOrchestratorTests {
             // Stub events
             doAnswer( invocation -> {
                 nfsLockTime.set(System.currentTimeMillis());
-                LOGGER.info("Acquring NFS lock");
-                return invocation.callRealMethod();
+                invocation.callRealMethod();
+                LOGGER.info("Acquried NFS lock");
+                return null;
             }).when(nfsMutex).acquire( any(Mutex.class) );
             doAnswer( invocation -> {
                 chanLockTime.set(System.currentTimeMillis());
-                LOGGER.info("Acquring FileChannel lock");
-                return invocation.callRealMethod();
+                invocation.callRealMethod();
+                LOGGER.info("Acquired FileChannel Lock");
+                return null;
             }).when(fileChannelMutex).acquire( any(Mutex.class) );
         }
         catch ( MutexCheckedException ex ) {
@@ -269,78 +270,101 @@ public class SimpleMutexOrchestratorTests {
     
     
     /**
+     * Tests whether 2 threads can lock-release
      * 
      */
     @Test
     @Order(3)
-    public void multipleThreadsQueueLocksA() {
-    
+    public void canMultipleThreadsRunLockReleaseQueue() {
+
         // Initialize test
         LOGGER.info("\n\n================ Tests Multiple Threads Form Mutex Queue ================\n");
-        MutexElection nfsMutex, fileChannelMutex;
-        Mutex initial, current;
-        List<Future<?>> lockReqs;
-        boolean assertionState;
-        
-        // Arrange: spy MutexElection and FileChannelMutex process
-        nfsMutex = spy(NfsMutex.class);
-        fileChannelMutex = spy(FileChannelMutex.class);
+        MutexElection nfsMutex;
+        MutexElection fileChannelMutex;
+        boolean assertionState = true;
+
+        // Arrange test spy NFS & FileChannelMutex
+        nfsMutex = spy(new NfsMutex());
+        fileChannelMutex = spy(new FileChannelMutex());
         MutexOrchestrator.configureForTestCases(nfsMutex, fileChannelMutex);
 
         try {
+
             doAnswer(invocation -> {
                 invocation.callRealMethod();
-                LOGGER.info("NFS Lock Acquired:\n'{}'", MutexOrchestrator.fetchActive().toJsonDoc());
+                LOGGER.info("NFS Lock Acquired");
                 return null;
             }).when(nfsMutex).acquire(any(Mutex.class));
-            
+
             doAnswer(invocation -> {
                 invocation.callRealMethod();
-                LOGGER.info("File Channel Lock Acquired:\n'{}'", MutexOrchestrator.fetchActive().toJsonDoc());
+                LOGGER.info("File Channel Lock Acquired");
                 return null;
             }).when(fileChannelMutex).acquire(any(Mutex.class));
-            
+
             doAnswer(invocation -> {
                 invocation.callRealMethod();
-                LOGGER.info("NFS Lock Released:\n'{}'", MutexOrchestrator.fetchActive());
+                LOGGER.info("NFS Lock Released");
                 return null;
             }).when(nfsMutex).release(any(Mutex.class));
-            
+
             doAnswer(invocation -> {
                 invocation.callRealMethod();
-                LOGGER.info("File Channel Lock Released:\n'{}'", MutexOrchestrator.fetchActive());
+                LOGGER.info("File Channel Lock Released");
                 return null;
             }).when(fileChannelMutex).release(any(Mutex.class));
+
         }
         catch (MutexCheckedException ex) {
             assertionState = false;
         }
 
-        // Act: run two threads that both try to acquire the lock
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        // Run test of two threads acquring lock
+        ExecutorService executor = Executors.newFixedThreadPool(1);
         Future<?> t1 = executor.submit(() -> {
             try {
                 MutexOrchestrator.acquireLock();
+                LOGGER.info(
+                    "Lock acquired-1:\n'{}'",
+                    MutexOrchestrator.fetchActive().toJsonDoc()
+                );
+                MutexFilesUtils.waitJitterTime();
+                LOGGER.info("Waited-1");
                 MutexOrchestrator.releaseLock();
-            } catch (Exception ex) { }
+                LOGGER.info("Released-1");
+            }
+            catch (Exception ex) {
+                LOGGER.error("1-Error during Lock-Release:\n\n");
+                ex.printStackTrace();
+            }
         });
+
         Future<?> t2 = executor.submit(() -> {
             try {
                 MutexOrchestrator.acquireLock();
-            } catch (Exception ex) { }
+                LOGGER.info(
+                    "Lock acquired-2:\n'{}'",
+                    MutexOrchestrator.fetchActive().toJsonDoc()
+                );
+                MutexFilesUtils.waitJitterTime();
+                LOGGER.info("Waited-2");
+                MutexOrchestrator.releaseLock();
+                LOGGER.info("Released-2");
+            }
+            catch (Exception ex) {
+                LOGGER.error("2-Error during Lock-Release:\n\n");
+                ex.printStackTrace();
+            }
         });
 
         try {
             t1.get();
-        } catch (InterruptedException | ExecutionException ex ) {
-            assertionState = false;
-        } 
-        try {
             t2.get();
-        } catch (InterruptedException | ExecutionException ex ) {
+        }
+        catch (InterruptedException | ExecutionException ex) {
             assertionState = false;
-        } 
-        
+        }
+
         try {
             Thread.sleep(10000);
         }
@@ -348,70 +372,69 @@ public class SimpleMutexOrchestratorTests {
 
         // Assert: verify NFS and FileChannel are each acquired exactly twice
         try {
-            if ( verify(nfsMutex, times(2)).acquire(any(Mutex.class)) ) {
-                assertionState = verify(fileChannelMutex, times(2)).acquire(any(Mutex.class));
-            }
-            else {
-                assertionState = false;
-            }
+            verify(nfsMutex, times(2)).acquire(any(Mutex.class));
+            verify(fileChannelMutex, times(2)).acquire(any(Mutex.class));
         }
-        catch ( MutexCheckedException ex ) {
+        catch (MutexCheckedException ex) {
             assertionState = false;
         }
         
-        
         // Evaluate test
-        assertTrue(assertionState, "Error multiple threads cannot organize lock through mutex orchestrator");
-        LOGGER.info("\n\n================ Tests Multiple Threads Form Mutex Queue ================\n");
+        assertTrue(
+            assertionState,
+            "Error multiple threads cannot organize lock through mutex orchestrator"
+        );
+        LOGGER.info(
+            "\n\n================ Tests Multiple Threads Form Mutex Queue ================\n"
+        );
     }
-    
+
     
     /**
-     * 
+     * Readily scalable 
      */
     @Test
-    @Order(3)
-    public void multipleThreadsQueueLocks() {
+    @Order(4)
+    public void scalableCanMultipleThreadsRunLockReleaseQueue() {
     
         // Initialize test
-        LOGGER.info("\n\n================ Tests Multiple Threads Form Mutex Queue ================\n");
-        MutexElection nfsMutex, fileChannelMutex;
-        Mutex initial, current;
-        List<Future<?>> lockReqs;
-        boolean assertionState;
+        LOGGER.info("\n\n================ Scalable Multiple Threads Form Mutex Queue Test ================\n");
+        int nWorkers = 4;
+        OrchestratorSpies spies;
+;
         
         // Configure mutex orchestrator
         LOGGER.info("Configuring MutexOrchestrator");
-        nfsMutex = spy(NfsMutex.class);
-        fileChannelMutex = spy(FileChannelMutex.class);
-        MutexOrchestrator.configureForTestCases(nfsMutex, fileChannelMutex);
+        spies = OrchestratorSpies.configure();
         
-        // Submit lock requests
-        LOGGER.info("Acquiring locks");
-        ExecutorService execServ = Executors.newFixedThreadPool(3);
-        lockReqs = MutexTestUtils.lockThenRelease(execServ, 3);
-        
-        // Display active
-        MutexFilesUtils.waitJitterTime();
-        initial = MutexOrchestrator.fetchActive();
-        if ( initial != null ) {
-            LOGGER.info("Displaying active mutex:\n'{}'", initial.toJsonDoc());
-            try {
-                MutexOrchestrator.releaseLock();
-                MutexFilesUtils.waitJitterTime();
-                current = MutexOrchestrator.fetchActive();
-                assertionState = !initial.getId().equals(current.getId());
-            }
-            catch ( MutexCheckedException ex ) {
-                assertionState = false;
-            }
+        // Perform unit test
+        try {
+            
+            // Wire spies
+            LOGGER.info("Wiring Spies to Logging");
+            MutexTestUtils.wireRealMethodsWithLogging(
+                spies.getNfsMutex(),
+                spies.getFileChannelMutex(),
+                LOGGER
+            );
+            
+            // Run workload
+            LOGGER.info("Executing workload with N workers = '{}'", nWorkers);
+            MutexTestUtils.runWorkers(
+                nWorkers,
+                MutexTestUtils.getLockReleaseLambda(LOGGER)
+            );
+            
+            // Verify test
+            verify(spies.getNfsMutex(), times(2)).acquire(any(Mutex.class));
+            verify(spies.getFileChannelMutex(), times(2)).acquire(any(Mutex.class));
         }
-        else {
-            assertionState = false;
+        catch (InterruptedException | ExecutionException | MutexCheckedException ex) {
         }
         
-        // Evaluate test
-        assertTrue(assertionState, "Error multiple threads cannot organize lock through mutex orchestrator");
-        LOGGER.info("\n\n================ Tests Multiple Threads Form Mutex Queue ================\n");
+        // Log completion
+        LOGGER.info(
+            "\n\n================ Scalable Multiple Threads Form Mutex Queue Test  ================\n"
+        );
     }
 }

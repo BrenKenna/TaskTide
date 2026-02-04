@@ -19,24 +19,30 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doAnswer;
 
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 
 /**
  *
  * @author Brendan Kenna
  */
-public class MutexTestUtils {
+class MutexTestUtils {
     
     // Logger
     private static final Logger LOGGER = LogManager.getLogger(MutexTestUtils.class);
@@ -191,5 +197,100 @@ public class MutexTestUtils {
         
         // Return output
         return output;
+    }
+    
+    
+    public static void wireRealMethodsWithLogging(
+        MutexElection nfs,
+        MutexElection fileChannel,
+        Logger logger
+    ) throws MutexCheckedException {
+
+        doAnswer(invoc -> {
+            invoc.callRealMethod();
+            logger.info("NFS acquire -> {}", MutexOrchestrator.fetchActive());
+            return null;
+        }).when(nfs).acquire(any(Mutex.class));
+
+        doAnswer(invoc -> {
+            invoc.callRealMethod();
+            logger.info("FileChannel acquire -> {}", MutexOrchestrator.fetchActive());
+            return null;
+        }).when(fileChannel).acquire(any(Mutex.class));
+
+        doAnswer(invoc -> {
+            invoc.callRealMethod();
+            logger.info("NFS release -> {}", MutexOrchestrator.fetchActive());
+            return null;
+        }).when(nfs).release(any(Mutex.class));
+
+        doAnswer(invoc -> {
+            invoc.callRealMethod();
+            logger.info("FileChannel release -> {}", MutexOrchestrator.fetchActive());
+            return null;
+        }).when(fileChannel).release(any(Mutex.class));
+    }
+
+    
+    /**
+     * Run the provided {@link Runnable} task
+     *  across required number of threads
+     * 
+     * @param workers
+     * @param task
+     * @throws InterruptedException
+     * @throws ExecutionException 
+     */
+    public static void runWorkers(
+        int workers,
+        Runnable task
+    ) throws InterruptedException, ExecutionException {
+
+        // Initilize the executor service and tasks
+        ExecutorService executor = Executors.newFixedThreadPool(workers);
+        List<Future<?>> futures = new ArrayList<>();
+
+        // Add tasks
+        for (int i = 0; i < workers; i++) {
+            futures.add(executor.submit(task));
+        }
+
+        // Wait for each
+        for (Future<?> f : futures) {
+            f.get();
+        }
+
+        // Shutdown executor service
+        executor.shutdown();
+    }
+    
+    
+    /**
+     * {@link Runnable} function invoked by thread workers
+     *  for the {@link MutexOrchestrator} lock-action-release
+     *   pipeline
+     * 
+     * @param logger
+     * @return {@link Runnable}
+     */
+    public static Runnable getLockReleaseLambda(Logger logger) {
+        return () -> {
+            try {
+               MutexOrchestrator.acquireLock();
+               logger.info(
+                    "Lock acquired:\n'{}'",
+                    MutexOrchestrator.fetchActive().toJsonDoc()
+               );
+               MutexFilesUtils.waitJitterTime();
+               logger.info("Waited");
+               MutexOrchestrator.releaseLock();
+               logger.info("Released");
+            }
+            
+            catch (MutexCheckedException ex) {
+                logger.error("Error during processing");
+                ex.printStackTrace();
+            }
+        };
     }
 }

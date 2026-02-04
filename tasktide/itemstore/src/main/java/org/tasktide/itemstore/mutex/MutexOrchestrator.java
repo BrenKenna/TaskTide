@@ -107,7 +107,7 @@ public class MutexOrchestrator {
      * 
      * @throws MutexCheckedException 
      */
-    public static synchronized void acquireLock()
+    public static void acquireLock()
       throws MutexCheckedException {
     
         // Initialize variables
@@ -156,11 +156,10 @@ public class MutexOrchestrator {
      * 
      * @throws MutexCheckedException 
      */
-    public static synchronized void releaseLock()
+    public static void releaseLock()
       throws MutexCheckedException {
         
         // Check if the orchestrator is configured
-        System.out.println("Releasing lock");
         if ( !isConfigured ) {
             throw new MutexCheckedException("Mutex Orhcestrator must be configured");
         }
@@ -180,7 +179,10 @@ public class MutexOrchestrator {
         
         // Release NFS mutex
         try {
-            LOGGER.info("Releasing NFS mutex:\n'{}'", activeMutex);
+            LOGGER.info(
+                "Releasing NFS mutex:\n'{}'",
+                activeMutex.toJsonDoc()
+            );
             NFS_MUTEX.release(activeMutex);
             MutexFilesUtils.waitJitterTime();
         }
