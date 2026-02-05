@@ -79,6 +79,7 @@ public enum MutexStrategy {
             }
         
             // Fetch file
+            MutexFilesUtils.waitJitterTime();
             Path targetFile = mutex.getFileForType(MutexFileType.HOST_FILE);
             HostLock hostLock = HostLockFactory.create(targetFile);
             mutex.setHostLock(hostLock);
@@ -96,6 +97,7 @@ public enum MutexStrategy {
                 
                 // Return success flag
                 mutex.setState(MutexState.LOCKED);
+                MutexFilesUtils.waitJitterTime();
                 return true;
             }
             catch (IOException ex) {
@@ -108,7 +110,6 @@ public enum MutexStrategy {
         
             // Any sanity check
             Path targetFile = mutex.getFileForType(MutexFileType.HOST_FILE);
-            
             
             // Fetch path and lock
             HostLock hostLock = mutex.getHostLock();
@@ -125,6 +126,7 @@ public enum MutexStrategy {
                 }
 
                 // Return closure state
+                MutexFilesUtils.waitJitterTime();
                 return true;
             }
             
@@ -158,6 +160,7 @@ public enum MutexStrategy {
             Path activeLeader;
         
             // Set state as initialization
+            MutexFilesUtils.waitJitterTime();
             LOGGER.debug("Initializing mutex");
             mutex.setState(MutexState.INITIALIZATION);
             FileUtility.makeFile(mutex.getElectionFile());
@@ -192,6 +195,7 @@ public enum MutexStrategy {
             LOGGER.debug("<utex written for:\t'{}'", mutex.getId());
             if ( MutexFilesUtils.writeHostFile(mutex) ) {
                 LOGGER.debug("Host lock file created for:\t'{}'", mutex.getId());
+                MutexFilesUtils.waitJitterTime();
                 return true;
             }
             

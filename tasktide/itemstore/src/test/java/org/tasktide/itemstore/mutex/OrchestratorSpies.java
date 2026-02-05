@@ -42,7 +42,7 @@ class OrchestratorSpies {
     private OrchestratorSpies(MutexElection nfsMutex, MutexElection fileChannelMutex) {
         this.NFS_MUTEX = nfsMutex;
         this.FILE_CHANNEL_MUTEX = fileChannelMutex;
-        MutexOrchestrator.configureForTestCases(INSTANCE.NFS_MUTEX, INSTANCE.FILE_CHANNEL_MUTEX);
+        MutexOrchestrator.configureForTestCases(this.NFS_MUTEX, this.FILE_CHANNEL_MUTEX);
     }
     
     
@@ -87,7 +87,9 @@ class OrchestratorSpies {
      */
     public static synchronized OrchestratorSpies configure() {
         if ( INSTANCE == null ) {
-            INSTANCE = new OrchestratorSpies( spy( new NfsMutex() ), spy( new FileChannelMutex() ) );
+            MutexElection nfsMutes = spy( new NfsMutex() );
+            MutexElection fileChannelMutex = spy( new FileChannelMutex() );
+            INSTANCE = new OrchestratorSpies(nfsMutes, fileChannelMutex);
         }
         return INSTANCE;
     }

@@ -57,6 +57,14 @@ interface MutexElection {
 
     
     /**
+     * 
+     * @param mutex
+     * @throws MutexCheckedException 
+     */
+    public void waitForLock(Mutex mutex) throws MutexCheckedException;
+    
+    
+    /**
      * Release lock
      * 
      * @param mutex

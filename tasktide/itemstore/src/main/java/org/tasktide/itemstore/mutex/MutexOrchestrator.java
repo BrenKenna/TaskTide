@@ -15,8 +15,6 @@
  */
 package org.tasktide.itemstore.mutex;
 
-import java.nio.file.Path;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -109,10 +107,6 @@ public class MutexOrchestrator {
      */
     public static void acquireLock()
       throws MutexCheckedException {
-    
-        // Initialize variables
-        Mutex mutex;
-        Path targetDir;
         
         // Check if orchestrator is configured
         if ( !isConfigured ) {
@@ -122,9 +116,23 @@ public class MutexOrchestrator {
         MutexConstants.initializePaths();
         
         // Make mutex
+        Mutex mutex;
         MutexFilesUtils.waitJitterTime();
         mutex = MutexFactory.create();
-        
+
+        // Perform locking
+        performLock(mutex);
+    }
+    
+    
+    /**
+     * Performs 
+     * 
+     * @param mutex
+     * @throws MutexCheckedException 
+     */
+    private static void performLock(Mutex mutex) throws MutexCheckedException {
+    
         // Acquire NFS lock
         try {
             LOGGER.info("Waiting for NFS lock");
@@ -145,7 +153,6 @@ public class MutexOrchestrator {
         catch (MutexCheckedException ex) {
             throw new MutexCheckedException("Unable to acquire target mutex");
         }
-        
     }
     
     
@@ -167,11 +174,23 @@ public class MutexOrchestrator {
             throw new MutexCheckedException("No active mutex detected");
         }
         
+        // Release both locks
+        LOGGER.info("Releasing active lock");
+        releaseActiveLock();
+    }
+    
+    
+    /**
+     * Releases active lock under 
+     * 
+     * @throws MutexCheckedException 
+     */
+    private synchronized static void releaseActiveLock() throws MutexCheckedException {
+    
         // Release File Channel lock
         try {
             LOGGER.info("Releasing FileChannel mutex");
             FILE_CHANNEL_MUTEX.release(activeMutex);
-            MutexFilesUtils.waitJitterTime();
         }
         catch (MutexCheckedException ex) {
             throw new MutexCheckedException("Unable to release file channel mutex");
@@ -184,7 +203,6 @@ public class MutexOrchestrator {
                 activeMutex.toJsonDoc()
             );
             NFS_MUTEX.release(activeMutex);
-            MutexFilesUtils.waitJitterTime();
         }
         catch (MutexUncheckedException ex) {
             throw new MutexCheckedException("Unable to release NFS mutex");

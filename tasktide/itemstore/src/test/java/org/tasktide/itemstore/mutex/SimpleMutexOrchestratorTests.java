@@ -104,7 +104,7 @@ public class SimpleMutexOrchestratorTests {
     public void canAcquireMutexOrchestrator() {
     
         // Initialize test
-        LOGGER.info("\n\n================ Tests Acquiring Mutex Orchestrator ================\n");
+        LOGGER.info("\n\n================ Tests Acquiring of Mutex Orchestrator ================\n");
         MutexElection nfsMutex, fileChannelMutex;
         boolean assertionState;
         
@@ -391,15 +391,16 @@ public class SimpleMutexOrchestratorTests {
 
     
     /**
-     * Readily scalable 
+     * Readily scalable
+     * 
      */
     @Test
     @Order(4)
     public void scalableCanMultipleThreadsRunLockReleaseQueue() {
     
         // Initialize test
-        LOGGER.info("\n\n================ Scalable Multiple Threads Form Mutex Queue Test ================\n");
-        int nWorkers = 4;
+        LOGGER.info("\n\n================ Scalable 50 Multiple Threads Form Mutex Queue Test ================\n");
+        int nWorkers = 50;
         OrchestratorSpies spies;
         
         // Configure mutex orchestrator

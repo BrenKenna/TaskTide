@@ -15,7 +15,9 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import java.nio.channels.FileChannel;
 import java.nio.file.Path;
+import org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException;
 
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexState;
@@ -43,7 +45,7 @@ class FileChannelMutex extends IntraProcessMutex {
      */
     private synchronized void ensureNoActiveLock() throws MutexCheckedException {
         if (active != null) {
-            throw new MutexCheckedException("Lock already active");
+            throw new ActiveMutexCheckedException("Lock already active");
         }
     }
     
@@ -52,8 +54,10 @@ class FileChannelMutex extends IntraProcessMutex {
      * Wait for lock to be acquired
      * 
      * @param mutex 
+     * @throws {@link MutexCheckedException}
      */
-    private void waitForLock(Mutex mutex) {
+    @Override
+    public void waitForLock(Mutex mutex) throws MutexCheckedException {
         
         // Wait until acquired
         boolean locked = false;
