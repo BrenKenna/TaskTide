@@ -144,7 +144,7 @@ class NfsMutex extends InterProcessMutex {
         
         // Only leader can release
         if ( active == null ) {
-            throw new MutexCheckedException("Not active leader");
+            throw new MutexCheckedException("No active leader");
         }
         
         // Check that leader is query

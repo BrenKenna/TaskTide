@@ -31,6 +31,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.itemstore.FileUtility;
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 
 import org.tasktide.itemstore.mutex.model.HostLock;
 import org.tasktide.itemstore.mutex.model.HostLockFactory;
@@ -157,7 +158,7 @@ public enum MutexStrategy {
         public boolean apply(Mutex mutex) {
             
             // Initialize variables
-            int pos;
+            int pos, lastPos = -1, streak = -1, limit = 10;
             Path activeLeader;
         
             // Set state as initialization
@@ -178,12 +179,12 @@ public enum MutexStrategy {
             LOGGER.debug("Queue position:\t'{}'\n\n'{}'", pos, mutex.toJsonDoc());
 
             // Wait until become leader
-            boolean acquired = false;
+            boolean acquired = false, predecessorMissing;
             Path predecessor = null;
             while(!acquired) {
 
                 // Buffer times
-                LOGGER.debug("Waiting to be leader");
+                // LOGGER.debug("Waiting to be leader");
                 MutexFilesUtils.waitJitterTime();
 
                 // Proceed if none before
@@ -191,19 +192,67 @@ public enum MutexStrategy {
                     
                     // Measure position
                     pos = inferPosition(mutex);
-                    if(pos < 0) {
-                        continue;
-                    }
-                    else if(pos == 0) {
-                        acquired = true;
-                    }
-                    else if ( pos > 0 ) {
-                        predecessor = MutexFilesUtils.findPredecessor(mutex, MutexFileType.ELECTION_FILE, pos);
-                        if ( predecessor != null ) {
-                            acquired = !Files.exists(predecessor);
+                    if(pos >= 0) {
+                        if(pos == 0) {
+                            acquired = true;
+                            MutexFilesUtils.waitJitterTime();
+                        }
+                        
+                        else {
+                            // Exmaine position unchanging
+                            if ( lastPos == pos ) {
+                                LOGGER.debug("Incrementing streak now to '{}' for mutex:\t'{}'", streak, mutex.getId());
+                                streak++;
+                                if ( streak == limit ) {
+                                    LOGGER.debug("Streak limit hit '{}' recasting ballot:\t'{}'", limit, mutex.getId());
+                                    streak = -1;
+                                    lastPos = -1;
+                                    MutexFilesUtils.recastBallot(mutex, true);
+                                }
+                            }
+                            lastPos = pos;
+                            
+                            // Examine predecessor
+                            predecessor = MutexFilesUtils.findPredecessor(mutex, MutexFileType.ELECTION_FILE, pos);
+                            if ( predecessor != null ) {
+
+                                // Evaluate if predecessor is missing
+                                predecessorMissing = !Files.exists(predecessor);
+                                
+                                if ( !predecessorMissing && pos <= 5 ) {
+
+                                    // Evaluate TTL
+                                    try {
+                                        
+                                        // Examine whether leader has gone stale
+                                        Path leader = MutexFilesUtils.getLeader();
+                                        if ( MutexFilesUtils.evaluateLeaderTimeToLive(leader) ) {
+                                            LOGGER.warn(
+                                                "Removing below stale leader status:\t'{}'\n\n'{}'",
+                                                MutexFilesUtils.clearStaleLeader(leader),
+                                                leader
+                                            );
+                                            predecessorMissing = true;
+                                        }
+                                        else {
+                                            LOGGER.info("Leader changed since TTL check-in");
+                                        }
+                                    }
+                                    catch ( MutexCheckedException ex ) {
+                                        LOGGER.info("Leader removed during TTL check-in");
+                                        predecessorMissing = true;
+                                    }
+                                }
+
+                                // Examine predecessor state
+                                if ( predecessorMissing ) {
+                                    predecessor = null;
+                                }
+                            }
                         }
                     }
                 }
+                
                 else {
                     acquired = !Files.exists(predecessor);
                 }
@@ -214,7 +263,7 @@ public enum MutexStrategy {
             mutex.setState(MutexState.HOST_LOCKED);
             LOGGER.debug("State set, writing mutex for:\t'{}'", mutex.getId());
             MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
-            LOGGER.debug("<utex written for:\t'{}'", mutex.getId());
+            LOGGER.debug("Mutex written for:\t'{}'", mutex.getId());
             if ( MutexFilesUtils.writeHostFile(mutex) ) {
                 LOGGER.debug("Host lock file created for:\t'{}'", mutex.getId());
                 MutexFilesUtils.waitJitterTime();
@@ -233,8 +282,9 @@ public enum MutexStrategy {
         @Override
         public boolean release(Mutex mutex) {
             return (
-                MutexFilesUtils.deleteFile(mutex.getElectionFile()) &&
-                MutexFilesUtils.deleteFile(mutex.getHostFile())
+                MutexFilesUtils.deleteFile(mutex.getHostFile()) &&
+                MutexFilesUtils.deleteFile(mutex.getConfirmBallot()) &&
+                MutexFilesUtils.deleteFile(mutex.getElectionFile())
             );
         }
     };
@@ -311,6 +361,13 @@ public enum MutexStrategy {
         // Search params
         int counter = 0;
         boolean found = false;
+        
+        
+        // Recast a new ballot if removed
+        if ( !Files.exists( mutex.getElectionFile() ) ) {
+            MutexFilesUtils.recastBallot(mutex, false);
+        }
+        
         
         // Fetch all election files
         List<Path> paths = MutexFilesUtils.fetchFiles(MutexConstants.getElectionDir())

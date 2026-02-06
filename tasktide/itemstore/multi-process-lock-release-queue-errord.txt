@@ -1,0 +1,1071 @@
+2026-02-06 20:26:45 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:47 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:47 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:47 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:47 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:48 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:48 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:48 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:48 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:48 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+2026-02-06 20:26:48 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Configuring arguments for testing
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+Java HotSpot(TM) 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-02-06 20:26:51 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:52 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:52 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:52 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:53 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:53 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:53 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:53 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:53 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:53 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:54 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:54 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:54 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:54 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:55 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:55 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:55 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:55 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:55 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:55 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'2'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409613226.10-171-238-13_b9078d3e-b501-434e-bc50-b95d937f29e9_886f9f17-1fe3-45ed-96c8-a9c91268d212.lock",
+    "End Jitter": "PT0.224S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409613225.10-171-238-13_b9078d3e-b501-434e-bc50-b95d937f29e9.lock",
+    "Id": "886f9f17-1fe3-45ed-96c8-a9c91268d212",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.089S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.465S",
+    "Timestamp": 1770409613276
+}'
+2026-02-06 20:26:55 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409611777.10-171-238-13_f0a127eb-72c7-43f5-827b-c37f6b1fa96c_1f06877f-fb6a-428c-930f-72328ba46360.lock",
+    "End Jitter": "PT0.348S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409611776.10-171-238-13_f0a127eb-72c7-43f5-827b-c37f6b1fa96c.lock",
+    "Id": "1f06877f-fb6a-428c-930f-72328ba46360",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.017S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.493S",
+    "Timestamp": 1770409611817
+}'
+2026-02-06 20:26:55 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:55 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:55 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409612820.10-171-238-13_9e387bd9-87f6-4060-8211-911cc1976ac4_933145f8-4612-420e-91d2-f18a55e4d4c2.lock",
+    "End Jitter": "PT0.28S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409612782.10-171-238-13_9e387bd9-87f6-4060-8211-911cc1976ac4.lock",
+    "Id": "933145f8-4612-420e-91d2-f18a55e4d4c2",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.271S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.414S",
+    "Timestamp": 1770409612840
+}'
+2026-02-06 20:26:55 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:55 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'0'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409613180.10-171-238-13_f551cfe4-31d6-4a3a-aa48-79b11ee3a21e_a50824fe-306d-4648-9665-0b267b189f56.lock",
+    "End Jitter": "PT0.394S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409613179.10-171-238-13_f551cfe4-31d6-4a3a-aa48-79b11ee3a21e.lock",
+    "Id": "a50824fe-306d-4648-9665-0b267b189f56",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.294S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.442S",
+    "Timestamp": 1770409613220
+}'
+2026-02-06 20:26:55 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'1f06877f-fb6a-428c-930f-72328ba46360'
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'1f06877f-fb6a-428c-930f-72328ba46360'
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'1f06877f-fb6a-428c-930f-72328ba46360'
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'4'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409613517.10-171-238-13_ef611f90-5864-4118-8e34-dfc64fde8241_91208bac-7b32-4c90-a968-16d839712b08.lock",
+    "End Jitter": "PT0.34S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409613517.10-171-238-13_ef611f90-5864-4118-8e34-dfc64fde8241.lock",
+    "Id": "91208bac-7b32-4c90-a968-16d839712b08",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.185S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.363S",
+    "Timestamp": 1770409613548
+}'
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'1f06877f-fb6a-428c-930f-72328ba46360'
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'1f06877f-fb6a-428c-930f-72328ba46360'
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Leader changed since TTL check-in
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'5'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409613738.10-171-238-13_40b47f59-7b58-4ff8-aa56-7179bd739142_fc4965f3-cd8d-40ab-9145-b508a3ba098a.lock",
+    "End Jitter": "PT0.306S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409613738.10-171-238-13_40b47f59-7b58-4ff8-aa56-7179bd739142.lock",
+    "Id": "fc4965f3-cd8d-40ab-9145-b508a3ba098a",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.234S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.204S",
+    "Timestamp": 1770409613757
+}'
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Leader changed since TTL check-in
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'6'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409613801.10-171-238-13_7ecca6d4-b435-4ba5-b980-c607193c5092_1e7f0dfa-63bb-47b3-a000-1958caaa8f4b.lock",
+    "End Jitter": "PT0.141S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409613800.10-171-238-13_7ecca6d4-b435-4ba5-b980-c607193c5092.lock",
+    "Id": "1e7f0dfa-63bb-47b3-a000-1958caaa8f4b",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.104S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.146S",
+    "Timestamp": 1770409613880
+}'
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:56 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'7'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409614006.10-171-238-13_f361eeee-28e7-4423-a98a-578855985dfd_3b9cd70c-3560-42b2-90f3-0d3419080998.lock",
+    "End Jitter": "PT0.253S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409614006.10-171-238-13_f361eeee-28e7-4423-a98a-578855985dfd.lock",
+    "Id": "3b9cd70c-3560-42b2-90f3-0d3419080998",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.07S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.262S",
+    "Timestamp": 1770409614038
+}'
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'7'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409613946.10-171-238-13_3bed7329-f278-4052-b6b1-1a9bbcc39c6a_3fcd7edd-2dfe-49b0-8c0d-e45269071887.lock",
+    "End Jitter": "PT0.146S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409613945.10-171-238-13_3bed7329-f278-4052-b6b1-1a9bbcc39c6a.lock",
+    "Id": "3fcd7edd-2dfe-49b0-8c0d-e45269071887",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.095S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.274S",
+    "Timestamp": 1770409614002
+}'
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'1f06877f-fb6a-428c-930f-72328ba46360'
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '0' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=1f06877f-fb6a-428c-930f-72328ba46360, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409611776.10-171-238-13_f0a127eb-72c7-43f5-827b-c37f6b1fa96c.lock, retryInterval=PT0.017S, staleFileThreshold=PT10S, startJitter=PT0.493S, endJitter=PT0.348S, state=LOCKED}
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409611777.10-171-238-13_f0a127eb-72c7-43f5-827b-c37f6b1fa96c_1f06877f-fb6a-428c-930f-72328ba46360.lock",
+    "End Jitter": "PT0.348S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409611776.10-171-238-13_f0a127eb-72c7-43f5-827b-c37f6b1fa96c.lock",
+    "Id": "1f06877f-fb6a-428c-930f-72328ba46360",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.017S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.493S",
+    "Timestamp": 1770409611817
+}'
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'9'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409614463.10-171-238-13_7a2967b7-f1b8-466b-af1f-7e45c66bc5ec_67dd3abf-8501-47d2-bd9b-f9f7feef1001.lock",
+    "End Jitter": "PT0.431S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409614462.10-171-238-13_7a2967b7-f1b8-466b-af1f-7e45c66bc5ec.lock",
+    "Id": "67dd3abf-8501-47d2-bd9b-f9f7feef1001",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.039S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.243S",
+    "Timestamp": 1770409614525
+}'
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'10'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409615432.10-171-238-13_fcf82966-76db-4e40-9222-53cfa3893955_7f5ea55b-30c3-44c7-9981-5b5a8715cc38.lock",
+    "End Jitter": "PT0.458S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409615432.10-171-238-13_fcf82966-76db-4e40-9222-53cfa3893955.lock",
+    "Id": "7f5ea55b-30c3-44c7-9981-5b5a8715cc38",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.093S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.49S",
+    "Timestamp": 1770409615527
+}'
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Acquring lock
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'11'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616293.10-171-238-13_f449b2f7-fea7-42fb-b5b0-59ecb09f1555_1e5a8d2e-46a9-4d16-ab3c-706290b6acc3.lock",
+    "End Jitter": "PT0.322S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409616293.10-171-238-13_f449b2f7-fea7-42fb-b5b0-59ecb09f1555.lock",
+    "Id": "1e5a8d2e-46a9-4d16-ab3c-706290b6acc3",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.109S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.401S",
+    "Timestamp": 1770409616455
+}'
+2026-02-06 20:26:57 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'1e5a8d2e-46a9-4d16-ab3c-706290b6acc3'
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'1e5a8d2e-46a9-4d16-ab3c-706290b6acc3'
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:57 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'9'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409615179.10-171-238-13_e45cb9b9-a5ba-495f-b72a-4c57fdbaca80_d387f9a7-c00c-4680-a17d-b402bf49089e.lock",
+    "End Jitter": "PT0.109S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409615177.10-171-238-13_e45cb9b9-a5ba-495f-b72a-4c57fdbaca80.lock",
+    "Id": "d387f9a7-c00c-4680-a17d-b402bf49089e",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.263S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.35S",
+    "Timestamp": 1770409615257
+}'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'1e5a8d2e-46a9-4d16-ab3c-706290b6acc3'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'1e5a8d2e-46a9-4d16-ab3c-706290b6acc3'
+2026-02-06 20:26:58 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:26:58 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:26:58 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'1e5a8d2e-46a9-4d16-ab3c-706290b6acc3'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'11'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616025.10-171-238-13_b1f6212b-e62f-480c-9a0e-b4fe71f56840_8ba4b636-cfaf-41aa-9980-afc8778f0ae5.lock",
+    "End Jitter": "PT0.238S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409615998.10-171-238-13_b1f6212b-e62f-480c-9a0e-b4fe71f56840.lock",
+    "Id": "8ba4b636-cfaf-41aa-9980-afc8778f0ae5",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.252S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.231S",
+    "Timestamp": 1770409616074
+}'
+2026-02-06 20:26:58 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:58 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'13'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616388.10-171-238-13_c10881de-7ef4-4a71-8bc7-8402f2d4da41_6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12.lock",
+    "End Jitter": "PT0.183S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409616386.10-171-238-13_c10881de-7ef4-4a71-8bc7-8402f2d4da41.lock",
+    "Id": "6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.017S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.222S",
+    "Timestamp": 1770409616447
+}'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'15'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616829.10-171-238-13_41d092ed-b019-4949-ad88-4dafa6c5e19a_10407d0b-038e-4b23-a6c5-7cd4d7209d00.lock",
+    "End Jitter": "PT0.133S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409616829.10-171-238-13_41d092ed-b019-4949-ad88-4dafa6c5e19a.lock",
+    "Id": "10407d0b-038e-4b23-a6c5-7cd4d7209d00",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.081S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.357S",
+    "Timestamp": 1770409616882
+}'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'14'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616736.10-171-238-13_f335a1f1-e384-456d-9bc0-40323f7a8acf_edff8c18-5400-4c83-a8fc-f319dcf47a2b.lock",
+    "End Jitter": "PT0.117S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409616736.10-171-238-13_f335a1f1-e384-456d-9bc0-40323f7a8acf.lock",
+    "Id": "edff8c18-5400-4c83-a8fc-f319dcf47a2b",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.025S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.322S",
+    "Timestamp": 1770409616839
+}'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:58 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match current1e5a8d2e-46a9-4d16-ab3c-706290b6acc3
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'15'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616806.10-171-238-13_ba5cd75f-828c-45e6-bd8a-d33a16d826d3_1684178f-4e37-41b3-92a9-2c0fa94c36b7.lock",
+    "End Jitter": "PT0.383S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409616805.10-171-238-13_ba5cd75f-828c-45e6-bd8a-d33a16d826d3.lock",
+    "Id": "1684178f-4e37-41b3-92a9-2c0fa94c36b7",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.042S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.374S",
+    "Timestamp": 1770409616827
+}'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:58 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for NFS lock
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'17'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409617406.10-171-238-13_a5e21ba3-679f-4be1-b278-b2c7aca9ebbe_d30840ff-a3a4-4ff9-8e0a-e7ca05eb0551.lock",
+    "End Jitter": "PT0.208S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409617399.10-171-238-13_a5e21ba3-679f-4be1-b278-b2c7aca9ebbe.lock",
+    "Id": "d30840ff-a3a4-4ff9-8e0a-e7ca05eb0551",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.089S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.106S",
+    "Timestamp": 1770409617481
+}'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'17'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409617602.10-171-238-13_d5968191-922d-4447-beb9-3d52e88653f2_837d9f74-575d-4705-a215-719bf534179f.lock",
+    "End Jitter": "PT0.302S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409617601.10-171-238-13_d5968191-922d-4447-beb9-3d52e88653f2.lock",
+    "Id": "837d9f74-575d-4705-a215-719bf534179f",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.067S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.112S",
+    "Timestamp": 1770409617630
+}'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'18'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409617451.10-171-238-13_c0046fcb-a429-40cc-8e6e-3afb0b492bad_314acc2a-cd8c-401c-adc5-637e5c2719d8.lock",
+    "End Jitter": "PT0.445S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409617451.10-171-238-13_c0046fcb-a429-40cc-8e6e-3afb0b492bad.lock",
+    "Id": "314acc2a-cd8c-401c-adc5-637e5c2719d8",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.111S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.381S",
+    "Timestamp": 1770409617470
+}'
+2026-02-06 20:26:58 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'21'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409617863.10-171-238-13_de2d13c5-8c0b-4842-83aa-f69d085c713e_1d83309b-71aa-40f2-a957-49d679b912e1.lock",
+    "End Jitter": "PT0.468S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409617860.10-171-238-13_de2d13c5-8c0b-4842-83aa-f69d085c713e.lock",
+    "Id": "1d83309b-71aa-40f2-a957-49d679b912e1",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.281S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.115S",
+    "Timestamp": 1770409617916
+}'
+2026-02-06 20:26:59 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Initializing mutex
+2026-02-06 20:26:59 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:59 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:59 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'20'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409617769.10-171-238-13_bc8cc5c4-3742-4783-ab2a-0fc2fe09f227_834a8d44-93c5-4df3-9fca-d16b467f5859.lock",
+    "End Jitter": "PT0.477S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409617769.10-171-238-13_bc8cc5c4-3742-4783-ab2a-0fc2fe09f227.lock",
+    "Id": "834a8d44-93c5-4df3-9fca-d16b467f5859",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.09S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.228S",
+    "Timestamp": 1770409617797
+}'
+2026-02-06 20:26:59 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'21'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409618039.10-171-238-13_88d87fe0-9219-4cac-839c-921b790398e4_3b0d5f4a-1414-4c89-887b-fcf788024080.lock",
+    "End Jitter": "PT0.372S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409618038.10-171-238-13_88d87fe0-9219-4cac-839c-921b790398e4.lock",
+    "Id": "3b0d5f4a-1414-4c89-887b-fcf788024080",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.272S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.33S",
+    "Timestamp": 1770409618049
+}'
+2026-02-06 20:26:59 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex initialized, inferring queue position
+2026-02-06 20:26:59 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Queue position:	'23'
+
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409618410.10-171-238-13_bf0e575d-0432-49a1-b4d8-0a5f0c7f34e7_a7fee790-c291-496f-89d2-e6abbcc86c31.lock",
+    "End Jitter": "PT0.362S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409618410.10-171-238-13_bf0e575d-0432-49a1-b4d8-0a5f0c7f34e7.lock",
+    "Id": "a7fee790-c291-496f-89d2-e6abbcc86c31",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "WAITING",
+    "Retry Interval": "PT0.17S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.28S",
+    "Timestamp": 1770409618423
+}'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'a50824fe-306d-4648-9665-0b267b189f56'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'a50824fe-306d-4648-9665-0b267b189f56'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'886f9f17-1fe3-45ed-96c8-a9c91268d212'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'886f9f17-1fe3-45ed-96c8-a9c91268d212'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'91208bac-7b32-4c90-a968-16d839712b08'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'91208bac-7b32-4c90-a968-16d839712b08'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'fc4965f3-cd8d-40ab-9145-b508a3ba098a'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'fc4965f3-cd8d-40ab-9145-b508a3ba098a'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'933145f8-4612-420e-91d2-f18a55e4d4c2'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'933145f8-4612-420e-91d2-f18a55e4d4c2'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'1e7f0dfa-63bb-47b3-a000-1958caaa8f4b'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'1e7f0dfa-63bb-47b3-a000-1958caaa8f4b'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'a50824fe-306d-4648-9665-0b267b189f56'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'3fcd7edd-2dfe-49b0-8c0d-e45269071887'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'3fcd7edd-2dfe-49b0-8c0d-e45269071887'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'886f9f17-1fe3-45ed-96c8-a9c91268d212'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'3b9cd70c-3560-42b2-90f3-0d3419080998'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'3b9cd70c-3560-42b2-90f3-0d3419080998'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'91208bac-7b32-4c90-a968-16d839712b08'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'fc4965f3-cd8d-40ab-9145-b508a3ba098a'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'933145f8-4612-420e-91d2-f18a55e4d4c2'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'1e7f0dfa-63bb-47b3-a000-1958caaa8f4b'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'a50824fe-306d-4648-9665-0b267b189f56'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'886f9f17-1fe3-45ed-96c8-a9c91268d212'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'a50824fe-306d-4648-9665-0b267b189f56'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'3fcd7edd-2dfe-49b0-8c0d-e45269071887'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'3b9cd70c-3560-42b2-90f3-0d3419080998'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'886f9f17-1fe3-45ed-96c8-a9c91268d212'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'fc4965f3-cd8d-40ab-9145-b508a3ba098a'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'933145f8-4612-420e-91d2-f18a55e4d4c2'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'933145f8-4612-420e-91d2-f18a55e4d4c2'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'91208bac-7b32-4c90-a968-16d839712b08'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'91208bac-7b32-4c90-a968-16d839712b08'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'1e7f0dfa-63bb-47b3-a000-1958caaa8f4b'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'3b9cd70c-3560-42b2-90f3-0d3419080998'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'1e7f0dfa-63bb-47b3-a000-1958caaa8f4b'
+2026-02-06 20:27:36 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'3fcd7edd-2dfe-49b0-8c0d-e45269071887'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'3b9cd70c-3560-42b2-90f3-0d3419080998'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'3fcd7edd-2dfe-49b0-8c0d-e45269071887'
+2026-02-06 20:27:36 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match currenta50824fe-306d-4648-9665-0b267b189f56
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'933145f8-4612-420e-91d2-f18a55e4d4c2'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:27:36 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match current91208bac-7b32-4c90-a968-16d839712b08
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:27:36 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match current1e7f0dfa-63bb-47b3-a000-1958caaa8f4b
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:27:36 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match current886f9f17-1fe3-45ed-96c8-a9c91268d212
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:27:36 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match current3b9cd70c-3560-42b2-90f3-0d3419080998
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:27:36 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match current3fcd7edd-2dfe-49b0-8c0d-e45269071887
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '1' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=933145f8-4612-420e-91d2-f18a55e4d4c2, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409612782.10-171-238-13_9e387bd9-87f6-4060-8211-911cc1976ac4.lock, retryInterval=PT0.271S, staleFileThreshold=PT10S, startJitter=PT0.414S, endJitter=PT0.28S, state=LOCKED}
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409612820.10-171-238-13_9e387bd9-87f6-4060-8211-911cc1976ac4_933145f8-4612-420e-91d2-f18a55e4d4c2.lock",
+    "End Jitter": "PT0.28S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409612782.10-171-238-13_9e387bd9-87f6-4060-8211-911cc1976ac4.lock",
+    "Id": "933145f8-4612-420e-91d2-f18a55e4d4c2",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.271S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.414S",
+    "Timestamp": 1770409612840
+}'
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:27:36 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'fc4965f3-cd8d-40ab-9145-b508a3ba098a'
+2026-02-06 20:27:36 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match currentfc4965f3-cd8d-40ab-9145-b508a3ba098a
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'67dd3abf-8501-47d2-bd9b-f9f7feef1001'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'67dd3abf-8501-47d2-bd9b-f9f7feef1001'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'd387f9a7-c00c-4680-a17d-b402bf49089e'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'd387f9a7-c00c-4680-a17d-b402bf49089e'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'7f5ea55b-30c3-44c7-9981-5b5a8715cc38'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'7f5ea55b-30c3-44c7-9981-5b5a8715cc38'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'67dd3abf-8501-47d2-bd9b-f9f7feef1001'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'7f5ea55b-30c3-44c7-9981-5b5a8715cc38'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'd387f9a7-c00c-4680-a17d-b402bf49089e'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'67dd3abf-8501-47d2-bd9b-f9f7feef1001'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'd387f9a7-c00c-4680-a17d-b402bf49089e'
+2026-02-06 20:29:30 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'7f5ea55b-30c3-44c7-9981-5b5a8715cc38'
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'd387f9a7-c00c-4680-a17d-b402bf49089e'
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'7f5ea55b-30c3-44c7-9981-5b5a8715cc38'
+2026-02-06 20:29:30 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match currentd387f9a7-c00c-4680-a17d-b402bf49089e
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:29:30 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match current7f5ea55b-30c3-44c7-9981-5b5a8715cc38
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:29:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'67dd3abf-8501-47d2-bd9b-f9f7feef1001'
+2026-02-06 20:29:31 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'67dd3abf-8501-47d2-bd9b-f9f7feef1001'
+2026-02-06 20:29:31 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:29:32 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:29:32 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '2' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:29:32 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:29:32 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:29:32 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:29:33 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=67dd3abf-8501-47d2-bd9b-f9f7feef1001, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409614462.10-171-238-13_7a2967b7-f1b8-466b-af1f-7e45c66bc5ec.lock, retryInterval=PT0.039S, staleFileThreshold=PT10S, startJitter=PT0.243S, endJitter=PT0.431S, state=LOCKED}
+2026-02-06 20:29:33 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409614463.10-171-238-13_7a2967b7-f1b8-466b-af1f-7e45c66bc5ec_67dd3abf-8501-47d2-bd9b-f9f7feef1001.lock",
+    "End Jitter": "PT0.431S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409614462.10-171-238-13_7a2967b7-f1b8-466b-af1f-7e45c66bc5ec.lock",
+    "Id": "67dd3abf-8501-47d2-bd9b-f9f7feef1001",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.039S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.243S",
+    "Timestamp": 1770409614525
+}'
+2026-02-06 20:29:33 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:29:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'8ba4b636-cfaf-41aa-9980-afc8778f0ae5'
+2026-02-06 20:29:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'8ba4b636-cfaf-41aa-9980-afc8778f0ae5'
+2026-02-06 20:29:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'8ba4b636-cfaf-41aa-9980-afc8778f0ae5'
+2026-02-06 20:29:54 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'8ba4b636-cfaf-41aa-9980-afc8778f0ae5'
+2026-02-06 20:29:54 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:29:54 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:29:54 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'8ba4b636-cfaf-41aa-9980-afc8778f0ae5'
+2026-02-06 20:29:55 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'8ba4b636-cfaf-41aa-9980-afc8778f0ae5'
+2026-02-06 20:29:55 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:29:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:29:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '3' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:29:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:29:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:29:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:29:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=8ba4b636-cfaf-41aa-9980-afc8778f0ae5, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409615998.10-171-238-13_b1f6212b-e62f-480c-9a0e-b4fe71f56840.lock, retryInterval=PT0.252S, staleFileThreshold=PT10S, startJitter=PT0.231S, endJitter=PT0.238S, state=LOCKED}
+2026-02-06 20:29:56 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616025.10-171-238-13_b1f6212b-e62f-480c-9a0e-b4fe71f56840_8ba4b636-cfaf-41aa-9980-afc8778f0ae5.lock",
+    "End Jitter": "PT0.238S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409615998.10-171-238-13_b1f6212b-e62f-480c-9a0e-b4fe71f56840.lock",
+    "Id": "8ba4b636-cfaf-41aa-9980-afc8778f0ae5",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.252S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.231S",
+    "Timestamp": 1770409616074
+}'
+2026-02-06 20:29:56 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:30:07 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12'
+2026-02-06 20:30:07 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12'
+2026-02-06 20:30:07 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'edff8c18-5400-4c83-a8fc-f319dcf47a2b'
+2026-02-06 20:30:07 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'edff8c18-5400-4c83-a8fc-f319dcf47a2b'
+2026-02-06 20:30:07 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12'
+2026-02-06 20:30:07 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'edff8c18-5400-4c83-a8fc-f319dcf47a2b'
+2026-02-06 20:30:07 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12'
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12'
+2026-02-06 20:30:07 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'edff8c18-5400-4c83-a8fc-f319dcf47a2b'
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'edff8c18-5400-4c83-a8fc-f319dcf47a2b'
+2026-02-06 20:30:07 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match currentedff8c18-5400-4c83-a8fc-f319dcf47a2b
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12'
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '4' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409616386.10-171-238-13_c10881de-7ef4-4a71-8bc7-8402f2d4da41.lock, retryInterval=PT0.017S, staleFileThreshold=PT10S, startJitter=PT0.222S, endJitter=PT0.183S, state=LOCKED}
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616388.10-171-238-13_c10881de-7ef4-4a71-8bc7-8402f2d4da41_6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12.lock",
+    "End Jitter": "PT0.183S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409616386.10-171-238-13_c10881de-7ef4-4a71-8bc7-8402f2d4da41.lock",
+    "Id": "6bd9e330-6bca-4f1c-81ec-9f9d34dc9a12",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.017S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.222S",
+    "Timestamp": 1770409616447
+}'
+2026-02-06 20:30:07 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:30:18 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'1684178f-4e37-41b3-92a9-2c0fa94c36b7'
+2026-02-06 20:30:18 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'1684178f-4e37-41b3-92a9-2c0fa94c36b7'
+2026-02-06 20:30:18 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'1684178f-4e37-41b3-92a9-2c0fa94c36b7'
+2026-02-06 20:30:18 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'1684178f-4e37-41b3-92a9-2c0fa94c36b7'
+2026-02-06 20:30:18 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:18 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:18 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'1684178f-4e37-41b3-92a9-2c0fa94c36b7'
+2026-02-06 20:30:19 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'1684178f-4e37-41b3-92a9-2c0fa94c36b7'
+2026-02-06 20:30:19 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:30:20 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:30:20 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '5' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:30:20 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:30:21 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:30:21 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:30:21 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=1684178f-4e37-41b3-92a9-2c0fa94c36b7, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409616805.10-171-238-13_ba5cd75f-828c-45e6-bd8a-d33a16d826d3.lock, retryInterval=PT0.042S, staleFileThreshold=PT10S, startJitter=PT0.374S, endJitter=PT0.383S, state=LOCKED}
+2026-02-06 20:30:21 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616806.10-171-238-13_ba5cd75f-828c-45e6-bd8a-d33a16d826d3_1684178f-4e37-41b3-92a9-2c0fa94c36b7.lock",
+    "End Jitter": "PT0.383S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409616805.10-171-238-13_ba5cd75f-828c-45e6-bd8a-d33a16d826d3.lock",
+    "Id": "1684178f-4e37-41b3-92a9-2c0fa94c36b7",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.042S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.374S",
+    "Timestamp": 1770409616827
+}'
+2026-02-06 20:30:21 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:30:25 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'10407d0b-038e-4b23-a6c5-7cd4d7209d00'
+2026-02-06 20:30:25 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'10407d0b-038e-4b23-a6c5-7cd4d7209d00'
+2026-02-06 20:30:25 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'10407d0b-038e-4b23-a6c5-7cd4d7209d00'
+2026-02-06 20:30:25 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'10407d0b-038e-4b23-a6c5-7cd4d7209d00'
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'10407d0b-038e-4b23-a6c5-7cd4d7209d00'
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'10407d0b-038e-4b23-a6c5-7cd4d7209d00'
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '6' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=10407d0b-038e-4b23-a6c5-7cd4d7209d00, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409616829.10-171-238-13_41d092ed-b019-4949-ad88-4dafa6c5e19a.lock, retryInterval=PT0.081S, staleFileThreshold=PT10S, startJitter=PT0.357S, endJitter=PT0.133S, state=LOCKED}
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409616829.10-171-238-13_41d092ed-b019-4949-ad88-4dafa6c5e19a_10407d0b-038e-4b23-a6c5-7cd4d7209d00.lock",
+    "End Jitter": "PT0.133S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409616829.10-171-238-13_41d092ed-b019-4949-ad88-4dafa6c5e19a.lock",
+    "Id": "10407d0b-038e-4b23-a6c5-7cd4d7209d00",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.081S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.357S",
+    "Timestamp": 1770409616882
+}'
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:30:25 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'd30840ff-a3a4-4ff9-8e0a-e7ca05eb0551'
+2026-02-06 20:30:25 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'd30840ff-a3a4-4ff9-8e0a-e7ca05eb0551'
+2026-02-06 20:30:25 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'd30840ff-a3a4-4ff9-8e0a-e7ca05eb0551'
+2026-02-06 20:30:25 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'd30840ff-a3a4-4ff9-8e0a-e7ca05eb0551'
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:25 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'd30840ff-a3a4-4ff9-8e0a-e7ca05eb0551'
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'd30840ff-a3a4-4ff9-8e0a-e7ca05eb0551'
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '7' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=d30840ff-a3a4-4ff9-8e0a-e7ca05eb0551, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409617399.10-171-238-13_a5e21ba3-679f-4be1-b278-b2c7aca9ebbe.lock, retryInterval=PT0.089S, staleFileThreshold=PT10S, startJitter=PT0.106S, endJitter=PT0.208S, state=LOCKED}
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409617406.10-171-238-13_a5e21ba3-679f-4be1-b278-b2c7aca9ebbe_d30840ff-a3a4-4ff9-8e0a-e7ca05eb0551.lock",
+    "End Jitter": "PT0.208S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409617399.10-171-238-13_a5e21ba3-679f-4be1-b278-b2c7aca9ebbe.lock",
+    "Id": "d30840ff-a3a4-4ff9-8e0a-e7ca05eb0551",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.089S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.106S",
+    "Timestamp": 1770409617481
+}'
+2026-02-06 20:30:26 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:30:27 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'837d9f74-575d-4705-a215-719bf534179f'
+2026-02-06 20:30:27 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'314acc2a-cd8c-401c-adc5-637e5c2719d8'
+2026-02-06 20:30:27 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'837d9f74-575d-4705-a215-719bf534179f'
+2026-02-06 20:30:27 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'314acc2a-cd8c-401c-adc5-637e5c2719d8'
+2026-02-06 20:30:27 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'314acc2a-cd8c-401c-adc5-637e5c2719d8'
+2026-02-06 20:30:27 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'837d9f74-575d-4705-a215-719bf534179f'
+2026-02-06 20:30:27 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'314acc2a-cd8c-401c-adc5-637e5c2719d8'
+2026-02-06 20:30:27 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'837d9f74-575d-4705-a215-719bf534179f'
+2026-02-06 20:30:27 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:27 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:27 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'837d9f74-575d-4705-a215-719bf534179f'
+2026-02-06 20:30:27 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:27 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:27 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'314acc2a-cd8c-401c-adc5-637e5c2719d8'
+2026-02-06 20:30:27 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException: Sanity checked leader does not match current837d9f74-575d-4705-a215-719bf534179f
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:287)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:30:28 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'314acc2a-cd8c-401c-adc5-637e5c2719d8'
+2026-02-06 20:30:28 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:30:29 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:30:29 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '8' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:30:29 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:30:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:30:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:30:30 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=314acc2a-cd8c-401c-adc5-637e5c2719d8, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409617451.10-171-238-13_c0046fcb-a429-40cc-8e6e-3afb0b492bad.lock, retryInterval=PT0.111S, staleFileThreshold=PT10S, startJitter=PT0.381S, endJitter=PT0.445S, state=LOCKED}
+2026-02-06 20:30:30 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409617451.10-171-238-13_c0046fcb-a429-40cc-8e6e-3afb0b492bad_314acc2a-cd8c-401c-adc5-637e5c2719d8.lock",
+    "End Jitter": "PT0.445S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409617451.10-171-238-13_c0046fcb-a429-40cc-8e6e-3afb0b492bad.lock",
+    "Id": "314acc2a-cd8c-401c-adc5-637e5c2719d8",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.111S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.381S",
+    "Timestamp": 1770409617470
+}'
+2026-02-06 20:30:30 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:30:40 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'834a8d44-93c5-4df3-9fca-d16b467f5859'
+2026-02-06 20:30:40 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'834a8d44-93c5-4df3-9fca-d16b467f5859'
+2026-02-06 20:30:40 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'834a8d44-93c5-4df3-9fca-d16b467f5859'
+2026-02-06 20:30:40 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'834a8d44-93c5-4df3-9fca-d16b467f5859'
+2026-02-06 20:30:40 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:40 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:40 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'834a8d44-93c5-4df3-9fca-d16b467f5859'
+2026-02-06 20:30:41 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'834a8d44-93c5-4df3-9fca-d16b467f5859'
+2026-02-06 20:30:41 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:30:42 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:30:42 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '9' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:30:42 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:30:43 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:30:43 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:30:43 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=834a8d44-93c5-4df3-9fca-d16b467f5859, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409617769.10-171-238-13_bc8cc5c4-3742-4783-ab2a-0fc2fe09f227.lock, retryInterval=PT0.09S, staleFileThreshold=PT10S, startJitter=PT0.228S, endJitter=PT0.477S, state=LOCKED}
+2026-02-06 20:30:43 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409617769.10-171-238-13_bc8cc5c4-3742-4783-ab2a-0fc2fe09f227_834a8d44-93c5-4df3-9fca-d16b467f5859.lock",
+    "End Jitter": "PT0.477S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409617769.10-171-238-13_bc8cc5c4-3742-4783-ab2a-0fc2fe09f227.lock",
+    "Id": "834a8d44-93c5-4df3-9fca-d16b467f5859",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.09S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.228S",
+    "Timestamp": 1770409617797
+}'
+2026-02-06 20:30:43 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:30:43 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'1d83309b-71aa-40f2-a957-49d679b912e1'
+2026-02-06 20:30:43 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'1d83309b-71aa-40f2-a957-49d679b912e1'
+2026-02-06 20:30:43 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'1d83309b-71aa-40f2-a957-49d679b912e1'
+2026-02-06 20:30:43 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'1d83309b-71aa-40f2-a957-49d679b912e1'
+2026-02-06 20:30:44 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:44 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:44 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'1d83309b-71aa-40f2-a957-49d679b912e1'
+2026-02-06 20:30:44 ERROR [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: Unable to acquire lock exiting:
+
+org.tasktide.itemstore.mutex.exceptions.MutexCheckedException: Unable to read elected leader1d83309b-71aa-40f2-a957-49d679b912e1
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.lambda$confirmLeader$1(MutexOrchestrator.java:284)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.confirmLeader(MutexOrchestrator.java:283)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.performLock(MutexOrchestrator.java:176)
+	at org.tasktide.itemstore.mutex.MutexOrchestrator.acquireLock(MutexOrchestrator.java:132)
+	at org.tasktide.itemstore.mutex.LockActionReleaseApp.main(LockActionReleaseApp.java:120)
+2026-02-06 20:30:44 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'3b0d5f4a-1414-4c89-887b-fcf788024080'
+2026-02-06 20:30:44 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'3b0d5f4a-1414-4c89-887b-fcf788024080'
+2026-02-06 20:30:44 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'3b0d5f4a-1414-4c89-887b-fcf788024080'
+2026-02-06 20:30:44 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'3b0d5f4a-1414-4c89-887b-fcf788024080'
+2026-02-06 20:30:44 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:44 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:44 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'3b0d5f4a-1414-4c89-887b-fcf788024080'
+2026-02-06 20:30:45 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'3b0d5f4a-1414-4c89-887b-fcf788024080'
+2026-02-06 20:30:45 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:30:46 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:30:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '10' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:30:46 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:30:47 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:30:47 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:30:47 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=3b0d5f4a-1414-4c89-887b-fcf788024080, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409618038.10-171-238-13_88d87fe0-9219-4cac-839c-921b790398e4.lock, retryInterval=PT0.272S, staleFileThreshold=PT10S, startJitter=PT0.33S, endJitter=PT0.372S, state=LOCKED}
+2026-02-06 20:30:47 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409618039.10-171-238-13_88d87fe0-9219-4cac-839c-921b790398e4_3b0d5f4a-1414-4c89-887b-fcf788024080.lock",
+    "End Jitter": "PT0.372S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409618038.10-171-238-13_88d87fe0-9219-4cac-839c-921b790398e4.lock",
+    "Id": "3b0d5f4a-1414-4c89-887b-fcf788024080",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.272S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.33S",
+    "Timestamp": 1770409618049
+}'
+2026-02-06 20:30:47 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete
+2026-02-06 20:30:47 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Active leader with Id:	'a7fee790-c291-496f-89d2-e6abbcc86c31'
+2026-02-06 20:30:47 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: State set, writing mutex for:	'a7fee790-c291-496f-89d2-e6abbcc86c31'
+2026-02-06 20:30:47 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Mutex written for:	'a7fee790-c291-496f-89d2-e6abbcc86c31'
+2026-02-06 20:30:47 DEBUG [ main -> org.tasktide.itemstore.mutex.MutexStrategy$2.apply ]: Host lock file created for:	'a7fee790-c291-496f-89d2-e6abbcc86c31'
+2026-02-06 20:30:48 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$0 ]: NFS Lock acquire -> null
+2026-02-06 20:30:48 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: NFS Lock acquired
+2026-02-06 20:30:48 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Confirming leadership:	'a7fee790-c291-496f-89d2-e6abbcc86c31'
+2026-02-06 20:30:48 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Leadership confirmed:	'a7fee790-c291-496f-89d2-e6abbcc86c31'
+2026-02-06 20:30:48 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: Waiting for FileChannel lock
+2026-02-06 20:30:49 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.performLock ]: File Channel Lock acquired
+2026-02-06 20:30:49 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Writing '11' to data file:	'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\multi-process.txt'
+2026-02-06 20:30:49 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Record written, releasing lock
+2026-02-06 20:30:50 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-06 20:30:50 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-06 20:30:50 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.lambda$wireRealMethodsWithLogging$1 ]: File Channel Lock release -> Mutex{id=a7fee790-c291-496f-89d2-e6abbcc86c31, lockDir=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex, lockFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\ItemStore-Mutex\Host-Lock\1770409618410.10-171-238-13_bf0e575d-0432-49a1-b4d8-0a5f0c7f34e7.lock, retryInterval=PT0.17S, staleFileThreshold=PT10S, startJitter=PT0.28S, endJitter=PT0.362S, state=LOCKED}
+2026-02-06 20:30:50 INFO  [ main -> org.tasktide.itemstore.mutex.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770409618410.10-171-238-13_bf0e575d-0432-49a1-b4d8-0a5f0c7f34e7_a7fee790-c291-496f-89d2-e6abbcc86c31.lock",
+    "End Jitter": "PT0.362S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770409618410.10-171-238-13_bf0e575d-0432-49a1-b4d8-0a5f0c7f34e7.lock",
+    "Id": "a7fee790-c291-496f-89d2-e6abbcc86c31",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.17S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.28S",
+    "Timestamp": 1770409618423
+}'
+2026-02-06 20:30:50 INFO  [ main -> org.tasktide.itemstore.mutex.LockActionReleaseApp.main ]: APP-Lock released, test complete

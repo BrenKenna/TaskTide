@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -276,7 +275,9 @@ public class ComplexMutexOrchestratorTests {
     
     /**
      * Tests whether multiple processes can operate the
-     *  Lock-Action-Release queue
+     *  Lock-Action-Release queue. Silent failure happening
+     *   somewhere, should track-down have client handler
+     *   try again if such a MutexProcessError occurs.
      * 
      */
     @Test

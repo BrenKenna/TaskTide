@@ -104,18 +104,13 @@ public class FileUtility {
      */
     public static boolean dropFile(Path path) {
         
-        // Create masterDB lock file
+        // Drop provided file
         try {
             Files.delete(path);
             return true;
         }
         
-        // Already exists
-        catch (FileAlreadyExistsException e) {
-            return true;
-        }
-        
-        // Creation failed for another reason
+        // Drop failed for another reason
         catch (IOException e) {
             return false;
         }
