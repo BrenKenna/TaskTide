@@ -38,10 +38,10 @@ import org.rocksdb.WriteOptions;
  * 
  * @author bkenna
  */
-public class RocksDBStore extends AbstractItemStore {
+public class RocksDbStore extends AbstractItemStore {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(RocksDBStore.class);
+    private final Logger LOGGER = LogManager.getLogger(RocksDbStore.class);
     private RocksDB master, proto;
     private final Options options;
     private final ObjectMapper MAPPER = new ObjectMapper();
@@ -55,7 +55,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @param masterDB
      * @param protoDB
      */
-    public RocksDBStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
+    public RocksDbStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
         super(storeName, dbDirectory, masterDB, protoDB);
         RocksDB.loadLibrary();
         this.options = new Options().setCreateIfMissing(true);
@@ -123,7 +123,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @return 
      */
     @Override
-    public List<Item> getAll(DbTarget target) {
+    public synchronized List<Item> getAll(DbTarget target) {
         
         // Initialize variables
         List<Item> output = new ArrayList<>();
@@ -165,7 +165,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @throws Exception 
      */
     @Override
-    public void saveItem(DbTarget target, Item item) throws Exception {
+    public synchronized void saveItem(DbTarget target, Item item) throws Exception {
         this.openConn(target);
         switch ( target ) {
             case PROTOTYPE -> {
@@ -193,7 +193,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public boolean update(DbTarget target, Item item) {
+    public synchronized boolean update(DbTarget target, Item item) {
         try {
             this.saveItem(target, item);
             return true;
@@ -214,7 +214,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @throws Exception 
      */
     @Override
-    public void saveItems(DbTarget target, List<Item> items) throws Exception {
+    public synchronized void saveItems(DbTarget target, List<Item> items) throws Exception {
         this.openConn(target);
         try (WriteBatch batch = new WriteBatch() ) {
             for ( Item item : items ) {
@@ -255,7 +255,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @throws Exception 
      */
     @Override
-    public Item getById(DbTarget target, String id) throws Exception {
+    public synchronized Item getById(DbTarget target, String id) throws Exception {
         this.openConn(target);
         byte[] data;
         switch ( target ) {
@@ -281,7 +281,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @throws Exception 
      */
     @Override
-    public List<Item> getItemsByState(DbTarget target, String state) throws Exception {
+    public synchronized List<Item> getItemsByState(DbTarget target, String state) throws Exception {
         this.openConn(target);
         List<Item> result = new ArrayList<>();
         RocksIterator iter;
@@ -315,7 +315,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @return String
      */
     @Override
-    public String getPayloadById(DbTarget target, String id) {
+    public synchronized String getPayloadById(DbTarget target, String id) {
         
         // Initialize data
         String output = null;
@@ -349,7 +349,7 @@ public class RocksDBStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public boolean delete(DbTarget target, Item item) throws Exception {
+    public synchronized boolean delete(DbTarget target, Item item) throws Exception {
         this.openConn(target);
         boolean status;
         try {

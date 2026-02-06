@@ -36,7 +36,7 @@ public enum ItemStoreType {
         
         @Override
         public ItemStore makeItemStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
-            return new RocksDBStore(storeName, dbDirectory, masterDB, protoDB);
+            return new RocksDbStore(storeName, dbDirectory, masterDB, protoDB);
         }
 
         @Override

@@ -16,3 +16,6 @@ tasktide/use-cases/task-binding-use-case/FunctionRunner/build/
 .gitignore
 tasktide/use-cases/task-binding-use-case/FunctionRunner/Deployment/FunctionRunner*
 tasktide/docs/Diagrams/~$Diagrams.pptx
+tasktide/itemstore/rocksDB/
+tasktide/itemstore/sqlite/
+tasktide/itemstore/ConcurrencyTests/

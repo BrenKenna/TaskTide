@@ -28,6 +28,7 @@ subprojects {
     dependencies {
         // Jakarta CDI
         implementation 'jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0'
+        implementation 'io.smallrye.config:smallrye-config:3.13.2'
 
         // Config
         implementation 'org.eclipse.microprofile.config:microprofile-config-api:2.0'
@@ -46,8 +47,11 @@ subprojects {
         testImplementation 'org.apache.logging.log4j:log4j-core:2.20.0'
         testImplementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0'
         testImplementation 'org.jboss.weld:weld-junit5:4.0.3.Final'
-        implementation 'io.smallrye.config:smallrye-config:3.13.2'
-
+        
+        // Mockito
+        testImplementation 'org.mockito:mockito-core:5.0.0'
+        testImplementation 'org.mockito:mockito-junit-jupiter:5.0.0'
+        
         // Unit testing with docker container
         testImplementation 'org.testcontainers:testcontainers:1.21.3'
 
