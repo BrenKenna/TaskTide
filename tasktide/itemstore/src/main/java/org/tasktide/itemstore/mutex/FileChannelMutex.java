@@ -17,6 +17,7 @@ package org.tasktide.itemstore.mutex;
 
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
+
 import org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException;
 
 import org.tasktide.itemstore.mutex.model.Mutex;

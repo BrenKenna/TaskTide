@@ -57,6 +57,33 @@ public enum MutexFileType {
             return MutexConstants.getElectionDir();
         }
     },
+    
+    CONFIRM_FILE {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isMutexFileType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isMutexFileType(MutexFileType query) {
+            return this == query;
+        }
+        
+        @Override
+        public Path fetchPathForFile() {
+            return MutexConstants.getElectionFile();
+        }
+        
+        @Override
+        public Path fetchPathForDir() {
+            return MutexConstants.getElectionDir();
+        }
+    },
 
     HOST_FILE {
         @Override

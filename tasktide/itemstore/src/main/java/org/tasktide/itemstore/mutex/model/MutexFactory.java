@@ -15,13 +15,11 @@
  */
 package org.tasktide.itemstore.mutex.model;
 
-import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
-import org.tasktide.itemstore.mutex.utils.MutexConstants;
-
 import java.nio.file.Path;
 import java.util.UUID;
-import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
+import org.tasktide.itemstore.mutex.utils.MutexConstants;
+import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
 /**
  * Class for creating {@link Mutex}, assuming {@link MutexConstants}
@@ -72,7 +70,6 @@ public class MutexFactory {
             MutexState.INITIALIZATION
         );
         
-        
         // Return
         return output;
     }
@@ -119,7 +116,6 @@ public class MutexFactory {
             MutexState.INITIALIZATION
         );
         
-        
         // Return
         return output;
     }
@@ -159,7 +155,6 @@ public class MutexFactory {
             MutexConstants.getEndJitter(),
             MutexState.INITIALIZATION
         );
-        
         
         // Return
         return output;

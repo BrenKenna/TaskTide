@@ -26,6 +26,8 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Random;
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
+import org.tasktide.itemstore.mutex.utils.MutexConstants;
+import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
 
 /**
@@ -110,7 +112,6 @@ public class Mutex {
         this.lockFile = lockFile;
         this.hostFile = hostFile;
         this.electionFile = electionFile;
-        
         this.state = state;
         
         this.startJitter = startJitter;
@@ -120,7 +121,6 @@ public class Mutex {
         this.retryInterval = retryInterval;
     }
 
-    
     /**
      * Get locking directory
      * 

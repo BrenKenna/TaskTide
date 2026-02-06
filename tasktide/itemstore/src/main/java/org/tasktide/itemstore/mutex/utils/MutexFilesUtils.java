@@ -23,6 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.io.IOException;
+import java.util.List;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -51,6 +52,17 @@ public class MutexFilesUtils {
     
     
     /**
+     * Represents provided data as JSON string
+     * 
+     * @param data
+     * @return String
+     */
+    public static String toJson(Object data) {
+        return PRETTY_JSON.toJson(data);
+    }
+    
+    
+    /**
      * Retrieve list of files under target directory
      *  under target
      * 
@@ -66,6 +78,54 @@ public class MutexFilesUtils {
         }
     }
     
+    
+    /**
+     * Returns the full file path of the leader
+     * 
+     * @param mutex
+     * @param fileType
+     * @return int
+     */
+    public static int findPosition(Mutex mutex, MutexFileType fileType) {
+        Path target = mutex.getFileForType(fileType).getParent().toAbsolutePath();
+        List<Path> paths = fetchFiles(target).toList();
+        int pos = -1, counter = 0;
+        boolean found = false;
+        
+        while ( !found && counter < paths.size() ) {
+            Path active = paths.get(counter);
+            if ( active.equals(target) ) {
+                pos = counter;
+                found = true;
+            }
+            else {
+                counter++;
+            }
+        }
+        
+        return pos;
+    }
+    
+    
+    /**
+     * Find predecessor path
+     * 
+     * @param mutex
+     * @param fileType
+     * @param pos
+     * @return Path
+     */
+    public static Path findPredecessor(Mutex mutex, MutexFileType fileType, int pos) {
+        Path target = mutex.getFileForType(fileType).getParent().toAbsolutePath();
+        List<Path> paths = fetchFiles(target).toList();
+        if ( pos - 1 < 0 ) {
+            return null;
+        }
+        else {
+            return paths.get(pos - 1);
+        }
+    }
+
     
     /**
      * Fetch the oldest path
@@ -244,7 +304,7 @@ public class MutexFilesUtils {
      * @param targetFile
      * @return boolean
      */
-    public static boolean writeMutex(Mutex mutex, Path targetFile) {
+    public static boolean writeMutexFile(Mutex mutex, Path targetFile) {
         try {
             Files.writeString(
                 targetFile,
@@ -275,17 +335,17 @@ public class MutexFilesUtils {
             
             case LOCK_FILE -> {
                 deleteFile(mutex.getLockFile());
-                writeMutex(mutex, mutex.getLockFile()); 
+                writeMutexFile(mutex, mutex.getLockFile()); 
             }
             
             case HOST_FILE -> {
                 deleteFile(mutex.getHostFile());
-                writeMutex(mutex, mutex.getHostFile());
+                writeMutexFile(mutex, mutex.getHostFile());
             }
             
             case ELECTION_FILE -> {
                 deleteFile(mutex.getElectionFile());
-                writeMutex(mutex, mutex.getElectionFile());
+                writeMutexFile(mutex, mutex.getElectionFile());
             }
             
             default -> {

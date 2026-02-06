@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 import java.util.Arrays;
@@ -177,14 +178,35 @@ public enum MutexStrategy {
             LOGGER.debug("Queue position:\t'{}'\n\n'{}'", pos, mutex.toJsonDoc());
 
             // Wait until become leader
-            while( pos != 0 ) {
+            boolean acquired = false;
+            Path predecessor = null;
+            while(!acquired) {
 
-                // Wait
-                LOGGER.debug("Waiting to become leader");
+                // Buffer times
+                LOGGER.debug("Waiting to be leader");
                 MutexFilesUtils.waitJitterTime();
 
-                // Fetch position
-                pos = inferPosition(mutex);
+                // Proceed if none before
+                if(predecessor == null) {
+                    
+                    // Measure position
+                    pos = inferPosition(mutex);
+                    if(pos < 0) {
+                        continue;
+                    }
+                    else if(pos == 0) {
+                        acquired = true;
+                    }
+                    else if ( pos > 0 ) {
+                        predecessor = MutexFilesUtils.findPredecessor(mutex, MutexFileType.ELECTION_FILE, pos);
+                        if ( predecessor != null ) {
+                            acquired = !Files.exists(predecessor);
+                        }
+                    }
+                }
+                else {
+                    acquired = !Files.exists(predecessor);
+                }
             }
 
             // Write mutex to lock file
@@ -291,14 +313,14 @@ public enum MutexStrategy {
         boolean found = false;
         
         // Fetch all election files
-        List<Path> paths = MutexFilesUtils.fetchFiles(MutexConstants.getHostDir())
+        List<Path> paths = MutexFilesUtils.fetchFiles(MutexConstants.getElectionDir())
             .sorted()
             .toList();
         
         // Search until found
         while( counter < paths.size() && !found ) {
             Path active = paths.get(counter);
-            if ( mutex.getElectionFile() == active ) {
+            if ( active.equals( mutex.getElectionFile() ) ) {
                 found = true;
             }
             else {

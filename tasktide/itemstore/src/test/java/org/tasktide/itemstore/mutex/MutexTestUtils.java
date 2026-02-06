@@ -15,10 +15,15 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import java.util.concurrent.ExecutorService;
@@ -29,6 +34,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
+import org.tasktide.itemstore.FileUtility;
 
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
@@ -200,6 +206,13 @@ class MutexTestUtils {
     }
     
     
+    /**
+     * 
+     * @param nfs
+     * @param fileChannel
+     * @param logger
+     * @throws MutexCheckedException 
+     */
     public static void wireRealMethodsWithLogging(
         MutexElection nfs,
         MutexElection fileChannel,
@@ -289,5 +302,184 @@ class MutexTestUtils {
                 ex.printStackTrace();
             }
         };
+    }
+    
+    
+    /**
+     * Submits required number of background processes to
+     *  generate records for a central log file. Application
+     *  here is the {@link LockReleaseProcess}
+     * 
+     * @param nWorkers
+     * @param logFile
+     * @return
+     * @throws IOException 
+     */
+    public static List<Process> runLockReleaseProcesses(
+        int nWorkers,
+        Path resultsFile
+    )
+    throws IOException {
+    
+        // Initialize vars
+        List<Process> processList;
+        
+        // Run application
+        // FileUtility.createDirectory(resultsFile.);
+        processList = new ArrayList<>();
+        for(int i = 0; i < nWorkers; i++) {
+
+            // Build process
+            LOGGER.info("Test Classpath:\t'{}'", System.getProperty("java.class.path"));
+            ProcessBuilder procBuilder = new ProcessBuilder(
+                "java",
+                "-cp",
+                System.getProperty("java.class.path"),
+                "org.tasktide.itemstore.mutex.LockActionReleaseApp",
+                resultsFile.toString()
+            );
+            
+            // Handle log stream
+            procBuilder.redirectErrorStream(true);
+            procBuilder.redirectOutput(
+                ProcessBuilder.Redirect.appendTo(
+                    resultsFile.resolveSibling("multi-process-lock-release-queue.log")
+                    .toFile()
+                )
+            );
+            
+            // Start process
+            processList.add(procBuilder.start());
+        }
+        
+        // Return process list
+        return processList;
+    }
+    
+    
+    /**
+     * Aggregates results from {@link LockReleaseProcess}
+     * 
+     * @param nExpected
+     * @param logFile
+     * @return List-Map-String, Long
+     * 
+     * @throws Exception - Indicates fail from malformed file
+     */
+    public static List<Map<String, Long>> fetchLockReleaseProcessResults(
+        int nExpected,
+        Path resultsDir
+    ) throws Exception {
+
+        // Fetch records
+        List<Map<String, Long>> records = new ArrayList<>();
+        for (Path file : Files.list(resultsDir).toList() ) {
+
+            // Fetch data
+            Map<String, Long> record = new HashMap<>();
+            String line = Files.readString(file);
+            String[] parts = line.split("\t");
+            
+            // Configure record
+            record.put("ID", Long.valueOf(parts[0]));
+            record.put("START", Long.valueOf(parts[1]));
+            record.put("POST LOCK", Long.valueOf(parts[2]));
+            record.put("END", Long.valueOf(parts[3]));
+            record.put("DURATION", Long.valueOf(parts[4]));
+            
+            // Append to dataset
+            records.add(record);
+        }
+        
+        // Return results
+        return records;
+    }
+
+    
+    /**
+     * Examines {@link LockReleaseProcess} test results,
+     *  with return value representing test state. Each
+     *  record logged as INFO. Examines if post lock time
+     *  for active process, overlaps with end time of the next
+     *  after ordered ascendingly by Post Lock
+     * 
+     * @param results
+     * @return boolean
+     */
+    public static boolean examineResults(List<Map<String, Long>> results) {
+    
+        // Sort results by start time
+        results.sort(
+            Comparator.comparingLong(a -> a.get("POST LOCK"))
+        );
+
+        // Verify that the start of one record does not overlap other
+        long lastEnd = Long.MIN_VALUE;
+        Map<String, Long> lastRecord = new HashMap<>();
+        for (Map<String, Long> record : results) {
+
+            // Check active overlaps with previous end
+            long start, end;
+            start = record.get("POST LOCK");
+            end = record.get("END");
+            if ( lastEnd >= start) {
+                LOGGER.error(
+                    "Error, overlap detected between active and previous record:\n\nPrevious Record:\n'{}'",
+                    MutexFilesUtils.toJson(lastRecord)
+                );
+                return false;
+            }
+
+            // Adjust lastEnd for next iter
+            lastRecord = record;
+            lastEnd = end;
+        }
+        
+        // Return success
+        return true;
+    }
+    
+    
+    /**
+     * Aggregates results from {@link LockReleaseProcess}
+     * 
+     * @param nExpected
+     * @param logFile
+     * @return List-Map-String, Long
+     * 
+     * @throws Exception - Indicates fail from malformed file
+     */
+    public static List<Integer> fetchLockReleaseProcessResultFile(
+        int nExpected,
+        Path resultsFile
+    ) throws Exception {
+
+        // Fetch records
+        List<Integer> records = new ArrayList<>();
+        for (String line : Files.readAllLines(resultsFile) ) {
+            int record = Integer.parseInt(line.strip());
+            records.add(record);
+        }
+        
+        // Return results
+        return records;
+    }
+    
+    
+    
+    public static boolean examineResultList(List<Integer> results) {
+    
+        // Sort results by start time
+        int previous = -1;
+        for (int i : results) {
+
+            // Break if squence is off
+            if ( previous > i ) {
+                return false;
+            }
+        }
+        
+        // Return success
+        return true;
     }
 }
