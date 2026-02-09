@@ -366,7 +366,7 @@ public class MutexFilesUtils {
      * Fetch leader
      * 
      * @return Path
-     * @throws org.tasktide.itemstore.mutex.exceptions.MutexCheckedException
+     * @throws MutexCheckedException
      */
     public static Path getLeader() throws MutexCheckedException {
         

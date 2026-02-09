@@ -25,6 +25,8 @@ import org.tasktide.itemstore.mutex.model.MutexState;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+import org.tasktide.itemstore.mutex.strategy.FileChannelStrategy;
+import org.tasktide.itemstore.mutex.strategy.MutexStrategy;
 
 
 /**
@@ -36,7 +38,19 @@ import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 class FileChannelMutex extends IntraProcessMutex {
     
     // Attributes
+    private final MutexStrategy FILE_CHANNEL_STRAT = new FileChannelStrategy();
     private Mutex active;
+    
+    
+    /**
+     * Get {@link MutexStrategy}
+     * 
+     * @return {@link FileChannelStrategy}
+     */
+    @Override
+    public MutexStrategy getStrategy() {
+        return this.FILE_CHANNEL_STRAT;
+    }
     
     
     /**
@@ -64,7 +78,7 @@ class FileChannelMutex extends IntraProcessMutex {
         boolean locked = false;
         while (!locked) {
             MutexFilesUtils.waitJitterTime();
-            locked = MutexStrategy.FILE_CHANNEL.apply(mutex);
+            locked = FILE_CHANNEL_STRAT.apply(mutex);
         }
     }
     
@@ -90,7 +104,7 @@ class FileChannelMutex extends IntraProcessMutex {
         
         // Otherwise rollback
         catch (RuntimeException | Error ex) {
-            MutexStrategy.FILE_CHANNEL.release(mutex);
+            FILE_CHANNEL_STRAT.release(mutex);
             throw ex;
         }
     }
@@ -159,7 +173,7 @@ class FileChannelMutex extends IntraProcessMutex {
             throw new MutexCheckedException("Mutex does not equal active");
         }
         
-        boolean state = MutexStrategy.FILE_CHANNEL.release(mutex);
+        boolean state = FILE_CHANNEL_STRAT.release(mutex);
         active = null;
         return state;
     }
@@ -183,8 +197,7 @@ class FileChannelMutex extends IntraProcessMutex {
             throw new MutexCheckedException("Mutex does not equal active");
         }
         
-        MutexStrategy.FILE_CHANNEL.release(active);
-        boolean state = MutexStrategy.FILE_CHANNEL.release(active);
+        boolean state = FILE_CHANNEL_STRAT.release(active);
         active = null;
         return state;
     }
@@ -199,11 +212,10 @@ class FileChannelMutex extends IntraProcessMutex {
     @Override
     public synchronized boolean release() throws MutexCheckedException {
         if ( active != null ) {
-            boolean state = MutexStrategy.FILE_CHANNEL.release(active);
+            boolean state = FILE_CHANNEL_STRAT.release(active);
             active = null;
             return state;
         }
-        
         else {
             throw new MutexCheckedException("No active lock to release");
         }

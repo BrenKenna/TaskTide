@@ -15,8 +15,6 @@
  */
 package org.tasktide.itemstore.mutex;
 
-import java.nio.file.Path;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,7 +31,12 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFactory;
 
+import org.tasktide.itemstore.mutex.strategy.ElectionStrategy;
+import org.tasktide.itemstore.mutex.strategy.FileChannelStrategy;
+import org.tasktide.itemstore.mutex.strategy.MutexStrategy;
+
 import org.tasktide.itemstore.mutex.utils.MutexConstants;
+import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
 
@@ -48,8 +51,12 @@ public class SimpleMutexStrategyTests {
     
     // Configure logger
     private static final Logger LOGGER = LogManager.getLogger(SimpleMutexStrategyTests.class);
+    private final MutexStrategy ELECTION, FILE_CHANNEL;
     
-    public SimpleMutexStrategyTests() { }
+    public SimpleMutexStrategyTests() {
+        this.ELECTION = new ElectionStrategy();
+        this.FILE_CHANNEL = new FileChannelStrategy();
+    }
     
     
     @BeforeAll
@@ -64,7 +71,10 @@ public class SimpleMutexStrategyTests {
         MutexLabellingUtils.configure();
         
         // Check config
-        LOGGER.info("Displaying config state:\t'{}'", MutexLabellingUtils.isConfigured());
+        LOGGER.info(
+            "Displaying config state:\t'{}'",
+            MutexLabellingUtils.isConfigured()
+        );
     }
     
     
@@ -93,13 +103,12 @@ public class SimpleMutexStrategyTests {
      */
     @Test
     @Order(0)
-    public void canApplySingleElectionLock() {
+    public void canApplyReleaseSingleElectionLock() {
     
         // Initialize test
         LOGGER.info("\n\n================ Tests Applying Single Election Lock ================\n");
-        Path targetDir;
+        int count = 0;
         Mutex mutex;
-        boolean assertionState;
         
         // Create a mutex
         mutex = MutexFactory.create();
@@ -110,12 +119,28 @@ public class SimpleMutexStrategyTests {
         );
         
         // Fetch election lock
-        assertionState = MutexStrategy.ELECTION.apply(mutex);
-        if ( assertionState ) {
+        if ( ELECTION.apply(mutex) ) {
             LOGGER.info(
                 "Lock successfully applied\n'{}'",
                 mutex.toJsonDoc()
             );
+            count++;
+        }
+        else {
+            LOGGER.error(
+                "Unable to apply lock\n'{}'",
+                mutex.toJsonDoc()
+            );
+        }
+        
+        // Let time pass then release lock
+        MutexFilesUtils.waitJitterTime();
+        if ( ELECTION.release(mutex) ) {
+            LOGGER.info(
+                "Lock successfully applied\n'{}'",
+                mutex.toJsonDoc()
+            );
+            count++;
         }
         else {
             LOGGER.error(
@@ -125,7 +150,7 @@ public class SimpleMutexStrategyTests {
         }
         
         // Evaluate test
-        assertTrue(assertionState, "Error cannot apply single election lock");
+        assertTrue(count == 2, "Error cannot apply single election lock");
         LOGGER.info("\n\n================ Tests Applying Single Election Lock ================\n");
     }
     
@@ -136,13 +161,12 @@ public class SimpleMutexStrategyTests {
      */
     @Test
     @Order(1)
-    public void canReleaseSingleElectionLock() {
+    public void canApplyReleaseSingleFileChannelLock() {
     
         // Initialize test
-        LOGGER.info("\n\n================ Tests Releasing Single Election Lock ================\n");
-        Path targetDir;
+        LOGGER.info("\n\n================ Tests Releasing Single File Channel Lock ================\n");
+        int count = 0;
         Mutex mutex;
-        boolean assertionState;
         
         // Create a mutex
         mutex = MutexFactory.create();
@@ -153,71 +177,38 @@ public class SimpleMutexStrategyTests {
         );
         
         // Fetch election lock
-        assertionState = MutexStrategy.ELECTION.apply(mutex);
-        
-        // Evaluate test
-        if ( assertionState ) {
-            LOGGER.info("Lock successfully applied");
-            assertionState = MutexStrategy.ELECTION.release(mutex);
-            if ( assertionState ) {
-                LOGGER.info("Released lock\n'{}'", mutex.toJsonDoc());
-            }
-            else {
-                LOGGER.info("Unable to release lock\n'{}'", mutex.toJsonDoc());
-            }
+        if ( FILE_CHANNEL.apply(mutex) ) {
+            LOGGER.info(
+                "Lock successfully applied\n'{}'",
+                mutex.toJsonDoc()
+            );
+            count++;
         }
         else {
-            LOGGER.error("Unable to apply lock");
+            LOGGER.error(
+                "Unable to apply lock\n'{}'",
+                mutex.toJsonDoc()
+            );
         }
         
-        // Evaluate test
-        assertTrue(assertionState, "Error cannot release single election lock");
-        LOGGER.info("\n\n================ Tests Releasing Single Election Lock ================\n");
-    }
-    
-    
-    /**
-     * Quite a bit under this one atm?
-     * 
-     */
-    @Test
-    @Order(2)
-    public void canReleaseSingleFileChannelLock() {
-    
-        // Initialize test
-        LOGGER.info("\n\n================ Tests Releasing Single FileChannel Lock ================\n");
-        Path targetDir;
-        Mutex mutex;
-        boolean assertionState;
-        
-        // Create a mutex
-        mutex = MutexFactory.create();
-        LOGGER.info(
-            "Created mutex:\t'{}'\n'{}'",
-            MutexConstants.getLockFile(),
-            mutex.toJsonDoc()
-        );
-        
-        // Fetch election lock
-        assertionState = MutexStrategy.FILE_CHANNEL.apply(mutex);
-        
-        // Evaluate test
-        if ( assertionState ) {
-            LOGGER.info("Lock successfully applied");
-            assertionState = MutexStrategy.FILE_CHANNEL.release(mutex);
-            if ( assertionState ) {
-                LOGGER.info("Released lock\n'{}'", mutex.toJsonDoc());
-            }
-            else {
-                LOGGER.info("Unable to release lock\n'{}'", mutex.toJsonDoc());
-            }
+        // Let time pass then release lock
+        MutexFilesUtils.waitJitterTime();
+        if ( FILE_CHANNEL.release(mutex) ) {
+            LOGGER.info(
+                "Lock successfully applied\n'{}'",
+                mutex.toJsonDoc()
+            );
+            count++;
         }
         else {
-            LOGGER.error("Unable to apply lock");
+            LOGGER.error(
+                "Unable to apply lock\n'{}'",
+                mutex.toJsonDoc()
+            );
         }
         
         // Evaluate test
-        assertTrue(assertionState, "Error cannot release single FileChannel lock");
-        LOGGER.info("\n\n================ Tests Releasing Single FileChannel Lock ================\n");
+        assertTrue(count == 2, "Error cannot release single file channel lock");
+        LOGGER.info("\n\n================ Tests Releasing Single File Channel Lock ================\n");
     }
 }

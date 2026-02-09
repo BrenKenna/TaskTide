@@ -271,7 +271,7 @@ public class MutexOrchestrator {
         // Fetch leader
         Mutex confirmLeaderMut;
         Path confirmLeader;
-        Path leader = MutexStrategy
+        Path leader = NFS_MUTEX.getStrategy()
             .inferLeader(MutexFileType.ELECTION_FILE)
             .orElseThrow( () ->
                 new MutexCheckedException("Unable to fetch active leader:\t" + mutex.getId())
@@ -312,15 +312,31 @@ public class MutexOrchestrator {
     }
     
     
-    
+    /**
+     * 
+     * 
+     * @param mutex 
+     */
     public static void cleanUp(Mutex mutex) {
-        LOGGER.debug("Cleaning up lock file:\t'{}'", mutex.getId());
+        LOGGER.debug(
+            "Cleaning up lock file:\t'{}'",
+            mutex.getId()
+        );
         FileUtility.dropFile(mutex.getLockFile());
-        LOGGER.debug("Cleaning up host file:\t'{}'", mutex.getId());
+        LOGGER.debug(
+            "Cleaning up host file:\t'{}'",
+            mutex.getId()
+        );
         FileUtility.dropFile(mutex.getHostFile());
-        LOGGER.debug("Cleaning up confirm ballot file:\t'{}'", mutex.getId());
+        LOGGER.debug(
+            "Cleaning up confirm ballot file:\t'{}'",
+            mutex.getId()
+        );
         FileUtility.dropFile(mutex.getConfirmBallot());
-        LOGGER.debug("Cleaning up election file:\t'{}'", mutex.getId());
+        LOGGER.debug(
+            "Cleaning up election file:\t'{}'",
+            mutex.getId()
+        );
         FileUtility.dropFile(mutex.getElectionFile());
     }
 }

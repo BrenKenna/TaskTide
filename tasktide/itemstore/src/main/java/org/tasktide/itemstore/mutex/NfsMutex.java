@@ -23,6 +23,9 @@ import org.tasktide.itemstore.mutex.model.MutexState;
 
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
+import org.tasktide.itemstore.mutex.strategy.ElectionStrategy;
+import org.tasktide.itemstore.mutex.strategy.MutexStrategy;
+
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
@@ -36,7 +39,20 @@ import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 class NfsMutex extends InterProcessMutex {
     
     // Attributes
+    private final MutexStrategy ELECTION_STRAT = new ElectionStrategy();
     private volatile Mutex active;
+    
+    
+    /**
+     * Get {@link MutexStrategy}
+     * 
+     * @return {@link ElectionStrategy}
+     */
+    @Override
+    public MutexStrategy getStrategy() {
+        return this.ELECTION_STRAT;
+    }
+    
     
     /**
      * Waits for provided {@link Mutex} to become the leader
@@ -55,7 +71,7 @@ class NfsMutex extends InterProcessMutex {
         }
         
         // Set active once elected
-        if ( MutexStrategy.ELECTION.apply(mutex) ) {
+        if ( ELECTION_STRAT.apply(mutex) ) {
             active = mutex;
         }
         
@@ -154,7 +170,7 @@ class NfsMutex extends InterProcessMutex {
         
         // Release election and host file
         boolean state;
-        state = MutexStrategy.ELECTION.release(mutex);
+        state = ELECTION_STRAT.release(mutex);
         active = null;
         
         // Drop active mutex
@@ -178,7 +194,7 @@ class NfsMutex extends InterProcessMutex {
         
         // Release election and host file
         boolean state;
-        state = MutexStrategy.ELECTION.release(active);
+        state = ELECTION_STRAT.release(active);
         active = null;
         
         return state;
