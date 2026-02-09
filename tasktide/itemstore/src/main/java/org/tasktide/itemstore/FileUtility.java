@@ -15,6 +15,9 @@
  */
 package org.tasktide.itemstore;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 
 import java.io.RandomAccessFile;
@@ -34,6 +37,9 @@ import java.util.Comparator;
  * @author Brendan Kenna
  */
 public class FileUtility {
+    
+    // Logger
+    private static final Logger LOGGER = LogManager.getLogger(FileUtility.class);
     
     
     /**
@@ -104,19 +110,18 @@ public class FileUtility {
      */
     public static boolean dropFile(Path path) {
         
-        // Create masterDB lock file
+        // Drop provided file
         try {
             Files.delete(path);
             return true;
         }
         
-        // Already exists
-        catch (FileAlreadyExistsException e) {
-            return true;
-        }
-        
-        // Creation failed for another reason
-        catch (IOException e) {
+        // Drop failed for another reason
+        catch (Exception ex) {
+            LOGGER.warn(
+                "Warning could not delete target file, display error:\t'{}'",
+                path, ex
+            );
             return false;
         }
     }

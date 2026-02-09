@@ -23,17 +23,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.io.IOException;
-import java.util.List;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.tasktide.itemstore.FileUtility;
+import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 
 import org.tasktide.itemstore.mutex.model.MutexFileType;
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
+import org.tasktide.itemstore.mutex.model.MutexFactory;
 
 
 /**
@@ -43,6 +48,8 @@ import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
  */
 public class MutexFilesUtils {
     
+    // Logger
+    private static final Logger LOGGER = LogManager.getLogger(MutexFilesUtils.class);
     
     // JsonB formatters
     private static final Jsonb JSON = JsonbBuilder.create();
@@ -118,6 +125,9 @@ public class MutexFilesUtils {
     public static Path findPredecessor(Mutex mutex, MutexFileType fileType, int pos) {
         Path target = mutex.getFileForType(fileType).getParent().toAbsolutePath();
         List<Path> paths = fetchFiles(target).toList();
+        if ( pos > paths.size() ) {
+            return null;
+        }
         if ( pos - 1 < 0 ) {
             return null;
         }
@@ -352,5 +362,153 @@ public class MutexFilesUtils {
                 throw new MutexUncheckedException("Mutex file type must one of:\tElection, Host, Lock");
             }
         }
+    }
+    
+    
+    /**
+     * Fetch leader
+     * 
+     * @return Path
+     * @throws MutexCheckedException
+     */
+    public static Path getLeader() throws MutexCheckedException {
+        
+        // Initialize variables
+        Optional<Path> result;
+        
+        // Fetch leader path
+        result = MutexFilesUtils.fetchOldest(MutexConstants.getElectionDir());
+        if ( result.isPresent() ) {
+            return result.get();
+        }
+        else {
+            throw new MutexCheckedException(
+                "Error unable to list the oldest file in election directory:\t" +
+                MutexConstants.getElectionDir()
+            );
+        }
+    }
+    
+    
+    /**
+     * Evaluates time to live of leader
+     * 
+     * @param leader
+     * @return boolean 
+     */
+    public static boolean evaluateLeaderTimeToLive(Path leader) {
+        
+        // Read mutex
+        Mutex mutex;
+        long allowed, initial,
+             jitter, now;
+        
+        // Read in mutex and timestamps
+        mutex = MutexFilesUtils.readMutexFromFile(leader).get();
+        now = System.currentTimeMillis();
+        allowed = MutexConstants.getStaleFileThreshold().toMillis();
+        initial = mutex.getTimestamp();
+        jitter = mutex.getStartJitter().toMillis();
+        
+        // Evaluate
+        long bufferedExpected = ( initial + jitter + allowed );
+        return now >= bufferedExpected;
+    }
+    
+    
+    /**
+     * 
+     * 
+     * @param targetFile
+     * @return 
+     */
+    public static boolean clearStaleLeader(Path targetFile) {
+        Optional<Mutex> var = MutexFilesUtils.readMutexFromFile(targetFile);
+        if ( var.isPresent() ) {
+            Mutex mutex = var.get();
+            if ( !MutexFilesUtils.deleteFile(mutex.getLockFile()) ) {
+                LOGGER.warn("Unable to clear central lock file");
+            }
+            if ( !MutexFilesUtils.deleteFile(mutex.getHostFile()) ) {
+                LOGGER.warn("Unable to clear host file");
+            }
+            if ( !MutexFilesUtils.deleteFile(mutex.getElectionFile()) ) {
+                LOGGER.warn("Unable to clear election file");
+            }
+            return true;
+        }
+        else {
+            LOGGER.warn(
+                "Unable to clear provided leader, perhaps cleared elsewhere:\t'{}'",
+                targetFile
+            );
+            return false;
+        }
+    }
+    
+    
+    
+    public static boolean writeConfirmatoryBallot(Mutex mutex, Path confirmDir) {
+        
+        // Fetch node process Id
+        String nodeProcId = MutexLabellingUtils.getNodeProcId();
+            
+        // Set election file
+        MutexFilesUtils.waitJitterTime();
+        FileUtility.createDirectory(confirmDir);
+        Path confirmFile = confirmDir.resolve(
+            System.currentTimeMillis() + 
+            "." +
+            nodeProcId +
+            ".lock"
+        );
+        mutex.setConfirmBallot(confirmFile);
+        
+        // Write file
+        try {
+            Files.writeString(
+                mutex.getConfirmBallot(),
+                mutex.toJsonDoc(),
+                StandardOpenOption.CREATE_NEW,
+                StandardOpenOption.WRITE
+            );
+            return true;
+        }
+        
+        catch (IOException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    
+    
+    public static void removeConfirmatoryBallot(Mutex mutex) {
+        FileUtility.dropFile(mutex.getConfirmBallot());
+    }
+    
+    
+    public static void recastBallot(Mutex mutex, boolean deleteFlag) {
+        
+        if ( deleteFlag ) {
+            FileUtility.dropFile(mutex.getElectionFile());
+        }
+        
+        // Fetch node process Id
+        String nodeProcId = MutexLabellingUtils.getNodeProcId();
+            
+        // Set election file
+        Mutex newMutex = MutexFactory.create();
+        
+        // Update with new values
+        mutex.setTimestamp( newMutex.getTimestamp() );
+        mutex.setElectionFile( newMutex.getElectionFile() );
+        mutex.setStartJitter( newMutex.getStartJitter() );
+        mutex.setEndJitter( newMutex.getEndJitter() );
+        mutex.setRetryInterval( newMutex.getRetryInterval() );
+        mutex.setStaleFileThreshold( newMutex.getStaleFileThreshold() );
+        
+        // Write new mutex
+        MutexFilesUtils.writeElectionFile(mutex);
     }
 }

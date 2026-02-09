@@ -26,8 +26,6 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Random;
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
-import org.tasktide.itemstore.mutex.utils.MutexConstants;
-import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
 
 
 /**
@@ -42,7 +40,7 @@ public class Mutex {
     private final String id;
     
     @JsonbProperty("Timestamp")
-    private final long timestamp;
+    private long timestamp;
     
     @JsonbProperty("Lock Dir")
     private final Path lockDir;
@@ -54,25 +52,28 @@ public class Mutex {
     private final Path hostFile;
     
     @JsonbProperty("Election File")
-    private final Path electionFile;
+    private Path electionFile;
     
     @JsonbProperty("Retry Interval")
-    private final Duration retryInterval;
+    private Duration retryInterval;
     
     @JsonbProperty("Stale File Threshold")
-    private final Duration staleFileThreshold;
+    private Duration staleFileThreshold;
    
     @JsonbProperty("Start Jitter")
-    private final Duration startJitter;
+    private Duration startJitter;
     
     @JsonbProperty("End Jitter")
-    private final Duration endJitter;
+    private Duration endJitter;
     
     @JsonbProperty("Mutex State")
     private MutexState state;
     
     @JsonbTransient
     private HostLock hostLock;
+    
+    @JsonbTransient
+    private Path confirmBallot;
     
     private final Random RAND = new Random();
     
@@ -121,6 +122,14 @@ public class Mutex {
         this.retryInterval = retryInterval;
     }
 
+    public Path getConfirmBallot() {
+        return confirmBallot;
+    }
+
+    public void setConfirmBallot(Path confirmBallot) {
+        this.confirmBallot = confirmBallot;
+    }
+    
     /**
      * Get locking directory
      * 
@@ -301,6 +310,32 @@ public class Mutex {
         Jsonb json = JsonbBuilder.create(conf);
         return json.toJson(this);
     }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setElectionFile(Path electionFile) {
+        this.electionFile = electionFile;
+    }
+
+    public void setRetryInterval(Duration retryInterval) {
+        this.retryInterval = retryInterval;
+    }
+
+    public void setStaleFileThreshold(Duration staleFileThreshold) {
+        this.staleFileThreshold = staleFileThreshold;
+    }
+
+    public void setStartJitter(Duration startJitter) {
+        this.startJitter = startJitter;
+    }
+
+    public void setEndJitter(Duration endJitter) {
+        this.endJitter = endJitter;
+    }
+    
+    
     
     
     /**

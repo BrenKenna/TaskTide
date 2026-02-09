@@ -15,8 +15,12 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.tasktide.itemstore.FileUtility;
+import org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException;
 
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFactory;
@@ -26,6 +30,7 @@ import org.tasktide.itemstore.mutex.utils.MutexConstants;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
+import org.tasktide.itemstore.mutex.model.MutexFileType;
 
 
 /**
@@ -43,7 +48,7 @@ public class MutexOrchestrator {
     private static final Logger LOGGER = LogManager.getLogger(MutexOrchestrator.class);
     
     // Flag for initialization
-    private static volatile boolean isConfigured = false;
+    private static volatile boolean isConfigured = false, pathsInit;
     
     // NFS & FileChannel mutexes
     private static volatile
@@ -112,8 +117,11 @@ public class MutexOrchestrator {
         if ( !isConfigured ) {
             throw new MutexCheckedException("Mutex Orhcestrator must be configured");
         }
-        MutexConstants.initializeDurations();
-        MutexConstants.initializePaths();
+        if ( !pathsInit ) {
+            MutexConstants.initializeDurations();
+            MutexConstants.initializePaths();
+            pathsInit = true;
+        }
         
         // Make mutex
         Mutex mutex;
@@ -122,6 +130,31 @@ public class MutexOrchestrator {
 
         // Perform locking
         performLock(mutex);
+    }
+    
+    
+    /**
+     * Try acquire lock until successful
+     */
+    public static void tryAcquireUntilSuccess() {
+        boolean done = false;
+        while ( !done ) {
+            boolean toFinish;
+            try {
+                acquireLock();
+                toFinish = true;
+            }
+            
+            catch ( Exception ex ) {
+                LOGGER.warn("Lock acquisition failed, retrying:\n{}", ex.getMessage());
+                MutexFilesUtils.waitJitterTime();
+                toFinish = false;
+            }
+            
+            if ( toFinish ) {
+                done = true;
+            }
+        }
     }
     
     
@@ -140,8 +173,22 @@ public class MutexOrchestrator {
             activeMutex = mutex;
             LOGGER.info("NFS Lock acquired");
         }
-        catch (MutexUncheckedException ex) {
-            throw new MutexCheckedException("Unable to acquire target mutex");
+        catch (MutexCheckedException ex) {
+            cleanUp(mutex);
+            activeMutex = null;
+            throw new MutexCheckedException("Unable to acquire target NFS mutex:\t" + mutex.getId());
+        }
+        
+        // Confirm leadership
+        try {
+            LOGGER.info("Confirming leadership:\t'{}'", mutex.getId());
+            confirmLeader(mutex);
+            LOGGER.info("Leadership confirmed:\t'{}'", mutex.getId());
+        }
+        catch (MutexCheckedException ex) {
+            cleanUp(mutex);
+            activeMutex = null;
+            throw new MutexCheckedException("Unable to confirm NFS mutex:\t" + mutex.getId());
         }
         
         // Acquire File Channel lock
@@ -151,7 +198,9 @@ public class MutexOrchestrator {
             LOGGER.info("File Channel Lock acquired");
         }
         catch (MutexCheckedException ex) {
-            throw new MutexCheckedException("Unable to acquire target mutex");
+            cleanUp(mutex);
+            activeMutex = null;
+            throw new MutexCheckedException("Unable to acquire target FileChannel mutex:\t" + mutex.getId());
         }
     }
     
@@ -185,7 +234,7 @@ public class MutexOrchestrator {
      * 
      * @throws MutexCheckedException 
      */
-    private synchronized static void releaseActiveLock() throws MutexCheckedException {
+    private static void releaseActiveLock() throws MutexCheckedException {
     
         // Release File Channel lock
         try {
@@ -217,5 +266,87 @@ public class MutexOrchestrator {
      */
     public static Mutex fetchActive() {
         return activeMutex;
+    }
+
+    
+    /**
+     * Confirm active leadership or dropout
+     * 
+     * @param mutex
+     * @throws MutexCheckedException 
+     */
+    public static void confirmLeader(Mutex mutex) throws MutexCheckedException {
+    
+        // Fetch leader
+        Mutex confirmLeaderMut;
+        Path confirmLeader;
+        Path leader = NFS_MUTEX.getStrategy()
+            .inferLeader(MutexFileType.ELECTION_FILE)
+            .orElseThrow( () ->
+                new MutexCheckedException("Unable to fetch active leader:\t" + mutex.getId())
+        );
+        
+        // Verify leadership
+        MutexFilesUtils.waitJitterTime();
+        Mutex leaderMut = MutexFilesUtils.readMutexFromFile(leader)
+            .orElseThrow( () -> 
+                new MutexCheckedException("Unable to read elected leader\t" + mutex.getId())
+        );
+        if ( !leaderMut.getId().equals( mutex.getId() ) ) {
+            throw new ActiveMutexCheckedException("Sanity checked leader does not match current\t" + mutex.getId());
+        }
+        
+        // Perform second round
+        Path confirmDir = MutexConstants.getLockDir().resolve("Confirm");
+        if (!MutexFilesUtils.writeConfirmatoryBallot(mutex, confirmDir)) {
+            throw new ActiveMutexCheckedException("Unable to write confirmatory ballot" + mutex.getId());
+        }
+        confirmLeader = MutexFilesUtils
+            .fetchOldest(confirmDir)
+            .orElseThrow( () -> {
+               MutexFilesUtils.removeConfirmatoryBallot(mutex);
+               return new ActiveMutexCheckedException("Unable to retrieve confirmatory ballots" + mutex.getId());
+            });
+        
+        // Check confirmed leader is me
+        confirmLeaderMut = MutexFilesUtils.readMutexFromFile(leader)
+            .orElseThrow( () ->
+                new MutexCheckedException("Unable to read confirmatory leader" + mutex.getId())
+            );
+        if ( !confirmLeaderMut.getId().equals(mutex.getId()) ) {
+            LOGGER.warn("Unable to confirm leadership, recasting ballot" + mutex.getId());
+            MutexFilesUtils.removeConfirmatoryBallot(mutex);
+            NFS_MUTEX.release(mutex);
+        }
+    }
+    
+    
+    /**
+     * 
+     * 
+     * @param mutex 
+     */
+    public static void cleanUp(Mutex mutex) {
+        
+        LOGGER.debug(
+            "Cleaning up lock file:\t'{}'",
+            mutex.getId()
+        );
+        FileUtility.dropFile(mutex.getLockFile());
+        LOGGER.debug(
+            "Cleaning up host file:\t'{}'",
+            mutex.getId()
+        );
+        FileUtility.dropFile(mutex.getHostFile());
+        LOGGER.debug(
+            "Cleaning up confirm ballot file:\t'{}'",
+            mutex.getId()
+        );
+        FileUtility.dropFile(mutex.getConfirmBallot());
+        LOGGER.debug(
+            "Cleaning up election file:\t'{}'",
+            mutex.getId()
+        );
+        FileUtility.dropFile(mutex.getElectionFile());
     }
 }

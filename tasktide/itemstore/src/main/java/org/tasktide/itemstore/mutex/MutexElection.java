@@ -20,6 +20,7 @@ import java.nio.file.Path;
 import org.tasktide.itemstore.mutex.model.MutexState;
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 import org.tasktide.itemstore.mutex.model.Mutex;
+import org.tasktide.itemstore.mutex.strategy.MutexStrategy;
 
 
 /**
@@ -28,6 +29,14 @@ import org.tasktide.itemstore.mutex.model.Mutex;
  * @author Brendan Kenna
  */
 interface MutexElection {
+    
+    
+    /**
+     * Fetch the composed {@link MutexStrategy}
+     * 
+     * @return {@link MutexStrategy}
+     */
+    public MutexStrategy getStrategy();
     
     
     /**

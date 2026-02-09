@@ -47,7 +47,6 @@ public class LockActionReleaseApp {
 
     // Random number generator
     private static final Logger LOGGER = LogManager.getLogger(LockActionReleaseApp.class);
-    private static final Random RAND = new Random();
     private static final Timestamps RESULTS = new Timestamps();
     
     private static void wireRealMethodsWithLogging(
@@ -101,7 +100,7 @@ public class LockActionReleaseApp {
         Path dataFile;
 
         // Configure args
-        LOGGER.info("Configuring arguments for testing");
+        LOGGER.info("APP-Configuring arguments for testing");
         dataFile = Paths.get(args[0]);
         
         // Configure constants
@@ -115,23 +114,29 @@ public class LockActionReleaseApp {
         );
         
         // Acquire lock
-        LOGGER.info("Acquring lock");
+        LOGGER.info("APP-Acquring lock");
         MutexFilesUtils.waitJitterTime();
-        MutexOrchestrator.acquireLock();
-        if (!Files.exists(dataFile)) {
-            LOGGER.info("Writing '0' to data file:\t'{}'", dataFile);
-            Files.writeString(dataFile, "0", StandardOpenOption.CREATE, StandardOpenOption.WRITE);
-        }
-        else {
-            int val = fetchLastInt(dataFile)+ 1;
-            LOGGER.info("Writing '{}' to data file:\t'{}'", val, dataFile);
-            Files.writeString(dataFile, "\n" + String.valueOf(val), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-        }
+        try {
+            MutexOrchestrator.tryAcquireUntilSuccess();
+            
+            if (!Files.exists(dataFile)) {
+                LOGGER.info("APP-Writing '0' to data file:\t'{}'", dataFile);
+                Files.writeString(dataFile, "0", StandardOpenOption.CREATE, StandardOpenOption.WRITE);
+            }
+            else {
+                int val = fetchLastInt(dataFile)+ 1;
+                LOGGER.info("APP-Writing '{}' to data file:\t'{}'", val, dataFile);
+                Files.writeString(dataFile, "\n" + String.valueOf(val), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+            }
 
-        // Release lock
-        LOGGER.info("Record written, releasing lock");
-        MutexFilesUtils.waitJitterTime();
-        MutexOrchestrator.releaseLock();
-        LOGGER.info("Lock released, test complete");
+            // Release lock
+            LOGGER.info("APP-Record written, releasing lock");
+            MutexOrchestrator.releaseLock();
+            LOGGER.info("APP-Lock released, test complete");
+        }
+        catch ( Exception ex ) {
+            LOGGER.error("Unable to acquire lock exiting:\n");
+            ex.printStackTrace();
+        }
     }
 }
