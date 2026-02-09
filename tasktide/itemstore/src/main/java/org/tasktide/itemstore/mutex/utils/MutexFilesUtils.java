@@ -23,12 +23,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.io.IOException;
-import java.time.Duration;
-import java.util.List;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -125,6 +125,9 @@ public class MutexFilesUtils {
     public static Path findPredecessor(Mutex mutex, MutexFileType fileType, int pos) {
         Path target = mutex.getFileForType(fileType).getParent().toAbsolutePath();
         List<Path> paths = fetchFiles(target).toList();
+        if ( pos > paths.size() ) {
+            return null;
+        }
         if ( pos - 1 < 0 ) {
             return null;
         }

@@ -17,6 +17,7 @@ package org.tasktide.itemstore.mutex.strategy;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.NoSuchElementException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -113,11 +114,9 @@ public class ElectionStrategy extends MutexStrategy {
      */
     @Override
     public synchronized boolean release(Mutex mutex) {
-        return (
-            MutexFilesUtils.deleteFile(mutex.getHostFile()) &&
-            MutexFilesUtils.deleteFile(mutex.getConfirmBallot()) &&
-            MutexFilesUtils.deleteFile(mutex.getElectionFile())
-        );
+        MutexFilesUtils.deleteFile(mutex.getHostFile());
+        MutexFilesUtils.deleteFile(mutex.getConfirmBallot());
+        return MutexFilesUtils.deleteFile(mutex.getElectionFile());
     }
     
     
@@ -130,7 +129,7 @@ public class ElectionStrategy extends MutexStrategy {
     
         // Set state as initialization
         MutexFilesUtils.waitJitterTime();
-        LOGGER.debug("Initializing mutex");
+        LOGGER.debug("Initializing mutex:\t'{}'", mutex.getId());
         mutex.setState(MutexState.INITIALIZATION);
         FileUtility.makeFile(mutex.getElectionFile());
         MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
@@ -162,9 +161,8 @@ public class ElectionStrategy extends MutexStrategy {
     
         // Exmaine position unchanging
         if ( state.getLastPos() == state.getPos() ) {
-            LOGGER.debug("Incrementing streak now to '{}' for mutex:\t'{}'", state.getStreak(), mutex.getId());
+            // LOGGER.debug("Incrementing streak now to '{}' for mutex:\t'{}'", state.getStreak(), mutex.getId());
             if ( state.getStreak() == limit ) {
-                LOGGER.debug("Streak limit hit '{}' recasting ballot:\t'{}'", limit, mutex.getId());
                 return PositionCheckValues.LIMIT_REACHED;
             }
             return PositionCheckValues.UNCHANGED;
@@ -183,19 +181,33 @@ public class ElectionStrategy extends MutexStrategy {
     public boolean evaluateLeaderTtl(Path leader) {
         
         // Examine whether leader has gone stale
-        if ( MutexFilesUtils.evaluateLeaderTimeToLive(leader) ) {
-            boolean clearStaleLeader = MutexFilesUtils.clearStaleLeader(leader);
+        boolean leaderState;
+        try {
+            leaderState = MutexFilesUtils.evaluateLeaderTimeToLive(leader);
+            
+            if ( leaderState ) {
+                boolean clearStaleLeader = MutexFilesUtils.clearStaleLeader(leader);
+                LOGGER.warn(
+                    "Removing below stale leader status:\t'{}'\n\n'{}'",
+                    clearStaleLeader,
+                    leader
+                );
+                return false;
+            }
+
+            else {
+                LOGGER.info("Leader passed TTL check-in:\t'{}'", leader);
+                return true;
+            }
+        }
+        
+        catch ( Exception ex ) {
             LOGGER.warn(
-                "Removing below stale leader status:\t'{}'\n\n'{}'",
-                clearStaleLeader,
-                leader
+                "Error verifiying leader TTL:\t'{}'\n'{}'",
+                leader,
+                ex
             );
             return false;
-        }
-            
-        else {
-            LOGGER.info("Leader passed TTL check-in:\t'{}'", leader);
-            return true;
         }
     }
     
@@ -312,19 +324,35 @@ public class ElectionStrategy extends MutexStrategy {
             switch ( loopDecision ) {
             
                 case ACQUIRED -> {
-                    acquired = true;
+                    LOGGER.info("Leadership acquired:\t'{}'", mutex.getId());
                 }
                 
                 case RECAST_BALLOT -> {
-                    MutexFilesUtils.recastBallot(mutex, acquired);
+                    LOGGER.info("Recasting ballot:\t'{}'", mutex.getId());
+                    MutexFilesUtils.recastBallot(mutex, true);
                 }
                 
                 case RESET_PREDECESSOR -> {
+                    LOGGER.info("Resetting predecessor:\t'{}'", mutex.getId());
                     state.setPredecessor(null);
                 }
                 
                 case CONTINUE -> {
-                    LOGGER.debug("Waiting for leadership for mutex:\t'{}'", mutex.getId());
+                    //LOGGER.debug("Waiting for leadership for mutex:\t'{}'", mutex.getId());
+                }
+            }
+            
+            // Verify leadership: Cover any FS visibility quirks etc
+            if ( loopDecision.isLoopDecision(LoopDecision.ACQUIRED) ) {
+                LOGGER.info("Verifying leadership:\t'{}'", mutex.getId());
+                MutexFilesUtils.waitJitterTime();
+                if ( this.inferPosition(mutex) == 0 ) {
+                    LOGGER.info("Leadership verified:\t'{}'", mutex.getId());
+                    acquired = true;
+                }
+                else {
+                    LOGGER.warn("Unable to verifiy leadership:\t'{}'", mutex.getId());
+                    acquired = false;
                 }
             }
         }

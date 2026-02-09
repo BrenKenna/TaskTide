@@ -17,10 +17,15 @@ package org.tasktide.itemstore.mutex.strategy;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.file.Path;
+
+import org.tasktide.itemstore.FileUtility;
+
 import org.tasktide.itemstore.mutex.MutexStrategyType;
+
 import org.tasktide.itemstore.mutex.model.HostLock;
 import org.tasktide.itemstore.mutex.model.HostLockFactory;
 import org.tasktide.itemstore.mutex.model.Mutex;
@@ -28,7 +33,10 @@ import org.tasktide.itemstore.mutex.model.MutexFileType;
 import org.tasktide.itemstore.mutex.model.MutexState;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
+
 /**
+ * Class specializing in applying, and releasing
+ *  {@link FileChannelMutex}
  *
  * @author Brendan Kenna
  */
@@ -44,6 +52,12 @@ public class FileChannelStrategy extends MutexStrategy {
     }
 
     
+    /**
+     * Apply {@link FileChannelMutex}
+     * 
+     * @param mutex
+     * @return boolean
+     */
     @Override
     public synchronized boolean apply(Mutex mutex) {
         
@@ -80,6 +94,13 @@ public class FileChannelStrategy extends MutexStrategy {
         }
     }
 
+    
+    /**
+     * Release {@link FileChannelMutex}
+     * 
+     * @param mutex
+     * @return boolean
+     */
     @Override
     public synchronized boolean release(Mutex mutex) {
         
@@ -102,16 +123,18 @@ public class FileChannelStrategy extends MutexStrategy {
 
             // Return closure state
             MutexFilesUtils.waitJitterTime();
+            FileUtility.dropFile(targetFile);
             return true;
         }
         
         catch (IOException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
 
     @Override
     public boolean cleanUp(Mutex mutex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.release(mutex);
     }
 }

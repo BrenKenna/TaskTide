@@ -117,7 +117,7 @@ public class LockActionReleaseApp {
         LOGGER.info("APP-Acquring lock");
         MutexFilesUtils.waitJitterTime();
         try {
-            MutexOrchestrator.acquireLock();
+            MutexOrchestrator.tryAcquireUntilSuccess();
             
             if (!Files.exists(dataFile)) {
                 LOGGER.info("APP-Writing '0' to data file:\t'{}'", dataFile);
@@ -131,7 +131,6 @@ public class LockActionReleaseApp {
 
             // Release lock
             LOGGER.info("APP-Record written, releasing lock");
-            MutexFilesUtils.waitJitterTime();
             MutexOrchestrator.releaseLock();
             LOGGER.info("APP-Lock released, test complete");
         }

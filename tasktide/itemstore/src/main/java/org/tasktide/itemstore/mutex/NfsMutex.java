@@ -77,7 +77,10 @@ class NfsMutex extends InterProcessMutex {
         
         // Otherwise throw error from rollback
         else {
-            throw new MutexCheckedException("Self as leader rollback occured");
+            throw new MutexCheckedException(
+                "Self as NFS-Leader rollback occured with mutex:\t" + 
+                mutex.getId()
+            );
         }
     }
     
@@ -185,7 +188,7 @@ class NfsMutex extends InterProcessMutex {
      * @throws MutexCheckedException 
      */
     @Override
-    public boolean release() throws MutexCheckedException {
+    public synchronized boolean release() throws MutexCheckedException {
         
         // Only leader can release
         if ( active == null ) {

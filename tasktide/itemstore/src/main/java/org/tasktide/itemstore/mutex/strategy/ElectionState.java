@@ -27,7 +27,7 @@ public class ElectionState {
     // Attributes
     private int pos = -1;
     private int lastPos = -1;
-    private int streak = -1;
+    private int streak = 0;
     private Path predecessor = null;
     private Path leader = null;
     

@@ -286,7 +286,7 @@ public class ComplexMutexOrchestratorTests {
     
         // Initialize test
         LOGGER.info(
-            "\n\n================ Multi-Processes Lock-Release-Queue  =================\n"
+            "\n\n================ Multi-Processes Lock-Release-Queue  ===================\n"
         );
         boolean assertionState;
         int nWorkers;

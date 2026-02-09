@@ -294,7 +294,11 @@ class MutexTestUtils {
                     "Lock acquired:\n'{}'",
                     MutexOrchestrator.fetchActive().toJsonDoc()
                );
+               logger.info("wairing");
+               MutexFilesUtils.waitJitterTime();
+               logger.info("releasing lock");
                MutexOrchestrator.releaseLock();
+               logger.info("lock released");
             }
             
             catch (MutexCheckedException ex) {

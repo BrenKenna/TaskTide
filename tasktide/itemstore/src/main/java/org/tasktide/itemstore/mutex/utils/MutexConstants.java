@@ -59,7 +59,7 @@ public class MutexConstants {
            retryInterval = Duration.ofMillis( RAND.nextLong(10L, 300L) );
            startJitter = Duration.ofMillis( RAND.nextLong(100L, 500L) );
            endJitter = Duration.ofMillis( RAND.nextLong(100L, 500L) );
-           staleFileThreshold = Duration.ofSeconds(10L);
+           staleFileThreshold = Duration.ofMillis(10000L);
            durationsInitialized = true;
         }
     }
