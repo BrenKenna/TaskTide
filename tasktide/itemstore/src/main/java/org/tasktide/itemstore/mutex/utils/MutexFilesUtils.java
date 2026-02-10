@@ -176,7 +176,7 @@ public class MutexFilesUtils {
                 return true;
             }
             
-            catch (IOException ex) {
+            catch (Exception ex) {
                 ex.printStackTrace();
                 return false;
             }
@@ -207,7 +207,7 @@ public class MutexFilesUtils {
             return true;
         }
         
-        catch (IOException ex) {
+        catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }
@@ -263,11 +263,16 @@ public class MutexFilesUtils {
      * @return boolean
      */
     public static boolean waitJitterTime() {
+        // long procId = ProcessHandle.current().pid();
+        long value = MutexConstants.getRandomJitter().toMillis();
+        // LOGGER.debug("Process-{} waiting '{}'ms", procId, value);
         try {
-            TimeUnit.MILLISECONDS.sleep(MutexConstants.getRandomJitter().toMillis());
+            TimeUnit.MILLISECONDS.sleep(value);
+            // LOGGER.debug("Process-{} waiting complete '{}'ms", procId, value);
             return true;
         }
         catch (Exception ex) {
+            // LOGGER.debug("Process-{} waiting complete '{}'ms", procId, value);
             return false;
         } 
     }
@@ -325,7 +330,7 @@ public class MutexFilesUtils {
             return true;
         }
         
-        catch (IOException ex) {
+        catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }
@@ -337,8 +342,9 @@ public class MutexFilesUtils {
      * 
      * @param mutex
      * @param fileType
+     * @throws org.tasktide.itemstore.mutex.exceptions.MutexCheckedException
      */
-    public static void writeMutex(Mutex mutex, MutexFileType fileType) {
+    public static void writeMutex(Mutex mutex, MutexFileType fileType) throws MutexCheckedException {
         
         // Delete file if exists
         switch ( fileType ) {
@@ -359,7 +365,7 @@ public class MutexFilesUtils {
             }
             
             default -> {
-                throw new MutexUncheckedException("Mutex file type must one of:\tElection, Host, Lock");
+                throw new MutexCheckedException("Mutex file type must one of:\tElection, Host, Lock");
             }
         }
     }
@@ -475,7 +481,7 @@ public class MutexFilesUtils {
             return true;
         }
         
-        catch (IOException ex) {
+        catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }

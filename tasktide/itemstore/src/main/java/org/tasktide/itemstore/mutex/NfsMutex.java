@@ -16,6 +16,8 @@
 package org.tasktide.itemstore.mutex;
 
 import java.nio.file.Path;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.model.MutexFactory;
@@ -27,7 +29,6 @@ import org.tasktide.itemstore.mutex.strategy.ElectionStrategy;
 import org.tasktide.itemstore.mutex.strategy.MutexStrategy;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
-import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
@@ -36,9 +37,10 @@ import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
  *
  * @author Brendan Kenna
  */
-class NfsMutex extends InterProcessMutex {
+public class NfsMutex extends InterProcessMutex {
     
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(NfsMutex.class);
     private final MutexStrategy ELECTION_STRAT = new ElectionStrategy();
     private volatile Mutex active;
     
@@ -62,13 +64,6 @@ class NfsMutex extends InterProcessMutex {
      */
     @Override
     public void waitForLock(Mutex mutex) throws MutexCheckedException {
-        
-        // Wait until no active leader
-        boolean hasActive = true;
-        while ( hasActive ) {
-            MutexFilesUtils.waitJitterTime();
-            hasActive = active != null;
-        }
         
         // Set active once elected
         if ( ELECTION_STRAT.apply(mutex) ) {
@@ -143,7 +138,7 @@ class NfsMutex extends InterProcessMutex {
         Mutex mutex = MutexFilesUtils
             .readMutexFromFile(targetFile)
             .orElseThrow(
-                () -> new MutexUncheckedException("Error no mutex found for host lock")
+                () -> new MutexCheckedException("Error no mutex found for host lock")
         );
         
         // Release if valid

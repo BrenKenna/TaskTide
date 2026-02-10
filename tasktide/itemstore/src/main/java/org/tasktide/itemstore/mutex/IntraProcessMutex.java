@@ -25,7 +25,7 @@ import org.tasktide.itemstore.mutex.model.HostLock;
  * 
  * @author Brendan Kenna
  */
-abstract class IntraProcessMutex implements MutexElection {
+public abstract class IntraProcessMutex implements MutexElection {
 
     
 }

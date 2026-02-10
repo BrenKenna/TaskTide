@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator;
 import static org.mockito.Mockito.spy;
 import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 

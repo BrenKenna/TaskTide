@@ -22,3 +22,11 @@ jar {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)
 }
+
+task runLockApp(type: JavaExec) {
+    group = 'application'
+    description = 'Run LockActionReleaseApp with path argument'
+    mainClass.set('org.tasktide.itemstore.mutex.LockActionReleaseApp')
+    classpath = sourceSets.test.runtimeClasspath // includes main, test, and all dependencies
+    args = ["/home/bren/testing/results.txt"]
+}

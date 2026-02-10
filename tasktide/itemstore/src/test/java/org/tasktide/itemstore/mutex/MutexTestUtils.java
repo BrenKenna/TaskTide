@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

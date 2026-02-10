@@ -13,13 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore.mutex;
+package org.tasktide.itemstore.mutex.orchestrator;
 
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.tasktide.itemstore.FileUtility;
+import org.tasktide.itemstore.mutex.FileChannelMutex;
+import org.tasktide.itemstore.mutex.MutexElection;
+import org.tasktide.itemstore.mutex.NfsMutex;
 import org.tasktide.itemstore.mutex.exceptions.ActiveMutexCheckedException;
 
 import org.tasktide.itemstore.mutex.model.Mutex;
@@ -108,12 +111,12 @@ public class MutexOrchestrator {
      * Acquire central {@link MutexElection} through {@link NfsMutex} lock
      *  then requesting {@link FileChannel} lock
      * 
-     * @throws MutexCheckedException 
+     * @return OrchestratorResult
+     * @throws MutexCheckedException
      */
-    public static void acquireLock()
-      throws MutexCheckedException {
+    public static OrchestratorResult acquireLock() throws MutexCheckedException {
         
-        // Check if orchestrator is configured
+        // Handle orchestrator configuration
         if ( !isConfigured ) {
             throw new MutexCheckedException("Mutex Orhcestrator must be configured");
         }
@@ -129,32 +132,54 @@ public class MutexOrchestrator {
         mutex = MutexFactory.create();
 
         // Perform locking
-        performLock(mutex);
+        return performLock(mutex);
     }
     
     
     /**
      * Try acquire lock until successful
+     * @throws java.lang.Exception
      */
-    public static void tryAcquireUntilSuccess() {
+    public static void tryAcquireUntilSuccess() throws Exception {
+        
+        // Initialize variables
+        int counter = 0;
+        long processId = ProcessHandle.current().pid();
         boolean done = false;
+        OrchestratorResult result;
+        
         while ( !done ) {
-            boolean toFinish;
-            try {
-                acquireLock();
-                toFinish = true;
-            }
             
-            catch ( Exception ex ) {
-                LOGGER.warn("Lock acquisition failed, retrying:\n{}", ex.getMessage());
-                MutexFilesUtils.waitJitterTime();
-                toFinish = false;
-            }
+            // Try acquire process
+            result = acquireLock();
             
-            if ( toFinish ) {
+            // Flag sucess
+            if ( result.isSuccess() ) {
                 done = true;
+                LOGGER.info("Process-{} Completed with counter value:\t'{}'", processId, counter);
+            }
+            
+            // Otherwise handle failure
+            else {
+                LOGGER.warn(
+                    "Process-{} Attempt {} failed: {} | Exception: {}",
+                    processId,
+                    counter,
+                    result.getStatus(),
+                    result.getException() != null ? result.getException().getMessage() : "none"
+                );
+                counter++;
+                MutexFilesUtils.waitJitterTime();
             }
         }
+        
+        // Log completion
+        LOGGER.info(
+            "Process-{} Loop terminating with done = '{}', and counter = '{}'",
+            processId,
+            done,
+            counter
+        );
     }
     
     
@@ -164,19 +189,24 @@ public class MutexOrchestrator {
      * @param mutex
      * @throws MutexCheckedException 
      */
-    private static void performLock(Mutex mutex) throws MutexCheckedException {
-    
+    private static OrchestratorResult performLock(Mutex mutex) {
+
         // Acquire NFS lock
         try {
-            LOGGER.info("Waiting for NFS lock");
+            LOGGER.info("Waiting for NFS lock for:\t'{}'", mutex.getId());
             NFS_MUTEX.acquire(mutex);
             activeMutex = mutex;
-            LOGGER.info("NFS Lock acquired");
+            LOGGER.info("NFS Lock acquired for:\t'{}'", mutex.getId());
         }
         catch (MutexCheckedException ex) {
             cleanUp(mutex);
             activeMutex = null;
-            throw new MutexCheckedException("Unable to acquire target NFS mutex:\t" + mutex.getId());
+            return new OrchestratorResult(
+                false,
+                OrchestratorStatus.NFS_LOCK_FAILED,
+                OrchestratorAction.LOCK,
+                ex
+            );
         }
         
         // Confirm leadership
@@ -188,20 +218,38 @@ public class MutexOrchestrator {
         catch (MutexCheckedException ex) {
             cleanUp(mutex);
             activeMutex = null;
-            throw new MutexCheckedException("Unable to confirm NFS mutex:\t" + mutex.getId());
+            return new OrchestratorResult(
+                false,
+                OrchestratorStatus.LEADERSHIP_CONFIRMATION_FAILED,
+                OrchestratorAction.LOCK,
+                ex
+            );
         }
         
         // Acquire File Channel lock
         try {
-            LOGGER.info("Waiting for FileChannel lock");
+            LOGGER.info("Waiting for FileChannel lock for:\t'{}'", mutex.getId());
             FILE_CHANNEL_MUTEX.acquire(mutex);
-            LOGGER.info("File Channel Lock acquired");
+            LOGGER.info("File Channel Lock acquired for:\t'{}'", mutex.getId());
         }
         catch (MutexCheckedException ex) {
             cleanUp(mutex);
             activeMutex = null;
-            throw new MutexCheckedException("Unable to acquire target FileChannel mutex:\t" + mutex.getId());
+            return new OrchestratorResult(
+                false,
+                OrchestratorStatus.FILE_CHANNEL_LOCK_FAILED,
+                OrchestratorAction.LOCK,
+                ex
+            );
         }
+        
+        // Successful result
+        LOGGER.info("Lock successful for:\t'{}'", mutex.getId());
+        return new OrchestratorResult(
+            true,
+            OrchestratorStatus.SUCCESS,
+            OrchestratorAction.LOCK
+        );
     }
     
     
@@ -241,7 +289,7 @@ public class MutexOrchestrator {
             LOGGER.info("Releasing FileChannel mutex");
             FILE_CHANNEL_MUTEX.release(activeMutex);
         }
-        catch (MutexCheckedException ex) {
+        catch (Exception ex) {
             throw new MutexCheckedException("Unable to release file channel mutex");
         }
         
@@ -253,7 +301,7 @@ public class MutexOrchestrator {
             );
             NFS_MUTEX.release(activeMutex);
         }
-        catch (MutexUncheckedException ex) {
+        catch (Exception ex) {
             throw new MutexCheckedException("Unable to release NFS mutex");
         }
     }
@@ -283,46 +331,50 @@ public class MutexOrchestrator {
         Path leader = NFS_MUTEX.getStrategy()
             .inferLeader(MutexFileType.ELECTION_FILE)
             .orElseThrow( () ->
-                new MutexCheckedException("Unable to fetch active leader:\t" + mutex.getId())
+                new ActiveMutexCheckedException("Unable to fetch active leader:\t" + mutex.getId())
         );
         
         // Verify leadership
         MutexFilesUtils.waitJitterTime();
         Mutex leaderMut = MutexFilesUtils.readMutexFromFile(leader)
             .orElseThrow( () -> 
-                new MutexCheckedException("Unable to read elected leader\t" + mutex.getId())
+                new ActiveMutexCheckedException("Unable to read elected leader:\t" + mutex.getId())
         );
         if ( !leaderMut.getId().equals( mutex.getId() ) ) {
-            throw new ActiveMutexCheckedException("Sanity checked leader does not match current\t" + mutex.getId());
+            throw new ActiveMutexCheckedException("Sanity checked leader does not match current:\t" + mutex.getId());
         }
         
         // Perform second round
         Path confirmDir = MutexConstants.getLockDir().resolve("Confirm");
         if (!MutexFilesUtils.writeConfirmatoryBallot(mutex, confirmDir)) {
-            throw new ActiveMutexCheckedException("Unable to write confirmatory ballot" + mutex.getId());
+            throw new ActiveMutexCheckedException("Unable to write confirmatory ballot:\t" + mutex.getId());
         }
         confirmLeader = MutexFilesUtils
             .fetchOldest(confirmDir)
             .orElseThrow( () -> {
                MutexFilesUtils.removeConfirmatoryBallot(mutex);
-               return new ActiveMutexCheckedException("Unable to retrieve confirmatory ballots" + mutex.getId());
+               return new ActiveMutexCheckedException("Unable to retrieve confirmatory ballots:\t" + mutex.getId());
             });
         
         // Check confirmed leader is me
         confirmLeaderMut = MutexFilesUtils.readMutexFromFile(leader)
             .orElseThrow( () ->
-                new MutexCheckedException("Unable to read confirmatory leader" + mutex.getId())
+                new ActiveMutexCheckedException("Unable to read confirmatory leader:\t" + mutex.getId())
             );
         if ( !confirmLeaderMut.getId().equals(mutex.getId()) ) {
-            LOGGER.warn("Unable to confirm leadership, recasting ballot" + mutex.getId());
+            LOGGER.warn("Unable to confirm leadership, recasting ballot:\t'{}'" + mutex.getId());
             MutexFilesUtils.removeConfirmatoryBallot(mutex);
-            NFS_MUTEX.release(mutex);
+            cleanUp(mutex);
+            throw new ActiveMutexCheckedException("Leadership confirmation failed:\t" + mutex.getId());
+        }
+        else {
+            LOGGER.info("Leadership confirmed:\t'{}'", mutex.getId());
         }
     }
     
     
     /**
-     * 
+     * Clear files
      * 
      * @param mutex 
      */

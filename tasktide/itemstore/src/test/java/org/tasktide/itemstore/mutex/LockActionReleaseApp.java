@@ -25,11 +25,13 @@ import java.nio.file.Paths;
 
 import java.nio.file.StandardOpenOption;
 
-import java.util.Random;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
+
+import org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator;
+
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
@@ -48,28 +50,6 @@ public class LockActionReleaseApp {
     // Random number generator
     private static final Logger LOGGER = LogManager.getLogger(LockActionReleaseApp.class);
     private static final Timestamps RESULTS = new Timestamps();
-    
-    private static void wireRealMethodsWithLogging(
-        MutexElection nfs,
-        MutexElection fileChannel,
-        Logger logger
-    ) throws MutexCheckedException {
-
-        doAnswer(invoc -> {
-            invoc.callRealMethod();
-            logger.info("NFS Lock acquire -> {}", MutexOrchestrator.fetchActive());
-            RESULTS.setPostLock(System.currentTimeMillis());
-            return null;
-        }).when(nfs).acquire(any(Mutex.class));
-
-        doAnswer(invoc -> {
-            RESULTS.setEnd(System.currentTimeMillis());
-            invoc.callRealMethod();
-            logger.info("File Channel Lock release -> {}", MutexOrchestrator.fetchActive());
-            return null;
-        }).when(fileChannel).release(any(Mutex.class));
-    }
-    
     
     public static int fetchLastInt(Path file) throws IOException {
         int last = -1;
@@ -106,12 +86,7 @@ public class LockActionReleaseApp {
         // Configure constants
         MutexTestUtils.configurePaths();
         MutexLabellingUtils.configure();
-        OrchestratorSpies spies = OrchestratorSpies.configure();
-        wireRealMethodsWithLogging(
-            spies.getNfsMutex(),
-            spies.getFileChannelMutex(),
-            LOGGER
-        );
+        MutexOrchestrator.configure();
         
         // Acquire lock
         LOGGER.info("APP-Acquring lock");
@@ -135,8 +110,7 @@ public class LockActionReleaseApp {
             LOGGER.info("APP-Lock released, test complete");
         }
         catch ( Exception ex ) {
-            LOGGER.error("Unable to acquire lock exiting:\n");
-            ex.printStackTrace();
+            LOGGER.error("Unable to acquire lock exiting:\n\n'{}'", ex);
         }
     }
 }

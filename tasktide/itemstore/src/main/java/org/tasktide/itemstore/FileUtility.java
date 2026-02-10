@@ -106,9 +106,26 @@ public class FileUtility {
      * Deletes file
      * 
      * @param path
-     * @return 
+     * @return boolean
      */
     public static boolean dropFile(Path path) {
+        
+        // Pass if null
+        if ( path == null ) {
+            LOGGER.warn(
+                "Warning provided paths is null, unable to delete:\n'{}'\n",
+                path
+            );
+            return false;
+        }
+        
+        // Pass if non-existent
+        if ( !Files.exists(path) ) {
+            LOGGER.warn(
+                "Warning provided path does not exist, unable to delete:\n'{}'\n",
+                path
+            );
+        }
         
         // Drop provided file
         try {
@@ -119,7 +136,7 @@ public class FileUtility {
         // Drop failed for another reason
         catch (Exception ex) {
             LOGGER.warn(
-                "Warning could not delete target file, display error:\t'{}'",
+                "Warning could not delete target file, displaying error:\t'{}'",
                 path, ex
             );
             return false;

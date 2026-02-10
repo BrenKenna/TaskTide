@@ -33,7 +33,7 @@ import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
 import org.tasktide.itemstore.mutex.model.Mutex;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 import org.tasktide.itemstore.mutex.utils.MutexLabellingUtils;
-import org.tasktide.itemstore.mutex.MutexOrchestrator;
+import org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator;
 
 
 /**

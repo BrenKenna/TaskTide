@@ -31,7 +31,7 @@ import org.tasktide.itemstore.mutex.model.Mutex;
  *
  * @author Brendan Kenna
  */
-abstract class InterProcessMutex implements MutexElection {
+public abstract class InterProcessMutex implements MutexElection {
     
 
     // Attributes

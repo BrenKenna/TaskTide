@@ -28,7 +28,7 @@ import org.tasktide.itemstore.mutex.strategy.MutexStrategy;
  *
  * @author Brendan Kenna
  */
-interface MutexElection {
+public interface MutexElection {
     
     
     /**
@@ -51,6 +51,8 @@ interface MutexElection {
      * Acquire lock on {@link Mutex}
      * 
      * @param mutex
+     * @return boolean
+     * 
      * @throws MutexCheckedException 
      */
     public boolean acquire(Mutex mutex) throws MutexCheckedException;
@@ -60,6 +62,8 @@ interface MutexElection {
      * Acquire a lock on target file
      * 
      * @param targetFile
+     * @return boolean
+     * 
      * @throws MutexCheckedException 
      */
     public boolean acquire(Path targetFile) throws MutexCheckedException;
@@ -77,6 +81,8 @@ interface MutexElection {
      * Release lock
      * 
      * @param mutex
+     * @return boolean
+     * 
      * @throws MutexCheckedException 
      */
     public boolean release(Mutex mutex) throws MutexCheckedException;
@@ -86,6 +92,8 @@ interface MutexElection {
      * Release lock
      * 
      * @param targetFile
+     * @return boolean
+     * 
      * @throws MutexCheckedException 
      */
     public boolean release(Path targetFile) throws MutexCheckedException;
@@ -94,6 +102,8 @@ interface MutexElection {
     
     /**
      * Release active lock
+     * 
+     * @return boolean
      * 
      * @throws MutexCheckedException 
      */

@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore.mutex;
 
+import org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -286,7 +287,7 @@ public class ComplexMutexOrchestratorTests {
     
         // Initialize test
         LOGGER.info(
-            "\n\n================ Multi-Processes Lock-Release-Queue  ===================\n"
+            "\n\n================ Multi-Processes Lock-Release-Queue  =====================\n"
         );
         boolean assertionState;
         int nWorkers;
@@ -296,7 +297,7 @@ public class ComplexMutexOrchestratorTests {
         
         // Configure test
         LOGGER.info("Configuring test");
-        nWorkers = 25;
+        nWorkers = 30;
         resultsFile = MutexConstants.getLockDir().resolve("multi-process.txt");
         MutexOrchestrator.configure();
         

@@ -35,7 +35,7 @@ import org.tasktide.itemstore.mutex.strategy.MutexStrategy;
  *
  * @author Brendan Kenna
  */
-class FileChannelMutex extends IntraProcessMutex {
+public class FileChannelMutex extends IntraProcessMutex {
     
     // Attributes
     private final MutexStrategy FILE_CHANNEL_STRAT = new FileChannelStrategy();

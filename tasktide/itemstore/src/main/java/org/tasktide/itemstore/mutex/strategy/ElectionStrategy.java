@@ -17,7 +17,6 @@ package org.tasktide.itemstore.mutex.strategy;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.NoSuchElementException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,7 +31,6 @@ import org.tasktide.itemstore.mutex.model.MutexState;
 import org.tasktide.itemstore.mutex.utils.MutexFilesUtils;
 
 import org.tasktide.itemstore.mutex.exceptions.MutexCheckedException;
-import org.tasktide.itemstore.mutex.exceptions.MutexUncheckedException;
 
 
 /**
@@ -83,9 +81,16 @@ public class ElectionStrategy extends MutexStrategy {
         LOGGER.debug("Active leader with Id:\t'{}'", mutex.getId());
         mutex.setState(MutexState.HOST_LOCKED);
         LOGGER.debug("State set, writing mutex for:\t'{}'", mutex.getId());
-        MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
-        LOGGER.debug("Mutex written for:\t'{}'", mutex.getId());
-        return MutexFilesUtils.writeHostFile(mutex);
+        try {
+            MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+            LOGGER.debug("Mutex written for:\t'{}'", mutex.getId());
+            return MutexFilesUtils.writeHostFile(mutex);
+        }
+        catch (MutexCheckedException ex) {
+            LOGGER.error("Unable to read leader mutex, rolling back:\t'{}'", mutex.getId());
+            this.cleanUp(mutex);
+            return false;
+        }
     }
     
     
@@ -132,15 +137,23 @@ public class ElectionStrategy extends MutexStrategy {
         LOGGER.debug("Initializing mutex:\t'{}'", mutex.getId());
         mutex.setState(MutexState.INITIALIZATION);
         FileUtility.makeFile(mutex.getElectionFile());
-        MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
-
-        // Fetch position and active leader
-        LOGGER.debug("Mutex initialized, inferring queue position");
-        inferLeader( MutexFileType.ELECTION_FILE ).orElseThrow(
-            () -> new MutexUncheckedException("Error no election files found")
-        );
-        mutex.setState(MutexState.WAITING);
-        MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+        try {
+            MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+            
+            // Fetch position and active leader
+            LOGGER.debug("Mutex initialized, inferring queue position");
+            if ( !inferLeader( MutexFileType.ELECTION_FILE ).isPresent() ) {
+                mutex.setState(MutexState.WAITING);
+                MutexFilesUtils.writeMutex(mutex, MutexFileType.ELECTION_FILE);
+            }
+            else {
+                LOGGER.warn("No election files detected");
+            }
+        }
+        catch (MutexCheckedException ex) {
+            LOGGER.error("Unable to write mutex, rolling back:\t'{}'", mutex.getId());
+            this.cleanUp(mutex);
+        }
     }
     
     
