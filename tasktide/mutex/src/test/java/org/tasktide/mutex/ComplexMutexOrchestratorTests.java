@@ -290,7 +290,7 @@ public class ComplexMutexOrchestratorTests {
     
         // Initialize test
         LOGGER.info(
-            "\n\n================ Multi-Processes Lock-Release-Queue  =====================\n"
+            "\n\n================ Multi-Processes Lock-Release-Queue  ===================\n"
         );
         boolean assertionState;
         int nWorkers;
@@ -300,7 +300,7 @@ public class ComplexMutexOrchestratorTests {
         
         // Configure test
         LOGGER.info("Configuring test");
-        nWorkers = 30;
+        nWorkers = 40;
         resultsFile = MutexConstants.getLockDir().resolve("multi-process.txt");
         MutexOrchestrator.configure();
         
