@@ -33,6 +33,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import org.tasktide.mutex.orchestrator.MutexOrchestrator;
+import org.tasktide.mutex.utils.DefaultMutexPaths;
+
 
 /**
  * Abstract ItemStore to implement getting ItemStore attributes,  
@@ -44,6 +50,7 @@ import java.util.Random;
 public abstract class AbstractItemStore implements ItemStore {
     
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(AbstractItemStore.class);
     private final String storeName;
     private final Path dbDirectory, masterDB, protoDB, masterLock;
     private FileChannel fileChannel;
@@ -79,8 +86,55 @@ public abstract class AbstractItemStore implements ItemStore {
             String msg = String.format("Error, cannot write to the configured path:\t%s", this.masterDB);
             throw new IllegalArgumentException(msg);
         }
+        
+        DefaultMutexPaths.config();
     }
 
+    
+    /**
+     * Wait for mutex to be acquired
+     * 
+     * @return boolean
+     */
+    protected boolean waitForMutex() {
+    
+        try {
+            LOGGER.info("Acquiring mutex");
+            MutexOrchestrator.tryAcquireUntilSuccess();
+            LOGGER.info("Mutex acquired");
+            return true;
+        }
+        catch ( Exception ex ) {
+            LOGGER.warn(
+                "Warning unable to acquire mutex, displaying error:\n'{}'",
+                ex
+            );
+            return false;
+        }
+    }
+    
+    
+    /**
+     * Release mutex
+     * 
+     * @return boolean
+     */
+    protected boolean releaseMutex() {
+        try {
+            LOGGER.info("Releasing mutex");
+            MutexOrchestrator.releaseLock();
+            LOGGER.info("Released mutex");
+            return true;
+        }
+        catch ( Exception ex ) {
+            LOGGER.warn(
+                "Warning unable to release mutex, displaying error:\n",
+                ex
+            );
+            return false;
+        }
+    }
+    
     
     /**
      * Checks whether configured directory is writable
@@ -156,8 +210,17 @@ public abstract class AbstractItemStore implements ItemStore {
      */
     private boolean tryLock() throws IOException {
         
+        // Try acquire lock
+        if ( !this.waitForMutex() ) {
+            LOGGER.error("Unable to acquire mutex for DB lock");
+            return false;
+        }
+        
         // Create masterDB lock file if non-existent
-        if ( !this.makeMasterLockFile()) {return false;}
+        if ( !this.makeMasterLockFile()) {
+            LOGGER.error("Unable to acquire DB lock");
+            return false;
+        }
         
         // Try create a lock
         try {
@@ -168,7 +231,7 @@ public abstract class AbstractItemStore implements ItemStore {
         }
         
         // Lock creation failed
-        catch (IOException e) { throw e;}
+        catch (IOException ex) { throw ex;}
     }
 
     
@@ -243,10 +306,18 @@ public abstract class AbstractItemStore implements ItemStore {
             if ( this.fileChannel != null && this.fileChannel.isOpen() ) {
                 fileChannel.close();
             }
+            
+            // Release mutex
+            this.releaseMutex();
             return true;
-        } catch (IOException ex) {
+        }
+        
+        catch (IOException ex) {
+            this.releaseMutex();
             return false;
         }
+        
+        
     }
     
     

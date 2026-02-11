@@ -74,7 +74,7 @@ public class ItemStoreTests {
     public void makeItemStore() {
     
         // Initialize test
-        logger.info("\n\n================ Can make ItemStore Test ================\n");
+        logger.info("\n\n================ Can make ItemStore Test ===============\n");
         boolean assertionState;
         Item item, result;
         ItemStore itemStore;

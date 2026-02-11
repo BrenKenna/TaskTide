@@ -32,6 +32,7 @@ configurations {
 dependencies {
 
     // Project core lib
+    implementation project(':mutex')
     implementation  project(':itemstore')
     implementation  project(':core')
     implementation  project(':engine')

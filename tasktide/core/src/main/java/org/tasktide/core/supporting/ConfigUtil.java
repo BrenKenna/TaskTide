@@ -27,7 +27,7 @@ import java.util.Map.Entry;
 
 import java.util.Properties;
 import org.eclipse.microprofile.config.spi.ConfigProviderResolver;
-import org.tasktide.itemstore.FileUtility;
+import org.tasktide.mutex.utils.FileUtility;
 
 
 /**

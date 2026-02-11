@@ -1,5 +1,6 @@
 rootProject.name = 'tasktide'
 
+include ':mutex'
 include ':itemstore'
 include ':core'
 include ':engine'
