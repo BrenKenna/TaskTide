@@ -15,27 +15,32 @@
  */
 package org.tasktide.mutex;
 
-import org.tasktide.mutex.actor.MutexActor;
+
 import java.io.IOException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 
+
+import org.tasktide.mutex.actor.MutexActor;
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 
 import org.tasktide.mutex.utils.MutexConstants;
@@ -341,7 +346,7 @@ class MutexTestUtils {
                 "java",
                 "-cp",
                 System.getProperty("java.class.path"),
-                "org.tasktide.itemstore.mutex.LockActionReleaseApp",
+                "org.tasktide.mutex.LockActionReleaseApp",
                 resultsFile.toString()
             );
             

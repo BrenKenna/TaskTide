@@ -25,14 +25,10 @@ import java.nio.file.Paths;
 
 import java.nio.file.StandardOpenOption;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doAnswer;
-
 import org.tasktide.mutex.exceptions.MutexCheckedException;
 
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 
-import org.tasktide.mutex.model.Mutex;
 import org.tasktide.mutex.utils.MutexFilesUtils;
 import org.tasktide.mutex.utils.MutexLabellingUtils;
 
