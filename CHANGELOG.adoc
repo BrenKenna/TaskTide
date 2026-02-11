@@ -21,13 +21,30 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 === 2). Bugs 
 
+==== Mutex
+
+- [/] Slow queue for >30 elements
++
+--
+        - Still works, but becomes slow after this as 40 took 3mins. 15-25 is a good number.
+        - Bucketing strategy will be required whose size is this limit.
+        - Likely operate recursively, splitting 100 into 10 buckets fine. But likely be more than that.
+        - Bucket leader claiming requires recursively leadership across buckets up to root queue.
+        - Eases listing permissions, making them quicker.
+        - Decision still sort of slow though, maybe reduce file deletion frequency
+                -> Maybe implementing client can be aware of this and implement sharding per workflow
+                -> ManagerClient aggregates the read view, can occasionally poll for updates?
+                -> Logical division & isolation of queue based on queue, that is eventually consistent?
+--
+
 ==== ItemStore
 
-- [/] Multi-threading with RocksDB
+- [X] Multi-threading with RocksDB <- Resolved with TaskTide-Mutex
 +
 --
         - Trying synchronizing the Open/Close connection methods.
         - Confirmatory unit test like Processor/Executor?
+        - Sanity check with jobs on HPC anyway
 --
 
 
@@ -69,6 +86,8 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 
 ==== Outstanding
+
+- [X] Adds ItemStore-Mutex
 - [] Review TaskTideService, and TaskTideRepository unit-tests.
 - [] Bean injection quirk between NetBeans & command-line.
 - [] Unit tests need to be executed separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB.
