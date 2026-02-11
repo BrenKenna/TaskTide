@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+description = 'tasktide:mutex'
+group = 'org.tasktide.mutex'
+version = '0.9.0'
+
+dependencies { }
+
+jar {
+    archiveBaseName.set("tasktide-${project.name}")
+    archiveVersion.set(version)
+}
+
+task runLockApp(type: JavaExec) {
+    group = 'application'
+    description = 'Run LockActionReleaseApp with path argument'
+    mainClass.set('org.tasktide.mutex.LockActionReleaseApp')
+    classpath = sourceSets.test.runtimeClasspath
+    args = ["/home/bren/testing/results.txt"]
+}
