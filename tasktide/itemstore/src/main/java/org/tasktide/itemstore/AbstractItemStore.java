@@ -35,6 +35,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.tasktide.mutex.exceptions.MutexUncheckedException;
 
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 import org.tasktide.mutex.utils.DefaultMutexPaths;
@@ -87,7 +88,12 @@ public abstract class AbstractItemStore implements ItemStore {
             throw new IllegalArgumentException(msg);
         }
         
-        DefaultMutexPaths.config();
+        try {
+            DefaultMutexPaths.config();
+        }
+        catch (MutexUncheckedException ex) {
+            LOGGER.warn("Mutex already configured");
+        }
     }
 
     

@@ -16,10 +16,8 @@
 package org.tasktide.core.services;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideMapper;
-import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 
@@ -38,19 +36,17 @@ import org.tasktide.core.model.job_env.metrics.MetricProfile;
  * 
  * @author Brendan Kenna
  */
-public class JobEnvironmentService implements TaskTideMapper<JobEnvironment, MetricProfile>, TaskTideService<JobEnvironment> {
-    
-    // Attributes
-    private final TaskTideRepository<JobEnvironment> repo;
+public class JobEnvironmentService extends AbstractTaskTideService<JobEnvironment>
+    implements TaskTideMapper<JobEnvironment, MetricProfile>
+{
 
-    
     /**
      * Constucted with {@link TaskTideRepository}
      * 
      * @param repo 
      */
     public JobEnvironmentService(TaskTideRepository<JobEnvironment> repo) {
-        this.repo = repo;
+        super(repo);
     }
 
     
@@ -64,143 +60,5 @@ public class JobEnvironmentService implements TaskTideMapper<JobEnvironment, Met
     @Override
     public List<MetricProfile> getThroughLink(TaskTideService<MetricProfile> mappingServ, JobEnvironment model) {
         return mappingServ.viewByField("jobEnvId", model.getId());
-    }
-
-    
-    /**
-     * Inserts provided record
-     * 
-     * @param model
-     * @return {@link JobEnvironment}
-     */
-    @Override
-    public JobEnvironment appendModel(JobEnvironment model) {
-        return this.repo.insertModel(model);
-    }
-
-    
-    /**
-     * Fetch {@link JobEnvironment} with provided field, matching input
-     * 
-     * @param field
-     * @param value
-     * @return List-{@link JobEnvironment}
-     */
-    @Override
-    public List<JobEnvironment> viewByField(String field, Object value) {
-        return this.repo.findByField(field, value);
-    }
-
-    
-    /**
-     * Fetch {@link JobEnvironment} with provided field, matching input,
-     *  and second condition
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @return List-{@link JobEnvironment}
-     */
-    @Override
-    public List<JobEnvironment> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
-        return this.repo.findByFieldForGroup(field, value, group, groupVal);
-    }
-
-    
-    /**
-     * Fetch all records
-     * 
-     * @return List-{@link JobEnvironment}
-     */
-    @Override
-    public List<JobEnvironment> viewAll() {
-        return this.repo.findAll();
-    }
-
-    
-    /**
-     * Collects records into list of {@link TaskTideModel}
-     * 
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<TaskTideModel> viewAllToTaskTideModel() {
-        return this.viewAll()
-            .stream()
-            .parallel()
-            .map(
-                elm -> (TaskTideModel<JobEnvironment>) elm
-            )
-        .collect(Collectors.toList());
-    }
-
-    
-    /**
-     * Fetch record matching queried Id
-     * 
-     * @return {@link JobEnvironment}
-     */
-    @Override
-    public JobEnvironment fetchById(String id) {
-        return this.repo.findById(id).orElse(null);
-    }
-
-    
-    /**
-     * Drop {@link JobEnvironment} by Id
-     * 
-     * @param id
-     * @return boolean
-     */
-    @Override
-    public boolean dropById(String id) {
-        return this.repo.deleteModel(id);
-    }
-
-    
-    /**
-     * Update {@link JobEnvironment}
-     * 
-     * @param model
-     * @return {@link JobEnvironment}
-     */
-    @Override
-    public synchronized JobEnvironment updateModel(JobEnvironment model) {
-        return this.repo.updateModel(model);
-    }
-
-    
-    /**
-     * Extend provided {@link JobEnvironment} list to backend
-     * 
-     * @param toAdd
-     * @return boolean
-     */
-    @Override
-    public synchronized boolean extendModel(List<JobEnvironment> toAdd) {
-        return this.repo.extendModel(toAdd);
-    }
-
-    
-    /**
-     * Commit changes to backend
-     * 
-     * @return int
-     */
-    @Override
-    public synchronized int save() {
-        return this.repo.save();
-    }
-
-    
-    /**
-     * Provide repository
-     * 
-     * @return {@link TaskTideRepository}-{@link JobEnvironment}
-     */
-    @Override
-    public TaskTideRepository<JobEnvironment> getRepo() {
-        return this.repo;
     }
 }

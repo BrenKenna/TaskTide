@@ -79,12 +79,10 @@ public class TaskTideManagerClient extends TaskTideClient {
      */
     @Override
     protected boolean configureClient() {
-        if ( ((String) this.managerArgs.getArgument("Method").getValue()).isEmpty() ) {
-            return false;
-        }
         // String inFile = ((String) this.managerArgs.getArgument("Target File").getValue());
         // return !inFile.isEmpty();
-        return true;
+
+        return !((String) this.managerArgs.getArgument("Method").getValue()).isEmpty();
     }
     
     

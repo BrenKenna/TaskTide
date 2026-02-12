@@ -16,10 +16,8 @@
 package org.tasktide.core.services;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideMapper;
-import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 
@@ -38,11 +36,9 @@ import org.tasktide.core.model.job_env.metrics.MetricProfile;
  * 
  * @author Brendan Kenna
  */
-public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEnvironment>, TaskTideService<MetricProfile> {
-    
-    // Attributes
-    private final TaskTideRepository<MetricProfile> repo;
-
+public class MetricProfileService extends AbstractTaskTideService<MetricProfile>
+    implements TaskTideMapper<MetricProfile, JobEnvironment>
+{
     
     /**
      * Constucted with {@link TaskTideRepository}
@@ -50,7 +46,7 @@ public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEn
      * @param repo 
      */
     public MetricProfileService(TaskTideRepository<MetricProfile> repo) {
-        this.repo = repo;
+        super(repo);
     }
 
     
@@ -64,143 +60,5 @@ public class MetricProfileService implements TaskTideMapper<MetricProfile, JobEn
     @Override
     public List<JobEnvironment> getThroughLink(TaskTideService<JobEnvironment> mappingServ, MetricProfile model) {
         return List.of(mappingServ.fetchById(model.getJobEnvId()));
-    }
-
-    
-    /**
-     * Inserts provided record
-     * 
-     * @param model
-     * @return {@link MetricProfile}
-     */
-    @Override
-    public MetricProfile appendModel(MetricProfile model) {
-        return this.repo.insertModel(model);
-    }
-
-    
-    /**
-     * Fetch {@link MetricProfile} with provided field, matching input
-     * 
-     * @param field
-     * @param value
-     * @return List-{@link MetricProfile}
-     */
-    @Override
-    public List<MetricProfile> viewByField(String field, Object value) {
-        return this.repo.findByField(field, value);
-    }
-
-    
-    /**
-     * Fetch {@link MetricProfile} with provided field, matching input,
-     *  and second condition
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @return List-{@link MetricProfile}
-     */
-    @Override
-    public List<MetricProfile> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
-        return this.repo.findByFieldForGroup(field, value, group, groupVal);
-    }
-
-    
-    /**
-     * Fetch all records
-     * 
-     * @return List-{@link MetricProfile}
-     */
-    @Override
-    public List<MetricProfile> viewAll() {
-        return this.repo.findAll();
-    }
-
-    
-    /**
-     * Collects records into list of {@link TaskTideModel}
-     * 
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<TaskTideModel> viewAllToTaskTideModel() {
-        return this.viewAll()
-            .stream()
-            .parallel()
-            .map(
-                elm -> (TaskTideModel<MetricProfile>) elm
-            )
-        .collect(Collectors.toList());
-    }
-
-    
-    /**
-     * Fetch record matching queried Id
-     * 
-     * @return {@link MetricProfile}
-     */
-    @Override
-    public MetricProfile fetchById(String id) {
-        return this.repo.findById(id).orElse(null);
-    }
-
-    
-    /**
-     * Drop {@link MetricProfile} by Id
-     * 
-     * @param id
-     * @return boolean
-     */
-    @Override
-    public boolean dropById(String id) {
-        return this.repo.deleteModel(id);
-    }
-
-    
-    /**
-     * Update {@link MetricProfile}
-     * 
-     * @param model
-     * @return {@link MetricProfile}
-     */
-    @Override
-    public synchronized MetricProfile updateModel(MetricProfile model) {
-        return this.repo.updateModel(model);
-    }
-
-    
-    /**
-     * Extend provided {@link MetricProfile} list to backend
-     * 
-     * @param toAdd
-     * @return boolean
-     */
-    @Override
-    public synchronized boolean extendModel(List<MetricProfile> toAdd) {
-        return this.repo.extendModel(toAdd);
-    }
-
-    
-    /**
-     * Commit changes to backend
-     * 
-     * @return int
-     */
-    @Override
-    public synchronized int save() {
-        return this.repo.save();
-    }
-
-    
-    /**
-     * Provide repository
-     * 
-     * @return {@link TaskTideRepository}-{@link MetricProfile}
-     */
-    @Override
-    public TaskTideRepository<MetricProfile> getRepo() {
-        return this.repo;
     }
 }

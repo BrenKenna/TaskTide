@@ -15,7 +15,6 @@
  */
 package org.tasktide.core.manager.command.commands;
 
-import org.tasktide.core.manager.command.CommandType;
 import jakarta.json.JsonObject;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -52,7 +51,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 
 import org.tasktide.core.supporting.JsonUtils;
-
+import org.tasktide.core.manager.command.CommandType;
 
 /**
  * {@link ManagerCommand} for importing tasks from JSON
