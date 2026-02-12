@@ -32,12 +32,25 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
         - Bucket leader claiming requires recursively leadership across buckets up to root queue.
         - Eases listing permissions, making them quicker.
         - Decision still sort of slow though, maybe reduce file deletion frequency
-                -> Maybe implementing client can be aware of this and implement sharding per workflow
-                -> ManagerClient aggregates the read view, can occasionally poll for updates?
-                -> Logical division & isolation of queue based on queue, that is eventually consistent?
+        +
+        --
+                - -> Maybe implementing client can be aware of this and implement sharding per workflow
+                - -> ManagerClient aggregates the read view, can occasionally poll for updates?
+                - -> Logical division & isolation of queue based on queue, that is eventually consistent?
+        --
 --
 
 ==== ItemStore
+
+- [/] Many mutex for "contextual action"
++
+--
+        - While concrete ItemStores individual method run via Open-Action-Close
+        - Quite often the context doing with will require a few queries
+        - Generally run query, then check result.
+        - Locking gets Id, checks item, lock Item, check Item, update with get 
+        - Perhaps enable a bulk ops on Abstract/Utility level
+--
 
 - [X] Multi-threading with RocksDB <- Resolved with TaskTide-Mutex
 +

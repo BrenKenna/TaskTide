@@ -28,6 +28,7 @@ import org.tasktide.tasktide.parser.model.ArgumentType;
 
 
 /**
+ * Configure properties for the {@link MutexOrchestrator}
  *
  * @author Brendan Kenna
  */
@@ -57,6 +58,10 @@ public class MutexConfigurer extends AbstractConfig {
     @ConfigProperty(name = "tasktide.mutex.maxRandomDuration", defaultValue = "500L")
     private long maxRandomLong;
     
+    
+    /**
+     * Path constants
+     */
     @ConfigProperty(name = "tasktide.mutex.lockDir", defaultValue = "")
     private Path lockDir;
     
@@ -94,14 +99,41 @@ public class MutexConfigurer extends AbstractConfig {
     }
     
 
+    /**
+     * Initialize configuration of {@link MutexConfigurer}
+     * 
+     * @param argTree 
+     */
     @Override
     public void initConfig(ArgumentTree argTree) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void help() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        // Configure duration properties
+        this.retryInterval();
+        this.startJitter();
+        this.endJitter();
+        this.staleFileThreshold();
+        this.minRandomDuration();
+        this.maxRandomDuration();
+        
+        // Validate any min-max pairs
+        if ( this.startJitter > this.endJitter ) {
+            long tmp = this.startJitter;
+            this.startJitter = this.endJitter;
+            this.endJitter = tmp;
+        }
+        if ( this.minRandomLong > this.maxRandomLong ) {
+            long tmp = this.minRandomLong;
+            this.minRandomLong = this.maxRandomLong;
+            this.maxRandomLong = tmp;
+        }
+        
+        // Configure path properties
+        this.lockDir();
+        this.lockFile();
+        this.electionDir();
+        this.electionFile();
+        this.hostDir();
+        this.hostFile();
     }
     
     
@@ -300,7 +332,7 @@ public class MutexConfigurer extends AbstractConfig {
     /**
      * Sets locking directory
      */
-    public void lockDirectory() {
+    public void lockDir() {
         
         // Initialize vars
         String tmp;
@@ -499,4 +531,11 @@ public class MutexConfigurer extends AbstractConfig {
         arg.setValue(this.electionFile);
         this.getArgumentMap().putArgument(arg);
     }
+    
+    
+    /**
+     * Not used because this is component of global setting
+     */
+    @Override
+    public void help() {}
 }

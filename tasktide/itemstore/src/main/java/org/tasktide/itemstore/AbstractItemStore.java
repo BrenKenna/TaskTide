@@ -35,6 +35,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.mutex.exceptions.MutexUncheckedException;
 
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
@@ -95,6 +96,18 @@ public abstract class AbstractItemStore implements ItemStore {
             LOGGER.warn("Mutex already configured");
         }
     }
+    
+    
+    /**
+     * Allows a collection of {@link ItemStore} methods to be
+     *  executed under the one lock
+     * 
+     * @param <T>
+     * @param target
+     * @param work
+     * @return T
+     */
+    public abstract <T> T execute(DbTarget target, BulkOperation<T> work);
 
     
     /**

@@ -27,6 +27,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.tasktide.itemstore.session.BulkOperation;
+import org.tasktide.itemstore.session.ItemStoreSession;
 
 
 /**
@@ -54,6 +56,36 @@ public class SqliteStore extends AbstractItemStore {
         this.initItemStore();
     }
 
+    
+    /**
+     * Performs {@link BulkOperation} over {@link DbTarget}
+     *  under one {@link ItemStoreSession}
+     * 
+     * @param <T>
+     * @param target
+     * @param operations
+     * @return T
+     */
+    @Override
+    public <T> T execute(DbTarget target, BulkOperation<T> operations) {
+        this.openConn(target);
+        try {
+            ItemStoreSession session;
+            switch ( target ) {
+                case MASTER -> {
+                    session = new SqliteSession(this.master);
+                }
+                default -> {
+                    session = new SqliteSession(this.proto);
+                }
+            }
+            return operations.execute(session);
+        }
+        finally {
+            this.closeConn(target);
+        }
+    }
+    
     
     /**
      * Initialize ItemStore throwing RuntimeException
@@ -549,6 +581,41 @@ public class SqliteStore extends AbstractItemStore {
                     return false;
                 }
             }
+        }
+    }
+    
+    
+    private class SqliteSession implements ItemStoreSession {
+        private final Connection conn;
+
+        SqliteSession(Connection conn) {
+            this.conn = conn;
+        }
+        
+        @Override
+        public boolean insert(Item item) {
+            return putItem(conn, item);
+        }
+
+        @Override
+        public Item getById(String id) {
+            List<Item> results;
+            String query = "SELECT * FROM Items WHERE Id = ?";
+            results = selectQuery(conn, query, id);
+            if ( !results.isEmpty() ) {
+                return results.get(0);
+            }
+            return null;
+        }
+
+        @Override
+        public boolean delete(Item item) {
+            return deleteItem(conn, item);
+        }
+
+        @Override
+        public List<Item> getAll() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     }
 }

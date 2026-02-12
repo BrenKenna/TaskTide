@@ -21,8 +21,11 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.tasktide.tasktide.client.TaskTideClient;
+
 import org.tasktide.tasktide.configurer.dependent.JNoSQLConfigurer;
 import org.tasktide.tasktide.configurer.dependent.JpaConfigurer;
+import org.tasktide.tasktide.configurer.dependent.MutexConfigurer;
 
 import org.tasktide.tasktide.parser.ArgumentTree;
 import org.tasktide.tasktide.parser.model.Argument;
@@ -42,6 +45,7 @@ public class GlobalConfig extends AbstractConfig {
     private final Logger LOGGER = LogManager.getLogger(GlobalConfig.class);
     private final JpaConfigurer jpaConf;
     private final JNoSQLConfigurer jnosqlConf;
+    private final MutexConfigurer mutexConf;
     
     // Which client to use
     @ConfigProperty(name = "tasktide.client", defaultValue = "Manager")
@@ -92,6 +96,7 @@ public class GlobalConfig extends AbstractConfig {
         super("");
         this.jnosqlConf = new JNoSQLConfigurer("");
         this.jpaConf = new JpaConfigurer("");
+        this.mutexConf = new MutexConfigurer("");
     }
     
     
@@ -104,6 +109,7 @@ public class GlobalConfig extends AbstractConfig {
         super(path);
         this.jnosqlConf = new JNoSQLConfigurer(path);
         this.jpaConf = new JpaConfigurer(path);
+        this.mutexConf = new MutexConfigurer(path);
     }
     
     
@@ -124,6 +130,9 @@ public class GlobalConfig extends AbstractConfig {
         this.filePath();
         this.dateFormat();
         this.tokenExpirationDays();
+        
+        // Configure TaskTide-Mutex
+        this.mutexConf.initConfig(argTree);
         
         // Jakarta NoSQL Parameters
         this.jnosqlConf.initConfig(argTree);
