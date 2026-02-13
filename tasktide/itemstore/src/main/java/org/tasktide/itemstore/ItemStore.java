@@ -16,6 +16,7 @@
 package org.tasktide.itemstore;
 
 import java.util.List;
+import org.tasktide.itemstore.session.BulkOperation;
 
 
 /**
@@ -24,6 +25,17 @@ import java.util.List;
  * @author bkenna
  */
 public interface ItemStore {
+    
+    /**
+     * Allows a collection of {@link ItemStore} methods to be
+     *  executed under the one lock
+     * 
+     * @param <T>
+     * @param target
+     * @param work
+     * @return T
+     */
+    <T> T execute(DbTarget target, BulkOperation<T> work);
     
     
     /**

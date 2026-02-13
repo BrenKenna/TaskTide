@@ -32,7 +32,6 @@ import org.tasktide.core.supporting.Utils;
 
 // For JavaDocs
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.manager.ManagerTask;
 
 /**
  * Collection of static methods to support {@link ManagerTask} to {@link TaskTideModel}.

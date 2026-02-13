@@ -42,6 +42,15 @@ public interface ItemStoreSession {
     
     
     /**
+     * Import an {@link Item} collection
+     * 
+     * @param items
+     * @return List-{@link Item}
+     */
+    boolean importItems(List<Item> items);
+    
+    
+    /**
      * Fetch {@link Item} matching Id
      * 
      * @param id

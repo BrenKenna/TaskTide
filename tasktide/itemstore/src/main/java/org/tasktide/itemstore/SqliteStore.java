@@ -94,6 +94,7 @@ public class SqliteStore extends AbstractItemStore {
      *  both the Master & Prototype
      */
     private void initItemStore() {
+        LOGGER.info("Initializing DB");
         this.openConn(DbTarget.BOTH);
         this.initDatabase(this.master);
         this.initDatabase(this.proto);
@@ -146,7 +147,7 @@ public class SqliteStore extends AbstractItemStore {
             ps.setString(2, item.getState());
             ps.setString(3, item.getCollection());
             ps.setString(4, item.getPayload());
-            return ps.execute();
+            return ps.executeUpdate() > 0;
         }
         catch (SQLException ex) {
             ex.printStackTrace();
@@ -248,7 +249,7 @@ public class SqliteStore extends AbstractItemStore {
         ;
         try ( PreparedStatement ps = conn.prepareStatement(query) ) {
             ps.setString(1, item.getId());
-            return ps.execute();
+            return ps.executeUpdate() > 0;
         }
         catch (SQLException ex) {
             LOGGER.error("Error deleting item displaying statck trace", ex);
@@ -482,7 +483,7 @@ public class SqliteStore extends AbstractItemStore {
     public boolean closeConn(DbTarget target) {
         switch (target) {
             case MASTER -> {
-                this.releaseLock();
+                this.releaseLock(true);
                 try {
                     if ( !this.master.isClosed() ) {
                         this.master.close();
@@ -501,7 +502,7 @@ public class SqliteStore extends AbstractItemStore {
                 catch (SQLException ex) {return false;}
             }
             default -> {
-                this.releaseLock();
+                this.releaseLock(true);
                 try {
                     if ( !this.master.isClosed() ) {
                         this.master.close();
@@ -552,7 +553,7 @@ public class SqliteStore extends AbstractItemStore {
                     if ( this.master.isClosed() ) {
                         this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
                     }
-                    this.releaseLock();
+                    this.releaseLock(false);
                     return true;
                 }
                 catch (Exception ex) {
@@ -569,7 +570,7 @@ public class SqliteStore extends AbstractItemStore {
                     if ( this.master.isClosed() ) {
                         this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
                     }
-                    this.releaseLock();
+                    this.releaseLock(false);
                     if ( this.proto == null ) {
                         this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
                     }
@@ -646,6 +647,21 @@ public class SqliteStore extends AbstractItemStore {
             else {
                 return null;
             }
-        } 
+        }
+        
+        @Override
+        public boolean importItems(List<Item> items) {
+            int counter = 0;
+            for ( Item item : items ) {
+                if ( this.insert(item) ) {
+                    counter++;
+                }
+            }
+            LOGGER.debug(
+                "Records inserted = '{}', Expected = '{}'",
+                counter, items.size()
+            );
+            return counter == items.size();
+        }
     }
 }

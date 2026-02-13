@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutorService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
@@ -54,7 +55,10 @@ public class TaskTideEngineClient extends TaskTideClient {
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(TaskTideEngineClient.class);
     private final TaskTideWorkerUnitProvider unitProvider;
-    private int workItemThreads, itemTaskThreads, workThreshold, taskThreshold;
+    private int
+        workItemThreads, itemTaskThreads,
+        workThreshold, taskThreshold
+    ;
     private TaskTideProcessor<WorkItem> processor;
     private TaskTideExecutor<WorkItem> workExec;
     private TaskTideEngineObserver<WorkItem> obs;

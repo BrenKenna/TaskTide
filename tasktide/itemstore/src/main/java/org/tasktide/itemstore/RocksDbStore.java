@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.logging.Level;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -426,7 +425,7 @@ public class RocksDbStore extends AbstractItemStore {
         LOGGER.debug("Closing connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {
-                this.releaseLock();
+                this.releaseLock(true);
                 if ( this.master == null ) {
                     return true;
                 }
@@ -445,7 +444,7 @@ public class RocksDbStore extends AbstractItemStore {
                 return true;
             }
             default -> {
-                this.releaseLock();
+                this.releaseLock(true);
                 if ( this.master != null ) {
                     if ( !this.master.isClosed() ) {
                         this.master.close();
@@ -665,6 +664,17 @@ public class RocksDbStore extends AbstractItemStore {
             else {
                 return null;
             }
+        }
+        
+        @Override
+        public boolean importItems(List<Item> items) {
+            int counter = 0;
+            for ( Item item : items ) {
+                if ( this.insert(item) ) {
+                    counter++;
+                }
+            }
+            return counter == items.size();
         }
     }
 }
