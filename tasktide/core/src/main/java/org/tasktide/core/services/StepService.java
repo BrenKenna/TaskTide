@@ -18,10 +18,8 @@ package org.tasktide.core.services;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideMapper;
-import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 
@@ -43,112 +41,19 @@ import org.tasktide.core.model.state_summary.StateSummary;
  * 
  * @author bkenna
  */
-public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideService<Step> {
-    
-    // Attributes
-    private final TaskTideRepository<Step> repo;
-    
-    
+public class StepService extends AbstractTaskTideService<Step>
+    implements TaskTideMapper<Step, WorkItem>
+{
+
     /**
      * Construct with repo for testing
      * 
      * @param repo 
      */
     public StepService(TaskTideRepository<Step> repo) {
-        this.repo = repo;
-    }
-    
-    
-    /**
-     * Add step to backend
-     * 
-     * @param model
-     * @return {@link TaskTideModel} of {@link Step Step}
-     */
-    @Override
-    public synchronized Step appendModel(Step model) {
-        return repo.insertModel(model);
+        super(repo);
     }
 
-    
-    /**
-     * Import step list to backend, measuring imported count against expected
-     * 
-     * @param toAdd
-     * @return boolean
-     */
-    @Override
-    public synchronized boolean extendModel(List<Step> toAdd) {
-        return repo.extendModel(toAdd);
-    }
-    
-    
-    /**
-     * View steps by field
-     * 
-     * @param field
-     * @param value
-     * @return List-{@link TaskTideModel} of {@link Step}
-     */
-    @Override
-    public synchronized List<Step> viewByField(String field, Object value) {
-        return repo.findByField(field, value);
-    }
-    
-    
-    /**
-     * Find {@link TaskTideModel} from backend with field and group
-     *  having specified value. Step = Name, State = ToDo
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @return List-{@link Step}
-     */
-    @Override
-    public synchronized List<Step> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
-        return repo.findByFieldForGroup(field, value, group, groupVal);
-    }
-    
-    
-    /**
-     * Fetch step by id
-     * 
-     * @param id
-     * @return {@link TaskTideModel} of {@link Step}
-     */
-    @Override
-    public synchronized Step fetchById(String id) {
-        return repo.findById(id).get();
-    }
-    
-    
-    /**
-     * View all steps
-     * 
-     * @return List-{@link Step}
-     */
-    @Override
-    public synchronized List<Step> viewAll() {
-        return repo.findAll();
-    }
-
-    
-    /**
-     * Fetch all {@link Step} as {@link TaskTideModel}
-     * 
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public synchronized List<TaskTideModel> viewAllToTaskTideModel() {
-        return this.viewAll()
-            .stream()
-            .parallel()
-            .map(elm -> (TaskTideModel<Step>) elm)
-        .collect(Collectors.toList());
-    }
-    
         
     /**
      * Fetch steps having name
@@ -159,31 +64,7 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     public synchronized List<Step> viewStepsByName(String stepName) {
         return repo.findByField("stepName", stepName);
     }
-    
-    
-    /**
-     * Drop step matching Id
-     * 
-     * @param id
-     * @return boolean
-     */
-    @Override
-    public synchronized boolean dropById(String id) {
-        return repo.deleteModel(id);
-    }
-    
-    
-    /**
-     * Update step
-     * 
-     * @param model
-     * @return {@link Step}
-     */
-    @Override
-    public synchronized Step updateModel(Step model) {
-        return repo.updateModel(model);
-    }
-    
+
     
     /**
      * View task count summary for provided step
@@ -202,7 +83,6 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
      * @return Map-String, {@link StateSummary}-{@link ItemState}
      */
     public synchronized Map<String, StateSummary<ItemState>> viewSummary() {
-        
         Map<String, StateSummary<ItemState>> results = new HashMap<>();
         for ( Step step : repo.findAll() ) {
             results.put(step.getStepName(), step.summarizeByState());
@@ -234,28 +114,6 @@ public class StepService implements TaskTideMapper<Step, WorkItem>, TaskTideServ
     @Override
     public synchronized List<WorkItem> getThroughLink(TaskTideService<WorkItem> mappingServ, Step model) {
         return mappingServ.viewByField("stepName", model.getStepName());
-    }
-    
-    
-    /**
-     * Return {@link Step} {@link TaskTideRepository}
-     * 
-     * @return {@link TaskTideRepository} of {@link Step}
-     */
-    @Override
-    public synchronized TaskTideRepository<Step> getRepo() {
-        return this.repo;
-    }
-    
-    
-    /**
-     * Save data to backend
-     * 
-     * @return int
-     */
-    @Override
-    public synchronized int save() {
-        return repo.save();
     }
     
     

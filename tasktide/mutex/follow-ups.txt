@@ -1,0 +1,112 @@
+
+---> Done
+
+2026-02-10 18:51:56.530 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1022 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to 
+read elected leader:      b9c9623c-1c9e-4f42-8804-501d6b1cea5f
+
+2026-02-10 18:52:19.913 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1022 Completed with counter value:        '1'      
+2026-02-10 18:52:19.916 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1022 Loop terminating with done = 'true', and counter = '1'
+
+
+
+---> Done
+2026-02-10 18:52:01.704 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1055 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read confirmatory leader: a43a90ad-088e-400f-bdc6-9ed21d8bdbf8
+
+2026-02-10 18:52:10.680 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1055 Completed with counter value:        '1'      
+2026-02-10 18:52:10.681 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1055 Loop terminating with done = 'true', and counter = '1'
+
+
+
+--> Done 
+2026-02-10 18:52:05.353 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-949 Attempt 1 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:       136df93f-5d91-4d18-a3ff-22e358ba7abd
+
+2026-02-10 18:52:40.549 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-949 Completed with counter value: '3'
+2026-02-10 18:52:40.551 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-949 Loop terminating with done = 'true', and counter = '3'
+
+
+
+--> Done 
+
+2026-02-10 18:52:07.413 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1134 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:      694ad1c7-92be-43ba-961d-39ac241ca3fb
+
+2026-02-10 18:53:28.605 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1134 Completed with counter value:        '1'      
+2026-02-10 18:53:28.606 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1134 Loop terminating with done = 'true', and counter = '1'
+
+
+--> Done
+
+2026-02-10 18:52:08.110 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1338 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:      2b34fea0-c417-407a-ae33-92410cbab48a
+
+2026-02-10 18:53:32.771 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1338 Completed with counter value:        '1'      
+2026-02-10 18:53:32.773 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1338 Loop terminating with done = 'true', and counter = '1'
+
+
+---> Done
+
+2026-02-10 18:52:09.410 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1195 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:      f9528b85-05b1-4429-9f3c-e3553b6f285d
+
+2026-02-10 18:53:26.395 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1195 Completed with counter value:        '2'      
+2026-02-10 18:53:26.397 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1195 Loop terminating with done = 'true', and counter = '2'
+
+
+
+---> Done
+2026-02-10 18:52:14.750 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-975 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:       c0a3c564-e8cd-411a-bd82-b598eebc8e3f
+
+2026-02-10 18:52:26.575 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-975 Completed with counter value: '1'
+2026-02-10 18:52:26.577 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-975 Loop terminating with done = 'true', and counter = '1'
+
+
+--> Done
+
+2026-02-10 18:52:29.440 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-949 Attempt 2 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read confirmatory leader:  90946a93-1b57-4c35-958b-5e7ac3394563
+
+2026-02-10 18:52:40.549 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-949 Completed with counter value: '3'
+2026-02-10 18:52:40.551 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-949 Loop terminating with done = 'true', and counter = '3'
+
+
+---> Done
+
+2026-02-10 18:52:31.637 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-959 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read confirmatory leader:  2b48f459-5f82-40fe-924d-12921c893fe4
+
+2026-02-10 18:52:43.807 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-959 Completed with counter value: '1'
+2026-02-10 18:52:43.809 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-959 Loop terminating with done = 'true', and counter = '1'
+
+
+---> Done
+2026-02-10 18:52:32.129 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1036 Attempt 2 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:      1350274f-e1a2-428b-b992-02c1b32181cf
+
+2026-02-10 18:53:02.099 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1036 Completed with counter value:        '3'      
+2026-02-10 18:53:02.100 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1036 Loop terminating with done = 'true', and counter = '3'
+
+ 
+---> Done
+2026-02-10 18:52:37.730 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1092 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:      c76957d2-091c-4b63-adc4-f1723b532569
+
+2026-02-10 18:53:23.414 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1092 Completed with counter value:        '1'      
+2026-02-10 18:53:23.417 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1092 Loop terminating with done = 'true', and counter = '1'
+
+
+---> Done
+2026-02-10 18:52:49.876 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1166 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read confirmatory leader: f0934e79-0373-490f-9a55-459e76a6ab89
+
+2026-02-10 18:53:10.006 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1166 Completed with counter value:        '1'      
+2026-02-10 18:53:10.009 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1166 Loop terminating with done = 'true', and counter = '1'
+
+
+---> Done
+
+
+2026-02-10 18:53:11.460 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-921 Attempt 3 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read confirmatory leader:  b999aadf-52ec-4b1e-86bd-5b9eac0592aa
+
+2026-02-10 18:53:20.934 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-921 Completed with counter value: '4'
+2026-02-10 18:53:20.937 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-921 Loop terminating with done = 'true', and counter = '4'
+
+---> Done 
+
+2026-02-10 18:53:17.827 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1195 Attempt 1 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:      bf4185b2-c54b-4264-98a6-f98c39ffd431
+
+2026-02-10 18:52:09.410 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1195 Attempt 0 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:  f9528b85-05b1-4429-9f3c-e3553b6f285d
+2026-02-10 18:53:17.827 WARN  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1195 Attempt 1 failed: LEADERSHIP_CONFIRMATION_FAILED | Exception: Unable to read elected leader:  bf4185b2-c54b-4264-98a6-f98c39ffd431
+2026-02-10 18:53:26.395 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1195 Completed with counter value:        '2'      
+2026-02-10 18:53:26.397 INFO  [ main -> org.tasktide.itemstore.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-1195 Loop terminating with done = 'true', and counter = '2'

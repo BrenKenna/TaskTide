@@ -19,6 +19,9 @@
             <AppenderRef ref="STDOUT"/>
             <AppenderRef ref="LOGFILE"/>
         </Logger>
+        
+        <!-- Disable mutex logs -->
+        <Logger name="org.tasktide.mutex" level="off" additivity="false"/>
 
         <!-- Root Logger -->
         <Root level="INFO">

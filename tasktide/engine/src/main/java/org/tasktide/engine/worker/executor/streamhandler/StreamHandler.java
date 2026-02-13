@@ -26,6 +26,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
+// For JavaDocs
+import org.tasktide.engine.worker.executor.ProcessExecutor;
+
 
 /**
  * Stdout and Stderr log stream handler for {@link ProcessExecutor}.

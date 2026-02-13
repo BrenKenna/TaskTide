@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="model/task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a></code>, <code><a href="model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a></code>, <code><a href="model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a></code>, <code><a href="model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a></code></dd>
+<dd><code><a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></code>, <code><a href="model/task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a></code>, <code><a href="model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a></code>, <code><a href="model/job_env/metrics/MetricData.html" title="class in org.tasktide.core.model.job_env.metrics">MetricData</a></code>, <code><a href="model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics">MetricProfile</a></code>, <code><a href="model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a></code>, <code><a href="model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a></code>, <code><a href="model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a></code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public interface </span><span class="element-name type-name-label">TaskTideModel&lt;T extends TaskTideModel&lt;T&gt;&gt;</span></div>
@@ -96,35 +96,50 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getCollection()" class="member-name-link">getCollection</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getAnnotations()" class="member-name-link">getAnnotations</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Fetch collection model is, or is part of</div>
+<div class="block">Get <a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> property</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getCollection()" class="member-name-link">getCollection</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
-<div class="block">Get Id from model</div>
+<div class="block">Fetch collection model is, or is part of</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getState()" class="member-name-link">getState</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Get Id from model</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getState()" class="member-name-link">getState</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Return current of model</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getValueFromField(java.lang.String)" class="member-name-link">getValueFromField</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;field)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getValueFromField(java.lang.String)" class="member-name-link">getValueFromField</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;field)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Get the value of field</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#resetModel()" class="member-name-link">resetModel</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#resetModel()" class="member-name-link">resetModel</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Reset model state</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#setAnnotations(org.tasktide.core.model.CustomAnnotation)" class="member-name-link">setAnnotations</a><wbr>(<a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Sets <a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> property</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#toJson()" class="member-name-link">toJson</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Represent model as JsonString</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#toJsonDoc()" class="member-name-link">toJsonDoc</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Represent model as JsonDoc</div>
 </div>
 </div>
 </div>
@@ -145,6 +160,17 @@ loadScripts(document, 'script');</script>
 <h3>toJson</h3>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toJson</span>()</div>
 <div class="block">Represent model as JsonString</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>String</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="toJsonDoc()">
+<h3>toJsonDoc</h3>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toJsonDoc</span>()</div>
+<div class="block">Represent model as JsonDoc</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>String</dd>
@@ -202,6 +228,28 @@ loadScripts(document, 'script');</script>
 <h3>resetModel</h3>
 <div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">resetModel</span>()</div>
 <div class="block">Reset model state</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getAnnotations()">
+<h3>getAnnotations</h3>
+<div class="member-signature"><span class="return-type"><a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></span>&nbsp;<span class="element-name">getAnnotations</span>()</div>
+<div class="block">Get <a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> property</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setAnnotations(org.tasktide.core.model.CustomAnnotation)">
+<h3>setAnnotations</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">setAnnotations</span><wbr><span class="parameters">(<a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</span></div>
+<div class="block">Sets <a href="model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> property</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>anno</code> - </dd>
+</dl>
 </section>
 </li>
 </ul>

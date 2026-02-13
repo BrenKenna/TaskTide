@@ -27,8 +27,8 @@ import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.supporting.JsonUtils;
 
-import org.tasktide.tasktide.parser.ArgumentTree;
-import org.tasktide.tasktide.parser.model.ArgumentMap;
+import org.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.model.ArgumentMap;
 
 
 /**
@@ -79,12 +79,10 @@ public class TaskTideManagerClient extends TaskTideClient {
      */
     @Override
     protected boolean configureClient() {
-        if ( ((String) this.managerArgs.getArgument("Method").getValue()).isEmpty() ) {
-            return false;
-        }
         // String inFile = ((String) this.managerArgs.getArgument("Target File").getValue());
         // return !inFile.isEmpty();
-        return true;
+
+        return !((String) this.managerArgs.getArgument("Method").getValue()).isEmpty();
     }
     
     

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
     <Appenders>
+        
         <!-- Console Appender -->
         <Console name="STDOUT" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p [ %t -> %C.%M ]: %m%n"/>
@@ -13,11 +14,15 @@
     </Appenders>
 
     <Loggers>
+        
         <!-- Logger for specific package/class -->
         <Logger name="org.tasktide" level="INFO" additivity="false">
             <AppenderRef ref="STDOUT"/>
             <AppenderRef ref="LOGFILE"/>
         </Logger>
+        
+        <!-- Disable mutex logs -->
+        <Logger name="org.tasktide.mutex" level="off" additivity="false"/>
         
         <!-- Root fallback -->
         <Root level="INFO">

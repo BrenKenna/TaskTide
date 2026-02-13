@@ -94,7 +94,7 @@ loadScripts(document, 'script');</script>
 <h2>Field Summary</h2>
 <div class="inherited-list">
 <h3 id="fields-inherited-from-class-org.tasktide.core.manager.command.commands.AbstractCommand">Fields inherited from class&nbsp;org.tasktide.core.manager.command.commands.<a href="AbstractCommand.html" title="class in org.tasktide.core.manager.command.commands">AbstractCommand</a></h3>
-<code><a href="AbstractCommand.html#action">action</a>, <a href="AbstractCommand.html#cmdSpec">cmdSpec</a>, <a href="AbstractCommand.html#target">target</a></code></div>
+<code><a href="AbstractCommand.html#action">action</a>, <a href="AbstractCommand.html#cmdSpec">cmdSpec</a>, <a href="AbstractCommand.html#cmdType">cmdType</a>, <a href="AbstractCommand.html#target">target</a></code></div>
 </section>
 </li>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -105,17 +105,11 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(org.tasktide.core.manager.command.ManagerAction,org.tasktide.core.manager.command.ManagerTarget,org.tasktide.core.manager.command.CommandSpec)" class="member-name-link">ImportCommand</a><wbr>(<a href="../ManagerAction.html" title="enum class in org.tasktide.core.manager.command">ManagerAction</a>&nbsp;action,
- <a href="../ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;target,
- <a href="../CommandSpec.html" title="class in org.tasktide.core.manager.command">CommandSpec</a>&nbsp;cmdSpec)</code></div>
-<div class="col-last even-row-color">
-<div class="block">Construct import command</div>
-</div>
-<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(org.tasktide.core.manager.command.ManagerAction,org.tasktide.core.manager.command.ManagerTarget,org.tasktide.core.manager.command.CommandSpec,org.tasktide.core.manager.command.commands.ImportType)" class="member-name-link">ImportCommand</a><wbr>(<a href="../ManagerAction.html" title="enum class in org.tasktide.core.manager.command">ManagerAction</a>&nbsp;action,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(org.tasktide.core.manager.command.ManagerAction,org.tasktide.core.manager.command.ManagerTarget,org.tasktide.core.manager.command.CommandSpec,org.tasktide.core.manager.command.CommandType)" class="member-name-link">ImportCommand</a><wbr>(<a href="../ManagerAction.html" title="enum class in org.tasktide.core.manager.command">ManagerAction</a>&nbsp;action,
  <a href="../ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;target,
  <a href="../CommandSpec.html" title="class in org.tasktide.core.manager.command">CommandSpec</a>&nbsp;cmdSpec,
- <a href="ImportType.html" title="enum class in org.tasktide.core.manager.command.commands">ImportType</a>&nbsp;importType)</code></div>
-<div class="col-last odd-row-color">
+ <a href="../CommandType.html" title="enum class in org.tasktide.core.manager.command">CommandType</a>&nbsp;cmdType)</code></div>
+<div class="col-last even-row-color">
 <div class="block">Construct import command</div>
 </div>
 </div>
@@ -148,31 +142,26 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add a task to a <a href="../../../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a></div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ImportType.html" title="enum class in org.tasktide.core.manager.command.commands">ImportType</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getImportType()" class="member-name-link">getImportType</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#importFile()" class="member-name-link">importFile</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Provides <a href="ImportType.html" title="enum class in org.tasktide.core.manager.command.commands"><code>ImportType</code></a></div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#importFile()" class="member-name-link">importFile</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Imports data from file</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#importTask(org.tasktide.core.manager.ManagerTask,java.lang.String,java.lang.String)" class="member-name-link">importTask</a><wbr>(<a href="../../ManagerTask.html" title="class in org.tasktide.core.manager">ManagerTask</a>&nbsp;task,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#importTask(org.tasktide.core.manager.ManagerTask,java.lang.String,java.lang.String)" class="member-name-link">importTask</a><wbr>(<a href="../../ManagerTask.html" title="class in org.tasktide.core.manager">ManagerTask</a>&nbsp;task,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workItemName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Import task providing updated <a href="../../../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a></div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#runCommand()" class="member-name-link">runCommand</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#runCommand()" class="member-name-link">runCommand</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Performs import command</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#validateCommand()" class="member-name-link">validateCommand</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#validateCommand()" class="member-name-link">validateCommand</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Validates provided data for import</div>
 </div>
 </div>
@@ -180,7 +169,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-org.tasktide.core.manager.command.commands.AbstractCommand">Methods inherited from class&nbsp;org.tasktide.core.manager.command.commands.<a href="AbstractCommand.html" title="class in org.tasktide.core.manager.command.commands">AbstractCommand</a></h3>
-<code><a href="AbstractCommand.html#execute()">execute</a>, <a href="AbstractCommand.html#getAction()">getAction</a>, <a href="AbstractCommand.html#getCmdSpec()">getCmdSpec</a>, <a href="AbstractCommand.html#getTarget()">getTarget</a>, <a href="AbstractCommand.html#toJsonDoc()">toJsonDoc</a>, <a href="AbstractCommand.html#toJsonString()">toJsonString</a>, <a href="AbstractCommand.html#toString()">toString</a></code></div>
+<code><a href="AbstractCommand.html#execute()">execute</a>, <a href="AbstractCommand.html#getAction()">getAction</a>, <a href="AbstractCommand.html#getCmdSpec()">getCmdSpec</a>, <a href="AbstractCommand.html#getCmdType()">getCmdType</a>, <a href="AbstractCommand.html#getTarget()">getTarget</a>, <a href="AbstractCommand.html#toJsonDoc()">toJsonDoc</a>, <a href="AbstractCommand.html#toJsonString()">toJsonString</a>, <a href="AbstractCommand.html#toString()">toString</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -196,34 +185,19 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(org.tasktide.core.manager.command.ManagerAction,org.tasktide.core.manager.command.ManagerTarget,org.tasktide.core.manager.command.CommandSpec)">
-<h3>ImportCommand</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ImportCommand</span><wbr><span class="parameters">(<a href="../ManagerAction.html" title="enum class in org.tasktide.core.manager.command">ManagerAction</a>&nbsp;action,
- <a href="../ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;target,
- <a href="../CommandSpec.html" title="class in org.tasktide.core.manager.command">CommandSpec</a>&nbsp;cmdSpec)</span></div>
-<div class="block">Construct import command</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>action</code> - </dd>
-<dd><code>target</code> - </dd>
-<dd><code>cmdSpec</code> - </dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="&lt;init&gt;(org.tasktide.core.manager.command.ManagerAction,org.tasktide.core.manager.command.ManagerTarget,org.tasktide.core.manager.command.CommandSpec,org.tasktide.core.manager.command.commands.ImportType)">
+<section class="detail" id="&lt;init&gt;(org.tasktide.core.manager.command.ManagerAction,org.tasktide.core.manager.command.ManagerTarget,org.tasktide.core.manager.command.CommandSpec,org.tasktide.core.manager.command.CommandType)">
 <h3>ImportCommand</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ImportCommand</span><wbr><span class="parameters">(<a href="../ManagerAction.html" title="enum class in org.tasktide.core.manager.command">ManagerAction</a>&nbsp;action,
  <a href="../ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;target,
  <a href="../CommandSpec.html" title="class in org.tasktide.core.manager.command">CommandSpec</a>&nbsp;cmdSpec,
- <a href="ImportType.html" title="enum class in org.tasktide.core.manager.command.commands">ImportType</a>&nbsp;importType)</span></div>
+ <a href="../CommandType.html" title="enum class in org.tasktide.core.manager.command">CommandType</a>&nbsp;cmdType)</span></div>
 <div class="block">Construct import command</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>action</code> - </dd>
 <dd><code>target</code> - </dd>
 <dd><code>cmdSpec</code> - </dd>
-<dd><code>importType</code> - </dd>
+<dd><code>cmdType</code> - </dd>
 </dl>
 </section>
 </li>
@@ -324,17 +298,6 @@ loadScripts(document, 'script');</script>
 <dd>boolean</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code></dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getImportType()">
-<h3>getImportType</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ImportType.html" title="enum class in org.tasktide.core.manager.command.commands">ImportType</a></span>&nbsp;<span class="element-name">getImportType</span>()</div>
-<div class="block">Provides <a href="ImportType.html" title="enum class in org.tasktide.core.manager.command.commands"><code>ImportType</code></a></div>
-<dl class="notes">
-<dt>Returns:</dt>
-<dd><a href="ImportType.html" title="enum class in org.tasktide.core.manager.command.commands"><code>ImportType</code></a></dd>
 </dl>
 </section>
 </li>

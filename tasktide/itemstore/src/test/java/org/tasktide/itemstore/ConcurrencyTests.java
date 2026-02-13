@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.mutex.utils.FileUtility;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;

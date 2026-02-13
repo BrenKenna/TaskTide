@@ -24,6 +24,9 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.TaskTideModel;
 
+// For JavaDocs
+import org.tasktide.core.model.collection.Step;
+
 
 /**
  * TaskTideModel class for Work Items
@@ -639,7 +642,7 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     
     
     /**
-     * Get the parent {@link StepId}
+     * Get the parent {@link Step} Id
      * 
      * @return String
      */

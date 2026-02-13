@@ -28,6 +28,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.tasktide.itemstore.session.BulkOperation;
+import org.tasktide.itemstore.session.ItemStoreSession;
+
 
 /**
  * Class to add support for SQLite
@@ -54,6 +57,36 @@ public class SqliteStore extends AbstractItemStore {
         this.initItemStore();
     }
 
+    
+    /**
+     * Performs {@link BulkOperation} over {@link DbTarget}
+     *  under one {@link ItemStoreSession}
+     * 
+     * @param <T>
+     * @param target
+     * @param operations
+     * @return T
+     */
+    @Override
+    public synchronized <T> T execute(DbTarget target, BulkOperation<T> operations) {
+        this.openConn(target);
+        try {
+            ItemStoreSession session;
+            switch ( target ) {
+                case MASTER -> {
+                    session = new SqliteSession(this.master);
+                }
+                default -> {
+                    session = new SqliteSession(this.proto);
+                }
+            }
+            return operations.execute(session);
+        }
+        finally {
+            this.closeConn(target);
+        }
+    }
+    
     
     /**
      * Initialize ItemStore throwing RuntimeException
@@ -550,5 +583,69 @@ public class SqliteStore extends AbstractItemStore {
                 }
             }
         }
+    }
+    
+    
+    /**
+     * {@link ItemStoreSession} for SQLite {@link Connection}
+     */
+    private class SqliteSession implements ItemStoreSession {
+        
+        // Attributes
+        private final Connection conn;
+
+        /**
+         * Construct with {@link Connection}
+         * @param conn 
+         */
+        SqliteSession(Connection conn) {
+            this.conn = conn;
+        }
+        
+        
+        @Override
+        public boolean insert(Item item) {
+            return putItem(conn, item);
+        }
+
+        @Override
+        public Item getById(String id) {
+            List<Item> results;
+            String query = "SELECT * FROM Items WHERE Id = ?";
+            results = selectQuery(this.conn, query, id);
+            if ( !results.isEmpty() ) {
+                return results.get(0);
+            }
+            return null;
+        }
+
+        @Override
+        public boolean delete(Item item) {
+            return deleteItem(this.conn, item);
+        }
+        
+        @Override
+        public List<Item> getItemsByState(String state) {
+            List<Item> results;
+            String query = "SELECT * FROM Items WHERE State = ?";
+            results = selectQuery(this.conn, query, state);
+            return results;
+        }
+
+        @Override
+        public List<Item> getAll() {
+            return selectAll(this.conn);
+        }
+        
+        @Override
+        public String getPayloadById(String id) {
+            Item result = this.getById(id);
+            if ( result != null ) {
+                return result.getPayload();
+            }
+            else {
+                return null;
+            }
+        } 
     }
 }

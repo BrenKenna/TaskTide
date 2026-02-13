@@ -71,14 +71,14 @@ loadScripts(document, 'script');</script>
 <h1 title="Class TaskLoggingBuilder" class="title">Class TaskLoggingBuilder</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>
+<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>&lt;<a href="../task/TaskLogging.html" title="class in org.tasktide.core.model.task">TaskLogging</a>&gt;
 <div class="inheritance">org.tasktide.core.model.builders.TaskLoggingBuilder</div>
 </div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">TaskLoggingBuilder</span>
-<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></span></div>
+<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../task/TaskLogging.html" title="class in org.tasktide.core.model.task">TaskLogging</a>&gt;</span></div>
 <div class="block">Allow TaskLogging objects to be built where all fields are optional</div>
 </section>
 <section class="summary">
@@ -113,42 +113,42 @@ loadScripts(document, 'script');</script>
 <div class="block">Construct TaskLogging object from provided fields</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#cpuDuration(long)" class="member-name-link">cpuDuration</a><wbr>(long&nbsp;cpuDuration)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withCpuDuration(long)" class="member-name-link">withCpuDuration</a><wbr>(long&nbsp;cpuDuration)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add CPU duration field</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#endTime(long)" class="member-name-link">endTime</a><wbr>(long&nbsp;endTime)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withEndTime(long)" class="member-name-link">withEndTime</a><wbr>(long&nbsp;endTime)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add end time field</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#exitCode(int)" class="member-name-link">exitCode</a><wbr>(int&nbsp;exitCode)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withExitCode(int)" class="member-name-link">withExitCode</a><wbr>(int&nbsp;exitCode)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add Exit Code field</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#id(java.lang.String)" class="member-name-link">id</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withId(java.lang.String)" class="member-name-link">withId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add Id field</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#processLog(org.tasktide.core.model.task.ProcessLog)" class="member-name-link">processLog</a><wbr>(<a href="../task/ProcessLog.html" title="class in org.tasktide.core.model.task">ProcessLog</a>&nbsp;procLog)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withProcessLog(org.tasktide.core.model.task.ProcessLog)" class="member-name-link">withProcessLog</a><wbr>(<a href="../task/ProcessLog.html" title="class in org.tasktide.core.model.task">ProcessLog</a>&nbsp;procLog)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add ProcessLog field</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#procId(long)" class="member-name-link">procId</a><wbr>(long&nbsp;procId)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withProcId(long)" class="member-name-link">withProcId</a><wbr>(long&nbsp;procId)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add Id field</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#startTime(long)" class="member-name-link">startTime</a><wbr>(long&nbsp;startTime)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStartTime(long)" class="member-name-link">withStartTime</a><wbr>(long&nbsp;startTime)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add start time</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#threadName(java.lang.String)" class="member-name-link">threadName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;threadName)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withThreadName(java.lang.String)" class="member-name-link">withThreadName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;threadName)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add thread name field</div>
 </div>
@@ -184,9 +184,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="id(java.lang.String)">
-<h3>id</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">id</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</span></div>
+<section class="detail" id="withId(java.lang.String)">
+<h3>withId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">withId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</span></div>
 <div class="block">Add Id field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -197,9 +197,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="procId(long)">
-<h3>procId</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">procId</span><wbr><span class="parameters">(long&nbsp;procId)</span></div>
+<section class="detail" id="withProcId(long)">
+<h3>withProcId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">withProcId</span><wbr><span class="parameters">(long&nbsp;procId)</span></div>
 <div class="block">Add Id field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -210,9 +210,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="processLog(org.tasktide.core.model.task.ProcessLog)">
-<h3>processLog</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">processLog</span><wbr><span class="parameters">(<a href="../task/ProcessLog.html" title="class in org.tasktide.core.model.task">ProcessLog</a>&nbsp;procLog)</span></div>
+<section class="detail" id="withProcessLog(org.tasktide.core.model.task.ProcessLog)">
+<h3>withProcessLog</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">withProcessLog</span><wbr><span class="parameters">(<a href="../task/ProcessLog.html" title="class in org.tasktide.core.model.task">ProcessLog</a>&nbsp;procLog)</span></div>
 <div class="block">Add ProcessLog field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -223,9 +223,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="startTime(long)">
-<h3>startTime</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">startTime</span><wbr><span class="parameters">(long&nbsp;startTime)</span></div>
+<section class="detail" id="withStartTime(long)">
+<h3>withStartTime</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">withStartTime</span><wbr><span class="parameters">(long&nbsp;startTime)</span></div>
 <div class="block">Add start time</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -236,9 +236,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="endTime(long)">
-<h3>endTime</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">endTime</span><wbr><span class="parameters">(long&nbsp;endTime)</span></div>
+<section class="detail" id="withEndTime(long)">
+<h3>withEndTime</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">withEndTime</span><wbr><span class="parameters">(long&nbsp;endTime)</span></div>
 <div class="block">Add end time field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -249,9 +249,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="threadName(java.lang.String)">
-<h3>threadName</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">threadName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;threadName)</span></div>
+<section class="detail" id="withThreadName(java.lang.String)">
+<h3>withThreadName</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">withThreadName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;threadName)</span></div>
 <div class="block">Add thread name field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -262,9 +262,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="cpuDuration(long)">
-<h3>cpuDuration</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">cpuDuration</span><wbr><span class="parameters">(long&nbsp;cpuDuration)</span></div>
+<section class="detail" id="withCpuDuration(long)">
+<h3>withCpuDuration</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">withCpuDuration</span><wbr><span class="parameters">(long&nbsp;cpuDuration)</span></div>
 <div class="block">Add CPU duration field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -275,9 +275,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="exitCode(int)">
-<h3>exitCode</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">exitCode</span><wbr><span class="parameters">(int&nbsp;exitCode)</span></div>
+<section class="detail" id="withExitCode(int)">
+<h3>withExitCode</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></span>&nbsp;<span class="element-name">withExitCode</span><wbr><span class="parameters">(int&nbsp;exitCode)</span></div>
 <div class="block">Add Exit Code field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -294,7 +294,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Construct TaskLogging object from provided fields</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></code></dd>
+<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../task/TaskLogging.html" title="class in org.tasktide.core.model.task">TaskLogging</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd><a href="../task/TaskLogging.html" title="class in org.tasktide.core.model.task"><code>TaskLogging</code></a></dd>
 </dl>

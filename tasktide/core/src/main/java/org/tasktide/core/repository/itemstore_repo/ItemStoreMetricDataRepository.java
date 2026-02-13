@@ -15,14 +15,16 @@
  */
 package org.tasktide.core.repository.itemstore_repo;
 
-
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.itemstore.ItemStore;
 
+// For JavaDocs
+import org.tasktide.core.TaskTideRepository;
+
 
 /**
- * {@link MetricData} {@link TaskTideRepository} backed by RocksDB
+ * {@link MetricData} {@link ItemStore}-{@link TaskTideRepository} backed by RocksDB
  *
  * @author Brendan Kenna
  */

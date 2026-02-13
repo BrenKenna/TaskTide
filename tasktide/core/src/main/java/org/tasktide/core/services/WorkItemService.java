@@ -18,13 +18,10 @@ package org.tasktide.core.services;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.TaskTideMapper;
-import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -40,10 +37,12 @@ import org.tasktide.core.supporting.Utils;
  * 
  * @author bkenna
  */
-public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTideService<WorkItem> {
+public class WorkItemService
+    extends AbstractTaskTideService<WorkItem>
+    implements TaskTideMapper<WorkItem, Step>
+{
     
     // Attributes
-    private final TaskTideRepository<WorkItem> repo;
     private final Utils utils;
     private final int LOCKING_WAIT_TIME;
     
@@ -54,7 +53,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param repo 
      */
     public WorkItemService(TaskTideRepository<WorkItem> repo) {
-        this.repo = repo;
+        super(repo);
         this.LOCKING_WAIT_TIME = 4;
         this.utils = new Utils("dd/MM/yy HH:mm:ss", 4);
     }
@@ -70,7 +69,7 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
         TaskTideRepository<WorkItem> repo,
         int lockingWaitTime
     ) {
-        this.repo = repo;
+        super(repo);
         this.LOCKING_WAIT_TIME = lockingWaitTime;
         this.utils = new Utils("dd/MM/yy HH:mm:ss", lockingWaitTime);
     }
@@ -83,143 +82,11 @@ public class WorkItemService implements TaskTideMapper<WorkItem, Step>, TaskTide
      * @param utilDate 
      */
     public WorkItemService(TaskTideRepository<WorkItem> repo, int lockWait, String utilDate) {
-        this.repo = repo;
+        super(repo);
         this.LOCKING_WAIT_TIME = lockWait;
-        this.utils = new Utils("dd/MM/yy HH:mm:ss", lockWait);
-    }
-    
-    
-    /**
-     * Insert work item
-     * 
-     * @param model
-     * @return {@link WorkItem}
-     */
-    @Override
-    public synchronized WorkItem appendModel(WorkItem model) {
-        return repo.insertModel(model);
-    }
-    
-    
-    /**
-     * Fetch work item list by field
-     * 
-     * @param field
-     * @param value
-     * @return List-{@link WorkItem}
-     */
-    @Override
-    public synchronized List<WorkItem> viewByField(String field, Object value) {
-        return repo.findByField(field, value);
-    }
-    
-    
-    /**
-     * Find {@link TaskTideModel} from backend with field and group
-     *  having specified value. Step = Name, State = ToDo
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @return List-{@link WorkItem}
-     */
-    @Override
-    public synchronized List<WorkItem> viewByFieldForGroup(String field, Object value, String group, Object groupVal) {
-        return repo.findByFieldForGroup(field, value, group, groupVal);
-    }
-    
-    
-    /**
-     * Find {@link WorkItem} by Id
-     * 
-     * @param id
-     * @return {@link WorkItem}
-     */
-    @Override
-    public synchronized WorkItem fetchById(String id) {
-        Optional<WorkItem> res = repo.findById(id);
-        if ( res.isPresent() ) {
-            return res.get();
-        }
-        else {
-            return null;
-        }
-    }
-    
-    
-    /**
-     * Find all work items
-     * 
-     * @return List-{@link WorkItem}
-     */
-    @Override
-    public synchronized List<WorkItem> viewAll() {
-        return repo.findAll();
-    }
-    
-    
-    /**
-     * Fetch all {@link WorkItem} as {@link TaskTideModel}
-     * 
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public synchronized List<TaskTideModel> viewAllToTaskTideModel() {
-        return this.viewAll()
-            .stream()
-            .parallel()
-            .map(elm -> (TaskTideModel<WorkItem>) elm)
-            .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Drop {@link WorkItem} by Id
-     * 
-     * @param id
-     * @return boolean
-     */
-    @Override
-    public synchronized boolean dropById(String id) {
-        return repo.deleteModel(id);
+        this.utils = new Utils(utilDate, lockWait);
     }
 
-    
-    /**
-     * Update {@link WorkItem}
-     * 
-     * @param model
-     * @return {@link WorkItem}
-     */
-    @Override
-    public synchronized WorkItem updateModel(WorkItem model) {
-        return repo.updateModel(model);
-    }
-
-    
-    /**
-     * Import {@link WorkItem} list matching imported count against expected
-     * 
-     * @param toAdd
-     * @return boolean
-     */
-    @Override
-    public synchronized boolean extendModel(List<WorkItem> toAdd) {
-        return repo.extendModel(toAdd);
-    }
-    
-    
-    /**
-     * Save data to backend
-     * 
-     * @return int
-     */
-    @Override
-    public synchronized int save() {
-        return repo.save();
-    }
-    
     
     /**
      * Add task to a WorkItem

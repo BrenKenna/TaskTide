@@ -33,6 +33,11 @@ import org.tasktide.core.model.state_summary.StateSummary;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.supporting.FileIO;
 
+// For JavaDocs
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.workitem.WorkItem;
+
 
 /**
  * Carries logic for summarizing {@link TaskTideModel},

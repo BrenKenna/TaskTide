@@ -1,0 +1,240 @@
+2026-02-12 11:20:55 INFO  [ Test worker -> org.testcontainers.images.PullPolicy.defaultPolicy ]: Image pull policy will be performed by: DefaultPullPolicy()
+2026-02-12 11:20:55 INFO  [ Test worker -> org.testcontainers.utility.ImageNameSubstitutor.instance ]: Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2026-02-12 11:20:55 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.getOrInitializeStrategy ]: Testcontainers version: 1.21.3
+2026-02-12 11:20:55 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.lambda$loadConfiguredStrategy$9 ]: Loaded org.testcontainers.dockerclient.NpipeSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2026-02-12 11:20:56 INFO  [ Test worker -> org.testcontainers.dockerclient.DockerClientProviderStrategy.tryOutStrategy ]: Found Docker environment with local Npipe socket (npipe:////./pipe/docker_engine)
+2026-02-12 11:20:56 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Docker host IP address is localhost
+2026-02-12 11:20:56 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Connected to docker: 
+  Server Version: 28.4.0
+  API Version: 1.51
+  Operating System: Docker Desktop
+  Total Memory: 7759 MB
+  Labels: 
+    com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+2026-02-12 11:20:56 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: testcontainers/ryuk:0.12.0
+2026-02-12 11:20:56 INFO  [ Test worker -> org.testcontainers.utility.RegistryAuthLocator.runCredentialProvider ]: Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2026-02-12 11:20:56 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 is starting: f17bfb9cc91818c5bf6d7fccf17f82706a6af771bc77a2633d64e8f3fecabba1
+2026-02-12 11:20:57 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container testcontainers/ryuk:0.12.0 started in PT1.1894714S
+2026-02-12 11:20:57 INFO  [ Test worker -> org.testcontainers.utility.RyukResourceReaper.init ]: Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2026-02-12 11:20:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.client ]: Checking the system...
+2026-02-12 11:20:57 INFO  [ Test worker -> org.testcontainers.DockerClientFactory.check ]: ✔︎ Docker server version should be at least 1.6.0
+2026-02-12 11:20:57 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Creating container for image: couchdb:latest
+2026-02-12 11:20:57 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest is starting: c923535367816b2680a2172246a33a8bf855d085ff4c693ab6ee158c2f67a11b
+2026-02-12 11:20:58 INFO  [ Test worker -> org.testcontainers.containers.wait.strategy.HttpWaitStrategy.waitUntilReady ]: /nostalgic_poincare: Waiting for 60 seconds for URL: http://localhost:5984/_up (where port 5984 maps to container port 5984)
+2026-02-12 11:20:59 INFO  [ Test worker -> org.testcontainers.containers.GenericContainer.tryStart ]: Container couchdb:latest started in PT1.8030886S
+2026-02-12 11:20:59 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Status code:	'201'
+2026-02-12 11:20:59 INFO  [ Test worker -> org.tasktide.tasktide.TestEnvironment.createDbHttp ]: Response body:	'{"ok":true}
+'
+2026-02-12 11:20:59 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-02-12 11:20:59 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-02-12 11:20:59 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-02-12 11:21:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-02-12 11:21:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container ceeb00d1-5257-4792-9aa3-996aa4e9fcf2 initialized
+2026-02-12 11:21:05 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.setUpClass ]: 
+
+---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------
+
+2026-02-12 11:21:05 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2026-02-12 11:21:05 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Creating ClientConfigMap
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Displaying configured properties
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Host:Port', Value = 'Argument{value=null, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Token Expiration', Value = 'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=GLOBAL}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Help', Value = 'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=GLOBAL}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Database Type', Value = 'Argument{value=null, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'WorkItem Name', Value = 'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=GLOBAL}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Database Provider', Value = 'Argument{value=null, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Workflow Name', Value = 'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=GLOBAL}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Step Name', Value = 'Argument{value=myStep, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=GLOBAL}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Date Format', Value = 'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=GLOBAL}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Password', Value = 'Argument{value=null, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL Provider Class', Value = 'Argument{value=null, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'NoSQL User', Value = 'Argument{value=null, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'File Path', Value = 'Argument{value=sqliteDbStore, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Key = 'Repository Type', Value = 'Argument{value=sqlite, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=GLOBAL}'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Initializing TaskTideServiceManager
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'sqlite'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring ItemStore ServiceManager
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStoreMap ]: Prcessing ItemStore from under:	'sqliteDbStore'
+2026-02-12 11:21:06 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:10 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:10 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:10 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:10 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:10 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:10 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-02-12 11:21:10 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:13 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:13 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:13 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:13 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:13 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:13 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:13 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:13 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-02-12 11:21:13 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:17 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:17 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:17 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:17 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:17 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:17 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:17 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:17 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-02-12 11:21:17 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:21 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:21 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:21 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:21 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:21 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:21 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:21 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:21 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-02-12 11:21:21 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:24 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:24 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:25 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:25 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:25 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:25 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:25 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:25 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-02-12 11:21:25 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:28 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:28 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:28 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:28 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:28 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:29 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:29 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:29 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-02-12 11:21:29 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Constructing TaskTideClient
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: Running the 'Manager'
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask ]: Executing ManagerCommand:
+'{
+    "Command Spec": {
+        "File Path": "src/test/resources/singleTaskImports.txt",
+        "Options": {
+            "Item Id": "",
+            "Delimiter": "|",
+            "Step Name": "myStep",
+            "Nested Delimiter": ""
+        },
+        "Query String": ""
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ''
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: No nested delimiter detected, importing as single tasks
+2026-02-12 11:21:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:35 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:35 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:46 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:46 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:46 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:46 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:46 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:46 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:46 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:46 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:50 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:50 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:50 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:50 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:50 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:50 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:50 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:50 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:53 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:53 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:54 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:54 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:54 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:54 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:54 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:54 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:21:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:21:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:21:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:21:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:22:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:22:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:22:04 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:22:04 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:04 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:04 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:04 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:04 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:04 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:04 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:22:08 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:22:08 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:08 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:08 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:08 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:08 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:08 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:08 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-12 11:22:11 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-12 11:22:11 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:12 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:12 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:12 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:12 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-12 11:22:12 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-12 11:22:12 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask ]: Displaying results:	'true'
+2026-02-12 11:22:12 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.canImportThroughManagerClient ]: 
+
+================ Tests ManagerClient-Import  ================
+
+2026-02-12 11:22:12 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container ceeb00d1-5257-4792-9aa3-996aa4e9fcf2 shut down
+2026-02-12 11:22:12 INFO  [ Test worker -> org.tasktide.tasktide.client.TaskTideClientTests.tearDownClass ]: 
+
+---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------
+

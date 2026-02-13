@@ -113,7 +113,7 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <div class="col-last odd-row-color">
 <div class="block">Construct with fields</div>
 </div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,java.lang.String,org.tasktide.core.model.workitem.ItemType,org.tasktide.core.model.workitem.ItemState,java.lang.String,long,long,int,int,org.tasktide.core.model.workitem.Workload,java.lang.String,java.lang.String)" class="member-name-link">WorkItem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,java.lang.String,org.tasktide.core.model.workitem.ItemType,org.tasktide.core.model.workitem.ItemState,java.lang.String,long,long,int,int,org.tasktide.core.model.workitem.Workload,java.lang.String,java.lang.String,java.lang.String,org.tasktide.core.model.CustomAnnotation)" class="member-name-link">WorkItem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemName,
  <a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;itemType,
  <a href="ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a>&nbsp;itemState,
@@ -124,7 +124,9 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
  int&nbsp;taskDone,
  <a href="Workload.html" title="class in org.tasktide.core.model.workitem">Workload</a>&nbsp;workload,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</code></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;jobEnvId,
+ <a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Constructor for JSON Deserialization</div>
 </div>
@@ -157,35 +159,45 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Fetch <a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task"><code>ItemTask</code></a> by their <a href="ItemState.html" title="enum class in org.tasktide.core.model.workitem"><code>ItemState</code></a></div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCollection()" class="member-name-link">getCollection</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAnnotations()" class="member-name-link">getAnnotations</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get step</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDoneDate()" class="member-name-link">getDoneDate</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get done date</div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get work item Id</div>
+<div class="block">Get annotations</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getItemName()" class="member-name-link">getItemName</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCollection()" class="member-name-link">getCollection</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get step</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getDoneDate()" class="member-name-link">getDoneDate</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get done date</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get work item Id</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getItemName()" class="member-name-link">getItemName</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Get item name</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getItemState()" class="member-name-link">getItemState</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getItemState()" class="member-name-link">getItemState</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Get item state</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getItemType()" class="member-name-link">getItemType</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getItemType()" class="member-name-link">getItemType</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Get item type</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getJobEnvId()" class="member-name-link">getJobEnvId</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get job environment Id</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLockDate()" class="member-name-link">getLockDate</a>()</code></div>
@@ -205,7 +217,7 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStepId()" class="member-name-link">getStepId</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get the parent <code>StepId</code></div>
+<div class="block">Get the parent <a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> Id</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStepName()" class="member-name-link">getStepName</a>()</code></div>
@@ -248,29 +260,39 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <div class="block">Unlock <a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task"><code>ItemTask</code></a> associated with provided Id</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDoneDate(long)" class="member-name-link">setDoneDate</a><wbr>(long&nbsp;doneDate)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAnnotations(org.tasktide.core.model.CustomAnnotation)" class="member-name-link">setAnnotations</a><wbr>(<a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set annotation provided</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDoneDate(long)" class="member-name-link">setDoneDate</a><wbr>(long&nbsp;doneDate)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Set done date</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setId(java.lang.String)" class="member-name-link">setId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setId(java.lang.String)" class="member-name-link">setId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Set work item id</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setItemName(java.lang.String)" class="member-name-link">setItemName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setItemName(java.lang.String)" class="member-name-link">setItemName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemName)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Set item name</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setItemState(org.tasktide.core.model.workitem.ItemState)" class="member-name-link">setItemState</a><wbr>(<a href="ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a>&nbsp;itemState)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setItemState(org.tasktide.core.model.workitem.ItemState)" class="member-name-link">setItemState</a><wbr>(<a href="ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a>&nbsp;itemState)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Set item state</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setItemType(org.tasktide.core.model.workitem.ItemType)" class="member-name-link">setItemType</a><wbr>(<a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;itemType)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setItemType(org.tasktide.core.model.workitem.ItemType)" class="member-name-link">setItemType</a><wbr>(<a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;itemType)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Set item type</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setJobEnvId(java.lang.String)" class="member-name-link">setJobEnvId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;jobEnvId)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets job environment Id</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setLockDate(long)" class="member-name-link">setLockDate</a><wbr>(long&nbsp;lockDate)</code></div>
@@ -285,7 +307,7 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStepId(java.lang.String)" class="member-name-link">setStepId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Set the parent <code>Step</code> Id</div>
+<div class="block">Set the parent <a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> Id</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setStepName(java.lang.String)" class="member-name-link">setStepName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</code></div>
@@ -345,7 +367,7 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Represent work item as string</div>
+<div class="block">Represent as string</div>
 </div>
 </div>
 </div>
@@ -403,7 +425,7 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,java.lang.String,org.tasktide.core.model.workitem.ItemType,org.tasktide.core.model.workitem.ItemState,java.lang.String,long,long,int,int,org.tasktide.core.model.workitem.Workload,java.lang.String,java.lang.String)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,java.lang.String,org.tasktide.core.model.workitem.ItemType,org.tasktide.core.model.workitem.ItemState,java.lang.String,long,long,int,int,org.tasktide.core.model.workitem.Workload,java.lang.String,java.lang.String,java.lang.String,org.tasktide.core.model.CustomAnnotation)">
 <h3>WorkItem</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">WorkItem</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemName,
@@ -416,7 +438,9 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
  int&nbsp;taskDone,
  <a href="Workload.html" title="class in org.tasktide.core.model.workitem">Workload</a>&nbsp;workload,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</span></div>
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;jobEnvId,
+ <a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</span></div>
 <div class="block">Constructor for JSON Deserialization</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -432,6 +456,8 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <dd><code>workload</code> - </dd>
 <dd><code>stepName</code> - </dd>
 <dd><code>stepId</code> - </dd>
+<dd><code>jobEnvId</code> - </dd>
+<dd><code>anno</code> - </dd>
 </dl>
 </section>
 </li>
@@ -556,6 +582,28 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 </section>
 </li>
 <li>
+<section class="detail" id="getJobEnvId()">
+<h3>getJobEnvId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getJobEnvId</span>()</div>
+<div class="block">Get job environment Id</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>String</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setJobEnvId(java.lang.String)">
+<h3>setJobEnvId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setJobEnvId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;jobEnvId)</span></div>
+<div class="block">Sets job environment Id</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>jobEnvId</code> - </dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="getItemName()">
 <h3>getItemName</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getItemName</span>()</div>
@@ -574,6 +622,32 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>itemName</code> - </dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAnnotations()">
+<h3>getAnnotations</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></span>&nbsp;<span class="element-name">getAnnotations</span>()</div>
+<div class="block">Get annotations</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="../../TaskTideModel.html#getAnnotations()">getAnnotations</a></code>&nbsp;in interface&nbsp;<code><a href="../../TaskTideModel.html" title="interface in org.tasktide.core">TaskTideModel</a>&lt;<a href="WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></dd>
+<dt>Returns:</dt>
+<dd><a href="../CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setAnnotations(org.tasktide.core.model.CustomAnnotation)">
+<h3>setAnnotations</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAnnotations</span><wbr><span class="parameters">(<a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</span></div>
+<div class="block">Set annotation provided</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="../../TaskTideModel.html#setAnnotations(org.tasktide.core.model.CustomAnnotation)">setAnnotations</a></code>&nbsp;in interface&nbsp;<code><a href="../../TaskTideModel.html" title="interface in org.tasktide.core">TaskTideModel</a>&lt;<a href="WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></dd>
+<dt>Parameters:</dt>
+<dd><code>anno</code> - </dd>
 </dl>
 </section>
 </li>
@@ -793,7 +867,7 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <section class="detail" id="setStepId(java.lang.String)">
 <h3>setStepId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setStepId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</span></div>
-<div class="block">Set the parent <code>Step</code> Id</div>
+<div class="block">Set the parent <a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> Id</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>stepId</code> - </dd>
@@ -804,7 +878,7 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <section class="detail" id="getStepId()">
 <h3>getStepId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getStepId</span>()</div>
-<div class="block">Get the parent <code>StepId</code></div>
+<div class="block">Get the parent <a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> Id</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>String</dd>
@@ -828,6 +902,8 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toJsonDoc</span>()</div>
 <div class="block">Serialize to a human readable formatted JSON string</div>
 <dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="../../TaskTideModel.html#toJsonDoc()">toJsonDoc</a></code>&nbsp;in interface&nbsp;<code><a href="../../TaskTideModel.html" title="interface in org.tasktide.core">TaskTideModel</a>&lt;<a href="WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>String</dd>
 </dl>
@@ -849,11 +925,12 @@ implements <a href="../../TaskTideModel.html" title="interface in org.tasktide.c
 <section class="detail" id="toString()">
 <h3>toString</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toString</span>()</div>
-<div class="block">Represent work item as string</div>
+<div class="block">Represent as string</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
 <dt>Returns:</dt>
+<dd>String</dd>
 </dl>
 </section>
 </li>

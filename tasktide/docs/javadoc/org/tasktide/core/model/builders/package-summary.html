@@ -44,7 +44,7 @@ loadScripts(document, 'script');</script>
 <ul class="sub-nav-list">
 <li>Package:&nbsp;</li>
 <li>Description&nbsp;|&nbsp;</li>
-<li>Related Packages&nbsp;|&nbsp;</li>
+<li><a href="#related-package-summary">Related Packages</a>&nbsp;|&nbsp;</li>
 <li><a href="#class-summary">Classes and Interfaces</a></li>
 </ul>
 </div>
@@ -66,6 +66,27 @@ loadScripts(document, 'script');</script>
 <section class="summary">
 <ul class="summary-list">
 <li>
+<div id="related-package-summary">
+<div class="caption"><span>Related Packages</span></div>
+<div class="summary-table two-column-summary">
+<div class="table-header col-first">Package</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><a href="../package-summary.html">org.tasktide.core.model</a></div>
+<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><a href="../collection/package-summary.html">org.tasktide.core.model.collection</a></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-first even-row-color"><a href="../job_env/package-summary.html">org.tasktide.core.model.job_env</a></div>
+<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><a href="../state_summary/package-summary.html">org.tasktide.core.model.state_summary</a></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-first even-row-color"><a href="../task/package-summary.html">org.tasktide.core.model.task</a></div>
+<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><a href="../workitem/package-summary.html">org.tasktide.core.model.workitem</a></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+</div>
+</div>
+</li>
+<li>
 <div id="class-summary">
 <div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="class-summary-tab0" role="tab" aria-selected="true" aria-controls="class-summary.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('class-summary', 'class-summary', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="class-summary-tab2" role="tab" aria-selected="false" aria-controls="class-summary.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('class-summary', 'class-summary-tab2', 2)" class="table-tab">Classes</button><button id="class-summary-tab3" role="tab" aria-selected="false" aria-controls="class-summary.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('class-summary', 'class-summary-tab3', 2)" class="table-tab">Enum Classes</button></div>
 <div id="class-summary.tabpanel" role="tabpanel">
@@ -76,11 +97,27 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color class-summary class-summary-tab3">
 <div class="block">Enumeration fo valid builder types</div>
 </div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="ItemTaskBuilder.html" title="class in org.tasktide.core.model.builders">ItemTaskBuilder</a></div>
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="CustomAnnotationBuilder.html" title="class in org.tasktide.core.model.builders">CustomAnnotationBuilder</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block"><a href="../CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> builder</div>
+</div>
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="ItemTaskBuilder.html" title="class in org.tasktide.core.model.builders">ItemTaskBuilder</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Allow ProcessLog objects to be built where all fields are optional</div>
 </div>
-<div class="col-first even-row-color class-summary class-summary-tab2"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></div>
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="JobEnvironmentBuilder.html" title="class in org.tasktide.core.model.builders">JobEnvironmentBuilder</a></div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block"><a href="../job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a> builder</div>
+</div>
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="MetricDataBuilder.html" title="class in org.tasktide.core.model.builders">MetricDataBuilder</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="block">Builder class for <a href="../job_env/metrics/MetricData.html" title="class in org.tasktide.core.model.job_env.metrics"><code>MetricData</code></a>.</div>
+</div>
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="MetricProfileBuilder.html" title="class in org.tasktide.core.model.builders">MetricProfileBuilder</a></div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block"><a href="../job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics"><code>MetricProfile</code></a> builder</div>
+</div>
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;T&gt;</div>
 <div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Abstract for building model classes</div>
 </div>
@@ -92,24 +129,28 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Allow ProcessLog objects to be built where all fields are optional</div>
 </div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></div>
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="ProfileDataBuilder.html" title="class in org.tasktide.core.model.builders">ProfileDataBuilder</a></div>
 <div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="block"><a href="../job_env/metrics/ProfileData.html" title="class in org.tasktide.core.model.job_env.metrics"><code>ProfileData</code></a></div>
+</div>
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Allow <a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> objects to be built where all fields are optional</div>
 </div>
-<div class="col-first even-row-color class-summary class-summary-tab2"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="TaskLoggingBuilder.html" title="class in org.tasktide.core.model.builders">TaskLoggingBuilder</a></div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
 <div class="block">Allow TaskLogging objects to be built where all fields are optional</div>
 </div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Allow <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> objects to be built where all fields are optional</div>
 </div>
-<div class="col-first even-row-color class-summary class-summary-tab2"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></div>
-<div class="col-last even-row-color class-summary class-summary-tab2">
+<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></div>
+<div class="col-last odd-row-color class-summary class-summary-tab2">
 <div class="block">Allow <a href="../workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> objects to be built where all fields are optional</div>
 </div>
-<div class="col-first odd-row-color class-summary class-summary-tab2"><a href="WorkloadBuilder.html" title="class in org.tasktide.core.model.builders">WorkloadBuilder</a></div>
-<div class="col-last odd-row-color class-summary class-summary-tab2">
+<div class="col-first even-row-color class-summary class-summary-tab2"><a href="WorkloadBuilder.html" title="class in org.tasktide.core.model.builders">WorkloadBuilder</a></div>
+<div class="col-last even-row-color class-summary class-summary-tab2">
 <div class="block">Allow ProcessLog objects to be built where all fields are optional</div>
 </div>
 </div>

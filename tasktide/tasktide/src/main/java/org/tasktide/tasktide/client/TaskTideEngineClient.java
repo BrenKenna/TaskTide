@@ -41,7 +41,7 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
 import org.tasktide.engine.worker.executor.WorkItemExecutor;
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 import org.tasktide.engine.worker.processor.WorkItemProcessor;
-import org.tasktide.tasktide.parser.model.ArgumentMap;
+import org.tasktide.parser.model.ArgumentMap;
 
 
 /**

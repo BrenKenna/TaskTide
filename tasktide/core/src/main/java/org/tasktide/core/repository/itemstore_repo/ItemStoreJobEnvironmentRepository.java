@@ -19,9 +19,12 @@ import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.itemstore.ItemStore;
 
+// For JavaDocs
+import org.tasktide.core.TaskTideRepository;
+
 
 /**
- * {@link JobEnvironment} {@link TaskTideRepository} backed by RocksDB/SQLite
+ * {@link JobEnvironment} {@link ItemStore}-{@link TaskTideRepository} backed by RocksDB/SQLite
  * 
  * @author Brendan Kenna
  */

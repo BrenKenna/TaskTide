@@ -47,6 +47,10 @@ import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 
 
+// For JavaDocs
+import org.tasktide.core.repository.JpaRepository;
+
+
 /**
  * Supports creation of {@link JpaRepository} {@link TaskTideRepository},
  *  {@link TaskTideService}, and initialize the {@link TaskTideServiceManager} 

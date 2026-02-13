@@ -118,7 +118,7 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addTask(java.lang.String,org.tasktide.core.model.task.ItemTask)" class="member-name-link">addTask</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;taskName,
  <a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;work)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Add a new work item to workload</div>
+<div class="block">Add a new work item to taskMap</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addTask(org.tasktide.core.model.task.ItemTask)" class="member-name-link">addTask</a><wbr>(<a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;task)</code></div>
@@ -128,17 +128,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#dropTask(java.lang.String)" class="member-name-link">dropTask</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;taskName)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Drop named task if present in workload</div>
+<div class="block">Drop named task if present in taskMap</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#dropTask(org.tasktide.core.model.task.ItemTask)" class="member-name-link">dropTask</a><wbr>(<a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;task)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Drop provided task if present from workload</div>
+<div class="block">Drop provided task if present from taskMap</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#dropTaskById(java.lang.String)" class="member-name-link">dropTaskById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;taskId)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Drop task by Id if present in workload</div>
+<div class="block">Drop task by Id if present in taskMap</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="../task/TaskState.html" title="enum class in org.tasktide.core.model.task">TaskState</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&gt;&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#fetchByState()" class="member-name-link">fetchByState</a>()</code></div>
@@ -158,7 +158,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get workload Id</div>
+<div class="block">Get taskMap Id</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>long</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLatestDone()" class="member-name-link">getLatestDone</a>()</code></div>
@@ -171,19 +171,19 @@ loadScripts(document, 'script');</script>
 <div class="block">Fetch task if present</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWorkload()" class="member-name-link">getWorkload</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTaskMap()" class="member-name-link">getTaskMap</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get workload</div>
+<div class="block">Get taskMap</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWorkloadSize()" class="member-name-link">getWorkloadSize</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get workload size</div>
+<div class="block">Get taskMap size</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWorkloadType()" class="member-name-link">getWorkloadType</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get workload type</div>
+<div class="block">Get taskMap type</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#resetModel()" class="member-name-link">resetModel</a>()</code></div>
@@ -198,17 +198,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setId(java.lang.String)" class="member-name-link">setId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workloadId)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Set workload Id</div>
+<div class="block">Set taskMap Id</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setWorkload(java.util.Map)" class="member-name-link">setWorkload</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&gt;&nbsp;workload)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setTaskMap(java.util.Map)" class="member-name-link">setTaskMap</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&gt;&nbsp;taskMap)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Set workload</div>
+<div class="block">Set taskMap</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setWorkloadType(org.tasktide.core.model.workitem.ItemType)" class="member-name-link">setWorkloadType</a><wbr>(<a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;workloadType)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Set workload type</div>
+<div class="block">Set taskMap type</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="../task/TaskState.html" title="enum class in org.tasktide.core.model.task">TaskState</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link">Integer</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#summarizeWorkload()" class="member-name-link">summarizeWorkload</a>()</code></div>
@@ -228,7 +228,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Represent workload as string</div>
+<div class="block">Represent as string</div>
 </div>
 </div>
 </div>
@@ -313,7 +313,7 @@ loadScripts(document, 'script');</script>
 <h3>addTask</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">addTask</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;taskName,
  <a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;work)</span></div>
-<div class="block">Add a new work item to workload</div>
+<div class="block">Add a new work item to taskMap</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>work</code> - </dd>
@@ -353,7 +353,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="dropTask(java.lang.String)">
 <h3>dropTask</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">dropTask</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;taskName)</span></div>
-<div class="block">Drop named task if present in workload</div>
+<div class="block">Drop named task if present in taskMap</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>taskName</code> - </dd>
@@ -366,7 +366,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="dropTaskById(java.lang.String)">
 <h3>dropTaskById</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">dropTaskById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;taskId)</span></div>
-<div class="block">Drop task by Id if present in workload</div>
+<div class="block">Drop task by Id if present in taskMap</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>taskId</code> - </dd>
@@ -379,7 +379,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="dropTask(org.tasktide.core.model.task.ItemTask)">
 <h3>dropTask</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">dropTask</span><wbr><span class="parameters">(<a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;task)</span></div>
-<div class="block">Drop provided task if present from workload</div>
+<div class="block">Drop provided task if present from taskMap</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>task</code> - </dd>
@@ -436,7 +436,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getWorkloadSize()">
 <h3>getWorkloadSize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getWorkloadSize</span>()</div>
-<div class="block">Get workload size</div>
+<div class="block">Get taskMap size</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>int</dd>
@@ -447,7 +447,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getId()">
 <h3>getId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getId</span>()</div>
-<div class="block">Get workload Id</div>
+<div class="block">Get taskMap Id</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>String</dd>
@@ -458,7 +458,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setId(java.lang.String)">
 <h3>setId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workloadId)</span></div>
-<div class="block">Set workload Id</div>
+<div class="block">Set taskMap Id</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>workloadId</code> - </dd>
@@ -466,10 +466,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="getWorkload()">
-<h3>getWorkload</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&gt;</span>&nbsp;<span class="element-name">getWorkload</span>()</div>
-<div class="block">Get workload</div>
+<section class="detail" id="getTaskMap()">
+<h3>getTaskMap</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&gt;</span>&nbsp;<span class="element-name">getTaskMap</span>()</div>
+<div class="block">Get taskMap</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>Map-TaskName, <a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task"><code>ItemTask</code></a></dd>
@@ -477,13 +477,13 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="setWorkload(java.util.Map)">
-<h3>setWorkload</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setWorkload</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&gt;&nbsp;workload)</span></div>
-<div class="block">Set workload</div>
+<section class="detail" id="setTaskMap(java.util.Map)">
+<h3>setTaskMap</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setTaskMap</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&gt;&nbsp;taskMap)</span></div>
+<div class="block">Set taskMap</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>workload</code> - </dd>
+<dd><code>taskMap</code> - </dd>
 </dl>
 </section>
 </li>
@@ -491,7 +491,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getWorkloadType()">
 <h3>getWorkloadType</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a></span>&nbsp;<span class="element-name">getWorkloadType</span>()</div>
-<div class="block">Get workload type</div>
+<div class="block">Get taskMap type</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd><a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem"><code>ItemType</code></a></dd>
@@ -502,7 +502,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="setWorkloadType(org.tasktide.core.model.workitem.ItemType)">
 <h3>setWorkloadType</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setWorkloadType</span><wbr><span class="parameters">(<a href="ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;workloadType)</span></div>
-<div class="block">Set workload type</div>
+<div class="block">Set taskMap type</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>workloadType</code> - </dd>
@@ -513,7 +513,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="toString()">
 <h3>toString</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toString</span>()</div>
-<div class="block">Represent workload as string</div>
+<div class="block">Represent as string</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
