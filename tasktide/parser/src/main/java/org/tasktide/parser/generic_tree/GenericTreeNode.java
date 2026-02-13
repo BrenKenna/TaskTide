@@ -13,15 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.parser.model;
+package org.tasktide.parser.generic_tree;
 
 import java.util.Map;
-import java.util.HashMap;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
  * Datapoint of {@link GenericTree}
+ * 
+ * @param <T> - Data Type of Tree
  * 
  * @author bkenna
  */
@@ -31,7 +33,7 @@ public class GenericTreeNode<T> {
     private T data;
     private final String address;
     private GenericTreeNode<T> parent;
-    private Map<String, GenericTreeNode<T>> children = new HashMap<>();
+    private final Map<String, GenericTreeNode<T>> children = new ConcurrentHashMap<>();
     
     
     /**
@@ -159,6 +161,6 @@ public class GenericTreeNode<T> {
      * 
      */
     public void clearChildren() {
-        this.children.clear();;
+        this.children.clear();
     }
 }

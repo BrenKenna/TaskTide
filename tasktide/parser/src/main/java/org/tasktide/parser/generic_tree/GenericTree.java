@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.parser.model;
+package org.tasktide.parser.generic_tree;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -49,6 +49,17 @@ public class GenericTree<T> {
     
     
     /**
+     * Get children as an immutable map
+     * 
+     * @param node
+     * @return Map-String, {@link GenericTreeNode}
+     */
+    public synchronized Map<String, GenericTreeNode<T>> getImmutableChildren(GenericTreeNode<T> node) {
+        return Collections.unmodifiableMap(node.getChildren());
+    }
+    
+    
+    /**
      * Get root node
      * 
      * @return GenericTreeNode-T
@@ -64,7 +75,7 @@ public class GenericTree<T> {
      * @param path
      * @param data 
      */
-    public void addChild(String path, T data) {
+    public synchronized void addChild(String path, T data) {
         this.recursiveAdd(root, path, data);
     }
     
@@ -75,7 +86,7 @@ public class GenericTree<T> {
      * @param path
      * @return {@link GenericTreeNode}-T
      */
-    public GenericTreeNode<T> findByAddress(String path) {
+    public synchronized GenericTreeNode<T> findByAddress(String path) {
         return this.recursiveGetByAddress(root, path);
     }
     
@@ -86,7 +97,7 @@ public class GenericTree<T> {
      * @param path
      * @return T
      */
-    public T getDataForAddress(String path) {
+    public synchronized T getDataForAddress(String path) {
         return this.findByAddress(path).getData();
     }
     
@@ -97,7 +108,7 @@ public class GenericTree<T> {
      * @param path
      * @return boolean
      */
-    public boolean removeByAddress(String path) {
+    public synchronized boolean removeByAddress(String path) {
         String[] addressArr = path.split(Pattern.quote(delimiter), 2);
         return recursiveRemove(root, addressArr);
     }
@@ -109,9 +120,9 @@ public class GenericTree<T> {
      * @param path
      * @return Map-String, {@link GenericTreeNode}-T
      */
-    public Map<String, GenericTreeNode<T>> getChildrenAtAddress(String path) {
+    public synchronized Map<String, GenericTreeNode<T>> getChildrenAtAddress(String path) {
         GenericTreeNode<T> node = this.findByAddress(path);
-        return node != null ? node.getChildren() : null;
+        return node != null ? getImmutableChildren(node) : null;
     }
     
     
@@ -122,12 +133,12 @@ public class GenericTree<T> {
      * @param delim
      * @return Map-String, Data
      */
-    public Map<String, T> getChildrenDataAtAddress(String path, String delim) {
+    public synchronized Map<String, T> getChildrenDataAtAddress(String path, String delim) {
         GenericTreeNode<T> node = this.findByAddress(path);
         if (node == null || node.getChildren() == null) return null;
         
         Map<String, T> result = new HashMap<>();
-        for (Map.Entry<String, GenericTreeNode<T>> entry : node.getChildren().entrySet()) {
+        for (Map.Entry<String, GenericTreeNode<T>> entry : getImmutableChildren(node).entrySet()) {
             result.put(entry.getKey(), entry.getValue().getData());
         }
         
@@ -142,7 +153,7 @@ public class GenericTree<T> {
      * @param query
      * @return {@link GenericTreeNode}-t
      */
-    public GenericTreeNode<T> findByData(T query) {
+    public synchronized GenericTreeNode<T> findByData(T query) {
         
         // Base case
         if ( this.root.listChildren().isEmpty() ) return null;
@@ -158,7 +169,7 @@ public class GenericTree<T> {
      * @param query
      * @return query
      */
-    public boolean containsData(T query) {
+    public synchronized boolean containsData(T query) {
         return findByData(query) != null;
     }
     
@@ -168,7 +179,7 @@ public class GenericTree<T> {
      * 
      * @return int
      */
-    public int size() {
+    public synchronized int size() {
         return sizeRecursive(root);
     }
     
@@ -179,7 +190,7 @@ public class GenericTree<T> {
      * @param node
      * @return List-{@link GenericTreeNode}-T
      */
-    public List<GenericTreeNode<T>> getPathToRoot(GenericTreeNode<T> node) {
+    public synchronized List<GenericTreeNode<T>> getPathToRoot(GenericTreeNode<T> node) {
         List<GenericTreeNode<T>> path = new ArrayList<>();
         GenericTreeNode<T> current = node;
         while (current != null) {
@@ -196,7 +207,7 @@ public class GenericTree<T> {
      * 
      * @return Map-String, Value
      */
-    public Map<String, T> toAddressDataMap() {
+    public synchronized Map<String, T> toAddressDataMap() {
         Map<String, T> result = new LinkedHashMap<>();
         collectAddressData(root, result);
         return result;
@@ -339,7 +350,7 @@ public class GenericTree<T> {
      * @param flag
      * @return String
      */
-    public String subStringPathToFlag(String path, String flag) {
+    public synchronized String subStringPathToFlag(String path, String flag) {
         String[] pathArr = path.split(Pattern.quote(this.delimiter));
         StringBuilder result = new StringBuilder();
         

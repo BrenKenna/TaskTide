@@ -21,7 +21,7 @@ import java.util.Map;
 
 import org.tasktide.parser.model.Argument;
 import org.tasktide.parser.model.ArgumentMap;
-import org.tasktide.parser.model.GenericTree;
+import org.tasktide.parser.generic_tree.GenericTree;
 
 
 /**
