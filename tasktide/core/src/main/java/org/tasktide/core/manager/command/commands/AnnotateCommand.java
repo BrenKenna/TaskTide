@@ -26,6 +26,12 @@ import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.file_handler.AnnotationCommandProcessor;
 
+// For JavaDoc
+import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.manager.command.ManagerCommand;
+
 
 /**
  * {@link ManagerCommand} for applying {@link CustomAnnotation}, or {@link JobEnvironment} onto

@@ -26,6 +26,8 @@ import org.tasktide.parser.ArgumentTree;
 import org.tasktide.parser.model.Argument;
 import org.tasktide.parser.model.ArgumentType;
 
+// For JavaDocs
+import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 
 /**
  * Configure properties for the {@link MutexOrchestrator}

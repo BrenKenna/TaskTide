@@ -23,6 +23,8 @@ import java.time.Duration;
 import org.tasktide.mutex.model.Mutex;
 import org.tasktide.mutex.exceptions.MutexUncheckedException;
 
+// For JavaDocs
+import org.tasktide.mutex.actor.MutexActor;
 
 /**
  * Holds constants for building {@link Mutex}
@@ -175,7 +177,7 @@ public class MutexConstants {
     
     
     /**
-     * Initialize paths for {@link InterProcessMutex}
+     * Initialize paths for {@link MutexActor}
      * 
      */
     public static synchronized void initializePaths() {
@@ -205,7 +207,7 @@ public class MutexConstants {
     
     
     /**
-     * Initialize paths for {@link InterProcessMutex}
+     * Initialize paths for {@link MutexActor}
      * 
      * @param lockingDir
      * @param lockingFile

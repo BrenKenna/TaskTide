@@ -19,9 +19,11 @@ import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.itemstore.ItemStore;
 
+// For JavaDocs
+import org.tasktide.core.TaskTideRepository;
 
 /**
- * {@link MetricProfile} {@link TaskTideRepository} backed by RocksDB/SQLite
+ * {@link MetricProfile} {@link ItemStore}-{@link TaskTideRepository} backed by RocksDB/SQLite
  * 
  * @author Brendan Kenna
  */

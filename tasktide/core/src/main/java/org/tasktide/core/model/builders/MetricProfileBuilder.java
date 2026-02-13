@@ -20,6 +20,9 @@ import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.core.model.job_env.metrics.ProfileData;
 
+// For JavaDocs
+import org.tasktide.core.model.job_env.JobEnvironment;
+
 
 /**
  * {@link MetricProfile} builder

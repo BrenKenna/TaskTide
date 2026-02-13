@@ -25,11 +25,15 @@ import jakarta.json.bind.annotation.JsonbTransient;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Random;
+
 import org.tasktide.mutex.exceptions.MutexUncheckedException;
+
+// For JavaDocs
+import org.tasktide.mutex.actor.MutexActor;
 
 
 /**
- * Model class for {@link InterProcessLock}
+ * Model class for {@link MutexActor}
  *
  * @author Brendan Kenna
  */

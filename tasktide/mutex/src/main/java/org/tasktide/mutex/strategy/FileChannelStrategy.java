@@ -24,7 +24,6 @@ import java.nio.file.Path;
 
 import org.tasktide.mutex.utils.FileUtility;
 
-
 import org.tasktide.mutex.model.HostLock;
 import org.tasktide.mutex.model.HostLockFactory;
 import org.tasktide.mutex.model.Mutex;
@@ -32,10 +31,13 @@ import org.tasktide.mutex.model.MutexFileType;
 import org.tasktide.mutex.model.MutexState;
 import org.tasktide.mutex.utils.MutexFilesUtils;
 
+// For JavaDoc
+import org.tasktide.mutex.actor.FileChannelActor;
+
 
 /**
  * Class specializing in applying, and releasing
- *  {@link FileChannelMutex}
+ *  {@link FileChannelActor}
  *
  * @author Brendan Kenna
  */
@@ -43,7 +45,7 @@ public class FileChannelStrategy extends MutexStrategy {
 
     /**
      * Constructs strategy for implementing
-     *  {@link FileChannelMutex}
+     *  {@link FileChannelActor}
      *  
      */
     public FileChannelStrategy() {
@@ -52,7 +54,7 @@ public class FileChannelStrategy extends MutexStrategy {
 
     
     /**
-     * Apply {@link FileChannelMutex}
+     * Apply {@link FileChannelActor}
      * 
      * @param mutex
      * @return boolean
@@ -95,7 +97,7 @@ public class FileChannelStrategy extends MutexStrategy {
 
     
     /**
-     * Release {@link FileChannelMutex}
+     * Release {@link FileChannelActor}
      * 
      * @param mutex
      * @return boolean

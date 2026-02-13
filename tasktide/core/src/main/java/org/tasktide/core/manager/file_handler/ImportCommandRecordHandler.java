@@ -39,7 +39,7 @@ public interface ImportCommandRecordHandler {
      * @param stepName
      * @param parts
      * @param cmd
-     * @param logger 
+     * @param LOGGER 
      * @return {@link WorkItem}
      */
     public WorkItem parseRecord(String[] parts, String stepName, AbstractCommand cmd, Logger LOGGER);

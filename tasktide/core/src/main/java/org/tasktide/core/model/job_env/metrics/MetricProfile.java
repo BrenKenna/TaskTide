@@ -27,9 +27,11 @@ import java.lang.reflect.Field;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.CustomAnnotation;
 
+// For JavaDocs
+import org.tasktide.core.model.job_env.JobEnvironment;
 
 /**
- * Holds {@link Profile} and computes mean across its
+ * Holds {@link ProfileData} and computes mean across its
  *  observed {@link MetricData} datapoints as its own Entity.
  * 
  * @author Brendan Kenna

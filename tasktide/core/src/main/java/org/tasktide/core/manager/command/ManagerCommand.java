@@ -16,6 +16,9 @@
 package org.tasktide.core.manager.command;
 
 
+// For JavaDocs
+import org.tasktide.core.TaskTideService;
+
 
 /**
  * Interface through which interactions against {@link TaskTideService}

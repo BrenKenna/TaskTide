@@ -16,6 +16,9 @@
 package org.tasktide.itemstore.session;
 
 
+// For JavaDocs
+import org.tasktide.itemstore.ItemStore;
+
 /**
  * Functional interface for executing a workflow
  *  of DB/{@link ItemStore} operations over provided

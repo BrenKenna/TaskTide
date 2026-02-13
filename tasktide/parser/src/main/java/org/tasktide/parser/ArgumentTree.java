@@ -25,7 +25,7 @@ import org.tasktide.parser.generic_tree.GenericTree;
 
 
 /**
- * Implementation of {@link GenerTree} for {@link ArgumentMap}
+ * Implementation of {@link GenericTree} for {@link ArgumentMap}
  *
  * @author bkenna
  */

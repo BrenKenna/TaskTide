@@ -23,6 +23,12 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 
+// For JavaDocs
+import org.tasktide.core.manager.ManagerTask;
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.TaskTideRepository;
+
+
 /**
  * Enum to suport {@link ManagerAction} over specific {@link TaskTideModel}.
  *  Exception is the {@link ManagerTask} value which goes towards {@link WorkItem}

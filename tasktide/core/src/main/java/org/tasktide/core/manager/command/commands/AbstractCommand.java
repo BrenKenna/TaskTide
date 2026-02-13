@@ -30,6 +30,9 @@ import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
 
+// For JavaDoc
+import org.tasktide.core.TaskTideRepository;
+
 
 /**
  * Abstract class to wrap standardize class fields

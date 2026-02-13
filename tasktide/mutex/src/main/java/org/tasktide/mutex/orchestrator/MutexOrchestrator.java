@@ -254,7 +254,7 @@ public class MutexOrchestrator {
     
     
     /**
-     * Releases {@link FileChannelLock} before the central {@link MutexActor}
+     * Releases {@link FileChannelActor} before the central {@link MutexActor}
      *  on {@link NfsMutexActor} using the {@link MutexFilesUtils} jitter time
      *  configured through {@link MutexConstants}
      * 

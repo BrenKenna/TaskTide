@@ -20,6 +20,8 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.parser.ArgumentTree;
 
+// For JavaDocs
+import org.tasktide.parser.configuration.TaskTideConfig;
 
 /**
  * Abstract for standardizing client logic for
@@ -68,10 +70,9 @@ public abstract class TaskTideClient {
     
     
     /**
-     * Configures concrete {@link TaskTideConfigurer}
+     * Configures concrete {@link TaskTideConfig}
      * 
      * @return boolean
-     * 
      */
     protected abstract boolean configureClient();
 
@@ -90,9 +91,9 @@ public abstract class TaskTideClient {
 
     
     /**
-     * Get concrete {@link TaskTideConfigurer}
+     * Get concrete {@link ClientConfigMap}
      * 
-     * @return {@link TaskTideConfigurer}
+     * @return {@link ClientConfigMap}
      */
     public ClientConfigMap getClientConf() {
         return this.config;

@@ -96,7 +96,7 @@ public class ImportCommandRecordProcessor {
     
     
     /**
-     * Parse {@link ItemType.SINGLE} from active line
+     * Parse {@link ItemType}.Single from active line
      * 
      * @param abstractCMD
      * @param LOGGER

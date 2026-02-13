@@ -36,6 +36,9 @@ import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 
 
+// For JavaDoc
+import org.tasktide.core.manager.command.ManagerCommand;
+
 
 /**
  * Class for handling the deletion of {@link TaskTideModel}

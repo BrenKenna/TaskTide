@@ -31,7 +31,9 @@ import org.tasktide.core.manager.command.ManagerTarget;
 
 import org.tasktide.core.manager.file_handler.WorkItemFileProcessor;
 
-
+// For JavaDocs
+import org.tasktide.core.TaskTideModel;
+        
 
 /**
  * Command class handling resetting {@link TaskTideModel}

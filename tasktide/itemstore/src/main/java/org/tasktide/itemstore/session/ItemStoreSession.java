@@ -19,6 +19,9 @@ import java.util.List;
 
 import org.tasktide.itemstore.Item;
 
+// For JavaDocs
+import org.tasktide.itemstore.ItemStore;
+
 
 /**
  * Operations supported under an {@link ItemStore} session, ultimately
@@ -30,10 +33,10 @@ import org.tasktide.itemstore.Item;
 public interface ItemStoreSession {
     
     /**
-     * Insert provided {@link Iten}
+     * Insert provided {@link Item}
      * 
      * @param item 
-     * @return  
+     * @return {@link Item}
      */
     boolean insert(Item item);
     
@@ -42,7 +45,7 @@ public interface ItemStoreSession {
      * Fetch {@link Item} matching Id
      * 
      * @param id
-     * @return 
+     * @return {@link Item}
      */
     Item getById(String id);
     
@@ -51,7 +54,7 @@ public interface ItemStoreSession {
      * Remove provided {@link Item}
      * 
      * @param item 
-     * @return  
+     * @return boolean
      */
     boolean delete(Item item);
     
@@ -59,7 +62,7 @@ public interface ItemStoreSession {
     /**
      * Fetch all records
      * 
-     * @return 
+     * @return List-{@link Item}
      */
     List<Item> getAll();
     

@@ -22,6 +22,9 @@ import java.util.UUID;
 
 import org.tasktide.mutex.exceptions.MutexUncheckedException;
 
+// For JavaDocs
+import org.tasktide.mutex.model.Mutex;
+
 
 /**
  * Utility for {@link Mutex} labelling
