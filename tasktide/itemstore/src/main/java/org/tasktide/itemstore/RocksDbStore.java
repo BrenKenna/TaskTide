@@ -15,11 +15,13 @@
  */
 package org.tasktide.itemstore;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.logging.Level;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,6 +33,9 @@ import org.rocksdb.RocksDBException;
 
 import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
+
+import org.tasktide.itemstore.session.BulkOperation;
+import org.tasktide.itemstore.session.ItemStoreSession;
 
 
 /**
@@ -59,6 +64,36 @@ public class RocksDbStore extends AbstractItemStore {
         super(storeName, dbDirectory, masterDB, protoDB);
         RocksDB.loadLibrary();
         this.options = new Options().setCreateIfMissing(true);
+    }
+    
+    
+    /**
+     * Performs {@link BulkOperation} over {@link DbTarget}
+     *  under one {@link ItemStoreSession}
+     * 
+     * @param <T>
+     * @param target
+     * @param operations
+     * @return T
+     */
+    @Override
+    public synchronized <T> T execute(DbTarget target, BulkOperation<T> operations) {
+        this.openConn(target);
+        try {
+            ItemStoreSession session;
+            switch ( target ) {
+                case MASTER -> {
+                    session = new RocksDbSession(this.master);
+                }
+                default -> {
+                    session = new RocksDbSession(this.proto);
+                }
+            }
+            return operations.execute(session);
+        }
+        finally {
+            this.closeConn(target);
+        }
     }
     
     
@@ -513,5 +548,123 @@ public class RocksDbStore extends AbstractItemStore {
                 }
             }
         }    
+    }
+    
+    
+    /**
+     * {@link ItemStoreSession} for SQLite {@link RocksDB}
+     */
+    private class RocksDbSession implements ItemStoreSession {
+    
+        // Attributes
+        private final RocksDB conn;
+        
+        
+        /**
+         * Construct with {@link RocksDB} connection
+         * 
+         * @param conn 
+         */
+        RocksDbSession(RocksDB conn) {
+            this.conn = conn;
+        }
+        
+        @Override
+        public boolean insert(Item item) {
+            try {
+                putItem(this.conn, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
+                return true;
+            }
+            catch (JsonProcessingException ex) {
+                return false;
+            }
+        }
+
+        @Override
+        public Item getById(String id) {
+            
+            // Initialize vars
+            byte[] data;
+            
+            // Fetch data point
+            try {
+                data = this.conn.get(id.getBytes());
+                return data == null ? null : MAPPER.readValue(data, Item.class);
+            }
+            
+            catch ( IOException | RocksDBException ex ) {
+                ex.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        public boolean delete(Item item) {
+            try {
+                this.conn.delete(item.getId().getBytes());
+                return true;
+            }
+            
+            catch ( RocksDBException ex ) {
+                ex.printStackTrace();
+                return false;
+            }
+        }
+
+        @Override
+        public List<Item> getAll() {
+            
+            // Initialize variables
+            List<Item> output = new ArrayList<>();
+            RocksIterator iter;
+            
+            // Fetch & consume iterator
+            iter = fetchIter(conn);
+            for (iter.seekToFirst(); iter.isValid(); iter.next()) {
+                Item active = fetchIteratorValue(iter);
+                if ( active != null ) {
+                    output.add(active);
+                }
+            }
+        
+            // Close iterator and return results
+            iter.close();
+            return output;
+        }
+
+        @Override
+        public List<Item> getItemsByState(String state) {
+            
+            // Initialize vars
+            List<Item> output = new ArrayList<>();
+            RocksIterator iter;
+            
+            // Fetch & consume iterator
+            iter = this.conn.newIterator();
+            for (iter.seekToFirst(); iter.isValid(); iter.next()) {
+                try {
+                    Item item = MAPPER.readValue(iter.value(), Item.class);
+                    if (item.getState().equals(state)) {
+                        output.add(item);
+                    }
+                }
+                catch ( IOException ex ) { }
+            }
+
+            // Close iterator & return results
+            iter.close();
+            return output;
+        }
+
+        @Override
+        public String getPayloadById(String id) {
+            Item result = this.getById(id);
+            if ( result != null ) {
+                return result.getPayload();
+            }
+            else {
+                return null;
+            }
+        }
     }
 }

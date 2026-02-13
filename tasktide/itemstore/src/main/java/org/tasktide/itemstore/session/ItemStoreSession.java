@@ -62,4 +62,22 @@ public interface ItemStoreSession {
      * @return 
      */
     List<Item> getAll();
+    
+    
+    /**
+     * Fetch {@link Item} collection matching provided state
+     * 
+     * @param state
+     * @return List-{@link Item}
+     */
+    public List<Item> getItemsByState(String state);
+    
+    
+    /**
+     * Fetch payload of {@link Item} by its Id
+     * 
+     * @param id
+     * @return String
+     */
+    public String getPayloadById(String id);
 }

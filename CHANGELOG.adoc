@@ -42,7 +42,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 ==== ItemStore
 
-- [/] Many mutex for "contextual action"
+- [X] Many mutex for "contextual action"
 +
 --
         - While concrete ItemStores individual method run via Open-Action-Close
