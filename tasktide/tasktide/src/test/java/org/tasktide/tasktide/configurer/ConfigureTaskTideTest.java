@@ -23,9 +23,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+
 import org.tasktide.core.manager.command.ManagerCommand;
 
-import org.tasktide.core.manager.command.commands.AbstractCommand;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 
@@ -41,9 +41,9 @@ import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
 import org.tasktide.itemstore.ItemStoreType;
 import org.tasktide.tasktide.client.TaskTideManagerClient;
-import org.tasktide.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.ArgumentTree;
 
-
+import org.tasktide.parser.configuration.TaskTideConfig;
         
 /**
  * Verifies that the TaskTide-Engine can be configured and used from

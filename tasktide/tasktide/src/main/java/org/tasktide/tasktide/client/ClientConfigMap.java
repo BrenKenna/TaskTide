@@ -25,9 +25,9 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 
-import org.tasktide.tasktide.parser.ArgumentTree;
-import org.tasktide.tasktide.parser.CliParser;
-import org.tasktide.tasktide.configurer.TaskTideConfig;
+import org.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.CliParser;
+import org.tasktide.parser.configuration.TaskTideConfig;
 
 
 /**

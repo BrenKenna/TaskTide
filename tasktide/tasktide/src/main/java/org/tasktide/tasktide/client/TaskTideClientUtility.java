@@ -43,7 +43,7 @@ import org.tasktide.tasktide.configurer.GlobalConfig;
 import org.tasktide.tasktide.configurer.ManagerConfig;
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
-import org.tasktide.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.ArgumentTree;
 
 
 /**

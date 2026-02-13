@@ -114,13 +114,19 @@ tasks.register('generateAllJavadocs', Javadoc) {
 }
 
 project(":mutex") {}
+project(":parser")
 project(":itemstore") {}
 project(":core") {}
 project(":engine") {}
 project(":tasktide") {}
 
 task buildAll {
-    dependsOn ':mutex:build', ':itemstore:build', ':core:build', 'engine:build', 'tasktide:build'
+    dependsOn ':mutex:build',
+              ':parser:build',
+              ':itemstore:build', 
+              ':core:build', 
+              'engine:build', 
+              'tasktide:build'
 }
 
 build.dependsOn buildAll

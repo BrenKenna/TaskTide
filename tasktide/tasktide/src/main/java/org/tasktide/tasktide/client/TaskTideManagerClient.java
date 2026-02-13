@@ -27,8 +27,8 @@ import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.supporting.JsonUtils;
 
-import org.tasktide.tasktide.parser.ArgumentTree;
-import org.tasktide.tasktide.parser.model.ArgumentMap;
+import org.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.model.ArgumentMap;
 
 
 /**

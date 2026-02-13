@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide.tasktide.parser;
+package org.tasktide.parser;
 
+import org.tasktide.parser.ArgumentTree;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -19,10 +20,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 
-import org.tasktide.tasktide.parser.model.Argument;
-import org.tasktide.tasktide.parser.model.ArgumentBuilder;
-import org.tasktide.tasktide.parser.model.ArgumentMap;
-import org.tasktide.tasktide.parser.model.ArgumentType;
+import org.tasktide.parser.model.Argument;
+import org.tasktide.parser.model.ArgumentBuilder;
+import org.tasktide.parser.model.ArgumentMap;
+import org.tasktide.parser.model.ArgumentType;
 
 
 /**

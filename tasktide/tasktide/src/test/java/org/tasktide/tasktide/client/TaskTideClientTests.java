@@ -4,7 +4,6 @@
  */
 package org.tasktide.tasktide.client;
 
-import org.tasktide.tasktide.configurer.ConfigureTaskTideTest;
 import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
@@ -21,7 +20,6 @@ import org.junit.jupiter.api.Test;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.tasktide.TestEnvironment;
 
-
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
 
@@ -35,7 +33,7 @@ import org.testcontainers.containers.GenericContainer;
  */
 public class TaskTideClientTests {
     
-    private static final Logger logger = LogManager.getLogger(ConfigureTaskTideTest.class);
+    private static final Logger logger = LogManager.getLogger(TaskTideClientTests.class);
     private static CdiContainerProvider provider;
     
     @Rule

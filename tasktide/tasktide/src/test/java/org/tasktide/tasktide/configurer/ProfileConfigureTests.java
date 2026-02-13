@@ -28,8 +28,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 
-import org.tasktide.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.ArgumentTree;
 
+import org.tasktide.parser.configuration.TaskTideConfig;
 
 /**
  * Class to test 

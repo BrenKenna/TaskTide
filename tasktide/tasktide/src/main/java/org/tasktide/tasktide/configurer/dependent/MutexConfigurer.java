@@ -21,10 +21,10 @@ import java.util.Random;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import org.tasktide.tasktide.configurer.AbstractConfig;
-import org.tasktide.tasktide.parser.ArgumentTree;
-import org.tasktide.tasktide.parser.model.Argument;
-import org.tasktide.tasktide.parser.model.ArgumentType;
+import org.tasktide.parser.configuration.AbstractConfig;
+import org.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.model.Argument;
+import org.tasktide.parser.model.ArgumentType;
 
 
 /**

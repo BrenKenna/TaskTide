@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+description = 'tasktide:parser'
+group = 'org.tasktide.parser'
+version = '0.9.0'
+
+dependencies {
+    // Mutex sub-project
+    implementation project(":mutex")
+}
+
+jar {
+    archiveBaseName.set("tasktide-${project.name}")
+    archiveVersion.set(version)
+}

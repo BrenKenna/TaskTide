@@ -18,7 +18,7 @@ package org.tasktide.tasktide.client;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.ArgumentTree;
 
 
 /**

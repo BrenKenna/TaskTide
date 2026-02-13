@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.tasktide.parser;
+package org.tasktide.parser;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.tasktide.tasktide.parser.model.Argument;
-import org.tasktide.tasktide.parser.model.ArgumentMap;
-import org.tasktide.tasktide.parser.model.GenericTree;
+import org.tasktide.parser.model.Argument;
+import org.tasktide.parser.model.ArgumentMap;
+import org.tasktide.parser.model.GenericTree;
 
 
 /**

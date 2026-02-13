@@ -15,6 +15,7 @@
  */
 package org.tasktide.tasktide.configurer;
 
+import org.tasktide.parser.configuration.AbstractConfig;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -27,9 +28,9 @@ import org.tasktide.tasktide.configurer.dependent.JNoSQLConfigurer;
 import org.tasktide.tasktide.configurer.dependent.JpaConfigurer;
 import org.tasktide.tasktide.configurer.dependent.MutexConfigurer;
 
-import org.tasktide.tasktide.parser.ArgumentTree;
-import org.tasktide.tasktide.parser.model.Argument;
-import org.tasktide.tasktide.parser.model.ArgumentType;
+import org.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.model.Argument;
+import org.tasktide.parser.model.ArgumentType;
 
 
 /**

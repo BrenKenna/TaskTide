@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.tasktide.configurer;
+package org.tasktide.parser.configuration;
 
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
 
-import org.tasktide.tasktide.parser.ArgumentTree;
-import org.tasktide.tasktide.parser.CliParser;
+import org.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.CliParser;
 
-import org.tasktide.tasktide.parser.model.ArgumentBuilder;
-import org.tasktide.tasktide.parser.model.ArgumentMap;
+import org.tasktide.parser.model.ArgumentBuilder;
+import org.tasktide.parser.model.ArgumentMap;
 
 
 /**
