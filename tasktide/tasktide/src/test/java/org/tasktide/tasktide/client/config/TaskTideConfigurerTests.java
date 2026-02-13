@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide.tasktide.configurer;
+package org.tasktide.tasktide.client.config;
 
+import org.tasktide.tasktide.client.config.EngineConfig;
+import org.tasktide.tasktide.client.config.ManagerConfig;
+import org.tasktide.tasktide.client.config.GlobalConfig;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;

@@ -18,9 +18,9 @@ package org.tasktide.tasktide.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.tasktide.tasktide.configurer.ManagerConfig;
-import org.tasktide.tasktide.configurer.EngineConfig;
-import org.tasktide.tasktide.configurer.GlobalConfig;
+import org.tasktide.tasktide.client.config.ManagerConfig;
+import org.tasktide.tasktide.client.config.EngineConfig;
+import org.tasktide.tasktide.client.config.GlobalConfig;
 
 
 /**

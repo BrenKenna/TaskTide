@@ -31,9 +31,9 @@ import org.testcontainers.containers.wait.strategy.Wait;
 
 import org.tasktide.core.supporting.ConfigUtil;
 
-import org.tasktide.tasktide.configurer.EngineConfig;
-import org.tasktide.tasktide.configurer.GlobalConfig;
-import org.tasktide.tasktide.configurer.ManagerConfig;
+import org.tasktide.tasktide.client.config.EngineConfig;
+import org.tasktide.tasktide.client.config.GlobalConfig;
+import org.tasktide.tasktide.client.config.ManagerConfig;
 
 
 /**

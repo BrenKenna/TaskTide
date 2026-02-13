@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.tasktide.configurer.dependent;
+package org.tasktide.tasktide.client.config.dependents;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 

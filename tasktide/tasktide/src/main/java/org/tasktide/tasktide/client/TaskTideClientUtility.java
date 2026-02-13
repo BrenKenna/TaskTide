@@ -37,10 +37,9 @@ import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreType;
 
 import org.tasktide.tasktide.TaskTide;
-import org.tasktide.tasktide.configurer.EngineConfig;
-
-import org.tasktide.tasktide.configurer.GlobalConfig;
-import org.tasktide.tasktide.configurer.ManagerConfig;
+import org.tasktide.tasktide.client.config.EngineConfig;
+import org.tasktide.tasktide.client.config.GlobalConfig;
+import org.tasktide.tasktide.client.config.ManagerConfig;
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
 import org.tasktide.parser.ArgumentTree;

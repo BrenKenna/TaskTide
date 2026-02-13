@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.tasktide.configurer;
+package org.tasktide.tasktide.client.config;
 
 import org.tasktide.parser.configuration.AbstractConfig;
 import jakarta.enterprise.context.ApplicationScoped;
