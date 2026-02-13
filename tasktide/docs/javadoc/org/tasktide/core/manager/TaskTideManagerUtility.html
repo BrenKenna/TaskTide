@@ -77,7 +77,14 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">TaskTideManagerUtility</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Collection of static methods to support <a href="ManagerTask.html" title="class in org.tasktide.core.manager"><code>ManagerTask</code></a> to <a href="../TaskTideModel.html" title="interface in org.tasktide.core"><code>TaskTideModel</code></a>.</div>
+<div class="block">Collection of static methods to support <a href="ManagerTask.html" title="class in org.tasktide.core.manager"><code>ManagerTask</code></a> to <a href="../TaskTideModel.html" title="interface in org.tasktide.core"><code>TaskTideModel</code></a>.
+ <br><br>1). Handling <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> for <a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>
+ <br><br>2). Handling <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> for <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a>. Where workflow name defaults
+  to the same as that for the step. Meaning, random "Arbitrary" tasks
+  can still be viewed as they are, and workflows developed as individual
+  steps, without interfering with defined workflows (StepA, StepB, StepC)
+ 
+ Maybe some methods for ManagerCommand instead?</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -108,7 +115,28 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#configureNewStep(java.lang.String)" class="member-name-link">configureNewStep</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Configures a new step</div>
+<div class="block">Configures a new <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a></div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#configureNewWorkflow(java.lang.String)" class="member-name-link">configureNewWorkflow</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowName)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Configures and imports <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a></div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchEnvs(org.tasktide.core.model.job_env.JobEnvironment,boolean)" class="member-name-link">fetchEnvs</a><wbr>(<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a>&nbsp;jobEnv,
+ boolean&nbsp;arrIndOrHost)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Fetch <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a> matching jobId-arrayInd, or hostname</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchJobEnvironmentId()" class="member-name-link">fetchJobEnvironmentId</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Fetch <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a> Id</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchJobEnvironmentId(boolean)" class="member-name-link">fetchJobEnvironmentId</a><wbr>(boolean&nbsp;arrIndOrHost)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Fetch <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a> Id</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchStepId(java.lang.String)" class="member-name-link">fetchStepId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</code></div>
@@ -124,6 +152,11 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#handleDelim(java.lang.String)" class="member-name-link">handleDelim</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;delim)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Validate delimiter</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#handleWorkflowForStep(org.tasktide.core.model.collection.Step)" class="member-name-link">handleWorkflowForStep</a><wbr>(<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&nbsp;step)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Handle <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> for <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a>.</div>
 </div>
 </div>
 </div>
@@ -188,10 +221,24 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="configureNewStep(java.lang.String)">
 <h3>configureNewStep</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">configureNewStep</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</span></div>
-<div class="block">Configures a new step</div>
+<div class="block">Configures a new <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>stepName</code> - </dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="handleWorkflowForStep(org.tasktide.core.model.collection.Step)">
+<h3>handleWorkflowForStep</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handleWorkflowForStep</span><wbr><span class="parameters">(<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&nbsp;step)</span></div>
+<div class="block">Handle <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> for <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a>. Where workflow name defaults
+  to the same as that for the step. Meaning, random "Arbitrary" tasks
+  can still be viewed as they are, and workflows developed as individual
+  steps, without interfering with defined workflows (StepA, StepB, StepC)</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>step</code> - </dd>
 </dl>
 </section>
 </li>
@@ -205,6 +252,56 @@ loadScripts(document, 'script');</script>
 <dd><code>workflowName</code> - </dd>
 <dt>Returns:</dt>
 <dd>String</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="configureNewWorkflow(java.lang.String)">
+<h3>configureNewWorkflow</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">configureNewWorkflow</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowName)</span></div>
+<div class="block">Configures and imports <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>workflowName</code> - </dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="fetchJobEnvironmentId()">
+<h3>fetchJobEnvironmentId</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">fetchJobEnvironmentId</span>()</div>
+<div class="block">Fetch <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a> Id</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>String</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="fetchJobEnvironmentId(boolean)">
+<h3>fetchJobEnvironmentId</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">fetchJobEnvironmentId</span><wbr><span class="parameters">(boolean&nbsp;arrIndOrHost)</span></div>
+<div class="block">Fetch <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a> Id</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>arrIndOrHost</code> - </dd>
+<dt>Returns:</dt>
+<dd>String</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="fetchEnvs(org.tasktide.core.model.job_env.JobEnvironment,boolean)">
+<h3>fetchEnvs</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a>&gt;</span>&nbsp;<span class="element-name">fetchEnvs</span><wbr><span class="parameters">(<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a>&nbsp;jobEnv,
+ boolean&nbsp;arrIndOrHost)</span></div>
+<div class="block">Fetch <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a> matching jobId-arrayInd, or hostname</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>jobEnv</code> - </dd>
+<dd><code>arrIndOrHost</code> - </dd>
+<dt>Returns:</dt>
+<dd>List-<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a></dd>
 </dl>
 </section>
 </li>

@@ -233,14 +233,6 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Build a <a href="../model/workitem/Workload.html" title="class in org.tasktide.core.model.workitem"><code>Workload</code></a> from <a href="../model/task/ItemTask.html" title="class in org.tasktide.core.model.task"><code>ItemTask</code></a></div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchRandomId()" class="member-name-link">fetchRandomId</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Fetch a random Id</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchRandomToken()" class="member-name-link">fetchRandomToken</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="ManagerTask.html" title="class in org.tasktide.core.manager">ManagerTask</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getPingTask()" class="member-name-link">getPingTask</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
@@ -260,6 +252,16 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getSeqTasks(int)" class="member-name-link">getSeqTasks</a><wbr>(int&nbsp;nTasks)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Generate list of random seq tasks</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#makeAnnotation(java.util.Map)" class="member-name-link">makeAnnotation</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&gt;&nbsp;data)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Make <a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> from data map</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#makeEmptyAnnotation()" class="member-name-link">makeEmptyAnnotation</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Build an empty <a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../model/task/ProcessLog.html" title="class in org.tasktide.core.model.task">ProcessLog</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#makeEmptyProcessLog()" class="member-name-link">makeEmptyProcessLog</a>()</code></div>
@@ -298,20 +300,27 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="fetchRandomId()">
-<h3>fetchRandomId</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">fetchRandomId</span>()</div>
-<div class="block">Fetch a random Id</div>
+<section class="detail" id="makeAnnotation(java.util.Map)">
+<h3>makeAnnotation</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></span>&nbsp;<span class="element-name">makeAnnotation</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&gt;&nbsp;data)</span></div>
+<div class="block">Make <a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> from data map</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>data</code> - </dd>
 <dt>Returns:</dt>
-<dd>String</dd>
+<dd><a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="fetchRandomToken()">
-<h3>fetchRandomToken</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">fetchRandomToken</span>()</div>
+<section class="detail" id="makeEmptyAnnotation()">
+<h3>makeEmptyAnnotation</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a></span>&nbsp;<span class="element-name">makeEmptyAnnotation</span>()</div>
+<div class="block">Build an empty <a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="../model/CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></dd>
+</dl>
 </section>
 </li>
 <li>

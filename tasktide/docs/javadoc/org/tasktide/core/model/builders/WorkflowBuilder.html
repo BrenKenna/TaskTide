@@ -71,14 +71,14 @@ loadScripts(document, 'script');</script>
 <h1 title="Class WorkflowBuilder" class="title">Class WorkflowBuilder</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>
+<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>&lt;<a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;
 <div class="inheritance">org.tasktide.core.model.builders.WorkflowBuilder</div>
 </div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">WorkflowBuilder</span>
-<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></span></div>
+<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;</span></div>
 <div class="block">Allow <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> objects to be built where all fields are optional</div>
 </section>
 <section class="summary">
@@ -113,23 +113,28 @@ loadScripts(document, 'script');</script>
 <div class="block">Construct <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> with the provided fields</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#id(java.lang.String)" class="member-name-link">id</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withAnnotation(org.tasktide.core.model.CustomAnnotation)" class="member-name-link">withAnnotation</a><wbr>(<a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> Id field</div>
+<div class="block">Adds <a href="../CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#steps(java.util.List)" class="member-name-link">steps</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;stepList)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withId(java.lang.String)" class="member-name-link">withId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> Id field</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withSteps(java.util.List)" class="member-name-link">withSteps</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;stepList)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> steps field</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withSteps(java.util.Map)" class="member-name-link">withSteps</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;steps)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> steps field</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#steps(java.util.Map)" class="member-name-link">steps</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;steps)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withWorkflowName(java.lang.String)" class="member-name-link">withWorkflowName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowName)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> steps field</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#workflowName(java.lang.String)" class="member-name-link">workflowName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowName)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> name field</div>
 </div>
 </div>
@@ -164,9 +169,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="id(java.lang.String)">
-<h3>id</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">id</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId)</span></div>
+<section class="detail" id="withId(java.lang.String)">
+<h3>withId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">withId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId)</span></div>
 <div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> Id field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -177,9 +182,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="workflowName(java.lang.String)">
-<h3>workflowName</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">workflowName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowName)</span></div>
+<section class="detail" id="withWorkflowName(java.lang.String)">
+<h3>withWorkflowName</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">withWorkflowName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowName)</span></div>
 <div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> name field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -190,9 +195,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="steps(java.util.Map)">
-<h3>steps</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">steps</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;steps)</span></div>
+<section class="detail" id="withSteps(java.util.Map)">
+<h3>withSteps</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">withSteps</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;steps)</span></div>
 <div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> steps field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -203,9 +208,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="steps(java.util.List)">
-<h3>steps</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">steps</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;stepList)</span></div>
+<section class="detail" id="withSteps(java.util.List)">
+<h3>withSteps</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">withSteps</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;stepList)</span></div>
 <div class="block">Add <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> steps field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -216,13 +221,25 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="withAnnotation(org.tasktide.core.model.CustomAnnotation)">
+<h3>withAnnotation</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkflowBuilder.html" title="class in org.tasktide.core.model.builders">WorkflowBuilder</a></span>&nbsp;<span class="element-name">withAnnotation</span><wbr><span class="parameters">(<a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</span></div>
+<div class="block">Adds <a href="../CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>anno</code> - </dd>
+<dt>Returns:</dt>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="build()">
 <h3>build</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a></span>&nbsp;<span class="element-name">build</span>()</div>
 <div class="block">Construct <a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a> with the provided fields</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></code></dd>
+<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd><a href="../collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a></dd>
 </dl>

@@ -71,14 +71,14 @@ loadScripts(document, 'script');</script>
 <h1 title="Class StepBuilder" class="title">Class StepBuilder</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>
+<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>&lt;<a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;
 <div class="inheritance">org.tasktide.core.model.builders.StepBuilder</div>
 </div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">StepBuilder</span>
-<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></span></div>
+<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;</span></div>
 <div class="block">Allow <a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> objects to be built where all fields are optional</div>
 </section>
 <section class="summary">
@@ -115,48 +115,53 @@ loadScripts(document, 'script');</script>
 <div class="block">Construct <a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> from provided fields</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepCount(int)" class="member-name-link">stepCount</a><wbr>(int&nbsp;stepCount)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withAnnotation(org.tasktide.core.model.CustomAnnotation)" class="member-name-link">withAnnotation</a><wbr>(<a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Adds <a href="../CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepCount(int)" class="member-name-link">withStepCount</a><wbr>(int&nbsp;stepCount)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add step count field</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepId(java.lang.String)" class="member-name-link">stepId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepId(java.lang.String)" class="member-name-link">withStepId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add stepId field</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepName(java.lang.String)" class="member-name-link">stepName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepName(java.lang.String)" class="member-name-link">withStepName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add step name field</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepsDone(int)" class="member-name-link">stepsDone</a><wbr>(int&nbsp;stepsDone)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepsDone(int)" class="member-name-link">withStepsDone</a><wbr>(int&nbsp;stepsDone)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add count of the steps done field</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepsError(int)" class="member-name-link">stepsError</a><wbr>(int&nbsp;stepsError)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepsError(int)" class="member-name-link">withStepsError</a><wbr>(int&nbsp;stepsError)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add count of steps in error state</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepsLocked(int)" class="member-name-link">stepsLocked</a><wbr>(int&nbsp;stepsLocked)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepsLocked(int)" class="member-name-link">withStepsLocked</a><wbr>(int&nbsp;stepsLocked)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add count of the steps locked field</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepState(org.tasktide.core.model.task.TaskState)" class="member-name-link">stepState</a><wbr>(<a href="../task/TaskState.html" title="enum class in org.tasktide.core.model.task">TaskState</a>&nbsp;stepState)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepState(org.tasktide.core.model.task.TaskState)" class="member-name-link">withStepState</a><wbr>(<a href="../task/TaskState.html" title="enum class in org.tasktide.core.model.task">TaskState</a>&nbsp;stepState)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add step state field</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepsToDo(int)" class="member-name-link">stepsToDo</a><wbr>(int&nbsp;stepsToDo)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepsToDo(int)" class="member-name-link">withStepsToDo</a><wbr>(int&nbsp;stepsToDo)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add count of the steps to do</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#workflowId(java.lang.String)" class="member-name-link">workflowId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withWorkflowId(java.lang.String)" class="member-name-link">withWorkflowId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add workflowId field</div>
 </div>
 </div>
@@ -192,9 +197,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="stepId(java.lang.String)">
-<h3>stepId</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">stepId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</span></div>
+<section class="detail" id="withStepId(java.lang.String)">
+<h3>withStepId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withStepId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</span></div>
 <div class="block">Add stepId field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -205,9 +210,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepName(java.lang.String)">
-<h3>stepName</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">stepName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</span></div>
+<section class="detail" id="withStepName(java.lang.String)">
+<h3>withStepName</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withStepName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</span></div>
 <div class="block">Add step name field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -218,9 +223,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="workflowId(java.lang.String)">
-<h3>workflowId</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">workflowId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId)</span></div>
+<section class="detail" id="withWorkflowId(java.lang.String)">
+<h3>withWorkflowId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withWorkflowId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId)</span></div>
 <div class="block">Add workflowId field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -231,9 +236,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepState(org.tasktide.core.model.task.TaskState)">
-<h3>stepState</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">stepState</span><wbr><span class="parameters">(<a href="../task/TaskState.html" title="enum class in org.tasktide.core.model.task">TaskState</a>&nbsp;stepState)</span></div>
+<section class="detail" id="withStepState(org.tasktide.core.model.task.TaskState)">
+<h3>withStepState</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withStepState</span><wbr><span class="parameters">(<a href="../task/TaskState.html" title="enum class in org.tasktide.core.model.task">TaskState</a>&nbsp;stepState)</span></div>
 <div class="block">Add step state field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -244,9 +249,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepCount(int)">
-<h3>stepCount</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">stepCount</span><wbr><span class="parameters">(int&nbsp;stepCount)</span></div>
+<section class="detail" id="withStepCount(int)">
+<h3>withStepCount</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withStepCount</span><wbr><span class="parameters">(int&nbsp;stepCount)</span></div>
 <div class="block">Add step count field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -257,9 +262,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepsLocked(int)">
-<h3>stepsLocked</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">stepsLocked</span><wbr><span class="parameters">(int&nbsp;stepsLocked)</span></div>
+<section class="detail" id="withStepsLocked(int)">
+<h3>withStepsLocked</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withStepsLocked</span><wbr><span class="parameters">(int&nbsp;stepsLocked)</span></div>
 <div class="block">Add count of the steps locked field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -270,9 +275,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepsDone(int)">
-<h3>stepsDone</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">stepsDone</span><wbr><span class="parameters">(int&nbsp;stepsDone)</span></div>
+<section class="detail" id="withStepsDone(int)">
+<h3>withStepsDone</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withStepsDone</span><wbr><span class="parameters">(int&nbsp;stepsDone)</span></div>
 <div class="block">Add count of the steps done field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -283,9 +288,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepsToDo(int)">
-<h3>stepsToDo</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">stepsToDo</span><wbr><span class="parameters">(int&nbsp;stepsToDo)</span></div>
+<section class="detail" id="withStepsToDo(int)">
+<h3>withStepsToDo</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withStepsToDo</span><wbr><span class="parameters">(int&nbsp;stepsToDo)</span></div>
 <div class="block">Add count of the steps to do</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -296,9 +301,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepsError(int)">
-<h3>stepsError</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">stepsError</span><wbr><span class="parameters">(int&nbsp;stepsError)</span></div>
+<section class="detail" id="withStepsError(int)">
+<h3>withStepsError</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withStepsError</span><wbr><span class="parameters">(int&nbsp;stepsError)</span></div>
 <div class="block">Add count of steps in error state</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -309,13 +314,25 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="withAnnotation(org.tasktide.core.model.CustomAnnotation)">
+<h3>withAnnotation</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="StepBuilder.html" title="class in org.tasktide.core.model.builders">StepBuilder</a></span>&nbsp;<span class="element-name">withAnnotation</span><wbr><span class="parameters">(<a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</span></div>
+<div class="block">Adds <a href="../CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>anno</code> - </dd>
+<dt>Returns:</dt>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="build()">
 <h3>build</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a></span>&nbsp;<span class="element-name">build</span>()</div>
 <div class="block">Construct <a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a> from provided fields</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></code></dd>
+<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd><a href="../collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a></dd>
 </dl>

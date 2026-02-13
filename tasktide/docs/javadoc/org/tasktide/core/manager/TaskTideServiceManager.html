@@ -77,8 +77,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">TaskTideServiceManager</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Container class <a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> for <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a>,
-   <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a>, and <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a></div>
+<div class="block">Container class <a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> for <a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>,
+   <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a>, <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a>, <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a>,
+   <a href="../model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics"><code>MetricProfile</code></a>, and <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -93,45 +94,60 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchStepService()" class="member-name-link">fetchStepService</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchJobEnvironmentService()" class="member-name-link">fetchJobEnvironmentService</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Fetches <a href="../services/JobEnvironmentService.html" title="class in org.tasktide.core.services"><code>JobEnvironmentService</code></a> if initialized</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/metrics/MetricData.html" title="class in org.tasktide.core.model.job_env.metrics">MetricData</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchMetricDataService()" class="member-name-link">fetchMetricDataService</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Fetches <a href="../services/MetricDataService.html" title="class in org.tasktide.core.services"><code>MetricDataService</code></a> if initialized</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics">MetricProfile</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchMetricProfileService()" class="member-name-link">fetchMetricProfileService</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Fetches <a href="../services/MetricProfileService.html" title="class in org.tasktide.core.services"><code>MetricProfileService</code></a> if initialized</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchStepService()" class="member-name-link">fetchStepService</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Fetches <a href="../services/StepService.html" title="class in org.tasktide.core.services"><code>StepService</code></a> if initialized</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchWorkflowService()" class="member-name-link">fetchWorkflowService</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchWorkflowService()" class="member-name-link">fetchWorkflowService</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Fetches <a href="../services/WorkflowService.html" title="class in org.tasktide.core.services"><code>WorkflowService</code></a> if initialized</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchWorkItemService()" class="member-name-link">fetchWorkItemService</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#fetchWorkItemService()" class="member-name-link">fetchWorkItemService</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Fetches <a href="../services/WorkItemService.html" title="class in org.tasktide.core.services"><code>WorkItemService</code></a> if initialized</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T extends <a href="../TaskTideModel.html" title="interface in org.tasktide.core">TaskTideModel</a>&lt;T&gt;&gt;<br><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;T&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getService(org.tasktide.core.manager.command.ManagerTarget)" class="member-name-link">getService</a><wbr>(<a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;tgt)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Get <a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> mapping to <a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T extends <a href="../TaskTideModel.html" title="interface in org.tasktide.core">TaskTideModel</a>&lt;T&gt;&gt;<br><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;T&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getService(org.tasktide.core.manager.command.ManagerTarget)" class="member-name-link">getService</a><wbr>(<a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;tgt)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Get <a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> for <a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStepService()" class="member-name-link">getStepService</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get <a href="../services/StepService.html" title="class in org.tasktide.core.services"><code>StepService</code></a></div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWorkflowService()" class="member-name-link">getWorkflowService</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>&lt;T extends <a href="../TaskTideModel.html" title="interface in org.tasktide.core">TaskTideModel</a>&lt;T&gt;&gt;<br><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;T&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getServiceFor(org.tasktide.core.manager.command.ManagerTarget)" class="member-name-link">getServiceFor</a><wbr>(<a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;tgt)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get <a href="../services/WorkflowService.html" title="class in org.tasktide.core.services"><code>WorkflowService</code></a></div>
+<div class="block">Get <a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> for <a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWorkItemService()" class="member-name-link">getWorkItemService</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Get <a href="../services/WorkItemService.html" title="class in org.tasktide.core.services"><code>WorkItemService</code></a></div>
-</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#initialize(org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService)" class="member-name-link">initialize</a><wbr>(<a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;&nbsp;workItemServ,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#initialize(org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService)" class="member-name-link">initialize</a><wbr>(<a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;&nbsp;workItemServ,
  <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;stepServ,
  <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;&nbsp;workflowServ)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Initialize service manager, throws error if already initialized</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#initialize(org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService)" class="member-name-link">initialize</a><wbr>(<a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;&nbsp;workItemServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;stepServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;&nbsp;workflowServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a>&gt;&nbsp;jobEnvServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/metrics/MetricData.html" title="class in org.tasktide.core.model.job_env.metrics">MetricData</a>&gt;&nbsp;metricDataServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics">MetricProfile</a>&gt;&nbsp;metricProfileServ)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Initialize service manager, throws error if already initialized</div>
 </div>
@@ -140,12 +156,22 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Returns whether the service manager is initialized</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#toJson()" class="member-name-link">toJson</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Represent as JSON string</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toString()" class="member-name-link">toString</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Represent as String</div>
+</div>
 </div>
 </div>
 </div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
-<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
+<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
 </section>
 </li>
 </ul>
@@ -184,6 +210,27 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="initialize(org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService,org.tasktide.core.TaskTideService)">
+<h3>initialize</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">initialize</span><wbr><span class="parameters">(<a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;&nbsp;workItemServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;stepServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;&nbsp;workflowServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a>&gt;&nbsp;jobEnvServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/metrics/MetricData.html" title="class in org.tasktide.core.model.job_env.metrics">MetricData</a>&gt;&nbsp;metricDataServ,
+ <a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics">MetricProfile</a>&gt;&nbsp;metricProfileServ)</span></div>
+<div class="block">Initialize service manager, throws error if already initialized</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>workItemServ</code> - </dd>
+<dd><code>stepServ</code> - </dd>
+<dd><code>workflowServ</code> - </dd>
+<dd><code>jobEnvServ</code> - </dd>
+<dd><code>metricDataServ</code> - </dd>
+<dd><code>metricProfileServ</code> - </dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="fetchWorkItemService()">
 <h3>fetchWorkItemService</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</span>&nbsp;<span class="element-name">fetchWorkItemService</span>()</div>
@@ -217,51 +264,92 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="fetchMetricDataService()">
+<h3>fetchMetricDataService</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/metrics/MetricData.html" title="class in org.tasktide.core.model.job_env.metrics">MetricData</a>&gt;</span>&nbsp;<span class="element-name">fetchMetricDataService</span>()</div>
+<div class="block">Fetches <a href="../services/MetricDataService.html" title="class in org.tasktide.core.services"><code>MetricDataService</code></a> if initialized</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a>-<a href="../model/job_env/metrics/MetricData.html" title="class in org.tasktide.core.model.job_env.metrics"><code>MetricData</code></a></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="fetchMetricProfileService()">
+<h3>fetchMetricProfileService</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics">MetricProfile</a>&gt;</span>&nbsp;<span class="element-name">fetchMetricProfileService</span>()</div>
+<div class="block">Fetches <a href="../services/MetricProfileService.html" title="class in org.tasktide.core.services"><code>MetricProfileService</code></a> if initialized</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a>-<a href="../model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics"><code>MetricProfile</code></a></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="fetchJobEnvironmentService()">
+<h3>fetchJobEnvironmentService</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env">JobEnvironment</a>&gt;</span>&nbsp;<span class="element-name">fetchJobEnvironmentService</span>()</div>
+<div class="block">Fetches <a href="../services/JobEnvironmentService.html" title="class in org.tasktide.core.services"><code>JobEnvironmentService</code></a> if initialized</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a>-<a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a></dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="getService(org.tasktide.core.manager.command.ManagerTarget)">
 <h3>getService</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="../TaskTideModel.html" title="interface in org.tasktide.core">TaskTideModel</a>&lt;T&gt;&gt;</span>
 <span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;T&gt;</span>&nbsp;<span class="element-name">getService</span><wbr><span class="parameters">(<a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;tgt)</span></div>
-<div class="block">Get <a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> mapping to <a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></div>
+<div class="block">Get <a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> for <a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></div>
 <dl class="notes">
 <dt>Type Parameters:</dt>
 <dd><code>T</code> - of <a href="../TaskTideModel.html" title="interface in org.tasktide.core"><code>TaskTideModel</code></a></dd>
 <dt>Parameters:</dt>
 <dd><code>tgt</code> - </dd>
 <dt>Returns:</dt>
-<dd>TaskTideService of <a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>, <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a>, or <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a></dd>
+<dd>TaskTideService of <a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>, <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a>, <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a>,
+      <a href="../model/job_env/JobEnvironment.html" title="class in org.tasktide.core.model.job_env"><code>JobEnvironment</code></a>, <a href="../model/job_env/metrics/MetricData.html" title="class in org.tasktide.core.model.job_env.metrics"><code>MetricData</code></a>, <a href="../model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics"><code>MetricProfile</code></a></dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="getWorkItemService()">
-<h3>getWorkItemService</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</span>&nbsp;<span class="element-name">getWorkItemService</span>()</div>
-<div class="block">Get <a href="../services/WorkItemService.html" title="class in org.tasktide.core.services"><code>WorkItemService</code></a></div>
+<section class="detail" id="getServiceFor(org.tasktide.core.manager.command.ManagerTarget)">
+<h3>getServiceFor</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="../TaskTideModel.html" title="interface in org.tasktide.core">TaskTideModel</a>&lt;T&gt;&gt;</span>
+<span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;T&gt;</span>&nbsp;<span class="element-name">getServiceFor</span><wbr><span class="parameters">(<a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a>&nbsp;tgt)</span></div>
+<div class="block">Get <a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> for <a href="command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></div>
 <dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>T</code> - </dd>
+<dt>Parameters:</dt>
+<dd><code>tgt</code> - </dd>
 <dt>Returns:</dt>
-<dd><a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> of <a href="../model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a></dd>
+<dd><a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a></dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="getStepService()">
-<h3>getStepService</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;</span>&nbsp;<span class="element-name">getStepService</span>()</div>
-<div class="block">Get <a href="../services/StepService.html" title="class in org.tasktide.core.services"><code>StepService</code></a></div>
+<section class="detail" id="toString()">
+<h3>toString</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toString</span>()</div>
+<div class="block">Represent as String</div>
 <dl class="notes">
+<dt>Overrides:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
 <dt>Returns:</dt>
-<dd><a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> of <a href="../model/collection/Step.html" title="class in org.tasktide.core.model.collection"><code>Step</code></a></dd>
+<dd>String</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="getWorkflowService()">
-<h3>getWorkflowService</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../TaskTideService.html" title="interface in org.tasktide.core">TaskTideService</a>&lt;<a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;</span>&nbsp;<span class="element-name">getWorkflowService</span>()</div>
-<div class="block">Get <a href="../services/WorkflowService.html" title="class in org.tasktide.core.services"><code>WorkflowService</code></a></div>
+<section class="detail" id="toJson()">
+<h3>toJson</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toJson</span>()</div>
+<div class="block">Represent as JSON string</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd><a href="../TaskTideService.html" title="interface in org.tasktide.core"><code>TaskTideService</code></a> of <a href="../model/collection/Workflow.html" title="class in org.tasktide.core.model.collection"><code>Workflow</code></a></dd>
+<dd>String</dd>
 </dl>
 </section>
 </li>

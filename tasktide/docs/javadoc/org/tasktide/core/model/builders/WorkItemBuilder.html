@@ -71,14 +71,14 @@ loadScripts(document, 'script');</script>
 <h1 title="Class WorkItemBuilder" class="title">Class WorkItemBuilder</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>
+<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>&lt;<a href="../workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;
 <div class="inheritance">org.tasktide.core.model.builders.WorkItemBuilder</div>
 </div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">WorkItemBuilder</span>
-<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></span></div>
+<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</span></div>
 <div class="block">Allow <a href="../workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> objects to be built where all fields are optional</div>
 </section>
 <section class="summary">
@@ -113,67 +113,77 @@ loadScripts(document, 'script');</script>
 <div class="block">Build <a href="../workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> from provided fields</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#doneDate(long)" class="member-name-link">doneDate</a><wbr>(long&nbsp;doneDate)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withAnnotation(org.tasktide.core.model.CustomAnnotation)" class="member-name-link">withAnnotation</a><wbr>(<a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Adds <a href="../CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> field</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withDoneDate(long)" class="member-name-link">withDoneDate</a><wbr>(long&nbsp;doneDate)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add done date field</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#id(java.lang.String)" class="member-name-link">id</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withId(java.lang.String)" class="member-name-link">withId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add id field</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#itemName(java.lang.String)" class="member-name-link">itemName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withItemName(java.lang.String)" class="member-name-link">withItemName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemName)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add item name field</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#itemState(org.tasktide.core.model.workitem.ItemState)" class="member-name-link">itemState</a><wbr>(<a href="../workitem/ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a>&nbsp;itemState)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withItemState(org.tasktide.core.model.workitem.ItemState)" class="member-name-link">withItemState</a><wbr>(<a href="../workitem/ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a>&nbsp;itemState)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add item state field</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#itemType(org.tasktide.core.model.workitem.ItemType)" class="member-name-link">itemType</a><wbr>(<a href="../workitem/ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;itemType)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withItemType(org.tasktide.core.model.workitem.ItemType)" class="member-name-link">withItemType</a><wbr>(<a href="../workitem/ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;itemType)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add item type field</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withJobEnvId(java.lang.String)" class="member-name-link">withJobEnvId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;jobEnvId)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add jobEnvId field</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#lockDate(long)" class="member-name-link">lockDate</a><wbr>(long&nbsp;lockDate)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withLockDate(long)" class="member-name-link">withLockDate</a><wbr>(long&nbsp;lockDate)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add lock date field</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#lockId(java.lang.String)" class="member-name-link">lockId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;lockId)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withLockId(java.lang.String)" class="member-name-link">withLockId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;lockId)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add lockId field</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepId(java.lang.String)" class="member-name-link">stepId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepId(java.lang.String)" class="member-name-link">withStepId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add stepId field</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stepName(java.lang.String)" class="member-name-link">stepName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStepName(java.lang.String)" class="member-name-link">withStepName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add step name field</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#taskCount(int)" class="member-name-link">taskCount</a><wbr>(int&nbsp;taskCount)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withTaskCount(int)" class="member-name-link">withTaskCount</a><wbr>(int&nbsp;taskCount)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add task count field</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#taskDone(int)" class="member-name-link">taskDone</a><wbr>(int&nbsp;taskDone)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withTaskDone(int)" class="member-name-link">withTaskDone</a><wbr>(int&nbsp;taskDone)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add task done field</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#workload(org.tasktide.core.model.task.ItemTask)" class="member-name-link">workload</a><wbr>(<a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;itemTask)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withWorkload(org.tasktide.core.model.task.ItemTask)" class="member-name-link">withWorkload</a><wbr>(<a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;itemTask)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add workload field with single <a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task"><code>ItemTask</code></a></div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#workload(org.tasktide.core.model.workitem.Workload)" class="member-name-link">workload</a><wbr>(<a href="../workitem/Workload.html" title="class in org.tasktide.core.model.workitem">Workload</a>&nbsp;workload)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withWorkload(org.tasktide.core.model.workitem.Workload)" class="member-name-link">withWorkload</a><wbr>(<a href="../workitem/Workload.html" title="class in org.tasktide.core.model.workitem">Workload</a>&nbsp;workload)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add workload field</div>
 </div>
@@ -209,9 +219,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="id(java.lang.String)">
-<h3>id</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">id</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</span></div>
+<section class="detail" id="withId(java.lang.String)">
+<h3>withId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</span></div>
 <div class="block">Add id field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -222,9 +232,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="itemName(java.lang.String)">
-<h3>itemName</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">itemName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemName)</span></div>
+<section class="detail" id="withItemName(java.lang.String)">
+<h3>withItemName</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withItemName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemName)</span></div>
 <div class="block">Add item name field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -235,9 +245,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="lockId(java.lang.String)">
-<h3>lockId</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">lockId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;lockId)</span></div>
+<section class="detail" id="withLockId(java.lang.String)">
+<h3>withLockId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withLockId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;lockId)</span></div>
 <div class="block">Add lockId field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -248,9 +258,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepId(java.lang.String)">
-<h3>stepId</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">stepId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</span></div>
+<section class="detail" id="withStepId(java.lang.String)">
+<h3>withStepId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withStepId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepId)</span></div>
 <div class="block">Add stepId field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -261,9 +271,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="itemType(org.tasktide.core.model.workitem.ItemType)">
-<h3>itemType</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">itemType</span><wbr><span class="parameters">(<a href="../workitem/ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;itemType)</span></div>
+<section class="detail" id="withItemType(org.tasktide.core.model.workitem.ItemType)">
+<h3>withItemType</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withItemType</span><wbr><span class="parameters">(<a href="../workitem/ItemType.html" title="enum class in org.tasktide.core.model.workitem">ItemType</a>&nbsp;itemType)</span></div>
 <div class="block">Add item type field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -274,9 +284,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="itemState(org.tasktide.core.model.workitem.ItemState)">
-<h3>itemState</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">itemState</span><wbr><span class="parameters">(<a href="../workitem/ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a>&nbsp;itemState)</span></div>
+<section class="detail" id="withItemState(org.tasktide.core.model.workitem.ItemState)">
+<h3>withItemState</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withItemState</span><wbr><span class="parameters">(<a href="../workitem/ItemState.html" title="enum class in org.tasktide.core.model.workitem">ItemState</a>&nbsp;itemState)</span></div>
 <div class="block">Add item state field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -287,9 +297,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="lockDate(long)">
-<h3>lockDate</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">lockDate</span><wbr><span class="parameters">(long&nbsp;lockDate)</span></div>
+<section class="detail" id="withLockDate(long)">
+<h3>withLockDate</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withLockDate</span><wbr><span class="parameters">(long&nbsp;lockDate)</span></div>
 <div class="block">Add lock date field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -300,9 +310,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="doneDate(long)">
-<h3>doneDate</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">doneDate</span><wbr><span class="parameters">(long&nbsp;doneDate)</span></div>
+<section class="detail" id="withDoneDate(long)">
+<h3>withDoneDate</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withDoneDate</span><wbr><span class="parameters">(long&nbsp;doneDate)</span></div>
 <div class="block">Add done date field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -313,9 +323,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="taskCount(int)">
-<h3>taskCount</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">taskCount</span><wbr><span class="parameters">(int&nbsp;taskCount)</span></div>
+<section class="detail" id="withTaskCount(int)">
+<h3>withTaskCount</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withTaskCount</span><wbr><span class="parameters">(int&nbsp;taskCount)</span></div>
 <div class="block">Add task count field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -326,9 +336,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="taskDone(int)">
-<h3>taskDone</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">taskDone</span><wbr><span class="parameters">(int&nbsp;taskDone)</span></div>
+<section class="detail" id="withTaskDone(int)">
+<h3>withTaskDone</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withTaskDone</span><wbr><span class="parameters">(int&nbsp;taskDone)</span></div>
 <div class="block">Add task done field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -339,9 +349,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="workload(org.tasktide.core.model.workitem.Workload)">
-<h3>workload</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">workload</span><wbr><span class="parameters">(<a href="../workitem/Workload.html" title="class in org.tasktide.core.model.workitem">Workload</a>&nbsp;workload)</span></div>
+<section class="detail" id="withWorkload(org.tasktide.core.model.workitem.Workload)">
+<h3>withWorkload</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withWorkload</span><wbr><span class="parameters">(<a href="../workitem/Workload.html" title="class in org.tasktide.core.model.workitem">Workload</a>&nbsp;workload)</span></div>
 <div class="block">Add workload field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -352,9 +362,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="workload(org.tasktide.core.model.task.ItemTask)">
-<h3>workload</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">workload</span><wbr><span class="parameters">(<a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;itemTask)</span></div>
+<section class="detail" id="withWorkload(org.tasktide.core.model.task.ItemTask)">
+<h3>withWorkload</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withWorkload</span><wbr><span class="parameters">(<a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;itemTask)</span></div>
 <div class="block">Add workload field with single <a href="../task/ItemTask.html" title="class in org.tasktide.core.model.task"><code>ItemTask</code></a></div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -365,13 +375,39 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stepName(java.lang.String)">
-<h3>stepName</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">stepName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</span></div>
+<section class="detail" id="withStepName(java.lang.String)">
+<h3>withStepName</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withStepName</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName)</span></div>
 <div class="block">Add step name field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>stepName</code> - </dd>
+<dt>Returns:</dt>
+<dd><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders"><code>WorkItemBuilder</code></a></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="withAnnotation(org.tasktide.core.model.CustomAnnotation)">
+<h3>withAnnotation</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withAnnotation</span><wbr><span class="parameters">(<a href="../CustomAnnotation.html" title="class in org.tasktide.core.model">CustomAnnotation</a>&nbsp;anno)</span></div>
+<div class="block">Adds <a href="../CustomAnnotation.html" title="class in org.tasktide.core.model"><code>CustomAnnotation</code></a> field</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>anno</code> - </dd>
+<dt>Returns:</dt>
+<dd><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders"><code>WorkItemBuilder</code></a></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="withJobEnvId(java.lang.String)">
+<h3>withJobEnvId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders">WorkItemBuilder</a></span>&nbsp;<span class="element-name">withJobEnvId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;jobEnvId)</span></div>
+<div class="block">Add jobEnvId field</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>jobEnvId</code> - </dd>
 <dt>Returns:</dt>
 <dd><a href="WorkItemBuilder.html" title="class in org.tasktide.core.model.builders"><code>WorkItemBuilder</code></a></dd>
 </dl>
@@ -384,7 +420,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Build <a href="../workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> from provided fields</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></code></dd>
+<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd><a href="../workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a></dd>
 </dl>

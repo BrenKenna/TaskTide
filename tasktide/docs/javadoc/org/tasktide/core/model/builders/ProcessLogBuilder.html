@@ -71,14 +71,14 @@ loadScripts(document, 'script');</script>
 <h1 title="Class ProcessLogBuilder" class="title">Class ProcessLogBuilder</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>
+<div class="inheritance"><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">org.tasktide.core.model.builders.ModelBuilder</a>&lt;<a href="../task/ProcessLog.html" title="class in org.tasktide.core.model.task">ProcessLog</a>&gt;
 <div class="inheritance">org.tasktide.core.model.builders.ProcessLogBuilder</div>
 </div>
 </div>
 <section class="class-description" id="class-description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ProcessLogBuilder</span>
-<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></span></div>
+<span class="extends-implements">extends <a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../task/ProcessLog.html" title="class in org.tasktide.core.model.task">ProcessLog</a>&gt;</span></div>
 <div class="block">Allow ProcessLog objects to be built where all fields are optional</div>
 </section>
 <section class="summary">
@@ -113,17 +113,17 @@ loadScripts(document, 'script');</script>
 <div class="block">Construct ProcessLog from provided fields</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#id(java.lang.String)" class="member-name-link">id</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withId(java.lang.String)" class="member-name-link">withId</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add id field</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stderr(java.lang.String%5B%5D)" class="member-name-link">stderr</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;stderr)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStderr(java.lang.String%5B%5D)" class="member-name-link">withStderr</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;stderr)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add stderr field</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#stdout(java.lang.String%5B%5D)" class="member-name-link">stdout</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;stdout)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#withStdout(java.lang.String%5B%5D)" class="member-name-link">withStdout</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;stdout)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add stdout field</div>
 </div>
@@ -159,9 +159,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="id(java.lang.String)">
-<h3>id</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></span>&nbsp;<span class="element-name">id</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</span></div>
+<section class="detail" id="withId(java.lang.String)">
+<h3>withId</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></span>&nbsp;<span class="element-name">withId</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id)</span></div>
 <div class="block">Add id field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -172,9 +172,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stdout(java.lang.String[])">
-<h3>stdout</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></span>&nbsp;<span class="element-name">stdout</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;stdout)</span></div>
+<section class="detail" id="withStdout(java.lang.String[])">
+<h3>withStdout</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></span>&nbsp;<span class="element-name">withStdout</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;stdout)</span></div>
 <div class="block">Add stdout field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -185,9 +185,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="stderr(java.lang.String[])">
-<h3>stderr</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></span>&nbsp;<span class="element-name">stderr</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;stderr)</span></div>
+<section class="detail" id="withStderr(java.lang.String[])">
+<h3>withStderr</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders">ProcessLogBuilder</a></span>&nbsp;<span class="element-name">withStderr</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;stderr)</span></div>
 <div class="block">Add stderr field</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -204,7 +204,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Construct ProcessLog from provided fields</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a></code></dd>
+<dd><code><a href="ModelBuilder.html#build()">build</a></code>&nbsp;in class&nbsp;<code><a href="ModelBuilder.html" title="class in org.tasktide.core.model.builders">ModelBuilder</a>&lt;<a href="../task/ProcessLog.html" title="class in org.tasktide.core.model.task">ProcessLog</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd><a href="ProcessLogBuilder.html" title="class in org.tasktide.core.model.builders"><code>ProcessLogBuilder</code></a></dd>
 </dl>
