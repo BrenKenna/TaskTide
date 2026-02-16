@@ -171,6 +171,21 @@ public class ItemStoreTestUtils {
     }
     
     
+    /**
+     * Wrapper method for later tests to fetch ItemStore
+     * 
+     * @param storeName
+     * @return {@link ItemStore}
+     */
+    public static ItemStore createSqliteStoreNoElection(String storeName) {
+        Path workDir;
+        String flag = "sqlite", proto;
+        workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
+        proto = UUID.randomUUID().toString();
+        return ItemStoreType.SQLITE.makeItemStoreNoElection(storeName, workDir.toString(), "master", proto);
+    }
+    
+    
      /**
      * Wrapper method for later tests to fetch ItemStore
      * 

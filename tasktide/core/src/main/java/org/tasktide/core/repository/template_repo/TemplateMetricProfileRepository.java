@@ -13,13 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.repository.nosql_repo;
+package org.tasktide.core.repository.template_repo;
 
 import jakarta.nosql.Template;
 
-import java.util.List;
-
-import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.repository.TemplateRepository;
 
@@ -43,22 +40,5 @@ public class TemplateMetricProfileRepository extends TemplateRepository<MetricPr
         String collectionName
     ) {
         super(template, MetricProfile.class, collectionName);
-    }
-    
-    
-    /**
-     * Add each element from input list to {@link TaskTideRepository}
-     * 
-     * @param toAdd
-     * @return boolean
-     */
-    @Override
-    public boolean extendModel(List<MetricProfile> toAdd) {
-        long importCount = toAdd.stream()
-            .filter(
-                elm -> insertModel(elm) != null
-            )
-        .count();
-        return importCount == toAdd.size();
     }
 }

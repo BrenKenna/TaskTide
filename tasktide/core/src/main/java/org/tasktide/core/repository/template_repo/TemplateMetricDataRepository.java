@@ -13,41 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.repository.nosql_repo;
-
-import java.util.List;
+package org.tasktide.core.repository.template_repo;
 
 import jakarta.nosql.Template;
 
-import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.repository.TemplateRepository;
 
 
 /**
- * Workflow repository
- * 
- * @author bkenna
+ * NoSQL orientated repository for {@link MetricData}
+ *
+ * @author Brendan Kenna
  */
-public class TemplateWorkflowRepository extends TemplateRepository<Workflow> {
+public class TemplateMetricDataRepository extends TemplateRepository<MetricData> {
+    
     
     /**
-     * Construct WorkflowRepository with injectable template and configurable collection name
+     * Constructs {@link MetricData} repository for the same
      * 
      * @param template
-     * @param collectionName workflow.repo-name
+     * @param collectionName 
      */
-    public TemplateWorkflowRepository(
+    public TemplateMetricDataRepository(
         Template template,
         String collectionName
     ) {
-        super(template, Workflow.class, collectionName);
-    }
-
-    @Override
-    public boolean extendModel(List<Workflow> toAdd) {
-        long importCount = toAdd.stream()
-            .filter( elm -> insertModel(elm) != null)
-        .count();
-        return importCount == toAdd.size();
+        super(template, MetricData.class, collectionName);
     }
 }

@@ -30,16 +30,27 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
         - Bucketing strategy will be required whose size is this limit.
         - Likely operate recursively, splitting 100 into 10 buckets fine. But likely be more than that.
         - Bucket leader claiming requires recursively leadership across buckets up to root queue.
-        - Eases listing permissions, making them quicker.
-        - Decision still sort of slow though, maybe reduce file deletion frequency
-        - -> Maybe implementing client can be aware of this and implement sharding per workflow
-        - -> ManagerClient aggregates the read view, can occasionally poll for updates?
-        - -> Logical division & isolation of queue based on queue, that is eventually consistent?
+        - Eases listing permissions, make each one of them quicker.
+        - Decision still sort of slow though, maybe reduce file deletion frequency & jitter.
+        - Maybe implementing client can be aware of this and implement sharding per workflow?
+        - ManagerClient aggregates the read view, can occasionally poll for updates?
+        - Logical division & isolation of queue based on queue, that is eventually consistent?
 --
+
 
 ==== ItemStore
 
-- [X] Many mutex for "contextual action" <- ItemStoreSession & BulkOperation Interfaces
+- [X] Multiple elections from configuring SQLite ItemStore
++
+--
+        - Each constructor validly makes an init call
+        - Second branch for openning connection with no election
+        - ItemStoreType offers factory method without triggering an election
+        - Only relevant to SQLite as RocksDB is schema-less
+--
++
+
+- [X] Many mutex for single "contextual action" <- ItemStoreSession & BulkOperation Interfaces
 +
 --
         - While concrete ItemStores individual method run via Open-Action-Close
@@ -64,6 +75,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - []  Builder code clean
 - []  Manager command code clean?
 - []  Optionally sort results?
+- [X] Template insert over iterable
 
 
 ==== Client
@@ -97,9 +109,17 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 ==== Outstanding
 
+- [X] Template inserts over an iterable
+- [X] JPA Entity Manager inserts in batches of 50
+- [X] Redundant elections
+- [X] LinkedOperation support on ItemStore
+- [X] Aggregate repetitive TaskTideService methods into an AbstratTaskTideService
+- [X] Adds ItemStoreSession and BulkOperations
+- [X] Mutex configurable
+- [X] Adds TaskTide-Parser
 - [X] Adds ItemStore-Mutex
-- [] Review TaskTideService, and TaskTideRepository unit-tests.
-- [] Bean injection quirk between NetBeans & command-line.
+- [/] Review TaskTideService, and TaskTideRepository unit-tests.
+- [?] Bean injection quirk between NetBeans & command-line.
 - [] Unit tests need to be executed separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB.
 - [/] Update UMLs.
 - [/] Incorporate host metrics:

@@ -13,42 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.repository.nosql_repo;
-
-import java.util.List;
+package org.tasktide.core.repository.template_repo;
 
 import jakarta.nosql.Template;
 
+import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.repository.TemplateRepository;
-import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
- *
- * WorkItem repository
+ * Workflow repository
  * 
  * @author bkenna
  */
-public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
+public class TemplateWorkflowRepository extends TemplateRepository<Workflow> {
     
     /**
-     * Construct WorkItemRepository with injectable template and configurable collection name
+     * Construct WorkflowRepository with injectable template and configurable collection name
      * 
      * @param template
-     * @param collectionName workitem.repo-name
+     * @param collectionName workflow.repo-name
      */
-    public TemplateWorkItemRepository(
+    public TemplateWorkflowRepository(
         Template template,
         String collectionName
     ) {
-        super(template, WorkItem.class, collectionName);
-    }
-
-    @Override
-    public boolean extendModel(List<WorkItem> toAdd) {
-        long importCount = toAdd.stream()
-            .filter( elm -> insertModel(elm) != null)
-        .count();
-        return importCount == toAdd.size();
+        super(template, Workflow.class, collectionName);
     }
 }

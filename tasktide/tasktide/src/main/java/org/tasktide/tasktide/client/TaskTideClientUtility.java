@@ -31,7 +31,7 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
-import org.tasktide.core.repository.nosql_repo.TemplateRepositoryUtility;
+import org.tasktide.core.repository.template_repo.TemplateRepositoryUtility;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreType;

@@ -16,8 +16,8 @@
 package org.tasktide.core.repository;
 
 import jakarta.nosql.Template;
-import java.util.HashMap;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -29,7 +29,6 @@ import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
- * 
  * Template Model Repository adding utility and collection info
  * 
  * @author bkenna
@@ -104,6 +103,19 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
     public T insertModel(T model) {
         T result = template.insert(model);
         return result;
+    }
+    
+    
+    /**
+     * Batch import provided list of records
+     * 
+     * @param toAdd
+     * @return boolean
+     */
+    @Override
+    public boolean extendModel(List<T> toAdd) {
+        Iterable<T> imported = template.insert(toAdd);
+        return imported != null;
     }
 
     

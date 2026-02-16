@@ -370,12 +370,33 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      */
     @Override
     public boolean extendModel(List<T> toAdd) {
-        int count = 0;
+        
+        // Initialize vars
+        int count = 0, batchSize = 50;
+        EntityTransaction tx;
+        
+        // Begin transaction
+        tx = entityManager.getTransaction();
+        tx.begin();
+        
+        // Add all records
         for ( T elm : toAdd ) {
-            if ( this.insertModel(elm) != null ) {
-                count++;
+            entityManager.persist(elm);
+            
+            // Flush batch if limit is hit
+            if ( count % batchSize == 0 ) {
+                entityManager.flush();
+                entityManager.clear();
             }
+            count++;
         }
+        
+        // Commit changes to close transaction
+        entityManager.flush();
+        entityManager.clear();
+        tx.commit();
+        
+        // Return results
         return count == toAdd.size();
     }
 }

@@ -17,7 +17,8 @@ package org.tasktide.itemstore;
 
 
 /**
- * Enum to support operations over {@link ItemStore}, and construction
+ * Enum to support operations over {@link ItemStore} based on the
+ *  type value, and strategic factory
  * 
  * @author bkenna
  */
@@ -37,6 +38,11 @@ public enum ItemStoreType {
         @Override
         public ItemStore makeItemStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
             return new RocksDbStore(storeName, dbDirectory, masterDB, protoDB);
+        }
+        
+        @Override
+        public ItemStore makeItemStoreNoElection(String storeName, String dbDirectory, String masterDB, String protoDB) {
+            return makeItemStore(storeName, dbDirectory, masterDB, protoDB);
         }
 
         @Override
@@ -60,6 +66,11 @@ public enum ItemStoreType {
         public ItemStore makeItemStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
             return new SqliteStore(storeName, dbDirectory, masterDB, protoDB);
         }
+        
+        @Override
+        public ItemStore makeItemStoreNoElection(String storeName, String dbDirectory, String masterDB, String protoDB) {
+            return new SqliteStore(storeName, dbDirectory, masterDB, protoDB, true);
+        }
 
         @Override
         public String toString() {
@@ -70,6 +81,7 @@ public enum ItemStoreType {
     public abstract boolean isItemStoreType(String query);
     public abstract boolean isItemStoreType(ItemStoreType query);
     public abstract ItemStore makeItemStore(String storeName, String dbDirectory, String masterDB, String protoDB);
+    public abstract ItemStore makeItemStoreNoElection(String storeName, String dbDirectory, String masterDB, String protoDB);
     
     
     /**

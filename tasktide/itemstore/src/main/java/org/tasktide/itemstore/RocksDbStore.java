@@ -32,9 +32,12 @@ import org.rocksdb.RocksDBException;
 
 import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
+import static org.tasktide.itemstore.DbTarget.MASTER;
+import static org.tasktide.itemstore.DbTarget.PROTOTYPE;
 
 import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.ItemStoreSession;
+import org.tasktide.itemstore.session.LinkedOperation;
 
 
 /**
@@ -46,7 +49,7 @@ public class RocksDbStore extends AbstractItemStore {
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(RocksDbStore.class);
-    private RocksDB master, proto;
+    protected RocksDB master, proto;
     private final Options options;
     private final ObjectMapper MAPPER = new ObjectMapper();
     
@@ -63,6 +66,47 @@ public class RocksDbStore extends AbstractItemStore {
         super(storeName, dbDirectory, masterDB, protoDB);
         RocksDB.loadLibrary();
         this.options = new Options().setCreateIfMissing(true);
+    }
+    
+    
+    /**
+     * Performs the {@link LinkedOperation} over two {@link RocksDbStore}
+     *  under one connection for both {@link ItemStore}
+     * 
+     * @param <T>
+     * @param target
+     * @param recipientStore
+     * @param operations
+     * @return T
+     */
+    @Override
+    public synchronized <T> T execute(DbTarget target, ItemStore recipientStore, LinkedOperation<T> operations) {
+    
+        // Opens connections
+        ItemStoreSession donor, recipient;
+        this.openConn(target);
+        ( (RocksDbStore) recipientStore).openConnNoElection(target);
+        
+        // Execute operation
+        try {
+            switch ( target ) {
+                case MASTER -> {
+                    donor = new RocksDbSession(this.master);
+                    recipient = new RocksDbSession( ( (AbstractItemStore) recipientStore).getConnection(target, RocksDB.class) );
+                }
+                default -> {
+                    donor = new RocksDbSession(this.proto);
+                    recipient = new RocksDbSession( ( (AbstractItemStore) recipientStore).getConnection(target, RocksDB.class) );
+                }
+            }
+            return operations.execute(donor, recipient);
+        }
+        
+        // Close connections
+        finally {
+            this.closeConn(target);
+            recipientStore.closeConn(target);
+        }
     }
     
     
@@ -92,6 +136,25 @@ public class RocksDbStore extends AbstractItemStore {
         }
         finally {
             this.closeConn(target);
+        }
+    }
+    
+    
+    /**
+     * Get {@link RocksDB} get connection
+     * 
+     * @param target
+     * @return {@link RocksDB}
+     */
+    @Override
+    protected <T> T getConnection(DbTarget target, Class<T> type) {
+        switch ( target ) {
+            case MASTER -> {
+                return type.cast(this.master);
+            }
+            default -> {
+                return type.cast(this.proto);
+            }
         }
     }
     
@@ -546,7 +609,82 @@ public class RocksDbStore extends AbstractItemStore {
                     return false;
                 }
             }
-        }    
+        }
+    }
+        
+        
+    public synchronized boolean openConnNoElection(DbTarget target) {
+        
+        LOGGER.debug("Openning connection to:\t'{}'", target);
+        switch (target) {
+            case MASTER -> {
+                try {
+                    if (this.master == null) {
+                        LOGGER.debug("Lock acquired. Null master, openning connection");
+                        this.master = RocksDB.open(this.options, this.getMasterFilePath());
+                        LOGGER.debug("Master is now '{}'", this.master);
+                        LOGGER.debug("Master state of open is '{}'", !this.master.isClosed());
+                        return true;
+                    }
+                    if (master.isClosed()) {
+                        LOGGER.debug("Lock acquired. Closed mnaster, openning connection");
+                        this.master = RocksDB.open(this.options, this.getMasterFilePath());
+                        LOGGER.debug("Master state of open is '{}'", !this.master.isClosed());
+                        return true;
+                    }
+                    LOGGER.debug("Lock acquired. Master is neither closed ir null");
+                    return false;
+                } catch (Exception ex) {
+                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
+                    ex.printStackTrace();
+                    return false;
+                }
+            }
+
+            case PROTOTYPE -> {
+                try {
+                    if (this.proto == null) {
+                        this.proto = RocksDB.open(this.options, this.getFilePath());
+                        return true;
+                    }
+                    if (proto.isClosed()) {
+                        this.proto = RocksDB.open(options, this.getFilePath());
+                    }
+                    return true;
+                } catch (RocksDBException ex) {
+                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
+                    ex.printStackTrace();
+                    return false;
+                }
+            }
+
+            default -> {
+                try {
+
+                    if (this.master == null || this.proto == null) {
+                        if (this.master == null) {
+                            this.master = RocksDB.open(this.options, this.getMasterFilePath());
+                        }
+                        if (this.proto == null) {
+                            this.proto = RocksDB.open(this.options, this.getFilePath());
+                        }
+                        return true;
+                    }
+
+                    if (master.isClosed()) {
+                        this.master = RocksDB.open(options, this.getMasterFilePath());
+                    }
+                    if (proto.isClosed()) {
+                        this.proto = RocksDB.open(options, this.getFilePath());
+                    }
+                    return true;
+                } catch (Exception ex) {
+                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
+                    ex.printStackTrace();
+                    return false;
+                }
+            }
+        }
     }
     
     
@@ -558,7 +696,6 @@ public class RocksDbStore extends AbstractItemStore {
         // Attributes
         private final RocksDB conn;
         
-        
         /**
          * Construct with {@link RocksDB} connection
          * 
@@ -567,6 +704,7 @@ public class RocksDbStore extends AbstractItemStore {
         RocksDbSession(RocksDB conn) {
             this.conn = conn;
         }
+        
         
         @Override
         public boolean insert(Item item) {

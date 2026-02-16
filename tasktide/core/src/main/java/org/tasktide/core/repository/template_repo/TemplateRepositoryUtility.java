@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.repository.nosql_repo;
+package org.tasktide.core.repository.template_repo;
 
 import jakarta.enterprise.inject.spi.CDI;
 import jakarta.nosql.Template;

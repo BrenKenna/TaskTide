@@ -99,6 +99,17 @@ public abstract class AbstractItemStore implements ItemStore {
     
     
     /**
+     * Get connection
+     * 
+     * @param <T>
+     * @param target
+     * @param type SqliteStore | RocksDbStore
+     * @return T 
+     */
+    protected abstract <T> T getConnection(DbTarget target, Class<T> type);
+    
+    
+    /**
      * Wait for mutex to be acquired
      * 
      * @return boolean

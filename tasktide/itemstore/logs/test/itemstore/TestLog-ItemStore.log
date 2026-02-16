@@ -1,415 +1,462 @@
-2026-02-13 15:56:36.767 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUpClass ]: 
+2026-02-16 11:39:58.718 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUpClass ]: 
 
 ---------------- Initiating ItemStore Session Tests ----------------
 
-2026-02-13 15:56:36.776 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUp ]: 
+2026-02-16 11:39:58.728 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2026-02-13 15:56:36.778 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: 
+2026-02-16 11:39:58.731 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsSqlite ]: 
 
-================ Can Bulk Import & Select RocksDB Test ================
+================ Linked Ops SQLite Test ===============
 
-2026-02-13 15:56:36.784 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Configuring RocksDB ItemStore and '10' test records
-2026-02-13 15:56:37.180 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Importing records & verifiying under bulk operation
-2026-02-13 15:56:37.182 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Openning connection to:	'MASTER'
-2026-02-13 15:56:37.184 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Waiting for lock
-2026-02-13 15:56:37.184 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
-2026-02-13 15:56:37.184 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
-2026-02-13 15:56:37.462 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:37.730 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:37.805 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
-2026-02-13 15:56:37.806 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
-2026-02-13 15:56:38.082 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.082 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.358 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.358 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.358 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.368 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.378 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.378 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.962 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.962 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:38.962 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:39.789 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:39.790 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'941d5785-b0ca-4c00-9c41-bc6d8a267565'
-2026-02-13 15:56:39.796 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-29248 Completed with counter value:	'0'
-2026-02-13 15:56:39.796 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-29248 Loop terminating with done = 'true', and counter = '0'
-2026-02-13 15:56:39.797 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
-2026-02-13 15:56:39.799 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Lock acquired. Null master, openning connection
-2026-02-13 15:56:39.858 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Master is now 'org.rocksdb.RocksDB@15ac59c2'
-2026-02-13 15:56:39.859 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Master state of open is 'true'
-2026-02-13 15:56:39.862 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsRocksDb$1 ]: Inserting records
-2026-02-13 15:56:39.892 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.892 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.893 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.893 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.893 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.893 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.894 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.894 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.894 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.894 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:56:39.913 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsRocksDb$1 ]: Displaying inserted record:
+2026-02-16 11:39:58.736 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsSqlite ]: Configuring SQLite ItemStore and '10' test records
+2026-02-16 11:39:58.804 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB
+2026-02-16 11:39:58.807 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
+2026-02-16 11:39:58.808 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-16 11:39:59.270 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:39:59.481 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:39:59.545 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-02-16 11:39:59.545 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-02-16 11:39:59.949 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:39:59.949 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.378 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.378 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.378 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.385 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.392 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.392 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.909 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.909 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:00.909 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:01.688 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:01.689 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'0a96990c-b5aa-4679-884f-c6c07d89e159'
+2026-02-16 11:40:01.693 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-41600 Completed with counter value:	'0'
+2026-02-16 11:40:01.694 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-41600 Loop terminating with done = 'true', and counter = '0'
+2026-02-16 11:40:01.694 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-16 11:40:01.862 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:40:01.862 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-16 11:40:01.862 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-16 11:40:01.998 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
 '{
-    "collection": "Step",
-    "id": "170e970c-340a-4dd8-9cac-0f7c4f4965d5",
-    "payload": "87271f27-2bce-4db3-94c7-6d6ce145b993",
-    "state": "State"
-}'
-2026-02-13 15:56:39.913 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.closeConn ]: Closing connection to:	'MASTER'
-2026-02-13 15:56:39.913 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
-2026-02-13 15:56:39.914 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
-2026-02-13 15:56:39.914 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
-2026-02-13 15:56:40.194 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
-'{
-    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770998197452.10-171-238-13_7d4c6904-494a-493e-9ee0-00313517ea7f_941d5785-b0ca-4c00-9c41-bc6d8a267565.lock",
-    "End Jitter": "PT0.276S",
-    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770998197452.10-171-238-13_7d4c6904-494a-493e-9ee0-00313517ea7f.lock",
-    "Id": "941d5785-b0ca-4c00-9c41-bc6d8a267565",
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1771241999262.10-171-238-13_265112bd-34b4-4d8a-8a9f-55069f8823c1_0a96990c-b5aa-4679-884f-c6c07d89e159.lock",
+    "End Jitter": "PT0.453S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1771241999261.10-171-238-13_265112bd-34b4-4d8a-8a9f-55069f8823c1.lock",
+    "Id": "0a96990c-b5aa-4679-884f-c6c07d89e159",
     "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
     "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
     "Mutex State": "LOCKED",
-    "Retry Interval": "PT0.238S",
+    "Retry Interval": "PT0.137S",
     "Stale File Threshold": "PT10S",
-    "Start Jitter": "PT0.255S",
-    "Timestamp": 1770998197460
+    "Start Jitter": "PT0.102S",
+    "Timestamp": 1771241999269
 }'
-2026-02-13 15:56:40.196 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
-2026-02-13 15:56:40.199 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Evaluating RocksDB ItemStore Session Test
-2026-02-13 15:56:40.208 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: 
+2026-02-16 11:40:01.999 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:40:02.004 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-02-16 11:40:02.005 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB under active mutex
+2026-02-16 11:40:02.019 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:40:02.019 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: No active mutex detected
+2026-02-16 11:40:02.019 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:40:02.024 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsSqlite ]: Importing records & verifiying under bulk operation
+2026-02-16 11:40:02.026 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
+2026-02-16 11:40:02.026 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-16 11:40:02.171 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:02.571 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:02.589 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-02-16 11:40:02.589 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-02-16 11:40:02.988 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:02.988 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.300 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.300 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.300 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.309 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.321 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.321 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.805 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.805 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:03.805 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:04.588 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:04.589 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'dcbb159c-bade-4f16-92e4-648ace5bde26'
+2026-02-16 11:40:04.590 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-41600 Completed with counter value:	'0'
+2026-02-16 11:40:04.590 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-41600 Loop terminating with done = 'true', and counter = '0'
+2026-02-16 11:40:04.591 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-16 11:40:04.601 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsSqlite$3 ]: Inserting records into sessionA
+2026-02-16 11:40:04.639 DEBUG [ Test worker -> org.tasktide.itemstore.SqliteStore$SqliteSession.importItems ]: Records inserted = '10', Expected = '10'
+2026-02-16 11:40:04.641 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsSqlite$3 ]: Displaying inserted record:
+'{
+    "collection": "Step",
+    "id": "aca115fb-f105-4fb7-a204-904e7fdbf4e5",
+    "payload": "ab3ed2cd-2c4e-42d1-8b5e-ce195ef61d6a",
+    "state": "State"
+}'
+2026-02-16 11:40:04.641 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsSqlite$3 ]: Inserting records into sessionB
+2026-02-16 11:40:04.678 DEBUG [ Test worker -> org.tasktide.itemstore.SqliteStore$SqliteSession.importItems ]: Records inserted = '10', Expected = '10'
+2026-02-16 11:40:04.679 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsSqlite$3 ]: Displaying inserted record:
+'{
+    "collection": "Step",
+    "id": "aca115fb-f105-4fb7-a204-904e7fdbf4e5",
+    "payload": "ab3ed2cd-2c4e-42d1-8b5e-ce195ef61d6a",
+    "state": "State"
+}'
+2026-02-16 11:40:04.679 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsSqlite$3 ]: Check results
+2026-02-16 11:40:04.679 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:40:04.679 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-16 11:40:04.679 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-16 11:40:04.993 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1771242002171.10-171-238-13_265112bd-34b4-4d8a-8a9f-55069f8823c1_dcbb159c-bade-4f16-92e4-648ace5bde26.lock",
+    "End Jitter": "PT0.453S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1771242002171.10-171-238-13_265112bd-34b4-4d8a-8a9f-55069f8823c1.lock",
+    "Id": "dcbb159c-bade-4f16-92e4-648ace5bde26",
+    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.137S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.102S",
+    "Timestamp": 1771242002171
+}'
+2026-02-16 11:40:04.994 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:40:04.995 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:40:04.995 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: No active mutex detected
+2026-02-16 11:40:04.995 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:40:04.995 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsSqlite ]: Evaluating SQLite ItemStore Linked Session Test
+2026-02-16 11:40:04.998 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsSqlite ]: 
 
-================ Can Bulk Import & Select RocksDB Test ================
+================ Linked Ops SQLite Test ================
 
-2026-02-13 15:56:40.210 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDown ]: 
+2026-02-16 11:40:04.999 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2026-02-13 15:56:40.217 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDownClass ]: 
+2026-02-16 11:40:05.005 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDownClass ]: 
 
 ---------------- Terminating ItemStore Session Tests ----------------
 
-2026-02-13 15:57:03.731 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUpClass ]: 
+2026-02-16 11:41:14.991 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUpClass ]: 
 
 ---------------- Initiating ItemStore Session Tests ----------------
 
-2026-02-13 15:57:03.741 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUp ]: 
+2026-02-16 11:41:15.000 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2026-02-13 15:57:03.743 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: 
+2026-02-16 11:41:15.001 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsRocksDb ]: 
 
-================ Can Bulk Import & Select SQLite Test ================
+================ Linked Ops RocksDB Test ===============
 
-2026-02-13 15:57:03.751 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Configuring SQLite ItemStore and '10' test records
-2026-02-13 15:57:03.818 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
-2026-02-13 15:57:03.818 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
-2026-02-13 15:57:04.248 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:04.597 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:04.656 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
-2026-02-13 15:57:04.656 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
-2026-02-13 15:57:05.029 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:05.029 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:05.324 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:05.324 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:05.324 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:05.333 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:05.341 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:05.342 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:06.033 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:06.033 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:06.033 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:07.237 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:07.237 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'2e28b6c4-3601-4d57-b6c8-595694371ff8'
-2026-02-13 15:57:07.242 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-33852 Completed with counter value:	'0'
-2026-02-13 15:57:07.242 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-33852 Loop terminating with done = 'true', and counter = '0'
-2026-02-13 15:57:07.242 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
-2026-02-13 15:57:07.446 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
-2026-02-13 15:57:07.446 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
-2026-02-13 15:57:07.447 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
-2026-02-13 15:57:07.790 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
-'{
-    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770998224241.10-171-238-13_a0b2f18e-edd1-4807-80ea-11fb1704edf6_2e28b6c4-3601-4d57-b6c8-595694371ff8.lock",
-    "End Jitter": "PT0.419S",
-    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770998224241.10-171-238-13_a0b2f18e-edd1-4807-80ea-11fb1704edf6.lock",
-    "Id": "2e28b6c4-3601-4d57-b6c8-595694371ff8",
-    "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
-    "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
-    "Mutex State": "LOCKED",
-    "Retry Interval": "PT0.115S",
-    "Stale File Threshold": "PT10S",
-    "Start Jitter": "PT0.262S",
-    "Timestamp": 1770998224245
-}'
-2026-02-13 15:57:07.791 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
-2026-02-13 15:57:07.795 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Importing records & verifiying under bulk operation
-2026-02-13 15:57:07.799 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
-2026-02-13 15:57:07.799 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
-2026-02-13 15:57:08.220 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:08.557 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:08.565 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
-2026-02-13 15:57:08.566 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
-2026-02-13 15:57:08.851 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:08.853 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.276 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.276 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.276 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.289 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.315 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.316 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.956 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.956 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:09.956 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:11.072 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:11.073 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'd17ba64a-8a22-45e9-9151-c9411d1f2fc0'
-2026-02-13 15:57:11.074 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-33852 Completed with counter value:	'0'
-2026-02-13 15:57:11.075 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-33852 Loop terminating with done = 'true', and counter = '0'
-2026-02-13 15:57:11.075 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
-2026-02-13 15:57:11.085 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsSqlite$0 ]: Inserting records
-2026-02-13 15:57:11.143 DEBUG [ Test worker -> org.tasktide.itemstore.SqliteStore$SqliteSession.importItems ]: Records inserted = '10', Expected = '10'
-2026-02-13 15:57:11.145 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsSqlite$0 ]: Displaying inserted record:
+2026-02-16 11:41:15.008 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsRocksDb ]: Configuring RocksDB ItemStore and '10' test records
+2026-02-16 11:41:15.375 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-02-16 11:41:15.378 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsRocksDb ]: Importing records & verifiying under bulk operation
+2026-02-16 11:41:15.384 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Openning connection to:	'MASTER'
+2026-02-16 11:41:15.387 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Waiting for lock
+2026-02-16 11:41:15.387 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
+2026-02-16 11:41:15.388 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-16 11:41:15.793 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:15.901 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:15.955 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-02-16 11:41:15.955 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-02-16 11:41:16.324 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:16.325 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:16.724 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:16.725 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:16.725 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:16.744 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:16.753 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:16.754 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:17.435 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:17.435 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:17.435 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:18.342 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:18.343 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'40d26223-b2f5-4818-84a1-a32dc9897d01'
+2026-02-16 11:41:18.346 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-15456 Completed with counter value:	'0'
+2026-02-16 11:41:18.346 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-15456 Loop terminating with done = 'true', and counter = '0'
+2026-02-16 11:41:18.346 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-16 11:41:18.351 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Lock acquired. Null master, openning connection
+2026-02-16 11:41:18.415 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Master is now 'org.rocksdb.RocksDB@f2ce6b'
+2026-02-16 11:41:18.415 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Master state of open is 'true'
+2026-02-16 11:41:18.415 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConnNoElection ]: Openning connection to:	'MASTER'
+2026-02-16 11:41:18.415 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConnNoElection ]: Lock acquired. Null master, openning connection
+2026-02-16 11:41:18.458 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConnNoElection ]: Master is now 'org.rocksdb.RocksDB@25c53f74'
+2026-02-16 11:41:18.458 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConnNoElection ]: Master state of open is 'true'
+2026-02-16 11:41:18.461 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsRocksDb$2 ]: Inserting records into sessionA
+2026-02-16 11:41:18.484 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.485 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.485 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.485 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.485 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.486 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.486 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.486 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.486 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.486 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB\master'
+2026-02-16 11:41:18.503 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsRocksDb$2 ]: Displaying inserted record:
 '{
     "collection": "Step",
-    "id": "d24c6ef4-f5f4-47a8-a55f-b99689b100d4",
-    "payload": "b2077cef-e7ba-4cd9-b746-0404d47987e6",
+    "id": "06ea1390-b9c0-41c9-9287-b31ee637f7f0",
+    "payload": "c7367d21-f9eb-482f-8de2-e284d776451e",
     "state": "State"
 }'
-2026-02-13 15:57:11.145 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
-2026-02-13 15:57:11.145 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
-2026-02-13 15:57:11.145 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
-2026-02-13 15:57:11.442 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+2026-02-16 11:41:18.503 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsRocksDb$2 ]: Inserting records into sessionB
+2026-02-16 11:41:18.503 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.504 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.504 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.505 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.505 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.505 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.506 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.506 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.506 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.506 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\LinkedOps-RocksDB-recipient\master'
+2026-02-16 11:41:18.506 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsRocksDb$2 ]: Displaying inserted record:
 '{
-    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770998228218.10-171-238-13_a0b2f18e-edd1-4807-80ea-11fb1704edf6_d17ba64a-8a22-45e9-9151-c9411d1f2fc0.lock",
-    "End Jitter": "PT0.419S",
-    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770998228218.10-171-238-13_a0b2f18e-edd1-4807-80ea-11fb1704edf6.lock",
-    "Id": "d17ba64a-8a22-45e9-9151-c9411d1f2fc0",
+    "collection": "Step",
+    "id": "06ea1390-b9c0-41c9-9287-b31ee637f7f0",
+    "payload": "c7367d21-f9eb-482f-8de2-e284d776451e",
+    "state": "State"
+}'
+2026-02-16 11:41:18.506 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneLinkedOpsRocksDb$2 ]: Check results
+2026-02-16 11:41:18.507 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.closeConn ]: Closing connection to:	'MASTER'
+2026-02-16 11:41:18.507 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:41:18.507 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-16 11:41:18.508 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-16 11:41:18.745 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1771242075786.10-171-238-13_e696b98b-2afe-4fd5-af3c-5ad492c6b943_40d26223-b2f5-4818-84a1-a32dc9897d01.lock",
+    "End Jitter": "PT0.422S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1771242075786.10-171-238-13_e696b98b-2afe-4fd5-af3c-5ad492c6b943.lock",
+    "Id": "40d26223-b2f5-4818-84a1-a32dc9897d01",
     "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
     "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
     "Mutex State": "LOCKED",
-    "Retry Interval": "PT0.115S",
+    "Retry Interval": "PT0.245S",
     "Stale File Threshold": "PT10S",
-    "Start Jitter": "PT0.262S",
-    "Timestamp": 1770998228218
+    "Start Jitter": "PT0.101S",
+    "Timestamp": 1771242075791
 }'
-2026-02-13 15:57:11.443 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
-2026-02-13 15:57:11.444 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Evaluating SQLite ItemStore Session Test
-2026-02-13 15:57:11.447 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: 
+2026-02-16 11:41:18.747 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:41:18.752 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.closeConn ]: Closing connection to:	'MASTER'
+2026-02-16 11:41:18.752 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:41:18.752 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: No active mutex detected
+2026-02-16 11:41:18.753 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:41:18.755 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsRocksDb ]: Evaluating RocksDB ItemStore Linked Session Test
+2026-02-16 11:41:18.758 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneLinkedOpsRocksDb ]: 
 
-================ Can Bulk Import & Select SQLite Test ================
+================ Linked Ops RocksDB Test ================
 
-2026-02-13 15:57:11.448 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDown ]: 
+2026-02-16 11:41:18.759 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2026-02-13 15:57:11.456 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDownClass ]: 
+2026-02-16 11:41:18.765 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDownClass ]: 
 
 ---------------- Terminating ItemStore Session Tests ----------------
 
-2026-02-13 15:58:21.355 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUpClass ]: 
+2026-02-16 11:41:51.739 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUpClass ]: 
 
 ---------------- Initiating ItemStore Session Tests ----------------
 
-2026-02-13 15:58:21.366 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUp ]: 
+2026-02-16 11:41:51.748 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2026-02-13 15:58:21.368 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: 
+2026-02-16 11:41:51.751 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: 
 
 ================ Can Bulk Import & Select RocksDB Test ===============
 
-2026-02-13 15:58:21.373 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Configuring RocksDB ItemStore and '10' test records
-2026-02-13 15:58:21.747 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Importing records & verifiying under bulk operation
-2026-02-13 15:58:21.757 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Openning connection to:	'MASTER'
-2026-02-13 15:58:21.759 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Waiting for lock
-2026-02-13 15:58:21.759 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
-2026-02-13 15:58:21.760 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
-2026-02-13 15:58:22.174 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:22.584 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:22.643 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
-2026-02-13 15:58:22.643 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
-2026-02-13 15:58:23.068 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:23.068 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:23.493 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:23.493 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:23.493 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:23.503 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:23.512 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:23.512 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:24.398 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:24.398 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:24.398 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:25.638 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:25.638 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'35751070-63f1-4c8e-aa56-54ffa05cc9eb'
-2026-02-13 15:58:25.641 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-26144 Completed with counter value:	'0'
-2026-02-13 15:58:25.641 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-26144 Loop terminating with done = 'true', and counter = '0'
-2026-02-13 15:58:25.641 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
-2026-02-13 15:58:25.644 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Lock acquired. Null master, openning connection
-2026-02-13 15:58:25.708 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Master is now 'org.rocksdb.RocksDB@34e20e6b'
-2026-02-13 15:58:25.708 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Master state of open is 'true'
-2026-02-13 15:58:25.711 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsRocksDb$1 ]: Inserting records
-2026-02-13 15:58:25.735 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.737 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.738 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.738 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.738 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.738 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.738 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.738 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.739 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.739 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
-2026-02-13 15:58:25.756 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsRocksDb$1 ]: Displaying inserted record:
+2026-02-16 11:41:51.759 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Configuring RocksDB ItemStore and '10' test records
+2026-02-16 11:41:52.103 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Importing records & verifiying under bulk operation
+2026-02-16 11:41:52.108 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Openning connection to:	'MASTER'
+2026-02-16 11:41:52.110 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Waiting for lock
+2026-02-16 11:41:52.110 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
+2026-02-16 11:41:52.110 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-16 11:41:52.431 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:52.650 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:52.706 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-02-16 11:41:52.707 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-02-16 11:41:52.913 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:52.914 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.176 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.177 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.177 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.190 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.204 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.204 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.909 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.909 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:53.909 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:54.697 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:54.698 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'36dd70e1-040f-4cf4-9fe0-4b097c751d69'
+2026-02-16 11:41:54.704 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-15548 Completed with counter value:	'0'
+2026-02-16 11:41:54.705 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-15548 Loop terminating with done = 'true', and counter = '0'
+2026-02-16 11:41:54.705 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-16 11:41:54.709 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Lock acquired. Null master, openning connection
+2026-02-16 11:41:54.762 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Master is now 'org.rocksdb.RocksDB@4a8df3e2'
+2026-02-16 11:41:54.762 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.openConn ]: Master state of open is 'true'
+2026-02-16 11:41:54.764 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsRocksDb$1 ]: Inserting records
+2026-02-16 11:41:54.789 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.791 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.791 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.791 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.791 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.791 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.791 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.792 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.792 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.792 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.putItem ]: Attempting insertion into ItemStrep: 'C:\Users\Brendan Kenna\GitHub\TaskTide\tasktide\itemstore\rocksDB\BulkOps-RocksDB\master'
+2026-02-16 11:41:54.809 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsRocksDb$1 ]: Displaying inserted record:
 '{
     "collection": "Step",
-    "id": "549f5283-7c1f-47d5-a173-7a6e8e2fab54",
-    "payload": "a63f0c14-1ca8-4238-a9b7-fecf49db80ee",
+    "id": "e5e21223-f1ff-438f-b2cf-26eb91c42cc8",
+    "payload": "239caa17-e511-4137-b4dd-9b6090d65417",
     "state": "State"
 }'
-2026-02-13 15:58:25.757 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.closeConn ]: Closing connection to:	'MASTER'
-2026-02-13 15:58:25.757 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
-2026-02-13 15:58:25.757 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
-2026-02-13 15:58:25.757 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
-2026-02-13 15:58:26.202 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+2026-02-16 11:41:54.809 DEBUG [ Test worker -> org.tasktide.itemstore.RocksDbStore.closeConn ]: Closing connection to:	'MASTER'
+2026-02-16 11:41:54.810 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:41:54.810 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-16 11:41:54.810 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-16 11:41:55.121 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
 '{
-    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770998302168.10-171-238-13_73d2a52c-cccc-4c22-bc0a-86b446028692_35751070-63f1-4c8e-aa56-54ffa05cc9eb.lock",
-    "End Jitter": "PT0.426S",
-    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770998302168.10-171-238-13_73d2a52c-cccc-4c22-bc0a-86b446028692.lock",
-    "Id": "35751070-63f1-4c8e-aa56-54ffa05cc9eb",
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1771242112422.10-171-238-13_eb8556cf-c7f6-495f-9be0-16418b511fd1_36dd70e1-040f-4cf4-9fe0-4b097c751d69.lock",
+    "End Jitter": "PT0.361S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1771242112422.10-171-238-13_eb8556cf-c7f6-495f-9be0-16418b511fd1.lock",
+    "Id": "36dd70e1-040f-4cf4-9fe0-4b097c751d69",
     "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
     "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
     "Mutex State": "LOCKED",
-    "Retry Interval": "PT0.202S",
+    "Retry Interval": "PT0.08S",
     "Stale File Threshold": "PT10S",
-    "Start Jitter": "PT0.398S",
-    "Timestamp": 1770998302172
+    "Start Jitter": "PT0.175S",
+    "Timestamp": 1771242112428
 }'
-2026-02-13 15:58:26.204 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
-2026-02-13 15:58:26.208 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Evaluating RocksDB ItemStore Session Test
-2026-02-13 15:58:26.211 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: 
+2026-02-16 11:41:55.122 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:41:55.126 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: Evaluating RocksDB ItemStore Session Test
+2026-02-16 11:41:55.131 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsRocksDb ]: 
 
 ================ Can Bulk Import & Select RocksDB Test ================
 
-2026-02-13 15:58:26.214 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDown ]: 
+2026-02-16 11:41:55.132 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2026-02-13 15:58:26.219 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDownClass ]: 
+2026-02-16 11:41:55.138 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDownClass ]: 
 
 ---------------- Terminating ItemStore Session Tests ----------------
 
-2026-02-13 16:00:07.119 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUpClass ]: 
+2026-02-16 11:42:05.749 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUpClass ]: 
 
 ---------------- Initiating ItemStore Session Tests ----------------
 
-2026-02-13 16:00:07.128 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUp ]: 
+2026-02-16 11:42:05.759 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.setUp ]: 
 
 ================ Initiating Next Test ================
 
-2026-02-13 16:00:07.130 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: 
+2026-02-16 11:42:05.759 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: 
 
 ================ Can Bulk Import & Select SQLite Test ================
 
-2026-02-13 16:00:07.136 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Configuring SQLite ItemStore and '10' test records
-2026-02-13 16:00:07.201 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB
-2026-02-13 16:00:07.205 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
-2026-02-13 16:00:07.206 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
-2026-02-13 16:00:07.374 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:07.577 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:07.639 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
-2026-02-13 16:00:07.640 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
-2026-02-13 16:00:07.780 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:07.780 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.008 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.008 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.009 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.024 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.031 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.031 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.468 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.469 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.469 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.897 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.898 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'9e251179-2681-4af7-ad80-1f7f87f8096a'
-2026-02-13 16:00:08.903 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-19280 Completed with counter value:	'0'
-2026-02-13 16:00:08.904 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-19280 Loop terminating with done = 'true', and counter = '0'
-2026-02-13 16:00:08.904 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
-2026-02-13 16:00:09.050 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
-2026-02-13 16:00:09.050 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
-2026-02-13 16:00:09.050 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
-2026-02-13 16:00:09.217 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+2026-02-16 11:42:05.766 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Configuring SQLite ItemStore and '10' test records
+2026-02-16 11:42:05.832 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB
+2026-02-16 11:42:05.836 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
+2026-02-16 11:42:05.836 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-16 11:42:06.223 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:06.592 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:06.655 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-02-16 11:42:06.656 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-02-16 11:42:07.046 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:07.046 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:07.424 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:07.425 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:07.425 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:07.439 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:07.446 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:07.446 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:08.253 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:08.254 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:08.254 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:09.394 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:09.395 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'743cbb61-90e2-46c7-8dac-4750ae4f0f5e'
+2026-02-16 11:42:09.398 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-11180 Completed with counter value:	'0'
+2026-02-16 11:42:09.399 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-11180 Loop terminating with done = 'true', and counter = '0'
+2026-02-16 11:42:09.399 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-16 11:42:09.564 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:42:09.565 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-16 11:42:09.565 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-16 11:42:09.954 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
 '{
-    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770998407370.10-171-238-13_ef60b1eb-65ac-4d6e-a215-8cfdf59bb5d1_9e251179-2681-4af7-ad80-1f7f87f8096a.lock",
-    "End Jitter": "PT0.242S",
-    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770998407370.10-171-238-13_ef60b1eb-65ac-4d6e-a215-8cfdf59bb5d1.lock",
-    "Id": "9e251179-2681-4af7-ad80-1f7f87f8096a",
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1771242126213.10-171-238-13_5eaf916f-13cb-4791-84be-d9d80b768975_743cbb61-90e2-46c7-8dac-4750ae4f0f5e.lock",
+    "End Jitter": "PT0.379S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1771242126213.10-171-238-13_5eaf916f-13cb-4791-84be-d9d80b768975.lock",
+    "Id": "743cbb61-90e2-46c7-8dac-4750ae4f0f5e",
     "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
     "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
     "Mutex State": "LOCKED",
-    "Retry Interval": "PT0.263S",
+    "Retry Interval": "PT0.266S",
     "Stale File Threshold": "PT10S",
-    "Start Jitter": "PT0.121S",
-    "Timestamp": 1770998407373
+    "Start Jitter": "PT0.367S",
+    "Timestamp": 1771242126221
 }'
-2026-02-13 16:00:09.218 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
-2026-02-13 16:00:09.221 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Importing records & verifiying under bulk operation
-2026-02-13 16:00:09.223 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
-2026-02-13 16:00:09.223 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
-2026-02-13 16:00:09.377 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.527 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.537 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
-2026-02-13 16:00:09.537 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
-2026-02-13 16:00:09.690 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.691 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.925 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.926 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.926 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.934 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.943 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:09.943 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:10.247 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:10.247 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:10.247 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:10.690 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:10.690 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a'
-2026-02-13 16:00:10.690 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-19280 Completed with counter value:	'0'
-2026-02-13 16:00:10.690 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-19280 Loop terminating with done = 'true', and counter = '0'
-2026-02-13 16:00:10.691 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
-2026-02-13 16:00:10.696 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsSqlite$0 ]: Inserting records
-2026-02-13 16:00:10.740 DEBUG [ Test worker -> org.tasktide.itemstore.SqliteStore$SqliteSession.importItems ]: Records inserted = '10', Expected = '10'
-2026-02-13 16:00:10.743 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsSqlite$0 ]: Displaying inserted record:
+2026-02-16 11:42:09.956 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:42:09.959 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Importing records & verifiying under bulk operation
+2026-02-16 11:42:09.961 DEBUG [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForLock ]: Waiting for
+2026-02-16 11:42:09.961 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-02-16 11:42:10.343 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:10.722 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:10.741 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-02-16 11:42:10.742 WARN  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-02-16 11:42:11.124 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:11.125 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:11.504 INFO  [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:11.506 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:11.507 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:11.523 DEBUG [ Test worker -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:11.531 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:11.531 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:12.309 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:12.309 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:12.309 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:13.431 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:13.432 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'd5915ba7-42b2-42b4-b0a9-fab35a559516'
+2026-02-16 11:42:13.433 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-11180 Completed with counter value:	'0'
+2026-02-16 11:42:13.434 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.tryAcquireUntilSuccess ]: Process-11180 Loop terminating with done = 'true', and counter = '0'
+2026-02-16 11:42:13.434 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-02-16 11:42:13.445 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsSqlite$0 ]: Inserting records
+2026-02-16 11:42:13.493 DEBUG [ Test worker -> org.tasktide.itemstore.SqliteStore$SqliteSession.importItems ]: Records inserted = '10', Expected = '10'
+2026-02-16 11:42:13.495 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.lambda$canImportAndSelectInOneOpsSqlite$0 ]: Displaying inserted record:
 '{
     "collection": "Step",
-    "id": "dae983ad-13b0-4049-9dc0-cd10230de80b",
-    "payload": "e1f8a1c6-344d-4cdd-9f20-a11665283513",
+    "id": "787da612-183c-4427-88b6-aa1a748f1905",
+    "payload": "4a487d59-514f-497a-9d98-caf131133d39",
     "state": "State"
 }'
-2026-02-13 16:00:10.743 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
-2026-02-13 16:00:10.743 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
-2026-02-13 16:00:10.743 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
-2026-02-13 16:00:10.952 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+2026-02-16 11:42:13.495 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-02-16 11:42:13.495 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-02-16 11:42:13.495 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-02-16 11:42:13.896 INFO  [ Test worker -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
 '{
-    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1770998409377.10-171-238-13_ef60b1eb-65ac-4d6e-a215-8cfdf59bb5d1_0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a.lock",
-    "End Jitter": "PT0.242S",
-    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1770998409377.10-171-238-13_ef60b1eb-65ac-4d6e-a215-8cfdf59bb5d1.lock",
-    "Id": "0f05e67c-97c9-4c2f-ac24-ee81fbe7b30a",
+    "Election File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Queue\\1771242130342.10-171-238-13_5eaf916f-13cb-4791-84be-d9d80b768975_d5915ba7-42b2-42b4-b0a9-fab35a559516.lock",
+    "End Jitter": "PT0.379S",
+    "Host File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\Host-Lock\\1771242130342.10-171-238-13_5eaf916f-13cb-4791-84be-d9d80b768975.lock",
+    "Id": "d5915ba7-42b2-42b4-b0a9-fab35a559516",
     "Lock Dir": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex",
     "Lock File": "C:\\Users\\Brendan Kenna\\GitHub\\TaskTide\\tasktide\\itemstore\\ItemStore-Mutex\\lock-file.lock",
     "Mutex State": "LOCKED",
-    "Retry Interval": "PT0.263S",
+    "Retry Interval": "PT0.266S",
     "Stale File Threshold": "PT10S",
-    "Start Jitter": "PT0.121S",
-    "Timestamp": 1770998409377
+    "Start Jitter": "PT0.367S",
+    "Timestamp": 1771242130342
 }'
-2026-02-13 16:00:10.953 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
-2026-02-13 16:00:10.953 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Evaluating SQLite ItemStore Session Test
-2026-02-13 16:00:10.955 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: 
+2026-02-16 11:42:13.902 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-02-16 11:42:13.904 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: Evaluating SQLite ItemStore Session Test
+2026-02-16 11:42:13.911 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.canImportAndSelectInOneOpsSqlite ]: 
 
 ================ Can Bulk Import & Select SQLite Test ================
 
-2026-02-13 16:00:10.958 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDown ]: 
+2026-02-16 11:42:13.914 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDown ]: 
 
 ================ Terminating Test ================
 
-2026-02-13 16:00:10.963 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDownClass ]: 
+2026-02-16 11:42:13.919 INFO  [ Test worker -> org.tasktide.itemstore.ItemStoreSessionTests.tearDownClass ]: 
 
 ---------------- Terminating ItemStore Session Tests ----------------
 

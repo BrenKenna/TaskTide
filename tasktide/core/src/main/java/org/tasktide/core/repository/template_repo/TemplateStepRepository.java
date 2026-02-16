@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.repository.nosql_repo;
-
-import java.util.List;
+package org.tasktide.core.repository.template_repo;
 
 import jakarta.nosql.Template;
 
@@ -40,13 +38,5 @@ public class TemplateStepRepository extends TemplateRepository<Step> {
        String collectionName
     ) {
         super(template, Step.class, collectionName);
-    }
-
-    @Override
-    public boolean extendModel(List<Step> toAdd) {
-        long importCount = toAdd.stream()
-            .filter( elm -> insertModel(elm) != null)
-        .count();
-        return importCount == toAdd.size();
     }
 }
