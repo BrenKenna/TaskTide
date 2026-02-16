@@ -17,6 +17,9 @@ package org.tasktide.itemstore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,12 +31,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static org.tasktide.itemstore.DbTarget.MASTER;
-import static org.tasktide.itemstore.DbTarget.PROTOTYPE;
-
 import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.ItemStoreSession;
 import org.tasktide.itemstore.session.LinkedOperation;
+import org.tasktide.itemstore.session.LinkedOperationMap;
 
 
 /**
@@ -66,6 +67,54 @@ public class SqliteStore extends AbstractItemStore {
     public SqliteStore(String storeName, String dbDirectory, String masterDB, String protoDB, boolean isLinked) {
         super(storeName, dbDirectory, masterDB, protoDB);
         this.initItemStore(isLinked);
+    }
+    
+    
+    /**
+     * Executes a {@link LinkedOperationMap} over an
+     *  {@link ItemStore} map
+     * 
+     * @param <T>
+     * @param target
+     * @param recipients
+     * @param operations
+     * @return T
+     */
+    @Override
+    public synchronized <T> T execute(
+        DbTarget target,
+        Map<String, ItemStore> recipients,
+        LinkedOperationMap<T> operations
+    ) {
+        
+        // Initialize vars
+        Map<String, ItemStoreSession> recipientMap = new HashMap<>();
+        
+        // Open connections
+        try {
+        
+            ItemStoreSession donor;
+            this.openConn(target);
+            for ( Entry<String, ItemStore> elm : recipients.entrySet() ) {
+                String label = elm.getKey();
+                RocksDbStore val = (RocksDbStore) elm.getValue();
+                val.openConnNoElection(target);
+                ItemStoreSession session = new SqliteSession( val.getConnection(target, Connection.class) );
+                recipientMap.put(label, session);
+            }
+        
+            // Perform operation
+            donor = new SqliteSession(this.master);
+            return operations.execute(donor, recipientMap);
+        }
+        
+        // Close connections
+        finally {
+            for ( Entry<String, ItemStore> elm : recipients.entrySet() ) { 
+                elm.getValue().closeConn(target, false);
+            }
+            this.closeConn(target, true);
+        }
     }
 
     
@@ -104,8 +153,8 @@ public class SqliteStore extends AbstractItemStore {
         
         // Close connections
         finally {
-            this.closeConn(target);
-            recipientStore.closeConn(target);
+            recipientStore.closeConn(target, false);
+            this.closeConn(target, true);
         }
     }
     
@@ -175,8 +224,12 @@ public class SqliteStore extends AbstractItemStore {
     
     /**
      * Initialize ItemStore throwing RuntimeException
-     *  if failed from delgated call to InitDatabase to
-     *  both the Master & Prototype
+     *  if failed from delegated call to InitDatabase to
+     *  both the Master & Prototype. If linked, then 
+     *   election occurs for openning connection, and no
+     *   closing occurs.
+     * 
+     * @param isLined
      */
     private void initItemStore(boolean isLinked) {
         LOGGER.info("Initializing DB under active mutex");
@@ -188,10 +241,11 @@ public class SqliteStore extends AbstractItemStore {
         }
         this.initDatabase(this.master);
         this.initDatabase(this.proto);
-        if ( isLinked ) {
+        if ( !isLinked ) {
             this.closeConn(DbTarget.BOTH);
         }
     }
+    
     
     /**
      * Initialize database on the provided connection.
@@ -594,6 +648,51 @@ public class SqliteStore extends AbstractItemStore {
             }
             default -> {
                 this.releaseLock(true);
+                try {
+                    if ( !this.master.isClosed() ) {
+                        this.master.close();
+                    }
+                    if ( !this.proto.isClosed() ) {
+                        this.proto.close();
+                    }
+                    return true;
+                }
+                catch (SQLException ex) {return false;}
+            }
+        }
+    }
+    
+    /**
+     * Close master and cache connections
+     * 
+     * @param target
+     * @param releaseMutex
+     * @return boolean
+     */
+    @Override
+    public boolean closeConn(DbTarget target, boolean releaseMutex) {
+        switch (target) {
+            case MASTER -> {
+                this.releaseLock(releaseMutex);
+                try {
+                    if ( !this.master.isClosed() ) {
+                        this.master.close();
+                    }
+                    return true;
+                }
+                catch (SQLException ex) {return false;}
+            }
+            case PROTOTYPE -> {
+                try {
+                    if ( !this.proto.isClosed() ) {
+                        this.proto.close();
+                    }
+                    return true;
+                }
+                catch (SQLException ex) {return false;}
+            }
+            default -> {
+                this.releaseLock(releaseMutex);
                 try {
                     if ( !this.master.isClosed() ) {
                         this.master.close();

@@ -15,12 +15,12 @@
  */
 package org.tasktide.itemstore;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,15 +29,16 @@ import org.rocksdb.RocksDB;
 import org.rocksdb.RocksIterator;
 import org.rocksdb.Options;
 import org.rocksdb.RocksDBException;
-
 import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
-import static org.tasktide.itemstore.DbTarget.MASTER;
-import static org.tasktide.itemstore.DbTarget.PROTOTYPE;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.ItemStoreSession;
 import org.tasktide.itemstore.session.LinkedOperation;
+import org.tasktide.itemstore.session.LinkedOperationMap;
 
 
 /**
@@ -66,6 +67,54 @@ public class RocksDbStore extends AbstractItemStore {
         super(storeName, dbDirectory, masterDB, protoDB);
         RocksDB.loadLibrary();
         this.options = new Options().setCreateIfMissing(true);
+    }
+    
+    
+    /**
+     * Executes a {@link LinkedOperationMap} over an
+     *  {@link ItemStore} map
+     * 
+     * @param <T>
+     * @param target
+     * @param recipients
+     * @param operations
+     * @return T
+     */
+    @Override
+    public synchronized <T> T execute(
+        DbTarget target,
+        Map<String, ItemStore> recipients,
+        LinkedOperationMap<T> operations
+    ) {
+        
+        // Initialize vars
+        Map<String, ItemStoreSession> recipientMap = new HashMap<>();
+        
+        // Open connections
+        try {
+        
+            ItemStoreSession donor;
+            this.openConn(target);
+            for ( Entry<String, ItemStore> elm : recipients.entrySet() ) {
+                String label = elm.getKey();
+                RocksDbStore val = (RocksDbStore) elm.getValue();
+                val.openConnNoElection(target);
+                ItemStoreSession session = new RocksDbSession( val.getConnection(target, RocksDB.class) );
+                recipientMap.put(label, session);
+            }
+        
+            // Perform operation
+            donor = new RocksDbSession(this.master);
+            return operations.execute(donor, recipientMap);
+        }
+        
+        // Close connections
+        finally {
+            for ( Entry<String, ItemStore> elm : recipients.entrySet() ) { 
+                elm.getValue().closeConn(target);
+            }
+            this.closeConn(target);
+        }
     }
     
     
@@ -104,8 +153,8 @@ public class RocksDbStore extends AbstractItemStore {
         
         // Close connections
         finally {
-            this.closeConn(target);
             recipientStore.closeConn(target);
+            this.closeConn(target);
         }
     }
     
@@ -508,6 +557,55 @@ public class RocksDbStore extends AbstractItemStore {
             }
             default -> {
                 this.releaseLock(true);
+                if ( this.master != null ) {
+                    if ( !this.master.isClosed() ) {
+                        this.master.close();
+                    }
+                }
+                
+                if ( this.proto != null ) {
+                    if ( !this.proto.isClosed() ) {
+                        this.proto.close();
+                    }
+                }
+                return true;
+            }
+        }
+    }
+    
+    
+    /**
+     * Close master and cache connections
+     * 
+     * @param target
+     * @param releaseMutex
+     * @return boolean
+     */
+    @Override
+    public synchronized boolean closeConn(DbTarget target, boolean releaseMutex) {
+        LOGGER.debug("Closing connection to:\t'{}'", target);
+        switch (target) {
+            case MASTER -> {
+                this.releaseLock(releaseMutex);
+                if ( this.master == null ) {
+                    return true;
+                }
+                if ( !this.master.isClosed() ) {
+                    this.master.close();
+                }
+                return true;
+            }
+            case PROTOTYPE -> {
+                if ( this.proto == null ) {
+                    return true;
+                }
+                if ( !this.proto.isClosed() ) {
+                    this.proto.close();
+                }
+                return true;
+            }
+            default -> {
+                this.releaseLock(releaseMutex);
                 if ( this.master != null ) {
                     if ( !this.master.isClosed() ) {
                         this.master.close();

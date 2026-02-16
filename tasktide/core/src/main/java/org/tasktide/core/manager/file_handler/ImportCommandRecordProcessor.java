@@ -59,6 +59,10 @@ public class ImportCommandRecordProcessor {
         String delim = (String) cmd.getCmdSpec().getOptionsKey("Delimiter").get();
         delim = TaskTideManagerUtility.handleDelim(delim);
         
+        // Fetch stepId
+        LOGGER.info("Fetching StepId for Step Name:\t'{}'", stepName);
+        String stepId = TaskTideManagerUtility.fetchStepId(stepName);
+        
         // Fetch reader
         List<WorkItem> results = new ArrayList<>();
         String line;
@@ -70,7 +74,7 @@ public class ImportCommandRecordProcessor {
 
                 // Parse data
                 String[] parts = line.split(delim);
-                WorkItem data = handler.parseRecord(parts, stepName, cmd, LOGGER);
+                WorkItem data = handler.parseRecord(parts, stepName, stepId, cmd, LOGGER);
 
                 // Throw error if null output
                 if (data == null) {
@@ -103,13 +107,12 @@ public class ImportCommandRecordProcessor {
      * @return List-{@link WorkItem}
      */
     public static List<WorkItem> parseSingleTaskWorkItem(AbstractCommand abstractCMD, Logger LOGGER) {
-        return recordProcessor(abstractCMD, LOGGER, (parts, stepName, cmd, logger) -> {
+        return recordProcessor(abstractCMD, LOGGER, (parts, stepName, stepId, cmd, logger) -> {
         
             // Split by delimiter, expecting 3 fields
             if ( parts.length == 2) {
                 ItemTask task = new ManagerTask(parts[0], parts[1]).asItemTask();
                 Workload workload = BuilderUtility.buildWorkload(task);
-                String stepId = TaskTideManagerUtility.fetchStepId(stepName);
                 return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
             }
             throw new IllegalArgumentException(
@@ -127,14 +130,13 @@ public class ImportCommandRecordProcessor {
      * @return List-{@link WorkItem}
      */
     public static List<WorkItem> parseNestedTaskWorkItem(AbstractCommand abstractCMD, Logger LOGGER) {
-        return recordProcessor(abstractCMD, LOGGER, (parts, stepName, cmd, logger) -> {
+        return recordProcessor(abstractCMD, LOGGER, (parts, stepName, stepId, cmd, logger) -> {
         
             // Fetch nested delimiter
             String nestedDelim = (String) cmd.getCmdSpec().getOptionsKey("Nested Delimiter").get();
             TaskTideManagerUtility.handleDelim(nestedDelim);
             
             // Handle as nested task
-            String stepId = TaskTideManagerUtility.fetchStepId(stepName);
             if ( parts[2].split(nestedDelim).length >= 2 ) {
 
                 // Create a new line for each seq value
@@ -156,7 +158,7 @@ public class ImportCommandRecordProcessor {
                 String[] newParts = Arrays.copyOfRange(parts, 0, parts.length - 2);
                 newParts = Arrays.copyOf(newParts, newParts.length + 1);
                 newParts[newParts.length - 1] = parts[parts.length - 2] + " " + parts[parts.length - 1];
-                return parseWorkItem(newParts, stepId);
+                return parseWorkItem(newParts, stepName, stepId);
             }
 
             // Otherwise raise exception
@@ -176,13 +178,12 @@ public class ImportCommandRecordProcessor {
      * 
      * @throws IllegalArgumentException 
      */
-    private static WorkItem parseWorkItem(String[] parts, String stepName) throws IllegalArgumentException {
+    private static WorkItem parseWorkItem(String[] parts, String stepName, String stepId) throws IllegalArgumentException {
     
         // Split by delimiter, expecting 3 fields
         if ( parts.length == 2) {
             ItemTask task = new ManagerTask(parts[0], parts[1]).asItemTask();
             Workload workload = BuilderUtility.buildWorkload(task);
-            String stepId = TaskTideManagerUtility.fetchStepId(stepName);
             return BuilderUtility.buildWorkItem(parts[0], workload, stepName, stepId);
         }
         throw new IllegalArgumentException(

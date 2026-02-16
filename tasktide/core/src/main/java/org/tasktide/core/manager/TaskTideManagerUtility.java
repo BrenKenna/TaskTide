@@ -86,6 +86,7 @@ public class TaskTideManagerUtility {
     public static String fetchStepId(String stepName) {
         List<Step> steps = TaskTideServiceManager.fetchStepService().viewByField("stepName", stepName);
         if ( steps.isEmpty() ) {
+            LOGGER.info("No step detected, begining creation for:\n'{}'", stepName);
             TaskTideManagerUtility.configureNewStep(stepName);
             return STEP_ID;
         }
@@ -123,16 +124,20 @@ public class TaskTideManagerUtility {
     public static void handleWorkflowForStep(Step step) {
         String workflowId;
         if (step.getCollection() == null) {
+            LOGGER.info("No workflow assigned to step, proceeding with StepName:\n'{}'", step.toJsonDoc());
             List<Workflow> data = TaskTideServiceManager.fetchWorkflowService().viewByField("workflowName", step.getStepName());
             if ( data.isEmpty() ) {
-                workflowId = fetchWorkflowId(step.getStepName());
+                LOGGER.info("No workflow detected, configuring for:\t'{}'", step.getStepName());
+                workflowId = fetchWorkflowId(step.getStepName(), step);
             }
             else {
-                workflowId = fetchWorkflowId(data.get(0).getId());
+                LOGGER.info("Previous workflow under step detected:\t'{}'", step.getStepName());
+                workflowId = fetchWorkflowId(data.get(0).getId(), step);
             }
         }
         else {
-            workflowId = fetchWorkflowId(step.getCollection());
+            LOGGER.info("Checking backend for workflow assignment to below Step:\t'{}'\n\n'{}'", step.getCollection(), step.toJsonDoc());
+            workflowId = fetchWorkflowId(step.getCollection(), step);
         }
         step.setWorkflowId(workflowId);
     }
@@ -142,16 +147,44 @@ public class TaskTideManagerUtility {
      * Fetch workflowId for provided step
      * 
      * @param workflowName
+     * @param step
      * @return String
      */
-    public static String fetchWorkflowId(String workflowName) {
+    public static String fetchWorkflowId(String workflowName, Step step) {
+        LOGGER.info("Fetching workflow for query:\t'{}'", workflowName);
         List<Workflow> workflows = TaskTideServiceManager.fetchWorkflowService().viewByField("workflowName", workflowName);
         if ( workflows.isEmpty() ) {
-            configureNewWorkflow(workflowName);
+            LOGGER.info("No workflow detected, configuring:\t'{}'", workflowName);
+            configureNewWorkflow(workflowName, step);
             return WORKFLOW_ID;
         }
         else {
+            LOGGER.info("Workflow detected:\t'{}'", workflows.get(0).getId());
             return workflows.get(0).getId();
+        }
+    }
+    
+    
+    /**
+     * Configures and imports {@link Workflow}
+     * 
+     * @param workflowName 
+     * @param step 
+     */
+    public static void configureNewWorkflow(String workflowName, Step step) {
+        
+        // Configure workflow
+        Workflow workflow = BuilderUtility.buildEmptyWorkflow();
+        workflow.setWorkflowName(workflowName);
+        workflow.setWorkflowId(WORKFLOW_ID);
+        workflow.setWorkflowSteps(Map.of(step.getStepName(), step));
+        
+        // Upload
+        try {
+            TaskTideServiceManager.fetchWorkflowService().appendModel(workflow);
+        }
+        catch (Exception ex) {
+            LOGGER.warn("Unable to append workflow. Displaying exception\n", ex);
         }
     }
     

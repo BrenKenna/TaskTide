@@ -40,6 +40,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 ==== ItemStore
 
+- [/] Disentangle responsibilities of ItemStore-Session-Executor, SessionContext?
 - [X] Multiple elections from configuring SQLite ItemStore
 +
 --
@@ -70,6 +71,25 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 
 ==== Manager
+
+
+- [/] Connection handling -> SqliteItemStore mostly impacted
++
+--
+        - ItemStoreMap opens ItemStore lock
+        - Once configured completly, then closes donor session
+        - LinkedOperationMap can be used, but forks code a little
+        - Keep linear dependency by reliance on higher level APIs for TaskTide not ItemStore?
+        - AbstractTaskTideService has OrchestrationContext, composed with ResultsInspector
+        - Uses same functional vocabulary as ItemStoreSession: Bulk, Linked, LinkedHashMap
+        - Adds ContextDataModel: Id, Operation, State, Result
+        - Results from OC.execute can be Model, List of Model
+        - Decouples the structural from functional elements of the TaskTideService.
+        - Allows TaskTideRepository to specialize in their isolated logic.
+        - ServiceAmbassador unifies and encapsulates this with iter Repository functionalities.
+        - Regardless of the configured backend database.
+
+--
 
 - [X] Reserved annotation keys
 - []  Builder code clean

@@ -23,6 +23,14 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
     
     
     /**
+     * Verifies that the related service was configured
+     * 
+     * @return boolean
+     */
+    public boolean isConfigured();
+    
+    
+    /**
      * Append model to backend
      * 
      * @param model

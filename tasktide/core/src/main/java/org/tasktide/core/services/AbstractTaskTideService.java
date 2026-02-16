@@ -50,6 +50,18 @@ public class AbstractTaskTideService<T extends TaskTideModel<T>>
 
     
     /**
+     * Checks that the {@link TaskTideRepository} property
+     *  is not null
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean isConfigured() {
+        return this.repo != null;
+    }
+    
+    
+    /**
      * Appends provided {@link TaskTideModel} to backend {@link TaskTideRepository}
      * 
      * @param model

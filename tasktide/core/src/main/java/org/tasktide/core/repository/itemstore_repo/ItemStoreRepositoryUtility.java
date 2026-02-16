@@ -40,6 +40,8 @@ import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
+import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.itemstore.DbTarget;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreType;
@@ -161,21 +163,76 @@ public class ItemStoreRepositoryUtility {
     }
     
     
+    public ItemStore fetchItemStore(String storeName, ItemStoreType storeType, boolean isElected) {
+        
+        // Resolve store locatoin
+        Path store = Paths.get(storeName);
+        try {
+            Files.createDirectories(store);
+            LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
+        }
+        catch (IOException ex) {
+            LOGGER.debug("ItemStoreDirectory already exists under:\t'{}'", storeName);
+        }
+        
+        // Set vars
+        String dbDirectory = store.toString();
+        String masterDB = "master";
+        String protoDB = UUID.randomUUID().toString();
+        
+        ItemStore result;
+        if ( !isElected ) {
+            result = storeType.makeItemStore(storeName, dbDirectory, masterDB, protoDB);
+        }
+        else {
+            result = storeType.makeItemStoreNoElection(storeName, dbDirectory, masterDB, protoDB);
+        }
+        result.closeConn(DbTarget.BOTH, false);
+        return result;
+    }
+    
+    
+    /**
+     * Closes connections across
+     * 
+     * @param donor
+     * @param recipients 
+     */
+    public void closeConnections(ItemStore donor, Map<String, ItemStore> recipients) {
+        donor.execute(DbTarget.MASTER, recipients, (varA, varB) -> {
+            LOGGER.info("Openning & closing connections across:\n'{}'", JsonUtils.toJson(true, recipients));
+            return null;
+        });
+    }
+    
+    
     /**
      * Fetch {@link ItemStore} map
      * 
      * @param storeType
      * @param storeName
-     * @return 
+     * 
+     * @return Map of {@link ManagerTarget}-{@link ItemStore}
      */
     public Map<ManagerTarget, ItemStore> fetchItemStoreMap(ItemStoreType storeType, String storeName) {
         LOGGER.info("Prcessing ItemStore from under:\t'{}'", storeName);
         Map<ManagerTarget, ItemStore> output = new HashMap<>();
-        for (ManagerTarget elm : ManagerTarget.values()) {
-            if (!elm.hasRepository()) {
-                ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType);
-                output.put(elm, store);
+        
+        boolean isElected = false;
+        ItemStore leader = null;
+        for (ManagerTarget elm : ManagerTarget.withRepositories() ) {
+            ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType, isElected);
+            output.put(elm, store);
+                
+            if ( !isElected ) {
+                    leader = store;
             }
+            
+            isElected = true;
+        }
+     
+        if ( leader != null ) {
+            leader.closeConn(DbTarget.BOTH, true);
         }
         return output;
     }
