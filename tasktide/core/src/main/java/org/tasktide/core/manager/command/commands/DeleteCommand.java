@@ -150,8 +150,20 @@ public class DeleteCommand extends AbstractCommand {
         switch ( this.action ) {
         
             case DELETE -> {
-                if ( this.cmdSpec.getQueryString().isPresent() ) {
-                    String qyertString = this.cmdSpec.getQueryString().get();
+                
+                if (
+                    this.optionsHasStringValue("Item Id") &&
+                    this.optionsHasStringValue("Step Name") &&
+                    !this.cmdSpec.queryStringIsEmpty()
+                ) {
+                    String msg = String.format(
+                        "Error 'Item Id', 'Step Name', and 'Query String' may all not be null:\n'%s'",
+                        this.cmdSpec.toJsonDoc()
+                    );
+                    throw new IllegalArgumentException(msg);
+                }
+                
+                if ( !this.cmdSpec.queryStringIsEmpty() ) {
                     LOGGER.info("Deleting ItemTask from WorkItem provided as JSON");
                     return this.deleteTask();
                 }
@@ -167,7 +179,7 @@ public class DeleteCommand extends AbstractCommand {
             }
             
             default -> {
-                ManagerAction[] actions = { ManagerAction.RESET_ITEM, ManagerAction.RESET_ITEMS };
+                ManagerAction[] actions = { ManagerAction.DELETE, ManagerAction.DELETE_LIST };
                 String msg = String.format("Reset command must be one of:\t'%s'", (Object[]) actions);
                 throw new IllegalArgumentException(msg);
             }
@@ -200,6 +212,22 @@ public class DeleteCommand extends AbstractCommand {
         
         // Unable to validate
         LOGGER.error("Error unable to validate DeleteCommand please review provided query string, target file, Item Id");
+        return false;
+    }
+    
+    
+    /**
+     * Verifies ItemId in {@link CommandSpec}
+     * 
+     * @param key
+     * @return boolean
+     */
+    private boolean optionsHasStringValue(String key) {
+        Object val;
+        if ( this.cmdSpec.getOptionsKey(key).isPresent() ) {
+            val = this.cmdSpec.getOptionsKey(key).get();
+            return !((String) val).isBlank() ;
+        }
         return false;
     }
 }

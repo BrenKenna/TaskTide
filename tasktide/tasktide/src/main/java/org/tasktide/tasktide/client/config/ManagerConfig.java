@@ -48,8 +48,8 @@ public class ManagerConfig extends AbstractConfig {
     @ConfigProperty(name = "tasktide.manager.method", defaultValue = "")
     String method;
     
-    @ConfigProperty(name = "tasktide.manager.importString", defaultValue = "")
-    String importString;
+    @ConfigProperty(name = "tasktide.manager.queryString", defaultValue = "")
+    String queryString;
     
     @ConfigProperty(name = "tasktide.manager.itemId", defaultValue = "")
     String itemId;
@@ -89,7 +89,7 @@ public class ManagerConfig extends AbstractConfig {
         this.delimiter();
         this.nestedDelimiter();
         this.method();
-        this.importString();
+        this.queryString();
         this.itemId();
         this.target();
         
@@ -211,19 +211,19 @@ public class ManagerConfig extends AbstractConfig {
     /**
      * JSON Import string
      */
-    public void importString() {
+    public void queryString() {
         Argument<String> arg;
         arg = this.getArgumentBuilder()
-            .withName("Import String")
+            .withName("Query String")
             .withDescription("JSON formatted string:\t '{'Field': 'Value'}'")
-            .withShortFlag("-is")
-            .withLongFlag("--import-string")
+            .withShortFlag("-qs")
+            .withLongFlag("--query-string")
             .withArgType(ArgumentType.ACTION)
             .withRefClass(String.class)
         .build();
         
-        this.importString = this.getConfigValue("tasktide.manager.importString", String.class, "");
-        arg.setValue(this.importString);
+        this.queryString = this.getConfigValue("tasktide.manager.queryString", String.class, "");
+        arg.setValue(this.queryString);
         this.getArgumentMap().putArgument(arg);
     }
     

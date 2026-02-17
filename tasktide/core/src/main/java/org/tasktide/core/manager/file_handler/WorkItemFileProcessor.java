@@ -182,10 +182,10 @@ public class WorkItemFileProcessor {
                 item = serv.fetchById(workItemId);
 
                 if (itemTaskId != null && !itemTaskId.isBlank()) {
-                    log.info("Resetting task '{}' in '{}'", itemTaskId, workItemId);
+                    log.info("Dropping task '{}' in '{}'", itemTaskId, workItemId);
                     item.getWorkload().dropTaskById(itemTaskId);
                 } else {
-                    log.info("Resetting all tasks in '{}'", workItemId);
+                    log.info("Dropping all tasks in '{}'", workItemId);
                     item.getWorkload().setTaskMap(new HashMap<>());
                 }
                 item.setTaskCounts();

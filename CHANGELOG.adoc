@@ -106,6 +106,16 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 ==== Engine
 
+
+- [/] Passing work to threads
++
+--
+        - Hangs/silently fails when the number of threads is greater than number of available tasks.
+        - Service mode fine single threaded. But hits the same
+        - Perhaps the TaskTide-Engine can benefit from intermediary class between client and processor
+--
++
+
 - [/] Attach JobEnvironment-Id to Task
 +
 --
@@ -128,6 +138,27 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 
 ==== Outstanding
+
+- [/] Verify Command-Line Commands
++
+--
+        [] Reset all             <- Should add
+        [] Delete all            <- Should add
+        [/] Delete WorkItem      <- Broke
+        [/] Export Query         <- No records following deletion
+        [X] Export               <- No stdout option?
+        [X] Import JSON          <- Should consider Collections<TaskTideModel> so upper Ids hold 
+        [X] Import single
+        [X] Import nested
+        [X] Annotate
+        [X] Summarize step stdout & json file
+        [X] Summarie each stdout & json file
+        [X] Delete Task from WorkItem
+        [X] Delete From file
+        [X] Reset Item
+        [X] Reset List
+--
+
 
 - [X] Template inserts over an iterable
 - [X] JPA Entity Manager inserts in batches of 50

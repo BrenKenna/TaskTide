@@ -114,7 +114,7 @@ tasks.register('generateAllJavadocs', Javadoc) {
 }
 
 project(":mutex") {}
-project(":parser")
+project(":parser") {}
 project(":itemstore") {}
 project(":core") {}
 project(":engine") {}
