@@ -70,6 +70,11 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
     public List<T> viewAll();
     
     
+    /**
+     * View all records to {@link TaskTideModel}
+     * 
+     * @return List-{@link TaskTideModel}
+     */
     public List<TaskTideModel> viewAllToTaskTideModel();
     
     
@@ -109,6 +114,11 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
     public boolean extendModel(List<T> toAdd);
     
     
+    /**
+     * Save cached records
+     * 
+     * @return int
+     */
     public int save();
     
     

@@ -47,10 +47,11 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     
     // Attributes
     private final List<T> workload;
-    protected final Logger logger;
+    protected final Logger LOGGER;
     protected final int threshold;
     protected final ExecutorService executorService;
     private final Random RAND = new Random();
+    protected final String processorType;
     
     
     /**
@@ -59,19 +60,22 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
      * @param workload
      * @param threshold
      * @param executorService
-     * @param logger
+     * @param LOGGER
+     * @param processorType
      */
     @Inject
     public TaskTideProcessor(
         List<T> workload,
         int threshold,
         ExecutorService executorService,
-        Logger logger
+        Logger LOGGER,
+        String processorType
     ) {
         this.workload = workload;
         this.threshold = threshold;
         this.executorService = executorService;
-        this.logger = logger;
+        this.LOGGER = LOGGER;
+        this.processorType = processorType;
     }
     
     
@@ -82,9 +86,11 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
         
         // Process iteratively
         if ( this.workload.size() <= this.threshold ) {
-            logger.info(
-          "Processing tasks of workload thread:\t'{}', Size='{}', First ItemId = '{}'",
-             Thread.currentThread().getName(), workload.size(), workload.get(0).getId()
+            LOGGER.info(
+                "Processing tasks of workload thread:\t'{}', Size='{}', First ItemId = '{}'",
+                Thread.currentThread().getName(),
+                workload.size(),
+                workload.get(0).getId()
             );
             if ( this.getExecutor() != null ) {
                 try {TimeUnit.MILLISECONDS.sleep(RAND.nextInt(5+1));}
@@ -92,9 +98,10 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
                 this.getExecutor().runTasks(workload);
             }
             else {
-                logger.warn(
-              "Warning, workload size '{}' < threshold '{}' at start-up. Enqueing all tasks",
-                    this.workload.size(), this.threshold
+                LOGGER.warn(
+                    "Warning, workload size '{}' < threshold '{}' at start-up. Enqueing all tasks",
+                    this.workload.size(),
+                    this.threshold
                 );
                 for ( T task : this.workload ) {
                     this.submitSubTask(List.of(task));
@@ -109,7 +116,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
             int mid = workload.size() / 2;
             List<T> left = workload.subList(0, mid);
             List<T> right = workload.subList(mid, workload.size());
-            // logger.debug("Displaying left & right sizes:\n\nLeft:\t'{}'\nRight:\t'{}'", left.size(), right.size());
+            // LOGGER.debug("Displaying left & right sizes:\n\nLeft:\t'{}'\nRight:\t'{}'", left.size(), right.size());
             
             // Submit tasks to processor
             submitSubTask(left);
@@ -150,13 +157,27 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     public void processChunks(List<T> workload) {
     
         // Initialize data
+        LOGGER.info(
+            "Shuffling, and grouping workload for ExecutorService for ProcessorType:\t'{}'",
+            this.processorType
+        );
         Collections.shuffle(workload);
-        List<List<T>> chunks = parallelChunks(workload);
+        List<List<T>> chunks = this.parallelChunks(workload);
         
         // Submit
+        LOGGER.info(
+            "Submitting '{}' workload of size:\t'{}'",
+            this.processorType,
+            chunks.size()
+        );
         for (List<T> chunk : chunks) {
-            submitParallelChunks(chunk);
+            this.submitParallelChunks(chunk);
         }
+        LOGGER.info(
+            "Submitted N = '{}' items for workload '{}'",
+            this.fetchTrackerTaskCount(),
+            this.processorType
+        );
     }
     
     
@@ -166,6 +187,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
      * @param chunk 
      */
     private void submitParallelChunks(List<T> chunk) {
+        LOGGER.info("Submitting sub-workload of size:\t'{}'", chunk.size());
         for ( T task : chunk ) {
             this.submitParallelSubTask(List.of(task));
         }
@@ -176,14 +198,14 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
      * Submit task execution by {@link TaskTideExecutor} to the executor service, adding future
      *  to {@link TaskTrackers}
      * 
-     * @param task
+     * @param taskList
      * @return 
      */
-    protected Future<?> submitParallelSubTask(List<T> task) {
-        Future<?> item = executorService.submit(( () -> {
-            newSubProcessor(task).getExecutor().runTasks(task);
+    protected Future<?> submitParallelSubTask(List<T> taskList) {
+        Future<?> item = this.executorService.submit(( () -> {
+            newSubProcessor(taskList).getExecutor().runTasks(taskList);
         }));
-        this.addTasksToTracker(task, item);
+        this.addTasksToTracker(taskList, item);
         return item;
     }
     
@@ -198,6 +220,14 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
     
     
     /**
+     * Fetch count of tasks registered in tracker
+     * 
+     * @return int
+     */
+    protected abstract int fetchTrackerTaskCount();
+    
+    
+    /**
      * Wait for future list
      * 
      * @param futures 
@@ -208,7 +238,7 @@ public abstract class TaskTideProcessor<T extends TaskTideModel<T>> implements T
                 future.get();
             }
             catch ( InterruptedException | ExecutionException ex) {
-                logger.error("Error encountered waiting on workload: {}", ex);
+                LOGGER.error("Error encountered waiting on workload:\n{}", ex);
             }
         }
     }

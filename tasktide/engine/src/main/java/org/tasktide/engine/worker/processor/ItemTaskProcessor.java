@@ -56,7 +56,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
         @ConfigProperty(name = "task-tide.engine.worker.processor.threshold.itemtask", defaultValue = "2") int threshold,
         ExecutorService executorService
     ) {
-        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
+        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class), "WorkItemProcessor");
         this.worker = new ItemTaskExecutor();
     }
     
@@ -75,7 +75,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
         ExecutorService executorService,
         TaskTideExecutor<ItemTask> executor
     ) {
-        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class));
+        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class), "WorkItemProcessor");
         this.worker = (ItemTaskExecutor) executor;
     }
 
@@ -119,6 +119,17 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     
     
     /**
+     * Fetch records in ItemTask Future tracker
+     * 
+     * @return int
+     */
+    @Override
+    protected int fetchTrackerTaskCount() {
+        return FutureTrackers.ITEM_TASK_TRACKER.taskCount();
+    }
+    
+    
+    /**
      * Divide workload across number of threads
      * 
      * @param workload
@@ -126,26 +137,35 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
      */
     @Override
     protected List<List<ItemTask>> parallelChunks(List<ItemTask> workload) {
-        // Initialize variables
-        List<ItemTask> slize = new ArrayList<>();
+        
+        // Initialize output
+        int itemTaskThreads, batchSizes, totalChunks, totalTasks;
         List< List<ItemTask> > results = new ArrayList<>();
         
-        // Initialize batch handler
-        int itemTaskThreads = TaskTideExecutorServiceProvider.getInstance().getItemTaskThreads();
-        int batchSize = workload.size() / itemTaskThreads;
-        
-        // Fetch sclies
-        int start = 0, end = 0;
-        while ( end < workload.size() ) {
-            results.add(workload.subList(start, end));
-            start = end + 1;
-            end = start + batchSize;
-            
-            if ( end > workload.size() ) {
-                results.add(workload.subList(start, workload.size()));
-            }
+        // Pass on empty workload
+        totalTasks = workload.size();
+        if ( totalTasks == 0 ) {
+            return results;
         }
         
+        // Configure batches
+        itemTaskThreads = TaskTideExecutorServiceProvider.getInstance().getItemTaskThreads();
+        if ( itemTaskThreads <= 0 ) {
+            throw new IllegalStateException("Error, ItemTask thread count must be > 0");
+        }
+        totalChunks = Math.min(itemTaskThreads, totalTasks);
+        batchSizes = (int) Math.ceil( ( double ) totalTasks / totalChunks );
+        
+        // Fetch slices
+        LOGGER.info(
+            "Fetching N = '{}' batches of size '{}' for ItemTask workload",
+            itemTaskThreads,
+            batchSizes
+        );
+        for ( int start = 0; start < workload.size(); start += batchSizes ) {
+            int end = Math.min(start + batchSizes, totalTasks);
+            results.add(workload.subList(start, end));
+        }
         return results;
     }
 }

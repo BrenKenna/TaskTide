@@ -22,14 +22,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.manager.TaskTideServiceManager;
 
+import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.CommandType;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
-
 import org.tasktide.core.manager.file_handler.WorkItemFileProcessor;
+
 
 // For JavaDocs
 import org.tasktide.core.TaskTideModel;

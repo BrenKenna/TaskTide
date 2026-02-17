@@ -16,11 +16,12 @@
 package org.tasktide.engine.worker.processor;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import org.apache.logging.log4j.LogManager;
-
 import java.util.List;
 import java.util.concurrent.Future;
+import java.util.concurrent.ExecutorService;
+
+import org.apache.logging.log4j.LogManager;
+
 import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.core.model.workitem.WorkItem;
@@ -51,7 +52,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
      * @param executorService 
      */
     public WorkItemProcessor(List<WorkItem> workload, int threshold, ExecutorService executorService) {
-        super(workload, threshold, executorService, LogManager.getLogger(WorkItemProcessor.class));
+        super(workload, threshold, executorService, LogManager.getLogger(WorkItemProcessor.class), "WorkItemProcessor");
         this.worker = new WorkItemExecutor();
     }
     
@@ -70,7 +71,7 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
         ExecutorService executorService,
         TaskTideExecutor<WorkItem> executor
     ) {
-        super(workload, threshold, executorService, LogManager.getLogger(WorkItemProcessor.class));
+        super(workload, threshold, executorService, LogManager.getLogger(WorkItemProcessor.class), "WorkItemProcessor");
         this.worker = (WorkItemExecutor) executor;
     }
     
@@ -111,6 +112,17 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
             FutureTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), item);
         }
     }
+    
+    
+    /**
+     * Fetch records in tracker
+     * 
+     * @return int
+     */
+    @Override
+    protected int fetchTrackerTaskCount() {
+        return FutureTrackers.WORK_ITEM_TRACKER.taskCount();
+    }
 
     
     /**
@@ -123,22 +135,32 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     protected List<List<WorkItem>> parallelChunks(List<WorkItem> workload) {
         
         // Initialize output
+        int workItemThreads, batchSizes, totalChunks, totalTasks;
         List< List<WorkItem> > results = new ArrayList<>();
         
-        // Initialize batch handler
-        int workItemThreads = TaskTideExecutorServiceProvider.getInstance().getWorkItemThreads();
-        int batchSize = workload.size() / workItemThreads;
+        // Pass on empty workload
+        totalTasks = workload.size();
+        if ( totalTasks == 0 ) {
+            return results;
+        }
         
-        // Fetch sclies
-        int start = 0, end = 0;
-        while ( end < workload.size() ) {
+        // Initialize batch handler
+        workItemThreads = TaskTideExecutorServiceProvider.getInstance().getWorkItemThreads();
+        if ( workItemThreads <= 0 ) {
+            throw new IllegalStateException("Error, WorkItem thread count must be > 0");
+        }
+        totalChunks = Math.min(workItemThreads, totalTasks);
+        batchSizes = (int) Math.ceil( ( double ) totalTasks / totalChunks );
+        
+        // Fetch slices
+        LOGGER.info(
+            "Fetching N = '{}' batches of size '{}' for WorkItem workload",
+            workItemThreads,
+            batchSizes
+        );
+        for ( int start = 0; start < workload.size(); start += batchSizes ) {
+            int end = Math.min(start + batchSizes, totalTasks);
             results.add(workload.subList(start, end));
-            start = end + 1;
-            end = start + batchSize;
-            
-            if ( end > workload.size() ) {
-                results.add(workload.subList(start, workload.size()));
-            }
         }
         return results;
     }

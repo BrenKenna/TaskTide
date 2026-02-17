@@ -111,8 +111,11 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 +
 --
         - Hangs/silently fails when the number of threads is greater than number of available tasks.
-        - Service mode fine single threaded. But hits the same
-        - Perhaps the TaskTide-Engine can benefit from intermediary class between client and processor
+        - Service mode fine single threaded, but hits the same.
+        - Perhaps the TaskTide-Engine can benefit from intermediary class between client and processor.
+
+        - TaskTideEngineClient.processWorkload(List-WorkItem) passes work to Processor-WorkItem
+        - 
 --
 +
 
