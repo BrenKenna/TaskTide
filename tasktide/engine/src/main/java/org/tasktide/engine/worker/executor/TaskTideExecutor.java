@@ -40,7 +40,7 @@ import org.tasktide.engine.worker.TaskTideWorkerUnit;
 public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements TaskTideWorkerUnit<T> {
     
     // Attributes 
-    protected final Logger logger;
+    protected final Logger LOGGER;
     protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
     protected final ProcessExecutor processExecutor;
     protected int processCount;
@@ -51,11 +51,11 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
      * Construct worker with workload and process runner
      * 
      * @param observer
-     * @param logger
+     * @param LOGGER
      */
-    public TaskTideExecutor(TaskTideEngineObserver<T> observer, Logger logger) {
+    public TaskTideExecutor(TaskTideEngineObserver<T> observer, Logger LOGGER) {
         this.observer = observer;
-        this.logger = logger;
+        this.LOGGER = LOGGER;
         this.processExecutor = new ProcessExecutor();
     }
     
@@ -69,7 +69,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
         
         // Process workload
         int done = 0, failed = 0, skipped = 0;
-        logger.info("Begining workload processing of N = '{}' tasks", workload.size());
+        LOGGER.info("Begining workload processing of N = '{}' tasks", workload.size());
         for (T task : workload) {
             synchronized(task) {
             
@@ -82,13 +82,13 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
                           
                             // Log progress & increment counters
                             incrementCount();
-                            logger.info(
+                            LOGGER.info(
                           "Completed task '{}', global count: {}",
                              task.getId(), sharedCounter.incrementAndGet()
                             );
                         }
                         else {
-                            logger.warn(
+                            LOGGER.warn(
                           "Warning, execution completed with error for task:\t'{}'",
                              task.getId()
                             );
@@ -105,7 +105,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
                 
                 // Otherwise skip task
                 else {
-                    logger.warn(
+                    LOGGER.warn(
                   "Warning, skipping task failing Observer Preprocessing checks for task:\t'{}'", 
                      task.getId()
                     );
@@ -115,7 +115,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
         }
         
         // Log summary
-        logger.info(
+        LOGGER.info(
      "\n\nWorkload processing complete, displaying summary:\nThread Total = '{}', Thread Done = '{}', Done = '{}', Failed = '{}', Skipped = '{}'",
          workload.size(), done, getGlobalCount(), failed, skipped
         );
@@ -143,7 +143,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
      * @param ex 
      */
     public void handleFailure(T task, Exception ex) {
-        logger.error(
+        LOGGER.error(
             "Exception while executing task '{}' on thread '{}': {}",
             task.getId(), Thread.currentThread().getName(), ex.getMessage(), ex
         );

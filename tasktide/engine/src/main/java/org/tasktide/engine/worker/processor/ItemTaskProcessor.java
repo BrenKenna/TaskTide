@@ -41,7 +41,7 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
 public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
 
     // Attributes
-    private final ItemTaskExecutor worker;;
+    private final ItemTaskExecutor worker;
     
     
     /**
@@ -159,7 +159,7 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
         // Fetch slices
         LOGGER.info(
             "Fetching N = '{}' batches of size '{}' for ItemTask workload",
-            itemTaskThreads,
+            totalChunks,
             batchSizes
         );
         for ( int start = 0; start < workload.size(); start += batchSizes ) {

@@ -47,7 +47,7 @@ public class ProcessExecutor {
     // Attributes
     private final String id;
     private final Path logDir;
-    private final Logger logger = LogManager.getLogger(ProcessExecutor.class);
+    private final Logger LOGGER = LogManager.getLogger(ProcessExecutor.class);
     private final DateUtility dateUtils;
     private final StreamHandler streamHandler;
     private String processWrapper;
@@ -160,7 +160,7 @@ public class ProcessExecutor {
     public TaskLogging execute(String command) throws IOException, InterruptedException {
         
         // Intialize vars
-        logger.debug("Beginning execution of task:\t" + command);
+        LOGGER.debug("Beginning execution of task:\t" + command);
         long startTime, doneTime;
         Process process;
         ProcessLog procLog;
@@ -172,19 +172,19 @@ public class ProcessExecutor {
             
             // Execute and log completion
             process = this.executeScript(command);
-            logger.debug("Execution complete for task:\t" + command);
+            LOGGER.debug("Execution complete for task:\t" + command);
             
             // Build process log from logs
-            logger.debug("Building ProcessLog for task:\t" + command);
+            LOGGER.debug("Building ProcessLog for task:\t" + command);
             procLog = this.buildProcessLog();
             doneTime = dateUtils.getDateLong();
             
             // Build task log
             result = this.buildTaskLogging(process, procLog, startTime, doneTime);
-            logger.debug("Displaying TaskLogging:\n" + result.toJsonDoc());
+            LOGGER.debug("Displaying TaskLogging:\n" + result.toJsonDoc());
         }
         catch (Exception ex) {
-            logger.error(
+            LOGGER.error(
                 "Error executing task '{}':\tDisplaying message for reference, and writing stack trace to stderr\n{}",
                 command, ex.getMessage()
             );
@@ -206,11 +206,11 @@ public class ProcessExecutor {
 
         // Handle exit code: perhaps log
         if ( result.getExitCode() == 0 ) {
-            logger.info("Successful execution of task:\t" + command);
+            LOGGER.info("Successful execution of task:\t" + command);
         }
         else {
-            logger.error("Error executing task:\t" + command);
-            logger.error("Displaying failed TaskLogging:\n" + result.toJsonDoc());
+            LOGGER.error("Error executing task:\t" + command);
+            LOGGER.error("Displaying failed TaskLogging:\n" + result.toJsonDoc());
         }
         
         // Return results

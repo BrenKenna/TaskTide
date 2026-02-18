@@ -22,6 +22,7 @@ import java.util.concurrent.ExecutorService;
 import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
@@ -103,36 +104,46 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     protected boolean executeTask(WorkItem task) throws IOException, InterruptedException {
         
         // Configure ItemTaskProcessor
-        logger.info(
+        LOGGER.info(
             "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
             task.getTaskCount(), Thread.currentThread().getName(), task.getId()
         );
             
         // Execute workload of processor
-        logger.info("Processor configured, processing workload for WorkItem:\t'{}'", task.getId());
+        LOGGER.info("Processor configured, processing workload for WorkItem:\t'{}'", task.getId());
         TaskTideProcessor<ItemTask> subProcessor = this.provideProcessor(task);
-        subProcessor.process();
+        List<ItemTask> toDo = task.getWorkload().fetchByState().get(TaskState.PENDING);
+        
+        if ( !toDo.isEmpty() ) {
             
-        // Leave work item observer periodically summarize states until done
-        logger.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
-            
-        // Evaluate task processing
-        if ( this.observer.onTaskProcessing(task) ) {
-            logger.info(
-                "Task processing complete on WorkItem:\t'{}'",
-                task.getId()
-            );
-            return true;
+            // Leave work item observer periodically summarize states until done
+            subProcessor.processChunks(toDo);
+            LOGGER.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
+
+            // Evaluate task processing
+            if ( this.observer.onTaskProcessing(task) ) {
+                LOGGER.info(
+                    "Task processing complete on WorkItem:\t'{}'",
+                    task.getId()
+                );
+                return true;
+            }
+
+            // Otherwise log warning
+            else {
+                LOGGER.warn(
+                    "Warning, Observer checks onTaskProcessing failed for WorkItem:\t'{}'", 
+                    task.getId()
+                );
+                return false;
+            }
         }
         
-        // Otherwise log warning
         else {
-            logger.warn(
-                "Warning, Observer checks onTaskProcessing failed for WorkItem:\t'{}'", 
-                task.getId()
-            );
+            LOGGER.warn("No active tasks detected for WorkItem:\t'{}'", task.getId());
             return false;
-        }
+        }  
+        
     }
     
     

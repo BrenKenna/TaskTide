@@ -79,7 +79,10 @@ public class TaskTideEngineUtility {
         
         // Wait until done
         baseCount = FutureTrackers.WORK_ITEM_TRACKER.taskCount();
-        logger.info("Begining state monitoring of ExecutorServiceTracker:\tN tasks = '{}'", baseCount);
+        logger.info(
+            "Begining state monitoring of ExecutorServiceTracker:\tN tasks = '{}'",
+            baseCount
+        );
         while ( !done ) {
         
             // Measure delay capping to 512
@@ -91,8 +94,14 @@ public class TaskTideEngineUtility {
                 sleepTime = Math.min(waitVal, 85) * 1000L;
             }
             
+            // Update expected
+            if ( FutureTrackers.WORK_ITEM_TRACKER.taskCount() > expected ) {
+                expected = FutureTrackers.WORK_ITEM_TRACKER.taskCount();
+            }
+            
             // Wait
-            logger.info("Letting '{}'ms elapse for state monitoring of ExecutorServiceTracker:\t'{}'", 
+            logger.info(
+                "Letting '{}'ms elapse for state monitoring of ExecutorServiceTracker:\tTask count = '{}'", 
                 sleepTime, FutureTrackers.WORK_ITEM_TRACKER.taskCount()
             );
             try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
@@ -106,8 +115,9 @@ public class TaskTideEngineUtility {
                 nRemaining = baseCount - currentDone;
             }
             logger.info(
-          "Displaying Iter-'{}' StateSummary of ExecutorServiceTracker:\n\nTotal='{}', Remaining='{}', Done='{}', Expected='{}'", 
-             counter, baseCount, nRemaining, currentDone, expected
+                "Displaying Iter-'{}' StateSummary of ExecutorServiceTracker:\n\nTotal='{}', Active='{}', Remaining='{}', Done='{}', Expected='{}'", 
+                counter, baseCount, FutureTrackers.WORK_ITEM_TRACKER.countActive(),
+                nRemaining, currentDone, expected
             );
             
             // Sum of touched ItemTasks, did any raise TK error, Executor have states?

@@ -73,35 +73,35 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
     protected boolean executeTask(ItemTask task) throws IOException, InterruptedException {
         
         // Acknowledge task execution
-        logger.info("Executing task on thread '{}':{}", Thread.currentThread().getName(), task.getTask());
+        LOGGER.info("Executing task on thread '{}':{}", Thread.currentThread().getName(), task.getTask());
         this.observer.onTaskProcessing(task);
         TaskLogging taskLog = processExecutor.execute(task.getTask());
         task.setTaskLog(taskLog);
 
         // Handle logging execution state
         if (taskLog.getExitCode() == 0) {
-            logger.info(
+            LOGGER.info(
                 "Task '{}' successful on thread '{}' with exit code {}\n",
                 task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
             );
             try {
-                logger.debug("Determining whether to apply results annotation");
+                LOGGER.debug("Determining whether to apply results annotation");
                 this.annotateResults(task);
             }
             catch (Exception ex) {
-                logger.error("Error applying results annotation, displaying stack trace:\t'{}'", ex.getMessage());
+                LOGGER.error("Error applying results annotation, displaying stack trace:\t'{}'", ex.getMessage());
                 ex.printStackTrace();
             }
         }
         else {
-            logger.error(
+            LOGGER.error(
                 "Task '{}' failed on thread '{}' with exit code {}\n",
                 task.getTaskName(), Thread.currentThread().getName(), taskLog.getExitCode()
             );
         }
 
         // Debugger message
-        // Move to Observer logger.debug("Task after execution:\n{}\n\n", task.toJsonDoc());
+        // Move to Observer LOGGER.debug("Task after execution:\n{}\n\n", task.toJsonDoc());
         return taskLog.getExitCode() == 0;
     }
     
@@ -122,7 +122,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
         }
         
         if ( task.getAnnotations().hasKey("Results Path") ) {
-            logger.debug("'Results Path' annotation detected for task:\n'{}'", task.getId());
+            LOGGER.debug("'Results Path' annotation detected for task:\n'{}'", task.getId());
             String path = (String) task.getAnnotations().getKey("Results Path");
             Path resultsPath = Paths.get(path);
             String data = Files.readString(resultsPath, StandardCharsets.UTF_8);
@@ -133,7 +133,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
             TaskTideServiceManager.fetchWorkItemService().appendModel(item);
         }
         else {
-            logger.debug("No 'Results Path' annotation detected for task:\n'{}'", task.getId());
+            LOGGER.debug("No 'Results Path' annotation detected for task:\n'{}'", task.getId());
         }
     }
 }
