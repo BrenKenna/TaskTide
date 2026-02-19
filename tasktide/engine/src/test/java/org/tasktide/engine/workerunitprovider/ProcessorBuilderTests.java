@@ -5,7 +5,9 @@
 package org.tasktide.engine.workerunitprovider;
 
 import jakarta.enterprise.inject.se.SeContainer;
+
 import jakarta.nosql.Template;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestInstance;
+
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.task.ItemTask;
@@ -138,21 +141,20 @@ public class ProcessorBuilderTests {
         obs = obsBuilder.withWorkload(workload).withMaxTime(1000000).build();
         executor = execBuilder.withObserver(obs).build();
         processor = procBuilder
-            .withWorkload(workload)
             .withSubExecutor(executor)
-            .withThreshold(2)
             .withExecutorService(4)
         .build();
         
         // Process workload
-        processor.process();
+        processor.process(workload);
         EngineTestUtils.waitUntilDoneTarget(workload, 30, logger);
         
         // Evaluate test
         assertionState = TaskTrackers.WORK_ITEM_TRACKER.taskCount() > 0;
         logger.info(
-      "Tracked '{}' ItemTasks displaying state of first:\t'{}'",
-            TaskTrackers.WORK_ITEM_TRACKER.taskCount(), TaskTrackers.WORK_ITEM_TRACKER.get(workload.get(0).getId())
+            "Tracked '{}' ItemTasks displaying state of first:\t'{}'",
+            TaskTrackers.WORK_ITEM_TRACKER.taskCount(),
+            TaskTrackers.WORK_ITEM_TRACKER.get(workload.get(0).getId())
         );
         logger.info("Displaying first task after processing:\n\n{}", workload.get(0).toJsonDoc());
         
@@ -201,13 +203,11 @@ public class ProcessorBuilderTests {
         // Build processor
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 5, 4);
         processor = procBuilder
-            .withWorkload(workload)
             .withExecutorService(2)
-            .withThreshold(2)
         .build();
         
         // Process tasks
-        processor.process();
+        processor.process(workload);
         EngineTestUtils.waitUntilDoneWorkItem(workload, 30, logger);
         
         // Evaluate test status

@@ -287,7 +287,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         // Process if available
         if ( !workload.isEmpty() ) {
             LOGGER.info("Processing workload of size:\t'{}'", workload.size());
-            this.processor.processChunks(workload);
+            this.processor.process(workload);
             TaskTideEngineUtility.waitOnExecutorTrackerWorkItem(workload.size(), LOGGER);
         }
         else {
@@ -308,9 +308,7 @@ public class TaskTideEngineClient extends TaskTideClient {
      */
     private ExecutorService initializeAndConfigureExecutorServices() {
         this.workItemThreads = (int) this.engineArgs.getArgument("WorkItem Threads").getValue();
-        this.workThreshold = (int) this.engineArgs.getArgument("WorkItem SubTasking Threshold").getValue();
         this.itemTaskThreads = (int) this.engineArgs.getArgument("ItemTask Threads").getValue();
-        this.taskThreshold = (int) this.engineArgs.getArgument("ItemTask SubTasking Threshold").getValue();
         TaskTideExecutorServiceProvider.initialize(this.workItemThreads, this.itemTaskThreads);
         return TaskTideExecutorServiceProvider.workItemExecutorService();
     }
@@ -339,7 +337,6 @@ public class TaskTideEngineClient extends TaskTideClient {
         return unitProvider.getWorkItemExecBuilder()
             .withWorkItemObserver(obs)
             .withSubThreads(this.workItemThreads)
-            .withSubTaskThreshold(this.workThreshold)
         .build();
     }
 
@@ -353,9 +350,7 @@ public class TaskTideEngineClient extends TaskTideClient {
      */
     private TaskTideProcessor<WorkItem> configureWorkItemProcessor(ExecutorService execServ, TaskTideExecutor<WorkItem> subExecutor) {
         return unitProvider.getWorkItemProcBuilder()
-            .withWorkload(TaskTideEngineUtility.fetchToDoWork())
             .withExecutorService(execServ)
-            .withThreshold(this.workThreshold)
             .withSubExecutor(subExecutor)
         .build();
     }

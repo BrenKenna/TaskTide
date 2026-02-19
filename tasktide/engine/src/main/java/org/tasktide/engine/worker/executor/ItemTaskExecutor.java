@@ -73,9 +73,16 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
     protected boolean executeTask(ItemTask task) throws IOException, InterruptedException {
         
         // Acknowledge task execution
-        LOGGER.info("Executing task on thread '{}':{}", Thread.currentThread().getName(), task.getTask());
-        this.observer.onTaskProcessing(task);
-        TaskLogging taskLog = processExecutor.execute(task.getTask());
+        TaskLogging taskLog;
+        LOGGER.info(
+            "Executing task on thread '{}':\n'{}'",
+            Thread.currentThread().getName(),
+            task.getTask()
+        );
+        //synchronized ( this.observer ) {
+            this.observer.onTaskProcessing(task);
+        //}
+        taskLog = processExecutor.execute(task.getTask());
         task.setTaskLog(taskLog);
 
         // Handle logging execution state
@@ -89,8 +96,10 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
                 this.annotateResults(task);
             }
             catch (Exception ex) {
-                LOGGER.error("Error applying results annotation, displaying stack trace:\t'{}'", ex.getMessage());
-                ex.printStackTrace();
+                LOGGER.error(
+                    "Error applying results annotation, displaying stack trace:\n\n'{}'",
+                    ex
+                );
             }
         }
         else {
@@ -113,7 +122,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
      * @param task
      * @throws Exception 
      */
-    public void annotateResults(ItemTask task) throws Exception {
+    private void annotateResults(ItemTask task) throws Exception {
         
         // Apply annotation on ItemTask if none yet
         if ( task.getAnnotations() == null ) {

@@ -44,7 +44,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
     protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
     protected final ProcessExecutor processExecutor;
     protected int processCount;
-    protected TaskTideEngineObserver<T> observer;
+    protected final TaskTideEngineObserver<T> observer;
     
     
     /**
@@ -68,57 +68,82 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
     public void runTasks(List<T> workload) {
         
         // Process workload
+        boolean allowed;
         int done = 0, failed = 0, skipped = 0;
-        LOGGER.info("Begining workload processing of N = '{}' tasks", workload.size());
+        LOGGER.info(
+            "Begining workload processing of N = '{}' tasks",
+            workload.size()
+        );
         for (T task : workload) {
-            synchronized(task) {
             
-                // Verify task before execution
-                if ( observer.onTaskStart(task) ) {
-                    try {
-                        
-                        // Execute work of task, evaluating output
-                        if ( executeTask(task) ) {
-                          
-                            // Log progress & increment counters
-                            incrementCount();
-                            LOGGER.info(
-                          "Completed task '{}', global count: {}",
-                             task.getId(), sharedCounter.incrementAndGet()
-                            );
-                        }
-                        else {
-                            LOGGER.warn(
-                          "Warning, execution completed with error for task:\t'{}'",
-                             task.getId()
-                            );
-                        }
-                        
-                        // Handle task clean-up
-                        observer.onTaskEnd(task);
-                    }
-                    catch ( IOException | InterruptedException ex ) {
-                        handleFailure(task, ex);
-                        failed++;
-                    }
+            // Serialize preprocessing
+            synchronized ( observer ) {
+                allowed = observer.onTaskStart(task);
+            }
+            
+            // Check state
+            if ( !allowed ) {
+                LOGGER.warn(
+                    "Warning, skipping task failing Observer Preprocessing checks for task:\t'{}'", 
+                    task.getId()
+                );
+                skipped++;
+                continue;
+            }
+            
+            // Try execute task
+            try {
+                
+                // Execute task
+                allowed = this.executeTask(task);
+                if ( allowed ) {
+                    
+                    // Log progress & increment counters
+                    this.processCount++;
+                    LOGGER.info(
+                        "Completed task '{}', global count:\t'{}'",
+                        task.getId(), sharedCounter.incrementAndGet()
+                    );
                 }
                 
-                // Otherwise skip task
+                // Otherwise log failed
                 else {
                     LOGGER.warn(
-                  "Warning, skipping task failing Observer Preprocessing checks for task:\t'{}'", 
-                     task.getId()
+                        "Warning, execution completed with error for task:\t'{}'",
+                        task.getId()
                     );
-                    skipped++;
+                }
+                
+                // Handle task clean-up
+                //synchronized ( observer ) {
+                    allowed = observer.onTaskEnd(task);
+                //}
+                if ( allowed ) {
+                    LOGGER.info(
+                        "Observer PostProcessing completed successfully for:\t'{}'",
+                        task.getId()
+                    );
+                }
+                else {
+                    LOGGER.warn(
+                        "Observer PostProcessing failed for:\t'{}'",
+                        task.getId()
+                    );
                 }
             }
+            
+            catch ( IOException | InterruptedException ex ) {
+                this.handleFailure(task, ex);
+                failed++;
+            }
+
+            finally {
+                LOGGER.info(
+                    "Workload processing complete, displaying summary:\nThread Total = '{}', Thread Done = '{}', Done = '{}', Failed = '{}', Skipped = '{}'",
+                    workload.size(), done, getGlobalCount(), failed, skipped
+                );
+            }
         }
-        
-        // Log summary
-        LOGGER.info(
-     "\n\nWorkload processing complete, displaying summary:\nThread Total = '{}', Thread Done = '{}', Done = '{}', Failed = '{}', Skipped = '{}'",
-         workload.size(), done, getGlobalCount(), failed, skipped
-        );
     }
     
     
@@ -144,7 +169,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
      */
     public void handleFailure(T task, Exception ex) {
         LOGGER.error(
-            "Exception while executing task '{}' on thread '{}': {}",
+            "Exception while executing task '{}' on thread '{}':\t'{}'\n\n{}",
             task.getId(), Thread.currentThread().getName(), ex.getMessage(), ex
         );
         if (ex instanceof InterruptedException) {

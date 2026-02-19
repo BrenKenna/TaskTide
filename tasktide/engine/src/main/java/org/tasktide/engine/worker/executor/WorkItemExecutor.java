@@ -23,7 +23,6 @@ import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
-import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.TaskTideExecutorServiceProvider;
@@ -31,6 +30,7 @@ import org.tasktide.engine.TaskTideWorkerUnitProvider;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.observer.chain.WorkItemObserver;
+import org.tasktide.engine.worker.processor.ItemTaskProcessor;
 
 import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
@@ -43,7 +43,6 @@ import org.tasktide.engine.worker.processor.TaskTideProcessor;
 public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
 
     // Attributes
-    private final int nThreads, taskThreshold;
     private final TaskTideWorkerUnitProvider unitProvider;
     
     
@@ -53,8 +52,6 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
      */
     public WorkItemExecutor() {
         super(new WorkItemObserver(), LogManager.getLogger(WorkItemExecutor.class));
-        this.nThreads = 4;
-        this.taskThreshold = 2;
         this.unitProvider = new TaskTideWorkerUnitProvider();
     }
     
@@ -62,13 +59,10 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     /**
      * Construct {@link WorkItem} with thread and task threshold values for {@link ItemTask}
      * 
-     * @param nThreads
      * @param taskThrehold 
      */
-    public WorkItemExecutor(int nThreads, int taskThrehold) {
+    public WorkItemExecutor(int taskThrehold) {
         super(new WorkItemObserver(), LogManager.getLogger(WorkItemExecutor.class));
-        this.nThreads = nThreads;
-        this.taskThreshold = taskThrehold;
         this.unitProvider = new TaskTideWorkerUnitProvider();
     }
     
@@ -81,10 +75,8 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
      * @param nThreads
      * @param taskThrehold
      */
-    public WorkItemExecutor( TaskTideEngineObserver<WorkItem> observer, int nThreads, int taskThrehold) {
+    public WorkItemExecutor(TaskTideEngineObserver<WorkItem> observer, int nThreads, int taskThrehold) {
         super(observer, LogManager.getLogger(WorkItemExecutor.class));
-        this.nThreads = nThreads;
-        this.taskThreshold = taskThrehold;
         this.unitProvider = new TaskTideWorkerUnitProvider();
     }
     
@@ -109,36 +101,31 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
             task.getTaskCount(), Thread.currentThread().getName(), task.getId()
         );
             
-        // Execute workload of processor
-        LOGGER.info("Processor configured, processing workload for WorkItem:\t'{}'", task.getId());
-        TaskTideProcessor<ItemTask> subProcessor = this.provideProcessor(task);
+        // Determine if any tasks are available
+        boolean state;
         List<ItemTask> toDo = task.getWorkload().fetchByState().get(TaskState.PENDING);
-        
         if ( !toDo.isEmpty() ) {
             
-            // Leave work item observer periodically summarize states until done
-            subProcessor.processChunks(toDo);
-            LOGGER.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
-
-            // Evaluate task processing
-            if ( this.observer.onTaskProcessing(task) ) {
+            // Determine if work item has multiple item tasks
+            if ( toDo.size() > 1 ) {
                 LOGGER.info(
-                    "Task processing complete on WorkItem:\t'{}'",
+                    "Configuring ItemTaskProcessor for nested workload of:\t'{}'",
                     task.getId()
                 );
-                return true;
+                TaskTideProcessor<ItemTask> subProcessor = this.provideProcessor();
+                state = this.handleNestedWorkItem(task, toDo, subProcessor);
             }
-
-            // Otherwise log warning
+            
+            // Otherwise process as single task work item
             else {
-                LOGGER.warn(
-                    "Warning, Observer checks onTaskProcessing failed for WorkItem:\t'{}'", 
-                    task.getId()
-                );
-                return false;
+                state = this.handleSingleItemTaskWorkItem(task, toDo.get(0));
             }
+            
+            // Return state
+            return state;
         }
         
+        // Otherwise skip
         else {
             LOGGER.warn("No active tasks detected for WorkItem:\t'{}'", task.getId());
             return false;
@@ -148,50 +135,120 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
     
     
     /**
-     * Provide sub-processor
+     * Handle the execution of single {@link ItemTask} from
+     *  {@link WorkItem}
+     * 
+     * @param workItem
+     * @param itemTask
+     * @return boolean
+     */
+    public boolean handleSingleItemTaskWorkItem(WorkItem workItem, ItemTask itemTask) {
+    
+        // Initialize vars
+        TaskTideExecutor<ItemTask> itemTaskExecutor;
+        boolean result = false;
+        
+        // Configure executor
+        LOGGER.info(
+            "Configuring ItemTaskExecutor for single task workload of:\t'{}' with '{}'",
+            workItem.getId(),
+            itemTask.getId()
+        );
+        itemTaskExecutor = new ItemTaskExecutor();
+        
+        // Try execute
+        try {
+            result = itemTaskExecutor.executeTask(itemTask);
+        }
+        catch ( IOException | InterruptedException ex) {
+            LOGGER.error(
+                "Error during execution of '{}', under '{}':\t'{}'\n\n'{}'",
+                itemTask.getId(), workItem.getId(),
+                ex.getMessage(), ex
+            );
+            result = false;
+        }
+        finally {
+            LOGGER.info(
+                "Execution of '{}', under '{}' completed with status:\t'{}'",
+                itemTask.getId(), workItem.getId(), result
+            );
+        }
+        
+        
+        // Return result
+        return result;
+    }
+    
+    
+    /**
+     * Delegate the processing of nested {@link WorkIten} processing
+     *  to {@link ItemTaskProcessor}
      * 
      * @param task
+     * @param toDo
+     * @param subProcessor
+     * @return boolean
+     */
+    public boolean handleNestedWorkItem(
+        WorkItem task,
+        List<ItemTask> toDo,
+        TaskTideProcessor<ItemTask> subProcessor
+    ) {
+        
+        // Leave work item observer periodically summarize states until done
+        boolean result;
+        LOGGER.info(
+            "Submitting workload of size '' for WorkItem:\t'{}'",
+            toDo.size(),
+            task.getId()
+        );
+        subProcessor.process(toDo);
+        
+        // Evaluate task processing
+        LOGGER.info("ExecutorObserver polling ItemTaskStateSummary for WorkItem:\t'{}'", task.getId());
+        if ( this.observer.onTaskProcessing(task) ) {
+            LOGGER.info(
+                "Task processing complete on WorkItem:\t'{}'",
+                task.getId()
+            );
+            result = true;
+        }
+
+        // Otherwise log warning
+        else {
+            LOGGER.warn(
+                "Warning, Observer checks onTaskProcessing failed for WorkItem:\t'{}'",
+                task.getId()
+            );
+            result = false;
+        }
+        
+        // Return result
+        return result;
+    }
+    
+    
+    /**
+     * Provide sub-processor
+     * 
      * @return {@link TaskTideProcessor}-{@link WorkItem},{@link ItemTask}
      */
-    public TaskTideProcessor<ItemTask> provideProcessor(WorkItem task) {
+    public TaskTideProcessor<ItemTask> provideProcessor() {
         
         // Initialize required variables
         TaskTideProcessor<ItemTask> processor;
-        List<ItemTask> toDo;
         ExecutorService executorService;
         
         // Fetch required components
-        toDo = task.fetchByStates().get(ItemState.TODO);
         executorService = TaskTideExecutorServiceProvider.itemTaskExecutorService();
         
         // Construct sub processor
         processor = unitProvider.getItemTaskProcBuilder()
-            .withWorkload(toDo)
             .withExecutorService(executorService)
-            .withThreshold(taskThreshold)
         .build();
         
        // Return processor
        return processor;
-    }
-
-    
-    /**
-     * Get number threads for sub-processor
-     * 
-     * @return int
-     */
-    public int getnThreads() {
-        return nThreads;
-    }
-
-    
-    /**
-     * Get task threshold limit for sub-processor
-     * 
-     * @return int
-     */
-    public int getTaskThreshold() {
-        return taskThreshold;
     }
 }

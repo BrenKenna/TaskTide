@@ -77,7 +77,7 @@ public class BuilderUtility {
     public static CustomAnnotation makeEmptyAnnotation() {
         return new CustomAnnotationBuilder()
             .withId("CustomAnnotation-" + Utils.generateSalt())
-            .withAnno(new HashMap<String, Object>())
+            .withAnno(new HashMap<>())
         .build();
     }
     

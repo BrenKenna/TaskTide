@@ -120,11 +120,9 @@ public class ConfigureTaskTideTest {
         engineConfig.initConfig(argTree);
         
         // Fetch configure values
-        int workItemThreads, workItemThreshold, itemTaskThreads, itemTaskThreshold;
+        int workItemThreads, itemTaskThreads;
         workItemThreads = (int) argTree.getTree().getDataForAddress("engine").getArgument("WorkItem Threads").getValue();
-        workItemThreshold = (int) argTree.getTree().getDataForAddress("engine").getArgument("WorkItem SubTasking Threshold").getValue();
         itemTaskThreads = (int) argTree.getTree().getDataForAddress("engine").getArgument("ItemTask Threads").getValue();
-        itemTaskThreshold = (int) argTree.getTree().getDataForAddress("engine").getArgument("ItemTask SubTasking Threshold").getValue();
         
         // Configure executor service for work items, and item tasks
         TaskTideExecutorServiceProvider.initialize(workItemThreads, itemTaskThreads);
@@ -145,19 +143,16 @@ public class ConfigureTaskTideTest {
         executor = unitProvider.getWorkItemExecBuilder()
             .withWorkItemObserver(observer)
             .withSubThreads(workItemThreads)
-            .withSubTaskThreshold(workItemThreshold)
         .build();
         
         // Configure processor
         processor = unitProvider.getWorkItemProcBuilder()
-            .withWorkload(workload)
             .withExecutorService(executorService)
-            .withThreshold(workItemThreshold)
             .withSubExecutor(executor)
         .build();
         
         // Process work
-        processor.process();
+        processor.process(workload);
         TaskTideEngineUtility.waitOnExecutorTrackerWorkItem(nWorkItems, logger);
         
         // Evaluate test status

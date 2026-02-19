@@ -15,7 +15,6 @@
  */
 package org.tasktide.engine.worker.processor;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 import java.util.concurrent.ExecutorService;
@@ -25,7 +24,6 @@ import org.apache.logging.log4j.LogManager;
 import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 
@@ -47,12 +45,10 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     /**
      * Construct with workload
      * 
-     * @param workload
-     * @param threshold
      * @param executorService 
      */
-    public WorkItemProcessor(List<WorkItem> workload, int threshold, ExecutorService executorService) {
-        super(workload, threshold, executorService, LogManager.getLogger(WorkItemProcessor.class), "WorkItemProcessor");
+    public WorkItemProcessor(ExecutorService executorService) {
+        super(executorService, LogManager.getLogger(WorkItemProcessor.class), ProcessorType.WORKITEM);
         this.worker = new WorkItemExecutor();
     }
     
@@ -60,18 +56,14 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     /**
      * Construct with all attributes
      * 
-     * @param workload
-     * @param threshold
      * @param executorService
      * @param executor 
      */
     public WorkItemProcessor(
-        List<WorkItem> workload,
-        int threshold,
         ExecutorService executorService,
         TaskTideExecutor<WorkItem> executor
     ) {
-        super(workload, threshold, executorService, LogManager.getLogger(WorkItemProcessor.class), "WorkItemProcessor");
+        super(executorService, LogManager.getLogger(WorkItemProcessor.class), ProcessorType.WORKITEM);
         this.worker = (WorkItemExecutor) executor;
     }
     
@@ -79,12 +71,11 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     /**
      * Create a new sub processor from self
      * 
-     * @param subList
      * @return {@link TaskTideProcessor}-{@link WorkItem}
      */
     @Override
-    protected TaskTideProcessor<WorkItem> newSubProcessor(List<WorkItem> subList) {
-        return new WorkItemProcessor(subList, this.threshold, this.executorService);
+    protected TaskTideProcessor<WorkItem> newSubProcessor() {
+        return new WorkItemProcessor(this.executorService);
     }
 
     
@@ -122,46 +113,5 @@ public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
     @Override
     protected int fetchTrackerTaskCount() {
         return FutureTrackers.WORK_ITEM_TRACKER.taskCount();
-    }
-
-    
-    /**
-     * Splits workload into smaller chunks for each thread
-     * 
-     * @param workload
-     * @return List-List-{@link WorkItem}
-     */
-    @Override
-    protected List<List<WorkItem>> parallelChunks(List<WorkItem> workload) {
-        
-        // Initialize output
-        int workItemThreads, batchSizes, totalChunks, totalTasks;
-        List< List<WorkItem> > results = new ArrayList<>();
-        
-        // Pass on empty workload
-        totalTasks = workload.size();
-        if ( totalTasks == 0 ) {
-            return results;
-        }
-        
-        // Initialize batch handler
-        workItemThreads = TaskTideExecutorServiceProvider.getInstance().getWorkItemThreads();
-        if ( workItemThreads <= 0 ) {
-            throw new IllegalStateException("Error, WorkItem thread count must be > 0");
-        }
-        totalChunks = Math.min(workItemThreads, totalTasks);
-        batchSizes = (int) Math.ceil( ( double ) totalTasks / totalChunks );
-        
-        // Fetch slices
-        LOGGER.info(
-            "Fetching N = '{}' batches of size '{}' for WorkItem workload",
-            workItemThreads,
-            batchSizes
-        );
-        for ( int start = 0; start < workload.size(); start += batchSizes ) {
-            int end = Math.min(start + batchSizes, totalTasks);
-            results.add(workload.subList(start, end));
-        }
-        return results;
     }
 }

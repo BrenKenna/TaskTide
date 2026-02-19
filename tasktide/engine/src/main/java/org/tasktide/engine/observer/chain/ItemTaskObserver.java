@@ -44,7 +44,7 @@ public class ItemTaskObserver extends ObserverChain<ItemTask> {
      */
     public ItemTaskObserver() {
         super(
-     List.of(
+            List.of(
                 new ItemTaskStateObserver(),
                 new ItemTaskTimeKeeper(100000)
             )

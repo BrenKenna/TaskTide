@@ -109,10 +109,10 @@ public class ItemTaskProcessorTests {
         // Configure task processor
         logger.info("Configuring task processor");
         ExecutorService executorService = Executors.newFixedThreadPool(1);
-        itemTaskProcessor = new ItemTaskProcessor(workload, 2, executorService);
+        itemTaskProcessor = new ItemTaskProcessor(executorService);
         
         // Process tasks
-        itemTaskProcessor.process();
+        itemTaskProcessor.process(workload);
         EngineTestUtils.waitUntilDoneTarget(workload, 30, logger);
         processed = EngineTestUtils.countNotActive(workload);
         if ( processed > 0 ) {

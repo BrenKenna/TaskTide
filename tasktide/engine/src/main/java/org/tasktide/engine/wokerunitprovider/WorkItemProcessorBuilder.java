@@ -15,8 +15,6 @@
  */
 package org.tasktide.engine.wokerunitprovider;
 
-import java.util.List;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -36,34 +34,8 @@ import org.tasktide.engine.worker.processor.WorkItemProcessor;
 public class WorkItemProcessorBuilder {
     
     // Attributes
-    private List<WorkItem> workload;
-    private int threshold;
     private ExecutorService executorService;
     private TaskTideExecutor<WorkItem> executor;
-    
-    
-    /**
-     * Build with {@link WorkItem} workload
-     * 
-     * @param workload
-     * @return {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
-     */
-    public WorkItemProcessorBuilder withWorkload(List<WorkItem> workload) {
-        this.workload = workload;
-        return this;
-    }
-    
-    
-    /**
-     * Build with sub tasking threshold
-     * 
-     * @param threshold
-     * @return {@link WorkItemProcessor} of {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
-     */
-    public WorkItemProcessorBuilder withThreshold(int threshold) {
-        this.threshold = threshold;
-        return this;
-    }
     
     
     /**
@@ -109,10 +81,8 @@ public class WorkItemProcessorBuilder {
      */
     public TaskTideProcessor<WorkItem> build() {
         return new WorkItemProcessor(
-     this.workload,
-     this.threshold,
-this.executorService,
-     this.executor
+            this.executorService,
+            this.executor
         );
     }
 }

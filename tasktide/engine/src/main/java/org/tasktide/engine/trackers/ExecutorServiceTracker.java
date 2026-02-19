@@ -21,7 +21,12 @@ import java.util.Set;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -39,6 +44,7 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     
     // Attributes
     private final ConcurrentMap<String, ExecutorServiceItem<T>> taskStates;
+    private final Logger LOGGER = LogManager.getLogger(ExecutorServiceTracker.class);
     
     
     /**
@@ -204,6 +210,22 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
         return taskStates.keySet();
     }
     
+    
+    /**
+     * Wait for future list
+     * 
+     * @param futures 
+     */
+    public void waitForAll(List<Future<?>> futures) {
+        for( Future<?> future : futures ) {
+            try {
+                future.get();
+            }
+            catch ( InterruptedException | ExecutionException ex) {
+                LOGGER.error("Error encountered waiting on workload:\n{}", ex);
+            }
+        }
+    }
     
     /**
      * Represent collection as String

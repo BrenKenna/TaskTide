@@ -129,7 +129,7 @@ public class WorkItemExecutorBuilder {
      */
     public TaskTideExecutor<WorkItem> build() {
         if ( this.observer == null ) {
-            return new WorkItemExecutor(this.nThreads, this.threshold);
+            return new WorkItemExecutor();
         }
         return new WorkItemExecutor(this.observer, this.nThreads, this.threshold);
     }

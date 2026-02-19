@@ -108,11 +108,11 @@ public class WorkItemProcessorTests {
         workload = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4, 4);
         TaskTideServiceManager.fetchWorkItemService().extendModel(workload);
         ExecutorService executorService = Executors.newFixedThreadPool(2);
-        workItemProcessor = new WorkItemProcessor(workload, 2, executorService);
+        workItemProcessor = new WorkItemProcessor(executorService);
         
         // Process work items
         logger.info("Processing workload of N Items = '{}'", workload.size());
-        workItemProcessor.process();
+        workItemProcessor.process(workload);
         EngineTestUtils.waitUntilDoneWorkItem(workload, 30, logger);
         
         

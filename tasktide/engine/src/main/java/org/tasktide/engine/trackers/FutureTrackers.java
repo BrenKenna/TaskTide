@@ -28,8 +28,8 @@ import org.tasktide.core.model.workitem.WorkItem;
 public final class FutureTrackers {
     
     // Attributes
-    public static final ExecutorServiceTracker<ItemTask> ITEM_TASK_TRACKER = new ExecutorServiceTracker<ItemTask>();
-    public static final ExecutorServiceTracker<WorkItem> WORK_ITEM_TRACKER = new ExecutorServiceTracker<WorkItem>();
+    public static final ExecutorServiceTracker<ItemTask> ITEM_TASK_TRACKER = new ExecutorServiceTracker<>();
+    public static final ExecutorServiceTracker<WorkItem> WORK_ITEM_TRACKER = new ExecutorServiceTracker<>();
     
     private FutureTrackers(){}
 }

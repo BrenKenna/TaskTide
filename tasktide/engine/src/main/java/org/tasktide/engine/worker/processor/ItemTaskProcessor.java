@@ -15,17 +15,15 @@
  */
 package org.tasktide.engine.worker.processor;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+
 import org.apache.logging.log4j.LogManager;
 
-import java.util.List;
-import java.util.concurrent.Future;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
 
-import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 
@@ -47,16 +45,12 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     /**
      * Construct with workload
      * 
-     * @param workload
-     * @param threshold
      * @param executorService
      */
     public ItemTaskProcessor(
-        List<ItemTask> workload,
-        @ConfigProperty(name = "task-tide.engine.worker.processor.threshold.itemtask", defaultValue = "2") int threshold,
         ExecutorService executorService
     ) {
-        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class), "WorkItemProcessor");
+        super(executorService, LogManager.getLogger(ItemTaskProcessor.class), ProcessorType.ITEM_TASK);
         this.worker = new ItemTaskExecutor();
     }
     
@@ -64,18 +58,14 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     /**
      * Construct with all attributes
      * 
-     * @param workload
-     * @param threshold
      * @param executorService
      * @param executor 
      */
     public ItemTaskProcessor(
-        List<ItemTask> workload,
-        @ConfigProperty(name = "task-tide.engine.worker.processor.threshold.itemtask", defaultValue = "2") int threshold,
         ExecutorService executorService,
         TaskTideExecutor<ItemTask> executor
     ) {
-        super(workload, threshold, executorService, LogManager.getLogger(ItemTaskProcessor.class), "WorkItemProcessor");
+        super(executorService, LogManager.getLogger(ItemTaskProcessor.class), ProcessorType.ITEM_TASK);
         this.worker = (ItemTaskExecutor) executor;
     }
 
@@ -83,12 +73,11 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     /**
      * Create a new sub processor from self
      * 
-     * @param subList
      * @return {@link TaskTideProcessor}-{@link ItemTask}
      */
     @Override
-    protected TaskTideProcessor<ItemTask> newSubProcessor(List<ItemTask> subList) {
-        return new ItemTaskProcessor(subList, threshold, executorService);
+    protected TaskTideProcessor<ItemTask> newSubProcessor() {
+        return new ItemTaskProcessor(executorService);
     }
 
     
@@ -126,46 +115,5 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
     @Override
     protected int fetchTrackerTaskCount() {
         return FutureTrackers.ITEM_TASK_TRACKER.taskCount();
-    }
-    
-    
-    /**
-     * Divide workload across number of threads
-     * 
-     * @param workload
-     * @return List-List-{@link ItemTask}
-     */
-    @Override
-    protected List<List<ItemTask>> parallelChunks(List<ItemTask> workload) {
-        
-        // Initialize output
-        int itemTaskThreads, batchSizes, totalChunks, totalTasks;
-        List< List<ItemTask> > results = new ArrayList<>();
-        
-        // Pass on empty workload
-        totalTasks = workload.size();
-        if ( totalTasks == 0 ) {
-            return results;
-        }
-        
-        // Configure batches
-        itemTaskThreads = TaskTideExecutorServiceProvider.getInstance().getItemTaskThreads();
-        if ( itemTaskThreads <= 0 ) {
-            throw new IllegalStateException("Error, ItemTask thread count must be > 0");
-        }
-        totalChunks = Math.min(itemTaskThreads, totalTasks);
-        batchSizes = (int) Math.ceil( ( double ) totalTasks / totalChunks );
-        
-        // Fetch slices
-        LOGGER.info(
-            "Fetching N = '{}' batches of size '{}' for ItemTask workload",
-            totalChunks,
-            batchSizes
-        );
-        for ( int start = 0; start < workload.size(); start += batchSizes ) {
-            int end = Math.min(start + batchSizes, totalTasks);
-            results.add(workload.subList(start, end));
-        }
-        return results;
     }
 }
