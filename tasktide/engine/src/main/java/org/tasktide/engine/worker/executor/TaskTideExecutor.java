@@ -157,7 +157,7 @@ public abstract class TaskTideExecutor<T extends TaskTideModel<T>> implements Ta
      * @throws IOException
      * @throws InterruptedException 
      */
-    protected abstract boolean executeTask(T task) throws IOException, InterruptedException;
+    public abstract boolean executeTask(T task) throws IOException, InterruptedException;
     
     
     /**

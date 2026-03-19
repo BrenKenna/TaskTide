@@ -70,7 +70,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
      * @throws InterruptedException 
      */
     @Override
-    protected boolean executeTask(ItemTask task) throws IOException, InterruptedException {
+    public boolean executeTask(ItemTask task) throws IOException, InterruptedException {
         
         // Acknowledge task execution
         TaskLogging taskLog;

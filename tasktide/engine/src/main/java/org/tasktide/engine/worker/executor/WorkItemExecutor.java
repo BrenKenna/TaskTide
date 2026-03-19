@@ -93,7 +93,7 @@ public class WorkItemExecutor extends TaskTideExecutor<WorkItem> {
      * @throws InterruptedException 
      */
     @Override
-    protected boolean executeTask(WorkItem task) throws IOException, InterruptedException {
+    public boolean executeTask(WorkItem task) throws IOException, InterruptedException {
         
         // Configure ItemTaskProcessor
         LOGGER.info(
