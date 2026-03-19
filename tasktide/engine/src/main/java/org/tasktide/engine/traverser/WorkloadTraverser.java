@@ -40,23 +40,6 @@ public interface WorkloadTraverser<T extends TaskTideModel<T>> {
     
     
     /**
-     * Fetch workload to process under provided collection
-     * 
-     * @param collection
-     * @return List-{@link TaskTideModel}
-     */
-    public List<T> fetchWorkload(String collection);
-    
-    
-    /**
-     * Fetch workload to process under provided collection
-     * 
-     * @return List-{@link TaskTideModel}
-     */
-    public List<T> fetchWorkload();
-    
-    
-    /**
      * Processes an element of workload  
      * 
      * @param elm

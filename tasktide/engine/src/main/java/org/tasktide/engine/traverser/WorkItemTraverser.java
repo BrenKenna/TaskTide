@@ -142,13 +142,16 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
     @Override
     public boolean processElm(WorkItem elm) throws TraverserCheckedException {
         
-        // Determine if any tasks are available
-        boolean shouldProcess = this.observer.onTaskProcessing(elm);
+        // Pass if preprocessing fails
+        if ( ! this.observer.onTaskProcessing(elm) ) {
+            LOGGER.warn("Warning, preprocessing failed for task:\t'{}'", elm.getId());
+            return false;
+        }
         
+        // Pass if no active tasks
         List<ItemTask> toDo = elm.getWorkload().fetchByState().get(TaskState.PENDING);
         if ( toDo.isEmpty() ) {
-            
-            // Pass if none
+            LOGGER.warn("Warning, no active tasks under WorkItem:\t'{}'", elm.getId());
             return false;
         }
         
@@ -194,7 +197,6 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
      * 
      * @return List-{@link WorkItem}
      */
-    @Override
     public List<WorkItem> fetchWorkload() {
         return TaskTideServiceManager
             .fetchWorkItemService()
@@ -211,7 +213,6 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
      * 
      * @return List-{@link WorkItem}
      */
-    @Override
     public List<WorkItem> fetchWorkload(String collection) {
         return TaskTideServiceManager
             .fetchWorkItemService()

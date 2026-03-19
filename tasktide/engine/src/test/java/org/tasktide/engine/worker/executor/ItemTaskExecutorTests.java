@@ -273,7 +273,7 @@ public class ItemTaskExecutorTests {
         logger.info("Configuring ItemTaskExecutor for processing");
         taskExecutor = new ItemTaskExecutor() {
             @Override
-            protected boolean executeTask(ItemTask t) throws IOException {
+            public boolean executeTask(ItemTask t) throws IOException {
                 throw new IOException("IO Failed");
             }
         };
@@ -321,7 +321,7 @@ public class ItemTaskExecutorTests {
         logger.info("Configuring ItemTaskExecutor for processing");
         taskExecutor = new ItemTaskExecutor() {
             @Override
-            protected boolean executeTask(ItemTask t) throws InterruptedException {
+            public boolean executeTask(ItemTask t) throws InterruptedException {
                 throw new InterruptedException("IO Failed");
             }
         };
