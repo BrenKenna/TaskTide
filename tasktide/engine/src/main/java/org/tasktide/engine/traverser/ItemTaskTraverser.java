@@ -36,7 +36,6 @@ import org.tasktide.engine.worker.executor.ItemTaskExecutor;
  */
 public class ItemTaskTraverser implements WorkloadTraverser<ItemTask> {
     
-    
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
     private final ItemTaskExecutor executor;
@@ -140,14 +139,23 @@ public class ItemTaskTraverser implements WorkloadTraverser<ItemTask> {
                 }
                 
                 // Perform onTaskEnd chores
-                LOGGER.info("Performing onTaskEnd chores:\t'{}'", task.getId());
+                LOGGER.info(
+                    "Performing onTaskEnd chores:\t'{}'",
+                    task.getId()
+                );
                 observer.onTaskEnd(task);
-                LOGGER.info("Processing complete for task:\t'{}'", task.getId());
+                LOGGER.info(
+                    "Processing complete for task:\t'{}'",
+                    task.getId()
+                );
             }
             
             // Otherwise skip
             else {
-                LOGGER.warn("Preprocessing failed for WorkItem:\t'{}'", task.getId());
+                LOGGER.warn(
+                    "Preprocessing failed for WorkItem:\t'{}'",
+                    task.getId()
+                );
                 skipped++;
             }
         }

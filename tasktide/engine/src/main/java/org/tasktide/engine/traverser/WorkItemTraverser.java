@@ -16,6 +16,8 @@
 package org.tasktide.engine.traverser;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -209,8 +211,38 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
     
     /**
      * Fetch {@link WorkItem} marked {@link ItemState.TODO}
+     *  across all tasks, random sampling
+     * 
+     * @param nTasks
+     * @return List-{@link WorkItem}
+     */
+    public List<WorkItem> fetchWorkload(int nTasks) {
+        
+        // Fetch workload
+        List<WorkItem> tasks = TaskTideServiceManager
+            .fetchWorkItemService()
+            .viewByField(
+                "itemState",
+                ItemState.TODO
+        );
+        
+        // Handle no tasks
+        if (tasks == null || tasks.isEmpty() || nTasks <= 0) {
+            return Collections.emptyList();
+        }
+        
+        // Shuffle and fetch sampling
+        Collections.shuffle(tasks);
+        int limit = Math.min(nTasks, tasks.size());
+        return new ArrayList<>(tasks.subList(0, limit));
+    }
+    
+    
+    /**
+     * Fetch {@link WorkItem} marked {@link ItemState.TODO}
      *  under the provided collection
      * 
+     * @param collection
      * @return List-{@link WorkItem}
      */
     public List<WorkItem> fetchWorkload(String collection) {
@@ -222,6 +254,38 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
                 "stepName",
                 collection
         );
+    }
+    
+    
+    /**
+     * Fetch {@link WorkItem} marked {@link ItemState.TODO}
+     *  under the provided collection, random sampling
+     * 
+     * @param collection
+     * @param nTasks
+     * @return List-{@link WorkItem}
+     */
+    public List<WorkItem> fetchWorkload(String collection, int nTasks) {
+        
+        // Fetch workload
+        List<WorkItem> tasks = TaskTideServiceManager
+            .fetchWorkItemService()
+            .viewByFieldForGroup(
+                "itemState",
+                ItemState.TODO,
+                "stepName",
+                collection
+        );
+        
+        // Handle no tasks
+        if (tasks == null || tasks.isEmpty() || nTasks <= 0) {
+            return Collections.emptyList();
+        }
+        
+        // Shuffle and fetch sampling
+        Collections.shuffle(tasks);
+        int limit = Math.min(nTasks, tasks.size());
+        return new ArrayList<>(tasks.subList(0, limit));
     }
     
     
