@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -34,6 +36,9 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
+import org.tasktide.engine.trackers.ExecutorServiceItem;
+import org.tasktide.engine.trackers.FutureTrackers;
+import org.tasktide.engine.trackers.TrackerWaiter;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 
 
@@ -96,55 +101,41 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
         
         // Traverse through workload
         for ( WorkItem task : workload ) {
-    
-            // Check pending tasks
-            LOGGER.info(
-                "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
-                task.getTaskCount(), Thread.currentThread().getName(), task.getId()
-            );
-            
-            // Serialize preprocessing
-            boolean shouldStart;
-            synchronized ( observer ) {
-                shouldStart = observer.onTaskStart(task);
-            }
-            
-            // Handle event outcome
-            if ( shouldStart ) {
-                
-                // Process task
-                LOGGER.info("Processing task:\t'{}'", task.getId());
-                boolean state = this.processElm(task);
-                
-                // Log progress & increment counters
-                if ( state ) {
-                    this.processCount++;
-                    LOGGER.info(
-                        "Completed task '{}', global count:\t'{}'",
-                        task.getId(), sharedCounter.incrementAndGet()
-                    );
-                }
-                
-                // Otherwise log failure
-                else {
-                    LOGGER.warn(
-                        "Warning, execution completed with error for task:\t'{}'",
-                        task.getId()
-                    );
-                }
-                
-                // Perform onTaskEnd chores
-                LOGGER.info("Performing onTaskEnd chores:\t'{}'", task.getId());
-                observer.onTaskEnd(task);
-                LOGGER.info("Processing complete for task:\t'{}'", task.getId());
-            }
-            
-            // Otherwise skip
-            else {
-                LOGGER.warn("Preprocessing failed for WorkItem:\t'{}'", task.getId());
+            if ( ! this.processTask(task) ) {
                 skipped++;
             }
         }
+    }
+    
+    
+    /**
+     * Schedules each {@link WorkItem} of provided workload into
+     *  {@link ExecutorService} thread pool. Using the {@link FutureTrackers}
+     *  container to fetch {@link TrackerWaiter}
+     * 
+     * @param workload
+     * @param threadPool
+     * @throws TraverserCheckedException 
+     */
+    @Override
+    public void traverse(List<WorkItem> workload, ExecutorService threadPool) throws TraverserCheckedException {
+        
+        // Schedule tasks
+        for ( WorkItem task : workload ) {
+            
+            // Schedule async operation
+            Future<Boolean> future = threadPool.submit(() -> {
+                return this.processTask(task);
+            });
+            
+            // Append to tracker for monitoring
+            ExecutorServiceItem<WorkItem> item = new ExecutorServiceItem<>(task, future);
+            FutureTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), item);
+        }
+        
+        // Fetch waiter for WorkItem workload
+        TrackerWaiter<WorkItem> trackerWaiter = FutureTrackers.WORK_ITEM_TRACKER.fetchWaiterFor(workload);
+        trackerWaiter.waitForWorkload();
     }
     
 
@@ -205,6 +196,68 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
                     return false;
                 }
             }
+        }
+    }
+    
+    
+    /**
+     * Processes provided task, entry point for passing to
+     *  {@link ExecutorService}
+     * 
+     * @param task
+     * @return boolean
+     * 
+     * @throws TraverserCheckedException 
+     */
+    private boolean processTask(WorkItem task) throws TraverserCheckedException {
+        // Check pending tasks
+        LOGGER.info(
+             "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
+             task.getTaskCount(), Thread.currentThread().getName(), task.getId()
+        );
+            
+        // Serialize preprocessing
+        boolean shouldStart;
+        synchronized ( observer ) {
+            shouldStart = observer.onTaskStart(task);
+        }
+            
+        // Handle event outcome
+        if ( shouldStart ) {
+                
+            // Process task
+            LOGGER.info("Processing task:\t'{}'", task.getId());
+            boolean state = this.processElm(task);
+                
+            // Log progress & increment counters
+            if ( state ) {
+                this.processCount++;
+                LOGGER.info(
+                    "Completed task '{}', global count:\t'{}'",
+                    task.getId(),
+                    sharedCounter.incrementAndGet()
+                );
+            }
+                
+            // Otherwise log failure
+            else {
+                LOGGER.warn(
+                    "Warning, execution completed with error for task:\t'{}'",
+                    task.getId()
+                );
+            }
+                
+            // Perform onTaskEnd chores
+            LOGGER.info("Performing onTaskEnd chores:\t'{}'", task.getId());
+            observer.onTaskEnd(task);
+            LOGGER.info("Processing complete for task:\t'{}'", task.getId());
+            return state;
+        }
+            
+        // Otherwise skip
+        else {
+            LOGGER.warn("Preprocessing failed for WorkItem:\t'{}'", task.getId());
+            return false;
         }
     }
     

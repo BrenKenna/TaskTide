@@ -134,7 +134,8 @@ public class ItemTaskTraverser implements WorkloadTraverser<ItemTask> {
     
     /**
      * Schedules each {@link ItemTask} of provided workload into
-     *  {@link ExecutorService} thread pool. Tracking
+     *  {@link ExecutorService} thread pool. Using the {@link FutureTrackers}
+     *  container to fetch {@link TrackerWaiter}
      * 
      * @param workload
      * @param threadPool
