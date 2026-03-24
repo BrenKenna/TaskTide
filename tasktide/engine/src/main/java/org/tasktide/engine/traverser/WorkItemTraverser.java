@@ -51,9 +51,23 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
     private final ItemTaskExecutor executor;
-    protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
-    protected int processCount;
-    protected final TaskTideEngineObserver<WorkItem> observer;
+    private static final AtomicInteger sharedCounter = new AtomicInteger(0);
+    private int processCount;
+    private final TaskTideEngineObserver<WorkItem> observer;
+    private final WorkloadTraverser itemTaskTraverser;
+    
+    
+    /**
+     * Construct with {@link TaskTideEngineObserver}
+     * 
+     * @param observer 
+     * @param itemTaskTraverser 
+     */
+    public WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer, ItemTaskTraverser itemTaskTraverser) {
+        this.observer = observer;
+        this.executor = new ItemTaskExecutor();
+        this.itemTaskTraverser = itemTaskTraverser;
+    }
     
     
     /**
@@ -64,6 +78,7 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
     public WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer) {
         this.observer = observer;
         this.executor = new ItemTaskExecutor();
+        this.itemTaskTraverser = new ItemTaskTraverser();
     }
     
     

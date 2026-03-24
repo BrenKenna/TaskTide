@@ -17,6 +17,8 @@ package org.tasktide.engine.traverser;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -24,8 +26,13 @@ import org.apache.logging.log4j.LogManager;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
+import org.tasktide.engine.observer.chain.ItemTaskObserver;
+import org.tasktide.engine.trackers.ExecutorServiceItem;
+import org.tasktide.engine.trackers.FutureTrackers;
+import org.tasktide.engine.trackers.TrackerWaiter;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
 
 
@@ -36,12 +43,23 @@ import org.tasktide.engine.worker.executor.ItemTaskExecutor;
  */
 public class ItemTaskTraverser implements WorkloadTraverser<ItemTask> {
     
+    
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
     private final ItemTaskExecutor executor;
     protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
     protected int processCount;
     protected final TaskTideEngineObserver<ItemTask> observer;
+    
+    
+    /**
+     * Constructs with default {@link ItemTaskObserver}
+     * 
+     */
+    public ItemTaskTraverser() {
+        this.observer = new ItemTaskObserver();
+        this.executor = new ItemTaskExecutor();
+    }
     
     
     /**
@@ -107,57 +125,105 @@ public class ItemTaskTraverser implements WorkloadTraverser<ItemTask> {
         
         int skipped = 0;
         for ( ItemTask task : workload ) {
-            
-            // Serialize preprocessing
-            boolean shouldStart;
-            synchronized ( observer ) {
-                shouldStart = observer.onTaskStart(task);
-            }
-            
-            // Handle event outcome
-            if ( shouldStart ) {
-                
-                // Process task
-                LOGGER.info("Processing task:\t'{}'", task.getId());
-                boolean state = this.processElm(task);
-                
-                // Log progress & increment counters
-                if ( state ) {
-                    this.processCount++;
-                    LOGGER.info(
-                        "Completed task '{}', global count:\t'{}'",
-                        task.getId(), sharedCounter.incrementAndGet()
-                    );
-                }
-                
-                // Otherwise log failure
-                else {
-                    LOGGER.warn(
-                        "Warning, execution completed with error for task:\t'{}'",
-                        task.getId()
-                    );
-                }
-                
-                // Perform onTaskEnd chores
-                LOGGER.info(
-                    "Performing onTaskEnd chores:\t'{}'",
-                    task.getId()
-                );
-                observer.onTaskEnd(task);
-                LOGGER.info(
-                    "Processing complete for task:\t'{}'",
-                    task.getId()
-                );
-            }
-            
-            // Otherwise skip
-            else {
-                LOGGER.warn(
-                    "Preprocessing failed for WorkItem:\t'{}'",
-                    task.getId()
-                );
+            if ( !this.processTask(task) ) {
                 skipped++;
             }
+        }
+    }
+    
+    
+    /**
+     * Schedules each {@link ItemTask} of provided workload into
+     *  {@link ExecutorService} thread pool. Tracking
+     * 
+     * @param workload
+     * @param threadPool
+     * 
+     * @throws TraverserCheckedException 
+     */
+    @Override
+    public void traverse(List<ItemTask> workload, ExecutorService threadPool) throws TraverserCheckedException {
+        
+        // Schedule tasks
+        for ( ItemTask task : workload ) {
+            
+            // Schedule async operation
+            Future<Boolean> future = threadPool.submit(() -> {
+                return this.processTask(task);
+            });
+            
+            // Append to tracker for monitoring
+            ExecutorServiceItem<ItemTask> item = new ExecutorServiceItem<>(task, future);
+            FutureTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), item);
+        }
+        
+        // Fetch waiter for ItemTask workload
+        TrackerWaiter<ItemTask> trackerWaiter = FutureTrackers.ITEM_TASK_TRACKER.fetchWaiterFor(workload);
+        trackerWaiter.waitForWorkload();
+    }
+    
+    
+    /**
+     * Processes provided task, entry point for passing to
+     *  {@link ExecutorService}
+     * 
+     * @param task
+     * @return boolean
+     * 
+     * @throws TraverserCheckedException 
+     */
+    private boolean processTask(ItemTask task) throws TraverserCheckedException {
+    
+        // Serialize preprocessing
+        boolean shouldStart;
+        synchronized ( observer ) {
+            shouldStart = observer.onTaskStart(task);
+        }
+            
+        // Handle event outcome
+        if ( shouldStart ) {
+                
+            // Process task
+            LOGGER.info("Processing task:\t'{}'", task.getId());
+            boolean state = this.processElm(task);
+                
+            // Log progress & increment counters
+            if ( state ) {
+                this.processCount++;
+                LOGGER.info(
+                    "Completed task '{}', global count:\t'{}'",
+                    task.getId(), sharedCounter.incrementAndGet()
+                );
+            }
+                
+            // Otherwise log failure
+            else {
+                LOGGER.warn(
+                    "Warning, execution completed with error for task:\t'{}'",
+                    task.getId()
+                );
+            }
+                
+            // Perform onTaskEnd chores
+            LOGGER.info(
+                "Performing onTaskEnd chores:\t'{}'",
+                task.getId()
+            );
+            observer.onTaskEnd(task);
+            LOGGER.info(
+                "Processing complete for task:\t'{}'",
+                task.getId()
+            );
+            return state;
+        }
+            
+        // Otherwise skip
+        else {
+            LOGGER.warn(
+                "Preprocessing failed for WorkItem:\t'{}'",
+                task.getId()
+            );
+            return false;
         }
     }
 }

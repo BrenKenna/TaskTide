@@ -45,13 +45,26 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     // Attributes
     private final ConcurrentMap<String, ExecutorServiceItem<T>> taskStates;
     private final Logger LOGGER = LogManager.getLogger(ExecutorServiceTracker.class);
-    
+    private final Class<T> TYPE;
     
     /**
      * Only constructable from within package
      */
-    ExecutorServiceTracker() {
+    ExecutorServiceTracker(Class<T> type) {
         this.taskStates = new ConcurrentHashMap<>();
+        this.TYPE = type;
+    }
+    
+    
+    /**
+     * Construct with state map
+     * 
+     * @param type
+     * @param taskStates 
+     */
+    ExecutorServiceTracker(Class<T> type, ConcurrentMap<String, ExecutorServiceItem<T>> taskStates) {
+        this.taskStates = new ConcurrentHashMap<>();
+        this.TYPE = type;
     }
     
     
@@ -226,6 +239,33 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
             }
         }
     }
+    
+    
+    /**
+     * Fetch a {@link TrackerWaiter} for provided workload
+     * 
+     * @param tasks
+     * @return {@link TrackerWaiter}
+     */
+    public TrackerWaiter<T> fetchWaiterFor(List<T> tasks) {
+        if ( tasks.isEmpty() ) {
+            LOGGER.error("Cannot fetch waiter for empty list, passing on creation");
+            return null;
+        }
+        ExecutorServiceTracker<T> tracker = new ExecutorServiceTracker<>(this.TYPE, this.taskStates);
+        return new TrackerWaiter<>(tasks, tracker, tracker.getType());
+    }
+    
+    
+    /**
+     * Get class type of tracker
+     * 
+     * @return Class of T
+     */
+    public Class<T> getType() {
+        return this.TYPE;
+    }
+    
     
     /**
      * Represent collection as String
