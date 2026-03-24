@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.traverser;
+package org.tasktide.engine.traversers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,6 +36,7 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
+import org.tasktide.engine.observer.chain.WorkItemObserver;
 import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.trackers.TrackerWaiter;
@@ -51,7 +52,7 @@ import org.tasktide.engine.worker.executor.ItemTaskExecutor;
  *
  * @author Bren
  */
-public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
+public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
 
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
@@ -59,7 +60,7 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
     private static final AtomicInteger sharedCounter = new AtomicInteger(0);
     private int processCount;
     private final TaskTideEngineObserver<WorkItem> observer;
-    private final WorkloadTraverser itemTaskTraverser;
+    private final TaskTideWorkloadTraverser itemTaskTraverser;
     
     
     /**
@@ -82,6 +83,17 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
      */
     public WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer) {
         this.observer = observer;
+        this.executor = new ItemTaskExecutor();
+        this.itemTaskTraverser = new ItemTaskTraverser();
+    }
+    
+    
+    /**
+     * Construct with default {@link TaskTideEngineObserver}
+     * 
+     */
+    public WorkItemTraverser() {
+        this.observer = new WorkItemObserver();
         this.executor = new ItemTaskExecutor();
         this.itemTaskTraverser = new ItemTaskTraverser();
     }
@@ -172,7 +184,7 @@ public class WorkItemTraverser implements WorkloadTraverser<WorkItem> {
                     "Configuring ItemTaskTraverser for nested workload of:\t'{}'",
                     elm.getId()
                 );
-                // Pass toDo to ItemTaskTraverser
+                // this.itemTaskTraverser.traverse(toDo, this.threadPool);
                 return true;
             }
             

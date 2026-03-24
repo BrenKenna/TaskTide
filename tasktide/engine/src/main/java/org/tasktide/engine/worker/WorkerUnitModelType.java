@@ -1,31 +1,59 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Enum.java to edit this template
+ * Copyright 2026 Bren.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-package org.tasktide.core;
+package org.tasktide.engine.worker;
 
 
 /**
- * Enum of valid model types
- * 
- * @author bkenna
+ * Enum for valid model types used by engine
+ *
+ * @author Bren
  */
-public enum TaskTideModelType {
+public enum WorkerUnitModelType {
     
     WORKITEM {
         @Override
         public boolean isModel(String query) {
-            return "workitme".equals(query.toLowerCase());
+            return "workitem".equals(query.toLowerCase());
         }
 
         @Override
-        public boolean isModel(TaskTideModelType query) {
+        public boolean isModel(WorkerUnitModelType query) {
             return WORKITEM == query;
         }
 
         @Override
         public String toString() {
             return "WorkItem";
+        }
+    },
+    
+    ITEMTASK {
+        @Override
+        public boolean isModel(String query) {
+            return "itemtask".equals(query.toLowerCase().trim().replace(" ", ""));
+        }
+
+        @Override
+        public boolean isModel(WorkerUnitModelType query) {
+            return ITEMTASK == query;
+        }
+
+        @Override
+        public String toString() {
+            return "ItemTask";
         }
     },
     
@@ -36,7 +64,7 @@ public enum TaskTideModelType {
         }
 
         @Override
-        public boolean isModel(TaskTideModelType query) {
+        public boolean isModel(WorkerUnitModelType query) {
             return STEP == query;
         }
 
@@ -53,7 +81,7 @@ public enum TaskTideModelType {
         }
 
         @Override
-        public boolean isModel(TaskTideModelType query) {
+        public boolean isModel(WorkerUnitModelType query) {
             return WORKFLOW == query;
         }
 
@@ -79,7 +107,7 @@ public enum TaskTideModelType {
      * @param query
      * @return boolean
      */
-    public abstract boolean isModel(TaskTideModelType query);
+    public abstract boolean isModel(WorkerUnitModelType query);
 
     
     
@@ -102,12 +130,12 @@ public enum TaskTideModelType {
         
         // Initialize values
         int modelInd = -1;
-        int limit = TaskTideModelType.values().length;
+        int limit = WorkerUnitModelType.values().length;
         int counter = 0;
         
         // Search until found
         while ( counter <= limit && modelInd < 0 ) {
-            TaskTideModelType modelType = TaskTideModelType.values()[counter];
+            WorkerUnitModelType modelType = WorkerUnitModelType.values()[counter];
             if ( modelType.isModel(query) ) {
                 modelInd = counter;
             }
@@ -136,12 +164,12 @@ public enum TaskTideModelType {
      * Return the TaskTide model type for query or null
      * 
      * @param query
-     * @return {@link TaskTideModelType}
+     * @return {@link WorkerUnitModelType}
      */
-    public static TaskTideModelType getQuery(String query) {
+    public static WorkerUnitModelType getQuery(String query) {
         int index = indexOf(query);
         if ( index >= 0) {
-            return TaskTideModelType.values()[index];
+            return WorkerUnitModelType.values()[index];
         }
         else {
             return null;

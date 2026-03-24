@@ -13,21 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.traverser;
+package org.tasktide.engine.exceptions;
 
 
 /**
- * Checked {@link Exception} for Traverser
+ * {@link RuntimeException} for engine components
  *
  * @author Bren
  */
-public class TraverserCheckedException extends Exception {
+public class TaskTideEngineUncheckedException extends RuntimeException {
     
-    public TraverserCheckedException(String msg) {
+    public TaskTideEngineUncheckedException(String msg) {
         super(msg);
     }
     
-    public TraverserCheckedException(String msg, Throwable ex) {
+    public TaskTideEngineUncheckedException(String msg, Throwable ex) {
         super(msg, ex);
     }
 }

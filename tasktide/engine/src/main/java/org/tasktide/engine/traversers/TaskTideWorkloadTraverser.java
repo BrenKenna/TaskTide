@@ -13,12 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.traverser;
+package org.tasktide.engine.traversers;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 import org.tasktide.core.TaskTideModel;
+
+import org.tasktide.engine.worker.TaskTideWorkerUnit;
 
 
 /**
@@ -28,9 +30,8 @@ import org.tasktide.core.TaskTideModel;
  * @param <T> of {@link TaskTideModel}
  * @author Bren
  */
-public interface WorkloadTraverser<T extends TaskTideModel<T>> {
+public interface TaskTideWorkloadTraverser<T extends TaskTideModel<T>> extends TaskTideWorkerUnit<T>{
  
-    
     /**
      * Traverses workload processing each element
      * 

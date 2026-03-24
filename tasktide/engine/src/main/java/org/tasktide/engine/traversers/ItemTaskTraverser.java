@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.traverser;
+package org.tasktide.engine.traversers;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,7 +41,7 @@ import org.tasktide.engine.worker.executor.ItemTaskExecutor;
  *
  * @author Bren
  */
-public class ItemTaskTraverser implements WorkloadTraverser<ItemTask> {
+public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
     
     
     // Attributes

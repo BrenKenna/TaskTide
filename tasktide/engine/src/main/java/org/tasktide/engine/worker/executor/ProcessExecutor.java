@@ -64,7 +64,7 @@ public class ProcessExecutor {
        @ConfigProperty(name = "task-tide.core.utils.date-format", defaultValue = "dd/MM/yy HH:mm:ss") String dateFormat,
        @ConfigProperty(name = "task-tide.core.utils.expiration", defaultValue = "2") int expiration
     ) {
-        this.id = UUID.randomUUID().toString();
+        this.id = "ProcessExecutor-" + UUID.randomUUID().toString();
         this.logDir = Paths.get("logs", this.id);
         this.dateUtils = new DateUtility(dateFormat, expiration);
         this.streamHandler = new StreamHandler(
@@ -78,7 +78,7 @@ public class ProcessExecutor {
      * Default constructor
      */
     public ProcessExecutor() {
-        this.id = UUID.randomUUID().toString();
+        this.id = "ProcessExecutor-" + UUID.randomUUID().toString();
         this.logDir = Paths.get("logs", this.id);
         this.dateUtils = new DateUtility("dd/MM/yy HH:mm:ss", 2);
         this.streamHandler = new StreamHandler(
