@@ -36,11 +36,13 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.observer.chain.WorkItemObserver;
 import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.trackers.TrackerWaiter;
+import org.tasktide.engine.worker.WorkerUnitContainer;
+import org.tasktide.engine.worker.WorkerUnitModelType;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
+import org.tasktide.engine.worker.executor.TaskTideExecutor;
 
 
 /**
@@ -56,11 +58,12 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
 
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
-    private final ItemTaskExecutor executor;
+    private final TaskTideExecutor<ItemTask> itemTaskExecutor;
     private static final AtomicInteger sharedCounter = new AtomicInteger(0);
     private int processCount;
     private final TaskTideEngineObserver<WorkItem> observer;
-    private final TaskTideWorkloadTraverser itemTaskTraverser;
+    private final TaskTideWorkloadTraverser<ItemTask> itemTaskTraverser;
+    private final WorkerUnitContainer workerUnits;
     
     
     /**
@@ -70,8 +73,9 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
      * @param itemTaskTraverser 
      */
     public WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer, ItemTaskTraverser itemTaskTraverser) {
+        this.workerUnits = WorkerUnitContainer.getInstance();
         this.observer = observer;
-        this.executor = new ItemTaskExecutor();
+        this.itemTaskExecutor = this.workerUnits.getEngineExecutor(WorkerUnitModelType.ITEMTASK);
         this.itemTaskTraverser = itemTaskTraverser;
     }
     
@@ -83,19 +87,21 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
      */
     public WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer) {
         this.observer = observer;
-        this.executor = new ItemTaskExecutor();
-        this.itemTaskTraverser = new ItemTaskTraverser();
+        this.workerUnits = WorkerUnitContainer.getInstance();
+        this.itemTaskExecutor = this.workerUnits.getEngineExecutor(WorkerUnitModelType.ITEMTASK);
+        this.itemTaskTraverser = this.workerUnits.getEngineWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
     }
     
     
     /**
-     * Construct with default {@link TaskTideEngineObserver}
-     * 
+     * Construct with default {@link TaskTideEngineObserver}. 
+     * Throws TaskTideEngineUncheckedException
      */
     public WorkItemTraverser() {
-        this.observer = new WorkItemObserver();
-        this.executor = new ItemTaskExecutor();
-        this.itemTaskTraverser = new ItemTaskTraverser();
+        this.workerUnits        = WorkerUnitContainer.getInstance();
+        this.observer           = this.workerUnits.getEngineObserverChain(WorkerUnitModelType.WORKITEM);
+        this.itemTaskExecutor   = this.workerUnits.getEngineExecutor(WorkerUnitModelType.ITEMTASK);
+        this.itemTaskTraverser  = this.workerUnits.getEngineWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
     }
     
     
@@ -191,7 +197,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
             // Otherwise process as single task work item
             else {
                 try {
-                    if ( this.executor.executeTask(toDo.get(0)) ) {
+                    if ( this.itemTaskExecutor.executeTask(toDo.get(0)) ) {
                         LOGGER.info("Processing sucessful for task:\t'{}'", elm.getId());
                         return true;
                     }

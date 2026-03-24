@@ -16,6 +16,7 @@
 package org.tasktide.engine.worker;
 
 import java.util.concurrent.ExecutorService;
+import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -26,6 +27,7 @@ import org.tasktide.engine.TaskTideExecutorServiceProvider;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
 import org.tasktide.engine.traversers.ItemTaskTraverser;
 import org.tasktide.engine.traversers.WorkItemTraverser;
 import org.tasktide.engine.worker.executor.ProcessExecutor;
@@ -233,76 +235,80 @@ public class WorkerUnitContainer {
     /**
      * Fetch required {@link TaskTideEngineObserver}
      * 
+     * @param <T> of {@link TaskTideModel}
      * @param type
      * @return {@link TaskTideEngineObserver}
      * 
-     * @throws TaskTideEngineCheckedException 
+     * @throws TaskTideEngineUncheckedException 
      */
-    public TaskTideEngineObserver<?>
+    @SuppressWarnings("unchecked")
+    public <T extends TaskTideModel<T>> TaskTideEngineObserver<T>
         getEngineObserverChain(WorkerUnitModelType type)
-    throws TaskTideEngineCheckedException {
-        switch ( type ) {
+    throws TaskTideEngineUncheckedException {
+        return switch ( type ) {
         
             case WORKITEM -> {
                 if ( this.workItemObserver != null ) {
-                    return this.workItemObserver;
+                    yield (TaskTideEngineObserver<T>) this.workItemObserver;
                 }
                 else {
-                    throw new TaskTideEngineCheckedException("WorkItem Observer not configured");
+                    throw new TaskTideEngineUncheckedException("WorkItem Observer not configured");
                 }
             }
             
             case ITEMTASK -> {
                 if ( this.itemTaskObserver != null ) {
-                    return this.workItemObserver;
+                    yield (TaskTideEngineObserver<T>)  this.itemTaskObserver;
                 }
                 else {
-                    throw new TaskTideEngineCheckedException("ItemTask Observer not configured");
+                    throw new TaskTideEngineUncheckedException("ItemTask Observer not configured");
                 }
             }
             
             default -> {
-                throw new TaskTideEngineCheckedException("No valid observer provided");
+                throw new TaskTideEngineUncheckedException("No valid observer provided");
             }
-        }
+        };
     }
         
         
     /**
      * Fetch required {@link TaskTideWorkloadTraverser}
      * 
+     * @param <T> of {@link TaskTideModel}
      * @param type
      * @return {@link TaskTideWorkloadTraverser}
      * 
-     * @throws TaskTideEngineCheckedException 
+     * @throws TaskTideEngineUncheckedException 
      */
-    public TaskTideWorkloadTraverser<?>
+    @SuppressWarnings("unchecked")
+    public <T extends TaskTideModel<T>> TaskTideWorkloadTraverser<T>
         getEngineWorkloadTraverser(WorkerUnitModelType type)
-    throws TaskTideEngineCheckedException {
-        switch ( type ) {
+    throws TaskTideEngineUncheckedException {
+        return switch ( type ) {
         
             case WORKITEM -> {
                 if ( this.workItemTraverser != null ) {
-                    return this.workItemTraverser;
+                    yield (TaskTideWorkloadTraverser<T>) this.workItemTraverser;
                 }
                 else {
-                    throw new TaskTideEngineCheckedException("WorkItem Traverser not configured");
+                    throw new TaskTideEngineUncheckedException("WorkItem Traverser not configured");
                 }
             }
             
             case ITEMTASK -> {
                 if ( this.itemTaskTraverser != null ) {
-                    return this.itemTaskTraverser;
+                    yield (TaskTideWorkloadTraverser<T>) this.itemTaskTraverser;
                 }
                 else {
-                    throw new TaskTideEngineCheckedException("ItemTask Traverser not configured");
+                    throw new TaskTideEngineUncheckedException("ItemTask Traverser not configured");
                 }
             }
             
             default -> {
-                throw new TaskTideEngineCheckedException("No valid tarverser provided");
+                throw new TaskTideEngineUncheckedException("No valid tarverser provided");
             }
-        }
+        };
     }
         
     
@@ -310,14 +316,46 @@ public class WorkerUnitContainer {
      * Fetch configured {@link ProcessExecutor}
      * 
      * @return {@link ProcessExecutor}
-     * @throws TaskTideEngineCheckedException 
+     * @throws TaskTideEngineUncheckedException 
      */
-    public ProcessExecutor getProcessExecutor() throws TaskTideEngineCheckedException {
+    public ProcessExecutor getProcessExecutor() throws TaskTideEngineUncheckedException {
         if ( this.processExecutor != null ) {
             return this.processExecutor;
         }
         else {
-            throw new TaskTideEngineCheckedException("Process Executor not configured");
+            throw new TaskTideEngineUncheckedException("Process Executor not configured");
         }
+    }
+    
+    
+    
+    /**
+     * Fetch required {@link TaskTideExecutor}
+     * 
+     * @param <T> of {@link TaskTideModel}
+     * @param type
+     * @return {@link TaskTideExecutor}
+     * 
+     * @throws TaskTideEngineUncheckedException 
+     */
+    @SuppressWarnings("unchecked")
+    public <T extends TaskTideModel<T>> TaskTideExecutor<T>
+        getEngineExecutor(WorkerUnitModelType type)
+    throws TaskTideEngineUncheckedException {
+        return switch ( type ) {
+            
+            case ITEMTASK -> {
+                if ( this.itemTaskExecutor != null ) {
+                    yield (TaskTideExecutor<T>) this.itemTaskExecutor;
+                }
+                else {
+                    throw new TaskTideEngineUncheckedException("ItemTask Executor not configured");
+                }
+            }
+            
+            default -> {
+                throw new TaskTideEngineUncheckedException("No valid executor provided");
+            }
+        };
     }
 }
