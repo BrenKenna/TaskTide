@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker;
+package org.tasktide.engine.workerunit;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.workitem.WorkItem;

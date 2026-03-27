@@ -20,7 +20,7 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.observer.worker.ObserverType;
 
-import org.tasktide.engine.worker.TaskTideWorkerUnit;
+import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
 
 
 /**

@@ -4,6 +4,8 @@
  */
 package org.tasktide.engine.worker.processor;
 
+import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
+import org.tasktide.engine.deprecated_processor.ItemTaskProcessor;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 import org.apache.logging.log4j.LogManager;
@@ -31,7 +33,7 @@ import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.engine.EngineTestUtils;
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
-import org.tasktide.engine.worker.TaskTideWorkerUnit;
+import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
 import org.testcontainers.containers.GenericContainer;
 
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker.processor;
+package org.tasktide.engine.deprecated_processor;
 
 import jakarta.inject.Inject;
 
@@ -32,8 +32,8 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.supporting.JsonUtils;
 
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.TaskTideWorkerUnit;
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
 import org.tasktide.engine.trackers.TaskTrackers;
 
 

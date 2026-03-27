@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker.executor;
+package org.tasktide.engine.executor;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.io.IOException;
@@ -28,7 +28,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 
-import org.tasktide.engine.worker.TaskTideWorkerUnit;
+import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
  
 
 /**

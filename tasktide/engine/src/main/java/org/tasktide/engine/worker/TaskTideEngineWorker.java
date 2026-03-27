@@ -25,6 +25,13 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
+
+import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.WorkerExecutionPolicy;
+
+import org.tasktide.engine.wokerunit.container.WorkerUnitContainer;
+import org.tasktide.engine.wokerunit.container.WorkerUnitModelType;
 
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.traversers.TraverserCheckedException;
@@ -44,7 +51,7 @@ public class TaskTideEngineWorker {
     private final Logger LOGGER = LogManager.getLogger(TaskTideEngineWorker.class);
     private final WorkerUnitContainer engineComponents;
     private final Random RAND = new Random(); 
-    private final WorkItemAcquisitionPolicy policy;
+    private final TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
 
     
     /**
@@ -52,7 +59,7 @@ public class TaskTideEngineWorker {
      * 
      * @param policy 
      */
-    public TaskTideEngineWorker(WorkItemAcquisitionPolicy policy) {
+    public TaskTideEngineWorker(TaskTideWorkloadAcquisitionPolicy<WorkItem> policy) {
         this.engineComponents = WorkerUnitContainer.getInstance();
         this.policy = policy;
     }
@@ -63,14 +70,44 @@ public class TaskTideEngineWorker {
      * 
      * @return {@link WorkItemAcquisitionPolicy}
      */
-    public WorkItemAcquisitionPolicy getPolicy() {
-        return policy;
+    public TaskTideWorkloadAcquisitionPolicy getPolicy() {
+        return this.policy;
+    }
+    
+    
+    /**
+     * Entry-point method for implementing classes 
+     * 
+     * @param executionPolicy 
+     */
+    public void runEngine(WorkerExecutionPolicy executionPolicy) {
+    
+        switch ( executionPolicy ) {
+        
+            case SERVICE -> {
+                LOGGER.info("Operating in service mode");
+                this.serviceOperation();
+            }
+            
+            case BATCH -> {
+                LOGGER.info("Operating in batch mode");
+                this.fetchAndRun();
+            }
+            
+            default -> {
+                LOGGER.error(
+                    "Invalid Execution Policy detected '{}'. Must be one of:\t'{}'",
+                    executionPolicy,
+                    WorkerExecutionPolicy.valuesString()
+                );
+            }
+        }
     }
     
     
     /**
      * Continuously scans {@link TaskTideRepository} for
-     *  work asyncronously
+     *  work asynchronously
      */
     public void serviceOperation() {
     
@@ -117,7 +154,7 @@ public class TaskTideEngineWorker {
     
     /**
      * Fetch workload from {@link WorkItemAcquisitionPolicy},
-     *  and process asyncronously
+     *  and process asynchronously
      */
     public void fetchAndRun() {
         

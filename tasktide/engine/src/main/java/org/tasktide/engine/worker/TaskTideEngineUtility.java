@@ -18,15 +18,9 @@ package org.tasktide.engine.worker;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.Logger;
-
-import org.tasktide.core.manager.TaskTideManagerUtility;
-
-import org.tasktide.core.manager.TaskTideServiceManager;
-import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -34,9 +28,6 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.trackers.FutureTrackers;
-
-// For JavaDocs
-import org.tasktide.core.model.job_env.JobEnvironment;
 
 
 /**
@@ -46,23 +37,18 @@ import org.tasktide.core.model.job_env.JobEnvironment;
  */
 public class TaskTideEngineUtility {
     
-    // Global var for Job Environment Id
-    public static volatile String JOB_ENV_ID;
-    
-    
     /**
-     * Fetch {@link JobEnvironment} Id for execution context
+     * Wait required number of seconds
      * 
-     * @return String
+     * @param seconds
+     * @return boolean
      */
-    public static synchronized String getJobEnvId() {
-        if ( JOB_ENV_ID == null ) {
-            JOB_ENV_ID = TaskTideManagerUtility.fetchJobEnvironmentId(true);
-        }
-        return JOB_ENV_ID;
+    public static boolean waitSeconds(int seconds) {
+        try {TimeUnit.SECONDS.sleep(seconds); return true;}
+        catch(InterruptedException ex) {return false;}
     }
     
-    
+
     /**
      * Waits via {@link FutureTrackers}
      * 
@@ -133,7 +119,7 @@ public class TaskTideEngineUtility {
      * @param workload
      * @return int
      */
-    public static int countNotActive(List<ItemTask> workload) {
+    public static int countNotActiveItemTask(List<ItemTask> workload) {
         return (int) workload.stream()
             .parallel()
             .filter(
@@ -151,17 +137,33 @@ public class TaskTideEngineUtility {
      * @param tasks
      * @return int
      */
-    public static int countNonActive(List<WorkItem> tasks) {
+    public static int countNotActiveWorkItem(List<WorkItem> tasks) {
         return (int) tasks
             .stream()
             .parallel()
             .mapToInt( elm -> {
                     Collection<ItemTask> itemTasks = elm.getWorkload().getTaskMap().values();
-                    return countNotActive(new ArrayList<>(itemTasks));
+                    return countNotActiveItemTask(new ArrayList<>(itemTasks));
             })
             .sum();
     }
     
+    
+    /**
+     * Fetch execution times across all
+     * 
+     * @param workload
+     * @param logger 
+     */
+    public static void fetchExecutionTimesWorkItem(List<WorkItem> workload, Logger logger) {
+        for ( WorkItem item : workload ) {
+            System.out.println("\n\n========= Analysing WorkItem:\t'" + item.getId() + "'=============\n\n");
+            fetchExecutionTimes(item.fetchByStates().get(ItemState.DONE), logger);
+            fetchExecutionTimes(item.fetchByStates().get(ItemState.ERROR), logger);
+            System.out.println("\n\n========= Done WorkItem:\t'" + item.getId() + "'=============\n\n");
+        }
+    }
+
     
     /**
      * Log execution times on INFO level
@@ -182,87 +184,5 @@ public class TaskTideEngineUtility {
             );
         }
         logger.info("Displaying Execution Times Across ItemTasks:{}", output);
-    }
-    
-    
-    /**
-     * Fetch execution times across all
-     * 
-     * @param workload
-     * @param logger 
-     */
-    public static void fetchExecutionTimesWorkItem(List<WorkItem> workload, Logger logger) {
-        for ( WorkItem item : workload ) {
-            System.out.println("\n\n========= Analysing WorkItem:\t'" + item.getId() + "'=============\n\n");
-            fetchExecutionTimes(item.fetchByStates().get(ItemState.DONE), logger);
-            fetchExecutionTimes(item.fetchByStates().get(ItemState.ERROR), logger);
-            System.out.println("\n\n========= Done WorkItem:\t'" + item.getId() + "'=============\n\n");
-        }
-    }
-    
-    
-    /**
-     * Fetch todo
-     * 
-     * @return List-{@link WorkItem}
-     */
-    public static List<WorkItem> fetchToDoWork() {
-        return TaskTideServiceManager.fetchWorkItemService().viewByField("itemState", ItemState.TODO);
-    }
-    
-    
-    /**
-     * Fetch todo for target step
-     * 
-     * @param stepName
-     * @return List-{@link WorkItem}
-     */
-    public static List<WorkItem> fetchToDoWorkTarget(String stepName) {
-        return TaskTideServiceManager
-            .fetchWorkItemService()
-            .viewByFieldForGroup("itemState", ItemState.TODO, "stepName", stepName);
-    }
-    
-    
-    /**
-     * Fetch todo for target step
-     * 
-     * @param stepName
-     * @param key
-     * @param value
-     * @return List-{@link WorkItem}
-     */
-    public static List<WorkItem> fetchToDoWorkTargetPilotLabel(String stepName, String key, Object value) {
-        return TaskTideServiceManager
-            .fetchWorkItemService()
-            .getRepo()
-        .findByFieldForGroupWithAnno("itemState", ItemState.TODO, "stepName", stepName, key, value);
-    }
-    
-    
-    /**
-     * Fetch todo for target step
-     * 
-     * @param stepName
-     * @param anno
-     * @return List-{@link WorkItem}
-     */
-    public static List<WorkItem> fetchToDoWorkTargetPilotLabel(String stepName, CustomAnnotation anno) {
-        return TaskTideServiceManager
-            .fetchWorkItemService()
-            .getRepo()
-        .findByFieldForGroupWithAnno("itemState", ItemState.TODO, "stepName", stepName, anno);
-    }
-    
-    
-    /**
-     * Wait required number of seconds
-     * 
-     * @param seconds
-     * @return boolean
-     */
-    public static boolean waitSeconds(int seconds) {
-        try {TimeUnit.SECONDS.sleep(seconds); return true;}
-        catch(InterruptedException ex) {return false;}
     }
 }

@@ -13,38 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.wokerunitprovider;
+package org.tasktide.engine.wokerunit.provider;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.task.ItemTask;
 
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
-
-import org.tasktide.engine.worker.processor.WorkItemProcessor;
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
+import org.tasktide.engine.deprecated_processor.ItemTaskProcessor;
 
 
 /**
- * Class to hold the logic for constructing {@link TaskTideProcessor} for {@link WorkItem}
+ * Class to hold the logic for constructing {@link TaskTideProcessor} for {@link ItemTask}
  * 
  * @author bkenna
  */
-public class WorkItemProcessorBuilder {
+public class ItemTaskProcessorBuilder {
     
     // Attributes
     private ExecutorService executorService;
-    private TaskTideExecutor<WorkItem> executor;
+    private TaskTideExecutor<ItemTask> executor;
     
     
     /**
      * Build with provided {@link ExecutorService}
      * 
      * @param executorService
-     * @return {@link WorkItemProcessor} of {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
+     * @return {@link ItemTaskProcessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
      */
-    public WorkItemProcessorBuilder withExecutorService(ExecutorService executorService) {
+    public ItemTaskProcessorBuilder withExecutorService(ExecutorService executorService) {
         this.executorService = executorService;
         return this;
     }
@@ -54,33 +53,33 @@ public class WorkItemProcessorBuilder {
      * Build with new {@link ExecutorService}
      * 
      * @param nThreads
-     * @return {@link WorkItemProcessor} of {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
+     * @return {@link ItemTaskProcessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
      */
-    public WorkItemProcessorBuilder withExecutorService(int nThreads) {
+    public ItemTaskProcessorBuilder withExecutorService(int nThreads) {
         this.executorService = Executors.newFixedThreadPool(nThreads);
         return this;
     }
     
     
     /**
-     * Build with provided {@link TaskTideExecutor} of {@link WorkItem}
+     * Build with provided {@link TaskTideExecutor} of {@link ItemTask}
      * 
      * @param executor
-     * @return {@link WorkItemProcessor} of {@link WorkItemProcessorBuilder} for {@link TaskTideProcessor} of {@link WorkItem}
+     * @return {@link ItemTaskProcessorBuilder} for {@link TaskTideProcessor} of {@link ItemTask}
      */
-    public WorkItemProcessorBuilder withSubExecutor(TaskTideExecutor<WorkItem> executor) {
+    public ItemTaskProcessorBuilder withSubExecutor(TaskTideExecutor<ItemTask> executor) {
         this.executor = executor;
         return this;
     }
     
     
     /**
-     * Build {@link TaskTideProcessor} for {@link WorkItem}
+     * Build {@link TaskTideProcessor} for {@link ItemTask}
      * 
-     * @return {@link TaskTideProcessor} of {@link WorkItem}
+     * @return {@link TaskTideProcessor} of {@link ItemTask}
      */
-    public TaskTideProcessor<WorkItem> build() {
-        return new WorkItemProcessor(
+    public TaskTideProcessor<ItemTask> build() {
+        return new ItemTaskProcessor(
             this.executorService,
             this.executor
         );

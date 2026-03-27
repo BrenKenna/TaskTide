@@ -13,29 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker;
+package org.tasktide.engine.policies;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.tasktide.core.manager.TaskTideServiceManager;
-
+import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.workitem.ItemState;
-import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
- * Build a query to fetch a workload for processing
- * 
+ * Abstract implementation of {@link TaskTideWorkloadAcquisitionPolicy}
+ *  to take the field policy building, and field getter aspects.
+ *  Preserves generic {@link TaskTideModel} type to allow implementing
+ *  class to focus on the specifics of building/fetching the
+ *  required {@link TaskTideModel} collection
+ *
+ * @param <T> of {@link TaskTideModel}
  * @author Bren
  */
-public class WorkItemAcquisitionPolicy {
+public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> implements TaskTideWorkloadAcquisitionPolicy<T> {
     
     // Attributes for which builder
     private boolean targetted, annoString, annotation;
-    
-    
+
     // Field properties
     private String target = "";
     private ItemState state = ItemState.TODO;
@@ -48,9 +47,10 @@ public class WorkItemAcquisitionPolicy {
      * Building an acquisition policy with collection
      * 
      * @param target
-     * @return {@link WorkItemAcquisitionPolicy}
+     * @return {@link  AbstractAcquisitionPolicy}
      */
-    public WorkItemAcquisitionPolicy withTarget(String target) {
+    @Override
+    public AbstractAcquisitionPolicy<T> withTarget(String target) {
         this.target = target;
         this.targetted = true;
         return this;
@@ -62,9 +62,10 @@ public class WorkItemAcquisitionPolicy {
      *  matching state
      * 
      * @param state
-     * @return {@link WorkItemAcquisitionPolicy}
+     * @return {@link  AbstractAcquisitionPolicy}
      */
-    public WorkItemAcquisitionPolicy withItemState(ItemState state) {
+    @Override
+    public  AbstractAcquisitionPolicy<T> withItemState(ItemState state) {
         this.state = state;
         return this;
     }
@@ -76,9 +77,10 @@ public class WorkItemAcquisitionPolicy {
      * 
      * @param key
      * @param val
-     * @return {@link WorkItemAcquisitionPolicy}
+     * @return {@link  AbstractAcquisitionPolicy}
      */
-    public WorkItemAcquisitionPolicy withAnno(String key, Object val) {
+    @Override
+    public  AbstractAcquisitionPolicy<T> withAnno(String key, Object val) {
         this.annoKey = key;
         this.annoVal = val;
         this.annoString = true;
@@ -93,93 +95,97 @@ public class WorkItemAcquisitionPolicy {
      * @param anno
      * @return 
      */
-    public WorkItemAcquisitionPolicy withAnno(CustomAnnotation anno) {
+    @Override
+    public  AbstractAcquisitionPolicy<T> withAnno(CustomAnnotation anno) {
         this.anno = anno;
         this.annotation = true;
         return this;
     }
-
+    
     
     /**
-     * Build {@link WorkItem} from {@link WorkItemAcquisitionPolicy}
+     * Return whether targetted field has been set
      * 
-     * @return List-{@link WorkItem}
+     * @return booleam
      */
-    public List<WorkItem> fetchWorkload() {
-    
-        // Fetch by annotation
-        if ( this.annotation ) {
-            if ( this.targetted ) {
-                return TaskTideServiceManager
-                    .fetchWorkItemService()
-                    .getRepo()
-                .findByFieldForGroupWithAnno(
-                    "itemState", this.state,
-                    "stepName", this.target,
-                    anno
-                );
-            }
-        }
-        
-        // Fetch by annotation string
-        else if ( this.annoString ) {
-            if ( this.targetted ) {
-                return TaskTideServiceManager
-                    .fetchWorkItemService()
-                    .getRepo()
-                .findByFieldForGroupWithAnno(
-                    "itemState", this.state,
-                    "stepName", this.target,
-                    this.annoKey, this.annoVal
-                );
-            }
-        }
-        
-        // Fetch collection
-        else {
-            if ( this.targetted ) {
-                return TaskTideServiceManager
-                    .fetchWorkItemService()
-                .viewByFieldForGroup(
-                    "itemState", this.state,
-                    "stepName", this.target
-                );    
-            }
-        }
-        
-        // Otherwise empty list
-        return new ArrayList<>();
-    }
-    
-    
+    @Override
     public boolean isTargetted() {
         return targetted;
     }
 
-    public boolean isAnnoString() {
+    
+    /**
+     * Return whether annotation string has been set
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean isStringAnnotated() {
         return annoString;
     }
 
-    public boolean isAnnotation() {
+    
+    /**
+     * Return whether the annotation field has been set
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean isCustomAnnotated() {
         return annotation;
     }
 
+    
+    /**
+     * Get target field
+     * 
+     * @return String
+     */
+    @Override
     public String getTarget() {
         return target;
     }
 
+    
+    /**
+     * Get {@link ItemState} field
+     * 
+     * @return {@link ItemState} 
+     */
+    @Override
     public ItemState getState() {
         return state;
     }
 
+    
+    /**
+     * Get annotation key field
+     * 
+     * @return String
+     */
+    @Override
     public String getAnnoKey() {
         return annoKey;
     }
 
+    
+    /**
+     * Get annotation value field
+     * 
+     * @return Object
+     */
+    @Override
     public Object getAnnoVal() {
         return annoVal;
     }
+    
 
+    /**
+     * Get {@link CustomAnnotation} field
+     * 
+     * @return {@link CustomAnnotation}
+     */
+    @Override
     public CustomAnnotation getAnno() {
         return anno;
     }

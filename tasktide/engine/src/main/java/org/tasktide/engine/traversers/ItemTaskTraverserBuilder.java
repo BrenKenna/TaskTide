@@ -18,7 +18,7 @@ package org.tasktide.engine.traversers;
 import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
+import org.tasktide.engine.executor.TaskTideExecutor;
 
 
 /**

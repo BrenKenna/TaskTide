@@ -4,9 +4,7 @@
  */
 package org.tasktide.tasktide.client.config;
 
-import org.tasktide.tasktide.client.config.EngineConfig;
-import org.tasktide.tasktide.client.config.ManagerConfig;
-import org.tasktide.tasktide.client.config.GlobalConfig;
+
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
@@ -36,11 +34,11 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.engine.worker.TaskTideEngineUtility;
 
-import org.tasktide.engine.wokerunitprovider.TaskTideExecutorServiceProvider;
-import org.tasktide.engine.wokerunitprovider.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.wokerunit.provider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.wokerunit.provider.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
 
 import org.tasktide.itemstore.ItemStoreType;
 import org.tasktide.tasktide.client.TaskTideManagerClient;
@@ -158,7 +156,7 @@ public class ConfigureTaskTideTest {
         // Evaluate test status
         boolean assertionState;
         int expected = nWorkItems * nItemTask;
-        int nProcessed = TaskTideEngineUtility.countNonActive(workload);
+        int nProcessed = TaskTideEngineUtility.countNotActiveWorkItem(workload);
         if ( nProcessed == expected ) {
             logger.info("Processed task count '{}', matches expected '{}'", nProcessed, expected);
             assertionState = true;

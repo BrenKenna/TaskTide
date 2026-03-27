@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.tasktide.engine.worker.processor;
+package org.tasktide.engine.deprecated_processor;
 
 import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
@@ -24,8 +24,8 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.wokerunitprovider.TaskTideExecutorServiceProvider;
-import org.tasktide.engine.wokerunitprovider.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.wokerunit.provider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.wokerunit.provider.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.trackers.ExecutorServiceTracker;
 import org.tasktide.engine.trackers.FutureTrackers;
 

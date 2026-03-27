@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutorService;
 
 import org.tasktide.core.TaskTideModel;
 
-import org.tasktide.engine.worker.TaskTideWorkerUnit;
+import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
 
 
 /**

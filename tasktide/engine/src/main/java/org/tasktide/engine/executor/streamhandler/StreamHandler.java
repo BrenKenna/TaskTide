@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker.executor.streamhandler;
+package org.tasktide.engine.executor.streamhandler;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -27,7 +27,7 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 // For JavaDocs
-import org.tasktide.engine.worker.executor.ProcessExecutor;
+import org.tasktide.engine.executor.ProcessExecutor;
 
 
 /**

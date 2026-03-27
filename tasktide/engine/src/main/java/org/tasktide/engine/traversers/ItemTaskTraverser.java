@@ -33,8 +33,8 @@ import org.tasktide.engine.observer.chain.ItemTaskObserver;
 import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.trackers.TrackerWaiter;
-import org.tasktide.engine.worker.executor.ItemTaskExecutor;
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
+import org.tasktide.engine.executor.ItemTaskExecutor;
+import org.tasktide.engine.executor.TaskTideExecutor;
 
 
 /**

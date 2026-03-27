@@ -4,6 +4,8 @@
  */
 package org.tasktide.engine.worker.executor;
 
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.executor.WorkItemExecutor;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 import org.apache.logging.log4j.LogManager;

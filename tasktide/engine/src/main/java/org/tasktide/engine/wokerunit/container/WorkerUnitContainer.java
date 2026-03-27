@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker;
+package org.tasktide.engine.wokerunit.container;
 
 import java.util.concurrent.ExecutorService;
 import org.tasktide.core.TaskTideModel;
@@ -22,15 +22,15 @@ import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.wokerunitprovider.TaskTideWorkerUnitProvider;
-import org.tasktide.engine.wokerunitprovider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.wokerunit.provider.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.wokerunit.provider.TaskTideExecutorServiceProvider;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
-import org.tasktide.engine.worker.executor.ProcessExecutor;
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
+import org.tasktide.engine.executor.ProcessExecutor;
+import org.tasktide.engine.executor.TaskTideExecutor;
 
 
 /**

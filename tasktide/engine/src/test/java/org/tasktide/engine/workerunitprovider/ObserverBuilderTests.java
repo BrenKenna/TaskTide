@@ -6,8 +6,8 @@ package org.tasktide.engine.workerunitprovider;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
-import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
-import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
+import org.tasktide.engine.wokerunit.provider.WorkItemObserverBuilder;
+import org.tasktide.engine.wokerunit.provider.ItemTaskObserverBuilder;
 
 import java.util.List;
 import java.util.ArrayList;

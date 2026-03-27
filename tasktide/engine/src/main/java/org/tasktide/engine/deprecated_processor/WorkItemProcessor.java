@@ -13,22 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker.processor;
+package org.tasktide.engine.deprecated_processor;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import java.util.concurrent.ExecutorService;
 
 import org.apache.logging.log4j.LogManager;
 
-
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 
-import org.tasktide.engine.worker.executor.ItemTaskExecutor;
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
+import org.tasktide.engine.executor.WorkItemExecutor;
+import org.tasktide.engine.executor.TaskTideExecutor;
 
 
 /**
@@ -36,22 +36,20 @@ import org.tasktide.engine.worker.executor.TaskTideExecutor;
  * 
  * @author bkenna
  */
-public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
-
+public class WorkItemProcessor extends TaskTideProcessor<WorkItem> {
+    
     // Attributes
-    private final ItemTaskExecutor worker;
+    private final WorkItemExecutor worker;
     
     
     /**
      * Construct with workload
      * 
-     * @param executorService
+     * @param executorService 
      */
-    public ItemTaskProcessor(
-        ExecutorService executorService
-    ) {
-        super(executorService, LogManager.getLogger(ItemTaskProcessor.class), ProcessorType.ITEM_TASK);
-        this.worker = new ItemTaskExecutor();
+    public WorkItemProcessor(ExecutorService executorService) {
+        super(executorService, LogManager.getLogger(WorkItemProcessor.class), ProcessorType.WORKITEM);
+        this.worker = new WorkItemExecutor();
     }
     
     
@@ -61,36 +59,36 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
      * @param executorService
      * @param executor 
      */
-    public ItemTaskProcessor(
+    public WorkItemProcessor(
         ExecutorService executorService,
-        TaskTideExecutor<ItemTask> executor
+        TaskTideExecutor<WorkItem> executor
     ) {
-        super(executorService, LogManager.getLogger(ItemTaskProcessor.class), ProcessorType.ITEM_TASK);
-        this.worker = (ItemTaskExecutor) executor;
+        super(executorService, LogManager.getLogger(WorkItemProcessor.class), ProcessorType.WORKITEM);
+        this.worker = (WorkItemExecutor) executor;
     }
-
     
+
     /**
      * Create a new sub processor from self
      * 
-     * @return {@link TaskTideProcessor}-{@link ItemTask}
+     * @return {@link TaskTideProcessor}-{@link WorkItem}
      */
     @Override
-    protected TaskTideProcessor<ItemTask> newSubProcessor() {
-        return new ItemTaskProcessor(executorService);
+    protected TaskTideProcessor<WorkItem> newSubProcessor() {
+        return new WorkItemProcessor(this.executorService);
     }
 
     
     /**
-     * Provide {@link ItemTask} worker
+     * Fetch {@link WorkItemExecutor}
      * 
-     * @return {@link TaskTideExecutor}-{@link ItemTask}
+     * @return {@link TaskTideExecutor}-{@link WorkItem}
      */
     @Override
-    protected TaskTideExecutor<ItemTask> getExecutor() {
+    protected TaskTideExecutor<WorkItem> getExecutor() {
         return this.worker;
     }
-    
+
     
     /**
      * Add workload to the {@link FutureTrackers}
@@ -99,21 +97,21 @@ public class ItemTaskProcessor extends TaskTideProcessor<ItemTask> {
      * @param future 
      */
     @Override
-    protected void addTasksToTracker(List<ItemTask> subList, Future future) {
-        for ( ItemTask task : subList ) {
-            ExecutorServiceItem<ItemTask> item = new ExecutorServiceItem<>(task, future);
-            FutureTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), item);
+    protected void addTasksToTracker(List<WorkItem> subList, Future future) {
+        for ( WorkItem task : subList ) {
+            ExecutorServiceItem<WorkItem> item = new ExecutorServiceItem<>(task, future);
+            FutureTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), item);
         }
     }
     
     
     /**
-     * Fetch records in ItemTask Future tracker
+     * Fetch records in tracker
      * 
      * @return int
      */
     @Override
     protected int fetchTrackerTaskCount() {
-        return FutureTrackers.ITEM_TASK_TRACKER.taskCount();
+        return FutureTrackers.WORK_ITEM_TRACKER.taskCount();
     }
 }

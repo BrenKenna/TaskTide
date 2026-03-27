@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 Brendan Kenna.
+ * Copyright 2026 Bren.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,54 +13,96 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package org.tasktide.tasktide.client;
+package org.tasktide.engine.workerunit;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
 
 /**
- * Enum of valid execution policies of the {@link TaskTideEngineClient}
+ * Class to support operations over valid {@link TaskTideWorkerUnit}
  *
- * @author Brendan Kenna
+ * @author Bren
  */
-public enum EngineExecutionPolicy {
+public enum TaskTideWorkerUnitType {
 
-    BATCH {
+    OBSERVER {
         @Override
         public String toString() {
             return name();
         }
 
         @Override
-        public boolean isEngineMode(String query) {
+        public boolean isWorkerUnitType(String query) {
             return name().equalsIgnoreCase(query);
         }
 
         @Override
-        public boolean isEngineMode(EngineExecutionPolicy query) {
+        public boolean isWorkerUnitType(TaskTideWorkerUnitType query) {
             return this == query;
         }
     },
 
-    SERVICE {
+    TRACKER {
         @Override
         public String toString() {
             return name();
         }
 
         @Override
-        public boolean isEngineMode(String query) {
+        public boolean isWorkerUnitType(String query) {
             return name().equalsIgnoreCase(query);
         }
 
         @Override
-        public boolean isEngineMode(EngineExecutionPolicy query) {
+        public boolean isWorkerUnitType(TaskTideWorkerUnitType query) {
+            return this == query;
+        }
+    },
+    
+    TRAVERSER {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isWorkerUnitType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isWorkerUnitType(TaskTideWorkerUnitType query) {
+            return this == query;
+        }
+    },
+    
+    EXECUTOR {
+        @Override
+        public String toString() {
+            return name();
+        }
+
+        @Override
+        public boolean isWorkerUnitType(String query) {
+            return name().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isWorkerUnitType(TaskTideWorkerUnitType query) {
             return this == query;
         }
     };
 
+    
+    /**
+     * Abstract method check if query is enum value
+     *
+     * @param query
+     * @return boolean
+     */
+    public abstract boolean isWorkerUnitType(String query);
+
 
     /**
      * Abstract method check if query is enum value
@@ -68,16 +110,7 @@ public enum EngineExecutionPolicy {
      * @param query
      * @return boolean
      */
-    public abstract boolean isEngineMode(String query);
-
-
-    /**
-     * Abstract method check if query is enum value
-     *
-     * @param query
-     * @return boolean
-     */
-    public abstract boolean isEngineMode(EngineExecutionPolicy query);
+    public abstract boolean isWorkerUnitType(TaskTideWorkerUnitType query);
 
 
     /**
@@ -87,15 +120,15 @@ public enum EngineExecutionPolicy {
      * @return >0/-1
      */
     public static int indexOf(String query) {
-        for ( EngineExecutionPolicy elm : values() ) {
-            if ( elm.isEngineMode(query) ) {
+        for (TaskTideWorkerUnitType elm : values()) {
+            if (elm.isWorkerUnitType(query)) {
                 return elm.ordinal();
             }
         }
         return -1;
     }
 
-
+    
     /**
      * Check if query maps to enum value
      *
@@ -103,34 +136,34 @@ public enum EngineExecutionPolicy {
      * @return boolean
      */
     public static boolean hasQuery(String query) {
-        if ( query == null ) {
+        if (query == null) {
             return false;
         }
 
-        for ( EngineExecutionPolicy elm : values() ) {
-            if ( elm.isEngineMode(query) ) {
+        for (TaskTideWorkerUnitType elm : values()) {
+            if (elm.isWorkerUnitType(query)) {
                 return true;
             }
         }
         return false;
     }
-    
 
+    
     /**
      * Map query to enum value
      *
      * @param query
-     * @return EngineMode
+     * @return TaskTideWorkerUnitType
      */
-    public static EngineExecutionPolicy get(String query) {
+    public static TaskTideWorkerUnitType get(String query) {
         int ind = indexOf(query);
-        if ( ind >= 0 ) {
+        if (ind >= 0) {
             return values()[ind];
         }
         return null;
     }
 
-
+    
     /**
      * Represent enum as string
      *
@@ -138,7 +171,7 @@ public enum EngineExecutionPolicy {
      */
     public static String valuesString() {
         return Arrays.stream(values())
-            .map( elm -> elm.name() )
+            .map(elm -> elm.name())
         .collect(Collectors.joining(","));
     }
 }

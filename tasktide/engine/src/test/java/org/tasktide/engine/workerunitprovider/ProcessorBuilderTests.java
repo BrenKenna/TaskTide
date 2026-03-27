@@ -37,25 +37,23 @@ import org.tasktide.core.repository.RepositoryType;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
 
-import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
-import org.tasktide.engine.wokerunitprovider.WorkItemExecutorBuilder;
-
-import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
-import org.tasktide.engine.wokerunitprovider.ItemTaskExecutorBuilder;
-
-import org.tasktide.engine.wokerunitprovider.WorkItemProcessorBuilder;
-import org.tasktide.engine.wokerunitprovider.ItemTaskProcessorBuilder;
+import org.tasktide.engine.wokerunit.provider.WorkItemObserverBuilder;
+import org.tasktide.engine.wokerunit.provider.WorkItemExecutorBuilder;
+import org.tasktide.engine.wokerunit.provider.ItemTaskObserverBuilder;
+import org.tasktide.engine.wokerunit.provider.ItemTaskExecutorBuilder;
+import org.tasktide.engine.wokerunit.provider.WorkItemProcessorBuilder;
+import org.tasktide.engine.wokerunit.provider.ItemTaskProcessorBuilder;
 
 import org.tasktide.engine.EngineTestUtils;
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.trackers.TaskTracker;
 import org.tasktide.engine.trackers.TaskTrackers;
-import org.tasktide.engine.worker.processor.ItemTaskProcessor;
-import org.tasktide.engine.worker.processor.WorkItemProcessor;
+import org.tasktide.engine.deprecated_processor.ItemTaskProcessor;
+import org.tasktide.engine.deprecated_processor.WorkItemProcessor;
 
 
 /**

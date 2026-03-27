@@ -4,8 +4,8 @@
  */
 package org.tasktide.engine;
 
-import org.tasktide.engine.wokerunitprovider.TaskTideExecutorServiceProvider;
-import org.tasktide.engine.wokerunitprovider.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.wokerunit.provider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.wokerunit.provider.TaskTideWorkerUnitProvider;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
@@ -31,8 +31,8 @@ import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.trackers.TaskTrackers;
 
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
 
 
 

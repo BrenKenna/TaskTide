@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker.executor;
+package org.tasktide.engine.executor;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -33,7 +33,7 @@ import org.tasktide.core.model.task.TaskLogging;
 
 import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.supporting.DateUtility;
-import org.tasktide.engine.worker.executor.streamhandler.StreamHandler;
+import org.tasktide.engine.executor.streamhandler.StreamHandler;
 
 
 /**

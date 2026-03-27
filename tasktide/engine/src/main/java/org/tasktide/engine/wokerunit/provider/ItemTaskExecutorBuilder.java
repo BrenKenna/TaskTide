@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.wokerunitprovider;
+package org.tasktide.engine.wokerunit.provider;
 
 import java.util.List;
 
@@ -22,8 +22,8 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.observer.chain.ItemTaskObserver;
 
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.executor.ItemTaskExecutor;
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.executor.ItemTaskExecutor;
 
 
 

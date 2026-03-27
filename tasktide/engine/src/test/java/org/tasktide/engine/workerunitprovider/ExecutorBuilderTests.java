@@ -36,18 +36,18 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.supporting.JsonUtils;
 
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
+import org.tasktide.engine.executor.TaskTideExecutor;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.trackers.TaskTracker;
 import org.tasktide.engine.trackers.TaskTrackers;
 
-import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
-import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
-import org.tasktide.engine.worker.executor.ItemTaskExecutor;
-import org.tasktide.engine.worker.executor.WorkItemExecutor;
+import org.tasktide.engine.wokerunit.provider.ItemTaskObserverBuilder;
+import org.tasktide.engine.wokerunit.provider.WorkItemObserverBuilder;
+import org.tasktide.engine.executor.ItemTaskExecutor;
+import org.tasktide.engine.executor.WorkItemExecutor;
 
-import org.tasktide.engine.wokerunitprovider.WorkItemExecutorBuilder;
-import org.tasktide.engine.wokerunitprovider.ItemTaskExecutorBuilder;
+import org.tasktide.engine.wokerunit.provider.WorkItemExecutorBuilder;
+import org.tasktide.engine.wokerunit.provider.ItemTaskExecutorBuilder;
 
 
 /**

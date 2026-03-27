@@ -4,6 +4,7 @@
  */
 package org.tasktide.engine.worker.executor;
 
+import org.tasktide.engine.executor.ItemTaskExecutor;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 import java.io.IOException;
