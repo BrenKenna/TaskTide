@@ -4,6 +4,8 @@
  */
 package org.tasktide.engine;
 
+import org.tasktide.engine.wokerunitprovider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.wokerunitprovider.TaskTideWorkerUnitProvider;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 

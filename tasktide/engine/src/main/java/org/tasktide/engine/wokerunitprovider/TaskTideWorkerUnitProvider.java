@@ -13,22 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine;
+package org.tasktide.engine.wokerunitprovider;
 
-import org.tasktide.engine.wokerunitprovider.ItemTaskExecutorBuilder;
-import org.tasktide.engine.wokerunitprovider.ItemTaskObserverBuilder;
-import org.tasktide.engine.wokerunitprovider.ItemTaskProcessorBuilder;
+import org.tasktide.engine.traversers.ItemTaskTraverserBuilder;
 
-import org.tasktide.engine.wokerunitprovider.WorkItemExecutorBuilder;
-import org.tasktide.engine.wokerunitprovider.WorkItemObserverBuilder;
-import org.tasktide.engine.wokerunitprovider.WorkItemProcessorBuilder;
+import org.tasktide.engine.traversers.WorkItemTraverserBuilder;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
+import org.tasktide.engine.observer.TaskTideEngineObserver;
+import org.tasktide.engine.worker.executor.TaskTideExecutor;
+import org.tasktide.engine.worker.processor.TaskTideProcessor;
 
 
 /**
@@ -42,11 +38,14 @@ public class TaskTideWorkerUnitProvider {
     private final WorkItemObserverBuilder workItemObsBuilder;
     private final WorkItemProcessorBuilder workItemProcBuilder;
     private final WorkItemExecutorBuilder workItemExecBuilder;
+    private final WorkItemTraverserBuilder workItemTravBuilder;
+    
     
     // ItemTask builder attributes
     private final ItemTaskObserverBuilder itemTaskObsBuilder;
     private final ItemTaskProcessorBuilder itemTaskProcBuilder;
     private final ItemTaskExecutorBuilder itemTaskExecBuilder;
+    private final ItemTaskTraverserBuilder itemTaskTravBuilder;
     
     
     /**
@@ -58,11 +57,13 @@ public class TaskTideWorkerUnitProvider {
         this.workItemObsBuilder = new WorkItemObserverBuilder();
         this.workItemProcBuilder = new WorkItemProcessorBuilder();
         this.workItemExecBuilder = new WorkItemExecutorBuilder();
+        this.workItemTravBuilder = new WorkItemTraverserBuilder();
         
         // Set ItemTask builders
         this.itemTaskObsBuilder = new ItemTaskObserverBuilder();
         this.itemTaskProcBuilder = new ItemTaskProcessorBuilder();
         this.itemTaskExecBuilder = new ItemTaskExecutorBuilder();
+        this.itemTaskTravBuilder = new ItemTaskTraverserBuilder();
     }
 
     
@@ -72,7 +73,7 @@ public class TaskTideWorkerUnitProvider {
      * @return {@link WorkItemObserverBuilder}
      */
     public WorkItemObserverBuilder getWorkItemObsBuilder() {
-        return workItemObsBuilder;
+        return this.workItemObsBuilder;
     }
 
     
@@ -82,7 +83,7 @@ public class TaskTideWorkerUnitProvider {
      * @return {@link WorkItemProcessorBuilder}
      */
     public WorkItemProcessorBuilder getWorkItemProcBuilder() {
-        return workItemProcBuilder;
+        return this.workItemProcBuilder;
     }
 
     
@@ -92,7 +93,17 @@ public class TaskTideWorkerUnitProvider {
      * @return {@link WorkItemExecutorBuilder}
      */
     public WorkItemExecutorBuilder getWorkItemExecBuilder() {
-        return workItemExecBuilder;
+        return this.workItemExecBuilder;
+    }
+    
+    
+    /**
+     * Get {@link WorkItemTraverserBuilder} for {@link WorkItem}
+     * 
+     * @return {@link WorkItemTraverserBuilder}
+     */
+    public WorkItemTraverserBuilder getWorkItemTravBuilder() {
+        return this.workItemTravBuilder;
     }
 
     
@@ -102,7 +113,7 @@ public class TaskTideWorkerUnitProvider {
      * @return {@link ItemTaskObserverBuilder}
      */
     public ItemTaskObserverBuilder getItemTaskObsBuilder() {
-        return itemTaskObsBuilder;
+        return this.itemTaskObsBuilder;
     }
 
     
@@ -112,16 +123,26 @@ public class TaskTideWorkerUnitProvider {
      * @return {@link ItemTaskProcessorBuilder}
      */
     public ItemTaskProcessorBuilder getItemTaskProcBuilder() {
-        return itemTaskProcBuilder;
+        return this.itemTaskProcBuilder;
     }
 
     
     /**
      * Get builder for {@link TaskTideExecutor} for {@link ItemTask}
      * 
-     * @return {@link ItemTaskExecutorBuilder}
+     * @return this.{@link ItemTaskExecutorBuilder}
      */
     public ItemTaskExecutorBuilder getItemTaskExecBuilder() {
-        return itemTaskExecBuilder;
+        return this.itemTaskExecBuilder;
+    }
+    
+    
+    /**
+     * Get {@link ItemTaskTraverserBuilder} for {@link ItemTask}
+     * 
+     * @return {@link ItemTaskTraverserBuilder}
+     */
+    public ItemTaskTraverserBuilder getItemTaskTravBuilder() {
+        return this.itemTaskTravBuilder;
     }
 }

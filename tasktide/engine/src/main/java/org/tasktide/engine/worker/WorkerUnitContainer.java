@@ -17,19 +17,18 @@ package org.tasktide.engine.worker;
 
 import java.util.concurrent.ExecutorService;
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.manager.TaskTideManagerUtility;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.TaskTideWorkerUnitProvider;
-import org.tasktide.engine.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.wokerunitprovider.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.wokerunitprovider.TaskTideExecutorServiceProvider;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
-import org.tasktide.engine.traversers.ItemTaskTraverser;
-import org.tasktide.engine.traversers.WorkItemTraverser;
 import org.tasktide.engine.worker.executor.ProcessExecutor;
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
 
@@ -60,6 +59,10 @@ public class WorkerUnitContainer {
     // Executors
     private TaskTideExecutor<ItemTask> itemTaskExecutor;
     private ProcessExecutor processExecutor;
+    
+    
+    // Job environment Id
+    private String JOB_ENV_ID;
     
     
     /**
@@ -165,7 +168,9 @@ public class WorkerUnitContainer {
         
             case ITEMTASK -> {
                 if ( this.itemTaskTraverser == null ) {
-                    this.itemTaskTraverser = new ItemTaskTraverser();
+                    this.itemTaskTraverser = this.unitProvider
+                        .getItemTaskTravBuilder()
+                        .build();
                 }
                 else {
                     throw new TaskTideEngineCheckedException("ItemTask Traverser already configured");
@@ -174,7 +179,9 @@ public class WorkerUnitContainer {
             
             case WORKITEM -> {
                 if ( this.workItemTraverser == null ) {
-                    this.workItemTraverser = new WorkItemTraverser();
+                    this.workItemTraverser = this.unitProvider
+                        .getWorkItemTravBuilder()
+                        .build();
                 }
                 else {
                     throw new TaskTideEngineCheckedException("WorkItem Traverser already configured");
@@ -357,5 +364,50 @@ public class WorkerUnitContainer {
                 throw new TaskTideEngineUncheckedException("No valid executor provided");
             }
         };
+    }
+        
+    
+    /**
+     * Fetch job environment Id through {@link TaskTideManagerUtility}
+     * 
+     * @return String
+     */
+    public String getJobEnvId() {
+        if ( this.JOB_ENV_ID == null ) {
+            this.JOB_ENV_ID = TaskTideManagerUtility.fetchJobEnvironmentId(true);
+        }
+        return this.JOB_ENV_ID;
+    }
+    
+    
+    /**
+     * Fetch {@link ExecutorService} thread pool for asyncronous processing
+     * 
+     * @param type
+     * @return {@link ExecutorService}
+     * 
+     * @throws TaskTideEngineUncheckedException 
+     */
+    public ExecutorService getThreadPool(WorkerUnitModelType type)
+        throws TaskTideEngineUncheckedException
+    {
+        if ( !this.executorServiceConfigured ) {
+            throw new TaskTideEngineUncheckedException("ExecutorService not configured");
+        }
+        
+        switch ( type ) {
+        
+            case WORKITEM -> {
+                return TaskTideExecutorServiceProvider.getInstance().getWorkItemExecutorService();
+            }
+            
+            case ITEMTASK -> {
+                return TaskTideExecutorServiceProvider.getInstance().getItemTaskExecutorService();
+            }
+            
+            default -> {
+                throw new TaskTideEngineUncheckedException("No valid executor service provided");
+            }
+        }
     }
 }

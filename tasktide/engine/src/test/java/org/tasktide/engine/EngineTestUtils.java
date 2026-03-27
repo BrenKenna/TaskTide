@@ -4,6 +4,7 @@
  */
 package org.tasktide.engine;
 
+import org.tasktide.engine.wokerunitprovider.TaskTideExecutorServiceProvider;
 import java.util.ArrayList;
 import java.util.Collection;
 

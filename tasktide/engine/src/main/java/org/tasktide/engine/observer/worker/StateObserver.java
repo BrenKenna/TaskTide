@@ -21,7 +21,7 @@ import org.tasktide.core.TaskTideService;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.TaskTideEngineUtility;
+import org.tasktide.engine.worker.TaskTideEngineUtility;
 import org.tasktide.engine.observer.WorkerObserver;
 import org.tasktide.engine.trackers.TaskTrackers;
 

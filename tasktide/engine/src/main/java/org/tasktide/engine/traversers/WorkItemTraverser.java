@@ -64,6 +64,32 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
     private final TaskTideEngineObserver<WorkItem> observer;
     private final TaskTideWorkloadTraverser<ItemTask> itemTaskTraverser;
     private final WorkerUnitContainer workerUnits;
+
+    
+    /**
+     * Construct with default {@link TaskTideEngineObserver}. 
+     * Throws TaskTideEngineUncheckedException
+     */
+    WorkItemTraverser() {
+        this.workerUnits        = WorkerUnitContainer.getInstance();
+        this.observer           = this.workerUnits.getEngineObserverChain(WorkerUnitModelType.WORKITEM);
+        this.itemTaskExecutor   = this.workerUnits.getEngineExecutor(WorkerUnitModelType.ITEMTASK);
+        this.itemTaskTraverser  = this.workerUnits.getEngineWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
+    }
+    
+    
+    /**
+     * 
+     * @param obs
+     * @param iTT
+     * @param exec 
+     */
+    WorkItemTraverser(TaskTideEngineObserver<WorkItem> obs, TaskTideWorkloadTraverser<ItemTask> iTT, TaskTideExecutor<ItemTask> exec) {
+        this.workerUnits = WorkerUnitContainer.getInstance();
+        this.observer = obs;
+        this.itemTaskTraverser = iTT;
+        this.itemTaskExecutor = exec;
+    }
     
     
     /**
@@ -72,7 +98,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
      * @param observer 
      * @param itemTaskTraverser 
      */
-    public WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer, ItemTaskTraverser itemTaskTraverser) {
+    WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer, ItemTaskTraverser itemTaskTraverser) {
         this.workerUnits = WorkerUnitContainer.getInstance();
         this.observer = observer;
         this.itemTaskExecutor = this.workerUnits.getEngineExecutor(WorkerUnitModelType.ITEMTASK);
@@ -85,25 +111,13 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
      * 
      * @param observer 
      */
-    public WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer) {
+    WorkItemTraverser(TaskTideEngineObserver<WorkItem> observer) {
         this.observer = observer;
         this.workerUnits = WorkerUnitContainer.getInstance();
         this.itemTaskExecutor = this.workerUnits.getEngineExecutor(WorkerUnitModelType.ITEMTASK);
         this.itemTaskTraverser = this.workerUnits.getEngineWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
     }
-    
-    
-    /**
-     * Construct with default {@link TaskTideEngineObserver}. 
-     * Throws TaskTideEngineUncheckedException
-     */
-    public WorkItemTraverser() {
-        this.workerUnits        = WorkerUnitContainer.getInstance();
-        this.observer           = this.workerUnits.getEngineObserverChain(WorkerUnitModelType.WORKITEM);
-        this.itemTaskExecutor   = this.workerUnits.getEngineExecutor(WorkerUnitModelType.ITEMTASK);
-        this.itemTaskTraverser  = this.workerUnits.getEngineWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
-    }
-    
+
     
     /**
      * Traverses provided workload processing elements passing validation

@@ -34,6 +34,7 @@ import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.trackers.TrackerWaiter;
 import org.tasktide.engine.worker.executor.ItemTaskExecutor;
+import org.tasktide.engine.worker.executor.TaskTideExecutor;
 
 
 /**
@@ -56,7 +57,7 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
      * Constructs with default {@link ItemTaskObserver}
      * 
      */
-    public ItemTaskTraverser() {
+    ItemTaskTraverser() {
         this.observer = new ItemTaskObserver();
         this.executor = new ItemTaskExecutor();
     }
@@ -67,11 +68,22 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
      * 
      * @param observer 
      */
-    public ItemTaskTraverser(TaskTideEngineObserver<ItemTask> observer) {
+    ItemTaskTraverser(TaskTideEngineObserver<ItemTask> observer) {
         this.observer = observer;
         this.executor = new ItemTaskExecutor();
     }
 
+    
+    /**
+     * Construct with {@link TaskTideEngineObserver} and {@link TaskTideExecutor}
+     * 
+     * @param observer 
+     */
+    ItemTaskTraverser(TaskTideEngineObserver<ItemTask> observer, TaskTideExecutor<ItemTask> itemTaskExec) {
+        this.observer = observer;
+        this.executor = (ItemTaskExecutor) itemTaskExec;
+    }
+    
 
     /**
      * Process {@link ItemTask}

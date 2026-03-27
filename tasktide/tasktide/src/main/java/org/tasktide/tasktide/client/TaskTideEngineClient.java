@@ -32,10 +32,10 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.supporting.JsonUtils;
 
-import org.tasktide.engine.TaskTideEngineUtility;
+import org.tasktide.engine.worker.TaskTideEngineUtility;
 
-import org.tasktide.engine.TaskTideExecutorServiceProvider;
-import org.tasktide.engine.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.wokerunitprovider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.wokerunitprovider.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 
 import org.tasktide.engine.worker.executor.TaskTideExecutor;
