@@ -137,7 +137,7 @@ public class TaskTideEngineClient extends TaskTideClient {
     
         // Initialize acquisition policy
         LOGGER.info("Configuring TaskTide-Engine Workload Acqusition Policy");
-        TaskTideWorkloadAcquisitionPolicy<WorkItem> policy = new WorkItemAcquisitionPolicy();
+        TaskTideWorkloadAcquisitionPolicy<WorkItem> policy = WorkItemAcquisitionPolicy.newInstance();
         
         // Apply step
         policy = policy.withTarget(this.step);

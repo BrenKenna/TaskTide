@@ -32,6 +32,16 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
     
     
     /**
+     * Static initializer for {@link WorkItemAcquisitionPolicy}
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy} of {@link WorkItem}
+     */
+    public static TaskTideWorkloadAcquisitionPolicy<WorkItem> newInstance() {
+        return new WorkItemAcquisitionPolicy();
+    }
+    
+    
+    /**
      * Build {@link WorkItem} from {@link WorkItemAcquisitionPolicy}
      * 
      * @return List-{@link WorkItem}
