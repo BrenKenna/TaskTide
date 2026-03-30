@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide.engine.workerunitprovider;
+package org.tasktide.engine.workerunit.provider;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
-import org.tasktide.engine.wokerunit.provider.WorkItemObserverBuilder;
-import org.tasktide.engine.wokerunit.provider.ItemTaskObserverBuilder;
+import org.tasktide.engine.workerunit.provider.WorkItemObserverBuilder;
+import org.tasktide.engine.workerunit.provider.ItemTaskObserverBuilder;
 
 import java.util.List;
 import java.util.ArrayList;

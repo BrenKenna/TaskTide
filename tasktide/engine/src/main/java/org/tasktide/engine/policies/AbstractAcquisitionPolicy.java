@@ -19,6 +19,8 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.workitem.ItemState;
 
+import org.tasktide.engine.policies.resources.ResourcePolicyMapper;
+
 
 /**
  * Abstract implementation of {@link TaskTideWorkloadAcquisitionPolicy}
@@ -34,6 +36,7 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
     
     // Attributes for which builder
     private boolean targetted, annoString, annotation;
+    protected Class<T> classRef;
 
     // Field properties
     private String target = "";
@@ -65,7 +68,7 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      * @return {@link  AbstractAcquisitionPolicy}
      */
     @Override
-    public  AbstractAcquisitionPolicy<T> withItemState(ItemState state) {
+    public AbstractAcquisitionPolicy<T> withItemState(ItemState state) {
         this.state = state;
         return this;
     }
@@ -80,7 +83,7 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      * @return {@link  AbstractAcquisitionPolicy}
      */
     @Override
-    public  AbstractAcquisitionPolicy<T> withAnno(String key, Object val) {
+    public AbstractAcquisitionPolicy<T> withAnno(String key, Object val) {
         this.annoKey = key;
         this.annoVal = val;
         this.annoString = true;
@@ -100,6 +103,32 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
         this.anno = anno;
         this.annotation = true;
         return this;
+    }
+    
+    
+    /**
+     * Represent as JSON String
+     * 
+     * @return String
+     */
+    @Override
+    public String toJsonString() {
+        return ResourcePolicyMapper
+            .toJsonResource(this)
+        .toJson();
+    }
+    
+    
+    /**
+     * Represent as JSON document
+     * 
+     * @return String
+     */
+    @Override
+    public String toJsonDoc() {
+        return ResourcePolicyMapper
+            .toJsonResource(this)
+        .toJsonDoc();
     }
     
     
@@ -188,5 +217,15 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
     @Override
     public CustomAnnotation getAnno() {
         return anno;
+    }
+    
+    
+    /**
+     * Get class reference
+     * 
+     * @return Class-T
+     */
+    public Class<T> getClassRef() {
+        return this.classRef;
     }
 }

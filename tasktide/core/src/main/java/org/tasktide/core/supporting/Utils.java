@@ -78,6 +78,16 @@ public class Utils {
     
     
     /**
+     * Fetch random UUID
+     * 
+     * @return String
+     */
+    public static String getRandomUUID() {
+        return UUID.randomUUID().toString();
+    }
+    
+    
+    /**
      * Convert input string to hexidecimal
      * 
      * @param input

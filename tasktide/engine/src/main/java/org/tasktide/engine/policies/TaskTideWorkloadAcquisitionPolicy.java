@@ -82,6 +82,22 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
     
     
     /**
+     * Represent as JSON string
+     * 
+     * @return String
+     */
+    public String toJsonString();
+    
+    
+    /**
+     * Represent as JSON document
+     * 
+     * @return String
+     */
+    public String toJsonDoc();
+    
+    
+    /**
      * Return whether targetted field has been set
      * 
      * @return booleam

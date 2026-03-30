@@ -25,16 +25,16 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
 
-import org.tasktide.engine.wokerunit.container.WorkerUnitContainer;
-import org.tasktide.engine.wokerunit.container.WorkerUnitModelType;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
+import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.traversers.TraverserCheckedException;
+import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 
 /**

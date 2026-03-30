@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide.engine.worker.executor;
+package org.tasktide.engine.executor;
 
 import org.tasktide.engine.executor.ItemTaskExecutor;
 import jakarta.enterprise.inject.se.SeContainer;

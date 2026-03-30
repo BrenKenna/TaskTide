@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-package org.tasktide.engine.workerunitprovider;
+package org.tasktide.engine.workerunit.provider;
 
 import jakarta.enterprise.inject.se.SeContainer;
 
@@ -40,12 +40,12 @@ import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.executor.TaskTideExecutor;
 import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
 
-import org.tasktide.engine.wokerunit.provider.WorkItemObserverBuilder;
-import org.tasktide.engine.wokerunit.provider.WorkItemExecutorBuilder;
-import org.tasktide.engine.wokerunit.provider.ItemTaskObserverBuilder;
-import org.tasktide.engine.wokerunit.provider.ItemTaskExecutorBuilder;
-import org.tasktide.engine.wokerunit.provider.WorkItemProcessorBuilder;
-import org.tasktide.engine.wokerunit.provider.ItemTaskProcessorBuilder;
+import org.tasktide.engine.workerunit.provider.WorkItemObserverBuilder;
+import org.tasktide.engine.workerunit.provider.WorkItemExecutorBuilder;
+import org.tasktide.engine.workerunit.provider.ItemTaskObserverBuilder;
+import org.tasktide.engine.workerunit.provider.ItemTaskExecutorBuilder;
+import org.tasktide.engine.workerunit.provider.WorkItemProcessorBuilder;
+import org.tasktide.engine.workerunit.provider.ItemTaskProcessorBuilder;
 
 import org.tasktide.engine.EngineTestUtils;
 import org.tasktide.engine.TestEnvironment;

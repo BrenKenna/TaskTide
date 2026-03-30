@@ -787,7 +787,7 @@ public class RocksDbStore extends AbstractItemStore {
     
     
     /**
-     * {@link ItemStoreSession} for SQLite {@link RocksDB}
+     * {@link ItemStoreSession} for RocksDB {@link RocksDB}
      */
     private class RocksDbSession implements ItemStoreSession {
     

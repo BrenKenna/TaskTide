@@ -34,8 +34,8 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.engine.worker.TaskTideEngineUtility;
 
-import org.tasktide.engine.wokerunit.provider.TaskTideExecutorServiceProvider;
-import org.tasktide.engine.wokerunit.provider.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.workerunit.provider.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.executor.TaskTideExecutor;
 import org.tasktide.engine.deprecated_processor.TaskTideProcessor;

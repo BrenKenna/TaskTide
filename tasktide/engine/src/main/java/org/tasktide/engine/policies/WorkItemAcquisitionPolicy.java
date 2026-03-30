@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.engine.policies.resources.ResourcePolicyMapper;
 
 
 /**
@@ -37,9 +38,11 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
      * @return {@link TaskTideWorkloadAcquisitionPolicy} of {@link WorkItem}
      */
     public static TaskTideWorkloadAcquisitionPolicy<WorkItem> newInstance() {
-        return new WorkItemAcquisitionPolicy();
+        WorkItemAcquisitionPolicy pol = new WorkItemAcquisitionPolicy();
+        pol.classRef = WorkItem.class;
+        return pol;
     }
-    
+
     
     /**
      * Build {@link WorkItem} from {@link WorkItemAcquisitionPolicy}

@@ -24,8 +24,8 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.wokerunit.provider.TaskTideExecutorServiceProvider;
-import org.tasktide.engine.wokerunit.provider.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.workerunit.provider.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.trackers.ExecutorServiceTracker;
 import org.tasktide.engine.trackers.FutureTrackers;
 

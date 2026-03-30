@@ -39,8 +39,8 @@ import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.trackers.TrackerWaiter;
-import org.tasktide.engine.wokerunit.container.WorkerUnitContainer;
-import org.tasktide.engine.wokerunit.container.WorkerUnitModelType;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
+import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 import org.tasktide.engine.executor.ItemTaskExecutor;
 import org.tasktide.engine.executor.TaskTideExecutor;
 
