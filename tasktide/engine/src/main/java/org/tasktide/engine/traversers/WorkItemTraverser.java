@@ -16,8 +16,6 @@
 package org.tasktide.engine.traversers;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -27,22 +25,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.core.manager.TaskTideServiceManager;
-import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
-import org.tasktide.core.model.workitem.ItemState;
-
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.manager.TaskTideServiceManager;
 
-import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.trackers.ExecutorServiceItem;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.trackers.TrackerWaiter;
+import org.tasktide.engine.trackers.ExecutorServiceItem;
+import org.tasktide.engine.observer.TaskTideEngineObserver;
+
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
+
 import org.tasktide.engine.executor.ItemTaskExecutor;
 import org.tasktide.engine.executor.TaskTideExecutor;
+
 
 
 /**
@@ -67,8 +65,9 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
 
     
     /**
-     * Construct with default {@link TaskTideEngineObserver}. 
-     * Throws TaskTideEngineUncheckedException
+     * Construct with default {@link TaskTideEngineObserver}
+     * 
+     * Throws {@link TaskTideEngineUncheckedException}
      */
     WorkItemTraverser() {
         this.workerUnits        = WorkerUnitContainer.getInstance();
@@ -79,6 +78,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
     
     
     /**
+     * Construct with arguments
      * 
      * @param obs
      * @param iTT
@@ -182,6 +182,69 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
     @Override
     public boolean processElm(WorkItem elm) throws TraverserCheckedException {
         
+        // Check pending tasks
+        LOGGER.info(
+             "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
+             elm.getTaskCount(), Thread.currentThread().getName(), elm.getId()
+        );
+            
+        // Serialize preprocessing
+        boolean shouldStart;
+        synchronized ( this.observer ) {
+            shouldStart = this.observer.onTaskStart(elm);
+        }
+            
+        // Handle event outcome
+        if ( shouldStart ) {
+                
+            // Process task
+            LOGGER.info("Processing task:\t'{}'", elm.getId());
+            boolean state = this.processTask(elm);
+                
+            // Log progress & increment counters
+            if ( state ) {
+                this.processCount++;
+                LOGGER.info(
+                    "Completed task '{}', global count:\t'{}'",
+                    elm.getId(),
+                    sharedCounter.incrementAndGet()
+                );
+            }
+                
+            // Otherwise log failure
+            else {
+                LOGGER.warn(
+                    "Warning, execution completed with error for task:\t'{}'",
+                    elm.getId()
+                );
+            }
+                
+            // Perform onTaskEnd chores
+            LOGGER.info("Performing onTaskEnd chores:\t'{}'", elm.getId());
+            this.observer.onTaskEnd(elm);
+            LOGGER.info("Processing complete for task:\t'{}'", elm.getId());
+            return state;
+        }
+            
+        // Otherwise skip
+        else {
+            LOGGER.warn("Preprocessing failed for WorkItem:\t'{}'", elm.getId());
+            return false;
+        }
+    }
+    
+    
+    /**
+     * Processes provided task, entry point for passing to
+     *  {@link ExecutorService}
+     * 
+     * @param task
+     * @return boolean
+     * 
+     * @throws TraverserCheckedException 
+     */
+    private boolean processTask(WorkItem elm) throws TraverserCheckedException {
+        
         // Pass if preprocessing fails
         if ( ! this.observer.onTaskProcessing(elm) ) {
             LOGGER.warn("Warning, preprocessing failed for task:\t'{}'", elm.getId());
@@ -204,8 +267,17 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
                     "Configuring ItemTaskTraverser for nested workload of:\t'{}'",
                     elm.getId()
                 );
-                // this.itemTaskTraverser.traverse(toDo, this.threadPool);
-                return true;
+                ExecutorService execServ = this.workerUnits.getThreadPool(WorkerUnitModelType.ITEMTASK);
+                try {
+                    LOGGER.info("Delegating WorkItem processing to ItemTask executor:\t'{}'", elm.getId());
+                    this.itemTaskTraverser.traverse(toDo, execServ);
+                    LOGGER.info("Execution completed");
+                    return true;
+                }
+                catch (TraverserCheckedException ex) {
+                    LOGGER.error("Error during WorkItem processing:\t'{}'\n\n{}", elm.getId(), ex);
+                    throw ex;
+                }
             }
             
             // Otherwise process as single task work item
@@ -229,207 +301,5 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
                 }
             }
         }
-    }
-    
-    
-    /**
-     * Processes provided task, entry point for passing to
-     *  {@link ExecutorService}
-     * 
-     * @param task
-     * @return boolean
-     * 
-     * @throws TraverserCheckedException 
-     */
-    private boolean processTask(WorkItem task) throws TraverserCheckedException {
-        // Check pending tasks
-        LOGGER.info(
-             "Configuring ItemTaskProcessor for Workload of size '{}' on thread '{}' for WorkItem:\t'{}'",
-             task.getTaskCount(), Thread.currentThread().getName(), task.getId()
-        );
-            
-        // Serialize preprocessing
-        boolean shouldStart;
-        synchronized ( observer ) {
-            shouldStart = observer.onTaskStart(task);
-        }
-            
-        // Handle event outcome
-        if ( shouldStart ) {
-                
-            // Process task
-            LOGGER.info("Processing task:\t'{}'", task.getId());
-            boolean state = this.processElm(task);
-                
-            // Log progress & increment counters
-            if ( state ) {
-                this.processCount++;
-                LOGGER.info(
-                    "Completed task '{}', global count:\t'{}'",
-                    task.getId(),
-                    sharedCounter.incrementAndGet()
-                );
-            }
-                
-            // Otherwise log failure
-            else {
-                LOGGER.warn(
-                    "Warning, execution completed with error for task:\t'{}'",
-                    task.getId()
-                );
-            }
-                
-            // Perform onTaskEnd chores
-            LOGGER.info("Performing onTaskEnd chores:\t'{}'", task.getId());
-            observer.onTaskEnd(task);
-            LOGGER.info("Processing complete for task:\t'{}'", task.getId());
-            return state;
-        }
-            
-        // Otherwise skip
-        else {
-            LOGGER.warn("Preprocessing failed for WorkItem:\t'{}'", task.getId());
-            return false;
-        }
-    }
-    
-    
-    /**
-     * Fetch every {@link WorkItem} marked {@link ItemState.TODO}
-     * 
-     * @return List-{@link WorkItem}
-     */
-    public List<WorkItem> fetchWorkload() {
-        return TaskTideServiceManager
-            .fetchWorkItemService()
-            .viewByField(
-                "itemState",
-                ItemState.TODO
-        );
-    }
-    
-    
-    /**
-     * Fetch {@link WorkItem} marked {@link ItemState.TODO}
-     *  across all tasks, random sampling
-     * 
-     * @param nTasks
-     * @return List-{@link WorkItem}
-     */
-    public List<WorkItem> fetchWorkload(int nTasks) {
-        
-        // Fetch workload
-        List<WorkItem> tasks = TaskTideServiceManager
-            .fetchWorkItemService()
-            .viewByField(
-                "itemState",
-                ItemState.TODO
-        );
-        
-        // Handle no tasks
-        if (tasks == null || tasks.isEmpty() || nTasks <= 0) {
-            return Collections.emptyList();
-        }
-        
-        // Shuffle and fetch sampling
-        Collections.shuffle(tasks);
-        int limit = Math.min(nTasks, tasks.size());
-        return new ArrayList<>(tasks.subList(0, limit));
-    }
-    
-    
-    /**
-     * Fetch {@link WorkItem} marked {@link ItemState.TODO}
-     *  under the provided collection
-     * 
-     * @param collection
-     * @return List-{@link WorkItem}
-     */
-    public List<WorkItem> fetchWorkload(String collection) {
-        return TaskTideServiceManager
-            .fetchWorkItemService()
-            .viewByFieldForGroup(
-                "itemState",
-                ItemState.TODO,
-                "stepName",
-                collection
-        );
-    }
-    
-    
-    /**
-     * Fetch {@link WorkItem} marked {@link ItemState.TODO}
-     *  under the provided collection, random sampling
-     * 
-     * @param collection
-     * @param nTasks
-     * @return List-{@link WorkItem}
-     */
-    public List<WorkItem> fetchWorkload(String collection, int nTasks) {
-        
-        // Fetch workload
-        List<WorkItem> tasks = TaskTideServiceManager
-            .fetchWorkItemService()
-            .viewByFieldForGroup(
-                "itemState",
-                ItemState.TODO,
-                "stepName",
-                collection
-        );
-        
-        // Handle no tasks
-        if (tasks == null || tasks.isEmpty() || nTasks <= 0) {
-            return Collections.emptyList();
-        }
-        
-        // Shuffle and fetch sampling
-        Collections.shuffle(tasks);
-        int limit = Math.min(nTasks, tasks.size());
-        return new ArrayList<>(tasks.subList(0, limit));
-    }
-    
-    
-    /**
-     * Fetch to do work for collection with provided {@link CustomAnnotation} key-value
-     * 
-     * @param collection
-     * @param key
-     * @param value
-     * 
-     * @return List-{@link WorkItem}
-     */
-    public List<WorkItem> fetchToDoWorkTargetPilotLabel(String collection, String key, Object value) {
-        return TaskTideServiceManager
-            .fetchWorkItemService()
-            .getRepo()
-            .findByFieldForGroupWithAnno(
-                "itemState",
-                ItemState.TODO,
-                "stepName",
-                collection,
-                key,
-                value
-        );
-    }
-    
-    
-    /**
-     * Fetch todo for target collection with provided {@link CustomAnnotation}
-     * 
-     * @param collection
-     * @param anno
-     * @return List-{@link WorkItem}
-     */
-    public List<WorkItem> fetchToDoWorkTargetPilotLabel(String collection, CustomAnnotation anno) {
-        return TaskTideServiceManager
-            .fetchWorkItemService()
-            .getRepo()
-            .findByFieldForGroupWithAnno(
-                "itemState",
-                ItemState.TODO,
-                "stepName",
-                collection,
-                anno
-        );
     }
 }

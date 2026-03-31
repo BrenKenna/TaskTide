@@ -22,9 +22,6 @@ import org.apache.logging.log4j.Logger;
 
 import jakarta.nosql.Template;
 import jakarta.enterprise.inject.se.SeContainer;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -38,11 +35,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Rule;
-import org.tasktide.core.manager.TaskTideServiceManager;
-import org.tasktide.core.manager.command.CommandSpec;
-import org.tasktide.core.manager.command.ManagerAction;
-import org.tasktide.core.manager.command.ManagerCommand;
-import org.tasktide.core.manager.command.ManagerTarget;
 import org.testcontainers.containers.GenericContainer;
 
 import org.tasktide.engine.TestEnvironment;
@@ -125,17 +117,16 @@ public class WorkItemAcquisitionTests {
     
         // Initialize test
         LOGGER.info("\n\n================ Can Fetch ToDo Work ================\n");
-        String step = "Ping Tests";
         int nExpected = 4;
         boolean assertionState;
         List<WorkItem> workload;
         TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
         
         // Build acquisition policy
-        LOGGER.info("Constructing policy for target step:\t'{}'", step);
+        LOGGER.info("Constructing policy for target step:\t'{}'", this.STEP);
         policy = WorkItemAcquisitionPolicy
             .newInstance()
-            .withTarget("Ping Tests")
+            .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
         ;
         LOGGER.info("Displaying acquisition policy resource:\n\n'{}'", policy.toJsonDoc());

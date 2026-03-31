@@ -96,6 +96,123 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
     @Override
     public boolean processElm(ItemTask elm) throws TraverserCheckedException {
         
+        // Serialize preprocessing
+        boolean shouldStart;
+        synchronized ( observer ) {
+            shouldStart = observer.onTaskStart(elm);
+        }
+            
+        // Handle event outcome
+        if ( shouldStart ) {
+                
+            // Process task
+            LOGGER.info("Processing task:\t'{}'", elm.getId());
+            boolean state = this.processTask(elm);
+                
+            // Log progress & increment counters
+            if ( state ) {
+                this.processCount++;
+                LOGGER.info(
+                    "Completed task '{}', global count:\t'{}'",
+                    elm.getId(), this.sharedCounter.incrementAndGet()
+                );
+            }
+                
+            // Otherwise log failure
+            else {
+                LOGGER.warn(
+                    "Warning, execution completed with error for task:\t'{}'",
+                    elm.getId()
+                );
+            }
+                
+            // Perform onTaskEnd chores
+            LOGGER.info(
+                "Performing onTaskEnd chores:\t'{}'",
+                elm.getId()
+            );
+            this.observer.onTaskEnd(elm);
+            LOGGER.info(
+                "Processing complete for task:\t'{}'",
+                elm.getId()
+            );
+            return state;
+        }
+            
+        // Otherwise skip
+        else {
+            LOGGER.warn(
+                "Preprocessing failed for WorkItem:\t'{}'",
+                elm.getId()
+            );
+            return false;
+        }
+    }
+
+    
+    /**
+     * Process {@link ItemTask} workload
+     * 
+     * @param workload
+     * 
+     * @throws TraverserCheckedException 
+     */
+    @Override
+    public void traverse(List<ItemTask> workload) throws TraverserCheckedException {
+        
+        int skipped = 0;
+        for ( ItemTask task : workload ) {
+            if ( !this.processElm(task) ) {
+                skipped++;
+            }
+        }
+    }
+    
+    
+    /**
+     * Schedules each {@link ItemTask} of provided workload into
+     *  {@link ExecutorService} thread pool. Using the {@link FutureTrackers}
+     *  container to fetch {@link TrackerWaiter}
+     * 
+     * @param workload
+     * @param threadPool
+     * 
+     * @throws TraverserCheckedException 
+     */
+    @Override
+    public void traverse(List<ItemTask> workload, ExecutorService threadPool) throws TraverserCheckedException {
+        
+        // Schedule tasks
+        for ( ItemTask task : workload ) {
+            
+            // Schedule async operation
+            Future<Boolean> future = threadPool.submit(() -> {
+                return this.processElm(task);
+            });
+            
+            // Append to tracker for monitoring
+            ExecutorServiceItem<ItemTask> item = new ExecutorServiceItem<>(task, future);
+            FutureTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), item);
+        }
+        
+        // Fetch waiter for ItemTask workload
+        TrackerWaiter<ItemTask> trackerWaiter = FutureTrackers.ITEM_TASK_TRACKER.fetchWaiterFor(workload);
+        trackerWaiter.waitForWorkload();
+    }
+    
+    
+    /**
+     * Processes provided task, entry point for passing to
+     *  {@link ExecutorService}
+     * 
+     * @param task
+     * @return boolean
+     * 
+     * @throws TraverserCheckedException 
+     */
+    private boolean processTask(ItemTask elm) throws TraverserCheckedException {
+        
+        
         // Pass if preprocessing fails
         if ( ! this.observer.onTaskProcessing(elm) ) {
             LOGGER.warn("Warning, preprocessing failed for task:\t'{}'", elm.getId());
@@ -121,122 +238,6 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
                 );
                 return false;
             }
-        }
-    }
-
-    
-    /**
-     * Process {@link ItemTask} workload
-     * 
-     * @param workload
-     * 
-     * @throws TraverserCheckedException 
-     */
-    @Override
-    public void traverse(List<ItemTask> workload) throws TraverserCheckedException {
-        
-        int skipped = 0;
-        for ( ItemTask task : workload ) {
-            if ( !this.processTask(task) ) {
-                skipped++;
-            }
-        }
-    }
-    
-    
-    /**
-     * Schedules each {@link ItemTask} of provided workload into
-     *  {@link ExecutorService} thread pool. Using the {@link FutureTrackers}
-     *  container to fetch {@link TrackerWaiter}
-     * 
-     * @param workload
-     * @param threadPool
-     * 
-     * @throws TraverserCheckedException 
-     */
-    @Override
-    public void traverse(List<ItemTask> workload, ExecutorService threadPool) throws TraverserCheckedException {
-        
-        // Schedule tasks
-        for ( ItemTask task : workload ) {
-            
-            // Schedule async operation
-            Future<Boolean> future = threadPool.submit(() -> {
-                return this.processTask(task);
-            });
-            
-            // Append to tracker for monitoring
-            ExecutorServiceItem<ItemTask> item = new ExecutorServiceItem<>(task, future);
-            FutureTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), item);
-        }
-        
-        // Fetch waiter for ItemTask workload
-        TrackerWaiter<ItemTask> trackerWaiter = FutureTrackers.ITEM_TASK_TRACKER.fetchWaiterFor(workload);
-        trackerWaiter.waitForWorkload();
-    }
-    
-    
-    /**
-     * Processes provided task, entry point for passing to
-     *  {@link ExecutorService}
-     * 
-     * @param task
-     * @return boolean
-     * 
-     * @throws TraverserCheckedException 
-     */
-    private boolean processTask(ItemTask task) throws TraverserCheckedException {
-    
-        // Serialize preprocessing
-        boolean shouldStart;
-        synchronized ( observer ) {
-            shouldStart = observer.onTaskStart(task);
-        }
-            
-        // Handle event outcome
-        if ( shouldStart ) {
-                
-            // Process task
-            LOGGER.info("Processing task:\t'{}'", task.getId());
-            boolean state = this.processElm(task);
-                
-            // Log progress & increment counters
-            if ( state ) {
-                this.processCount++;
-                LOGGER.info(
-                    "Completed task '{}', global count:\t'{}'",
-                    task.getId(), sharedCounter.incrementAndGet()
-                );
-            }
-                
-            // Otherwise log failure
-            else {
-                LOGGER.warn(
-                    "Warning, execution completed with error for task:\t'{}'",
-                    task.getId()
-                );
-            }
-                
-            // Perform onTaskEnd chores
-            LOGGER.info(
-                "Performing onTaskEnd chores:\t'{}'",
-                task.getId()
-            );
-            observer.onTaskEnd(task);
-            LOGGER.info(
-                "Processing complete for task:\t'{}'",
-                task.getId()
-            );
-            return state;
-        }
-            
-        // Otherwise skip
-        else {
-            LOGGER.warn(
-                "Preprocessing failed for WorkItem:\t'{}'",
-                task.getId()
-            );
-            return false;
         }
     }
 }

@@ -4,7 +4,6 @@
  */
 package org.tasktide.engine.trackers;
 
-import org.tasktide.engine.trackers.ExecutionState;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,7 +16,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.tasktide.engine.trackers.TaskTrackers;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
+
+
 
 
 
@@ -26,10 +29,12 @@ import org.tasktide.engine.trackers.TaskTrackers;
  * 
  * @author bkenna
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TaskTrackerTests {
     
     
-    private static final Logger logger = LogManager.getLogger(TaskTrackerTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(TaskTrackerTests.class);
     
     public TaskTrackerTests() {}
     
@@ -37,24 +42,24 @@ public class TaskTrackerTests {
     @BeforeAll
     public static void setUpClass() {        
         String msg = "\n\n---------------- Initiating TaskTracker Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
     }
     
     @AfterAll
     public static void tearDownClass() {
         String msg = "\n\n---------------- Terminating TaskTracker Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
     }
     
     
     @BeforeEach
     public void setUp() {
-        logger.info("\n\n================ Initiating Next Test ================\n");
+        LOGGER.info("\n\n================ Initiating Next Test ================\n");
     }
     
     @AfterEach
     public void tearDown() {
-        logger.info("\n\n================ Terminating Test ================\n");
+        LOGGER.info("\n\n================ Terminating Test ================\n");
     }
     
     
@@ -66,21 +71,21 @@ public class TaskTrackerTests {
     public void shouldRegisterTasks(){
     
         // Initialize test
-        logger.info("\n\n================ Can Register Test ================\n");
+        LOGGER.info("\n\n================ Can Register Test ================\n");
         int nTasks = 0;
         boolean assertionState;
         
         // Add tasks
-        logger.info("Registering three tasks in tracker");
+        LOGGER.info("Registering three tasks in tracker");
         TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-1", ExecutionState.QUEUED);
         TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-2", ExecutionState.QUEUED);
         TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-3", ExecutionState.QUEUED);
-        logger.info("Tasks registered = '{}'", TaskTrackers.WORK_ITEM_TRACKER.taskCount());
+        LOGGER.info("Tasks registered = '{}'", TaskTrackers.WORK_ITEM_TRACKER.taskCount());
         
         // Check registered tasks
         assertionState = TaskTrackers.WORK_ITEM_TRACKER.taskCount() == 3;
         assertTrue(assertionState, "Not all three tasks were registered");
-        logger.info("\n\n================ Can Register Tasks Test ================\n");
+        LOGGER.info("\n\n================ Can Register Tasks Test ================\n");
     }
     
     
@@ -92,21 +97,21 @@ public class TaskTrackerTests {
     public void shouldTrackTask(){
     
         // Initialize test
-        logger.info("\n\n================ Can Track Tasks Test ================\n");
+        LOGGER.info("\n\n================ Can Track Tasks Test ================\n");
         
         // Add tasks
-        logger.info("Registering task");
+        LOGGER.info("Registering task");
         TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-1", ExecutionState.QUEUED);
         ExecutionState oldState = TaskTrackers.WORK_ITEM_TRACKER.get("Task-1");
 
         // Mark new state
-        logger.info("Marking task as '{}'", ExecutionState.RUNNING);
+        LOGGER.info("Marking task as '{}'", ExecutionState.RUNNING);
         TaskTrackers.WORK_ITEM_TRACKER.markTask("Task-1", ExecutionState.RUNNING);
         ExecutionState currentState = TaskTrackers.WORK_ITEM_TRACKER.get("Task-1");
         
         // Check state has changed
         assertFalse(oldState.isState(currentState), "Task Not Tracked");
-        logger.info("\n\n================ Can Track Tasks Test ================\n");
+        LOGGER.info("\n\n================ Can Track Tasks Test ================\n");
     }
     
     
@@ -119,28 +124,28 @@ public class TaskTrackerTests {
     public void stateShouldMatch() {
     
         // Initialize test
-        logger.info("\n\n================ Can Check State Test ================\n");
+        LOGGER.info("\n\n================ Can Check State Test ================\n");
         String taskId = "Task-1";
         int progress = 0;
         
         // Check task is held
-        logger.info("Registering task");
+        LOGGER.info("Registering task");
         TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.QUEUED);
         if ( TaskTrackers.WORK_ITEM_TRACKER.isHeld(taskId) ) {
             progress++;
         }
         else {
-            logger.warn("Warning Task not in Held ExecutoionState");
+            LOGGER.warn("Warning Task not in Held ExecutoionState");
         }
         
         // Check task is active
-        logger.info("Marking task '{}' as running", taskId);
+        LOGGER.info("Marking task '{}' as running", taskId);
         TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.RUNNING);
         if ( TaskTrackers.WORK_ITEM_TRACKER.isActive(taskId) ) {
             progress++;
         }
         else {
-            logger.warn("Warning task in an active ExecutionState");
+            LOGGER.warn("Warning task in an active ExecutionState");
         }
         
         // Check task is done
@@ -149,11 +154,11 @@ public class TaskTrackerTests {
             progress++;
         }
         else {
-            logger.warn("Warning task in a completed ExecutionState");
+            LOGGER.warn("Warning task in a completed ExecutionState");
         }
         
         // Check state progressed
         assertTrue(progress == 3, "Not all three tasks were registered");
-        logger.info("\n\n================ Can Check State Test ================\n");
+        LOGGER.info("\n\n================ Can Check State Test ================\n");
     }
 }
