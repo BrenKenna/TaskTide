@@ -32,7 +32,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Assertions;
 
 import org.junit.Rule;
 import org.testcontainers.containers.GenericContainer;
@@ -146,7 +146,7 @@ public class WorkItemAcquisitionTests {
         }
         
         // Log status
-        assertTrue(assertionState, "Error cannot fetch to do work");
+        Assertions.assertTrue(assertionState, "Error cannot fetch to do work");
         LOGGER.info("\n\n================ Can Fetch ToDo Work ================\n");
     }
     
@@ -157,7 +157,7 @@ public class WorkItemAcquisitionTests {
      *  using Pilot Label annotation
      */
     @Test
-    @Order(0)
+    @Order(1)
     public void canFetchToDoWorkPilotLabel() {
     
         // Initialize test
@@ -196,7 +196,7 @@ public class WorkItemAcquisitionTests {
         }
         
         // Log status
-        assertTrue(assertionState, "Error cannot fetch to do work");
+        Assertions.assertTrue(assertionState, "Error cannot fetch to do work");
         LOGGER.info("\n\n================ Can Fetch ToDo Work Pilot Label ================\n");
     }
 }

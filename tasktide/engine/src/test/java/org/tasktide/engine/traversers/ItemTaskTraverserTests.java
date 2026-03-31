@@ -151,7 +151,6 @@ public class ItemTaskTraverserTests {
         List<ItemTask> tasks;
         WorkItem task;
         ItemTask itemTask;
-        String resultMap;
         TaskTideWorkloadTraverser<ItemTask> traverser;
         
         // Build acquisition policy
@@ -213,8 +212,8 @@ public class ItemTaskTraverserTests {
             
             // Process task
             traverser.traverse(tasks);
-            LOGGER.info("Traversal complete");
             resultMap = JsonUtils.toJson(true, task.getWorkload().summarizeWorkload());
+            LOGGER.info("Traversal complete");
             
             // Check workload
             LOGGER.info("Evaluating workload status:\t'{}'\n\n'{}'", task.getId(), resultMap);
@@ -269,8 +268,8 @@ public class ItemTaskTraverserTests {
             
             // Process task
             traverser.traverse(tasks, execServ);
-            LOGGER.info("Traversal complete");
             resultMap = JsonUtils.toJson(true, task.getWorkload().summarizeWorkload());
+            LOGGER.info("Traversal complete");
             
             // Check workload
             LOGGER.info("Evaluating workload status:\t'{}'\n\n'{}'", task.getId(), resultMap);
