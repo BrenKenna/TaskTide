@@ -17,6 +17,7 @@ package org.tasktide.engine.trackers;
 
 import java.util.Map;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -47,6 +48,7 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     private final Logger LOGGER = LogManager.getLogger(ExecutorServiceTracker.class);
     private final Class<T> TYPE;
     
+    
     /**
      * Only constructable from within package
      */
@@ -63,19 +65,15 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
      * @param taskStates 
      */
     ExecutorServiceTracker(Class<T> type, ConcurrentMap<String, ExecutorServiceItem<T>> taskStates) {
-        this.taskStates = new ConcurrentHashMap<>();
+        if ( taskStates != null ) {
+            this.taskStates = taskStates;
+        }
+        else {
+            this.taskStates = new ConcurrentHashMap<>();
+        }
         this.TYPE = type;
     }
-    
-    
-    /**
-     * Clear entries from collection
-     * 
-     */
-    public void clearMap() {
-        this.taskStates.clear();
-    }
-    
+
     
     /**
      * Fetch list of completed Ids
@@ -102,6 +100,17 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     public void markTask(String taskId, ExecutorServiceItem<T> item) {
         taskStates.putIfAbsent(taskId, item);
     }
+    
+    
+    /**
+     * Fetch entry set
+     * 
+     * @return 
+     */
+    public Set<Entry<String, ExecutorServiceItem<T>>> fetchEntrySet() {
+        return this.taskStates.entrySet();
+    }
+    
     
     
     /**
@@ -252,6 +261,7 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
             LOGGER.error("Cannot fetch waiter for empty list, passing on creation");
             return null;
         }
+        LOGGER.info("Task size:\t'{}'", this.taskStates.size());
         ExecutorServiceTracker<T> tracker = new ExecutorServiceTracker<>(this.TYPE, this.taskStates);
         return new TrackerWaiter<>(tasks, tracker, tracker.getType());
     }

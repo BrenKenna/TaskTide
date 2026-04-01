@@ -17,6 +17,7 @@ package org.tasktide.engine.trackers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import java.util.concurrent.ExecutionException;
@@ -27,6 +28,8 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.engine.worker.TaskTideEngineUtility;
 
 
 /**
@@ -47,6 +50,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
     private final ExecutorServiceTracker<T> TRACKER;
     
     private int failed, done, active;
+    private final Random rand = new Random();
     
     
     /**
@@ -73,10 +77,25 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
     public boolean waitForWorkload() {
         int total = this.TASKS.size();
         boolean wereKilled = false;
+        
+        if ( this.TRACKER.getIds().isEmpty() ) {
+            LOGGER.error("Error, FutureTracker is empty");
+            return false;
+        }
+        else {
+            LOGGER.info(
+                "Future tracker size = '{}', shown below\n\n",
+                this.TRACKER.getIds().size(),
+                JsonUtils.toJson(true, FutureTrackers.ITEM_TASK_TRACKER.getIds())
+            );
+        }
+        
         while ( this.TASKS_DONE.size() < total && !wereKilled ) {
             this.scanItems();
             wereKilled = this.evaluateWorkload();
+            TaskTideEngineUtility.waitSeconds( rand.nextInt(1, 10) );
         }
+        
         return wereKilled;
     }
     
@@ -100,6 +119,10 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
     
         // Reset coutner & scan items
         this.resetCounters();
+        LOGGER.info(
+            "Workload size:\t'{}'",
+            this.TASKS.size()
+        );
         for ( int i = 0; i < this.TASKS.size(); i++ ) {
             
             // Fetch data for current iter
@@ -107,10 +130,17 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
             String taskId = task.getId();
             
             // Examine completed tasks
+            if ( !this.TRACKER.isPresent(taskId) ) {
+                LOGGER.info("Task not present:\t'{}'", taskId);
+                continue;
+            }
+            
+            // Handle completed task
             if ( this.TRACKER.isComplete(taskId) ) {
                 
                 // Transfer to do list, and fetch future
-                this.TASKS_DONE.add( this.TASKS.remove(i));
+                LOGGER.info("'{}' processing completed:\t'{}'", this.TYPE.getSimpleName(), taskId);
+                this.TASKS_DONE.add(task);
                 Future future = this.TRACKER.get(taskId).getFuture();
                 
                 // Handle task event: Failed or complete
@@ -134,6 +164,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
             
             // Note task as active
             else {
+                LOGGER.info("Task still active:\t'{}'", taskId);
                 this.active++;
             }
         }
@@ -150,7 +181,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
     private boolean evaluateWorkload() {
         
         // Fetch current state
-        LOGGER.info(
+        LOGGER.debug(
             "Examining '{}' workload for waiter:\t'{}'",
             this.TYPE,
             this.ID
@@ -158,7 +189,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
         this.scanItems();
         
         // Examine results
-        LOGGER.info(
+        LOGGER.debug(
             "'{}' examining workload state for N = '{}' tasks",
             this.ID,
             this.TASKS.size()

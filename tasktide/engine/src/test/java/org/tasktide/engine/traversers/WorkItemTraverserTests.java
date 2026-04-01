@@ -15,11 +15,11 @@
  */
 package org.tasktide.engine.traversers;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
-import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
+import jakarta.enterprise.inject.se.SeContainer;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -36,9 +36,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
-import org.junit.Rule;
-
-import org.testcontainers.containers.GenericContainer;
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
 
 import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.TestEnvironment;
@@ -46,10 +45,12 @@ import org.tasktide.engine.TestEnvironment;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
-
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
+import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
 
 /**
@@ -63,15 +64,15 @@ public class WorkItemTraverserTests {
     
     private static final Logger LOGGER = LogManager.getLogger(WorkItemTraverserTests.class);
     
-    private final String STEP = "Ping Tests";
+    private final String STEP = "Nested NS Lookups";
     
     private SeContainer container;
     private Template template;
     
     
     // CouchDB container
-    @Rule
-    public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
+    // @Rule
+    // public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
     
     public WorkItemTraverserTests() {
     }
@@ -84,7 +85,7 @@ public class WorkItemTraverserTests {
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP, ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
     }
     
     
@@ -96,7 +97,7 @@ public class WorkItemTraverserTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        couchDB.stop();
+        //couchDB.stop();
     }
     
     
@@ -137,6 +138,55 @@ public class WorkItemTraverserTests {
     
     
     /**
+     * Fetch {@link TaskTideWorkloadTraverser}
+     * 
+     * @return {@link TaskTideWorkloadTraverser}-{@link WorkItem}
+     */
+    public TaskTideWorkloadTraverser<WorkItem> getTraverser() {
+        try {
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureProcessExecutor();
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureExecutorServices(3, 3);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 100000);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineObserverChain(WorkerUnitModelType.WORKITEM, 100000);
+            
+            WorkerUnitContainer
+                .getInstance()
+                .configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
+            
+            return WorkerUnitContainer
+                    .getInstance()
+                    .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM)
+            ;
+        }
+        
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
+            return null;
+        }
+    }
+    
+    
+    /**
      * Tests that the {@link WorkItemTraverser} can process tasks
      * 
      */
@@ -158,7 +208,7 @@ public class WorkItemTraverserTests {
         
         // Fetch first task
         LOGGER.info("Fetching first task & configuring WorkItem Traverser");
-        traverser = new WorkItemTraverser();
+        traverser = this.getTraverser();
         
         // Try process first task
         LOGGER.info("Processing workload from '{}'", task.getId());
@@ -197,7 +247,7 @@ public class WorkItemTraverserTests {
         
         // Traverse workload
         LOGGER.info("Performing WorkItemTraverser traversal");
-        traverser = new WorkItemTraverser();
+        traverser = this.getTraverser();
         try {
             
             // Process task
@@ -237,7 +287,7 @@ public class WorkItemTraverserTests {
         
         // Fetch first task
         LOGGER.info("Performing WorkItemTraverser traversal");
-        traverser = new WorkItemTraverser();
+        traverser = this.getTraverser();
         try {
             
             // Process task

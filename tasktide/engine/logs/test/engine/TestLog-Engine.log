@@ -1,0 +1,1330 @@
+2026-04-01 16:34:41 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.setUpClass ]: 
+
+---------------- Initiating WorkItem Traverser Tests ----------------
+
+2026-04-01 16:34:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-04-01 16:34:41 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-01 16:34:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-01 16:34:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 93813176-025e-4889-8632-87711aa09869 initialized
+2026-04-01 16:34:49 INFO  [ Test worker -> org.tasktide.engine.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\engine\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-01 16:34:49 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-01 16:34:49 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-01 16:34:49 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Nested NS Lookups'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "StepCount": 0,
+    "StepId": "Step-30d328c5-1dd5-43e8-a6e3-9e11f384f1bd",
+    "StepName": "Nested NS Lookups",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-24a7146d-a627-48d9-ab2f-0eb4bf1bc607"
+    }
+}'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Nested NS Lookups'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Nested NS Lookups'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Nested NS Lookups'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.canTraverseWorkloadParallel ]: 
+
+================ Can Traverse WorkItem Parallel ================
+
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.canTraverseWorkloadParallel ]: Fetching workload target step:	'Nested NS Lookups'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.canTraverseWorkloadParallel ]: Performing WorkItemTraverser traversal
+2026-04-01 16:34:50 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '3' on thread 'pool-3-thread-1' for WorkItem:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:50 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:50 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5' set on thread 'pool-3-thread-1'
+2026-04-01 16:34:50 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:50 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '4' on thread 'pool-3-thread-2' for WorkItem:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'5'
+2026-04-01 16:34:50 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '5' on thread 'pool-3-thread-3' for WorkItem:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.waitForWorkload ]: Future tracker size = '5', shown below
+
+
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:34:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'WorkItem-TrackerWaiter-8e5ec9e1-f765-4eae-bc02-e8e29624e36d':	 Total = '5', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:34:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'WorkItem-TrackerWaiter-8e5ec9e1-f765-4eae-bc02-e8e29624e36d':	 Total = '5', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processTask ]: Configuring ItemTaskTraverser for nested workload of:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.handleParallelContext ]: Delegating WorkItem processing to ItemTask executor:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Submitting ItemTasks
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd"
+]
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186"
+]
+2026-04-01 16:34:54 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Atomic TimeKeeper for task 'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd' set on thread 'pool-5-thread-1'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:34:54 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Tasks submitted, fetching TrackerWaiter for workload
+2026-04-01 16:34:54 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying elements:
+
+
+2026-04-01 16:34:54 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'3'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Waiting on workload:	'ItemTask-TrackerWaiter-7a88be44-1935-4f58-a04f-12d2d67d18f3'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.waitForWorkload ]: Future tracker size = '3', shown below
+
+
+2026-04-01 16:34:54 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'3'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'3'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:54 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:54 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-7a88be44-1935-4f58-a04f-12d2d67d18f3':	 Total = '3', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-3':
+'nslookup lifestylesports.com'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-2':
+'nslookup easons.com'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':
+'nslookup aerlingus.com'
+2026-04-01 16:34:55 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup lifestylesports.com':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:34:55 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup lifestylesports.com
+2026-04-01 16:34:55 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057695265,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057695091,
+    "Thread Name": "",
+    "id": "TaskLogging-a3d4fa72-96a9-4f05-861c-42bdcdb91e07"
+}
+2026-04-01 16:34:55 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_1-0' failed on thread 'pool-5-thread-3' with exit code -11
+
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:55 WARN  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:55 WARN  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-940a03c8-3f40-4068-a19e-922459295aac',
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-940a03c8-3f40-4068-a19e-922459295aac' completed in 378ms
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:55 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup easons.com':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:34:55 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup easons.com
+2026-04-01 16:34:55 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057695317,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057695133,
+    "Thread Name": "",
+    "id": "TaskLogging-709a9b43-49b4-4321-8e62-71c77320b68d"
+}
+2026-04-01 16:34:55 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_1-1' failed on thread 'pool-5-thread-2' with exit code -11
+
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:55 WARN  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup aerlingus.com
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_1-2' successful on thread 'pool-5-thread-1' with exit code 0
+
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing sucessful for task:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd', global count:	'1'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:55 WARN  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186',
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186' completed in 430ms
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd',
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd' completed in 475ms
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:34:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'WorkItem-TrackerWaiter-8e5ec9e1-f765-4eae-bc02-e8e29624e36d':	 Total = '5', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processTask ]: Configuring ItemTaskTraverser for nested workload of:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.handleParallelContext ]: Delegating WorkItem processing to ItemTask executor:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Submitting ItemTasks
+2026-04-01 16:34:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:34:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:34:55 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Tasks submitted, fetching TrackerWaiter for workload
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying elements:
+
+
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'8'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Waiting on workload:	'ItemTask-TrackerWaiter-32b7b362-9929-4a6e-a5ce-9382dbd13607'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:55 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.waitForWorkload ]: Future tracker size = '8', shown below
+
+
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:55 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-32b7b362-9929-4a6e-a5ce-9382dbd13607':	 Total = '5', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':
+'nslookup independent.ie'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-2':
+'nslookup irishexaminer.com'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.WorkItemTraverser.processTask ]: Configuring ItemTaskTraverser for nested workload of:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.WorkItemTraverser.handleParallelContext ]: Delegating WorkItem processing to ItemTask executor:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Submitting ItemTasks
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8"
+]
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8"
+]
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8"
+]
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e",
+    "ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Tasks submitted, fetching TrackerWaiter for workload
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying elements:
+
+
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'12'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Waiting on workload:	'ItemTask-TrackerWaiter-f6cafee0-4ff2-41b6-8ecf-e1aeabdfb08e'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.waitForWorkload ]: Future tracker size = '12', shown below
+
+
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'4'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'4'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-f6cafee0-4ff2-41b6-8ecf-e1aeabdfb08e':	 Total = '4', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-3':
+'nslookup rte.ie'
+2026-04-01 16:34:56 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup independent.ie':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:34:56 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup independent.ie
+2026-04-01 16:34:56 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057696321,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057696166,
+    "Thread Name": "",
+    "id": "TaskLogging-ffddca97-6158-4b4f-b2b5-2bd27dd09a13"
+}
+2026-04-01 16:34:56 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_4-3' failed on thread 'pool-5-thread-1' with exit code -11
+
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:56 WARN  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:56 WARN  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef',
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef' completed in 402ms
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup irishexaminer.com':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:34:56 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup irishexaminer.com
+2026-04-01 16:34:56 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057696390,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057696198,
+    "Thread Name": "",
+    "id": "TaskLogging-65b9fdfd-a725-476f-b3f4-b37dd097621a"
+}
+2026-04-01 16:34:56 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_4-4' failed on thread 'pool-5-thread-2' with exit code -11
+
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:56 WARN  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup rte.ie
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_4-0' successful on thread 'pool-5-thread-3' with exit code 0
+
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing sucessful for task:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5', global count:	'2'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':
+'nslookup irishtime.com'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5',
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5' completed in 104ms
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 WARN  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-120371d1-9e74-4726-8639-6af46e10633c',
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-120371d1-9e74-4726-8639-6af46e10633c' completed in 48ms
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-3':
+'nslookup journal.ie'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-2':
+'nslookup musgravegroup.com'
+2026-04-01 16:34:56 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup irishtime.com':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:34:56 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup irishtime.com
+2026-04-01 16:34:56 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057696803,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057696585,
+    "Thread Name": "",
+    "id": "TaskLogging-c623fdb4-2a18-4b3c-acf7-6d11e6ebcf5c"
+}
+2026-04-01 16:34:56 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_4-2' failed on thread 'pool-5-thread-1' with exit code -11
+
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 WARN  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup journal.ie':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:34:56 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup journal.ie
+2026-04-01 16:34:56 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057696856,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057696639,
+    "Thread Name": "",
+    "id": "TaskLogging-e33ded21-8511-4f1f-96fb-590a80410df0"
+}
+2026-04-01 16:34:56 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_4-1' failed on thread 'pool-5-thread-3' with exit code -11
+
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 WARN  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 WARN  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b',
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b' completed in 350ms
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:56 WARN  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'3'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50',
+2026-04-01 16:34:56 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50' completed in 56ms
+2026-04-01 16:34:56 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'3'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-940a03c8-3f40-4068-a19e-922459295aac'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:34:56 WARN  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Failed task threshold reached on waiter 'ItemTask-TrackerWaiter-7a88be44-1935-4f58-a04f-12d2d67d18f3', kill workload of size:	'3'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup musgravegroup.com
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_5-3' successful on thread 'pool-5-thread-2' with exit code 0
+
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing sucessful for task:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8', global count:	'3'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:56 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':
+'nslookup centra.ie'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-120371d1-9e74-4726-8639-6af46e10633c'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b'
+2026-04-01 16:34:56 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50'
+2026-04-01 16:34:56 WARN  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Failed task threshold reached on waiter 'ItemTask-TrackerWaiter-32b7b362-9929-4a6e-a5ce-9382dbd13607', kill workload of size:	'5'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8',
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8' completed in 87ms
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-3':
+'nslookup dunnestores.com'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-2':
+'nslookup supervalu.ie'
+2026-04-01 16:34:57 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup centra.ie':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:34:57 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup centra.ie
+2026-04-01 16:34:57 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057697372,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057697129,
+    "Thread Name": "",
+    "id": "TaskLogging-1e83a3be-a2a1-45b3-8e80-d20adf855ca6"
+}
+2026-04-01 16:34:57 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_5-2' failed on thread 'pool-5-thread-1' with exit code -11
+
+2026-04-01 16:34:57 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:57 WARN  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:57 WARN  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a',
+2026-04-01 16:34:57 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a' completed in 404ms
+2026-04-01 16:34:57 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:57 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:34:57 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup supervalu.ie':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:34:57 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup supervalu.ie
+2026-04-01 16:34:57 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057697451,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057697183,
+    "Thread Name": "",
+    "id": "TaskLogging-3b4c13b5-852a-408e-a0f9-448cb65c1007"
+}
+2026-04-01 16:34:57 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_5-0' failed on thread 'pool-5-thread-2' with exit code -11
+
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 WARN  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 WARN  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e',
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e' completed in 484ms
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:57 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:34:58 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'WorkItem-TrackerWaiter-8e5ec9e1-f765-4eae-bc02-e8e29624e36d':	 Total = '5', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Waiting complete
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.handleParallelContext ]: Execution completed
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5', global count:	'1'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5',
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5' completed in 4973ms
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '2' on thread 'pool-3-thread-1' for WorkItem:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:00 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup dunnestores.com
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_5-1' successful on thread 'pool-5-thread-3' with exit code 0
+
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing sucessful for task:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e', global count:	'4'
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e',
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e' completed in 4473ms
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:35:01 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'4'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'4'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e'
+2026-04-01 16:35:03 WARN  [ pool-3-thread-2 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Failed task threshold reached on waiter 'ItemTask-TrackerWaiter-f6cafee0-4ff2-41b6-8ecf-e1aeabdfb08e', kill workload of size:	'4'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Waiting complete
+2026-04-01 16:35:03 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.handleParallelContext ]: Execution completed
+2026-04-01 16:35:03 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-975448db-c3f5-4835-93ac-50ba11633557', global count:	'2'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:35:03 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-975448db-c3f5-4835-93ac-50ba11633557',
+2026-04-01 16:35:03 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-975448db-c3f5-4835-93ac-50ba11633557' completed in 3006ms
+2026-04-01 16:35:03 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:03 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:35:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:35:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:35:04 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '4' on thread 'pool-3-thread-3' for WorkItem:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processTask ]: Configuring ItemTaskTraverser for nested workload of:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.handleParallelContext ]: Delegating WorkItem processing to ItemTask executor:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Submitting ItemTasks
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e",
+    "ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e",
+    "ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298",
+    "ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Tasks submitted, fetching TrackerWaiter for workload
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying elements:
+
+
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'14'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Waiting on workload:	'ItemTask-TrackerWaiter-a6e66662-69a3-425d-9b42-e8795b1ba6e3'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.waitForWorkload ]: Future tracker size = '14', shown below
+
+
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'2'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'2'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-a6e66662-69a3-425d-9b42-e8795b1ba6e3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-2':
+'nslookup atu.ie'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':
+'nslookup mtu.ie'
+2026-04-01 16:35:05 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup atu.ie':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:35:05 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup atu.ie
+2026-04-01 16:35:05 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057705296,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057705149,
+    "Thread Name": "",
+    "id": "TaskLogging-df79ab53-f30b-4f2d-81b0-09cef8f934f0"
+}
+2026-04-01 16:35:05 ERROR [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_2-0' failed on thread 'pool-5-thread-2' with exit code -11
+
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 WARN  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 WARN  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298',
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298' completed in 320ms
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup mtu.ie
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_2-1' successful on thread 'pool-5-thread-1' with exit code 0
+
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing sucessful for task:	'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a', global count:	'5'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a',
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a' completed in 354ms
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'WorkItem' processing completed:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'WorkItem' processing completed:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'WorkItem' processing completed:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'WorkItem' processing completed:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:05 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'WorkItem-TrackerWaiter-8e5ec9e1-f765-4eae-bc02-e8e29624e36d':	 Total = '5', Done = '2', Failed = '', Active = '0'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.processTask ]: Configuring ItemTaskTraverser for nested workload of:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.WorkItemTraverser.handleParallelContext ]: Delegating WorkItem processing to ItemTask executor:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Submitting ItemTasks
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0",
+    "ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e",
+    "ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298",
+    "ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0",
+    "ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e",
+    "ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9",
+    "ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298",
+    "ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-d8adf647-a6d6-4591-8077-958d699f1024",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0",
+    "ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e",
+    "ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9",
+    "ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298",
+    "ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying registerred task:
+
+[
+    "ItemTask-9433e314-ab0b-4822-b55d-ce718b5c20cd",
+    "ItemTask-d8adf647-a6d6-4591-8077-958d699f1024",
+    "ItemTask-d998c7d4-410b-4798-8cf3-4eb5d19d0ae5",
+    "ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0",
+    "ItemTask-7a29b231-147a-4a99-9d37-60db84195161",
+    "ItemTask-accf61c5-b7c0-46d4-b72f-890f659f803e",
+    "ItemTask-81a370d2-7f36-429d-820c-c3a910d1241e",
+    "ItemTask-c2d904fc-b619-49fb-a808-44a6276349c8",
+    "ItemTask-be0ff4c2-2a3e-49d6-b2c7-916ac142e186",
+    "ItemTask-1af9d88c-6277-495d-bfca-1ffed975b16a",
+    "ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9",
+    "ItemTask-b9940c33-79c4-4e44-b91e-965337fe9298",
+    "ItemTask-dca2833f-242b-43ce-82d4-3f952166c01a",
+    "ItemTask-9b02597b-e315-4d92-9baf-43e12a28fd9b",
+    "ItemTask-120371d1-9e74-4726-8639-6af46e10633c",
+    "ItemTask-9e2b1743-7e6f-4ad8-9b47-7825a32d5a50",
+    "ItemTask-f9a4b0b4-42f9-4910-8f65-f30fc96d14ef",
+    "ItemTask-940a03c8-3f40-4068-a19e-922459295aac"
+]
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Tasks submitted, fetching TrackerWaiter for workload
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Displaying elements:
+
+
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'18'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Waiting on workload:	'ItemTask-TrackerWaiter-94f8d75d-f4ea-48ba-bd50-42150fceab45'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.waitForWorkload ]: Future tracker size = '18', shown below
+
+
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'4'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'4'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-94f8d75d-f4ea-48ba-bd50-42150fceab45':	 Total = '4', Done = '0', Failed = '', Active = '0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':
+'nslookup ucc.ie'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-3':
+'nslookup dcu.ie'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-2':
+'nslookup tcd.ie'
+2026-04-01 16:35:06 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup ucc.ie':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:35:06 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup ucc.ie
+2026-04-01 16:35:06 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057706338,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057706174,
+    "Thread Name": "",
+    "id": "TaskLogging-226de8d7-5e9b-4e94-9251-0e916e4e1c2a"
+}
+2026-04-01 16:35:06 ERROR [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_3-3' failed on thread 'pool-5-thread-1' with exit code -11
+
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 WARN  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 WARN  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024',
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024' completed in 317ms
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluating starting of task 'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: Evaluating whether enough time to run task 'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateStart ]: TimeKeeper evaluated sufficient to run task 'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskStart ]: TimeKeeper evaluated time left for processing as 'true' for ItemTask:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task 'nslookup dcu.ie':	Displaying message for reference, and writing stack trace to stderr
+logs\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f
+2026-04-01 16:35:06 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Error executing task:	nslookup dcu.ie
+2026-04-01 16:35:06 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Displaying failed TaskLogging:
+{
+    "CPU Duration": 0,
+    "End Time": 1775057706388,
+    "Exit Code": -11,
+    "Process Id": 0,
+    "Process Log": {
+        "Stderr": [
+            "logs\\ProcessExecutor-99a52bd5-8457-4d4a-bf71-73065e3bda0f",
+            "java.base/sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105)",
+            "java.base/java.nio.file.Files.delete(Files.java:1152)",
+            "org.tasktide.engine.executor.streamhandler.StreamHandler.handleLogs(StreamHandler.java:82)",
+            "org.tasktide.engine.executor.ProcessExecutor.buildProcessLog(ProcessExecutor.java:230)",
+            "org.tasktide.engine.executor.ProcessExecutor.execute(ProcessExecutor.java:179)",
+            "org.tasktide.engine.executor.ItemTaskExecutor.executeTask(ItemTaskExecutor.java:85)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processTask(ItemTaskTraverser.java:237)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.processElm(ItemTaskTraverser.java:110)",
+            "org.tasktide.engine.traversers.ItemTaskTraverser.lambda$traverse$0(ItemTaskTraverser.java:191)",
+            "java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)",
+            "java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)",
+            "java.base/java.lang.Thread.run(Thread.java:842)",
+            null
+        ],
+        "Stdout": [
+            "See stderr"
+        ],
+        "id": "-1"
+    },
+    "Start Time": 1775057706215,
+    "Thread Name": "",
+    "id": "TaskLogging-e4c2f8fd-ad30-4c29-bd69-cecfbef40027"
+}
+2026-04-01 16:35:06 ERROR [ pool-5-thread-3 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_3-1' failed on thread 'pool-5-thread-3' with exit code -11
+
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing unsuccessful for task:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 WARN  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Warning, execution completed with error for task:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-5-thread-1':
+'nslookup tud.ie'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup tcd.ie
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_3-0' successful on thread 'pool-5-thread-2' with exit code 0
+
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing sucessful for task:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9', global count:	'6'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9',
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9' completed in 82ms
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:06 WARN  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Execution failed forItemTask:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0',
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0' completed in 104ms
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-3 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup tud.ie
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_3-2' successful on thread 'pool-5-thread-1' with exit code 0
+
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processTask ]: Processing sucessful for task:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-7a29b231-147a-4a99-9d37-60db84195161', global count:	'7'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'ItemTask-7a29b231-147a-4a99-9d37-60db84195161',
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'ItemTask-7a29b231-147a-4a99-9d37-60db84195161' completed in 328ms
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ pool-5-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'WorkItem' processing completed:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'WorkItem' processing completed:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'5'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'WorkItem' processing completed:	'WorkItem-271d0fc2-a3f8-46c7-9f99-74cd00d4b4f5'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'WorkItem' processing completed:	'WorkItem-975448db-c3f5-4835-93ac-50ba11633557'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-cfdca56b-8baf-4cab-b7e4-4ba9ec268f2d'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Task still active:	'WorkItem-dd0739f9-5855-4fa5-aaf8-6eea25fb1f2d'
+2026-04-01 16:35:06 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'WorkItem-TrackerWaiter-8e5ec9e1-f765-4eae-bc02-e8e29624e36d':	 Total = '5', Done = '2', Failed = '', Active = '0'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'4'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Workload size:	'4'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-7fbcf0fb-7059-40c7-aac7-578e71e652f0'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-3128d495-0d93-4024-9354-bb0a9b705fa9'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-d8adf647-a6d6-4591-8077-958d699f1024'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-7a29b231-147a-4a99-9d37-60db84195161'
+2026-04-01 16:35:08 WARN  [ pool-3-thread-3 -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Failed task threshold reached on waiter 'ItemTask-TrackerWaiter-94f8d75d-f4ea-48ba-bd50-42150fceab45', kill workload of size:	'4'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Waiting complete
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.WorkItemTraverser.handleParallelContext ]: Execution completed
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595', global count:	'3'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Measuring the elapsed time of task 'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595',
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: Task 'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595' completed in 3108ms
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.evaluateDuration ]: TimeKeeper evaluated enough time left for next task
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.TimeKeeperObserver.onTaskEnd ]: TimeKeeper evaluated time left next 'true' with ItemTask:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:35:08 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-9643f55f-27bd-4d37-af5e-68e696ae3595'
+2026-04-01 16:35:08 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.canTraverseWorkloadParallel ]: Traversal complete
+2026-04-01 16:35:08 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.canTraverseWorkloadParallel ]: 
+
+================ Can Traverse WorkItem Parallel ================
+
+2026-04-01 16:35:08 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-04-01 16:35:08 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.tearDownClass ]: 
+
+---------------- Terminating WorkItem Traverser Tests ----------------
+
+2026-04-01 16:35:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 93813176-025e-4889-8632-87711aa09869 shut down
+2026-04-01 16:35:08 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverserTests.tearDownClass ]: CDI container shut down

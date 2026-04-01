@@ -23,6 +23,7 @@ import jakarta.enterprise.inject.se.SeContainer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -37,13 +38,14 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import org.junit.Rule;
-import org.testcontainers.containers.GenericContainer;
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
 
 import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.TestEnvironment;
 
 import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
@@ -64,15 +66,15 @@ public class ItemTaskTraverserTests {
     
     private static final Logger LOGGER = LogManager.getLogger(ItemTaskTraverserTests.class);
     
-    private final String STEP = "Nested Ping Tests";
+    private final String STEP = "Nested NS Lookups";
     
     private SeContainer container;
     private Template template;
     
     
     // CouchDB container
-    @Rule
-    public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
+    // @Rule
+    // public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
     
     public ItemTaskTraverserTests() {
     }
@@ -85,7 +87,7 @@ public class ItemTaskTraverserTests {
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        TestUtils.importTestRecords("nested-ping-tasks.txt", this.STEP, ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
     }
     
     
@@ -97,7 +99,7 @@ public class ItemTaskTraverserTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        couchDB.stop();
+        // couchDB.stop();
     }
     
     
@@ -217,7 +219,8 @@ public class ItemTaskTraverserTests {
             
             // Check workload
             LOGGER.info("Evaluating workload status:\t'{}'\n\n'{}'", task.getId(), resultMap);
-            if ( task.getTaskDone() == task.getTaskCount() ) {
+            int tasksDone = task.getWorkload().summarizeWorkload().get(TaskState.COMPLETE);
+            if ( tasksDone == task.getTaskCount() ) {
                 LOGGER.info("ItemTask Traversal completed successfully");
                 assertionState = true;
             }
@@ -273,7 +276,9 @@ public class ItemTaskTraverserTests {
             
             // Check workload
             LOGGER.info("Evaluating workload status:\t'{}'\n\n'{}'", task.getId(), resultMap);
-            if ( task.getTaskDone() == task.getTaskCount() ) {
+            Map<TaskState, Integer> taskSummary = task.getWorkload().summarizeWorkload();
+            int inActive = taskSummary.get(TaskState.ACTIVE) + taskSummary.get(TaskState.PENDING);
+            if ( inActive == 0 ) {
                 LOGGER.info("ItemTask Traversal completed successfully");
                 assertionState = true;
             }

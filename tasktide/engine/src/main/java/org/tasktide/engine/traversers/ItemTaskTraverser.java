@@ -27,6 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.observer.chain.ItemTaskObserver;
@@ -43,7 +44,6 @@ import org.tasktide.engine.executor.TaskTideExecutor;
  * @author Bren
  */
 public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
-    
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
@@ -114,7 +114,7 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
                 this.processCount++;
                 LOGGER.info(
                     "Completed task '{}', global count:\t'{}'",
-                    elm.getId(), this.sharedCounter.incrementAndGet()
+                    elm.getId(), sharedCounter.incrementAndGet()
                 );
             }
                 
@@ -183,6 +183,7 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
     public void traverse(List<ItemTask> workload, ExecutorService threadPool) throws TraverserCheckedException {
         
         // Schedule tasks
+        LOGGER.info("Submitting ItemTasks");
         for ( ItemTask task : workload ) {
             
             // Schedule async operation
@@ -193,11 +194,22 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
             // Append to tracker for monitoring
             ExecutorServiceItem<ItemTask> item = new ExecutorServiceItem<>(task, future);
             FutureTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), item);
+            LOGGER.info(
+                "Displaying registerred task:\n\n{}",
+                JsonUtils.toJson(true, FutureTrackers.ITEM_TASK_TRACKER.getIds())
+            );
         }
         
         // Fetch waiter for ItemTask workload
+        LOGGER.info("Tasks submitted, fetching TrackerWaiter for workload");
+        LOGGER.info(
+            "Displaying elements:\n\n",
+            JsonUtils.toJson(true, FutureTrackers.ITEM_TASK_TRACKER.getIds())
+        );
         TrackerWaiter<ItemTask> trackerWaiter = FutureTrackers.ITEM_TASK_TRACKER.fetchWaiterFor(workload);
+        LOGGER.info("Waiting on workload:\t'{}'", trackerWaiter.getId());
         trackerWaiter.waitForWorkload();
+        LOGGER.info("Waiting complete");
     }
     
     

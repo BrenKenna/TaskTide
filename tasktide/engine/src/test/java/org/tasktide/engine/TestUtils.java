@@ -49,14 +49,15 @@ import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
-import org.tasktide.core.model.CustomAnnotation;
 
+import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
-import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
@@ -72,7 +73,7 @@ import org.tasktide.itemstore.RocksDbStore;
  */
 public class TestUtils {
     
-    private static Logger LOGGER = LogManager.getLogger(TestUtils.class);
+    private static final Logger LOGGER = LogManager.getLogger(TestUtils.class);
     
     
     /**
@@ -116,6 +117,7 @@ public class TestUtils {
     
     /**
      * Displays all {@link WorkItem} through Logger
+     * 
      */
     public static void viewWorkItems() {
         List<WorkItem> items = TaskTideServiceManager.fetchWorkItemService().viewAll();
@@ -126,7 +128,7 @@ public class TestUtils {
     /**
      * Import test json doc via {@link ManagerCommand},
      *  requires {@link TaskTideServiceManager} to be
-     *  iniialized.
+     *  initialized.
      * 
      * @param resourcePath
      * @param stepName
@@ -152,6 +154,43 @@ public class TestUtils {
         
         // Make and run import
         cmd = action.makeCommand(target, cmdSpec);
+        LOGGER.info("Performing below import command:\n\n'{}'", cmd.toJsonDoc());
+        cmd.execute();
+    }
+    
+    
+    /**
+     * Import test json doc via {@link ManagerCommand},
+     *  requires {@link TaskTideServiceManager} to be
+     *  initialized.
+     * 
+     * @param resourcePath
+     * @param stepName
+     * @param delimiter
+     * @param subDelim
+     */
+    public static void importTestRecords(String resourcePath, String stepName, String delimiter, String subDelim) {
+    
+        // Initialize vars
+        ManagerTarget target = ManagerTarget.WORKITEM;
+        ManagerAction action = ManagerAction.IMPORT;
+        CommandSpec cmdSpec;
+        ManagerCommand cmd;
+        
+        // Fetch json doc
+        Path path = TestUtils.fetchResourcePath(resourcePath);
+        String targetFile = path.toString();
+        
+        // Construct command spec
+        Map<String, Object> opts = new HashMap<>();
+        opts.put("Delimiter", delimiter);
+        opts.put("Step Name", stepName);
+        opts.put("Nested Delimiter", subDelim);
+        cmdSpec = new CommandSpec(targetFile, null, opts);
+        
+        // Make and run import
+        cmd = action.makeCommand(target, cmdSpec);
+        LOGGER.info("Performing below import command:\n\n'{}'", cmd.toJsonDoc());
         cmd.execute();
     }
     
@@ -243,8 +282,8 @@ public class TestUtils {
      */
     public static String modelToJsonString(List<? extends TaskTideModel<?>> models) {
         return models.stream()
-                .map(TaskTideModel::toJson)
-                .collect(Collectors.joining(",\n", "{\n", "\n]"));
+            .map(TaskTideModel::toJson)
+        .collect(Collectors.joining(",\n", "{\n", "\n]"));
     }
     
     

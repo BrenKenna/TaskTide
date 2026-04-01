@@ -42,7 +42,6 @@ import org.tasktide.engine.executor.ItemTaskExecutor;
 import org.tasktide.engine.executor.TaskTideExecutor;
 
 
-
 /**
  * Class to hold logic for fetching a workload from the
  *  {@link TaskTideServiceManager}. Utilizing the
@@ -58,11 +57,13 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
     private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
     private final TaskTideExecutor<ItemTask> itemTaskExecutor;
     private static final AtomicInteger sharedCounter = new AtomicInteger(0);
-    private int processCount;
     private final TaskTideEngineObserver<WorkItem> observer;
     private final TaskTideWorkloadTraverser<ItemTask> itemTaskTraverser;
     private final WorkerUnitContainer workerUnits;
 
+    private int processCount;
+    private boolean PARALLEL_CONTEXT = false;
+    
     
     /**
      * Construct with default {@link TaskTideEngineObserver}
@@ -123,13 +124,15 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
      * Traverses provided workload processing elements passing validation
      * 
      * @param workload
-     * @throws TraverserCheckedException 
+     * 
+     * @throws {@link TraverserCheckedException} 
      */
     @Override
     public void traverse(List<WorkItem> workload) throws TraverserCheckedException {
         
         // Initialize local coutners
         int skipped = 0;
+        this.PARALLEL_CONTEXT = false;
         
         // Traverse through workload
         for ( WorkItem task : workload ) {
@@ -147,17 +150,19 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
      * 
      * @param workload
      * @param threadPool
-     * @throws TraverserCheckedException 
+     * 
+     * @throws {@link TraverserCheckedException} 
      */
     @Override
     public void traverse(List<WorkItem> workload, ExecutorService threadPool) throws TraverserCheckedException {
         
         // Schedule tasks
+        this.PARALLEL_CONTEXT = true;
         for ( WorkItem task : workload ) {
             
             // Schedule async operation
             Future<Boolean> future = threadPool.submit(() -> {
-                return this.processTask(task);
+                return this.processElm(task);
             });
             
             // Append to tracker for monitoring
@@ -177,7 +182,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
      * @param elm
      * @return boolean
      * 
-     * @throws TraverserCheckedException 
+     * @throws {@link TraverserCheckedException} 
      */
     @Override
     public boolean processElm(WorkItem elm) throws TraverserCheckedException {
@@ -241,15 +246,15 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
      * @param task
      * @return boolean
      * 
-     * @throws TraverserCheckedException 
+     * @throws {@link TraverserCheckedException} 
      */
     private boolean processTask(WorkItem elm) throws TraverserCheckedException {
         
         // Pass if preprocessing fails
-        if ( ! this.observer.onTaskProcessing(elm) ) {
-            LOGGER.warn("Warning, preprocessing failed for task:\t'{}'", elm.getId());
-            return false;
-        }
+        //if ( ! this.observer.onTaskProcessing(elm) ) {
+        //    LOGGER.warn("Warning, preprocessing failed for task:\t'{}'", elm.getId());
+        //    return false;
+        //}
         
         // Pass if no active tasks
         List<ItemTask> toDo = elm.getWorkload().fetchByState().get(TaskState.PENDING);
@@ -267,17 +272,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
                     "Configuring ItemTaskTraverser for nested workload of:\t'{}'",
                     elm.getId()
                 );
-                ExecutorService execServ = this.workerUnits.getThreadPool(WorkerUnitModelType.ITEMTASK);
-                try {
-                    LOGGER.info("Delegating WorkItem processing to ItemTask executor:\t'{}'", elm.getId());
-                    this.itemTaskTraverser.traverse(toDo, execServ);
-                    LOGGER.info("Execution completed");
-                    return true;
-                }
-                catch (TraverserCheckedException ex) {
-                    LOGGER.error("Error during WorkItem processing:\t'{}'\n\n{}", elm.getId(), ex);
-                    throw ex;
-                }
+                return this.handleParallelContext(elm, toDo);
             }
             
             // Otherwise process as single task work item
@@ -299,6 +294,53 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
                     );
                     return false;
                 }
+            }
+        }
+    }
+    
+    
+    /**
+     * Uses the parallel context boolean field to determine
+     *  how to use the {@link ItemTaskTraverser}
+     * 
+     * @param elm
+     * @param toDo
+     * @return boolean
+     * 
+     * @throws {@link TraverserCheckedException} 
+     */
+    private boolean
+        handleParallelContext(WorkItem elm, List<ItemTask> toDo)
+    throws TraverserCheckedException {
+            
+        // Passes ItemTask workload to executor service
+        if ( PARALLEL_CONTEXT ) {
+            ExecutorService execServ = this.workerUnits.getThreadPool(WorkerUnitModelType.ITEMTASK);
+            try {
+                LOGGER.info("Delegating WorkItem processing to ItemTask executor:\t'{}'", elm.getId());
+                this.itemTaskTraverser.traverse(toDo, execServ);
+                LOGGER.info("Execution completed");
+                return true;
+            }
+            
+            catch (TraverserCheckedException ex) {
+                LOGGER.error("Error during WorkItem processing:\t'{}'\n\n{}", elm.getId(), ex);
+                throw ex;
+            }
+        }
+        
+        // Otherwise processed seraially
+        else {
+            try {
+                LOGGER.info("Delegating WorkItem processing to ItemTask executor:\t'{}'", elm.getId());
+                this.itemTaskTraverser.traverse(toDo);
+                LOGGER.info("Execution completed");
+                return true;
+            }
+            
+            catch (TraverserCheckedException ex) {
+                LOGGER.error("Error during WorkItem processing:\t'{}'\n\n{}", elm.getId(), ex);
+                throw ex;
             }
         }
     }

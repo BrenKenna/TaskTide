@@ -34,8 +34,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Assertions;
 
-import org.junit.Rule;
-import org.testcontainers.containers.GenericContainer;
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
 
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
@@ -66,8 +66,8 @@ public class WorkItemAcquisitionTests {
     
     
     // CouchDB container
-    @Rule
-    public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
+    // @Rule
+    // public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
     
     public WorkItemAcquisitionTests() {
     }
@@ -92,7 +92,7 @@ public class WorkItemAcquisitionTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        couchDB.stop();
+        // couchDB.stop();
     }
     
     
