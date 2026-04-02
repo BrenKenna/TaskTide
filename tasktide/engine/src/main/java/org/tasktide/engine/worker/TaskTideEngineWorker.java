@@ -109,7 +109,7 @@ public class TaskTideEngineWorker {
      * Continuously scans {@link TaskTideRepository} for
      *  work asynchronously
      */
-    public void serviceOperation() {
+    private void serviceOperation() {
     
         // Perhaps allow a queue like a file being written?
         int counter = 0;
@@ -125,7 +125,7 @@ public class TaskTideEngineWorker {
      * Continuously scans {@link TaskTideRepository} for
      *  work serially
      */
-    public void serviceOperationSerial() {
+    private void serviceOperationSerial() {
     
         // Perhaps allow a queue like a file being written?
         int counter = 0;
@@ -143,7 +143,7 @@ public class TaskTideEngineWorker {
      * 
      * @return List-{@link WorkItem}
      */
-    public List<WorkItem> fetchWorkload() {
+    private List<WorkItem> fetchWorkload() {
         List<WorkItem> workload = this.policy.fetchWorkload();
         if ( workload.size() > 1 ) {
             Collections.shuffle(workload);
@@ -156,7 +156,7 @@ public class TaskTideEngineWorker {
      * Fetch workload from {@link WorkItemAcquisitionPolicy},
      *  and process asynchronously
      */
-    public void fetchAndRun() {
+    private void fetchAndRun() {
         
         // Process each step in order provided
         LOGGER.info("Determing how to process workload");
@@ -183,7 +183,7 @@ public class TaskTideEngineWorker {
      * Fetch workload from {@link WorkItemAcquisitionPolicy},
      *  and process serially
      */
-    public void fetchAndRunSerial() {
+    private void fetchAndRunSerial() {
         
         // Process each step in order provided
         LOGGER.info("Determing how to process workload");

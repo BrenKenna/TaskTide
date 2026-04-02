@@ -4,12 +4,13 @@
  */
 package org.tasktide.tasktide.client;
 
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.nosql.Template;
 import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,13 +18,27 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+// import org.junit.Rule;
+// import org.tasktide.tasktide.TestEnvironment;
+// import org.testcontainers.containers.GenericContainer;
+
+import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+
+import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
+import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
+import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
+
 import org.tasktide.tasktide.TestEnvironment;
+import org.tasktide.tasktide.TestUtils;
 
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
 
-import org.testcontainers.containers.GenericContainer;
+
 
 
 /**
@@ -33,11 +48,15 @@ import org.testcontainers.containers.GenericContainer;
  */
 public class TaskTideClientTests {
     
-    private static final Logger logger = LogManager.getLogger(TaskTideClientTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(TaskTideClientTests.class);
     private static CdiContainerProvider provider;
     
-    @Rule
-    private static final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    private final String STEP = "Nested NS Lookups";
+    private SeContainer container;
+    private Template template;
+    
+    //@Rule
+    //private static final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     public TaskTideClientTests() {
     }
@@ -47,7 +66,7 @@ public class TaskTideClientTests {
     public static void setUpClass() {
         String msg = "\n\n---------------- Initiating Configuration from TaskTide-Engine-Config Tests ----------------\n";
         provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, true);
-        logger.info(msg);
+        LOGGER.info(msg);
     }
     
     
@@ -55,8 +74,8 @@ public class TaskTideClientTests {
     public static void tearDownClass() {
         String msg = "\n\n---------------- Terminating Configuration from TaskTide-Engine-Config Tests ----------------\n";
         provider.shutdown();
-        logger.info(msg);
-        couchDB.stop();
+        LOGGER.info(msg);
+        //couchDB.stop();
     }
     
     @BeforeEach
@@ -69,6 +88,28 @@ public class TaskTideClientTests {
 
     
     /**
+     * Initialize document backend providing {@link TaskTideWorkloadAcquisitionPolicy}
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy} of {@link WorkItem}
+     */
+    public TaskTideWorkloadAcquisitionPolicy<WorkItem> initDocumentTemplate() {
+    
+        // Load
+        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
+        
+        // Return acquisition policy
+        return WorkItemAcquisitionPolicy
+            .newInstance()
+            .withTarget(this.STEP)
+            .withItemState(ItemState.TODO)
+        ;
+    }
+
+    
+    /**
      * Tests importing through the manager client
      */
     @Test
@@ -76,31 +117,31 @@ public class TaskTideClientTests {
     public void canImportThroughManagerClient() {
     
         // Initialize data
-        logger.info("\n\n================ Tests ManagerClient-Import  ================\n");
+        LOGGER.info("\n\n================ Tests ManagerClient-Import  ================\n");
         
         // Fetch config
-        logger.info("Creating ClientConfigMap");
+        LOGGER.info("Creating ClientConfigMap");
         ClientConfigMap configMap = new ClientConfigMap();
         configMap.addConfigs(provider);
-        logger.info("Displaying configured properties");
+        LOGGER.info("Displaying configured properties");
         for ( Entry elm : configMap.getArgTree().getGlobalArguments().getArgMap().entrySet() ) {
-            logger.info("Key = '{}', Value = '{}'", elm.getKey(), elm.getValue());
+            LOGGER.info("Key = '{}', Value = '{}'", elm.getKey(), elm.getValue());
         }
         
         // Fetch service manager
-        logger.info("Initializing TaskTideServiceManager");
+        LOGGER.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
         TaskTideClientUtility.initServiceManager(repoType, configMap);
         
         // Fetch client
-        logger.info("Constructing TaskTideClient");
+        LOGGER.info("Constructing TaskTideClient");
         TaskTideClientType clientType = TaskTideClientType.MANAGER;
         TaskTideClient client = clientType.makeClient(configMap);
         
         // Import data
-        logger.info("Running the '{}'", clientType);
+        LOGGER.info("Running the '{}'", clientType);
         client.runClient();
-        logger.info("\n\n================ Tests ManagerClient-Import  ================\n");
+        LOGGER.info("\n\n================ Tests ManagerClient-Import  ================\n");
     }
     
     
@@ -112,31 +153,32 @@ public class TaskTideClientTests {
     public void canProcessThroughEngineClient() {
     
         // Initialize data
-        logger.info("\n\n================ Tests EngineClient  ================\n");
+        LOGGER.info("\n\n================ Tests EngineClient  ================\n");
         
         // Fetch config
-        logger.info("Constructing ClientConfigMap");
+        LOGGER.info("Constructing ClientConfigMap");
         ClientConfigMap configMap = new ClientConfigMap();
         configMap.addConfigs(provider);
         
         // Fetch service manager
-        logger.info("Initializing TaskTideServiceManager");
+        LOGGER.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
         try {
             TaskTideClientUtility.initServiceManager(repoType, configMap);
+            this.initDocumentTemplate();
         }
         catch (IllegalStateException ex) {
-            logger.info("Proceeding to Engine with previously iniatied engine");
+            LOGGER.info("Proceeding to Engine with previously iniatied engine");
         }
         
         // Fetch client
-        logger.info("Fetching Client");
+        LOGGER.info("Fetching Client");
         TaskTideClientType clientType = TaskTideClientType.ENGINE;
         TaskTideClient client = clientType.makeClient(configMap);
         
         // Import data
-        logger.info("Running the '{}'", clientType);
+        LOGGER.info("Running the '{}'", clientType);
         client.runClient();
-        logger.info("\n\n================ Tests EngineClient  ================\n");
+        LOGGER.info("\n\n================ Tests EngineClient  ================\n");
     }
 }
