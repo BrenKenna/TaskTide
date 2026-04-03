@@ -36,11 +36,12 @@ public interface ImportCommandRecordHandler {
      * Parsing files from {@link ManagerCommand} requiring
      *  iterations over them
      * 
-     * @param stepName
      * @param parts
+     * @param stepName
+     * @param stepId
      * @param cmd
      * @param LOGGER 
      * @return {@link WorkItem}
      */
-    public WorkItem parseRecord(String[] parts, String stepName, AbstractCommand cmd, Logger LOGGER);
+    public WorkItem parseRecord(String[] parts, String stepName, String stepId, AbstractCommand cmd, Logger LOGGER);
 }

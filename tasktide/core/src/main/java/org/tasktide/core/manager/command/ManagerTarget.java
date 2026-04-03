@@ -87,7 +87,7 @@ public enum ManagerTarget {
         
         @Override
         public boolean hasRepository() {
-            return false;
+            return true;
         }
     },
 
@@ -114,7 +114,7 @@ public enum ManagerTarget {
         
         @Override
         public boolean hasRepository() {
-            return false;
+            return true;
         }
     },
 
@@ -141,7 +141,7 @@ public enum ManagerTarget {
         
         @Override
         public boolean hasRepository() {
-            return false;
+            return true;
         }
     },
     
@@ -170,7 +170,7 @@ public enum ManagerTarget {
         
         @Override
         public boolean hasRepository() {
-            return false;
+            return true;
         }
     },
     
@@ -199,7 +199,7 @@ public enum ManagerTarget {
         
         @Override
         public boolean hasRepository() {
-            return false;
+            return true;
         }
     },
     
@@ -228,7 +228,7 @@ public enum ManagerTarget {
         
         @Override
         public boolean hasRepository() {
-            return false;
+            return true;
         }
     };
     
@@ -327,5 +327,18 @@ public enum ManagerTarget {
         return Arrays.stream(values())
             .map(elm -> elm.name())
             .collect(Collectors.joining(","));
+    }
+    
+    
+    /**
+     * Provides an array of {@link ManagerTarget} which
+     *  have repositories associated with them
+     * 
+     * @return Array-{@link ManagerTarget}
+     */
+    public static ManagerTarget[] withRepositories() {
+        return Arrays.stream( values() )
+            .filter( elm -> elm.hasRepository() )
+        .toArray(ManagerTarget[]::new);
     }
 }

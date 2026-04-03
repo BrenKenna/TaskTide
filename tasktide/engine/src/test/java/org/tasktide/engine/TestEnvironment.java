@@ -17,6 +17,7 @@ package org.tasktide.engine;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
+
 import org.eclipse.microprofile.config.Config;
 
 import jakarta.nosql.Template;
@@ -267,7 +268,6 @@ public class TestEnvironment {
         }
         catch (Exception ex) {
             LOGGER.error("Error during create database request. Displaying stack trace\n\n", ex);
-            ex.printStackTrace();
             return false;
         }
     }

@@ -17,11 +17,17 @@ package org.tasktide.engine.trackers;
 
 import java.util.Map;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -39,24 +45,35 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     
     // Attributes
     private final ConcurrentMap<String, ExecutorServiceItem<T>> taskStates;
+    private final Logger LOGGER = LogManager.getLogger(ExecutorServiceTracker.class);
+    private final Class<T> TYPE;
     
     
     /**
      * Only constructable from within package
      */
-    ExecutorServiceTracker() {
+    ExecutorServiceTracker(Class<T> type) {
         this.taskStates = new ConcurrentHashMap<>();
+        this.TYPE = type;
     }
     
     
     /**
-     * Clear entries from collection
+     * Construct with state map
      * 
+     * @param type
+     * @param taskStates 
      */
-    public void clearMap() {
-        this.taskStates.clear();
+    ExecutorServiceTracker(Class<T> type, ConcurrentMap<String, ExecutorServiceItem<T>> taskStates) {
+        if ( taskStates != null ) {
+            this.taskStates = taskStates;
+        }
+        else {
+            this.taskStates = new ConcurrentHashMap<>();
+        }
+        this.TYPE = type;
     }
-    
+
     
     /**
      * Fetch list of completed Ids
@@ -83,6 +100,17 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     public void markTask(String taskId, ExecutorServiceItem<T> item) {
         taskStates.putIfAbsent(taskId, item);
     }
+    
+    
+    /**
+     * Fetch entry set
+     * 
+     * @return 
+     */
+    public Set<Entry<String, ExecutorServiceItem<T>>> fetchEntrySet() {
+        return this.taskStates.entrySet();
+    }
+    
     
     
     /**
@@ -202,6 +230,50 @@ public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
      */
     public Set<String> getIds() {
         return taskStates.keySet();
+    }
+    
+    
+    /**
+     * Wait for future list
+     * 
+     * @param futures 
+     */
+    public void waitForAll(List<Future<?>> futures) {
+        for( Future<?> future : futures ) {
+            try {
+                future.get();
+            }
+            catch ( InterruptedException | ExecutionException ex) {
+                LOGGER.error("Error encountered waiting on workload:\n{}", ex);
+            }
+        }
+    }
+    
+    
+    /**
+     * Fetch a {@link TrackerWaiter} for provided workload
+     * 
+     * @param tasks
+     * @return {@link TrackerWaiter}
+     */
+    public TrackerWaiter<T> fetchWaiterFor(List<T> tasks) {
+        if ( tasks.isEmpty() ) {
+            LOGGER.error("Cannot fetch waiter for empty list, passing on creation");
+            return null;
+        }
+        LOGGER.info("Task size:\t'{}'", this.taskStates.size());
+        ExecutorServiceTracker<T> tracker = new ExecutorServiceTracker<>(this.TYPE, this.taskStates);
+        return new TrackerWaiter<>(tasks, tracker, tracker.getType());
+    }
+    
+    
+    /**
+     * Get class type of tracker
+     * 
+     * @return Class of T
+     */
+    public Class<T> getType() {
+        return this.TYPE;
     }
     
     

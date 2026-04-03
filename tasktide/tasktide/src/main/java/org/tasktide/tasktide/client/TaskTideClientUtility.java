@@ -31,7 +31,7 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
-import org.tasktide.core.repository.nosql_repo.TemplateRepositoryUtility;
+import org.tasktide.core.repository.template_repo.TemplateRepositoryUtility;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreType;
@@ -191,9 +191,15 @@ public class TaskTideClientUtility {
      * @param configMap
      */
     public static void initNoSqlServiceManager(ClientConfigMap configMap) {
-        String dbType = (String) configMap.getArgTree().getGlobalArguments().getArgMap().get("NoSQL Database Type").getValue();
+        String dbType = (String) configMap.getArgTree()
+            .getGlobalArguments()
+            .getArgMap()
+            .get("NoSQL Database Type")
+        .getValue();
         TemplateRepositoryUtility.initialize(dbType);
-        TemplateRepositoryUtility.get().initServiceManager();
+        TemplateRepositoryUtility
+             .get()
+        .initServiceManager();
     }
     
     
@@ -214,7 +220,7 @@ public class TaskTideClientUtility {
     public static void initItemStoreServiceManager(ClientConfigMap configMap) {
         String storeTypeString, storeName;
         LOGGER.debug("Repository FilePath is:\t'{}'", configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue());
-        storeName = (String) configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue(); // Thinks boolean
+        storeName = (String) configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue();
         storeTypeString = (String) configMap.getArgTree().getGlobalArguments().getArgument("Repository Type").getValue();
         ItemStoreType storeType = ItemStoreType.get(storeTypeString);
         ItemStoreRepositoryUtility.initialize(storeType, storeName);

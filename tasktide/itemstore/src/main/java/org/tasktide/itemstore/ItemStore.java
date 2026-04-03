@@ -16,6 +16,11 @@
 package org.tasktide.itemstore;
 
 import java.util.List;
+import java.util.Map;
+
+import org.tasktide.itemstore.session.BulkOperation;
+import org.tasktide.itemstore.session.LinkedOperation;
+import org.tasktide.itemstore.session.LinkedOperationMap;
 
 
 /**
@@ -24,6 +29,46 @@ import java.util.List;
  * @author bkenna
  */
 public interface ItemStore {
+    
+    
+    /**
+     * Allows a collection of {@link ItemStore} methods to be
+     *  executed across an {@link ItemStore} map under one locked
+     *  {@link LinkedOperation}
+     * 
+     * @param <T>
+     * @param target
+     * @param recipients
+     * @param operations
+     * @return T
+     */
+    <T> T execute(DbTarget target, Map<String, ItemStore> recipients, LinkedOperationMap<T> operations);
+    
+    
+    /**
+     * Allows a collection of {@link ItemStore} methods to be
+     *  executed across {@link ItemStore} under one locked
+     *  {@link LinkedOperation}
+     * 
+     * @param <T>
+     * @param target
+     * @param itemStore
+     * @param operations
+     * @return T
+     */
+    <T> T execute(DbTarget target, ItemStore itemStore, LinkedOperation<T> operations);
+    
+    
+    /**
+     * Allows a collection of {@link ItemStore} methods to be
+     *  executed under the one lock
+     * 
+     * @param <T>
+     * @param target
+     * @param work
+     * @return T
+     */
+    <T> T execute(DbTarget target, BulkOperation<T> work);
     
     
     /**
@@ -192,6 +237,16 @@ public interface ItemStore {
      * @return boolean
      */
     boolean closeConn(DbTarget target);
+    
+    
+    /**
+     * Close connection to target DB and Mutex
+     * 
+     * @param target
+     * @param releaseMutex
+     * @return boolean
+     */
+    boolean closeConn(DbTarget target, boolean releaseMutex);
     
     
     /**

@@ -344,6 +344,34 @@ public enum ManagerAction {
             return cmd;
         }
     },
+
+    DELETE_ALL {
+        @Override
+        public CommandType getCommandType() {
+            return CommandType.BATCH_DELETE;
+        }
+        
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd = new DeleteCommand(ManagerAction.DELETE_ALL, target, cmdSpec, CommandType.BATCH_DELETE);
+            return cmd;
+        }
+    },
    
     ANNOTATE_JOB {
         @Override

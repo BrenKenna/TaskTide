@@ -23,6 +23,9 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.concurrency.ParallelItemTaskExecutor;
 import org.tasktide.engine.trackers.FutureTrackers;
 
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
+
+
 
 /**
  * Test utility to support development of the TaskTideEngine

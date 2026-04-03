@@ -15,37 +15,29 @@
  */
 package org.tasktide.tasktide.client;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
-
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.tasktide.core.TaskTideRepository;
+import org.apache.logging.log4j.LogManager;
 
-import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.model.builders.CustomAnnotationBuilder;
-import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.core.model.builders.CustomAnnotationBuilder;
 
-import org.tasktide.engine.TaskTideEngineUtility;
+import org.tasktide.engine.worker.TaskTideEngineWorker;
+import org.tasktide.engine.policies.WorkerExecutionPolicy;
+import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 
-import org.tasktide.engine.TaskTideExecutorServiceProvider;
-import org.tasktide.engine.TaskTideWorkerUnitProvider;
-import org.tasktide.engine.observer.TaskTideEngineObserver;
+import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.executor.WorkItemExecutor;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
-import org.tasktide.engine.worker.processor.WorkItemProcessor;
+import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+
 import org.tasktide.parser.model.ArgumentMap;
 
 
 /**
- * Class for configuring implementing the TaskTideEngine 
+ * Class for configuring implementing the {@link TaskTideEngineWorker} 
  * 
  * @author bkenna
  */
@@ -53,14 +45,13 @@ public class TaskTideEngineClient extends TaskTideClient {
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(TaskTideEngineClient.class);
-    private final TaskTideWorkerUnitProvider unitProvider;
-    private int workItemThreads, itemTaskThreads, workThreshold, taskThreshold;
-    private TaskTideProcessor<WorkItem> processor;
-    private TaskTideExecutor<WorkItem> workExec;
-    private TaskTideEngineObserver<WorkItem> obs;
-    private final ArgumentMap engineArgs, globalArgs;
     private final String step;
-    private final Random RAND = new Random(); 
+    private final WorkerUnitContainer workerContainer;
+    private final ArgumentMap engineArgs, globalArgs;
+    
+    private TaskTideWorkloadAcquisitionPolicy<WorkItem> acquisitionPolicy;
+    private TaskTideEngineWorker worker;
+    private int workItemThreads, itemTaskThreads;
     
     
     /**
@@ -70,7 +61,7 @@ public class TaskTideEngineClient extends TaskTideClient {
      */
     public TaskTideEngineClient(ClientConfigMap configMap) {
         super(configMap);
-        this.unitProvider = new TaskTideWorkerUnitProvider();
+        this.workerContainer = WorkerUnitContainer.getInstance();
         this.engineArgs = this.getArgTree().getTree().getDataForAddress("engine");
         this.globalArgs = this.getArgTree().getTree().getDataForAddress("");
         this.step = (String) globalArgs.getArgument("Step Name").getValue();
@@ -80,46 +71,45 @@ public class TaskTideEngineClient extends TaskTideClient {
     /**
      * Initialize client by:
      * <br><br>
-     * 1). Configuring a separate {@link ExecutorService}
-     *  for {@link WorkItem}, and {@link ItemTask}.
+     * 1). Configuring the {@link WorkerUnitContainer}
      * <br><br>
-     * 2). Configuring {@link TaskTideEngineObserver}.
+     * 2). Configuring an {@link WorkItemAcquisitionPolicy}.
      * <br><br>
-     * 3). Configuring {@link TaskTideExecutor}.
-     * <br><br>
-     * 4). Configuring {@link TaskTideProcessor}.
+     * 3). Configuring the {@link TaskTideEngineWorker}
      */
     @Override
     protected boolean configureClient() {
         
-        // Try configure client
+        // Try configure engine client
         try {
-            // Initialize executor service 
-            ExecutorService executorServ;
-            executorServ = this.initializeAndConfigureExecutorServices();
-
-            // Configure EngineObserver
-            this.obs = this.configureWorkItemEngineObserverChain();
-
-            // Configure Executor
-            this.workExec = this.configureWorkItemExecutor(obs);
-
-            // Configures processor
-            this.processor = this.configureWorkItemProcessor(executorServ, workExec);
+            
+            // Configure engine components
+            LOGGER.info("Constructing TaskTide-Engine WorkerUnitContainer");
+            this.configureWorkerContainer();
+            
+            // Configure the fuel for the engine
+            LOGGER.info("Configuring the workload Acqusition Policy for Step:\t'{}'", this.step);
+            this.acquisitionPolicy = this.configureAcquisitionPolicy();
+            
+            // Configure engine worker
+            LOGGER.info("Constructing TaskTide-Engine Worker");
+            this.worker = new TaskTideEngineWorker(this.acquisitionPolicy);
+            
+            // Return client state
+            LOGGER.info("TaskTide-Engine client configured");
             return true;
         }
         
         // Catch and log error, return false for graceful shutdown
-        catch (Exception ex) {
+        catch ( TaskTideEngineCheckedException ex) {
             LOGGER.error("Error during client configuration, displaying stack trace:\n{}", ex);
-            ex.printStackTrace();
             return false;
         }
     }
     
     
     /**
-     * Processes workload through {@link TaskTideProcessor}
+     * Processes workload through {@link TaskTideEngineWorker}
      * 
      */
     @Override
@@ -128,22 +118,16 @@ public class TaskTideEngineClient extends TaskTideClient {
         // Determine eexecution policy
         LOGGER.info("Determining engine execution policy");
         String pol = (String) this.engineArgs.getArgument("Execution Policy").getValue();
-        EngineExecutionPolicy execPol = EngineExecutionPolicy.get(pol);
+        WorkerExecutionPolicy execPol = WorkerExecutionPolicy.get(pol);
+
+        // Process based on policy
+        LOGGER.info("Engine Worker operating in '{}' mode", execPol);
+        try {
+            this.worker.runEngine(execPol);
+        }
         
-        // Process based on mode
-        switch ( execPol ) {
-            
-            // Fetch and run processing
-            case BATCH -> {
-                LOGGER.info("Operating in batch mode");
-                this.fetchAndRun();
-            }
-            
-            // Run as service
-            case SERVICE -> {
-                LOGGER.info("Operating as a service");
-                this.serviceOperation();
-            }
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error("Error during workload processing by TaskTideEngineWorkre:\n\n{}", ex);
         }
         
         // Clean up - close connections etc
@@ -152,19 +136,71 @@ public class TaskTideEngineClient extends TaskTideClient {
     
     
     /**
-     * Continuously scans {@link TaskTideRepository} for
-     *  work
+     * Configures {@link WorkItemAcquisitionPolicy}
+     * 
+     * @return {@link WorkItemAcquisitionPolicy}
      */
-    private void serviceOperation() {
+    public TaskTideWorkloadAcquisitionPolicy<WorkItem> configureAcquisitionPolicy() {
     
-        // Perhaps allow a queue like a file being written?
-        int counter = 0;
-        while ( true ) {
-            this.fetchAndRun();
-            TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
-            counter++;
+        // Initialize acquisition policy
+        LOGGER.info("Configuring TaskTide-Engine Workload Acqusition Policy");
+        TaskTideWorkloadAcquisitionPolicy<WorkItem> policy = WorkItemAcquisitionPolicy.newInstance();
+        
+        // Apply step
+        policy = policy.withTarget(this.step);
+        
+        // Apply state
+        policy = policy.withItemState(ItemState.TODO); // this can now be an argument
+        
+        // Apply annotation key-value
+        if (
+            this.engineArgs.getArgument("Pilot Label Key").getValue() != "" &&
+            this.engineArgs.getArgument("Pilot Label Value").getValue() != ""
+        ) {
+            String key = (String) this.engineArgs.getArgument("Pilot Label Key").getValue();
+            Object val = this.engineArgs.getArgument("Pilot Label Value").getValue();
+            policy = policy.withAnno(key, val);
         }
+        
+        // Apply custom annotation
+        if ( this.engineArgs.getArgument("Pilot Label Annotation").getValue() != "" ) {
+            String json = (String) this.engineArgs.getArgument("Pilot Label Annotation").getValue();
+            CustomAnnotation anno = CustomAnnotationBuilder.fromJsonString(json);
+            policy = policy.withAnno(anno);
+        }
+        
+        // Return acquisition policy
+        return policy;
     }
+    
+    
+    /**
+     * Configures {@link WorkerUnitContainer} components
+     * 
+     * @throws {@link TaskTideEngineCheckedException} 
+     */
+    public void configureWorkerContainer() throws TaskTideEngineCheckedException {
+    
+        // Set thread pool sizes
+        LOGGER.info("Configuring taskTideEngineWorkerContainer components");
+        this.workItemThreads = (int) this.engineArgs.getArgument("WorkItem Threads").getValue();
+        this.itemTaskThreads = (int) this.engineArgs.getArgument("ItemTask Threads").getValue();
+        this.workerContainer.configureExecutorServices(this.workItemThreads, this.itemTaskThreads);
+
+        // Configure EngineObservers
+        int timeKeeperObserverMaxTime = (int) this.engineArgs.getArgument("TimeKeeper Wall Time").getValue();
+        this.workerContainer.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, timeKeeperObserverMaxTime);
+        this.workerContainer.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, timeKeeperObserverMaxTime);
+            
+        // Configure Executors
+        this.workerContainer.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+        this.workerContainer.configureProcessExecutor();
+
+        // Configure traversers
+        this.workerContainer.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
+        this.workerContainer.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
+    }
+    
     
     /**
      * Performs required cleanup actions
@@ -173,186 +209,5 @@ public class TaskTideEngineClient extends TaskTideClient {
     @Override
     protected void cleanUp() {
         
-    }
-    
-    
-    /**
-     * Determines whether pilot label is configured
-     * 
-     * @return boolean 
-     */
-    private boolean hasPilotLabel() {
-        return
-            (this.engineArgs.getArgument("Pilot Label Key").getValue() != "" &&
-            this.engineArgs.getArgument("Pilot Label Value").getValue() != "")
-            || 
-            this.engineArgs.getArgument("Pilot Label Annotation").getValue() != ""
-        ;
-    }
-    
-    
-    /**
-     * Fetches available work based on pilot label annotation
-     * 
-     * @param step
-     * @return List-{@link WorkItem}
-     */
-    private List<WorkItem> handlePilotLabel(String step) {
-    
-        if ( this.engineArgs.getArgument("Pilot Label Key").getValue() != "" &&
-            this.engineArgs.getArgument("Pilot Label Value").getValue() != "" )
-        {
-            String key = (String) this.engineArgs.getArgument("Pilot Label Key").getValue();
-            Object value = this.engineArgs.getArgument("Pilot Label Value").getValue();
-            return TaskTideEngineUtility.fetchToDoWorkTargetPilotLabel(step, key, value);
-        }
-        
-        else {
-            String json = (String) this.engineArgs.getArgument("Pilot Label Annotation").getValue();
-            CustomAnnotation anno = CustomAnnotationBuilder.fromJsonString(json);
-            LOGGER.info("Evaluating annotation query:\n'{}'", JsonUtils.toJson(true, anno));
-            return TaskTideEngineUtility.fetchToDoWorkTargetPilotLabel(step, anno);
-        }
-    }
-    
-    
-    /**
-     * Fetches engine workload, checking if pilot label
-     *  was used
-     * 
-     * @param step
-     * @return List-{@link WorkItem}
-     */
-    private List<WorkItem> fetchWorkload(String step) {
-        if ( this.hasPilotLabel() ) {
-            LOGGER.info("Pilot label provided");
-            return this.handlePilotLabel(step);
-        }
-        else {
-            LOGGER.info("No pilot label provided, processing all tasks");
-            return TaskTideEngineUtility.fetchToDoWorkTarget(step);
-        }
-    }
-    
-    
-    /**
-     * Fetch and run workloads
-     * 
-     */
-    private void fetchAndRun() {
-        
-        // Process each step in order provided
-        LOGGER.info("Determing how to process workload");
-        if ( this.step.contains(",") ) {
-            String[] steps = this.step.split(",");
-            LOGGER.info("Processing in pipeline mode:\t'{}'", JsonUtils.toJson(false, steps));
-            for ( String elm : steps ) {
-                LOGGER.info("Processing step:\t'{}'", elm);
-                List<WorkItem> workload = this.fetchWorkload(elm);
-                Collections.shuffle(workload);
-                this.processWorkload(workload);
-                LOGGER.info("Processing complete for step:\t'{}'", elm);
-            }
-        }
-        
-        // Process target step
-        else if ( !this.step.equalsIgnoreCase("na") ) {
-            LOGGER.info("Processing single step:\t'{}'", step);
-            List<WorkItem> workload = this.fetchWorkload(step);
-            this.processWorkload(workload);
-            LOGGER.info("Processing complete for step:\t'{}'", step);
-        }
-        
-        // Process all, perhaps check a force as it could be a mistake?
-        else {
-            LOGGER.info("No step detected, processing unassigned under '{}'", step);
-            List<WorkItem> workload = TaskTideEngineUtility.fetchToDoWorkTarget(step);
-            this.processWorkload(workload);
-            LOGGER.info("Processing complete");
-        }
-    }
-    
-    
-    /**
-     * Processes provided workload
-     * 
-     * @param workload 
-     */
-    private void processWorkload(List<WorkItem> workload) {
-        
-        // Process if available
-        if ( !workload.isEmpty() ) {
-            LOGGER.info("Processing workload of size:\t'{}'", workload.size());
-            this.processor.processChunks(workload);
-            TaskTideEngineUtility.waitOnExecutorTrackerWorkItem(workload.size(), LOGGER);
-        }
-        else {
-            LOGGER.warn(
-                "Warning, no ToDo tasks available for processing. Query below backend for more information\n\n{}\n\n",
-                TaskTideServiceManager.fetchWorkItemService().getRepo().getRepositoryMetaData()
-            );
-        }
-    }
-    
-    
-    /**
-     * Initializes and configures an {@link ExecutorService} for
-     *  {@link WorkItem} and {@link ItemTask} processing through the
-     *  {@link TaskTideExecutorServiceProvider}
-     * 
-     * @return {@link ExecutorService}
-     */
-    private ExecutorService initializeAndConfigureExecutorServices() {
-        this.workItemThreads = (int) this.engineArgs.getArgument("WorkItem Threads").getValue();
-        this.workThreshold = (int) this.engineArgs.getArgument("WorkItem SubTasking Threshold").getValue();
-        this.itemTaskThreads = (int) this.engineArgs.getArgument("ItemTask Threads").getValue();
-        this.taskThreshold = (int) this.engineArgs.getArgument("ItemTask SubTasking Threshold").getValue();
-        TaskTideExecutorServiceProvider.initialize(this.workItemThreads, this.itemTaskThreads);
-        return TaskTideExecutorServiceProvider.workItemExecutorService();
-    }
-    
-    
-    /**
-     * Configures the EngineObserver for {@link WorkItem}
-     * 
-     * @return {@link TaskTideEngineObserver}
-     */
-    private TaskTideEngineObserver<WorkItem> configureWorkItemEngineObserverChain() {
-        int timeKeeperObserverMaxTime = (int) this.engineArgs.getArgument("TimeKeeper Wall Time").getValue();
-        return unitProvider.getWorkItemObsBuilder()
-            .withMaxTime(timeKeeperObserverMaxTime)
-        .build();
-    } 
-    
-    
-    /**
-     * Configures {@link WorkItemExecutor}
-     * 
-     * @param obs
-     * @return {@link TaskTideExecutor} of {@link WorkItem}
-     */
-    private TaskTideExecutor<WorkItem> configureWorkItemExecutor(TaskTideEngineObserver<WorkItem> obs) {
-        return unitProvider.getWorkItemExecBuilder()
-            .withWorkItemObserver(obs)
-            .withSubThreads(this.workItemThreads)
-            .withSubTaskThreshold(this.workThreshold)
-        .build();
-    }
-
-    
-    /**
-     * Configures {@link WorkItemProcessor}
-     * 
-     * @param execServ
-     * @param subExecutor
-     * @return {@link TaskTideProcessor} of {@link WorkItem}
-     */
-    private TaskTideProcessor<WorkItem> configureWorkItemProcessor(ExecutorService execServ, TaskTideExecutor<WorkItem> subExecutor) {
-        return unitProvider.getWorkItemProcBuilder()
-            .withWorkload(TaskTideEngineUtility.fetchToDoWork())
-            .withExecutorService(execServ)
-            .withThreshold(this.workThreshold)
-            .withSubExecutor(subExecutor)
-        .build();
     }
 }

@@ -90,6 +90,21 @@ public class CommandSpec {
 
     
     /**
+     * Returns whether file path is empty
+     * 
+     * @return boolean
+     */
+    public boolean filePathIsEmpty() {
+        if ( this.filePath.isEmpty() ) {
+            return true;
+        }
+        else {
+            return this.filePath.get().isEmpty();
+        }
+    }
+    
+    
+    /**
      * Gets query string for {@link ManagerCommand}
      * 
      * @return Optional-String
@@ -106,6 +121,21 @@ public class CommandSpec {
      */
     public void setQueryString(Optional<String> queryString) {
         this.queryString = queryString;
+    }
+    
+    
+    /**
+     * Returns whether file path is empty
+     * 
+     * @return boolean
+     */
+    public boolean queryStringIsEmpty() {
+        if ( this.queryString.isEmpty() ) {
+            return true;
+        }
+        else {
+            return this.queryString.get().isEmpty();
+        }
     }
 
     

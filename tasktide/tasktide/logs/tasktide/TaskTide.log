@@ -1,0 +1,4 @@
+2026-04-03 12:36:34 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2026-04-03 12:36:34 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-04-03 12:36:41 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2026-04-03 12:36:41 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.jboss.weld.exceptions.UnsatisfiedResolutionException: WELD-001334: Unsatisfied dependencies for type GlobalConfig with qualifiers  '

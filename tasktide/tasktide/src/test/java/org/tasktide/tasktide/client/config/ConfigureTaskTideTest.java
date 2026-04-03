@@ -4,9 +4,7 @@
  */
 package org.tasktide.tasktide.client.config;
 
-import org.tasktide.tasktide.client.config.EngineConfig;
-import org.tasktide.tasktide.client.config.ManagerConfig;
-import org.tasktide.tasktide.client.config.GlobalConfig;
+
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.inject.spi.CDI;
@@ -34,13 +32,13 @@ import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
-import org.tasktide.engine.TaskTideEngineUtility;
+import org.tasktide.engine.worker.TaskTideEngineUtility;
 
-import org.tasktide.engine.TaskTideExecutorServiceProvider;
-import org.tasktide.engine.TaskTideWorkerUnitProvider;
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.workerunit.provider.TaskTideWorkerUnitProvider;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
 
 import org.tasktide.itemstore.ItemStoreType;
 import org.tasktide.tasktide.client.TaskTideManagerClient;
@@ -120,11 +118,9 @@ public class ConfigureTaskTideTest {
         engineConfig.initConfig(argTree);
         
         // Fetch configure values
-        int workItemThreads, workItemThreshold, itemTaskThreads, itemTaskThreshold;
+        int workItemThreads, itemTaskThreads;
         workItemThreads = (int) argTree.getTree().getDataForAddress("engine").getArgument("WorkItem Threads").getValue();
-        workItemThreshold = (int) argTree.getTree().getDataForAddress("engine").getArgument("WorkItem SubTasking Threshold").getValue();
         itemTaskThreads = (int) argTree.getTree().getDataForAddress("engine").getArgument("ItemTask Threads").getValue();
-        itemTaskThreshold = (int) argTree.getTree().getDataForAddress("engine").getArgument("ItemTask SubTasking Threshold").getValue();
         
         // Configure executor service for work items, and item tasks
         TaskTideExecutorServiceProvider.initialize(workItemThreads, itemTaskThreads);
@@ -145,25 +141,22 @@ public class ConfigureTaskTideTest {
         executor = unitProvider.getWorkItemExecBuilder()
             .withWorkItemObserver(observer)
             .withSubThreads(workItemThreads)
-            .withSubTaskThreshold(workItemThreshold)
         .build();
         
         // Configure processor
         processor = unitProvider.getWorkItemProcBuilder()
-            .withWorkload(workload)
             .withExecutorService(executorService)
-            .withThreshold(workItemThreshold)
             .withSubExecutor(executor)
         .build();
         
         // Process work
-        processor.process();
+        processor.process(workload);
         TaskTideEngineUtility.waitOnExecutorTrackerWorkItem(nWorkItems, logger);
         
         // Evaluate test status
         boolean assertionState;
         int expected = nWorkItems * nItemTask;
-        int nProcessed = TaskTideEngineUtility.countNonActive(workload);
+        int nProcessed = TaskTideEngineUtility.countNotActiveWorkItem(workload);
         if ( nProcessed == expected ) {
             logger.info("Processed task count '{}', matches expected '{}'", nProcessed, expected);
             assertionState = true;

@@ -79,9 +79,6 @@ public class TaskTideManagerClient extends TaskTideClient {
      */
     @Override
     protected boolean configureClient() {
-        // String inFile = ((String) this.managerArgs.getArgument("Target File").getValue());
-        // return !inFile.isEmpty();
-
         return !((String) this.managerArgs.getArgument("Method").getValue()).isEmpty();
     }
     
@@ -126,7 +123,7 @@ public class TaskTideManagerClient extends TaskTideClient {
 
         // Target file & query string
         String targetFile = (String) this.managerArgs.getArgument("Target File").getValue();
-        String queryString = (String) this.managerArgs.getArgument("Import String").getValue();
+        String queryString = (String) this.managerArgs.getArgument("Query String").getValue();
         
         // Setup options map
         Map<String, Object> opts = new HashMap<>();

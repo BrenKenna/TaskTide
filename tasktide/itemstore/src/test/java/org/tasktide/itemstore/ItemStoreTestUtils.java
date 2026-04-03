@@ -157,6 +157,51 @@ public class ItemStoreTestUtils {
     
     
     /**
+     * Wrapper method for later tests to fetch ItemStore
+     * 
+     * @param storeName
+     * @return {@link ItemStore}
+     */
+    public static ItemStore createSqliteStore(String storeName) {
+        Path workDir;
+        String flag = "sqlite", proto;
+        workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
+        proto = UUID.randomUUID().toString();
+        return ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString(), "master", proto);
+    }
+    
+    
+    /**
+     * Wrapper method for later tests to fetch ItemStore
+     * 
+     * @param storeName
+     * @return {@link ItemStore}
+     */
+    public static ItemStore createSqliteStoreNoElection(String storeName) {
+        Path workDir;
+        String flag = "sqlite", proto;
+        workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
+        proto = UUID.randomUUID().toString();
+        return ItemStoreType.SQLITE.makeItemStoreNoElection(storeName, workDir.toString(), "master", proto);
+    }
+    
+    
+     /**
+     * Wrapper method for later tests to fetch ItemStore
+     * 
+     * @param storeName
+     * @return {@link ItemStore}
+     */
+    public static ItemStore createRocksDbStore(String storeName) {
+        Path workDir;
+        String flag = "rocksDB", proto;
+        workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
+        proto = UUID.randomUUID().toString();
+        return ItemStoreType.ROCKSDB.makeItemStore(storeName, workDir.toString(), "master", proto);
+    }
+    
+    
+    /**
      * Fetch process builder for {@link CrossJvmFileLocker}
      * 
      * @return {@link ProcessBuilder} 
@@ -170,9 +215,9 @@ public class ItemStoreTestUtils {
         // Configure process
         classPath = System.getProperty("java.class.path");
         output = new ProcessBuilder(
-      "java",
-      "-cp", classPath,
-      "org.tasktide.itemstore.stores.CrossJvmFileLocker"
+            "java",
+            "-cp", classPath,
+            "org.tasktide.itemstore.stores.CrossJvmFileLocker"
         );
         
         // Return process builder
@@ -325,5 +370,37 @@ public class ItemStoreTestUtils {
         catch ( IOException ex ) {
             return "";
         }
+    }
+    
+    
+    /**
+     * Fetches random item
+     * 
+     * @return {@link Item}
+     */
+    public static Item fetchRandomItem() {
+        return new Item<String>(UUID.randomUUID().toString(), "State", "Step", UUID.randomUUID().toString());
+    }
+    
+    
+    /**
+     * Fetch required number of randomized records
+     * 
+     * @param nItems
+     * @return List-{@link Item}
+     */
+    public static List<Item> fetchRandomItems(int nItems) {
+        
+        // Initialize
+        List<Item> output;
+        output = new ArrayList<>();
+        
+        // Fetch mock data
+        for ( int i = 0; i < nItems; i++ ) {
+            output.add( fetchRandomItem() );
+        }
+        
+        // Return results
+        return output;
     }
 }

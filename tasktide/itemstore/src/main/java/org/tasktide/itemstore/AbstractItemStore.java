@@ -35,7 +35,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.tasktide.itemstore.session.BulkOperation;
+
 import org.tasktide.mutex.exceptions.MutexUncheckedException;
 
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
@@ -99,16 +99,15 @@ public abstract class AbstractItemStore implements ItemStore {
     
     
     /**
-     * Allows a collection of {@link ItemStore} methods to be
-     *  executed under the one lock
+     * Get connection
      * 
      * @param <T>
      * @param target
-     * @param work
-     * @return T
+     * @param type SqliteStore | RocksDbStore
+     * @return T 
      */
-    public abstract <T> T execute(DbTarget target, BulkOperation<T> work);
-
+    protected abstract <T> T getConnection(DbTarget target, Class<T> type);
+    
     
     /**
      * Wait for mutex to be acquired
@@ -243,14 +242,14 @@ public abstract class AbstractItemStore implements ItemStore {
         
         // Try create a lock
         try {
-            releaseLock();
+            releaseLock(false);
             this.fileChannel = new RandomAccessFile(this.masterLock.toFile(), "rw").getChannel();
             this.fileLock = fileChannel.tryLock();
             return fileLock != null;
         }
         
         // Lock creation failed
-        catch (IOException ex) { throw ex;}
+        catch (IOException ex) { releaseLock(true) ; throw ex;}
     }
 
     
@@ -294,6 +293,7 @@ public abstract class AbstractItemStore implements ItemStore {
         try {
             
             // Fetch file lock
+            LOGGER.debug("Waiting for");
             locked = this.tryLock();
             
             // Enter loop if not locked
@@ -311,9 +311,10 @@ public abstract class AbstractItemStore implements ItemStore {
     /**
      * Release lock on master
      * 
+     * @param releaseMutex
      * @return boolean
      */
-    protected boolean releaseLock() {
+    protected boolean releaseLock(boolean releaseMutex) {
         try {
             
             // Clear lock
@@ -327,7 +328,9 @@ public abstract class AbstractItemStore implements ItemStore {
             }
             
             // Release mutex
-            this.releaseMutex();
+            if ( releaseMutex ) {
+                this.releaseMutex();
+            }
             return true;
         }
         
@@ -353,7 +356,7 @@ public abstract class AbstractItemStore implements ItemStore {
             this.saveItem(DbTarget.MASTER, item);
         } 
         finally {
-            releaseLock();
+            releaseLock(true);
         }
     }
     
@@ -370,7 +373,7 @@ public abstract class AbstractItemStore implements ItemStore {
             this.saveItems(DbTarget.MASTER, items);
         } 
         finally {
-            releaseLock();
+            releaseLock(true);
         }
     }
     
@@ -388,7 +391,7 @@ public abstract class AbstractItemStore implements ItemStore {
         } 
         catch (InterruptedException ex) {}
         finally {
-            releaseLock();
+            releaseLock(true);
         }
     }
     

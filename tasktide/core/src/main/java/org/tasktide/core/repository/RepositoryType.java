@@ -40,9 +40,9 @@ import org.tasktide.core.repository.jpa_repo.JpaStepRepository;
 import org.tasktide.core.repository.jpa_repo.JpaWorkItemRepository;
 import org.tasktide.core.repository.jpa_repo.JpaWorkflowRepository;
 
-import org.tasktide.core.repository.nosql_repo.TemplateStepRepository;
-import org.tasktide.core.repository.nosql_repo.TemplateWorkItemRepository;
-import org.tasktide.core.repository.nosql_repo.TemplateWorkflowRepository;
+import org.tasktide.core.repository.template_repo.TemplateStepRepository;
+import org.tasktide.core.repository.template_repo.TemplateWorkItemRepository;
+import org.tasktide.core.repository.template_repo.TemplateWorkflowRepository;
 
 import org.tasktide.core.repository.itemstore_repo.ItemStoreStepRepository;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreWorkItemRepository;
@@ -56,9 +56,9 @@ import org.tasktide.core.repository.json_repo.JsonStepRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
 import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
 
-import org.tasktide.core.repository.nosql_repo.TemplateJobEnvironmentRepository;
-import org.tasktide.core.repository.nosql_repo.TemplateMetricDataRepository;
-import org.tasktide.core.repository.nosql_repo.TemplateMetricProfileRepository;
+import org.tasktide.core.repository.template_repo.TemplateJobEnvironmentRepository;
+import org.tasktide.core.repository.template_repo.TemplateMetricDataRepository;
+import org.tasktide.core.repository.template_repo.TemplateMetricProfileRepository;
 
 import org.tasktide.itemstore.ItemStoreType;
 

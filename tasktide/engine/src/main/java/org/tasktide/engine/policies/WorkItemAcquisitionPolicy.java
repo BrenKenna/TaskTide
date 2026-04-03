@@ -1,0 +1,97 @@
+/*
+ * Copyright 2026 Bren.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.tasktide.engine.policies;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import org.tasktide.core.model.workitem.WorkItem;
+
+import org.tasktide.core.manager.TaskTideServiceManager;
+
+
+/**
+ * Build a query to fetch {@link WorkItem} collection for processing
+ * 
+ * @author Bren
+ */
+public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkItem> {
+    
+    
+    /**
+     * Static initializer for {@link WorkItemAcquisitionPolicy}
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy} of {@link WorkItem}
+     */
+    public static TaskTideWorkloadAcquisitionPolicy<WorkItem> newInstance() {
+        WorkItemAcquisitionPolicy pol = new WorkItemAcquisitionPolicy();
+        pol.classRef = WorkItem.class;
+        return pol;
+    }
+
+    
+    /**
+     * Build {@link WorkItem} from {@link WorkItemAcquisitionPolicy}
+     * 
+     * @return List-{@link WorkItem}
+     */
+    @Override
+    public List<WorkItem> fetchWorkload() {
+    
+        // Fetch by annotation
+        if ( this.isCustomAnnotated() ) {
+            if ( this.isTargetted() ) {
+                return TaskTideServiceManager
+                    .fetchWorkItemService()
+                    .getRepo()
+                .findByFieldForGroupWithAnno(
+                    "itemState", this.getState(),
+                    "stepName", this.getTarget(),
+                    this.getAnno()
+                );
+            }
+        }
+        
+        // Fetch by annotation string
+        else if ( this.isStringAnnotated() ) {
+            if ( this.isTargetted() ) {
+                return TaskTideServiceManager
+                    .fetchWorkItemService()
+                    .getRepo()
+                .findByFieldForGroupWithAnno(
+                    "itemState", this.getState(),
+                    "stepName", this.getTarget(),
+                    this.getAnnoKey(), this.getAnnoVal()
+                );
+            }
+        }
+        
+        // Fetch collection
+        else {
+            if ( this.isTargetted() ) {
+                return TaskTideServiceManager
+                    .fetchWorkItemService()
+                .viewByFieldForGroup(
+                    "itemState", this.getState(),
+                    "stepName", this.getTarget()
+                );    
+            }
+        }
+        
+        // Otherwise empty list
+        return new ArrayList<>();
+    }
+}

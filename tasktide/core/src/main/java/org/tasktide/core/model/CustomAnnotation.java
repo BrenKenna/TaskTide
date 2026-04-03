@@ -101,6 +101,9 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * @return Object
      */
     public Object getKey(String key) {
+        if ( this.anno == null ) {
+            this.anno = new HashMap<>();
+        }
         return this.anno.get(key);
     }
     

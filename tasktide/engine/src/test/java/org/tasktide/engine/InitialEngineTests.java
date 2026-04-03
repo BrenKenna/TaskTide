@@ -29,10 +29,11 @@ import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.trackers.FutureTrackers;
 import org.tasktide.engine.trackers.TaskTrackers;
 
-import org.tasktide.engine.worker.executor.TaskTideExecutor;
-import org.tasktide.engine.worker.processor.TaskTideProcessor;
+import org.tasktide.engine.executor.TaskTideExecutor;
+import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
 
-
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
+import org.tasktide.engine.workerunit.provider.TaskTideWorkerUnitProvider;
 
 /**
  *
@@ -112,14 +113,12 @@ public class InitialEngineTests {
         
         // Configure processor
         processor = unitProvider.getWorkItemProcBuilder()
-            .withWorkload(workload)
             .withExecutorService(executorService)
-            .withThreshold(2)
             .withSubExecutor(executor)
         .build();
         
         // Process tasks
-        processor.process();
+        processor.process(workload);
         EngineTestUtils.waitUntilDoneWorkItem(workload, 30, logger);
         
         // Evaluate test status
@@ -189,14 +188,12 @@ public class InitialEngineTests {
         
         // Configure processor
         processor = unitProvider.getWorkItemProcBuilder()
-            .withWorkload(workload)
             .withExecutorService(executorService)
-            .withThreshold(1)
             .withSubExecutor(executor)
         .build();
         
         // Process tasks
-        processor.process();
+        processor.process(workload);
         
         // Wait until done:
         //  N ItemTasks = (6*4), WorkItems = 4
@@ -273,14 +270,12 @@ public class InitialEngineTests {
         
         // Configure processor
         processor = unitProvider.getWorkItemProcBuilder()
-            .withWorkload(workload)
             .withExecutorService(executorService)
-            .withThreshold(3)
             .withSubExecutor(executor)
         .build();
         
         // Process tasks
-        processor.process();
+        processor.process(workload);
         
         // Wait until done:
         //  N ItemTasks = (6*4), WorkItems = 4
@@ -358,14 +353,12 @@ public class InitialEngineTests {
         
         // Configure processor
         processor = unitProvider.getWorkItemProcBuilder()
-            .withWorkload(workload)
             .withExecutorService(executorService)
-            .withThreshold(nWorkItemThreads)
             .withSubExecutor(executor)
         .build();
         
         // Process tasks
-        processor.process();
+        processor.process(workload);
         
         // Wait until done
         int expected = workItems * tasks;
@@ -441,14 +434,12 @@ public class InitialEngineTests {
         
         // Configure processor
         processor = unitProvider.getWorkItemProcBuilder()
-            .withWorkload(workload)
             .withExecutorService(executorService)
-            .withThreshold(1)
             .withSubExecutor(executor)
         .build();
         
         // Process tasks
-        processor.processChunks(workload);
+        processor.process(workload);
         
         // Wait until done:
         int expected = workItems * tasks;

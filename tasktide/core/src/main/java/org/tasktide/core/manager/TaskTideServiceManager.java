@@ -16,7 +16,7 @@
 package org.tasktide.core.manager;
 
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.TaskTideService;
@@ -27,6 +27,7 @@ import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.core.services.JobEnvironmentService;
 import org.tasktide.core.services.MetricDataService;
 import org.tasktide.core.services.MetricProfileService;
@@ -49,7 +50,6 @@ public final class TaskTideServiceManager {
     // There can be only one
     private static volatile TaskTideServiceManager INSTANCE;
     private final ConcurrentHashMap<ManagerTarget, TaskTideService> serviceMap;
-
     
     /**
      * Package private construction with the {@link TaskTideService}

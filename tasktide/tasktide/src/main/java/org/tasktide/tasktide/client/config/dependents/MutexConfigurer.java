@@ -39,6 +39,7 @@ public class MutexConfigurer extends AbstractConfig {
     
     /**
      * Time constants
+     * 
      */
     private final Random RAND = new Random();
     
@@ -63,6 +64,7 @@ public class MutexConfigurer extends AbstractConfig {
     
     /**
      * Path constants
+     * 
      */
     @ConfigProperty(name = "tasktide.mutex.lockDir", defaultValue = "")
     private Path lockDir;
@@ -85,6 +87,7 @@ public class MutexConfigurer extends AbstractConfig {
     
     /**
      * Defaults {@link ArgumentTree} path to root
+     * 
      */
     public MutexConfigurer() {
         super("tasktide");
