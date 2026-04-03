@@ -191,9 +191,15 @@ public class TaskTideClientUtility {
      * @param configMap
      */
     public static void initNoSqlServiceManager(ClientConfigMap configMap) {
-        String dbType = (String) configMap.getArgTree().getGlobalArguments().getArgMap().get("NoSQL Database Type").getValue();
+        String dbType = (String) configMap.getArgTree()
+            .getGlobalArguments()
+            .getArgMap()
+            .get("NoSQL Database Type")
+        .getValue();
         TemplateRepositoryUtility.initialize(dbType);
-        TemplateRepositoryUtility.get().initServiceManager();
+        TemplateRepositoryUtility
+             .get()
+        .initServiceManager();
     }
     
     

@@ -15,19 +15,20 @@
  */
 package org.tasktide.core.repository.template_repo;
 
-import jakarta.enterprise.inject.spi.CDI;
 import jakarta.nosql.Template;
+import jakarta.enterprise.inject.spi.CDI;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import org.eclipse.jnosql.mapping.column.ColumnTemplate;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 import org.eclipse.jnosql.mapping.graph.GraphTemplate;
 import org.eclipse.jnosql.mapping.keyvalue.KeyValueTemplate;
 
-import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
+import org.tasktide.core.TaskTideRepository;
+
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
@@ -53,7 +54,7 @@ public class TemplateRepositoryUtility {
     
     // Attributes
     private static TemplateRepositoryUtility INSTANCE;
-    private String dbType;
+    private final String dbType;
     
     
     /**
@@ -165,6 +166,6 @@ public class TemplateRepositoryUtility {
         
         // Initialize service manager with services
         TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
-        LOGGER.debug("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
+        //LOGGER.debug("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
     }
 }

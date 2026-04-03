@@ -25,20 +25,14 @@ import org.junit.jupiter.api.Test;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
-import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
-import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
-import org.tasktide.tasktide.TestEnvironment;
 import org.tasktide.tasktide.TestUtils;
 
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
-
-
 
 
 /**
@@ -52,8 +46,7 @@ public class TaskTideClientTests {
     private static CdiContainerProvider provider;
     
     private final String STEP = "Nested NS Lookups";
-    private SeContainer container;
-    private Template template;
+
     
     //@Rule
     //private static final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
@@ -90,14 +83,17 @@ public class TaskTideClientTests {
     /**
      * Initialize document backend providing {@link TaskTideWorkloadAcquisitionPolicy}
      * 
+     * @param repoType
+     * @param configMap
+     * 
      * @return {@link TaskTideWorkloadAcquisitionPolicy} of {@link WorkItem}
      */
-    public TaskTideWorkloadAcquisitionPolicy<WorkItem> initDocumentTemplate() {
+    public TaskTideWorkloadAcquisitionPolicy<WorkItem>
+        initDocumentTemplate(RepositoryType repoType, ClientConfigMap configMap)
+    {
     
         // Load
-        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        TaskTideClientUtility.initServiceManager(repoType, configMap);
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
         
         // Return acquisition policy
@@ -164,8 +160,7 @@ public class TaskTideClientTests {
         LOGGER.info("Initializing TaskTideServiceManager");
         RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
         try {
-            TaskTideClientUtility.initServiceManager(repoType, configMap);
-            this.initDocumentTemplate();
+            this.initDocumentTemplate(repoType, configMap);
         }
         catch (IllegalStateException ex) {
             LOGGER.info("Proceeding to Engine with previously iniatied engine");

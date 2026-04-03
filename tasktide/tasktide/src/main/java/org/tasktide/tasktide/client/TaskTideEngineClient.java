@@ -15,28 +15,29 @@
  */
 package org.tasktide.tasktide.client;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.model.builders.CustomAnnotationBuilder;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.builders.CustomAnnotationBuilder;
 
 import org.tasktide.engine.worker.TaskTideEngineWorker;
-import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
+
+import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
 
 import org.tasktide.parser.model.ArgumentMap;
-import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 
 /**
- * Class for configuring implementing the TaskTideEngine 
+ * Class for configuring implementing the {@link TaskTideEngineWorker} 
  * 
  * @author bkenna
  */
@@ -87,7 +88,7 @@ public class TaskTideEngineClient extends TaskTideClient {
             this.configureWorkerContainer();
             
             // Configure the fuel for the engine
-            LOGGER.info("Configuring the workload Acqusition Policy");
+            LOGGER.info("Configuring the workload Acqusition Policy for Step:\t'{}'", this.step);
             this.acquisitionPolicy = this.configureAcquisitionPolicy();
             
             // Configure engine worker
@@ -121,7 +122,13 @@ public class TaskTideEngineClient extends TaskTideClient {
 
         // Process based on policy
         LOGGER.info("Engine Worker operating in '{}' mode", execPol);
-        this.worker.runEngine(execPol);
+        try {
+            this.worker.runEngine(execPol);
+        }
+        
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error("Error during workload processing by TaskTideEngineWorkre:\n\n{}", ex);
+        }
         
         // Clean up - close connections etc
         this.cleanUp();

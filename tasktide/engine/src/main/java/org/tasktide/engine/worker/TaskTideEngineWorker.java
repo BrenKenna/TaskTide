@@ -15,6 +15,7 @@
  */
 package org.tasktide.engine.worker;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -25,6 +26,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 
 import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
@@ -78,9 +80,11 @@ public class TaskTideEngineWorker {
     /**
      * Entry-point method for implementing classes 
      * 
-     * @param executionPolicy 
+     * @param executionPolicy
+     * 
+     * @throws {@link TaskTideEngineCheckedException}
      */
-    public void runEngine(WorkerExecutionPolicy executionPolicy) {
+    public void runEngine(WorkerExecutionPolicy executionPolicy) throws TaskTideEngineCheckedException {
     
         switch ( executionPolicy ) {
         
@@ -108,8 +112,10 @@ public class TaskTideEngineWorker {
     /**
      * Continuously scans {@link TaskTideRepository} for
      *  work asynchronously
+     * 
+     * @throws {@link TaskTideEngineCheckedException}
      */
-    private void serviceOperation() {
+    private void serviceOperation() throws TaskTideEngineCheckedException {
     
         // Perhaps allow a queue like a file being written?
         int counter = 0;
@@ -124,8 +130,11 @@ public class TaskTideEngineWorker {
     /**
      * Continuously scans {@link TaskTideRepository} for
      *  work serially
+     * 
+     * @throws {@link TaskTideEngineCheckedException}
+     * 
      */
-    private void serviceOperationSerial() {
+    private void serviceOperationSerial() throws TaskTideEngineCheckedException {
     
         // Perhaps allow a queue like a file being written?
         int counter = 0;
@@ -144,7 +153,7 @@ public class TaskTideEngineWorker {
      * @return List-{@link WorkItem}
      */
     private List<WorkItem> fetchWorkload() {
-        List<WorkItem> workload = this.policy.fetchWorkload();
+        List<WorkItem> workload = new ArrayList<>(this.policy.fetchWorkload());
         if ( workload.size() > 1 ) {
             Collections.shuffle(workload);
         }
@@ -155,17 +164,27 @@ public class TaskTideEngineWorker {
     /**
      * Fetch workload from {@link WorkItemAcquisitionPolicy},
      *  and process asynchronously
+     * 
+     * @throws {@link TaskTideEngineCheckedException}
      */
-    private void fetchAndRun() {
+    private void fetchAndRun() throws TaskTideEngineCheckedException {
         
         // Process each step in order provided
         LOGGER.info("Determing how to process workload");
         ExecutorService threadPool = this.engineComponents.getThreadPool(WorkerUnitModelType.WORKITEM);
-        TaskTideWorkloadTraverser<WorkItem> traverser = this.engineComponents
+        TaskTideWorkloadTraverser<WorkItem> traverser =
+            this.engineComponents
             .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM);
         
         // Fetch workload
+        LOGGER.info("Fetching workload");
         List<WorkItem> workload = this.fetchWorkload();
+        if ( workload.isEmpty() ) {
+            throw new TaskTideEngineCheckedException("Error, cannot process an empty worklaod");
+        }
+        else {
+            LOGGER.info("Processing workload of size '{}'", workload.size());
+        }
         
         // Process workload
         try {

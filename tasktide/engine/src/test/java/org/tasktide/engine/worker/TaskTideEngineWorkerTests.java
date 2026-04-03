@@ -32,7 +32,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -43,23 +42,16 @@ import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.TestEnvironment;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
-import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
-
-import org.tasktide.engine.executor.ProcessExecutor;
-import org.tasktide.engine.executor.TaskTideExecutor;
-import org.tasktide.engine.observer.TaskTideEngineObserver;
-
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
-import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
 
-
 /**
+ * Suite of tests for {@link TaskTideEngineWorker}
  *
  * @author Bren
  */
@@ -154,9 +146,10 @@ public class TaskTideEngineWorkerTests {
             // Configure engine componenets
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
-            workerUnit.configureExecutorServices(3, 3);
+            workerUnit.configureExecutorServices(5, 5);
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 10000);
             workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
             
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, 100000);
             workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);

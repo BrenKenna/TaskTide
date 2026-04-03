@@ -57,8 +57,8 @@ import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
 
-
 /**
+ * Suite of tests for {@link WorkerUnitContainer} package
  *
  * @author Bren
  */
@@ -327,6 +327,7 @@ public class WorkerUnitContainerTests {
             workerUnit.configureExecutorServices(3, 3);
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 10000);
             workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
             
             itemTaskTrav = workerUnit.getEngineWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
             assertionState = itemTaskTrav != null;
@@ -370,6 +371,7 @@ public class WorkerUnitContainerTests {
             workerUnit.configureExecutorServices(3, 3);
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 10000);
             workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
             
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, 100000);
             workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
@@ -419,6 +421,7 @@ public class WorkerUnitContainerTests {
             workerUnit.configureExecutorServices(3, 3);
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 10000);
             workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
             
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, 100000);
             workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);

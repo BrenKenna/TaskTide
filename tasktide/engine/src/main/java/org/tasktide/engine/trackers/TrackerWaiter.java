@@ -20,15 +20,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.ExecutionException;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.supporting.JsonUtils;
+
 import org.tasktide.engine.worker.TaskTideEngineUtility;
 
 
@@ -82,14 +82,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
             LOGGER.error("Error, FutureTracker is empty");
             return false;
         }
-        else {
-            LOGGER.info(
-                "Future tracker size = '{}', shown below\n\n",
-                this.TRACKER.getIds().size(),
-                JsonUtils.toJson(true, FutureTrackers.ITEM_TASK_TRACKER.getIds())
-            );
-        }
-        
+
         while ( this.TASKS_DONE.size() < total && !wereKilled ) {
             this.scanItems();
             wereKilled = this.evaluateWorkload();
@@ -152,19 +145,20 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
                     else {
                         this.failed++;
                     }
-                } catch (InterruptedException | ExecutionException ex) {
+                }
+                
+                catch (InterruptedException | ExecutionException ex) {
                     LOGGER.warn(
                        "'{}' unable to fetch future for task:\t'{}'",
                        taskId,
                        this.ID
                     );
-                    failed++;
+                    this.failed++;
                 }
             }
             
             // Note task as active
             else {
-                LOGGER.info("Task still active:\t'{}'", taskId);
                 this.active++;
             }
         }
@@ -233,7 +227,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
      * @return int
      */
     public int getFailed() {
-        return failed;
+        return this.failed;
     }
 
     
@@ -243,7 +237,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
      * @return int
      */
     public int getDone() {
-        return done;
+        return this.done;
     }
 
     
@@ -253,7 +247,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
      * @return int
      */
     public int getActive() {
-        return active;
+        return this.active;
     }
 
     
@@ -273,7 +267,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
      * @return Class of T
      */
     public Class<T> getType() {
-        return TYPE;
+        return this.TYPE;
     }
 
     
@@ -283,7 +277,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
      * @return 
      */
     public String getId() {
-        return ID;
+        return this.ID;
     }
 
     
@@ -295,12 +289,12 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
     @Override
     public String toString() {
         return "TrackerWaiter{" +
-            "TYPE=" + TYPE +
-            ", ID=" + ID +
-            ", TASKS=" + TASKS +
-            ", failed=" + failed +
-            ", done=" + done +
-            ", active=" + active +
+            "TYPE="     + this.TYPE +
+            ", ID="     + this.ID +
+            ", TASKS="  + this.TASKS +
+            ", failed=" + this.failed +
+            ", done="   + this.done +
+            ", active=" + this.active +
         '}';
     }
 }
