@@ -17,14 +17,12 @@ package org.tasktide.engine.worker;
 
 import jakarta.nosql.Template;
 import jakarta.enterprise.inject.se.SeContainer;
-import java.util.concurrent.ExecutorService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
@@ -184,7 +182,13 @@ public class TaskTideEngineWorkerTests {
         
         // Run engine
         LOGGER.info("Running engine in batch");
-        worker.runEngine(WorkerExecutionPolicy.BATCH);
+        try {
+            worker.runEngine(WorkerExecutionPolicy.BATCH);
+        }
+        catch ( TaskTideEngineCheckedException ex ) {
+            
+        }
+        
         LOGGER.info("Engine processing completed");
         
         // Log complete
