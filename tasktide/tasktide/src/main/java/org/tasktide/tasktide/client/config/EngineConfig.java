@@ -29,10 +29,11 @@ import org.tasktide.parser.model.ArgumentType;
 
 import org.tasktide.engine.observer.WorkerObserver;
 import org.tasktide.engine.observer.worker.TimeKeeperObserver;
-        
+import org.tasktide.engine.worker.TaskTideEngineWorker;
+
 
 /**
- * Class to template the {@link Engine} module parameters
+ * Class to template the {@link TaskTideEngineWorker} module parameters
  * 
  * @author bkenna
  */
@@ -121,7 +122,7 @@ public class EngineConfig extends AbstractConfig {
     
     
     /**
-     * Applies the {@link Engine} configurations to {@link ArgumentTree}
+     * Applies the {@link TaskTideEngineWorker} configurations to {@link ArgumentTree}
      * 
      * @param argTree 
      */

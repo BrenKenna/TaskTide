@@ -19,10 +19,13 @@ import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbProperty;
+
 import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.workitem.ItemState;
+
+import org.tasktide.engine.policies.AbstractAcquisitionPolicy;
 
 
 /**
@@ -139,7 +142,7 @@ public class AcquisitionPolicyJsonResource<T extends TaskTideModel<T>> {
 
     /**
      * 
-     * Getters & Setters
+     * Getters and Setters
      * 
      */
     public String getId() {

@@ -34,6 +34,8 @@ import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
 import org.tasktide.engine.executor.ProcessExecutor;
 import org.tasktide.engine.executor.TaskTideExecutor;
 
+import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
+
 
 /**
  * Container class to hold instances of each {@link TaskTideWorkerUnit}

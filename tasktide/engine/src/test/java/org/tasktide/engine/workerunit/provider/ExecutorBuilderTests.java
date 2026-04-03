@@ -41,13 +41,7 @@ import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.trackers.TaskTracker;
 import org.tasktide.engine.trackers.TaskTrackers;
 
-import org.tasktide.engine.workerunit.provider.ItemTaskObserverBuilder;
-import org.tasktide.engine.workerunit.provider.WorkItemObserverBuilder;
 import org.tasktide.engine.executor.ItemTaskExecutor;
-import org.tasktide.engine.executor.WorkItemExecutor;
-
-import org.tasktide.engine.workerunit.provider.WorkItemExecutorBuilder;
-import org.tasktide.engine.workerunit.provider.ItemTaskExecutorBuilder;
 
 
 /**
@@ -151,61 +145,5 @@ public class ExecutorBuilderTests {
         // Evaluate test
         assertTrue(assertionState, "ItemTaskExecutor failed processing");
         logger.info("\n\n================ Evaluate Building ItemTaskExecutor ================\n");
-    }
-    
-    
-    /**
-     * Verify through {@link TaskTracker} that built {@link WorkItemExecutor} can execute work
-     */
-    @Test
-    @Order(1)
-    public void canBuildWorkItemExecutor() {
-    
-        // Initialize requierd variables
-        logger.info("\n\n================ Evaluate Building WorkItemExecutor ================\n");
-        boolean assertionState;
-        WorkItemObserverBuilder obsBuilder;
-        WorkItemExecutorBuilder execBuilder;
-        
-        TaskTideEngineObserver<WorkItem> obs;
-        TaskTideExecutor<WorkItem> executor;
-        WorkItem task;
-        
-        // Configure requirements
-        obsBuilder = new WorkItemObserverBuilder();
-        execBuilder = new WorkItemExecutorBuilder();
-        task = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 4);
-        
-        // Build observers
-        obs = obsBuilder
-            .withMaxTime(1000000)
-        .build();
-
-        // Build WorkItemExecutor builder
-        executor = execBuilder
-            .withWorkItemObserver(obs)
-            .withSubTaskThreshold(2)
-            .withSubThreads(2)
-        .build();
-        
-        // Process work
-        List<WorkItem> data = List.of(task); 
-        executor.runTasks(data);
-        try {
-            TimeUnit.SECONDS.sleep(65L);
-        }
-        catch ( Exception ex ) {logger.warn("Interupt exception encountered while waiting for 1min");}
-        
-        // Evaluate processing
-        assertionState = TaskTrackers.ITEM_TASK_TRACKER.taskCount() > 0;
-        logger.info(
-      "Tracked '{}' ItemTasks displaying state of first:\t'{}'",
-            TaskTrackers.ITEM_TASK_TRACKER.taskCount(), TaskTrackers.ITEM_TASK_TRACKER.get(task.getId())
-        );
-        logger.info("Displaying first task after processing:\n\n{}", task.toJsonDoc());
-        
-        // Evaluate test
-        assertTrue(assertionState, "WorkItemExecutor failed processing");
-        logger.info("\n\n================ Evaluate Building WorkItemExecutor ================\n");
     }
 }

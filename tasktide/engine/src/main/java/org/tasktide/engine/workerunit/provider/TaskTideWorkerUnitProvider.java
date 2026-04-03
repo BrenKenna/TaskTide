@@ -24,7 +24,6 @@ import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.executor.TaskTideExecutor;
-import org.tasktide.engine.deprecated_processor.TaskTideProcessor;
 
 
 /**
@@ -36,14 +35,10 @@ public class TaskTideWorkerUnitProvider {
     
     // WorkItem builder attributes
     private final WorkItemObserverBuilder workItemObsBuilder;
-    private final WorkItemProcessorBuilder workItemProcBuilder;
-    private final WorkItemExecutorBuilder workItemExecBuilder;
     private final WorkItemTraverserBuilder workItemTravBuilder;
-    
     
     // ItemTask builder attributes
     private final ItemTaskObserverBuilder itemTaskObsBuilder;
-    private final ItemTaskProcessorBuilder itemTaskProcBuilder;
     private final ItemTaskExecutorBuilder itemTaskExecBuilder;
     private final ItemTaskTraverserBuilder itemTaskTravBuilder;
     
@@ -55,13 +50,10 @@ public class TaskTideWorkerUnitProvider {
         
         // Set WorkItem builders
         this.workItemObsBuilder = new WorkItemObserverBuilder();
-        this.workItemProcBuilder = new WorkItemProcessorBuilder();
-        this.workItemExecBuilder = new WorkItemExecutorBuilder();
         this.workItemTravBuilder = new WorkItemTraverserBuilder();
         
         // Set ItemTask builders
         this.itemTaskObsBuilder = new ItemTaskObserverBuilder();
-        this.itemTaskProcBuilder = new ItemTaskProcessorBuilder();
         this.itemTaskExecBuilder = new ItemTaskExecutorBuilder();
         this.itemTaskTravBuilder = new ItemTaskTraverserBuilder();
     }
@@ -76,26 +68,6 @@ public class TaskTideWorkerUnitProvider {
         return this.workItemObsBuilder;
     }
 
-    
-    /**
-     * Get builder for {@link TaskTideProcessor} for {@link WorkItem}
-     * 
-     * @return {@link WorkItemProcessorBuilder}
-     */
-    public WorkItemProcessorBuilder getWorkItemProcBuilder() {
-        return this.workItemProcBuilder;
-    }
-
-    
-    /**
-     * Get builder for {@link TaskTideExecutor} for {@link WorkItem}
-     * 
-     * @return {@link WorkItemExecutorBuilder}
-     */
-    public WorkItemExecutorBuilder getWorkItemExecBuilder() {
-        return this.workItemExecBuilder;
-    }
-    
     
     /**
      * Get {@link WorkItemTraverserBuilder} for {@link WorkItem}
@@ -114,16 +86,6 @@ public class TaskTideWorkerUnitProvider {
      */
     public ItemTaskObserverBuilder getItemTaskObsBuilder() {
         return this.itemTaskObsBuilder;
-    }
-
-    
-    /**
-     * Get builder for {@link TaskTideProcessor} for {@link ItemTask}
-     * 
-     * @return {@link ItemTaskProcessorBuilder}
-     */
-    public ItemTaskProcessorBuilder getItemTaskProcBuilder() {
-        return this.itemTaskProcBuilder;
     }
 
     

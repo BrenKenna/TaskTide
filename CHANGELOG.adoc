@@ -15,8 +15,8 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X]   5). Early & Late binding semantics.
 - [/]   6). Docker compose.
 - [/]   7). Kubectl config.
-- []    8). Version-1 documentation
-- []    9). Version-1 paper.
+- [/]    8). Version-1 documentation
+- [/]    9). Version-1 paper.
 
 
 === 2). Bugs 
@@ -91,23 +91,58 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 --
 
-- [X] Reserved annotation keys
 - []  Builder code clean
 - []  Manager command code clean?
-- []  Optionally sort results?
+- [/] Incorporate host metrics:
++
+--
+        - [X] Job Env Entity
+        - [X] Place Id on ItemTask or WorkItem?
+        - [] Store under job_env
+        - [] A job can have a MetricProfiles over its lifecycle.
+--
+
+- [/] JobEnvironment property on ItemTask gives identifiers for tracking, pull out on ItemStore.
++
+--
+        - [] AWS Batch
+        - [] SLURM
+        - [] Docker
+        - [] K8s
+        - [] gLite
+--
+
+- [X] Reserved annotation keys
 - [X] Template insert over iterable
+
 
 
 ==== Client
 
-- [] Optionally sort/shuffle results config
-- [] New tasks seen but not processed in service mode
+
+- [/] Config review
+- [X] Optionally sort/shuffle results config
+- [X] New tasks seen but not processed in service mode
 
 
 ==== Engine
 
+- [X] Drops TaskTideProcessor, and TaskTideExecutor.
 
-- [/] Passing work to threads
+- [X] Parallelism & Logging
++
+--
+        - Added TaskTideWorkloadTraverser, Acquisition & EnginePolicies.
+        - AcquisitionPolicyJsonResource to represent TaskTideWorkloadAcquisitionPolicy as JSON.
+        - TrackerWaiter for Traversers to fetch from FutureTrackers for their workload.
+        - Singleton WorkerUnitContainer to initialize engine components, which they reference.
+        - TaskTideEngineWorker as the entry-point for running the engine given an ExecutionPolicy.
+        - ExecutionPolicy-Service,Batch put into the Engine Lib.
+        - TaskTideWorkloadAcquisitionPolicy handles ordering of related workload output.
+--
++
+
+- [X] Passing work to threads
 +
 --
         - Hangs/silently fails when the number of threads is greater than number of available tasks.
@@ -115,7 +150,6 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
         - Perhaps the TaskTide-Engine can benefit from intermediary class between client and processor.
 
         - TaskTideEngineClient.processWorkload(List-WorkItem) passes work to Processor-WorkItem
-        - 
 --
 +
 
@@ -125,7 +159,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
         - ObserverChain through EngineUtility using ManagerUtility
 --
 
-- [/] Attach results to tasks
+- [X] Attach results to tasks
 +
 --
         - ItemTaskExecutor attaches to ItemTask
@@ -141,6 +175,8 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 
 ==== Outstanding
+
+- [?] Bean injection quirk between NetBeans & command-line.
 
 - [/] Verify Command-Line Commands
 +
@@ -172,45 +208,14 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X] Mutex configurable
 - [X] Adds TaskTide-Parser
 - [X] Adds ItemStore-Mutex
-- [/] Review TaskTideService, and TaskTideRepository unit-tests.
-- [?] Bean injection quirk between NetBeans & command-line.
-- [] Unit tests need to be executed separately for nosql_repo, bubbles up as couchDB template ends up getting used for mongoDB.
+- [X] Review TaskTideService, and TaskTideRepository unit-tests.
 - [/] Update UMLs.
-- [/] Incorporate host metrics:
-+
---
-        - [X] Job Env Entity
-        - [X] Place Id on ItemTask or WorkItem?
-        - [] Store under job_env
-        - [] A job can have a MetricProfiles over its lifecycle.
---
-
-- [/] JobEnvironment property on ItemTask gives identifiers for tracking, pull out on ItemStore.
-+
---
-        - [] AWS Batch
-        - [] SLURM
-        - [] Docker
-        - [] K8s
-        - [] gLite
---
-
-- [] Logger messages DRY view on Debug, Info, Warn, Error.
-- [] Engine cleanup - Logs, Service Shutdowns.
-- [/] Config cleanup:
-+
---
-        - [X] Drop superfluous configs.
-        - [X] Verify that --client can be dropped.
-        - [X] Engine & Manager share model names.
-        - [X] Input and Output file merged into Target File.
---
+- [] Logger messages DRY review on Debug, Info, Warn, Error.
 
 - [] Check over failed unit tests as they work independantly
 +
 --
         - [] Singleton not set for "container Id".
-        - [] Engine error messages, and old unit tests missing SOA.
         - [/] Background jobs from ItemStore.
         - [X] TaskTideClient needs TestContainers.
 --
@@ -293,3 +298,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X] SQLite ItemStore.
 - [X] JPA Repository.
 - [X] TaskTide Architecture Diagrams.
+- [X] Semaphore for ItemStore mutex.
+- [X] Service & Batch execution policies on TaskTide-Engine, not TaskTide-Engine-Client.
+- [X] True, non-repetitive, and traceable parallelism of TaskTide-Engine workload processing.
+- [X] Drops TaskTideProcessor, and TaskTideExecutor.
