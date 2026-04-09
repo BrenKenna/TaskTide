@@ -118,6 +118,7 @@ project(":parser") {}
 project(":itemstore") {}
 project(":core") {}
 project(":engine") {}
+project(":api") {}
 project(":tasktide") {}
 
 task buildAll {
@@ -125,7 +126,8 @@ task buildAll {
               ':parser:build',
               ':itemstore:build', 
               ':core:build', 
-              'engine:build', 
+              ':engine:build',
+              ':api:build',
               'tasktide:build'
 }
 

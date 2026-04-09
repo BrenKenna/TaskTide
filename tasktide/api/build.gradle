@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+description = 'tasktide:api'
+group = 'org.tasktide.api'
+version = '0.9.5'
+
+dependencies {
+
+    // Project core lib
+    implementation  project(':core')
+    implementation  project(':engine')
+
+    // REST-API
+    implementation  "jakarta.ws.rs:jakarta.ws.rs-api:4.0.0"
+    implementation  "org.glassfish.jersey.containers:jersey-container-servlet:4.0.2"
+    implementation  "org.glassfish.jersey.inject:jersey-hk2:4.0.2"
+    implementation  "org.glassfish.jersey.media:jersey-media-json-jackson:4.0.2"
+
+    // GraphQL: https://www.cve.org/CVERecord?id=CVE-2026-24400, https://www.cve.org/CVERecord?id=CVE-2022-4065
+    implementation  "org.eclipse.microprofile.graphql:microprofile-graphql-api:2.0"
+    implementation  "io.smallrye:smallrye-graphql:2.18.0"
+    implementation  "io.smallrye:smallrye-graphql-api:2.18.0"
+}
+
+
+jar {
+    archiveBaseName.set("tasktide-${project.name}")
+    archiveVersion.set(version)
+}
+
