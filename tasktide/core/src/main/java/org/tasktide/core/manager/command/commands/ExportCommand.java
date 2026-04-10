@@ -18,24 +18,24 @@ package org.tasktide.core.manager.command.commands;
 import jakarta.json.JsonObject;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.core.supporting.FileIO;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.CommandType;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
+import org.tasktide.core.manager.TaskTideServiceManager;
 
 
 /**
@@ -178,7 +178,10 @@ public class ExportCommand extends AbstractCommand {
                     LOGGER.error("Error, an output file must be provided");
                     return false;
                 }
-                if ( !this.cmdSpec.hasOptionsKey("Target") && !this.cmdSpec.hasOptionsKey("Step Name")) {
+                if ( 
+                    !this.cmdSpec.hasOptionsKey("Target")
+                    && !this.cmdSpec.hasOptionsKey("Step Name")
+                ) {
                     LOGGER.error("Error, a subject must be provided either as a Target or Step Name");
                     return false;
                 }
@@ -186,12 +189,18 @@ public class ExportCommand extends AbstractCommand {
             }
             
             case EXPORT_QUERY -> {
-                if ( this.cmdSpec.getFilePath().isEmpty() || this.cmdSpec.getQueryString().isEmpty() ) {
+                if ( 
+                    this.cmdSpec.getFilePath().isEmpty()
+                    || this.cmdSpec.getQueryString().isEmpty()
+                ) {
                     LOGGER.error("Error, an output file and query string must be provided");
                     return false;
                 }
                 
-                if ( !this.cmdSpec.hasOptionsKey("Target") && !this.cmdSpec.hasOptionsKey("Step Name")) {
+                if (
+                    !this.cmdSpec.hasOptionsKey("Target")
+                    && !this.cmdSpec.hasOptionsKey("Step Name")
+                ) {
                     LOGGER.error("Error, a subject must be provided either as a Target or Step Name");
                     return false;
                 }

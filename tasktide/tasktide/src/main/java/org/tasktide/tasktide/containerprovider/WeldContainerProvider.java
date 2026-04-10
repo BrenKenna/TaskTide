@@ -16,6 +16,7 @@
 package org.tasktide.tasktide.containerprovider;
 
 import jakarta.enterprise.inject.spi.Extension;
+
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 
