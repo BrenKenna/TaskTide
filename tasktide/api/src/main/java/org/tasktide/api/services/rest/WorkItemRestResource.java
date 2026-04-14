@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.rest.services;
+package org.tasktide.api.services.rest;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -48,10 +48,10 @@ import org.tasktide.core.model.workitem.WorkItem;
  */
 @Path("/services/workitem")
 @RequestScoped
-public class WorkItemResource {
+public class WorkItemRestResource {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(WorkItemResource.class);
+    private final Logger LOGGER = LogManager.getLogger(WorkItemRestResource.class);
     private final TaskTideService<WorkItem> workItemService;
     
     
@@ -59,7 +59,7 @@ public class WorkItemResource {
      * Construct with {@link WorkItem} {@link TaskTideService}
      * 
      */
-    public WorkItemResource() {
+    public WorkItemRestResource() {
         this.workItemService = TaskTideServiceManager.fetchWorkItemService();
     }
     

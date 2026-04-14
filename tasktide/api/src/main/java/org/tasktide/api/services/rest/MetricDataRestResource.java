@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.rest.services;
+package org.tasktide.api.services.rest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.enterprise.context.RequestScoped;
-
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
+
+import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
@@ -34,160 +34,111 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 import org.tasktide.core.TaskTideService;
-import org.tasktide.core.services.StepService;
-import org.tasktide.core.manager.TaskTideManagerUtility;
+import org.tasktide.core.services.MetricDataService;
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.job_env.metrics.MetricData;
 
-import org.tasktide.core.model.collection.Step;
 
 
 /**
- * REST resource for interacting with {@link StepService}
- *
+ * REST resource for interacting with {@link MetricDataService}
+ * 
  * @author Bren
  */
-@Path("/services/step")
+@Path("/services/metric-data")
 @RequestScoped
-public class StepResource {
+public class MetricDataRestResource {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(StepResource.class);
-    private final TaskTideService<Step> stepService;
+    private final Logger LOGGER = LogManager.getLogger(MetricDataRestResource.class);
+    private final TaskTideService<MetricData> metricDataService;
     
     
     /**
-     * Construct with {@link Step} {@link TaskTideService}
+     * Construct with {@link MetricData} {@link TaskTideService}
      * 
      */
-    public StepResource() {
-        this.stepService = TaskTideServiceManager.fetchStepService();
+    public MetricDataRestResource() {
+        this.metricDataService = TaskTideServiceManager.fetchMetricDataService();
     }
     
     
     /**
-     * Endpoint to create provided {@link Step}, returning
+     * Endpoint to create provided {@link MetricData}, returning
      *  whether the resource was created to the client
      * 
-     * @param step
+     * @param metricData
      * @param req
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createStep(Step step, @Context HttpServletRequest req) {
+    public Response createMetricData(MetricData metricData, @Context HttpServletRequest req) {
     
         // Log request
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new step request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, step
+            "Adding new metricData request from '{}', '{}':\n\n'{}'",
+            ip, userAgent, metricData
         );
         
         // Validate input
-        if ( step == null ) {
+        if ( metricData == null ) {
             return Response.status(400).build();
         }
         
-        // Add step
-        if ( stepService.appendModel(step) != null ) {
+        // Add metricData
+        if ( metricDataService.extendModel( List.of(metricData) ) ) {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import below step:\n\n'%s'", step.toJsonDoc());
+            String msg = String.format("Unable to import below metricData:\n\n'%s'", metricData.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }
     
     
     /**
-     * Endpoint to import provided {@link Step} collection, returning
+     * Endpoint to import provided {@link MetricData} collection, returning
      *  whether the resource was created to the client
      * 
-     * @param steps
+     * @param metricDatas
      * @param req
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createSteps(List<Step> steps, @Context HttpServletRequest req) {
+    public Response createMetricDatas(List<MetricData> metricDatas, @Context HttpServletRequest req) {
     
         // Log request
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Importing steps request from '{}', '{}':\n\n'{}'",
+            "Importing metricDatas request from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
         
         // Validate input
-        if ( steps == null ) {
+        if ( metricDatas == null ) {
             return Response.status(400).build();
         }
         
-        // Add step
-        if ( stepService.extendModel(steps) ) {
+        // Add metricData
+        if ( metricDataService.extendModel(metricDatas) ) {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import provided step collection");
+            String msg = String.format("Unable to import provided metricData collection");
             return Response.status(500, msg).build();
         }
     }
-    
-    
-    /**
-     * Endpoint to create a new empty {@link Step}, returning
-     *  created resource to the client
-     * 
-     * @param stepName
-     * @param req
-     * 
-     * @return {@link Response}
-     */
-    @POST
-    @Path("add")
-    public Response createStep(
-        @QueryParam("stepName") String stepName,
-        @Context HttpServletRequest req
-    ) {
-        
-        // Log request
-        List<Step> result;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
-        LOGGER.info(
-            "Adding new step request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, stepName
-        );
-        
-        // Validate query params
-        if ( stepName == null ) {
-            return Response.status(400, "Missing step name").build();
-        }
 
-        // Fetch workload if present
-        TaskTideManagerUtility.configureNewStep(stepName);
-        result = stepService.viewByField("StepName", stepName);
-        if ( result == null ) {
-            String msg = String.format(
-                "Could not verify creation of step:\t'%s'",
-                stepName
-            );
-            return Response.status(500, msg).build();
-        }
-        
-        // Otherwise return to client
-        else {
-            return Response.ok(result.get(0)).build();
-        }
-    }
-    
     
     /**
-     * Endpoint for fetching {@link Step} by Id,
+     * Endpoint for fetching {@link MetricData} by Id,
      *  field having value, or field having value for a
      *  group having a value
      * 
@@ -202,7 +153,7 @@ public class StepResource {
      */
     @GET
     @Path("/get")
-    public Response readStep(
+    public Response readMetricData(
         @QueryParam("id") String id,
         @QueryParam("field") String field,
         @QueryParam("value") String value,
@@ -215,17 +166,17 @@ public class StepResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get step request recieved from '{}', '{}':\n\n'{}'",
+            "Get metricData request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
     
-        // Handle step Id
+        // Handle metricData Id
         if ( id != null ) {
-            Step step = stepService.fetchById(id);
-            if ( step != null ) {
-                return Response.ok(step).build();
+            MetricData metricData = metricDataService.fetchById(id);
+            if ( metricData != null ) {
+                return Response.ok(metricData).build();
             }
-            String msg = String.format("No step found for Id:\t'%s'", id);
+            String msg = String.format("No metricData found for Id:\t'%s'", id);
             return Response.status(404, msg).build();
         }
         
@@ -234,7 +185,7 @@ public class StepResource {
             ( field != null && value != null ) &&
             ( grouping == null && groupingVal == null )
         ) {
-            List<Step> results = stepService.viewByField(field, value);
+            List<MetricData> results = metricDataService.viewByField(field, value);
             if ( results != null ) {
                 if ( !results.isEmpty() ) {
                     return Response.ok(results).build();
@@ -242,7 +193,7 @@ public class StepResource {
             }
             
             String msg = String.format(
-                "No step found for Field = '%s', and Value = '%s'",
+                "No metricData found for Field = '%s', and Value = '%s'",
                 field, value
             );
             return Response.status(404, msg).build();
@@ -253,7 +204,7 @@ public class StepResource {
             (field != null && value != null) &&
             ( grouping != null && groupingVal != null )
         ) {
-            List<Step> results = stepService
+            List<MetricData> results = metricDataService
                 .viewByFieldForGroup(field, value, grouping, groupingVal);
             if ( results != null ) {
                 if ( !results.isEmpty() ) {
@@ -262,7 +213,7 @@ public class StepResource {
             }
             
             String msg = String.format(
-                "No step found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
+                "No metricData found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
                 field, value, grouping, groupingVal
             );
             return Response.status(404, msg).build();
@@ -270,14 +221,14 @@ public class StepResource {
         
         // Otherwise bad method
         else {
-            String msg = "A StepId, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
+            String msg = "A MetricDataId, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
             return Response.status(400, msg).build();
         }
     }
     
     
     /**
-     * Endpoint for dropping {@link Step} by Id
+     * Endpoint for dropping {@link MetricData} by Id
      * 
      * @param id
      * @param req
@@ -286,64 +237,64 @@ public class StepResource {
      */
     @DELETE
     @Path("/drop/{id}")
-    public Response dropStep(@PathParam("id") String id, @Context HttpServletRequest req) {
+    public Response dropMetricData(@PathParam("id") String id, @Context HttpServletRequest req) {
     
         // Log request
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get step request recieved from '{}', '{}':\n\n'{}'",
+            "Get metricData request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
         
         // Validate path param
         if ( id == null ) {
-            return Response.status(400, "No step Id provided").build();
+            return Response.status(400, "No metricData Id provided").build();
         }
         
-        // Drop step
-        if ( stepService.dropById(id) ) {
-            return Response.ok("Step deleted").build();
+        // Drop metricData
+        if ( metricDataService.dropById(id) ) {
+            return Response.ok("MetricData deleted").build();
         }
         else {
-            String msg = String.format("Server unable to verify deletion of step:\t'%s'", id);
+            String msg = String.format("Server unable to verify deletion of metricData:\t'%s'", id);
             return Response.status(500, msg).build();
         }
     }
     
     
     /**
-     * Endpoint for updating {@link Step} providing new resource
+     * Endpoint for updating {@link MetricData} providing new resource
      * 
-     * @param step
+     * @param metricData
      * @param req
      * 
      * @return {@link Response}
      */
     @PUT
     @Path("/update")
-    public Response updateStep(Step step, @Context HttpServletRequest req) {
+    public Response updateMetricData(MetricData metricData, @Context HttpServletRequest req) {
     
         // Log request
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Update step request recieved from '{}', '{}':\n\n'{}'",
+            "Update metricData request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
         
         // Validate path param
-        if ( step == null ) {
-            return Response.status(400, "No step Id provided").build();
+        if ( metricData == null ) {
+            return Response.status(400, "No metricData Id provided").build();
         }
         
-        // Update step
-        Step updated = stepService.updateModel(step);
+        // Update metricData
+        MetricData updated = metricDataService.updateModel(metricData);
         if ( updated != null ) {
             return Response.ok(updated).build();
         }
         else {
-            String msg = String.format("Server verifying update of step:\t'%s'", step.toJsonDoc());
+            String msg = String.format("Server verifying update of metricData:\t'%s'", metricData.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }

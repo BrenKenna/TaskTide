@@ -13,18 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.rest;
-
-import jakarta.ws.rs.ApplicationPath;
-import jakarta.ws.rs.core.Application;
+package org.tasktide.api.services.graphql.endpoints;
 
 
 /**
- * Root application path
+ * Unchecked exceptions for GrapQL APIs
  *
  * @author Bren
  */
-@ApplicationPath("/tasktide/api")
-public class TaskTideRestApi extends Application {
+public class GrapqlUncheckedException extends RuntimeException {
+
+    public GrapqlUncheckedException(String msg) {
+        super(msg);
+    }
     
+    public GrapqlUncheckedException(String msg, Throwable ex) {
+        super(msg, ex);
+    }
 }

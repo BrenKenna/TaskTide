@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.rest.services;
+package org.tasktide.api.services.rest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -46,10 +46,10 @@ import org.tasktide.core.model.job_env.JobEnvironment;
  */
 @Path("/services/metric-data")
 @RequestScoped
-public class JobEnvironmentResource {
+public class JobEnvironmentRestResource {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(JobEnvironmentResource.class);
+    private final Logger LOGGER = LogManager.getLogger(JobEnvironmentRestResource.class);
     private final TaskTideService<JobEnvironment> jobEnvironmentService;
     
     
@@ -57,7 +57,7 @@ public class JobEnvironmentResource {
      * Construct with {@link JobEnvironment} {@link TaskTideService}
      * 
      */
-    public JobEnvironmentResource() {
+    public JobEnvironmentRestResource() {
         this.jobEnvironmentService = TaskTideServiceManager.fetchJobEnvironmentService();
     }
     

@@ -12,6 +12,10 @@ dependencies {
     implementation  project(':core')
     implementation  project(':engine')
 
+    // Authentication and Authorization
+    implementation  "org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:2.1"
+    implementation  "io.smallrye:smallrye-jwt:4.6.3"
+
     // Web server
     implementation  "org.glassfish.jersey.containers:jersey-container-servlet:4.0.2"
     implementation  "org.glassfish.jersey.inject:jersey-hk2:4.0.2"

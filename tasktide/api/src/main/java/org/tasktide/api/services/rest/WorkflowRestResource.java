@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.rest.services;
+package org.tasktide.api.services.rest;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -50,10 +50,10 @@ import org.tasktide.core.model.collection.Step;
  */
 @Path("/services/workflow")
 @RequestScoped
-public class WorkflowResource {
+public class WorkflowRestResource {
  
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(WorkflowResource.class);
+    private final Logger LOGGER = LogManager.getLogger(WorkflowRestResource.class);
     private final TaskTideService<Workflow> workflowService;
     
     
@@ -61,7 +61,7 @@ public class WorkflowResource {
      * Construct with {@link Workflow} {@link TaskTideService}
      * 
      */
-    public WorkflowResource() {
+    public WorkflowRestResource() {
         this.workflowService = TaskTideServiceManager.fetchWorkflowService();
     }
     

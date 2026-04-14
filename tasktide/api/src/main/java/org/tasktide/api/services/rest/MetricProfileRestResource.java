@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.rest.services;
+package org.tasktide.api.services.rest;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,10 +46,10 @@ import org.tasktide.core.model.job_env.metrics.MetricProfile;
  */
 @Path("/services/metric-profile")
 @RequestScoped
-public class MetricProfileResource {
+public class MetricProfileRestResource {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(MetricProfileResource.class);
+    private final Logger LOGGER = LogManager.getLogger(MetricProfileRestResource.class);
     private final TaskTideService<MetricProfile> metricProfileService;
     
     
@@ -57,7 +57,7 @@ public class MetricProfileResource {
      * Construct with {@link MetricProfile} {@link TaskTideService}
      * 
      */
-    public MetricProfileResource() {
+    public MetricProfileRestResource() {
         this.metricProfileService = TaskTideServiceManager.fetchMetricProfileService();
     }
     
