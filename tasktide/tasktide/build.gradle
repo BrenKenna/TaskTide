@@ -37,6 +37,7 @@ dependencies {
     implementation  project(':itemstore')
     implementation  project(':core')
     implementation  project(':engine')
+    implementation  project(':api')
 
     // Command-line argument parser
     implementation  'info.picocli:picocli:4.7.7'

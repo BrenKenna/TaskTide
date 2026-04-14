@@ -1,3 +1,9 @@
+org.tasktide.api
+org.tasktide.api.manager.rest
+org.tasktide.api.services.graphql.context
+org.tasktide.api.services.graphql.endpoints
+org.tasktide.api.services.graphql.inputs
+org.tasktide.api.services.rest
 org.tasktide.core
 org.tasktide.core.manager
 org.tasktide.core.manager.command
