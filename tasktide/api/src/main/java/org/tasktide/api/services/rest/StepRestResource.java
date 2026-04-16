@@ -15,11 +15,13 @@
  */
 package org.tasktide.api.services.rest;
 
+import jakarta.annotation.security.RolesAllowed;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -32,6 +34,7 @@ import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 
 import java.util.List;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.services.StepService;
@@ -46,6 +49,7 @@ import org.tasktide.core.model.collection.Step;
  *
  * @author Bren
  */
+@RolesAllowed("user")
 @Path("/services/step")
 @RequestScoped
 public class StepRestResource {
@@ -54,6 +58,8 @@ public class StepRestResource {
     private final Logger LOGGER = LogManager.getLogger(StepRestResource.class);
     private final TaskTideService<Step> stepService;
     
+    @Inject
+    JsonWebToken jwt;
     
     /**
      * Construct with {@link Step} {@link TaskTideService}
@@ -81,8 +87,8 @@ public class StepRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new step request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, step
+            "Adding new Step request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, step
         );
         
         // Validate input
@@ -95,7 +101,7 @@ public class StepRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import below step:\n\n'%s'", step.toJsonDoc());
+            String msg = String.format("Unable to import below Step:\n\n'%s'", step.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }
@@ -118,7 +124,7 @@ public class StepRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Importing steps request from '{}', '{}':\n\n'{}'",
+            "Importing Step collection request from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
         
@@ -132,7 +138,7 @@ public class StepRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import provided step collection");
+            String msg = String.format("Unable to import provided Step collection");
             return Response.status(500, msg).build();
         }
     }
@@ -159,13 +165,13 @@ public class StepRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new step request from '{}', '{}':\n\n'{}'",
+            "Adding new Step request from '{}', '{}':\n\n'{}'",
             ip, userAgent, stepName
         );
         
         // Validate query params
         if ( stepName == null ) {
-            return Response.status(400, "Missing step name").build();
+            return Response.status(400, "Missing Step name").build();
         }
 
         // Fetch workload if present
@@ -173,7 +179,7 @@ public class StepRestResource {
         result = stepService.viewByField("StepName", stepName);
         if ( result == null ) {
             String msg = String.format(
-                "Could not verify creation of step:\t'%s'",
+                "Could not verify creation of Step:\t'%s'",
                 stepName
             );
             return Response.status(500, msg).build();
@@ -215,7 +221,7 @@ public class StepRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get step request recieved from '{}', '{}':\n\n'{}'",
+            "Get Step request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
     
@@ -225,7 +231,7 @@ public class StepRestResource {
             if ( step != null ) {
                 return Response.ok(step).build();
             }
-            String msg = String.format("No step found for Id:\t'%s'", id);
+            String msg = String.format("No Step found for Id:\t'%s'", id);
             return Response.status(404, msg).build();
         }
         
@@ -242,7 +248,7 @@ public class StepRestResource {
             }
             
             String msg = String.format(
-                "No step found for Field = '%s', and Value = '%s'",
+                "No Step found for Field = '%s', and Value = '%s'",
                 field, value
             );
             return Response.status(404, msg).build();
@@ -262,7 +268,7 @@ public class StepRestResource {
             }
             
             String msg = String.format(
-                "No step found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
+                "No Step found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
                 field, value, grouping, groupingVal
             );
             return Response.status(404, msg).build();
@@ -270,7 +276,7 @@ public class StepRestResource {
         
         // Otherwise bad method
         else {
-            String msg = "A StepId, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
+            String msg = "A Step.Id, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
             return Response.status(400, msg).build();
         }
     }
@@ -292,13 +298,13 @@ public class StepRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get step request recieved from '{}', '{}':\n\n'{}'",
+            "Get Step request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
         
         // Validate path param
         if ( id == null ) {
-            return Response.status(400, "No step Id provided").build();
+            return Response.status(400, "No Step.Id provided").build();
         }
         
         // Drop step
@@ -306,7 +312,7 @@ public class StepRestResource {
             return Response.ok("Step deleted").build();
         }
         else {
-            String msg = String.format("Server unable to verify deletion of step:\t'%s'", id);
+            String msg = String.format("Server unable to verify deletion of Step:\t'%s'", id);
             return Response.status(500, msg).build();
         }
     }
@@ -328,13 +334,13 @@ public class StepRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Update step request recieved from '{}', '{}':\n\n'{}'",
+            "Update Step request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
         
         // Validate path param
         if ( step == null ) {
-            return Response.status(400, "No step Id provided").build();
+            return Response.status(400, "No Step.Id provided").build();
         }
         
         // Update step
@@ -343,7 +349,7 @@ public class StepRestResource {
             return Response.ok(updated).build();
         }
         else {
-            String msg = String.format("Server verifying update of step:\t'%s'", step.toJsonDoc());
+            String msg = String.format("Server verifying update of Step:\t'%s'", step.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }

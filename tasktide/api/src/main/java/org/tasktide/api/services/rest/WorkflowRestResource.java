@@ -18,7 +18,7 @@ package org.tasktide.api.services.rest;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
 
 import jakarta.ws.rs.DELETE;
@@ -31,6 +31,10 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
+import jakarta.servlet.http.HttpServletRequest;
+
+import jakarta.annotation.security.RolesAllowed;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.util.List;
 
@@ -48,6 +52,7 @@ import org.tasktide.core.model.collection.Step;
  *
  * @author Bren
  */
+@RolesAllowed("user")
 @Path("/services/workflow")
 @RequestScoped
 public class WorkflowRestResource {
@@ -56,6 +61,8 @@ public class WorkflowRestResource {
     private final Logger LOGGER = LogManager.getLogger(WorkflowRestResource.class);
     private final TaskTideService<Workflow> workflowService;
     
+    @Inject
+    JsonWebToken jwt;
     
     /**
      * Construct with {@link Workflow} {@link TaskTideService}
@@ -83,8 +90,8 @@ public class WorkflowRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new workflow request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, workflow
+            "Adding new Workflow request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, workflow
         );
         
         // Validate input
@@ -97,7 +104,7 @@ public class WorkflowRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import below workflow:\n\n'%s'", workflow.toJsonDoc());
+            String msg = String.format("Unable to import below Workflow:\n\n'%s'", workflow.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }
@@ -120,8 +127,8 @@ public class WorkflowRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Importing workflows request from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Importing Workflow collection by user '{}' from '{}' using '{}'",
+            this.jwt.getName(), ip, userAgent
         );
         
         // Validate input
@@ -134,7 +141,7 @@ public class WorkflowRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import provided workflow collection");
+            String msg = String.format("Unable to import provided Workflow collection");
             return Response.status(500, msg).build();
         }
     }
@@ -163,13 +170,14 @@ public class WorkflowRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new workflow request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, workflowName
+            "Adding new Workflow request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, workflowName
         );
+        
         
         // Validate query params
         if ( workflowName == null ) {
-            return Response.status(400, "Missing workflow name").build();
+            return Response.status(400, "Missing Worfklow name").build();
         }
         
         // Handle stepId
@@ -180,7 +188,7 @@ public class WorkflowRestResource {
             Step step = TaskTideServiceManager.fetchStepService().fetchById(stepId);
             if ( step == null ) {
                 String msg = String.format(
-                    "Could not create '%s' step for provided step Id:\t'%s'",
+                    "Could not create '%s' Step for provided Step.Id:\t'%s'",
                     workflowName, stepId
                 );
                 return Response.status(404, msg).build();
@@ -192,7 +200,7 @@ public class WorkflowRestResource {
         result = workflowService.viewByField("WorkflowName", workflowName);
         if ( result == null ) {
             String msg = String.format(
-                "Could not verify creation of workflow:\t'%s'",
+                "Could not verify creation of Workflow:\t'%s'",
                 workflowName
             );
             return Response.status(500, msg).build();
@@ -234,17 +242,17 @@ public class WorkflowRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get workflow request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Get Workflow request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
-    
+        
         // Handle workflow Id
         if ( id != null ) {
             Workflow workflow = workflowService.fetchById(id);
             if ( workflow != null ) {
                 return Response.ok(workflow).build();
             }
-            String msg = String.format("No workflow found for Id:\t'%s'", id);
+            String msg = String.format("No Workflow found for Id:\t'%s'", id);
             return Response.status(404, msg).build();
         }
         
@@ -261,7 +269,7 @@ public class WorkflowRestResource {
             }
             
             String msg = String.format(
-                "No workflow found for Field = '%s', and Value = '%s'",
+                "No Workflow found for Field = '%s', and Value = '%s'",
                 field, value
             );
             return Response.status(404, msg).build();
@@ -281,7 +289,7 @@ public class WorkflowRestResource {
             }
             
             String msg = String.format(
-                "No workflow found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
+                "No Workflow found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
                 field, value, grouping, groupingVal
             );
             return Response.status(404, msg).build();
@@ -289,7 +297,7 @@ public class WorkflowRestResource {
         
         // Otherwise bad method
         else {
-            String msg = "A WorkflowId, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
+            String msg = "A Workflow.Id, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
             return Response.status(400, msg).build();
         }
     }
@@ -320,6 +328,10 @@ public class WorkflowRestResource {
             "Get workflow request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
         );
+        LOGGER.info(
+            "Add step to Workflow request by user '{}' from '{}' using '{}':\n\nStep = '{}'\nWorkflow = '{}'",
+            this.jwt.getName(), ip, userAgent, stepId, workflowId
+        );
         
         // Validate params
         if ( workflowId == null || stepId == null ) {
@@ -346,7 +358,7 @@ public class WorkflowRestResource {
             return Response.ok(result).build();
         }
         else {
-            String msg = String.format("Unable to verify update of workflow '%s'", workflowId);
+            String msg = String.format("Unable to verify update of Workflow '%s'", workflowId);
             return Response.status(500, msg).build();
         }
     }
@@ -368,13 +380,13 @@ public class WorkflowRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get workflow request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Drop Workflow request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
         
         // Validate path param
         if ( id == null ) {
-            return Response.status(400, "No workflow Id provided").build();
+            return Response.status(400, "No Workflow.Id provided").build();
         }
         
         // Drop workflow
@@ -382,7 +394,7 @@ public class WorkflowRestResource {
             return Response.ok("Workflow deleted").build();
         }
         else {
-            String msg = String.format("Server unable to verify deletion of workflow:\t'%s'", id);
+            String msg = String.format("Server unable to verify deletion of Workflow:\t'%s'", id);
             return Response.status(500, msg).build();
         }
     }
@@ -404,13 +416,13 @@ public class WorkflowRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get workflow request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Update Workflow request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, workflow
         );
         
         // Validate path param
         if ( workflow == null ) {
-            return Response.status(400, "No workflow Id provided").build();
+            return Response.status(400, "No Workflow.Id provided").build();
         }
         
         // Update workflow
@@ -419,7 +431,7 @@ public class WorkflowRestResource {
             return Response.ok(updated).build();
         }
         else {
-            String msg = String.format("Server verifying update of workflow:\t'%s'", workflow.toJsonDoc());
+            String msg = String.format("Server verifying update of Workflow:\t'%s'", workflow.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }

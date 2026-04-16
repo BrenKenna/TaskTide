@@ -18,8 +18,8 @@ package org.tasktide.api.services.rest;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
+import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -30,6 +30,10 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
+import jakarta.servlet.http.HttpServletRequest;
+
+import jakarta.annotation.security.RolesAllowed;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.util.List;
 
@@ -44,6 +48,7 @@ import org.tasktide.core.model.job_env.metrics.MetricProfile;
  *
  * @author Bren
  */
+@RolesAllowed("user")
 @Path("/services/metric-profile")
 @RequestScoped
 public class MetricProfileRestResource {
@@ -52,6 +57,8 @@ public class MetricProfileRestResource {
     private final Logger LOGGER = LogManager.getLogger(MetricProfileRestResource.class);
     private final TaskTideService<MetricProfile> metricProfileService;
     
+    @Inject
+    JsonWebToken jwt;
     
     /**
      * Construct with {@link MetricProfile} {@link TaskTideService}
@@ -79,8 +86,8 @@ public class MetricProfileRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new metricProfile request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, metricProfile
+            "Adding new MetricProfile request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, metricProfile
         );
         
         // Validate input
@@ -93,7 +100,7 @@ public class MetricProfileRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import below metricProfile:\n\n'%s'", metricProfile.toJsonDoc());
+            String msg = String.format("Unable to import below MetricProfile:\n\n'%s'", metricProfile.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }
@@ -116,8 +123,8 @@ public class MetricProfileRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Importing metricProfiles request from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Import MetricProfile collection request by user '{}' from '{}' using '{}'",
+            this.jwt.getName(), ip, userAgent
         );
         
         // Validate input
@@ -130,7 +137,7 @@ public class MetricProfileRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import provided metricProfile collection");
+            String msg = String.format("Unable to import provided MetricProfile collection");
             return Response.status(500, msg).build();
         }
     }
@@ -165,8 +172,8 @@ public class MetricProfileRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get metricProfile request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Get MetricProfile collection request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
     
         // Handle metricProfile Id
@@ -175,7 +182,7 @@ public class MetricProfileRestResource {
             if ( metricProfile != null ) {
                 return Response.ok(metricProfile).build();
             }
-            String msg = String.format("No metricProfile found for Id:\t'%s'", id);
+            String msg = String.format("No MetricProfile found for Id:\t'%s'", id);
             return Response.status(404, msg).build();
         }
         
@@ -192,7 +199,7 @@ public class MetricProfileRestResource {
             }
             
             String msg = String.format(
-                "No metricProfile found for Field = '%s', and Value = '%s'",
+                "No MetricProfile found for Field = '%s', and Value = '%s'",
                 field, value
             );
             return Response.status(404, msg).build();
@@ -212,7 +219,7 @@ public class MetricProfileRestResource {
             }
             
             String msg = String.format(
-                "No metricProfile found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
+                "No MetricProfile found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
                 field, value, grouping, groupingVal
             );
             return Response.status(404, msg).build();
@@ -220,7 +227,7 @@ public class MetricProfileRestResource {
         
         // Otherwise bad method
         else {
-            String msg = "A MetricProfileId, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
+            String msg = "A MetricProfile.Id, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
             return Response.status(400, msg).build();
         }
     }
@@ -242,13 +249,13 @@ public class MetricProfileRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get metricProfile request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Drop MetricProfile collection request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
         
         // Validate path param
         if ( id == null ) {
-            return Response.status(400, "No metricProfile Id provided").build();
+            return Response.status(400, "No MetricProfile.Id provided").build();
         }
         
         // Drop metricProfile
@@ -256,7 +263,7 @@ public class MetricProfileRestResource {
             return Response.ok("MetricProfile deleted").build();
         }
         else {
-            String msg = String.format("Server unable to verify deletion of metricProfile:\t'%s'", id);
+            String msg = String.format("Server unable to verify deletion of MetricProfile:\t'%s'", id);
             return Response.status(500, msg).build();
         }
     }
@@ -278,13 +285,13 @@ public class MetricProfileRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Update metricProfile request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Update MetricProfile collection request by user '{}' from '{}' using '{}' for resource:\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, metricProfile
         );
         
         // Validate path param
         if ( metricProfile == null ) {
-            return Response.status(400, "No metricProfile Id provided").build();
+            return Response.status(400, "No MetricProfile.Id provided").build();
         }
         
         // Update metricProfile
@@ -293,7 +300,7 @@ public class MetricProfileRestResource {
             return Response.ok(updated).build();
         }
         else {
-            String msg = String.format("Server verifying update of metricProfile:\t'%s'", metricProfile.toJsonDoc());
+            String msg = String.format("Server verifying update of MetricProfile:\t'%s'", metricProfile.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }

@@ -18,7 +18,7 @@ package org.tasktide.api.services.rest;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
 
 import jakarta.ws.rs.DELETE;
@@ -30,6 +30,10 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
+import jakarta.servlet.http.HttpServletRequest;
+
+import jakarta.annotation.security.RolesAllowed;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.util.List;
 
@@ -46,6 +50,7 @@ import org.tasktide.core.model.workitem.WorkItem;
  *
  * @author Bren
  */
+@RolesAllowed("user")
 @Path("/services/workitem")
 @RequestScoped
 public class WorkItemRestResource {
@@ -54,6 +59,8 @@ public class WorkItemRestResource {
     private final Logger LOGGER = LogManager.getLogger(WorkItemRestResource.class);
     private final TaskTideService<WorkItem> workItemService;
     
+    @Inject
+    JsonWebToken jwt;
     
     /**
      * Construct with {@link WorkItem} {@link TaskTideService}
@@ -81,8 +88,8 @@ public class WorkItemRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new workItem request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, workItem
+            "Adding new WorkItem request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, workItem
         );
         
         // Validate input
@@ -95,7 +102,7 @@ public class WorkItemRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import below workItem:\n\n'%s'", workItem.toJsonDoc());
+            String msg = String.format("Unable to import below WorkItem:\n\n'%s'", workItem.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }
@@ -118,8 +125,8 @@ public class WorkItemRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Importing workItems request from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Importing WorkItem collection request by user '{}' from '{}' using '{}'",
+            this.jwt.getName(), ip, userAgent
         );
         
         // Validate input
@@ -132,7 +139,7 @@ public class WorkItemRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import provided workItem collection");
+            String msg = String.format("Unable to import provided WorkItem collection");
             return Response.status(500, msg).build();
         }
     }
@@ -159,13 +166,13 @@ public class WorkItemRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new workItem request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, managerTask
+            "Adding new WorkItem request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, managerTask
         );
         
         // Validate query params
         if ( managerTask == null ) {
-            return Response.status(400, "Missing workItem name").build();
+            return Response.status(400, "Missing WorkItem name").build();
         }
 
         // Fetch workload if present
@@ -173,7 +180,7 @@ public class WorkItemRestResource {
         result = workItemService.appendModel(workItem);
         if ( result == null ) {
             String msg = String.format(
-                "Could not verify creation of workItem:\t'%s'",
+                "Could not verify creation of WorkItem:\t'%s'",
                 workItem.getItemName()
             );
             return Response.status(500, msg).build();
@@ -215,8 +222,8 @@ public class WorkItemRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get workItem request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Get WorkItem request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
     
         // Handle workItem Id
@@ -225,7 +232,7 @@ public class WorkItemRestResource {
             if ( workItem != null ) {
                 return Response.ok(workItem).build();
             }
-            String msg = String.format("No workItem found for Id:\t'%s'", id);
+            String msg = String.format("No WorkItem found for Id:\t'%s'", id);
             return Response.status(404, msg).build();
         }
         
@@ -242,7 +249,7 @@ public class WorkItemRestResource {
             }
             
             String msg = String.format(
-                "No workItem found for Field = '%s', and Value = '%s'",
+                "No WorkItem found for Field = '%s', and Value = '%s'",
                 field, value
             );
             return Response.status(404, msg).build();
@@ -262,7 +269,7 @@ public class WorkItemRestResource {
             }
             
             String msg = String.format(
-                "No workItem found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
+                "No WorkItem found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
                 field, value, grouping, groupingVal
             );
             return Response.status(404, msg).build();
@@ -270,7 +277,7 @@ public class WorkItemRestResource {
         
         // Otherwise bad method
         else {
-            String msg = "A WorkItemId, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
+            String msg = "A WorkItem.Id, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
             return Response.status(400, msg).build();
         }
     }
@@ -292,13 +299,13 @@ public class WorkItemRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get workItem request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Drop WorkItem request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
         
         // Validate path param
         if ( id == null ) {
-            return Response.status(400, "No workItem Id provided").build();
+            return Response.status(400, "No WorkItem.Id provided").build();
         }
         
         // Drop workItem
@@ -306,7 +313,7 @@ public class WorkItemRestResource {
             return Response.ok("WorkItem deleted").build();
         }
         else {
-            String msg = String.format("Server unable to verify deletion of workItem:\t'%s'", id);
+            String msg = String.format("Server unable to verify deletion of WorkItem:\t'%s'", id);
             return Response.status(500, msg).build();
         }
     }
@@ -328,8 +335,8 @@ public class WorkItemRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Update workItem request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Update WorkItem request by user '{}' from '{}' using '{}' for resource:\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, workItem
         );
         
         // Validate path param
@@ -343,7 +350,7 @@ public class WorkItemRestResource {
             return Response.ok(updated).build();
         }
         else {
-            String msg = String.format("Server verifying update of workItem:\t'%s'", workItem.toJsonDoc());
+            String msg = String.format("Server verifying update of WorkItem:\t'%s'", workItem.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }

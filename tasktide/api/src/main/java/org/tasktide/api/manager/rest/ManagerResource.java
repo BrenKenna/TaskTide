@@ -15,8 +15,8 @@
  */
 package org.tasktide.api.manager.rest;
 
+import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -25,21 +25,24 @@ import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
-
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.servlet.http.HttpServletRequest;
+
+import jakarta.annotation.security.RolesAllowed;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.command.ManagerCommand;
-import org.tasktide.core.manager.command.commands.AnnotateCommand;
+import org.tasktide.core.manager.command.commands.ResetCommand;
 import org.tasktide.core.manager.command.commands.DeleteCommand;
 import org.tasktide.core.manager.command.commands.ExportCommand;
 import org.tasktide.core.manager.command.commands.ImportCommand;
-import org.tasktide.core.manager.command.commands.ResetCommand;
 import org.tasktide.core.manager.command.commands.SummarizeCommand;
+import org.tasktide.core.manager.command.commands.AnnotateCommand;
 
 
 /**
@@ -47,12 +50,17 @@ import org.tasktide.core.manager.command.commands.SummarizeCommand;
  *
  * @author Bren
  */
+// @DeclareRoles("user") // Leaving in as a curious note on use cases
+@RolesAllowed("user")
 @Path("manager")
 @RequestScoped
 public class ManagerResource {
     
     // Logging
     private final Logger LOGGER = LogManager.getLogger(ManagerResource.class);
+    
+    @Inject
+    JsonWebToken jwt;
     
     
     /**
@@ -73,8 +81,8 @@ public class ManagerResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Processing import request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, cmd.toJsonDoc()
+            "Processing import request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
         );
         
         // Perform command
@@ -82,8 +90,8 @@ public class ManagerResource {
         
         // Log status
         LOGGER.info(
-            "Import request from '{}', '{}' status:\t'{}'",
-            ip, userAgent, output
+            "Import request by user '{}' from '{}' '{}' status:\t'{}'",
+            this.jwt.getName(), ip, userAgent, output
         );
         
         // Handle command output
@@ -114,8 +122,8 @@ public class ManagerResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Processing export request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, cmd.toJsonDoc()
+            "Processing export request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
         );
         
         // Run command
@@ -123,8 +131,8 @@ public class ManagerResource {
         
         // Log status
         LOGGER.info(
-            "Export request from '{}', '{}' status:\t'{}'",
-            ip, userAgent, output
+            "Export request by user '{}' from '{}' '{}' status:\t'{}'",
+            this.jwt.getName(), ip, userAgent, output
         );
         
         // Handle command output
@@ -155,8 +163,8 @@ public class ManagerResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Processing reset request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, cmd.toJsonDoc()
+            "Processing reset request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
         );
         
         // Run command
@@ -164,8 +172,8 @@ public class ManagerResource {
         
         // Log status
         LOGGER.info(
-            "Reset request from '{}', '{}' status:\t'{}'",
-            ip, userAgent, output
+            "Reset request by user '{}' from '{}' '{}' status:\t'{}'",
+            this.jwt.getName(), ip, userAgent, output
         );
         
         // Handle command output
@@ -195,8 +203,8 @@ public class ManagerResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Processing delete request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, cmd.toJsonDoc()
+            "Processing delete request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
         );
         
         // Run command
@@ -204,8 +212,8 @@ public class ManagerResource {
         
         // Log status
         LOGGER.info(
-            "Delete request from '{}', '{}' status:\t'{}'",
-            ip, userAgent, output
+            "Delete request by user '{}' from '{}' '{}' status:\t'{}'",
+            this.jwt.getName(), ip, userAgent, output
         );
         
         // Handle command output
@@ -236,8 +244,8 @@ public class ManagerResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Processing annotation request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, cmd.toJsonDoc()
+            "Processing annotate request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
         );
         
         // Run command
@@ -245,8 +253,8 @@ public class ManagerResource {
         
         // Log status
         LOGGER.info(
-            "Annotation request from '{}', '{}' status:\t'{}'",
-            ip, userAgent, output
+            "Annotation request by user '{}' from '{}' '{}' status:\t'{}'",
+            this.jwt.getName(), ip, userAgent, output
         );
         
         // Handle command output
@@ -276,8 +284,8 @@ public class ManagerResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Processing summary request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, cmd.toJsonDoc()
+            "Processing summary request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
         );
         
         // Run command
@@ -285,8 +293,8 @@ public class ManagerResource {
         
         // Log status
         LOGGER.info(
-            "Summary request from '{}', '{}' status:\t'{}'",
-            ip, userAgent, output
+            "Summary request by user '{}' from '{}' '{}' status:\t'{}'",
+            this.jwt.getName(), ip, userAgent, output
         );
         
         // Handle command output

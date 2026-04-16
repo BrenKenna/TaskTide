@@ -18,8 +18,10 @@ package org.tasktide.api.services.rest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.List;
+
+import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -30,8 +32,10 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
+import jakarta.servlet.http.HttpServletRequest;
 
-import java.util.List;
+import jakarta.annotation.security.RolesAllowed;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.services.JobEnvironmentService;
@@ -44,6 +48,7 @@ import org.tasktide.core.model.job_env.JobEnvironment;
  *
  * @author Bren
  */
+@RolesAllowed("user")
 @Path("/services/metric-data")
 @RequestScoped
 public class JobEnvironmentRestResource {
@@ -52,6 +57,8 @@ public class JobEnvironmentRestResource {
     private final Logger LOGGER = LogManager.getLogger(JobEnvironmentRestResource.class);
     private final TaskTideService<JobEnvironment> jobEnvironmentService;
     
+    @Inject
+    JsonWebToken jwt;
     
     /**
      * Construct with {@link JobEnvironment} {@link TaskTideService}
@@ -79,8 +86,8 @@ public class JobEnvironmentRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new jobEnvironment request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, jobEnvironment
+            "Adding new JobEnvironment request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, jobEnvironment
         );
         
         // Validate input
@@ -93,7 +100,7 @@ public class JobEnvironmentRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import below jobEnvironment:\n\n'%s'", jobEnvironment.toJsonDoc());
+            String msg = String.format("Unable to import below JobEnvironment:\n\n'%s'", jobEnvironment.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }
@@ -116,8 +123,8 @@ public class JobEnvironmentRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Importing jobEnvironments request from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Importing JobEnvironment collection request by user '{}' from '{}' using '{}'",
+            this.jwt.getName(), ip, userAgent
         );
         
         // Validate input
@@ -130,7 +137,7 @@ public class JobEnvironmentRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import provided jobEnvironment collection");
+            String msg = String.format("Unable to import provided JobEnvironment collection");
             return Response.status(500, msg).build();
         }
     }
@@ -165,8 +172,8 @@ public class JobEnvironmentRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get jobEnvironment request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Get JobEnvironment request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
     
         // Handle jobEnvironment Id
@@ -175,7 +182,7 @@ public class JobEnvironmentRestResource {
             if ( jobEnvironment != null ) {
                 return Response.ok(jobEnvironment).build();
             }
-            String msg = String.format("No jobEnvironment found for Id:\t'%s'", id);
+            String msg = String.format("No JobEnvironment found for Id:\t'%s'", id);
             return Response.status(404, msg).build();
         }
         
@@ -192,7 +199,7 @@ public class JobEnvironmentRestResource {
             }
             
             String msg = String.format(
-                "No jobEnvironment found for Field = '%s', and Value = '%s'",
+                "No JobEnvironment found for Field = '%s', and Value = '%s'",
                 field, value
             );
             return Response.status(404, msg).build();
@@ -212,7 +219,7 @@ public class JobEnvironmentRestResource {
             }
             
             String msg = String.format(
-                "No jobEnvironment found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
+                "No JobEnvironment found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
                 field, value, grouping, groupingVal
             );
             return Response.status(404, msg).build();
@@ -220,7 +227,7 @@ public class JobEnvironmentRestResource {
         
         // Otherwise bad method
         else {
-            String msg = "A JobEnvironmentId, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
+            String msg = "A JobEnvironment.Id, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
             return Response.status(400, msg).build();
         }
     }
@@ -242,13 +249,13 @@ public class JobEnvironmentRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get jobEnvironment request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Drop JobEnvironment request by user '{}' from '{}' using '{}'`for resource:\t\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
         
         // Validate path param
         if ( id == null ) {
-            return Response.status(400, "No jobEnvironment Id provided").build();
+            return Response.status(400, "No JobEnvironment.Id provided").build();
         }
         
         // Drop jobEnvironment
@@ -256,7 +263,7 @@ public class JobEnvironmentRestResource {
             return Response.ok("JobEnvironment deleted").build();
         }
         else {
-            String msg = String.format("Server unable to verify deletion of jobEnvironment:\t'%s'", id);
+            String msg = String.format("Server unable to verify deletion of JobEnvironment:\t'%s'", id);
             return Response.status(500, msg).build();
         }
     }
@@ -278,13 +285,13 @@ public class JobEnvironmentRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Update jobEnvironment request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Update JobEnvironment request by user '{}' from '{}' using '{}'`for resource:\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, jobEnvironment
         );
         
         // Validate path param
         if ( jobEnvironment == null ) {
-            return Response.status(400, "No jobEnvironment Id provided").build();
+            return Response.status(400, "No JobEnvironment.Id provided").build();
         }
         
         // Update jobEnvironment
@@ -293,7 +300,7 @@ public class JobEnvironmentRestResource {
             return Response.ok(updated).build();
         }
         else {
-            String msg = String.format("Server verifying update of jobEnvironment:\t'%s'", jobEnvironment.toJsonDoc());
+            String msg = String.format("Server verifying update of JobEnvironment:\t'%s'", jobEnvironment.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }

@@ -18,18 +18,22 @@ package org.tasktide.api.services.rest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.servlet.http.HttpServletRequest;
+
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
-
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
+import jakarta.servlet.http.HttpServletRequest;
+
+import jakarta.annotation.security.RolesAllowed;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.util.List;
 
@@ -39,12 +43,12 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 
 
-
 /**
  * REST resource for interacting with {@link MetricDataService}
  * 
  * @author Bren
  */
+@RolesAllowed("user")
 @Path("/services/metric-data")
 @RequestScoped
 public class MetricDataRestResource {
@@ -53,6 +57,8 @@ public class MetricDataRestResource {
     private final Logger LOGGER = LogManager.getLogger(MetricDataRestResource.class);
     private final TaskTideService<MetricData> metricDataService;
     
+    @Inject
+    JsonWebToken jwt;
     
     /**
      * Construct with {@link MetricData} {@link TaskTideService}
@@ -80,8 +86,8 @@ public class MetricDataRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Adding new metricData request from '{}', '{}':\n\n'{}'",
-            ip, userAgent, metricData
+            "Adding new MetricData request by user '{}' from '{}' using '{}':\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, metricData
         );
         
         // Validate input
@@ -94,7 +100,7 @@ public class MetricDataRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import below metricData:\n\n'%s'", metricData.toJsonDoc());
+            String msg = String.format("Unable to import below MetricData:\n\n'%s'", metricData.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }
@@ -117,8 +123,8 @@ public class MetricDataRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Importing metricDatas request from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Importing MetricData collection request by user '{}' from '{}' using '{}'",
+            this.jwt.getName(), ip, userAgent
         );
         
         // Validate input
@@ -131,7 +137,7 @@ public class MetricDataRestResource {
             return Response.ok().build();
         }
         else {
-            String msg = String.format("Unable to import provided metricData collection");
+            String msg = String.format("Unable to import provided MetricData collection");
             return Response.status(500, msg).build();
         }
     }
@@ -166,8 +172,8 @@ public class MetricDataRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get metricData request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Get MetricData request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
     
         // Handle metricData Id
@@ -176,7 +182,7 @@ public class MetricDataRestResource {
             if ( metricData != null ) {
                 return Response.ok(metricData).build();
             }
-            String msg = String.format("No metricData found for Id:\t'%s'", id);
+            String msg = String.format("No MetricData found for Id:\t'%s'", id);
             return Response.status(404, msg).build();
         }
         
@@ -193,7 +199,7 @@ public class MetricDataRestResource {
             }
             
             String msg = String.format(
-                "No metricData found for Field = '%s', and Value = '%s'",
+                "No MetricData found for Field = '%s', and Value = '%s'",
                 field, value
             );
             return Response.status(404, msg).build();
@@ -213,7 +219,7 @@ public class MetricDataRestResource {
             }
             
             String msg = String.format(
-                "No metricData found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
+                "No MetricData found for Field = '%s', Value = '%s', Grouping = '%s', GroupingValue = '%s'",
                 field, value, grouping, groupingVal
             );
             return Response.status(404, msg).build();
@@ -221,7 +227,7 @@ public class MetricDataRestResource {
         
         // Otherwise bad method
         else {
-            String msg = "A MetricDataId, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
+            String msg = "A MetricData.Id, or Field-Value, or Field-Value Grouping-Grouping Value must be provided";
             return Response.status(400, msg).build();
         }
     }
@@ -243,13 +249,13 @@ public class MetricDataRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Get metricData request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Drop MetricData request by user '{}' from '{}' using '{}' for resource:\t'{}'",
+            this.jwt.getName(), ip, userAgent, id
         );
         
         // Validate path param
         if ( id == null ) {
-            return Response.status(400, "No metricData Id provided").build();
+            return Response.status(400, "No MetricData Id provided").build();
         }
         
         // Drop metricData
@@ -257,7 +263,7 @@ public class MetricDataRestResource {
             return Response.ok("MetricData deleted").build();
         }
         else {
-            String msg = String.format("Server unable to verify deletion of metricData:\t'%s'", id);
+            String msg = String.format("Server unable to verify deletion of MetricData:\t'%s'", id);
             return Response.status(500, msg).build();
         }
     }
@@ -279,13 +285,13 @@ public class MetricDataRestResource {
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
-            "Update metricData request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Update MetricData request by user '{}' from '{}' using '{}'\n\n'{}'",
+            this.jwt.getName(), ip, userAgent, metricData
         );
         
         // Validate path param
         if ( metricData == null ) {
-            return Response.status(400, "No metricData Id provided").build();
+            return Response.status(400, "No MetricData Id provided").build();
         }
         
         // Update metricData
@@ -294,7 +300,7 @@ public class MetricDataRestResource {
             return Response.ok(updated).build();
         }
         else {
-            String msg = String.format("Server verifying update of metricData:\t'%s'", metricData.toJsonDoc());
+            String msg = String.format("Server verifying update of MetricData:\t'%s'", metricData.toJsonDoc());
             return Response.status(500, msg).build();
         }
     }

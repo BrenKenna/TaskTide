@@ -15,6 +15,7 @@
  */
 package org.tasktide.api.services.graphql.endpoints;
 
+import jakarta.annotation.security.RolesAllowed;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -40,6 +41,7 @@ import org.tasktide.core.model.collection.Workflow;
  *
  * @author Bren
  */
+@RolesAllowed("user")
 @ApplicationScoped
 public class WorkflowGraphqlApi {
 
@@ -48,7 +50,7 @@ public class WorkflowGraphqlApi {
     
     @Inject
     RequestContext requestContext;
-    
+
     public WorkflowGraphqlApi() {
         this.workflowService = TaskTideServiceManager.fetchWorkflowService();
     }
