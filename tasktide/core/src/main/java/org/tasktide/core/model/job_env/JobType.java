@@ -15,8 +15,6 @@
  */
 package org.tasktide.core.model.job_env;
 
-import java.net.UnknownHostException;
-
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Collectors;

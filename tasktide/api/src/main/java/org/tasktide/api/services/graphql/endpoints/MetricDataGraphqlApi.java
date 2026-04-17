@@ -19,95 +19,84 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import jakarta.inject.Inject;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 
-import java.util.List;
-
-import org.tasktide.api.services.graphql.context.RequestContext;
-import org.tasktide.api.services.graphql.inputs.WorkflowInput;
-
 import org.tasktide.core.TaskTideService;
+import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
-import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.api.services.graphql.inputs.MetricDataInput;
+import org.tasktide.api.services.graphql.context.RequestContext;
 
 
 /**
- * GraphQL API against {@link Workflow}
+ * GraphQL API against {@link MetricData}
  *
  * @author Bren
  */
 @GraphQLApi
 @RolesAllowed("user")
 @ApplicationScoped
-public class WorkflowGraphqlApi {
+public class MetricDataGraphqlApi {
 
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(WorkflowGraphqlApi.class);
-    private final TaskTideService<Workflow> workflowService;
+    private final Logger LOGGER = LogManager.getLogger(MetricDataGraphqlApi.class);
+    private final TaskTideService<MetricData> metricDataService;
     
     @Inject
     RequestContext requestContext;
 
-    public WorkflowGraphqlApi() {
-        this.workflowService = TaskTideServiceManager.fetchWorkflowService();
+    public MetricDataGraphqlApi() {
+        this.metricDataService = TaskTideServiceManager.fetchMetricDataService();
     }
     
     
     /**
-     * Get {@link Workflow} from {@link WorkflowInput} query
+     * Get {@link MetricData} from {@link MetricDataInput} query
      * 
      * @param query
-     * @return {@link Workflow}
+     * @return {@link MetricData}
      */
-    @Query("search-workflow")
-    public Workflow getWorkflow(WorkflowInput query) {
+    @Query("search-metric-data")
+    public MetricData getMetricData(MetricDataInput query) {
         LOGGER.info(
-            "GraphQL Workflow Query from user '{}' for '{}' incoming from '{}', '{}'",
+            "GraphQL MetricDatas Query from user '{}' for '{}' incoming from '{}', '{}'",
             this.requestContext.getJsonWebToken().getName(), requestContext.getIp(), requestContext.getUserAgent()
         );
         
-        if ( query.workflowId != null ) {
-            return this.workflowService.fetchById(query.workflowId);
+        if ( query.id != null ) {
+            return this.metricDataService.fetchById(query.id);
         }
-        
-        else if ( query.workflowName != null ) {
-            List<Workflow> workflows = this.workflowService.viewByField("WorkflowName", query.workflowName);
-            if ( workflows != null ) {
-                return workflows.get(0);
-            }
-        }
-        
+  
         else {
-            String msg = String.format("Either workflowId or workflow name must be provided:\n'%s'", query);
+            String msg = String.format("Either metricDataId or metricData name must be provided:\n'%s'", query);
             throw new GrapqlUncheckedException(msg);
         }
-        return null;
     }
     
     
     /**
-     * Delete {@link Workflow} from {@link WorkflowInput}
+     * Delete {@link MetricData} from {@link MetricDataInput}
      * 
      * @param query 
      */
-    @Mutation("drop-workflow")
-    public void dropWorkflow(WorkflowInput query) {
+    @Mutation("drop-metric-data")
+    public void dropMetricData(MetricDataInput query) {
         LOGGER.info(
-            "GraphQL Workflow Mutation from user '{}' for '{}' incoming from '{}', '{}'",
+            "GraphQL MetricDatas Mutation from user '{}' for '{}' incoming from '{}', '{}'",
             this.requestContext.getJsonWebToken().getName(), requestContext.getIp(), requestContext.getUserAgent()
         );
         
-        if ( query.workflowId == null ) {
-            String msg = String.format("Either workflowId or workflow name must be provided:\n'%s'", query);
+        if ( query.id == null ) {
+            String msg = String.format("Either metricDataId or metricData name must be provided:\n'%s'", query);
             throw new GrapqlUncheckedException(msg); 
         }
         
-        this.workflowService.dropById(query.workflowId);
+        this.metricDataService.dropById(query.id);
     }
 }

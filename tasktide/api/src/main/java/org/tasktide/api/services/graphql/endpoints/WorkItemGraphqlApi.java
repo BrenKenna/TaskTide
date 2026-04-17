@@ -19,8 +19,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import jakarta.inject.Inject;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Mutation;
@@ -28,63 +28,61 @@ import org.eclipse.microprofile.graphql.GraphQLApi;
 
 import java.util.List;
 
-import org.tasktide.api.services.graphql.context.RequestContext;
-import org.tasktide.api.services.graphql.inputs.WorkflowInput;
-
 import org.tasktide.core.TaskTideService;
+import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
-import org.tasktide.core.model.collection.Workflow;
+import org.tasktide.api.services.graphql.context.RequestContext;
+import org.tasktide.api.services.graphql.inputs.WorkItemInput;
 
 
 /**
- * GraphQL API against {@link Workflow}
  *
  * @author Bren
  */
 @GraphQLApi
-@RolesAllowed("user")
+@RolesAllowed("users")
 @ApplicationScoped
-public class WorkflowGraphqlApi {
+public class WorkItemGraphqlApi {
 
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(WorkflowGraphqlApi.class);
-    private final TaskTideService<Workflow> workflowService;
+    private final Logger LOGGER = LogManager.getLogger(WorkItemGraphqlApi.class);
+    private final TaskTideService<WorkItem> workItemService;
     
     @Inject
     RequestContext requestContext;
 
-    public WorkflowGraphqlApi() {
-        this.workflowService = TaskTideServiceManager.fetchWorkflowService();
+    public WorkItemGraphqlApi() {
+        this.workItemService = TaskTideServiceManager.fetchWorkItemService();
     }
     
     
     /**
-     * Get {@link Workflow} from {@link WorkflowInput} query
+     * Get {@link WorkItem} from {@link WorkItemInput} query
      * 
      * @param query
-     * @return {@link Workflow}
+     * @return {@link WorkItem}
      */
-    @Query("search-workflow")
-    public Workflow getWorkflow(WorkflowInput query) {
+    @Query("search-workitem")
+    public WorkItem getWorkItem(WorkItemInput query) {
         LOGGER.info(
-            "GraphQL Workflow Query from user '{}' for '{}' incoming from '{}', '{}'",
+            "GraphQL WorkItem Query from user '{}' for '{}' incoming from '{}', '{}'",
             this.requestContext.getJsonWebToken().getName(), requestContext.getIp(), requestContext.getUserAgent()
         );
         
-        if ( query.workflowId != null ) {
-            return this.workflowService.fetchById(query.workflowId);
+        if ( query.workItemId != null ) {
+            return this.workItemService.fetchById(query.workItemId);
         }
         
-        else if ( query.workflowName != null ) {
-            List<Workflow> workflows = this.workflowService.viewByField("WorkflowName", query.workflowName);
-            if ( workflows != null ) {
-                return workflows.get(0);
+        else if ( query.workItemName != null ) {
+            List<WorkItem> workItems = this.workItemService.viewByField("WorkItemName", query.workItemName);
+            if ( workItems != null ) {
+                return workItems.get(0);
             }
         }
         
         else {
-            String msg = String.format("Either workflowId or workflow name must be provided:\n'%s'", query);
+            String msg = String.format("Either workItemId or workItem name must be provided:\n'%s'", query);
             throw new GrapqlUncheckedException(msg);
         }
         return null;
@@ -92,22 +90,22 @@ public class WorkflowGraphqlApi {
     
     
     /**
-     * Delete {@link Workflow} from {@link WorkflowInput}
+     * Delete {@link WorkItem} from {@link WorkItemInput}
      * 
      * @param query 
      */
-    @Mutation("drop-workflow")
-    public void dropWorkflow(WorkflowInput query) {
+    @Mutation("drop-workitem")
+    public void dropWorkItem(WorkItemInput query) {
         LOGGER.info(
-            "GraphQL Workflow Mutation from user '{}' for '{}' incoming from '{}', '{}'",
+            "GraphQL WorkItem Mutation from user '{}' for '{}' incoming from '{}', '{}'",
             this.requestContext.getJsonWebToken().getName(), requestContext.getIp(), requestContext.getUserAgent()
         );
         
-        if ( query.workflowId == null ) {
-            String msg = String.format("Either workflowId or workflow name must be provided:\n'%s'", query);
+        if ( query.workItemId == null ) {
+            String msg = String.format("Either workItemId or workItem name must be provided:\n'%s'", query);
             throw new GrapqlUncheckedException(msg); 
         }
         
-        this.workflowService.dropById(query.workflowId);
+        this.workItemService.dropById(query.workItemId);
     }
 }

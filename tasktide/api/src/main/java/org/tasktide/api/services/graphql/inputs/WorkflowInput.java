@@ -38,7 +38,7 @@ import org.tasktide.core.supporting.JsonUtils;
 @Description("GraphQL Data Model for TaskTide-Workflow")
 public class WorkflowInput {
     
-    private static final WorkflowBuilder workflowBuilder = new WorkflowBuilder();
+    private final WorkflowBuilder workflowBuilder = new WorkflowBuilder();
     
     public String workflowId, workflowName, stepName;
     public List<StepInput> workflowSteps;
@@ -53,7 +53,7 @@ public class WorkflowInput {
      * @return {@link Workflow}
      */
     public Workflow asWorkflow() {
-        return workflowBuilder
+        return this.workflowBuilder
             .withId(workflowId)
             .withWorkflowName(workflowName)
             .withSteps( this.parseSteps() )

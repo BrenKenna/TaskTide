@@ -18,11 +18,14 @@ package org.tasktide.api.services.graphql.inputs;
 import org.eclipse.microprofile.graphql.Input;
 import org.eclipse.microprofile.graphql.Description;
 
-import org.tasktide.core.model.workitem.ItemState;
-import org.tasktide.core.model.workitem.ItemType;
 import org.tasktide.core.model.CustomAnnotation;
+
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.workitem.ItemType;
+
+import org.tasktide.core.model.builders.WorkItemBuilder;
 
 import org.tasktide.core.supporting.JsonUtils;
 
@@ -36,9 +39,15 @@ import org.tasktide.core.supporting.JsonUtils;
 @Description("GraphQL Data Model for TaskTide-WorkItem")
 public class WorkItemInput {
 
-    public String workflowId, itemName,
+    private final WorkItemBuilder workItemBuilder = new WorkItemBuilder();
+    
+    public String workItemId, workItemName,
         lockId, stepName,
         stepId, jobEnvId;
+    
+    public long lockDate, doneDate;
+    
+    public int taskCount, taskDone;
     
     @Description("ItemType of WorkItem: Single/Nested")
     public ItemType itemType;
@@ -70,5 +79,30 @@ public class WorkItemInput {
      */
     public Workload parseWorkload() {
         return JsonUtils.fromJson(this.workload, Workload.class);
+    }
+    
+    
+    /**
+     * Represent as {@link WorkItem}
+     * 
+     * @return {@link WorkItem}
+     */
+    public WorkItem asWorkItem() {
+        return this.workItemBuilder
+            .withId(workItemId)
+            .withItemName(this.workItemName)
+            .withItemType(itemType)
+            .withItemState(itemState)
+            .withLockId(lockId)
+            .withLockDate(lockDate)
+            .withDoneDate(doneDate)
+            .withTaskCount(this.taskCount)
+            .withTaskDone(this.taskDone)
+            .withWorkload(this.parseWorkload())
+            .withStepName(this.stepName)
+            .withStepId(stepId)
+            .withJobEnvId(jobEnvId)
+            .withAnnotation(this.parseAnnotation())
+        .build();
     }
 }
