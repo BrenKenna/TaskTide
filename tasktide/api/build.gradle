@@ -29,6 +29,17 @@ dependencies {
     implementation  "org.eclipse.microprofile.graphql:microprofile-graphql-api:2.0"
     implementation  "io.smallrye:smallrye-graphql:2.18.0"
     implementation  "io.smallrye:smallrye-graphql-api:2.18.0"
+
+    // Persistence
+    implementation  "jakarta.persistence:jakarta.persistence-api:3.1.0"
+    implementation  "org.hibernate.orm:hibernate-core:6.4.4.Final"
+    implementation  "com.zaxxer:HikariCP:5.1.0"
+    implementation  "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:2.19.2"
+    implementation  "jakarta.nosql:jakarta.nosql-api:1.0.0"
+    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
+    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.8"
+    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.8"
+    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.8"
 }
 
 
