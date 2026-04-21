@@ -1,0 +1,169 @@
+/*
+ * Copyright 2026 Bren.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.tasktide.api.services.rest;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+import jakarta.nosql.Template;
+import jakarta.enterprise.inject.se.SeContainer;
+
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.Response;
+import java.util.List;
+import org.glassfish.jersey.test.JerseyTest;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
+
+import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.manager.BuilderUtility;
+import org.tasktide.core.model.collection.Step;
+
+import org.tasktide.api.TestUtils;
+import org.tasktide.api.JerseyRuntime;
+import org.tasktide.api.TestEnvironment;
+import org.tasktide.api.WebApiTestUtils;
+
+
+/**
+ * Suite of tests against {@link StepRestResource}
+ *
+ * @author Bren
+ */
+@TestInstance(TestInstance.Lifecycle.PER_METHOD)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class StepRestResourceTest {
+    
+    private final Logger LOGGER = LogManager.getLogger(StepRestResourceTest.class);
+    
+    private final String STEP = "Restful Steps";
+    private final String RESOURCE_PATH = "/services/step";
+    
+    private SeContainer container;
+    private Template template;
+    private JerseyTest jerseyTest;
+    
+    
+    public StepRestResourceTest() {
+    }
+    
+    @BeforeAll
+    public void setUpClass() throws Exception {
+        String msg = "\n\n---------------- Initiating Step REST Resource Tests ----------------\n";
+        LOGGER.info(msg);
+        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
+        jerseyTest = JerseyRuntime.fetchAndRunHttpHarness(container, StepRestResource.class);
+    }
+    
+    @AfterAll
+    public void tearDownClass() throws Exception {
+        jerseyTest.tearDown();
+        container.close();
+    }
+    
+    @BeforeEach
+    public void setUp() {
+    }
+    
+    @AfterEach
+    public void tearDown() {
+    }
+
+
+    /**
+     * Tests adding {@link Step}
+     * 
+     */
+    @Test
+    @Order(0)
+    public void canAddStep() {
+    
+        // Configure test
+        LOGGER.info("\n\n================ StepRestResource Can Add Step ================\n");
+        String stepName = "Test-Step";
+        String bearerToken;
+        String methodPath = RESOURCE_PATH + "/add";
+        Step step;
+        Response resp;
+        
+        // Make test step
+        step = BuilderUtility.buildStep(stepName);
+        LOGGER.info("Created test step:\n\n'{}'", step.toJsonDoc());
+        
+        // Fetch mock token
+        LOGGER.info("Firiing test Step creation against StepRestResource");
+        bearerToken = "Bearer " + WebApiTestUtils.token("johnDoe");
+        resp = jerseyTest
+            .target(methodPath)
+            .request()
+                .header("Authorization", bearerToken)
+                .header("User-Agent", "JUnit-Test")
+        .post(Entity.json(step));
+        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        
+        // Evaluate test
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not add Step through StepRestResource");
+        LOGGER.info("\n\n================ StepRestResource Can Add Step ================\n");
+    }
+    
+    
+    /**
+     * Tests querying {@link Step} by field
+     * 
+     */
+    @Test
+    @Order(1)
+    public void canQueryStepByField() {
+    
+        // Configure test
+        LOGGER.info("\n\n================ StepRestResource Can Query By Field ================\n");
+        String bearerToken;
+        String methodPath = RESOURCE_PATH + "/get";
+        Response resp;
+        
+        // Fetch mock token
+        LOGGER.info("Firiing test query by field against StepRestResource for:\t'{}'", STEP);
+        bearerToken = "Bearer " + WebApiTestUtils.token("johnDoe");
+        resp = jerseyTest
+            .target(methodPath)
+            .queryParam("field", "stepName")
+            .queryParam("value", STEP)
+            .request()
+                .header("Authorization", bearerToken)
+                .header("User-Agent", "JUnit-Test")
+        .get();
+        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        
+        // Evaluate test
+        List<Step> records = resp.readEntity(new GenericType<List<Step>>() {});
+        LOGGER.info("Displaying retrieved records:\n\n'{}", records);
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could query Step field through StepRestResource");
+        LOGGER.info("\n\n================ StepRestResource Can Query By Field ================\n");
+    }
+}

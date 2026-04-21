@@ -40,6 +40,11 @@ dependencies {
     implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.8"
     implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.8"
     implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.8"
+
+    // Testing API calls
+    testImplementation  "org.glassfish.jersey.test-framework:jersey-test-framework-core:4.0.2"
+    testImplementation  "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:4.0.2"
+    testImplementation  "io.smallrye:smallrye-jwt-build:4.6.3"
 }
 
 
