@@ -19,14 +19,14 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import jakarta.nosql.Template;
-import jakarta.enterprise.inject.se.SeContainer;
 
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.Response;
+
 import java.security.KeyPair;
+
 import java.util.List;
-import org.glassfish.jersey.test.JerseyTest;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -39,12 +39,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import org.tasktide.api.AbstractBaseJerseyTest;
+
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.model.collection.Step;
 
 import org.tasktide.api.TestUtils;
-import org.tasktide.api.JerseyRuntime;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.WebApiTestUtils;
 
@@ -56,31 +57,27 @@ import org.tasktide.api.WebApiTestUtils;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class StepRestResourceTest {
+public class StepRestResourceTest extends AbstractBaseJerseyTest {
     
     private final Logger LOGGER = LogManager.getLogger(StepRestResourceTest.class);
     
     private final String STEP = "Restful Steps";
     private final String RESOURCE_PATH = "/services/step";
     
-    private SeContainer container;
     private Template template;
-    private JerseyTest jerseyTest;
     private KeyPair KEY_PAIR;
     
-    
     public StepRestResourceTest() {
+        super(StepRestResource.class);
     }
     
     @BeforeAll
     public void setUpClass() throws Exception {
         String msg = "\n\n---------------- Initiating Step REST Resource Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
-        jerseyTest = JerseyRuntime.fetchAndRunHttpHarness(container, StepRestResource.class);
         
         KEY_PAIR = WebApiTestUtils.getKeyPair();
         System.setProperty("mp.jwt.verify.publickey", WebApiTestUtils.toPemPublic(KEY_PAIR.getPublic()));
@@ -89,16 +86,8 @@ public class StepRestResourceTest {
     
     @AfterAll
     public void tearDownClass() throws Exception {
-        jerseyTest.tearDown();
+        this.tearDown();
         container.close();
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
     }
 
 
@@ -114,7 +103,7 @@ public class StepRestResourceTest {
         LOGGER.info("\n\n================ StepRestResource Can Add Step ================\n");
         String stepName = "Test-Step";
         String bearerToken;
-        String methodPath = RESOURCE_PATH + "/add";
+        String methodPath = RESOURCE_PATH + "/add-step";
         Step step;
         Response resp;
         
@@ -125,12 +114,13 @@ public class StepRestResourceTest {
         // Fetch mock token
         LOGGER.info("Firiing test Step creation against StepRestResource");
         bearerToken = "Bearer " + WebApiTestUtils.token("johnDoe");
-        resp = jerseyTest
-            .target(methodPath)
+        this.requestCtx.activate();
+        resp = this.target(methodPath)
             .request()
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
         .post(Entity.json(step));
+        this.requestCtx.deactivate();
         LOGGER.info("Displaying resource response:\n\n'{}'", resp);
         
         // Evaluate test
@@ -156,14 +146,15 @@ public class StepRestResourceTest {
         // Fetch mock token
         LOGGER.info("Firiing test query by field against StepRestResource for:\t'{}'", STEP);
         bearerToken = "Bearer " + WebApiTestUtils.token("johnDoe");
-        resp = jerseyTest
-            .target(methodPath)
+        this.requestCtx.activate();
+        resp = this.target(methodPath)
             .queryParam("field", "stepName")
             .queryParam("value", STEP)
             .request()
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
         .get();
+        this.requestCtx.deactivate();
         LOGGER.info("Displaying resource response:\n\n'{}'", resp);
         
         // Evaluate test

@@ -170,7 +170,7 @@ public class Step implements TaskTideModel<Step> {
         @JsonbProperty("StepsToDo") int stepsToDo,
         @JsonbProperty("StepsError") int stepsError,
         @JsonbProperty("WorkflowId") String workflowId,
-        @JsonbProperty("Custom Annotation") CustomAnnotation anno
+        @JsonbProperty("Annotation") CustomAnnotation anno
     ) {
         this.stepId = stepId;
         this.stepName = stepName;

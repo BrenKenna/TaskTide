@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
+import jakarta.ws.rs.Consumes;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -29,12 +29,15 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.util.List;
-import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.tasktide.api.TaskTideRestApi;
+// import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.services.StepService;
@@ -52,20 +55,21 @@ import org.tasktide.core.model.collection.Step;
 @RolesAllowed("user")
 @Path("/services/step")
 @RequestScoped
-public class StepRestResource {
+public class StepRestResource extends TaskTideRestApi {
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(StepRestResource.class);
     private final TaskTideService<Step> stepService;
     
-    @Inject
-    JsonWebToken jwt;
+    // @Inject
+    //JsonWebToken jwt;
     
     /**
      * Construct with {@link Step} {@link TaskTideService}
      * 
      */
     public StepRestResource() {
+        LOGGER.info("Step resource created");
         this.stepService = TaskTideServiceManager.fetchStepService();
     }
     
@@ -80,25 +84,28 @@ public class StepRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add")
+    @Path("/add-step")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createStep(Step step, @Context HttpServletRequest req) {
     
         // Log request
+        LOGGER.info("Add step request pending");
         String ip = req.getRemoteAddr();
         String userAgent = req.getHeader("User-Agent");
         LOGGER.info(
             "Adding new Step request by user '{}' from '{}' using '{}':\n\n'{}'",
-            this.jwt.getName(), ip, userAgent, step
+            ip, userAgent, step
         );
         
         // Validate input
         if ( step == null ) {
-            return Response.status(400).build();
+            return Response.status(405).build();
         }
         
         // Add step
         if ( stepService.appendModel(step) != null ) {
-            return Response.ok().build();
+            return Response.ok(step).build();
         }
         else {
             String msg = String.format("Unable to import below Step:\n\n'%s'", step.toJsonDoc());
@@ -117,7 +124,7 @@ public class StepRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add")
+    @Path("/add-steps")
     public Response createSteps(List<Step> steps, @Context HttpServletRequest req) {
     
         // Log request
@@ -154,7 +161,7 @@ public class StepRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("add")
+    @Path("/create-step")
     public Response createStep(
         @QueryParam("stepName") String stepName,
         @Context HttpServletRequest req

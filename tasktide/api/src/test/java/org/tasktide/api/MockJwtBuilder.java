@@ -15,26 +15,30 @@
  */
 package org.tasktide.api;
 
-import jakarta.enterprise.inject.Produces;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.context.ApplicationScoped;
-
-import org.eclipse.microprofile.jwt.JsonWebToken;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
- * 
+ *
  * @author Bren
  */
-@ApplicationScoped
-public class JwtProducer {
+public class MockJwtBuilder {
 
-    @Produces
-    @RequestScoped
-    public JsonWebToken produceJwt() {
-        return new MockJwtBuilder()
-            .withName("test-user")
-            .withClaim("claim", "claim-value")
-        .build();
+    private String name;
+    private final Map<String, Object> claims = new HashMap<>();
+
+    public MockJwtBuilder withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public MockJwtBuilder withClaim(String key, Object value) {
+        claims.put(key, value);
+        return this;
+    }
+
+    public MockJwt build() {
+        return new MockJwt(name, claims);
     }
 }

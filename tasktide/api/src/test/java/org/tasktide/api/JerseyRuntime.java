@@ -87,8 +87,8 @@ public class JerseyRuntime {
     
         // Initialize resource config
         ResourceConfig config = new ResourceConfig();
-        config.register(JWTAuthenticationFilter.class);
-        config.register(JwtRequestFilter.class);
+        //config.register(JWTAuthenticationFilter.class);
+        //config.register(JwtRequestFilter.class);
         
         // Fetch each resource
         for (Class<?> clazz : resources) {

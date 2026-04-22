@@ -212,6 +212,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * 
      * @return 
      */
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @JsonbTransient
     @Override
     public String getState() {
@@ -224,6 +225,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * 
      * @return 
      */
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @JsonbTransient
     @Override
     public String getCollection() {
@@ -236,10 +238,11 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * 
      * @return 
      */
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @JsonbTransient
     @Override
     public CustomAnnotation getAnnotations() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this;
     }
 
     
@@ -247,10 +250,11 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * Not implemented, throws UnsupportedOperationException
      *  
      */
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @JsonbTransient
     @Override
     public void setAnnotations(CustomAnnotation anno) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.anno = anno.getAnno();
     }
 
     
