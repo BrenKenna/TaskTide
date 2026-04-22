@@ -15,11 +15,13 @@ dependencies {
     // Authentication and Authorization
     implementation  "io.smallrye:smallrye-jwt:4.6.3"
     implementation  "org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:2.1"
+    implementation  "io.smallrye:smallrye-jwt-cdi-extension:4.6.3"
 
     // Web server
     implementation  "org.glassfish.jersey.containers:jersey-container-servlet:4.0.2"
     implementation  "org.glassfish.jersey.inject:jersey-hk2:4.0.2"
     implementation  "org.glassfish.jersey.media:jersey-media-json-jackson:4.0.2"
+    implementation  "org.glassfish.jersey.inject:jersey-cdi2-se:4.0.2"
 
     // REST-API
     implementation  "jakarta.ws.rs:jakarta.ws.rs-api:4.0.0"
@@ -45,6 +47,11 @@ dependencies {
     testImplementation  "org.glassfish.jersey.test-framework:jersey-test-framework-core:4.0.2"
     testImplementation  "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:4.0.2"
     testImplementation  "io.smallrye:smallrye-jwt-build:4.6.3"
+
+    testRuntimeOnly     "org.junit.platform:junit-platform-launcher:1.13.4" // Masked somehow?
+
+
+    
 }
 
 
@@ -52,4 +59,3 @@ jar {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)
 }
-

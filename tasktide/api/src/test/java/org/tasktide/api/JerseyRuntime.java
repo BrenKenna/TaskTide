@@ -21,6 +21,7 @@ import jakarta.enterprise.inject.se.SeContainer;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.server.ResourceConfig;
 
+import io.smallrye.jwt.auth.jaxrs.JWTAuthenticationFilter;
 
 /**
  * Collection of utility methods to support
@@ -86,18 +87,18 @@ public class JerseyRuntime {
     
         // Initialize resource config
         ResourceConfig config = new ResourceConfig();
-
+        config.register(JWTAuthenticationFilter.class);
+        config.register(JwtRequestFilter.class);
+        
         // Fetch each resource
         for (Class<?> clazz : resources) {
-            Object instance = container.select(clazz).get();
-            config.register(instance);
+            config.register(clazz);
         }
 
+        
         // JSON support
         config.register(org.glassfish.jersey.jackson.JacksonFeature.class);
 
         return config;
     }
-
-
 }

@@ -24,6 +24,7 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.Response;
+import java.security.KeyPair;
 import java.util.List;
 import org.glassfish.jersey.test.JerseyTest;
 
@@ -53,7 +54,7 @@ import org.tasktide.api.WebApiTestUtils;
  *
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_METHOD)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class StepRestResourceTest {
     
@@ -65,6 +66,7 @@ public class StepRestResourceTest {
     private SeContainer container;
     private Template template;
     private JerseyTest jerseyTest;
+    private KeyPair KEY_PAIR;
     
     
     public StepRestResourceTest() {
@@ -74,11 +76,15 @@ public class StepRestResourceTest {
     public void setUpClass() throws Exception {
         String msg = "\n\n---------------- Initiating Step REST Resource Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
         jerseyTest = JerseyRuntime.fetchAndRunHttpHarness(container, StepRestResource.class);
+        
+        KEY_PAIR = WebApiTestUtils.getKeyPair();
+        System.setProperty("mp.jwt.verify.publickey", WebApiTestUtils.toPemPublic(KEY_PAIR.getPublic()));
+        System.setProperty("mp.jwt.verify.issuer", "web-api-testing");
     }
     
     @AfterAll
