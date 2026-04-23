@@ -30,9 +30,11 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
-import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.core.UriInfo;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.util.List;
@@ -74,17 +76,24 @@ public class MetricDataRestResource {
      *  whether the resource was created to the client
      * 
      * @param metricData
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createMetricData(MetricData metricData, @Context HttpServletRequest req) {
+    public Response createMetricData(
+        MetricData metricData,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Adding new MetricData request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, metricData
@@ -111,17 +120,24 @@ public class MetricDataRestResource {
      *  whether the resource was created to the client
      * 
      * @param metricDatas
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createMetricDatas(List<MetricData> metricDatas, @Context HttpServletRequest req) {
+    public Response createMetricDatas(
+        List<MetricData> metricDatas,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Importing MetricData collection request by user '{}' from '{}' using '{}'",
             this.jwt.getName(), ip, userAgent
@@ -153,7 +169,9 @@ public class MetricDataRestResource {
      * @param value
      * @param grouping
      * @param groupingVal
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -165,12 +183,14 @@ public class MetricDataRestResource {
         @QueryParam("value") String value,
         @QueryParam("grouping") String grouping,
         @QueryParam("groupingValue") String groupingVal,
-        @Context HttpServletRequest req
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
     ) {
         
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Get MetricData request by user '{}' from '{}' using '{}' for resource:\t'{}'",
             this.jwt.getName(), ip, userAgent, id
@@ -237,17 +257,24 @@ public class MetricDataRestResource {
      * Endpoint for dropping {@link MetricData} by Id
      * 
      * @param id
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @DELETE
     @Path("/drop/{id}")
-    public Response dropMetricData(@PathParam("id") String id, @Context HttpServletRequest req) {
+    public Response dropMetricData(
+        @PathParam("id") String id,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Drop MetricData request by user '{}' from '{}' using '{}' for resource:\t'{}'",
             this.jwt.getName(), ip, userAgent, id
@@ -273,17 +300,24 @@ public class MetricDataRestResource {
      * Endpoint for updating {@link MetricData} providing new resource
      * 
      * @param metricData
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @PUT
     @Path("/update")
-    public Response updateMetricData(MetricData metricData, @Context HttpServletRequest req) {
+    public Response updateMetricData(
+        MetricData metricData,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Update MetricData request by user '{}' from '{}' using '{}'\n\n'{}'",
             this.jwt.getName(), ip, userAgent, metricData

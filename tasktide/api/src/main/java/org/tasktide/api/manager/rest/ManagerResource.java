@@ -31,6 +31,9 @@ import jakarta.ws.rs.core.Response;
 import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.core.UriInfo;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import org.apache.logging.log4j.LogManager;
@@ -67,19 +70,26 @@ public class ManagerResource {
      * Endpoint for performing provided {@link ImportCommand}
      * 
      * @param cmd
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/import")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response importTasks(ImportCommand cmd, @Context HttpServletRequest req) {
+    public Response importTasks(
+        ImportCommand cmd,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
         
         // Log request
         boolean output;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Processing import request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
@@ -108,19 +118,26 @@ public class ManagerResource {
      * Endpoint for performing the provided {@link ExportCommand}
      * 
      * @param cmd
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @GET
     @Path("/export")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response exportTasks(ExportCommand cmd, @Context HttpServletRequest req) {
+    public Response exportTasks(
+        ExportCommand cmd,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
         
         // Log request
         boolean output;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Processing export request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
@@ -149,19 +166,26 @@ public class ManagerResource {
      * Endpoint for performing the provided {@link ResetCommand}
      * 
      * @param cmd
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @PATCH
     @Path("/reset")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response resetTasks(ResetCommand cmd, @Context HttpServletRequest req) {
+    public Response resetTasks(
+        ResetCommand cmd,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
         boolean output;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Processing reset request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
@@ -190,18 +214,25 @@ public class ManagerResource {
      * Endpoint for performing the provided {@link DeleteCommand}
      * 
      * @param cmd
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @DELETE
     @Path("/delete")
-    public Response deleteTasks(DeleteCommand cmd, @Context HttpServletRequest req) {
+    public Response deleteTasks(
+        DeleteCommand cmd,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
         boolean output;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Processing delete request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
@@ -231,18 +262,25 @@ public class ManagerResource {
      *  All annotations are patches
      * 
      * @param cmd
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @PATCH
     @Path("/annotate")
-    public Response annotateTasks(AnnotateCommand cmd, @Context HttpServletRequest req) {
+    public Response annotateTasks(
+        AnnotateCommand cmd,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
         boolean output;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Processing annotate request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()
@@ -271,18 +309,25 @@ public class ManagerResource {
      * Endpoint for performing required {@link SummarizeCommand}
      * 
      * @param cmd
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @GET
     @Path("/summarize")
-    public Response summariseTasks(SummarizeCommand cmd, @Context HttpServletRequest req) {
+    public Response summariseTasks(
+        SummarizeCommand cmd,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
         boolean output;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Processing summary request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, cmd.toJsonDoc()

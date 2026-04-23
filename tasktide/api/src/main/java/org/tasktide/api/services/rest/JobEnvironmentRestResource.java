@@ -35,6 +35,9 @@ import jakarta.ws.rs.core.Response;
 import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.core.UriInfo;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import org.tasktide.core.TaskTideService;
@@ -74,17 +77,24 @@ public class JobEnvironmentRestResource {
      *  whether the resource was created to the client
      * 
      * @param jobEnvironment
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createJobEnvironment(JobEnvironment jobEnvironment, @Context HttpServletRequest req) {
+    public Response createJobEnvironment(
+        JobEnvironment jobEnvironment,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Adding new JobEnvironment request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, jobEnvironment
@@ -111,17 +121,24 @@ public class JobEnvironmentRestResource {
      *  whether the resource was created to the client
      * 
      * @param jobEnvironments
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createJobEnvironments(List<JobEnvironment> jobEnvironments, @Context HttpServletRequest req) {
+    public Response createJobEnvironments(
+        List<JobEnvironment> jobEnvironments,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Importing JobEnvironment collection request by user '{}' from '{}' using '{}'",
             this.jwt.getName(), ip, userAgent
@@ -153,7 +170,9 @@ public class JobEnvironmentRestResource {
      * @param value
      * @param grouping
      * @param groupingVal
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -165,12 +184,14 @@ public class JobEnvironmentRestResource {
         @QueryParam("value") String value,
         @QueryParam("grouping") String grouping,
         @QueryParam("groupingValue") String groupingVal,
-        @Context HttpServletRequest req
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
     ) {
         
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Get JobEnvironment request by user '{}' from '{}' using '{}' for resource:\t'{}'",
             this.jwt.getName(), ip, userAgent, id
@@ -237,17 +258,24 @@ public class JobEnvironmentRestResource {
      * Endpoint for dropping {@link JobEnvironment} by Id
      * 
      * @param id
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @DELETE
     @Path("/drop/{id}")
-    public Response dropJobEnvironment(@PathParam("id") String id, @Context HttpServletRequest req) {
+    public Response dropJobEnvironment(
+        @PathParam("id") String id,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Drop JobEnvironment request by user '{}' from '{}' using '{}'`for resource:\t\t'{}'",
             this.jwt.getName(), ip, userAgent, id
@@ -273,17 +301,24 @@ public class JobEnvironmentRestResource {
      * Endpoint for updating {@link JobEnvironment} providing new resource
      * 
      * @param jobEnvironment
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @PUT
     @Path("/update")
-    public Response updateJobEnvironment(JobEnvironment jobEnvironment, @Context HttpServletRequest req) {
+    public Response updateJobEnvironment(
+        JobEnvironment jobEnvironment,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Update JobEnvironment request by user '{}' from '{}' using '{}'`for resource:\n\n'{}'",
             this.jwt.getName(), ip, userAgent, jobEnvironment

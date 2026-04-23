@@ -34,6 +34,9 @@ import jakarta.ws.rs.core.Response;
 import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.core.UriInfo;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.util.List;
@@ -78,17 +81,24 @@ public class WorkflowRestResource {
      *  whether the resource was created to the client
      * 
      * @param workflow
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createWorkflow(Workflow workflow, @Context HttpServletRequest req) {
+    public Response createWorkflow(
+        Workflow workflow,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Adding new Workflow request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, workflow
@@ -115,17 +125,24 @@ public class WorkflowRestResource {
      *  whether the resource was created to the client
      * 
      * @param workflows
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createWorkflows(List<Workflow> workflows, @Context HttpServletRequest req) {
+    public Response createWorkflows(
+        List<Workflow> workflows,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Importing Workflow collection by user '{}' from '{}' using '{}'",
             this.jwt.getName(), ip, userAgent
@@ -153,7 +170,9 @@ public class WorkflowRestResource {
      * 
      * @param workflowName
      * @param stepId
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -162,13 +181,15 @@ public class WorkflowRestResource {
     public Response createWorkflow(
         @QueryParam("workflowName") String workflowName,
         @QueryParam("stepId") String stepId,
-        @Context HttpServletRequest req
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
     ) {
         
         // Log request
         List<Workflow> result;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Adding new Workflow request by user '{}' from '{}' using '{}' for resource:\t'{}'",
             this.jwt.getName(), ip, userAgent, workflowName
@@ -223,7 +244,9 @@ public class WorkflowRestResource {
      * @param value
      * @param grouping
      * @param groupingVal
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -235,12 +258,14 @@ public class WorkflowRestResource {
         @QueryParam("value") String value,
         @QueryParam("grouping") String grouping,
         @QueryParam("groupingValue") String groupingVal,
-        @Context HttpServletRequest req
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
     ) {
         
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Get Workflow request by user '{}' from '{}' using '{}' for resource:\t'{}'",
             this.jwt.getName(), ip, userAgent, id
@@ -309,7 +334,9 @@ public class WorkflowRestResource {
      * 
      * @param workflowId
      * @param stepId
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -318,12 +345,14 @@ public class WorkflowRestResource {
     public Response addStep(
        @QueryParam("workflowId") String workflowId,
        @QueryParam("stepId") String stepId,
-       @Context HttpServletRequest req
+       @Context HttpHeaders reqHeader,
+       @Context UriInfo uriInfo,
+       @Context SecurityContext securityContext
     ) {
         
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Get workflow request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
@@ -368,17 +397,24 @@ public class WorkflowRestResource {
      * Endpoint for dropping {@link Workflow} by Id
      * 
      * @param id
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @DELETE
     @Path("/drop/{id}")
-    public Response dropWorkflow(@PathParam("id") String id, @Context HttpServletRequest req) {
+    public Response dropWorkflow(
+        @PathParam("id") String id,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Drop Workflow request by user '{}' from '{}' using '{}' for resource:\t'{}'",
             this.jwt.getName(), ip, userAgent, id
@@ -404,17 +440,24 @@ public class WorkflowRestResource {
      * Endpoint for updating {@link Workflow} providing new resource
      * 
      * @param workflow
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @PUT
     @Path("/update")
-    public Response updateWorkflow(Workflow workflow, @Context HttpServletRequest req) {
+    public Response updateWorkflow(
+        Workflow workflow,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Update Workflow request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, workflow

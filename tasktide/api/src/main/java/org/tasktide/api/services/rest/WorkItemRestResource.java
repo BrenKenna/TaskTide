@@ -33,6 +33,9 @@ import jakarta.ws.rs.core.Response;
 import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.core.UriInfo;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.util.List;
@@ -76,17 +79,24 @@ public class WorkItemRestResource {
      *  whether the resource was created to the client
      * 
      * @param workItem
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createWorkItem(WorkItem workItem, @Context HttpServletRequest req) {
+    public Response createWorkItem(
+        WorkItem workItem,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Adding new WorkItem request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, workItem
@@ -113,17 +123,24 @@ public class WorkItemRestResource {
      *  whether the resource was created to the client
      * 
      * @param workItems
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add")
-    public Response createWorkItems(List<WorkItem> workItems, @Context HttpServletRequest req) {
+    public Response createWorkItems(
+        List<WorkItem> workItems,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Importing WorkItem collection request by user '{}' from '{}' using '{}'",
             this.jwt.getName(), ip, userAgent
@@ -150,7 +167,9 @@ public class WorkItemRestResource {
      *  created resource to the client
      * 
      * @param managerTask
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -158,13 +177,15 @@ public class WorkItemRestResource {
     @Path("add")
     public Response createWorkItem(
         ManagerTask managerTask,
-        @Context HttpServletRequest req
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
     ) {
         
         // Log request
         WorkItem result;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Adding new WorkItem request by user '{}' from '{}' using '{}':\n\n'{}'",
             this.jwt.getName(), ip, userAgent, managerTask
@@ -203,7 +224,9 @@ public class WorkItemRestResource {
      * @param value
      * @param grouping
      * @param groupingVal
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -215,12 +238,14 @@ public class WorkItemRestResource {
         @QueryParam("value") String value,
         @QueryParam("grouping") String grouping,
         @QueryParam("groupingValue") String groupingVal,
-        @Context HttpServletRequest req
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
     ) {
         
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Get WorkItem request by user '{}' from '{}' using '{}' for resource:\t'{}'",
             this.jwt.getName(), ip, userAgent, id
@@ -287,17 +312,24 @@ public class WorkItemRestResource {
      * Endpoint for dropping {@link WorkItem} by Id
      * 
      * @param id
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @DELETE
     @Path("/drop/{id}")
-    public Response dropWorkItem(@PathParam("id") String id, @Context HttpServletRequest req) {
+    public Response dropWorkItem(
+        @PathParam("id") String id,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Drop WorkItem request by user '{}' from '{}' using '{}' for resource:\t'{}'",
             this.jwt.getName(), ip, userAgent, id
@@ -323,17 +355,24 @@ public class WorkItemRestResource {
      * Endpoint for updating {@link WorkItem} providing new resource
      * 
      * @param workItem
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @PUT
     @Path("/update")
-    public Response updateWorkItem(WorkItem workItem, @Context HttpServletRequest req) {
+    public Response updateWorkItem(
+        WorkItem workItem,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Update WorkItem request by user '{}' from '{}' using '{}' for resource:\n\n'{}'",
             this.jwt.getName(), ip, userAgent, workItem
