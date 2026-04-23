@@ -1501,3 +1501,1560 @@
 2026-04-22 17:20:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 50774d0f-543e-40b1-bcd3-d48f3fd101d4 shut down
 2026-04-22 17:20:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 22522c36-fe24-4b7c-b1a8-49cd378f7fc5 shut down
 2026-04-22 17:20:47 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 7c95c39c-e0d9-4d17-bf76-800c1dfe430e shut down
+2026-04-23 12:00:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:00:59 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:00:59 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:01:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1c77af2e-f2f0-4cbc-b4b5-affe7a39b119 initialized
+2026-04-23 12:01:06 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:01:06 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:01:06 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:01:06 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:01:06 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:01:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1c77af2e-f2f0-4cbc-b4b5-affe7a39b119 shut down
+2026-04-23 12:03:27 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:03:27 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:03:28 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:03:34 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 5b571a37-d189-40c7-b91a-57f21ff1c48b initialized
+2026-04-23 12:03:34 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Steps'
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "StepCount": 0,
+    "StepId": "Step-b7faa495-e782-44ec-90e0-983ce4c919c0",
+    "StepName": "Restful Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-5f666be8-fb88-455c-80ff-79a4aa07a65e"
+    }
+}'
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Steps'
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Steps'
+2026-04-23 12:03:35 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Steps'
+2026-04-23 12:03:36 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:03:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:03:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b61b696a-760d-4e30-b562-47ff5363aed9 initialized
+2026-04-23 12:03:37 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:03:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5b571a37-d189-40c7-b91a-57f21ff1c48b, b61b696a-760d-4e30-b562-47ff5363aed9]
+2026-04-23 12:03:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5b571a37-d189-40c7-b91a-57f21ff1c48b, b61b696a-760d-4e30-b562-47ff5363aed9]
+2026-04-23 12:03:37 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-e5dfa86d-57c8-400e-b954-eb10c2256078",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-fefb53e9-deb9-4fdd-ae0f-7b00e210f6ef"
+    }
+}'
+2026-04-23 12:03:37 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:03:37 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 906129e3-8393-45e9-a52b-f1b14b6033a4 initialized
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5b571a37-d189-40c7-b91a-57f21ff1c48b, b61b696a-760d-4e30-b562-47ff5363aed9, 906129e3-8393-45e9-a52b-f1b14b6033a4]
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5b571a37-d189-40c7-b91a-57f21ff1c48b, b61b696a-760d-4e30-b562-47ff5363aed9, 906129e3-8393-45e9-a52b-f1b14b6033a4]
+2026-04-23 12:03:38 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5b571a37-d189-40c7-b91a-57f21ff1c48b, b61b696a-760d-4e30-b562-47ff5363aed9, 906129e3-8393-45e9-a52b-f1b14b6033a4]
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5b571a37-d189-40c7-b91a-57f21ff1c48b, b61b696a-760d-4e30-b562-47ff5363aed9, 906129e3-8393-45e9-a52b-f1b14b6033a4]
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5b571a37-d189-40c7-b91a-57f21ff1c48b, b61b696a-760d-4e30-b562-47ff5363aed9, 906129e3-8393-45e9-a52b-f1b14b6033a4]
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5b571a37-d189-40c7-b91a-57f21ff1c48b, b61b696a-760d-4e30-b562-47ff5363aed9, 906129e3-8393-45e9-a52b-f1b14b6033a4]
+2026-04-23 12:03:38 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 906129e3-8393-45e9-a52b-f1b14b6033a4 shut down
+2026-04-23 12:03:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 5b571a37-d189-40c7-b91a-57f21ff1c48b shut down
+2026-04-23 12:03:38 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b61b696a-760d-4e30-b562-47ff5363aed9 shut down
+2026-04-23 12:04:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:04:52 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:04:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:04:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 7ef51dca-1385-47d4-9160-6afbd2534d7c initialized
+2026-04-23 12:04:59 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:05:00 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:05:00 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:05:00 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:05:00 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:05:01 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:05:01 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:05:01 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 8c194cf7-8771-4774-9611-52ecf9f998e5 initialized
+2026-04-23 12:05:02 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7ef51dca-1385-47d4-9160-6afbd2534d7c, 8c194cf7-8771-4774-9611-52ecf9f998e5]
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7ef51dca-1385-47d4-9160-6afbd2534d7c, 8c194cf7-8771-4774-9611-52ecf9f998e5]
+2026-04-23 12:05:02 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-08b8b688-1148-4235-b8ce-d506251314e7",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-eb398063-f5e9-4b9c-9b63-e072bd223324"
+    }
+}'
+2026-04-23 12:05:02 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6cdb24ef-4744-43fc-bfa1-abf2b34c4068 initialized
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7ef51dca-1385-47d4-9160-6afbd2534d7c, 8c194cf7-8771-4774-9611-52ecf9f998e5, 6cdb24ef-4744-43fc-bfa1-abf2b34c4068]
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7ef51dca-1385-47d4-9160-6afbd2534d7c, 8c194cf7-8771-4774-9611-52ecf9f998e5, 6cdb24ef-4744-43fc-bfa1-abf2b34c4068]
+2026-04-23 12:05:02 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7ef51dca-1385-47d4-9160-6afbd2534d7c, 8c194cf7-8771-4774-9611-52ecf9f998e5, 6cdb24ef-4744-43fc-bfa1-abf2b34c4068]
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7ef51dca-1385-47d4-9160-6afbd2534d7c, 8c194cf7-8771-4774-9611-52ecf9f998e5, 6cdb24ef-4744-43fc-bfa1-abf2b34c4068]
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7ef51dca-1385-47d4-9160-6afbd2534d7c, 8c194cf7-8771-4774-9611-52ecf9f998e5, 6cdb24ef-4744-43fc-bfa1-abf2b34c4068]
+2026-04-23 12:05:02 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [7ef51dca-1385-47d4-9160-6afbd2534d7c, 8c194cf7-8771-4774-9611-52ecf9f998e5, 6cdb24ef-4744-43fc-bfa1-abf2b34c4068]
+2026-04-23 12:05:02 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:05:02 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '' from '' using 'Step{stepId=Step-08b8b688-1148-4235-b8ce-d506251314e7, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:05:03 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:05:03 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:05:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6cdb24ef-4744-43fc-bfa1-abf2b34c4068 shut down
+2026-04-23 12:05:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 7ef51dca-1385-47d4-9160-6afbd2534d7c shut down
+2026-04-23 12:05:03 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 8c194cf7-8771-4774-9611-52ecf9f998e5 shut down
+2026-04-23 12:15:59 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:15:59 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:16:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:16:06 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc initialized
+2026-04-23 12:16:06 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:16:06 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:16:06 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:16:06 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:16:06 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:16:07 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:16:07 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:16:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5 initialized
+2026-04-23 12:16:08 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:16:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc, e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5]
+2026-04-23 12:16:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc, e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5]
+2026-04-23 12:16:08 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-c0efeb63-b4a3-472a-8b59-aa6e66d2deb4",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-2e3a7679-bba1-40ea-8369-c8f005a6c8e4"
+    }
+}'
+2026-04-23 12:16:08 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:16:08 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:16:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:16:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6a825752-ffba-41c3-bc06-67554adbef68 initialized
+2026-04-23 12:16:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc, e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5, 6a825752-ffba-41c3-bc06-67554adbef68]
+2026-04-23 12:16:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc, e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5, 6a825752-ffba-41c3-bc06-67554adbef68]
+2026-04-23 12:16:09 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:16:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc, e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5, 6a825752-ffba-41c3-bc06-67554adbef68]
+2026-04-23 12:16:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc, e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5, 6a825752-ffba-41c3-bc06-67554adbef68]
+2026-04-23 12:16:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc, e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5, 6a825752-ffba-41c3-bc06-67554adbef68]
+2026-04-23 12:16:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc, e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5, 6a825752-ffba-41c3-bc06-67554adbef68]
+2026-04-23 12:16:09 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:16:09 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-c0efeb63-b4a3-472a-8b59-aa6e66d2deb4, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:16:09 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:16:09 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:16:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6a825752-ffba-41c3-bc06-67554adbef68 shut down
+2026-04-23 12:16:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 0d7b42e8-3b1f-4fb9-b1b9-37f7071609bc shut down
+2026-04-23 12:16:09 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e1b9d1a5-0020-4b47-aeab-d8fe2e8612e5 shut down
+2026-04-23 12:17:37 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:17:37 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:17:37 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:17:44 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container c09c3239-42d3-4bf6-a72d-3c86c83a1e1c initialized
+2026-04-23 12:17:44 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:17:44 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:17:44 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:17:44 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:17:44 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:17:45 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:17:45 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e3716063-e2a9-49b1-a00d-d489e5fdb894 initialized
+2026-04-23 12:17:46 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c09c3239-42d3-4bf6-a72d-3c86c83a1e1c, e3716063-e2a9-49b1-a00d-d489e5fdb894]
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c09c3239-42d3-4bf6-a72d-3c86c83a1e1c, e3716063-e2a9-49b1-a00d-d489e5fdb894]
+2026-04-23 12:17:46 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-eb9c9c14-4b9c-480f-8089-2ccfa76cb941",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-c1b7db1e-aecd-49ab-bcd8-63c7b716f434"
+    }
+}'
+2026-04-23 12:17:46 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container bc8afa42-48d8-4976-b098-975a8a53e9a6 initialized
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c09c3239-42d3-4bf6-a72d-3c86c83a1e1c, e3716063-e2a9-49b1-a00d-d489e5fdb894, bc8afa42-48d8-4976-b098-975a8a53e9a6]
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [c09c3239-42d3-4bf6-a72d-3c86c83a1e1c, e3716063-e2a9-49b1-a00d-d489e5fdb894, bc8afa42-48d8-4976-b098-975a8a53e9a6]
+2026-04-23 12:17:46 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=400, reason=Bad Request}}'
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container bc8afa42-48d8-4976-b098-975a8a53e9a6 shut down
+2026-04-23 12:17:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container c09c3239-42d3-4bf6-a72d-3c86c83a1e1c shut down
+2026-04-23 12:17:46 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e3716063-e2a9-49b1-a00d-d489e5fdb894 shut down
+2026-04-23 12:19:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:19:22 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:19:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:19:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 02e9bfb3-799a-4ac2-9379-f125b4152791 initialized
+2026-04-23 12:19:28 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:19:29 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:19:29 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:19:29 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:19:29 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:19:30 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:19:30 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:19:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 678bc130-1f15-4668-b3b4-a11758f6c733 initialized
+2026-04-23 12:19:31 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:19:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [02e9bfb3-799a-4ac2-9379-f125b4152791, 678bc130-1f15-4668-b3b4-a11758f6c733]
+2026-04-23 12:19:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [02e9bfb3-799a-4ac2-9379-f125b4152791, 678bc130-1f15-4668-b3b4-a11758f6c733]
+2026-04-23 12:19:31 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-f17784ae-ea56-4194-aaf9-08f5441dfc77",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-585bcbbb-007e-4aa2-9257-dca0c5351920"
+    }
+}'
+2026-04-23 12:19:31 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:19:31 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:19:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:19:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2ecec7dd-b309-4dc5-af65-ae80a7038fd6 initialized
+2026-04-23 12:19:31 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=400, reason=Bad Request}}'
+2026-04-23 12:19:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 2ecec7dd-b309-4dc5-af65-ae80a7038fd6 shut down
+2026-04-23 12:19:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 02e9bfb3-799a-4ac2-9379-f125b4152791 shut down
+2026-04-23 12:19:31 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 678bc130-1f15-4668-b3b4-a11758f6c733 shut down
+2026-04-23 12:20:09 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:20:10 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:20:10 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:20:16 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 32413e9a-3a42-4b8a-9938-94fe6d719168 initialized
+2026-04-23 12:20:16 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:20:16 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:20:16 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:20:16 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:20:16 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:20:17 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:20:17 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:20:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b86bc435-632f-4daf-be25-59a4c9bff494 initialized
+2026-04-23 12:20:18 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:20:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [32413e9a-3a42-4b8a-9938-94fe6d719168, b86bc435-632f-4daf-be25-59a4c9bff494]
+2026-04-23 12:20:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [32413e9a-3a42-4b8a-9938-94fe6d719168, b86bc435-632f-4daf-be25-59a4c9bff494]
+2026-04-23 12:20:18 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-5817af7a-d637-4553-bc76-1813e7751272",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-54839509-7e3c-4375-aff3-70abf019e9e6"
+    }
+}'
+2026-04-23 12:20:18 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:20:18 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-5817af7a-d637-4553-bc76-1813e7751272, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:20:18 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:20:18 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:20:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6781ba9c-ec98-4b0c-bc88-49588fa38ca3 initialized
+2026-04-23 12:20:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=400, reason=Bad Request}}'
+2026-04-23 12:20:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6781ba9c-ec98-4b0c-bc88-49588fa38ca3 shut down
+2026-04-23 12:20:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 32413e9a-3a42-4b8a-9938-94fe6d719168 shut down
+2026-04-23 12:20:19 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b86bc435-632f-4daf-be25-59a4c9bff494 shut down
+2026-04-23 12:31:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:31:31 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:31:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:31:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 3a72f3e0-f355-4915-a61f-6bd18c893806 initialized
+2026-04-23 12:31:37 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:31:38 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:31:38 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:31:38 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:31:38 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:31:39 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:31:39 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:31:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1327c961-e29d-4476-b993-25535ffb3aa8 initialized
+2026-04-23 12:31:39 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:31:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [3a72f3e0-f355-4915-a61f-6bd18c893806, 1327c961-e29d-4476-b993-25535ffb3aa8]
+2026-04-23 12:31:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [3a72f3e0-f355-4915-a61f-6bd18c893806, 1327c961-e29d-4476-b993-25535ffb3aa8]
+2026-04-23 12:31:39 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-3d413c65-5d7c-4ce0-87fc-d83134c31ab5",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-d3ebcfe0-7d83-4fbf-ab10-1d57aa045650"
+    }
+}'
+2026-04-23 12:31:39 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:31:39 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-3d413c65-5d7c-4ce0-87fc-d83134c31ab5, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:31:40 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:31:40 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:31:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 3bb7aff0-1968-46cc-aba7-04476ffe14bf initialized
+2026-04-23 12:31:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [3a72f3e0-f355-4915-a61f-6bd18c893806, 1327c961-e29d-4476-b993-25535ffb3aa8, 3bb7aff0-1968-46cc-aba7-04476ffe14bf]
+2026-04-23 12:31:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [3a72f3e0-f355-4915-a61f-6bd18c893806, 1327c961-e29d-4476-b993-25535ffb3aa8, 3bb7aff0-1968-46cc-aba7-04476ffe14bf]
+2026-04-23 12:31:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:31:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:31:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-3d413c65-5d7c-4ce0-87fc-d83134c31ab5, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:31:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:31:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:31:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 3bb7aff0-1968-46cc-aba7-04476ffe14bf shut down
+2026-04-23 12:31:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 3a72f3e0-f355-4915-a61f-6bd18c893806 shut down
+2026-04-23 12:31:40 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1327c961-e29d-4476-b993-25535ffb3aa8 shut down
+2026-04-23 12:34:48 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:34:48 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:34:49 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:34:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9cf6dfdf-3df9-4598-9182-039f95b5b3aa initialized
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Steps'
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "StepCount": 0,
+    "StepId": "Step-85e74022-04cb-4b0f-b686-e10026bcd16b",
+    "StepName": "Restful Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-86a133e4-ac73-416b-9cba-9ec76f89a1af"
+    }
+}'
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Steps'
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Steps'
+2026-04-23 12:34:55 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Steps'
+2026-04-23 12:34:56 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:34:56 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b2d78395-1d13-4f4a-963e-122a968ee484 initialized
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [9cf6dfdf-3df9-4598-9182-039f95b5b3aa, b2d78395-1d13-4f4a-963e-122a968ee484]
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [9cf6dfdf-3df9-4598-9182-039f95b5b3aa, b2d78395-1d13-4f4a-963e-122a968ee484]
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-b882bf8c-d7f6-4d98-bdbd-0e54c93cd56c",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotations": {
+        },
+        "id": "CustomAnnotation-b6283035-0ddf-4000-a51d-21b99eabb0b8"
+    }
+}'
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-b882bf8c-d7f6-4d98-bdbd-0e54c93cd56c, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 953fa8f8-191b-4255-a385-aa30e5fabc08 initialized
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [9cf6dfdf-3df9-4598-9182-039f95b5b3aa, b2d78395-1d13-4f4a-963e-122a968ee484, 953fa8f8-191b-4255-a385-aa30e5fabc08]
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [9cf6dfdf-3df9-4598-9182-039f95b5b3aa, b2d78395-1d13-4f4a-963e-122a968ee484, 953fa8f8-191b-4255-a385-aa30e5fabc08]
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-b882bf8c-d7f6-4d98-bdbd-0e54c93cd56c, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:34:57 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 953fa8f8-191b-4255-a385-aa30e5fabc08 shut down
+2026-04-23 12:34:57 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9cf6dfdf-3df9-4598-9182-039f95b5b3aa shut down
+2026-04-23 12:34:57 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b2d78395-1d13-4f4a-963e-122a968ee484 shut down
+2026-04-23 12:42:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:42:08 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:42:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:42:14 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container ad8dc876-421b-44ef-bcb2-49625a811076 initialized
+2026-04-23 12:42:14 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:42:14 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:42:14 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:42:14 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:42:14 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:42:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Steps'
+2026-04-23 12:42:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "StepCount": 0,
+    "StepId": "Step-191366b4-c938-48fb-834e-ac1197d342af",
+    "StepName": "Restful Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotation Map": {
+        },
+        "id": "CustomAnnotation-680ee9b7-8d3e-4aa2-8c71-4f192ffbde68"
+    }
+}'
+2026-04-23 12:42:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Steps'
+2026-04-23 12:42:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Steps'
+2026-04-23 12:42:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Steps'
+2026-04-23 12:42:16 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:42:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:42:16 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f74fbde0-4863-422d-8260-de3cf3fd7361 initialized
+2026-04-23 12:42:16 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 12:42:16 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [ad8dc876-421b-44ef-bcb2-49625a811076, f74fbde0-4863-422d-8260-de3cf3fd7361]
+2026-04-23 12:42:16 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [ad8dc876-421b-44ef-bcb2-49625a811076, f74fbde0-4863-422d-8260-de3cf3fd7361]
+2026-04-23 12:42:16 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "StepCount": 0,
+    "StepId": "Step-93138e12-fd8c-4f00-886a-c7099ff20092",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0,
+    "annotations": {
+        "Annotation Map": {
+        },
+        "id": "CustomAnnotation-514bd24b-3aee-44b3-8fda-087aa1f7a192"
+    }
+}'
+2026-04-23 12:42:16 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:42:16 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-93138e12-fd8c-4f00-886a-c7099ff20092, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:42:17 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:42:17 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:42:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 388e5a95-c17e-413c-81c4-c634d87f2c57 initialized
+2026-04-23 12:42:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [ad8dc876-421b-44ef-bcb2-49625a811076, f74fbde0-4863-422d-8260-de3cf3fd7361, 388e5a95-c17e-413c-81c4-c634d87f2c57]
+2026-04-23 12:42:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [ad8dc876-421b-44ef-bcb2-49625a811076, f74fbde0-4863-422d-8260-de3cf3fd7361, 388e5a95-c17e-413c-81c4-c634d87f2c57]
+2026-04-23 12:42:17 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:42:17 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:42:17 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-93138e12-fd8c-4f00-886a-c7099ff20092, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:42:17 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:42:17 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:42:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 388e5a95-c17e-413c-81c4-c634d87f2c57 shut down
+2026-04-23 12:42:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container ad8dc876-421b-44ef-bcb2-49625a811076 shut down
+2026-04-23 12:42:17 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container f74fbde0-4863-422d-8260-de3cf3fd7361 shut down
+2026-04-23 12:45:13 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:45:13 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:45:14 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:45:20 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a6669a98-88d8-4496-aa7c-70e2e2f62c41 initialized
+2026-04-23 12:45:20 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:45:20 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:45:20 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:45:20 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:45:20 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:45:21 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:45:21 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:45:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1a27948d-f4dc-45dc-8f88-e513f705e78c initialized
+2026-04-23 12:45:22 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 12:45:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [a6669a98-88d8-4496-aa7c-70e2e2f62c41, 1a27948d-f4dc-45dc-8f88-e513f705e78c]
+2026-04-23 12:45:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [a6669a98-88d8-4496-aa7c-70e2e2f62c41, 1a27948d-f4dc-45dc-8f88-e513f705e78c]
+2026-04-23 12:45:22 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "Annotation": {
+        "Annotation Map": {
+        },
+        "id": "CustomAnnotation-567e92d0-af46-4c4d-8b4b-80c3fa39e5d6"
+    },
+    "StepCount": 0,
+    "StepId": "Step-403ea776-3ef9-471d-8306-19be43291297",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:45:22 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:45:22 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-403ea776-3ef9-471d-8306-19be43291297, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:45:22 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:45:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:45:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e63160ff-f460-4596-b052-47dd5d6b1b65 initialized
+2026-04-23 12:45:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [a6669a98-88d8-4496-aa7c-70e2e2f62c41, 1a27948d-f4dc-45dc-8f88-e513f705e78c, e63160ff-f460-4596-b052-47dd5d6b1b65]
+2026-04-23 12:45:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [a6669a98-88d8-4496-aa7c-70e2e2f62c41, 1a27948d-f4dc-45dc-8f88-e513f705e78c, e63160ff-f460-4596-b052-47dd5d6b1b65]
+2026-04-23 12:45:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:45:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:45:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-403ea776-3ef9-471d-8306-19be43291297, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:45:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:45:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:45:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e63160ff-f460-4596-b052-47dd5d6b1b65 shut down
+2026-04-23 12:45:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a6669a98-88d8-4496-aa7c-70e2e2f62c41 shut down
+2026-04-23 12:45:23 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1a27948d-f4dc-45dc-8f88-e513f705e78c shut down
+2026-04-23 12:46:46 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:46:46 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:46:47 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:46:53 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1d67768d-da5d-4808-a614-8245e8762494 initialized
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Steps'
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Map": {
+        },
+        "id": "CustomAnnotation-9c896f0a-0c46-45e6-9ee9-806867d013ea"
+    },
+    "StepCount": 0,
+    "StepId": "Step-5ae129eb-aeab-4886-b2df-a9e0914a22a5",
+    "StepName": "Restful Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Steps'
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Steps'
+2026-04-23 12:46:53 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Steps'
+2026-04-23 12:46:54 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:46:54 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:46:54 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 8e5775ef-d29f-4448-bf03-df7c0dd7e5e1 initialized
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1d67768d-da5d-4808-a614-8245e8762494, 8e5775ef-d29f-4448-bf03-df7c0dd7e5e1]
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1d67768d-da5d-4808-a614-8245e8762494, 8e5775ef-d29f-4448-bf03-df7c0dd7e5e1]
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "Step Annotation": {
+        "Annotation Map": {
+        },
+        "id": "CustomAnnotation-acfcbb88-03b4-4e60-b271-d44761fa8664"
+    },
+    "StepCount": 0,
+    "StepId": "Step-f14dfe41-e9d2-4b27-9d3c-b0a3b6ae7276",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-f14dfe41-e9d2-4b27-9d3c-b0a3b6ae7276, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a8c76388-d480-48f8-b6d6-c76c9558013a initialized
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1d67768d-da5d-4808-a614-8245e8762494, 8e5775ef-d29f-4448-bf03-df7c0dd7e5e1, a8c76388-d480-48f8-b6d6-c76c9558013a]
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [1d67768d-da5d-4808-a614-8245e8762494, 8e5775ef-d29f-4448-bf03-df7c0dd7e5e1, a8c76388-d480-48f8-b6d6-c76c9558013a]
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-f14dfe41-e9d2-4b27-9d3c-b0a3b6ae7276, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:46:55 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a8c76388-d480-48f8-b6d6-c76c9558013a shut down
+2026-04-23 12:46:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 1d67768d-da5d-4808-a614-8245e8762494 shut down
+2026-04-23 12:46:55 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 8e5775ef-d29f-4448-bf03-df7c0dd7e5e1 shut down
+2026-04-23 12:50:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:50:31 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:50:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:50:37 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 828fb9f8-ee47-4a1b-a968-e21c70a6f2b0 initialized
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Steps'
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Map": {
+        },
+        "id": "CustomAnnotation-70488db2-e16a-45c2-84fe-70fa93ab63a8"
+    },
+    "StepCount": 0,
+    "StepId": "Step-adedf27d-bdf2-4398-ad27-7a8b4bb9ce82",
+    "StepName": "Restful Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Steps'
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Steps'
+2026-04-23 12:50:38 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Steps'
+2026-04-23 12:50:39 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:50:39 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:50:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container c4680e89-33d9-497a-9d92-e3d167428579 initialized
+2026-04-23 12:50:39 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 12:50:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [828fb9f8-ee47-4a1b-a968-e21c70a6f2b0, c4680e89-33d9-497a-9d92-e3d167428579]
+2026-04-23 12:50:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [828fb9f8-ee47-4a1b-a968-e21c70a6f2b0, c4680e89-33d9-497a-9d92-e3d167428579]
+2026-04-23 12:50:39 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "Step Annotation": {
+        "Annotation Map": {
+            "Key": "Value"
+        },
+        "id": "CustomAnnotation-fc204cad-cabf-4ca8-ba26-b6a9429eeb38"
+    },
+    "StepCount": 0,
+    "StepId": "Step-cc744e23-e624-4afc-ac52-e9d8a9a12707",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:50:39 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:50:39 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-cc744e23-e624-4afc-ac52-e9d8a9a12707, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:50:40 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:50:40 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:50:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b830189b-5650-406a-a607-045cb2c09a2f initialized
+2026-04-23 12:50:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [828fb9f8-ee47-4a1b-a968-e21c70a6f2b0, c4680e89-33d9-497a-9d92-e3d167428579, b830189b-5650-406a-a607-045cb2c09a2f]
+2026-04-23 12:50:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [828fb9f8-ee47-4a1b-a968-e21c70a6f2b0, c4680e89-33d9-497a-9d92-e3d167428579, b830189b-5650-406a-a607-045cb2c09a2f]
+2026-04-23 12:50:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:50:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:50:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-cc744e23-e624-4afc-ac52-e9d8a9a12707, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:50:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:50:40 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:50:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b830189b-5650-406a-a607-045cb2c09a2f shut down
+2026-04-23 12:50:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 828fb9f8-ee47-4a1b-a968-e21c70a6f2b0 shut down
+2026-04-23 12:50:40 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container c4680e89-33d9-497a-9d92-e3d167428579 shut down
+2026-04-23 12:52:14 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:52:14 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:52:14 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:52:20 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 92cd17c4-b5bb-49f2-a6f3-0107f7f0b1b2 initialized
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Steps'
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-0e1fc497-fb28-4d0a-a201-5a6beb51c4c2",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-b16978d8-9b51-4cb1-9ea2-396514bdbb97",
+    "StepName": "Restful Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Steps'
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Steps'
+2026-04-23 12:52:21 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Steps'
+2026-04-23 12:52:22 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:52:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:52:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container ce43dec3-8e20-4a3f-acde-959da1b2049e initialized
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [92cd17c4-b5bb-49f2-a6f3-0107f7f0b1b2, ce43dec3-8e20-4a3f-acde-959da1b2049e]
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [92cd17c4-b5bb-49f2-a6f3-0107f7f0b1b2, ce43dec3-8e20-4a3f-acde-959da1b2049e]
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-8c59477c-8144-4b79-ad29-a8e8c4fd8b3f",
+        "Annotation Map": {
+            "Key": "Value"
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-1fff1e15-903f-4c0f-bb7f-c10bf5a0c3d6",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-1fff1e15-903f-4c0f-bb7f-c10bf5a0c3d6, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 17c325e9-1612-46fe-825d-924b5b8274ec initialized
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [92cd17c4-b5bb-49f2-a6f3-0107f7f0b1b2, ce43dec3-8e20-4a3f-acde-959da1b2049e, 17c325e9-1612-46fe-825d-924b5b8274ec]
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [92cd17c4-b5bb-49f2-a6f3-0107f7f0b1b2, ce43dec3-8e20-4a3f-acde-959da1b2049e, 17c325e9-1612-46fe-825d-924b5b8274ec]
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-1fff1e15-903f-4c0f-bb7f-c10bf5a0c3d6, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:52:23 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 17c325e9-1612-46fe-825d-924b5b8274ec shut down
+2026-04-23 12:52:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 92cd17c4-b5bb-49f2-a6f3-0107f7f0b1b2 shut down
+2026-04-23 12:52:23 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container ce43dec3-8e20-4a3f-acde-959da1b2049e shut down
+2026-04-23 12:53:27 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 12:53:27 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:53:27 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:53:33 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container cf940d13-b96c-45c0-b3e6-58aec360c0f8 initialized
+2026-04-23 12:53:33 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Steps'
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-bd3a4042-8d5a-416a-b270-ba1a4ab01496",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-c4c7550d-6135-4518-8756-67c8da34ffa4",
+    "StepName": "Restful Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Steps'
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Steps'
+2026-04-23 12:53:34 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Steps'
+2026-04-23 12:53:35 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:53:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:53:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 5ae51a96-8eea-4528-bf8e-a6bbb8eb832f initialized
+2026-04-23 12:53:35 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 12:53:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [cf940d13-b96c-45c0-b3e6-58aec360c0f8, 5ae51a96-8eea-4528-bf8e-a6bbb8eb832f]
+2026-04-23 12:53:35 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [cf940d13-b96c-45c0-b3e6-58aec360c0f8, 5ae51a96-8eea-4528-bf8e-a6bbb8eb832f]
+2026-04-23 12:53:35 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-7a33d0b9-b19b-4d2e-aaaa-42e0b0dd8168",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-bfc0494f-f360-47e2-97dc-f1c0ea4a92d2",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 12:53:35 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 12:53:35 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-bfc0494f-f360-47e2-97dc-f1c0ea4a92d2, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 12:53:36 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 12:53:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 12:53:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 42f563a1-5842-4999-958f-5ce2f4621a26 initialized
+2026-04-23 12:53:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [cf940d13-b96c-45c0-b3e6-58aec360c0f8, 5ae51a96-8eea-4528-bf8e-a6bbb8eb832f, 42f563a1-5842-4999-958f-5ce2f4621a26]
+2026-04-23 12:53:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [cf940d13-b96c-45c0-b3e6-58aec360c0f8, 5ae51a96-8eea-4528-bf8e-a6bbb8eb832f, 42f563a1-5842-4999-958f-5ce2f4621a26]
+2026-04-23 12:53:36 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 12:53:36 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Add step request pending
+2026-04-23 12:53:36 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStepJson ]: Adding new Step request by user '127.0.0.1' from 'JUnit-Test' using 'Step{stepId=Step-bfc0494f-f360-47e2-97dc-f1c0ea4a92d2, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}':
+
+'{}'
+2026-04-23 12:53:36 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 12:53:36 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 12:53:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 42f563a1-5842-4999-958f-5ce2f4621a26 shut down
+2026-04-23 12:53:36 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container cf940d13-b96c-45c0-b3e6-58aec360c0f8 shut down
+2026-04-23 12:53:36 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 5ae51a96-8eea-4528-bf8e-a6bbb8eb832f shut down
+2026-04-23 13:43:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 13:43:23 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:43:24 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:43:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 5e990e76-e075-45cb-92c2-529041ea7b47 initialized
+2026-04-23 13:43:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 13:43:30 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 13:43:30 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 13:43:30 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 13:43:30 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 13:43:31 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:43:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 77b936f5-98a8-4236-aad4-691a1125eaf0 initialized
+2026-04-23 13:43:32 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5e990e76-e075-45cb-92c2-529041ea7b47, 77b936f5-98a8-4236-aad4-691a1125eaf0]
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5e990e76-e075-45cb-92c2-529041ea7b47, 77b936f5-98a8-4236-aad4-691a1125eaf0]
+2026-04-23 13:43:32 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-5a9693b0-98d7-4500-8048-e021b84a2ce0",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-93e9476a-ddd0-4b71-a010-38dddadcbb4c",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 13:43:32 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 13:43:32 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-93e9476a-ddd0-4b71-a010-38dddadcbb4c, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container eb3e2e95-f691-4cb8-9b34-fa2f6a29ca97 initialized
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5e990e76-e075-45cb-92c2-529041ea7b47, 77b936f5-98a8-4236-aad4-691a1125eaf0, eb3e2e95-f691-4cb8-9b34-fa2f6a29ca97]
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [5e990e76-e075-45cb-92c2-529041ea7b47, 77b936f5-98a8-4236-aad4-691a1125eaf0, eb3e2e95-f691-4cb8-9b34-fa2f6a29ca97]
+2026-04-23 13:43:32 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 13:43:32 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStep ]: Adding new Step request by user 'null' from '127.0.0.1' using 'JUnit-Test':
+
+'Step{stepId=Step-93e9476a-ddd0-4b71-a010-38dddadcbb4c, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}'
+2026-04-23 13:43:32 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 13:43:32 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container eb3e2e95-f691-4cb8-9b34-fa2f6a29ca97 shut down
+2026-04-23 13:43:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 5e990e76-e075-45cb-92c2-529041ea7b47 shut down
+2026-04-23 13:43:32 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 77b936f5-98a8-4236-aad4-691a1125eaf0 shut down
+2026-04-23 13:45:21 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 13:45:21 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:45:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:45:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 41511ff7-38f2-4316-bc75-21205ec87eaa initialized
+2026-04-23 13:45:28 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 13:45:28 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 13:45:28 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 13:45:28 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 13:45:28 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 13:45:29 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:45:29 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container bfc50cd1-d139-4930-9cab-641aa294eacb initialized
+2026-04-23 13:45:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================= StepRestResource Can Add Step =================
+
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [41511ff7-38f2-4316-bc75-21205ec87eaa, bfc50cd1-d139-4930-9cab-641aa294eacb]
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [41511ff7-38f2-4316-bc75-21205ec87eaa, bfc50cd1-d139-4930-9cab-641aa294eacb]
+2026-04-23 13:45:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-ffe35bee-96b5-49e1-a42d-229dd71579d2",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-96cbd36c-8417-4740-8657-36c0bb199810",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 13:45:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 13:45:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-96cbd36c-8417-4740-8657-36c0bb199810, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6c46074c-059f-49ff-a8c7-47d05616b7c3 initialized
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [41511ff7-38f2-4316-bc75-21205ec87eaa, bfc50cd1-d139-4930-9cab-641aa294eacb, 6c46074c-059f-49ff-a8c7-47d05616b7c3]
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [41511ff7-38f2-4316-bc75-21205ec87eaa, bfc50cd1-d139-4930-9cab-641aa294eacb, 6c46074c-059f-49ff-a8c7-47d05616b7c3]
+2026-04-23 13:45:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [41511ff7-38f2-4316-bc75-21205ec87eaa, bfc50cd1-d139-4930-9cab-641aa294eacb, 6c46074c-059f-49ff-a8c7-47d05616b7c3]
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [41511ff7-38f2-4316-bc75-21205ec87eaa, bfc50cd1-d139-4930-9cab-641aa294eacb, 6c46074c-059f-49ff-a8c7-47d05616b7c3]
+2026-04-23 13:45:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStep ]: Adding new Step request by user 'null' from '127.0.0.1' using 'JUnit-Test':
+
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-ffe35bee-96b5-49e1-a42d-229dd71579d2",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-96cbd36c-8417-4740-8657-36c0bb199810",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 13:45:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 13:45:30 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6c46074c-059f-49ff-a8c7-47d05616b7c3 shut down
+2026-04-23 13:45:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 41511ff7-38f2-4316-bc75-21205ec87eaa shut down
+2026-04-23 13:45:30 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container bfc50cd1-d139-4930-9cab-641aa294eacb shut down
+2026-04-23 13:49:09 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 13:49:09 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:49:09 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:49:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e52e1218-4054-4fbe-b955-f5067197b707 initialized
+2026-04-23 13:49:15 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 13:49:15 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 13:49:15 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 13:49:15 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 13:49:15 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 13:49:16 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e52e1218-4054-4fbe-b955-f5067197b707 shut down
+2026-04-23 13:51:10 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 13:51:10 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:51:11 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:51:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container aec7ece5-c829-425a-81df-7cc38cdb7a9c initialized
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Steps'
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-16de8f6b-bf09-4e62-bcd8-1cc957ae2e2b",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-3a6f0858-c215-4430-93f5-02ddda2fb606",
+    "StepName": "Restful Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Steps'
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Steps'
+2026-04-23 13:51:17 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Steps'
+2026-04-23 13:51:18 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:51:18 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6b87f77f-091c-47c0-9f0f-ff05985d158a initialized
+2026-04-23 13:51:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aec7ece5-c829-425a-81df-7cc38cdb7a9c, 6b87f77f-091c-47c0-9f0f-ff05985d158a]
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aec7ece5-c829-425a-81df-7cc38cdb7a9c, 6b87f77f-091c-47c0-9f0f-ff05985d158a]
+2026-04-23 13:51:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Created test step:
+
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-5b25f4b0-fab6-4f77-a934-17c5dde50ce4",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-c33863ca-a2fa-4add-afd0-bf0666d71e7f",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 13:51:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Firiing test Step creation against StepRestResource
+2026-04-23 13:51:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Serialized Step:
+
+'Entity{entity=Step{stepId=Step-c33863ca-a2fa-4add-afd0-bf0666d71e7f, stepName=Test-Step, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a0eeec70-f75b-4328-b243-a3aeafb390f4 initialized
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aec7ece5-c829-425a-81df-7cc38cdb7a9c, 6b87f77f-091c-47c0-9f0f-ff05985d158a, a0eeec70-f75b-4328-b243-a3aeafb390f4]
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aec7ece5-c829-425a-81df-7cc38cdb7a9c, 6b87f77f-091c-47c0-9f0f-ff05985d158a, a0eeec70-f75b-4328-b243-a3aeafb390f4]
+2026-04-23 13:51:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aec7ece5-c829-425a-81df-7cc38cdb7a9c, 6b87f77f-091c-47c0-9f0f-ff05985d158a, a0eeec70-f75b-4328-b243-a3aeafb390f4]
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [aec7ece5-c829-425a-81df-7cc38cdb7a9c, 6b87f77f-091c-47c0-9f0f-ff05985d158a, a0eeec70-f75b-4328-b243-a3aeafb390f4]
+2026-04-23 13:51:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.createStep ]: Adding new Step request by user 'null' from '127.0.0.1' using 'JUnit-Test':
+
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-5b25f4b0-fab6-4f77-a934-17c5dde50ce4",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-c33863ca-a2fa-4add-afd0-bf0666d71e7f",
+    "StepName": "Test-Step",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-23 13:51:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/step/add-step, status=200, reason=OK}}'
+2026-04-23 13:51:19 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canAddStep ]: 
+
+================ StepRestResource Can Add Step ================
+
+2026-04-23 13:51:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a0eeec70-f75b-4328-b243-a3aeafb390f4 shut down
+2026-04-23 13:51:20 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container aec7ece5-c829-425a-81df-7cc38cdb7a9c shut down
+2026-04-23 13:51:20 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6b87f77f-091c-47c0-9f0f-ff05985d158a shut down
+2026-04-23 13:51:35 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-23 13:51:35 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:51:36 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:51:42 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 3cbb9b0e-bfde-4f68-a5c2-703a838aef64 initialized
+2026-04-23 13:51:42 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-23 13:51:42 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-23 13:51:42 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-23 13:51:42 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-23 13:51:42 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Steps'
+2026-04-23 13:51:44 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:51:44 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:51:44 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container cec16331-7d1c-4744-b21d-e2c09eeaa59e initialized
+2026-04-23 13:51:44 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canQueryStepByField ]: 
+
+================ StepRestResource Can Query By Field ================
+
+2026-04-23 13:51:44 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canQueryStepByField ]: Firiing test query by field against StepRestResource for:	'Restful Steps'
+2026-04-23 13:51:44 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-23 13:51:44 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-23 13:51:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 0fb5538b-8ca8-4a3b-b521-a9fc21b4662e initialized
+2026-04-23 13:51:45 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.<init> ]: Step resource created
+2026-04-23 13:51:45 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResource.readStep ]: Get Step request recieved from 'null', 'JUnit-Test':
+
+'{}'
+2026-04-23 13:51:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [3cbb9b0e-bfde-4f68-a5c2-703a838aef64, cec16331-7d1c-4744-b21d-e2c09eeaa59e, 0fb5538b-8ca8-4a3b-b521-a9fc21b4662e]
+2026-04-23 13:51:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldSEProvider.getCDI ]: WELD-ENV-002006: Multiple containers running - CDI.current() may not work properly: [3cbb9b0e-bfde-4f68-a5c2-703a838aef64, cec16331-7d1c-4744-b21d-e2c09eeaa59e, 0fb5538b-8ca8-4a3b-b521-a9fc21b4662e]
+2026-04-23 13:51:45 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canQueryStepByField ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=GET, uri=http://localhost:9998/services/step/get?field=stepName&value=Restful+Steps, status=200, reason=OK}}'
+2026-04-23 13:51:45 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canQueryStepByField ]: Displaying retrieved records:
+
+'[Step{stepId=Step-3a6f0858-c215-4430-93f5-02ddda2fb606, stepName=Restful Steps, stepState=Pending, stepCount=0, stepsLocked=0, stepsDone=0}]
+2026-04-23 13:51:45 INFO  [ Test worker -> org.tasktide.api.services.rest.StepRestResourceTest.canQueryStepByField ]: 
+
+================ StepRestResource Can Query By Field ================
+
+2026-04-23 13:51:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 0fb5538b-8ca8-4a3b-b521-a9fc21b4662e shut down
+2026-04-23 13:51:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 3cbb9b0e-bfde-4f68-a5c2-703a838aef64 shut down
+2026-04-23 13:51:45 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container cec16331-7d1c-4744-b21d-e2c09eeaa59e shut down

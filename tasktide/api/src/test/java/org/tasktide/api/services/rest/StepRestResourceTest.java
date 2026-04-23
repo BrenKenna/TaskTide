@@ -22,16 +22,15 @@ import jakarta.nosql.Template;
 
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 import java.security.KeyPair;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -109,17 +108,20 @@ public class StepRestResourceTest extends AbstractBaseJerseyTest {
         
         // Make test step
         step = BuilderUtility.buildStep(stepName);
+        // step.getAnnotations().add("Key", "Value");
         LOGGER.info("Created test step:\n\n'{}'", step.toJsonDoc());
         
         // Fetch mock token
         LOGGER.info("Firiing test Step creation against StepRestResource");
+        LOGGER.info("Serialized Step:\n\n'{}'", Entity.entity(step, MediaType.APPLICATION_JSON));
         bearerToken = "Bearer " + WebApiTestUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
-        .post(Entity.json(step));
+                .header("X-Forwarded-For", "127.0.0.1")
+        .post(Entity.entity(step, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         LOGGER.info("Displaying resource response:\n\n'{}'", resp);
         

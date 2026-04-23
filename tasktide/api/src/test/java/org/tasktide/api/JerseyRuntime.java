@@ -21,7 +21,7 @@ import jakarta.enterprise.inject.se.SeContainer;
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.server.ResourceConfig;
 
-import io.smallrye.jwt.auth.jaxrs.JWTAuthenticationFilter;
+import org.glassfish.jersey.jsonb.JsonBindingFeature;
 
 /**
  * Collection of utility methods to support
@@ -95,9 +95,8 @@ public class JerseyRuntime {
             config.register(clazz);
         }
 
-        
         // JSON support
-        config.register(org.glassfish.jersey.jackson.JacksonFeature.class);
+        config.register(JsonBindingFeature.class);
 
         return config;
     }

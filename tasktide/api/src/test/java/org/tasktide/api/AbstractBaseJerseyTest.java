@@ -15,17 +15,19 @@
  */
 package org.tasktide.api;
 
-
-import jakarta.enterprise.context.control.RequestContextController;
-import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.ws.rs.core.Application;
-import org.glassfish.jersey.jackson.JacksonFeature;
-import org.glassfish.jersey.server.ResourceConfig;
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.context.control.RequestContextController;
+
 import org.glassfish.jersey.test.JerseyTest;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.jsonb.JsonBindingFeature;
+
 import org.tasktide.api.services.rest.StepRestResource;
-import org.tasktide.api.services.rest.WorkflowRestResource;
+
 
 /**
+ * 
  *
  * @author Bren
  */
@@ -57,7 +59,7 @@ public class AbstractBaseJerseyTest extends JerseyTest {
             //Object instance = container.select(clazz).get();
             config.register(clazz);
         }
-        config.register(JacksonFeature.class);
+        config.register(JsonBindingFeature.class);
         return config;
     }
     

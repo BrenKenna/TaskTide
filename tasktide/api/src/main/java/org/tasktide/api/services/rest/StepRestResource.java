@@ -32,8 +32,11 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.SecurityContext;
+import jakarta.ws.rs.core.UriInfo;
 
 import java.util.List;
 import org.tasktide.api.TaskTideRestApi;
@@ -79,7 +82,9 @@ public class StepRestResource extends TaskTideRestApi {
      *  whether the resource was created to the client
      * 
      * @param step
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -87,21 +92,26 @@ public class StepRestResource extends TaskTideRestApi {
     @Path("/add-step")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createStep(Step step, @Context HttpServletRequest req) {
-    
-        // Log request
-        LOGGER.info("Add step request pending");
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
-        LOGGER.info(
-            "Adding new Step request by user '{}' from '{}' using '{}':\n\n'{}'",
-            ip, userAgent, step
-        );
+    public Response createStep(
+        Step step,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
         
         // Validate input
         if ( step == null ) {
             return Response.status(405).build();
         }
+    
+        // Log request
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
+        LOGGER.info(
+            "Adding new Step request by user '{}' from '{}' using '{}':\n\n'{}'",
+            securityContext.getUserPrincipal(), ip, userAgent, step.toJsonDoc()
+        );
+
         
         // Add step
         if ( stepService.appendModel(step) != null ) {
@@ -119,17 +129,24 @@ public class StepRestResource extends TaskTideRestApi {
      *  whether the resource was created to the client
      * 
      * @param steps
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @POST
     @Path("/add-steps")
-    public Response createSteps(List<Step> steps, @Context HttpServletRequest req) {
+    public Response createSteps(
+        List<Step> steps,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Importing Step collection request from '{}', '{}':\n\n'{}'",
             ip, userAgent
@@ -156,7 +173,9 @@ public class StepRestResource extends TaskTideRestApi {
      *  created resource to the client
      * 
      * @param stepName
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -164,13 +183,15 @@ public class StepRestResource extends TaskTideRestApi {
     @Path("/create-step")
     public Response createStep(
         @QueryParam("stepName") String stepName,
-        @Context HttpServletRequest req
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
     ) {
         
         // Log request
         List<Step> result;
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Adding new Step request from '{}', '{}':\n\n'{}'",
             ip, userAgent, stepName
@@ -209,7 +230,9 @@ public class StepRestResource extends TaskTideRestApi {
      * @param value
      * @param grouping
      * @param groupingVal
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
@@ -221,12 +244,14 @@ public class StepRestResource extends TaskTideRestApi {
         @QueryParam("value") String value,
         @QueryParam("grouping") String grouping,
         @QueryParam("groupingValue") String groupingVal,
-        @Context HttpServletRequest req
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
     ) {
         
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Get Step request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
@@ -293,17 +318,24 @@ public class StepRestResource extends TaskTideRestApi {
      * Endpoint for dropping {@link Step} by Id
      * 
      * @param id
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @DELETE
     @Path("/drop/{id}")
-    public Response dropStep(@PathParam("id") String id, @Context HttpServletRequest req) {
+    public Response dropStep(
+        @PathParam("id") String id,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Get Step request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent
@@ -329,17 +361,24 @@ public class StepRestResource extends TaskTideRestApi {
      * Endpoint for updating {@link Step} providing new resource
      * 
      * @param step
-     * @param req
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
      * 
      * @return {@link Response}
      */
     @PUT
     @Path("/update")
-    public Response updateStep(Step step, @Context HttpServletRequest req) {
+    public Response updateStep(
+        Step step,
+        @Context HttpHeaders reqHeader,
+        @Context UriInfo uriInfo,
+        @Context SecurityContext securityContext
+    ) {
     
         // Log request
-        String ip = req.getRemoteAddr();
-        String userAgent = req.getHeader("User-Agent");
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
             "Update Step request recieved from '{}', '{}':\n\n'{}'",
             ip, userAgent

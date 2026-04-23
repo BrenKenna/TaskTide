@@ -44,16 +44,16 @@ import org.tasktide.core.TaskTideModel;
 public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
     
     // Id for annotation collection
-    @jakarta.nosql.Column("AnnotationId")
-    @jakarta.persistence.Column(name = "AnnotationId")
-    @JsonbProperty("AnnotationId")
+    @jakarta.nosql.Column("Annotation Id")
+    @jakarta.persistence.Column(name = "Annotation Id")
+    @JsonbProperty("Annotation Id")
     private String annoId;
     
     // Annotations field
-    @jakarta.nosql.Column("Annotations")
-    @jakarta.persistence.Column(name = "Annotations", columnDefinition = "BLOB")
+    @jakarta.nosql.Column("Annotation Map")
+    @jakarta.persistence.Column(name = "Annotation Map", columnDefinition = "BLOB")
     @jakarta.persistence.Convert(converter = CustomAnnotationJpaConverter.class)
-    @JsonbProperty("Annotations")
+    @JsonbProperty("Annotation Map")
     private Map<String, Object> anno;
 
 
@@ -74,8 +74,8 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      */
     @JsonbCreator
     public CustomAnnotation(
-       @JsonbProperty("AnnotationId") String annoId,
-       @JsonbProperty("Annotations") Map<String, Object> anno
+       @JsonbProperty("Annotation Id") String annoId,
+       @JsonbProperty("Annotation Map") Map<String, Object> anno
     ) {
         this.annoId = annoId;
         this.anno = anno;
@@ -135,6 +135,7 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
      * @return String
      */
     @Override
+    @JsonbProperty("Annotation Id")
     public String getId() {
         return annoId;
     }

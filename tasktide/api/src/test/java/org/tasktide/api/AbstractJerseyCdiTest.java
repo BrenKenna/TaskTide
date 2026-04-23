@@ -15,12 +15,14 @@
  */
 package org.tasktide.api;
 
-
-import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 import jakarta.ws.rs.core.Application;
-import org.glassfish.jersey.server.ResourceConfig;
+import jakarta.enterprise.inject.se.SeContainer;
+
 import org.glassfish.jersey.test.JerseyTest;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.jsonb.JsonBindingFeature;
+
 
 /**
  *
@@ -42,7 +44,7 @@ public class AbstractJerseyCdiTest extends JerseyTest {
 
         ResourceConfig config = new ResourceConfig()
                 .packages("org.tasktide.api.services.rest")
-                .register(org.glassfish.jersey.jackson.JacksonFeature.class);
+                .register(JsonBindingFeature.class);
 
         return config;
     }
