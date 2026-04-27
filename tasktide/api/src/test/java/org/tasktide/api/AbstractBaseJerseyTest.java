@@ -36,33 +36,12 @@ public class AbstractBaseJerseyTest extends JerseyTest {
     protected SeContainer container;
     protected RequestContextController requestCtx;
     
-    private Class<?>[] resources;
+    protected Class<?>[] resources;
     
     protected AbstractBaseJerseyTest(Class<?>... resources) {
         this.resources = resources;
     }
-    
-    
-    @Override
-    protected Application configure() {
-        
-        this.container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
-        this.requestCtx = container.select(RequestContextController.class).get();
-        
-        ResourceConfig config = new ResourceConfig();
-        
-        resources = new Class<?>[] {
-            StepRestResource.class
-        };
-        
-        for (Class<?> clazz : resources) {
-            //Object instance = container.select(clazz).get();
-            config.register(clazz);
-        }
-        config.register(JsonBindingFeature.class);
-        return config;
-    }
-    
+
     
     public boolean activateCtx() {
         return this.requestCtx.activate();

@@ -15,12 +15,14 @@
  */
 package org.tasktide.api.services.rest;
 
+import jakarta.enterprise.context.control.RequestContextController;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import jakarta.nosql.Template;
 
 import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -28,6 +30,8 @@ import jakarta.ws.rs.core.Response;
 import java.security.KeyPair;
 
 import java.util.List;
+import org.glassfish.jersey.jsonb.JsonBindingFeature;
+import org.glassfish.jersey.server.ResourceConfig;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -69,6 +73,27 @@ public class StepRestResourceTest extends AbstractBaseJerseyTest {
     public StepRestResourceTest() {
         super(StepRestResource.class);
     }
+    
+    @Override
+    protected Application configure() {
+        
+        this.container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
+        this.requestCtx = container.select(RequestContextController.class).get();
+        
+        ResourceConfig config = new ResourceConfig();
+        
+        this.resources = new Class<?>[] {
+            StepRestResource.class
+        };
+        
+        for (Class<?> clazz : this.resources) {
+            //Object instance = container.select(clazz).get();
+            config.register(clazz);
+        }
+        config.register(JsonBindingFeature.class);
+        return config;
+    }
+    
     
     @BeforeAll
     public void setUpClass() throws Exception {

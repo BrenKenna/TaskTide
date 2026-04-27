@@ -19,7 +19,6 @@ import jakarta.annotation.security.RolesAllowed;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.Consumes;
 
@@ -39,7 +38,6 @@ import jakarta.ws.rs.core.SecurityContext;
 import jakarta.ws.rs.core.UriInfo;
 
 import java.util.List;
-import org.tasktide.api.TaskTideRestApi;
 // import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import org.tasktide.core.TaskTideService;
@@ -49,15 +47,17 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.collection.Step;
 
+import org.tasktide.api.TaskTideRestApi;
+
 
 /**
  * REST resource for interacting with {@link StepService}
  *
  * @author Bren
  */
+@RequestScoped
 @RolesAllowed("user")
 @Path("/services/step")
-@RequestScoped
 public class StepRestResource extends TaskTideRestApi {
     
     // Attributes

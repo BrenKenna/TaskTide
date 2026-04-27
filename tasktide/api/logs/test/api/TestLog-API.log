@@ -3058,3 +3058,55 @@
 2026-04-23 13:51:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 0fb5538b-8ca8-4a3b-b521-a9fc21b4662e shut down
 2026-04-23 13:51:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 3cbb9b0e-bfde-4f68-a5c2-703a838aef64 shut down
 2026-04-23 13:51:45 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container cec16331-7d1c-4744-b21d-e2c09eeaa59e shut down
+2026-04-24 12:24:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 6.0.3 (Final)
+2026-04-24 12:24:41 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-24 12:24:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-24 12:24:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container bf89df55-0976-41ea-866b-de1bdd9c250f initialized
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.api.services.rest.WorkflowResourceTest.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful Workflow",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful Workflow'
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful Workflow'
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-b7e6eec8-e01f-444b-8614-bf829bd2c48a",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-0c11df92-64ed-4696-b2a7-a9a9743a1e00",
+    "StepName": "Restful Workflow",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful Workflow'
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful Workflow'
+2026-04-24 12:24:49 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful Workflow'
+2026-04-24 12:24:50 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-04-24 12:24:50 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-04-24 12:24:51 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 31c1f892-87a0-49ed-b923-83523ea8b840 initialized
+2026-04-24 12:24:51 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container bf89df55-0976-41ea-866b-de1bdd9c250f shut down
+2026-04-24 12:24:51 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 31c1f892-87a0-49ed-b923-83523ea8b840 shut down
