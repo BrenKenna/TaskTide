@@ -22,11 +22,12 @@ import org.apache.logging.log4j.LogManager;
 
 import org.eclipse.jetty.server.Server;
 
+import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.ConfigProvider;
+
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
-import org.glassfish.jersey.server.spi.ComponentProvider;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
-import org.glassfish.jersey.inject.cdi.se.CdiSeInjectionManagerFactory;
 
 
 
@@ -42,16 +43,93 @@ public class TaskTideWebApi {
     
     // Attributes
     private Server server;
-    private final String webUri;
+    private String host, basePath;
+    private int port;
+    private Config config;
+    private ResourceConfig resourceConfig;
     
     
     /**
      * Construct with application config
      * 
-     * @param webUri 
+     * @param host
+     * @param port
+     * @param basePath 
      */
-    public TaskTideWebApi(String webUri) {
-        this.webUri = webUri;
+    public TaskTideWebApi(String host, int port, String basePath) {
+        this.host = host;
+        this.port = port;
+        this.basePath = basePath;
+        this.applyOverrides();
+    }
+    
+    
+    /**
+     * Construct with config
+     * 
+     * @param config 
+     */
+    public TaskTideWebApi(Config config) {
+        this.config = config;
+        this.host = config
+            .getOptionalValue("tasktide.web-api.host", String.class)
+        .orElse("http://localhost");
+        this.port = config
+            .getOptionalValue("tasktide.web-api.port", Integer.class)
+        .orElse(8080);
+        this.basePath = config
+            .getOptionalValue("tasktide.web-api.base-path", String.class)
+        .orElse("/");
+    }
+    
+    
+    /**
+     * Apply overrides over host, port, base URL path
+     * 
+     */
+    private void applyOverrides() {
+        this.config = ConfigProvider.getConfig();
+        this.host = config
+            .getOptionalValue("tasktide.web-api.host", String.class)
+        .orElse("http://localhost");
+        this.port = config
+            .getOptionalValue("tasktide.web-api.port", Integer.class)
+        .orElse(8080);
+        this.basePath = config
+            .getOptionalValue("tasktide.web-api.base-path", String.class)
+        .orElse("/");
+    }
+    
+    
+    /**
+     * Apply {@link ResourceConfig} and
+     *  {@link Config}
+     * 
+     */
+    public void configureServer() {
+    
+        // Fetch config
+        if ( this.config == null ) {
+            this.config = ConfigProvider.getConfig();
+        }
+        
+        // Configure jersey
+        this.resourceConfig = new ResourceConfig()
+            .packages("org.tasktide.api.resources")
+        ;
+        resourceConfig.register(JsonBindingFeature.class);
+        //resourceConfig.register(ComponentProvider.class);
+        //resourceConfig.register(CdiSeInjectionManagerFactory.class);
+        
+        // Set Jersey properties
+        this.config.getPropertyNames().forEach(
+            name -> {
+                if ( name.startsWith("jersey.") ) {
+                    String val = config.getConfigValue(name).getRawValue();
+                    Object parsedVal = this.parseValue(val);
+                    resourceConfig.property(name, parsedVal);
+                }
+        });
     }
     
     
@@ -66,19 +144,10 @@ public class TaskTideWebApi {
         if ( this.server != null ) {
             return this.server.isStarted();
         }
-        
-        // Configure jersey
-        ResourceConfig config = new ResourceConfig()
-            .packages("org.tasktide.api")
-        ;
-        config.register(JsonBindingFeature.class);
-        config.register(ComponentProvider.class);
-        config.register(CdiSeInjectionManagerFactory.class);
-        
+
         // Start web server
-        URI uri = URI.create(webUri);
         this.server = JettyHttpContainerFactory
-            .createServer(uri, config);
+            .createServer(this.getWebUri(), resourceConfig);
 
         return this.server.isStarting() || this.server.isRunning();
     }
@@ -100,6 +169,102 @@ public class TaskTideWebApi {
                 return false;
             }
         }
+        
         return false;
+    }
+    
+    
+    /**
+     * Get server state
+     * 
+     * @return 
+     */
+    public String getState() {
+        return this.server.getState();
+    }
+    
+    
+    /**
+     * Get web uri
+     * 
+     * @return {@link URI}
+     */
+    public URI getWebUri() {
+        return URI.create(this.getWebUriString());
+    }
+    
+    
+    /**
+     * Get web URI
+     * 
+     * @return String
+     */
+    public String getWebUriString() {
+        return
+            this.host + ":" +
+            String.valueOf(this.port) + "/" +
+        this.basePath;
+    }
+
+    
+    /**
+     * 
+     * 
+     * @return {@link Config}
+     */
+    public Config getConfig() {
+        return config;
+    }
+
+    
+    /**
+     * 
+     * 
+     * @return {@link ResourceConfig}
+     */
+    public ResourceConfig getResourceConfig() {
+        return resourceConfig;
+    }
+    
+
+    /**
+     * Parse boolean/int/long/double/string from value
+     * 
+     * @param value
+     * @return Object
+     */
+    private Object parseValue(String value) {
+
+        if (value == null) return null;
+
+        // boolean
+        if ("true".equalsIgnoreCase(value) || "false".equalsIgnoreCase(value)) {
+            return Boolean.parseBoolean(value);
+        }
+
+        // integer
+        if (value.matches("^-?\\d+$")) {
+            try {
+                return Integer.parseInt(value);
+            } catch (NumberFormatException e) {
+                return Long.parseLong(value); // fallback
+            }
+        }
+
+        // decimal
+        if (value.matches("^-?\\d+\\.\\d+$")) {
+            return Double.parseDouble(value);
+        }
+
+        // otherwise leave as string
+        return value;
+    }
+    
+    
+    
+    public void displayResourceConfig() {
+        resourceConfig.getInstances().forEach(i ->
+            System.out.println("PROVIDER: " + i.getClass().getName())
+        );
     }
 }

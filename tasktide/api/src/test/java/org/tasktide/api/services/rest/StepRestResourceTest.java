@@ -15,6 +15,7 @@
  */
 package org.tasktide.api.services.rest;
 
+import org.tasktide.api.resources.services.rest.StepRestResource;
 import jakarta.enterprise.context.control.RequestContextController;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -50,7 +51,8 @@ import org.tasktide.core.model.collection.Step;
 
 import org.tasktide.api.TestUtils;
 import org.tasktide.api.TestEnvironment;
-import org.tasktide.api.WebApiTestUtils;
+import org.tasktide.api.utils.WebApiUtils;
+import org.tasktide.api.jwt.JwtRequestFilter;
 
 
 /**
@@ -91,6 +93,7 @@ public class StepRestResourceTest extends AbstractBaseJerseyTest {
             config.register(clazz);
         }
         config.register(JsonBindingFeature.class);
+        config.register(JwtRequestFilter.class);
         return config;
     }
     
@@ -103,8 +106,8 @@ public class StepRestResourceTest extends AbstractBaseJerseyTest {
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
         
-        KEY_PAIR = WebApiTestUtils.getKeyPair();
-        System.setProperty("mp.jwt.verify.publickey", WebApiTestUtils.toPemPublic(KEY_PAIR.getPublic()));
+        KEY_PAIR = WebApiUtils.getKeyPair();
+        System.setProperty("mp.jwt.verify.publickey", WebApiUtils.toPemPublic(KEY_PAIR.getPublic()));
         System.setProperty("mp.jwt.verify.issuer", "web-api-testing");
     }
     
@@ -139,7 +142,7 @@ public class StepRestResourceTest extends AbstractBaseJerseyTest {
         // Fetch mock token
         LOGGER.info("Firiing test Step creation against StepRestResource");
         LOGGER.info("Serialized Step:\n\n'{}'", Entity.entity(step, MediaType.APPLICATION_JSON));
-        bearerToken = "Bearer " + WebApiTestUtils.token("johnDoe");
+        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
@@ -172,7 +175,7 @@ public class StepRestResourceTest extends AbstractBaseJerseyTest {
         
         // Fetch mock token
         LOGGER.info("Firiing test query by field against StepRestResource for:\t'{}'", STEP);
-        bearerToken = "Bearer " + WebApiTestUtils.token("johnDoe");
+        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .queryParam("field", "stepName")

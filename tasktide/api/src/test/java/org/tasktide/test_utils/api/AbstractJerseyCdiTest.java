@@ -13,42 +13,52 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api;
+package org.tasktide.test_utils.api;
 
+import jakarta.nosql.Template;
 import jakarta.ws.rs.core.Application;
 import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.context.control.RequestContextController;
 
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
-
-import org.tasktide.api.resources.services.rest.StepRestResource;
+import org.tasktide.api.TestEnvironment;
 
 
 /**
- * 
  *
  * @author Bren
  */
-public class AbstractBaseJerseyTest extends JerseyTest {
+public class AbstractJerseyCdiTest extends JerseyTest {
 
     protected SeContainer container;
-    protected RequestContextController requestCtx;
-    
-    protected Class<?>[] resources;
-    
-    protected AbstractBaseJerseyTest(Class<?>... resources) {
-        this.resources = resources;
+    protected Template template;
+
+    @Override
+    protected Application configure() {
+        container = TestEnvironment.startWeldContainer(
+                "microprofile-config.properties",
+                getClass()
+        );
+
+        template = TestEnvironment.fetchDocumentTemplate(container);
+
+        ResourceConfig config = new ResourceConfig()
+                .packages("org.tasktide.api.services.rest")
+                .register(JsonBindingFeature.class);
+
+        return config;
     }
 
-    
-    public boolean activateCtx() {
-        return this.requestCtx.activate();
+    protected <T> T bean(Class<T> type) {
+        return container.select(type).get();
     }
-    
-    
-    public void deactivateCtx() {
-        this.requestCtx.deactivate();
+
+    @Override
+    public void tearDown() throws Exception {
+        super.tearDown();
+        if (container != null) {
+            container.close();
+        }
     }
 }

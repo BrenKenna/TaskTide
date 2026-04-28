@@ -17,6 +17,7 @@ package org.tasktide.api.services.rest;
 
 
 
+import org.tasktide.api.resources.services.rest.StepRestResource;
 import jakarta.enterprise.context.control.RequestContextController;
 import jakarta.nosql.Template;
 import jakarta.ws.rs.core.Application;
@@ -35,7 +36,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
-import org.tasktide.api.WebApiTestUtils;
+import org.tasktide.api.utils.WebApiUtils;
 import org.tasktide.core.repository.RepositoryType;
 
 /**
@@ -87,8 +88,8 @@ public class WorkflowResourceTest extends AbstractBaseJerseyTest {
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
         
-        KEY_PAIR = WebApiTestUtils.getKeyPair();
-        System.setProperty("mp.jwt.verify.publickey", WebApiTestUtils.toPemPublic(KEY_PAIR.getPublic()));
+        KEY_PAIR = WebApiUtils.getKeyPair();
+        System.setProperty("mp.jwt.verify.publickey", WebApiUtils.toPemPublic(KEY_PAIR.getPublic()));
         System.setProperty("mp.jwt.verify.issuer", "web-api-testing");
     }
     

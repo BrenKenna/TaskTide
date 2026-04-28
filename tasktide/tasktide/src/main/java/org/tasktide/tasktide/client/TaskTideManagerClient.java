@@ -148,13 +148,11 @@ public class TaskTideManagerClient extends TaskTideClient {
     
         // Fetch task to perform
         String actVal = (String) this.managerArgs.getArgument("Method").getValue();
-        ManagerAction action = ManagerAction.get(actVal);
-        this.setAction(action);
+        this.setAction( ManagerAction.get(actVal) );
         
         // Fetch target of action
         String tgtVal = (String) this.managerArgs.getArgument("Target").getValue();
-        ManagerTarget target = ManagerTarget.get(tgtVal);
-        this.setTarget(target);
+        this.setTarget( ManagerTarget.get(tgtVal) );
         
         // Fetch command spec
         CommandSpec cmdSpec = this.mapToCommandSpec();
@@ -175,11 +173,31 @@ public class TaskTideManagerClient extends TaskTideClient {
     
     
     /**
+     * Get {@link ManagerTarget}
+     * 
+     * @return {@link ManagerTarget}
+     */
+    public ManagerTarget getTarget() {
+        return this.target;
+    }
+    
+    
+    /**
      * Sets {@link ManagerAction}
      * 
      * @param action 
      */
     public void setAction(ManagerAction action) {
         this.action = action;
+    }
+    
+    
+    /**
+     * Get {@link ManagerAction}
+     * 
+     * @return {@link ManagerAction}
+     */
+    public ManagerAction getAction() {
+        return this.action;
     }
 }

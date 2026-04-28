@@ -13,42 +13,44 @@ dependencies {
     implementation  project(':engine')
 
     // Authentication and Authorization
-    implementation  "io.smallrye:smallrye-jwt:4.6.3"
-    implementation  "org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:2.1"
-    implementation  "io.smallrye:smallrye-jwt-cdi-extension:4.6.3"
+    //implementation      "io.smallrye:smallrye-jwt:4.6.3"
+    implementation      "org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:2.1"
+    implementation      "com.nimbusds:nimbus-jose-jwt:10.9"
+    implementation      "io.smallrye:smallrye-jwt-cdi-extension:4.6.3"
+    implementation      "io.smallrye.config:smallrye-config:3.17.2"
 
     // Web server
-    implementation  "org.glassfish.jersey.inject:jersey-hk2:4.0.2"
-    implementation  "org.glassfish.jersey.inject:jersey-cdi2-se:4.0.2"
-    implementation  "org.glassfish.jersey.media:jersey-media-json-binding:4.0.2"
-    implementation  "org.glassfish.jersey.containers:jersey-container-servlet:4.0.2"
-    implementation  "org.glassfish.jersey.containers:jersey-container-jetty-http:4.0.2"
+    implementation      platform("org.glassfish.jersey:jersey-bom:3.1.6")
+    implementation      "org.glassfish.jersey.inject:jersey-hk2"
+    //implementation      "org.glassfish.jersey.inject:jersey-cdi2-se"
+    implementation      "org.glassfish.jersey.media:jersey-media-json-binding"
+    //implementation      "org.glassfish.jersey.containers:jersey-container-servlet"
+    implementation      "org.glassfish.jersey.containers:jersey-container-jetty-http"
+    testImplementation  "org.glassfish.jersey.test-framework:jersey-test-framework-core"
+    testImplementation  "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory"
 
     // REST-API
-    implementation  "jakarta.ws.rs:jakarta.ws.rs-api:4.0.0"
-    implementation  "jakarta.servlet:jakarta.servlet-api:6.1.0"
+    implementation      "jakarta.ws.rs:jakarta.ws.rs-api:4.0.0"
+    implementation      "jakarta.servlet:jakarta.servlet-api:6.1.0"
 
     // GraphQL: https://www.cve.org/CVERecord?id=CVE-2026-24400 , https://www.cve.org/CVERecord?id=CVE-2022-4065
-    implementation  "org.eclipse.microprofile.graphql:microprofile-graphql-api:2.0"
-    implementation  "io.smallrye:smallrye-graphql:2.18.0"
-    implementation  "io.smallrye:smallrye-graphql-api:2.18.0"
+    implementation      "org.eclipse.microprofile.graphql:microprofile-graphql-api:2.0"
+    implementation      "io.smallrye:smallrye-graphql:2.18.0"
+    implementation      "io.smallrye:smallrye-graphql-api:2.18.0"
 
     // Persistence
-    implementation  "jakarta.persistence:jakarta.persistence-api:3.1.0"
-    implementation  "org.hibernate.orm:hibernate-core:6.4.4.Final"
-    implementation  "com.zaxxer:HikariCP:5.1.0"
-    implementation  "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:2.19.2"
-    implementation  "jakarta.nosql:jakarta.nosql-api:1.0.0"
-    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
-    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.8"
-    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.8"
-    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.8"
+    implementation      "jakarta.persistence:jakarta.persistence-api:3.1.0"
+    implementation      "org.hibernate.orm:hibernate-core:6.4.4.Final"
+    implementation      "com.zaxxer:HikariCP:5.1.0"
+    implementation      "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:2.19.2"
+    implementation      "jakarta.nosql:jakarta.nosql-api:1.0.0"
+    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
+    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.8"
+    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.8"
+    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.8"
 
     // Testing API calls
-    testImplementation  "org.glassfish.jersey.test-framework:jersey-test-framework-core:4.0.2"
-    testImplementation  "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:4.0.2"
-    testImplementation  "io.smallrye:smallrye-jwt-build:4.6.3"
-
+    implementation      "io.smallrye:smallrye-jwt-build:4.6.3"
     testRuntimeOnly     "org.junit.platform:junit-platform-launcher:1.13.4" // Masked somehow?
 }
 
