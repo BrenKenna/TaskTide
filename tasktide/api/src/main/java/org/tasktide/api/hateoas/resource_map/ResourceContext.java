@@ -20,6 +20,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// For documentation
+import org.tasktide.api.hateoas.links.LinkTemplate;
+
 
 /**
  * Bind a resource method to a {@link LinkTemplate}

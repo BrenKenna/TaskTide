@@ -15,11 +15,20 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X]   5). Early & Late binding semantics.
 - [/]   6). Docker compose.
 - [/]   7). Kubectl config.
-- [/]    8). Version-1 documentation
-- [/]    9). Version-1 paper.
+- [/]   8). Version-1 documentation.
+- [/]   9). Version-1 paper.
 
 
 === 2). Bugs 
+
+
+=== Web API
+
+- [] General using of the WebAPI - starting, stopping, logging etc
+- [] StepResource returning 415
+- [] Integration with Keycloak
+- [] Trial Hateoas resource envelope
+
 
 ==== Mutex
 
@@ -88,7 +97,6 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
         - Allows TaskTideRepository to specialize in their isolated logic.
         - ServiceAmbassador unifies and encapsulates this with iter Repository functionalities.
         - Regardless of the configured backend database.
-
 --
 
 - []  Builder code clean
@@ -197,7 +205,6 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
         [X] Reset Item
         [X] Reset List
 --
-
 
 - [X] Template inserts over an iterable
 - [X] JPA Entity Manager inserts in batches of 50

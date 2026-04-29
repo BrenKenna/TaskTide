@@ -31,7 +31,7 @@ import org.tasktide.api.security_context.data_models.MetricProfileResourcePermis
 
 
 /**
- * Container class {@link TaskTideServiceResourcePermission} for {@link WorkItemResourcePermission},
+ * Container class for {@link WorkItemResourcePermission},
  *   {@link StepResourcePermission}, {@link WorkflowResourcePermission}, {@link JobEnvironmentResourcePermission},
  *   {@link MetricProfileResourcePermission}, and {@link JobEnvironmentResourcePermission}
  *
@@ -197,7 +197,7 @@ public final class TaskTideResourcePermissionServiceManager {
     
     
     /**
-     * Fetches {@link MetricProfilResourcePermissioneService} if initialized
+     * Fetches {@link MetricProfileResourcePermission} if initialized
      * 
      * @return {@link TaskTideService}-{@link MetricProfileResourcePermission}
      */
@@ -212,7 +212,7 @@ public final class TaskTideResourcePermissionServiceManager {
     /**
      * Fetches {@link JobEnvironmentResourcePermissionService} if initialized
      * 
-     * @return {@link TaskTideService}-{@link JobEnvironmenResourcePermissiont}
+     * @return {@link TaskTideService}-{@link JobEnvironmentResourcePermission}
      */
     public static TaskTideService<JobEnvironmentResourcePermission> fetchJobEnvironmentService() {
         if ( INSTANCE != null ) {

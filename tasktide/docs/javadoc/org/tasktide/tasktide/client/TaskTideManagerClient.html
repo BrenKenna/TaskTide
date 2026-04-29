@@ -99,7 +99,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(org.tasktide.tasktide.client.ClientConfigMap)" class="member-name-link">TaskTideManagerClient</a><wbr>(<a href="ClientConfigMap.html" title="class in org.tasktide.tasktide.client">ClientConfigMap</a>&nbsp;configMap)</code></div>
 <div class="col-last odd-row-color">
-<div class="block">Construct engine client</div>
+<div class="block">Construct manager client</div>
 </div>
 </div>
 </section>
@@ -125,12 +125,22 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Validate client arguments are configurable</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../core/manager/command/ManagerCommand.html" title="interface in org.tasktide.core.manager.command">ManagerCommand</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getManagerCommand()" class="member-name-link">getManagerCommand</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../core/manager/command/ManagerAction.html" title="enum class in org.tasktide.core.manager.command">ManagerAction</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAction()" class="member-name-link">getAction</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get <a href="../../core/manager/command/ManagerAction.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerAction</code></a></div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../core/manager/command/ManagerCommand.html" title="interface in org.tasktide.core.manager.command">ManagerCommand</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getManagerCommand()" class="member-name-link">getManagerCommand</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Fetch configured <a href="../../core/manager/command/ManagerCommand.html" title="interface in org.tasktide.core.manager.command"><code>ManagerCommand</code></a> to run,
   internally <a href="../../core/manager/command/CommandSpec.html" title="class in org.tasktide.core.manager.command"><code>CommandSpec</code></a> for peripheral
   parameters required outside of this <a href="../../core/manager/command/ManagerAction.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerAction</code></a>.makeComand()</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../core/manager/command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTarget()" class="member-name-link">getTarget</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get <a href="../../core/manager/command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../../core/manager/command/CommandSpec.html" title="class in org.tasktide.core.manager.command">CommandSpec</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#mapToCommandSpec()" class="member-name-link">mapToCommandSpec</a>()</code></div>
@@ -176,7 +186,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="&lt;init&gt;(org.tasktide.tasktide.client.ClientConfigMap)">
 <h3>TaskTideManagerClient</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">TaskTideManagerClient</span><wbr><span class="parameters">(<a href="ClientConfigMap.html" title="class in org.tasktide.tasktide.client">ClientConfigMap</a>&nbsp;configMap)</span></div>
-<div class="block">Construct engine client</div>
+<div class="block">Construct manager client</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>configMap</code> - </dd>
@@ -274,6 +284,17 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="getTarget()">
+<h3>getTarget</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../core/manager/command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command">ManagerTarget</a></span>&nbsp;<span class="element-name">getTarget</span>()</div>
+<div class="block">Get <a href="../../core/manager/command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="../../core/manager/command/ManagerTarget.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerTarget</code></a></dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="setAction(org.tasktide.core.manager.command.ManagerAction)">
 <h3>setAction</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAction</span><wbr><span class="parameters">(<a href="../../core/manager/command/ManagerAction.html" title="enum class in org.tasktide.core.manager.command">ManagerAction</a>&nbsp;action)</span></div>
@@ -281,6 +302,17 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>action</code> - </dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getAction()">
+<h3>getAction</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../../core/manager/command/ManagerAction.html" title="enum class in org.tasktide.core.manager.command">ManagerAction</a></span>&nbsp;<span class="element-name">getAction</span>()</div>
+<div class="block">Get <a href="../../core/manager/command/ManagerAction.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerAction</code></a></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><a href="../../core/manager/command/ManagerAction.html" title="enum class in org.tasktide.core.manager.command"><code>ManagerAction</code></a></dd>
 </dl>
 </section>
 </li>
