@@ -65,6 +65,24 @@ public class TaskTideWebApi {
     
     
     /**
+     * Construct with application config
+     * 
+     * @param host
+     * @param port
+     * @param basePath 
+     * @param shouldApplyOverrides 
+     */
+    public TaskTideWebApi(String host, int port, String basePath, boolean shouldApplyOverrides) {
+        this.host = host;
+        this.port = port;
+        this.basePath = basePath;
+        if ( shouldApplyOverrides ) {
+            this.applyOverrides();
+        }
+    }
+    
+    
+    /**
      * Construct with config
      * 
      * @param config 
