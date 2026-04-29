@@ -1,0 +1,5 @@
+NameServerLookups_1|nslookup|lifestylesports.com,easons.com,aerlingus.com
+NameServerLookups_2|nslookup|atu.ie,mtu.ie
+NameServerLookups_3|nslookup|tcd.ie,dcu.ie,tud.ie,ucc.ie
+NameServerLookups_4|nslookup|rte.ie,journal.ie,irishtime.com,independent.ie,irishexaminer.com
+NameServerLookups_5|nslookup|supervalu.ie,dunnestores.com,centra.ie,musgravegroup.com

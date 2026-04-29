@@ -16,9 +16,9 @@
 package org.tasktide.core.model.builders;
 
 import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.JobState;
 import org.tasktide.core.model.job_env.JobType;
+import org.tasktide.core.model.job_env.JobEnvironment;
 
 
 /**

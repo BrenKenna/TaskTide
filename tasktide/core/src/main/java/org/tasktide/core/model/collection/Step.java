@@ -97,8 +97,9 @@ public class Step implements TaskTideModel<Step> {
     private Workflow workflow;
     
     // Custom annotations
-    @Column("Annotations")
-    @JsonbProperty("Annotations")
+    @jakarta.persistence.Column(name = "Step Annotation")
+    @jakarta.nosql.Column("Step Annotation")
+    @JsonbProperty("Step Annotation")
     private CustomAnnotation anno;
     
     
@@ -170,7 +171,7 @@ public class Step implements TaskTideModel<Step> {
         @JsonbProperty("StepsToDo") int stepsToDo,
         @JsonbProperty("StepsError") int stepsError,
         @JsonbProperty("WorkflowId") String workflowId,
-        @JsonbProperty("Custom Annotation") CustomAnnotation anno
+        @JsonbProperty("Step Annotation") CustomAnnotation anno
     ) {
         this.stepId = stepId;
         this.stepName = stepName;
@@ -191,6 +192,7 @@ public class Step implements TaskTideModel<Step> {
      * @return {@link CustomAnnotation}
      */
     @Override
+    @JsonbProperty("Step Annotation")
     public CustomAnnotation getAnnotations() {
         return this.anno;
     }

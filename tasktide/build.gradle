@@ -46,7 +46,9 @@ subprojects {
         implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
 
         // Use JUnit Jupiter for testing.
-        testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+        testImplementation  platform("org.junit:junit-bom:5.9.3")
+        testImplementation  "org.junit.jupiter:junit-jupiter"
+        testRuntimeOnly     "org.junit.jupiter:junit-jupiter-engine"
         testImplementation 'org.jboss.weld:weld-junit5:4.0.3.Final'
         testImplementation 'org.apache.logging.log4j:log4j-api:2.20.0'
         testImplementation 'org.apache.logging.log4j:log4j-core:2.20.0'
@@ -85,6 +87,21 @@ subprojects {
 }
 
 
+// Force standard junit
+configurations.all {
+    resolutionStrategy {
+        force "org.junit:junit-bom:5.13.4"
+        force "org.junit.jupiter:junit-jupiter-api:5.13.4"
+        force "org.junit.jupiter:junit-jupiter-engine:5.13.4"
+        force "org.junit.jupiter:junit-jupiter-params:5.13.4"
+
+        force "org.junit.platform:junit-platform-engine:1.13.4"
+        force "org.junit.platform:junit-platform-launcher:1.13.4"
+        force "org.junit.platform:junit-platform-commons:1.13.4"
+    }
+}
+
+
 /**
  * Allow list of comma-separated tests to be excluded.
  *   /-> Tests in full class path format
@@ -118,6 +135,7 @@ project(":parser") {}
 project(":itemstore") {}
 project(":core") {}
 project(":engine") {}
+project(":api") {}
 project(":tasktide") {}
 
 task buildAll {
@@ -125,7 +143,8 @@ task buildAll {
               ':parser:build',
               ':itemstore:build', 
               ':core:build', 
-              'engine:build', 
+              ':engine:build',
+              ':api:build',
               'tasktide:build'
 }
 

@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.tasktide.core.model.job_env.metrics.MetricData;
-import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.core.model.job_env.metrics.ProfileData;
 
 

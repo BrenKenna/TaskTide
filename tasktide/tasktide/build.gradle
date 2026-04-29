@@ -37,6 +37,7 @@ dependencies {
     implementation  project(':itemstore')
     implementation  project(':core')
     implementation  project(':engine')
+    implementation  project(':api')
 
     // Command-line argument parser
     implementation  'info.picocli:picocli:4.7.7'
@@ -61,7 +62,7 @@ dependencies {
     implementation      'org.jboss.weld.se:weld-se-core:5.1.2.Final'
     implementation      'org.jboss.logging:jboss-logging:3.6.0.Final'
     implementation      'io.quarkus.arc:arc:3.11.1'
-    implementation      'io.smallrye.config:smallrye-config:3.13.2'
+    implementation      'io.smallrye.config:smallrye-config:3.17.2'
 
     // JPA
     implementation      "jakarta.persistence:jakarta.persistence-api:3.1.0"
