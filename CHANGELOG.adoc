@@ -19,7 +19,30 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [/]   9). Version-1 paper.
 
 
-=== 2). Bugs 
+=== 2). To Do
+
+
+==== a). Code ToDo
+
+- [] Embedded server on WebApi
+- [] WebAPi StepResources returning 415
+- [] ItemStore makes use of Linked Operation Map
+- [] Bucket mutex queue?
+- [] Verbose logging?
+
+
+
+==== b). Documentation
+
+- [] Adjust Engine README.md & UML for new design
+- [] Update Core README.md & UML with ManagerCommand
+- [] README.md & UML for Parser
+- [] README.md & UML for Mutex
+- [] README.md & UML for WebAPI
+
+
+
+=== 3). Bugs 
 
 
 === Web API
@@ -229,7 +252,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 
 
-=== 3). Code Resolves
+=== 4). Code Resolves
 
 - [X] Formatting of help splash text.
 - [X] Hangs if a folder is not writable - at least repository file path.
