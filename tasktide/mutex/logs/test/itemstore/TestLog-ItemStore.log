@@ -9011,3 +9011,316 @@ java.nio.file.NoSuchFileException: C:\Users\Brendan Kenna\GitHub\TaskTide\taskti
 
 ---------------- Terminating Complex Mutex Orchestrator Tests ----------------
 
+2026-05-05 09:24:02.696 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.setUpClass ]: 
+
+---------------- Initiating Complex Mutex Orchestrator Tests ----------------
+
+2026-05-05 09:24:02.721 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.setUpClass ]: Displaying config state:	'true'
+2026-05-05 09:24:02.734 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-05-05 09:24:02.739 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: 
+
+================ Scalable 50 Multiple Threads Form Mutex Queue Test ================
+
+2026-05-05 09:24:02.739 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: Configuring MutexOrchestrator
+2026-05-05 09:24:04.183 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: Wiring Spies to Logging
+2026-05-05 09:24:04.251 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: Executing workload with N workers = '50'
+2026-05-05 09:24:04.443 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:04.443 INFO  [ pool-2-thread-6 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'2ba303b4-7d7a-4019-afc1-3cd1f71101fa'
+2026-05-05 09:24:04.443 INFO  [ pool-2-thread-29 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'fc8859f6-561c-4894-b9c9-35b8a9aea4bf'
+2026-05-05 09:24:04.460 INFO  [ pool-2-thread-47 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'f9c22e0f-15e9-444f-931f-87445c0966f5'
+2026-05-05 09:24:04.462 INFO  [ pool-2-thread-18 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'34c93744-15af-41c7-853f-d58d16a111eb'
+2026-05-05 09:24:04.464 INFO  [ pool-2-thread-37 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'f55d5e39-0b39-440f-9053-f7f317079b5c'
+2026-05-05 09:24:04.472 INFO  [ pool-2-thread-7 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'6cb6cbc4-4371-4647-a299-0cb4bc0193d4'
+2026-05-05 09:24:04.482 INFO  [ pool-2-thread-42 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'6f0334ec-54cb-4955-aa2c-40aeb7be750e'
+2026-05-05 09:24:04.482 INFO  [ pool-2-thread-38 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'21a9a58a-1be4-43cc-bd39-20224da3b7f9'
+2026-05-05 09:24:04.497 INFO  [ pool-2-thread-35 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'4c5e7799-56c2-41a2-b991-fae015b90760'
+2026-05-05 09:24:04.502 INFO  [ pool-2-thread-39 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'fe2d90e3-d92b-447c-bfef-4b0f48081939'
+2026-05-05 09:24:04.506 INFO  [ pool-2-thread-24 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'c28d705f-aa81-4716-9d13-8306b43ef5cb'
+2026-05-05 09:24:04.517 INFO  [ pool-2-thread-20 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'7839f6d0-86c7-4615-8522-3eb1fe76f945'
+2026-05-05 09:24:04.532 INFO  [ pool-2-thread-4 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'b6f1b07a-097d-4481-b670-4cb0c24a6bb5'
+2026-05-05 09:24:04.532 INFO  [ pool-2-thread-11 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'7840960f-62ad-4ef5-a2b8-41b845f0d9e7'
+2026-05-05 09:24:04.535 INFO  [ pool-2-thread-40 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'b6a308f3-f56e-446f-a527-0cddb4207e2f'
+2026-05-05 09:24:04.539 INFO  [ pool-2-thread-33 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'df5ab3c7-bb4c-41ae-9683-cb350e87c58a'
+2026-05-05 09:24:04.549 INFO  [ pool-2-thread-48 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'd15d6b0c-4b14-4e11-b499-1c2c85496be8'
+2026-05-05 09:24:04.555 INFO  [ pool-2-thread-34 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'df75cb5e-2c71-45e2-add3-f8492164104f'
+2026-05-05 09:24:04.558 INFO  [ pool-2-thread-14 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'36ca7ff9-3aa9-495d-ae4d-097421a28971'
+2026-05-05 09:24:04.567 INFO  [ pool-2-thread-8 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'cc1d0944-422d-4807-9bcc-389785bf44a8'
+2026-05-05 09:24:04.568 INFO  [ pool-2-thread-2 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'c88a2e44-67a2-4519-8a5e-d647ee0180e9'
+2026-05-05 09:24:04.568 INFO  [ pool-2-thread-25 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'f3ad27fa-7b39-492b-a6e3-ad27adc65810'
+2026-05-05 09:24:04.569 INFO  [ pool-2-thread-46 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'27f728a1-f2ea-4d0e-8b99-0b165a3fb033'
+2026-05-05 09:24:04.572 INFO  [ pool-2-thread-21 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'97f99a34-5443-47d6-aca2-6839322e63de'
+2026-05-05 09:24:04.587 INFO  [ pool-2-thread-23 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'4571f245-822e-403b-9a68-8f66327f2074'
+2026-05-05 09:24:04.600 INFO  [ pool-2-thread-10 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'a75a2193-3b02-4445-bcb7-03b3f7f3f20c'
+2026-05-05 09:24:04.604 INFO  [ pool-2-thread-17 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'db058cbe-3eb1-4136-8209-fd5842d7baa5'
+2026-05-05 09:24:04.605 INFO  [ pool-2-thread-45 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'3b2538b8-0f56-461d-9468-235564ce19d6'
+2026-05-05 09:24:04.606 INFO  [ pool-2-thread-19 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'8f0771d0-cb07-49f1-8f40-7217b0fa3872'
+2026-05-05 09:24:04.610 INFO  [ pool-2-thread-31 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'b3914adf-7747-4dcd-85fd-ac0220eb15bd'
+2026-05-05 09:24:04.610 INFO  [ pool-2-thread-41 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'd547d1bd-a5cf-40c5-9f8b-a960a9a41657'
+2026-05-05 09:24:04.610 INFO  [ pool-2-thread-50 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'8cff79a1-33ab-4040-885e-26c098d911ef'
+2026-05-05 09:24:04.615 INFO  [ pool-2-thread-44 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'aa439638-bdb3-455f-9b3a-cb1e1ca72f5f'
+2026-05-05 09:24:04.618 INFO  [ pool-2-thread-5 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'ac9731fd-3937-4711-89d0-7a324452540e'
+2026-05-05 09:24:04.626 INFO  [ pool-2-thread-49 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'678d9cc0-3036-4173-805a-dcf896b71411'
+2026-05-05 09:24:04.626 INFO  [ pool-2-thread-36 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'ecb77bc9-6e02-4cc8-a4a4-74d93d82ea6e'
+2026-05-05 09:24:04.631 INFO  [ pool-2-thread-22 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'35afc74c-d386-4ff5-ba5b-da9de7559fed'
+2026-05-05 09:24:04.643 INFO  [ pool-2-thread-15 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'944356ef-51a1-4c2a-9728-0d8c40be2f62'
+2026-05-05 09:24:04.649 INFO  [ pool-2-thread-16 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'3b138bbc-8b31-4617-96c4-f51adf9b8879'
+2026-05-05 09:24:04.652 INFO  [ pool-2-thread-32 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'388a3c26-1dec-477f-a651-eddecd88c375'
+2026-05-05 09:24:04.652 INFO  [ pool-2-thread-9 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'9ae67614-a729-420d-90c0-c242fbd291ae'
+2026-05-05 09:24:04.666 INFO  [ pool-2-thread-3 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'b0360e9f-d65e-4a17-8b75-5d8116b43521'
+2026-05-05 09:24:04.676 INFO  [ pool-2-thread-26 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'e7ee89d7-e01f-485b-9cb2-57a418ccc540'
+2026-05-05 09:24:04.678 DEBUG [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:04.679 INFO  [ pool-2-thread-27 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'bb97573c-2c9a-462d-ab1e-ad55388cbc20'
+2026-05-05 09:24:04.680 INFO  [ pool-2-thread-12 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'6200189e-b8aa-4ef9-b33f-6dc127c60819'
+2026-05-05 09:24:04.700 INFO  [ pool-2-thread-43 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'6a561f32-5e42-47bb-99b6-c0782eb3fe2c'
+2026-05-05 09:24:04.705 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:04.712 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:04.724 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for NFS lock for:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:04.880 DEBUG [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-05-05 09:24:04.882 WARN  [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-05-05 09:24:05.095 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:05.096 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:05.324 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:05.324 DEBUG [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:05.324 DEBUG [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:05.344 DEBUG [ pool-2-thread-13 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:05.366 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.MutexTestUtils.lambda$wireRealMethodsWithLogging$3 ]: NFS acquire -> null
+2026-05-05 09:24:05.367 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:05.367 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:05.646 DEBUG [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:05.664 DEBUG [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-05-05 09:24:05.665 WARN  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-05-05 09:24:06.044 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:06.044 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:06.045 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:06.048 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:06.049 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:06.273 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:06.273 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:06.671 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:06.672 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:06.914 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.MutexTestUtils.lambda$wireRealMethodsWithLogging$4 ]: FileChannel acquire -> Mutex{id=7e4d9b3a-fea2-4b37-98fe-8aeae1571fed, lockDir=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex, lockFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Host-Lock\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136.lock, retryInterval=PT0.163S, staleFileThreshold=PT10S, startJitter=PT0.143S, endJitter=PT0.455S, state=LOCKED}
+2026-05-05 09:24:06.916 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:06.917 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'7e4d9b3a-fea2-4b37-98fe-8aeae1571fed'
+2026-05-05 09:24:06.924 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:06.924 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:06.952 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7 ]: Lock acquired:
+'{
+    "Election File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\Queue\\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock",
+    "End Jitter": "PT0.455S",
+    "Host File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\Host-Lock\\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136.lock",
+    "Id": "7e4d9b3a-fea2-4b37-98fe-8aeae1571fed",
+    "Lock Dir": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.163S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.143S",
+    "Timestamp": 1777969444428
+}'
+2026-05-05 09:24:06.954 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7 ]: wairing
+2026-05-05 09:24:07.250 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:07.251 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:07.333 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7 ]: releasing lock
+2026-05-05 09:24:07.334 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: Releasing active lock
+2026-05-05 09:24:07.334 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing FileChannel mutex
+2026-05-05 09:24:07.419 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:07.420 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:07.582 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.MutexTestUtils.lambda$wireRealMethodsWithLogging$6 ]: FileChannel release -> Mutex{id=7e4d9b3a-fea2-4b37-98fe-8aeae1571fed, lockDir=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex, lockFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Host-Lock\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136.lock, retryInterval=PT0.163S, staleFileThreshold=PT10S, startJitter=PT0.143S, endJitter=PT0.455S, state=LOCKED}
+2026-05-05 09:24:07.598 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseActiveLock ]: Releasing NFS mutex:
+'{
+    "Election File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\Queue\\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock",
+    "End Jitter": "PT0.455S",
+    "Host File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\Host-Lock\\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136.lock",
+    "Id": "7e4d9b3a-fea2-4b37-98fe-8aeae1571fed",
+    "Lock Dir": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "LOCKED",
+    "Retry Interval": "PT0.163S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.143S",
+    "Timestamp": 1777969444428
+}'
+2026-05-05 09:24:07.746 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:07.747 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:08.139 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:08.154 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:08.396 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:08.397 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:08.606 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:08.607 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:09.031 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:09.032 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:09.426 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Recasting ballot:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:09.660 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:09.661 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:10.005 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:10.007 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:10.286 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:10.288 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:10.451 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:10.453 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:10.864 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:10.866 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:11.210 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:11.212 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:11.415 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:11.415 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:11.731 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:11.732 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:12.146 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:12.165 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:12.599 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:12.600 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:12.765 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:12.766 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:13.100 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:13.101 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:13.549 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Recasting ballot:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:14.007 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:14.007 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:14.323 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:14.325 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:14.500 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Leader passed TTL check-in:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:14.501 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Resetting predecessor:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:14.805 WARN  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.evaluateLeaderTtl ]: Removing below stale leader status:	'true'
+
+'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Queue\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_7e4d9b3a-fea2-4b37-98fe-8aeae1571fed.lock'
+2026-05-05 09:24:15.094 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.096 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.284 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.286 DEBUG [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.287 DEBUG [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.302 DEBUG [ pool-2-thread-30 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.315 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.MutexTestUtils.lambda$wireRealMethodsWithLogging$3 ]: NFS acquire -> Mutex{id=7e4d9b3a-fea2-4b37-98fe-8aeae1571fed, lockDir=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex, lockFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Host-Lock\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136.lock, retryInterval=PT0.163S, staleFileThreshold=PT10S, startJitter=PT0.143S, endJitter=PT0.455S, state=LOCKED}
+2026-05-05 09:24:15.315 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.MutexTestUtils.lambda$wireRealMethodsWithLogging$5 ]: NFS release -> Mutex{id=7e4d9b3a-fea2-4b37-98fe-8aeae1571fed, lockDir=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex, lockFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Host-Lock\1777969444422.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136.lock, retryInterval=PT0.163S, staleFileThreshold=PT10S, startJitter=PT0.143S, endJitter=PT0.455S, state=LOCKED}
+2026-05-05 09:24:15.316 INFO  [ pool-2-thread-13 -> org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7 ]: lock released
+2026-05-05 09:24:15.316 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.316 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.605 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:15.624 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-05-05 09:24:15.625 WARN  [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-05-05 09:24:15.819 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:15.820 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:15.897 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.897 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:15.897 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:16.192 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.193 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.194 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.210 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.218 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.MutexTestUtils.lambda$wireRealMethodsWithLogging$3 ]: NFS acquire -> null
+2026-05-05 09:24:16.219 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.219 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.620 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:16.640 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-05-05 09:24:16.642 WARN  [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-05-05 09:24:16.755 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.MutexTestUtils.lambda$wireRealMethodsWithLogging$4 ]: FileChannel acquire -> Mutex{id=98b24122-4083-428e-8d7c-1145fbe4b48d, lockDir=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex, lockFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock, hostFile=C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\Host-Lock\1777969444711.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136.lock, retryInterval=PT0.163S, staleFileThreshold=PT10S, startJitter=PT0.143S, endJitter=PT0.455S, state=HOST_LOCKED}
+2026-05-05 09:24:16.756 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: File Channel Lock acquired for:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:16.759 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Lock successful for:	'd173db9d-528d-41a7-9566-2b7ded65c3b0'
+2026-05-05 09:24:16.780 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7 ]: Lock acquired:
+'{
+    "Election File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\Queue\\1777969444711.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136_98b24122-4083-428e-8d7c-1145fbe4b48d.lock",
+    "End Jitter": "PT0.455S",
+    "Host File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\Host-Lock\\1777969444711.192-168-0-160_81ff8666-c319-4451-b3e3-af9475b3d136.lock",
+    "Id": "98b24122-4083-428e-8d7c-1145fbe4b48d",
+    "Lock Dir": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex",
+    "Lock File": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\mutex\\ItemStore-Mutex\\lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.163S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.143S",
+    "Timestamp": 1777969444712
+}'
+2026-05-05 09:24:16.780 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7 ]: wairing
+2026-05-05 09:24:16.826 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.827 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.828 INFO  [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.877 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp ]: Cleaning up lock file:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.878 WARN  [ pool-2-thread-28 -> org.tasktide.mutex.utils.FileUtility.dropFile ]: Warning provided path does not exist, unable to delete:
+'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock'
+
+2026-05-05 09:24:16.878 WARN  [ pool-2-thread-28 -> org.tasktide.mutex.utils.FileUtility.dropFile ]: Warning could not delete target file, displaying error:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock'
+java.nio.file.NoSuchFileException: C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at sun.nio.fs.WindowsFileSystemProvider.implDelete(WindowsFileSystemProvider.java:275) ~[?:?]
+	at sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105) ~[?:?]
+	at java.nio.file.Files.delete(Files.java:1152) ~[?:?]
+	at org.tasktide.mutex.utils.FileUtility.dropFile(FileUtility.java:132) ~[main/:?]
+	at org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp(MutexOrchestrator.java:419) ~[main/:?]
+	at org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock(MutexOrchestrator.java:236) ~[main/:?]
+	at org.tasktide.mutex.orchestrator.MutexOrchestrator.acquireLock(MutexOrchestrator.java:135) ~[main/:?]
+	at org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7(MutexTestUtils.java:299) ~[test/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) [?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:264) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) [?:?]
+	at java.lang.Thread.run(Thread.java:842) [?:?]
+2026-05-05 09:24:16.889 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp ]: Cleaning up host file:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.897 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp ]: Cleaning up confirm ballot file:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:16.900 DEBUG [ pool-2-thread-28 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp ]: Cleaning up election file:	'98b24122-4083-428e-8d7c-1145fbe4b48d'
+2026-05-05 09:24:17.069 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:17.070 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:17.177 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7 ]: releasing lock
+2026-05-05 09:24:17.177 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.releaseLock ]: No active mutex detected
+2026-05-05 09:24:17.178 INFO  [ pool-2-thread-30 -> org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7 ]: lock released
+2026-05-05 09:24:17.486 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:17.487 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:17.487 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:17.514 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Mutex written for:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:17.529 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.MutexTestUtils.lambda$wireRealMethodsWithLogging$3 ]: NFS acquire -> null
+2026-05-05 09:24:17.531 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: NFS Lock acquired for:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:17.531 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Confirming leadership:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:17.734 DEBUG [ pool-2-thread-43 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Initializing mutex:	'6a561f32-5e42-47bb-99b6-c0782eb3fe2c'
+2026-05-05 09:24:17.753 DEBUG [ pool-2-thread-43 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: Mutex initialized, inferring queue position
+2026-05-05 09:24:17.754 WARN  [ pool-2-thread-43 -> org.tasktide.mutex.strategy.ElectionStrategy.initMutex ]: No election files detected
+2026-05-05 09:24:18.039 INFO  [ pool-2-thread-43 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership acquired:	'6a561f32-5e42-47bb-99b6-c0782eb3fe2c'
+2026-05-05 09:24:18.040 INFO  [ pool-2-thread-43 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Verifying leadership:	'6a561f32-5e42-47bb-99b6-c0782eb3fe2c'
+2026-05-05 09:24:18.180 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.confirmLeader ]: Leadership confirmed:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:18.190 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Leadership confirmed:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:18.191 INFO  [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock ]: Waiting for FileChannel lock for:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:18.192 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp ]: Cleaning up lock file:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:18.193 WARN  [ pool-2-thread-1 -> org.tasktide.mutex.utils.FileUtility.dropFile ]: Warning provided path does not exist, unable to delete:
+'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock'
+
+2026-05-05 09:24:18.194 WARN  [ pool-2-thread-1 -> org.tasktide.mutex.utils.FileUtility.dropFile ]: Warning could not delete target file, displaying error:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock'
+java.nio.file.NoSuchFileException: C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\mutex\ItemStore-Mutex\lock-file.lock
+	at sun.nio.fs.WindowsException.translateToIOException(WindowsException.java:85) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:103) ~[?:?]
+	at sun.nio.fs.WindowsException.rethrowAsIOException(WindowsException.java:108) ~[?:?]
+	at sun.nio.fs.WindowsFileSystemProvider.implDelete(WindowsFileSystemProvider.java:275) ~[?:?]
+	at sun.nio.fs.AbstractFileSystemProvider.delete(AbstractFileSystemProvider.java:105) ~[?:?]
+	at java.nio.file.Files.delete(Files.java:1152) ~[?:?]
+	at org.tasktide.mutex.utils.FileUtility.dropFile(FileUtility.java:132) ~[main/:?]
+	at org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp(MutexOrchestrator.java:419) ~[main/:?]
+	at org.tasktide.mutex.orchestrator.MutexOrchestrator.performLock(MutexOrchestrator.java:236) ~[main/:?]
+	at org.tasktide.mutex.orchestrator.MutexOrchestrator.acquireLock(MutexOrchestrator.java:135) ~[main/:?]
+	at org.tasktide.mutex.MutexTestUtils.lambda$getLockReleaseLambda$7(MutexTestUtils.java:299) ~[test/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) [?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:264) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) [?:?]
+	at java.lang.Thread.run(Thread.java:842) [?:?]
+2026-05-05 09:24:18.196 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp ]: Cleaning up host file:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:18.203 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp ]: Cleaning up confirm ballot file:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:18.211 DEBUG [ pool-2-thread-1 -> org.tasktide.mutex.orchestrator.MutexOrchestrator.cleanUp ]: Cleaning up election file:	'e01add99-ec54-4cfe-a5ac-750d872dd39e'
+2026-05-05 09:24:18.214 ERROR [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: Test failed with error
+2026-05-05 09:24:18.218 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.scalableCanMultipleThreadsRunLockReleaseQueue ]: 
+
+================ Scalable Multiple Threads Form Mutex Queue Test  ================
+
+2026-05-05 09:24:18.225 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-05-05 09:24:18.247 INFO  [ Test worker -> org.tasktide.mutex.ComplexMutexOrchestratorTests.tearDownClass ]: 
+
+---------------- Terminating Complex Mutex Orchestrator Tests ----------------
+
+2026-05-05 09:24:18.260 INFO  [ pool-2-thread-43 -> org.tasktide.mutex.strategy.ElectionStrategy.waitUntilLeader ]: Leadership verified:	'6a561f32-5e42-47bb-99b6-c0782eb3fe2c'
+2026-05-05 09:24:18.261 DEBUG [ pool-2-thread-43 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: Active leader with Id:	'6a561f32-5e42-47bb-99b6-c0782eb3fe2c'
+2026-05-05 09:24:18.261 DEBUG [ pool-2-thread-43 -> org.tasktide.mutex.strategy.ElectionStrategy.apply ]: State set, writing mutex for:	'6a561f32-5e42-47bb-99b6-c0782eb3fe2c'

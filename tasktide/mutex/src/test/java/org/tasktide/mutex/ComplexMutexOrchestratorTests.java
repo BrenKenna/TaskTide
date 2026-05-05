@@ -15,9 +15,6 @@
  */
 package org.tasktide.mutex;
 
-import org.tasktide.mutex.actor.NfsMutexActor;
-import org.tasktide.mutex.actor.FileChannelActor;
-import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -53,6 +50,10 @@ import org.tasktide.mutex.utils.MutexFilesUtils;
 import org.tasktide.mutex.exceptions.MutexCheckedException;
 import org.tasktide.mutex.utils.MutexConstants;
 import org.tasktide.mutex.actor.MutexActor;
+
+import org.tasktide.mutex.actor.NfsMutexActor;
+import org.tasktide.mutex.actor.FileChannelActor;
+import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 
 
 /**
