@@ -6068,3 +6068,42 @@ java.lang.NullPointerException: Cannot invoke "java.security.Principal.getName()
 2026-05-06 17:22:12 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
 2026-05-06 17:22:13 INFO  [ jetty-http-server-9 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
 2026-05-06 17:22:20 INFO  [ jetty-http-server-1 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-06 17:23:33 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-06 17:23:34 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-06 17:23:34 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-06 17:23:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 9b9404f1-5ae3-4bdd-82b8-c467b64ff5e4 initialized
+2026-05-06 17:23:47 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-06 17:23:47 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-06 17:23:47 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-06 17:23:47 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-06 17:23:48 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.webServerPathsArePreviliged ]: 
+
+================ Web Server Paths Are Previliged ================
+
+2026-05-06 17:23:48 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.webServerPathsArePreviliged ]: TaskTide web URL:	'http://localhost:8080//'
+2026-05-06 17:23:50 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-12.0.7; built: 2024-02-29T21:19:41.771Z; git: c89aca8fd34083befd79f328a3b8b6ffff04347e; jvm 17.0.12+8-LTS-286
+2026-05-06 17:23:50 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@78340041{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-06 17:23:50 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started oejs.Server@4de14c58{STARTING}[12.0.7,sto=0] @18778ms
+2026-05-06 17:23:50 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.webServerPathsArePreviliged ]: Server status:	'STARTED'
+2026-05-06 17:23:50 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.webServerPathsArePreviliged ]: Sending POST request to:	'localhost:///services/step/add-step'
+2026-05-06 17:23:50 INFO  [ jetty-http-server-9 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-06 17:23:50 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.webServerPathsArePreviliged ]: Logging response status:	'401'
+2026-05-06 17:23:50 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.webServerPathsArePreviliged ]: 
+
+================ Web Server Paths Are Previliged ================
+
+2026-05-06 17:23:50 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 9b9404f1-5ae3-4bdd-82b8-c467b64ff5e4 shut down

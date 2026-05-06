@@ -171,7 +171,7 @@ public class TaskTideWebApiTest {
         .post(Entity.entity(step, MediaType.APPLICATION_JSON));
         LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
         
-        LOGGER.info("\n\n================ Can Start Web Server ================\n");
+        LOGGER.info("\n\n================= Can Start Web Server =================\n");
     }
     
     
