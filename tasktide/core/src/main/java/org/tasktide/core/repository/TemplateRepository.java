@@ -140,7 +140,7 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
     @Override
     public boolean deleteModel(String id) {
         template.delete(COLLECTION_CLASS, id);
-        return findById(id).isPresent();
+        return findById(id).isEmpty();
     }
 
     

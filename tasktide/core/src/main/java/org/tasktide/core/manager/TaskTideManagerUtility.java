@@ -49,12 +49,28 @@ public class TaskTideManagerUtility {
     
     // Attributes
     private static final Logger LOGGER = LogManager.getLogger(TaskTideManagerUtility.class);
-    private static final String STEP_ID = "Step-" + Utils.generateSalt();
-    private static final String WORKFLOW_ID = "Workflow-" + Utils.generateSalt();
+    private static String STEP_ID = "Step-" + Utils.generateSalt();
+    private static String WORKFLOW_ID = "Workflow-" + Utils.generateSalt();
     
     // Perhaps written to a file instead?
     private static final String JOB_ENVIRONMENT_ID = "JobEnvironment-" + Utils.generateSalt();
 
+    
+    public static void updateStepId() {
+        STEP_ID = "Step-" + Utils.generateSalt();
+    }
+    
+    
+    public static void updateWorkflowId() {
+        WORKFLOW_ID = "Workflow-" + Utils.generateSalt();
+    }
+    
+    
+    public static void updateStepWorkflowIds() {
+        updateStepId();
+        updateWorkflowId();
+    }
+    
     
     /**
      * Validate delimiter
@@ -103,6 +119,19 @@ public class TaskTideManagerUtility {
      */
     public static void configureNewStep(String stepName) {
         Step step = BuilderUtility.buildStep(STEP_ID, stepName);
+        handleWorkflowForStep(step);
+        try {
+            TaskTideServiceManager.fetchStepService().appendModel(step);
+        }
+        catch (Exception ex) {
+            LOGGER.warn("Unable to append step. Displaying exception\n", ex);
+        }
+    }
+    
+    
+    public static void configureNewStepNewId(String stepName) {
+        updateStepWorkflowIds();
+        Step step = BuilderUtility.buildStep(stepName);
         handleWorkflowForStep(step);
         try {
             TaskTideServiceManager.fetchStepService().appendModel(step);

@@ -63,6 +63,9 @@ public class TaskTideWebApiTest {
     private SeContainer container;
     private Template template;
     
+    private final Object webApiLock = new Object();
+    private volatile boolean running = true;
+    
     public TaskTideWebApiTest() {
     }
     
@@ -91,20 +94,34 @@ public class TaskTideWebApiTest {
     }
 
     
+    /**
+     * Blocks main thread until stopped
+     * 
+     */
+    private void blockMain() {
+        synchronized ( this.webApiLock ) {
+            while ( true ) {
+                try {
+                    this.webApiLock.wait();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+        }
+    }
     
     @Test
     @Order(0)
     public void canReadConfigMap() {
     
         LOGGER.info("\n\n================ Can Read Web API Config ================\n");
-        
         Config config = ConfigProvider.getConfig();
         TaskTideWebApi webApi = new TaskTideWebApi(config);
         
         LOGGER.info("TaskTide web URL:\t'{}'", webApi.getWebUri());
         webApi.configureServer();
         ResourceConfig rc = webApi.getResourceConfig();
-        
         
         int counter = 0;
         for ( String name : config.getPropertyNames() ) {
@@ -146,13 +163,84 @@ public class TaskTideWebApiTest {
         Step step = BuilderUtility.buildStep("Test Step");
         Client client = ClientBuilder.newClient();
         WebTarget target = client.target("http://localhost:8080/services/step/add-step");
-        LOGGER.info("Sending POST request to:\t'{}{}'", target.getUri().getHost(), target.getUri().getPath());
+        LOGGER.info("Sending POST request to:\t'{}://{}'", target.getUri().getHost(), target.getUri().getPath());
         Response resp = target.request(MediaType.APPLICATION_JSON)
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(step, MediaType.APPLICATION_JSON));
         LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
+        
+        LOGGER.info("\n\n================ Can Start Web Server ================\n");
+    }
+    
+    
+    
+    @Test
+    @Order(2)
+    public void webServerPathsArePreviliged() {
+    
+        LOGGER.info("\n\n================ Web Server Paths Are Previliged ================\n");
+        
+        Config config = ConfigProvider.getConfig();
+        TaskTideWebApi webApi = new TaskTideWebApi(config);
+        
+        LOGGER.info("TaskTide web URL:\t'{}'", webApi.getWebUri());
+        webApi.configureServer();
+        ResourceConfig rc = webApi.getResourceConfig();
+        
+        boolean serverStarted = webApi.startWebServer();
+        while ( !webApi.getState().equals("STARTED") ) {
+            LOGGER.info("Waiting for web server to start");
+        }
+        LOGGER.info("Server status:\t'{}'", webApi.getState());
+        
+        
+        
+        String bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
+        Step step = BuilderUtility.buildStep("Test Step");
+        Client client = ClientBuilder.newClient();
+        WebTarget target = client.target("http://localhost:8080/services/step/add-step");
+        LOGGER.info("Sending POST request to:\t'{}://{}'", target.getUri().getHost(), target.getUri().getPath());
+        Response resp = target.request(MediaType.APPLICATION_JSON)
+                .header("User-Agent", "JUnit-Test")
+                .header("X-Forwarded-For", "127.0.0.1")
+        .post(Entity.entity(step, MediaType.APPLICATION_JSON));
+        LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
+        
+        LOGGER.info("\n\n================ Web Server Paths Are Previliged ================\n");
+    }
+    
+    
+    @Test
+    @Order(3)
+    public void canStartWebService() {
+    
+        LOGGER.info("\n\n================ Can Start Web Server ================\n");
+        
+        Config config = ConfigProvider.getConfig();
+        TaskTideWebApi webApi = new TaskTideWebApi(config);
+        
+        LOGGER.info("TaskTide web URL:\t'{}'", webApi.getWebUri());
+        webApi.configureServer();
+        ResourceConfig rc = webApi.getResourceConfig();
+        
+        boolean serverStarted = webApi.startWebServer();
+        while ( !webApi.getState().equals("STARTED") ) {
+            LOGGER.info("Waiting for web server to start");
+        }
+        LOGGER.info("Server status:\t'{}'", webApi.getState());
+        
+        
+        
+        // Shutdown hook
+        Runtime.getRuntime().addShutdownHook( new Thread( () -> {
+            LOGGER.info("Shutdown signal received, shutting down TaskTide-WebApi server");
+            webApi.stopServer();
+        }));
+        
+        // Wait until stopped
+        this.blockMain();
         
         LOGGER.info("\n\n================ Can Start Web Server ================\n");
     }

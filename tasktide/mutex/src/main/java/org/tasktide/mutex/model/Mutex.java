@@ -340,8 +340,6 @@ public class Mutex {
     }
     
     
-    
-    
     /**
      * Represent as string
      * 

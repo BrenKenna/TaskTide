@@ -146,7 +146,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
             elm -> entityManager.remove(elm)
         );
         tx.commit();
-        return result.isPresent();
+        return result.isEmpty();
     }
 
     

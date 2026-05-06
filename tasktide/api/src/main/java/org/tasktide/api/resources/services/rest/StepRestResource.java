@@ -104,15 +104,19 @@ public class StepRestResource extends TaskTideRestApi {
         String ip = reqHeader.getHeaderString("X-Forwarded-For");
         String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
-            "Adding new Step request by user '{}' from '{}' using '{}':\n\n'{}'",
-            securityContext.getUserPrincipal().getName(), ip, userAgent, step.toJsonDoc()
+            "Add Step request recieved from '{}', '{}' from user '{}':\n\n'{}'",
+            ip, userAgent, securityContext.getUserPrincipal().getName(), step
         );
+        
         
         // Role can be configured
         if ( !WebApiUtils.checkSecurityContext(securityContext, "user") ) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
-
+        LOGGER.info(
+            "Adding new Step request by user '{}' from '{}' using '{}':\n\n'{}'",
+            securityContext.getUserPrincipal().getName(), ip, userAgent, step.toJsonDoc()
+        );
         
         // Add step
         if ( stepService.appendModel(step) != null ) {
@@ -149,14 +153,18 @@ public class StepRestResource extends TaskTideRestApi {
         String ip = reqHeader.getHeaderString("X-Forwarded-For");
         String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
-            "Adding new Step request by user '{}' from '{}' using '{}'",
-            securityContext.getUserPrincipal().getName(), ip, userAgent
+            "Get Step request recieved from '{}', '{}':\n\n'{}'",
+            ip, userAgent
         );
         
         // Role can be configured
         if ( !WebApiUtils.checkSecurityContext(securityContext, "user") ) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
+        LOGGER.info(
+            "Adding new Step request by user '{}' from '{}' using '{}'",
+            securityContext.getUserPrincipal().getName(), ip, userAgent
+        );
         
         // Validate input
         if ( steps == null ) {
@@ -198,15 +206,15 @@ public class StepRestResource extends TaskTideRestApi {
         List<Step> result;
         String ip = reqHeader.getHeaderString("X-Forwarded-For");
         String userAgent = reqHeader.getHeaderString("User-Agent");
-        LOGGER.info(
-            "Adding new Step request by user '{}' from '{}' using '{}':\t'{}'",
-            securityContext.getUserPrincipal().getName(), ip, userAgent, stepName
-        );
         
         // Role can be configured
         if ( !WebApiUtils.checkSecurityContext(securityContext, "user") ) {
             return Response.status(Response.Status.FORBIDDEN).build();
         }
+        LOGGER.info(
+            "Create named Step '{}' request by user from '{}' using '{}':\t'{}'",
+            stepName, ip, userAgent, stepName
+        );
         
         // Validate query params
         if ( stepName == null ) {
@@ -214,8 +222,9 @@ public class StepRestResource extends TaskTideRestApi {
         }
 
         // Fetch workload if present
-        TaskTideManagerUtility.configureNewStep(stepName);
+        TaskTideManagerUtility.configureNewStepNewId(stepName);
         result = stepService.viewByField("StepName", stepName);
+        LOGGER.info("Verifying creation of below step:\n'{}'", result);
         if ( result == null ) {
             String msg = String.format(
                 "Could not verify creation of Step:\t'%s'",
@@ -277,6 +286,7 @@ public class StepRestResource extends TaskTideRestApi {
         if ( id != null ) {
             Step step = stepService.fetchById(id);
             if ( step != null ) {
+                LOGGER.info("Step '{}' found matching '{}'", step.getStepName(), id);
                 return Response.ok(step).build();
             }
             String msg = String.format("No Step found for Id:\t'%s'", id);
@@ -353,8 +363,8 @@ public class StepRestResource extends TaskTideRestApi {
         String ip = reqHeader.getHeaderString("X-Forwarded-For");
         String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
-            "Get Step request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
+            "Drop Step request recieved for Step '{}' from '{}', '{}':\n\n'{}'",
+            id, ip, userAgent
         );
         
         // Role can be configured
@@ -369,10 +379,12 @@ public class StepRestResource extends TaskTideRestApi {
         
         // Drop step
         if ( stepService.dropById(id) ) {
+            LOGGER.info("Droped step matching id:\t'{}'", id);
             return Response.ok("Step deleted").build();
         }
         else {
             String msg = String.format("Server unable to verify deletion of Step:\t'%s'", id);
+            LOGGER.info(msg);
             return Response.status(500, msg).build();
         }
     }

@@ -28,6 +28,7 @@ import org.eclipse.microprofile.config.ConfigProvider;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
+import org.tasktide.api.jwt.JwtRequestFilter;
 
 
 
@@ -136,6 +137,7 @@ public class TaskTideWebApi {
             .packages("org.tasktide.api.resources")
         ;
         resourceConfig.register(JsonBindingFeature.class);
+        resourceConfig.register(JwtRequestFilter.class);
         //resourceConfig.register(ComponentProvider.class);
         //resourceConfig.register(CdiSeInjectionManagerFactory.class);
         
