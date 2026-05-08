@@ -49,6 +49,15 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 - [/] Unit test coverage of REST endpoints
 
+- [] Metrics endpoint
+--
+        - [] "/metrics?data=x,y,z"
+        - [] Query parmeter list
+        - [] MetricResponse of Hostname, Epoch Timestamp, and Map of String, Value
+        - [] Use StatisticsHandler
+        - [] /metrics?data=health returns server state
+--
+
 - [/] General using of the WebAPI
 --
         - [X] Starting, stopping and logging all clear
