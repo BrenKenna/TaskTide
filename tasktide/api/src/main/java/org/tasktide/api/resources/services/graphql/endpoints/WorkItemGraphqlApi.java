@@ -61,7 +61,7 @@ public class WorkItemGraphqlApi {
      * @param query
      * @return {@link WorkItem}
      */
-    @Query("search-workitem")
+    @Query("searchWorkItem")
     public WorkItem getWorkItem(WorkItemInput query) {
         LOGGER.info(
             "GraphQL WorkItem Query from user '{}' for '{}' incoming from '{}', '{}'",
@@ -96,7 +96,7 @@ public class WorkItemGraphqlApi {
      * 
      * @param query 
      */
-    @Mutation("drop-workitem")
+    @Mutation("dropWorkItem")
     public void dropWorkItem(WorkItemInput query) {
         LOGGER.info(
             "GraphQL WorkItem Mutation from user '{}' for '{}' incoming from '{}', '{}'",

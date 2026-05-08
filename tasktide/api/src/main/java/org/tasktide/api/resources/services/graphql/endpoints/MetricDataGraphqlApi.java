@@ -60,7 +60,7 @@ public class MetricDataGraphqlApi {
      * @param query
      * @return {@link MetricData}
      */
-    @Query("search-metric-data")
+    @Query("searchMetricData")
     public MetricData getMetricData(MetricDataInput query) {
         LOGGER.info(
             "GraphQL MetricDatas Query from user '{}' for '{}' incoming from '{}', '{}'",
@@ -87,7 +87,7 @@ public class MetricDataGraphqlApi {
      * 
      * @param query 
      */
-    @Mutation("drop-metric-data")
+    @Mutation("dropMetricData")
     public void dropMetricData(MetricDataInput query) {
         LOGGER.info(
             "GraphQL MetricDatas Mutation from user '{}' for '{}' incoming from '{}', '{}'",

@@ -60,7 +60,7 @@ public class MetricProfileGraphqlApi {
      * @param query
      * @return {@link MetricProfile}
      */
-    @Query("search-metric-profile")
+    @Query("searchMetricProfile")
     public MetricProfile getMetricProfile(MetricProfileInput query) {
         LOGGER.info(
             "GraphQL MetricProfiles Query from user '{}' for '{}' incoming from '{}', '{}'",
@@ -87,7 +87,7 @@ public class MetricProfileGraphqlApi {
      * 
      * @param query 
      */
-    @Mutation("drop-metric-profile")
+    @Mutation("dropMetricProfile")
     public void dropMetricProfile(MetricProfileInput query) {
         LOGGER.info(
             "GraphQL MetricProfiles Mutation from user '{}' for '{}' incoming from '{}', '{}'",

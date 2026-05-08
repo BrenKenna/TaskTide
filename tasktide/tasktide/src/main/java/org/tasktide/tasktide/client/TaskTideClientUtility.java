@@ -43,6 +43,7 @@ import org.tasktide.tasktide.client.config.ManagerConfig;
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
 import org.tasktide.parser.ArgumentTree;
+import org.tasktide.tasktide.client.config.WebApiConfig;
 
 
 /**
@@ -115,7 +116,8 @@ public class TaskTideClientUtility {
             
             if ( flag ) {
                 provider.addBeanClass(
-                GlobalConfig.class, ManagerConfig.class, EngineConfig.class
+                GlobalConfig.class, ManagerConfig.class,
+                EngineConfig.class, WebApiConfig.class
                 );
             }
             

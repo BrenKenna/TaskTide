@@ -60,7 +60,7 @@ public class JobEnvironmentGraphqlApi {
      * @param query
      * @return {@link JobEnvironment}
      */
-    @Query("search-job-environment")
+    @Query("searchJobEnvironment")
     public JobEnvironment getJobEnvironment(JobEnvironmentInput query) {
         LOGGER.info(
             "GraphQL JobEnvironments Query from user '{}' for '{}' incoming from '{}', '{}'",
@@ -87,7 +87,7 @@ public class JobEnvironmentGraphqlApi {
      * 
      * @param query 
      */
-    @Mutation("drop-job-environment")
+    @Mutation("dropJobEnvironment")
     public void dropJobEnvironment(JobEnvironmentInput query) {
         LOGGER.info(
             "GraphQL JobEnvironments Mutation from user '{}' for '{}' incoming from '{}', '{}'",

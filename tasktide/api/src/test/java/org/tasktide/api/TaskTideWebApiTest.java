@@ -227,7 +227,7 @@ public class TaskTideWebApiTest {
         
         boolean serverStarted = webApi.startWebServer();
         while ( !webApi.getState().equals("STARTED") ) {
-            LOGGER.info("Waiting for web server to start");
+            LOGGER.info("Waiting for web server to start state:\n'{}'", webApi.getState());
         }
         LOGGER.info("Server status:\t'{}'", webApi.getState());
         

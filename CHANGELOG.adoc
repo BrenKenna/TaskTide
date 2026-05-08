@@ -53,6 +53,23 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [] Trial Hateoas resource envelope
 
 
+General usage check
+Add secure context
+GraphQL endpoints for individual and collection over CRUD
+Check JWT against KeyCloak
+
+Client failing to start web server with below
+
+'''
+
+org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type HttpServletRequest with qualifiers @Default
+  at injection point [BackedAnnotatedField] @Inject org.tasktide.api.resources.services.graphql.context.RequestContext.request
+  at org.tasktide.api.resources.services.graphql.context.RequestContext.request(RequestContext.java:0)
+
+
+'''
+
+
 ==== Mutex
 
 - [/] Slow queue for >30 elements

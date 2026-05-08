@@ -21,15 +21,19 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
-import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
-import org.tasktide.api.jwt.JwtRequestFilter;
+import org.glassfish.jersey.servlet.ServletContainer;
 
+import io.smallrye.graphql.entry.http.ExecutionServlet;
+
+import org.tasktide.api.jwt.JwtRequestFilter;
 
 
 /**
@@ -166,10 +170,27 @@ public class TaskTideWebApi {
         }
 
         // Start web server
-        this.server = JettyHttpContainerFactory
+        /*this.server = JettyHttpContainerFactory
             .createServer(this.getWebUri(), resourceConfig);
-
-        return this.server.isStarting() || this.server.isRunning();
+        */
+        this.server = new Server(this.port);
+        ServletContextHandler ctx = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        ctx.setContextPath("/");
+        
+        ServletHolder jerseyServlet = new ServletHolder(new ServletContainer(this.resourceConfig));
+        ctx.addServlet(jerseyServlet, this.basePath + "/api/*");
+        
+        ServletHolder graphqlServlet = new ServletHolder(new ExecutionServlet());
+        ctx.addServlet(graphqlServlet, this.basePath + "/graphql/*");
+        
+        this.server.setHandler(ctx);
+        try {
+            this.server.start();
+            return this.server.isStarting() || this.server.isRunning();
+        }
+        catch ( Exception ex ) {
+            return false;
+        }
     }
     
     

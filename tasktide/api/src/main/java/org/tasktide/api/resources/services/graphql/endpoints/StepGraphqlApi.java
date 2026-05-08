@@ -62,7 +62,7 @@ public class StepGraphqlApi {
      * @param query
      * @return {@link Step}
      */
-    @Query("search-step")
+    @Query("searchStep")
     public Step getStep(StepInput query) {
         LOGGER.info(
             "GraphQL Steps Query from user '{}' for '{}' incoming from '{}', '{}'",
@@ -97,7 +97,7 @@ public class StepGraphqlApi {
      * 
      * @param query 
      */
-    @Mutation("drop-step")
+    @Mutation("dropStep")
     public void dropStep(StepInput query) {
         LOGGER.info(
             "GraphQL Steps Mutation from user '{}' for '{}' incoming from '{}', '{}'",

@@ -2,3 +2,27 @@
 2026-04-03 12:36:34 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
 2026-04-03 12:36:41 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
 2026-04-03 12:36:41 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.jboss.weld.exceptions.UnsatisfiedResolutionException: WELD-001334: Unsatisfied dependencies for type GlobalConfig with qualifiers  '
+2026-05-08 13:16:50 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2026-05-08 13:16:50 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-05-08 13:16:57 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type HttpServletRequest with qualifiers @Default
+  at injection point [BackedAnnotatedField] @Inject org.tasktide.api.resources.services.graphql.context.RequestContext.request
+  at org.tasktide.api.resources.services.graphql.context.RequestContext.request(RequestContext.java:0)
+'
+2026-05-08 13:17:43 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2026-05-08 13:17:43 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-05-08 13:17:49 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type HttpServletRequest with qualifiers @Default
+  at injection point [BackedAnnotatedField] @Inject org.tasktide.api.resources.services.graphql.context.RequestContext.request
+  at org.tasktide.api.resources.services.graphql.context.RequestContext.request(RequestContext.java:0)
+'
+2026-05-08 13:19:01 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2026-05-08 13:19:01 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-05-08 13:19:07 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type HttpServletRequest with qualifiers @Default
+  at injection point [BackedAnnotatedField] @Inject org.tasktide.api.resources.services.graphql.context.RequestContext.request
+  at org.tasktide.api.resources.services.graphql.context.RequestContext.request(RequestContext.java:0)
+'
+2026-05-08 13:36:14 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2026-05-08 13:36:14 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-05-08 13:36:24 FATAL [ main -> org.tasktide.tasktide.TaskTide.main ]: Exiting on fatal error:	'org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type HttpServletRequest with qualifiers @Default
+  at injection point [BackedAnnotatedField] @Inject org.tasktide.api.resources.services.graphql.context.RequestContext.request
+  at org.tasktide.api.resources.services.graphql.context.RequestContext.request(RequestContext.java:0)
+'

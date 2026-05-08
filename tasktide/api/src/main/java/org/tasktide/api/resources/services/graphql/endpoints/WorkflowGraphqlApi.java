@@ -64,7 +64,7 @@ public class WorkflowGraphqlApi {
      * @param query
      * @return {@link Workflow}
      */
-    @Query("search-workflow")
+    @Query("searchWorkflow")
     public Workflow getWorkflow(WorkflowInput query) {
         LOGGER.info(
             "GraphQL Workflow Query from user '{}' for '{}' incoming from '{}', '{}'",
@@ -99,7 +99,7 @@ public class WorkflowGraphqlApi {
      * 
      * @param query 
      */
-    @Mutation("drop-workflow")
+    @Mutation("dropWorkflow")
     public void dropWorkflow(WorkflowInput query) {
         LOGGER.info(
             "GraphQL Workflow Mutation from user '{}' for '{}' incoming from '{}', '{}'",
