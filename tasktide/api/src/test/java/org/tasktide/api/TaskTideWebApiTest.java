@@ -23,6 +23,7 @@ import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -41,14 +42,21 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
+
 import org.tasktide.api.utils.WebApiUtils;
+
 import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.repository.RepositoryType;
 
 
 /**
- * 
+ * Suite of tests for {@link TaskTideWebApi} which
+ *  is the entry-point of the WebApi. Methods
+ *  here sanity check mounted endpoints for Auth,
+ *  and firing HTTP requests against. Distinct
+ *  over HTTP-Harness, as these relate to starting/stopping
+ *  server, and replicate client/browser etc
  *
  * @author Bren
  */
@@ -111,6 +119,12 @@ public class TaskTideWebApiTest {
         }
     }
     
+    
+    /**
+     * Tests configured properties are registered,
+     *  very handy for testing the degree of validity.
+     *  Could almost be its own suite
+     */
     @Test
     @Order(0)
     public void canReadConfigMap() {
@@ -137,7 +151,9 @@ public class TaskTideWebApiTest {
     }
     
     
-    
+    /**
+     * Tests that configured web server reaches a started state
+     */
     @Test
     @Order(1)
     public void canStartWebServer() {
@@ -175,12 +191,14 @@ public class TaskTideWebApiTest {
     }
     
     
-    
+    /**
+     * Tests that paths on web service are privileged
+     */
     @Test
     @Order(2)
-    public void webServerPathsArePreviliged() {
+    public void webServerPathsArePrevileged() {
     
-        LOGGER.info("\n\n================ Web Server Paths Are Previliged ================\n");
+        LOGGER.info("\n\n================ Web Server Paths Are Previleged ================\n");
         
         Config config = ConfigProvider.getConfig();
         TaskTideWebApi webApi = new TaskTideWebApi(config);
@@ -208,10 +226,14 @@ public class TaskTideWebApiTest {
         .post(Entity.entity(step, MediaType.APPLICATION_JSON));
         LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
         
-        LOGGER.info("\n\n================ Web Server Paths Are Previliged ================\n");
+        LOGGER.info("\n\n================ Web Server Paths Are Previleged ================\n");
     }
     
     
+    /**
+     * Tests web service operates indefinetely, for using web-browser
+     *  cURL requests etc
+     */
     @Test
     @Order(3)
     public void canStartWebService() {

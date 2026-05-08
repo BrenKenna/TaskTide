@@ -142,8 +142,8 @@ public class TaskTideWebApi {
         ;
         resourceConfig.register(JsonBindingFeature.class);
         resourceConfig.register(JwtRequestFilter.class);
-        //resourceConfig.register(ComponentProvider.class);
-        //resourceConfig.register(CdiSeInjectionManagerFactory.class);
+        // resourceConfig.register(ComponentProvider.class);
+        // resourceConfig.register(CdiSeInjectionManagerFactory.class);
         
         // Set Jersey properties
         this.config.getPropertyNames().forEach(
@@ -170,9 +170,6 @@ public class TaskTideWebApi {
         }
 
         // Start web server
-        /*this.server = JettyHttpContainerFactory
-            .createServer(this.getWebUri(), resourceConfig);
-        */
         this.server = new Server(this.port);
         ServletContextHandler ctx = new ServletContextHandler(ServletContextHandler.SESSIONS);
         ctx.setContextPath("/");

@@ -47,18 +47,26 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 === Web API
 
-- [] General using of the WebAPI - starting, stopping, logging etc
-- [] StepResource returning 415
-- [] Integration with Keycloak
+- [/] Unit test coverage of REST endpoints
+
+- [/] General using of the WebAPI
+--
+        - [X] Starting, stopping and logging all clear
+        - [X] Endpoints are previliged
+        - [X] GraphQL and REST endpoints are both mounted
+        - [X] Basic use of ManagerClient via REST occur
+        - [/] Broad and general use over PostMan 
+--
+
 - [] Trial Hateoas resource envelope
 
+- [] Add secure context
 
-General usage check
-Add secure context
-GraphQL endpoints for individual and collection over CRUD
-Check JWT against KeyCloak
+- [] GraphQL endpoints for individual and collection over CRUD
 
-Client failing to start web server with below
+- [] Integration with Keycloak
+
+- [] Client failing to start web server with below
 
 '''
 
@@ -68,6 +76,11 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
 
 
 '''
+
+- [X] StepResource returning 415
+--
+        - Problem was values from MPC overidding
+--
 
 
 ==== Mutex
