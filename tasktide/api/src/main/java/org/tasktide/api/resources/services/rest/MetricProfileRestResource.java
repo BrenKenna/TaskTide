@@ -19,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.ws.rs.Consumes;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -26,10 +27,12 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.SecurityContext;
 import jakarta.ws.rs.core.UriInfo;
 
@@ -77,7 +80,9 @@ public class MetricProfileRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-profile")
+    @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createMetricProfile(
         MetricProfile metricProfile,
         @Context HttpHeaders reqHeader,
@@ -126,7 +131,9 @@ public class MetricProfileRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-profiles")
+    @Path("/import")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createMetricProfiles(
         List<MetricProfile> metricProfiles,
         @Context HttpHeaders reqHeader,
@@ -181,6 +188,7 @@ public class MetricProfileRestResource {
      */
     @GET
     @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response readMetricProfile(
         @QueryParam("id") String id,
         @QueryParam("field") String field,
@@ -322,6 +330,8 @@ public class MetricProfileRestResource {
      */
     @PUT
     @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response updateMetricProfile(
         MetricProfile metricProfile,
         @Context HttpHeaders reqHeader,

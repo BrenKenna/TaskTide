@@ -62,12 +62,13 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [/] Unit Test Notes
 --
         - [] Logging inconsistencies
-        - [/] Use add, import, create etc semantics
-                - [X] Completed are step and worklow
+        - [X] Use add, import, create etc semantics
+                - [] Service Manager
+                - [X] TaskTide Service
         - [X] Create by name 404 across all resources
                 - Use target.query()
         - [X] Standard CRUD all operational
-        - [X] Step, Workflow
+        - [X] Workflow, Step, WorkItem, MetricProfile, MetricData, JobEnvironment
 
 --
 

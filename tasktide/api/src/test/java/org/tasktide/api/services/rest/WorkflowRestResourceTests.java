@@ -55,13 +55,14 @@ import org.tasktide.api.jwt.JwtRequestFilter;
 import org.tasktide.api.resources.services.rest.WorkflowRestResource;
 
 import org.tasktide.api.utils.WebApiUtils;
-import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.collection.Step;
 
 
 /**
- *
+ * Suite of tests for {@link WorkflowRestResource}, seeking basic functionality,
+ *  and anything that can improve the core-lib
+ * 
  * @author Bren
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -108,8 +109,6 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info(msg);
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        // TaskTideManagerUtility.configureNewWorkflow(WORKFLOW);
-        //TaskTideManagerUtility.configureNewStepNewId(WORKFLOW);
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.WORKFLOW, "|", ",");
         
         KEY_PAIR = WebApiUtils.getKeyPair();

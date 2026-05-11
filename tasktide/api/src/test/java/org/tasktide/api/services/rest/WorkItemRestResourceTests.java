@@ -61,7 +61,10 @@ import org.tasktide.api.resources.services.rest.WorkItemRestResource;
 
 import org.tasktide.api.utils.WebApiUtils;
 
+
 /**
+ * Suite of tests for {@link WorkItemRestResource}, seeking basic functionality,
+ *  and anything that can improve the core-lib
  *
  * @author Bren
  */

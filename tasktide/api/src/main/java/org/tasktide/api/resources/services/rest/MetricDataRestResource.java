@@ -19,6 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.ws.rs.Consumes;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -26,11 +27,13 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 
 import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.SecurityContext;
 import jakarta.ws.rs.core.UriInfo;
 
@@ -78,7 +81,9 @@ public class MetricDataRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-data")
+    @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createMetricData(
         MetricData metricData,
         @Context HttpHeaders reqHeader,
@@ -127,7 +132,9 @@ public class MetricDataRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-datas")
+    @Path("/import")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createMetricDatas(
         List<MetricData> metricDatas,
         @Context HttpHeaders reqHeader,
@@ -182,6 +189,7 @@ public class MetricDataRestResource {
      */
     @GET
     @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response readMetricData(
         @QueryParam("id") String id,
         @QueryParam("field") String field,
@@ -323,6 +331,8 @@ public class MetricDataRestResource {
      */
     @PUT
     @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response updateMetricData(
         MetricData metricData,
         @Context HttpHeaders reqHeader,

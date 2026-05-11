@@ -6207,3 +6207,1464 @@ WorkflowId='Workflow-72c129a8-26ab-42df-bd0f-89e5a27ddc8a'
 ================ WorkflowRestResource Update Workflow Test ================
 
 2026-05-11 19:42:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b3954e52-f40b-40a6-8ab7-de115dd57f94 shut down
+2026-05-11 20:18:13 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:18:14 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:18:14 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:18:14 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:18:20 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:18:20 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container dff87f36-dbd1-42ff-9130-3a137e70b721 initialized
+2026-05-11 20:18:20 INFO  [ Test worker -> org.tasktide.api.services.rest.WorkItemRestResourceTests.setUpClass ]: 
+
+---------------- Initiating WorkItem REST Resource Tests ----------------
+
+2026-05-11 20:18:21 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful WorkItems",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:18:21 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:18:21 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:18:21 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful WorkItems'
+2026-05-11 20:18:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful WorkItems'
+2026-05-11 20:18:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-abae3991-a528-4944-a12a-867a2acbc606",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-b764eba3-a5c1-41b2-87bf-18b9e4a104d1",
+    "StepName": "Restful WorkItems",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-05-11 20:18:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful WorkItems'
+2026-05-11 20:18:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful WorkItems'
+2026-05-11 20:18:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful WorkItems'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.services.rest.WorkItemRestResourceTests.canAddTaskToWorkItem ]: 
+
+================ WorkItemRestResource Add Task to WorkItem Test ================
+
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.services.rest.WorkItemRestResourceTests.canAddTaskToWorkItem ]: Created test workItem:	'WorkItem-55bc4df8-f3bc-4bf6-acf9-34f2a897db07'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.WorkItemRestResource.createWorkItem ]: Adding new WorkItem request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'WorkItem{id=WorkItem-55bc4df8-f3bc-4bf6-acf9-34f2a897db07, itemName=Add-Task-WorkItem-Test, itemType=null, itemState=ToDo, lockId=null, lockDate=0, doneDate=0, taskCount=0, taskDone=0, workload=Workload{workloadId=Workload-39c86649-b81b-479d-b487-f36ca2ef002c, taskMap={}, workloadType=Single}, stepName=Add-Task-WorkItem-Test, stepId=null, jobEnvId=null, anno=CustomAnnotation{annoId=CustomAnnotation-69de5bc7-76df-45a0-8491-08ef97113540, anno={}}}'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.services.rest.WorkItemRestResourceTests.canAddTaskToWorkItem ]: WorkItem creation state:	'200'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.services.rest.WorkItemRestResourceTests.canAddTaskToWorkItem ]: Update workItem test:	'WorkItem-55bc4df8-f3bc-4bf6-acf9-34f2a897db07'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.services.rest.WorkItemRestResourceTests.canAddTaskToWorkItem ]: Serialized ItemTask:
+
+'Entity{entity=ItemTask{itemTaskId=ItemTask-77445933-014c-4a02-b071-5210c1b893e3, taskName=New Task, task=nslookup nui.ie, taskState=Pending, taskLog=TaskLogging{taskLogId=TaskLog-ed5c4e5e-d8bc-4fd4-b801-07882c0831c0, procId=0, procLog=ProcessLog{procLogId=ProcessLog-ace2953f-69ce-44b7-b9ca-4b4439951a08, stdout=[Ljava.lang.String;@591be976, stderr=[Ljava.lang.String;@591be976}, startTime=0, endTime=0, threadName=NA, cpuDuration=0}, workItemId=WorkItem-55bc4df8-f3bc-4bf6-acf9-34f2a897db07, jobEnvId=NA, anno=CustomAnnotation{annoId=CustomAnnotation-fac8c09e-8759-4864-b013-a7cc1cd35439, anno={}}}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.WorkItemRestResource.addTaskToWorkItem ]: Add ItemTask to WorkItem request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':	'WorkItem-55bc4df8-f3bc-4bf6-acf9-34f2a897db07'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.WorkItemRestResource.addTaskToWorkItem ]: Evaluating provided parameters
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.WorkItemRestResource.addTaskToWorkItem ]: Fetching workItem for:	'WorkItem-55bc4df8-f3bc-4bf6-acf9-34f2a897db07'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.WorkItemRestResource.addTaskToWorkItem ]: Adding task:	'ItemTask-77445933-014c-4a02-b071-5210c1b893e3'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.WorkItemRestResource.addTaskToWorkItem ]: WorkItem updated:	'WorkItem-55bc4df8-f3bc-4bf6-acf9-34f2a897db07'
+2026-05-11 20:18:23 INFO  [ Test worker -> org.tasktide.api.services.rest.WorkItemRestResourceTests.canAddTaskToWorkItem ]: 
+
+================ WorkItemRestResource Add Task to WorkItem Test ================
+
+2026-05-11 20:18:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container dff87f36-dbd1-42ff-9130-3a137e70b721 shut down
+2026-05-11 20:36:14 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:36:14 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:36:15 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:36:15 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:36:21 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:36:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container afc20458-43a1-4f41-ac0c-04423063c331 initialized
+2026-05-11 20:36:21 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment REST Resource Tests ----------------
+
+2026-05-11 20:36:21 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful JobEnvironments",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:36:21 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:36:21 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:36:21 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful JobEnvironments'
+2026-05-11 20:36:21 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful JobEnvironments'
+2026-05-11 20:36:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-61f4f0f5-96e8-423b-b783-ec915b0e2f55",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-6f6c8e51-865d-4843-8d1e-0a5c59b731e1",
+    "StepName": "Restful JobEnvironments",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-05-11 20:36:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful JobEnvironments'
+2026-05-11 20:36:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful JobEnvironments'
+2026-05-11 20:36:22 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful JobEnvironments'
+2026-05-11 20:36:23 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Can Add JobEnvironment ================
+
+2026-05-11 20:36:23 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Created test jobEnvironment:
+
+'{
+    "Array Index": -1,
+    "Host OS": "Windows 11-amd64",
+    "Hostname": "D4W815J4",
+    "Id": "366bd93b-fbcf-4474-b84f-710c507c471b",
+    "Java Version": "17.0.12+8-LTS-286",
+    "Job Id": "40128",
+    "Job Type": "LOCAL",
+    "annotations": {
+        "Annotation Id": "CustomAnnotation-5f675aaf-4811-4674-848d-365f0565218c",
+        "Annotation Map": {
+        }
+    },
+    "collection": "LOCAL"
+}'
+2026-05-11 20:36:23 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Firiing test JobEnvironment creation against JobEnvironmentRestResource
+2026-05-11 20:36:23 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Serialized JobEnvironment:
+
+'Entity{entity=JobEnvironment{id=366bd93b-fbcf-4474-b84f-710c507c471b, type=LOCAL, jobId=40128, arrayInd=-1, hostname=D4W815J4, hostOS=Windows 11-amd64, javaVersion=17.0.12+8-LTS-286}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-05-11 20:36:23 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/jobEnvironment/add, status=404, reason=Not Found}}'
+2026-05-11 20:36:23 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container afc20458-43a1-4f41-ac0c-04423063c331 shut down
+2026-05-11 20:39:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:39:41 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:39:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:39:42 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:39:48 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:39:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 5f5f6c33-f8a4-468b-9606-113b92a4e42e initialized
+2026-05-11 20:39:48 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment REST Resource Tests ----------------
+
+2026-05-11 20:39:48 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful JobEnvironments",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:39:48 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:39:48 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:39:48 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful JobEnvironments'
+2026-05-11 20:39:50 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Can Add JobEnvironment ================
+
+2026-05-11 20:39:50 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Created test jobEnvironment:
+
+'{
+    "Array Index": -1,
+    "Host OS": "Windows 11-amd64",
+    "Hostname": "D4W815J4",
+    "Id": "5921a025-691c-4310-9518-f838a2c363f0",
+    "Java Version": "17.0.12+8-LTS-286",
+    "Job Id": "42136",
+    "Job Type": "LOCAL",
+    "annotations": {
+        "Annotation Id": "CustomAnnotation-ccd968a7-0f80-446b-8969-9b5d633feb34",
+        "Annotation Map": {
+        }
+    },
+    "collection": "LOCAL"
+}'
+2026-05-11 20:39:50 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Firiing test JobEnvironment creation against JobEnvironmentRestResource
+2026-05-11 20:39:50 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Serialized JobEnvironment:
+
+'Entity{entity=JobEnvironment{id=5921a025-691c-4310-9518-f838a2c363f0, type=LOCAL, jobId=42136, arrayInd=-1, hostname=D4W815J4, hostOS=Windows 11-amd64, javaVersion=17.0.12+8-LTS-286}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-05-11 20:39:50 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.createJobEnvironment ]: Adding new JobEnvironment request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'JobEnvironment{id=5921a025-691c-4310-9518-f838a2c363f0, type=LOCAL, jobId=42136, arrayInd=-1, hostname=D4W815J4, hostOS=Windows 11-amd64, javaVersion=17.0.12+8-LTS-286}'
+2026-05-11 20:39:50 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/job-environment/add, status=200, reason=OK}}'
+2026-05-11 20:39:50 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Can Add JobEnvironment ================
+
+2026-05-11 20:39:50 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 5f5f6c33-f8a4-468b-9606-113b92a4e42e shut down
+2026-05-11 20:43:01 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:43:01 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:43:01 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:43:02 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:43:08 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:43:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 27ab7d92-e130-4b40-bea7-4ed1b1d68bb8 initialized
+2026-05-11 20:43:08 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment REST Resource Tests ----------------
+
+2026-05-11 20:43:08 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful JobEnvironments",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:43:08 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:43:08 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:43:08 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful JobEnvironments'
+2026-05-11 20:43:10 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Can Add JobEnvironment ================
+
+2026-05-11 20:43:10 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Created test jobEnvironment:
+
+'{
+    "Array Index": -1,
+    "Host OS": "Windows 11-amd64",
+    "Hostname": "D4W815J4",
+    "Id": "JobEnvironment-4f9e8dd4-80a5-4c8d-bec1-695bc61bd1be",
+    "Java Version": "17.0.12+8-LTS-286",
+    "Job Id": "17816",
+    "Job Type": "LOCAL",
+    "annotations": {
+        "Annotation Id": "CustomAnnotation-ae0600d0-f988-417e-b779-665b0bcc648c",
+        "Annotation Map": {
+        }
+    },
+    "collection": "LOCAL"
+}'
+2026-05-11 20:43:10 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Firiing test JobEnvironment creation against JobEnvironmentRestResource
+2026-05-11 20:43:10 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Serialized JobEnvironment:
+
+'Entity{entity=JobEnvironment{id=JobEnvironment-4f9e8dd4-80a5-4c8d-bec1-695bc61bd1be, type=LOCAL, jobId=17816, arrayInd=-1, hostname=D4W815J4, hostOS=Windows 11-amd64, javaVersion=17.0.12+8-LTS-286}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-05-11 20:43:10 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.createJobEnvironment ]: Adding new JobEnvironment request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'JobEnvironment{id=JobEnvironment-4f9e8dd4-80a5-4c8d-bec1-695bc61bd1be, type=LOCAL, jobId=17816, arrayInd=-1, hostname=D4W815J4, hostOS=Windows 11-amd64, javaVersion=17.0.12+8-LTS-286}'
+2026-05-11 20:43:10 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/job-environment/add, status=200, reason=OK}}'
+2026-05-11 20:43:10 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Can Add JobEnvironment ================
+
+2026-05-11 20:43:10 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 27ab7d92-e130-4b40-bea7-4ed1b1d68bb8 shut down
+2026-05-11 20:45:07 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:45:07 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:45:07 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:45:08 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:45:14 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:45:14 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 49071368-39a1-4418-b646-b131e08fb33a initialized
+2026-05-11 20:45:14 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment REST Resource Tests ----------------
+
+2026-05-11 20:45:14 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful JobEnvironments",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:45:14 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:45:14 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:45:14 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful JobEnvironments'
+2026-05-11 20:45:15 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: 
+
+================ JobEnvironmentRestResource Can Query By Field ================
+
+2026-05-11 20:45:15 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: Firiing test query by field against JobEnvironmentRestResource for:	'Restful JobEnvironments'
+2026-05-11 20:45:15 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.readJobEnvironment ]: Get JobEnvironment request by user 'johnDoe' from 'null' using 'JUnit-Test' for resource:	'null'
+2026-05-11 20:45:16 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=GET, uri=http://localhost:9998/services/job-environment/get?field=jobType&value=LOCAL, status=404, reason=No JobEnvironment found for Field = 'jobType', and Value = 'LOCAL'}}'
+2026-05-11 20:45:16 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: Displaying retrieved records:
+
+'null
+2026-05-11 20:45:16 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 49071368-39a1-4418-b646-b131e08fb33a shut down
+2026-05-11 20:47:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:47:16 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:47:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:47:16 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:47:22 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:47:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 19645f3f-2778-4a30-bccd-57f0197b4f9d initialized
+2026-05-11 20:47:23 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment REST Resource Tests ----------------
+
+2026-05-11 20:47:23 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful JobEnvironments",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:47:23 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:47:23 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:47:23 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful JobEnvironments'
+2026-05-11 20:47:24 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: 
+
+================ JobEnvironmentRestResource Can Query By Field ================
+
+2026-05-11 20:47:24 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: Firiing test query by field against JobEnvironmentRestResource for:	'Restful JobEnvironments'
+2026-05-11 20:47:25 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.readJobEnvironment ]: Get JobEnvironment request by user 'johnDoe' from 'null' using 'JUnit-Test' for resource:	'null'
+2026-05-11 20:47:25 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=GET, uri=http://localhost:9998/services/job-environment/get?field=JobType&value=LOCAL, status=200, reason=OK}}'
+2026-05-11 20:47:25 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: Displaying retrieved records:
+
+'[JobEnvironment{id=JobEnvironment-4f9e8dd4-80a5-4c8d-bec1-695bc61bd1be, type=LOCAL, jobId=17816, arrayInd=-1, hostname=D4W815J4, hostOS=Windows 11-amd64, javaVersion=17.0.12+8-LTS-286}]
+2026-05-11 20:47:25 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canQueryJobEnvironmentByField ]: 
+
+================ JobEnvironmentRestResource Can Query By Field ================
+
+2026-05-11 20:47:25 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 19645f3f-2778-4a30-bccd-57f0197b4f9d shut down
+2026-05-11 20:53:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:53:23 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:53:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:53:24 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:53:30 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:53:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 67e4299a-835f-402c-8783-56b1aff5e91f initialized
+2026-05-11 20:53:30 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment REST Resource Tests ----------------
+
+2026-05-11 20:53:30 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful JobEnvironments",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:53:30 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:53:30 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:53:30 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful JobEnvironments'
+2026-05-11 20:53:32 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddMultipleJobEnvironments ]: 
+
+================ JobEnvironmentRestResource Can Add Multiple JobEnvironments ================
+
+2026-05-11 20:53:32 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddMultipleJobEnvironments ]: Importing JobEnvironment Collection against JobEnvironmentRestResource
+2026-05-11 20:53:32 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.createJobEnvironments ]: Importing JobEnvironment collection request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test'
+2026-05-11 20:53:32 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddMultipleJobEnvironments ]: Displaying status code:
+
+'200
+2026-05-11 20:53:32 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canAddMultipleJobEnvironments ]: 
+
+================ JobEnvironmentRestResource Can Add Multiple JobEnvironments ================
+
+2026-05-11 20:53:32 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 67e4299a-835f-402c-8783-56b1aff5e91f shut down
+2026-05-11 20:53:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:53:55 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:53:55 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:53:55 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:54:01 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:54:01 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e479c088-7c12-4165-9180-5a9d0a800235 initialized
+2026-05-11 20:54:01 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment REST Resource Tests ----------------
+
+2026-05-11 20:54:01 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful JobEnvironments",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:54:01 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:54:01 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:54:01 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful JobEnvironments'
+2026-05-11 20:54:03 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canDropJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Drop JobEnvironment Test ================
+
+2026-05-11 20:54:03 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canDropJobEnvironment ]: Created test jobEnvironment:	'JobEnvironment-f8de66f3-3226-4864-98ee-90ea8210a09a'
+2026-05-11 20:54:03 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.createJobEnvironment ]: Adding new JobEnvironment request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'JobEnvironment{id=JobEnvironment-f8de66f3-3226-4864-98ee-90ea8210a09a, type=LOCAL, jobId=21424, arrayInd=-1, hostname=D4W815J4, hostOS=Windows 11-amd64, javaVersion=17.0.12+8-LTS-286}'
+2026-05-11 20:54:03 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canDropJobEnvironment ]: JobEnvironment creation state:	'200'
+2026-05-11 20:54:03 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canDropJobEnvironment ]: Dropping jobEnvironment test:	'JobEnvironment-f8de66f3-3226-4864-98ee-90ea8210a09a'
+2026-05-11 20:54:03 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.dropJobEnvironment ]: Drop JobEnvironment request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test'`for resource:		'JobEnvironment-f8de66f3-3226-4864-98ee-90ea8210a09a'
+2026-05-11 20:54:03 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canDropJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Drop JobEnvironment Test ================
+
+2026-05-11 20:54:03 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e479c088-7c12-4165-9180-5a9d0a800235 shut down
+2026-05-11 20:54:15 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 20:54:15 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 20:54:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 20:54:16 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:54:22 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 20:54:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 77978635-2fbe-47de-bc05-d7606b5cdd33 initialized
+2026-05-11 20:54:22 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.setUpClass ]: 
+
+---------------- Initiating JobEnvironment REST Resource Tests ----------------
+
+2026-05-11 20:54:22 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful JobEnvironments",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 20:54:22 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 20:54:22 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 20:54:22 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful JobEnvironments'
+2026-05-11 20:54:24 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canUpdateJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Update JobEnvironment Test ================
+
+2026-05-11 20:54:24 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canUpdateJobEnvironment ]: Created test jobEnvironment:	'JobEnvironment-5541948c-b1a2-4edc-aa12-68f6969e87c7'
+2026-05-11 20:54:24 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.createJobEnvironment ]: Adding new JobEnvironment request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'JobEnvironment{id=JobEnvironment-5541948c-b1a2-4edc-aa12-68f6969e87c7, type=LOCAL, jobId=29124, arrayInd=-1, hostname=D4W815J4, hostOS=Windows 11-amd64, javaVersion=17.0.12+8-LTS-286}'
+2026-05-11 20:54:24 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canUpdateJobEnvironment ]: JobEnvironment creation state:	'200'
+2026-05-11 20:54:24 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canUpdateJobEnvironment ]: Update jobEnvironment test:	'JobEnvironment-5541948c-b1a2-4edc-aa12-68f6969e87c7'
+2026-05-11 20:54:24 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.JobEnvironmentRestResource.updateJobEnvironment ]: Update JobEnvironment request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test'`for resource:
+
+'JobEnvironment{id=JobEnvironment-5541948c-b1a2-4edc-aa12-68f6969e87c7, type=LOCAL, jobId=29124, arrayInd=-1, hostname=D4W815J4, hostOS=Derp, javaVersion=17.0.12+8-LTS-286}'
+2026-05-11 20:54:24 INFO  [ Test worker -> org.tasktide.api.services.rest.JobEnvironmentRestResourceTests.canUpdateJobEnvironment ]: 
+
+================ JobEnvironmentRestResource Update JobEnvironment Test ================
+
+2026-05-11 20:54:24 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 77978635-2fbe-47de-bc05-d7606b5cdd33 shut down
+2026-05-11 21:25:21 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 21:25:21 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 21:25:21 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 21:25:22 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:25:28 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:25:28 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 681dc7a8-786a-4969-96ea-c79753ff7e40 initialized
+2026-05-11 21:25:28 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricData REST Resource Tests ----------------
+
+2026-05-11 21:25:28 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricDatas",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 21:25:28 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 21:25:28 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 21:25:28 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricDatas'
+2026-05-11 21:25:29 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful MetricDatas'
+2026-05-11 21:25:29 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-1bce5b77-eae9-4d8a-817d-907e8baad9a6",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-fce8df04-1c6c-4297-9bf5-e34606d94789",
+    "StepName": "Restful MetricDatas",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-05-11 21:25:29 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful MetricDatas'
+2026-05-11 21:25:29 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful MetricDatas'
+2026-05-11 21:25:29 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful MetricDatas'
+2026-05-11 21:25:30 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: 
+
+================ MetricDataRestResource Can Add MetricData ================
+
+2026-05-11 21:25:30 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Created test metricData:
+
+'{
+    "Available": 43.0,
+    "Id": "MetricData-4e84de92-1ee4-446c-8bb5-994350c920af",
+    "Label": "Add-MetricData-Test",
+    "Metric Type": "CPU",
+    "Timestamp": 1778531130350,
+    "Total": 49.0,
+    "Units": "GB",
+    "Used": 6.0,
+    "annotations": {
+        "Annotation Id": "CustomAnnotation-6097968f-7db9-4deb-8448-5632e6202413",
+        "Annotation Map": {
+        }
+    },
+    "collection": "CPU",
+    "state": "GB"
+}'
+2026-05-11 21:25:30 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Firiing test MetricData creation against MetricDataRestResource
+2026-05-11 21:25:30 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Serialized MetricData:
+
+'Entity{entity=MetricData{id=MetricData-4e84de92-1ee4-446c-8bb5-994350c920af, label=Add-MetricData-Test, timestamp=1778531130350, total=49.0, available=43.0, used=6.0, units=GB, metricType=CPU}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-05-11 21:25:30 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/job-environment/add, status=404, reason=Not Found}}'
+2026-05-11 21:25:30 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 681dc7a8-786a-4969-96ea-c79753ff7e40 shut down
+2026-05-11 21:28:15 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 21:28:16 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 21:28:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 21:28:16 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:28:22 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:28:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 409968a4-a22a-49e6-a930-7698a42a8b25 initialized
+2026-05-11 21:28:22 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricData REST Resource Tests ----------------
+
+2026-05-11 21:28:23 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricDatas",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 21:28:23 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 21:28:23 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 21:28:23 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricDatas'
+2026-05-11 21:28:24 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: 
+
+================ MetricDataRestResource Can Add MetricData ================
+
+2026-05-11 21:28:24 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Created test metricData:
+
+'{
+    "Available": 52.0,
+    "Id": "MetricData-51f0c1fc-f798-4fc0-8a1a-cabdf831d9c4",
+    "Label": "Add-MetricData-Test",
+    "Metric Type": "CPU",
+    "Timestamp": 1778531304443,
+    "Total": 62.0,
+    "Units": "GB",
+    "Used": 10.0,
+    "annotations": {
+        "Annotation Id": "CustomAnnotation-e953acde-5f39-41f4-bc3f-08556e05c71b",
+        "Annotation Map": {
+        }
+    },
+    "collection": "CPU",
+    "state": "GB"
+}'
+2026-05-11 21:28:24 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Firiing test MetricData creation against MetricDataRestResource
+2026-05-11 21:28:24 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Serialized MetricData:
+
+'Entity{entity=MetricData{id=MetricData-51f0c1fc-f798-4fc0-8a1a-cabdf831d9c4, label=Add-MetricData-Test, timestamp=1778531304443, total=62.0, available=52.0, used=10.0, units=GB, metricType=CPU}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-05-11 21:28:24 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/job-environment/add, status=404, reason=Not Found}}'
+2026-05-11 21:28:24 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 409968a4-a22a-49e6-a930-7698a42a8b25 shut down
+2026-05-11 21:30:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 21:30:42 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 21:30:42 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 21:30:43 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:30:49 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:30:49 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 0bd3a2ef-ff66-45b7-9950-ccc498ac5eab initialized
+2026-05-11 21:30:49 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricData REST Resource Tests ----------------
+
+2026-05-11 21:30:49 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricDatas",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 21:30:49 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 21:30:49 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 21:30:49 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricDatas'
+2026-05-11 21:30:51 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: 
+
+================ MetricDataRestResource Can Add MetricData ================
+
+2026-05-11 21:30:51 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Created test metricData:
+
+'{
+    "Available": 14.0,
+    "Id": "MetricData-c205db1c-de0e-42af-8fee-f40548896edd",
+    "Label": "Add-MetricData-Test",
+    "Metric Type": "CPU",
+    "Timestamp": 1778531451102,
+    "Total": 22.0,
+    "Units": "GB",
+    "Used": 8.0,
+    "annotations": {
+        "Annotation Id": "CustomAnnotation-eb4e2606-1361-43e0-b0dd-686d8cb707e7",
+        "Annotation Map": {
+        }
+    },
+    "collection": "CPU",
+    "state": "GB"
+}'
+2026-05-11 21:30:51 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Firiing test MetricData creation against MetricDataRestResource
+2026-05-11 21:30:51 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Serialized MetricData:
+
+'Entity{entity=MetricData{id=MetricData-c205db1c-de0e-42af-8fee-f40548896edd, label=Add-MetricData-Test, timestamp=1778531451102, total=22.0, available=14.0, used=8.0, units=GB, metricType=CPU}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-05-11 21:30:51 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricDataRestResource.createMetricData ]: Adding new MetricData request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'MetricData{id=MetricData-c205db1c-de0e-42af-8fee-f40548896edd, label=Add-MetricData-Test, timestamp=1778531451102, total=22.0, available=14.0, used=8.0, units=GB, metricType=CPU}'
+2026-05-11 21:30:51 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/metric-data/add, status=200, reason=OK}}'
+2026-05-11 21:30:51 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMetricData ]: 
+
+================ MetricDataRestResource Can Add MetricData ================
+
+2026-05-11 21:30:51 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 0bd3a2ef-ff66-45b7-9950-ccc498ac5eab shut down
+2026-05-11 21:35:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 21:35:52 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 21:35:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 21:35:53 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:35:59 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:35:59 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 04739b79-b029-4354-b857-f875aeb5040d initialized
+2026-05-11 21:35:59 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricData REST Resource Tests ----------------
+
+2026-05-11 21:36:00 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricDatas",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 21:36:00 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 21:36:00 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 21:36:00 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricDatas'
+2026-05-11 21:36:01 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: 
+
+================ MetricDataRestResource Can Query By Field ================
+
+2026-05-11 21:36:01 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: Firing test query by field against MetricDataRestResource for:	'LOCAL'
+2026-05-11 21:36:01 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricDataRestResource.readMetricData ]: Get MetricData request by user 'johnDoe' from 'null' using 'JUnit-Test' for resource:	'null'
+2026-05-11 21:36:01 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=GET, uri=http://localhost:9998/services/metric-data/get?field=JobType&value=LOCAL, status=404, reason=No MetricData found for Field = 'JobType', and Value = 'LOCAL'}}'
+2026-05-11 21:36:01 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: Displaying retrieved records:
+
+'null
+2026-05-11 21:36:01 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 04739b79-b029-4354-b857-f875aeb5040d shut down
+2026-05-11 21:38:46 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 21:38:46 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 21:38:46 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 21:38:47 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:38:53 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:38:53 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 30955c35-757b-4d1f-b700-c3a968240f5f initialized
+2026-05-11 21:38:53 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricData REST Resource Tests ----------------
+
+2026-05-11 21:38:53 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricDatas",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 21:38:53 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 21:38:53 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 21:38:53 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricDatas'
+2026-05-11 21:38:54 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: 
+
+================ MetricDataRestResource Can Query By Field ================
+
+2026-05-11 21:38:54 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: Firing test query by field against MetricDataRestResource for:	'LOCAL'
+2026-05-11 21:38:55 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricDataRestResource.readMetricData ]: Get MetricData request by user 'johnDoe' from 'null' using 'JUnit-Test' for resource:	'null'
+2026-05-11 21:38:55 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=GET, uri=http://localhost:9998/services/metric-data/get?field=Type&value=CPU, status=200, reason=OK}}'
+2026-05-11 21:38:55 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: Displaying retrieved records:
+
+'[MetricData{id=MetricData-c205db1c-de0e-42af-8fee-f40548896edd, label=Add-MetricData-Test, timestamp=1778531451102, total=22.0, available=14.0, used=8.0, units=GB, metricType=CPU}]
+2026-05-11 21:38:55 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canQueryMetricDataByField ]: 
+
+================ MetricDataRestResource Can Query By Field ================
+
+2026-05-11 21:38:55 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 30955c35-757b-4d1f-b700-c3a968240f5f shut down
+2026-05-11 21:39:12 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 21:39:12 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 21:39:12 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 21:39:12 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:39:19 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:39:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e61d2b0a-267a-4ff2-9aeb-bdc4305f7346 initialized
+2026-05-11 21:39:19 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricData REST Resource Tests ----------------
+
+2026-05-11 21:39:19 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricDatas",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 21:39:19 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 21:39:19 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 21:39:19 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricDatas'
+2026-05-11 21:39:21 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMultipleMetricDatas ]: 
+
+================ MetricDataRestResource Can Add Multiple MetricDatas ================
+
+2026-05-11 21:39:21 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMultipleMetricDatas ]: Importing MetricData Collection against MetricDataRestResource
+2026-05-11 21:39:21 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricDataRestResource.createMetricDatas ]: Importing MetricData collection request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test'
+2026-05-11 21:39:21 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMultipleMetricDatas ]: Displaying status code:
+
+'200
+2026-05-11 21:39:21 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canAddMultipleMetricDatas ]: 
+
+================ MetricDataRestResource Can Add Multiple MetricDatas ================
+
+2026-05-11 21:39:21 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e61d2b0a-267a-4ff2-9aeb-bdc4305f7346 shut down
+2026-05-11 21:41:07 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 21:41:07 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 21:41:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 21:41:08 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:41:14 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:41:14 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 95f476de-03ae-42bc-a4a4-80d66fea7558 initialized
+2026-05-11 21:41:14 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricData REST Resource Tests ----------------
+
+2026-05-11 21:41:14 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricDatas",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 21:41:14 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 21:41:14 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 21:41:14 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricDatas'
+2026-05-11 21:41:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful MetricDatas'
+2026-05-11 21:41:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-180c8a5d-203f-4f2a-84e3-fe58b6e965f6",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-e34e5825-7d0e-44fc-99fb-2c8c61b8c9d3",
+    "StepName": "Restful MetricDatas",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-05-11 21:41:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful MetricDatas'
+2026-05-11 21:41:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful MetricDatas'
+2026-05-11 21:41:15 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful MetricDatas'
+2026-05-11 21:41:16 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canDropMetricData ]: 
+
+================ MetricDataRestResource Drop MetricData Test ================
+
+2026-05-11 21:41:16 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canDropMetricData ]: Created test metricData:	'MetricData-b5f0e58f-da74-46cc-8a58-1aa151ae2c6a'
+2026-05-11 21:41:16 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricDataRestResource.createMetricData ]: Adding new MetricData request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'MetricData{id=MetricData-b5f0e58f-da74-46cc-8a58-1aa151ae2c6a, label=Metric-Data-Label, timestamp=1778532076630, total=100.0, available=86.0, used=14.0, units=PCT, metricType=CPU}'
+2026-05-11 21:41:16 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canDropMetricData ]: MetricData creation state:	'200'
+2026-05-11 21:41:16 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canDropMetricData ]: Dropping metricData test:	'MetricData-b5f0e58f-da74-46cc-8a58-1aa151ae2c6a'
+2026-05-11 21:41:16 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricDataRestResource.dropMetricData ]: Drop MetricData request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test' for resource:	'MetricData-b5f0e58f-da74-46cc-8a58-1aa151ae2c6a'
+2026-05-11 21:41:17 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canDropMetricData ]: 
+
+================ MetricDataRestResource Drop MetricData Test ================
+
+2026-05-11 21:41:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 95f476de-03ae-42bc-a4a4-80d66fea7558 shut down
+2026-05-11 21:42:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 21:42:38 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 21:42:39 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 21:42:39 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:42:45 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 21:42:46 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 5d94a38d-2594-4fa9-8be6-2bb987985d95 initialized
+2026-05-11 21:42:46 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricData REST Resource Tests ----------------
+
+2026-05-11 21:42:46 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricDatas",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 21:42:46 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 21:42:46 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 21:42:46 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricDatas'
+2026-05-11 21:42:48 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canUpdateMetricData ]: 
+
+================ MetricDataRestResource Update MetricData Test ================
+
+2026-05-11 21:42:48 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canUpdateMetricData ]: Created test metricData:	'MetricData-91a23f7c-168b-40a3-9c7a-91ddacb783b5'
+2026-05-11 21:42:48 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricDataRestResource.createMetricData ]: Adding new MetricData request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'MetricData{id=MetricData-91a23f7c-168b-40a3-9c7a-91ddacb783b5, label=Drop-MetricData-Test, timestamp=1778532168048, total=100.0, available=98.0, used=2.0, units=PCT, metricType=CPU}'
+2026-05-11 21:42:48 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canUpdateMetricData ]: MetricData creation state:	'200'
+2026-05-11 21:42:48 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canUpdateMetricData ]: Update metricData test:	'MetricData-91a23f7c-168b-40a3-9c7a-91ddacb783b5'
+2026-05-11 21:42:48 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricDataRestResource.updateMetricData ]: Update MetricData request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test'
+
+'MetricData{id=MetricData-91a23f7c-168b-40a3-9c7a-91ddacb783b5, label=Some metric label, timestamp=1778532168048, total=100.0, available=98.0, used=2.0, units=PCT, metricType=CPU}'
+2026-05-11 21:42:48 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricDataRestResourceTests.canUpdateMetricData ]: 
+
+================ MetricDataRestResource Update MetricData Test ================
+
+2026-05-11 21:42:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 5d94a38d-2594-4fa9-8be6-2bb987985d95 shut down
+2026-05-11 22:10:05 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 22:10:05 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 22:10:05 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 22:10:06 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:10:12 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:10:12 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 6fcec752-dbb0-41f3-887a-a2fa4677c3c1 initialized
+2026-05-11 22:10:12 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricProfile REST Resource Tests ----------------
+
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricProfiles",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricProfiles'
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Restful MetricProfiles'
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-496456cf-61d1-41e7-8dd7-c9569ce4b59c",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-ba07fd78-1b41-4b1e-898c-2d1215bd1f48",
+    "StepName": "Restful MetricProfiles",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Restful MetricProfiles'
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Restful MetricProfiles'
+2026-05-11 22:10:13 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Restful MetricProfiles'
+2026-05-11 22:10:14 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canAddMetricProfile ]: 
+
+================ MetricProfileRestResource Can Add MetricProfile ================
+
+2026-05-11 22:10:14 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canAddMetricProfile ]: Created test metricProfile:
+
+'{
+    "Id": "MetricProfile-028054c9-c3b9-40bd-88a0-b53fc588404d",
+    "Label": "Add-MetricProfile-Test",
+    "Mean Available": 0.0,
+    "Mean Total": 0.0,
+    "Mean Used": 0.0,
+    "Metric Type": "MEMORY",
+    "Profile Data": {
+        "Id": "ProfileData-51592b77-17d0-4a3c-b52b-1cfdd20da194",
+        "Metric Profile": {
+            "DataPoint-6": {
+                "Available": 34.0,
+                "Id": "MetricData-6c7085aa-1ed0-4421-b9bf-bce6dbe07669",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 43.0,
+                "Units": "GB",
+                "Used": 9.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-cd09f615-4ba6-460d-8314-7a37598ee60d",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-5": {
+                "Available": 59.0,
+                "Id": "MetricData-b3f9d4ed-b726-4719-a64d-392f7d133cf8",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 60.0,
+                "Units": "GB",
+                "Used": 1.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-ffcf8670-b7b0-443e-bb4d-ed2cfd69b6eb",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-4": {
+                "Available": 22.0,
+                "Id": "MetricData-354cebe1-bbbd-49a9-8e4a-90c3a6001272",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 34.0,
+                "Units": "GB",
+                "Used": 12.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-4f633945-92f8-439b-bcf6-91fb9c210907",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-3": {
+                "Available": 15.0,
+                "Id": "MetricData-2fdd14bc-b998-4b49-a061-1476e797c8b3",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 20.0,
+                "Units": "GB",
+                "Used": 5.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-c0022b9c-402f-4004-9d66-2c6278c705c0",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-2": {
+                "Available": 7.0,
+                "Id": "MetricData-9672ed2e-78f7-4521-8c32-a6495b58946a",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 20.0,
+                "Units": "GB",
+                "Used": 13.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-6c776b53-d678-4ecb-8f7b-1d8eb931855d",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-1": {
+                "Available": 31.0,
+                "Id": "MetricData-9ba39932-aff2-476f-acf4-f896f1298afc",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 33.0,
+                "Units": "GB",
+                "Used": 2.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-e3ffb1bc-801a-4892-b4c5-9d46b4604cd7",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-0": {
+                "Available": 47.0,
+                "Id": "MetricData-dd7bc8d3-4c2f-463c-9401-fc25bda3fca2",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 60.0,
+                "Units": "GB",
+                "Used": 13.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-09769325-7124-4670-805c-19c842610046",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-9": {
+                "Available": 15.0,
+                "Id": "MetricData-98f36ef1-d13c-46eb-8f37-3c953942ae6d",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 20.0,
+                "Units": "GB",
+                "Used": 5.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-c0b682ce-14df-4733-8f4a-6ed2605c1b52",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-8": {
+                "Available": 7.0,
+                "Id": "MetricData-14a92656-dc58-46f8-8697-b64796354ef9",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 16.0,
+                "Units": "GB",
+                "Used": 9.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-269610fd-fc06-4abe-b3c0-efb8176b045a",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            },
+            "DataPoint-7": {
+                "Available": 27.0,
+                "Id": "MetricData-e4bc8e3d-a42f-4920-8778-41dba243f088",
+                "Label": "Metric-Data-Label",
+                "Metric Type": "CPU",
+                "Timestamp": 1778533814629,
+                "Total": 37.0,
+                "Units": "GB",
+                "Used": 10.0,
+                "annotations": {
+                    "Annotation Id": "CustomAnnotation-aa2d9cf4-2186-425d-8a6b-e7a5e47bc0b1",
+                    "Annotation Map": {
+                    }
+                },
+                "collection": "CPU",
+                "state": "GB"
+            }
+        }
+    },
+    "Timestamp": 0,
+    "Units": "GB",
+    "annotations": {
+        "Annotation Id": "CustomAnnotation-504372a9-a6b1-4004-b120-7fa97e2441ee",
+        "Annotation Map": {
+        }
+    },
+    "collection": "MEMORY",
+    "state": "GB"
+}'
+2026-05-11 22:10:14 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canAddMetricProfile ]: Firiing test MetricProfile creation against MetricProfileRestResource
+2026-05-11 22:10:14 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canAddMetricProfile ]: Serialized MetricProfile:
+
+'Entity{entity=MetricProfile{id=MetricProfile-028054c9-c3b9-40bd-88a0-b53fc588404d, label=Add-MetricProfile-Test, timestamp=0, meanTotal=0.0, meanAvailable=0.0, meanUsed=0.0, profile=MetricProfile{id=ProfileData-51592b77-17d0-4a3c-b52b-1cfdd20da194, metricProfile={DataPoint-6=MetricData{id=MetricData-6c7085aa-1ed0-4421-b9bf-bce6dbe07669, label=Metric-Data-Label, timestamp=1778533814629, total=43.0, available=34.0, used=9.0, units=GB, metricType=CPU}, DataPoint-5=MetricData{id=MetricData-b3f9d4ed-b726-4719-a64d-392f7d133cf8, label=Metric-Data-Label, timestamp=1778533814629, total=60.0, available=59.0, used=1.0, units=GB, metricType=CPU}, DataPoint-4=MetricData{id=MetricData-354cebe1-bbbd-49a9-8e4a-90c3a6001272, label=Metric-Data-Label, timestamp=1778533814629, total=34.0, available=22.0, used=12.0, units=GB, metricType=CPU}, DataPoint-3=MetricData{id=MetricData-2fdd14bc-b998-4b49-a061-1476e797c8b3, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=15.0, used=5.0, units=GB, metricType=CPU}, DataPoint-2=MetricData{id=MetricData-9672ed2e-78f7-4521-8c32-a6495b58946a, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=7.0, used=13.0, units=GB, metricType=CPU}, DataPoint-1=MetricData{id=MetricData-9ba39932-aff2-476f-acf4-f896f1298afc, label=Metric-Data-Label, timestamp=1778533814629, total=33.0, available=31.0, used=2.0, units=GB, metricType=CPU}, DataPoint-0=MetricData{id=MetricData-dd7bc8d3-4c2f-463c-9401-fc25bda3fca2, label=Metric-Data-Label, timestamp=1778533814629, total=60.0, available=47.0, used=13.0, units=GB, metricType=CPU}, DataPoint-9=MetricData{id=MetricData-98f36ef1-d13c-46eb-8f37-3c953942ae6d, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=15.0, used=5.0, units=GB, metricType=CPU}, DataPoint-8=MetricData{id=MetricData-14a92656-dc58-46f8-8697-b64796354ef9, label=Metric-Data-Label, timestamp=1778533814629, total=16.0, available=7.0, used=9.0, units=GB, metricType=CPU}, DataPoint-7=MetricData{id=MetricData-e4bc8e3d-a42f-4920-8778-41dba243f088, label=Metric-Data-Label, timestamp=1778533814629, total=37.0, available=27.0, used=10.0, units=GB, metricType=CPU}}}, units=GB, type=MEMORY, jobEnvId=null}, variant=Variant[mediaType=application/json, language=null, encoding=null], annotations=[]}'
+2026-05-11 22:10:14 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.createMetricProfile ]: Adding new MetricProfile request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'MetricProfile{id=MetricProfile-028054c9-c3b9-40bd-88a0-b53fc588404d, label=Add-MetricProfile-Test, timestamp=0, meanTotal=0.0, meanAvailable=0.0, meanUsed=0.0, profile=MetricProfile{id=ProfileData-51592b77-17d0-4a3c-b52b-1cfdd20da194, metricProfile={DataPoint-6=MetricData{id=MetricData-6c7085aa-1ed0-4421-b9bf-bce6dbe07669, label=Metric-Data-Label, timestamp=1778533814629, total=43.0, available=34.0, used=9.0, units=GB, metricType=CPU}, DataPoint-5=MetricData{id=MetricData-b3f9d4ed-b726-4719-a64d-392f7d133cf8, label=Metric-Data-Label, timestamp=1778533814629, total=60.0, available=59.0, used=1.0, units=GB, metricType=CPU}, DataPoint-4=MetricData{id=MetricData-354cebe1-bbbd-49a9-8e4a-90c3a6001272, label=Metric-Data-Label, timestamp=1778533814629, total=34.0, available=22.0, used=12.0, units=GB, metricType=CPU}, DataPoint-3=MetricData{id=MetricData-2fdd14bc-b998-4b49-a061-1476e797c8b3, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=15.0, used=5.0, units=GB, metricType=CPU}, DataPoint-2=MetricData{id=MetricData-9672ed2e-78f7-4521-8c32-a6495b58946a, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=7.0, used=13.0, units=GB, metricType=CPU}, DataPoint-1=MetricData{id=MetricData-9ba39932-aff2-476f-acf4-f896f1298afc, label=Metric-Data-Label, timestamp=1778533814629, total=33.0, available=31.0, used=2.0, units=GB, metricType=CPU}, DataPoint-0=MetricData{id=MetricData-dd7bc8d3-4c2f-463c-9401-fc25bda3fca2, label=Metric-Data-Label, timestamp=1778533814629, total=60.0, available=47.0, used=13.0, units=GB, metricType=CPU}, DataPoint-9=MetricData{id=MetricData-98f36ef1-d13c-46eb-8f37-3c953942ae6d, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=15.0, used=5.0, units=GB, metricType=CPU}, DataPoint-8=MetricData{id=MetricData-14a92656-dc58-46f8-8697-b64796354ef9, label=Metric-Data-Label, timestamp=1778533814629, total=16.0, available=7.0, used=9.0, units=GB, metricType=CPU}, DataPoint-7=MetricData{id=MetricData-e4bc8e3d-a42f-4920-8778-41dba243f088, label=Metric-Data-Label, timestamp=1778533814629, total=37.0, available=27.0, used=10.0, units=GB, metricType=CPU}}}, units=GB, type=MEMORY, jobEnvId=null}'
+2026-05-11 22:10:15 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canAddMetricProfile ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=POST, uri=http://localhost:9998/services/metric-profile/add, status=200, reason=OK}}'
+2026-05-11 22:10:15 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canAddMetricProfile ]: 
+
+================ MetricProfileRestResource Can Add MetricProfile ================
+
+2026-05-11 22:10:15 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 6fcec752-dbb0-41f3-887a-a2fa4677c3c1 shut down
+2026-05-11 22:10:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 22:10:58 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 22:10:59 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 22:10:59 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:11:05 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:11:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2bb7d30b-eedd-4928-8877-1d74e98f51ab initialized
+2026-05-11 22:11:06 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricProfile REST Resource Tests ----------------
+
+2026-05-11 22:11:06 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricProfiles",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 22:11:06 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 22:11:06 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 22:11:06 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricProfiles'
+2026-05-11 22:11:07 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: 
+
+================ MetricProfileRestResource Can Query By Field ================
+
+2026-05-11 22:11:07 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Firing test query by field against MetricProfileRestResource for:	'LOCAL'
+2026-05-11 22:11:08 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.readMetricProfile ]: Get MetricProfile collection request by user 'johnDoe' from 'null' using 'JUnit-Test' for resource:	'null'
+2026-05-11 22:11:08 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=GET, uri=http://localhost:9998/services/metric-profile/get?field=Type&value=CPU, status=404, reason=No MetricProfile found for Field = 'Type', and Value = 'CPU'}}'
+2026-05-11 22:11:08 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Displaying retrieved records:
+
+'null
+2026-05-11 22:11:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 2bb7d30b-eedd-4928-8877-1d74e98f51ab shut down
+2026-05-11 22:11:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 22:11:41 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 22:11:41 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 22:11:42 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:11:48 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:11:48 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 57a04af6-589d-44d9-a42d-580222f5047f initialized
+2026-05-11 22:11:48 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricProfile REST Resource Tests ----------------
+
+2026-05-11 22:11:48 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricProfiles",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 22:11:48 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 22:11:48 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 22:11:48 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricProfiles'
+2026-05-11 22:11:50 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: 
+
+================ MetricProfileRestResource Can Query By Field ================
+
+2026-05-11 22:11:50 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Firing test query by field against MetricProfileRestResource for:	'LOCAL'
+2026-05-11 22:11:50 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.readMetricProfile ]: Get MetricProfile collection request by user 'johnDoe' from 'null' using 'JUnit-Test' for resource:	'null'
+2026-05-11 22:11:50 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=GET, uri=http://localhost:9998/services/metric-profile/get?field=MetricType&value=CPU, status=404, reason=No MetricProfile found for Field = 'MetricType', and Value = 'CPU'}}'
+2026-05-11 22:11:50 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Displaying retrieved records:
+
+'null
+2026-05-11 22:11:50 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 57a04af6-589d-44d9-a42d-580222f5047f shut down
+2026-05-11 22:12:51 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 22:12:51 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 22:12:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 22:12:52 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:12:58 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:12:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container ddb8ef33-dc58-4a70-9035-1d0fbd84ce2a initialized
+2026-05-11 22:12:59 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricProfile REST Resource Tests ----------------
+
+2026-05-11 22:12:59 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricProfiles",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 22:12:59 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 22:12:59 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 22:12:59 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricProfiles'
+2026-05-11 22:13:00 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: 
+
+================ MetricProfileRestResource Can Query By Field ================
+
+2026-05-11 22:13:00 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Firing test query by field against MetricProfileRestResource for:	'LOCAL'
+2026-05-11 22:13:00 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.readMetricProfile ]: Get MetricProfile collection request by user 'johnDoe' from 'null' using 'JUnit-Test' for resource:	'null'
+2026-05-11 22:13:00 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Displaying resource response:
+
+'InboundJaxrsResponse{context=ClientResponse{method=GET, uri=http://localhost:9998/services/metric-profile/get?field=Label&value=Add-MetricProfile-Test, status=200, reason=OK}}'
+2026-05-11 22:13:00 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: Displaying retrieved records:
+
+'[MetricProfile{id=MetricProfile-028054c9-c3b9-40bd-88a0-b53fc588404d, label=Add-MetricProfile-Test, timestamp=0, meanTotal=0.0, meanAvailable=0.0, meanUsed=0.0, profile=MetricProfile{id=ProfileData-51592b77-17d0-4a3c-b52b-1cfdd20da194, metricProfile={DataPoint-6=MetricData{id=MetricData-6c7085aa-1ed0-4421-b9bf-bce6dbe07669, label=Metric-Data-Label, timestamp=1778533814629, total=43.0, available=34.0, used=9.0, units=GB, metricType=CPU}, DataPoint-5=MetricData{id=MetricData-b3f9d4ed-b726-4719-a64d-392f7d133cf8, label=Metric-Data-Label, timestamp=1778533814629, total=60.0, available=59.0, used=1.0, units=GB, metricType=CPU}, DataPoint-4=MetricData{id=MetricData-354cebe1-bbbd-49a9-8e4a-90c3a6001272, label=Metric-Data-Label, timestamp=1778533814629, total=34.0, available=22.0, used=12.0, units=GB, metricType=CPU}, DataPoint-3=MetricData{id=MetricData-2fdd14bc-b998-4b49-a061-1476e797c8b3, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=15.0, used=5.0, units=GB, metricType=CPU}, DataPoint-2=MetricData{id=MetricData-9672ed2e-78f7-4521-8c32-a6495b58946a, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=7.0, used=13.0, units=GB, metricType=CPU}, DataPoint-1=MetricData{id=MetricData-9ba39932-aff2-476f-acf4-f896f1298afc, label=Metric-Data-Label, timestamp=1778533814629, total=33.0, available=31.0, used=2.0, units=GB, metricType=CPU}, DataPoint-0=MetricData{id=MetricData-dd7bc8d3-4c2f-463c-9401-fc25bda3fca2, label=Metric-Data-Label, timestamp=1778533814629, total=60.0, available=47.0, used=13.0, units=GB, metricType=CPU}, DataPoint-9=MetricData{id=MetricData-98f36ef1-d13c-46eb-8f37-3c953942ae6d, label=Metric-Data-Label, timestamp=1778533814629, total=20.0, available=15.0, used=5.0, units=GB, metricType=CPU}, DataPoint-8=MetricData{id=MetricData-14a92656-dc58-46f8-8697-b64796354ef9, label=Metric-Data-Label, timestamp=1778533814629, total=16.0, available=7.0, used=9.0, units=GB, metricType=CPU}, DataPoint-7=MetricData{id=MetricData-e4bc8e3d-a42f-4920-8778-41dba243f088, label=Metric-Data-Label, timestamp=1778533814629, total=37.0, available=27.0, used=10.0, units=GB, metricType=CPU}}}, units=GB, type=MEMORY, jobEnvId=null}]
+2026-05-11 22:13:00 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canQueryMetricProfileByField ]: 
+
+================ MetricProfileRestResource Can Query By Field ================
+
+2026-05-11 22:13:00 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container ddb8ef33-dc58-4a70-9035-1d0fbd84ce2a shut down
+2026-05-11 22:13:10 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 22:13:10 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 22:13:10 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 22:13:11 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:13:17 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:13:17 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 58be1ea1-7391-4625-9a43-1adc5f90b083 initialized
+2026-05-11 22:13:17 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricProfile REST Resource Tests ----------------
+
+2026-05-11 22:13:17 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricProfiles",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 22:13:17 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 22:13:17 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 22:13:17 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricProfiles'
+2026-05-11 22:13:19 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canImportMultipleMetricProfile ]: 
+
+================ MetricProfileRestResource Can Add Multiple MetricProfiles ================
+
+2026-05-11 22:13:19 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canImportMultipleMetricProfile ]: Importing MetricProfile Collection against MetricProfileRestResource
+2026-05-11 22:13:19 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.createMetricProfiles ]: Import MetricProfile collection request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test'
+2026-05-11 22:13:19 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canImportMultipleMetricProfile ]: Displaying status code:
+
+'200
+2026-05-11 22:13:19 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canImportMultipleMetricProfile ]: 
+
+================ MetricProfileRestResource Can Add Multiple MetricProfiles ================
+
+2026-05-11 22:13:19 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 58be1ea1-7391-4625-9a43-1adc5f90b083 shut down
+2026-05-11 22:15:02 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 22:15:02 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 22:15:02 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 22:15:02 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:15:09 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:15:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 85cc1dee-e34d-4176-aaa8-21a5f16571b4 initialized
+2026-05-11 22:15:09 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricProfile REST Resource Tests ----------------
+
+2026-05-11 22:15:09 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricProfiles",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 22:15:09 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 22:15:09 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 22:15:09 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricProfiles'
+2026-05-11 22:15:11 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canDropMetricProfile ]: 
+
+================ MetricProfileRestResource Drop MetricProfile Test ================
+
+2026-05-11 22:15:11 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canDropMetricProfile ]: Created test metricProfile:	'MetricProfile-accc2fd3-aa20-4b8c-9926-3c56064df513'
+2026-05-11 22:15:11 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.createMetricProfile ]: Adding new MetricProfile request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'MetricProfile{id=MetricProfile-accc2fd3-aa20-4b8c-9926-3c56064df513, label=Random-Memory-Profile, timestamp=0, meanTotal=0.0, meanAvailable=0.0, meanUsed=0.0, profile=MetricProfile{id=ProfileData-f27d83a8-d77e-460a-aa39-619f9f1e269e, metricProfile={DataPoint-6=MetricData{id=MetricData-89a52f41-1719-4bd1-8628-927220f8ac17, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=61.0, used=39.0, units=PCT, metricType=CPU}, DataPoint-5=MetricData{id=MetricData-e660427c-2de5-41ee-837c-226ff90e8f2c, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=9.0, used=91.0, units=PCT, metricType=CPU}, DataPoint-4=MetricData{id=MetricData-77c447e7-352c-4a5e-9392-ff101270e0fb, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=47.0, used=53.0, units=PCT, metricType=CPU}, DataPoint-3=MetricData{id=MetricData-b65dd7c6-9364-4772-a4c5-d601d1734596, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=48.0, used=52.0, units=PCT, metricType=CPU}, DataPoint-2=MetricData{id=MetricData-772611f3-054f-42bd-9bac-fb87ce6ca087, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=6.0, used=94.0, units=PCT, metricType=CPU}, DataPoint-1=MetricData{id=MetricData-f6bf6848-39da-4a0f-9e0c-15fa016b338f, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=29.0, used=71.0, units=PCT, metricType=CPU}, DataPoint-0=MetricData{id=MetricData-64035c3d-ff6e-4308-a36f-7e4def411f6e, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=16.0, used=84.0, units=PCT, metricType=CPU}, DataPoint-9=MetricData{id=MetricData-ac0e0ca7-84eb-48c9-b893-b47fce906edf, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=95.0, used=5.0, units=PCT, metricType=CPU}, DataPoint-8=MetricData{id=MetricData-380bf0f6-0efb-48ab-93e6-57a4c0b44a3f, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=74.0, used=26.0, units=PCT, metricType=CPU}, DataPoint-7=MetricData{id=MetricData-3e5c6bbd-f93d-493f-92fa-888da54b7621, label=Metric-Data-Label, timestamp=1778534111081, total=100.0, available=19.0, used=81.0, units=PCT, metricType=CPU}}}, units=PCT, type=CPU, jobEnvId=null}'
+2026-05-11 22:15:11 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canDropMetricProfile ]: MetricProfile creation state:	'200'
+2026-05-11 22:15:11 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canDropMetricProfile ]: Dropping metricProfile test:	'MetricProfile-accc2fd3-aa20-4b8c-9926-3c56064df513'
+2026-05-11 22:15:11 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.dropMetricProfile ]: Drop MetricProfile collection request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test' for resource:	'MetricProfile-accc2fd3-aa20-4b8c-9926-3c56064df513'
+2026-05-11 22:15:11 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canDropMetricProfile ]: 
+
+================ MetricProfileRestResource Drop MetricProfile Test ================
+
+2026-05-11 22:15:11 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 85cc1dee-e34d-4176-aaa8-21a5f16571b4 shut down
+2026-05-11 22:15:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-11 22:15:31 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-11 22:15:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-11 22:15:32 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:15:38 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-11 22:15:38 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a5449d95-a2a0-4689-b4c8-48579cccdf71 initialized
+2026-05-11 22:15:38 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.setUpClass ]: 
+
+---------------- Initiating MetricProfile REST Resource Tests ----------------
+
+2026-05-11 22:15:38 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Restful MetricProfiles",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-11 22:15:38 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-11 22:15:38 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-11 22:15:38 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Restful MetricProfiles'
+2026-05-11 22:15:40 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canUpdateMetricProfile ]: 
+
+================ MetricProfileRestResource Update MetricProfile Test ================
+
+2026-05-11 22:15:40 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canUpdateMetricProfile ]: Created test metricProfile:	'MetricProfile-6306491d-7875-4dc8-a738-6acba99644d4'
+2026-05-11 22:15:40 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.createMetricProfile ]: Adding new MetricProfile request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test':
+
+'MetricProfile{id=MetricProfile-6306491d-7875-4dc8-a738-6acba99644d4, label=Update-MetricProfile-Test, timestamp=0, meanTotal=0.0, meanAvailable=0.0, meanUsed=0.0, profile=MetricProfile{id=ProfileData-1fb724b5-2a50-437e-a4e6-2d5b9cf2c8d5, metricProfile={DataPoint-6=MetricData{id=MetricData-57a27a41-ef3a-4cc1-9895-b4394860e9e1, label=Metric-Data-Label, timestamp=1778534140333, total=39.0, available=27.0, used=12.0, units=GB, metricType=CPU}, DataPoint-5=MetricData{id=MetricData-8aabf031-9a4e-45d0-9453-1be3940a8461, label=Metric-Data-Label, timestamp=1778534140333, total=30.0, available=24.0, used=6.0, units=GB, metricType=CPU}, DataPoint-4=MetricData{id=MetricData-31c85a2a-2834-4ccf-86d9-f995782b2eb6, label=Metric-Data-Label, timestamp=1778534140333, total=18.0, available=10.0, used=8.0, units=GB, metricType=CPU}, DataPoint-3=MetricData{id=MetricData-97d74751-7eda-429b-b1be-b4ee71b60352, label=Metric-Data-Label, timestamp=1778534140333, total=28.0, available=20.0, used=8.0, units=GB, metricType=CPU}, DataPoint-2=MetricData{id=MetricData-c39c0a91-410c-4075-b5ca-1a426bf05fc6, label=Metric-Data-Label, timestamp=1778534140333, total=16.0, available=11.0, used=5.0, units=GB, metricType=CPU}, DataPoint-1=MetricData{id=MetricData-f46865ac-20ef-4b13-a0a8-bacd8b581ec8, label=Metric-Data-Label, timestamp=1778534140333, total=60.0, available=57.0, used=3.0, units=GB, metricType=CPU}, DataPoint-0=MetricData{id=MetricData-5be0f186-77b8-4f46-8406-5e9a2f10ac56, label=Metric-Data-Label, timestamp=1778534140333, total=51.0, available=45.0, used=6.0, units=GB, metricType=CPU}, DataPoint-9=MetricData{id=MetricData-c763a062-ec96-4321-a879-cfc693284b0e, label=Metric-Data-Label, timestamp=1778534140333, total=59.0, available=49.0, used=10.0, units=GB, metricType=CPU}, DataPoint-8=MetricData{id=MetricData-50e08637-02dc-45eb-8f82-9c9935387b72, label=Metric-Data-Label, timestamp=1778534140333, total=24.0, available=18.0, used=6.0, units=GB, metricType=CPU}, DataPoint-7=MetricData{id=MetricData-47e780b7-6ea3-467d-8157-10d49f7b7101, label=Metric-Data-Label, timestamp=1778534140333, total=52.0, available=42.0, used=10.0, units=GB, metricType=CPU}}}, units=GB, type=MEMORY, jobEnvId=null}'
+2026-05-11 22:15:40 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canUpdateMetricProfile ]: MetricProfile creation state:	'200'
+2026-05-11 22:15:40 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canUpdateMetricProfile ]: Update metricProfile test:	'MetricProfile-6306491d-7875-4dc8-a738-6acba99644d4'
+2026-05-11 22:15:40 INFO  [ Test worker -> org.tasktide.api.resources.services.rest.MetricProfileRestResource.updateMetricProfile ]: Update MetricProfile collection request by user 'johnDoe' from '127.0.0.1' using 'JUnit-Test' for resource:
+
+'MetricProfile{id=MetricProfile-6306491d-7875-4dc8-a738-6acba99644d4, label=Some metric label, timestamp=0, meanTotal=0.0, meanAvailable=0.0, meanUsed=0.0, profile=MetricProfile{id=ProfileData-1fb724b5-2a50-437e-a4e6-2d5b9cf2c8d5, metricProfile={DataPoint-6=MetricData{id=MetricData-57a27a41-ef3a-4cc1-9895-b4394860e9e1, label=Metric-Data-Label, timestamp=1778534140333, total=39.0, available=27.0, used=12.0, units=GB, metricType=CPU}, DataPoint-5=MetricData{id=MetricData-8aabf031-9a4e-45d0-9453-1be3940a8461, label=Metric-Data-Label, timestamp=1778534140333, total=30.0, available=24.0, used=6.0, units=GB, metricType=CPU}, DataPoint-4=MetricData{id=MetricData-31c85a2a-2834-4ccf-86d9-f995782b2eb6, label=Metric-Data-Label, timestamp=1778534140333, total=18.0, available=10.0, used=8.0, units=GB, metricType=CPU}, DataPoint-3=MetricData{id=MetricData-97d74751-7eda-429b-b1be-b4ee71b60352, label=Metric-Data-Label, timestamp=1778534140333, total=28.0, available=20.0, used=8.0, units=GB, metricType=CPU}, DataPoint-2=MetricData{id=MetricData-c39c0a91-410c-4075-b5ca-1a426bf05fc6, label=Metric-Data-Label, timestamp=1778534140333, total=16.0, available=11.0, used=5.0, units=GB, metricType=CPU}, DataPoint-1=MetricData{id=MetricData-f46865ac-20ef-4b13-a0a8-bacd8b581ec8, label=Metric-Data-Label, timestamp=1778534140333, total=60.0, available=57.0, used=3.0, units=GB, metricType=CPU}, DataPoint-0=MetricData{id=MetricData-5be0f186-77b8-4f46-8406-5e9a2f10ac56, label=Metric-Data-Label, timestamp=1778534140333, total=51.0, available=45.0, used=6.0, units=GB, metricType=CPU}, DataPoint-9=MetricData{id=MetricData-c763a062-ec96-4321-a879-cfc693284b0e, label=Metric-Data-Label, timestamp=1778534140333, total=59.0, available=49.0, used=10.0, units=GB, metricType=CPU}, DataPoint-8=MetricData{id=MetricData-50e08637-02dc-45eb-8f82-9c9935387b72, label=Metric-Data-Label, timestamp=1778534140333, total=24.0, available=18.0, used=6.0, units=GB, metricType=CPU}, DataPoint-7=MetricData{id=MetricData-47e780b7-6ea3-467d-8157-10d49f7b7101, label=Metric-Data-Label, timestamp=1778534140333, total=52.0, available=42.0, used=10.0, units=GB, metricType=CPU}}}, units=GB, type=MEMORY, jobEnvId=null}'
+2026-05-11 22:15:40 INFO  [ Test worker -> org.tasktide.api.services.rest.MetricProfileRestResourceTests.canUpdateMetricProfile ]: 
+
+================ MetricProfileRestResource Update MetricProfile Test ================
+
+2026-05-11 22:15:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a5449d95-a2a0-4689-b4c8-48579cccdf71 shut down

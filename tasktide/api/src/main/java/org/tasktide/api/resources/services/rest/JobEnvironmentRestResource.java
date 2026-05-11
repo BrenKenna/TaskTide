@@ -78,7 +78,7 @@ public class JobEnvironmentRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-environment")
+    @Path("/add")
     public Response createJobEnvironment(
         JobEnvironment jobEnvironment,
         @Context HttpHeaders reqHeader,
@@ -127,7 +127,7 @@ public class JobEnvironmentRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-environments")
+    @Path("/import")
     public Response createJobEnvironments(
         List<JobEnvironment> jobEnvironments,
         @Context HttpHeaders reqHeader,

@@ -24,24 +24,24 @@ import jakarta.json.bind.JsonbConfig;
 
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jakarta.nosql.Template;
+import java.util.Random;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideService;
+import org.tasktide.core.manager.BuilderUtility;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 
@@ -51,16 +51,23 @@ import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
 
 import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.model.builders.BuilderType;
+import org.tasktide.core.model.builders.MetricDataBuilder;
+import org.tasktide.core.model.builders.MetricProfileBuilder;
+import org.tasktide.core.model.builders.ModelBuilderProvider;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
+import org.tasktide.core.model.job_env.metrics.MetricType;
+import org.tasktide.core.model.job_env.metrics.ProfileData;
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.core.supporting.Utils;
 
 
 /**
@@ -71,7 +78,8 @@ import org.tasktide.core.supporting.JsonUtils;
 public class TestUtils {
     
     private static final Logger LOGGER = LogManager.getLogger(TestUtils.class);
-    
+    private static final Random RAND = new Random();
+    private static final ModelBuilderProvider BUILDER_PROV = new ModelBuilderProvider();
     
     /**
      * Creates an annotation providing an early-binding
@@ -305,5 +313,121 @@ public class TestUtils {
         SeContainer container;
         container = SeContainerInitializer.newInstance().initialize();
         return container.select(DocumentTemplate.class).get();
+    }
+    
+    
+    /**
+     * Fetch random memory metric
+     * 
+     * @return {@link MetricData}
+     */
+    public static MetricData fetchRandomMemoryMetric() {
+        MetricData output;
+        long total = RAND.nextLong(16, 64);
+        long used = RAND.nextLong(1, 14);
+        long available = total - used;
+        
+        MetricDataBuilder builder = (MetricDataBuilder) BUILDER_PROV.getBuilder(BuilderType.METRICDATA);
+        output = builder
+            .withId( "MetricData-" + Utils.getRandomUUID() )
+            .withAnnotation( BuilderUtility.makeEmptyAnnotation() )
+            .withLabel("Metric-Data-Label")
+            .withMetricType(MetricType.CPU)
+            .withTimestamp(System.currentTimeMillis())
+            .withUnits("GB")
+            .withTotal(total)
+            .withUsed(used)
+            .withAvailable(available)
+        .build();
+        return output;
+    }
+    
+    
+    /**
+     * Fetch random Cpu metric
+     * 
+     * @return {@link MetricData}
+     */
+    public static MetricData fetchRandomCpuMetric() {
+        MetricData output;
+        long total = 100;
+        long used = RAND.nextLong(1, 100);
+        long available = total - used;
+        
+        MetricDataBuilder builder = (MetricDataBuilder) BUILDER_PROV.getBuilder(BuilderType.METRICDATA);
+        output = builder
+            .withId( "MetricData-" + Utils.getRandomUUID() )
+            .withAnnotation( BuilderUtility.makeEmptyAnnotation() )
+            .withLabel("Metric-Data-Label")
+            .withMetricType(MetricType.CPU)
+            .withTimestamp(System.currentTimeMillis())
+            .withUnits("PCT")
+            .withTotal(total)
+            .withUsed(used)
+            .withAvailable(available)
+        .build();
+        return output;
+    }
+    
+    
+    /**
+     * Create random memory {@link MetricProfile}
+     * 
+     * @param dataPoints
+     * 
+     * @return {@link MetricProfile}
+     */
+    public static MetricProfile createRandomMemoryMetricProfile(int dataPoints) {
+    
+        MetricProfile output;
+        Map<String, MetricData> profile = new HashMap<>();
+        
+        for ( int i = 0; i < dataPoints; i++) {
+            MetricData data = fetchRandomMemoryMetric();
+            profile.put("DataPoint-" + i, data);
+        }
+        
+        MetricProfileBuilder builder = (MetricProfileBuilder) BUILDER_PROV.getBuilder(BuilderType.METRICPROFILE);
+        output = builder
+            .withId("MetricProfile-" + Utils.getRandomUUID())
+            .withAnnotation( BuilderUtility.makeEmptyAnnotation() )
+            .withProfile( new ProfileData("ProfileData-" + Utils.getRandomUUID(), profile))
+            .withType(MetricType.MEMORY)
+            .withUnits("GB")
+            .withLabel("Random-Memory-Profile")
+        .build();
+        
+        return output;
+    }
+    
+    
+    /**
+     * Create random memory {@link MetricProfile}
+     * 
+     * @param dataPoints
+     * 
+     * @return {@link MetricProfile}
+     */
+    public static MetricProfile createRandomCpuMetricProfile(int dataPoints) {
+    
+        MetricProfile output;
+        Map<String, MetricData> profile = new HashMap<>();
+        
+        for ( int i = 0; i < dataPoints; i++) {
+            MetricData data = TestUtils.fetchRandomCpuMetric();
+            profile.put("DataPoint-" + i, data);
+        }
+        
+        MetricProfileBuilder builder = (MetricProfileBuilder) BUILDER_PROV.getBuilder(BuilderType.METRICPROFILE);
+        output = builder
+            .withId("MetricProfile-" + Utils.getRandomUUID())
+            .withAnnotation( BuilderUtility.makeEmptyAnnotation() )
+            .withProfile( new ProfileData("ProfileData-" + Utils.getRandomUUID(), profile))
+            .withType(MetricType.CPU)
+            .withUnits("PCT")
+            .withLabel("Random-Memory-Profile")
+        .build();
+        
+        return output;
     }
 }
