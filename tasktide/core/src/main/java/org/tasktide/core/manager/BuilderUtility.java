@@ -204,6 +204,7 @@ public class BuilderUtility {
         return new WorkloadBuilder()
             .withId( "Workload-" + Utils.generateSalt() )
             .withWorkloadState(ItemState.TODO)
+            .withWorkload(new HashMap<>())
         .build();
     }
     
@@ -458,6 +459,16 @@ public class BuilderUtility {
     }
     
     
+    public static Workflow buildWorkflow(String workflowName) {
+        return new WorkflowBuilder()
+            .withId("Workflow-" + Utils.generateSalt())
+            .withWorkflowName(workflowName)
+            .withSteps( new HashMap<>() )
+            .withAnnotation( makeEmptyAnnotation() )
+        .build();
+    }
+    
+    
     /**
      * Build {@link Workflow}
      * 
@@ -490,6 +501,63 @@ public class BuilderUtility {
             .withSteps( steps )
             .withAnnotation( makeEmptyAnnotation() )
         .build();
+    }
+    
+    
+    /**
+     * Make a {@link ManagerTask} with supplied task name, script, collection name, and annotations
+     * 
+     * @param taskName
+     * @param taskScript
+     * @param stepName
+     * @param anno
+     * 
+     * @return {@link ManagerTask}
+     */
+    public static ManagerTask buildManagerTask(String taskName, String taskScript, String stepName, CustomAnnotation anno) {
+        return new ManagerTask(taskName, taskScript, stepName, anno);
+    }
+    
+    
+    /**
+     * Make a {@link ManagerTask} with supplied task name, script, and collection name
+     * 
+     * @param taskName
+     * @param taskScript
+     * @param stepName
+     * @return {@link ManagerTask}
+     */
+    public static ManagerTask buildManagerTask(String taskName, String taskScript, String stepName) {
+        CustomAnnotation anno = BuilderUtility.makeEmptyAnnotation();
+        return new ManagerTask(taskName, taskScript, stepName, anno);
+    }
+    
+    
+    /**
+     * Make a {@link ManagerTask} with supplied task name, and script
+     * 
+     * @param taskName
+     * @param taskScript
+     * 
+     * @return {@link ManagerTask}
+     */
+    public static ManagerTask buildManagerTask(String taskName, String taskScript) {
+        CustomAnnotation anno = BuilderUtility.makeEmptyAnnotation();
+        String stepName = "Arbitrary";
+        return new ManagerTask(taskName, taskScript, stepName, anno);
+    }
+    
+    
+    /**
+     * Build new {@link ItemTask} through {@link ManagerTask}
+     * 
+     * @param taskName
+     * @param taskScript
+     * 
+     * @return {@link ItemTask}
+     */
+    public static ItemTask buildItemTask(String taskName, String taskScript) {
+        return buildManagerTask(taskName, taskScript).asItemTask();
     }
     
     

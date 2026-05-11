@@ -19,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.ws.rs.Consumes;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -27,10 +28,12 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.SecurityContext;
 import jakarta.ws.rs.core.UriInfo;
 
@@ -81,7 +84,9 @@ public class WorkflowRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-workflow")
+    @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createWorkflow(
         Workflow workflow,
         @Context HttpHeaders reqHeader,
@@ -109,7 +114,7 @@ public class WorkflowRestResource {
         
         // Add workflow
         if ( workflowService.appendModel(workflow) != null ) {
-            return Response.ok().build();
+            return Response.ok(workflow).build();
         }
         else {
             String msg = String.format("Unable to import below Workflow:\n\n'%s'", workflow.toJsonDoc());
@@ -130,7 +135,9 @@ public class WorkflowRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-workflows")
+    @Path("/import")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createWorkflows(
         List<Workflow> workflows,
         @Context HttpHeaders reqHeader,
@@ -180,7 +187,8 @@ public class WorkflowRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("create-workflow")
+    @Path("/create")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createWorkflow(
         @QueryParam("workflowName") String workflowName,
         @QueryParam("stepId") String stepId,
@@ -209,33 +217,40 @@ public class WorkflowRestResource {
         }
         
         // Handle stepId
+        TaskTideManagerUtility.updateStepWorkflowIds();
         if ( stepId == null ) {
+            LOGGER.info("Creating workflow:\t'{}'", workflowName);
             TaskTideManagerUtility.configureNewWorkflow(workflowName);
         }
         else {
+            LOGGER.info("Creating workflow '{}' for step:\t'{}'", stepId);
             Step step = TaskTideServiceManager.fetchStepService().fetchById(stepId);
             if ( step == null ) {
                 String msg = String.format(
                     "Could not create '%s' Step for provided Step.Id:\t'%s'",
                     workflowName, stepId
                 );
+                LOGGER.warn(msg);
                 return Response.status(404, msg).build();
             }
             TaskTideManagerUtility.configureNewWorkflow(workflowName, step);
         }
         
         // Fetch workload if present
-        result = workflowService.viewByField("WorkflowName", workflowName);
+        LOGGER.info("Verifying creation of workflow:\t'{}'", workflowName);
+        result = workflowService.viewByField("workflowName", workflowName);
         if ( result == null ) {
             String msg = String.format(
                 "Could not verify creation of Workflow:\t'%s'",
                 workflowName
             );
+            LOGGER.warn(msg);
             return Response.status(500, msg).build();
         }
         
         // Otherwise return to client
         else {
+            LOGGER.info("Returning created resource to client");
             return Response.ok(result.get(0)).build();
         }
     }
@@ -259,6 +274,7 @@ public class WorkflowRestResource {
      */
     @GET
     @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response readWorkflow(
         @QueryParam("id") String id,
         @QueryParam("field") String field,
@@ -352,8 +368,9 @@ public class WorkflowRestResource {
      * 
      * @return {@link Response}
      */
-    @PATCH
-    @Path("/addStep")
+    @PUT
+    @Path("/add-step")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response addStep(
        @QueryParam("workflowId") String workflowId,
        @QueryParam("stepId") String stepId,
@@ -366,11 +383,7 @@ public class WorkflowRestResource {
         String ip = reqHeader.getHeaderString("X-Forwarded-For");
         String userAgent = reqHeader.getHeaderString("User-Agent");
         LOGGER.info(
-            "Get workflow request recieved from '{}', '{}':\n\n'{}'",
-            ip, userAgent
-        );
-        LOGGER.info(
-            "Add step to Workflow request by user '{}' from '{}' using '{}':\n\nStep = '{}'\nWorkflow = '{}'",
+            "Add step to Workflow request by user '{}' from '{}' using '{}':\n\nStep = '{}'\nWorkflow = '{}'\n",
             securityContext.getUserPrincipal().getName(), ip, userAgent, stepId, workflowId
         );
         
@@ -380,11 +393,13 @@ public class WorkflowRestResource {
         }
         
         // Validate params
+        LOGGER.info("Validating query parameters");
         if ( workflowId == null || stepId == null ) {
             return Response.status(400, "").build();
         }
         
         // Try fetch workflow
+        LOGGER.info("Fetching workflow");
         Workflow workflow = workflowService.fetchById(workflowId);
         if ( workflow == null ) {
             String msg = String.format("Workflow not foud:\t'%s'", workflowId);
@@ -392,14 +407,40 @@ public class WorkflowRestResource {
         }
         
         // Try fetch step
+        LOGGER.info("Fetching step");
         Step step = TaskTideServiceManager.fetchStepService().fetchById(stepId);
         if ( step == null ) {
             String msg = String.format("Step not foud:\t'%s'", stepId);
             return Response.status(404, msg).build();
         }
         
+        // Clear old workflow reference
+        LOGGER.info("Clearing step reference on old workflow:\n\nStepId='{}'\nWorkflowId='{}'\n", step.getId(), step.getWorkflowId());
+        String oldWorkflowId = step.getWorkflowId();
+        if ( oldWorkflowId != null ) {
+           LOGGER.info("Fetching old workflow for Id:\t'{}'", oldWorkflowId);
+           Workflow oldWorkflow = this.workflowService.fetchById(oldWorkflowId);
+           LOGGER.info("Workflow retrieved");
+           if ( oldWorkflow != null ) {
+                oldWorkflow.getWorkflowSteps().remove(step.getId());
+                LOGGER.info("Updating old workflow");
+                this.workflowService.updateModel(oldWorkflow);
+            }
+           LOGGER.warn("No record workflow Id detected previously assigned to step:\t'{}',{}'", step.getId(), oldWorkflowId);
+        }
+        else {
+            LOGGER.warn("No previous workflow allocation detected for:\t'{}'", step.getId());
+        }
+        
+        
         // Add step to workflow
+        LOGGER.info("Adding step to workflow");
         Workflow result = ( (WorkflowService) workflowService ).addStepToWorkflow(workflow, step);
+        step.setWorkflowId(workflowId);
+        TaskTideServiceManager
+            .fetchStepService()
+        .updateModel(step);
+        
         if ( result != null ) {
             return Response.ok(result).build();
         }
@@ -470,6 +511,8 @@ public class WorkflowRestResource {
      */
     @PUT
     @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response updateWorkflow(
         Workflow workflow,
         @Context HttpHeaders reqHeader,

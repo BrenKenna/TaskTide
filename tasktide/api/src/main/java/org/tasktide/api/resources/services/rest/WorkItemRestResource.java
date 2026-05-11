@@ -19,17 +19,21 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.ws.rs.Consumes;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.SecurityContext;
 import jakarta.ws.rs.core.UriInfo;
 
@@ -40,6 +44,7 @@ import org.tasktide.core.TaskTideService;
 import org.tasktide.core.manager.ManagerTask;
 import org.tasktide.core.services.WorkItemService;
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.core.model.workitem.WorkItem;
 
@@ -79,7 +84,9 @@ public class WorkItemRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-workitem")
+    @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createWorkItem(
         WorkItem workItem,
         @Context HttpHeaders reqHeader,
@@ -128,7 +135,9 @@ public class WorkItemRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-workitems")
+    @Path("/import")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createWorkItems(
         List<WorkItem> workItems,
         @Context HttpHeaders reqHeader,
@@ -177,7 +186,9 @@ public class WorkItemRestResource {
      * @return {@link Response}
      */
     @POST
-    @Path("create-workitem")
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createWorkItem(
         ManagerTask managerTask,
         @Context HttpHeaders reqHeader,
@@ -240,6 +251,7 @@ public class WorkItemRestResource {
      */
     @GET
     @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response readWorkItem(
         @QueryParam("id") String id,
         @QueryParam("field") String field,
@@ -381,6 +393,8 @@ public class WorkItemRestResource {
      */
     @PUT
     @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response updateWorkItem(
         WorkItem workItem,
         @Context HttpHeaders reqHeader,
@@ -413,6 +427,80 @@ public class WorkItemRestResource {
         }
         else {
             String msg = String.format("Server verifying update of WorkItem:\t'%s'", workItem.toJsonDoc());
+            return Response.status(500, msg).build();
+        }
+    }
+    
+    
+    /**
+     * Endpoint for adding {@link ItemTask} to a {@link WorkItem},
+     * 
+     * @param itemTask
+     * @param itemId
+     * @param reqHeader
+     * @param uriInfo
+     * @param securityContext
+     * 
+     * @return {@link Response}
+     */
+    @PUT
+    @Path("/add-task")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response addTaskToWorkItem(
+       ItemTask itemTask,
+       @QueryParam("itemId") String itemId,
+       @Context HttpHeaders reqHeader,
+       @Context UriInfo uriInfo,
+       @Context SecurityContext securityContext
+    ) {
+        
+        // Log request
+        String ip = reqHeader.getHeaderString("X-Forwarded-For");
+        String userAgent = reqHeader.getHeaderString("User-Agent");
+        LOGGER.info(
+            "Add ItemTask to WorkItem request by user '{}' from '{}' using '{}':\t'{}'",
+            securityContext.getUserPrincipal().getName(), ip, userAgent, itemId
+        );
+        
+        // Role can be configured
+        if ( !WebApiUtils.checkSecurityContext(securityContext, "user") ) {
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
+        
+        // Validate params
+        LOGGER.info("Evaluating provided parameters");
+        if ( itemTask == null || itemId == null ) {
+            LOGGER.info("Invalid arguments for appending task to WorkItem:\t'{}'", itemId);
+            LOGGER.info("Displaying ItemTask:\n\n'{}'", itemTask.toJsonDoc());
+            return Response.status(400, "Invalid arguments for appending task to WorkItem").build();
+        }
+        
+        // Try fetch work item
+        LOGGER.info("Fetching workItem for:\t'{}'", itemId);
+        WorkItem workItem = this.workItemService.fetchById(itemId);
+        if ( workItem == null ) {
+            String msg = String.format("WorkItem not foud:\t'%s'", itemId);
+            return Response.status(404, msg).build();
+        }
+        
+        // Add task to work item
+        LOGGER.info("Adding task:\t'{}'", itemTask.getId());
+        if ( workItem.addTask(itemTask) ) {
+            workItem = this.workItemService.updateModel(workItem);
+            if ( workItem != null ) {
+                LOGGER.info("WorkItem updated:\t'{}'", itemId);
+                return Response.ok(workItem).build();
+            }
+            else {
+                LOGGER.info("Unable to verify update of WorkItem:\t'{}'", itemId);
+                String msg = String.format("Unable to verify update of WorkItem '%s'", itemId);
+                return Response.status(500, msg).build();
+            }
+        }
+        else {
+            LOGGER.info("Unable to append task to WorkItem:\t'{}'", itemId);
+            String msg = String.format("Unable to verify update of WorkItem '%s'", itemId);
             return Response.status(500, msg).build();
         }
     }

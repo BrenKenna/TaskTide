@@ -85,7 +85,7 @@ public class StepRestResource extends TaskTideRestApi {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-step")
+    @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createStep(
@@ -141,7 +141,9 @@ public class StepRestResource extends TaskTideRestApi {
      * @return {@link Response}
      */
     @POST
-    @Path("/add-steps")
+    @Path("/import")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createSteps(
         List<Step> steps,
         @Context HttpHeaders reqHeader,
@@ -193,9 +195,9 @@ public class StepRestResource extends TaskTideRestApi {
      * 
      * @return {@link Response}
      */
-    @POST
-    @Path("/create-step")
-    public Response createStep(
+    @GET
+    @Path("/create")
+    public Response createNamedStep(
         @QueryParam("stepName") String stepName,
         @Context HttpHeaders reqHeader,
         @Context UriInfo uriInfo,
@@ -402,6 +404,8 @@ public class StepRestResource extends TaskTideRestApi {
      */
     @PUT
     @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response updateStep(
         Step step,
         @Context HttpHeaders reqHeader,

@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.manager;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -206,7 +207,7 @@ public class TaskTideManagerUtility {
         Workflow workflow = BuilderUtility.buildEmptyWorkflow();
         workflow.setWorkflowName(workflowName);
         workflow.setWorkflowId(WORKFLOW_ID);
-        workflow.setWorkflowSteps(Map.of(step.getStepName(), step));
+        workflow.setWorkflowSteps(Map.of(step.getId(), step));
         
         // Upload
         try {
@@ -229,7 +230,7 @@ public class TaskTideManagerUtility {
         Workflow workflow = BuilderUtility.buildEmptyWorkflow();
         workflow.setWorkflowName(workflowName);
         workflow.setWorkflowId(WORKFLOW_ID);
-        workflow.setWorkflowSteps(Map.of("", BuilderUtility.buildEmptyStep()));
+        workflow.setWorkflowSteps(new HashMap<>());
         
         // Upload
         try {

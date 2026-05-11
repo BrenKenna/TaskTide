@@ -32,6 +32,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
+import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
+import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
+import org.tasktide.core.model.collection.WorkflowStepConverter;
 
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.InternetProtocol;
@@ -181,8 +184,13 @@ public class TestEnvironment {
     public static SeContainer startWeldContainer(String filePath, Class<?> clazz) {
         Config conf = ConfigUtil.loadFrom(filePath);
         ConfigUtil.register(conf, clazz);
-        return SeContainerInitializer.newInstance()
-            .initialize();
+        
+        
+        SeContainerInitializer init = SeContainerInitializer.newInstance();
+        init.addExtensions(ReflectionEntityMetadataExtension.class, DocumentExtension.class);
+        init.addBeanClasses(WorkflowStepConverter.class);
+        
+        return init.initialize();
     }
 
     

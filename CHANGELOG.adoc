@@ -58,6 +58,20 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
         - [] /metrics?data=health returns server state
 --
 
+
+- [/] Unit Test Notes
+--
+        - [] Logging inconsistencies
+        - [/] Use add, import, create etc semantics
+                - [X] Completed are step and worklow
+        - [X] Create by name 404 across all resources
+                - Use target.query()
+        - [X] Standard CRUD all operational
+        - [X] Step, Workflow
+
+--
+
+
 - [/] General using of the WebAPI
 --
         - [X] Starting, stopping and logging all clear
@@ -82,7 +96,6 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type HttpServletRequest with qualifiers @Default
   at injection point [BackedAnnotatedField] @Inject org.tasktide.api.resources.services.graphql.context.RequestContext.request
   at org.tasktide.api.resources.services.graphql.context.RequestContext.request(RequestContext.java:0)
-
 
 '''
 
@@ -184,7 +197,7 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
 
 - [X] Reserved annotation keys
 - [X] Template insert over iterable
-
+- [X] Mask Step on Workflow Entity in favour of Step List
 
 
 ==== Client
@@ -288,7 +301,7 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
         - [/] Background jobs from ItemStore.
         - [X] TaskTideClient needs TestContainers.
 --
-
+- [X] Mask Step on Workflow Entity in favour of Step List
 
 
 === 4). Code Resolves

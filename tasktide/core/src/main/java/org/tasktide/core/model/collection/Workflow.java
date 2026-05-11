@@ -23,7 +23,7 @@ import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
 
-import jakarta.nosql.Column;
+import jakarta.nosql.Convert;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
@@ -61,14 +61,18 @@ public class Workflow implements TaskTideModel<Workflow> {
     @JsonbProperty("WorkflowName")
     private String workflowName;
     
-    @jakarta.nosql.Column("WorkflowSteps")
     @jakarta.persistence.Transient
     @JsonbProperty("WorkflowSteps")
     private Map<String, Step> workflowSteps;
     
+    @JsonbTransient
+    @jakarta.persistence.Transient
+    @jakarta.nosql.Column("StepIds")
+    private List<String> stepIds;
+    
     @OneToMany(mappedBy = "workflow", cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<Step> stepList = new ArrayList<>();
-    
+
     
     // Custom annotations
     @jakarta.nosql.Column("Annotations")
@@ -109,6 +113,22 @@ public class Workflow implements TaskTideModel<Workflow> {
 
     
     /**
+     * Jakarta-NoSQL compatibble constructor?
+     * 
+     * @param workflowId
+     * @param workflowName
+     * @param stepIds
+     * @param anno 
+     */
+    public Workflow(String workflowId, String workflowName, List<String> stepIds, CustomAnnotation anno) {
+        this.workflowId = workflowId;
+        this.workflowName = workflowName;
+        this.workflowSteps = WorkflowStepConverter.convertToEntityAttribute(stepIds);
+        this.anno = anno;
+    }
+    
+    
+    /**
      * JPA PostLoad method for populating step map from stepList
      * 
      */
@@ -119,7 +139,7 @@ public class Workflow implements TaskTideModel<Workflow> {
             workflowSteps.put(elm.getStepName(), elm);
         }
     }
-    
+
     
     /**
      * Get annotations
@@ -210,7 +230,12 @@ public class Workflow implements TaskTideModel<Workflow> {
      * @return Map-String, {@link Step}
      */
     public Map<String, Step> getWorkflowSteps() {
-        return workflowSteps;
+        
+        if (this.workflowSteps == null || this.workflowSteps.isEmpty()) {
+            this.hydrateSteps();
+        }
+        
+        return this.workflowSteps;
     }
 
     
@@ -221,6 +246,44 @@ public class Workflow implements TaskTideModel<Workflow> {
      */
     public void setWorkflowSteps(Map<String, Step> workflowSteps) {
         this.workflowSteps = workflowSteps;
+    }
+    
+    
+    public List<String> getStepIds() {
+        if ( this.stepIds == null && this.workflowSteps != null ) {
+            this.stepIds = WorkflowStepConverter.convertToDatabaseColumn(this.workflowSteps);
+        }
+        return this.stepIds;
+    }
+    
+    
+    public void setStepIds(List<String> stepIds) {
+        this.stepIds = stepIds;
+    }
+    
+    
+    public void hydrateSteps() {
+        if ( this.stepIds == null ) {
+            this.workflowSteps = new HashMap<>();
+            return;
+        }
+        
+        if ( this.workflowSteps != null && !this.workflowSteps.isEmpty() ) {
+            return; // already hydrated
+        }
+        
+        this.workflowSteps = WorkflowStepConverter.convertToEntityAttribute(stepIds);
+    }
+    
+    
+    public void deHydrateSteps() {
+        if ( this.workflowSteps == null || this.workflowSteps.isEmpty() ) {
+             this.stepIds = new ArrayList<>();
+        }
+        
+        else {
+            this.stepIds = WorkflowStepConverter.convertToDatabaseColumn(workflowSteps);
+        }
     }
     
     

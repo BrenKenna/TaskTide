@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.model.builders;
 
+import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
@@ -152,6 +153,10 @@ public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
         }
         if ( output.getJobEnvId() == null ) {
             output.setJobEnvId("");
+        }
+        if ( anno == null ) {
+            anno = BuilderUtility.makeEmptyAnnotation();
+            output.setAnnotations(anno);
         }
         return output;
     }
