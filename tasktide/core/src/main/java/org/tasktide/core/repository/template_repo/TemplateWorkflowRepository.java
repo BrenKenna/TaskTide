@@ -25,6 +25,8 @@ import org.tasktide.core.model.collection.Workflow;
 
 import org.tasktide.core.repository.TemplateRepository;
 
+import org.tasktide.core.TaskTideModel;
+
 
 /**
  * Workflow repository

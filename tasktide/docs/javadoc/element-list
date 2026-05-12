@@ -3,9 +3,6 @@ org.tasktide.api.hateoas.links
 org.tasktide.api.hateoas.resource_map
 org.tasktide.api.jwt
 org.tasktide.api.resources.manager.rest
-org.tasktide.api.resources.services.graphql.context
-org.tasktide.api.resources.services.graphql.endpoints
-org.tasktide.api.resources.services.graphql.inputs
 org.tasktide.api.resources.services.rest
 org.tasktide.api.security_context.data_models
 org.tasktide.api.security_context.service_hooks
@@ -53,6 +50,7 @@ org.tasktide.engine.workerunit.provider
 org.tasktide.itemstore
 org.tasktide.itemstore.session
 org.tasktide.mutex.actor
+org.tasktide.mutex.bucketing
 org.tasktide.mutex.exceptions
 org.tasktide.mutex.model
 org.tasktide.mutex.orchestrator

@@ -213,7 +213,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createWorkflow(org.tasktide.core.model.collection.Workflow,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createWorkflow</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("/add-workflow")
+@Path("/add")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createWorkflow</span><wbr><span class="parameters">(<a href="../../../../core/model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&nbsp;workflow,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -238,7 +240,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createWorkflows(java.util.List,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createWorkflows</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("/add-workflows")
+@Path("/import")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createWorkflows</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../../../core/model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&gt;&nbsp;workflows,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -263,7 +267,8 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createWorkflow(java.lang.String,java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createWorkflow</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("create-workflow")
+@Path("/create")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createWorkflow</span><wbr><span class="parameters">(@QueryParam("workflowName")
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowName,
  @QueryParam("stepId")
@@ -293,6 +298,7 @@ loadScripts(document, 'script');</script>
 <h3>readWorkflow</h3>
 <div class="member-signature"><span class="annotations">@GET
 @Path("/get")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">readWorkflow</span><wbr><span class="parameters">(@QueryParam("id")
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
  @QueryParam("field")
@@ -330,8 +336,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="addStep(java.lang.String,java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>addStep</h3>
-<div class="member-signature"><span class="annotations">@PATCH
-@Path("/addStep")
+<div class="member-signature"><span class="annotations">@PUT
+@Path("/add-step")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">addStep</span><wbr><span class="parameters">(@QueryParam("workflowId")
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;workflowId,
  @QueryParam("stepId")
@@ -386,6 +393,8 @@ loadScripts(document, 'script');</script>
 <h3>updateWorkflow</h3>
 <div class="member-signature"><span class="annotations">@PUT
 @Path("/update")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">updateWorkflow</span><wbr><span class="parameters">(<a href="../../../../core/model/collection/Workflow.html" title="class in org.tasktide.core.model.collection">Workflow</a>&nbsp;workflow,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,

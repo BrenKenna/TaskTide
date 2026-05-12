@@ -114,7 +114,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createStep(java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">createStep</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createNamedStep(java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">createNamedStep</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName,
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
  jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
  jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
@@ -209,7 +209,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createStep(org.tasktide.core.model.collection.Step,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createStep</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("/add-step")
+@Path("/add")
 @Consumes("application/json")
 @Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createStep</span><wbr><span class="parameters">(<a href="../../../../core/model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&nbsp;step,
@@ -236,7 +236,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createSteps(java.util.List,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createSteps</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("/add-steps")
+@Path("/import")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createSteps</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../../../core/model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&gt;&nbsp;steps,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -258,11 +260,11 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="createStep(java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
-<h3>createStep</h3>
-<div class="member-signature"><span class="annotations">@POST
-@Path("/create-step")
-</span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createStep</span><wbr><span class="parameters">(@QueryParam("stepName")
+<section class="detail" id="createNamedStep(java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
+<h3>createNamedStep</h3>
+<div class="member-signature"><span class="annotations">@GET
+@Path("/create")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createNamedStep</span><wbr><span class="parameters">(@QueryParam("stepName")
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;stepName,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -352,6 +354,8 @@ loadScripts(document, 'script');</script>
 <h3>updateStep</h3>
 <div class="member-signature"><span class="annotations">@PUT
 @Path("/update")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">updateStep</span><wbr><span class="parameters">(<a href="../../../../core/model/collection/Step.html" title="class in org.tasktide.core.model.collection">Step</a>&nbsp;step,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,

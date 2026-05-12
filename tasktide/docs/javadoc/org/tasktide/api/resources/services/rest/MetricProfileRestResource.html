@@ -193,7 +193,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createMetricProfile(org.tasktide.core.model.job_env.metrics.MetricProfile,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createMetricProfile</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("/add-profile")
+@Path("/add")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createMetricProfile</span><wbr><span class="parameters">(<a href="../../../../core/model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics">MetricProfile</a>&nbsp;metricProfile,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -218,7 +220,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createMetricProfiles(java.util.List,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createMetricProfiles</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("/add-profiles")
+@Path("/import")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createMetricProfiles</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../../../core/model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics">MetricProfile</a>&gt;&nbsp;metricProfiles,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -244,6 +248,7 @@ loadScripts(document, 'script');</script>
 <h3>readMetricProfile</h3>
 <div class="member-signature"><span class="annotations">@GET
 @Path("/get")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">readMetricProfile</span><wbr><span class="parameters">(@QueryParam("id")
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
  @QueryParam("field")
@@ -308,6 +313,8 @@ loadScripts(document, 'script');</script>
 <h3>updateMetricProfile</h3>
 <div class="member-signature"><span class="annotations">@PUT
 @Path("/update")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">updateMetricProfile</span><wbr><span class="parameters">(<a href="../../../../core/model/job_env/metrics/MetricProfile.html" title="class in org.tasktide.core.model.job_env.metrics">MetricProfile</a>&nbsp;metricProfile,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,

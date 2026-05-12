@@ -110,42 +110,51 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createWorkItem(org.tasktide.core.manager.ManagerTask,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">createWorkItem</a><wbr>(<a href="../../../../core/manager/ManagerTask.html" title="class in org.tasktide.core.manager">ManagerTask</a>&nbsp;managerTask,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addTaskToWorkItem(org.tasktide.core.model.task.ItemTask,java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">addTaskToWorkItem</a><wbr>(<a href="../../../../core/model/task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;itemTask,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemId,
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
  jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
  jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Endpoint for adding <a href="../../../../core/model/task/ItemTask.html" title="class in org.tasktide.core.model.task"><code>ItemTask</code></a> to a <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>,</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createWorkItem(org.tasktide.core.manager.ManagerTask,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">createWorkItem</a><wbr>(<a href="../../../../core/manager/ManagerTask.html" title="class in org.tasktide.core.manager">ManagerTask</a>&nbsp;managerTask,
+ jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
+ jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
+ jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Endpoint to create a new empty <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>, returning
   created resource to the client</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createWorkItem(org.tasktide.core.model.workitem.WorkItem,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">createWorkItem</a><wbr>(<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&nbsp;workItem,
- jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
- jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
- jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Endpoint to create provided <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>, returning
-  whether the resource was created to the client</div>
-</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createWorkItems(java.util.List,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">createWorkItems</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;&nbsp;workItems,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createWorkItem(org.tasktide.core.model.workitem.WorkItem,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">createWorkItem</a><wbr>(<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&nbsp;workItem,
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
  jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
  jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Endpoint to import provided <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> collection, returning
+<div class="block">Endpoint to create provided <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>, returning
   whether the resource was created to the client</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#dropWorkItem(java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">dropWorkItem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createWorkItems(java.util.List,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">createWorkItems</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;&nbsp;workItems,
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
  jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
  jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Endpoint for dropping <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> by Id</div>
+<div class="block">Endpoint to import provided <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> collection, returning
+  whether the resource was created to the client</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#readWorkItem(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">readWorkItem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#dropWorkItem(java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">dropWorkItem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
+ jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
+ jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
+ jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Endpoint for dropping <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> by Id</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#readWorkItem(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">readWorkItem</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;field,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;value,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;grouping,
@@ -153,17 +162,17 @@ loadScripts(document, 'script');</script>
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
  jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
  jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Endpoint for fetching <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> by Id,
   field having value, or field having value for a
   group having a value</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateWorkItem(org.tasktide.core.model.workitem.WorkItem,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">updateWorkItem</a><wbr>(<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&nbsp;workItem,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>jakarta.ws.rs.core.Response</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateWorkItem(org.tasktide.core.model.workitem.WorkItem,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)" class="member-name-link">updateWorkItem</a><wbr>(<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&nbsp;workItem,
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
  jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
  jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Endpoint for updating <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a> providing new resource</div>
 </div>
 </div>
@@ -202,7 +211,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createWorkItem(org.tasktide.core.model.workitem.WorkItem,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createWorkItem</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("/add-workitem")
+@Path("/add")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createWorkItem</span><wbr><span class="parameters">(<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&nbsp;workItem,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -227,7 +238,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createWorkItems(java.util.List,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createWorkItems</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("/add-workitems")
+@Path("/import")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createWorkItems</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&gt;&nbsp;workItems,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -252,7 +265,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createWorkItem(org.tasktide.core.manager.ManagerTask,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
 <h3>createWorkItem</h3>
 <div class="member-signature"><span class="annotations">@POST
-@Path("create-workitem")
+@Path("/create")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">createWorkItem</span><wbr><span class="parameters">(<a href="../../../../core/manager/ManagerTask.html" title="class in org.tasktide.core.manager">ManagerTask</a>&nbsp;managerTask,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -278,6 +293,7 @@ loadScripts(document, 'script');</script>
 <h3>readWorkItem</h3>
 <div class="member-signature"><span class="annotations">@GET
 @Path("/get")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">readWorkItem</span><wbr><span class="parameters">(@QueryParam("id")
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;id,
  @QueryParam("field")
@@ -342,6 +358,8 @@ loadScripts(document, 'script');</script>
 <h3>updateWorkItem</h3>
 <div class="member-signature"><span class="annotations">@PUT
 @Path("/update")
+@Consumes("application/json")
+@Produces("application/json")
 </span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">updateWorkItem</span><wbr><span class="parameters">(<a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem">WorkItem</a>&nbsp;workItem,
  @Context
  jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
@@ -353,6 +371,35 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>workItem</code> - </dd>
+<dd><code>reqHeader</code> - </dd>
+<dd><code>uriInfo</code> - </dd>
+<dd><code>securityContext</code> - </dd>
+<dt>Returns:</dt>
+<dd><code>Response</code></dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="addTaskToWorkItem(org.tasktide.core.model.task.ItemTask,java.lang.String,jakarta.ws.rs.core.HttpHeaders,jakarta.ws.rs.core.UriInfo,jakarta.ws.rs.core.SecurityContext)">
+<h3>addTaskToWorkItem</h3>
+<div class="member-signature"><span class="annotations">@PUT
+@Path("/add-task")
+@Consumes("application/json")
+@Produces("application/json")
+</span><span class="modifiers">public</span>&nbsp;<span class="return-type">jakarta.ws.rs.core.Response</span>&nbsp;<span class="element-name">addTaskToWorkItem</span><wbr><span class="parameters">(<a href="../../../../core/model/task/ItemTask.html" title="class in org.tasktide.core.model.task">ItemTask</a>&nbsp;itemTask,
+ @QueryParam("itemId")
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;itemId,
+ @Context
+ jakarta.ws.rs.core.HttpHeaders&nbsp;reqHeader,
+ @Context
+ jakarta.ws.rs.core.UriInfo&nbsp;uriInfo,
+ @Context
+ jakarta.ws.rs.core.SecurityContext&nbsp;securityContext)</span></div>
+<div class="block">Endpoint for adding <a href="../../../../core/model/task/ItemTask.html" title="class in org.tasktide.core.model.task"><code>ItemTask</code></a> to a <a href="../../../../core/model/workitem/WorkItem.html" title="class in org.tasktide.core.model.workitem"><code>WorkItem</code></a>,</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>itemTask</code> - </dd>
+<dd><code>itemId</code> - </dd>
 <dd><code>reqHeader</code> - </dd>
 <dd><code>uriInfo</code> - </dd>
 <dd><code>securityContext</code> - </dd>
