@@ -47,11 +47,18 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 === Web API
 
-- [] Client does not start, referencing missing HttpServletRequest dependency for GraphQL endpoints
+- [X] Client does not start, referencing missing HttpServletRequest dependency for GraphQL endpoints
+--
+        - Dropped simpler small-rye graphql, will replace with java-graphql
+--
 
 - [X] Unit test coverage of REST endpoints
 
-- [] Unit test GraphQL endpoints
+- [X] Unit test GraphQL endpoints
+--
+        - Dropped simpler small-rye graphql, will replace with java-graphql
+--
+
 
 - [] WebApi etrics endpoint
 --
@@ -90,12 +97,16 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 - [] Add secure context
 
-- [] GraphQL endpoints for individual and collection over CRUD
+- [X] GraphQL endpoints for individual and collection over CRUD
+--
+        - Dropped simpler small-rye graphql, will replace with java-graphql
+--
 
 - [] Integration with Keycloak
 
-- [] Client failing to start web server with below
-
+- [X] Client failing to start web server with below
+--
+        - Dropped simpler small-rye graphql, will replace with java-graphql
 '''
 
 org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependencies for type HttpServletRequest with qualifiers @Default
@@ -103,6 +114,8 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
   at org.tasktide.api.resources.services.graphql.context.RequestContext.request(RequestContext.java:0)
 
 '''
+--
+
 
 - [X] StepResource returning 415
 --
@@ -209,6 +222,7 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
 
 
 - [/] Config review
+- [X] All clients run
 - [X] Optionally sort/shuffle results config
 - [X] New tasks seen but not processed in service mode
 
