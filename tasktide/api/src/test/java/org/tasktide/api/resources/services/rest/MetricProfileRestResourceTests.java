@@ -13,28 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.services.rest;
+package org.tasktide.api.resources.services.rest;
 
-import org.tasktide.api.resources.services.rest.StepRestResource;
 import jakarta.enterprise.context.control.RequestContextController;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-
 import jakarta.nosql.Template;
-
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
 import java.security.KeyPair;
 import java.util.ArrayList;
-
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -43,38 +37,40 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
-
 import org.tasktide.api.AbstractBaseJerseyTest;
-
-import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.manager.BuilderUtility;
-import org.tasktide.core.model.collection.Step;
-
-import org.tasktide.api.TestUtils;
 import org.tasktide.api.TestEnvironment;
-import org.tasktide.api.utils.WebApiUtils;
+import org.tasktide.api.TestUtils;
 import org.tasktide.api.jwt.JwtRequestFilter;
+import org.tasktide.api.resources.services.rest.MetricProfileRestResource;
+import org.tasktide.api.utils.WebApiUtils;
+import org.tasktide.core.model.job_env.JobType;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
+import org.tasktide.core.model.job_env.metrics.MetricType;
+import org.tasktide.core.repository.RepositoryType;
 
 
 /**
- * Suite of tests against {@link StepRestResource}
+ * Suite of tests against {@link MetricProfileRestResource}
  *
  * @author Bren
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class StepRestResourceTests extends AbstractBaseJerseyTest {
+public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
+
+    private final Logger LOGGER = LogManager.getLogger(MetricProfileRestResourceTests.class);
     
-    private final Logger LOGGER = LogManager.getLogger(StepRestResourceTests.class);
-    
-    private final String STEP = "Restful Steps";
-    private final String RESOURCE_PATH = "/services/step";
+    private final String STEP = "Restful MetricProfiles";
+    private final String RESOURCE_PATH = "/services/metric-profile";
     
     private Template template;
     private KeyPair KEY_PAIR;
+
+    private int PROFILE_DATA_POINTS;
     
-    public StepRestResourceTests() {
-        super(StepRestResource.class);
+    public MetricProfileRestResourceTests() {
+        super(MetricProfileRestResource.class);
+        this.PROFILE_DATA_POINTS = 10;
     }
     
     @Override
@@ -86,7 +82,7 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
         ResourceConfig config = new ResourceConfig();
         
         this.resources = new Class<?>[] {
-            StepRestResource.class
+            MetricProfileRestResource.class
         };
         
         for (Class<?> clazz : this.resources) {
@@ -101,7 +97,7 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
     
     @BeforeAll
     public void setUpClass() throws Exception {
-        String msg = "\n\n---------------- Initiating Step REST Resource Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating MetricProfile REST Resource Tests ----------------\n";
         LOGGER.info(msg);
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
@@ -120,29 +116,29 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
 
 
     /**
-     * Tests adding {@link Step}
+     * Tests adding {@link MetricProfile}
      * 
      */
     @Test
     @Order(0)
-    public void canAddStep() {
+    public void canAddMetricProfile() {
     
         // Configure test
-        LOGGER.info("\n\n================ StepRestResource Can Add Step ================\n");
-        String stepName = "Add-Step-Test";
+        LOGGER.info("\n\n================ MetricProfileRestResource Can Add MetricProfile ================\n");
+        String metricProfileName = "Add-MetricProfile-Test";
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
-        Step step;
+        MetricProfile metricProfile;
         Response resp;
         
-        // Make test step
-        step = BuilderUtility.buildStep(stepName);
-        // step.getAnnotations().add("Key", "Value");
-        LOGGER.info("Created test step:\n\n'{}'", step.toJsonDoc());
+        // Make test metricProfile
+        metricProfile = TestUtils.createRandomMemoryMetricProfile(this.PROFILE_DATA_POINTS);
+        metricProfile.setLabel(metricProfileName);
+        LOGGER.info("Created test metricProfile:\n\n'{}'", metricProfile.toJsonDoc());
         
         // Fetch mock token
-        LOGGER.info("Firiing test Step creation against StepRestResource");
-        LOGGER.info("Serialized Step:\n\n'{}'", Entity.entity(step, MediaType.APPLICATION_JSON));
+        LOGGER.info("Firiing test MetricProfile creation against MetricProfileRestResource");
+        LOGGER.info("Serialized MetricProfile:\n\n'{}'", Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
@@ -150,37 +146,37 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(step, MediaType.APPLICATION_JSON));
+        .post(Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         LOGGER.info("Displaying resource response:\n\n'{}'", resp);
         
         // Evaluate test
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not add Step through StepRestResource");
-        LOGGER.info("\n\n================ StepRestResource Can Add Step ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not add MetricProfile through MetricProfileRestResource");
+        LOGGER.info("\n\n================ MetricProfileRestResource Can Add MetricProfile ================\n");
     }
     
     
     /**
-     * Tests querying {@link Step} by field
+     * Tests querying {@link MetricProfile} by field
      * 
      */
     @Test
     @Order(1)
-    public void canQueryStepByField() {
+    public void canQueryMetricProfileByField() {
     
         // Configure test
-        LOGGER.info("\n\n================ StepRestResource Can Query By Field ================\n");
+        LOGGER.info("\n\n================ MetricProfileRestResource Can Query By Field ================\n");
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/get";
         Response resp;
         
         // Fetch mock token
-        LOGGER.info("Firiing test query by field against StepRestResource for:\t'{}'", STEP);
+        LOGGER.info("Firing test query by field against MetricProfileRestResource for:\t'{}'", JobType.LOCAL);
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
-            .queryParam("field", "stepName")
-            .queryParam("value", STEP)
+            .queryParam("field", "Label")
+            .queryParam("value", "Add-MetricProfile-Test")
             .request()
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
@@ -189,38 +185,39 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Displaying resource response:\n\n'{}'", resp);
         
         // Evaluate test
-        List<Step> records = resp.readEntity(new GenericType<List<Step>>() {});
+        List<MetricProfile> records = resp.readEntity(new GenericType<List<MetricProfile>>() {});
         LOGGER.info("Displaying retrieved records:\n\n'{}", records);
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could query Step field through StepRestResource");
-        LOGGER.info("\n\n================ StepRestResource Can Query By Field ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could query MetricProfile field through MetricProfileRestResource");
+        LOGGER.info("\n\n================ MetricProfileRestResource Can Query By Field ================\n");
     }
     
     
     /**
-     * Tests whether a collection of steps can be imported
+     * Tests whether a collection of metricProfiles can be imported
      */
     @Test
     @Order(2)
-    public void canAddMultipleSteps() {
+    public void canImportMultipleMetricProfile() {
     
         // Configure test
-        LOGGER.info("\n\n================ StepRestResource Can Add Multiple Steps ================\n");
-        String stepName = "Batch-Import-Steps";
+        LOGGER.info("\n\n================ MetricProfileRestResource Can Add Multiple MetricProfiles ================\n");
+        String metricProfileName = "Batch-Import-MetricProfile";
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/import";
         Response resp;
-        List<Step> steps = new ArrayList<>();
-        int nSteps = 10;
+        List<MetricProfile> metricProfiles = new ArrayList<>();
+        int nMetricProfiles = 10;
         
-        // Create and add step collection
-        for ( int i = 0; i < nSteps; i++ ) {
-            Step step = BuilderUtility.buildStep(stepName + "-" + i);
-            steps.add(step);
+        // Create and add metricProfile collection
+        for ( int i = 0; i < nMetricProfiles; i++ ) {
+            MetricProfile metricProfile = TestUtils.createRandomCpuMetricProfile(this.PROFILE_DATA_POINTS);
+            metricProfile.setLabel(metricProfileName + "-" + i);
+            metricProfiles.add(metricProfile);
             
         }
         
         // Fetch mock token
-        LOGGER.info("Importing Step Collection against StepRestResource");
+        LOGGER.info("Importing MetricProfile Collection against MetricProfileRestResource");
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
@@ -228,75 +225,33 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(steps, MediaType.APPLICATION_JSON));
+        .post(Entity.entity(metricProfiles, MediaType.APPLICATION_JSON));
         
         // Evaluate test
         LOGGER.info("Displaying status code:\n\n'{}", resp.getStatus());
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not import Step collection through StepRestResource");
-        LOGGER.info("\n\n================ StepRestResource Can Add Multiple Steps ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not import MetricProfile collection through MetricProfileRestResource");
+        LOGGER.info("\n\n================ MetricProfileRestResource Can Add Multiple MetricProfiles ================\n");
     }
-    
+
     
     /**
-     * Tests creating step by name
+     * Tests dropping metricProfile
      * 
      */
     @Test
     @Order(3)
-    public void canCreateStepByName() {
+    public void canDropMetricProfile() {
     
         // Configure test
-        LOGGER.info("\n\n================ StepRestResource Create Named Step Test ================\n");
-        String stepName = "Create-Step-Test";
-        String bearerToken;
-        String methodPath = RESOURCE_PATH + "/create";
-        Step step;
-        Response resp;
-        
-        // Make test step
-        step = BuilderUtility.buildStep(stepName);
-        // step.getAnnotations().add("Key", "Value");
-        LOGGER.info("Created test step:\n\n'{}'", step.toJsonDoc());
-        
-        // Fetch mock token
-        LOGGER.info("Firing Step creation request against StepRestResource");
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
-        this.requestCtx.activate();
-        resp = this.target(methodPath)
-            .queryParam("stepName", "doggie")
-            .request()
-                .header("Authorization", bearerToken)
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
-        .get();
-        this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
-        
-        // Evaluate test
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not create named Step through StepRestResource");
-        LOGGER.info("\n\n================ StepRestResource Create Named Step Test ================\n");
-    }
-    
-    
-    /**
-     * Tests dropping step
-     * 
-     */
-    @Test
-    @Order(4)
-    public void canDropStep() {
-    
-        // Configure test
-        LOGGER.info("\n\n================ StepRestResource Drop Step Test ================\n");
-        String stepName = "Drop-Step-Test";
+        LOGGER.info("\n\n================ MetricProfileRestResource Drop MetricProfile Test ================\n");
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
-        Step step;
+        MetricProfile metricProfile;
         Response resp;
         
-        // Make test step
-        step = BuilderUtility.buildStep(stepName);
-        LOGGER.info("Created test step:\t'{}'", step.getId());
+        // Make test metricProfile
+        metricProfile = TestUtils.createRandomCpuMetricProfile(this.PROFILE_DATA_POINTS);
+        LOGGER.info("Created test metricProfile:\t'{}'", metricProfile.getId());
         
         // Fetch mock token
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
@@ -306,17 +261,17 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(step, MediaType.APPLICATION_JSON));
+        .post(Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        LOGGER.info("Step creation state:\t'{}'", resp.getStatus());
+        LOGGER.info("MetricProfile creation state:\t'{}'", resp.getStatus());
         
         
-        // Drop step
-        LOGGER.info("Dropping step test:\t'{}'", step.getId());
+        // Drop metricProfile
+        LOGGER.info("Dropping metricProfile test:\t'{}'", metricProfile.getId());
         methodPath = RESOURCE_PATH + "/drop";
         this.requestCtx.activate();
         resp = this.target(methodPath)
-            .path(step.getId())
+            .path(metricProfile.getId())
             .request()
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
@@ -324,34 +279,33 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
         .delete();
         this.requestCtx.deactivate();
         
-        
         // Evaluate test
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not drop Step through StepRestResource");
-        LOGGER.info("\n\n================ StepRestResource Drop Step Test ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not drop MetricProfile through MetricProfileRestResource");
+        LOGGER.info("\n\n================ MetricProfileRestResource Drop MetricProfile Test ================\n");
     }
 
     
     /**
-     * Tests updating step
+     * Tests updating metricProfile
      * 
      */
     @Test
-    @Order(5)
-    public void canUpdateStep() {
+    @Order(4)
+    public void canUpdateMetricProfile() {
     
         // Configure test
-        LOGGER.info("\n\n================ StepRestResource Update Step Test ================\n");
-        String stepName = "Drop-Step-Test";
+        LOGGER.info("\n\n================ MetricProfileRestResource Update MetricProfile Test ================\n");
+        String metricProfileName = "Update-MetricProfile-Test";
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
-        Step step;
+        MetricProfile metricProfile;
         Response resp;
         
-        // Make test step
-        step = BuilderUtility.buildStep(stepName);
-        LOGGER.info("Created test step:\t'{}'", step.getId());
-        
-        
+        // Make test metricProfile
+        metricProfile = TestUtils.createRandomMemoryMetricProfile(this.PROFILE_DATA_POINTS);
+        metricProfile.setLabel(metricProfileName);
+        LOGGER.info("Created test metricProfile:\t'{}'", metricProfile.getId());
+
         // Fetch mock token
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
@@ -360,14 +314,14 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(step, MediaType.APPLICATION_JSON));
+        .post(Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        LOGGER.info("Step creation state:\t'{}'", resp.getStatus());
+        LOGGER.info("MetricProfile creation state:\t'{}'", resp.getStatus());
         
         
-        // Update step
-        LOGGER.info("Update step test:\t'{}'", step.getId());
-        step.setStepName("Updated Step Name");
+        // Update metricProfile
+        LOGGER.info("Update metricProfile test:\t'{}'", metricProfile.getId());
+        metricProfile.setLabel("Some metric label");
         methodPath = RESOURCE_PATH + "/update";
         this.requestCtx.activate();
         resp = this.target(methodPath)
@@ -375,12 +329,12 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .put(Entity.entity(step, MediaType.APPLICATION_JSON));
+        .put(Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         
         
         // Evaluate test
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not update Step through StepRestResource");
-        LOGGER.info("\n\n================ StepRestResource Update Step Test ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not update MetricProfile through MetricProfileRestResource");
+        LOGGER.info("\n\n================ MetricProfileRestResource Update MetricProfile Test ================\n");
     }
 }

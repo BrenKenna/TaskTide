@@ -15,6 +15,7 @@
  */
 package org.tasktide.tasktide.client;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -116,8 +117,9 @@ public class TaskTideClientUtility {
             
             if ( flag ) {
                 provider.addBeanClass(
-                GlobalConfig.class, ManagerConfig.class,
-                EngineConfig.class, WebApiConfig.class
+                    GlobalConfig.class, ManagerConfig.class,
+                    EngineConfig.class, WebApiConfig.class,
+                    HttpServletRequest.class
                 );
             }
             

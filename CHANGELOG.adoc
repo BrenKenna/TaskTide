@@ -47,9 +47,13 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 === Web API
 
-- [/] Unit test coverage of REST endpoints
+- [] Client does not start, referencing missing HttpServletRequest dependency for GraphQL endpoints
 
-- [] Metrics endpoint
+- [X] Unit test coverage of REST endpoints
+
+- [] Unit test GraphQL endpoints
+
+- [] WebApi etrics endpoint
 --
         - [] "/metrics?data=x,y,z"
         - [] Query parmeter list

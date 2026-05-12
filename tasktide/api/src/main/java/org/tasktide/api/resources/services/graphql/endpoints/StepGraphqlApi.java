@@ -26,6 +26,7 @@ import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 
 import java.util.List;
+import org.eclipse.microprofile.graphql.Name;
 
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.model.collection.Step;
@@ -63,7 +64,7 @@ public class StepGraphqlApi {
      * @return {@link Step}
      */
     @Query("searchStep")
-    public Step getStep(StepInput query) {
+    public Step getStep(@Name("query") StepInput query) {
         LOGGER.info(
             "GraphQL Steps Query from user '{}' for '{}' incoming from '{}', '{}'",
             this.requestContext.getUsername(), requestContext.getIp(), requestContext.getUserAgent()
@@ -95,10 +96,10 @@ public class StepGraphqlApi {
     /**
      * Delete {@link Step} from {@link StepInput}
      * 
-     * @param query 
+     * @param step
      */
     @Mutation("dropStep")
-    public void dropStep(StepInput query) {
+    public void dropStep(@Name("step") StepInput step) {
         LOGGER.info(
             "GraphQL Steps Mutation from user '{}' for '{}' incoming from '{}', '{}'",
             this.requestContext.getUsername(), requestContext.getIp(), requestContext.getUserAgent()
@@ -108,11 +109,11 @@ public class StepGraphqlApi {
             throw new jakarta.ws.rs.ForbiddenException();
         }
         
-        if ( query.stepId == null ) {
-            String msg = String.format("Either stepId or step name must be provided:\n'%s'", query);
+        if ( step.stepId == null ) {
+            String msg = String.format("Either stepId or step name must be provided:\n'%s'", step);
             throw new GrapqlUncheckedException(msg); 
         }
         
-        this.stepService.dropById(query.stepId);
+        this.stepService.dropById(step.stepId);
     }
 }

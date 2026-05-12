@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.services.rest;
+package org.tasktide.api.resources.services.rest;
 
 import jakarta.enterprise.context.control.RequestContextController;
 import jakarta.nosql.Template;
@@ -22,19 +22,14 @@ import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
 import java.security.KeyPair;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
+import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -44,44 +39,40 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.api.AbstractBaseJerseyTest;
-
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
-
 import org.tasktide.api.jwt.JwtRequestFilter;
-import org.tasktide.api.resources.services.rest.JobEnvironmentRestResource;
-
+import org.tasktide.api.resources.services.rest.MetricDataRestResource;
 import org.tasktide.api.utils.WebApiUtils;
-
 import org.tasktide.core.manager.BuilderUtility;
-import org.tasktide.core.model.builders.JobEnvironmentBuilder;
-import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.builders.BuilderType;
+import org.tasktide.core.model.builders.MetricDataBuilder;
+import org.tasktide.core.model.builders.ModelBuilderProvider;
 import org.tasktide.core.model.job_env.JobType;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.core.repository.RepositoryType;
-
+import org.tasktide.core.supporting.Utils;
 
 /**
- * Suite of tests over {@link JobEnvironmentRestResource}
  *
  * @author Bren
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
+public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
 
-    private final Logger LOGGER = LogManager.getLogger(JobEnvironmentRestResourceTests.class);
+    private final Logger LOGGER = LogManager.getLogger(MetricDataRestResourceTests.class);
     
-    private final String STEP = "Restful JobEnvironments";
-    private final String RESOURCE_PATH = "/services/job-environment";
+    private final String STEP = "Restful MetricDatas";
+    private final String RESOURCE_PATH = "/services/metric-data";
     
     private Template template;
     private KeyPair KEY_PAIR;
+
     
-    private final JobEnvironmentBuilder jobEnvBuild;
-    
-    public JobEnvironmentRestResourceTests() {
-        super(JobEnvironmentRestResource.class);
-        this.jobEnvBuild = new JobEnvironmentBuilder();
+    public MetricDataRestResourceTests() {
+        super(MetricDataRestResource.class);
     }
     
     @Override
@@ -93,7 +84,7 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         ResourceConfig config = new ResourceConfig();
         
         this.resources = new Class<?>[] {
-            JobEnvironmentRestResource.class
+            MetricDataRestResource.class
         };
         
         for (Class<?> clazz : this.resources) {
@@ -108,7 +99,7 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
     
     @BeforeAll
     public void setUpClass() throws Exception {
-        String msg = "\n\n---------------- Initiating JobEnvironment REST Resource Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating MetricData REST Resource Tests ----------------\n";
         LOGGER.info(msg);
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
@@ -125,39 +116,31 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         container.close();
     }
 
-    
-    public JobEnvironment fetchJobEnv() {
-        Optional<JobEnvironment> jobEnv = JobType.fetchJobEnvironment();
-        if ( jobEnv.isPresent() ) {
-            return jobEnv.get();
-        }
-        return null;
-    }
-    
 
     /**
-     * Tests adding {@link JobEnvironment}
+     * Tests adding {@link MetricData}
      * 
      */
     @Test
     @Order(0)
-    public void canAddJobEnvironment() {
+    public void canAddMetricData() {
     
         // Configure test
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Can Add JobEnvironment ================\n");
-        String jobEnvironmentName = "Add-JobEnvironment-Test";
+        LOGGER.info("\n\n================ MetricDataRestResource Can Add MetricData ================\n");
+        String metricDataName = "Add-MetricData-Test";
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
-        JobEnvironment jobEnvironment;
+        MetricData metricData;
         Response resp;
         
-        // Make test jobEnvironment
-        jobEnvironment = this.fetchJobEnv();
-        LOGGER.info("Created test jobEnvironment:\n\n'{}'", jobEnvironment.toJsonDoc());
+        // Make test metricData
+        metricData = TestUtils.fetchRandomMemoryMetric();
+        metricData.setLabel(metricDataName);
+        LOGGER.info("Created test metricData:\n\n'{}'", metricData.toJsonDoc());
         
         // Fetch mock token
-        LOGGER.info("Firiing test JobEnvironment creation against JobEnvironmentRestResource");
-        LOGGER.info("Serialized JobEnvironment:\n\n'{}'", Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
+        LOGGER.info("Firiing test MetricData creation against MetricDataRestResource");
+        LOGGER.info("Serialized MetricData:\n\n'{}'", Entity.entity(metricData, MediaType.APPLICATION_JSON));
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
@@ -165,37 +148,37 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
+        .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         LOGGER.info("Displaying resource response:\n\n'{}'", resp);
         
         // Evaluate test
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not add JobEnvironment through JobEnvironmentRestResource");
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Can Add JobEnvironment ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not add MetricData through MetricDataRestResource");
+        LOGGER.info("\n\n================ MetricDataRestResource Can Add MetricData ================\n");
     }
     
     
     /**
-     * Tests querying {@link JobEnvironment} by field
+     * Tests querying {@link MetricData} by field
      * 
      */
     @Test
     @Order(1)
-    public void canQueryJobEnvironmentByField() {
+    public void canQueryMetricDataByField() {
     
         // Configure test
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Can Query By Field ================\n");
+        LOGGER.info("\n\n================ MetricDataRestResource Can Query By Field ================\n");
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/get";
         Response resp;
         
         // Fetch mock token
-        LOGGER.info("Firiing test query by field against JobEnvironmentRestResource for:\t'{}'", STEP);
+        LOGGER.info("Firing test query by field against MetricDataRestResource for:\t'{}'", JobType.LOCAL);
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
-            .queryParam("field", "JobType")
-            .queryParam("value", JobType.LOCAL)
+            .queryParam("field", "Type")
+            .queryParam("value", MetricType.CPU)
             .request()
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
@@ -204,38 +187,39 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Displaying resource response:\n\n'{}'", resp);
         
         // Evaluate test
-        List<JobEnvironment> records = resp.readEntity(new GenericType<List<JobEnvironment>>() {});
+        List<MetricData> records = resp.readEntity(new GenericType<List<MetricData>>() {});
         LOGGER.info("Displaying retrieved records:\n\n'{}", records);
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could query JobEnvironment field through JobEnvironmentRestResource");
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Can Query By Field ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could query MetricData field through MetricDataRestResource");
+        LOGGER.info("\n\n================ MetricDataRestResource Can Query By Field ================\n");
     }
     
     
     /**
-     * Tests whether a collection of jobEnvironments can be imported
+     * Tests whether a collection of metricDatas can be imported
      */
     @Test
     @Order(2)
-    public void canAddMultipleJobEnvironments() {
+    public void canImportMultipleMetricData() {
     
         // Configure test
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Can Add Multiple JobEnvironments ================\n");
-        String jobEnvironmentName = "Batch-Import-JobEnvironments";
+        LOGGER.info("\n\n================ MetricDataRestResource Can Add Multiple MetricDatas ================\n");
+        String metricDataName = "Batch-Import-MetricData";
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/import";
         Response resp;
-        List<JobEnvironment> jobEnvironments = new ArrayList<>();
-        int nJobEnvironments = 10;
+        List<MetricData> metricDatas = new ArrayList<>();
+        int nMetricDatas = 10;
         
-        // Create and add jobEnvironment collection
-        for ( int i = 0; i < nJobEnvironments; i++ ) {
-            JobEnvironment jobEnvironment = this.fetchJobEnv();
-            jobEnvironments.add(jobEnvironment);
+        // Create and add metricData collection
+        for ( int i = 0; i < nMetricDatas; i++ ) {
+            MetricData metricData = TestUtils.fetchRandomCpuMetric();
+            metricData.setLabel(metricDataName + "-" + i);
+            metricDatas.add(metricData);
             
         }
         
         // Fetch mock token
-        LOGGER.info("Importing JobEnvironment Collection against JobEnvironmentRestResource");
+        LOGGER.info("Importing MetricData Collection against MetricDataRestResource");
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
@@ -243,33 +227,33 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(jobEnvironments, MediaType.APPLICATION_JSON));
+        .post(Entity.entity(metricDatas, MediaType.APPLICATION_JSON));
         
         // Evaluate test
         LOGGER.info("Displaying status code:\n\n'{}", resp.getStatus());
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not import JobEnvironment collection through JobEnvironmentRestResource");
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Can Add Multiple JobEnvironments ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not import MetricData collection through MetricDataRestResource");
+        LOGGER.info("\n\n================ MetricDataRestResource Can Add Multiple MetricDatas ================\n");
     }
 
     
     /**
-     * Tests dropping jobEnvironment
+     * Tests dropping metricData
      * 
      */
     @Test
     @Order(3)
-    public void canDropJobEnvironment() {
+    public void canDropMetricData() {
     
         // Configure test
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Drop JobEnvironment Test ================\n");
+        LOGGER.info("\n\n================ MetricDataRestResource Drop MetricData Test ================\n");
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
-        JobEnvironment jobEnvironment;
+        MetricData metricData;
         Response resp;
         
-        // Make test jobEnvironment
-        jobEnvironment = this.fetchJobEnv();
-        LOGGER.info("Created test jobEnvironment:\t'{}'", jobEnvironment.getId());
+        // Make test metricData
+        metricData = TestUtils.fetchRandomCpuMetric();
+        LOGGER.info("Created test metricData:\t'{}'", metricData.getId());
         
         // Fetch mock token
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
@@ -279,17 +263,17 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
+        .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        LOGGER.info("JobEnvironment creation state:\t'{}'", resp.getStatus());
+        LOGGER.info("MetricData creation state:\t'{}'", resp.getStatus());
         
         
-        // Drop jobEnvironment
-        LOGGER.info("Dropping jobEnvironment test:\t'{}'", jobEnvironment.getId());
+        // Drop metricData
+        LOGGER.info("Dropping metricData test:\t'{}'", metricData.getId());
         methodPath = RESOURCE_PATH + "/drop";
         this.requestCtx.activate();
         resp = this.target(methodPath)
-            .path(jobEnvironment.getId())
+            .path(metricData.getId())
             .request()
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
@@ -299,30 +283,31 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         
         
         // Evaluate test
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not drop JobEnvironment through JobEnvironmentRestResource");
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Drop JobEnvironment Test ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not drop MetricData through MetricDataRestResource");
+        LOGGER.info("\n\n================ MetricDataRestResource Drop MetricData Test ================\n");
     }
 
     
     /**
-     * Tests updating jobEnvironment
+     * Tests updating metricData
      * 
      */
     @Test
     @Order(4)
-    public void canUpdateJobEnvironment() {
+    public void canUpdateMetricData() {
     
         // Configure test
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Update JobEnvironment Test ================\n");
-        String jobEnvironmentName = "Drop-JobEnvironment-Test";
+        LOGGER.info("\n\n================ MetricDataRestResource Update MetricData Test ================\n");
+        String metricDataName = "Update-MetricData-Test";
         String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
-        JobEnvironment jobEnvironment;
+        MetricData metricData;
         Response resp;
         
-        // Make test jobEnvironment
-        jobEnvironment = this.fetchJobEnv();
-        LOGGER.info("Created test jobEnvironment:\t'{}'", jobEnvironment.getId());
+        // Make test metricData
+        metricData = TestUtils.fetchRandomCpuMetric();
+        metricData.setLabel(metricDataName);
+        LOGGER.info("Created test metricData:\t'{}'", metricData.getId());
 
         // Fetch mock token
         bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
@@ -332,14 +317,14 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
+        .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        LOGGER.info("JobEnvironment creation state:\t'{}'", resp.getStatus());
+        LOGGER.info("MetricData creation state:\t'{}'", resp.getStatus());
         
         
-        // Update jobEnvironment
-        LOGGER.info("Update jobEnvironment test:\t'{}'", jobEnvironment.getId());
-        jobEnvironment.setHostOS("Derp");
+        // Update metricData
+        LOGGER.info("Update metricData test:\t'{}'", metricData.getId());
+        metricData.setLabel("Some metric label");
         methodPath = RESOURCE_PATH + "/update";
         this.requestCtx.activate();
         resp = this.target(methodPath)
@@ -347,12 +332,12 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
                 .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
-        .put(Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
+        .put(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         
         
         // Evaluate test
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not update JobEnvironment through JobEnvironmentRestResource");
-        LOGGER.info("\n\n================ JobEnvironmentRestResource Update JobEnvironment Test ================\n");
+        Assertions.assertTrue(resp.getStatus() == 200, "Error could not update MetricData through MetricDataRestResource");
+        LOGGER.info("\n\n================ MetricDataRestResource Update MetricData Test ================\n");
     }
 }

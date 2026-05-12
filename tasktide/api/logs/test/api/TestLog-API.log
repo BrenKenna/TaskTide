@@ -7668,3 +7668,820 @@ WorkflowId='Workflow-72c129a8-26ab-42df-bd0f-89e5a27ddc8a'
 ================ MetricProfileRestResource Update MetricProfile Test ================
 
 2026-05-11 22:15:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a5449d95-a2a0-4689-b4c8-48579cccdf71 shut down
+2026-05-12 09:33:52 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 09:33:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 09:33:52 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 09:33:53 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 09:33:53 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 09:34:01 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 09:34:01 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container fdc8f33a-b030-4a71-8fcf-1538025a8b49 initialized
+2026-05-12 09:34:01 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 09:34:01 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 09:34:01 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 09:34:01 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 09:34:02 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'GraphQL Steps'
+2026-05-12 09:34:02 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-5a781b52-b157-45d1-ae03-f1e4054c005b",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-c5744c81-f84b-4693-9723-446166f1359c",
+    "StepName": "GraphQL Steps",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-05-12 09:34:02 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'GraphQL Steps'
+2026-05-12 09:34:02 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'GraphQL Steps'
+2026-05-12 09:34:02 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'GraphQL Steps'
+2026-05-12 09:34:02 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 09:34:02 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 09:34:03 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@d88d9d7{/,null,AVAILABLE}
+2026-05-12 09:34:03 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@75708130{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 09:34:03 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@a1c4f69{STARTING}[11.0.20,sto=0] @12702ms
+2026-05-12 09:34:03 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 09:34:03 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 09:34:03 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container fdc8f33a-b030-4a71-8fcf-1538025a8b49 shut down
+2026-05-12 09:38:21 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 09:38:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 09:38:22 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 09:38:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 09:38:23 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 09:38:29 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 09:38:29 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 09f7f965-2842-4e5a-a8eb-012aa7dcb67c initialized
+2026-05-12 09:38:29 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 09:38:29 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 09:38:29 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 09:38:29 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 09:38:31 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 09:38:31 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 09:38:31 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@b9750f0{/,null,AVAILABLE}
+2026-05-12 09:38:31 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@52c68925{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 09:38:31 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@628b9af5{STARTING}[11.0.20,sto=0] @11626ms
+2026-05-12 09:38:31 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 09:38:31 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 09:38:31 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@628b9af5{STOPPING}[11.0.20,sto=0]
+2026-05-12 09:38:31 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@52c68925{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 09:38:31 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@b9750f0{/,null,STOPPED}
+2026-05-12 09:38:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 09f7f965-2842-4e5a-a8eb-012aa7dcb67c shut down
+2026-05-12 10:39:32 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 10:39:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:39:32 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:39:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:39:33 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:39:39 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:39:39 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 28427a4c-05c9-4f40-b0e3-4e69ac8d399d initialized
+2026-05-12 10:39:39 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:39:39 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:39:39 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:39:39 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 10:39:40 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:39:40 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:39:41 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@4f61c7e1{/,null,AVAILABLE}
+2026-05-12 10:39:41 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@31dbca5d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:39:41 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@edf4973{STARTING}[11.0.20,sto=0] @11388ms
+2026-05-12 10:39:41 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: 
+
+================ Can Search Step ================
+
+2026-05-12 10:39:41 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Querying endpoint
+2026-05-12 10:39:41 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Logging response status:	'405'
+2026-05-12 10:39:41 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@edf4973{STOPPING}[11.0.20,sto=0]
+2026-05-12 10:39:41 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@31dbca5d{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:39:41 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@4f61c7e1{/,null,STOPPED}
+2026-05-12 10:39:41 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 28427a4c-05c9-4f40-b0e3-4e69ac8d399d shut down
+2026-05-12 10:45:07 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 10:45:07 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:45:07 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:45:08 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:45:08 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:45:14 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:45:14 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 938b4cb2-dd40-46f5-b890-3ad136bc974b initialized
+2026-05-12 10:45:15 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:45:15 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:45:15 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:45:15 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 10:45:15 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:45:15 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:45:16 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@2b39e77d{/,null,AVAILABLE}
+2026-05-12 10:45:16 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@6f8035d6{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:45:16 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@120661d2{STARTING}[11.0.20,sto=0] @10678ms
+2026-05-12 10:45:16 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 10:45:16 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@120661d2{STOPPING}[11.0.20,sto=0]
+2026-05-12 10:45:16 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@6f8035d6{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:45:16 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@2b39e77d{/,null,STOPPED}
+2026-05-12 10:45:16 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 938b4cb2-dd40-46f5-b890-3ad136bc974b shut down
+2026-05-12 10:46:51 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 10:46:51 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:46:51 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:46:52 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:46:52 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:46:58 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:46:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 57f30dd7-1d00-407e-a4d1-e80645a7a9a1 initialized
+2026-05-12 10:46:59 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:46:59 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:46:59 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:46:59 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 10:46:59 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:47:00 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:47:00 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@627dfd9f{/,null,AVAILABLE}
+2026-05-12 10:47:00 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@3f36c191{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:47:00 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@37a0c3c6{STARTING}[11.0.20,sto=0] @10838ms
+2026-05-12 10:47:00 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 10:47:00 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: Parsing schema:
+
+'HTTP ERROR 404 Not Found
+URI: /graphql/schema.graphql
+STATUS: 404
+MESSAGE: Not Found
+SERVLET: org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-8929865
+'
+2026-05-12 10:47:00 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@37a0c3c6{STOPPING}[11.0.20,sto=0]
+2026-05-12 10:47:00 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@3f36c191{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:47:00 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@627dfd9f{/,null,STOPPED}
+2026-05-12 10:47:00 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 57f30dd7-1d00-407e-a4d1-e80645a7a9a1 shut down
+2026-05-12 10:47:58 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 10:47:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:47:58 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:47:58 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:47:59 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:48:05 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:48:05 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 784cf810-156a-4681-87e5-e77795034e12 initialized
+2026-05-12 10:48:05 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:48:05 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:48:05 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:48:05 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 10:48:06 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:48:06 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:48:07 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@22b00077{/,null,AVAILABLE}
+2026-05-12 10:48:07 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@79169472{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:48:07 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@1488d1c{STARTING}[11.0.20,sto=0] @10725ms
+2026-05-12 10:48:07 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 10:48:07 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: Parsing schema:
+
+'HTTP ERROR 404 Not Found
+URI: /graphql/
+STATUS: 404
+MESSAGE: Not Found
+SERVLET: org.eclipse.jetty.servlet.ServletHandler$Default404Servlet-23974cac
+'
+2026-05-12 10:48:07 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@1488d1c{STOPPING}[11.0.20,sto=0]
+2026-05-12 10:48:07 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@79169472{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:48:07 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@22b00077{/,null,STOPPED}
+2026-05-12 10:48:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 784cf810-156a-4681-87e5-e77795034e12 shut down
+2026-05-12 10:48:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:48:38 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:48:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:48:39 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:48:45 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:48:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f7f75ab1-3e3f-4631-bb32-be9e0a7a91b8 initialized
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Nested NS Lookups'
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-1d0a23f0-571c-4d42-813d-0aa6eb9770ed",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-0bef2102-a9f9-4ee8-b4f8-23a70173c699",
+    "StepName": "Nested NS Lookups",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Nested NS Lookups'
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Nested NS Lookups'
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Nested NS Lookups'
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: 
+
+================ Can Start Web Server ================
+
+2026-05-12 10:48:46 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: TaskTide web URL:	'http://localhost:8080//tasktide'
+2026-05-12 10:48:47 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:48:47 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:48:48 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@7e32442d{/,null,AVAILABLE}
+2026-05-12 10:48:48 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@ab595e8{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:48:48 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@579cfcc4{STARTING}[11.0.20,sto=0] @11283ms
+2026-05-12 10:48:48 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
+2026-05-12 10:49:19 INFO  [ qtp2026446122-75 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 10:50:38 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 10:50:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:50:38 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:50:38 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:50:38 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:50:45 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:50:45 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container f7e11c9c-2e65-4288-beb3-a41d7474394c initialized
+2026-05-12 10:50:45 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:50:45 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:50:45 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:50:45 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 10:50:46 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:50:46 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:50:47 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@808f65{/,null,AVAILABLE}
+2026-05-12 10:50:47 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@3b2114ce{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:50:47 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@3ede428e{STARTING}[11.0.20,sto=0] @10749ms
+2026-05-12 10:50:47 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 10:50:47 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: Parsing schema:
+
+'HTTP ERROR 405 GET Queries is not enabled
+URI: /tasktide/graphql/schema.graphql
+STATUS: 405
+MESSAGE: GET Queries is not enabled
+SERVLET: io.smallrye.graphql.entry.http.ExecutionServlet-bb896e9
+'
+2026-05-12 10:50:47 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@3ede428e{STOPPING}[11.0.20,sto=0]
+2026-05-12 10:50:47 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@3b2114ce{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:50:47 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@808f65{/,null,STOPPED}
+2026-05-12 10:50:47 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container f7e11c9c-2e65-4288-beb3-a41d7474394c shut down
+2026-05-12 10:53:00 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 10:53:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:53:00 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:53:01 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:53:01 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:53:08 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:53:08 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 797eee78-4309-4411-9cc3-79b6ec922460 initialized
+2026-05-12 10:53:08 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:53:08 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:53:08 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:53:08 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 10:53:09 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:53:09 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:53:10 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@4086e003{/,null,AVAILABLE}
+2026-05-12 10:53:10 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@5d2bfc9f{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:53:10 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@301c622d{STARTING}[11.0.20,sto=0] @11880ms
+2026-05-12 10:53:10 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: 
+
+================ Can Unit Test Be Configured ================
+
+2026-05-12 10:53:10 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.thisUnitTestCanBeConfigured ]: Parsing schema:
+
+'HTTP ERROR 405 GET Queries is not enabled
+URI: /tasktide/graphql/schema.graphql
+STATUS: 405
+MESSAGE: GET Queries is not enabled
+SERVLET: io.smallrye.graphql.entry.http.ExecutionServlet-b21cbbf
+'
+2026-05-12 10:53:10 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@301c622d{STOPPING}[11.0.20,sto=0]
+2026-05-12 10:53:10 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@5d2bfc9f{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:53:10 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@4086e003{/,null,STOPPED}
+2026-05-12 10:53:10 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 797eee78-4309-4411-9cc3-79b6ec922460 shut down
+2026-05-12 10:53:44 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 10:53:44 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:53:45 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:53:45 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:53:45 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:53:51 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:53:51 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2fefa881-f9f0-4466-9039-80ebad84b09b initialized
+2026-05-12 10:53:52 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:53:52 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:53:52 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:53:52 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 10:53:52 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:53:52 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:53:53 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@5392c0a7{/,null,AVAILABLE}
+2026-05-12 10:53:53 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@57def953{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:53:53 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@73c6ebec{STARTING}[11.0.20,sto=0] @10679ms
+2026-05-12 10:53:53 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: 
+
+================ Can Search Step ================
+
+2026-05-12 10:53:53 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@73c6ebec{STOPPING}[11.0.20,sto=0]
+2026-05-12 10:53:53 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@57def953{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:53:53 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@5392c0a7{/,null,STOPPED}
+2026-05-12 10:53:53 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 2fefa881-f9f0-4466-9039-80ebad84b09b shut down
+2026-05-12 10:55:18 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 10:55:18 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 10:55:18 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 10:55:19 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 10:55:19 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:55:25 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 10:55:25 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 27aa4f64-0e8c-4884-8ccf-993aeb0108d8 initialized
+2026-05-12 10:55:26 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 10:55:26 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 10:55:26 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 10:55:26 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 10:55:26 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 10:55:26 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 10:55:27 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@5f31385e{/,null,AVAILABLE}
+2026-05-12 10:55:27 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@4ed74d03{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:55:27 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@41623694{STARTING}[11.0.20,sto=0] @10286ms
+2026-05-12 10:55:27 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: 
+
+================ Can Search Step ================
+
+2026-05-12 10:55:27 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Displaying query:
+
+'{
+    "query": "query Search-Step {     searchStep(query: { 		StepState: Pending 		StepName: \"GraphQL Steps\"     }) { 		Id 		StepName 		StepState 		StepCount 		WorkflowId     } } "
+}
+'
+2026-05-12 10:55:27 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Querying endpoint
+2026-05-12 10:55:27 WARN  [ qtp425543552-75 -> org.eclipse.jetty.server.HttpChannel.handleException ]: /tasktide/graphql
+jakarta.json.stream.JsonParsingException: Unexpected char 9 at (line no=2, column no=59, offset=60)
+	at org.eclipse.parsson.JsonTokenizer.unexpectedChar(JsonTokenizer.java:593) ~[parsson-1.1.5.jar:?]
+	at org.eclipse.parsson.JsonTokenizer.readString(JsonTokenizer.java:166) ~[parsson-1.1.5.jar:?]
+	at org.eclipse.parsson.JsonTokenizer.nextToken(JsonTokenizer.java:356) ~[parsson-1.1.5.jar:?]
+	at org.eclipse.parsson.JsonParserImpl$ObjectContext.getNextEvent(JsonParserImpl.java:486) ~[parsson-1.1.5.jar:?]
+	at org.eclipse.parsson.JsonParserImpl.next(JsonParserImpl.java:363) ~[parsson-1.1.5.jar:?]
+	at org.eclipse.parsson.JsonParserImpl.getObject(JsonParserImpl.java:327) ~[parsson-1.1.5.jar:?]
+	at org.eclipse.parsson.JsonParserImpl.getObject(JsonParserImpl.java:152) ~[parsson-1.1.5.jar:?]
+	at org.eclipse.parsson.JsonReaderImpl.readObject(JsonReaderImpl.java:85) ~[parsson-1.1.5.jar:?]
+	at io.smallrye.graphql.entry.http.ExecutionServlet.getJsonObjectFromBody(ExecutionServlet.java:132) ~[smallrye-graphql-servlet-2.8.6.jar:2.8.6]
+	at io.smallrye.graphql.entry.http.ExecutionServlet.doPost(ExecutionServlet.java:73) ~[smallrye-graphql-servlet-2.8.6.jar:2.8.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:653) ~[jakarta.servlet-api-6.1.0.jar:6.1.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:723) ~[jakarta.servlet-api-6.1.0.jar:6.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:764) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:529) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1381) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1303) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) [jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) [jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) [jetty-util-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) [jetty-util-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) [jetty-util-11.0.20.jar:11.0.20]
+	at java.lang.Thread.run(Thread.java:842) [?:?]
+2026-05-12 10:55:27 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Logging response status:	'500'
+2026-05-12 10:55:27 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@41623694{STOPPING}[11.0.20,sto=0]
+2026-05-12 10:55:27 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@4ed74d03{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 10:55:27 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@5f31385e{/,null,STOPPED}
+2026-05-12 10:55:27 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 27aa4f64-0e8c-4884-8ccf-993aeb0108d8 shut down
+2026-05-12 11:00:22 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 11:00:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 11:00:22 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 11:00:22 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 11:00:23 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 11:00:31 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 11:00:31 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 11:00:31 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 11:00:32 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 11:00:32 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 11:00:40 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 11:00:40 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container e89c3fd0-ec4a-40b3-8e51-08968ee959cc initialized
+2026-05-12 11:00:40 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 11:00:40 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 11:00:40 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 11:00:40 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 11:00:41 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 11:00:41 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 11:00:42 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@1bce19db{/,null,AVAILABLE}
+2026-05-12 11:00:42 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@28468162{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 11:00:42 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@7e4a6afd{STARTING}[11.0.20,sto=0] @12400ms
+2026-05-12 11:00:42 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: 
+
+================ Can Search Step ================
+
+2026-05-12 11:00:42 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Displaying query:
+
+'{
+    "query": "query SearchStep {     searchStep(query: {   StepState: Pending   StepName: \"GraphQL Steps\"     }) {   stepId   stepName   stepState   stepCount   workflowId     } } "
+}
+'
+2026-05-12 11:00:42 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Querying endpoint
+2026-05-12 11:00:42 WARN  [ qtp1792339731-76 -> org.eclipse.jetty.server.HttpChannel.handleException ]: /tasktide/graphql
+java.lang.NullPointerException: Cannot invoke "io.smallrye.graphql.execution.ExecutionService.executeSync(jakarta.json.JsonObject, java.util.Map, io.smallrye.graphql.execution.ExecutionResponseWriter)" because "this.executionService" is null
+	at io.smallrye.graphql.entry.http.ExecutionServlet.doPost(ExecutionServlet.java:81) ~[smallrye-graphql-servlet-2.8.6.jar:2.8.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:653) ~[jakarta.servlet-api-6.1.0.jar:6.1.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:723) ~[jakarta.servlet-api-6.1.0.jar:6.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:764) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:529) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1381) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1303) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) [jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) [jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) [jetty-util-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) [jetty-util-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) [jetty-util-11.0.20.jar:11.0.20]
+	at java.lang.Thread.run(Thread.java:842) [?:?]
+2026-05-12 11:00:42 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Logging response status:	'500'
+2026-05-12 11:00:42 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@7e4a6afd{STOPPING}[11.0.20,sto=0]
+2026-05-12 11:00:42 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@28468162{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 11:00:42 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@1bce19db{/,null,STOPPED}
+2026-05-12 11:00:42 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container e89c3fd0-ec4a-40b3-8e51-08968ee959cc shut down
+2026-05-12 11:01:15 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 11:01:15 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 11:01:15 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 11:01:16 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 11:01:16 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 11:01:22 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 11:01:22 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2daedded-4f97-49ad-83b5-4cfc006236ab initialized
+2026-05-12 11:01:23 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 11:01:23 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 11:01:23 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 11:01:23 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 11:01:23 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 11:01:23 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 11:01:24 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@54c15e{/,null,AVAILABLE}
+2026-05-12 11:01:24 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@5aa461{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 11:01:24 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@2f16c21f{STARTING}[11.0.20,sto=0] @11199ms
+2026-05-12 11:01:24 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: 
+
+================ Can Search Step ================
+
+2026-05-12 11:01:24 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Displaying query:
+
+'{
+    "query": "query SearchStep {     searchStep(query: {   StepName: \"GraphQL Steps\"   StepState: Pending     }) {   stepId   stepName   stepState   stepCount   workflowId     } } "
+}'
+2026-05-12 11:01:24 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Querying endpoint
+2026-05-12 11:01:25 WARN  [ qtp1993482475-76 -> org.eclipse.jetty.server.HttpChannel.handleException ]: /tasktide/graphql
+java.lang.NullPointerException: Cannot invoke "io.smallrye.graphql.execution.ExecutionService.executeSync(jakarta.json.JsonObject, java.util.Map, io.smallrye.graphql.execution.ExecutionResponseWriter)" because "this.executionService" is null
+	at io.smallrye.graphql.entry.http.ExecutionServlet.doPost(ExecutionServlet.java:81) ~[smallrye-graphql-servlet-2.8.6.jar:2.8.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:653) ~[jakarta.servlet-api-6.1.0.jar:6.1.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:723) ~[jakarta.servlet-api-6.1.0.jar:6.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:764) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:529) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1381) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1303) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) [jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) [jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) [jetty-util-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) [jetty-util-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) [jetty-util-11.0.20.jar:11.0.20]
+	at java.lang.Thread.run(Thread.java:842) [?:?]
+2026-05-12 11:01:25 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Logging response status:	'500'
+2026-05-12 11:01:25 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@2f16c21f{STOPPING}[11.0.20,sto=0]
+2026-05-12 11:01:25 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@5aa461{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 11:01:25 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@54c15e{/,null,STOPPED}
+2026-05-12 11:01:25 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 2daedded-4f97-49ad-83b5-4cfc006236ab shut down
+2026-05-12 11:27:00 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.setUpClass ]: 
+
+---------------- Initiating Step REST Resource Tests ----------------
+
+2026-05-12 11:27:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 11:27:00 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 11:27:00 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 11:27:01 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 11:27:07 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 11:27:07 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 8263c16c-dec9-4f84-9257-0b86eb78abc0 initialized
+2026-05-12 11:27:07 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "GraphQL Steps",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 11:27:07 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 11:27:07 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 11:27:07 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'GraphQL Steps'
+2026-05-12 11:27:08 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 11:27:08 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 11:27:09 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@5d96b0f{/,null,AVAILABLE}
+2026-05-12 11:27:09 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@59ac60d1{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 11:27:09 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@798d8247{STARTING}[11.0.20,sto=0] @11390ms
+2026-05-12 11:27:09 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: 
+
+================ Can Search Step ================
+
+2026-05-12 11:27:09 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Displaying query:
+
+'{
+    "query": "query SearchStep {     searchStep(query: {   StepState: Pending   StepName: \"GraphQL Steps\"     }) {   stepId   stepName   stepState   stepCount   workflowId     } } "
+}'
+2026-05-12 11:27:09 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Querying endpoint
+2026-05-12 11:27:09 WARN  [ qtp2047368450-75 -> org.eclipse.jetty.server.HttpChannel.handleException ]: /tasktide/graphql
+java.lang.NullPointerException: Cannot invoke "io.smallrye.graphql.execution.ExecutionService.executeSync(jakarta.json.JsonObject, java.util.Map, io.smallrye.graphql.execution.ExecutionResponseWriter)" because "this.executionService" is null
+	at io.smallrye.graphql.entry.http.ExecutionServlet.doPost(ExecutionServlet.java:81) ~[smallrye-graphql-servlet-2.8.6.jar:2.8.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:653) ~[jakarta.servlet-api-6.1.0.jar:6.1.0]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:723) ~[jakarta.servlet-api-6.1.0.jar:6.1.0]
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:764) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:529) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1580) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:221) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1381) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:176) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:484) ~[jetty-servlet-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1553) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:174) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1303) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:129) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:122) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.Server.handle(Server.java:563) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel$RequestDispatchable.dispatch(HttpChannel.java:1598) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel.dispatch(HttpChannel.java:753) ~[jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:501) [jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:287) [jetty-server-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:314) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:100) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.io.SelectableChannelEndPoint$1.run(SelectableChannelEndPoint.java:53) [jetty-io-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969) [jetty-util-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194) [jetty-util-11.0.20.jar:11.0.20]
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149) [jetty-util-11.0.20.jar:11.0.20]
+	at java.lang.Thread.run(Thread.java:842) [?:?]
+2026-05-12 11:27:09 INFO  [ Test worker -> org.tasktide.api.resources.services.graphql.StepGraphqlApiTests.canSearchStep ]: Logging response status:	'500'
+2026-05-12 11:27:09 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStop ]: Stopped Server@798d8247{STOPPING}[11.0.20,sto=0]
+2026-05-12 11:27:09 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStop ]: Stopped ServerConnector@59ac60d1{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 11:27:09 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStop ]: Stopped o.e.j.s.ServletContextHandler@5d96b0f{/,null,STOPPED}
+2026-05-12 11:27:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container 8263c16c-dec9-4f84-9257-0b86eb78abc0 shut down

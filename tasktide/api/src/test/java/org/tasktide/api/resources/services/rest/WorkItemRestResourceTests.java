@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.services.rest;
+package org.tasktide.api.resources.services.rest;
 
 import jakarta.enterprise.context.control.RequestContextController;
 
