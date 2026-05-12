@@ -68,6 +68,11 @@ public class TaskTide {
                 System.exit(0);
             }
             TaskTideClientType clientType = configMap.whichClient();
+            if ( clientType == null ) {
+                LOGGER.fatal("Error, exiting cannot parse provided client. Please check this value matches one of 'Manager, Engine, WebAPI'");
+                provider.shutdown();
+                System.exit(0);
+            }
 
             // Fetch TaskTideServiceManager
             RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);

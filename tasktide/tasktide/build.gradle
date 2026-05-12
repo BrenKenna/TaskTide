@@ -197,3 +197,19 @@ tasks.register('pilotLabelExecution', JavaExec) {
             "--execution-policy", "batch"
     ]
 }
+
+
+// Test batch execution
+tasks.register('webApiExecution', JavaExec) {
+    //dependsOn(tasks.named("annotations"))
+    group = 'application'
+    description = 'Run engine in batch mode using pilot label'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+            "web-api",
+            "--repository-type", "nosql",
+            "--nosql-database-type", "document"
+    ]
+}

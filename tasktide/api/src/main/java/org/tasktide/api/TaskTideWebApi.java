@@ -179,8 +179,8 @@ public class TaskTideWebApi {
         ServletHolder jerseyServlet = new ServletHolder(new ServletContainer(this.resourceConfig));
         ctx.addServlet(jerseyServlet, this.basePath + "/api/*");
         
-        ServletHolder graphqlServlet = new ServletHolder(ExecutionServlet.class);
-        ctx.addServlet(graphqlServlet, this.basePath + "/graphql/*");
+        //ServletHolder graphqlServlet = new ServletHolder(ExecutionServlet.class);
+        //ctx.addServlet(graphqlServlet, this.basePath + "/graphql/*");
         
         this.server.setHandler(ctx);
         try {

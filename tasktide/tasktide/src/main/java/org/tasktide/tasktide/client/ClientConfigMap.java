@@ -78,6 +78,7 @@ public class ClientConfigMap {
      */
     public void addConfigs(CdiContainerProvider provider) {
         for ( TaskTideClientType elm : TaskTideClientType.values() ) {
+            // LOGGER.debug("\n\n==Evaluating client type:\t'{}'\n\n==", elm);
             TaskTideConfig config = this.parseConfigs(provider, elm);
             this.configMap.put(elm, config);
         }
@@ -92,7 +93,6 @@ public class ClientConfigMap {
     public TaskTideClientType whichClient() {
         List<String> pathTokens = argTree.resolveActionPath(argsIn);
         String actionPath = String.join(" ", pathTokens);
-        
         LOGGER.debug("Evaluating client module for:\t'{}'", actionPath);
         if ( actionPath != null ) {
             return TaskTideClientType.get(actionPath);

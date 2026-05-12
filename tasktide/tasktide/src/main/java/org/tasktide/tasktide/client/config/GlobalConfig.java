@@ -309,7 +309,6 @@ public class GlobalConfig extends AbstractConfig {
         
         this.filePath = this.getConfigValue("tasktide.core.repository.file-path", String.class, "");
         arg.setValue(this.filePath);
-        LOGGER.debug("Argument is configured as:\n'{}'", arg);
         this.getArgumentMap().putArgument(arg);
     }
       
@@ -331,6 +330,7 @@ public class GlobalConfig extends AbstractConfig {
         
         this.client = this.getConfigValue("tasktide.client", String.class, "");
         arg.setValue(this.client);
+        LOGGER.debug("Argument is configured as:\n'{}'", arg);
         this.getArgumentMap().putArgument(arg);
     }
 }

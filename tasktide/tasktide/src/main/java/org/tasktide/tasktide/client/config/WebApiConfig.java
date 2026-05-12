@@ -73,6 +73,13 @@ public class WebApiConfig extends AbstractConfig {
         this.host();
         this.port();
         this.basePath();
+        
+        if ( this.getPath().isEmpty() ) {
+            argTree.getTree().getRoot().setData(this.getArgumentMap());
+        }
+        else {
+            argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
+        }
     }
 
     
@@ -132,7 +139,7 @@ public class WebApiConfig extends AbstractConfig {
             .withRefClass(String.class)
         .build();
         
-        this.basePath = this.getConfigValue("tasktide.web-api.server.base-path", String.class, "/");
+        this.basePath = this.getConfigValue("tasktide.web-api.server.base-path", String.class, "/tasktide");
         arg.setValue(this.basePath);
         this.getArgumentMap().putArgument(arg);
     }

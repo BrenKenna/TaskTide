@@ -140,6 +140,7 @@ public class TaskTideClientUtility {
      */
     public static TaskTideClientType configureClient(ArgumentTree argTree) {
         String cliString = (String) argTree.getGlobalArguments().getArgMap().get("Client").getValue();
+        LOGGER.debug("\n\n===Parsed Client String:\t'{}'\n\n\n===", cliString);
         return TaskTideClientType.valueOf(cliString);
     }
 

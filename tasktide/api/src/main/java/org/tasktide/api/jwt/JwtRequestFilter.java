@@ -157,6 +157,7 @@ public class JwtRequestFilter implements ContainerRequestFilter {
      * 
      * @param ctx 
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void filter(ContainerRequestContext ctx) {
     

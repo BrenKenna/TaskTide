@@ -21,6 +21,7 @@ import java.util.List;
 import org.tasktide.tasktide.client.config.ManagerConfig;
 import org.tasktide.tasktide.client.config.EngineConfig;
 import org.tasktide.tasktide.client.config.GlobalConfig;
+import org.tasktide.tasktide.client.config.WebApiConfig;
 
 
 /**
@@ -123,6 +124,43 @@ public enum TaskTideClientType {
         @Override
         public String pathInTree() {
             return "manager";
+        }
+    },
+    
+    WEBAPI {
+        @Override
+        public String toString() {
+            return "WebAPI";
+        }
+
+        @Override
+        public boolean isClient(String s) {
+            String query = s.toLowerCase()
+                .replace(" ", "")
+                .replace("_", "")
+                .replace("-", "")
+            ;
+            return "webapi".equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isClient(TaskTideClientType other) {
+            return this == other;
+        }
+        
+        @Override
+        public TaskTideClient makeClient(ClientConfigMap configMap) {
+            return new TaskTideWebApiClient(configMap);
+        }
+        
+        @Override
+        public Class getConfigClass() {
+            return WebApiConfig.class;
+        }
+        
+        @Override
+        public String pathInTree() {
+            return "webapi";
         }
     };
 
