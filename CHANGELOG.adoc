@@ -4,7 +4,7 @@
 # Notice
 All changes to this project for versions beyond v1.0.0 will be reflected here. For the initial release currently is a checklist, and bug catches + fixes from use cases.
 
-== [0.9.9] - 2025-11-21
+== [0.9.9] - 2025-11-21 -> 22/06/2026
 
 
 === 1). Main Checklist
@@ -14,31 +14,45 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X]   4). Drop database files & old workflow engine from repo.
 - [X]   5). Early & Late binding semantics.
 - [/]   6). Docker compose.
-- [/]   7). Kubectl config.
-- [/]   8). Version-1 documentation.
-- [/]   9). Version-1 paper.
+- [/]   7). Version-1 documentation.
+- [/]   0). Version-1 paper.
 
 
 === 2). To Do
 
+- [/] Wrap any MVP work on WebAPI and trial over docker
+- [] Documentation on GitHub
+- [] ItemStore using LinkedOperationMap and Note mutex bucketing
+- [] Review logging messages
+- [] Update paper
+- [] Once over and submit
+
 
 ==== a). Code ToDo
 
-- [] Embedded server on WebApi
-- [] WebAPi StepResources returning 415
+- [X] Embedded server on WebApi
+- [X] WebAPi StepResources returning 415
 - [] ItemStore makes use of Linked Operation Map
 - [] Bucket mutex queue?
 - [] Verbose logging?
+- [/] Authentication schemes for WebAPI
+--
+        - Single SchemeProvider handle the nitty gritty
+        - Works with Enum method on SchemeType
+--
+- [] Trial over docker
+- [] GitHub docs
+- [] Drop UMLs in favour of documentation
 
 
 
 ==== b). Documentation
 
-- [] Adjust Engine README.md & UML for new design
-- [] Update Core README.md & UML with ManagerCommand
-- [] README.md & UML for Parser
-- [] README.md & UML for Mutex
-- [] README.md & UML for WebAPI
+- [] Adjust Engine README.md for new design
+- [] Update Core README.md with ManagerCommand
+- [] README.md Parser
+- [] README.md Mutex
+- [] README.md WebAPI
 
 
 
