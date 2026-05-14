@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.jwt;
+package org.tasktide.api.auth;
 
 import java.util.Set;
 
@@ -27,11 +27,11 @@ import jakarta.ws.rs.core.SecurityContext;
  */
 public class JwtSecurityContext implements SecurityContext {
 
-    private final JwtPrincipal principal;
+    private final AuthPrincipal principal;
     private final boolean secure;
     private final Set<String> roles;
     
-    public JwtSecurityContext(JwtPrincipal principal, boolean secure, Set<String> roles) {
+    public JwtSecurityContext(AuthPrincipal principal, boolean secure, Set<String> roles) {
         this.principal = principal;
         this.secure = secure;
         this.roles = roles;

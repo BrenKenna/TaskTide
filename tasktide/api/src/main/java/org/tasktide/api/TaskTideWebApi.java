@@ -34,7 +34,7 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import io.smallrye.graphql.entry.http.ExecutionServlet;
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.tasktide.api.jwt.JwtRequestFilter;
+import org.tasktide.api.auth.JwtRequestFilter;
 
 
 /**

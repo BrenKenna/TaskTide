@@ -56,7 +56,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
 import org.tasktide.core.repository.RepositoryType;
 
-import org.tasktide.api.jwt.JwtRequestFilter;
+import org.tasktide.api.auth.JwtRequestFilter;
 import org.tasktide.api.resources.services.rest.WorkItemRestResource;
 
 import org.tasktide.api.utils.WebApiUtils;

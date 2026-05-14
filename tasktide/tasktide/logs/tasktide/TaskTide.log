@@ -2758,3 +2758,247 @@ Base Path = '/tasktide'
 2026-05-12 13:14:01 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.performClientTask ]: Server listening on 'http://localhost:8080//tasktide' spinup state is 'STARTED'
 2026-05-12 13:14:46 INFO  [ qtp877706515-74 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
 2026-05-12 13:14:46 INFO  [ qtp877706515-72 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:03:31 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2026-05-12 17:03:31 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-05-12 17:03:32 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:03:32 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/api/build/libs/tasktide-api-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:03:36 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:03:36 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/api/build/libs/tasktide-api-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parse ]: Parsing global arguments:	N = '14'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=GLOBAL}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=GLOBAL}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'document'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=GLOBAL}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=GLOBAL}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=Nested NS Lookups, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=GLOBAL}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=GLOBAL}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=nosql, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=GLOBAL}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'nosql'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parse ]: Parsing action arguments for:	'web-api'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=/tasktide, refClass=class java.lang.String, name=Base Path, shortFlag=-bp, longFlag=--base-path, description= , argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=8080, refClass=class java.lang.Integer, name=Port, shortFlag=-port, longFlag=--port, description= , argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=http://localhost, refClass=class java.lang.String, name=Host, shortFlag=-host, longFlag=--host, description= , argType=ACTION}'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:03:36 DEBUG [ main -> org.tasktide.tasktide.client.ClientConfigMap.whichClient ]: Evaluating client module for:	'web-api'
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'nosql'
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'NoSQL' Repository
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring NoSQL Template ServiceManager
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'WebAPI'
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: Fetching configurations for TaskTide-WebApi
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: Proceeding with TaskTide-WebApi configurations:
+
+Host = 'http://localhost'
+Port = '8080'
+Base Path = '/tasktide'
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: TaskTide-WebApi configured
+2026-05-12 17:03:36 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.performClientTask ]: Starting TaskTide-WebApi
+2026-05-12 17:03:37 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.performClientTask ]: Server listening on 'http://localhost:8080//tasktide' spinup state is 'STARTED'
+2026-05-12 17:04:00 INFO  [ qtp531076772-75 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:06:30 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2026-05-12 17:06:30 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-05-12 17:06:31 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/api/build/libs/tasktide-api-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:06:31 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:06:35 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/api/build/libs/tasktide-api-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:06:35 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parse ]: Parsing global arguments:	N = '14'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=GLOBAL}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=GLOBAL}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'document'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=GLOBAL}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=GLOBAL}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=Nested NS Lookups, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=GLOBAL}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=GLOBAL}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=nosql, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=GLOBAL}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'nosql'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parse ]: Parsing action arguments for:	'web-api'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=/tasktide, refClass=class java.lang.String, name=Base Path, shortFlag=-bp, longFlag=--base-path, description= , argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=8080, refClass=class java.lang.Integer, name=Port, shortFlag=-port, longFlag=--port, description= , argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=http://localhost, refClass=class java.lang.String, name=Host, shortFlag=-host, longFlag=--host, description= , argType=ACTION}'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:06:35 DEBUG [ main -> org.tasktide.tasktide.client.ClientConfigMap.whichClient ]: Evaluating client module for:	'web-api'
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'nosql'
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'NoSQL' Repository
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring NoSQL Template ServiceManager
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'WebAPI'
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: Fetching configurations for TaskTide-WebApi
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: Proceeding with TaskTide-WebApi configurations:
+
+Host = 'http://localhost'
+Port = '8080'
+Base Path = '/tasktide'
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: TaskTide-WebApi configured
+2026-05-12 17:06:35 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.performClientTask ]: Starting TaskTide-WebApi
+2026-05-12 17:06:36 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.performClientTask ]: Server listening on 'http://localhost:8080//tasktide' spinup state is 'STARTED'
+2026-05-12 17:06:44 INFO  [ qtp1736189984-75 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:08:06 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Configuring the CDI Container Provider
+2026-05-12 17:08:06 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.configureCdiInstance ]: Starting 'Weld' container
+2026-05-12 17:08:07 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/api/build/libs/tasktide-api-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:08:07 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:08:12 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/api/build/libs/tasktide-api-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:08:12 WARN  [ main -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching TaskTide configs
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parse ]: Parsing global arguments:	N = '14'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Host:Port, shortFlag=-nsh, longFlag=--nosql-host, description=Specifies the backend NoSQL-DB host:port to use, argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=4, refClass=class java.lang.Integer, name=Token Expiration, shortFlag=-te, longFlag=--token-expiration, description=Specifies the token expiration limit, default is 4 days, argType=GLOBAL}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=GLOBAL}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=document, refClass=class java.lang.String, name=NoSQL Database Type, shortFlag=-dbt, longFlag=--nosql-database-type, description=Specifies the NoSQL Database Type: Document, KeyValue, Column, Graph, argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'document'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-work-item, refClass=class java.lang.String, name=WorkItem Name, shortFlag=-win, longFlag=--work-item-collection-name, description=Specifies the WorkItem Collection Name to use, argType=GLOBAL}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Database Provider, shortFlag=-dbt, longFlag=--nosql-database-provider, description=Specifies the NoSQL Software Name: Mongo, CouchDB etc, argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=profiled-workflow, refClass=class java.lang.String, name=Workflow Name, shortFlag=-wn, longFlag=--workflow-name, description=Specifies the workflow name to use, argType=GLOBAL}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=Nested NS Lookups, refClass=class java.lang.String, name=Step Name, shortFlag=-sn, longFlag=--step-name, description=Specifies the step name to use, argType=GLOBAL}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=dd/MM/yy HH:mm:ss, refClass=class java.lang.String, name=Date Format, shortFlag=-df, longFlag=--date-format, description=Specifies date format to use. Default is 'dd/MM/yy HH:mm:ss', argType=GLOBAL}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Password, shortFlag=-nsp, longFlag=--nosql-password, description=Specifies the backend NoSQL-DB password to use, argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL Provider Class, shortFlag=-nspc, longFlag=--nosql-provider-class, description=Specifies the backend NoSQL-DB Provider Class, argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=null, refClass=class java.lang.String, name=NoSQL User, shortFlag=-nsu, longFlag=--nosql-user, description=Specifies the backend NoSQL-DB Username to use, argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=, refClass=class java.lang.String, name=File Path, shortFlag=-fp, longFlag=--file-path, description=Specifies the file path for RocksDB/Json repository, argType=GLOBAL}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=nosql, refClass=class java.lang.String, name=Repository Type, shortFlag=-rt, longFlag=--repository-type, description=Specifies the backend repository type: RocksDB, NoSQL, Json, argType=GLOBAL}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.fetchRawValue ]: Parsing on next recod is data
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'nosql'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parse ]: Parsing action arguments for:	'web-api'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=/tasktide, refClass=class java.lang.String, name=Base Path, shortFlag=-bp, longFlag=--base-path, description= , argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=false, refClass=class java.lang.Boolean, name=Help, shortFlag=-h, longFlag=--help, description=Displays command-line documentation, argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=8080, refClass=class java.lang.Integer, name=Port, shortFlag=-port, longFlag=--port, description= , argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Parsing argument data:
+'Argument{value=http://localhost, refClass=class java.lang.String, name=Host, shortFlag=-host, longFlag=--host, description= , argType=ACTION}'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.parser.CliParser.parseFromMap ]: Fetched raw value of 'null'
+2026-05-12 17:08:12 DEBUG [ main -> org.tasktide.tasktide.client.ClientConfigMap.whichClient ]: Evaluating client module for:	'web-api'
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.fetchRepoType ]: Querying configured repo type:	'nosql'
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Fetching the TaskTideServiceManager for 'NoSQL' Repository
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideClientUtility.initServiceManager ]: Configuring NoSQL Template ServiceManager
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: ServiceManager state is now:	'true'
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.TaskTide.main ]: Constructing client:	'WebAPI'
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: Fetching configurations for TaskTide-WebApi
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: Proceeding with TaskTide-WebApi configurations:
+
+Host = 'http://localhost'
+Port = '8080'
+Base Path = '/tasktide'
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.configureClient ]: TaskTide-WebApi configured
+2026-05-12 17:08:12 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.performClientTask ]: Starting TaskTide-WebApi
+2026-05-12 17:08:13 INFO  [ main -> org.tasktide.tasktide.client.TaskTideWebApiClient.performClientTask ]: Server listening on 'http://localhost:8080//tasktide' spinup state is 'STARTED'
+2026-05-12 17:08:25 INFO  [ qtp251888112-76 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:08:25 INFO  [ qtp251888112-64 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created

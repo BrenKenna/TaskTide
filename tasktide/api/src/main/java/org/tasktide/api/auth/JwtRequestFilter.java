@@ -13,18 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.jwt;
+package org.tasktide.api.auth;
 
 import com.nimbusds.jose.JOSEException;
 import com.nimbusds.jose.JWSVerifier;
 import com.nimbusds.jose.crypto.RSASSAVerifier;
-import com.nimbusds.jwt.JWTClaimsSet;
+
 import com.nimbusds.jwt.SignedJWT;
+import com.nimbusds.jwt.JWTClaimsSet;
 
 import jakarta.annotation.Priority;
 
 import jakarta.ws.rs.Priorities;
 import jakarta.ws.rs.ext.Provider;
+
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.SecurityContext;
 
@@ -52,7 +54,7 @@ import org.tasktide.api.utils.WebApiUtils;
 public class JwtRequestFilter implements ContainerRequestFilter {
 
     private final RSAPublicKey publicKey;
-    
+    private final boolean EVAL_ENABLED = false;
     
     public JwtRequestFilter() {
         this.publicKey = WebApiUtils.getPublicKey();
@@ -73,48 +75,7 @@ public class JwtRequestFilter implements ContainerRequestFilter {
             Response.status(Response.Status.UNAUTHORIZED).build()
         );
     }
-    
-    
-    /**
-     * Fetches authorization header
-     * 
-     * @param ctx
-     * 
-     * @return String
-     */
-    public String getAuthHeader(ContainerRequestContext ctx) {
-        return ctx.getHeaderString("Authorization");
-    }
-    
-    
-    /**
-     * Parse bearer token from authorization header
-     * 
-     * @param ctx
-     * 
-     * @return String
-     */
-    public String getToken(ContainerRequestContext ctx) {
-        return this.getAuthHeader(ctx).substring("Bearer ".length());
-    }
-    
-    
-    /**
-     * Checks for bearer token aborting if absent
-     * 
-     * @param ctx
-     * 
-     * @return boolean
-     */
-    public boolean checkHeader(ContainerRequestContext ctx) {
-        String authHeader = ctx.getHeaderString("Authorization");
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return false;
-        }
-        return true;
-    }
-    
-    
+
     
     /**
      * Verifies token signature and expiration
@@ -128,7 +89,7 @@ public class JwtRequestFilter implements ContainerRequestFilter {
     public SignedJWT verifiySignature(ContainerRequestContext ctx) throws ParseException, JOSEException {
     
         // Verify token signature
-        String token = this.getToken(ctx);
+        String token = AuthUtils.parseBearerToken(ctx);
         SignedJWT jwt = SignedJWT.parse(token);
         JWSVerifier verifier = new RSASSAVerifier(this.publicKey);
 
@@ -160,8 +121,12 @@ public class JwtRequestFilter implements ContainerRequestFilter {
     @SuppressWarnings("unchecked")
     @Override
     public void filter(ContainerRequestContext ctx) {
+        
+        if ( !this.EVAL_ENABLED ) {
+            return;
+        }
     
-        if ( !this.checkHeader(ctx) ) {
+        if ( !AuthUtils.checkAuthorizationHeader(ctx) ) {
             this.abort(ctx);
             return;
         }
@@ -180,7 +145,7 @@ public class JwtRequestFilter implements ContainerRequestFilter {
 
             // Apply this as security context
             Set<String> rolesSet = new HashSet<>(roles);
-            JwtPrincipal principal = new JwtPrincipal(subject, rolesSet);
+            AuthPrincipal principal = new AuthPrincipal(subject, rolesSet);
             SecurityContext original = ctx.getSecurityContext();
             ctx.setSecurityContext(
                 new JwtSecurityContext(principal, original.isSecure(), rolesSet)

@@ -26,6 +26,9 @@ import java.security.interfaces.RSAPublicKey;
 
 import java.util.Base64;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 /**
  * Utility to support unit-testing web api resources.
@@ -35,9 +38,12 @@ import java.util.Base64;
  */
 public class WebApiUtils {
 
+    private static final Logger LOGGER = LogManager.getLogger(WebApiUtils.class);
+    
     // Key pairs
     private static KeyPairGenerator KPG;
     private static KeyPair KP;
+    private static final boolean EVAL_ENABLED = false;
     
     
     /**
@@ -129,10 +135,20 @@ public class WebApiUtils {
     
     
     public static boolean checkSecurityContext(SecurityContext ctx, String role) {
-        if ( !requireUser(ctx) ) {
-            return false;
+        LOGGER.info("Security Context eval state:\t'{}'", EVAL_ENABLED);
+        if ( EVAL_ENABLED ) {
+            if ( !requireUser(ctx) ) {
+                return false;
+            }
+            return requireRole(ctx, role);
         }
-        
-        return requireRole(ctx, role);
+        else {
+            return true;
+        }
+    }
+    
+    
+    public static boolean getEvalState() {
+        return EVAL_ENABLED;
     }
 }

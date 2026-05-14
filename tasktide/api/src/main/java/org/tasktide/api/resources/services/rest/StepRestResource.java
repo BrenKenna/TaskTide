@@ -281,6 +281,7 @@ public class StepRestResource extends TaskTideRestApi {
         
         // Role can be configured
         if ( !WebApiUtils.checkSecurityContext(securityContext, "user") ) {
+            LOGGER.info("Unauthorized request");
             return Response.status(Response.Status.FORBIDDEN).build();
         }
     

@@ -51,7 +51,7 @@ import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
 
-import org.tasktide.api.jwt.JwtRequestFilter;
+import org.tasktide.api.auth.JwtRequestFilter;
 import org.tasktide.api.resources.services.rest.WorkflowRestResource;
 
 import org.tasktide.api.utils.WebApiUtils;

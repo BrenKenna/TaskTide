@@ -40,7 +40,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
-import org.tasktide.api.jwt.JwtRequestFilter;
+import org.tasktide.api.auth.JwtRequestFilter;
 import org.tasktide.api.resources.services.rest.MetricProfileRestResource;
 import org.tasktide.api.utils.WebApiUtils;
 import org.tasktide.core.model.job_env.JobType;

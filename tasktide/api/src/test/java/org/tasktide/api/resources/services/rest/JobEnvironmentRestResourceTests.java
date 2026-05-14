@@ -48,12 +48,10 @@ import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
 
-import org.tasktide.api.jwt.JwtRequestFilter;
-import org.tasktide.api.resources.services.rest.JobEnvironmentRestResource;
+import org.tasktide.api.auth.JwtRequestFilter;
 
 import org.tasktide.api.utils.WebApiUtils;
 
-import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.model.builders.JobEnvironmentBuilder;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.JobType;

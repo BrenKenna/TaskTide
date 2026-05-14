@@ -53,7 +53,7 @@ import org.tasktide.core.model.collection.Step;
 import org.tasktide.api.TestUtils;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.utils.WebApiUtils;
-import org.tasktide.api.jwt.JwtRequestFilter;
+import org.tasktide.api.auth.JwtRequestFilter;
 
 
 /**

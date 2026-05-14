@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.api.jwt;
+package org.tasktide.api.auth;
 
 import java.security.Principal;
 
@@ -21,16 +21,17 @@ import java.util.Set;
 
 
 /**
+ * Data model for authentication and authorization
  *
  * @author Bren
  */
-public class JwtPrincipal implements Principal {
+public class AuthPrincipal implements Principal {
 
     private final String name;
     private final Set<String> roles;
     
     
-    public JwtPrincipal(String name, Set<String> roles) {
+    public AuthPrincipal(String name, Set<String> roles) {
         this.name = name;
         this.roles = roles;
     }

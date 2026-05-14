@@ -8521,3 +8521,278 @@ java.lang.NullPointerException: Cannot invoke "io.smallrye.graphql.execution.Exe
 2026-05-12 13:07:00 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@735dc133{STARTING}[11.0.20,sto=0] @18119ms
 2026-05-12 13:07:00 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
 2026-05-12 13:09:08 INFO  [ qtp984522383-78 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:10:45 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 17:10:45 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 17:10:46 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 17:10:47 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:10:58 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:10:58 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container b8e6de96-a393-46a9-957f-376e98b6f72c initialized
+2026-05-12 17:10:58 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 17:10:58 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 17:10:58 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 17:10:58 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-12 17:10:59 INFO  [ Thread-3 -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container b8e6de96-a393-46a9-957f-376e98b6f72c shut down
+2026-05-12 17:13:02 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 17:13:02 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 17:13:02 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 17:13:03 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:13:11 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:13:11 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 1f1c8559-2cb9-49eb-a17b-dc2aacf917cd initialized
+2026-05-12 17:13:11 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 17:13:11 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 17:13:11 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 17:13:11 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-12 17:13:12 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Nested NS Lookups'
+2026-05-12 17:13:12 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-c2230aba-264f-4b87-8a1e-cc17146668d8",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-2af9818c-a7bd-4e41-9471-5d9d075e58c5",
+    "StepName": "Nested NS Lookups",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-05-12 17:13:12 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Nested NS Lookups'
+2026-05-12 17:13:12 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Nested NS Lookups'
+2026-05-12 17:13:12 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Nested NS Lookups'
+2026-05-12 17:13:13 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: 
+
+================ Can Start Web Server ================
+
+2026-05-12 17:13:13 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: TaskTide web URL:	'http://localhost:8080//tasktide'
+2026-05-12 17:13:13 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 17:13:13 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 17:13:15 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@1e90939f{/,null,AVAILABLE}
+2026-05-12 17:13:15 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@14927cd4{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 17:13:15 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@154cbb46{STARTING}[11.0.20,sto=0] @14743ms
+2026-05-12 17:13:15 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
+2026-05-12 17:13:57 INFO  [ qtp572980523-74 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:16:48 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 17:16:48 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 17:16:49 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 17:16:49 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:16:55 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:16:56 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 21468b31-5f66-40b9-82f6-85670c441326 initialized
+2026-05-12 17:16:56 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 17:16:56 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 17:16:56 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 17:16:56 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-12 17:16:56 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: 
+
+================ Can Start Web Server ================
+
+2026-05-12 17:16:56 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: TaskTide web URL:	'http://localhost:8080//tasktide'
+2026-05-12 17:16:57 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 17:16:57 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 17:16:57 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@52f8effb{/,null,AVAILABLE}
+2026-05-12 17:16:57 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@70a8654{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 17:16:57 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@68ee7b3b{STARTING}[11.0.20,sto=0] @11182ms
+2026-05-12 17:16:57 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
+2026-05-12 17:19:27 INFO  [ qtp1525027227-76 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:21:23 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 17:21:23 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 17:21:24 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 17:21:24 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:21:30 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:21:31 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 76538b1f-2215-4ef5-a109-f58144129b24 initialized
+2026-05-12 17:21:31 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 17:21:31 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 17:21:31 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 17:21:31 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-12 17:21:31 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: 
+
+================ Can Start Web Server ================
+
+2026-05-12 17:21:31 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: TaskTide web URL:	'http://localhost:8080//tasktide'
+2026-05-12 17:21:32 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 17:21:32 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 17:21:32 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@35307365{/,null,AVAILABLE}
+2026-05-12 17:21:33 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@66c91224{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 17:21:33 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@2d21d12b{STARTING}[11.0.20,sto=0] @10968ms
+2026-05-12 17:21:33 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
+
+bear Token Eval:	'false'
+2026-05-12 17:21:57 INFO  [ qtp1653389536-77 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:23:49 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 17:23:49 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 17:23:50 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 17:23:50 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:23:56 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:23:56 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 2c629864-0a8c-4bcf-bf8c-52675b67ece5 initialized
+2026-05-12 17:23:57 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 17:23:57 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 17:23:57 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 17:23:57 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-12 17:23:57 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: 
+
+================ Can Start Web Server ================
+
+2026-05-12 17:23:57 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: TaskTide web URL:	'http://localhost:8080//tasktide'
+2026-05-12 17:23:57 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 17:23:57 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 17:23:58 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@572d1f18{/,null,AVAILABLE}
+2026-05-12 17:23:58 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@7715d43c{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 17:23:58 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@1ecbb787{STARTING}[11.0.20,sto=0] @10779ms
+2026-05-12 17:23:58 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
+
+bear Token Eval:	'false'
+2026-05-12 17:24:02 INFO  [ qtp497757429-77 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:24:08 INFO  [ qtp497757429-66 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:26:11 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 17:26:11 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 17:26:11 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 17:26:12 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:26:18 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:26:18 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container 7aecc0de-fb39-452c-98d2-657d9bbc0f98 initialized
+2026-05-12 17:26:19 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 17:26:19 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 17:26:19 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 17:26:19 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-12 17:26:19 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: 
+
+================ Can Start Web Server ================
+
+2026-05-12 17:26:19 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: TaskTide web URL:	'http://localhost:8080//tasktide'
+2026-05-12 17:26:20 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 17:26:20 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 17:26:21 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@7ebc2975{/,null,AVAILABLE}
+2026-05-12 17:26:21 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@698394bf{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 17:26:21 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@66487713{STARTING}[11.0.20,sto=0] @11679ms
+2026-05-12 17:26:21 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
+
+bear Token Eval:	'false'
+2026-05-12 17:26:26 INFO  [ qtp1652216902-77 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:27:02 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-05-12 17:27:02 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-05-12 17:27:03 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-05-12 17:27:03 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:27:09 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-05-12 17:27:09 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container c261fcc5-3763-4bf3-b7b7-5b8b26d21364 initialized
+2026-05-12 17:27:09 INFO  [ Test worker -> org.tasktide.api.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\api\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-05-12 17:27:09 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-05-12 17:27:09 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:','
+2026-05-12 17:27:09 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-05-12 17:27:10 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: 
+
+================ Can Start Web Server ================
+
+2026-05-12 17:27:10 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: TaskTide web URL:	'http://localhost:8080//tasktide'
+2026-05-12 17:27:10 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 17.0.12+8-LTS-286
+2026-05-12 17:27:10 INFO  [ Test worker -> org.eclipse.jetty.server.session.DefaultSessionIdManager.doStart ]: Session workerName=node0
+2026-05-12 17:27:11 INFO  [ Test worker -> org.eclipse.jetty.server.handler.ContextHandler.doStart ]: Started o.e.j.s.ServletContextHandler@45543b88{/,null,AVAILABLE}
+2026-05-12 17:27:11 INFO  [ Test worker -> org.eclipse.jetty.server.AbstractConnector.doStart ]: Started ServerConnector@7d5176d6{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2026-05-12 17:27:11 INFO  [ Test worker -> org.eclipse.jetty.server.Server.doStart ]: Started Server@4ceb368b{STARTING}[11.0.20,sto=0] @10785ms
+2026-05-12 17:27:11 INFO  [ Test worker -> org.tasktide.api.TaskTideWebApiTest.canStartWebService ]: Server status:	'STARTED'
+
+bear Token Eval:	'false'
+2026-05-12 17:27:15 INFO  [ qtp985496352-79 -> org.tasktide.api.resources.services.rest.StepRestResource.<init> ]: Step resource created
+2026-05-12 17:27:15 INFO  [ qtp985496352-79 -> org.tasktide.api.resources.services.rest.StepRestResource.readStep ]: Get Step request recieved from 'null', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36':
+
+'{}'
+2026-05-12 17:27:15 INFO  [ qtp985496352-79 -> org.tasktide.api.utils.WebApiUtils.checkSecurityContext ]: Security Context eval state:	'false'

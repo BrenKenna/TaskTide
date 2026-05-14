@@ -251,10 +251,8 @@ public class TaskTideWebApiTest {
         while ( !webApi.getState().equals("STARTED") ) {
             LOGGER.info("Waiting for web server to start state:\n'{}'", webApi.getState());
         }
-        LOGGER.info("Server status:\t'{}'", webApi.getState());
-        
-        
-        
+        LOGGER.info("Server status:\t'{}'\n\nbear Token Eval:\t'{}'", webApi.getState(), WebApiUtils.getEvalState());
+
         // Shutdown hook
         Runtime.getRuntime().addShutdownHook( new Thread( () -> {
             LOGGER.info("Shutdown signal received, shutting down TaskTide-WebApi server");
