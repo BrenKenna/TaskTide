@@ -54,6 +54,14 @@ Yup, <a href="/tasktide/tasktide/README.md#i-nosql-backend-configurations">see h
 </p>
 
 
+## 8). I want to use SQLite/RocksDB, do I need to install any drivers for them?
+<p>
+Drivers for these are provided with TaskTide. Just specify which one you're using, and the fully qualified path. Tasktide does the rest.
+  
+We recommend copying the folder temporarily for any live monitoring during production scale out
+</p>
+
+
 ## 8). How do I use TaskTide?
 <p>
 TaskTide is designed as configurable command-line client where its <a href="/tasktide/tasktide/README.md#c-manager-client-configurations">Manager Client</a> for task orchestration, and its <a href="/tasktide/tasktide/README.md#b-engine-client-configurations">Engine Client</a> can used for task processing. See <a href="/FAQ.md#1-how-do-install-tasktide">this link</a> for installation. Templates will be provided to demonstrate TaskTide deployment.
