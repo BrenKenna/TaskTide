@@ -1,14 +1,12 @@
 # TaskTide - EngineLib
 <p>
-Provides the transactional processing logic over <a href="/tasktide/core/README.md#1-tasktide-entities">TaskTide Entities</a>. The operating principle of the TaskTide Engine is to process ToDo work in an OS process. Engine processing is managed by an "<i>Observer Interface</i>" chain which handles the validation logic of task processing over the life-cycle of each individual "<i>WorkItem</i>", and "<i>ItemTask</i>". A "<i>TaskTide Processor</i>" interface handles the parallel processing & tracking separately for WorkItems and ItemTasks, and the "<i>TaskTide Executor</i>" interfaces runs the OS process that task are executed in.
+Provides the transactional processing logic over <a href="/tasktide/core/README.md#1-tasktide-entities">TaskTide Entities</a>. The operating principle of the TaskTide Engine is to process ToDo work in an OS process. Engine processing overseen by an "<i>Observer Chain</i>" which implements validation logic of task processing over key life-cycle transistions of each individual "<i>WorkItem</i>", and "<i>ItemTask</i>", and feeding relevant updates back to configured database. 
 </p>
 
 
-## 1). TaskTide Engine Execution Chain
+## 1). TaskTide Engine Worker
 <p>
-The "<i>WorkUnit</i>" marker interface implicity aggregates the abstract engine components "<i>TaskTideProcessor, TaskTideExecutor, and TaskTideEngineObserver Chain</i>". The "<i>TaskTideProcessor</i>" is implemented by the separate "<i>WorkItemProcessor</i>", and "<i>ItemTaskProcessor</i>" to submit these units of work for processing in their own thread pools. A static package private "<i>FutureTrackers</i>" container was designed so that the units of work can be tracked over their life-cycle either on aggregate, on individual basis via the "<i>ExecutorServiceTracker</i>" which caches the TaskTideModel, and the thread process in separate concurrent maps. Meaning WorkItem thread processes are cached separatetly from ItemTasks, as they babysit their workload processing.
 
-Like the processor, the "<i>TaskTideExecutor</i>" interface is implemented by separate "<i>WorkItemExecutor</i>", and <i>ItemTaskExecutor</i>" which perform the execution operation. For WorkItems, this is "<i>ItemTaskProcessor</i>" delegation, and ItemTasks is running its associated task script attribute in an OS process. WorkItemExecutors poll their workload until they have reached a completed state (Done, Erorr).
 </p>
 
 
@@ -22,7 +20,7 @@ The abstract "<i>StateObserver</i>" decorates the pre, during, and post task pro
 
 ## 3). Log Handling
 <p>
-It is strongly recommended that tasks are provided as end-user developed ETL scripts. Where data is fetched/Extracted from a source, processed/Transformed by some script/binary, and uploaded/Loaded into some source. This is so that end-users can gauarntee where these task logs are being, for instance with linux stdout/stderr could be sent to null device if no interested. Or a file, and pushed to S3/AzureBlob, CloudWatch/Azure Monitor. Otherwise these data are stored in an ItemTask property if less than 1MB, or into a zip if greater 1MB and acknowledged on the ItemTask (ie either has the logs, or their full file path). In time, destinations maybe configured but are not a current priority.
+It is recommended that tasks are provided as end-user developed ETL scripts sink their logs to a file, and handled separately. This is so that end-users can gauarntee where these task logs are stored, for instance with linux stdout/stderr could be sent to null device if no interested. Or a file, and pushed to S3/AzureBlob, CloudWatch/Azure Monitor. Otherwise these data are stored in an ItemTask property if less than 1MB, or into a zip if greater 1MB and acknowledged on the ItemTask (ie either has the logs, or their full file path). These are logged outputs from ETL script/executable provided, not sub-scripts/programs used by that script. In time, destinations maybe configured but this not a current priority.
 </p>
 
 
