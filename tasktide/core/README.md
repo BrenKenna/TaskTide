@@ -1,12 +1,12 @@
 # TaskTide - CoreLib
 <p>
-Provides the model entities for the <a href="/tasktide/docs/assets/tasktide-arch.png">TaskTide System</a>, and orchestrates their persistence to configurable backend (ie File Based-RocksDB/SQLite, Relational, NoSQL) through type constrained Service-Repository pattern. The entity classes for TaskTide are summarized below, this Model View Controller complete served to simplify the design of the "<a href="/tasktide/engine/README.md">TaskTide Engine Library</a>" and "<a href="/tasktide/tasktide/README.md">TaskTide Client Appilcation</a>" views.
+Provides the model entities for the <a href="/tasktide/docs/assets/tasktide-arch.png">TaskTide System</a>, and their persistence to configured backend (ie Daemonless RocksDB/SQLite, Relational, NoSQL) through type constrained repository, and service ambassador pattern. The entity classes for TaskTide are summarized below, this Model View Controller complete served to simplify the design of the "<a href="/tasktide/engine/README.md">TaskTide Engine Library</a>", "<a href="/tasktide/api">TaskTide WebAPI</a>", and "<a href="/tasktide/tasktide/README.md">TaskTide Client Appilcation</a>" views.
 </p>
 
 
 ## 1). TaskTide Entities
 <p>
-The entities that TaskTide uses,  models a "<i>Workflow</i>" as a collection of "<i>Steps</i>" where each Step has a collection of work units to perform "<i>WorkItem</i>". In decoupling the units of work away from their meta-data (slie Step, Workflow), TaskTide supports both arbitrary and structured Task processing. Meaning, not all work units to be orchestrated by TaskTide have to be defined under a Workflow-Step model.
+TaskTide models a "<i>Workflow</i>" as a collection of "<i>Steps</i>" where each Step has a collection of work units to perform "<i>WorkItem</i>". In decoupling the units of work away from their meta-data (ie Step, Workflow), TaskTide supports both arbitrary and structured Task processing. Meaning, that not all work units to be orchestrated by TaskTide have to be explicitly defined under a Workflow-Step model.
 </p>
 
 <p>
@@ -26,7 +26,7 @@ The TaskTide repositories were modelled as generic abstract interfaces constrain
 
 ## 3). TaskTide Service & Manager
 <p>
-A given "<i>TaskTideService</i>" interface (Workflow, Step, WorkItem) is composed with its corresponding "<i>TaskTideRepository</i>" which decouples the repository complexity (backend database) from the implementing class' business logic into a configurable singleton "<i>TaskTideServiceManager</i>" (ie configured once and reused). Which for the TaskTide Engine Client is task processing, and TaskTide Manager Client is task orchestration. The Manager package builds on this logic providing end-user facing interfaces for task import/export through its own "<i>ManagerTask</i>" model, which performs TaskTideModel conversion.
+A given "<i>TaskTideService</i>" instance (Workflow, Step, WorkItem) is composed with its corresponding "<i>TaskTideRepository</i>" which decouples the repository complexity (backend database) from the implementing class' business logic into a configurable singleton "<i>TaskTideServiceManager</i>" (ie configured once and reused). Which for the TaskTide Engine Client is task processing, and TaskTide Manager Client is task orchestration. The Manager package builds on this logic providing end-user facing interfaces for task import/export through its own "<i>ManagerTask</i>" model, which performs TaskTideModel conversion.
 </p>
 
 
