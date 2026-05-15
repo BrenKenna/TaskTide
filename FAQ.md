@@ -8,27 +8,31 @@ Download the latest release <a href="https://github.com/BrenKenna/TaskTide/relea
 
 ## 2). What backends are usable?
 <p>
-In short any, use depends on environment where TaskTide is implemented (ie containerized, Grid, HPC, Edge). TaskTide supports is intentionally designed to be deployed environments (ie container, HPC, and Grid). Recognizing that not all environments can utilise the same "<i>single source of truth</i>", support for different backends was baked into its design. For environments where a production grade database is available over a network either <a href="/tasktide/tasktide/README.md#ii-relational-backend-configurations">Relational Databases</a> like MySQL/Postgres can be used, or <a href="/tasktide/tasktide/README.md#i-nosql-backend-configurations">NoSQL Databases</a> like MongoDB, CouchDB etc can be used. For environments like HPC/Edge where batch jobs have direct access to data storage, an <a href="/tasktide/tasktide/README.md#a-global-configurations">ItemStore</a> can be configured using either SQLite or RocksDB.
+In short any, use depends on environment where TaskTide is implemented (ie containerized, Grid, HPC, Edge). Recognizing that not all environments can utilise the same "<i>single source of truth</i>", support for different backends was baked into its design. For environments where a production grade database is available over a network either <a href="/tasktide/tasktide/README.md#ii-relational-backend-configurations">Relational Databases</a> like MySQL/Postgres, or <a href="/tasktide/tasktide/README.md#i-nosql-backend-configurations">NoSQL Databases</a> like MongoDB, CouchDB etc can be used. For environments like HPC/Edge which are constrained to daemonless databases, an <a href="/tasktide/tasktide/README.md#a-global-configurations">ItemStore</a> can be configured using either SQLite or RocksDB.
 </p>
 
 
 ## 3). How do I configure a backend for TaskTide?
 <p>
-While database provisioning is outside the scope of TaskTide, <a href="/Database-Driver-Installation.md">this link</a> offers a guide on Relational and NoSQL databases, and configuration of RocksDB/SQLite is <a href="/tasktide/tasktide/README.md#a-global-configurations">described here</a>
+While database provisioning is outside the scope of TaskTide, <a href="/Database-Driver-Installation.md">this link</a> offers a guide on Relational and NoSQL databases, and configuration of RocksDB/SQLite is <a href="/tasktide/tasktide/README.md#a-global-configurations">described here</a>.
 </p>
 
 
 ## 4). What exactly are these ETLs and Pilot Jobs?
 
-### ETL Scripting
+### a). ETL Scripting
 <p>
-An ETL is a design pattern for data processing, which organizes data processing into three steps. First step is "<i>Extraction</i>" which stages data to be processed onto the compute platform, for instance for a docker container this would be downloading source data/firing a query against a database. Second step is "<i>Transformation</i>", which performs the required action over input data. Third step is "<i>Loading</i>" where the results from this process are pushed to storage for downstream analysis. TaskTide recommends to "<i>phrase</i>" tasks as ETL scripts, where the input changes per task, as such an ETL script is the standardized unit of processing for TaskTide. Designing a collection of related ETL scripts is called pipelining, where the pipeline produces the required output, each step in that workflow acts as checkpoints for data migrating through this process. Reliance of this approach depends on variety of factors which wall-time of an analytical pipeline ("work" could be chopped up), required pipeline, and dimensions of input data.
+An ETL is a design pattern for data processing, which organizes data processing into three steps. The first step "<i>Extraction</i>" stages data to be processed onto the compute platform, for instance for a docker container this would be downloading source data/firing a query against a database. The second step "<i>Transformation</i>" performs the required action over input data. The third step "<i>Loading</i>" is where the results from this process are pushed to storage for downstream analysis.
+  
+TaskTide recommends to frame tasks as ETL scripts to support its best use, automation, fault-tolerance, and observability. Designing a collection of related ETL scripts is called pipelining, where the pipeline produces the required output, each step in that workflow acts as checkpoints for data migrating through this process. Note worthy aspects this approach to consider include the wall-time of an analytical pipeline steps (could "work"  be chopped up), environmental requirements pipeline such as any reference data and resource utilization (memory, cpu etc), and dimensions of input data that support logical data subsetting and aggregation.
 </p>
 
 
-### Pilot Jobs
+### b). Pilot Jobs
 <p>
-A pilot job is a design approach in batch computing, where a set of related long running batch jobs process their associated units of work. Instead of say, an array short/long running jobs fired independently. Together the two approaches act as a means of orchestration batch job deployments, where ETLs can be designed & tested on smaller subsets, and scaled out with TaskTide. 
+A pilot job is a design approach in batch computing, where a set of related long running batch jobs process their associated units of work. Instead of say, an array short/long running jobs fired independently. Together the two approaches act as a means of orchestration batch job deployments, where ETLs can be designed & tested on smaller subsets, and scaled out with TaskTide.
+  
+There are two scale out models in this approach called early and late task binding, both of which are supported by TaskTide. In early-task binding tasks are allocated to pilot before that job becomes active, be likened to fetch and run batch jobs. Late task binding would be more similar to interactive computing like with notebooks, where a pilot job is provisioned ahead of time and assigned work dynamically. TaskTide supports these task binding semantics through its ETL model, model annotations, workers fetching targetted work collections from central database, and configurable batch/service execution polocies of the TaskTide-Engine. 
 </p>
 
 
