@@ -53,7 +53,7 @@ import org.tasktide.core.model.collection.Step;
 import org.tasktide.api.TestUtils;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.utils.WebApiUtils;
-import org.tasktide.api.auth.JwtRequestFilter;
+import org.tasktide.api.auth.AuthenicationFilter;
 
 
 /**
@@ -94,7 +94,7 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
             config.register(clazz);
         }
         config.register(JsonBindingFeature.class);
-        config.register(JwtRequestFilter.class);
+        config.register(AuthenicationFilter.class);
         return config;
     }
     

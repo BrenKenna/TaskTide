@@ -21,7 +21,7 @@ import com.nimbusds.jwt.JWTClaimsSet;
 /**
  * Interface through which authentication
  *  is verified. Nimbus performs OIDC cryptographic
- *  verification, and token properties. Letting
+ *  verification, and input properties. Letting
  *  endpoints to focus on evaluating roles.
  *
  * @author Bren
@@ -38,57 +38,57 @@ public interface AuthenticationScheme {
     
     
     /**
-     * Verify authenticity of token
+     * Verify authenticity of input
      * 
-     * @param token
+     * @param input
      * @return {@link AuthPrincipal}
      * 
      * @throws AuthenticationException 
      */
-    public AuthPrincipal authenticate(String token) throws AuthenticationException;
+    public AuthPrincipal authenticate(Object input) throws AuthenticationException;
     
     
     /**
      * Map {@link JWTClaimsSet} to {@link AuthPrincipal}
      * 
-     * @param claims
+     * @param input
      * @return {@link AuthPrincipal}
      */
-    public AuthPrincipal mapToAuthPrincipal(JWTClaimsSet claims);
+    public AuthPrincipal mapToAuthPrincipal(Object input);
     
     
     /**
-     * Validate JWT token properties
+     * Validate JWT input properties
      * 
-     * @param claims
+     * @param input
      * @return boolean
      */
-    public boolean validate(JWTClaimsSet claims);
+    public boolean validate(Object input);
     
     
     /**
      * Verify issuer of HWT
      * 
-     * @param claims
+     * @param input
      * @return boolean
      */
-    public boolean verifiyIssuer(JWTClaimsSet claims);
+    public boolean verifiyIssuer(Object input);
     
     
     /**
      * Verify audience of JWT
      * 
-     * @param claims
+     * @param input
      * @return boolean
      */
-    public boolean verifyAudience(JWTClaimsSet claims);
+    public boolean verifyAudience(Object input);
 
     
     /**
      * Verify expiration of JWT
      * 
-     * @param claims
+     * @param input
      * @return boolean
      */
-    public boolean verifyExpiration(JWTClaimsSet claims);
+    public boolean verifyExpiration(Object input);
 }

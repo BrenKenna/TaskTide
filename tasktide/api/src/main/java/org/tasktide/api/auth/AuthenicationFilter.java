@@ -54,6 +54,12 @@ public class AuthenicationFilter implements ContainerRequestFilter {
     }
     
     
+    /**
+     * Evaluate the authenticity of provided token under the
+     *  configured {@link AuthenticationScheme}
+     * 
+     * @param ctx 
+     */
     @Override
     public void filter(ContainerRequestContext ctx) {
 
@@ -71,15 +77,16 @@ public class AuthenicationFilter implements ContainerRequestFilter {
             return;
         }
 
-        
+        // Validate authenication principal from auth token
         try {
 
+            // Fetch verified principal for app to use
             AuthPrincipal principal =
                 scheme.authenticate(token);
 
+            // Embedd in security context of request
             SecurityContext original =
                 ctx.getSecurityContext();
-
             ctx.setSecurityContext(
                 new JwtSecurityContext(
                     principal,

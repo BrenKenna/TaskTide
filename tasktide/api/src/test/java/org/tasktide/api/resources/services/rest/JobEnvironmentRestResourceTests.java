@@ -48,7 +48,7 @@ import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
 
-import org.tasktide.api.auth.JwtRequestFilter;
+import org.tasktide.api.auth.AuthenicationFilter;
 
 import org.tasktide.api.utils.WebApiUtils;
 
@@ -99,7 +99,7 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
             config.register(clazz);
         }
         config.register(JsonBindingFeature.class);
-        config.register(JwtRequestFilter.class);
+        config.register(AuthenicationFilter.class);
         return config;
     }
     

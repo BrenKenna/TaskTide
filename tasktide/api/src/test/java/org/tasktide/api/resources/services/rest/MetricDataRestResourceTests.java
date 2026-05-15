@@ -41,18 +41,16 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
-import org.tasktide.api.auth.JwtRequestFilter;
-import org.tasktide.api.resources.services.rest.MetricDataRestResource;
+
+import org.tasktide.api.auth.AuthenicationFilter;
 import org.tasktide.api.utils.WebApiUtils;
-import org.tasktide.core.manager.BuilderUtility;
-import org.tasktide.core.model.builders.BuilderType;
-import org.tasktide.core.model.builders.MetricDataBuilder;
-import org.tasktide.core.model.builders.ModelBuilderProvider;
+
 import org.tasktide.core.model.job_env.JobType;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.supporting.Utils;
+
+
 
 /**
  *
@@ -92,7 +90,7 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
             config.register(clazz);
         }
         config.register(JsonBindingFeature.class);
-        config.register(JwtRequestFilter.class);
+        config.register(AuthenicationFilter.class);
         return config;
     }
     

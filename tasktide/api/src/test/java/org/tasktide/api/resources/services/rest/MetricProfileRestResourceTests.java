@@ -40,12 +40,10 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
-import org.tasktide.api.auth.JwtRequestFilter;
-import org.tasktide.api.resources.services.rest.MetricProfileRestResource;
+import org.tasktide.api.auth.AuthenicationFilter;
 import org.tasktide.api.utils.WebApiUtils;
 import org.tasktide.core.model.job_env.JobType;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
-import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.core.repository.RepositoryType;
 
 
@@ -66,7 +64,7 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
     private Template template;
     private KeyPair KEY_PAIR;
 
-    private int PROFILE_DATA_POINTS;
+    private final int PROFILE_DATA_POINTS;
     
     public MetricProfileRestResourceTests() {
         super(MetricProfileRestResource.class);
@@ -90,7 +88,7 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
             config.register(clazz);
         }
         config.register(JsonBindingFeature.class);
-        config.register(JwtRequestFilter.class);
+        config.register(AuthenicationFilter.class);
         return config;
     }
     

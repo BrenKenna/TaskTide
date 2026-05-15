@@ -51,8 +51,7 @@ import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
 
-import org.tasktide.api.auth.JwtRequestFilter;
-import org.tasktide.api.resources.services.rest.WorkflowRestResource;
+import org.tasktide.api.auth.AuthenicationFilter;
 
 import org.tasktide.api.utils.WebApiUtils;
 import org.tasktide.core.manager.TaskTideServiceManager;
@@ -98,7 +97,7 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
             config.register(clazz);
         }
         config.register(JsonBindingFeature.class);
-        config.register(JwtRequestFilter.class);
+        config.register(AuthenicationFilter.class);
         return config;
     }
     

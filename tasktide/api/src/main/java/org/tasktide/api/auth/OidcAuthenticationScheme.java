@@ -101,11 +101,12 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
     /**
      * Validate JWT properties
      * 
-     * @param claims
+     * @param input
      * @return boolean
      */
     @Override
-    public boolean validate(JWTClaimsSet claims) {
+    public boolean validate(Object input) {
+        JWTClaimsSet claims = (JWTClaimsSet) input;
 
         // Verify issue
         if ( !this.verifiyIssuer(claims) ) {
@@ -125,11 +126,13 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
     /**
      * Verify that the claim has not expired
      * 
-     * @param claims
+     * @param input
      * @return boolean
      */
     @Override
-    public boolean verifyExpiration(JWTClaimsSet claims) {
+    public boolean verifyExpiration(Object input) {
+        JWTClaimsSet claims = (JWTClaimsSet) input;
+        
         Date notBeforeTimeOnClaim = claims.getNotBeforeTime();
         Date now = new Date();
         if ( notBeforeTimeOnClaim == null ) {
@@ -143,11 +146,13 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
      * Verify application is configured audience of 
      *  JWT claim
      * 
-     * @param claims
+     * @param input
      * @return boolean
      */
     @Override
-    public boolean verifyAudience(JWTClaimsSet claims) {
+    public boolean verifyAudience(Object input) {
+        JWTClaimsSet claims = (JWTClaimsSet) input;
+        
         List<String> audienceOnClaim = claims.getAudience();
         if ( audienceOnClaim == null ) {
             return false;
@@ -160,12 +165,14 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
      * Verifies that the issuer on JWT claims set
      *  matches configured issuer
      * 
-     * @param claims
+     * @param input
      * 
      * @return boolean
      */
     @Override
-    public boolean verifiyIssuer(JWTClaimsSet claims) {
+    public boolean verifiyIssuer(Object input) {
+        JWTClaimsSet claims = (JWTClaimsSet) input;
+        
         String issuerOnClaim = claims.getIssuer();
         String configuredIssuer = this.config.issuer().toString();
         if ( issuerOnClaim == null ) {
@@ -178,11 +185,13 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
     /**
      * Map JWT to {@link AuthPrincipal}
      * 
-     * @param claims
+     * @param input
      * @return {@link AuthPrincipal}
      */
     @Override
-    public AuthPrincipal mapToAuthPrincipal(JWTClaimsSet claims) {
+    public AuthPrincipal mapToAuthPrincipal(Object input) {
+        
+        JWTClaimsSet claims = (JWTClaimsSet) input;
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
@@ -190,14 +199,15 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
     /**
      * Verify authenticity of bearer token
      * 
-     * @param token
+     * @param input
      * @return
      * @throws AuthenticationException 
      */
     @Override
-    public AuthPrincipal authenticate(String token) throws AuthenticationException {
+    public AuthPrincipal authenticate(Object input) throws AuthenticationException {
         
         // Initialize vars
+        String token = (String) input;
         JWTClaimsSet claims;
         
         // Try parse jwt

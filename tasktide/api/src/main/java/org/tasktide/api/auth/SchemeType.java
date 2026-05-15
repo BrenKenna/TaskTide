@@ -43,7 +43,7 @@ public enum SchemeType {
         }
     },
 
-    LOCAL {
+    EMBEDDED {
         @Override
         public String toString() {
             return name();
@@ -60,7 +60,7 @@ public enum SchemeType {
         }
     },
     
-    OFF {
+    NONE {
         @Override
         public String toString() {
             return name();

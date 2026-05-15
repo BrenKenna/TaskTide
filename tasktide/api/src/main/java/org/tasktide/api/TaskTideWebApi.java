@@ -31,10 +31,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import io.smallrye.graphql.entry.http.ExecutionServlet;
-import jakarta.servlet.http.HttpServletRequest;
-
-import org.tasktide.api.auth.JwtRequestFilter;
+import org.tasktide.api.auth.AuthenicationFilter;
 
 
 /**
@@ -142,7 +139,7 @@ public class TaskTideWebApi {
             .packages("org.tasktide.api.resources")
         ;
         resourceConfig.register(JsonBindingFeature.class);
-        resourceConfig.register(JwtRequestFilter.class);
+        resourceConfig.register(AuthenicationFilter.class);
         //resourceConfig.register(HttpServletRequest.class);
         // resourceConfig.register(ComponentProvider.class);
         // resourceConfig.register(CdiSeInjectionManagerFactory.class);
