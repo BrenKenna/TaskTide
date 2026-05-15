@@ -47,8 +47,12 @@ How TaskTide should run can be configured based on parameters in a <a href="/tas
 ## 🧱 Architecture
 
 - **Core Model**             – Defines the stateful task and workflow data structure, described <a href="/tasktide/core/README.md">here</a>.
-- **Engine Lib**             – Processes and tracks WorkItems and their tasks, described <a href="/tasktide/engine/README.md">here</a>.
-- **Client Application**     – Provides access and services for workflows and persistence, described <a href="/tasktide/tasktide/README.md">here</a>.
+- **Engine Lib**             – Defines the task processing and tracking logic for WorkItems and their tasks, described <a href="/tasktide/engine/README.md">here</a>.
+- **Web API**                – Defines Jakarta-WS REST API, and an embedded Jetty-WebServer.
+- **Mute**                   - Defines ItemSore semaphore for acquiring a mutex on the configured RocksDB/SQLite database.
+- **ItemStore**              - Defines an interface for configuring TaskTide with daemonless databases (RocksDB/SQLite).
+- **Parser**                 - Defines a configurable command-line argument tree.
+- **Client Application**     – Provides access and services for workflow deployments and persistence, described <a href="/tasktide/tasktide/README.md">here</a>.
 
 
 <p align="center">
