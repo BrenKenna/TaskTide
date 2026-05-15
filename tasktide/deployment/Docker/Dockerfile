@@ -4,16 +4,15 @@ FROM eclipse-temurin:17-jre
 
 # Configure container
 RUN groupadd --system tasktide && \
-    useradd --system --create-home --gid tasktide tasktide
+    useradd --system --gid tasktide tasktide
 RUN apt-get update && apt-get install -y unzip
 
 
 # Unpack task into working directory
 WORKDIR /opt/tasktide
-COPY tasktide/build/distributions/tasktide-0.9.0.zip /tmp/
-RUN unzip /tmp/tasktide-0.9.0.zip -d /opt && \
-    mv /opt/tasktide-0.9.0/* /opt/tasktide && \
-    rm -f /tmp/tasktide-0.9.0.zip && \
+
+RUN unzip tasktide/build/distributions/tasktide-0.9.0.zip -d /opt && \
+    mv /opt/tasktide-0.9.0 /opt/tasktide && \
     chmod +x /opt/tasktide/bin/tasktide && \
     chown -R tasktide:tasktide /opt/tasktide
 
