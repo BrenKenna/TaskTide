@@ -1,6 +1,6 @@
 # TaskTide - ClientApp
 <p id="intro">
-Orchestrates the TaskTide-ItemStore, TaskTide-CoreLib, and TaskTide-Engine into a configuarable command-line application. Whose design caters for the development of future clients (ex REST-API) through the <a href="/tasktide/tasktide/README.md#3-client-arcitecture">TaskTide-Client Interface</a>. How the program runs is goverened by arguments that are supplied at runtime, or the use of a "<a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Configuration File</a>". This design choice was to allow users of different familiarities to be able to run the program. Though not recommended to use both where not required, command-line arguments overwrite the MPC values, and the global command-line arguments also include documentation on database backend for reference.
+Unified application exposing the TaskTide-Manager, TaskTide-Engine, and embedded TaskTide-WebAPI into a configuarable command-line program. How the program runs is goverened by arguments that are supplied at runtime, or the use of a "<a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Configuration File</a>". This design choice was to allow users of different familiarities to be able to run the program. Though not recommended to use both where not required, command-line arguments overwrite the config file values.
 
 ---
 
@@ -8,7 +8,7 @@ Orchestrates the TaskTide-ItemStore, TaskTide-CoreLib, and TaskTide-Engine into 
 
 #### TaskTide Configuration File
 <p id="config-file">
-The complete configuration for TaskTide is <a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">provided here</a>. For clarity this shows all values, but not all of the supplied are required. For instance, if using an RocksDB/SQLite backend then neither, the Relational/SQL/JPA backends, or the NoSQL configurations are not needed. Similarly if using Relational/SQL/JPA backends, no configurations are required for RocksDB/SQLite, or NoSQL (vice versa). Simiarlly, if running the EngineClient is the requirement, then the ManagerClient configs are needed and vice versa.
+The complete configuration for TaskTide is <a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">provided here</a>. For clarity this shows all values, but not all of the supplied are required. For instance, if using an RocksDB/SQLite backend then neither, the Relational/SQL/JPA backends, or the NoSQL configurations are not needed. Similarly if using Relational/SQL/JPA backends, no configurations are required for TaskTide-ItemStore/RocksDB/SQLite, or NoSQL etc. Simiarlly, if running the TaskTide-EngineClient is the requirement, then the TaskTide-ManagerClient or WebAPI configs are needed.
 </p>
 
 <p id="db-config">
@@ -19,7 +19,7 @@ If using an SQL, or NoSQL backend then a microprofile-configuration file like th
 
 #### Command-Line Arguments
 <p id="command-line-config">
-Command-line arguments are used to configure the client to run such as the Engine for task processing, or the Manager for the registration, and management of tasks. With this, TaskTide has properties that are configured "<i>globally</i>" like the specific backend to use, that are common for both the Manager and Engine. In addition to this, each client has their own configuration that specific to it. For instance the Manager client has input/output files to coordinate its import/export operations. Whereas the Engine, has arguments for the number of threads to use for the parallel processing of TaskTide entities. The complete command-line arguments can be found by running "tasktide --help/-h". The <a>following link</a> directs to table text showing the same.
+Command-line arguments are used to configure which TaskTide-Client to run such as the Engine for task processing, the Manager for the registration, and management of tasks, or the WebAPI for service deployment. With this, TaskTide has properties that are configured "<i>globally</i>" like the specific backend to use, that are common for both the Manager, Engine, and WebAPI. In addition to this, each client has their own configuration that specific to it. For instance the Manager client has input/output files to coordinate its import/export operations. Whereas the Engine, has arguments for the number of threads to use for the parallel processing of TaskTide entities. The WebAPI, has arguments for configuring IdP. The complete command-line arguments can be found by running "tasktide --help/-h". The <a>following link</a> directs to table text showing the same.
 </p>
 
 ---
