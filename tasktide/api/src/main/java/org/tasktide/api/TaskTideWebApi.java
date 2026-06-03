@@ -16,13 +16,21 @@
 package org.tasktide.api;
 
 import java.net.URI;
+import java.nio.file.Path;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.eclipse.jetty.server.HttpConfiguration;
+import org.eclipse.jetty.server.HttpConnectionFactory;
+import org.eclipse.jetty.server.SecureRequestCustomizer;
 
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.server.SslConnectionFactory;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.util.resource.Resource;
+import org.eclipse.jetty.util.ssl.SslContextFactory;
 
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
@@ -50,6 +58,10 @@ public class TaskTideWebApi {
     private int port;
     private Config config;
     private ResourceConfig resourceConfig;
+    
+    // SSL Attributes
+    private boolean sslEnabled = false;
+    private String PEM;
     
     
     /**
@@ -101,6 +113,10 @@ public class TaskTideWebApi {
         this.basePath = config
             .getOptionalValue("tasktide.web-api.base-path", String.class)
         .orElse("/");
+        
+        this.PEM = config
+            .getOptionalValue("tasktide.web-api.tls.pem", String.class)
+        .orElse("");
     }
     
     
@@ -168,7 +184,7 @@ public class TaskTideWebApi {
             return this.server.isStarted();
         }
 
-        // Start web server
+        // Mount resources
         this.server = new Server(this.port);
         ServletContextHandler ctx = new ServletContextHandler(ServletContextHandler.SESSIONS);
         ctx.setContextPath("/");
@@ -178,8 +194,17 @@ public class TaskTideWebApi {
         
         //ServletHolder graphqlServlet = new ServletHolder(ExecutionServlet.class);
         //ctx.addServlet(graphqlServlet, this.basePath + "/graphql/*");
-        
         this.server.setHandler(ctx);
+        
+        // Add secure connector
+        if ( this.addSecureConnector() ) {
+            LOGGER.info("SSL connections configured");
+        }
+        else {
+            LOGGER.info("SSL not configured");
+        }
+        
+        // Start web server
         try {
             this.server.start();
             return this.server.isStarting() || this.server.isRunning();
@@ -188,6 +213,53 @@ public class TaskTideWebApi {
             return false;
         }
     }
+    
+    
+    
+    /**
+     * Start web server
+     * 
+     * @return boolean
+     */
+    private boolean addSecureConnector() {
+        
+        // Skip if pem is absent
+        if ( this.PEM == null || this.PEM.isEmpty() ) {
+            LOGGER.info("No PEM file provided, skipping SSL config");
+            return false;
+        }
+        
+        // Skip if file does not exist
+        Path pemPath = Path.of(this.PEM);
+        if ( !pemPath.toFile().exists() ) {
+            LOGGER.warn("Provided PEM file does not exist, skipping SSL config:\t'{}'", pemPath);
+            return false;
+        }
+        
+        // Config ssl
+        SslContextFactory.Server ssl = new SslContextFactory.Server();
+        ssl.setKeyStoreProvider("BC");
+        ssl.setKeyStoreType("PKCS12");
+        ssl.setCertAlias("default");
+        ssl.setKeyStoreResource( Resource.newResource(pemPath) );
+        
+        // Config https connector
+        HttpConfiguration httpsConfig = new HttpConfiguration();
+        httpsConfig.addCustomizer( new SecureRequestCustomizer() );
+        HttpConnectionFactory httpConFact = new HttpConnectionFactory(httpsConfig);
+        SslConnectionFactory sslConnFact = new SslConnectionFactory(ssl, "http/1.1");
+        ServerConnector httpsConnector = new ServerConnector(
+            this.server,
+            sslConnFact,
+            httpConFact
+        );
+        httpsConnector.setPort(this.port);
+        
+        // Add https connector
+        this.server.addConnector(httpsConnector);
+        return true;
+    }
+    
     
     
     /**

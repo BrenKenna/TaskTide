@@ -32,13 +32,16 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 - [X] Embedded server on WebApi
 - [X] WebAPi StepResources returning 415
-- [] ItemStore makes use of Linked Operation Map
-- [] Bucket mutex queue?
-- [] Verbose logging?
+- [/] ItemStore makes use of Linked Operation Map
 - [/] Authentication schemes for WebAPI
 --
         - Single SchemeProvider handle the nitty gritty
         - Works with Enum method on SchemeType
+        - No auth scheme and integration with Keycloak
+--
+- [/] Secure context for WebAPI
+--
+        - Needs testing
 --
 - [] Trial over docker
 - [] GitHub docs
@@ -59,7 +62,14 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 === 3). Bugs 
 
 
-=== Web API
+==== Web API
+
+- [] Confirm auth against Keycloak, and no authenication schemes
+
+- [] Trial Hateoas resource envelope
+
+- [] Add secure context
+
 
 - [X] Client does not start, referencing missing HttpServletRequest dependency for GraphQL endpoints
 --
@@ -74,7 +84,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 --
 
 
-- [] WebApi etrics endpoint
+- [] WebApi metrics endpoint
 --
         - [] "/metrics?data=x,y,z"
         - [] Query parmeter list
@@ -107,16 +117,18 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
         - [/] Broad and general use over PostMan 
 --
 
-- [] Trial Hateoas resource envelope
-
-- [] Add secure context
 
 - [X] GraphQL endpoints for individual and collection over CRUD
 --
         - Dropped simpler small-rye graphql, will replace with java-graphql
 --
 
-- [] Integration with Keycloak
+
+- [X] StepResource returning 415
+--
+        - Problem was values from MPC overidding
+--
+
 
 - [X] Client failing to start web server with below
 --
@@ -130,11 +142,6 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
 '''
 --
 
-
-- [X] StepResource returning 415
---
-        - Problem was values from MPC overidding
---
 
 
 ==== Mutex
