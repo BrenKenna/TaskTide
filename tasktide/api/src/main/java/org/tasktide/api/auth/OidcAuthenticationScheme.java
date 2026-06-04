@@ -106,9 +106,9 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
      */
     @Override
     public boolean validate(Object input) {
-        JWTClaimsSet claims = (JWTClaimsSet) input;
 
         // Verify issue
+        JWTClaimsSet claims = (JWTClaimsSet) input;
         if ( !this.verifiyIssuer(claims) ) {
             return false;
         }
