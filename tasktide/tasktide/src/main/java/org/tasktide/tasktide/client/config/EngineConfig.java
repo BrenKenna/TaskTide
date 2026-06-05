@@ -68,17 +68,11 @@ public class EngineConfig extends AbstractConfig {
     @ConfigProperty(name = "tasktide.engine.worker.lock-wait-time", defaultValue = "4")
     int lockTime;
     
-    @ConfigProperty(name = "tasktide.engine.worker.processor.threads.workitem", defaultValue = "1")
+    @ConfigProperty(name = "tasktide.engine.worker.threads.workitem", defaultValue = "1")
     int workItemThreads;
     
-    @ConfigProperty(name = "tasktide.engine.worker.processor.threshold.workItem", defaultValue = "-1")
-    int workItemThreshold;
-    
-    @ConfigProperty(name = "tasktide.engine.worker.processor.threads.itemTask", defaultValue = "1")
+    @ConfigProperty(name = "tasktide.engine.worker.threads.itemTask", defaultValue = "1")
     int itemTaskThreads;
-    
-    @ConfigProperty(name = "tasktide.engine.worker.processor.itemTask.threshold", defaultValue = "-1")
-    int itemTaskThreshold;
     
     
     /**
@@ -130,9 +124,7 @@ public class EngineConfig extends AbstractConfig {
     public void initConfig(ArgumentTree argTree) {
         this.help();
         this.workItemThreads();
-        this.workItemSubTaskThreshold();
         this.itemTaskThreads();
-        this.itemTaskSubTaskThreshold();
         this.timeKeeperMaxWallTime();
         this.pilotLabelKey();
         this.pilotLabelValue();
@@ -206,52 +198,6 @@ public class EngineConfig extends AbstractConfig {
         int value = this.workItemThreads <= 0 ? 1 : this.workItemThreads;
         this.workItemThreads = value;
         arg.setValue(workItemThreads);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Configure the sub-tasking threshold for work items
-     * 
-     */
-    public void workItemSubTaskThreshold() {
-        Argument<Integer> arg;
-        arg = this.getArgumentBuilder()
-            .withName("WorkItem SubTasking Threshold")
-            .withDescription("Defines the numbers of WorkItems which are processed as a workload by its ThreadPool")
-            .withShortFlag("-ws")
-            .withLongFlag("--work-item-sub-task-threshold")
-            .withArgType(ArgumentType.ACTION)
-            .withRefClass(Integer.class)
-        .build();
-        
-        this.workItemThreshold = this.getConfigValue("tasktide.engine.worker.processor.treshold.workitem", Integer.class, 1);
-        int value = this.workItemThreshold <= 0 ? this.workItemThreshold : this.workItemThreshold;
-        this.workItemThreshold = value;
-        arg.setValue(workItemThreshold);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Configure the sub-tasking threshold for item tasks
-     * 
-     */
-    public void itemTaskSubTaskThreshold() {
-        Argument<Integer> arg;
-        arg = this.getArgumentBuilder()
-            .withName("ItemTask SubTasking Threshold")
-            .withDescription("Defines the numbers of ItemTasks which are processed as a workload by its ThreadPool")
-            .withShortFlag("-is")
-            .withLongFlag("--item-task-sub-task-threshold")
-            .withArgType(ArgumentType.ACTION)
-            .withRefClass(Integer.class)
-        .build();
-        
-        this.itemTaskThreshold = this.getConfigValue("tasktide.engine.worker.processor.threshold.itemtask", Integer.class, this.itemTaskThreads);
-        int value = this.itemTaskThreshold <= 0 ? this.itemTaskThreads : this.itemTaskThreshold;
-        this.itemTaskThreshold = value;
-        arg.setValue(itemTaskThreshold);
         this.getArgumentMap().putArgument(arg);
     }
     

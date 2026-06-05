@@ -16,6 +16,7 @@
 package org.tasktide.engine.trackers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -49,7 +50,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
     private final List<T> TASKS, TASKS_DONE;
     private final ExecutorServiceTracker<T> TRACKER;
     
-    private int failed, done, active;
+    private int failed, done, active, iterations = 0;
     private final Random rand = new Random();
     
     
@@ -84,9 +85,9 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
         }
 
         while ( this.TASKS_DONE.size() < total && !wereKilled ) {
-            this.scanItems();
             wereKilled = this.evaluateWorkload();
             TaskTideEngineUtility.waitSeconds( rand.nextInt(1, 10) );
+            this.iterations++;
         }
         
         return wereKilled;
@@ -113,7 +114,8 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
         // Reset coutner & scan items
         this.resetCounters();
         LOGGER.info(
-            "Workload size:\t'{}'",
+            "Tracker '{}' Workload size:\t'{}'",
+            this.ID,
             this.TASKS.size()
         );
         for ( int i = 0; i < this.TASKS.size(); i++ ) {
@@ -147,6 +149,8 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
                     }
                 }
                 
+                // On single task WI, loose the Future but retain its alias
+                //   -> Leaving processing to IT pool
                 catch (InterruptedException | ExecutionException ex) {
                     LOGGER.warn(
                        "'{}' unable to fetch future for task:\t'{}'",

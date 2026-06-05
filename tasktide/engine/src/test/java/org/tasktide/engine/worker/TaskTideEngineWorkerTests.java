@@ -35,6 +35,7 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 
 import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.TestEnvironment;
@@ -46,6 +47,7 @@ import org.tasktide.engine.policies.WorkerExecutionPolicy;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
+import org.tasktide.itemstore.ItemStoreType;
 
 
 /**
@@ -65,6 +67,10 @@ public class TaskTideEngineWorkerTests {
     private Template template;
     
     
+    //private final ItemStoreType storeType = ItemStoreType.SQLITE;
+    //private final String storeName = "TaskTideRepo/SQLITE";
+    
+    
     // CouchDB container
     // @Rule
     // public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
@@ -80,6 +86,10 @@ public class TaskTideEngineWorkerTests {
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        
+        //ItemStoreRepositoryUtility.initialize(storeType, storeName);
+        //ItemStoreRepositoryUtility.get().initServiceManager();
+        
         TestUtils.importTestRecords(
             "nested-nslookup-tasks.txt",
             this.STEP,
@@ -173,7 +183,7 @@ public class TaskTideEngineWorkerTests {
     public void canRunEngineBatchMode() {
         
         // Configure test
-        LOGGER.info("\n\n================ Can Run Engine Worker ================\n");
+        LOGGER.info("\n\n================= Can Run Engine Worker =================\n");
         TaskTideEngineWorker worker;
         
         // Fetch engine worker
@@ -192,6 +202,6 @@ public class TaskTideEngineWorkerTests {
         LOGGER.info("Engine processing completed");
         
         // Log complete
-        LOGGER.info("\n\n================ Can Run Engine Worker ================\n");
+        LOGGER.info("\n\n================ Can Run Engine Worker =================\n");
     }
 }

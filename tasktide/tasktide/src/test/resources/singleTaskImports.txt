@@ -1,4 +1,4 @@
-Ping_Test_1|ping -c 4 google.com
-Ping_Test_2|ping -c 4 dcu.ie
-Ping_Test_3|ping -c 4 ucd.ie
-Ping_Test_4|ping -c 4 tcd.ie
+Ping_Test_1|ping google.com
+Ping_Test_2|ping dcu.ie
+Ping_Test_3|ping ucd.ie
+Ping_Test_4|ping tcd.ie

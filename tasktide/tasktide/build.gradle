@@ -122,9 +122,31 @@ tasks.register('singleTaskImport', JavaExec) {
             "--target-file", "src/test/resources/singleTaskImports.txt",
             "--method", "import",
             "--delimiter", "|",
+            "--step-name", "SingleTaskImports",
             "--target", "WORKITEM"
     ]
 }
+
+
+tasks.register('nestedTaskImport', JavaExec) {
+    group = 'application'
+    description = 'Import nested tasks'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+        "manager",
+            "--repository-type", "sqlite",
+            "--file-path", "./itemStoreRepo/sqlite",
+            "--target-file", "src/test/resources/nested-nslookup-tasks.txt",
+            "--method", "import",
+            "--delimiter", "|",
+            "--nested-delimiter", ",",
+            "--step-name", "NestedTaskImports",
+            "--target", "WORKITEM"
+    ]
+}
+
 
 tasks.register('summarizeCollection', JavaExec) {
     group = 'application'
@@ -193,7 +215,7 @@ tasks.register('pilotLabelExecution', JavaExec) {
             "--repository-type", "nosql",
             "--nosql-database-type", "document",
             "--step-name", "Arbitrary",
-            "--pilo-label-annotation", """{""Pilot Label"": ""Unit-Tests-Are-Awesome""}""",
+            "--pilot-label-annotation", """{""Pilot Label"": ""Unit-Tests-Are-Awesome""}""",
             "--execution-policy", "batch"
     ]
 }
@@ -211,5 +233,43 @@ tasks.register('webApiExecution', JavaExec) {
             "web-api",
             "--repository-type", "nosql",
             "--nosql-database-type", "document"
+    ]
+}
+
+
+
+
+// Test batch execution
+tasks.register('singleTaskEngineExecution', JavaExec) {
+    //dependsOn(tasks.named("annotations"))
+    group = 'application'
+    description = 'Run multi-threaded engine in batch mode for single task imports'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+        "engine",
+            "--repository-type", "sqlite",
+            "--file-path", "./itemStoreRepo/sqlite",
+            "--step-name", "SingleTaskImports",
+            "--execution-policy", "batch",
+            "--work-item-threads", "1"
+    ]
+}
+
+
+tasks.register('nestedTaskEngineExecution', JavaExec) {
+    group = 'application'
+    description = 'Run multi-threaded engine in batch mode for single task imports'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+        "engine",
+            "--repository-type", "sqlite",
+            "--file-path", "./itemStoreRepo/sqlite",
+            "--step-name", "NestedTaskImports",
+            "--execution-policy", "batch",
+            "--work-item-threads", "2"
     ]
 }
