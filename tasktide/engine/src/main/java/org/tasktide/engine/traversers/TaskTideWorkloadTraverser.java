@@ -16,7 +16,6 @@
 package org.tasktide.engine.traversers;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
 
 import org.tasktide.core.TaskTideModel;
 
@@ -39,16 +38,6 @@ public interface TaskTideWorkloadTraverser<T extends TaskTideModel<T>> extends T
      * @throws TraverserCheckedException 
      */
     public void traverse(List<T> workload) throws TraverserCheckedException;
-    
-    
-    /**
-     * Traverses workload processing each element
-     * 
-     * @param workload
-     * @param threadPool
-     * @throws TraverserCheckedException 
-     */
-    public void traverse(List<T> workload, ExecutorService threadPool) throws TraverserCheckedException;
     
     
     /**

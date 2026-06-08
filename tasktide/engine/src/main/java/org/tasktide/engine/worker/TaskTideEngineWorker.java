@@ -128,25 +128,6 @@ public class TaskTideEngineWorker {
     
     
     /**
-     * Continuously scans {@link TaskTideRepository} for
-     *  work serially
-     * 
-     * @throws {@link TaskTideEngineCheckedException}
-     * 
-     */
-    private void serviceOperationSerial() throws TaskTideEngineCheckedException {
-    
-        // Perhaps allow a queue like a file being written?
-        int counter = 0;
-        while ( true ) {
-            this.fetchAndRun();
-            TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
-            counter++;
-        }
-    }
-    
-    
-    /**
      * Fetches engine workload, checking if pilot label
      *  was used
      * 
@@ -170,8 +151,7 @@ public class TaskTideEngineWorker {
     private void fetchAndRun() throws TaskTideEngineCheckedException {
         
         // Process each step in order provided
-        LOGGER.info("Determing how to process workload");
-        ExecutorService threadPool = this.engineComponents.getThreadPool(WorkerUnitModelType.WORKITEM);
+        LOGGER.info("Configuring WorkItem-Traverser for processing");
         TaskTideWorkloadTraverser<WorkItem> traverser =
             this.engineComponents
             .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM);
@@ -180,37 +160,11 @@ public class TaskTideEngineWorker {
         LOGGER.info("Fetching workload");
         List<WorkItem> workload = this.fetchWorkload();
         if ( workload.isEmpty() ) {
-            throw new TaskTideEngineCheckedException("Error, cannot process an empty worklaod");
+            throw new TaskTideEngineCheckedException("Error, cannot process an empty workload");
         }
         else {
             LOGGER.info("Processing workload of size '{}'", workload.size());
         }
-        
-        // Process workload
-        try {
-            traverser.traverse(workload, threadPool);
-            LOGGER.info("Processing complete for step:\t'{}'", this.policy.getTarget());
-        }
-                
-        catch ( TraverserCheckedException ex ) {
-            LOGGER.error("Error processing workload:\n\n'{}'", ex);
-        }
-    }
-    
-    
-    /**
-     * Fetch workload from {@link WorkItemAcquisitionPolicy},
-     *  and process serially
-     */
-    private void fetchAndRunSerial() {
-        
-        // Process each step in order provided
-        LOGGER.info("Determing how to process workload");
-        TaskTideWorkloadTraverser<WorkItem> traverser = this.engineComponents
-            .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM);
-        
-        // Fetch workload
-        List<WorkItem> workload = this.fetchWorkload();
         
         // Process workload
         try {

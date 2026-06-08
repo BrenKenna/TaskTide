@@ -131,7 +131,7 @@ public class TaskTideExecutorServiceProvider {
      * @return int
      */
     public int getWorkItemThreads() {
-        return workItemThreads;
+        return this.workItemThreads;
     }
 
     
@@ -141,6 +141,16 @@ public class TaskTideExecutorServiceProvider {
      * @return int
      */
     public int getItemTaskThreads() {
-        return itemTaskThreads;
+        return this.itemTaskThreads;
+    }
+    
+    
+    /**
+     * Checks whether service provider is parallelized
+     * 
+     * @return boolean
+     */
+    public boolean isParallelized() {
+        return this.getItemTaskThreads() > 1 || this.getWorkItemThreads() > 1;
     }
 }

@@ -15,6 +15,7 @@
  */
 package org.tasktide.engine.traversers;
 
+import org.tasktide.engine.processingstrategy.ItemTaskTraverser;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 

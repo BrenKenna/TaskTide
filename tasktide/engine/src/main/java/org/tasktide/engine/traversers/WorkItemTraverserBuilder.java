@@ -30,24 +30,9 @@ import org.tasktide.engine.executor.TaskTideExecutor;
 public class WorkItemTraverserBuilder {
  
     // Attributes
-    private TaskTideWorkloadTraverser<ItemTask> itemTaskTraverser;
     private TaskTideExecutor<ItemTask> itemTaskExecutor;
     private TaskTideEngineObserver<WorkItem> workItemObserver;
-    
-    
-    /**
-     * Build with provided {@link TaskTideWorkloadTraverser}
-     * 
-     * @param itemTaskTraverser
-     * @return {@link WorkItemTraverserBuilder}
-     */
-    public WorkItemTraverserBuilder
-        withItemTaskTraverser(TaskTideWorkloadTraverser<ItemTask> itemTaskTraverser)
-    {
-        this.itemTaskTraverser = itemTaskTraverser;
-        return this;
-    }
-        
+
     
     /**
      * Build with provided {@link TaskTideEngineObserver}
@@ -87,7 +72,6 @@ public class WorkItemTraverserBuilder {
         // Default construction
         if ( 
             this.workItemObserver == null &&
-            this.itemTaskTraverser == null &&
             this.itemTaskExecutor == null
         ) {
             return new WorkItemTraverser();
@@ -95,21 +79,17 @@ public class WorkItemTraverserBuilder {
         
         // With all arguments
         if ( 
-            this.itemTaskTraverser != null &&
             this.workItemObserver != null &&
             this.itemTaskExecutor != null
         ) {
-            ItemTaskTraverser iTT = (ItemTaskTraverser) this.itemTaskTraverser; 
-            return new WorkItemTraverser(this.workItemObserver, iTT, this.itemTaskExecutor); 
+            return new WorkItemTraverser(this.workItemObserver, this.itemTaskExecutor); 
         }
         
         // With observer and traverser
         else if (
-            this.itemTaskTraverser != null &&
             this.workItemObserver != null
         ) {
-            ItemTaskTraverser iTT = (ItemTaskTraverser) this.itemTaskTraverser; 
-            return new WorkItemTraverser(this.workItemObserver, iTT); 
+            return new WorkItemTraverser(this.workItemObserver); 
         }
         
         // With observer
