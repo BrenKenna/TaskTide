@@ -63,12 +63,12 @@ public class TaskTideEngineWorkerTests {
     
     private final String STEP = "Nested NS Lookups";
     
-    private SeContainer container;
-    private Template template;
+    //private SeContainer container;
+    //private Template template;
     
     
-    //private final ItemStoreType storeType = ItemStoreType.SQLITE;
-    //private final String storeName = "TaskTideRepo/SQLITE";
+    private final ItemStoreType storeType = ItemStoreType.SQLITE;
+    private final String storeName = "TaskTideRepo/SQLITE";
     
     
     // CouchDB container
@@ -83,12 +83,12 @@ public class TaskTideEngineWorkerTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Engine Worker Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        //container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        //template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+        //TestUtils.initServiceManager(RepositoryType.NOSQL, template);
         
-        //ItemStoreRepositoryUtility.initialize(storeType, storeName);
-        //ItemStoreRepositoryUtility.get().initServiceManager();
+        ItemStoreRepositoryUtility.initialize(storeType, storeName);
+        ItemStoreRepositoryUtility.get().initServiceManager();
         
         TestUtils.importTestRecords(
             "nested-nslookup-tasks.txt",
@@ -103,10 +103,11 @@ public class TaskTideEngineWorkerTests {
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating WorkItem Traverser Tests ----------------\n";
         LOGGER.info(msg);
-        if (container != null && container.isRunning()) {
+        /*if (container != null && container.isRunning()) {
             container.close();
             LOGGER.info("CDI container shut down");
         }
+        */
         // couchDB.stop();
     }
     
@@ -154,12 +155,13 @@ public class TaskTideEngineWorkerTests {
             // Configure engine componenets
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
-            workerUnit.configureExecutorServices(5, 5);
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 10000);
+            workerUnit.configureExecutorServices(2, 2);
+            
+            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
             workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
             workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
             
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, 100000);
+            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, -1);
             workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
             
             // Configures worker
@@ -198,7 +200,6 @@ public class TaskTideEngineWorkerTests {
         catch ( TaskTideEngineCheckedException ex ) {
             
         }
-        
         LOGGER.info("Engine processing completed");
         
         // Log complete

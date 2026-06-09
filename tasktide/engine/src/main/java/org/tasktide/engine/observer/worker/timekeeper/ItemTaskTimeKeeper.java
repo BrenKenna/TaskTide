@@ -38,7 +38,7 @@ public class ItemTaskTimeKeeper extends TimeKeeperObserver<ItemTask> {
      * @param maxTime 
      */
     public ItemTaskTimeKeeper(
-        @ConfigProperty(name = "task-tide.engine.observer.worker.timekeep.itemtask", defaultValue = "10000") long maxTime
+        @ConfigProperty(name = "task-tide.engine.observer.worker.timekeep.itemtask", defaultValue = "1000000") long maxTime
     ) {
         super(maxTime, LogManager.getLogger(WorkItemTimeKeeper.class));
     }

@@ -15,7 +15,6 @@
  */
 package org.tasktide.engine.observer.worker;
 
-import org.tasktide.engine.observer.WorkerObserver;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -29,6 +28,8 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.observer.ObserverResult;
 import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
+
+import org.tasktide.engine.observer.WorkerObserver;
 
 
 /**
@@ -66,13 +67,19 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
 
     
     /**
-     * Use {@link ObserverType} to check if TimeKeeper is optional
+     * Use {@link ObserverType} to check if TimeKeeper is optional.
+     *  If not optional there is a guard against the max time LTE 1
      * 
      * @return boolean
      */
     @Override
     public boolean isOptional() {
-        return type.isOptional();
+        if ( !type.isOptional() ) {
+            if ( this.maxTime <= 1 ) {
+                return true;
+            }
+        }
+        return true;
     }
 
     
@@ -96,13 +103,19 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
     @Override
     public ObserverResult onTaskStart(T task) {
         
+        // Bypass optional observer
+        if ( this.isOptional() ) {
+            logger.debug("Skipping optional TimeKeeper evaluation");
+            return ObserverResult.success();
+        }
+        
         // Current time in milliseconds
         long start = startTime.get();
         long now = System.currentTimeMillis();
         long elapsed = now - start;
         
         // Evaluate starting task
-        boolean eval = evaluateStart(task, now, start, elapsed);
+        boolean eval = this.evaluateStart(task, now, start, elapsed);
         logger.info("TimeKeeper evaluated time left for processing as '{}' for ItemTask:\t'{}'", eval, task.getId());
         
         // Return result
@@ -110,7 +123,7 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
             return ObserverResult.success();
         }
         else {
-            return ObserverResult.failure(this);
+            return ObserverResult.failure(this, this.isOptional());
         }
     }
     
@@ -123,6 +136,12 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
      */
     @Override
     public ObserverResult onTaskEnd(T task) {
+        
+        // Bypass optional observer
+        if ( this.isOptional() ) {
+            logger.debug("Skipping optional TimeKeeper evaluation");
+            return ObserverResult.success();
+        }
     
         // Measure processing time
         logger.info("Measuring the elapsed time of task '{}',", task.getId());
@@ -131,16 +150,16 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
         
         // Evaluate duration
         logger.info("Task '{}' completed in {}ms", task.getId(), duration);
-        boolean eval = evaluateDuration(now, duration);
+        boolean eval = this.evaluateDuration(now, duration);
         updateAbortFlag(eval);
-        logger.info("TimeKeeper evaluated time left next '{}' with ItemTask:\t'{}'", eval, task.getId());
+        logger.info("TimeKeeper evaluated time left next '{}' with task:\t'{}'", eval, task.getId());
         
         // Return result
         if ( eval ) {
             return ObserverResult.success();
         }
         else {
-            return ObserverResult.failure(this);
+            return ObserverResult.failure(this, this.isOptional());
         }
     }
     
@@ -216,6 +235,12 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
      */
     private boolean evaluateStart(T task, long now, long start, long elapsed) {
     
+        // Bypass optional observer
+        if ( this.isOptional() ) {
+            logger.info("TimeKeeper configured as optional, not skipping proceeding tasks");
+            return true;
+        }
+        
         // Initialize this observers start time
         logger.info("TimeKeeper evaluating starting of task '{}'", task.getId());
         if ( start == 0 ) {
@@ -228,7 +253,7 @@ public abstract class TimeKeeperObserver<T extends TaskTideModel<T>> implements 
         
         // Evaluating whether previous task flagged an abort
         if ( !abort.get() ) {
-            logger.warn("TimeKeeper detected previous task flagged an abort, should skip task '{}'", task.getId());
+            logger.warn("TimeKeeper detected previous task flagged an abort, determining should skip task '{}'", task.getId());
             this.handleTaskState(task, false);
             return false;
         }

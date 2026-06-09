@@ -151,7 +151,7 @@ public class WorkItemTraverserTests {
             
             WorkerUnitContainer
                 .getInstance()
-            .configureExecutorServices(3, 3);
+            .configureExecutorServices(1, 1);
             
             WorkerUnitContainer
                 .getInstance()
@@ -278,7 +278,6 @@ public class WorkItemTraverserTests {
         LOGGER.info("\n\n================ Can Traverse WorkItem Parallel ================\n");
         boolean assertionState;
         List<WorkItem> workload;
-        ExecutorService execServ = Executors.newFixedThreadPool(3);
         TaskTideWorkloadTraverser<WorkItem> traverser;
         
         // Build acquisition policy
@@ -291,7 +290,7 @@ public class WorkItemTraverserTests {
         try {
             
             // Process task
-            traverser.traverse(workload, execServ);
+            traverser.traverse(workload);
             LOGGER.info("Traversal complete");
             assertionState = true;
         }

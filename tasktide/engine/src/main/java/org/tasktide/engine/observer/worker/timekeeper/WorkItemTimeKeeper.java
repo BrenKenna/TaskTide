@@ -38,7 +38,7 @@ public class WorkItemTimeKeeper extends TimeKeeperObserver<WorkItem> {
      * @param maxTime 
      */
     public WorkItemTimeKeeper(
-        @ConfigProperty(name = "task-tide.engine.observer.worker.timekeep.workitem", defaultValue = "10000") long maxTime
+        @ConfigProperty(name = "task-tide.engine.observer.worker.timekeep.workitem", defaultValue = "1000000") long maxTime
     ) {
         super(maxTime, LogManager.getLogger(WorkItemTimeKeeper.class));
     }

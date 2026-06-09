@@ -46,7 +46,7 @@ public class ItemTaskProcessingStrategy implements ProcessingStrategy<ItemTask> 
      * @param observer
      * @param executor 
      */
-    ItemTaskProcessingStrategy(TaskTideEngineObserver<ItemTask> observer, ItemTaskExecutor executor) {
+    public ItemTaskProcessingStrategy(TaskTideEngineObserver<ItemTask> observer, ItemTaskExecutor executor) {
         this.observer = observer;
         this.executor = executor;
     }

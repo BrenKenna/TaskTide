@@ -15,7 +15,6 @@
  */
 package org.tasktide.engine.traversers;
 
-import org.tasktide.engine.processingstrategy.ItemTaskTraverser;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -271,7 +270,7 @@ public class ItemTaskTraverserTests {
         try {
             
             // Process task
-            traverser.traverse(tasks, execServ);
+            traverser.traverse(tasks);
             resultMap = JsonUtils.toJson(true, task.getWorkload().summarizeWorkload());
             LOGGER.info("Traversal complete");
             

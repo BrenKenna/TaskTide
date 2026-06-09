@@ -17,6 +17,7 @@ package org.tasktide.engine.observer.worker;
 
 import org.tasktide.engine.observer.WorkerObserver;
 
+
 /**
  * Enum to support logic handling optional/critical {@link WorkerObserver}
  * 

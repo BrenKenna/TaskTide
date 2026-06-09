@@ -253,7 +253,7 @@ tasks.register('singleTaskEngineExecution', JavaExec) {
             "--file-path", "./itemStoreRepo/sqlite",
             "--step-name", "SingleTaskImports",
             "--execution-policy", "batch",
-            "--work-item-threads", "1"
+            "--work-item-threads", "2"
     ]
 }
 
@@ -270,6 +270,7 @@ tasks.register('nestedTaskEngineExecution', JavaExec) {
             "--file-path", "./itemStoreRepo/sqlite",
             "--step-name", "NestedTaskImports",
             "--execution-policy", "batch",
-            "--work-item-threads", "2"
+            "--work-item-threads", "2",
+            "--item-task-threads", "2"
     ]
 }

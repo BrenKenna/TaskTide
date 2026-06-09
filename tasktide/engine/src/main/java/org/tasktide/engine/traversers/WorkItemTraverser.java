@@ -144,10 +144,10 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
         LOGGER.info("Traversing workload of size '{}' serially", workload.size());
         int skipped = 0, counter = 0;
         for ( WorkItem task : workload ) {
-            LOGGER.info("Processing element '{}' of '':\t'{}'", counter, workload.size(), task.getId());
+            LOGGER.info("Processing element '{}' of '{}':\t'{}'", counter, workload.size(), task.getId());
             if ( !this.processElm(task) ) {
                 skipped++;
-                LOGGER.info("Error processing task '' of '{}':\t", counter, workload.size(), task.getId());
+                LOGGER.info("Error processing task '{}' of '{}':\t", counter, workload.size(), task.getId());
             }
             LOGGER.info("Processing completed:\t'{}'", task.getId());
             counter++;
@@ -182,6 +182,11 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
                     return this.processElm(task);
                 }
                 catch ( Exception ex ) {
+                    LOGGER.error(
+                        "Error encountered during processing of task '{}', displaying stack trace\n\n'{}'",
+                        task.getId(),
+                        ex
+                    );
                     return false;
                 }
             });
@@ -197,7 +202,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
         TrackerWaiter<WorkItem> trackerWaiter = FutureTrackers.WORK_ITEM_TRACKER.fetchWaiterFor(workload);
         LOGGER.info("Waiting on workload:\t'{}'", trackerWaiter.getId());
         trackerWaiter.waitForWorkload();
-        LOGGER.info("ItemTask traversal completed from waiter:\t'{}'", trackerWaiter.getId());
+        LOGGER.info("WorkItem traversal completed from waiter:\t'{}'", trackerWaiter.getId());
     }
     
 

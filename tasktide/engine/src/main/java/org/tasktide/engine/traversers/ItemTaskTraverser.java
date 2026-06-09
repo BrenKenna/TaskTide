@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.processingstrategy;
+package org.tasktide.engine.traversers;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -36,9 +36,7 @@ import org.tasktide.engine.trackers.TrackerWaiter;
 
 import org.tasktide.engine.executor.ItemTaskExecutor;
 import org.tasktide.engine.executor.TaskTideExecutor;
-import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
-import org.tasktide.engine.traversers.TraverserCheckedException;
-import org.tasktide.engine.traversers.WorkItemTraverser;
+import org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy;
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
@@ -67,11 +65,11 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
      * Constructs with default {@link ItemTaskObserver}
      * 
      */
-    public ItemTaskTraverser() {
+    ItemTaskTraverser() {
         this.workerUnits = WorkerUnitContainer.getInstance();
         this.observer = new ItemTaskObserver();
         this.executor = new ItemTaskExecutor();
-        this.processingStrat = new ItemTaskProcessingStrategy(observer, executor);
+        this.processingStrat = new ItemTaskProcessingStrategy(this.observer, this.executor);
         this.PARALLEL_CONTEXT = TaskTideExecutorServiceProvider.getInstance().isParallelized();
     }
     
@@ -81,11 +79,11 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
      * 
      * @param observer 
      */
-    public ItemTaskTraverser(TaskTideEngineObserver<ItemTask> observer) {
+    ItemTaskTraverser(TaskTideEngineObserver<ItemTask> observer) {
         this.workerUnits = WorkerUnitContainer.getInstance();
         this.observer = observer;
         this.executor = new ItemTaskExecutor();
-        this.processingStrat = new ItemTaskProcessingStrategy(observer, executor);
+        this.processingStrat = new ItemTaskProcessingStrategy(this.observer, this.executor);
         this.PARALLEL_CONTEXT = TaskTideExecutorServiceProvider.getInstance().isParallelized();
     }
 
@@ -96,11 +94,11 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
      * @param observer 
      * @param itemTaskExec 
      */
-    public ItemTaskTraverser(TaskTideEngineObserver<ItemTask> observer, TaskTideExecutor<ItemTask> itemTaskExec) {
+    ItemTaskTraverser(TaskTideEngineObserver<ItemTask> observer, TaskTideExecutor<ItemTask> itemTaskExec) {
         this.workerUnits = WorkerUnitContainer.getInstance();
         this.observer = observer;
         this.executor = (ItemTaskExecutor) itemTaskExec;
-        this.processingStrat = new ItemTaskProcessingStrategy(observer, executor);
+        this.processingStrat = new ItemTaskProcessingStrategy(this.observer, this.executor);
         this.PARALLEL_CONTEXT = TaskTideExecutorServiceProvider.getInstance().isParallelized();
     }
     

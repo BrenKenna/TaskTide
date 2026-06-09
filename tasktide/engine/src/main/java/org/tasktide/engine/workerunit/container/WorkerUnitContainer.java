@@ -174,7 +174,7 @@ public class WorkerUnitContainer {
                 if ( this.itemTaskTraverser == null ) {
                     this.itemTaskTraverser = this.unitProvider
                         .getItemTaskTravBuilder()
-                        .build();
+                    .build();
                 }
                 else {
                     throw new TaskTideEngineCheckedException("ItemTask Traverser already configured");
@@ -185,7 +185,7 @@ public class WorkerUnitContainer {
                 if ( this.workItemTraverser == null ) {
                     this.workItemTraverser = this.unitProvider
                         .getWorkItemTravBuilder()
-                        .build();
+                    .build();
                 }
                 else {
                     throw new TaskTideEngineCheckedException("WorkItem Traverser already configured");
@@ -214,6 +214,7 @@ public class WorkerUnitContainer {
                 if ( this.itemTaskExecutor == null ) {
                     this.itemTaskExecutor = this.unitProvider
                         .getItemTaskExecBuilder()
+                        .withObserver(this.itemTaskObserver)
                     .build();
                 }
                 else {

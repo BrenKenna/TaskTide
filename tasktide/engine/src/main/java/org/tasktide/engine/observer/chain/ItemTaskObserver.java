@@ -45,8 +45,8 @@ public class ItemTaskObserver extends ObserverChain<ItemTask> {
     public ItemTaskObserver() {
         super(
             List.of(
-                new ItemTaskStateObserver(),
-                new ItemTaskTimeKeeper(100000)
+                new ItemTaskTimeKeeper(100000),
+                new ItemTaskStateObserver()
             )
         );
     }
@@ -62,8 +62,8 @@ public class ItemTaskObserver extends ObserverChain<ItemTask> {
     ) {
         super(
             List.of(
-                new ItemTaskStateObserver(),
-                new ItemTaskTimeKeeper(maxTime)
+                new ItemTaskTimeKeeper(maxTime),
+                new ItemTaskStateObserver()
             )
         );
     }

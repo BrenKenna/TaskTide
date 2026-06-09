@@ -16,6 +16,7 @@
 package org.tasktide.engine.observer;
 
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -60,11 +61,13 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
     public boolean onTaskStart(T task) {
         for ( WorkerObserver<T> obs : this.observers ) {
             ObserverResult result = obs.onTaskStart(task);
+            LOGGER.info("Evaluating Observer '{}' with result '{}'", obs.getName(), task.getId());
             if ( !result.isSuccess() && !result.getType().isOptional() ) {
                 if ( !result.canIgnore() ) {
                     LOGGER.warn("Task '{}' failed onTaskStart Observation '{}' check", task.getId(), obs.getName());
                     return false;
                 }
+                LOGGER.info("Can ignore Observer '{}' check on task '{}'", obs.getName(), task.getId());
             }
         }
         return true;
@@ -82,11 +85,13 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
     public boolean onTaskProcessing(T task) {
         for ( WorkerObserver<T> obs : this.observers ) {
             ObserverResult result = obs.onTaskProcessing(task);
+            LOGGER.info("Evaluating Observer '{}' with result '{}'", obs.getName(), task.getId());
             if ( !result.isSuccess() && !result.getType().isOptional() ) {
                 if ( !result.canIgnore() ) {
                     LOGGER.warn("Task '{}' failed onTaskProcessing Observation '{}' check", task.getId(), obs.getName());
                     return false;
                 }
+                LOGGER.info("Can ignore Observer '{}' check on task '{}'", obs.getName(), task.getId());
             }
         }
         return true;
@@ -109,6 +114,7 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
                     LOGGER.warn("Task '{}' failed onTaskEnd Observation '{}' check", task.getId(), obs.getName());
                     return false;
                 }
+                LOGGER.info("Can ignore Observer result '{}' check on task '{}'", obs.getName(), task.getId());
             }
         }
         return true;

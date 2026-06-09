@@ -241,7 +241,7 @@ public class ImportCommand extends AbstractCommand{
             // Use nested delimiter
             else {
                 nestedDelimiter = TaskTideManagerUtility.handleDelim(nestedDelimiter);
-                LOGGER.info("Importing using nested delimiter of:'{}'", nestedDelimiter);
+                LOGGER.info("Importing using nested delimiter of:\t'{}'", nestedDelimiter);
                 return ImportCommandRecordProcessor.parseNestedTaskWorkItem(this, LOGGER);
             }
         }
