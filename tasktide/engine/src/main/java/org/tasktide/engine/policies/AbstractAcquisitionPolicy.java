@@ -44,6 +44,7 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
     private String annoKey;
     private Object annoVal;
     private CustomAnnotation anno;
+    private int windowSize, poolSize;
     
     
     /**
@@ -99,9 +100,23 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      * @return 
      */
     @Override
-    public  AbstractAcquisitionPolicy<T> withAnno(CustomAnnotation anno) {
+    public AbstractAcquisitionPolicy<T> withAnno(CustomAnnotation anno) {
         this.anno = anno;
         this.annotation = true;
+        return this;
+    }
+    
+    
+    @Override
+    public AbstractAcquisitionPolicy<T> withWindowSize(int windowSize) {
+        this.windowSize = windowSize;
+        return this;
+    }
+    
+    
+    @Override
+    public AbstractAcquisitionPolicy<T> withPoolSize(int poolSize) {
+        this.poolSize = poolSize;
         return this;
     }
     
@@ -227,5 +242,48 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      */
     public Class<T> getClassRef() {
         return this.classRef;
+    }
+
+
+    /**
+     * Get window size
+     * 
+     * @return int
+     */
+    @Override
+    public int getWindowSize() {
+        return windowSize;
+    }
+
+    
+    /**
+     * Set window size
+     * 
+     * @param windowSize 
+     */
+    public void setWindowSize(int windowSize) {
+        this.windowSize = windowSize;
+    }
+    
+    
+    
+    /**
+     * Get window size
+     * 
+     * @return int
+     */
+    @Override
+    public int getPoolSize() {
+        return this.poolSize;
+    }
+
+    
+    /**
+     * Set window size
+     * 
+     * @param poolSize 
+     */
+    public void setPoolSize(int poolSize) {
+        this.poolSize = poolSize;
     }
 }

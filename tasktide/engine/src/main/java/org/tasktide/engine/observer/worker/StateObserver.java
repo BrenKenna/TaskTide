@@ -58,7 +58,7 @@ public abstract class StateObserver<T extends TaskTideModel<T>> implements Worke
      */
     @Override
     public boolean isOptional() {
-        return type.isOptional();
+        return false;
     }
 
     

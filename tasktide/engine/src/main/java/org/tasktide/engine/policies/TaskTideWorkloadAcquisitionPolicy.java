@@ -82,6 +82,25 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
     
     
     /**
+     * Build acquisition policy with provided window size
+     * 
+     * @param windowSize
+     * @return int
+     */
+    public AbstractAcquisitionPolicy<T> withWindowSize(int windowSize);
+    
+    
+    
+    /**
+     * Build acquisition policy with provided pool size
+     * 
+     * @param poolSize
+     * @return int
+     */
+    public AbstractAcquisitionPolicy<T> withPoolSize(int poolSize);
+    
+    
+    /**
      * Represent as JSON string
      * 
      * @return String
@@ -159,4 +178,21 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
      * @return {@link CustomAnnotation}
      */
     public CustomAnnotation getAnno();
+    
+    
+    /**
+     * Get window size
+     * 
+     * @return int
+     */
+    public int getWindowSize();
+    
+    
+    
+    /**
+     * Get pool size
+     * 
+     * @return int
+     */
+    public int getPoolSize();
 }

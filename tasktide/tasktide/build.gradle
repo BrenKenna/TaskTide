@@ -116,7 +116,7 @@ tasks.register('singleTaskImport', JavaExec) {
     mainClass.set('org.tasktide.tasktide.TaskTide')
     
     args = [
-            "manager",
+        "manager",
             "--repository-type", "sqlite",
             "--file-path", "./itemStoreRepo/sqlite",
             "--target-file", "src/test/resources/singleTaskImports.txt",
@@ -154,7 +154,7 @@ tasks.register('summarizeCollection', JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass.set('org.tasktide.tasktide.TaskTide')
     args = [
-            "manager",
+        "manager",
             "--repository-type", "sqlite",
             "--file-path", "./itemStoreRepo/sqlite",
             "--method", "Summarize",
@@ -172,7 +172,7 @@ tasks.register('jsonImport', JavaExec) {
     mainClass.set('org.tasktide.tasktide.TaskTide')
     
     args = [
-            "manager",
+        "manager",
             "--repository-type", "sql",
             "--target-file", "src/test/resources/import-docs.json",
             "--method", "import",
@@ -191,7 +191,7 @@ tasks.register('annotations', JavaExec) {
     mainClass.set('org.tasktide.tasktide.TaskTide')
     
     args = [
-            "manager",
+        "manager",
             "--repository-type", "sql",
             "--method", "Annotation",
             "--import-string", """{""Pilot Label"": ""Gradle Build""}""",
@@ -211,7 +211,7 @@ tasks.register('pilotLabelExecution', JavaExec) {
     mainClass.set('org.tasktide.tasktide.TaskTide')
     
     args = [
-            "engine",
+        "engine",
             "--repository-type", "nosql",
             "--nosql-database-type", "document",
             "--step-name", "Arbitrary",
@@ -230,7 +230,7 @@ tasks.register('webApiExecution', JavaExec) {
     mainClass.set('org.tasktide.tasktide.TaskTide')
     
     args = [
-            "web-api",
+        "web-api",
             "--repository-type", "nosql",
             "--nosql-database-type", "document"
     ]

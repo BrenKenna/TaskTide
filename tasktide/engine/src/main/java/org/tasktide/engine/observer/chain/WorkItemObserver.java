@@ -44,7 +44,7 @@ public class WorkItemObserver extends ObserverChain<WorkItem> {
      */
     public WorkItemObserver() {
         super(
-     List.of(
+            List.of(
                 new WorkItemTimeKeeper(0),
                 new WorkItemStateObserver(),
                 new WorkItemExecutorObserver()

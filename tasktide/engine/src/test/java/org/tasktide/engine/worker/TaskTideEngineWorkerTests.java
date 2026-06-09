@@ -133,6 +133,8 @@ public class TaskTideEngineWorkerTests {
             .newInstance()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
+            .withWindowSize(2)
+            .withPoolSize(2)
         ;
     }
 
@@ -155,7 +157,7 @@ public class TaskTideEngineWorkerTests {
             // Configure engine componenets
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
-            workerUnit.configureExecutorServices(2, 2);
+            workerUnit.configureExecutorServices(1, 4);
             
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
             workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);

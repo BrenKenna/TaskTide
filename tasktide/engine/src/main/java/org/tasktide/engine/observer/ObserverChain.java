@@ -85,13 +85,14 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
     public boolean onTaskProcessing(T task) {
         for ( WorkerObserver<T> obs : this.observers ) {
             ObserverResult result = obs.onTaskProcessing(task);
-            LOGGER.info("Evaluating Observer '{}' with result '{}'", obs.getName(), task.getId());
-            if ( !result.isSuccess() && !result.getType().isOptional() ) {
+            LOGGER.info("Evaluating Observer '{}' onTaskProcessing for task '{}'", obs.getName(), task.getId());
+            if ( !result.isSuccess() ) {
+                LOGGER.info("Observer failed '{}' onTaskProcessing for task '{}'. Checking lenience", obs.getName(), task.getId());
                 if ( !result.canIgnore() ) {
                     LOGGER.warn("Task '{}' failed onTaskProcessing Observation '{}' check", task.getId(), obs.getName());
                     return false;
                 }
-                LOGGER.info("Can ignore Observer '{}' check on task '{}'", obs.getName(), task.getId());
+                LOGGER.info("Can ignore Observer '{}' check onTaskProcessing for task '{}'", obs.getName(), task.getId());
             }
         }
         return true;
@@ -109,12 +110,14 @@ public abstract class ObserverChain<T extends TaskTideModel<T>> implements TaskT
     public boolean onTaskEnd(T task) {
         for ( WorkerObserver<T> obs : this.observers ) {
             ObserverResult result = obs.onTaskEnd(task);
-            if ( !result.isSuccess() && !result.getType().isOptional() ) {
+            LOGGER.info("Evaluating Observer '{}' onTaskEnd for task '{}'", obs.getName(), task.getId());
+            if ( !result.isSuccess() ) {
+                LOGGER.info("Observer failed '{}' onTaskEnd for task '{}'. Checking lenience", obs.getName(), task.getId());
                 if ( !result.canIgnore() ) {
                     LOGGER.warn("Task '{}' failed onTaskEnd Observation '{}' check", task.getId(), obs.getName());
                     return false;
                 }
-                LOGGER.info("Can ignore Observer result '{}' check on task '{}'", obs.getName(), task.getId());
+                LOGGER.info("Can ignore Observer '{}' check onTaskProcessing for task '{}'", obs.getName(), task.getId());
             }
         }
         return true;

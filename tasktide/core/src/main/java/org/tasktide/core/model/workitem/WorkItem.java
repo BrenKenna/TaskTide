@@ -242,6 +242,21 @@ public class WorkItem implements TaskTideModel<WorkItem> {
     
     
     /**
+     * Used by engine to adjust a task without
+     *  changing work item state
+     * 
+     * @param task 
+     */
+    public void adjustTaskState(ItemTask task) {
+        this.workload.dropTask(task);
+        this.workload.addTask(task);
+        
+        this.setTaskCount();
+        this.setTaskDone();
+    }
+    
+    
+    /**
      * Add task
      * 
      * @param task

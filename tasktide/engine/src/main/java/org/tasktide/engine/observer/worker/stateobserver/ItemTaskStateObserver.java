@@ -140,8 +140,9 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      */
     public void handleWorkItemUpdate(ItemTask task) {
         WorkItem ref = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getWorkItemId());
-        ref.dropTask(task);
-        ref.addTask(task);
+        logger.info("'{}' task state before update is '{}'", ref.getId(), ref.getState());
+        ref.adjustTaskState(task);
+        logger.info("'{}' task state after update is '{}'", ref.getId(), ref.getState());
         TaskTideServiceManager.fetchWorkItemService().updateModel(ref);
     }
     

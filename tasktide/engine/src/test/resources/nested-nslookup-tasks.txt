@@ -1,2 +1,5 @@
-NameServerLookups_1|nslookup|lifestylesports.com
-NameServerLookups_2|nslookup|atu.ie
+NameServerLookups_1|nslookup|lifestylesports.com,easons.com
+NameServerLookups_2|nslookup|atu.ie,mtu.ie
+NameServerLookups_3|nslookup|tcd.ie,dcu.ie
+NameServerLookups_4|nslookup|rte.ie,journal.ie
+NameServerLookups_5|nslookup|supervalu.ie,dunnestores.com

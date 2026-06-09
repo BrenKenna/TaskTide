@@ -64,7 +64,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
 
     private int processCount;
     
-    private boolean PARALLEL_CONTEXT = TaskTideExecutorServiceProvider.getInstance().isParallelized();
+    private final boolean PARALLEL_CONTEXT;
     
     
     /**
@@ -76,7 +76,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
         this.workerUnits        = WorkerUnitContainer.getInstance();
         this.processingStrat    = new WorkItemProcessingStrategy();
         this.observer           = this.workerUnits.getEngineObserverChain(WorkerUnitModelType.WORKITEM);
-        this.PARALLEL_CONTEXT   = TaskTideExecutorServiceProvider.getInstance().isParallelized();
+        this.PARALLEL_CONTEXT   = false; // TaskTideExecutorServiceProvider.getInstance().isParallelized();
     }
     
     
@@ -90,7 +90,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
         this.workerUnits = WorkerUnitContainer.getInstance();
         this.processingStrat = new WorkItemProcessingStrategy();
         this.observer = obs;
-        this.PARALLEL_CONTEXT = TaskTideExecutorServiceProvider.getInstance().isParallelized();
+        this.PARALLEL_CONTEXT = false; // TaskTideExecutorServiceProvider.getInstance().isParallelized();
     }
     
     
@@ -103,7 +103,7 @@ public class WorkItemTraverser implements TaskTideWorkloadTraverser<WorkItem> {
         this.workerUnits = WorkerUnitContainer.getInstance();
         this.processingStrat = new WorkItemProcessingStrategy();
         this.observer = observer;
-        this.PARALLEL_CONTEXT = TaskTideExecutorServiceProvider.getInstance().isParallelized();
+        this.PARALLEL_CONTEXT = false; // TaskTideExecutorServiceProvider.getInstance().isParallelized();
     }
 
     

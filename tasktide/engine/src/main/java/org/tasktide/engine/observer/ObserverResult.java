@@ -120,7 +120,7 @@ public class ObserverResult {
      * @return ObserverResult
      */
     public static ObserverResult failure(WorkerObserver observer) {
-        return new ObserverResult(false, observer.getClass().getSimpleName(), observer.getType());
+        return new ObserverResult(false, observer.getClass().getSimpleName(), observer.getType(), observer.isOptional());
     }
     
     

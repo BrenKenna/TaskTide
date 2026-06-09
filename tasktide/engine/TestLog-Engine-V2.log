@@ -1,0 +1,851 @@
+2026-06-09 20:23:29 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.setUpClass ]: 
+
+---------------- Initiating Engine Worker Tests ----------------
+
+2026-06-09 20:23:29 INFO  [ Test worker -> org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility.fetchItemStoreMap ]: Prcessing ItemStore from under:	'TaskTideRepo/SQLITE'
+2026-06-09 20:23:29 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB
+2026-06-09 20:23:29 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:31 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:31 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:32 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB under active mutex
+2026-06-09 20:23:32 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB under active mutex
+2026-06-09 20:23:32 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB under active mutex
+2026-06-09 20:23:32 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB under active mutex
+2026-06-09 20:23:32 WARN  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.<init> ]: Mutex already configured
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.SqliteStore.initItemStore ]: Initializing DB under active mutex
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.engine.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\engine\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "Nested NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:	','
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Nested NS Lookups'
+2026-06-09 20:23:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:34 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:34 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:34 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:34 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchStepId ]: No step detected, begining creation for:
+'Nested NS Lookups'
+2026-06-09 20:23:34 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow assigned to step, proceeding with StepName:
+'{
+    "Step Annotation": {
+        "Annotation Id": "CustomAnnotation-d854a3e4-ec4b-4f90-bb85-f9a0b1e38c38",
+        "Annotation Map": {
+        }
+    },
+    "StepCount": 0,
+    "StepId": "Step-1c4bc87f-ccd9-4c75-b901-905b386e2f08",
+    "StepName": "Nested NS Lookups",
+    "StepState": "PENDING",
+    "StepsDone": 0,
+    "StepsError": 0,
+    "StepsLocked": 0,
+    "StepsToDo": 0
+}'
+2026-06-09 20:23:34 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:36 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.handleWorkflowForStep ]: No workflow detected, configuring for:	'Nested NS Lookups'
+2026-06-09 20:23:36 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: Fetching workflow for query:	'Nested NS Lookups'
+2026-06-09 20:23:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:38 INFO  [ Test worker -> org.tasktide.core.manager.TaskTideManagerUtility.fetchWorkflowId ]: No workflow detected, configuring:	'Nested NS Lookups'
+2026-06-09 20:23:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:40 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:40 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:40 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:40 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:44 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:44 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:45 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:45 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:47 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:47 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:47 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:47 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:49 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:49 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:49 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:49 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-06-09 20:23:49 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.canRunEngineBatchMode ]: 
+
+================= Can Run Engine Worker =================
+
+2026-06-09 20:23:49 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.canRunEngineBatchMode ]: Fetching engine worker
+2026-06-09 20:23:49 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:51 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:51 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:51 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:51 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.canRunEngineBatchMode ]: Running engine in batch
+2026-06-09 20:23:51 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.runEngine ]: Operating in batch mode
+2026-06-09 20:23:51 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:53 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:53 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:53 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:53 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Processing available tasks iteration:	'0'
+2026-06-09 20:23:53 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Performing serial sample and traverse
+2026-06-09 20:23:53 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Configuring WorkItem-Traverser for processing
+2026-06-09 20:23:53 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Fetching workload
+2026-06-09 20:23:53 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleWorkload ]: Sampling '2' tasks from available pool '3'
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Processing workload of size '2'
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Thread 'Thread[Test worker,5,main]' processing sampled '[WorkItem-6065d356-8888-4979-a870-5434bacfff62, WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088]'
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Determining how to process workload
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Processing workload serially
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Traversing workload of size '2' serially
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing element '0' of '2':	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '2' on thread 'Test worker' for WorkItem:	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemTimeKeeper' with result 'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Verifying that task 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' is still available
+2026-06-09 20:23:55 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:57 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Task 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' is still available
+2026-06-09 20:23:57 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:23:59 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:23:59 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:23:59 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:23:59 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:01 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:03 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:03 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:03 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:07 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.verifyItem ]: Item state = 'Locked', Reference state = 'Locked'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemStateObserver' with result 'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemExecutorObserver' with result 'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processTask ]: Configuring ItemTaskTraverser for nested workload from:	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processNestedWorkload ]: Delegating WorkItem processing to ItemTask executor:	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Determining how to process workload
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Processing workload in parallel
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Fetching thread pool
+2026-06-09 20:24:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' with result 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' with result 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:09 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:09 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Tasks submitted, fetching TrackerWaiter for workload
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'2'
+2026-06-09 20:24:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' with result 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' with result 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:09 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Waiting on workload:	'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:09 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:24:11 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:11 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:11 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state before update is 'Locked'
+2026-06-09 20:24:11 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state after update is 'Locked'
+2026-06-09 20:24:11 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:13 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:13 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:13 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state before update is 'Locked'
+2026-06-09 20:24:13 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state after update is 'Locked'
+2026-06-09 20:24:13 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:14 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:14 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:24:15 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:15 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:24:16 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:16 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:16 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:16 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:17 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:17 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:24:18 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:18 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:18 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:18 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:20 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:20 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:20 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':
+'nslookup easons.com'
+2026-06-09 20:24:20 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:20 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:21 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:21 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:24:22 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:22 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:22 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:22 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:24 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:24 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:24 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:24 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:26 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:26 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:26 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:26 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:26 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:26 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':
+'nslookup lifestylesports.com'
+2026-06-09 20:24:26 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:28 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:28 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:28 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:28 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state before update is 'Locked'
+2026-06-09 20:24:28 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:28 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state after update is 'Locked'
+2026-06-09 20:24:29 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:29 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:24:30 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:30 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:30 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:30 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state before update is 'Locked'
+2026-06-09 20:24:30 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state after update is 'Locked'
+2026-06-09 20:24:30 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:32 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:32 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:32 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:32 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:34 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:34 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:34 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:34 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:36 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:36 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:36 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:36 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:36 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup easons.com
+2026-06-09 20:24:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_1-1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2026-06-09 20:24:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529', global count:	'1'
+2026-06-09 20:24:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskEnd for task 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:37 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:37 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:24:38 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:38 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:38 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:38 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:40 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:40 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:41 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:41 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:42 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:42 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:43 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:43 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup lifestylesports.com
+2026-06-09 20:24:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_1-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2026-06-09 20:24:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6', global count:	'2'
+2026-06-09 20:24:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskEnd for task 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:44 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:44 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:45 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:45 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:45 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state before update is 'Locked'
+2026-06-09 20:24:45 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state after update is 'Locked'
+2026-06-09 20:24:45 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:45 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:24:47 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:47 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:47 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state before update is 'Locked'
+2026-06-09 20:24:47 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-6065d356-8888-4979-a870-5434bacfff62' task state after update is 'Locked'
+2026-06-09 20:24:47 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:49 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:49 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:49 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:49 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:51 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:51 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:51 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:51 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:53 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:53 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:53 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:53 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' onTaskEnd for task 'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:53 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:53 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:24:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:24:54 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '1', Failed = '', Active = '0'
+2026-06-09 20:24:55 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:55 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:55 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:55 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:57 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:57 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:57 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:57 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:24:59 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:24:59 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:24:59 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:24:59 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' onTaskEnd for task 'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:24:59 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:25:03 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3' Workload size:	'2'
+2026-06-09 20:25:03 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-98824c83-9de6-4570-acda-7f3a38e5d529'
+2026-06-09 20:25:03 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-f07fcbb7-726a-4528-a50f-bde833f377d6'
+2026-06-09 20:25:03 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3':	 Total = '2', Done = '2', Failed = '', Active = '0'
+2026-06-09 20:25:05 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: ItemTask traversal completed from waiter:	'ItemTask-TrackerWaiter-c7c41e5f-e333-41af-83a0-7164d3e1f6c3'
+2026-06-09 20:25:05 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processNestedWorkload ]: Execution completed
+2026-06-09 20:25:05 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-6065d356-8888-4979-a870-5434bacfff62', global count:	'1'
+2026-06-09 20:25:05 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:25:05 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemTimeKeeper' onTaskEnd for task 'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:25:05 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:07 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:07 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:07 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:07 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:09 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:11 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:11 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemStateObserver' onTaskEnd for task 'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemExecutorObserver' onTaskEnd for task 'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed:	'WorkItem-6065d356-8888-4979-a870-5434bacfff62'
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing element '1' of '2':	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '2' on thread 'Test worker' for WorkItem:	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemTimeKeeper' with result 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Verifying that task 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' is still available
+2026-06-09 20:25:12 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:14 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:14 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:14 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:14 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Task 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' is still available
+2026-06-09 20:25:14 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:16 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:16 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:16 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:16 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:18 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:18 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:18 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:18 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:20 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:20 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:20 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:24 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.verifyItem ]: Item state = 'Locked', Reference state = 'Locked'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemStateObserver' with result 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemExecutorObserver' with result 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processTask ]: Configuring ItemTaskTraverser for nested workload from:	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processNestedWorkload ]: Delegating WorkItem processing to ItemTask executor:	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Determining how to process workload
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Processing workload in parallel
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Fetching thread pool
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Tasks submitted, fetching TrackerWaiter for workload
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'4'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Waiting on workload:	'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32'
+2026-06-09 20:25:26 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' with result 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:25:26 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:25:26 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' with result 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:25:26 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:25:26 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' with result 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:26 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:25:26 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' with result 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:26 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:26 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:26 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:27 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:25:27 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:25:28 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:28 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:28 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:28 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:28 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state before update is 'Locked'
+2026-06-09 20:25:28 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state after update is 'Locked'
+2026-06-09 20:25:30 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:30 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:30 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:30 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state before update is 'Locked'
+2026-06-09 20:25:30 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state after update is 'Locked'
+2026-06-09 20:25:30 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:32 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:32 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:33 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:33 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:34 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:25:34 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:25:34 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:34 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:35 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:35 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:37 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:37 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:37 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:25:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':
+'nslookup mtu.ie'
+2026-06-09 20:25:37 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:25:37 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:37 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:25:37 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:25:39 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:39 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:39 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:39 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:41 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:41 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:41 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:41 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:43 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:43 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:43 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:43 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':
+'nslookup atu.ie'
+2026-06-09 20:25:43 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:45 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:45 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:45 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:45 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state before update is 'Locked'
+2026-06-09 20:25:45 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:45 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state after update is 'Locked'
+2026-06-09 20:25:46 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:25:46 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:25:47 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:47 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:48 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state before update is 'Locked'
+2026-06-09 20:25:48 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state after update is 'Locked'
+2026-06-09 20:25:48 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:48 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:25:48 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:25:49 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:49 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:50 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:50 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:25:50 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:25:52 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:52 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:52 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:52 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:54 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup atu.ie
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_2-0' successful on thread 'pool-3-thread-2' with exit code 0
+
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095', global count:	'3'
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:54 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskEnd for task 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:25:56 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:56 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:56 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:56 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:25:57 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:25:57 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:25:58 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:25:58 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:25:58 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:25:58 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:00 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:00 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:00 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:26:00 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:26:01 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:26:01 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup mtu.ie
+2026-06-09 20:26:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_2-1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2026-06-09 20:26:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:26:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869', global count:	'4'
+2026-06-09 20:26:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:26:01 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskEnd for task 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:26:02 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:02 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:03 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:03 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state before update is 'Locked'
+2026-06-09 20:26:03 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state after update is 'Locked'
+2026-06-09 20:26:04 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:04 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:04 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:26:04 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:26:05 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state before update is 'Locked'
+2026-06-09 20:26:05 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088' task state after update is 'Locked'
+2026-06-09 20:26:05 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:07 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:07 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:07 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:07 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:07 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:26:07 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:26:09 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:09 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:09 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:09 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:11 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:11 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:11 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:11 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' onTaskEnd for task 'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:26:11 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:26:11 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:11 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:26:11 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:26:11 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '1', Failed = '', Active = '0'
+2026-06-09 20:26:13 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:13 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:13 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:13 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:15 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:15 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:15 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:15 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:17 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:17 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:17 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:17 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' onTaskEnd for task 'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:26:17 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:26:18 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32' Workload size:	'2'
+2026-06-09 20:26:18 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-278aea79-799c-4ce2-a7cf-90df117ed869'
+2026-06-09 20:26:18 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-2c11f9a5-b841-4a86-968a-40dc62f31095'
+2026-06-09 20:26:18 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32':	 Total = '2', Done = '2', Failed = '', Active = '0'
+2026-06-09 20:26:25 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: ItemTask traversal completed from waiter:	'ItemTask-TrackerWaiter-058380d6-9463-49a8-98d0-16febbd50b32'
+2026-06-09 20:26:25 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processNestedWorkload ]: Execution completed
+2026-06-09 20:26:25 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088', global count:	'2'
+2026-06-09 20:26:25 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:26:25 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemTimeKeeper' onTaskEnd for task 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:26:25 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:27 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:27 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:28 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:28 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:30 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:30 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:30 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:30 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemStateObserver' onTaskEnd for task 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemExecutorObserver' onTaskEnd for task 'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed:	'WorkItem-8de5a156-1887-4c10-929d-4ecf84e6a088'
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed for workload of size '2'
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Processing complete for step:	'Nested NS Lookups'
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Iteration '0' completed with state:	'true'
+2026-06-09 20:26:32 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:34 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:34 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:34 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:34 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Processing available tasks iteration:	'1'
+2026-06-09 20:26:34 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Performing serial sample and traverse
+2026-06-09 20:26:34 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Configuring WorkItem-Traverser for processing
+2026-06-09 20:26:34 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Fetching workload
+2026-06-09 20:26:34 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleWorkload ]: Processing retrieved workload of size '1'
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Processing workload of size '1'
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Thread 'Thread[Test worker,5,main]' processing sampled '[WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b]'
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Determining how to process workload
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Processing workload serially
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Traversing workload of size '1' serially
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing element '0' of '1':	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '2' on thread 'Test worker' for WorkItem:	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemTimeKeeper' with result 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Verifying that task 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' is still available
+2026-06-09 20:26:36 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:38 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Task 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' is still available
+2026-06-09 20:26:38 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:40 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:40 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:40 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:40 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:42 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:44 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:44 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:44 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:47 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.verifyItem ]: Item state = 'Locked', Reference state = 'Locked'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemStateObserver' with result 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemExecutorObserver' with result 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processTask ]: Configuring ItemTaskTraverser for nested workload from:	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processNestedWorkload ]: Delegating WorkItem processing to ItemTask executor:	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Determining how to process workload
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Processing workload in parallel
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Fetching thread pool
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Tasks submitted, fetching TrackerWaiter for workload
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.trackers.ExecutorServiceTracker.fetchWaiterFor ]: Task size:	'6'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: Waiting on workload:	'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:26:49 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:26:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' with result 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:26:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' with result 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:26:49 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' with result 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:26:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:26:49 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:26:49 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:49 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' with result 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:26:49 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:26:49 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:26:51 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:51 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:51 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state before update is 'Locked'
+2026-06-09 20:26:51 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state after update is 'Locked'
+2026-06-09 20:26:51 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:53 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:53 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:53 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:53 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:55 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:55 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:26:55 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:26:55 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:55 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:56 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:26:56 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:26:57 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:57 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:57 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:57 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:26:57 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-2':
+'nslookup dcu.ie'
+2026-06-09 20:26:57 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:26:57 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:59 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:26:59 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:26:59 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:26:59 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state before update is 'Locked'
+2026-06-09 20:26:59 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:26:59 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state after update is 'Locked'
+2026-06-09 20:27:01 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:01 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:01 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:27:01 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:27:01 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:01 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state before update is 'Locked'
+2026-06-09 20:27:01 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state after update is 'Locked'
+2026-06-09 20:27:01 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:03 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:03 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:04 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:04 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:06 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:06 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:06 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:06 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:08 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:08 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:08 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:27:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':
+'nslookup tcd.ie'
+2026-06-09 20:27:08 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskProcessing for task 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:27:08 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:08 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:27:08 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:27:10 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:10 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:10 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:10 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:12 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:12 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:12 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:12 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:12 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:27:12 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:27:14 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup dcu.ie
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_3-1' successful on thread 'pool-3-thread-2' with exit code 0
+
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a', global count:	'5'
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:27:14 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskEnd for task 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:27:16 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:16 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:16 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state before update is 'Locked'
+2026-06-09 20:27:16 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:16 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state after update is 'Locked'
+2026-06-09 20:27:16 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:27:16 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:27:18 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:18 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:18 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state before update is 'Locked'
+2026-06-09 20:27:18 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state after update is 'Locked'
+2026-06-09 20:27:18 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:20 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:20 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:20 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:20 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:22 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:22 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:22 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:22 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:23 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:27:23 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '0', Failed = '', Active = '0'
+2026-06-09 20:27:24 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:24 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:25 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:25 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' onTaskProcessing for task 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:27:25 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:25 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	nslookup tcd.ie
+2026-06-09 20:27:25 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'NameServerLookups_3-0' successful on thread 'pool-3-thread-1' with exit code 0
+
+2026-06-09 20:27:25 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:27:25 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e', global count:	'6'
+2026-06-09 20:27:25 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:27:25 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' onTaskEnd for task 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:27:26 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:26 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:27 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:27 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:28 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:28 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:29 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:29 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:30 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:30 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:31 INFO  [ pool-3-thread-2 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:31 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' onTaskEnd for task 'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:27:31 INFO  [ pool-3-thread-2 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:27:32 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:27:32 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:27:32 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '1', Failed = '', Active = '0'
+2026-06-09 20:27:33 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:33 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:33 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:33 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state before update is 'Locked'
+2026-06-09 20:27:33 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.handleWorkItemUpdate ]: 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b' task state after update is 'Locked'
+2026-06-09 20:27:33 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:35 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:35 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:35 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:35 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:35 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: Tracker 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b' Workload size:	'2'
+2026-06-09 20:27:35 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.scanItems ]: 'ItemTask' processing completed:	'ItemTask-0edf09ab-1e7c-487c-b510-d1444248542a'
+2026-06-09 20:27:35 INFO  [ Test worker -> org.tasktide.engine.trackers.TrackerWaiter.evaluateWorkload ]: Task state within threshold on waiter 'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b':	 Total = '2', Done = '1', Failed = '', Active = '0'
+2026-06-09 20:27:37 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:37 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:37 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:37 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:37 INFO  [ Test worker -> org.tasktide.engine.traversers.ItemTaskTraverser.parallelSubmit ]: ItemTask traversal completed from waiter:	'ItemTask-TrackerWaiter-d603e0c2-c6dd-43c1-8efe-511d0bf75c5b'
+2026-06-09 20:27:37 INFO  [ Test worker -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processNestedWorkload ]: Execution completed
+2026-06-09 20:27:37 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b', global count:	'3'
+2026-06-09 20:27:37 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:27:37 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemTimeKeeper' onTaskEnd for task 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:27:39 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:39 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:39 INFO  [ pool-3-thread-1 -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:39 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' onTaskEnd for task 'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:27:39 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-7f8b54d9-981f-43e2-bc60-91aec635520e'
+2026-06-09 20:27:39 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:41 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:41 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:41 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:41 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:43 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemStateObserver' onTaskEnd for task 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemExecutorObserver' onTaskEnd for task 'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed:	'WorkItem-af8af575-c0c6-4739-af16-ed3db51da36b'
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed for workload of size '1'
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Processing complete for step:	'Nested NS Lookups'
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Iteration '1' completed with state:	'true'
+2026-06-09 20:27:45 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Acquiring mutex
+2026-06-09 20:27:47 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.waitForMutex ]: Mutex acquired
+2026-06-09 20:27:47 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Releasing mutex
+2026-06-09 20:27:47 INFO  [ Test worker -> org.tasktide.itemstore.AbstractItemStore.releaseMutex ]: Released mutex
+2026-06-09 20:27:47 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: No active tasks, engine worker shutting down after '2' iterations
+2026-06-09 20:27:47 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.canRunEngineBatchMode ]: Engine processing completed
+2026-06-09 20:27:47 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.canRunEngineBatchMode ]: 
+
+================ Can Run Engine Worker =================
+
+2026-06-09 20:27:47 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-06-09 20:27:47 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorkerTests.tearDownClass ]: 
+
+---------------- Terminating WorkItem Traverser Tests ----------------
+

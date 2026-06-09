@@ -19,7 +19,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,6 +40,7 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.traversers.TraverserCheckedException;
+
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 
@@ -55,6 +60,10 @@ public class TaskTideEngineWorker {
     private final Random RAND = new Random(); 
     private final TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
 
+    private List<WorkerTask> tasks;
+    private ExecutorService workerPool;
+    private final int windowSize;
+    
     
     /**
      * Construct with {@link WorkItemAcquisitionPolicy}
@@ -64,6 +73,10 @@ public class TaskTideEngineWorker {
     public TaskTideEngineWorker(TaskTideWorkloadAcquisitionPolicy<WorkItem> policy) {
         this.engineComponents = WorkerUnitContainer.getInstance();
         this.policy = policy;
+        this.windowSize = this.policy.getWindowSize();
+        if ( policy.getPoolSize() > 1 ) {
+            this.workerPool = Executors.newFixedThreadPool(policy.getPoolSize());
+        }
     }
     
     
@@ -74,6 +87,38 @@ public class TaskTideEngineWorker {
      */
     public TaskTideWorkloadAcquisitionPolicy getPolicy() {
         return this.policy;
+    }
+    
+    
+    /**
+     * Checks whether there are available tasks. Perhaps 
+     *  a more suitable method of the policy? As it is basically#
+     *   asking is the poloicy valid
+     * 
+     * @return boolean
+     */
+    private boolean hasTasks() {
+        List<WorkItem> workload = new ArrayList<>(this.policy.fetchWorkload());
+        return !workload.isEmpty();
+    }
+    
+    
+    /**
+     * 
+     * 
+     */
+    public void fetchAndRun() {
+    
+        // Process tasks until done
+        int iters = 0;
+        while ( this.hasTasks() ) {
+            LOGGER.info("Processing available tasks iteration:\t'{}'", iters);
+            boolean processingState = this.processSampling();
+            LOGGER.info("Iteration '{}' completed with state:\t'{}'", iters, processingState);
+            iters++;
+            
+        }
+        LOGGER.info("No active tasks, engine worker shutting down after '{}' iterations", iters);
     }
     
     
@@ -133,11 +178,18 @@ public class TaskTideEngineWorker {
      * 
      * @return List-{@link WorkItem}
      */
-    private List<WorkItem> fetchWorkload() {
+    private List<WorkItem> sampleWorkload() {
         List<WorkItem> workload = new ArrayList<>(this.policy.fetchWorkload());
         if ( workload.size() > 1 ) {
             Collections.shuffle(workload);
         }
+        if ( workload.size() > this.windowSize ) {
+            if ( this.windowSize > 1 ) {
+                LOGGER.info("Sampling '{}' tasks from available pool '{}'", this.windowSize, workload.size());
+                return workload.subList(0, windowSize);
+            }
+        }
+        LOGGER.info("Processing retrieved workload of size '{}'", workload.size());
         return workload;
     }
     
@@ -148,7 +200,7 @@ public class TaskTideEngineWorker {
      * 
      * @throws {@link TaskTideEngineCheckedException}
      */
-    private void fetchAndRun() throws TaskTideEngineCheckedException {
+    private void sampleAndTraverse() throws TaskTideEngineCheckedException {
         
         // Process each step in order provided
         LOGGER.info("Configuring WorkItem-Traverser for processing");
@@ -158,7 +210,7 @@ public class TaskTideEngineWorker {
         
         // Fetch workload
         LOGGER.info("Fetching workload");
-        List<WorkItem> workload = this.fetchWorkload();
+        List<WorkItem> workload = this.sampleWorkload();
         if ( workload.isEmpty() ) {
             throw new TaskTideEngineCheckedException("Error, cannot process an empty workload");
         }
@@ -168,12 +220,107 @@ public class TaskTideEngineWorker {
         
         // Process workload
         try {
+            LOGGER.info(
+                "Thread '{}' processing sampled '{}'",
+                Thread.currentThread(),
+                workload.stream().map(WorkItem::getId).toList()
+            );
             traverser.traverse(workload);
             LOGGER.info("Processing complete for step:\t'{}'", this.policy.getTarget());
         }
                 
         catch ( TraverserCheckedException ex ) {
             LOGGER.error("Error processing workload:\n\n'{}'", ex);
+        }
+    }
+
+    
+    /**
+     * Process a sampling of workload
+     * 
+     * @return boolean
+     */
+    private boolean processSampling() {
+        
+        // If parellel option
+        if ( this.policy.getPoolSize() >= 2 ) {
+            
+            // Submit tasks
+            LOGGER.info("Configured '{}' Parallel EngineWorkers, submitting work", this.policy.getPoolSize());
+            this.tasks = new ArrayList<>();
+            for ( int i = 0; i < this.policy.getPoolSize(); i++) {
+                LOGGER.info("Starting engine worker-'{}'", i);
+                Future<?> future = this.workerPool.submit( () -> {
+                    try {
+                        this.sampleAndTraverse();
+                        return true;
+                    }
+                    catch ( TaskTideEngineCheckedException ex ) {
+                        return false;
+                    }
+                });
+                WorkerTask task = new WorkerTask("Task-" + i, future);
+                this.tasks.add(task);
+                LOGGER.info("Engine worker-'{}' started, caching for reference", i);
+                TaskTideEngineUtility.waitSeconds( RAND.nextInt(0, 11) );
+            }
+            
+            // Wait for them to finish
+            LOGGER.info("Waiting on '{}' to process window sizes of '{}'", this.tasks.size(), this.windowSize);
+            int counter = 0;
+            for ( WorkerTask task : this.tasks ) {
+                LOGGER.info("Waiting on task:\t'{}'", task.getLabel());
+                if ( task.waitOnTask() ) {
+                    LOGGER.info("Task '{}' completed successfully", task.getLabel());
+                    counter++;
+                }
+                LOGGER.warn("Task '{}' failed to cmplete", task.getLabel());
+            }
+            
+            // Check if all finished
+            LOGGER.info("Engine workers completed '{}' of '{}' successful", counter, this.tasks.size());
+            return counter == this.tasks.size();
+        }
+        
+        
+        // Otherwise sample and run
+        else {
+            LOGGER.info("Performing serial sample and traverse");
+            try {
+                this.sampleAndTraverse();
+                return true;
+            }
+            catch ( TaskTideEngineCheckedException ex ) {
+                return false;
+            }
+        }
+    }
+    
+    
+    private class WorkerTask {
+        private final String label;
+        private final Future task;
+        
+        WorkerTask(String label, Future task) {
+            this.label = label;
+            this.task = task;
+        }
+        
+        public String getLabel() {
+            return this.label;
+        }
+        
+        public Future getTask() {
+            return this.task;
+        }
+        
+        public boolean waitOnTask() {
+            try {
+                this.task.get();
+                return true;
+            } catch ( InterruptedException | ExecutionException ex) {
+                return false;
+            }
         }
     }
 }

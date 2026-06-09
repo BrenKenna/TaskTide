@@ -83,11 +83,14 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
     public ObserverResult onTaskStart(WorkItem task) {
         
         // Check task is still available
+        LOGGER.info("Verifying that task '{}' is still available", task.getId());
         String taskId = task.getId();
-        if ( task.getItemState() == ItemState.TODO ) {
-            TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.PREPARE);
+        WorkItem check = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getId());
+        if ( check.getItemState() == ItemState.TODO ) {
             
             // Verify task is still available
+            LOGGER.info("Task '{}' is still available", task.getId());
+            TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.PREPARE);
             if ( verifyItem(task) ) {
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.LOCKED);
                 task.setJobEnvId(this.JOB_ENV_ID);
@@ -111,7 +114,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             if ( !TaskTrackers.WORK_ITEM_TRACKER.isRunning(taskId) ) {
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
             }
-            LOGGER.warn("Item not to do state. Displaying for reference:\n'{}'", JsonUtils.toJson(true, task));
+            LOGGER.warn("Skipping '{}' not in ToDo state", task.getId());
             return ObserverResult.failure(this);
         }
     }
@@ -140,6 +143,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         // Fetch and verify active locked the task
         WorkItem check = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getId());
         if (check != null) {
+            LOGGER.info("Item state = '{}', Reference state = '{}'", task.getItemState(), check.getState());
             return lockId.equals( check.getLockId() );
         }
         return false;
