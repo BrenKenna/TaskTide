@@ -15,9 +15,10 @@
  */
 package org.tasktide.tasktide.client.config;
 
-import org.tasktide.parser.configuration.AbstractConfig;
-import jakarta.enterprise.context.ApplicationScoped;
 import java.util.Random;
+
+import jakarta.enterprise.context.ApplicationScoped;
+
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
@@ -30,6 +31,8 @@ import org.tasktide.parser.model.ArgumentType;
 import org.tasktide.engine.observer.WorkerObserver;
 import org.tasktide.engine.observer.worker.TimeKeeperObserver;
 import org.tasktide.engine.worker.TaskTideEngineWorker;
+
+import org.tasktide.parser.configuration.AbstractConfig;
 
 
 /**
@@ -56,6 +59,7 @@ public class EngineConfig extends AbstractConfig {
     
     /**
      * Engine execution policy
+     * 
      */
     @ConfigProperty(name = "tasktide.engine.execution-policy", defaultValue = "batch")
     String executionPolicy;
@@ -68,15 +72,17 @@ public class EngineConfig extends AbstractConfig {
     @ConfigProperty(name = "tasktide.engine.worker.lock-wait-time", defaultValue = "4")
     int lockTime;
     
-    @ConfigProperty(name = "tasktide.engine.worker.threads.workitem", defaultValue = "1")
-    int workItemThreads;
+    @ConfigProperty(name = "tasktide.engine.worker.threads.worker-pool-size", defaultValue = "1")
+    int workerPoolSize;
+    
+    @ConfigProperty(name = "tasktide.engine.worker.window-size", defaultValue = "10")
+    int windowSize;
     
     @ConfigProperty(name = "tasktide.engine.worker.threads.itemTask", defaultValue = "1")
     int itemTaskThreads;
     
     
     /**
-     *
      * TimeKeeper Params
      * 
      */
@@ -123,7 +129,8 @@ public class EngineConfig extends AbstractConfig {
     @Override
     public void initConfig(ArgumentTree argTree) {
         this.help();
-        this.workItemThreads();
+        this.workerPoolSize();
+        this.windowSize();
         this.itemTaskThreads();
         this.timeKeeperMaxWallTime();
         this.pilotLabelKey();
@@ -167,8 +174,8 @@ public class EngineConfig extends AbstractConfig {
         arg = this.getArgumentBuilder()
             .withName("Lock Wait Time")
             .withDescription("Configures the wait time in seconds for locking an item")
-            .withShortFlag("-t")
-            .withLongFlag("--max-wall-time")
+            .withShortFlag("-l")
+            .withLongFlag("--lock-wait-time")
             .withArgType(ArgumentType.ACTION)
             .withRefClass(Integer.class)
         .build();
@@ -183,21 +190,44 @@ public class EngineConfig extends AbstractConfig {
      * Configure the number of threads for {@link WorkItem} processing
      * 
      */
-    public void workItemThreads() {
+    public void workerPoolSize() {
         Argument<Integer> arg;
         arg = this.getArgumentBuilder()
-            .withName("WorkItem Threads")
-            .withDescription("Defines the number of threads that work item processing can be distributed to")
+            .withName("Worker Pool Size")
+            .withDescription("Defines the number of active engine workers")
             .withShortFlag("-w")
-            .withLongFlag("--work-item-threads")
+            .withLongFlag("--worker-pool-size")
             .withArgType(ArgumentType.ACTION)
             .withRefClass(Integer.class)
         .build();
         
-        this.workItemThreads = this.getConfigValue("tasktide.engine.worker.processor.threads.workitem", Integer.class, 1);
-        int value = this.workItemThreads <= 0 ? 1 : this.workItemThreads;
-        this.workItemThreads = value;
-        arg.setValue(workItemThreads);
+        this.workerPoolSize = this.getConfigValue("tasktide.engine.worker.threads.worker-pool-size", Integer.class, 1);
+        int value = this.workerPoolSize <= 0 ? 1 : this.workerPoolSize;
+        this.workerPoolSize = value;
+        arg.setValue(workerPoolSize);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configure the number of threads for {@link WorkItem} processing
+     * 
+     */
+    public void windowSize() {
+        Argument<Integer> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Window Size")
+            .withDescription("Defines the number of tasks polled")
+            .withShortFlag("-wws")
+            .withLongFlag("--worker-window-size")
+            .withArgType(ArgumentType.ACTION)
+            .withRefClass(Integer.class)
+        .build();
+        
+        this.windowSize = this.getConfigValue("tasktide.engine.worker.window-size", Integer.class, 10);
+        int value = this.windowSize <= 0 ? 10 : this.windowSize;
+        this.windowSize = value;
+        arg.setValue(windowSize);
         this.getArgumentMap().putArgument(arg);
     }
     
@@ -234,7 +264,7 @@ public class EngineConfig extends AbstractConfig {
         arg = this.getArgumentBuilder()
             .withName("TimeKeeper Wall Time")
             .withDescription("Configures the max wall-time for task processing in __")
-            .withShortFlag("-t")
+            .withShortFlag("-m")
             .withLongFlag("--max-wall-time")
             .withArgType(ArgumentType.ACTION)
             .withRefClass(Integer.class)
@@ -381,7 +411,7 @@ public class EngineConfig extends AbstractConfig {
         arg = this.getArgumentBuilder()
             .withName("Pilot Label Annotation")
             .withDescription("For early task binding to pilot job")
-            .withShortFlag("-pla")
+            .withShortFlag("-pa")
             .withLongFlag("--pilot-label-annotation")
             .withArgType(ArgumentType.ACTION)
             .withRefClass(String.class)

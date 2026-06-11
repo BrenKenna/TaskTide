@@ -96,16 +96,16 @@ public class WorkerUnitContainer {
      * Configures the {@link ExecutorService} for 
      *  both {@link WorkItem}, and {@link ItemTask}
      * 
-     * @param workItemThreads
+     * @param engineWorkers
      * @param itemTaskThreads
      * 
      * @throws TaskTideEngineCheckedException 
      */
     public void
-        configureExecutorServices(int workItemThreads, int itemTaskThreads)
+        configureExecutorServices(int engineWorkers, int itemTaskThreads)
     throws TaskTideEngineCheckedException {
         if ( !this.executorServiceConfigured ) {
-            TaskTideExecutorServiceProvider.initialize(workItemThreads, itemTaskThreads);
+            TaskTideExecutorServiceProvider.initialize(engineWorkers, itemTaskThreads);
             this.executorServiceConfigured = true;
         }
         else {
@@ -355,7 +355,6 @@ public class WorkerUnitContainer {
         getEngineExecutor(WorkerUnitModelType type)
     throws TaskTideEngineUncheckedException {
         return switch ( type ) {
-            
             case ITEMTASK -> {
                 if ( this.itemTaskExecutor != null ) {
                     yield (TaskTideExecutor<T>) this.itemTaskExecutor;
@@ -401,9 +400,8 @@ public class WorkerUnitContainer {
         }
         
         switch ( type ) {
-        
             case WORKITEM -> {
-                return TaskTideExecutorServiceProvider.getInstance().getWorkItemExecutorService();
+                return TaskTideExecutorServiceProvider.getInstance().getEngineWorkerExecutorService();
             }
             
             case ITEMTASK -> {

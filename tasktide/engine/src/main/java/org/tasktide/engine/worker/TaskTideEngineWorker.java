@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -61,7 +61,7 @@ public class TaskTideEngineWorker {
     private final TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
 
     private List<WorkerTask> tasks;
-    private ExecutorService workerPool;
+    private final ExecutorService workerPool;
     private final int windowSize;
     
     
@@ -74,9 +74,7 @@ public class TaskTideEngineWorker {
         this.engineComponents = WorkerUnitContainer.getInstance();
         this.policy = policy;
         this.windowSize = this.policy.getWindowSize();
-        if ( policy.getPoolSize() > 1 ) {
-            this.workerPool = Executors.newFixedThreadPool(policy.getPoolSize());
-        }
+        this.workerPool = this.engineComponents.getThreadPool(WorkerUnitModelType.WORKITEM);
     }
     
     
@@ -104,7 +102,9 @@ public class TaskTideEngineWorker {
     
     
     /**
-     * 
+     * Consumes random samplings of tasks from
+     *  {@link TaskTideWorkloadAcquisitionPolicy} until
+     *  all tasks have been processed
      * 
      */
     public void fetchAndRun() {
@@ -173,8 +173,8 @@ public class TaskTideEngineWorker {
     
     
     /**
-     * Fetches engine workload, checking if pilot label
-     *  was used
+     * Fetches randomly sorted workload from acquisition policy.
+     *  Sampling a collection of tasks if configured
      * 
      * @return List-{@link WorkItem}
      */
@@ -236,14 +236,29 @@ public class TaskTideEngineWorker {
 
     
     /**
-     * Process a sampling of workload
+     * Serial or parallel execution of smapleAndTraverse. Parallelism
+     *  dictated by pool size attribute. Since the smapleAndTraverse,
+     *  and engine logic are self-container. 1 to poolSize can simply
+     *  perform this asynchronously and main thread can wait on them.
      * 
      * @return boolean
      */
     private boolean processSampling() {
         
-        // If parellel option
-        if ( this.policy.getPoolSize() >= 2 ) {
+        // Process serially
+        if ( this.policy.getPoolSize() < 2 ) {
+            LOGGER.info("Performing serial sample and traverse");
+            try {
+                this.sampleAndTraverse();
+                return true;
+            }
+            catch ( TaskTideEngineCheckedException ex ) {
+                return false;
+            }
+        }
+        
+        // Otherwise recruit additional workers
+        else  {
             
             // Submit tasks
             LOGGER.info("Configured '{}' Parallel EngineWorkers, submitting work", this.policy.getPoolSize());
@@ -281,22 +296,13 @@ public class TaskTideEngineWorker {
             LOGGER.info("Engine workers completed '{}' of '{}' successful", counter, this.tasks.size());
             return counter == this.tasks.size();
         }
-        
-        
-        // Otherwise sample and run
-        else {
-            LOGGER.info("Performing serial sample and traverse");
-            try {
-                this.sampleAndTraverse();
-                return true;
-            }
-            catch ( TaskTideEngineCheckedException ex ) {
-                return false;
-            }
-        }
     }
     
     
+    /**
+     * Inner model class to hold task label and future
+     * 
+     */
     private class WorkerTask {
         private final String label;
         private final Future task;

@@ -33,22 +33,23 @@ public class TaskTideExecutorServiceProvider {
     // There can be only one
     private static volatile TaskTideExecutorServiceProvider instance;
     
+    
     // Executor services
-    private final int workItemThreads, itemTaskThreads;
-    private final ExecutorService workItemExecutorService;
+    private final int engineWorkerThreads, itemTaskThreads;
+    private final ExecutorService engineWorkerExecutorService;
     private final ExecutorService itemTaskExecutorService;
     
     
     /**
      * Construct with required thread pool size
      * 
-     * @param workItemThreads
+     * @param engineWorkerThreads
      * @param itemTaskThreds 
      */
-    private TaskTideExecutorServiceProvider(int workItemThreads, int itemTaskThreds) {
-        this.workItemThreads = workItemThreads;
+    private TaskTideExecutorServiceProvider(int engineWorkerThreads, int itemTaskThreds) {
+        this.engineWorkerThreads = engineWorkerThreads;
         this.itemTaskThreads = itemTaskThreds;
-        this.workItemExecutorService = Executors.newFixedThreadPool(workItemThreads);
+        this.engineWorkerExecutorService = Executors.newFixedThreadPool(engineWorkerThreads);
         this.itemTaskExecutorService = Executors.newFixedThreadPool(itemTaskThreds);
     }
 
@@ -56,14 +57,14 @@ public class TaskTideExecutorServiceProvider {
     /**
      * Initialize executor services for provided pool sizes
      * 
-     * @param workItemThreads
+     * @param engineWorkerThreads
      * @param itemTaskThreads
      */
-    public static synchronized void initialize(int workItemThreads, int itemTaskThreads) {
+    public static synchronized void initialize(int engineWorkerThreads, int itemTaskThreads) {
         if ( instance != null ) {
             throw new IllegalStateException("TaskTideExecutorService already initialize");
         }
-        instance = new TaskTideExecutorServiceProvider(workItemThreads, itemTaskThreads);
+        instance = new TaskTideExecutorServiceProvider(engineWorkerThreads, itemTaskThreads);
     
     }
     
@@ -88,8 +89,8 @@ public class TaskTideExecutorServiceProvider {
      * 
      * @return {@link ExecutorService}
      */
-    public ExecutorService getWorkItemExecutorService() {
-        return workItemExecutorService;
+    public ExecutorService getEngineWorkerExecutorService() {
+        return this.engineWorkerExecutorService;
     }
 
     
@@ -99,7 +100,7 @@ public class TaskTideExecutorServiceProvider {
      * @return {@link ExecutorService}
      */
     public ExecutorService getItemTaskExecutorService() {
-        return itemTaskExecutorService;
+        return this.itemTaskExecutorService;
     }
 
     
@@ -109,8 +110,8 @@ public class TaskTideExecutorServiceProvider {
      * 
      * @return ExecutorService
      */
-    public static ExecutorService workItemExecutorService() {
-        return getInstance().getWorkItemExecutorService();
+    public static ExecutorService engineWorkerExecutorService() {
+        return getInstance().getEngineWorkerExecutorService();
     }
 
     
@@ -130,8 +131,8 @@ public class TaskTideExecutorServiceProvider {
      * 
      * @return int
      */
-    public int getWorkItemThreads() {
-        return this.workItemThreads;
+    public int getEngineWorkerThreads() {
+        return this.engineWorkerThreads;
     }
 
     
@@ -151,6 +152,6 @@ public class TaskTideExecutorServiceProvider {
      * @return boolean
      */
     public boolean isParallelized() {
-        return this.getItemTaskThreads() > 1 || this.getWorkItemThreads() > 1;
+        return this.getItemTaskThreads() > 1 || this.getEngineWorkerThreads() > 1;
     }
 }

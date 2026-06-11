@@ -32,6 +32,7 @@ import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+import org.tasktide.parser.model.Argument;
 
 import org.tasktide.parser.model.ArgumentMap;
 
@@ -51,7 +52,7 @@ public class TaskTideEngineClient extends TaskTideClient {
     
     private TaskTideWorkloadAcquisitionPolicy<WorkItem> acquisitionPolicy;
     private TaskTideEngineWorker worker;
-    private int workItemThreads, itemTaskThreads;
+    private int engineWorkerThreads, itemTaskThreads;
     
     
     /**
@@ -169,6 +170,14 @@ public class TaskTideEngineClient extends TaskTideClient {
             policy = policy.withAnno(anno);
         }
         
+        // Apply worker pool size
+        policy.withPoolSize(this.engineWorkerThreads);
+        
+        // Apply window size
+        Argument arg = this.engineArgs.getArgument("Window Size");
+        int argVal = (int) arg.getValue();
+        policy.withWindowSize(argVal);
+        
         // Return acquisition policy
         return policy;
     }
@@ -183,9 +192,9 @@ public class TaskTideEngineClient extends TaskTideClient {
     
         // Set thread pool sizes
         LOGGER.info("Configuring taskTideEngineWorkerContainer components");
-        this.workItemThreads = (int) this.engineArgs.getArgument("WorkItem Threads").getValue();
+        this.engineWorkerThreads = (int) this.engineArgs.getArgument("Worker Pool Size").getValue();
         this.itemTaskThreads = (int) this.engineArgs.getArgument("ItemTask Threads").getValue();
-        this.workerContainer.configureExecutorServices(this.workItemThreads, this.itemTaskThreads);
+        this.workerContainer.configureExecutorServices(this.engineWorkerThreads, this.itemTaskThreads);
 
         // Configure EngineObservers
         int timeKeeperObserverMaxTime = (int) this.engineArgs.getArgument("TimeKeeper Wall Time").getValue();

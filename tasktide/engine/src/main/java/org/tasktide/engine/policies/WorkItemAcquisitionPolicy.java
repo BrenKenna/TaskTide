@@ -41,6 +41,17 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
         pol.classRef = WorkItem.class;
         return pol;
     }
+    
+    
+    /**
+     * Checks whether there are active tasks
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean hasNext() {
+        return !this.fetchWorkload().isEmpty();
+    }
 
     
     /**
@@ -94,4 +105,8 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
         // Otherwise empty list
         return new ArrayList<>();
     }
+    
+    
+    
+    
 }

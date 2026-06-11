@@ -49,7 +49,7 @@ public class EngineTestUtils {
         TaskTideExecutorServiceProvider.initialize(nWorkItemThreads, nItemTaskThreads);
         
         // Return result
-        return TaskTideExecutorServiceProvider.workItemExecutorService();
+        return TaskTideExecutorServiceProvider.engineWorkerExecutorService();
     }
     
     

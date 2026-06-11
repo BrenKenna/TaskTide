@@ -43,6 +43,14 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
     
     
     /**
+     * Checks whether there are active tasks
+     * 
+     * @return boolean
+     */
+    public boolean hasNext();
+    
+    
+    /**
      * Build query with {@link CustomAnnotation} for early task
      *  binding semantics with Pilot Label for example
      * 
