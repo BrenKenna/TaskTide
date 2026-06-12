@@ -40,7 +40,6 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
 import org.tasktide.engine.executor.ItemTaskExecutor;
 import org.tasktide.engine.executor.TaskTideExecutor;
-import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
 
 
 /**

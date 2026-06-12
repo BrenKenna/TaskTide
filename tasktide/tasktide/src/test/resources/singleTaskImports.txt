@@ -1,4 +1,4 @@
-Ping_Test_1|ping google.com
-Ping_Test_2|ping dcu.ie
-Ping_Test_3|ping ucd.ie
-Ping_Test_4|ping tcd.ie
+Lookup_Test_1|nslookup google.com
+Lookup_Test_2|nslookup dcu.ie
+Lookup_Test_3|nslookup ucd.ie
+Lookup_Test_4|nslookup tcd.ie

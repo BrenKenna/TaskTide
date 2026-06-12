@@ -25,7 +25,6 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.engine.executor.ItemTaskExecutor;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.traversers.TraverserCheckedException;
-import org.tasktide.engine.traversers.WorkItemTraverser;
 
 
 /**
@@ -35,7 +34,7 @@ import org.tasktide.engine.traversers.WorkItemTraverser;
 public class ItemTaskProcessingStrategy implements ProcessingStrategy<ItemTask> {
 
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
+    private final Logger LOGGER = LogManager.getLogger(ItemTaskProcessingStrategy.class);
     private final TaskTideEngineObserver<ItemTask> observer;
     private final ItemTaskExecutor executor;
     

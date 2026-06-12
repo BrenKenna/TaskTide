@@ -360,9 +360,6 @@ public class WorkItem implements TaskTideModel<WorkItem> {
         if ( this.taskCount == this.taskDone ) {
             this.itemState = ItemState.DONE;
         }
-        this.itemState = ItemState.TODO;
-        this.lockDate = 0L;
-        this.lockId = "";
     }
     
     

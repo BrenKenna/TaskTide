@@ -253,7 +253,7 @@ tasks.register('singleTaskEngineExecution', JavaExec) {
             "--file-path", "./itemStoreRepo/sqlite",
             "--step-name", "SingleTaskImports",
             "--execution-policy", "batch",
-            "--worker-pool-size", "2",
+            "--worker-pool-size", "1",
             "--item-task-threads", "1"
     ]
 }

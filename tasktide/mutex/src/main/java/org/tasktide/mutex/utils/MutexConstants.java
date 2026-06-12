@@ -63,11 +63,16 @@ public class MutexConstants {
            endJitter = Duration.ofMillis( RAND.nextLong(100L, 500L) );
            staleFileThreshold = Duration.ofMillis(10000L);
            
-           if (startJitter.toMillis() > endJitter.toMillis() ) {
+           if ( startJitter.toMillis() == endJitter.toMillis() ) {
+               endJitter= Duration.ofMillis( endJitter.toMillis() + RAND.nextLong(100L, 500L) );
+           }
+           
+           if ( startJitter.toMillis() > endJitter.toMillis() ) {
                 Duration tmp = startJitter;
                 startJitter = endJitter;
                 endJitter = tmp;
             }
+
            durationsInitialized = true;
         }
     }
@@ -163,11 +168,16 @@ public class MutexConstants {
             long min = startJitter.toMillis();
             long max = endJitter.toMillis();
             
+            if ( min == max ) {
+                return Duration.ofMillis(RAND.nextLong(min));
+            }
+            
             if ( min > max ) {
                 long tmp = min;
                 min = max;
                 max = tmp;
             }
+            
             return Duration.ofMillis(RAND.nextLong(min, max));
         }
         else {

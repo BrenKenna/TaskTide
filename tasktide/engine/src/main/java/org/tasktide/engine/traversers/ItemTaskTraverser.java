@@ -50,7 +50,7 @@ import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
 public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(WorkItemTraverser.class);
+    private final Logger LOGGER = LogManager.getLogger(ItemTaskTraverser.class);
     private final ItemTaskExecutor executor;
     protected static final AtomicInteger sharedCounter = new AtomicInteger(0);
     protected int processCount;
@@ -153,7 +153,7 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
      * 
      * @throws TraverserCheckedException 
      */
-    public void parallelSubmit(List<ItemTask> workload) throws TraverserCheckedException {
+    private void parallelSubmit(List<ItemTask> workload) throws TraverserCheckedException {
         
         // Schedule tasks
         LOGGER.info("Fetching thread pool");

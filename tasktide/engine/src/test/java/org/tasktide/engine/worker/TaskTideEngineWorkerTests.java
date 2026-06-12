@@ -15,9 +15,8 @@
  */
 package org.tasktide.engine.worker;
 
-import jakarta.nosql.Template;
 import jakarta.enterprise.inject.se.SeContainer;
-
+import jakarta.nosql.Template;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,10 +34,9 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
+import org.tasktide.engine.TestEnvironment;
 
 import org.tasktide.engine.TestUtils;
-import org.tasktide.engine.TestEnvironment;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
@@ -47,7 +45,6 @@ import org.tasktide.engine.policies.WorkerExecutionPolicy;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
-import org.tasktide.itemstore.ItemStoreType;
 
 
 /**
@@ -63,12 +60,12 @@ public class TaskTideEngineWorkerTests {
     
     private final String STEP = "Nested NS Lookups";
     
-    //private SeContainer container;
-    //private Template template;
+    private SeContainer container;
+    private Template template;
     
     
-    private final ItemStoreType storeType = ItemStoreType.SQLITE;
-    private final String storeName = "TaskTideRepo/SQLITE";
+    //private final ItemStoreType storeType = ItemStoreType.SQLITE;
+    //private final String storeName = "TaskTideRepo/SQLITE";
     
     
     // CouchDB container
@@ -83,12 +80,12 @@ public class TaskTideEngineWorkerTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Engine Worker Tests ----------------\n";
         LOGGER.info(msg);
-        //container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
-        //template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        //TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
+        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
         
-        ItemStoreRepositoryUtility.initialize(storeType, storeName);
-        ItemStoreRepositoryUtility.get().initServiceManager();
+        //ItemStoreRepositoryUtility.initialize(storeType, storeName);
+        //ItemStoreRepositoryUtility.get().initServiceManager();
         
         TestUtils.importTestRecords(
             "nested-nslookup-tasks.txt",
@@ -103,11 +100,10 @@ public class TaskTideEngineWorkerTests {
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating WorkItem Traverser Tests ----------------\n";
         LOGGER.info(msg);
-        /*if (container != null && container.isRunning()) {
+        if (container != null && container.isRunning()) {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        */
         // couchDB.stop();
     }
     
@@ -134,7 +130,7 @@ public class TaskTideEngineWorkerTests {
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
             .withWindowSize(2)
-            .withPoolSize(2)
+            .withPoolSize(1)
         ;
     }
 
@@ -157,7 +153,7 @@ public class TaskTideEngineWorkerTests {
             // Configure engine componenets
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
-            workerUnit.configureExecutorServices(1, 4);
+            workerUnit.configureExecutorServices(1, 1);
             
             workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
             workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
