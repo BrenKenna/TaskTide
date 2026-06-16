@@ -16,6 +16,8 @@
 package org.tasktide.core.model.workitem;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 import org.tasktide.core.model.state_summary.StateSummaryType;
 import org.tasktide.core.model.task.TaskState;
@@ -239,5 +241,19 @@ public enum ItemState implements StateSummaryType {
         return Arrays.stream(values())
             .map(elm -> elm.name())
             .collect(Collectors.joining(","));
+    }
+    
+    
+    /**
+     * Initializes an empty state map
+     * 
+     * @return Map-{@link ItemState}, int
+     */
+    public static Map<ItemState, Integer> fetchEmptyStateMap() {
+        Map<ItemState, Integer> output = new HashMap<>();
+        for ( ItemState state : ItemState.values() ) {
+            output.put(state, 0);
+        }
+        return output;
     }
 }

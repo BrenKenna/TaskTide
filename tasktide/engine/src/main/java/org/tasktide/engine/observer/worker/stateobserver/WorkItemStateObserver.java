@@ -28,7 +28,6 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.engine.observer.ObserverResult;
 import org.tasktide.engine.observer.worker.StateObserver;
@@ -83,13 +82,19 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
     public ObserverResult onTaskStart(WorkItem task) {
         
         // Check task is still available
-        LOGGER.info("Verifying that task '{}' is still available", task.getId());
+        LOGGER.info(
+            "Verifying that task '{}' is still available",
+            task.getId()
+        );
         String taskId = task.getId();
         WorkItem check = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getId());
         if ( check.getItemState() == ItemState.TODO ) {
             
             // Verify task is still available
-            LOGGER.info("Task '{}' is still available", task.getId());
+            LOGGER.info(
+                "Task '{}' is still available",
+                task.getId()
+            );
             TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.PREPARE);
             if ( verifyItem(task) ) {
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(taskId, ExecutionState.LOCKED);
@@ -99,13 +104,19 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             
             // Mark task as skipped if marked running on another thread
             if ( !TaskTrackers.WORK_ITEM_TRACKER.isRunning(taskId) ) {
-                LOGGER.warn("Item locked already running");
+                LOGGER.warn(
+                    "Task '{}' locked and already running",
+                    taskId
+                );
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
                 return ObserverResult.failure(this);
             }
             
             // Mark as skipped if running on another thread within other JVM
-            LOGGER.warn("Item could not be verified");
+            LOGGER.warn(
+                "Task '{}' state could not be verified as available:\t'{}'",
+                task.getId(), task.getItemState()
+            );
             return ObserverResult.failure(this);
         }
         
@@ -114,7 +125,7 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
             if ( !TaskTrackers.WORK_ITEM_TRACKER.isRunning(taskId) ) {
                 TaskTrackers.WORK_ITEM_TRACKER.markTask(task.getId(), ExecutionState.SKIPPED);
             }
-            LOGGER.warn("Skipping '{}' not in ToDo state", task.getId());
+            LOGGER.warn("Skipping '{}' not in 'ToDo' state", task.getId());
             return ObserverResult.failure(this);
         }
     }
@@ -143,7 +154,6 @@ public class WorkItemStateObserver extends StateObserver<WorkItem> {
         // Fetch and verify active locked the task
         WorkItem check = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getId());
         if (check != null) {
-            LOGGER.info("Item state = '{}', Reference state = '{}'", task.getItemState(), check.getState());
             return lockId.equals( check.getLockId() );
         }
         return false;

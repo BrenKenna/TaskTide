@@ -22,7 +22,6 @@ import java.util.Random;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.apache.logging.log4j.LogManager;
@@ -42,6 +41,7 @@ import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.traversers.TraverserCheckedException;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
+import org.tasktide.engine.trackers.ExecutorServiceItem;
 
 
 /**
@@ -112,9 +112,15 @@ public class TaskTideEngineWorker {
         // Process tasks until done
         int iters = 0;
         while ( this.hasTasks() ) {
-            LOGGER.info("Processing available tasks iteration:\t'{}'", iters);
+            LOGGER.info(
+                "Processing available tasks iteration:\t'{}'",
+                iters
+            );
             boolean processingState = this.processSampling();
-            LOGGER.info("Iteration '{}' completed with state:\t'{}'", iters, processingState);
+            LOGGER.info(
+                "Iteration '{}' completed with state:\t'{}'",
+                iters, processingState
+            );
             iters++;
             
         }
@@ -185,7 +191,10 @@ public class TaskTideEngineWorker {
         }
         if ( workload.size() > this.windowSize ) {
             if ( this.windowSize > 1 ) {
-                LOGGER.info("Sampling '{}' tasks from available pool '{}'", this.windowSize, workload.size());
+                LOGGER.info(
+                    "Sampling '{}' tasks from available pool '{}'",
+                    this.windowSize, workload.size()
+                );
                 return workload.subList(0, windowSize);
             }
         }
@@ -215,7 +224,10 @@ public class TaskTideEngineWorker {
             throw new TaskTideEngineCheckedException("Error, cannot process an empty workload");
         }
         else {
-            LOGGER.info("Processing workload of size '{}'", workload.size());
+            LOGGER.info(
+                "Processing workload of size '{}'",
+                workload.size()
+            );
         }
         
         // Process workload
@@ -226,7 +238,10 @@ public class TaskTideEngineWorker {
                 workload.stream().map(WorkItem::getId).toList()
             );
             traverser.traverse(workload);
-            LOGGER.info("Processing complete for step:\t'{}'", this.policy.getTarget());
+            LOGGER.info(
+                "Processing complete for step:\t'{}'",
+                this.policy.getTarget()
+            );
         }
                 
         catch ( TraverserCheckedException ex ) {
@@ -261,7 +276,10 @@ public class TaskTideEngineWorker {
         else  {
             
             // Submit tasks
-            LOGGER.info("Configured '{}' Parallel EngineWorkers, submitting work", this.policy.getPoolSize());
+            LOGGER.info(
+                "Configured '{}' Parallel EngineWorkers, submitting work",
+                this.policy.getPoolSize()
+            );
             this.tasks = new ArrayList<>();
             for ( int i = 0; i < this.policy.getPoolSize(); i++) {
                 LOGGER.info("Starting engine worker-'{}'", i);
@@ -276,24 +294,39 @@ public class TaskTideEngineWorker {
                 });
                 WorkerTask task = new WorkerTask("Task-" + i, future);
                 this.tasks.add(task);
-                LOGGER.info("Engine worker-'{}' started, caching for reference", i);
+                LOGGER.info("Engine 'Worker-{}' started, caching for reference", i);
                 TaskTideEngineUtility.waitSeconds( RAND.nextInt(0, 11) );
             }
             
             // Wait for them to finish
-            LOGGER.info("Waiting on '{}' to process window sizes of '{}'", this.tasks.size(), this.windowSize);
+            LOGGER.info(
+                "Waiting on '{}' to process window sizes of '{}'",
+                this.tasks.size(), this.windowSize
+            );
             int counter = 0;
             for ( WorkerTask task : this.tasks ) {
-                LOGGER.info("Waiting on task:\t'{}'", task.getLabel());
+                LOGGER.info(
+                    "Waiting on task:\t'{}'",
+                    task.getLabel()
+                );
                 if ( task.waitOnTask() ) {
-                    LOGGER.info("Task '{}' completed successfully", task.getLabel());
+                    LOGGER.info(
+                        "Task '{}' completed successfully",
+                        task.getLabel()
+                    );
                     counter++;
                 }
-                LOGGER.warn("Task '{}' failed to cmplete", task.getLabel());
+                LOGGER.warn(
+                    "Task '{}' failed to cmplete",
+                    task.getLabel()
+                );
             }
             
             // Check if all finished
-            LOGGER.info("Engine workers completed '{}' of '{}' successful", counter, this.tasks.size());
+            LOGGER.info(
+                "Engine workers completed '{}' of '{}' successful",
+                counter, this.tasks.size()
+            );
             return counter == this.tasks.size();
         }
     }

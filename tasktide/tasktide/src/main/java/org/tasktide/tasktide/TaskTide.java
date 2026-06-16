@@ -24,11 +24,11 @@ import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.tasktide.client.ClientConfigMap;
 import org.tasktide.tasktide.client.TaskTideClient;
-import org.tasktide.tasktide.client.TaskTideClientUtility;
 import org.tasktide.tasktide.client.TaskTideClientType;
+import org.tasktide.tasktide.client.TaskTideClientUtility;
 
-import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
+import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 
 
 /**

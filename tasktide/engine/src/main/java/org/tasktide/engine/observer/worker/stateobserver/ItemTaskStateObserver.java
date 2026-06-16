@@ -118,23 +118,19 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
         logger.info("Performing end task chores for ItemTask:\t'{}'", task.getId());
         if (task.getTaskLog().getExitCode() == 0) {
             logger.info("Marking ItemTask '{}' as completed", task.getId());
-            logger.debug("Displaying ItemTask for reference, before handling:\n\n'{}'", task);
             task.setTaskState(TaskState.COMPLETE);
             TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.COMPLETED);
             this.handleWorkItemUpdate(task);
-            logger.debug("Displaying ItemTask for reference, after handling:\n\n'{}'", task);
             return ObserverResult.success();
         }
         
         // Otherwise acknowledge error
         else {
             logger.warn("Marking ItemTask '{}' with error", task.getId());
-            logger.debug("Displaying ItemTask for reference, before handling:\n\n'{}'", task);
             task.setTaskState(TaskState.ERROR);
             TaskTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), ExecutionState.FAILED);
             this.handleWorkItemUpdate(task);
             logger.warn("Execution failed for ItemTask:\t'{}'", task.getId());
-            logger.debug("Displaying ItemTask for reference, after handling:\n\n'{}'", task);
             return ObserverResult.failure(this, true);
         }
     }
@@ -147,9 +143,7 @@ public class ItemTaskStateObserver extends StateObserver<ItemTask> {
      */
     public void handleWorkItemUpdate(ItemTask task) {
         WorkItem ref = TaskTideServiceManager.fetchWorkItemService().fetchById(task.getWorkItemId());
-        logger.info("'{}' task state before update is '{}'", ref.getId(), ref.getState());
         ref.adjustTaskState(task);
-        logger.info("'{}' task state after update is '{}'", ref.getId(), ref.getState());
         TaskTideServiceManager.fetchWorkItemService().updateModel(ref);
     }
     

@@ -17,6 +17,7 @@ package org.tasktide.core.manager.command.commands;
 
 import jakarta.json.bind.annotation.JsonbProperty;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,7 @@ import org.tasktide.core.supporting.FileIO;
 
 // For JavaDocs
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
@@ -49,6 +51,7 @@ public class SummarizeCommand extends AbstractCommand {
     
     // Attibutes
     private final Logger LOGGER = LogManager.getLogger(SummarizeCommand.class);
+    private String STEP_ID;
 
     
     /**
@@ -82,6 +85,20 @@ public class SummarizeCommand extends AbstractCommand {
             case SUMMARIZE -> {
                 LOGGER.info("Summarizing collection");
                 StateSummary<ItemState> summary = this.summarize();
+                
+                if ( !this.directOutput(summary) ) {
+                    LOGGER.info("Directing results to stdout");
+                    return summary;
+                }
+                else {
+                    return true;
+                }
+            }
+            
+            case SUMMARIZE_BY_ITEM_TASK -> {
+                LOGGER.info("Summarizing ItemTask state across collection");
+                StateSummary<ItemState> summary = this.summarizeAcrossItemTask();
+                
                 if ( !this.directOutput(summary) ) {
                     LOGGER.info("Directing results to stdout");
                     return summary;
@@ -140,11 +157,61 @@ public class SummarizeCommand extends AbstractCommand {
     @Override
     public boolean validateCommand() {
         if ( !this.cmdSpec.hasOptionsKey("Step Name") ) {
+            LOGGER.error("No Step name provided");
             return false;
         }
         
+        String step = (String) this.cmdSpec.getOptionsKey("Step Name").get();
+        List<Step> steps = TaskTideServiceManager.fetchStepService().viewByField("stepName", step);
+        if ( steps.isEmpty() ) {
+            LOGGER.error("No step found for queried '{}' Step", step);
+            return false;
+        }
+        
+        this.STEP_ID = steps.get(0).getId();
         return true;
     }
+    
+    
+    /**
+     * Summarize
+     * 
+     * @return 
+     */
+    public StateSummary<ItemState> summarize() {
+    
+        // Initialize vars
+        List<WorkItem> workItems;
+        StateSummary<ItemState> output;
+        
+        // Fetch work items
+        workItems = TaskTideServiceManager
+            .fetchWorkItemService()
+        .viewByField("stepId", this.STEP_ID);
+        
+        // Collapse task count by state
+        Map<ItemState, Integer> stateCount = ItemState.fetchEmptyStateMap();
+        for ( WorkItem task : workItems ) {
+            ItemState state = task.getItemState();
+            if ( stateCount.isEmpty() ) {
+                stateCount.put(state, 1);
+            }
+            
+            else if ( !stateCount.containsKey( state ) ) {
+                stateCount.put(state, 1);
+            }
+            
+            else {
+                int count = stateCount.get( state );
+                stateCount.put(state, count+1);
+            }
+        }
+        
+        // Return results as StateSummary
+        output = new StateSummary<>(stateCount);
+        return output;
+    }
+    
     
     
     /**
@@ -152,17 +219,15 @@ public class SummarizeCommand extends AbstractCommand {
      * 
      * @return {@link StateSummary} of {@link ItemState}
      */
-    public StateSummary<ItemState> summarize() {
+    public StateSummary<ItemState> summarizeAcrossItemTask() {
         
         // Fetch coordinating arguments
         StateSummary<ItemState> output;
-        String step = (String) this.cmdSpec.getOptionsKey("Step Name").get();
-        String stepId = TaskTideServiceManager.fetchStepService().viewByField("stepName", step).get(0).getId();
         
         // Collect into concurrent map
         Map<ItemState, Integer> results = TaskTideServiceManager
             .fetchWorkItemService()
-            .viewByField("stepId", stepId)
+            .viewByField("stepId", this.STEP_ID)
             .parallelStream()
                 .map( elm -> elm.summarizeByState() )
                 .flatMap( map -> map.entrySet().stream() )
@@ -184,16 +249,13 @@ public class SummarizeCommand extends AbstractCommand {
      * @return Map-String, {@link StateSummary} of {@link ItemState}
      */
     public Map<String, StateSummary<ItemState>> summarizeEach() {
-        
-        // Fetch coordinating arguments
-        String step = (String) this.cmdSpec.getOptionsKey("Step Name").get();
-        String stepId = TaskTideServiceManager.fetchStepService().viewByField("stepName", step).get(0).getId();
-        
+
         // Calculate results
-        Map<String, StateSummary<ItemState>> results =
+        Map<String, StateSummary<ItemState>> results;
+        results =
             TaskTideServiceManager
             .fetchWorkItemService()
-            .viewByField("stepId", stepId)
+            .viewByField("stepId", this.STEP_ID)
             .parallelStream()
         .collect(Collectors.toConcurrentMap(
             elm -> elm.getId(),

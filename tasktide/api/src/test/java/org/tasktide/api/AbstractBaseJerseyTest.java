@@ -15,15 +15,10 @@
  */
 package org.tasktide.api;
 
-import jakarta.ws.rs.core.Application;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.context.control.RequestContextController;
 
 import org.glassfish.jersey.test.JerseyTest;
-import org.glassfish.jersey.server.ResourceConfig;
-import org.glassfish.jersey.jsonb.JsonBindingFeature;
-
-import org.tasktide.api.resources.services.rest.StepRestResource;
 
 
 /**

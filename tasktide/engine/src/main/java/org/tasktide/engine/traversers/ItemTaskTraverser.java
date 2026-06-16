@@ -15,7 +15,9 @@
  */
 package org.tasktide.engine.traversers;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
@@ -160,6 +162,7 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
         ExecutorService threadPool = this.workerUnits.getThreadPool(WorkerUnitModelType.ITEMTASK);
         
         // Schedule tasks
+        List< ExecutorServiceItem<ItemTask> > futures = new ArrayList<>();
         for ( ItemTask task : workload ) {
             
             // Schedule async operation
@@ -170,19 +173,22 @@ public class ItemTaskTraverser implements TaskTideWorkloadTraverser<ItemTask> {
                 catch ( Exception ex ) {
                     return false;
                 }
+                
             });
             
             // Append to tracker for monitoring
             ExecutorServiceItem<ItemTask> item = new ExecutorServiceItem<>(task, future);
-            FutureTrackers.ITEM_TASK_TRACKER.markTask(task.getId(), item);
+            futures.add(item);
         }
         
         // Fetch waiter for ItemTask workload
-        LOGGER.info("Tasks submitted, fetching TrackerWaiter for workload");
-        TrackerWaiter<ItemTask> trackerWaiter = FutureTrackers.ITEM_TASK_TRACKER.fetchWaiterFor(workload);
-        LOGGER.info("Waiting on workload:\t'{}'", trackerWaiter.getId());
-        trackerWaiter.waitForWorkload();
-        LOGGER.info("ItemTask traversal completed from waiter:\t'{}'", trackerWaiter.getId());
+        LOGGER.info("Tasks submitted, waiting on workload to complete");
+        for ( ExecutorServiceItem<ItemTask> task : futures ) {
+            LOGGER.info("Waiting on task '{}' to complete", task.getModel().getId() );
+            task.waitOnTask();
+            LOGGER.info("Task '{}' complete", task.getModel().getId() );
+        }
+        LOGGER.info("Workload processing completed for '{}' tasks", futures.size());
     }
     
 

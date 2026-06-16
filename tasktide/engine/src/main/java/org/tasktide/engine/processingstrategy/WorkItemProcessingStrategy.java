@@ -15,7 +15,6 @@
  */
 package org.tasktide.engine.processingstrategy;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
@@ -25,7 +24,6 @@ import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.engine.executor.TaskTideExecutor;
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.traversers.TraverserCheckedException;
 
@@ -72,7 +70,10 @@ public class WorkItemProcessingStrategy implements ProcessingStrategy<WorkItem> 
         // Pass if no active tasks
         List<ItemTask> toDo = task.getWorkload().fetchByState().get(TaskState.PENDING);
         if ( toDo.isEmpty() ) {
-            LOGGER.warn("Warning, no active tasks under WorkItem:\t'{}'", task.getId());
+            LOGGER.warn(
+                "Warning, no active tasks under WorkItem:\t'{}'",
+                task.getId()
+            );
             return false;
         }
         
@@ -99,7 +100,10 @@ public class WorkItemProcessingStrategy implements ProcessingStrategy<WorkItem> 
     private boolean processWorkload(WorkItem task, List<ItemTask> toDo) {
     
         // Try process task
-        LOGGER.info("Delegating WorkItem processing to ItemTaskTraverser:\t'{}'", task.getId());
+        LOGGER.info(
+            "Delegating WorkItem processing to ItemTaskTraverser:\t'{}'",
+            task.getId()
+        );
         try {
             this.itemTaskTraverser.traverse(toDo);
             LOGGER.info("Execution completed");
@@ -108,7 +112,10 @@ public class WorkItemProcessingStrategy implements ProcessingStrategy<WorkItem> 
 
         // Otherwise fail
         catch (TraverserCheckedException ex) {
-            LOGGER.error("Error during WorkItem processing:\t'{}'\n\n{}", task.getId(), ex);
+            LOGGER.error(
+                "Error during WorkItem processing:\t'{}'\n\n{}",
+                task.getId(), ex
+            );
             return false;
         }
     }

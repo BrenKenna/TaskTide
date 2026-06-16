@@ -253,8 +253,8 @@ tasks.register('singleTaskEngineExecution', JavaExec) {
             "--file-path", "./itemStoreRepo/sqlite",
             "--step-name", "SingleTaskImports",
             "--execution-policy", "batch",
-            "--worker-pool-size", "1",
-            "--item-task-threads", "1"
+            "--worker-pool-size", "2",
+            "--worker-window-size", "3"
     ]
 }
 
@@ -272,6 +272,7 @@ tasks.register('nestedTaskEngineExecution', JavaExec) {
             "--step-name", "NestedTaskImports",
             "--execution-policy", "batch",
             "--worker-pool-size", "2",
-            "--item-task-threads", "2"
+            "--item-task-threads", "2",
+            "--worker-window-size", "3"
     ]
 }

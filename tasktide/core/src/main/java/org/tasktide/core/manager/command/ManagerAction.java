@@ -289,6 +289,34 @@ public enum ManagerAction {
         }
     },
     
+    SUMMARIZE_BY_ITEM_TASK {
+        @Override
+        public CommandType getCommandType() {
+            return CommandType.SELECT;
+        }
+        
+        @Override
+        public boolean isManagerAction(String query) {
+            return this.toString().equalsIgnoreCase(query);
+        }
+
+        @Override
+        public boolean isManagerAction(ManagerAction query) {
+            return this == query;
+        }
+
+        @Override
+        public String toString() {
+            return name();
+        }
+        
+        @Override
+        public ManagerCommand makeCommand(ManagerTarget target, CommandSpec cmdSpec) {
+            AbstractCommand cmd = new SummarizeCommand(ManagerAction.SUMMARIZE_BY_ITEM_TASK, target, cmdSpec, CommandType.SELECT);
+            return cmd;
+        }
+    },
+    
     DELETE {
         @Override
         public CommandType getCommandType() {

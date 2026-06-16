@@ -15,6 +15,7 @@
  */
 package org.tasktide.engine.trackers;
 
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import org.tasktide.core.TaskTideModel;
@@ -65,5 +66,21 @@ public class ExecutorServiceItem<T extends TaskTideModel<T>> {
      */
     public Future<?> getFuture() {
         return this.future;
+    }
+    
+    
+    /**
+     * Wait on task processing to complete
+     * 
+     * @return boolean
+     */
+    public boolean waitOnTask() {
+        try {
+            this.future.get();
+            return true;
+        }
+        catch ( InterruptedException | ExecutionException ex ) {
+            return false;
+        }
     }
 }
