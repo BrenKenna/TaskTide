@@ -23,6 +23,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
 import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
@@ -36,6 +38,8 @@ import org.tasktide.core.repository.template_repo.TemplateRepositoryUtility;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.mutex.utils.MutexConstants;
+import org.tasktide.mutex.utils.MutexLabellingUtils;
 
 import org.tasktide.tasktide.TaskTide;
 import org.tasktide.tasktide.client.config.EngineConfig;
@@ -44,6 +48,7 @@ import org.tasktide.tasktide.client.config.ManagerConfig;
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 import org.tasktide.tasktide.containerprovider.CdiProviders;
 import org.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.model.Argument;
 import org.tasktide.tasktide.client.config.WebApiConfig;
 
 
@@ -222,13 +227,62 @@ public class TaskTideClientUtility {
      * 
      * @param configMap
      */
+    @SuppressWarnings("unchecked")
     public static void initItemStoreServiceManager(ClientConfigMap configMap) {
+        
+        // Fetch ItemStore configurations
         String storeTypeString, storeName;
         LOGGER.debug("Repository FilePath is:\t'{}'", configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue());
         storeName = (String) configMap.getArgTree().getGlobalArguments().getArgument("File Path").getValue();
         storeTypeString = (String) configMap.getArgTree().getGlobalArguments().getArgument("Repository Type").getValue();
+        
+        // Fetch and apply Mutex configurations
+        configureMutexPaths(configMap, storeName);
+        
+        // Configure Item store
         ItemStoreType storeType = ItemStoreType.get(storeTypeString);
         ItemStoreRepositoryUtility.initialize(storeType, storeName);
         ItemStoreRepositoryUtility.get().initServiceManager();
+    }
+    
+    
+    /**
+     * Configure paths under root directory, defaulting to
+     *  the path used for ItemStore repo
+     * 
+     * 
+     * @param configMap
+     * @param storeName
+     */
+    @SuppressWarnings("unchecked")
+    public static void configureMutexPaths(ClientConfigMap configMap, String storeName) {
+        
+        // Fetch mutex root directory
+        Path rootDir;
+        Argument<Path> arg = (Argument<Path>) 
+            configMap.getArgTree()
+            .getGlobalArguments().getArgument("Mutex Root Directory");
+        
+        // Use or default to item store repo
+        if ( arg != null ) {
+            rootDir = arg.getValue();
+        }
+        else {
+            rootDir = Paths.get(storeName).resolve("Mutex");
+        }
+        
+        // Apply paths
+        Path lockDir = rootDir.resolve("Host-Lock");
+        Path lockFile = lockDir.resolve("lock-file.lock");
+        
+        Path electionDir = rootDir.resolve("Queue");
+        Path electionFile = electionDir.resolve(MutexLabellingUtils.getNodeProcId() + ".lock");
+        
+        // Initialize mutex
+        MutexConstants.initializePaths(
+            lockDir, lockFile,
+            electionDir , electionFile,
+            rootDir
+        );
     }
 }

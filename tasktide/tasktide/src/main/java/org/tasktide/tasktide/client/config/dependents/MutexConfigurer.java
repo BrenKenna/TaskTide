@@ -28,6 +28,9 @@ import org.tasktide.parser.model.ArgumentType;
 
 // For JavaDocs
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
+import org.tasktide.mutex.utils.MutexConstants;
+import org.tasktide.mutex.utils.MutexLabellingUtils;
+import static org.tasktide.mutex.utils.MutexLabellingUtils.getNodeProcId;
 
 /**
  * Configure properties for the {@link MutexOrchestrator}
@@ -66,24 +69,9 @@ public class MutexConfigurer extends AbstractConfig {
      * Path constants
      * 
      */
-    @ConfigProperty(name = "tasktide.mutex.lockDir", defaultValue = "")
-    private Path lockDir;
-    
-    @ConfigProperty(name = "tasktide.mutex.lockFile", defaultValue = "")
-    private Path lockFile;
-    
-    @ConfigProperty(name = "tasktide.mutex.hostDir", defaultValue = "")
-    private Path hostDir;
-    
-    @ConfigProperty(name = "tasktide.mutex.hostFile", defaultValue = "")
-    private Path hostFile;
-    
-    @ConfigProperty(name = "tasktide.mutex.electionDir", defaultValue = "")
-    private Path electionDir;
-    
-    @ConfigProperty(name = "tasktide.mutex.electionFile", defaultValue = "")
-    private Path electionFile;
-    
+    @ConfigProperty(name = "tasktide.mutex.rootDir", defaultValue = "")
+    private Path rootDir;
+
     
     /**
      * Defaults {@link ArgumentTree} path to root
@@ -133,14 +121,46 @@ public class MutexConfigurer extends AbstractConfig {
         }
         
         // Configure path properties
-        this.lockDir();
-        this.lockFile();
-        this.electionDir();
-        this.electionFile();
-        this.hostDir();
-        this.hostFile();
+        this.rootDir();
     }
     
+    
+    /**
+     * Configure root directory
+     * 
+     */
+    public void rootDir() {
+    
+        // Initialize vars
+        String tmp;
+        Argument<String> arg;
+        
+        
+        // Build argument
+        arg = this.getArgumentBuilder()
+            .withName("Mutex Root Directory")
+            .withDescription("Configures root directory for mutex")
+            .withLongFlag("--mutex-root-dir")
+            .withShortFlag("-mrd")
+            .withArgType(ArgumentType.ACTION)
+        .build();
+        arg.setRefClass(String.class);
+        
+        // Fetch value if present
+        try {
+            tmp = this.getConfig().getValue("tasktide.mutex.rootDir", String.class);
+            this.rootDir = Paths.get(tmp);
+            arg.setValue(tmp);
+        
+        }
+        catch (Exception ex) {
+            arg.setValue(null);
+        }
+
+        // Handle setting value
+        this.getArgumentMap().putArgument(arg);
+    }
+
     
     /**
      * Sets retry interval
@@ -330,210 +350,6 @@ public class MutexConfigurer extends AbstractConfig {
         
         // Handle setting value
         arg.setValue(this.maxRandomLong);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Sets locking directory
-     */
-    public void lockDir() {
-        
-        // Initialize vars
-        String tmp;
-        Argument<Path> arg;
-        
-        // Fetch value if present
-        try {
-            tmp = this.getConfig().getValue("tasktide.mutex.lockDir", String.class);
-        }
-        catch (Exception ex) {
-            tmp = "ItemStore-Mutex";
-        }
-        
-        // Build argument
-        arg = this.getArgumentBuilder()
-            .withName("Locking Directory")
-            .withDescription("Configures central locking directory")
-            .withLongFlag("--lockDir")
-            .withShortFlag("-ld")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(Path.class);
-        
-        // Handle setting value
-        this.lockDir = Paths.get(tmp);
-        arg.setValue(this.lockDir);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Sets lock file
-     */
-    public void lockFile() {
-        
-        // Initialize vars
-        String tmp;
-        Argument<Path> arg;
-        
-        // Fetch value if present
-        try {
-            tmp = this.getConfig().getValue("tasktide.mutex.lockFile", String.class);
-        }
-        catch (Exception ex) {
-            tmp = "lock.lock";
-        }
-        
-        // Build argument
-        arg = this.getArgumentBuilder()
-            .withName("Locking File")
-            .withDescription("Configures central locking file")
-            .withLongFlag("--lockFile")
-            .withShortFlag("-lf")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(Path.class);
-        
-        // Handle setting value
-        this.lockFile = Paths.get(tmp);
-        arg.setValue(this.lockFile);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Sets lock file
-     */
-    public void hostDir() {
-        
-        // Initialize vars
-        String tmp;
-        Argument<Path> arg;
-        
-        // Fetch value if present
-        try {
-            tmp = this.getConfig().getValue("tasktide.mutex.hostDir", String.class);
-        }
-        catch (Exception ex) {
-            tmp = "hostDir";
-        }
-        
-        // Build argument
-        arg = this.getArgumentBuilder()
-            .withName("Host Directory")
-            .withDescription("Configures central host directory")
-            .withLongFlag("--hostDir")
-            .withShortFlag("-hd")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(Path.class);
-        
-        // Handle setting value
-        this.hostDir = Paths.get(tmp);
-        arg.setValue(this.hostDir);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Sets lock file
-     */
-    public void hostFile() {
-        
-        // Initialize vars
-        String tmp;
-        Argument<Path> arg;
-        
-        // Fetch value if present
-        try {
-            tmp = this.getConfig().getValue("tasktide.mutex.hostFile", String.class);
-        }
-        catch (Exception ex) {
-            tmp = "hostFile";
-        }
-        
-        // Build argument
-        arg = this.getArgumentBuilder()
-            .withName("Host File")
-            .withDescription("Configures central host file")
-            .withLongFlag("--hostFile")
-            .withShortFlag("-hf")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(Path.class);
-        
-        // Handle setting value
-        this.hostFile = Paths.get(tmp);
-        arg.setValue(this.hostFile);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Sets lock file
-     */
-    public void electionDir() {
-        
-        // Initialize vars
-        String tmp;
-        Argument<Path> arg;
-        
-        // Fetch value if present
-        try {
-            tmp = this.getConfig().getValue("tasktide.mutex.electionDir", String.class);
-        }
-        catch (Exception ex) {
-            tmp = "electionDir";
-        }
-        
-        // Build argument
-        arg = this.getArgumentBuilder()
-            .withName("Election Directory")
-            .withDescription("Configures central election directory")
-            .withLongFlag("--electionDir")
-            .withShortFlag("-ed")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(Path.class);
-        
-        // Handle setting value
-        this.electionDir = Paths.get(tmp);
-        arg.setValue(this.electionDir);
-        this.getArgumentMap().putArgument(arg);
-    }
-    
-    
-    /**
-     * Sets lock file
-     */
-    public void electionFile() {
-        
-        // Initialize vars
-        String tmp;
-        Argument<Path> arg;
-        
-        // Fetch value if present
-        try {
-            tmp = this.getConfig().getValue("tasktide.mutex.electionFile", String.class);
-        }
-        catch (Exception ex) {
-            tmp = "electionFile.lock";
-        }
-        
-        // Build argument
-        arg = this.getArgumentBuilder()
-            .withName("Election File")
-            .withDescription("Configures election file")
-            .withLongFlag("--electionFile")
-            .withShortFlag("-ef")
-            .withArgType(ArgumentType.ACTION)
-        .build();
-        arg.setRefClass(Path.class);
-        
-        // Handle setting value
-        this.electionFile = Paths.get(tmp);
-        arg.setValue(this.electionFile);
         this.getArgumentMap().putArgument(arg);
     }
     

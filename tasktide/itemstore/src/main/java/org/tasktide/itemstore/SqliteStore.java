@@ -258,7 +258,6 @@ public class SqliteStore extends AbstractItemStore {
         String query = 
         """
             CREATE TABLE IF NOT EXISTS Items(
-                Auto_Id INTEGER PRIMARY KEY AUTOINCREMENT,
                 Id TEXT UNIQUE NOT NULL,
                 State TEXT NOT NULL,
                 Collection TEXT NOT NULL,
