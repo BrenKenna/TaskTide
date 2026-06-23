@@ -41,7 +41,6 @@ import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.traversers.TraverserCheckedException;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.trackers.ExecutorServiceItem;
 
 
 /**
@@ -282,7 +281,7 @@ public class TaskTideEngineWorker {
             );
             this.tasks = new ArrayList<>();
             for ( int i = 0; i < this.policy.getPoolSize(); i++) {
-                LOGGER.info("Starting engine worker-'{}'", i);
+                LOGGER.info("Starting engine 'Worker-{}'", i);
                 Future<?> future = this.workerPool.submit( () -> {
                     try {
                         this.sampleAndTraverse();
