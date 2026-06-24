@@ -252,7 +252,6 @@ public class RocksDbStore extends AbstractItemStore {
         }
         
         try {
-            LOGGER.debug("Attempting insertion into ItemStrep: '{}'", db.getName());
             db.put(key, value);
         }
         catch (RocksDBException ex) {
@@ -279,11 +278,9 @@ public class RocksDbStore extends AbstractItemStore {
         this.openConn(target);
         switch (target) {
             case MASTER -> {
-                LOGGER.debug("Fetching master iter '{}' from:\t'{}'", target, this.getFilePath());
                 iter = this.fetchIter(this.master);
             }
             default -> {
-                LOGGER.debug("Fetching prototype iter from:\t'{}'", this.getFilePath());
                 iter = this.fetchIter(this.proto);
             }
         }
@@ -373,17 +370,14 @@ public class RocksDbStore extends AbstractItemStore {
             
             switch ( target ) {
                 case PROTOTYPE -> {
-                    LOGGER.debug("Attempting batch write into prototype");
                     proto.write(writeOptions, batch);
                 }
                 
                 case MASTER -> {
-                    LOGGER.debug("Attempting batch write into prototype");
                     master.write(writeOptions, batch);
                 }
                 
                 case BOTH -> {
-                    LOGGER.debug("Attempting batch write into master & prototype");
                     master.write(writeOptions, batch);
                     proto.write(writeOptions, batch);
                 }
@@ -406,11 +400,9 @@ public class RocksDbStore extends AbstractItemStore {
         byte[] data;
         switch ( target ) {
             case PROTOTYPE -> {
-                LOGGER.debug("Fetching record matching Id from Prototype:\t'{}'", id);
                 data = proto.get(id.getBytes());
             }
             default -> {
-                LOGGER.debug("Fetching record matching Id from Master:\t'{}'", id);
                 data = master.get(id.getBytes());
             }
         }
@@ -501,11 +493,9 @@ public class RocksDbStore extends AbstractItemStore {
         try {
             switch (target) {
                 case PROTOTYPE -> {
-                    LOGGER.debug("Deleting record matching Id from Prototype");
                     this.proto.delete(item.getId().getBytes());
                 }
                 case MASTER -> {
-                    LOGGER.debug("Deleting record matching Id from Master");
                     this.master.delete(item.getId().getBytes());
                 }
                 
@@ -534,7 +524,6 @@ public class RocksDbStore extends AbstractItemStore {
      */
     @Override
     public synchronized boolean closeConn(DbTarget target) {
-        LOGGER.debug("Closing connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {
                 this.releaseLock(true);
@@ -583,7 +572,6 @@ public class RocksDbStore extends AbstractItemStore {
      */
     @Override
     public synchronized boolean closeConn(DbTarget target, boolean releaseMutex) {
-        LOGGER.debug("Closing connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {
                 this.releaseLock(releaseMutex);
@@ -631,26 +619,18 @@ public class RocksDbStore extends AbstractItemStore {
      */
     @Override
     public synchronized boolean openConn(DbTarget target) {
-        LOGGER.debug("Openning connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {
                 try {
-                    LOGGER.debug("Waiting for lock");
                     this.waitForLock();
                     if ( this.master == null ) {
-                        LOGGER.debug("Lock acquired. Null master, openning connection");
                         this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        LOGGER.debug("Master is now '{}'", this.master);
-                        LOGGER.debug("Master state of open is '{}'", !this.master.isClosed());
                         return true;
                     }
                     if (master.isClosed()) {
-                        LOGGER.debug("Lock acquired. Closed mnaster, openning connection");
                         this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        LOGGER.debug("Master state of open is '{}'", !this.master.isClosed());
                         return true;
                     }
-                    LOGGER.debug("Lock acquired. Master is neither closed ir null");
                     return false;
                 }
                 catch (RocksDBException | InterruptedException | IOException ex) {
@@ -712,25 +692,17 @@ public class RocksDbStore extends AbstractItemStore {
         
         
     public synchronized boolean openConnNoElection(DbTarget target) {
-        
-        LOGGER.debug("Openning connection to:\t'{}'", target);
         switch (target) {
             case MASTER -> {
                 try {
                     if (this.master == null) {
-                        LOGGER.debug("Lock acquired. Null master, openning connection");
                         this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        LOGGER.debug("Master is now '{}'", this.master);
-                        LOGGER.debug("Master state of open is '{}'", !this.master.isClosed());
                         return true;
                     }
                     if (master.isClosed()) {
-                        LOGGER.debug("Lock acquired. Closed mnaster, openning connection");
                         this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        LOGGER.debug("Master state of open is '{}'", !this.master.isClosed());
                         return true;
                     }
-                    LOGGER.debug("Lock acquired. Master is neither closed ir null");
                     return false;
                 } catch (Exception ex) {
                     LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
@@ -804,6 +776,13 @@ public class RocksDbStore extends AbstractItemStore {
         }
         
         
+        /**
+         * Insert {@link Item} through session
+         * 
+         * @param item
+         * 
+         * @return boolean
+         */
         @Override
         public boolean insert(Item item) {
             try {
@@ -815,6 +794,14 @@ public class RocksDbStore extends AbstractItemStore {
             }
         }
 
+        
+        /**
+         * Fetch {@link Item} by Id
+         * 
+         * @param id
+         * 
+         * @return {@link Item} 
+         */
         @Override
         public Item getById(String id) {
             
@@ -833,6 +820,13 @@ public class RocksDbStore extends AbstractItemStore {
             }
         }
 
+        
+        /**
+         * Drop {@link Item} through session
+         * 
+         * @param item
+         * @return boolean
+         */
         @Override
         public boolean delete(Item item) {
             try {
@@ -846,6 +840,12 @@ public class RocksDbStore extends AbstractItemStore {
             }
         }
 
+        
+        /**
+         * Fetch all records through session
+         * 
+         * @return List-{@link Item}
+         */
         @Override
         public List<Item> getAll() {
             
@@ -867,6 +867,13 @@ public class RocksDbStore extends AbstractItemStore {
             return output;
         }
 
+        
+        /**
+         * Query by state field through session
+         * 
+         * @param state
+         * @return List-{@link Item}
+         */
         @Override
         public List<Item> getItemsByState(String state) {
             
@@ -891,6 +898,14 @@ public class RocksDbStore extends AbstractItemStore {
             return output;
         }
 
+        
+        /**
+         * Fetch payload for Id
+         * 
+         * @param id
+         * 
+         * @return String
+         */
         @Override
         public String getPayloadById(String id) {
             Item result = this.getById(id);
@@ -902,6 +917,14 @@ public class RocksDbStore extends AbstractItemStore {
             }
         }
         
+        
+        /**
+         * Batch import through session
+         * 
+         * @param items
+         * 
+         * @return boolean
+         */
         @Override
         public boolean importItems(List<Item> items) {
             int counter = 0;

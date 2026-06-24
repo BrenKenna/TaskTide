@@ -261,7 +261,7 @@ public class SqliteStore extends AbstractItemStore {
                 Id TEXT UNIQUE NOT NULL,
                 State TEXT NOT NULL,
                 Collection TEXT NOT NULL,
-                Payload TEXT NOT NULL
+                Payload JSON NOT NULL
             )
         """;
         try ( Statement stmt = conn.createStatement() ) {
