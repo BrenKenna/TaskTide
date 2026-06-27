@@ -270,6 +270,7 @@ public class TaskTideWebApi {
             return this.server.isStarting() || this.server.isRunning();
         }
         catch ( Exception ex ) {
+            LOGGER.error("Error starting web server:\n\n'{}'", ex);
             return false;
         }
     }
