@@ -60,7 +60,7 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
     private final URL jwksUrl;
     
     // Scheme type
-    private final SchemeType SCHEME_TYPE = SchemeType.OIDC;
+    private final AuthenticationSchemeType SCHEME_TYPE = AuthenticationSchemeType.OIDC;
     
 
     /**
@@ -90,10 +90,10 @@ public class OidcAuthenticationScheme implements AuthenticationScheme {
     /**
      * Get scheme type
      * 
-     * @return {@link SchemeType}
+     * @return {@link AuthenticationSchemeType}
      */
     @Override
-    public SchemeType getSchemeType() {
+    public AuthenticationSchemeType getSchemeType() {
         return this.SCHEME_TYPE;
     }
 

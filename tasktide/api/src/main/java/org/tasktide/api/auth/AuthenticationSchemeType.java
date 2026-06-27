@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  *
  * @author Bren
  */
-public enum SchemeType {
+public enum AuthenticationSchemeType {
 
     OIDC {
         @Override
@@ -38,7 +38,7 @@ public enum SchemeType {
         }
 
         @Override
-        public boolean isSchemeType(SchemeType query) {
+        public boolean isSchemeType(AuthenticationSchemeType query) {
             return this == query;
         }
     },
@@ -55,7 +55,7 @@ public enum SchemeType {
         }
 
         @Override
-        public boolean isSchemeType(SchemeType query) {
+        public boolean isSchemeType(AuthenticationSchemeType query) {
             return this == query;
         }
     },
@@ -72,7 +72,7 @@ public enum SchemeType {
         }
 
         @Override
-        public boolean isSchemeType(SchemeType query) {
+        public boolean isSchemeType(AuthenticationSchemeType query) {
             return this == query;
         }
     };
@@ -93,7 +93,7 @@ public enum SchemeType {
      * @param query
      * @return boolean
      */
-    public abstract boolean isSchemeType(SchemeType query);
+    public abstract boolean isSchemeType(AuthenticationSchemeType query);
 
 
     /**
@@ -103,7 +103,7 @@ public enum SchemeType {
      * @return >0/-1
      */
     public static int indexOf(String query) {
-        for (SchemeType elm : values()) {
+        for (AuthenticationSchemeType elm : values()) {
             if (elm.isSchemeType(query)) {
                 return elm.ordinal();
             }
@@ -123,7 +123,7 @@ public enum SchemeType {
             return false;
         }
 
-        for (SchemeType elm : values()) {
+        for (AuthenticationSchemeType elm : values()) {
             if (elm.isSchemeType(query)) {
                 return true;
             }
@@ -136,9 +136,9 @@ public enum SchemeType {
      * Map query to enum value
      *
      * @param query
-     * @return SchemeType
+     * @return AuthenticationSchemeType
      */
-    public static SchemeType get(String query) {
+    public static AuthenticationSchemeType get(String query) {
         int ind = indexOf(query);
         if (ind >= 0) {
             return values()[ind];

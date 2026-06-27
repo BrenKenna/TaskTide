@@ -34,6 +34,7 @@ import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.supporting.DateUtility;
 import org.tasktide.engine.executor.streamhandler.StreamHandler;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 
 
 /**
@@ -65,7 +66,7 @@ public class ProcessExecutor {
        @ConfigProperty(name = "task-tide.core.utils.expiration", defaultValue = "2") int expiration
     ) {
         this.id = "ProcessExecutor-" + UUID.randomUUID().toString();
-        this.logDir = Paths.get("logs", this.id);
+        this.logDir = WorkerUnitContainer.getInstance().getStreamPath().resolve(this.id);
         this.dateUtils = new DateUtility(dateFormat, expiration);
         this.streamHandler = new StreamHandler(
             this.logDir.resolve("stdout.log").toFile(),
@@ -79,7 +80,7 @@ public class ProcessExecutor {
      */
     public ProcessExecutor() {
         this.id = "ProcessExecutor-" + UUID.randomUUID().toString();
-        this.logDir = Paths.get("logs", this.id);
+        this.logDir = WorkerUnitContainer.getInstance().getStreamPath().resolve(this.id);
         this.dateUtils = new DateUtility("dd/MM/yy HH:mm:ss", 2);
         this.streamHandler = new StreamHandler(
             this.logDir.resolve("stdout.log").toFile(),

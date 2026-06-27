@@ -43,7 +43,7 @@ public class EmbeddedAuthenicationScheme implements AuthenticationScheme {
     private final JWSVerifier verifier;
     private SignedJWT jwt;
     
-    private final SchemeType SCHEME_TYPE = SchemeType.EMBEDDED;
+    private final AuthenticationSchemeType SCHEME_TYPE = AuthenticationSchemeType.EMBEDDED;
     
     
     /**
@@ -177,12 +177,12 @@ public class EmbeddedAuthenicationScheme implements AuthenticationScheme {
 
     
     /**
-     * Get {@link SchemeType}
+     * Get {@link AuthenticationSchemeType}
      * 
-     * @return {@link SchemeType}
+     * @return {@link AuthenticationSchemeType}
      */
     @Override
-    public SchemeType getSchemeType() {
+    public AuthenticationSchemeType getSchemeType() {
         return this.SCHEME_TYPE;
     }
     

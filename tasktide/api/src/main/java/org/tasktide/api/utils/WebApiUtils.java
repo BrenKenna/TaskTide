@@ -15,16 +15,15 @@
  */
 package org.tasktide.api.utils;
 
-import io.smallrye.jwt.build.Jwt;
-import jakarta.ws.rs.core.SecurityContext;
+import java.util.Base64;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PublicKey;
-
 import java.security.interfaces.RSAPublicKey;
 
-import java.util.Base64;
+import io.smallrye.jwt.build.Jwt;
+import jakarta.ws.rs.core.SecurityContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

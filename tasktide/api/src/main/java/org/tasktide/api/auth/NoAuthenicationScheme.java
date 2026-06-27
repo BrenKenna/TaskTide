@@ -25,7 +25,7 @@ package org.tasktide.api.auth;
 public class NoAuthenicationScheme implements AuthenticationScheme {
 
     // Scheme type
-    private final SchemeType SCHEME_TYPE = SchemeType.NONE;
+    private final AuthenticationSchemeType SCHEME_TYPE = AuthenticationSchemeType.NONE;
     
     /**
      * Default constructor
@@ -34,12 +34,12 @@ public class NoAuthenicationScheme implements AuthenticationScheme {
     
     
     /**
-     * Get {@link SchemeType}
+     * Get {@link AuthenticationSchemeType}
      * 
-     * @return {@link SchemeType}
+     * @return {@link AuthenticationSchemeType}
      */
     @Override
-    public SchemeType getSchemeType() {
+    public AuthenticationSchemeType getSchemeType() {
         return this.SCHEME_TYPE;
     }
 

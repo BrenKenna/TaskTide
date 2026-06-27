@@ -173,12 +173,10 @@ public class TaskTideWebApiTest {
         }
         LOGGER.info("Server status:\t'{}'", webApi.getState());
         
-        
-        
         String bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         Step step = BuilderUtility.buildStep("Test Step");
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("http://localhost:8080/services/step/add-step");
+        WebTarget target = client.target("http://localhost:8080/tasktide/api/services/step/add");
         LOGGER.info("Sending POST request to:\t'{}://{}'", target.getUri().getHost(), target.getUri().getPath());
         Response resp = target.request(MediaType.APPLICATION_JSON)
                 .header("Authorization", bearerToken)
@@ -218,8 +216,8 @@ public class TaskTideWebApiTest {
         String bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         Step step = BuilderUtility.buildStep("Test Step");
         Client client = ClientBuilder.newClient();
-        WebTarget target = client.target("http://localhost:8080/services/step/add-step");
-        LOGGER.info("Sending POST request to:\t'{}://{}'", target.getUri().getHost(), target.getUri().getPath());
+        WebTarget target = client.target("http://localhost:8080/tasktide/api/services/step/add");
+        LOGGER.info("Sending POST request to:\t'http://localhost:8080/tasktide/api/services/step/add'");
         Response resp = target.request(MediaType.APPLICATION_JSON)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
@@ -251,7 +249,7 @@ public class TaskTideWebApiTest {
         while ( !webApi.getState().equals("STARTED") ) {
             LOGGER.info("Waiting for web server to start state:\n'{}'", webApi.getState());
         }
-        LOGGER.info("Server status:\t'{}'\n\nbear Token Eval:\t'{}'", webApi.getState(), WebApiUtils.getEvalState());
+        LOGGER.info("Server status:\t'{}'", webApi.getState());
 
         // Shutdown hook
         Runtime.getRuntime().addShutdownHook( new Thread( () -> {

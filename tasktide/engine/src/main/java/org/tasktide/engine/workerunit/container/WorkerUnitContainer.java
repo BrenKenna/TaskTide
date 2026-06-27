@@ -15,7 +15,13 @@
  */
 package org.tasktide.engine.workerunit.container;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.ExecutorService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 
@@ -46,6 +52,7 @@ import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
 public class WorkerUnitContainer {
     
     // Constructed attributes
+    private final Logger LOGGER = LogManager.getLogger(WorkerUnitContainer.class);
     private static WorkerUnitContainer INSTANCE;
     private final TaskTideWorkerUnitProvider unitProvider;
     
@@ -64,6 +71,8 @@ public class WorkerUnitContainer {
     private TaskTideExecutor<ItemTask> itemTaskExecutor;
     private ProcessExecutor processExecutor;
     
+    // Stream directory
+    private Path STREAM_DIR;
     
     // Job environment Id
     private String JOB_ENV_ID;
@@ -411,6 +420,52 @@ public class WorkerUnitContainer {
             default -> {
                 throw new TaskTideEngineUncheckedException("No valid executor service provided");
             }
+        }
+    }
+    
+    
+    /**
+     * Get configured Path for ProcessExecutor
+     *  streams, defaulting to current directory
+     *  under 'tasktide-process-executor-streams'
+     * 
+     * @return Path
+     */
+    public Path getStreamPath() {
+        if ( this.STREAM_DIR != null ) {
+            return this.STREAM_DIR;
+        }
+        
+        else {
+            LOGGER.warn("Warning Stream Path not configured defaulting to current directory:\t'{}'", Paths.get("").toAbsolutePath());
+            return this.STREAM_DIR = Paths.get("").toAbsolutePath().resolve("tasktide-process-executor-streams");
+        }
+    }
+    
+    
+    public void configureStreamPath(String pathString) throws TaskTideEngineCheckedException {
+        if ( this.STREAM_DIR != null ) {
+            throw new TaskTideEngineCheckedException("ProcessExecutor Stream Path already configured");
+        }
+        else {
+            Path path = Paths.get(pathString);
+            if ( !Files.exists(path) ) {
+                try {
+                    Files.createDirectories(path);
+                    LOGGER.info(
+                        "Created '{}' for ProcessExecutor Stream Path:\t'{}'",
+                        pathString
+                    );
+                }
+                catch ( IOException ex ) {
+                    LOGGER.error(
+                        "Unable to configure '%s' as ProcessExecutor Stream Path:\t'%s'",
+                        pathString, ex
+                    );
+                    throw new TaskTideEngineCheckedException(ex.getMessage());
+                }
+            }
+            LOGGER.info("Process Executor Stream Path configured for:\t'{}'", pathString);
         }
     }
 }

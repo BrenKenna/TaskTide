@@ -66,6 +66,14 @@ public class EngineConfig extends AbstractConfig {
     
     
     /**
+     * Process Executor stream directory
+     * 
+     */
+    @ConfigProperty(name = "tasktide.engine.process-executor.stream-directory", defaultValue = "batch")
+    String processExecutorStreamDirectory;
+    
+    
+    /**
      * Worker Params
      * 
      */
@@ -138,6 +146,8 @@ public class EngineConfig extends AbstractConfig {
         this.pilotLabelAnnotation();
         this.executionPolicy();
         
+        this.processExecutorStreamDirectory();
+        
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
         }
@@ -161,6 +171,28 @@ public class EngineConfig extends AbstractConfig {
             .withArgType(ArgumentType.ACTION)
             .withValue(false, Boolean.class)
         .build();
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configures Stream Directory for ProcessExecutor
+     * 
+     */
+    public void processExecutorStreamDirectory() {
+        Argument<String> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Process Executor Stream Directory")
+            .withDescription("Log stream directory for Process Executor")
+            .withShortFlag("-sd")
+            .withLongFlag("--stream-directory")
+            .withArgType(ArgumentType.ACTION)
+            .withRefClass(String.class)
+        .build();
+        
+        this.processExecutorStreamDirectory = this.getConfigValue("tasktide.engine.process-executor.stream-directory", String.class, null);
+        arg.setValue(this.processExecutorStreamDirectory);
+        
         this.getArgumentMap().putArgument(arg);
     }
     

@@ -30,11 +30,11 @@ public interface AuthenticationScheme {
     
     
     /**
-     * Provide {@link SchemeType} of implementing class
+     * Provide {@link AuthenticationSchemeType} of implementing class
      * 
-     * @return {@link SchemeType}
+     * @return {@link AuthenticationSchemeType}
      */
-    public SchemeType getSchemeType();
+    public AuthenticationSchemeType getSchemeType();
     
     
     /**

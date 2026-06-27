@@ -40,6 +40,11 @@ import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 import org.tasktide.api.auth.AuthenicationFilter;
+import org.tasktide.api.auth.AuthenticationException;
+import org.tasktide.api.auth.AuthenticationScheme;
+import org.tasktide.api.auth.AuthenticationSchemeContainer;
+import org.tasktide.api.auth.AuthenticationSchemeFactory;
+import org.tasktide.api.auth.AuthenticationSchemeType;
 
 
 /**
@@ -59,6 +64,9 @@ public class TaskTideWebApi {
     private Config config;
     private ResourceConfig resourceConfig;
     
+    private AuthenticationSchemeType authSchemeType;
+    private AuthenticationScheme authScheme;
+    
     // SSL Attributes
     private boolean sslEnabled = false;
     private String PEM;
@@ -69,12 +77,13 @@ public class TaskTideWebApi {
      * 
      * @param host
      * @param port
-     * @param basePath 
+     * @param basePath
      */
     public TaskTideWebApi(String host, int port, String basePath) {
         this.host = host;
         this.port = port;
         this.basePath = basePath;
+        this.authSchemeType = AuthenticationSchemeType.NONE;
         this.applyOverrides();
     }
     
@@ -91,6 +100,7 @@ public class TaskTideWebApi {
         this.host = host;
         this.port = port;
         this.basePath = basePath;
+        this.authSchemeType = AuthenticationSchemeType.NONE;
         if ( shouldApplyOverrides ) {
             this.applyOverrides();
         }
@@ -114,6 +124,13 @@ public class TaskTideWebApi {
             .getOptionalValue("tasktide.web-api.base-path", String.class)
         .orElse("/");
         
+        // Configure authentication scheme
+        String authString = config
+            .getOptionalValue("tasktide.web-api.auth-scheme", String.class)
+        .orElse("None");
+        this.authSchemeType = AuthenticationSchemeType.get(authString);
+        this.configureAuthenticationScheme();
+        
         this.PEM = config
             .getOptionalValue("tasktide.web-api.tls.pem", String.class)
         .orElse("");
@@ -135,6 +152,49 @@ public class TaskTideWebApi {
         this.basePath = config
             .getOptionalValue("tasktide.web-api.base-path", String.class)
         .orElse("/");
+        
+        // Configure authentication scheme
+        String authString = config
+            .getOptionalValue("tasktide.web-api.auth-scheme", String.class)
+        .orElse("None");
+        this.authSchemeType = AuthenticationSchemeType.get(authString);
+        this.configureAuthenticationScheme();
+        
+    }
+    
+    
+    /**
+     * Configures {@link AuthenticationScheme}
+     * 
+     */
+    private void configureAuthenticationScheme() {
+    
+        // Fetch authenication scheme for configured type
+        LOGGER.info("fetching authentication scheme for configured type:\t'{}'", this.authSchemeType);
+        switch ( this.authSchemeType ) {
+        
+            case NONE -> {
+                LOGGER.info("Configuring with no authentication scheme");
+                this.authScheme = AuthenticationSchemeFactory.createNoAuthenticationScheme();
+            }
+            
+            case EMBEDDED -> {
+                LOGGER.info("Configuring with embedded authentication scheme");
+                this.authScheme = AuthenticationSchemeFactory.createEmbeddedAuthenicationScheme();
+            }
+            
+            default -> {
+                LOGGER.info("Defaulting to no authentication scheme");
+                this.authScheme = AuthenticationSchemeFactory.createNoAuthenticationScheme();
+            }
+        }
+        
+        // Set container value bypassing exception as this is the entrypoing
+        try {
+            AuthenticationSchemeContainer.configureAuthenticationSchemeProvider(authScheme);
+        }
+        catch ( Exception ex ) {}
+        
     }
     
     

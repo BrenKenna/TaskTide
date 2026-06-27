@@ -85,7 +85,10 @@ public class StreamHandler {
         // Otherwise zip and report on token
         else {
             Path zipFile = this.zipFiles();
-            String msg = String.format("stderr saved to ", zipFile.toFile().getAbsolutePath());
+            String msg = String.format(
+                "Std/Stderr logs saved to:\t'%s'",
+                zipFile.toFile().getAbsolutePath()
+            );
             String[] logArr = { msg };
             this.setStderrArr(logArr);
             this.setStdoutArr(logArr);
@@ -114,12 +117,10 @@ public class StreamHandler {
      */
     public Path zipFiles() throws IOException {
         Path zipFile = this.logDir.resolve("logs.zip");
-        
         ZipOutputStream zos = new ZipOutputStream(Files.newOutputStream(zipFile));
         this.addToZip(zos, stdout.toPath(), "stdout.log");
         this.addToZip(zos, stderr.toPath(), "stderr.log");
         zos.close();
-        
         return zipFile;
     }
     

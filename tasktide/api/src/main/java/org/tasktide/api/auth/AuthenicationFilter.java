@@ -17,7 +17,6 @@ package org.tasktide.api.auth;
 
 import jakarta.annotation.Priority;
 
-import jakarta.inject.Inject;
 
 import jakarta.ws.rs.Priorities;
 
@@ -27,6 +26,9 @@ import jakarta.ws.rs.container.ContainerRequestFilter;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.SecurityContext;
 import jakarta.ws.rs.ext.Provider;
+import java.util.HashSet;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -37,10 +39,8 @@ import jakarta.ws.rs.ext.Provider;
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class AuthenicationFilter implements ContainerRequestFilter {
-
-    @Inject
-    AuthenticationScheme scheme;
-
+    
+    private static final Logger LOGGER = LogManager.getLogger(AuthenicationFilter.class);
     
     /**
      * Blanket abort method for container requests
@@ -63,6 +63,23 @@ public class AuthenicationFilter implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext ctx) {
 
+        // Handle authentication scheme
+        AuthenticationScheme scheme;
+        LOGGER.info("Processing incoming request");
+        try {
+            scheme = AuthenticationSchemeContainer.getAuthenticationScheme();
+        }
+        catch (AuthenticationException ex) {
+            LOGGER.warn("Unable to detect authentication scheme, defaulting to none");
+            scheme = AuthenticationSchemeFactory.createNoAuthenticationScheme();
+        }
+        
+        // Bypass if no authentication is required
+        if ( scheme.getSchemeType().isSchemeType(AuthenticationSchemeType.NONE) ) {
+            LOGGER.info("Bypassing authentication");
+            this.setEmptyPrincipal(ctx);
+            return;
+        }
         
         // Verify authorization header
         if ( !AuthUtils.checkAuthorizationHeader(ctx) ) {
@@ -78,8 +95,20 @@ public class AuthenicationFilter implements ContainerRequestFilter {
         }
 
         // Validate authenication principal from auth token
+        this.processAuthenticationScheme(ctx, scheme, token);
+    }
+    
+    
+    /**
+     * Process {@link AuthenticationScheme}
+     * 
+     * @param ctx
+     * @param scheme
+     * @param token 
+     */
+    private void processAuthenticationScheme(ContainerRequestContext ctx, AuthenticationScheme scheme, String token) {
         try {
-
+            
             // Fetch verified principal for app to use
             AuthPrincipal principal =
                 scheme.authenticate(token);
@@ -98,5 +127,17 @@ public class AuthenicationFilter implements ContainerRequestFilter {
         } catch (AuthenticationException ex) {
             abort(ctx);
         }
+    }
+    
+    
+    /**
+     * Set empty principal
+     * 
+     * @param ctx 
+     */
+    private void setEmptyPrincipal(ContainerRequestContext ctx) {
+        AuthPrincipal principal = new AuthPrincipal("", new HashSet<>());
+        JwtSecurityContext jwt = new JwtSecurityContext(principal, true, new HashSet<>());
+        ctx.setSecurityContext(jwt);
     }
 }
