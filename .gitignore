@@ -15,11 +15,9 @@ tasktide/use-cases/task-binding-use-case/Early-Task-Binding/tasktide-0.9.0/
 tasktide/use-cases/task-binding-use-case/FunctionRunner/build/
 .gitignore
 tasktide/use-cases/task-binding-use-case/FunctionRunner/Deployment/FunctionRunner*
-tasktide/docs/Diagrams/~$Diagrams.pptx
-tasktide/itemstore/rocksDB/
-tasktide/itemstore/sqlite/
 tasktide/itemstore/ConcurrencyTests/
 tasktide/mutex/ItemStore-Mutex/multi-process-lock-release-queue.log
 tasktide/use-cases/deployment-use-case/tasktide-service/tasktide-0.9.5.zip
 tasktide/use-cases/deployment-use-case/tasktide-service/tasktide.zip
 tasktide/use-cases/deployment-use-case/tasktide-service/couchdb_data/
+tasktide/use-cases/deployment-use-case/tasktide-service/tasktide_data/

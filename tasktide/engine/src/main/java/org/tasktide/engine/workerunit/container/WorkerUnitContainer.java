@@ -19,9 +19,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.util.concurrent.ExecutorService;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.manager.TaskTideManagerUtility;
 
@@ -448,13 +451,19 @@ public class WorkerUnitContainer {
             throw new TaskTideEngineCheckedException("ProcessExecutor Stream Path already configured");
         }
         else {
-            Path path = Paths.get(pathString);
+            Path path;
+            if ( pathString == null ) {
+                path = Paths.get("").toAbsolutePath().resolve("tasktide-process-executor-streams");
+            }
+            else {
+                path = Paths.get(pathString);
+            }
             if ( !Files.exists(path) ) {
                 try {
                     Files.createDirectories(path);
                     LOGGER.info(
                         "Created '{}' for ProcessExecutor Stream Path:\t'{}'",
-                        pathString
+                        path.toAbsolutePath().toString()
                     );
                 }
                 catch ( IOException ex ) {
@@ -465,7 +474,6 @@ public class WorkerUnitContainer {
                     throw new TaskTideEngineCheckedException(ex.getMessage());
                 }
             }
-            LOGGER.info("Process Executor Stream Path configured for:\t'{}'", pathString);
         }
     }
 }

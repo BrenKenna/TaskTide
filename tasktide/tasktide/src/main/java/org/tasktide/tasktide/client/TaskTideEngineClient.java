@@ -190,6 +190,10 @@ public class TaskTideEngineClient extends TaskTideClient {
      */
     public void configureWorkerContainer() throws TaskTideEngineCheckedException {
     
+        // Configure Process Executor Stream Path
+        String pathString = (String) this.engineArgs.getArgument("Process Executor Stream Directory").getValue();
+        this.workerContainer.configureStreamPath(pathString);
+        
         // Set thread pool sizes
         LOGGER.info("Configuring taskTideEngineWorkerContainer components");
         this.engineWorkerThreads = (int) this.engineArgs.getArgument("Worker Pool Size").getValue();
@@ -208,10 +212,6 @@ public class TaskTideEngineClient extends TaskTideClient {
         // Configure traversers
         this.workerContainer.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
         this.workerContainer.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
-        
-        // Configure Process Executor Stream Path
-        String pathString = (String) this.engineArgs.getArgument("Process Executor Stream Directory").getValue();
-        this.workerContainer.configureStreamPath(pathString);
     }
     
     
