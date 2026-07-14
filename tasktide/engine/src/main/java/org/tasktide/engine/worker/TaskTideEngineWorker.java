@@ -184,11 +184,31 @@ public class TaskTideEngineWorker {
      * @return List-{@link WorkItem}
      */
     private List<WorkItem> sampleWorkload() {
+        
+        // Fetch workload
         List<WorkItem> workload = new ArrayList<>(this.policy.fetchWorkload());
+        
+        // Log empty workload
+        if ( workload.isEmpty() ) {
+            LOGGER.info(
+                "No more available tasks detected for EngineWorker '{}' ceasing",
+                Thread.currentThread().getName()
+            );
+            return workload;
+        }
+        
+        // Shuffle workload
         if ( workload.size() > 1 ) {
+            LOGGER.info("Shuffling workload before processing");
             Collections.shuffle(workload);
         }
+        
+        // Fetch a slice for processing
         if ( workload.size() > this.windowSize ) {
+            LOGGER.info(
+                "Processing retrieved workload of size '{}'",
+                workload.size()
+            );
             if ( this.windowSize > 1 ) {
                 LOGGER.info(
                     "Sampling '{}' tasks from available pool '{}'",
@@ -197,7 +217,8 @@ public class TaskTideEngineWorker {
                 return workload.subList(0, windowSize);
             }
         }
-        LOGGER.info("Processing retrieved workload of size '{}'", workload.size());
+        
+        // Return workload
         return workload;
     }
     
@@ -211,7 +232,7 @@ public class TaskTideEngineWorker {
     private void sampleAndTraverse() throws TaskTideEngineCheckedException {
         
         // Process each step in order provided
-        LOGGER.info("Configuring WorkItem-Traverser for processing");
+        LOGGER.info("Configuring WorkItem-Traverser");
         TaskTideWorkloadTraverser<WorkItem> traverser =
             this.engineComponents
             .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM);
@@ -293,13 +314,13 @@ public class TaskTideEngineWorker {
                 });
                 WorkerTask task = new WorkerTask("Task-" + i, future);
                 this.tasks.add(task);
-                LOGGER.info("Engine 'Worker-{}' started, caching for reference", i);
+                LOGGER.info("Engine 'Worker-{}' started", i);
                 TaskTideEngineUtility.waitSeconds( RAND.nextInt(0, 11) );
             }
             
             // Wait for them to finish
             LOGGER.info(
-                "Waiting on '{}' to process window sizes of '{}'",
+                "Waiting on '{}' tasks across window sizes of '{}'",
                 this.tasks.size(), this.windowSize
             );
             int counter = 0;

@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 // For JavaDocs
 import org.tasktide.engine.executor.ProcessExecutor;
@@ -41,6 +43,7 @@ import org.tasktide.engine.executor.ProcessExecutor;
 public class StreamHandler {
     
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(StreamHandler.class);
     private final Path logDir;
     private final File stdout, stderr;
     private String[] stderrArr, stdoutArr;
@@ -103,9 +106,19 @@ public class StreamHandler {
      * @throws IOException 
      */
     public long measureSizes() throws IOException {
-        long output = Files.size(stdout.toPath());
-        output += Files.size(stderr.toPath());
-        return output;
+        try {
+            long output = Files.size(stdout.toPath());
+            output += Files.size(stderr.toPath());
+            return output;
+        }
+        
+        catch (Exception ex) {
+            LOGGER.error(
+                "Unable to determine stdout/stderr sizes, skipping check with below error:\n\n{}",
+                ex
+            );
+            return 0L;
+        }
     }
     
     

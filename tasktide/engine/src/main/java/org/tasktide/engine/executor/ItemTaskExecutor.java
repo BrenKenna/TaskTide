@@ -82,7 +82,7 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
         //synchronized ( this.observer ) {
             this.observer.onTaskProcessing(task);
         //}
-        taskLog = processExecutor.execute(task.getTask());
+        taskLog = processExecutor.execute(task.getTask(), task.getId());
         task.setTaskLog(taskLog);
 
         // Handle logging execution state

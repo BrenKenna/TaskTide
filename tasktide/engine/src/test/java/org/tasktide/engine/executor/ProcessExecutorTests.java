@@ -76,7 +76,7 @@ public class ProcessExecutorTests {
         taskScript = "ping google.com";
         try {
             LOGGER.info("Processing task:\t'{}'", taskScript);
-            proc = procExec.executeScript(taskScript);
+            proc = procExec.executeScript(taskScript, "ping-task");
             LOGGER.info("Task processing complete with exit code '{}'", proc.exitValue());
             assertionState = true;
         }
@@ -112,7 +112,7 @@ public class ProcessExecutorTests {
         taskScript = "hostname";
         try {
             LOGGER.info("Processing task:\t'{}'", taskScript);
-            proc = procExec.executeScript(taskScript);
+            proc = procExec.executeScript(taskScript, "hostname-task");
             LOGGER.info("Task processing complete with exit code '{}'", proc.exitValue());
             assertionState = true;
         }
@@ -148,7 +148,7 @@ public class ProcessExecutorTests {
         taskScript = "ping google.com";
         try {
             LOGGER.info("Processing task:\t'{}'", taskScript);
-            taskLog = procExec.execute(taskScript);
+            taskLog = procExec.execute(taskScript, "ping-task");
             LOGGER.info("Task processing complete with exit code '{}'", taskLog.toJsonDoc());
             assertionState = true;
         }

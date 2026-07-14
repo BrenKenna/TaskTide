@@ -21,3 +21,6 @@ tasktide/use-cases/deployment-use-case/tasktide-service/tasktide-0.9.5.zip
 tasktide/use-cases/deployment-use-case/tasktide-service/tasktide.zip
 tasktide/use-cases/deployment-use-case/tasktide-service/couchdb_data/
 tasktide/use-cases/deployment-use-case/tasktide-service/tasktide_data/
+tasktide/use-cases/deployment-use-case/tasktide-service/mario-data/
+tasktide/use-cases/deployment-use-case/sif/
+*.log

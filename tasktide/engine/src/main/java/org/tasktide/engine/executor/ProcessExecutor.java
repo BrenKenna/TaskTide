@@ -46,10 +46,10 @@ public class ProcessExecutor {
     
     // Attributes
     private final String id;
-    private final Path logDir;
+    private Path logDir;
     private final Logger LOGGER = LogManager.getLogger(ProcessExecutor.class);
     private final DateUtility dateUtils;
-    private final StreamHandler streamHandler;
+    private StreamHandler streamHandler;
     private String processWrapper;
     private boolean escapeStrings;
     
@@ -67,10 +67,6 @@ public class ProcessExecutor {
         this.id = "ProcessExecutor-" + UUID.randomUUID().toString();
         this.logDir = WorkerUnitContainer.getInstance().getStreamPath().resolve(this.id);
         this.dateUtils = new DateUtility(dateFormat, expiration);
-        this.streamHandler = new StreamHandler(
-            this.logDir.resolve("stdout.log").toFile(),
-            this.logDir.resolve("stderr.log").toFile()
-        );
     }
     
     
@@ -81,10 +77,7 @@ public class ProcessExecutor {
         this.id = "ProcessExecutor-" + UUID.randomUUID().toString();
         this.logDir = WorkerUnitContainer.getInstance().getStreamPath().resolve(this.id);
         this.dateUtils = new DateUtility("dd/MM/yy HH:mm:ss", 2);
-        this.streamHandler = new StreamHandler(
-            this.logDir.resolve("stdout.log").toFile(),
-            this.logDir.resolve("stderr.log").toFile()
-        );
+        
     }
 
     
@@ -117,14 +110,41 @@ public class ProcessExecutor {
     
     
     /**
+     * Configure log directory using provided label
+     *  under configured stream path
+     * 
+     * @param label
+     * @throws IOException 
+     */
+    private void configureLog(String label) throws IOException {
+    
+        // Extend log dir for label
+        this.logDir = WorkerUnitContainer.getInstance().getStreamPath().resolve(this.id);
+        this.logDir = this.logDir.resolve(label);
+        
+        // Create log directory
+        Files.createDirectories(this.logDir);
+        
+        // Configure stream handler
+        this.streamHandler = new StreamHandler(
+            this.logDir.resolve("stdout.log").toFile(),
+            this.logDir.resolve("stderr.log").toFile()
+        );
+    }
+    
+    
+    /**
      * Executes the provided script through Java Lang ProcessBuilder
      * 
      * @param script
+     * @param label
+     * 
      * @return Process
+     * 
      * @throws IOException
      * @throws InterruptedException 
      */
-    public Process executeScript(String script) throws IOException, InterruptedException {
+    public Process executeScript(String script, String label) throws IOException, InterruptedException {
         
         // Initialize vars
         Process proc;
@@ -132,6 +152,7 @@ public class ProcessExecutor {
         ProcessBuilder procBuild;
         
         // Fetch output log sinks
+        this.configureLog(label);
         stdout = this.fetchStdoutLog().toFile();
         stderr = this.fetchStderrLog().toFile();
         
@@ -152,12 +173,13 @@ public class ProcessExecutor {
      * Run provided command returning {@link TaskLogging} 
      * 
      * @param command
+     * @param label
      * @return {@link TaskLogging}
      * <br><br>
      * @throws IOException
      * @throws InterruptedException 
      */
-    public TaskLogging execute(String command) throws IOException, InterruptedException {
+    public TaskLogging execute(String command, String label) throws IOException, InterruptedException {
         
         // Intialize vars
         LOGGER.debug("Beginning execution of task:\t" + command);
@@ -171,7 +193,7 @@ public class ProcessExecutor {
         try {
             
             // Execute and log completion
-            process = this.executeScript(command);
+            process = this.executeScript(command, label);
             LOGGER.debug("Execution complete for task:\t" + command);
             
             // Build process log from logs
@@ -229,7 +251,7 @@ public class ProcessExecutor {
         String[] stdout, stderr;
         this.streamHandler.handleLogs();
         stdout = this.streamHandler.getStdoutArr();
-        stderr = this.streamHandler.getStdoutArr();
+        stderr = this.streamHandler.getStderrArr();
         return BuilderUtility.buildProcessLog(stdout, stderr);
     }
 
