@@ -18,7 +18,7 @@ package org.tasktide.engine.policies.resources;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.supporting.Utils;
 
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.AbstractAcquisitionPolicy;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
@@ -37,27 +37,26 @@ public class ResourcePolicyMapper {
      * Fetch {@link AcquisitionPolicyJsonResource} representation
      *  of {@link AbstractAcquisitionPolicy}
      * 
-     * @param <T> of {@link TaskTideModel}
      * @param policy
      * @return AcquisitionPolicyJsonResource of {@link TaskTideModel}
      */
     public static
-        <T extends TaskTideModel<T>> AcquisitionPolicyJsonResource<T>
-    toJsonResource(AbstractAcquisitionPolicy<T> policy) {
+        AcquisitionPolicyJsonResource
+    toJsonResource(AbstractAcquisitionPolicy policy) {
         
         // Sets policy Id
         String policyId = Utils.getRandomUUID();
         
         // Returns policy as resouce
-        return new AcquisitionPolicyJsonResource<>(
+        return new AcquisitionPolicyJsonResource(
             policyId,
-            policy.getClassRef().getSimpleName(),
+            policy.getPolicyMode().name(),
             policy.getTarget(),
             policy.getState(),
             policy.getAnnoKey(),
             policy.getAnnoVal(),
             policy.getAnno(),
-            policy.isTargetted(),
+            policy.isTargeted(),
             policy.isStringAnnotated(),
             policy.isCustomAnnotated()
         );
@@ -69,19 +68,18 @@ public class ResourcePolicyMapper {
      *  from provided {@link AcquisitionPolicyJsonResource} and 
      *  ResourcePolicyModelType for valid {@link TaskTideModel}
      * 
-     * @param <T> of {@link TaskTideModel}
      * @param resource
      * @param type
      * 
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
     public static
-        <T extends TaskTideModel<T>> TaskTideWorkloadAcquisitionPolicy
+        TaskTideWorkloadAcquisitionPolicy
     fromJsonResource( AcquisitionPolicyJsonResource resource, ResourcePolicyModelType type) {
         switch ( type ) {
         
             case WORKITEM -> {
-                return WorkItemAcquisitionPolicy
+                return TargetedAcquisitionPolicy
                     .newInstance()
                     .withTarget(resource.getTarget())
                     .withItemState(resource.getState())

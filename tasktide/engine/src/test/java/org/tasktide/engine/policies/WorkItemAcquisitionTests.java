@@ -120,11 +120,11 @@ public class WorkItemAcquisitionTests {
         int nExpected = 4;
         boolean assertionState;
         List<WorkItem> workload;
-        TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
+        TaskTideWorkloadAcquisitionPolicy policy;
         
         // Build acquisition policy
         LOGGER.info("Constructing policy for target step:\t'{}'", this.STEP);
-        policy = WorkItemAcquisitionPolicy
+        policy = TargetedAcquisitionPolicy
             .newInstance()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
@@ -166,11 +166,11 @@ public class WorkItemAcquisitionTests {
         int nExpected = 4;
         boolean assertionState;
         List<WorkItem> workload;
-        TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
+        TaskTideWorkloadAcquisitionPolicy policy;
         
         // Build acquisition policy
         LOGGER.info("Constructing policy for target step:\t'{}'", step);
-        policy = WorkItemAcquisitionPolicy
+        policy = TargetedAcquisitionPolicy
             .newInstance()
             .withTarget("Ping Tests")
             .withItemState(ItemState.TODO)

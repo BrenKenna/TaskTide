@@ -52,7 +52,7 @@ import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 
 
 /**
@@ -122,11 +122,11 @@ public class ItemTaskTraverserTests {
     public List<WorkItem> fetchWorkload() {
     
         // Initialize vars
-        TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
+        TaskTideWorkloadAcquisitionPolicy policy;
         List<WorkItem> workload;
         
         // Build policy & fetch workload
-        policy = WorkItemAcquisitionPolicy
+        policy = TargetedAcquisitionPolicy
             .newInstance()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)

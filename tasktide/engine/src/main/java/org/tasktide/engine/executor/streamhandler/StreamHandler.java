@@ -62,6 +62,13 @@ public class StreamHandler {
     }
 
     
+    /**
+     * Measures log file size less than 1MB is stored
+     *  in DB, otherwise file is retained and logged on
+     *  database
+     * 
+     * @throws IOException 
+     */
     public void handleLogs() throws IOException {
     
         // Measure file sizes

@@ -31,10 +31,9 @@ import org.tasktide.engine.policies.AbstractAcquisitionPolicy;
 /**
  * Data object for representing {@link AbstractAcquisitionPolicy}
  *
- * @param <T> of {@link TaskTideModel}
  * @author Bren
  */
-public class AcquisitionPolicyJsonResource<T extends TaskTideModel<T>> {
+public class AcquisitionPolicyJsonResource {
     
     // JSON String handlers
     private final Jsonb JSON_BUILDER = JsonbBuilder.create();
@@ -63,7 +62,7 @@ public class AcquisitionPolicyJsonResource<T extends TaskTideModel<T>> {
     protected CustomAnnotation anno;
     
     @JsonbProperty("Target Set")
-    protected boolean targetted;
+    protected boolean targeted;
     
     @JsonbProperty("Annotation String Set")
     protected boolean annoString;
@@ -81,7 +80,7 @@ public class AcquisitionPolicyJsonResource<T extends TaskTideModel<T>> {
         @JsonbProperty("Annotation Key") String annoKey,
         @JsonbProperty("Annotation Value") Object annoVal,
         @JsonbProperty("CustomAnnotation") CustomAnnotation anno,
-        @JsonbProperty("Target Set") boolean targetted,
+        @JsonbProperty("Target Set") boolean targeted,
         @JsonbProperty("Annotation String") boolean annoString,
         @JsonbProperty("Custom Annotation Set") boolean annotation
     ) {
@@ -92,7 +91,7 @@ public class AcquisitionPolicyJsonResource<T extends TaskTideModel<T>> {
         this.annoKey = annoKey;
         this.annoVal = annoVal;
         this.anno = anno;
-        this.targetted = targetted;
+        this.targeted = targeted;
         this.annoString = annoString;
         this.annotation = annotation;
     }
@@ -133,7 +132,7 @@ public class AcquisitionPolicyJsonResource<T extends TaskTideModel<T>> {
             ", annoKey=" + annoKey +
             ", annoVal=" + annoVal +
             ", anno=" + anno +
-            ", targetted=" + targetted +
+            ", targeted=" + targeted +
             ", annoString=" + annoString +
             ", annotation=" + annotation +
         '}';
@@ -201,12 +200,12 @@ public class AcquisitionPolicyJsonResource<T extends TaskTideModel<T>> {
         this.anno = anno;
     }
 
-    public boolean isTargetted() {
-        return targetted;
+    public boolean isTargeted() {
+        return targeted;
     }
 
-    public void setTargetted(boolean targetted) {
-        this.targetted = targetted;
+    public void setTargeted(boolean targeted) {
+        this.targeted = targeted;
     }
 
     public boolean isAnnoString() {

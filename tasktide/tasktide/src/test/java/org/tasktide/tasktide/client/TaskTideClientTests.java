@@ -27,7 +27,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 
 import org.tasktide.tasktide.TestUtils;
 
@@ -88,7 +88,7 @@ public class TaskTideClientTests {
      * 
      * @return {@link TaskTideWorkloadAcquisitionPolicy} of {@link WorkItem}
      */
-    public TaskTideWorkloadAcquisitionPolicy<WorkItem>
+    public TaskTideWorkloadAcquisitionPolicy
         initDocumentTemplate(RepositoryType repoType, ClientConfigMap configMap)
     {
     
@@ -97,7 +97,7 @@ public class TaskTideClientTests {
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
         
         // Return acquisition policy
-        return WorkItemAcquisitionPolicy
+        return TargetedAcquisitionPolicy
             .newInstance()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)

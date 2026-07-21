@@ -22,8 +22,6 @@ import jakarta.nosql.Template;
 import jakarta.enterprise.inject.se.SeContainer;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -48,7 +46,7 @@ import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
@@ -121,11 +119,11 @@ public class WorkItemTraverserTests {
     public List<WorkItem> fetchWorkload() {
     
         // Initialize vars
-        TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
+        TaskTideWorkloadAcquisitionPolicy policy;
         List<WorkItem> workload;
         
         // Build policy & fetch workload
-        policy = WorkItemAcquisitionPolicy
+        policy = TargetedAcquisitionPolicy
             .newInstance()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)

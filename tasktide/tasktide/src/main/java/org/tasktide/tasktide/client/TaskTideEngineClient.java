@@ -15,12 +15,13 @@
  */
 package org.tasktide.tasktide.client;
 
+import java.util.Map;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.builders.CustomAnnotationBuilder;
 
 import org.tasktide.engine.worker.TaskTideEngineWorker;
@@ -28,10 +29,11 @@ import org.tasktide.engine.policies.WorkerExecutionPolicy;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
 import org.tasktide.parser.model.Argument;
 
 import org.tasktide.parser.model.ArgumentMap;
@@ -50,9 +52,10 @@ public class TaskTideEngineClient extends TaskTideClient {
     private final WorkerUnitContainer workerContainer;
     private final ArgumentMap engineArgs, globalArgs;
     
-    private TaskTideWorkloadAcquisitionPolicy<WorkItem> acquisitionPolicy;
+    private TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
     private TaskTideEngineWorker worker;
     private int engineWorkerThreads, itemTaskThreads;
+    private final Map<String, Object> acquisitionOpts;
     
     
     /**
@@ -60,12 +63,14 @@ public class TaskTideEngineClient extends TaskTideClient {
      * 
      * @param configMap
      */
+    @SuppressWarnings("unchecked")
     public TaskTideEngineClient(ClientConfigMap configMap) {
         super(configMap);
         this.workerContainer = WorkerUnitContainer.getInstance();
         this.engineArgs = this.getArgTree().getTree().getDataForAddress("engine");
         this.globalArgs = this.getArgTree().getTree().getDataForAddress("");
         this.step = (String) globalArgs.getArgument("Step Name").getValue();
+        this.acquisitionOpts = (Map<String, Object>) globalArgs.getArgument("Acquisition Options").getValue();
     }
     
     
@@ -74,7 +79,7 @@ public class TaskTideEngineClient extends TaskTideClient {
      * <br><br>
      * 1). Configuring the {@link WorkerUnitContainer}
      * <br><br>
-     * 2). Configuring an {@link WorkItemAcquisitionPolicy}.
+     * 2). Configuring an {@link TargetedAcquisitionPolicy}.
      * <br><br>
      * 3). Configuring the {@link TaskTideEngineWorker}
      */
@@ -137,18 +142,16 @@ public class TaskTideEngineClient extends TaskTideClient {
     
     
     /**
-     * Configures {@link WorkItemAcquisitionPolicy}
+     * Configures {@link TargetedAcquisitionPolicy}
      * 
-     * @return {@link WorkItemAcquisitionPolicy}
+     * @return {@link TargetedAcquisitionPolicy}
      */
-    public TaskTideWorkloadAcquisitionPolicy<WorkItem> configureAcquisitionPolicy() {
-    
+    public TaskTideWorkloadAcquisitionPolicy configureAcquisitionPolicy() {
+        
         // Initialize acquisition policy
         LOGGER.info("Configuring TaskTide-Engine Workload Acqusition Policy");
-        TaskTideWorkloadAcquisitionPolicy<WorkItem> policy = WorkItemAcquisitionPolicy.newInstance();
-        
-        // Apply step
-        policy = policy.withTarget(this.step);
+        TaskTideWorkloadAcquisitionPolicy policy = AcquisitionPolicyMode.initBuilder(this.step, this.acquisitionOpts);
+        LOGGER.info("TaskTide-Engine configured for:\t'{}'", policy.getPolicyMode());
         
         // Apply state
         policy = policy.withItemState(ItemState.TODO); // this can now be an argument
@@ -179,7 +182,7 @@ public class TaskTideEngineClient extends TaskTideClient {
         policy.withWindowSize(argVal);
         
         // Return acquisition policy
-        return policy;
+        return policy.build();
     }
     
     

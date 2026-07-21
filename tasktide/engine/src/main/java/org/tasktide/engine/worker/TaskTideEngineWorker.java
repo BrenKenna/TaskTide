@@ -31,7 +31,7 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
@@ -44,7 +44,7 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 
 /**
- * Engine worker using the {@link WorkItemAcquisitionPolicy} interface
+ * Engine worker using the {@link TargetedAcquisitionPolicy} interface
  *  to acquire a workload to process, and process them through the
  *  {@link TaskTideWorkloadTraverser} interface. Update simplifies the
  *  TaskTide-EngineClient, and EngineUtility methods
@@ -57,7 +57,7 @@ public class TaskTideEngineWorker {
     private final Logger LOGGER = LogManager.getLogger(TaskTideEngineWorker.class);
     private final WorkerUnitContainer engineComponents;
     private final Random RAND = new Random(); 
-    private final TaskTideWorkloadAcquisitionPolicy<WorkItem> policy;
+    private final TaskTideWorkloadAcquisitionPolicy policy;
 
     private List<WorkerTask> tasks;
     private final ExecutorService workerPool;
@@ -65,11 +65,11 @@ public class TaskTideEngineWorker {
     
     
     /**
-     * Construct with {@link WorkItemAcquisitionPolicy}
+     * Construct with {@link TargetedAcquisitionPolicy}
      * 
      * @param policy 
      */
-    public TaskTideEngineWorker(TaskTideWorkloadAcquisitionPolicy<WorkItem> policy) {
+    public TaskTideEngineWorker(TaskTideWorkloadAcquisitionPolicy policy) {
         this.engineComponents = WorkerUnitContainer.getInstance();
         this.policy = policy;
         this.windowSize = this.policy.getWindowSize();
@@ -78,9 +78,9 @@ public class TaskTideEngineWorker {
     
     
     /**
-     * Get the {@link WorkItemAcquisitionPolicy}
+     * Get the {@link TargetedAcquisitionPolicy}
      * 
-     * @return {@link WorkItemAcquisitionPolicy}
+     * @return {@link TargetedAcquisitionPolicy}
      */
     public TaskTideWorkloadAcquisitionPolicy getPolicy() {
         return this.policy;
@@ -224,7 +224,7 @@ public class TaskTideEngineWorker {
     
     
     /**
-     * Fetch workload from {@link WorkItemAcquisitionPolicy},
+     * Fetch workload from {@link TargetedAcquisitionPolicy},
      *  and process asynchronously
      * 
      * @throws {@link TaskTideEngineCheckedException}

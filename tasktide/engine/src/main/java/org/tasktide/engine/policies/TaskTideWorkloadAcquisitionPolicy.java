@@ -22,24 +22,32 @@ import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
- * Build a query to fetch a {@link TaskTideModel} workload for processing
+ * Interface for defining policies for consuming workloads.
+ * <br>
+ * All policies resolve to a {@link WorkItem}, some may only
+ *  target a specific step/task collection, or target a set
+ *  of steps for a workflow
+ * <br>
+ * Leaving the definition of the target up to the user,
+ *  provides a much broader and generic approach to DAG
+ *  scheduling then explicitly taking this on
  *
- * @param <T> of {@link TaskTideModel}
  * @author Bren
  */
-public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
+public interface TaskTideWorkloadAcquisitionPolicy {
     
     
     /**
      * Fetch/build {@link TaskTideModel} workload from {@link TaskTideServiceManager}
      *  from built query
      * 
-     * @return 
+     * @return List-{@link WorkItem}
      */
-    public List<T> fetchWorkload();
+    public List<WorkItem> fetchWorkload();
     
     
     /**
@@ -57,7 +65,7 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
      * @param anno
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
-    public TaskTideWorkloadAcquisitionPolicy<T> withAnno(CustomAnnotation anno);
+    public TaskTideWorkloadAcquisitionPolicy withAnno(CustomAnnotation anno);
     
     
     /**
@@ -68,7 +76,7 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
      * @param val
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
-    public TaskTideWorkloadAcquisitionPolicy<T> withAnno(String key, Object val);
+    public TaskTideWorkloadAcquisitionPolicy withAnno(String key, Object val);
     
     
     /**
@@ -77,7 +85,7 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
      * @param state
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
-    public TaskTideWorkloadAcquisitionPolicy<T> withItemState(ItemState state);
+    public TaskTideWorkloadAcquisitionPolicy withItemState(ItemState state);
     
     
     /**
@@ -86,16 +94,16 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
      * @param target
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
-    public TaskTideWorkloadAcquisitionPolicy<T> withTarget(String target);
+    public TaskTideWorkloadAcquisitionPolicy withTarget(String target);
     
     
     /**
      * Build acquisition policy with provided window size
      * 
      * @param windowSize
-     * @return int
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
-    public AbstractAcquisitionPolicy<T> withWindowSize(int windowSize);
+    public TaskTideWorkloadAcquisitionPolicy withWindowSize(int windowSize);
     
     
     
@@ -103,9 +111,17 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
      * Build acquisition policy with provided pool size
      * 
      * @param poolSize
-     * @return int
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
-    public AbstractAcquisitionPolicy<T> withPoolSize(int poolSize);
+    public TaskTideWorkloadAcquisitionPolicy withPoolSize(int poolSize);
+    
+    
+    /**
+     * Build acquisition policy
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+     */
+    public TaskTideWorkloadAcquisitionPolicy build();
     
     
     /**
@@ -129,7 +145,7 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
      * 
      * @return booleam
      */
-    public boolean isTargetted();
+    public boolean isTargeted();
 
     
     /**
@@ -196,11 +212,26 @@ public interface TaskTideWorkloadAcquisitionPolicy<T extends TaskTideModel<T>> {
     public int getWindowSize();
     
     
-    
     /**
      * Get pool size
      * 
      * @return int
      */
     public int getPoolSize();
+    
+    
+    /**
+     * Get Id
+     * 
+     * @return String
+     */
+    public String getId();
+    
+    
+    /**
+     * Get {@link AcquisitionPolicyMode}
+     * 
+     * @return {@link AcquisitionPolicyMode}
+     */
+    public AcquisitionPolicyMode getPolicyMode();
 }

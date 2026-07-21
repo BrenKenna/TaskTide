@@ -50,7 +50,7 @@ import org.tasktide.engine.executor.TaskTideExecutor;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
@@ -126,8 +126,8 @@ public class WorkerUnitContainerTests {
      * 
      * @return {@link TaskTideWorkloadAcquisitionPolicy} for {@link WorkItem}
      */
-    public TaskTideWorkloadAcquisitionPolicy<WorkItem> getAcquisitionPolicy() {
-        return WorkItemAcquisitionPolicy
+    public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy() {
+        return TargetedAcquisitionPolicy
             .newInstance()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
@@ -409,7 +409,7 @@ public class WorkerUnitContainerTests {
         // Configure test
         LOGGER.info("\n\n================ Configure EngineWorker Through WorkerUnitContainer ================\n");
         WorkerUnitContainer workerUnit;
-        TaskTideWorkloadAcquisitionPolicy<WorkItem> acquisitionPolicy;
+        TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
         TaskTideEngineWorker worker;
         boolean assertionState;
         

@@ -24,21 +24,28 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 
 
 /**
- * Build a query to fetch {@link WorkItem} collection for processing
+ * Acquisition policy targetting a single collection of {@link WorkItem}
  * 
  * @author Bren
  */
-public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkItem> {
+public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
     
     
     /**
-     * Static initializer for {@link WorkItemAcquisitionPolicy}
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy} of {@link WorkItem}
+     * Constructs with random UUID
      */
-    public static TaskTideWorkloadAcquisitionPolicy<WorkItem> newInstance() {
-        WorkItemAcquisitionPolicy pol = new WorkItemAcquisitionPolicy();
-        pol.classRef = WorkItem.class;
+    TargetedAcquisitionPolicy() {
+        super(AcquisitionPolicyMode.TARGETED);
+    }
+    
+    
+    /**
+     * Static initializer for {@link TargetedAcquisitionPolicy}
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+     */
+    public static TaskTideWorkloadAcquisitionPolicy newInstance() {
+        TargetedAcquisitionPolicy pol = new TargetedAcquisitionPolicy();
         return pol;
     }
     
@@ -52,10 +59,10 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
     public boolean hasNext() {
         return !this.fetchWorkload().isEmpty();
     }
-
+    
     
     /**
-     * Build {@link WorkItem} from {@link WorkItemAcquisitionPolicy}
+     * Build {@link WorkItem} from {@link TargetedAcquisitionPolicy}
      * 
      * @return List-{@link WorkItem}
      */
@@ -64,7 +71,7 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
     
         // Fetch by annotation
         if ( this.isCustomAnnotated() ) {
-            if ( this.isTargetted() ) {
+            if ( this.isTargeted() ) {
                 return TaskTideServiceManager
                     .fetchWorkItemService()
                     .getRepo()
@@ -78,7 +85,7 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
         
         // Fetch by annotation string
         else if ( this.isStringAnnotated() ) {
-            if ( this.isTargetted() ) {
+            if ( this.isTargeted() ) {
                 return TaskTideServiceManager
                     .fetchWorkItemService()
                     .getRepo()
@@ -92,7 +99,7 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
         
         // Fetch collection
         else {
-            if ( this.isTargetted() ) {
+            if ( this.isTargeted() ) {
                 return TaskTideServiceManager
                     .fetchWorkItemService()
                 .viewByFieldForGroup(
@@ -105,8 +112,4 @@ public class WorkItemAcquisitionPolicy extends AbstractAcquisitionPolicy<WorkIte
         // Otherwise empty list
         return new ArrayList<>();
     }
-    
-    
-    
-    
 }

@@ -15,11 +15,15 @@
  */
 package org.tasktide.engine.policies;
 
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.engine.policies.resources.ResourcePolicyMapper;
+import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
 
 
 /**
@@ -29,14 +33,15 @@ import org.tasktide.engine.policies.resources.ResourcePolicyMapper;
  *  class to focus on the specifics of building/fetching the
  *  required {@link TaskTideModel} collection
  *
- * @param <T> of {@link TaskTideModel}
  * @author Bren
  */
-public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> implements TaskTideWorkloadAcquisitionPolicy<T> {
+public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcquisitionPolicy {
     
     // Attributes for which builder
+    protected final String id;
+    protected final AcquisitionPolicyMode policyType;
+    
     private boolean targetted, annoString, annotation;
-    protected Class<T> classRef;
 
     // Field properties
     private String target = "";
@@ -48,13 +53,24 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
     
     
     /**
+     * Construct provided {@link AcquisitionPolicyMode}
+     * 
+     * @param policyType 
+     */
+    AbstractAcquisitionPolicy(AcquisitionPolicyMode policyType) {
+        this.policyType = policyType;
+        this.id = policyType.toString() + UUID.randomUUID().toString();
+    }
+    
+    
+    /**
      * Building an acquisition policy with collection
      * 
      * @param target
      * @return {@link  AbstractAcquisitionPolicy}
      */
     @Override
-    public AbstractAcquisitionPolicy<T> withTarget(String target) {
+    public AbstractAcquisitionPolicy withTarget(String target) {
         this.target = target;
         this.targetted = true;
         return this;
@@ -69,7 +85,7 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      * @return {@link  AbstractAcquisitionPolicy}
      */
     @Override
-    public AbstractAcquisitionPolicy<T> withItemState(ItemState state) {
+    public AbstractAcquisitionPolicy withItemState(ItemState state) {
         this.state = state;
         return this;
     }
@@ -84,7 +100,7 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      * @return {@link  AbstractAcquisitionPolicy}
      */
     @Override
-    public AbstractAcquisitionPolicy<T> withAnno(String key, Object val) {
+    public AbstractAcquisitionPolicy withAnno(String key, Object val) {
         this.annoKey = key;
         this.annoVal = val;
         this.annoString = true;
@@ -100,22 +116,34 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      * @return 
      */
     @Override
-    public AbstractAcquisitionPolicy<T> withAnno(CustomAnnotation anno) {
+    public AbstractAcquisitionPolicy withAnno(CustomAnnotation anno) {
         this.anno = anno;
         this.annotation = true;
         return this;
     }
     
     
+    /**
+     * Apply window size
+     * 
+     * @param windowSize
+     * @return 
+     */
     @Override
-    public AbstractAcquisitionPolicy<T> withWindowSize(int windowSize) {
+    public AbstractAcquisitionPolicy withWindowSize(int windowSize) {
         this.windowSize = windowSize;
         return this;
     }
     
     
+    /**
+     * Apply pool size
+     * 
+     * @param poolSize
+     * @return 
+     */
     @Override
-    public AbstractAcquisitionPolicy<T> withPoolSize(int poolSize) {
+    public AbstractAcquisitionPolicy withPoolSize(int poolSize) {
         this.poolSize = poolSize;
         return this;
     }
@@ -153,7 +181,7 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      * @return booleam
      */
     @Override
-    public boolean isTargetted() {
+    public boolean isTargeted() {
         return targetted;
     }
 
@@ -233,16 +261,6 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
     public CustomAnnotation getAnno() {
         return anno;
     }
-    
-    
-    /**
-     * Get class reference
-     * 
-     * @return Class-T
-     */
-    public Class<T> getClassRef() {
-        return this.classRef;
-    }
 
 
     /**
@@ -285,5 +303,51 @@ public abstract class AbstractAcquisitionPolicy<T extends TaskTideModel<T>> impl
      */
     public void setPoolSize(int poolSize) {
         this.poolSize = poolSize;
+    }
+    
+    
+    /**
+     * Get Id of acquisition policy
+     * 
+     * @return String
+     */
+    @Override
+    public String getId() {
+        return this.id;
+    }
+    
+    
+    /**
+     * Get {@link AcquisitionPolicyMode}
+     * 
+     * @return {@link AcquisitionPolicyMode}
+     */
+    @Override
+    public AcquisitionPolicyMode getPolicyMode() {
+        return this.policyType;
+    }
+    
+    
+    /**
+     * Build with light verification will add in error
+     *  and logging for null target or state
+     * 
+     * @return AbstractAcquisitionPolicy
+     */
+    @Override
+    public AbstractAcquisitionPolicy build() {
+        if ( this.anno == null ) {
+            this.anno = new CustomAnnotation();
+        }
+        
+        if ( this.poolSize < 1 ) {
+            this.poolSize = 1;
+        }
+        
+        if ( this.windowSize < 1 ) {
+            this.windowSize = 1;
+        }
+        
+        return this;
     }
 }

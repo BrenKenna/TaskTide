@@ -40,7 +40,7 @@ import org.tasktide.engine.TestUtils;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.WorkItemAcquisitionPolicy;
+import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
@@ -124,8 +124,8 @@ public class TaskTideEngineWorkerTests {
      * 
      * @return {@link TaskTideWorkloadAcquisitionPolicy} for {@link WorkItem}
      */
-    public TaskTideWorkloadAcquisitionPolicy<WorkItem> getAcquisitionPolicy() {
-        return WorkItemAcquisitionPolicy
+    public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy() {
+        return TargetedAcquisitionPolicy
             .newInstance()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
@@ -145,7 +145,7 @@ public class TaskTideEngineWorkerTests {
         
         // Initialize vars
         WorkerUnitContainer workerUnit;
-        TaskTideWorkloadAcquisitionPolicy<WorkItem> acquisitionPolicy;
+        TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
         
         // Try configure process executor
         try {
