@@ -68,4 +68,12 @@ public interface WorkflowAcquisitionStrategy {
      * @return {@link WorkflowStrategyMode}
      */
     public WorkflowStrategyMode getStrategyMode();
+    
+    
+    /**
+     * Returns active policy
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+     */
+    public TaskTideWorkloadAcquisitionPolicy getActive();
 }

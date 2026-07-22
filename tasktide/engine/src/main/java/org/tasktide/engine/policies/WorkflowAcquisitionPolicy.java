@@ -16,12 +16,16 @@
 package org.tasktide.engine.policies;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.policies.workflow.RoundRobinWorkflowStrategy;
+import org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy;
 
 import org.tasktide.engine.policies.workflow.WorkflowAcquisitionStrategy;
+import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
 
 
@@ -72,14 +76,53 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     
     
     /**
-     * Static initializer for {@link TargetedAcquisitionPolicy}
+     * Constructs policy
      * 
      * @param steps
      * @param stratType
+     * @param strategy mode
+     */
+    WorkflowAcquisitionPolicy(List<String> steps, WorkflowStrategyType stratType, WorkflowStrategyMode strategyMode) {
+        super(AcquisitionPolicyMode.WORKFLOW);
+        this.steps = steps;
+        this.strategyType = stratType;
+        
+        this.strategy = this.strategyType.makeStrategy();
+        this.strategy.setStrategyMode(strategyMode);
+
+        this.policies = new ArrayList<>();
+        this.steps
+            .forEach(
+                elm -> this.policies.add(this.getPolicyForTarget(elm))
+        );
+    }
+    
+    
+    /**
+     * Static initializer for {@link TargetedAcquisitionPolicy} using default {@link WorkflowStrategyType}
+     * 
+     * @param steps
+     * @param stratType
+     * 
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
     */
     public static TaskTideWorkloadAcquisitionPolicy newInstance(List<String> steps, WorkflowStrategyType stratType) {
         WorkflowAcquisitionPolicy pol = new WorkflowAcquisitionPolicy(steps, stratType);
+        return pol;
+    }
+    
+    
+    /**
+     * Static initializer for {@link WorkflowStrategyMode} using provided {@link WorkflowStrategyMode}
+     * 
+     * @param steps
+     * @param stratType
+     * @param strategyMode
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+    */
+    public static TaskTideWorkloadAcquisitionPolicy newInstance(List<String> steps, WorkflowStrategyType stratType, WorkflowStrategyMode strategyMode) {
+        WorkflowAcquisitionPolicy pol = new WorkflowAcquisitionPolicy(steps, stratType, strategyMode);
         return pol;
     }
 
@@ -92,7 +135,25 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
      */
     @Override
     public List<WorkItem> fetchWorkload() {
-        return this.strategy.fetchWorkload(this.policies);
+        
+        // Initialize output
+        List<WorkItem> output;
+        
+        // Fetch workload
+        output = this.strategy.fetchWorkload(this.policies);
+        
+        // Handle null list
+        if ( output == null ) {
+            return Collections.emptyList();
+        }
+        
+        // Handle empty list
+        if ( output.isEmpty() ) {
+            return Collections.emptyList();
+        }
+ 
+        // Otherwise pass as is
+        return output;
     }
 
     
@@ -156,4 +217,19 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
         );
         return list;
     }
+
+    
+    /**
+     * Get active {@link TaskTideWorkloadAcquisitionPolicy} from 
+     *  {@link WorkflowAcquisitionStrategy}
+     * 
+     * @return String
+     */
+    @Override
+    public String getTarget() {
+        return this.strategy.getActive().getTarget();
+    }
+    
+    
+    
 }

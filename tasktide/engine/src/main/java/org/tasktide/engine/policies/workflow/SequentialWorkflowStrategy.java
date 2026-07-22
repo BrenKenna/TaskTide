@@ -70,12 +70,6 @@ public class SequentialWorkflowStrategy implements WorkflowAcquisitionStrategy {
                 this.getTargetNames(policies)
             );
             this.activePolicy = policies.get(currentIndex);
-            
-            // Fetch workload
-            LOGGER.info(
-                "Fetching workload for target:\t'{}'",
-                activePolicy.getTarget()
-            );
             List<WorkItem> workload = activePolicy.fetchWorkload();
             
             
@@ -181,5 +175,16 @@ public class SequentialWorkflowStrategy implements WorkflowAcquisitionStrategy {
     @Override
     public WorkflowStrategyMode getStrategyMode() {
         return this.mode;
+    }
+
+    
+    /**
+     * Get active policy
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+     */
+    @Override
+    public TaskTideWorkloadAcquisitionPolicy getActive() {
+        return this.activePolicy;
     }
 }

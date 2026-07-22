@@ -44,6 +44,7 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 
 /**
+ * Suite of tests for {@link WorkflowAcquisitionStrategy}
  *
  * @author Bren
  */
@@ -67,7 +68,7 @@ public class WorkflowAcquisitionStrategyTests {
     
     @BeforeAll
     public void setUpClass() {
-        String msg = "\n\n---------------- Initiating WorkItem Acquisition Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating Workflow Acquisition Strategy Tests ----------------\n";
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
@@ -78,7 +79,7 @@ public class WorkflowAcquisitionStrategyTests {
     
     @AfterAll
     public void tearDownClass() {
-        String msg = "\n\n---------------- Terminating WorkItem Acquisition Tests ----------------\n";
+        String msg = "\n\n---------------- Terminating Workflow Acquisition Tests ----------------\n";
         LOGGER.info(msg);
         if (container != null && container.isRunning()) {
             container.close();
