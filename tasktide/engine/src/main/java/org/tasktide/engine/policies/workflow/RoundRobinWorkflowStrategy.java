@@ -35,17 +35,23 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
  */
 public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
 
+    // Attributes
     private final Logger LOGGER = LogManager.getLogger(RoundRobinWorkflowStrategy.class);
+    
     private boolean initilized = false;
     private Deque<TaskTideWorkloadAcquisitionPolicy> workflow;
     private TaskTideWorkloadAcquisitionPolicy active;
+    private WorkflowStrategyMode mode = null;
+    private int attempts = 0;
     
     
     /**
-     * Exhaustively consumes policies round robin approach where active element
-     *  is enqueued once consumed
+     * Fetches {@link WorkItem} collection according to configured {@link TaskTideWorkloadAcquisitionPolicy}.
+     *  Stateless round robin processing of steps in the workflow, where flow is determined by the configured
+     *  {@link WorkflowStrategyMode}
      * 
      * @param policies
+     * 
      * @return List-{@link WorkItem}
      */
     @Override
@@ -56,6 +62,16 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
         if (policies.isEmpty()) {
             return Collections.emptyList();
         }
+        
+        // Configure round robin mode
+        if ( this.mode == null ) {
+            LOGGER.info(
+                "Defaulting Round Robin mode to:\t'{}'",
+                WorkflowStrategyMode.SCANNER
+            );
+            this.mode = WorkflowStrategyMode.SCANNER;
+        }
+        this.attempts++;
         
         // Configure workload queue
         if ( !this.initilized ) {
@@ -68,26 +84,55 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
             this.initilized = true;
         }
         
-        // Fetch first task set
-        if ( this.active == null ) {
-            LOGGER.info("Fetching next workflow to consume");
-            this.active = this.workflow.pollFirst();
-        }
+        // Fetch next task set
+        LOGGER.info("Fetching next workflow to consume");
+        this.active = this.workflow.pollFirst();
         
         // Fetch workload
         LOGGER.info("Fetching workload for active target:\t'{}'", this.active.getTarget());
         output = this.active.fetchWorkload();
         
-        // Return next batch of tasks if present
-        if ( !output.isEmpty() ) {
-            LOGGER.info("Providing next batch of n = '{}' tasks", output.size());
-            return output;
+        // Handle scanner mode
+        if ( this.mode == WorkflowStrategyMode.SCANNER ) {
+            
+            // Handle next run
+            LOGGER.info(
+                "Re-queuing active target '{}', and proceeding to next workflow step",
+                this.active.getTarget()
+            );
+            this.workflow.offerLast(this.active);
+            this.active = null;
+            
+            // Return next batch of tasks if present
+            if ( !output.isEmpty() ) {
+                LOGGER.info("Providing next batch of n = '{}' tasks", output.size());
+                return output;
+            }
+            else {
+                LOGGER.warn("No tasks detected for active batch. Returning empty list");
+                return Collections.emptyList();
+            }
         }
         
-        // Handle next run
-        LOGGER.info("Re-queuing active target '{}', and proceeding to next workflow step");
-        this.workflow.offerLast(active);
-        this.active = null;
+        // Handle exhaust mode
+        else if ( this.mode == WorkflowStrategyMode.EXHAUST ) {
+            
+            // Return next batch of tasks if present
+            if ( !output.isEmpty() ) {
+                LOGGER.info("Providing next batch of n = '{}' tasks", output.size());
+                return output;
+            }
+
+            // Enqueue next
+            LOGGER.warn("No tasks detected for active batch. Returning empty list, and enqueing next workflow");
+            this.workflow.offerLast(this.active);
+            this.active = null;
+            
+            // Return empty list
+            return Collections.emptyList();
+        }
+        
+        // Return empty
         return Collections.emptyList();
     }
     
@@ -102,5 +147,27 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
         return this.active == null
             ? -1
             : this.active.hasNext() ? 1 : 0;
+    }
+
+    
+    /**
+     * Sets {@link WorkflowStrategyMode}
+     * 
+     * @param mode 
+     */
+    @Override
+    public void setStrategyMode(WorkflowStrategyMode mode) {
+        this.mode = mode;
+    }
+
+    
+    /**
+     * Gets {@link WorkflowStrategyMode}
+     * 
+     * @return {@link WorkflowStrategyMode}
+     */
+    @Override
+    public WorkflowStrategyMode getStrategyMode() {
+        return this.mode;
     }
 }

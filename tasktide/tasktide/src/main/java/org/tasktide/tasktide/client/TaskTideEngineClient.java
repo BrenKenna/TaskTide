@@ -29,7 +29,6 @@ import org.tasktide.engine.policies.WorkerExecutionPolicy;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 
-import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
@@ -79,7 +78,7 @@ public class TaskTideEngineClient extends TaskTideClient {
      * <br><br>
      * 1). Configuring the {@link WorkerUnitContainer}
      * <br><br>
-     * 2). Configuring an {@link TargetedAcquisitionPolicy}.
+     * 2). Configuring an {@link TaskTideWorkloadAcquisitionPolicy}.
      * <br><br>
      * 3). Configuring the {@link TaskTideEngineWorker}
      */
@@ -142,9 +141,9 @@ public class TaskTideEngineClient extends TaskTideClient {
     
     
     /**
-     * Configures {@link TargetedAcquisitionPolicy}
+     * Configures {@link TaskTideWorkloadAcquisitionPolicy}
      * 
-     * @return {@link TargetedAcquisitionPolicy}
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
     public TaskTideWorkloadAcquisitionPolicy configureAcquisitionPolicy() {
         

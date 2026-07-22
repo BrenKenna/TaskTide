@@ -51,4 +51,21 @@ public interface WorkflowAcquisitionStrategy {
      * @return int
      */
     public int hasNext();
+    
+    
+    /**
+     * Sets {@link WorkflowStrategyMode} currently SCANNER,
+     *  or EXAHUST of strategy
+     * 
+     * @param mode 
+     */
+    public void setStrategyMode(WorkflowStrategyMode mode);
+    
+    
+    /**
+     * Provides {@link WorkflowStrategyMode} of strategy
+     * 
+     * @return {@link WorkflowStrategyMode}
+     */
+    public WorkflowStrategyMode getStrategyMode();
 }

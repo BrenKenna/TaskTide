@@ -231,7 +231,7 @@ public class TestUtils {
             return TestUtils.fetchResource(resource);
         }
         catch (Exception ex) {
-            throw new IllegalArgumentException("Unable to read provided resource;\t" + resource);
+            throw new IllegalArgumentException("Unable to read provided resource:\t" + resource);
         }
     }
     
