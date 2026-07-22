@@ -151,6 +151,42 @@ public class TaskTideClientUtility {
 
     
     /**
+     * Retrieves the configured or defaulted, -1, result set size
+     * 
+     * @param configMap
+     * 
+     * @return int/-1
+     */
+    public static int fetchResultSetSize(ClientConfigMap configMap) {
+        
+        // Fetch value
+        int value = (int) configMap
+            .getArgTree()
+            .getGlobalArguments()
+            .getArgMap()
+            .get("Result Set Size")
+        .getValue();
+        
+        // Log configured value
+        if ( value >= 1 ) {
+            LOGGER.info(
+                "Result set size configured to:\t'{}'",
+                value
+            );
+            return value;
+        }
+        
+        // Otherwise log defaulted
+        else {
+            LOGGER.warn(
+                "No value applied for result set size, meaning all records could be retrieved from backend database"
+            );
+            return -1;
+        }
+    }
+    
+    
+    /**
      * Fetches the {@link RepositoryType} from the {@link GlobalConfig}.
      *   Returns NOSQL atm
      * 
@@ -185,7 +221,7 @@ public class TaskTideClientUtility {
             
             case SQL -> {
                 LOGGER.info("Configuring SQL ServiceManager");
-                initSqlServiceManager();
+                initSqlServiceManager(configMap);
             }
             
             default -> {
@@ -210,15 +246,24 @@ public class TaskTideClientUtility {
         TemplateRepositoryUtility
              .get()
         .initServiceManager();
+        TaskTideServiceManager
+            .setResultSetSize(
+                TaskTideClientUtility.fetchResultSetSize(configMap)
+        );
     }
     
     
     /**
      * Fetch {@link TaskTideServiceManager} for SQL backend
      * 
+     * @param configMap
      */
-    public static void initSqlServiceManager() {
+    public static void initSqlServiceManager(ClientConfigMap configMap) {
         JpaRepositoryUtility.get().initServiceManager();
+        TaskTideServiceManager
+            .setResultSetSize(
+                TaskTideClientUtility.fetchResultSetSize(configMap)
+        );
     }
     
     

@@ -44,6 +44,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
     protected final Class<T> COLLECTION_CLASS;
     protected final String collectionName;
     protected final RepositoryType repoType;
+    protected int resultSetSize;
 
     
     /**
@@ -159,14 +160,29 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      */
     @Override
     public List<T> findByField(String field, Object value) {
+        
+        // Configure query string
         String query = String.format(
             "SELECT e FROM %s e WHERE e.%s = :value",
             COLLECTION_CLASS.getSimpleName(), field
         );
-        return entityManager
-            .createQuery(query, COLLECTION_CLASS)
-            .setParameter("value", value)
-        .getResultList();
+        
+        // Parameterize and reduce to result set size
+        if ( this.resultSetSize >= 1 ) {
+            return entityManager
+                .createQuery(query, COLLECTION_CLASS)
+                .setParameter("value", value)
+                .setMaxResults(this.resultSetSize)
+            .getResultList();
+        }
+        
+        // Otherwise all
+        else {
+            return entityManager
+                .createQuery(query, COLLECTION_CLASS)
+                .setParameter("value", value)
+            .getResultList();
+        }
     }
 
     
@@ -186,11 +202,25 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
             "SELECT e FROM %s e WHERE e.%s = :value AND e.%s = :groupVal",
             COLLECTION_CLASS.getSimpleName(), field, group
         );
-        return entityManager
-            .createQuery(query, COLLECTION_CLASS)
-            .setParameter("value", value)
-            .setParameter("groupVal", groupVal)
-        .getResultList();
+        
+        // Reduce to result set size
+        if ( this.resultSetSize >= 1 ) {
+            return entityManager
+                .createQuery(query, COLLECTION_CLASS)
+                .setParameter("value", value)
+                .setParameter("groupVal", groupVal)
+                .setMaxResults(this.resultSetSize)
+            .getResultList();
+        }
+        
+        // Otherwise all
+        else {
+            return entityManager
+                .createQuery(query, COLLECTION_CLASS)
+                .setParameter("value", value)
+                .setParameter("groupVal", groupVal)
+            .getResultList();
+        }
     }
 
     
@@ -314,12 +344,27 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      */
     @Override
     public List<T> findAll() {
-        return entityManager
-            .createQuery(
-                String.format("SELECT e FROM %s e", COLLECTION_CLASS.getSimpleName()),
-                    COLLECTION_CLASS
-            )
-        .getResultList();
+        
+        // Reduce to result set size
+        if ( this.resultSetSize >= 1 ) {
+            return entityManager
+                .createQuery(
+                    String.format("SELECT e FROM %s e", COLLECTION_CLASS.getSimpleName()),
+                        COLLECTION_CLASS
+                )
+                .setMaxResults(this.resultSetSize)
+            .getResultList();
+        }
+        
+        // Otherwise all
+        else {
+            return entityManager
+                .createQuery(
+                    String.format("SELECT e FROM %s e", COLLECTION_CLASS.getSimpleName()),
+                        COLLECTION_CLASS
+                )
+            .getResultList();
+        }
     }
 
     
@@ -398,5 +443,27 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Return results
         return count == toAdd.size();
+    }
+    
+    
+    /**
+     * Get results set size
+     * 
+     * @return int
+     */
+    @Override
+    public int getResultSetSize() {
+        return this.resultSetSize;
+    }
+
+    
+    /**
+     * Set results set size
+     * 
+     * @param nRecords 
+     */
+    @Override
+    public void setResultSetSize(int nRecords) {
+        this.resultSetSize = nRecords;
     }
 }

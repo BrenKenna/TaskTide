@@ -38,6 +38,7 @@ public class AbstractTaskTideService<T extends TaskTideModel<T>>
     
     // Attributes
     protected final TaskTideRepository<T> repo;
+    protected int resultSetSize;
     
     /**
      * Construct {@link TaskTideService} with {@link TaskTideRepository}
@@ -46,6 +47,18 @@ public class AbstractTaskTideService<T extends TaskTideModel<T>>
      */
     public AbstractTaskTideService(TaskTideRepository<T> repo) {
         this.repo = repo;
+    }
+    
+    
+    /**
+     * Construct {@link TaskTideService} with {@link TaskTideRepository}
+     * 
+     * @param repo 
+     * @param resultSetSize 
+     */
+    public AbstractTaskTideService(TaskTideRepository<T> repo, int resultSetSize) {
+        this.repo = repo;
+        this.resultSetSize = resultSetSize;
     }
 
     
@@ -204,4 +217,30 @@ public class AbstractTaskTideService<T extends TaskTideModel<T>>
     public TaskTideRepository<T> getRepo() {
         return this.repo;
     }
+
+    
+    /**
+     * Gets result set size
+     * 
+     * @return 
+     */
+    @Override
+    public int getResultSetSize() {
+        return this.resultSetSize;
+    }
+
+    
+    /**
+     * Sets new result set size
+     * 
+     * @param nRecords 
+     */
+    @Override
+    public void setResultSetSize(int nRecords) {
+        this.resultSetSize = nRecords;
+        this.repo.setResultSetSize(nRecords);
+    }
+    
+    
+    
 }

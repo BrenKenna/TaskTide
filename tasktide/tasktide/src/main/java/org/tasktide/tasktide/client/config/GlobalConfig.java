@@ -48,9 +48,12 @@ public class GlobalConfig extends AbstractConfig {
     private final JNoSQLConfigurer jnosqlConf;
     private final MutexConfigurer mutexConf;
     
-    // Which client to use
-    @ConfigProperty(name = "tasktide.client", defaultValue = "Manager")
-    private String client;
+    /**
+     * Defines result set size defaulting to -1
+     * 
+     */
+    @ConfigProperty(name = "tasktide.core.results-set-size", defaultValue = "-1")
+    private int resultSetSize;
     
     
     /**
@@ -124,6 +127,7 @@ public class GlobalConfig extends AbstractConfig {
         
         // Configure repo properties
         this.help();
+        this.resultSetSize();
         this.workflowName();
         this.stepName();
         this.workItemName();
@@ -311,26 +315,25 @@ public class GlobalConfig extends AbstractConfig {
         arg.setValue(this.filePath);
         this.getArgumentMap().putArgument(arg);
     }
-      
+    
     
     /**
-     * Configures the {@link TaskTideClient} to use
+     * Configure token expiration days
      * 
      */
-    public void client() {
-        Argument<String> arg;
+    public void resultSetSize() {
+        Argument<Integer> arg;
         arg = this.getArgumentBuilder()
-            .withName("Client")
-            .withDescription("Specifies which client to use")
-            .withShortFlag("-c")
-            .withLongFlag("--client")
+            .withName("Result Set Size")
+            .withDescription("Specifies the result set size for services. Defaults to -1")
+            .withShortFlag("-rss")
+            .withLongFlag("--result-set-size")
             .withArgType(ArgumentType.GLOBAL)
-            .withRefClass(String.class)
+            .withRefClass(Integer.class)
         .build();
         
-        this.client = this.getConfigValue("tasktide.client", String.class, "");
-        arg.setValue(this.client);
-        LOGGER.debug("Argument is configured as:\n'{}'", arg);
+        this.resultSetSize = this.getConfigValue("tasktide.utils.token-expiration-days", Integer.class, -1);
+        arg.setValue(this.resultSetSize);
         this.getArgumentMap().putArgument(arg);
     }
 }

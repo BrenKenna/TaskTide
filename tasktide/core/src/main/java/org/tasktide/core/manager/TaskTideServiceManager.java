@@ -50,6 +50,7 @@ public final class TaskTideServiceManager {
     // There can be only one
     private static volatile TaskTideServiceManager INSTANCE;
     private final ConcurrentHashMap<ManagerTarget, TaskTideService> serviceMap;
+    private int resultSetSize;
     
     /**
      * Package private construction with the {@link TaskTideService}
@@ -286,6 +287,39 @@ public final class TaskTideServiceManager {
     public static String toJson() {
         if ( INSTANCE != null ) {
              return JsonUtils.toJson(true, INSTANCE.serviceMap);
+        }
+        throw new IllegalStateException("TaskTideServiceManager must be initialized first");  
+    }
+    
+    
+    /**
+     * Get result set size
+     * 
+     * @return int
+     */
+    public static int getResultSetSize() {
+        if ( INSTANCE != null ) {
+            return INSTANCE.resultSetSize;
+        }
+        throw new IllegalStateException("TaskTideServiceManager must be initialized first");  
+    }
+    
+    
+    /**
+     * Set result set size
+     * 
+     * @param resultSetSize
+     */
+    public static void setResultSetSize(int resultSetSize) {
+        if ( INSTANCE != null ) {
+            INSTANCE
+                .serviceMap
+                .values()
+                .parallelStream()
+                .forEach(
+                    elm -> elm.setResultSetSize(resultSetSize)
+            );
+            return;
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");  
     }

@@ -31,19 +31,21 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
+
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
+
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
-import org.tasktide.engine.policies.workflow.WorkflowAcquisitionStrategy;
+
 import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
 
 
-
 /**
+ * Suite of tests for {@link WorkflowAcquisitionPolicy}
  *
  * @author Bren
  */
@@ -56,9 +58,11 @@ public class WorkflowAcquisitionPolicyTests {
         "Step-1",
         "Step-2"
     };
+    private final int RESULT_SET_SIZE = 2;
     
     private SeContainer container;
     private Template template;
+    
     
     // CouchDB container
     // @Rule
@@ -74,6 +78,7 @@ public class WorkflowAcquisitionPolicyTests {
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        TaskTideServiceManager.setResultSetSize(this.RESULT_SET_SIZE);
         TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS[0], ",");
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS[1], "|", ",");
     }
@@ -202,7 +207,7 @@ public class WorkflowAcquisitionPolicyTests {
             int current = counter % this.STEPS.length;
             String activeStep = this.STEPS[current];
             LOGGER.info(
-                "Examining first workload of size '{}' matches the expected target '{}'",
+                "Examining workload of size '{}' matches the expected target '{}'",
                 workload.size(),
                 activeStep
             );

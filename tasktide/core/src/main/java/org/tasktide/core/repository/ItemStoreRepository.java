@@ -47,6 +47,7 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
     private final ItemStore repo;
     private final Jsonb JSON_BUILDER = JsonbBuilder.create();
     protected final RepositoryType repoType;
+    protected int resultSetSize;
     
     
     /**
@@ -454,5 +455,26 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
      */
     public void clear() {
         this.repo.clearPrototype();
+    }
+    
+    /**
+     * Get results set size
+     * 
+     * @return int
+     */
+    @Override
+    public int getResultSetSize() {
+        return this.resultSetSize;
+    }
+
+    
+    /**
+     * Set results set size
+     * 
+     * @param nRecords 
+     */
+    @Override
+    public void setResultSetSize(int nRecords) {
+        this.resultSetSize = nRecords;
     }
 }

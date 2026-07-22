@@ -49,6 +49,7 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
     protected final String collectionName;
     protected final RepositoryType repoType;
     protected Compression compUtil;
+    protected int resultSetSize;
     
     
     /**
@@ -415,6 +416,27 @@ public abstract class JsonRepository<T extends TaskTideModel<T>> implements Task
         return repoType;
     }
 
+    /**
+     * Get results set size
+     * 
+     * @return int
+     */
+    @Override
+    public int getResultSetSize() {
+        return this.resultSetSize;
+    }
+
+    
+    /**
+     * Set results set size
+     * 
+     * @param nRecords 
+     */
+    @Override
+    public void setResultSetSize(int nRecords) {
+        this.resultSetSize = nRecords;
+    }
+    
     
     /**
      * Represent as string

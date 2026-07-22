@@ -164,7 +164,9 @@ public class WorkItemService
     public synchronized void traceCounts() {
         repo.findAll().stream()
             .parallel()
-            .forEach( elm -> elm.setTaskCounts() );
+            .forEach( 
+               elm -> elm.setTaskCounts()
+        );
     }
     
     

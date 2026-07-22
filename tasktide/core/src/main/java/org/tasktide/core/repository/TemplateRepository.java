@@ -42,6 +42,7 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
     protected final Class<T> COLLECTION_CLASS;
     protected final String collectionName;
     protected final RepositoryType repoType;
+    protected int resultSetSize;
     
     
     /**
@@ -153,10 +154,25 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      */
     @Override
     public List<T> findByField(String field, Object value) {
-        return template.select(COLLECTION_CLASS)
+        
+        // Reduce to result set size
+        if ( this.resultSetSize >= 1 ) {
+            return template
+                .select(COLLECTION_CLASS)
+                .where(field)
+                .eq(value)
+                .limit(resultSetSize)
+            .result();
+        }
+        
+        // Otherwise all
+        else {
+            return template
+                .select(COLLECTION_CLASS)
                 .where(field)
                 .eq(value)
             .result();
+        }
     }
 
     
@@ -285,12 +301,27 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      */
     @Override
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
-        return template.select(COLLECTION_CLASS)
-            .where(field)
-            .eq(value)
-            .and(group)
-            .eq(groupVal)
-        .result();
+        
+        // Reduce to result set size
+        if ( this.resultSetSize >= 1 ) {
+            return template.select(COLLECTION_CLASS)
+                .where(field)
+                .eq(value)
+                .and(group)
+                .eq(groupVal)
+                .limit(resultSetSize)
+            .result();
+        }
+        
+        // Otherwise all
+        else {
+            return template.select(COLLECTION_CLASS)
+                .where(field)
+                .eq(value)
+                .and(group)
+                .eq(groupVal)
+            .result();
+        }
     }
     
     
@@ -301,7 +332,19 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      */
     @Override
     public List<T> findAll() {
-        return template.select(COLLECTION_CLASS).result();
+        
+        // Reduce to result set size
+        if ( this.resultSetSize >= 1 ) {
+            return template
+                .select(COLLECTION_CLASS)
+                .limit(resultSetSize)
+            .result();
+        }
+        
+        // Otherwise all
+        else {
+            return template.select(COLLECTION_CLASS).result();
+        }
     }
     
     
@@ -354,5 +397,27 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      */
     public RepositoryType getRepoType() {
         return repoType;
+    }
+
+    
+    /**
+     * Get results set size
+     * 
+     * @return int
+     */
+    @Override
+    public int getResultSetSize() {
+        return this.resultSetSize;
+    }
+
+    
+    /**
+     * Set results set size
+     * 
+     * @param nRecords 
+     */
+    @Override
+    public void setResultSetSize(int nRecords) {
+        this.resultSetSize = nRecords;
     }
 }

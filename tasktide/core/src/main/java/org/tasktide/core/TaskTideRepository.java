@@ -1,6 +1,17 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ * Copyright 2026 Brendan Kenna.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.tasktide.core;
 
@@ -23,12 +34,27 @@ import org.tasktide.core.model.workitem.WorkItem;
  */
 public interface TaskTideRepository<T extends TaskTideModel<T>> {
     
+    /**
+     * Get result set size
+     * 
+     * @return int
+     */
+    public int getResultSetSize();
+    
+    
+    /**
+     * Set result set size
+     * 
+     * @param nRecords 
+     */
+    public void setResultSetSize(int nRecords);
+    
     
     /**
      * Find model by Id
      * 
      * @param id
-     * @return Optional-T
+     * @return Optional-{@link TaskTideModel}
      */
     public Optional<T> findById(String id);
     
@@ -37,7 +63,7 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      * Insert model into repository
      * 
      * @param model
-     * @return T
+     * @return {@link TaskTideModel}
      */
     public T insertModel(T model);
     
@@ -46,7 +72,7 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      * Update the provided model on backend
      * 
      * @param model
-     * @return T
+     * @return {@link TaskTideModel}
      */
     public T updateModel(T model);
     
@@ -65,7 +91,7 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      * 
      * @param field
      * @param value
-     * @return List-T
+     * @return List-{@link TaskTideModel}
      */
     public List<T> findByField(String field, Object value);
     
@@ -78,6 +104,7 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      * @param value
      * @param group
      * @param groupVal
+     * 
      * @return List-{@link TaskTideModel}
      */
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal);
@@ -87,6 +114,7 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      * Filters records with provided {@link CustomAnnotation}
      * 
      * @param anno
+     * 
      * @return List-{@link TaskTideModel}
      */
     public List<T> filterByAnnotation(CustomAnnotation anno);
