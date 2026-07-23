@@ -15,6 +15,7 @@
  */
 package org.tasktide.tasktide.client;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
@@ -69,7 +70,13 @@ public class TaskTideEngineClient extends TaskTideClient {
         this.engineArgs = this.getArgTree().getTree().getDataForAddress("engine");
         this.globalArgs = this.getArgTree().getTree().getDataForAddress("");
         this.step = (String) globalArgs.getArgument("Step Name").getValue();
-        this.acquisitionOpts = (Map<String, Object>) globalArgs.getArgument("Acquisition Options").getValue();
+        Object acqOpts = globalArgs.getArgument("Acquisition Options").getValue();
+        if ( acqOpts == null ) {
+            this.acquisitionOpts = new HashMap<>();
+        }
+        else {
+            this.acquisitionOpts = (Map<String, Object>) acqOpts;
+        }
     }
     
     
