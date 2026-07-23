@@ -128,6 +128,7 @@ public class TaskTideManagerClient extends TaskTideClient {
         
         // Setup options map
         Map<String, Object> opts = new HashMap<>();
+        opts.put("Workflow Name", (String) this.globalArgs.getArgument("Workflow Name").getValue());
         opts.put("Step Name", (String) this.globalArgs.getArgument("Step Name").getValue());
         opts.put("Delimiter", (String) this.managerArgs.getArgument("Delimiter").getValue());
         opts.put("Nested Delimiter", (String) this.managerArgs.getArgument("Nested Delimiter").getValue());

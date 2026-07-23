@@ -276,3 +276,40 @@ tasks.register('nestedTaskEngineExecution', JavaExec) {
             "--worker-window-size", "3"
     ]
 }
+
+
+
+// Workflow registration
+tasks.register('workflowRegistration', JavaExec) {
+    group = 'application'
+    description = 'Register new workflow'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+        "manager",
+            "--repository-type", "nosql",
+            "--method", "add",
+            "--workflow-name", "MyWorkflow",
+            "--target", "WORKFLOW"
+    ]
+}
+
+
+
+// Step in Workflow registration
+tasks.register('stepInWorkflowRegistration', JavaExec) {
+    group = 'application'
+    description = 'Register step in workflow'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+        "manager",
+            "--repository-type", "nosql",
+            "--method", "add",
+            "--workflow-name", "My New Workflow",
+            "--step-name", "My Workflow Step",
+            "--target", "STEP"
+    ]
+}

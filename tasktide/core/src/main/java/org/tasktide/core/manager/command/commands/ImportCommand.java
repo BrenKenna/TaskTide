@@ -116,19 +116,28 @@ public class ImportCommand extends AbstractCommand{
             case ADD -> {
                 
                 // Import workItem
-                if ( this.target.isManagerTarget( ManagerTarget.WORKITEM ) ) {
-                    LOGGER.info("Attempting WorkItem import");
+                if ( this.target.isManagerTarget(ManagerTarget.WORKITEM) ) {
+                    LOGGER.info("Attempting to add WorkItem");
                     return this.addWorkItem() != null;
                 }
                 
                 // Import workflow
-                if ( this.target.isManagerTarget( ManagerTarget.WORKFLOW ) ) {
-                    LOGGER.info("Attempting Workflow import");
+                if ( this.target.isManagerTarget(ManagerTarget.WORKFLOW) ) {
+                    LOGGER.info("Attempting to add Workflow");
                     return this.addWorkflow() != null;
                 }
                 
+                // Import step
+                if ( this.target.isManagerTarget(ManagerTarget.STEP) ) {
+                    LOGGER.info("Attempting to add Step");
+                    return this.addStep() != null;
+                }
+                
                 // Otherwise pass
-                LOGGER.info("Command-line not yet confiured for importing:\t'{}'", this.target);
+                LOGGER.info(
+                    "Command-line not yet confiured for importing:\t'{}'",
+                    this.target
+                );
                 return false;
             }
             
@@ -450,7 +459,7 @@ public class ImportCommand extends AbstractCommand{
         LOGGER.info("Committing Step & Workflow updates");
         if (
             TaskTideServiceManager.fetchWorkflowService().updateModel(workflow) != null
-            && TaskTideServiceManager.fetchStepService().updateModel(output) != null
+            && TaskTideServiceManager.fetchStepService().appendModel(output) != null
         ) {
             LOGGER.info("Successfully added '{}' to '{}'", output.getId(), workflow.getId());
             return output;
