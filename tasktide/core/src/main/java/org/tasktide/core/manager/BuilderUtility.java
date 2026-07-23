@@ -407,8 +407,15 @@ public class BuilderUtility {
     public static Step buildEmptyStep() {
         return new StepBuilder()
             .withStepId( "Step-" + Utils.generateSalt() )
+            .withStepName("")
             .withStepState(TaskState.PENDING)
             .withAnnotation( makeEmptyAnnotation() )
+            .withWorkflowId("")
+            .withStepCount(0)
+            .withStepsDone(0)
+            .withStepsToDo(0)
+            .withStepsError(0)
+            .withStepsLocked(0)
         .build();
     }
     
@@ -425,6 +432,12 @@ public class BuilderUtility {
             .withStepName(stepName)
             .withStepState(TaskState.PENDING)
             .withAnnotation( makeEmptyAnnotation() )
+            .withWorkflowId("")
+            .withStepCount(0)
+            .withStepsDone(0)
+            .withStepsToDo(0)
+            .withStepsError(0)
+            .withStepsLocked(0)
         .build();
     }
     
@@ -454,7 +467,8 @@ public class BuilderUtility {
     public static Workflow buildEmptyWorkflow() {
         return new WorkflowBuilder()
             .withId("Workflow-" + Utils.generateSalt())
-            .withAnnotation( makeEmptyAnnotation() )
+            .withAnnotation(BuilderUtility.makeEmptyAnnotation())
+            .withSteps(new HashMap<>())
         .build();
     }
     
@@ -463,8 +477,8 @@ public class BuilderUtility {
         return new WorkflowBuilder()
             .withId("Workflow-" + Utils.generateSalt())
             .withWorkflowName(workflowName)
-            .withSteps( new HashMap<>() )
-            .withAnnotation( makeEmptyAnnotation() )
+            .withSteps(new HashMap<>())
+            .withAnnotation(BuilderUtility.makeEmptyAnnotation())
         .build();
     }
     
@@ -480,8 +494,8 @@ public class BuilderUtility {
         return new WorkflowBuilder()
             .withId("Workflow-" + Utils.generateSalt())
             .withWorkflowName(workflowName)
-            .withSteps( steps )
-            .withAnnotation( makeEmptyAnnotation() )
+            .withSteps(steps)
+            .withAnnotation(BuilderUtility.makeEmptyAnnotation())
         .build();
     }
     
@@ -498,8 +512,8 @@ public class BuilderUtility {
         return new WorkflowBuilder()
             .withId("Workflow-" + Utils.generateSalt())
             .withWorkflowName(workflowName)
-            .withSteps( steps )
-            .withAnnotation( makeEmptyAnnotation() )
+            .withSteps(steps)
+            .withAnnotation(BuilderUtility.makeEmptyAnnotation())
         .build();
     }
     

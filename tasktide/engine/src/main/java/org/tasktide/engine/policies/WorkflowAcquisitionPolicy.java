@@ -229,7 +229,4 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     public String getTarget() {
         return this.strategy.getActive().getTarget();
     }
-    
-    
-    
 }

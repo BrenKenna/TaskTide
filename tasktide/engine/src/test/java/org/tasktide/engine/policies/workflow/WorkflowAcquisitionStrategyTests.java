@@ -17,8 +17,10 @@ package org.tasktide.engine.policies.workflow;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -36,9 +38,12 @@ import org.junit.jupiter.api.Assertions;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.core.repository.RepositoryType;
+
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
+
 import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 

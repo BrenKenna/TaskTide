@@ -23,8 +23,6 @@ import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
 
-import jakarta.nosql.Convert;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
 
@@ -125,6 +123,56 @@ public class Workflow implements TaskTideModel<Workflow> {
         this.workflowName = workflowName;
         this.workflowSteps = WorkflowStepConverter.convertToEntityAttribute(stepIds);
         this.anno = anno;
+    }
+    
+    
+    /**
+     * Calls dropStep using Id of the
+     *  provided {@link Step}
+     * 
+     * @param step
+     * @return boolean
+     */
+    public boolean dropStep(Step step) {
+        return this.dropStep(step.getId());
+    }
+    
+    
+    /**
+     * Drop step Id from workflow, clearing
+     *  from stepList and stepIds too
+     * 
+     * @param stepId
+     * 
+     * @return boolean
+     */
+    public boolean dropStep(String stepId) {
+        if ( !this.workflowSteps.containsKey(stepId) ) {
+            return false;
+        }
+        Step step = this.workflowSteps.remove(stepId);
+        this.stepList.remove(step);
+        this.stepIds.remove(stepId);
+        return true;
+    }
+
+    
+    /**
+     * Adds provided {@link Step} to {@link Workflow}
+     *  if not already present
+     * 
+     * @param step
+     * 
+     * @return boolean
+     */
+    public boolean addStep(Step step) {
+        if ( this.workflowSteps.containsKey(step.getId()) ) {
+            return false;
+        }
+        this.workflowSteps.put(step.getId(), step);
+        this.stepIds.add(step.getId());
+        this.stepList.add(step);
+        return true;
     }
     
     

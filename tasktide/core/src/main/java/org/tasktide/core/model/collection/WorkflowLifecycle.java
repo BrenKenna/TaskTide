@@ -34,6 +34,5 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @InterceptorBinding
 @Retention(RUNTIME)
 @Target({TYPE, METHOD})
-public @interface WorkflowLifecycle {
-    
+public @interface WorkflowLifecycle {   
 }

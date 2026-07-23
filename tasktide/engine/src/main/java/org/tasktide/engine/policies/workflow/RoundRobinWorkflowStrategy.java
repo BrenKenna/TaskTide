@@ -29,7 +29,7 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 
 /**
- * Round robin strategy to consume steps of workflow
+ * Round robin strategy to consume steps of workflow FIFO queue
  *
  * @author Bren
  */
@@ -89,7 +89,10 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
         this.activePolicy = this.workflow.pollFirst();
         
         // Fetch workload
-        LOGGER.info("Fetching workload for active target:\t'{}'", this.activePolicy.getTarget());
+        LOGGER.info(
+            "Fetching workload for active target:\t'{}'",
+            this.activePolicy.getTarget()
+        );
         output = this.activePolicy.fetchWorkload();
         
         // Handle scanner mode
@@ -105,7 +108,10 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
             
             // Return next batch of tasks if present
             if ( !output.isEmpty() ) {
-                LOGGER.info("Providing next batch of n = '{}' tasks", output.size());
+                LOGGER.info(
+                    "Providing next batch of n = '{}' tasks",
+                    output.size()
+                );
                 return output;
             }
             else {
@@ -119,7 +125,10 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
             
             // Return next batch of tasks if present
             if ( !output.isEmpty() ) {
-                LOGGER.info("Providing next batch of n = '{}' tasks", output.size());
+                LOGGER.info(
+                    "Providing next batch of n = '{}' tasks",
+                    output.size()
+                );
                 return output;
             }
 

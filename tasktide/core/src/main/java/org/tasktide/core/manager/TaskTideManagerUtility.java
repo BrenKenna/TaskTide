@@ -95,6 +95,59 @@ public class TaskTideManagerUtility {
     
     
     /**
+     * Fetch workflowId for workflow name if present
+     * 
+     * @param workflowName
+     * 
+     * @return String
+     */
+    public static String fetchWorkflowIdForName(String workflowName) {
+        List<Workflow> workflows = TaskTideServiceManager.fetchWorkflowService().viewByField("workflowName", workflowName);
+        if ( workflows.isEmpty() ) {
+            return "";
+        }
+        else {
+            return workflows.get(0).getId();
+        }
+    }
+    
+    
+    /**
+     * Fetch workflowId for workflow name if present
+     * 
+     * @param workflowName
+     * 
+     * @return String
+     */
+    public static Workflow fetchWorkflowForName(String workflowName) {
+        List<Workflow> workflows = TaskTideServiceManager.fetchWorkflowService().viewByField("workflowName", workflowName);
+        if ( workflows.isEmpty() ) {
+            return null;
+        }
+        else {
+            return workflows.get(0);
+        }
+    }
+    
+    
+    /**
+     * Fetch stepId for step name if present
+     * 
+     * @param stepName
+     * 
+     * @return String
+     */
+    public static String fetchStepIdForName(String stepName) {
+        List<Step> steps = TaskTideServiceManager.fetchStepService().viewByField("stepName", stepName);
+        if ( steps.isEmpty() ) {
+            return "";
+        }
+        else {
+            return steps.get(0).getId();
+        }
+    }
+    
+    /**
      * Fetch stepId for provided step, or register as new
      * 
      * @param stepName
@@ -340,5 +393,31 @@ public class TaskTideManagerUtility {
                 )
             ;
        }
+    }
+    
+    
+    /**
+     * Add {@link Workflow}
+     * 
+     * @param workflowName
+     * 
+     * @return {@link Workflow}
+     */
+    public static Workflow addWorkflow(String workflowName) {
+        
+        // Check if workflow already exists
+        if ( !TaskTideServiceManager.fetchWorkflowService().viewByField("workflowName", workflowName).isEmpty() ) {
+            LOGGER.warn("Workflow already exists for:\t'{}'", workflowName);
+            return null;
+        }
+        
+        // Configure workflow
+        Workflow workflow = BuilderUtility
+            .buildWorkflow(workflowName);
+        
+        // Import record
+        return TaskTideServiceManager
+            .fetchWorkflowService()
+        .appendModel(workflow);
     }
 }

@@ -52,6 +52,9 @@ import org.tasktide.core.model.workitem.Workload;
 
 import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.core.manager.command.CommandType;
+import org.tasktide.core.model.builders.WorkflowBuilder;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 
 /**
  * {@link ManagerCommand} for importing tasks from JSON
@@ -109,9 +112,24 @@ public class ImportCommand extends AbstractCommand{
                 }
             }
             
-            // Add workitem
+            // Add task tide model
             case ADD -> {
-                return this.addWorkItem() != null;
+                
+                // Import workItem
+                if ( this.target.isManagerTarget( ManagerTarget.WORKITEM ) ) {
+                    LOGGER.info("Attempting WorkItem import");
+                    return this.addWorkItem() != null;
+                }
+                
+                // Import workflow
+                if ( this.target.isManagerTarget( ManagerTarget.WORKFLOW ) ) {
+                    LOGGER.info("Attempting Workflow import");
+                    return this.addWorkflow() != null;
+                }
+                
+                // Otherwise pass
+                LOGGER.info("Command-line not yet confiured for importing:\t'{}'", this.target);
+                return false;
             }
             
             // Append
@@ -174,11 +192,42 @@ public class ImportCommand extends AbstractCommand{
     
     
     /**
+     * Add {@link Workflow}
+     * 
+     * @return {@link Workflow}
+     */
+    public Workflow addWorkflow() {
+
+        // Configure workflow parameters
+        String workflowName = (String) this.cmdSpec
+            .getOptions()
+            .get()
+        .get("Workflow Name");
+        
+        // Check if workflow already exists
+        if ( !TaskTideServiceManager.fetchWorkflowService().viewByField("workflowName", workflowName).isEmpty() ) {
+            LOGGER.warn("Workflow already exists for:\t'{}'", workflowName);
+            return null;
+        }
+        
+        // Configure workflow
+        Workflow workflow = BuilderUtility
+            .buildWorkflow(workflowName);
+        
+        // Import record
+        return TaskTideServiceManager
+            .fetchWorkflowService()
+        .appendModel(workflow);
+    }
+
+    
+    /**
      * Import task providing updated {@link WorkItem}
      * 
      * @param task
      * @param workItemName
      * @param stepName
+     * 
      * @return {@link WorkItem}
      */
     public WorkItem importTask(ManagerTask task, String workItemName, String stepName) {
@@ -343,5 +392,76 @@ public class ImportCommand extends AbstractCommand{
             ex.printStackTrace();
             return new ArrayList<>();
         }
+    }
+    
+    
+    /**
+     * Adds {@link Step} under isolated, or configured
+     *  {@link Workflow}
+     * 
+     * @return {@link Step}
+     */
+    public Step addStep() {
+        
+        // Configure step parameters
+        String stepName = (String) this.cmdSpec
+            .getOptions()
+            .get()
+        .get("Step Name");
+        String workflowName = (String) this.cmdSpec
+            .getOptions()
+            .get()
+        .get("Workflow Name");
+        
+        // Pass if step already exists
+        String stepId = TaskTideManagerUtility.fetchStepIdForName(stepName);
+        if ( !stepId.isEmpty() ) {
+            LOGGER.warn("Step already exists");
+            return null;
+        }
+        
+        // Handle no workflow provided
+        if ( workflowName.isEmpty() ) {
+            
+            // Import directly
+            LOGGER.info(
+                "No previous record detected, proceeding to create step as isolated workflow:\t'{}'",
+                workflowName
+            );
+            TaskTideManagerUtility.configureNewStepNewId(stepName);
+            stepId = TaskTideManagerUtility.fetchStepIdForName(stepName);
+            return TaskTideServiceManager.fetchStepService().fetchById(stepId);
+        }
+        
+        // Otherwise try create workflow
+        Workflow workflow = TaskTideManagerUtility.fetchWorkflowForName(workflowName);
+        if ( workflow == null) {
+            LOGGER.info("No workflow detected, createing new workflow for:\t'{}'", workflowName);
+            workflow = TaskTideManagerUtility.addWorkflow(workflowName);
+        }
+        
+        // Create step
+        LOGGER.info("Registering '{}' step under workflow '{}'", stepName, workflow.getId());
+        Step output = BuilderUtility.buildStep(stepName);
+        output.setWorkflowId(workflow);
+        workflow.addStep(output);
+        
+        // Commit changes
+        LOGGER.info("Committing Step & Workflow updates");
+        if (
+            TaskTideServiceManager.fetchWorkflowService().updateModel(workflow) != null
+            && TaskTideServiceManager.fetchStepService().updateModel(output) != null
+        ) {
+            LOGGER.info("Successfully added '{}' to '{}'", output.getId(), workflow.getId());
+            return output;
+        }
+        
+        // Log one or both failing
+        LOGGER.warn(
+            "Commit failed review steps & workflow before proceeding. Failed to update one or both '{}' and '{}'",
+            output.getId(),
+            workflow.getId()
+        );
+        return null;
     }
 }
