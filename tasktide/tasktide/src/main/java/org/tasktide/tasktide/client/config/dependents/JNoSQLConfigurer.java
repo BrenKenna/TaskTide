@@ -87,7 +87,7 @@ public class JNoSQLConfigurer extends AbstractConfig {
         this.nosqlPassword();
         this.nosqlHost();
         
-         // Put argument map into tree
+        // Put argument map into tree
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
         }
@@ -259,8 +259,7 @@ public class JNoSQLConfigurer extends AbstractConfig {
         this.getArgumentMap().putArgument(arg);
     }
     
-    
-    
+  
     @Override
     public void help() {}
 }

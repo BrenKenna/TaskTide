@@ -313,3 +313,25 @@ tasks.register('stepInWorkflowRegistration', JavaExec) {
             "--target", "STEP"
     ]
 }
+
+
+// Step in Workflow registration
+tasks.register('processWorkflow', JavaExec) {
+    group = 'application'
+    description = 'Process steps pf workflow'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+        "engine",
+            "--repository-type", "nosql",
+            "--target", "WORKITEM",
+            "--step-name", "Rscript-Jobs,SleepJobs",
+            "--execution-policy", "BATCH",
+            "--worker-pool-size", "1",
+            "--worker-window-size", "1",
+            "--item-task-threads", "1",
+            "--result-set-size", "2",
+            "--strategy-type", "ROUND_R"
+    ]
+}

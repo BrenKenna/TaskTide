@@ -70,11 +70,11 @@ public class TaskTideEngineClient extends TaskTideClient {
         this.engineArgs = this.getArgTree().getTree().getDataForAddress("engine");
         this.globalArgs = this.getArgTree().getTree().getDataForAddress("");
         this.step = (String) globalArgs.getArgument("Step Name").getValue();
-        Object acqOpts = globalArgs.getArgument("Acquisition Options").getValue();
-        if ( acqOpts == null ) {
+        if ( globalArgs.getArgument("Acquisition Options") == null ) {
             this.acquisitionOpts = new HashMap<>();
         }
         else {
+            Object acqOpts = globalArgs.getArgument("Acquisition Options").getValue();
             this.acquisitionOpts = (Map<String, Object>) acqOpts;
         }
     }

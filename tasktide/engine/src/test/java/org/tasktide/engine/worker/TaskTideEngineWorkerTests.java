@@ -98,7 +98,7 @@ public class TaskTideEngineWorkerTests {
     
     @AfterAll
     public void tearDownClass() {
-        String msg = "\n\n---------------- Terminating WorkItem Traverser Tests ----------------\n";
+        String msg = "\n\n---------------- Terminating Engine Worker Tests----------------\n";
         LOGGER.info(msg);
         if (container != null && container.isRunning()) {
             container.close();

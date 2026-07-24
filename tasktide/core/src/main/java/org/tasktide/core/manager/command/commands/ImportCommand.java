@@ -254,10 +254,23 @@ public class ImportCommand extends AbstractCommand{
      */
     @Override
     public boolean validateCommand() {
-        if ( this.cmdSpec.getFilePath().isEmpty() ) {
-            return false;
+        
+        if ( this.target == ManagerTarget.WORKITEM ) {
+            if ( this.cmdSpec.getFilePath().isEmpty() ) {
+                return false;
+            }
+            return !this.cmdSpec.getOptionsKey("Delimiter").isEmpty();
         }
-        return !this.cmdSpec.getOptionsKey("Delimiter").isEmpty();
+        
+        if ( this.target == ManagerTarget.STEP ) {
+            return !cmdSpec.getOptionsKey("Step Name").isEmpty();
+        }
+        
+        if ( this.target == ManagerTarget.WORKFLOW ) {
+            return !cmdSpec.getOptionsKey("Workflow Name").isEmpty();
+        }
+        
+        return false;
     }
     
     

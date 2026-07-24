@@ -35,6 +35,7 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.repository.template_repo.TemplateRepositoryUtility;
+import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.ItemStoreType;
@@ -237,6 +238,11 @@ public class TaskTideClientUtility {
      * @param configMap
      */
     public static void initNoSqlServiceManager(ClientConfigMap configMap) {
+        LOGGER.info(
+            configMap.getArgTree()
+            .getGlobalArguments()
+            .getArgMap()
+        );
         String dbType = (String) configMap.getArgTree()
             .getGlobalArguments()
             .getArgMap()

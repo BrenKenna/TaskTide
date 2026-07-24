@@ -50,12 +50,16 @@ public enum WorkflowStrategyType {
     ROUND_ROBIN {
         @Override
         public String toString() {
-            return name();
+            return "Round Robin";
         }
 
         @Override
         public boolean isWorkflowStrategyType(String query) {
-            return name().equalsIgnoreCase(query);
+            query = query.toLowerCase()
+               .replace("_", " ")
+               .replace("roundrobin", "round robin")
+            ;
+            return "Round Robin".equalsIgnoreCase(query);
         }
 
         @Override

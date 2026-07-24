@@ -127,7 +127,7 @@ public class JpaConfigurer extends AbstractConfig {
             .withDescription("Configures database URL in the form jdbcLpostgresql://localhost:5432/mydb")
             .withLongFlag("--db-url")
             .withShortFlag("-dbu")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
         .build();
         arg.setRefClass(String.class);
         
@@ -159,7 +159,7 @@ public class JpaConfigurer extends AbstractConfig {
             .withDescription("Configures database user name")
             .withLongFlag("--db-username")
             .withShortFlag("-dbusr")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
         .build();
         arg.setRefClass(String.class);
         
@@ -191,7 +191,7 @@ public class JpaConfigurer extends AbstractConfig {
             .withDescription("Configures database password")
             .withLongFlag("--db-pass")
             .withShortFlag("-dbp")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
         .build();
         arg.setRefClass(String.class);
         
@@ -223,7 +223,7 @@ public class JpaConfigurer extends AbstractConfig {
             .withDescription("Configures database user name")
             .withLongFlag("--db-driver")
             .withShortFlag("-dbd")
-            .withArgType(ArgumentType.ACTION)
+            .withArgType(ArgumentType.GLOBAL)
         .build();
         arg.setRefClass(String.class);
         
