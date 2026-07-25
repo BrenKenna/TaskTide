@@ -106,7 +106,6 @@ public interface TaskTideWorkloadAcquisitionPolicy {
     public TaskTideWorkloadAcquisitionPolicy withWindowSize(int windowSize);
     
     
-    
     /**
      * Build acquisition policy with provided pool size
      * 

@@ -32,25 +32,31 @@ public interface WorkflowAcquisitionStrategy {
     
     
     /**
+     * Evaluate retrieved workload
+     * 
+     * @param workload
+     * 
+     * @return List={@link WorkItem} 
+     */
+    public List<WorkItem> evaluateWorkload(List<WorkItem> workload);
+    
+    
+    /**
      * Fetches workload from step in provided collection
      * 
-     * @param policies
      * @return List-{@link TaskTideWorkloadAcquisitionPolicym}
      */
-    public List<WorkItem> fetchWorkload(List<TaskTideWorkloadAcquisitionPolicy> policies);
+    public List<WorkItem> fetchWorkload();
     
     
     /**
      * Checks whether there are any available tasks left
-     *  in the active step
+     *  in the active step, or throws
+     *  {@link TaskTideEngineUncheckedException} if not yet configured
      * 
-     * 0  = none
-     * 1  = yes
-     * -1 = not yet configured
-     * 
-     * @return int
+     * @return boolean
      */
-    public int hasNext();
+    public boolean hasNext();
     
     
     /**
@@ -76,4 +82,51 @@ public interface WorkflowAcquisitionStrategy {
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
     public TaskTideWorkloadAcquisitionPolicy getActive();
+    
+    
+    /**
+     * Set an iteration on algorithm
+     * 
+     * @param limit 
+     */
+    public void setIterationLimit(int limit);
+    
+    
+    /**
+     * Get iteration limit
+     * 
+     * @return int
+     */
+    public int getIterationLimit();
+
+    
+    /**
+     * Get target names as a list
+     * 
+     * @return String
+     */
+    public List<String> getTargetNames();
+    
+    
+    /**
+     * Get Id
+     * 
+     * @return String
+     */
+    public String getId();
+    
+    
+    /**
+     * Configure default {@link WorkflowStrategyMode}
+     * 
+     */
+    public void configureDefaultStrategyMode();
+    
+    
+    /**
+     * Evaluate iteration counter
+     * 
+     * @return boolean
+     */
+    public boolean evaluateIterationCounter();
 }

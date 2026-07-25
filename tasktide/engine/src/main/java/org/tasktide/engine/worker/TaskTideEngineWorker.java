@@ -62,6 +62,7 @@ public class TaskTideEngineWorker {
     private List<WorkerTask> tasks;
     private final ExecutorService workerPool;
     private final int windowSize;
+    private String activeStep;
     
     
     /**
@@ -95,8 +96,7 @@ public class TaskTideEngineWorker {
      * @return boolean
      */
     private boolean hasTasks() {
-        List<WorkItem> workload = new ArrayList<>(this.policy.fetchWorkload());
-        return !workload.isEmpty();
+        return this.policy.hasNext();
     }
     
     
@@ -238,7 +238,6 @@ public class TaskTideEngineWorker {
             .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM);
         
         // Fetch workload
-        LOGGER.info("Fetching workload");
         List<WorkItem> workload = this.sampleWorkload();
         if ( workload.isEmpty() ) {
             throw new TaskTideEngineCheckedException("Error, cannot process an empty workload");
@@ -260,12 +259,14 @@ public class TaskTideEngineWorker {
             traverser.traverse(workload);
             LOGGER.info(
                 "Processing complete for step:\t'{}'",
-                this.policy.getTarget()
+                this.activeStep
             );
+            this.activeStep = "";
         }
                 
         catch ( TraverserCheckedException ex ) {
             LOGGER.error("Error processing workload:\n\n'{}'", ex);
+            this.activeStep = "";
         }
     }
 

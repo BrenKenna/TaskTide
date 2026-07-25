@@ -20,6 +20,8 @@ import java.util.stream.Collectors;
 
 
 /**
+ * Enum to support operations over valid {@link WorkflowAcquisitionStrategy}
+ *  instances, and is the interface for initializing their strategic building
  *
  * @author Bren
  */
@@ -42,8 +44,8 @@ public enum WorkflowStrategyType {
         }
         
         @Override
-        public WorkflowAcquisitionStrategy makeStrategy() {
-            return new SequentialWorkflowStrategy();
+        public WorkflowStrategyBuilder initializeStrategyBuilder() {
+            return new WorkflowStrategyBuilder(this);
         }
     },
 
@@ -68,8 +70,8 @@ public enum WorkflowStrategyType {
         }
         
         @Override
-        public WorkflowAcquisitionStrategy makeStrategy() {
-            return new RoundRobinWorkflowStrategy();
+        public WorkflowStrategyBuilder initializeStrategyBuilder() {
+            return new WorkflowStrategyBuilder(this);
         }
     };
     
@@ -77,9 +79,10 @@ public enum WorkflowStrategyType {
     /**
      * {@link WorkflowAcquisitionStrategy} factory method
      * 
-     * @return {@link WorkflowAcquisitionStrategy}
+     * @return {@link WorkflowStrategyBuilder}
      */
-    public abstract WorkflowAcquisitionStrategy makeStrategy();
+    public abstract WorkflowStrategyBuilder initializeStrategyBuilder();
+
 
 
     /**
@@ -169,15 +172,20 @@ public enum WorkflowStrategyType {
      *  whether the engine should cycle through steps
      * 
      * @param shouldCycle
-     * @return {@link WorkflowAcquisitionStrategy}
+     * @return {@link WorkflowStrategyBuilder}
      */
-    public static WorkflowAcquisitionStrategy getStrategy(boolean shouldCycle) {
+    public static WorkflowStrategyBuilder getStrategy(boolean shouldCycle) {
+        
+        // Initialize round robin scanner if strategy if cycling is required
         if ( shouldCycle ) {
-            return new RoundRobinWorkflowStrategy();
+            return new WorkflowStrategyBuilder(WorkflowStrategyType.ROUND_ROBIN)
+                .withStrategyMode(WorkflowStrategyMode.SCANNER);
         }
         
+        // Otherwise use sequential exhaustion
         else {
-            return new SequentialWorkflowStrategy();
+            return new WorkflowStrategyBuilder(WorkflowStrategyType.SEQUENTIAL)
+                .withStrategyMode(WorkflowStrategyMode.EXHAUST);
         }
     }
 }

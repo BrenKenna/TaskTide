@@ -119,11 +119,7 @@ public class WorkflowAcquisitionStrategyTests {
         WorkflowAcquisitionStrategy strat;
         WorkItem workItem;
         List<TaskTideWorkloadAcquisitionPolicy> policies = new ArrayList<>();
-        
-        // Initialize
-        LOGGER.info("Initializing '{}' workflow strategy", WorkflowStrategyType.SEQUENTIAL);
-        strat = WorkflowStrategyType.getStrategy(false);
-        
+
         // Configure acquisition policies
         LOGGER.info("Configuring acqusition policies for steps");
         for ( String step : STEPS ) {
@@ -135,9 +131,17 @@ public class WorkflowAcquisitionStrategyTests {
             policies.add(policy);
         }
         
+        // Initialize
+        LOGGER.info("Initializing '{}' workflow strategy", WorkflowStrategyType.SEQUENTIAL);
+        strat = WorkflowStrategyType.SEQUENTIAL
+            .initializeStrategyBuilder()
+            .withPolicies(policies)
+            .withStrategyMode(WorkflowStrategyMode.EXHAUST)
+        .build();
+        
         // Fetch workload
         LOGGER.info("Fetching first batch");
-        workload = strat.fetchWorkload(policies);
+        workload = strat.fetchWorkload();
         
         // Verify that the step is expected
         LOGGER.info(
@@ -160,7 +164,7 @@ public class WorkflowAcquisitionStrategyTests {
         
         // Fetch workload
         LOGGER.info("Fetching next batch");
-        workload = strat.fetchWorkload(policies);
+        workload = strat.fetchWorkload();
         LOGGER.info("Marking tasks completed, to enqueue next run");
         workload
            .forEach( elm -> {
@@ -181,7 +185,7 @@ public class WorkflowAcquisitionStrategyTests {
         
         // Verify workflow is completed
         LOGGER.info("Verifying workflow has been fully consumed");
-        workload = strat.fetchWorkload(policies);
+        workload = strat.fetchWorkload();
         
         // Verify that the step is expected
         LOGGER.info("Verifying retrieved workload is empty");
@@ -206,10 +210,6 @@ public class WorkflowAcquisitionStrategyTests {
         WorkItem workItem;
         List<TaskTideWorkloadAcquisitionPolicy> policies = new ArrayList<>();
         
-        // Initialize
-        LOGGER.info("Initializing '{}' workflow strategy", WorkflowStrategyType.ROUND_ROBIN);
-        strat = WorkflowStrategyType.getStrategy(true);
-        
         // Configure acquisition policies
         LOGGER.info("Configuring acqusition policies for steps");
         for ( String step : STEPS ) {
@@ -221,9 +221,17 @@ public class WorkflowAcquisitionStrategyTests {
             policies.add(policy);
         }
         
+        // Initialize
+        LOGGER.info("Initializing '{}' workflow strategy", WorkflowStrategyType.ROUND_ROBIN);
+        strat = WorkflowStrategyType.ROUND_ROBIN
+            .initializeStrategyBuilder()
+            .withPolicies(policies)
+            .withStrategyMode(WorkflowStrategyMode.SCANNER)
+        .build();
+        
         // Fetch workload
         LOGGER.info("Fetching first batch");
-        workload = strat.fetchWorkload(policies);
+        workload = strat.fetchWorkload();
         
         // Verify that the step is expected
         LOGGER.info(
@@ -246,7 +254,7 @@ public class WorkflowAcquisitionStrategyTests {
         
         // Fetch workload
         LOGGER.info("Fetching next batch");
-        workload = strat.fetchWorkload(policies);
+        workload = strat.fetchWorkload();
         LOGGER.info("Marking tasks completed, to enqueue next run");
         workload
            .forEach( elm -> {
@@ -267,7 +275,7 @@ public class WorkflowAcquisitionStrategyTests {
         
         // Verify workflow is completed
         LOGGER.info("Verifying workflow has been fully consumed");
-        workload = strat.fetchWorkload(policies);
+        workload = strat.fetchWorkload();
         
         // Verify that the step is expected
         LOGGER.info("Verifying retrieved workload is empty");

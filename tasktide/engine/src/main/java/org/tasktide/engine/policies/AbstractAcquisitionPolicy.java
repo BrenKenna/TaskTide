@@ -15,15 +15,12 @@
  */
 package org.tasktide.engine.policies;
 
-import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.engine.policies.resources.ResourcePolicyMapper;
-import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
 
 
 /**
@@ -49,7 +46,7 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
     private String annoKey;
     private Object annoVal;
     private CustomAnnotation anno;
-    private int windowSize, poolSize;
+    protected int windowSize, poolSize;
     
     
     /**
@@ -147,6 +144,7 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
         this.poolSize = poolSize;
         return this;
     }
+
     
     
     /**

@@ -11,14 +11,13 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License.
+ * counterations under the License.
  */
 package org.tasktide.engine.policies.workflow;
 
-import java.util.ArrayDeque;
 import java.util.Collections;
-import java.util.Deque;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,60 +32,49 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
  *
  * @author Bren
  */
-public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
+public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
 
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(RoundRobinWorkflowStrategy.class);
     
-    private boolean initilized = false;
-    private Deque<TaskTideWorkloadAcquisitionPolicy> workflow;
-    private TaskTideWorkloadAcquisitionPolicy activePolicy;
-    private WorkflowStrategyMode mode = null;
-    private int attempts = 0;
     
+    /**
+     * Construct with {@link TaskTideWorkloadAcquisitionPolicy} list, {@link WorkflowStrategyMode}, and iteration limit
+     * 
+     * @param policies
+     * @param mode
+     * @param limit 
+     */
+    RoundRobinWorkflowStrategy(List<TaskTideWorkloadAcquisitionPolicy> policies, WorkflowStrategyMode mode, int limit) {
+        super("RoundRobinWorkflowStrategy-" + UUID.randomUUID().toString(), policies, mode, limit);
+    }
     
     /**
      * Fetches {@link WorkItem} collection according to configured {@link TaskTideWorkloadAcquisitionPolicy}.
      *  Stateless round robin processing of steps in the workflow, where flow is determined by the configured
      *  {@link WorkflowStrategyMode}
      * 
-     * @param policies
      * 
      * @return List-{@link WorkItem}
      */
     @Override
-    public List<WorkItem> fetchWorkload(List<TaskTideWorkloadAcquisitionPolicy> policies) {
+    public List<WorkItem> fetchWorkload() {
         
         // Initialize variables
         List<WorkItem> output;
         if (policies.isEmpty()) {
+            LOGGER.warn("No policies configured, passing");
+            return Collections.emptyList();
+        }
+        
+        // Evalute counter if configured
+        if ( !this.evaluateIterationCounter() ) {
+            LOGGER.info("Workflow iteration counter breached");
             return Collections.emptyList();
         }
         
         // Configure round robin mode
-        if ( this.mode == null ) {
-            LOGGER.info(
-                "Defaulting Round Robin mode to:\t'{}'",
-                WorkflowStrategyMode.SCANNER
-            );
-            this.mode = WorkflowStrategyMode.SCANNER;
-        }
-        this.attempts++;
-        
-        // Configure workload queue
-        if ( !this.initilized ) {
-            LOGGER.info("Initializing Round-Robin workflow consumer");
-            this.workflow = new ArrayDeque<>();
-            policies
-                .forEach(
-                    elm -> workflow.offerLast(elm)
-            );
-            this.initilized = true;
-        }
-        
-        // Fetch next task set
-        LOGGER.info("Fetching next workflow to consume");
-        this.activePolicy = this.workflow.pollFirst();
+        this.configureDefaultStrategyMode();
         
         // Fetch workload
         LOGGER.info(
@@ -94,6 +82,45 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
             this.activePolicy.getTarget()
         );
         output = this.activePolicy.fetchWorkload();
+        
+        // Handle results
+        output = this.evaluateWorkload(output);
+        if ( output.isEmpty() ) {
+            LOGGER.info("Workflow processing complete");
+        }
+        else {
+            LOGGER.info("N tasks detected = '{}'", output.size());
+        }
+        return output;
+    }
+
+    
+    /**
+     * Configure default {@link WorkflowStrategyMode.SCANNER}
+     *  for {@link WorkflowAcquisitionStrategy}
+     * 
+     */
+    @Override
+    public void configureDefaultStrategyMode() {
+        if ( this.mode == null ) {
+            LOGGER.info(
+                "Defaulting Round Robin mode to:\t'{}'",
+                WorkflowStrategyMode.SCANNER
+            );
+            this.mode = WorkflowStrategyMode.SCANNER;
+        }
+    }
+
+    
+    /**
+     * Evaluate retrieved workload to configured
+     *  {@link WorkflowStrategyMode}
+     * 
+     * @param workload
+     * @return List-{@link WorkItem}
+     */
+    @Override
+    public List<WorkItem> evaluateWorkload(List<WorkItem> workload) {
         
         // Handle scanner mode
         if ( this.mode == WorkflowStrategyMode.SCANNER ) {
@@ -104,15 +131,15 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
                 this.activePolicy.getTarget()
             );
             this.workflow.offerLast(this.activePolicy);
-            this.activePolicy = null;
+            this.activePolicy = this.workflow.pollFirst();
             
             // Return next batch of tasks if present
-            if ( !output.isEmpty() ) {
+            if ( !workload.isEmpty() ) {
                 LOGGER.info(
                     "Providing next batch of n = '{}' tasks",
-                    output.size()
+                    workload.size()
                 );
-                return output;
+                return workload;
             }
             else {
                 LOGGER.warn("No tasks detected for active batch. Returning empty list");
@@ -124,18 +151,18 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
         else if ( this.mode == WorkflowStrategyMode.EXHAUST ) {
             
             // Return next batch of tasks if present
-            if ( !output.isEmpty() ) {
+            if ( !workload.isEmpty() ) {
                 LOGGER.info(
                     "Providing next batch of n = '{}' tasks",
-                    output.size()
+                    workload.size()
                 );
-                return output;
+                return workload;
             }
 
             // Enqueue next
             LOGGER.warn("No tasks detected for active batch. Returning empty list, and enqueing next workflow");
             this.workflow.offerLast(this.activePolicy);
-            this.activePolicy = null;
+            this.activePolicy = this.workflow.pollFirst();
             
             // Return empty list
             return Collections.emptyList();
@@ -143,51 +170,5 @@ public class RoundRobinWorkflowStrategy implements WorkflowAcquisitionStrategy {
         
         // Return empty
         return Collections.emptyList();
-    }
-    
-    
-    /**
-     * Checks whether available tasks in active step
-     * 
-     * @return 0, 1, -1
-     */
-    @Override
-    public int hasNext() {
-        return this.activePolicy == null
-            ? -1
-            : this.activePolicy.hasNext() ? 1 : 0;
-    }
-
-    
-    /**
-     * Sets {@link WorkflowStrategyMode}
-     * 
-     * @param mode 
-     */
-    @Override
-    public void setStrategyMode(WorkflowStrategyMode mode) {
-        this.mode = mode;
-    }
-
-    
-    /**
-     * Gets {@link WorkflowStrategyMode}
-     * 
-     * @return {@link WorkflowStrategyMode}
-     */
-    @Override
-    public WorkflowStrategyMode getStrategyMode() {
-        return this.mode;
-    }
-    
-    
-    /**
-     * Get active policy
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    @Override
-    public TaskTideWorkloadAcquisitionPolicy getActive() {
-        return this.activePolicy;
     }
 }

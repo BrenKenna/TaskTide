@@ -55,7 +55,8 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     
 
     /**
-     * Constructs policy
+     * Constructs policy, building {@link WorkflowAcquisitionStrategy}#
+     *  internally
      * 
      * @param steps
      * @param stratType 
@@ -64,14 +65,17 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
         super(AcquisitionPolicyMode.WORKFLOW);
         this.steps = steps;
         this.strategyType = stratType;
-        
-        this.strategy = this.strategyType.makeStrategy();
 
         this.policies = new ArrayList<>();
         this.steps
             .forEach(
                 elm -> this.policies.add(this.getPolicyForTarget(elm))
         );
+        
+        this.strategy = this.strategyType
+            .initializeStrategyBuilder()
+            .withPolicies(this.policies)
+        .build();
     }
     
     
@@ -82,19 +86,58 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
      * @param stratType
      * @param strategy mode
      */
-    WorkflowAcquisitionPolicy(List<String> steps, WorkflowStrategyType stratType, WorkflowStrategyMode strategyMode) {
+    WorkflowAcquisitionPolicy(
+        List<String> steps,
+        WorkflowStrategyType stratType,
+        WorkflowStrategyMode strategyMode
+    ) {
         super(AcquisitionPolicyMode.WORKFLOW);
         this.steps = steps;
         this.strategyType = stratType;
-        
-        this.strategy = this.strategyType.makeStrategy();
-        this.strategy.setStrategyMode(strategyMode);
 
         this.policies = new ArrayList<>();
         this.steps
             .forEach(
                 elm -> this.policies.add(this.getPolicyForTarget(elm))
         );
+        
+        this.strategy = this.strategyType
+            .initializeStrategyBuilder()
+            .withPolicies(this.policies)
+            .withStrategyMode(strategyMode)
+        .build();
+    }
+    
+    
+    /**
+     * Constructs policy
+     * 
+     * @param steps
+     * @param stratType
+     * @param strategy mode
+     */
+    WorkflowAcquisitionPolicy(
+        List<String> steps,
+        WorkflowStrategyType stratType,
+        WorkflowStrategyMode strategyMode,
+        int iterationLimit
+    ) {
+        super(AcquisitionPolicyMode.WORKFLOW);
+        this.steps = steps;
+        this.strategyType = stratType;
+
+        this.policies = new ArrayList<>();
+        this.steps
+            .forEach(
+                elm -> this.policies.add(this.getPolicyForTarget(elm))
+        );
+
+        this.strategy = this.strategyType
+            .initializeStrategyBuilder()
+            .withPolicies(this.policies)
+            .withStrategyMode(strategyMode)
+            .withIterationLimit(iterationLimit)
+        .build();
     }
     
     
@@ -121,8 +164,33 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
      * 
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
     */
-    public static TaskTideWorkloadAcquisitionPolicy newInstance(List<String> steps, WorkflowStrategyType stratType, WorkflowStrategyMode strategyMode) {
+    public static TaskTideWorkloadAcquisitionPolicy newInstance(
+        List<String> steps,
+        WorkflowStrategyType stratType,
+        WorkflowStrategyMode strategyMode
+    ) {
         WorkflowAcquisitionPolicy pol = new WorkflowAcquisitionPolicy(steps, stratType, strategyMode);
+        return pol;
+    }
+    
+    
+    /**
+     * Static initializer for {@link WorkflowStrategyMode} using provided {@link WorkflowStrategyMode}
+     * 
+     * @param steps
+     * @param stratType
+     * @param strategyMode
+     * @param iterationLimit
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+    */
+    public static TaskTideWorkloadAcquisitionPolicy newInstance(
+        List<String> steps,
+        WorkflowStrategyType stratType,
+        WorkflowStrategyMode strategyMode,
+        int iterationLimit
+    ) {
+        WorkflowAcquisitionPolicy pol = new WorkflowAcquisitionPolicy(steps, stratType, strategyMode, iterationLimit);
         return pol;
     }
 
@@ -140,18 +208,13 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
         List<WorkItem> output;
         
         // Fetch workload
-        output = this.strategy.fetchWorkload(this.policies);
+        output = this.strategy.fetchWorkload();
         
         // Handle null list
         if ( output == null ) {
             return Collections.emptyList();
         }
         
-        // Handle empty list
-        if ( output.isEmpty() ) {
-            return Collections.emptyList();
-        }
- 
         // Otherwise pass as is
         return output;
     }
@@ -165,19 +228,7 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
      */
     @Override
     public boolean hasNext() {
-        switch ( this.strategy.hasNext() ) {
-            case 1 -> {
-                return true;
-            }
-            
-            case 0 -> {
-                return false;
-            }
-            
-            default -> {
-                return false;
-            }
-        }
+        return this.strategy.hasNext();
     }
 
     
@@ -227,6 +278,9 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
      */
     @Override
     public String getTarget() {
+        if ( this.strategy.getActive() == null ) {
+            return null;
+        }
         return this.strategy.getActive().getTarget();
     }
 }

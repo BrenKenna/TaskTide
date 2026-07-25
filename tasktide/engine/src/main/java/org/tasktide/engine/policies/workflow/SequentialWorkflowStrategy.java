@@ -16,13 +16,14 @@
 package org.tasktide.engine.policies.workflow;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.UUID;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
@@ -32,159 +33,169 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
  *
  * @author Bren
  */
-public class SequentialWorkflowStrategy implements WorkflowAcquisitionStrategy {
+public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
     
-    // Attributes
+    // Internal attributes
     private final Logger LOGGER = LogManager.getLogger(SequentialWorkflowStrategy.class);
-    private int currentIndex = 0;
-    private TaskTideWorkloadAcquisitionPolicy activePolicy;
-    private WorkflowStrategyMode mode = null;
-
+    
+    
+    /**
+     * Construct with {@link TaskTideWorkloadAcquisitionPolicy} list, {@link WorkflowStrategyMode}, and iteration limit
+     * 
+     * @param policies
+     * @param mode
+     * @param limit 
+     */
+    SequentialWorkflowStrategy(List<TaskTideWorkloadAcquisitionPolicy> policies, WorkflowStrategyMode mode, int limit) {
+        super("SequentialWorkflowStrategy-" + UUID.randomUUID().toString(), policies, mode, limit);
+    }
+    
     
     /**
      * Fetches {@link WorkItem} collection according to configured {@link TaskTideWorkloadAcquisitionPolicy}.
      *  Stateless sequential processing of steps in the workflow, where flow is determined by the configured
      *  {@link WorkflowStrategyMode}
      * 
-     * @param policies
      * 
      * @return List-{@link WorkItem}
      */
     @Override
-    public List<WorkItem> fetchWorkload(List<TaskTideWorkloadAcquisitionPolicy> policies) {
+    public List<WorkItem> fetchWorkload() {
         
         // Default strategy mode
-        if ( this.mode == null ) {
-            LOGGER.info("Defaulting Sequential Strategy '{}' mode", WorkflowStrategyMode.EXHAUST);
-            this.mode = WorkflowStrategyMode.EXHAUST;
+        this.configureDefaultStrategyMode();
+
+        // Check counter is in range
+        if ( !this.evaluateIterationCounter() ) {
+            LOGGER.info("Workflow iteration counter breached");
+            return Collections.emptyList();
         }
-        
+
         // Sequentially consume provided workload acquisition policies
-        LOGGER.info("Fetching workflow records for registered targets:\t'{}'", this.getTargetNames(policies));
-        while ( currentIndex < policies.size() ) {
+        LOGGER.info(
+            "Fetching workflow records for registered targets:\t'{}'",
+            this.getTargetNames()
+        );
+        while ( !this.workflow.isEmpty() ) {
             
             // Fetch active policy
+            if ( this.activePolicy == null ) {
+                LOGGER.info("No active policy, detected polling first");
+                this.activePolicy = this.workflow.pollFirst();
+                if ( this.activePolicy == null ) {
+                    LOGGER.info("Next task not detected, workflow processing complete");
+                    return Collections.emptyList();
+                }
+            }
+            
+            // Fetch workload
             LOGGER.info(
                 "Examing collection '{}' in workflow '{}'",
-                policies.get(currentIndex).getTarget(),
-                this.getTargetNames(policies)
+                this.activePolicy.getTarget(),
+                this.getTargetNames()
             );
-            this.activePolicy = policies.get(currentIndex);
-            List<WorkItem> workload = activePolicy.fetchWorkload();
+            List<WorkItem> workload = this.activePolicy.fetchWorkload();
             
             
-            // Handle exhaustive mode
-            if ( this.mode == WorkflowStrategyMode.EXHAUST ) {
-                
-                // Return workload if any tasks available
-                if ( !workload.isEmpty() ) {
-                    LOGGER.info(
-                        "Reterived workload of size '{}' for target '{}'",
-                        workload.size(), activePolicy.getTarget()
-                    );
-                    return workload;
-                }
-                
-                // Otherwise let the loop hit the next target
-                LOGGER.info(
-                    "Active step in workflow has been consumed '{}', proceeding to the next step",
-                    activePolicy.getTarget()
-                );
-                currentIndex++;
-                this.activePolicy = null;
-            }
-            
-            // Handle scanner mode
-            else if ( this.mode == WorkflowStrategyMode.SCANNER ) {
-                
-                // Otherwise let the loop hit the next target
-                LOGGER.info(
-                    "Re-queueing active step in workflow '{}', and configuring the next step",
-                    activePolicy.getTarget()
-                );
-                currentIndex++;
-                this.activePolicy = null;
-                
-                // Return workload if any tasks available
-                if ( !workload.isEmpty() ) {
-                    LOGGER.info(
-                        "Reterived workload of size '{}' for target '{}'",
-                        workload.size(), activePolicy.getTarget()
-                    );
-                    return workload;
-                }
-            }
-
+            // Evaluate workload
+            return this.evaluateWorkload(workload);
         }
         
         // Complete consumation
         LOGGER.info(
             "Processing of provided workflow completed under '{}' mode :\t'{}'",
             this.mode,
-            this.getTargetNames(policies)
+            this.getTargetNames()
         );
         return Collections.emptyList();
     }
+    
+    
+    /**
+     * Configure {@link WorkflowStrategyMode.EXHAUST}
+     *  if not mode was not specified on construction
+     * 
+     */
+    @Override
+    public void configureDefaultStrategyMode() {
+        if ( this.mode == null ) {
+            LOGGER.info(
+                "Defaulting Sequential Strategy '{}' mode",
+                WorkflowStrategyMode.EXHAUST
+            );
+            this.mode = WorkflowStrategyMode.EXHAUST;
+        }
+    }
+    
+    
+    /**
+     * Evaluate workload based on configured {@lnk WorkflowStrategyMode}
+     * 
+     * @param workload
+     * 
+     * @return List-{@link WorkItem} 
+     */
+    @Override
+    public List<WorkItem> evaluateWorkload(List<WorkItem> workload) {
+    
+        // Handle exhaustive mode
+        if (this.mode == WorkflowStrategyMode.EXHAUST) {
 
-    
-    /**
-     * Checks whether available tasks in active step
-     * 
-     * @return 0, 1, -1
-     */
-    @Override
-    public int hasNext() {
-        return this.activePolicy == null
-            ? -1
-            : this.activePolicy.hasNext() ? 1 : 0;
-    }
-    
-    
-    /**
-     * Get target names as a list
-     * 
-     * @param policies
-     * @return String
-     */
-    public List<String> getTargetNames(List<TaskTideWorkloadAcquisitionPolicy> policies) {
-        List<String> list = new ArrayList<>();
-        policies
-            .forEach(
-                elm -> list.add(elm.getTarget())
-        );
-        return list;
-    }
-    
-    
-    /**
-     * Sets {@link WorkflowStrategyMode}
-     * 
-     * @param mode 
-     */
-    @Override
-    public void setStrategyMode(WorkflowStrategyMode mode) {
-        this.mode = mode;
-    }
+            // Return workload if any tasks available
+            if (!workload.isEmpty()) {
+                LOGGER.info(
+                        "Reterived workload of size '{}' for target '{}'",
+                        workload.size(), this.activePolicy.getTarget()
+                );
+                return workload;
+            }
 
-    
-    /**
-     * Gets {@link WorkflowStrategyMode}
-     * 
-     * @return {@link WorkflowStrategyMode}
-     */
-    @Override
-    public WorkflowStrategyMode getStrategyMode() {
-        return this.mode;
-    }
+            // Otherwise let the loop hit the next target
+            if (!this.workflow.isEmpty()) {
+                LOGGER.info(
+                    "Active step in workflow has been consumed '{}', proceeding to the next step '{}'",
+                    this.activePolicy.getTarget(), this.workflow.peekFirst()
+                );
+                this.activePolicy = null;
+                return Collections.emptyList();
+            }
+            
+            else {
+                LOGGER.info("Worflow has been consumed, triggering completion");
+                return Collections.emptyList();
+            }
+        }
 
-    
-    /**
-     * Get active policy
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    @Override
-    public TaskTideWorkloadAcquisitionPolicy getActive() {
-        return this.activePolicy;
+        // Handle scanner mode
+        else if (this.mode == WorkflowStrategyMode.SCANNER) {
+
+            // Otherwise let the loop hit the next target
+            String targetName = this.activePolicy.getTarget();
+            LOGGER.info(
+                    "Clearing active step '{}' from, and configuring the next step",
+                    targetName
+            );
+            if (!this.workflow.isEmpty()) {
+                LOGGER.info(
+                        "Active step in workflow has been scanned '{}', proceeding to the next step",
+                        activePolicy.getTarget()
+                );
+                this.activePolicy = null;
+            } else {
+                LOGGER.info("Worflow scanning complete, triggering completion");
+            }
+
+            // Return workload if any tasks available
+            if (!workload.isEmpty()) {
+                LOGGER.info(
+                        "Reterived workload of size '{}' for target '{}'",
+                        workload.size(), targetName
+                );
+                return workload;
+            }
+        }
+        
+        // Otherwise error
+        throw new TaskTideEngineUncheckedException("No WorkflowStrategyMode configured");
     }
 }
