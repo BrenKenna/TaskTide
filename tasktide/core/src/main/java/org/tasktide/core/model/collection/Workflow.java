@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 import org.tasktide.core.TaskTideModel;
@@ -83,7 +84,7 @@ public class Workflow implements TaskTideModel<Workflow> {
      * Null constructor
      */
     public Workflow() {
-        this.workflowSteps = new HashMap<>();
+        this.workflowSteps = new LinkedHashMap<>();
         this.anno = new CustomAnnotation();
     }
     
@@ -182,7 +183,7 @@ public class Workflow implements TaskTideModel<Workflow> {
      */
     @jakarta.persistence.PostLoad
     public void populateStateMap() {
-        workflowSteps = new HashMap<>();
+        workflowSteps = new LinkedHashMap<>();
         for ( Step elm : stepList ) {
             workflowSteps.put(elm.getStepName(), elm);
         }
@@ -312,7 +313,7 @@ public class Workflow implements TaskTideModel<Workflow> {
     
     public void hydrateSteps() {
         if ( this.stepIds == null ) {
-            this.workflowSteps = new HashMap<>();
+            this.workflowSteps = new LinkedHashMap<>();
             return;
         }
         

@@ -16,6 +16,7 @@
 package org.tasktide.core.manager;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -468,7 +469,7 @@ public class BuilderUtility {
         return new WorkflowBuilder()
             .withId("Workflow-" + Utils.generateSalt())
             .withAnnotation(BuilderUtility.makeEmptyAnnotation())
-            .withSteps(new HashMap<>())
+            .withSteps(new LinkedHashMap<>())
         .build();
     }
     
@@ -477,7 +478,7 @@ public class BuilderUtility {
         return new WorkflowBuilder()
             .withId("Workflow-" + Utils.generateSalt())
             .withWorkflowName(workflowName)
-            .withSteps(new HashMap<>())
+            .withSteps(new LinkedHashMap<>())
             .withAnnotation(BuilderUtility.makeEmptyAnnotation())
         .build();
     }

@@ -63,7 +63,7 @@ public abstract class AbstractWorkflowStrategy implements WorkflowAcquisitionStr
                 .forEach(
                     elm -> workflow.offerLast(elm)
         );
-        this.activePolicy = policies.get(0);
+        this.activePolicy = this.workflow.pollFirst();
         this.mode = mode;
         this.limit = -1;
         this.counter = 0;

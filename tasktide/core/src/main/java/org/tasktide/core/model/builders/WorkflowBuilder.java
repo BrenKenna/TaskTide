@@ -16,6 +16,7 @@
 package org.tasktide.core.model.builders;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -81,7 +82,7 @@ public class WorkflowBuilder extends ModelBuilder<Workflow> {
      * @return {@link WorkflowBuilder}
      */
     public WorkflowBuilder withSteps(List<Step> stepList) {
-        this.steps = new HashMap<>();
+        this.steps = new LinkedHashMap<>();
         for (Step step : stepList) {
             this.steps.put(step.getStepName(), step);
         }

@@ -72,7 +72,7 @@ public class EngineWorkerWorkflowAcquisitionTests {
     private static final Logger LOGGER = LogManager.getLogger(TaskTideEngineWorkerTests.class);
     
     private final String WORKFLOW_NAME = "EngineWorker Workflow Acquisition Test";
-    private final String STEP = "Ping,NS Lookups";
+    private final String STEP = "Ping,NS Lookups,Numero 3";
     private final String FILE_PATH = "src/test/resources/nested-nslookup-tasks.txt";
     
     private SeContainer container;
@@ -159,6 +159,17 @@ public class EngineWorkerWorkflowAcquisitionTests {
         opts = new HashMap<>();
         opts.put("Workflow Name", this.WORKFLOW_NAME);
         opts.put("Step Name", this.STEP.split(",")[1]);
+        cmdSpec = new CommandSpec(this.FILE_PATH, "", opts);
+        cmd = ManagerAction.ADD.makeCommand(ManagerTarget.STEP, cmdSpec);
+        LOGGER.info("Displaying workflow creation cmd:\n\n'{}'", cmd.toJsonDoc());
+        cmd.execute();
+        LOGGER.info("Command result:\t'{}'", cmd.execute());
+        
+        // Create third step
+        LOGGER.info("Creating step:\t'{}'", this.STEP.split(",")[2]);
+        opts = new HashMap<>();
+        opts.put("Workflow Name", this.WORKFLOW_NAME);
+        opts.put("Step Name", this.STEP.split(",")[2]);
         cmdSpec = new CommandSpec(this.FILE_PATH, "", opts);
         cmd = ManagerAction.ADD.makeCommand(ManagerTarget.STEP, cmdSpec);
         LOGGER.info("Displaying workflow creation cmd:\n\n'{}'", cmd.toJsonDoc());
@@ -405,10 +416,9 @@ public class EngineWorkerWorkflowAcquisitionTests {
     }
     
     
-    
     /**
      * Tests running engine in batch mode with using the
-     *  Sequential Scanner of targeted workflow
+     *  Round Robin Scanner of targeted workflow
      * 
      */
     @Test
@@ -460,5 +470,62 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Log complete
         LOGGER.info("\n\n================ Can Run Batch Round Robin Scanner Workflow Worker =================\n");
+    }
+    
+    
+    /**
+     * Tests running engine in batch mode with using the
+     *  Round Robin Exhaust of targeted workflow
+     * 
+     */
+    @Test
+    @Order(3)
+    public void canRunEngineBatchRoundRobinExhaustMode() {
+
+        // Configure test
+        LOGGER.info("\n\n================= Can Run Batch Round Robin Exhaust Workflow Worker =================\n");
+        TaskTideEngineWorker worker;
+        WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
+        WorkflowStrategyType stratType = WorkflowStrategyType.ROUND_ROBIN;
+        WorkflowStrategyMode stratMode = WorkflowStrategyMode.EXHAUST;
+        int ITERATION_LIMIT = 4;
+        int RESULT_SET_LIMIT = 1;
+        
+        // Import workload
+        LOGGER.info("Importing workload");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        
+        // Fetch engine worker
+        LOGGER.info(
+            "Configuring engine worker for:\t'{}' '{}' mode, with iteration limit",
+            stratType,
+            stratMode
+        );
+        LOGGER.info(
+            "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
+            ITERATION_LIMIT, RESULT_SET_LIMIT
+        );
+        TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
+        worker = this.getEngineWorker(stratType, stratMode, ITERATION_LIMIT);
+        
+        // Run engine
+        LOGGER.info(
+            "Running '{}' '{}' of workflow in '{}' mode",
+            stratType, stratMode, executionPolicy
+        );
+        try {
+            worker.runEngine(executionPolicy);
+        }
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error(
+                "Error running '{}' '{}' of workflow in '{}' mode:\n\n'{}'",
+                stratType, stratMode, executionPolicy, ex
+            );
+        }
+        LOGGER.info("Engine processing completed");
+        
+        // Log complete
+        LOGGER.info("\n\n================ Can Run Batch Round Robin Exhaust Workflow Worker =================\n");
     }
 }

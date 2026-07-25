@@ -132,6 +132,10 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
             );
             this.workflow.offerLast(this.activePolicy);
             this.activePolicy = this.workflow.pollFirst();
+            LOGGER.info(
+                "Active policy for the next iteration is now:\t'{}'",
+                this.activePolicy.getTarget()
+            );
             
             // Return next batch of tasks if present
             if ( !workload.isEmpty() ) {
@@ -170,5 +174,36 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
         
         // Return empty
         return Collections.emptyList();
+    }
+    
+    
+    /**
+     * Checks whether there active tasks in workflow,
+     *  bypassing count of records
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean hasNext() {
+        
+        // Check iteration counter if configured
+        if ( this.limit > 0 ) {
+            if ( this.counter >= this.limit ) {
+                LOGGER.warn(
+                    "Workflow iteration counter breached '{}' limit",
+                    this.limit
+                );
+                return false;
+            }
+        }
+        
+        // Check if queue is consumed
+        if ( this.activePolicy == null ) {
+            LOGGER.warn("Workflow processing completed");
+            return false;
+        }
+        
+        // Check if has next
+        return true;
     }
 }
