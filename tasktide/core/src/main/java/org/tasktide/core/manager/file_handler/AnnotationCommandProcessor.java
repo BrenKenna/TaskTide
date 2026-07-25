@@ -26,9 +26,12 @@ import org.tasktide.core.manager.TaskTideManagerUtility;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.command.CommandSpec;
+import static org.tasktide.core.manager.command.ManagerTarget.STEP;
 import org.tasktide.core.manager.command.commands.AbstractCommand;
 
 import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
@@ -95,33 +98,64 @@ public class AnnotationCommandProcessor {
             
             // Apply annotation to WorkItem
             CustomAnnotation anno = fetchAnnoFromCmdSpec(cmd);
-            WorkItem item;
+            boolean state = false;
             switch (parts.length) {
                 case 1 -> {
-                    logger.info("Annotating WorkItem");
-                    item = TaskTideServiceManager
-                            .fetchWorkItemService()
-                            .fetchById(parts[0]);
-                    item.setAnnotations(anno);
+                    
+                    switch ( CMD.getTarget() ) {
+                        case WORKITEM -> {
+                            logger.info("Annotating WorkItem");
+                            WorkItem item = TaskTideServiceManager
+                                .fetchWorkItemService()
+                                .fetchById(parts[0]);
+                            item.setAnnotations(anno);
+                            state = TaskTideServiceManager
+                                .fetchWorkItemService()
+                            .updateModel(item) != null;
+                        }
+                        
+                        case STEP -> {
+                            logger.info("Annotating Step");
+                            Step item = TaskTideServiceManager
+                                .fetchStepService()
+                                .fetchById(parts[0]);
+                            item.setAnnotations(anno);
+                            state = TaskTideServiceManager
+                                .fetchStepService()
+                            .updateModel(item) != null;
+                        }
+                        
+                        case WORKFLOW -> {
+                            logger.info("Annotating Workflow");
+                            Workflow item = TaskTideServiceManager
+                                .fetchWorkflowService()
+                                .fetchById(parts[0]);
+                            item.setAnnotations(anno);
+                            state = TaskTideServiceManager
+                                .fetchWorkflowService()
+                            .updateModel(item) != null;
+                        }
+                    }
                 }
                 case 2 -> {
                     logger.info("Annotating ItemTask");
-                    item = TaskTideServiceManager
+                    WorkItem item = TaskTideServiceManager
                             .fetchWorkItemService()
                             .fetchById(parts[0]);
                     ItemTask task = item.getWorkload().getById(parts[1]);
                     task.setAnnotations(anno);
+                    state = TaskTideServiceManager
+                        .fetchWorkItemService()
+                    .updateModel(item) != null;
                 }
                 default -> {
                     logger.error("Error, malformed line");
-                    return false;
+                    state = false;
                 }
             }
             
             // Update record
-            return TaskTideServiceManager
-                .fetchWorkItemService()
-            .updateModel(item) != null;
+            return state;
         });
     }
     

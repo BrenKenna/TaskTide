@@ -112,4 +112,22 @@ public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
         // Otherwise empty list
         return new ArrayList<>();
     }
+    
+    
+    /**
+     * Clone active {@link TargetedAcquisitionPolicy}
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+     */
+    @Override
+    public TaskTideWorkloadAcquisitionPolicy clonePolicy() {
+        return TargetedAcquisitionPolicy
+            .newInstance()
+            .withAnno(this.getAnno())
+            .withItemState(this.getState())
+            .withTarget(this.getTarget())
+            .withPoolSize(this.poolSize)
+            .withWindowSize(this.windowSize)
+        .build();
+    }
 }

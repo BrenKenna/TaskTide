@@ -51,7 +51,7 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
  *
  * @author Bren
  */
-public class TaskTideEngineWorker {
+public class TaskTideEngineWorker implements Cloneable {
     
     // Worker unit container
     private final Logger LOGGER = LogManager.getLogger(TaskTideEngineWorker.class);
@@ -137,7 +137,6 @@ public class TaskTideEngineWorker {
     public void runEngine(WorkerExecutionPolicy executionPolicy) throws TaskTideEngineCheckedException {
     
         switch ( executionPolicy ) {
-        
             case SERVICE -> {
                 LOGGER.info("Operating in service mode");
                 this.serviceOperation();
@@ -305,8 +304,9 @@ public class TaskTideEngineWorker {
             for ( int i = 0; i < this.policy.getPoolSize(); i++) {
                 LOGGER.info("Starting engine 'Worker-{}'", i);
                 Future<?> future = this.workerPool.submit( () -> {
+                    TaskTideEngineWorker workerClone = this.clone();
                     try {
-                        this.sampleAndTraverse();
+                        workerClone.sampleAndTraverse();
                         return true;
                     }
                     catch ( TaskTideEngineCheckedException ex ) {
@@ -354,26 +354,64 @@ public class TaskTideEngineWorker {
     
     
     /**
+     * Clone active {@link TaskTideEngineWorker}
+     * 
+     * @return {@link TaskTideEngineWorker}
+     */
+    @Override
+    public TaskTideEngineWorker clone() {
+        return new TaskTideEngineWorker(this.policy.clonePolicy());
+    }
+    
+    
+    /**
      * Inner model class to hold task label and future
      * 
      */
     private class WorkerTask {
+        
+        // Attributes
         private final String label;
         private final Future task;
         
+        
+        /**
+         * Construct {@link WorkerTask}
+         * 
+         * @param label
+         * @param task 
+         */
         WorkerTask(String label, Future task) {
             this.label = label;
             this.task = task;
         }
         
+        
+        /**
+         * Get task label
+         * 
+         * @return String
+         */
         public String getLabel() {
             return this.label;
         }
         
+        
+        /**
+         * Get future
+         * 
+         * @return {@link Future}
+         */
         public Future getTask() {
             return this.task;
         }
         
+        
+        /**
+         * Wait on task
+         * 
+         * @return boolean
+         */
         public boolean waitOnTask() {
             try {
                 this.task.get();

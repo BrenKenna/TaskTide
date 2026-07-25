@@ -283,4 +283,19 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
         }
         return this.strategy.getActive().getTarget();
     }
+
+    
+    /**
+     * Clone the {@link WorkflowAcquisitionPolicy}
+     * 
+     * @return {@link WorkflowAcquisitionPolicy}
+     */
+    @Override
+    public TaskTideWorkloadAcquisitionPolicy clonePolicy() {
+        return new WorkflowAcquisitionPolicy(this.steps, this.strategyType)
+            .withAnno(this.getAnno())
+            .withItemState(this.getState())
+            .withPoolSize(this.poolSize)
+        .withWindowSize(this.windowSize);
+    }
 }

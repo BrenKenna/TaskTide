@@ -233,4 +233,12 @@ public interface TaskTideWorkloadAcquisitionPolicy {
      * @return {@link AcquisitionPolicyMode}
      */
     public AcquisitionPolicyMode getPolicyMode();
+    
+    
+    /**
+     * Clone active {@link TaskTideWorkloadAcquisitionPolicy}
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy} clone
+     */
+    public TaskTideWorkloadAcquisitionPolicy clonePolicy();
 }

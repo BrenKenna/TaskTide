@@ -18,6 +18,7 @@ package org.tasktide.core.manager.command.commands;
 import jakarta.json.JsonObject;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,6 +39,8 @@ import org.tasktide.core.manager.command.ManagerTarget;
 
 // For JavaDoc
 import org.tasktide.core.manager.command.ManagerCommand;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
 
 
 /**
@@ -78,6 +81,84 @@ public class DeleteCommand extends AbstractCommand {
     public Object deleteWorkItem() {
         String itemId = (String) this.cmdSpec.getOptionsKey("Item Id").get();
         return TaskTideServiceManager.fetchWorkItemService().dropById(itemId);
+    }
+    
+    
+    /**
+     * Deletes {@link Workflow}, optionally
+     *  clears all {@link Step}, and {@link WorkItem}
+     *  associated with it
+     * 
+     * @param recursive
+     * @return Object
+     */
+    public Object deleteWorkflow(boolean recursive) {
+        String itemId = (String) this.cmdSpec.getOptionsKey("Item Id").get();
+        
+        Workflow workflow = TaskTideServiceManager
+            .fetchWorkflowService()
+        .fetchById(itemId);
+        
+        if ( !TaskTideServiceManager.fetchWorkflowService().dropById(itemId) ) {
+            return false;
+        }
+        
+        if ( recursive ) {
+            for ( Step step : workflow.getWorkflowSteps().values() ) {
+                List<WorkItem> items = TaskTideServiceManager
+                    .fetchWorkItemService()
+                .viewByField("stepName", step.getStepName());
+                if ( items != null ) {
+                    items.parallelStream()
+                        .forEach(
+                            elm -> TaskTideServiceManager.fetchWorkItemService().dropById(elm.getId())
+                    );
+                }
+                if ( !TaskTideServiceManager.fetchStepService().dropById(step.getId()) ) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    
+    /**
+     * Drop {@link Step} clearing from workflow,
+     *  optionally deletes all {@link WorkItem}
+     *  associated with it too
+     * 
+     * @param recursive
+     * @return boolean as Object
+     */
+    public Object deleteStep(boolean recursive) {
+        String itemId = (String) this.cmdSpec.getOptionsKey("Item Id").get();
+        
+        Step step = TaskTideServiceManager
+            .fetchStepService()
+        .fetchById(itemId);
+        
+        if ( !TaskTideServiceManager.fetchStepService().dropById(itemId) ) {
+            return false;
+        }
+        
+        Workflow workflow = TaskTideServiceManager
+            .fetchWorkflowService()
+        .fetchById(step.getWorkflowId());
+        workflow.dropStep(step);
+        
+        if ( recursive ) {
+            List<WorkItem> items = TaskTideServiceManager
+               .fetchWorkItemService()
+            .viewByField("stepName", step.getStepName());
+            if (items != null) {
+                items.parallelStream()
+                    .forEach(
+                        elm -> TaskTideServiceManager.fetchWorkItemService().dropById(elm.getId())
+                );
+            }
+        }
+        return true;
     }
     
     
