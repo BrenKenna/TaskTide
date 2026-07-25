@@ -15,9 +15,7 @@
  */
 package org.tasktide.core.services;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.tasktide.core.TaskTideMapper;
 import org.tasktide.core.TaskTideRepository;
@@ -63,44 +61,6 @@ public class StepService extends AbstractTaskTideService<Step>
      */
     public synchronized List<Step> viewStepsByName(String stepName) {
         return repo.findByField("stepName", stepName);
-    }
-
-    
-    /**
-     * View task count summary for provided step
-     * 
-     * @param step
-     * @return {@link StateSummary}-{@link ItemState}
-     */
-    public synchronized StateSummary<ItemState> viewStepSummary(Step step) {
-        return step.summarizeByState();
-    }
-    
-    
-    /**
-     * View task count summary for all steps
-     * 
-     * @return Map-String, {@link StateSummary}-{@link ItemState}
-     */
-    public synchronized Map<String, StateSummary<ItemState>> viewSummary() {
-        Map<String, StateSummary<ItemState>> results = new HashMap<>();
-        for ( Step step : repo.findAll() ) {
-            results.put(step.getStepName(), step.summarizeByState());
-        }
-        return results;
-    }
-    
-    
-    /**
-     * Update {@link Step} {@link ItemState} counts to new values
-     * 
-     * @param step
-     * @param newCounts
-     * @return {@link Step}
-     */
-    public synchronized Step updateStepCounts(Step step, StateSummary<ItemState> newCounts) {
-        step.setStateCounts(newCounts);
-        return repo.updateModel(step);
     }
 
     

@@ -74,28 +74,7 @@ public class WorkflowService extends AbstractTaskTideService<Workflow>
         workflow.getWorkflowSteps().remove(step.getId());
         return repo.deleteModel(workflow.getWorkflowId());
     }
-
     
-    /**
-     * Summarize {@link Step} across all {@link Workflow}
-     *
-     * @return WorkflowId, StepId,{@link StateSummary}-{@link ItemState}
-     */
-    public synchronized Map<String, Map<String, StateSummary<ItemState>>> summarizeWorkflow() {
-
-        // Intialize vars
-        Map<String, Map<String, StateSummary<ItemState>>> results = new HashMap<>();
-
-        // Fetch step summaries for each step
-        for (Workflow elm : this.viewAll()) {
-            Map<String, StateSummary<ItemState>> stepData = elm.summarizeStepStates();
-            results.put(elm.getWorkflowId(), stepData);
-        }
-
-        // Return results
-        return results;
-    }
-
     
     /**
      * Fetch steps for {@link Workflow}

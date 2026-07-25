@@ -391,21 +391,7 @@ public class Workflow implements TaskTideModel<Workflow> {
     public String getState() {
         return "";
     }
-    
-    /**
-     * Summarize {@link Workflow} {@link Step} collection
-     * 
-     * @return Map-String,{@link StateSummary}-{@link ItemState}
-     */
-    @JsonbTransient
-    public Map<String, StateSummary<ItemState>> summarizeStepStates() {
-        Map<String, StateSummary<ItemState>> results = new HashMap<>();
-        for ( Entry<String, Step> elm : workflowSteps.entrySet() ) {
-               results.put( elm.getKey(), elm.getValue().summarizeByState() );
-        }
-        return results;
-    }
-            
+
     
     /**
      * TaskTideModel interface method to represent as JsonDoc

@@ -56,36 +56,6 @@ public class Step implements TaskTideModel<Step> {
     @JsonbProperty("StepName")
     private String stepName;
     
-    @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)
-    @jakarta.nosql.Column("StepState")
-    @JsonbProperty("StepState")
-    private TaskState stepState;
-    
-    @jakarta.persistence.Column(name = "StepCount")
-    @jakarta.nosql.Column("StepCount")
-    @JsonbProperty("StepCount")
-    private int stepCount;
-    
-    @jakarta.persistence.Column(name = "StepsLocked")
-    @jakarta.nosql.Column("StepsLocked")
-    @JsonbProperty("StepsLocked")
-    private int stepsLocked;
-    
-    @jakarta.persistence.Column(name = "StepsDone")
-    @jakarta.nosql.Column("StepsDone")
-    @JsonbProperty("StepsDone")
-    private int stepsDone;
-    
-    @jakarta.persistence.Column(name = "StepsError")
-    @jakarta.nosql.Column("StepsError")
-    @JsonbProperty("StepsError")
-    private int stepsError;
-    
-    @jakarta.persistence.Column(name = "StepsToDo")
-    @jakarta.nosql.Column("StepsToDo")
-    @JsonbProperty("StepsToDo")
-    private int stepsToDo;
-    
     @jakarta.persistence.Column(name = "WorkflowId")
     @jakarta.nosql.Column("WorkflowId")
     @JsonbProperty("WorkflowId")
@@ -117,31 +87,14 @@ public class Step implements TaskTideModel<Step> {
      * 
      * @param stepId
      * @param stepName
-     * @param stepState
-     * @param stepCount
-     * @param stepsLocked
-     * @param stepsDone 
-     * @param stepsToDo
-     * @param stepsError
+     * 
      */
     public Step(
         String stepId,
-        String stepName,
-        TaskState stepState,
-        int stepCount,
-        int stepsLocked,
-        int stepsDone,
-        int stepsToDo,
-        int stepsError
+        String stepName
     ) {
         this.stepId = stepId;
         this.stepName = stepName;
-        this.stepState = stepState;
-        this.stepCount = stepCount;
-        this.stepsLocked = stepsLocked;
-        this.stepsDone = stepsDone;
-        this.stepsError = stepsError;
-        this.stepsToDo = stepsToDo;
         this.anno = new CustomAnnotation();
     }
     
@@ -151,36 +104,19 @@ public class Step implements TaskTideModel<Step> {
      * 
      * @param stepId
      * @param stepName
-     * @param stepState
-     * @param stepCount
-     * @param stepsLocked
-     * @param stepsDone 
-     * @param stepsToDo
-     * @param stepsError
      * @param workflowId
      * @param anno
+     * 
      */
     @JsonbCreator
     public Step(
         @JsonbProperty("StepId") String stepId,
         @JsonbProperty("StepName") String stepName,
-        @JsonbProperty("StepState") TaskState stepState,
-        @JsonbProperty("StepCount") int stepCount,
-        @JsonbProperty("StepsLocked") int stepsLocked,
-        @JsonbProperty("StepsDone") int stepsDone,
-        @JsonbProperty("StepsToDo") int stepsToDo,
-        @JsonbProperty("StepsError") int stepsError,
         @JsonbProperty("WorkflowId") String workflowId,
         @JsonbProperty("Step Annotation") CustomAnnotation anno
     ) {
         this.stepId = stepId;
         this.stepName = stepName;
-        this.stepState = stepState;
-        this.stepCount = stepCount;
-        this.stepsLocked = stepsLocked;
-        this.stepsDone = stepsDone;
-        this.stepsError = stepsError;
-        this.stepsToDo = stepsToDo;
         this.workflowId = workflowId;
         this.anno = anno;
     }
@@ -213,12 +149,7 @@ public class Step implements TaskTideModel<Step> {
      * Reset model
      */
     @Override
-    public void resetModel() {
-        this.stepState = TaskState.PENDING;
-        this.stepsLocked = 0;
-        this.stepsError = 0;
-        this.stepsToDo = this.stepCount;
-    }
+    public void resetModel() {}
     
     
     /**
@@ -311,132 +242,14 @@ public class Step implements TaskTideModel<Step> {
         this.stepName = stepName;
     }
 
-    
-    /**
-     * Get step state
-     * 
-     * @return {@link TaskState}
-     */
-    public TaskState getStepState() {
-        return stepState;
-    }
-
-    
-    /**
-     * Set step state
-     * 
-     * @param stepState 
-     */
-    public void setStepState(TaskState stepState) {
-        this.stepState = stepState;
-    }
-
-    
-    /**
-     * Get step count
-     * 
-     * @return int
-     */
-    public int getStepCount() {
-        return stepCount;
-    }
-
-    
-    /**
-     * Set step count
-     * 
-     * @param stepCount 
-     */
-    public void setStepCount(int stepCount) {
-        this.stepCount = stepCount;
-    }
-
-    
-    /**
-     * Get locked step count
-     * 
-     * @return int
-     */
-    public int getStepsLocked() {
-        return stepsLocked;
-    }
-
-    
-    /**
-     * Set steps locked count
-     * 
-     * @param stepsLocked 
-     */
-    public void setStepsLocked(int stepsLocked) {
-        this.stepsLocked = stepsLocked;
-    }
-
-    
-    /**
-     * Get count of steps done
-     * 
-     * @return int
-     */
-    public int getStepsDone() {
-        return stepsDone;
-    }
-
-    
-    /**
-     * Set count of steps done
-     * 
-     * @param stepsDone 
-     */
-    public void setStepsDone(int stepsDone) {
-        this.stepsDone = stepsDone;
-    }
-
-    
-    /**
-     * Get count of steps in error
-     * 
-     * @return int
-     */
-    public int getStepsError() {
-        return stepsError;
-    }
-
-    
-    /**
-     * Set count of steps in error
-     * 
-     * @param stepsError 
-     */
-    public void setStepsError(int stepsError) {
-        this.stepsError = stepsError;
-    }
-
-    
-    /**
-     * Get count of steps in to do
-     * 
-     * @return int
-     */
-    public int getStepsToDo() {
-        return stepsToDo;
-    }
-
-    
-    /**
-     * Set count of steps in to do
-     * 
-     * @param stepsToDo 
-     */
-    public void setStepsToDo(int stepsToDo) {
-        this.stepsToDo = stepsToDo;
-    }
 
     
     @Override
     @JsonbTransient
     public String getState() {
-        return this.getStepState().name();
+        return "";
     }
+    
     
     /**
      * Represent as string
@@ -446,13 +259,10 @@ public class Step implements TaskTideModel<Step> {
     @Override
     public String toString() {
         return "Step{" +
-            "stepId=" + stepId +
-            ", stepName=" + stepName +
-            ", stepState=" + stepState +
-            ", stepCount=" + stepCount +
-            ", stepsLocked=" + stepsLocked +
-            ", stepsDone=" + stepsDone +
-        '}';
+            "stepId=" + this.stepId +
+            ", stepName=" + this.stepName +
+            ", workflowId=" + this.workflowId
+        + "}";
     }
     
     
@@ -502,47 +312,6 @@ public class Step implements TaskTideModel<Step> {
         return getStepId();
     }
 
-    
-    /**
-     * Summarize step by ItemState
-     * 
-     * @return {@link StateSummary}-{@link ItemState}
-     */
-    @JsonbTransient
-    public StateSummary<ItemState> summarizeByState() {
-    
-        // Initialize vars
-        Map<ItemState, Integer> results = new HashMap<>();
-        
-        // Map to results
-        results.put(ItemState.LOCKED, stepsLocked);
-        results.put(ItemState.DONE, stepsDone);
-        results.put(ItemState.TODO, stepsToDo);
-        results.put(ItemState.ERROR, this.stepsError);
-        
-        // Return results
-        return new StateSummary<>(results);
-    }
-    
-    
-    /**
-     * Set new state counts
-     * 
-     * @param counts 
-     */
-    @JsonbTransient
-    public void setStateCounts(StateSummary<ItemState> counts) {
-        setStepsLocked( counts.getCount(ItemState.LOCKED) );
-        setStepsDone(counts.getCount(ItemState.DONE));
-        setStepsToDo(counts.getCount(ItemState.TODO));
-        setStepsError(counts.getCount(ItemState.ERROR));
-        stepsDone = counts.getCounts().values()
-                        .stream()
-                        .mapToInt(Integer::intValue)
-                        .sum();   
-    }
-    
-    
     /**
      * {@link TaskTideModel} interface get the value from the required field
      * 

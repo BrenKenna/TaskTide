@@ -409,14 +409,8 @@ public class BuilderUtility {
         return new StepBuilder()
             .withStepId( "Step-" + Utils.generateSalt() )
             .withStepName("")
-            .withStepState(TaskState.PENDING)
             .withAnnotation( makeEmptyAnnotation() )
             .withWorkflowId("")
-            .withStepCount(0)
-            .withStepsDone(0)
-            .withStepsToDo(0)
-            .withStepsError(0)
-            .withStepsLocked(0)
         .build();
     }
     
@@ -431,14 +425,8 @@ public class BuilderUtility {
         return new StepBuilder()
             .withStepId( "Step-" + Utils.generateSalt() )
             .withStepName(stepName)
-            .withStepState(TaskState.PENDING)
             .withAnnotation( makeEmptyAnnotation() )
             .withWorkflowId("")
-            .withStepCount(0)
-            .withStepsDone(0)
-            .withStepsToDo(0)
-            .withStepsError(0)
-            .withStepsLocked(0)
         .build();
     }
     
@@ -454,7 +442,6 @@ public class BuilderUtility {
         return new StepBuilder()
             .withStepId(stepId)
             .withStepName(stepName)
-            .withStepState(TaskState.PENDING)
             .withAnnotation( makeEmptyAnnotation() )
         .build();
     }
@@ -474,6 +461,12 @@ public class BuilderUtility {
     }
     
     
+    /**
+     * Build {@link Workflow}
+     * 
+     * @param workflowName
+     * @return {@link Workflow}
+     */
     public static Workflow buildWorkflow(String workflowName) {
         return new WorkflowBuilder()
             .withId("Workflow-" + Utils.generateSalt())
