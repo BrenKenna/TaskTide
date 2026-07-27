@@ -43,6 +43,7 @@ import org.tasktide.core.repository.RepositoryType;
 
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
 
 import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
@@ -123,8 +124,8 @@ public class WorkflowAcquisitionStrategyTests {
         // Configure acquisition policies
         LOGGER.info("Configuring acqusition policies for steps");
         for ( String step : STEPS ) {
-            policy = TargetedAcquisitionPolicy.newInstance()
-                .withTarget(step)
+            policy = AcquisitionPolicyMode.TARGETED
+                .initBuilder()
                 .withItemState(ItemState.TODO)
                 .withWindowSize(100)
             .build();
@@ -213,7 +214,8 @@ public class WorkflowAcquisitionStrategyTests {
         // Configure acquisition policies
         LOGGER.info("Configuring acqusition policies for steps");
         for ( String step : STEPS ) {
-            policy = TargetedAcquisitionPolicy.newInstance()
+            policy = AcquisitionPolicyMode.TARGETED
+                .initBuilder()
                 .withTarget(step)
                 .withItemState(ItemState.TODO)
                 .withWindowSize(100)

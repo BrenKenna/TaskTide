@@ -39,6 +39,7 @@ import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
@@ -125,13 +126,13 @@ public class TaskTideEngineWorkerTests {
      * @return {@link TaskTideWorkloadAcquisitionPolicy} for {@link WorkItem}
      */
     public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy() {
-        return TargetedAcquisitionPolicy
-            .newInstance()
+        return AcquisitionPolicyMode.TARGETED
+            .initBuilder()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
             .withWindowSize(2)
             .withPoolSize(1)
-        ;
+        .build();
     }
 
     

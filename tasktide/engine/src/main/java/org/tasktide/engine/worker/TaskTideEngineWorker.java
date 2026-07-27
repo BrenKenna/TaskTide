@@ -61,7 +61,7 @@ public class TaskTideEngineWorker implements Cloneable {
 
     private List<WorkerTask> tasks;
     private final ExecutorService workerPool;
-    private final int windowSize;
+    private final int windowSize, iterationLimit, iterCounter = 0;
     private String activeStep;
     
     
@@ -74,6 +74,7 @@ public class TaskTideEngineWorker implements Cloneable {
         this.engineComponents = WorkerUnitContainer.getInstance();
         this.policy = policy;
         this.windowSize = this.policy.getWindowSize();
+        this.iterationLimit = this.policy.getIterationLimit();
         this.workerPool = this.engineComponents.getThreadPool(WorkerUnitModelType.WORKITEM);
     }
     
@@ -96,6 +97,16 @@ public class TaskTideEngineWorker implements Cloneable {
      * @return boolean
      */
     private boolean hasTasks() {
+        
+        // Check iteration counter against configured limit
+        if ( this.iterationLimit > 1 ) {
+            if ( this.iterCounter <= this.iterationLimit ) {
+                LOGGER.warn("Iteration limit '{}' breached, initiating shutdown", this.iterationLimit);
+                return false;
+            }
+        }
+        
+        // Check whether policy has more work
         return this.policy.hasNext();
     }
     
@@ -185,7 +196,7 @@ public class TaskTideEngineWorker implements Cloneable {
     private List<WorkItem> sampleWorkload() {
         
         // Fetch workload
-        List<WorkItem> workload = new ArrayList<>(this.policy.fetchWorkload());
+        List<WorkItem> workload = this.policy.fetchWorkload();
         
         // Log empty workload
         if ( workload.isEmpty() ) {

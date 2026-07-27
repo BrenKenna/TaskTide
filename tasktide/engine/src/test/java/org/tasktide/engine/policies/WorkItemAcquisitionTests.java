@@ -124,11 +124,11 @@ public class WorkItemAcquisitionTests {
         
         // Build acquisition policy
         LOGGER.info("Constructing policy for target step:\t'{}'", this.STEP);
-        policy = TargetedAcquisitionPolicy
-            .newInstance()
+        policy = AcquisitionPolicyMode.TARGETED
+            .initBuilder()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
-        ;
+        .build();
         LOGGER.info("Displaying acquisition policy resource:\n\n'{}'", policy.toJsonDoc());
         
         // Fetch workload
@@ -170,15 +170,15 @@ public class WorkItemAcquisitionTests {
         
         // Build acquisition policy
         LOGGER.info("Constructing policy for target step:\t'{}'", step);
-        policy = TargetedAcquisitionPolicy
-            .newInstance()
+        policy = AcquisitionPolicyMode.TARGETED
+            .initBuilder()
             .withTarget("Ping Tests")
             .withItemState(ItemState.TODO)
             .withAnno(
                 "Pilot Label",
                 "Early Task Binding Semantics"
             )
-        ;
+        .build();
         LOGGER.info("Displaying acquisition policy resource:\n\n'{}'", policy.toJsonDoc());
         
         // Fetch workload

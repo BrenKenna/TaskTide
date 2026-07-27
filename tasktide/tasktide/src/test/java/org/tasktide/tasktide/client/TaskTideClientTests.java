@@ -4,8 +4,6 @@
  */
 package org.tasktide.tasktide.client;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.nosql.Template;
 import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
@@ -25,9 +23,9 @@ import org.junit.jupiter.api.Test;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 
 import org.tasktide.tasktide.TestUtils;
 
@@ -97,11 +95,10 @@ public class TaskTideClientTests {
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
         
         // Return acquisition policy
-        return TargetedAcquisitionPolicy
-            .newInstance()
+        return AcquisitionPolicyMode.TARGETED.initBuilder()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
-        ;
+        .build();
     }
 
     

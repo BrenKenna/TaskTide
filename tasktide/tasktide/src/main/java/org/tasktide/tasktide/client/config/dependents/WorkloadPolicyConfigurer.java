@@ -15,6 +15,7 @@
  */
 package org.tasktide.tasktide.client.config.dependents;
 
+import java.util.Random;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
@@ -32,23 +33,26 @@ import org.tasktide.parser.model.ArgumentType;
  *
  * @author Bren
  */
-public class WorkflowPolicyConfigurer extends AbstractConfig {
+public class WorkloadPolicyConfigurer extends AbstractConfig {
 
     // Acquisition mode
     @ConfigProperty(name = "tasktide.engine.policy.acquisition.workflow.mode", defaultValue = "Exhaust")
     WorkflowStrategyMode strategyMode;
-    
 
     // Workflow strategy
     @ConfigProperty(name = "tasktide.engine.policy.acquisition.workflow.strategy", defaultValue = "Sequential")
     WorkflowStrategyType strategyType;
+    
+    // Iteration limit 
+    @ConfigProperty(name = "tasktide.engine.policy.acquisition.iteration-limit", defaultValue = "-1")
+    int iterationLimit = -1;
     
     
     /**
      * Defaults {@link ArgumentTree} path to root
      * 
      */
-    public WorkflowPolicyConfigurer() {
+    public WorkloadPolicyConfigurer() {
         super("engine");
     }
     
@@ -57,7 +61,7 @@ public class WorkflowPolicyConfigurer extends AbstractConfig {
      * 
      * @param path 
      */
-    public WorkflowPolicyConfigurer(String path) {
+    public WorkloadPolicyConfigurer(String path) {
         super(path);
     }
     
@@ -70,6 +74,11 @@ public class WorkflowPolicyConfigurer extends AbstractConfig {
     @Override
     public void initConfig(ArgumentTree argTree) {
     
+        // Configure values
+        this.strategyType();
+        this.strategyMode();
+        this.iterationLimit();
+        
          // Put argument map into tree
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
@@ -146,6 +155,27 @@ public class WorkflowPolicyConfigurer extends AbstractConfig {
         );
         
         arg.setValue(this.strategyType);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configures iteration limit
+     * 
+     */
+    public void iterationLimit() {
+        Argument<Integer> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Iteration Limit")
+            .withDescription("Configures the wait time in seconds for locking an item")
+            .withShortFlag("-il")
+            .withLongFlag("--iteration-limit")
+            .withArgType(ArgumentType.ACTION)
+            .withRefClass(Integer.class)
+        .build();
+        
+        this.iterationLimit = this.getConfigValue("tasktide.engine.policy.acquisition.iteration-limit", Integer.class, -1);
+        arg.setValue(this.iterationLimit);
         this.getArgumentMap().putArgument(arg);
     }
 }

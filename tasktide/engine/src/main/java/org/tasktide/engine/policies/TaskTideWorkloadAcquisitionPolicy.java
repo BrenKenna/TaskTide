@@ -23,6 +23,7 @@ import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 
 
 /**
@@ -56,72 +57,7 @@ public interface TaskTideWorkloadAcquisitionPolicy {
      * @return boolean
      */
     public boolean hasNext();
-    
-    
-    /**
-     * Build query with {@link CustomAnnotation} for early task
-     *  binding semantics with Pilot Label for example
-     * 
-     * @param anno
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy withAnno(CustomAnnotation anno);
-    
-    
-    /**
-     * Build query with {@link CustomAnnotation} for early task
-     *  binding semantics with Pilot Label for example
-     * 
-     * @param key
-     * @param val
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy withAnno(String key, Object val);
-    
-    
-    /**
-     * Build with {@link ItemState}
-     * 
-     * @param state
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy withItemState(ItemState state);
-    
-    
-    /**
-     * Building an acquisition policy with collection
-     * 
-     * @param target
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy withTarget(String target);
-    
-    
-    /**
-     * Build acquisition policy with provided window size
-     * 
-     * @param windowSize
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy withWindowSize(int windowSize);
-    
-    
-    /**
-     * Build acquisition policy with provided pool size
-     * 
-     * @param poolSize
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy withPoolSize(int poolSize);
-    
-    
-    /**
-     * Build acquisition policy
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy build();
-    
+
     
     /**
      * Represent as JSON string
@@ -177,6 +113,14 @@ public interface TaskTideWorkloadAcquisitionPolicy {
      * @return {@link ItemState} 
      */
     public ItemState getState();
+    
+    
+    /**
+     * Set {@link ItemState} field
+     * 
+     * @param state
+     */
+    public void setState(ItemState state);
 
     
     /**
@@ -194,6 +138,15 @@ public interface TaskTideWorkloadAcquisitionPolicy {
      */
     public Object getAnnoVal();
     
+    
+    /**
+     * Set annotation key-value
+     * 
+     * @param key
+     * @param value 
+     */
+    public void setAnnoKeyValue(String key, Object value);
+    
 
     /**
      * Get {@link CustomAnnotation} field
@@ -201,6 +154,14 @@ public interface TaskTideWorkloadAcquisitionPolicy {
      * @return {@link CustomAnnotation}
      */
     public CustomAnnotation getAnno();
+    
+    
+    /**
+     * Set {@link CustomAnnotation} field
+     * 
+     * @param anno
+     */
+    public void setAnno(CustomAnnotation anno);
     
     
     /**
@@ -241,4 +202,20 @@ public interface TaskTideWorkloadAcquisitionPolicy {
      * @return {@link TaskTideWorkloadAcquisitionPolicy} clone
      */
     public TaskTideWorkloadAcquisitionPolicy clonePolicy();
+    
+    
+    /**
+     * Set iteration limit
+     * 
+     * @param iterationLimit 
+     */
+    public void setIterationLimit(int iterationLimit);
+    
+    
+    /**
+     * Get iteration limit
+     * 
+     * @return int
+     */
+    public int getIterationLimit();
 }

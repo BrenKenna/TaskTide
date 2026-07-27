@@ -126,12 +126,11 @@ public class WorkflowAcquisitionPolicyTests {
             "Configuring acqusition policies for workflow:\t'{}'",
             List.of(this.STEPS)
         );
-        workflowPolicy = WorkflowAcquisitionPolicy
-            .newInstance(
-                List.of(this.STEPS),
-                WorkflowStrategyType.SEQUENTIAL,
-                WorkflowStrategyMode.EXHAUST
-            )
+        workflowPolicy = AcquisitionPolicyMode.TARGETED
+            .initBuilder()
+            .withTarget(this.STEPS[0] + "," + this.STEPS[1])
+            .withStrategyMode(WorkflowStrategyMode.EXHAUST)
+            .withStrategyType(WorkflowStrategyType.SEQUENTIAL)
             .withWindowSize(100)
         .build();
         
@@ -190,12 +189,11 @@ public class WorkflowAcquisitionPolicyTests {
             "Configuring acqusition policies for workflow:\t'{}'",
             List.of(this.STEPS)
         );
-        workflowPolicy = WorkflowAcquisitionPolicy
-            .newInstance(
-                List.of(this.STEPS),
-                WorkflowStrategyType.ROUND_ROBIN,
-                WorkflowStrategyMode.SCANNER
-            )
+        workflowPolicy = AcquisitionPolicyMode.TARGETED
+            .initBuilder()
+            .withTarget(this.STEPS[0] + "," + this.STEPS[1])
+            .withStrategyType(WorkflowStrategyType.ROUND_ROBIN)
+            .withStrategyMode(WorkflowStrategyMode.SCANNER)
             .withWindowSize(2)
         .build();
         

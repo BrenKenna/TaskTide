@@ -21,10 +21,11 @@ import java.util.ArrayList;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
+import org.tasktide.core.model.workitem.ItemState;
 
 
 /**
- * Acquisition policy targetting a single collection of {@link WorkItem}
+ * Acquisition policy targeting a single collection of {@link WorkItem}
  * 
  * @author Bren
  */
@@ -32,21 +33,23 @@ public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
     
     
     /**
-     * Constructs with random UUID
-     */
-    TargetedAcquisitionPolicy() {
-        super(AcquisitionPolicyMode.TARGETED);
-    }
-    
-    
-    /**
-     * Static initializer for {@link TargetedAcquisitionPolicy}
+     * Construct {@link TargetedAcquisitionPolicy}
      * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+     * @param policyType
+     * @param target
+     * @param state
+     * @param windowSize
+     * @param poolSize
+     * @param iterationLimit 
      */
-    public static TaskTideWorkloadAcquisitionPolicy newInstance() {
-        TargetedAcquisitionPolicy pol = new TargetedAcquisitionPolicy();
-        return pol;
+    TargetedAcquisitionPolicy(
+        String target,
+        ItemState state,
+        int windowSize,
+        int poolSize,
+        int iterationLimit
+    ) {
+        super(AcquisitionPolicyMode.TARGETED, target, state, windowSize, poolSize, iterationLimit);
     }
     
     
@@ -57,6 +60,11 @@ public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
      */
     @Override
     public boolean hasNext() {
+        
+        if ( this.iterationLimit > 1 ) {
+            return this.counter < this.iterationLimit;
+        }
+        
         return !this.fetchWorkload().isEmpty();
     }
     
@@ -121,8 +129,7 @@ public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
      */
     @Override
     public TaskTideWorkloadAcquisitionPolicy clonePolicy() {
-        return TargetedAcquisitionPolicy
-            .newInstance()
+        return new AcquisitionPolicyBuilder(AcquisitionPolicyMode.TARGETED)
             .withAnno(this.getAnno())
             .withItemState(this.getState())
             .withTarget(this.getTarget())

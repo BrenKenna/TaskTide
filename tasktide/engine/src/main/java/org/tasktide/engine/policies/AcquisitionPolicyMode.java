@@ -16,10 +16,7 @@
 package org.tasktide.engine.policies;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
-import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
 
 
 /**
@@ -44,6 +41,11 @@ public enum AcquisitionPolicyMode {
         public boolean isAcquisitionPolicyMode(AcquisitionPolicyMode query) {
             return this == query;
         }
+        
+        @Override
+        public AcquisitionPolicyBuilder initBuilder() {
+            return new AcquisitionPolicyBuilder(this);
+        }
     },
 
     TARGETED {
@@ -61,8 +63,21 @@ public enum AcquisitionPolicyMode {
         public boolean isAcquisitionPolicyMode(AcquisitionPolicyMode query) {
             return this == query;
         }
+        
+        @Override
+        public AcquisitionPolicyBuilder initBuilder() {
+            return new AcquisitionPolicyBuilder(this);
+        }
     };
 
+    /**
+     * Initialize {@link AcquisitionPolicyBuilder} for configured
+     *  target
+     * 
+     * @return {@link TaskTideWorkloadAcquisitionPolicy}
+     */
+    public abstract AcquisitionPolicyBuilder initBuilder();
+    
 
     /**
      * Abstract method check if query is enum value
@@ -142,46 +157,5 @@ public enum AcquisitionPolicyMode {
         return Arrays.stream(values())
             .map(elm -> elm.name())
         .collect(Collectors.joining(","));
-    }
-    
-    
-    
-    /**
-     * Initialize {@link AbstractAcquisitionPolicy} for configured
-     *  target
-     * 
-     * @param target
-     * @param opts
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public static TaskTideWorkloadAcquisitionPolicy initBuilder(String target, Map<String, Object> opts) {
-        
-        // Pass if target is null
-        if ( target == null ) {
-            return null;
-        }
-        
-        // Pass if target is an empty string
-        if ( target.isEmpty() ) {
-            return null;
-        }
-        
-        // Parse stripped string
-        target = target.replaceAll("[,;]$", "").strip();
-        
-        // Evaluate as a workflow acquisition policy
-        if ( target.contains(",") || target.contains(";") ) {
-            target = target.replace(";", ",");
-            List<String> steps = List.of(target.split(","));
-            String stratString = (String) opts.getOrDefault("Workflow Strategy", WorkflowStrategyType.SEQUENTIAL.name());
-            WorkflowStrategyType workflowStrategy = WorkflowStrategyType.get(stratString);
-            return WorkflowAcquisitionPolicy.newInstance(steps, workflowStrategy);
-        }
-        
-        // Evaluate as targeted acquisition policy
-        else {
-            return TargetedAcquisitionPolicy.newInstance();
-        }
     }
 }

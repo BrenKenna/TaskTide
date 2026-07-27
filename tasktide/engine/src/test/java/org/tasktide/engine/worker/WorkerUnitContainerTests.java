@@ -48,6 +48,7 @@ import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
 import org.tasktide.engine.executor.ProcessExecutor;
 import org.tasktide.engine.executor.TaskTideExecutor;
 import org.tasktide.engine.observer.TaskTideEngineObserver;
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
@@ -127,11 +128,11 @@ public class WorkerUnitContainerTests {
      * @return {@link TaskTideWorkloadAcquisitionPolicy} for {@link WorkItem}
      */
     public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy() {
-        return TargetedAcquisitionPolicy
-            .newInstance()
+        return AcquisitionPolicyMode.TARGETED
+            .initBuilder()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
-        ;
+        .build();
     }
     
     

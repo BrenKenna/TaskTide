@@ -18,8 +18,8 @@ package org.tasktide.engine.policies.resources;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.supporting.Utils;
 
-import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.AbstractAcquisitionPolicy;
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 
@@ -79,12 +79,12 @@ public class ResourcePolicyMapper {
         switch ( type ) {
         
             case WORKITEM -> {
-                return TargetedAcquisitionPolicy
-                    .newInstance()
+                return AcquisitionPolicyMode.TARGETED.initBuilder()
                     .withTarget(resource.getTarget())
                     .withItemState(resource.getState())
                     .withAnno(resource.getAnno())
-                    .withAnno(resource.getAnnoKey(), resource.getAnnoVal());
+                    .withAnno(resource.getAnnoKey(), resource.getAnnoVal())
+                .build();
             }
             
             default -> {

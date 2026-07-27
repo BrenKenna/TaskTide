@@ -48,6 +48,7 @@ import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
 import org.tasktide.engine.policies.WorkflowAcquisitionPolicy;
@@ -186,16 +187,14 @@ public class EngineWorkerWorkflowAcquisitionTests {
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
     public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy(WorkflowStrategyType strategy, WorkflowStrategyMode mode) {
-        return WorkflowAcquisitionPolicy
-            .newInstance(
-                List.of(this.STEP.split(",")),
-                strategy,
-                mode
-            )
+        return AcquisitionPolicyMode.TARGETED
+            .initBuilder()
+            .withTarget(this.STEP)
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
             .withWindowSize(2)
-        .withPoolSize(1);
+            .withPoolSize(1)
+        .build();
     }
     
     
@@ -210,16 +209,13 @@ public class EngineWorkerWorkflowAcquisitionTests {
      * @return {@link TaskTideWorkloadAcquisitionPolicy}
      */
     public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy(WorkflowStrategyType strategy, WorkflowStrategyMode mode, int poolSize, int windowSize) {
-        return WorkflowAcquisitionPolicy
-            .newInstance(
-                List.of(this.STEP.split(",")),
-                strategy,
-                mode
-            )
+        return AcquisitionPolicyMode.TARGETED
+            .initBuilder()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
             .withWindowSize(windowSize)
-        .withPoolSize(poolSize);
+            .withPoolSize(poolSize)
+        .build();
     }
 
     
@@ -276,17 +272,15 @@ public class EngineWorkerWorkflowAcquisitionTests {
      */
     public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy(WorkflowStrategyType strategy, WorkflowStrategyMode mode, int iterationLimit) {
         LOGGER.info("Configuring acqusition policy with iteration limit\t'{}'", iterationLimit);
-        return WorkflowAcquisitionPolicy
-            .newInstance(
-                List.of(this.STEP.split(",")),
-                strategy,
-                mode,
-                iterationLimit
-            )
+        return AcquisitionPolicyMode.TARGETED
+            .initBuilder()
+            .withTarget(this.STEP)
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
             .withWindowSize(2)
-        .withPoolSize(1);
+            .withPoolSize(1)
+            .withIterationLimit(iterationLimit)
+        .build();
     }
 
     
@@ -607,7 +601,7 @@ public class EngineWorkerWorkflowAcquisitionTests {
     public void canRunEngineBatchRoundRobinScannerMode_Parallel() {
 
         // Configure test
-        LOGGER.info("\n\n================= Can Run Parallel Batch Round Robin Scanner Workflow Worker =================\n");
+        LOGGER.info("\n\n================= Can Run Parallel Batch Round Robin Scanner Workflow Workers =================\n");
         TaskTideEngineWorker worker;
         WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
         WorkflowStrategyType stratType = WorkflowStrategyType.ROUND_ROBIN;
@@ -652,6 +646,6 @@ public class EngineWorkerWorkflowAcquisitionTests {
         LOGGER.info("Engine processing completed");
         
         // Log complete
-        LOGGER.info("\n\n================ Can Run Batch Round Robin Scanner Workflow Worker =================\n");
+        LOGGER.info("\n\n================ Can Run Parallel Batch Round Robin Scanner Workflow Workers =================\n");
     }
 }

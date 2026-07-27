@@ -18,6 +18,8 @@ package org.tasktide.engine.policies;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -47,6 +49,9 @@ import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
  */
 public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
 
+    // Logger
+    private final Logger LOGGER = LogManager.getLogger(AbstractAcquisitionPolicy.class);
+    
     // Attributes
     private final List<String> steps;
     private final List<TaskTideWorkloadAcquisitionPolicy> policies;
@@ -142,57 +147,42 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     
     
     /**
-     * Static initializer for {@link TargetedAcquisitionPolicy} using default {@link WorkflowStrategyType}
+     * Constructs policy
      * 
      * @param steps
      * @param stratType
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-    */
-    public static TaskTideWorkloadAcquisitionPolicy newInstance(List<String> steps, WorkflowStrategyType stratType) {
-        WorkflowAcquisitionPolicy pol = new WorkflowAcquisitionPolicy(steps, stratType);
-        return pol;
-    }
-    
-    
-    /**
-     * Static initializer for {@link WorkflowStrategyMode} using provided {@link WorkflowStrategyMode}
-     * 
-     * @param steps
-     * @param stratType
-     * @param strategyMode
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-    */
-    public static TaskTideWorkloadAcquisitionPolicy newInstance(
-        List<String> steps,
-        WorkflowStrategyType stratType,
-        WorkflowStrategyMode strategyMode
-    ) {
-        WorkflowAcquisitionPolicy pol = new WorkflowAcquisitionPolicy(steps, stratType, strategyMode);
-        return pol;
-    }
-    
-    
-    /**
-     * Static initializer for {@link WorkflowStrategyMode} using provided {@link WorkflowStrategyMode}
-     * 
-     * @param steps
-     * @param stratType
-     * @param strategyMode
-     * @param iterationLimit
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-    */
-    public static TaskTideWorkloadAcquisitionPolicy newInstance(
+     * @param strategy mode
+     */
+    WorkflowAcquisitionPolicy(
         List<String> steps,
         WorkflowStrategyType stratType,
         WorkflowStrategyMode strategyMode,
+        int poolSize,
+        int windowSize,
         int iterationLimit
     ) {
-        WorkflowAcquisitionPolicy pol = new WorkflowAcquisitionPolicy(steps, stratType, strategyMode, iterationLimit);
-        return pol;
+        super(AcquisitionPolicyMode.WORKFLOW);
+        this.steps = steps;
+        this.strategyType = stratType;
+        
+        this.iterationLimit = iterationLimit;
+        this.poolSize = poolSize;
+        this.windowSize = windowSize;
+
+        this.policies = new ArrayList<>();
+        this.steps
+            .forEach(
+                elm -> this.policies.add(this.getPolicyForTarget(elm))
+        );
+
+        this.strategy = this.strategyType
+            .initializeStrategyBuilder()
+            .withPolicies(this.policies)
+            .withStrategyMode(strategyMode)
+            .withIterationLimit(this.iterationLimit)
+        .build();
     }
+
 
     
     /**
@@ -206,6 +196,18 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
         
         // Initialize output
         List<WorkItem> output;
+        
+        // Evaluate iteration limit if provided
+        if ( this.iterationLimit > 0 ) {
+            LOGGER.info(
+                "Evaluating iteration counter '{}' against configured limit '{}'",
+                this.counter, this.iterationLimit
+            );
+            if ( this.counter >= this.iterationLimit ) {
+                return Collections.emptyList();
+            }
+            this.counter++;
+        }
         
         // Fetch workload
         output = this.strategy.fetchWorkload();
@@ -228,6 +230,10 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
      */
     @Override
     public boolean hasNext() {
+        if ( this.iterationLimit > 1 ) {
+            return this.counter < this.iterationLimit;
+        }
+        
         return this.strategy.hasNext();
     }
 
@@ -241,13 +247,13 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     public TaskTideWorkloadAcquisitionPolicy getPolicyForTarget(String step) {
         
         // Build policy
-        TaskTideWorkloadAcquisitionPolicy policy = TargetedAcquisitionPolicy
-            .newInstance()
+        TaskTideWorkloadAcquisitionPolicy policy = new AcquisitionPolicyBuilder(AcquisitionPolicyMode.TARGETED)
             .withTarget(step)
             .withItemState(ItemState.TODO)
-            .withAnno( this.getAnno() )
-            .withWindowSize( this.getWindowSize() )
-            .withPoolSize( this.getPoolSize() )
+            .withAnno(this.getAnno())
+            .withPoolSize(this.poolSize)
+            .withWindowSize(this.windowSize)
+            .withIterationLimit(this.iterationLimit)
         .build();
         
         // Return policy
@@ -292,10 +298,16 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
      */
     @Override
     public TaskTideWorkloadAcquisitionPolicy clonePolicy() {
-        return new WorkflowAcquisitionPolicy(this.steps, this.strategyType)
-            .withAnno(this.getAnno())
-            .withItemState(this.getState())
-            .withPoolSize(this.poolSize)
-        .withWindowSize(this.windowSize);
+        WorkflowAcquisitionPolicy policy = new WorkflowAcquisitionPolicy(this.steps, this.strategyType);
+        policy.setAnno(this.getAnno());
+        policy.setState(this.getState());
+        
+        policy.setPoolSize(this.poolSize);
+        policy.setWindowSize(this.windowSize);
+        
+        policy.setIterationLimit(this.iterationLimit);
+        policy.strategy.setIterationLimit(this.iterationLimit);
+
+        return policy;
     }
 }

@@ -33,7 +33,10 @@ import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+import org.tasktide.engine.policies.AcquisitionPolicyBuilder;
 import org.tasktide.engine.policies.AcquisitionPolicyMode;
+import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
+import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
 import org.tasktide.parser.model.Argument;
 
 import org.tasktide.parser.model.ArgumentMap;
@@ -156,11 +159,28 @@ public class TaskTideEngineClient extends TaskTideClient {
         
         // Initialize acquisition policy
         LOGGER.info("Configuring TaskTide-Engine Workload Acqusition Policy");
-        TaskTideWorkloadAcquisitionPolicy policy = AcquisitionPolicyMode.initBuilder(this.step, this.acquisitionOpts);
-        LOGGER.info("TaskTide-Engine configured for:\t'{}'", policy.getPolicyMode());
+        AcquisitionPolicyBuilder builder;
+        if ( this.step.contains(",") ) {
+            
+            // Fetch strategy configs
+            LOGGER.info("Configuring Targeted Workload Acquisition:\t'{}'");
+            String modeStr = (String) this.engineArgs.getArgument("Acquisition Mode").getValue();
+            String typeStr = (String) this.engineArgs.getArgument("Strategy Type").getValue();
+            
+            // Initialize builder
+            builder = AcquisitionPolicyMode.WORKFLOW.initBuilder()
+                .withTarget(this.step)
+                .withStrategyMode(WorkflowStrategyMode.get(modeStr))
+            .withStrategyType(WorkflowStrategyType.get(typeStr));
+        }
+        else {
+            LOGGER.info("Configuring Targeted Workload Acquisition:\t'{}'");
+            builder = AcquisitionPolicyMode.TARGETED.initBuilder()
+                .withTarget(this.step);
+        }
         
         // Apply state
-        policy = policy.withItemState(ItemState.TODO); // this can now be an argument
+        builder = builder.withItemState(ItemState.TODO); // this can now be an argument
         
         // Apply annotation key-value
         if (
@@ -169,26 +189,30 @@ public class TaskTideEngineClient extends TaskTideClient {
         ) {
             String key = (String) this.engineArgs.getArgument("Pilot Label Key").getValue();
             Object val = this.engineArgs.getArgument("Pilot Label Value").getValue();
-            policy = policy.withAnno(key, val);
+            builder = builder.withAnno(key, val);
         }
         
         // Apply custom annotation
         if ( this.engineArgs.getArgument("Pilot Label Annotation").getValue() != "" ) {
             String json = (String) this.engineArgs.getArgument("Pilot Label Annotation").getValue();
             CustomAnnotation anno = CustomAnnotationBuilder.fromJsonString(json);
-            policy = policy.withAnno(anno);
+            builder = builder.withAnno(anno);
         }
         
         // Apply worker pool size
-        policy.withPoolSize(this.engineWorkerThreads);
+        builder = builder.withPoolSize(this.engineWorkerThreads);
         
         // Apply window size
         Argument arg = this.engineArgs.getArgument("Window Size");
         int argVal = (int) arg.getValue();
-        policy.withWindowSize(argVal);
+        builder = builder.withWindowSize(argVal);
+        
+        // Apply iteration limit
+        int iterationLimit = (int) this.engineArgs.getArgument("Iteration Limit").getValue();
+        builder = builder.withIterationLimit(iterationLimit);
         
         // Return acquisition policy
-        return policy.build();
+        return builder.build();
     }
     
     

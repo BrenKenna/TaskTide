@@ -37,20 +37,19 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
     // Attributes for which builder
     protected final String id;
     protected final AcquisitionPolicyMode policyType;
-    
-    private boolean targetted, annoString, annotation;
 
     // Field properties
-    private String target = "";
+    private String target;
     private ItemState state = ItemState.TODO;
     private String annoKey;
     private Object annoVal;
     private CustomAnnotation anno;
     protected int windowSize, poolSize;
+    protected int iterationLimit = -1, counter = 0;
     
     
     /**
-     * Construct provided {@link AcquisitionPolicyMode}
+     * Construct with policy type
      * 
      * @param policyType 
      */
@@ -61,91 +60,89 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
     
     
     /**
-     * Building an acquisition policy with collection
+     * Construct provided {@link AcquisitionPolicyMode}
      * 
-     * @param target
-     * @return {@link  AbstractAcquisitionPolicy}
+     * @param policyType 
      */
-    @Override
-    public AbstractAcquisitionPolicy withTarget(String target) {
+    AbstractAcquisitionPolicy(
+        AcquisitionPolicyMode policyType,
+        String target
+    ) {
+        this.policyType = policyType;
+        this.id = policyType.toString() + UUID.randomUUID().toString();
         this.target = target;
-        this.targetted = true;
-        return this;
     }
     
     
     /**
-     * Building an acquisition policy for elements of collection
-     *  matching state
+     * Construct provided {@link AcquisitionPolicyMode}
      * 
-     * @param state
-     * @return {@link  AbstractAcquisitionPolicy}
+     * @param policyType 
      */
-    @Override
-    public AbstractAcquisitionPolicy withItemState(ItemState state) {
+    AbstractAcquisitionPolicy(
+        AcquisitionPolicyMode policyType,
+        String target,
+        ItemState state
+    ) {
+        this.policyType = policyType;
+        this.id = policyType.toString() + UUID.randomUUID().toString();
+        
+        this.target = target;
         this.state = state;
-        return this;
     }
     
     
     /**
-     * Building an acquisition policy for elements with provided
-     *  annotation key-value pair
+     * Construct provided {@link AcquisitionPolicyMode}
      * 
-     * @param key
-     * @param val
-     * @return {@link  AbstractAcquisitionPolicy}
+     * @param policyType 
      */
-    @Override
-    public AbstractAcquisitionPolicy withAnno(String key, Object val) {
-        this.annoKey = key;
-        this.annoVal = val;
-        this.annoString = true;
-        return this;
-    }
-    
-    
-    /**
-     * Building an acquisition policy for elements with provided
-     *  annotation
-     * 
-     * @param anno
-     * @return 
-     */
-    @Override
-    public AbstractAcquisitionPolicy withAnno(CustomAnnotation anno) {
-        this.anno = anno;
-        this.annotation = true;
-        return this;
-    }
-    
-    
-    /**
-     * Apply window size
-     * 
-     * @param windowSize
-     * @return 
-     */
-    @Override
-    public AbstractAcquisitionPolicy withWindowSize(int windowSize) {
+    AbstractAcquisitionPolicy(
+        AcquisitionPolicyMode policyType,
+        String target,
+        ItemState state,
+        int windowSize,
+        int poolSize
+    ) {
+        this.policyType = policyType;
+        this.id = policyType.toString() + UUID.randomUUID().toString();
+        
+        this.target = target;
+        this.state = state;
+        
         this.windowSize = windowSize;
-        return this;
+        this.poolSize = poolSize;
     }
     
     
     /**
-     * Apply pool size
      * 
+     * @param policyType
+     * @param target
+     * @param state
+     * @param windowSize
      * @param poolSize
-     * @return 
+     * @param iterationLimit 
      */
-    @Override
-    public AbstractAcquisitionPolicy withPoolSize(int poolSize) {
+    AbstractAcquisitionPolicy(
+        AcquisitionPolicyMode policyType,
+        String target,
+        ItemState state,
+        int windowSize,
+        int poolSize,
+        int iterationLimit
+    ) {
+        this.policyType = policyType;
+        this.id = policyType.toString() + UUID.randomUUID().toString();
+        
+        this.target = target;
+        this.state = state;
+        
+        this.windowSize = windowSize;
         this.poolSize = poolSize;
-        return this;
+        this.iterationLimit = iterationLimit;
     }
 
-    
     
     /**
      * Represent as JSON String
@@ -171,39 +168,6 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
             .toJsonResource(this)
         .toJsonDoc();
     }
-    
-    
-    /**
-     * Return whether targetted field has been set
-     * 
-     * @return booleam
-     */
-    @Override
-    public boolean isTargeted() {
-        return targetted;
-    }
-
-    
-    /**
-     * Return whether annotation string has been set
-     * 
-     * @return boolean
-     */
-    @Override
-    public boolean isStringAnnotated() {
-        return annoString;
-    }
-
-    
-    /**
-     * Return whether the annotation field has been set
-     * 
-     * @return boolean
-     */
-    @Override
-    public boolean isCustomAnnotated() {
-        return annotation;
-    }
 
     
     /**
@@ -225,6 +189,17 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
     @Override
     public ItemState getState() {
         return state;
+    }
+    
+    
+    /**
+     * Set {@link ItemState} field
+     * 
+     * @param state
+     */
+    @Override
+    public void setState(ItemState state) {
+        this.state = state;
     }
 
     
@@ -249,6 +224,19 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
         return annoVal;
     }
     
+    
+    /**
+     * Set annotation key-value
+     * 
+     * @param key
+     * @param value 
+     */
+    @Override
+    public void setAnnoKeyValue(String key, Object value) {
+        this.annoKey = key;
+        this.annoVal = value;
+    }
+    
 
     /**
      * Get {@link CustomAnnotation} field
@@ -258,6 +246,16 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
     @Override
     public CustomAnnotation getAnno() {
         return anno;
+    }
+    
+    
+    /**
+     * Set {@link CustomAnnotation} field
+     * 
+     */
+    @Override
+    public void setAnno(CustomAnnotation anno) {
+        this.anno = anno;
     }
 
 
@@ -324,28 +322,58 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
     public AcquisitionPolicyMode getPolicyMode() {
         return this.policyType;
     }
-    
+
     
     /**
-     * Build with light verification will add in error
-     *  and logging for null target or state
+     * Get iteration limit
      * 
-     * @return AbstractAcquisitionPolicy
+     * @return int
      */
     @Override
-    public AbstractAcquisitionPolicy build() {
-        if ( this.anno == null ) {
-            this.anno = new CustomAnnotation();
-        }
-        
-        if ( this.poolSize < 1 ) {
-            this.poolSize = 1;
-        }
-        
-        if ( this.windowSize < 1 ) {
-            this.windowSize = 1;
-        }
-        
-        return this;
+    public int getIterationLimit() {
+        return this.iterationLimit;
+    }
+
+    
+    /**
+     * Set iteration limit
+     * 
+     * @param iterationLimit 
+     */
+    @Override
+    public void setIterationLimit(int iterationLimit) {
+        this.iterationLimit = iterationLimit;
+    }
+    
+    /**
+     * Return whether targetted field has been set
+     * 
+     * @return booleam
+     */
+    @Override
+    public boolean isTargeted() {
+        return this.target != null;
+    }
+
+    
+    /**
+     * Return whether annotation string has been set
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean isStringAnnotated() {
+        return this.annoKey != null && this.annoVal != null;
+    }
+
+    
+    /**
+     * Return whether the annotation field has been set
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean isCustomAnnotated() {
+        return this.anno != null;
     }
 }

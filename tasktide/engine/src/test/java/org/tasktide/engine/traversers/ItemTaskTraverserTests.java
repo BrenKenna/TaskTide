@@ -50,6 +50,7 @@ import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
@@ -126,11 +127,11 @@ public class ItemTaskTraverserTests {
         List<WorkItem> workload;
         
         // Build policy & fetch workload
-        policy = TargetedAcquisitionPolicy
-            .newInstance()
+        policy = AcquisitionPolicyMode.TARGETED
+            .initBuilder()
             .withTarget(this.STEP)
             .withItemState(ItemState.TODO)
-        ;
+        .build();
         workload = policy.fetchWorkload();
         
         // Return results
