@@ -17,7 +17,9 @@ package org.tasktide.engine.policies.workflow;
 
 import java.util.List;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -37,6 +39,7 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
     
     // Internal attributes
     private final Logger LOGGER = LogManager.getLogger(SequentialWorkflowStrategy.class);
+    private static AtomicBoolean canIncrement;
     
     
     /**
@@ -48,8 +51,29 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
      */
     SequentialWorkflowStrategy(List<TaskTideWorkloadAcquisitionPolicy> policies, WorkflowStrategyMode mode, int limit) {
         super("SequentialWorkflowStrategy-" + UUID.randomUUID().toString(), policies, mode, limit);
+        SequentialWorkflowStrategy.canIncrement = new AtomicBoolean(false);
     }
     
+    
+    /**
+     * Construct with previous state
+     * 
+     * @param id
+     * @param policies
+     * @param workflow
+     * @param activePolicy
+     * @param mode
+     * @param limit 
+     */
+    SequentialWorkflowStrategy(
+        List<TaskTideWorkloadAcquisitionPolicy> policies,
+        Deque<TaskTideWorkloadAcquisitionPolicy> stateWorkflow,
+        TaskTideWorkloadAcquisitionPolicy stateActivePolicy,
+        WorkflowStrategyMode mode,
+        int limit
+    ) {
+        super("SequentialWorkflowStrategy-" + UUID.randomUUID().toString(), policies, stateWorkflow, stateActivePolicy, mode, limit);
+    }
     
     /**
      * Fetches {@link WorkItem} collection according to configured {@link TaskTideWorkloadAcquisitionPolicy}.
@@ -73,7 +97,8 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
 
         // Sequentially consume provided workload acquisition policies
         LOGGER.info(
-            "Fetching workflow records for registered targets:\t'{}'",
+            "Fetching workflow records for registered targets, queue size is now '{}':\t'{}'",
+            this.workflow.size(),
             this.getTargetNames()
         );
         while ( !this.workflow.isEmpty() ) {
@@ -144,9 +169,10 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
             // Return workload if any tasks available
             if (!workload.isEmpty()) {
                 LOGGER.info(
-                        "Reterived workload of size '{}' for target '{}'",
-                        workload.size(), this.activePolicy.getTarget()
+                    "Reterived workload of size '{}' for target '{}'",
+                    workload.size(), this.activePolicy.getTarget()
                 );
+                SequentialWorkflowStrategy.getOrSetCanIncrement(false, false);
                 return workload;
             }
 
@@ -157,11 +183,13 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
                     this.activePolicy.getTarget(), this.workflow.peekFirst()
                 );
                 this.activePolicy = null;
+                SequentialWorkflowStrategy.getOrSetCanIncrement(false, true);
                 return Collections.emptyList();
             }
             
             else {
                 LOGGER.info("Worflow has been consumed, triggering completion");
+                SequentialWorkflowStrategy.getOrSetCanIncrement(false, true);
                 return Collections.emptyList();
             }
         }
@@ -171,31 +199,72 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
 
             // Otherwise let the loop hit the next target
             String targetName = this.activePolicy.getTarget();
+            SequentialWorkflowStrategy.getOrSetCanIncrement(false, true);
             LOGGER.info(
-                    "Clearing active step '{}' from, and configuring the next step",
-                    targetName
+                "Clearing active step '{}' from, and configuring the next step",
+                targetName
             );
             if (!this.workflow.isEmpty()) {
                 LOGGER.info(
-                        "Active step in workflow has been scanned '{}', proceeding to the next step",
-                        activePolicy.getTarget()
+                    "Active step in workflow has been scanned '{}', proceeding to the next step",
+                    activePolicy.getTarget()
                 );
                 this.activePolicy = null;
-            } else {
+                
+            }
+            else {
                 LOGGER.info("Worflow scanning complete, triggering completion");
             }
 
             // Return workload if any tasks available
             if (!workload.isEmpty()) {
                 LOGGER.info(
-                        "Reterived workload of size '{}' for target '{}'",
-                        workload.size(), targetName
+                    "Reterived workload of size '{}' for target '{}'",
+                    workload.size(), targetName
                 );
                 return workload;
             }
+            return Collections.emptyList();
         }
         
         // Otherwise error
         throw new TaskTideEngineUncheckedException("No WorkflowStrategyMode configured");
+    }
+    
+    
+    /**
+     * Set active policy to first element in queue
+     *  without replacement
+     * 
+     */
+    @Override
+    public void incrementWindow() {
+        boolean currentVal = SequentialWorkflowStrategy.getOrSetCanIncrement(true, true);
+        if ( currentVal ) {
+            this.activePolicy = this.workflow.pollFirst();
+        }
+    }
+    
+    
+    /**
+     * Ensure only one thread can get set value at a time
+     * 
+     * @param flag true=get current value, false = set provided value
+     * @param val 
+     * 
+     * @return boolean
+     */
+    private static synchronized boolean getOrSetCanIncrement(boolean flag, boolean val) {
+        
+        // Get current value
+        if ( flag ) {
+            boolean currentValue = SequentialWorkflowStrategy.canIncrement.get();
+            SequentialWorkflowStrategy.canIncrement.set(currentValue);
+            return currentValue;
+        }
+        
+        // Otherwise just set
+        SequentialWorkflowStrategy.canIncrement = new AtomicBoolean(val);
+        return val;
     }
 }

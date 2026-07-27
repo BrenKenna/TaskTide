@@ -15,9 +15,9 @@
  */
 package org.tasktide.engine.policies.workflow;
 
+import java.util.Deque;
 import java.util.List;
 
-import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
@@ -30,10 +30,13 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 public class WorkflowStrategyBuilder {
 
     // Attributes
-    private WorkflowStrategyType strategyType;
+    private final WorkflowStrategyType strategyType;
     private List<TaskTideWorkloadAcquisitionPolicy> policies;
     private WorkflowStrategyMode mode;
     private int limit = -1;
+    private Deque<TaskTideWorkloadAcquisitionPolicy> workflow;
+    private TaskTideWorkloadAcquisitionPolicy activePolicy;
+    private boolean hasState = false;
     
     
     /**
@@ -83,6 +86,25 @@ public class WorkflowStrategyBuilder {
     
     
     /**
+     * Build with defined workflow state
+     * 
+     * @param workflow
+     * @param activePolicy
+     * 
+     * @return {@link WorkflowStrategyBuilder}
+     */
+    public WorkflowStrategyBuilder withWorkflowState(
+        Deque<TaskTideWorkloadAcquisitionPolicy> workflow,
+        TaskTideWorkloadAcquisitionPolicy activePolicy
+    ) {
+        this.workflow = workflow;
+        this.activePolicy = activePolicy;
+        this.hasState = true;
+        return this;
+    }
+    
+    
+    /**
      * Build configured {@link WorkflowAcquisitionStrategy}, throwing
      *  {@link TaskTideEngineUncheckedException} if policy
      *  list is not configured
@@ -115,12 +137,18 @@ public class WorkflowStrategyBuilder {
         
         // Construct roud robin strategy
         if ( this.strategyType == WorkflowStrategyType.ROUND_ROBIN ) {
-            return new RoundRobinWorkflowStrategy(this.policies, this.mode, this.limit);
+            if ( !this.hasState ) {
+                return new RoundRobinWorkflowStrategy(this.policies, this.mode, this.limit);
+            }
+            return new RoundRobinWorkflowStrategy(this.policies, this.workflow, this.activePolicy, this.mode, this.limit);
         }
         
         // Otherwise use sequential
         else {
-            return new SequentialWorkflowStrategy(this.policies, this.mode, this.limit);
+            if ( !this.hasState ) {
+                return new SequentialWorkflowStrategy(this.policies, this.mode, this.limit);
+            }
+            return new SequentialWorkflowStrategy(this.policies, this.workflow, this.activePolicy, this.mode, this.limit);
         }
     }
 }

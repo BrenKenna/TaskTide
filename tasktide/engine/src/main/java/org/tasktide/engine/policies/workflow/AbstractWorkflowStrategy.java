@@ -69,6 +69,34 @@ public abstract class AbstractWorkflowStrategy implements WorkflowAcquisitionStr
         this.counter = 0;
         this.limit = limit;
     }
+    
+    
+    /**
+     * 
+     * 
+     * @param id
+     * @param policies
+     * @param workflow
+     * @param activePolicy
+     * @param mode
+     * @param limit 
+     */
+    AbstractWorkflowStrategy(
+        String id, List<TaskTideWorkloadAcquisitionPolicy> policies,
+        Deque<TaskTideWorkloadAcquisitionPolicy> workflow,
+        TaskTideWorkloadAcquisitionPolicy activePolicy,
+        WorkflowStrategyMode mode,
+        int limit
+    ) {
+        this.id = id;
+        this.policies = policies;
+        this.workflow = workflow;
+        this.activePolicy = activePolicy;
+        this.mode = mode;
+        this.limit = -1;
+        this.counter = 0;
+        this.limit = limit;
+    }
 
     
     /**
@@ -91,7 +119,7 @@ public abstract class AbstractWorkflowStrategy implements WorkflowAcquisitionStr
         }
         
         // Check if queue is consumed
-        if ( this.activePolicy == null ) {
+        if ( this.activePolicy == null || this.workflow.isEmpty() ) {
             LOGGER.warn("Workflow processing completed");
             return false;
         }

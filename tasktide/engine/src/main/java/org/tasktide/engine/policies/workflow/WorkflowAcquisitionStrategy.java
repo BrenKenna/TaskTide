@@ -32,6 +32,13 @@ public interface WorkflowAcquisitionStrategy {
     
     
     /**
+     * Increment window on step
+     * 
+     */
+    public void incrementWindow();
+    
+    
+    /**
      * Evaluate retrieved workload
      * 
      * @param workload

@@ -61,7 +61,8 @@ public class TaskTideEngineWorker implements Cloneable {
 
     private List<WorkerTask> tasks;
     private final ExecutorService workerPool;
-    private final int windowSize, iterationLimit, iterCounter = 0;
+    private final int windowSize, iterationLimit;
+    private int iterCounter = 0;
     private String activeStep;
     
     
@@ -100,10 +101,15 @@ public class TaskTideEngineWorker implements Cloneable {
         
         // Check iteration counter against configured limit
         if ( this.iterationLimit > 1 ) {
-            if ( this.iterCounter <= this.iterationLimit ) {
-                LOGGER.warn("Iteration limit '{}' breached, initiating shutdown", this.iterationLimit);
+            if ( this.iterCounter > this.iterationLimit ) {
+                LOGGER.warn(
+                    "Iteration limit '{}' breached after '{}' iterations, initiating shutdown",
+                    this.iterationLimit,
+                    this.iterCounter
+                );
                 return false;
             }
+            this.iterCounter++;
         }
         
         // Check whether policy has more work
@@ -262,16 +268,16 @@ public class TaskTideEngineWorker implements Cloneable {
         // Process workload
         try {
             LOGGER.info(
-                "Thread '{}' processing sampled '{}'",
+                "Begining thread '{}' processing sampled '{}'",
                 Thread.currentThread(),
                 workload.stream().map(WorkItem::getId).toList()
             );
             traverser.traverse(workload);
             LOGGER.info(
-                "Processing complete for step:\t'{}'",
+                "Completed thread '{}' processing sampled '{}'",
+                workload.stream().map(WorkItem::getId).toList(),
                 this.activeStep
             );
-            this.activeStep = "";
         }
                 
         catch ( TraverserCheckedException ex ) {
@@ -327,8 +333,9 @@ public class TaskTideEngineWorker implements Cloneable {
                 WorkerTask task = new WorkerTask("Task-" + i, future);
                 this.tasks.add(task);
                 LOGGER.info("Engine 'Worker-{}' started", i);
-                TaskTideEngineUtility.waitSeconds( RAND.nextInt(0, 11) );
+                TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
             }
+            this.policy.incrementWindow();
             
             // Wait for them to finish
             LOGGER.info(

@@ -29,7 +29,6 @@ import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
  */
 public class AcquisitionPolicyBuilder {
 
-    
     // Attributes
     private AcquisitionPolicyMode mode;
     private CustomAnnotation anno;
@@ -221,7 +220,6 @@ public class AcquisitionPolicyBuilder {
         
         // Build workflow acquisition policy
         else if ( this.mode.isAcquisitionPolicyMode(AcquisitionPolicyMode.WORKFLOW) ) {
-            
             String parsed = target.replaceAll("[,;]$", "").strip();
             target = parsed.replace(";", ",");
             List<String> steps = List.of(target.split(","));

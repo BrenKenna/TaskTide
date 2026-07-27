@@ -18,11 +18,13 @@ package org.tasktide.engine.policies;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
+
 import org.tasktide.engine.policies.workflow.RoundRobinWorkflowStrategy;
 import org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy;
 
@@ -56,7 +58,7 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     private final List<String> steps;
     private final List<TaskTideWorkloadAcquisitionPolicy> policies;
     private final WorkflowStrategyType strategyType;
-    private final WorkflowAcquisitionStrategy strategy;
+    protected WorkflowAcquisitionStrategy strategy;
     
 
     /**
@@ -80,68 +82,6 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
         this.strategy = this.strategyType
             .initializeStrategyBuilder()
             .withPolicies(this.policies)
-        .build();
-    }
-    
-    
-    /**
-     * Constructs policy
-     * 
-     * @param steps
-     * @param stratType
-     * @param strategy mode
-     */
-    WorkflowAcquisitionPolicy(
-        List<String> steps,
-        WorkflowStrategyType stratType,
-        WorkflowStrategyMode strategyMode
-    ) {
-        super(AcquisitionPolicyMode.WORKFLOW);
-        this.steps = steps;
-        this.strategyType = stratType;
-
-        this.policies = new ArrayList<>();
-        this.steps
-            .forEach(
-                elm -> this.policies.add(this.getPolicyForTarget(elm))
-        );
-        
-        this.strategy = this.strategyType
-            .initializeStrategyBuilder()
-            .withPolicies(this.policies)
-            .withStrategyMode(strategyMode)
-        .build();
-    }
-    
-    
-    /**
-     * Constructs policy
-     * 
-     * @param steps
-     * @param stratType
-     * @param strategy mode
-     */
-    WorkflowAcquisitionPolicy(
-        List<String> steps,
-        WorkflowStrategyType stratType,
-        WorkflowStrategyMode strategyMode,
-        int iterationLimit
-    ) {
-        super(AcquisitionPolicyMode.WORKFLOW);
-        this.steps = steps;
-        this.strategyType = stratType;
-
-        this.policies = new ArrayList<>();
-        this.steps
-            .forEach(
-                elm -> this.policies.add(this.getPolicyForTarget(elm))
-        );
-
-        this.strategy = this.strategyType
-            .initializeStrategyBuilder()
-            .withPolicies(this.policies)
-            .withStrategyMode(strategyMode)
-            .withIterationLimit(iterationLimit)
         .build();
     }
     
@@ -231,9 +171,10 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     @Override
     public boolean hasNext() {
         if ( this.iterationLimit > 1 ) {
-            return this.counter < this.iterationLimit;
+            if (this.counter > this.iterationLimit) {
+                return false;
+            }
         }
-        
         return this.strategy.hasNext();
     }
 
@@ -305,9 +246,20 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
         policy.setPoolSize(this.poolSize);
         policy.setWindowSize(this.windowSize);
         
-        policy.setIterationLimit(this.iterationLimit);
-        policy.strategy.setIterationLimit(this.iterationLimit);
+        policy.strategy = this.strategy;
 
         return policy;
+    }
+    
+    
+    /**
+     * Delegates incrementing to the specific
+     *  {@link WorkflowStrategyType} of this
+     *  policy
+     * 
+     */
+    @Override
+    public void incrementWindow() {
+        this.strategy.incrementWindow();
     }
 }

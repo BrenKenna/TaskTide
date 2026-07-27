@@ -137,4 +137,12 @@ public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
             .withWindowSize(this.windowSize)
         .build();
     }
+    
+    
+    /**
+     * Not implemented
+     * 
+     */
+    @Override
+    public void incrementWindow() { }
 }

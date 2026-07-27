@@ -20,7 +20,6 @@ import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
@@ -35,13 +34,13 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
+
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
-import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.core.repository.RepositoryType;
 
@@ -49,15 +48,11 @@ import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 import org.tasktide.engine.policies.AcquisitionPolicyMode;
-import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
-import org.tasktide.engine.policies.WorkflowAcquisitionPolicy;
 
 import org.tasktide.engine.policies.workflow.WorkflowAcquisitionStrategy;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
-import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
-import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
 
 
 /**
@@ -75,6 +70,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
     private final String WORKFLOW_NAME = "EngineWorker Workflow Acquisition Test";
     private final String STEP = "Ping,NS Lookups,Numero 3";
     private final String FILE_PATH = "src/test/resources/nested-nslookup-tasks.txt";
+    
+    private final AcquisitionPolicyMode POLICY_MODE = AcquisitionPolicyMode.WORKFLOW;
     
     private SeContainer container;
     private Template template;
@@ -177,202 +174,7 @@ public class EngineWorkerWorkflowAcquisitionTests {
         cmd.execute();
         LOGGER.info("Command result:\t'{}'", cmd.execute());
     }
-    
-    
-    /**
-     * Fetch {@link TaskTideWorkloadAcquisitionPolicy}
-     * 
-     * @param strategy
-     * @param mode
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy(WorkflowStrategyType strategy, WorkflowStrategyMode mode) {
-        return AcquisitionPolicyMode.TARGETED
-            .initBuilder()
-            .withTarget(this.STEP)
-            .withTarget(this.STEP)
-            .withItemState(ItemState.TODO)
-            .withWindowSize(2)
-            .withPoolSize(1)
-        .build();
-    }
-    
-    
-    /**
-     * Configure {@link TaskTideWorkloadAcquisitionPolicy} with parallelism options
-     * 
-     * @param strategy
-     * @param mode
-     * @param poolSize
-     * @param windowSize
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy(WorkflowStrategyType strategy, WorkflowStrategyMode mode, int poolSize, int windowSize) {
-        return AcquisitionPolicyMode.TARGETED
-            .initBuilder()
-            .withTarget(this.STEP)
-            .withItemState(ItemState.TODO)
-            .withWindowSize(windowSize)
-            .withPoolSize(poolSize)
-        .build();
-    }
 
-    
-    /**
-     * Fetch {@link TaskTideEngineWorker} configured
-     *  through {@link WorkerUnitContainer}
-     * 
-     * @param strategy
-     * @param mode
-     * @return {@link TaskTideEngineWorker}
-     */
-    public TaskTideEngineWorker getEngineWorker(WorkflowStrategyType strategy, WorkflowStrategyMode mode) {
-        
-        // Initialize vars
-        WorkerUnitContainer workerUnit;
-        TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
-        
-        // Try configure process executor
-        try {
-            
-            // Configure engine componenets
-            workerUnit = WorkerUnitContainer.getInstance();
-            workerUnit.configureProcessExecutor();
-            workerUnit.configureExecutorServices(1, 1);
-            
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
-            workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
-            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
-            
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, -1);
-            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
-            
-            // Configures worker
-            acquisitionPolicy = this.getAcquisitionPolicy(strategy, mode);
-            return new TaskTideEngineWorker(acquisitionPolicy);
-        }
-        
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
-            return null;
-        }
-    }
-    
-    
-    
-    /**
-     * Fetch {@link TaskTideWorkloadAcquisitionPolicy}
-     * 
-     * @param strategy
-     * @param mode
-     * @param iterationLimit
-     * 
-     * @return {@link TaskTideWorkloadAcquisitionPolicy}
-     */
-    public TaskTideWorkloadAcquisitionPolicy getAcquisitionPolicy(WorkflowStrategyType strategy, WorkflowStrategyMode mode, int iterationLimit) {
-        LOGGER.info("Configuring acqusition policy with iteration limit\t'{}'", iterationLimit);
-        return AcquisitionPolicyMode.TARGETED
-            .initBuilder()
-            .withTarget(this.STEP)
-            .withTarget(this.STEP)
-            .withItemState(ItemState.TODO)
-            .withWindowSize(2)
-            .withPoolSize(1)
-            .withIterationLimit(iterationLimit)
-        .build();
-    }
-
-    
-    /**
-     * Fetch {@link TaskTideEngineWorker} configured
-     *  through {@link WorkerUnitContainer}
-     * 
-     * @param strategy
-     * @param mode
-     * @param iterationLimit
-     * 
-     * @return {@link TaskTideEngineWorker}
-     */
-    public TaskTideEngineWorker getEngineWorker(WorkflowStrategyType strategy, WorkflowStrategyMode mode, int iterationLimit) {
-        
-        // Initialize vars
-        WorkerUnitContainer workerUnit;
-        TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
-        
-        // Try configure process executor
-        try {
-            
-            // Configure engine componenets
-            workerUnit = WorkerUnitContainer.getInstance();
-            workerUnit.configureProcessExecutor();
-            workerUnit.configureExecutorServices(1, 1);
-            
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
-            workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
-            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
-            
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, -1);
-            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
-            
-            // Configures worker
-            acquisitionPolicy = this.getAcquisitionPolicy(strategy, mode, iterationLimit);
-            LOGGER.info(
-                "Acquisition Policy Iteration Limit = '{}'",
-                iterationLimit
-            );
-            return new TaskTideEngineWorker(acquisitionPolicy);
-        }
-        
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
-            return null;
-        }
-    }
-    
-    
-    /**
-     * Configure {@link TaskTideEngineWorker} with provided parallelism options
-     * 
-     * @param strategy
-     * @param mode
-     * @param poolSize
-     * @param windowSize
-     * 
-     * @return {@link TaskTideEngineWorker}
-     */
-    public TaskTideEngineWorker getEngineWorker(WorkflowStrategyType strategy, WorkflowStrategyMode mode, int poolSize, int windowSize) {
-        
-        // Initialize vars
-        WorkerUnitContainer workerUnit;
-        TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
-        
-        // Try configure process executor
-        try {
-            
-            // Configure engine componenets
-            workerUnit = WorkerUnitContainer.getInstance();
-            workerUnit.configureProcessExecutor();
-            workerUnit.configureExecutorServices(poolSize, poolSize);
-            
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
-            workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
-            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
-            
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, -1);
-            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
-            
-            // Configures worker
-            acquisitionPolicy = this.getAcquisitionPolicy(strategy, mode, poolSize, windowSize);
-            return new TaskTideEngineWorker(acquisitionPolicy);
-        }
-        
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
-            return null;
-        }
-    }
-    
     
     /**
      * Tests running engine in batch mode with using the
@@ -397,7 +199,7 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Fetch engine worker
         LOGGER.info("Configuring engine worker for:\t'{}' '{}' mode, no iteration limit", stratType, stratMode);
-        worker = this.getEngineWorker(stratType, stratMode);
+        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEP, stratType, stratMode);
         
         // Run engine
         LOGGER.info(
@@ -454,7 +256,7 @@ public class EngineWorkerWorkflowAcquisitionTests {
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = this.getEngineWorker(stratType, stratMode, ITERATION_LIMIT);
+        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEP, stratType, stratMode, ITERATION_LIMIT);
         
         // Run engine
         LOGGER.info(
@@ -511,7 +313,7 @@ public class EngineWorkerWorkflowAcquisitionTests {
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = this.getEngineWorker(stratType, stratMode, ITERATION_LIMIT);
+        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEP, stratType, stratMode, ITERATION_LIMIT);
         
         // Run engine
         LOGGER.info(
@@ -568,7 +370,7 @@ public class EngineWorkerWorkflowAcquisitionTests {
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = this.getEngineWorker(stratType, stratMode, ITERATION_LIMIT);
+        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEP, stratType, stratMode, ITERATION_LIMIT);
         
         // Run engine
         LOGGER.info(
@@ -593,7 +395,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
     
     /**
      * Tests running engine in batch mode with using the
-     *  Round Robin Scanner of targeted workflow
+     *  {@link WorkflowStrategyType.ROUND_ROBIN} {@link WorkflowStrategyMode.SCANNER}
+     *  of targeted workflow
      * 
      */
     @Test
@@ -606,10 +409,10 @@ public class EngineWorkerWorkflowAcquisitionTests {
         WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
         WorkflowStrategyType stratType = WorkflowStrategyType.ROUND_ROBIN;
         WorkflowStrategyMode stratMode = WorkflowStrategyMode.SCANNER;
-        int ITERATION_LIMIT = 4;
-        int RESULT_SET_LIMIT = 1;
-        int WINDOW_SIZE = 4;
-        int POOL_SIZE = 2;
+        int ITERATION_LIMIT = 4,
+            RESULT_SET_LIMIT = 1,
+            WINDOW_SIZE = 4,
+        POOL_SIZE = 2;
         
         // Import workload
         LOGGER.info("Importing workload");
@@ -627,7 +430,10 @@ public class EngineWorkerWorkflowAcquisitionTests {
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = this.getEngineWorker(stratType, stratMode, POOL_SIZE, WINDOW_SIZE);
+        worker = EngineWorkerTestUtils.getEngineWorker(
+            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT
+        );
         
         // Run engine
         LOGGER.info(
@@ -647,5 +453,69 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Log complete
         LOGGER.info("\n\n================ Can Run Parallel Batch Round Robin Scanner Workflow Workers =================\n");
+    }
+    
+    
+    
+    /**
+     * Tests running engine in batch mode with using the
+     *  {@link WorkflowStrategyType.SEQUENTIAL} {@link WorkflowStrategyMode.SCANNER}
+     *  of targeted workflow
+     * 
+     */
+    @Test
+    @Order(5)
+    public void canRunEngineBatchSequentialScannerMode_Parallel() {
+
+        // Configure test
+        LOGGER.info("\n\n================= Can Run Parallel Batch Sequential Scanner Workflow Workers =================\n");
+        TaskTideEngineWorker worker;
+        WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
+        WorkflowStrategyType stratType = WorkflowStrategyType.SEQUENTIAL;
+        WorkflowStrategyMode stratMode = WorkflowStrategyMode.SCANNER;
+        int ITERATION_LIMIT = 6,
+            RESULT_SET_LIMIT = 1,
+            WINDOW_SIZE = 4,
+        POOL_SIZE = 1;
+        
+        // Import workload
+        LOGGER.info("Importing workload");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        
+        // Fetch engine worker
+        LOGGER.info(
+            "Configuring engine worker for:\t'{}' '{}' mode, with iteration limit",
+            stratType,
+            stratMode
+        );
+        LOGGER.info(
+            "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
+            ITERATION_LIMIT, RESULT_SET_LIMIT
+        );
+        TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
+        worker = EngineWorkerTestUtils.getEngineWorker(
+            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT
+        );
+        
+        // Run engine
+        LOGGER.info(
+            "Running '{}' '{}' of workflow in '{}' mode",
+            stratType, stratMode, executionPolicy
+        );
+        try {
+            worker.runEngine(executionPolicy);
+        }
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error(
+                "Error running '{}' '{}' of workflow in '{}' mode:\n\n'{}'",
+                stratType, stratMode, executionPolicy, ex
+            );
+        }
+        LOGGER.info("Engine processing completed");
+        
+        // Log complete
+        LOGGER.info("\n\n================ Can Run Parallel Batch Sequential Scanner Workflow Workers =================\n");
     }
 }

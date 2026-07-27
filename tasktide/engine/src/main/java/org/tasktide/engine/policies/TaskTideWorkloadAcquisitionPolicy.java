@@ -23,7 +23,6 @@ import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 
 
 /**
@@ -40,6 +39,13 @@ import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
  * @author Bren
  */
 public interface TaskTideWorkloadAcquisitionPolicy {
+    
+    
+    /**
+     * Increment position
+     * 
+     */
+    public void incrementWindow();
     
     
     /**
