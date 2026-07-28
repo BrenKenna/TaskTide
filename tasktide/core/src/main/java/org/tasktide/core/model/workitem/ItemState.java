@@ -139,6 +139,52 @@ public enum ItemState implements StateSummaryType {
         public String toString() {
             return "For Unlock";
         }
+    },
+    
+    HOLD {
+        @Override
+        public boolean isState(String query) {
+            query = query.toLowerCase().replace(" ", "").replace("_", "");
+            return "hold".equals(query);
+        }
+
+        @Override
+        public boolean isState(ItemState query) {
+            return HOLD == query;
+        }
+
+        @Override
+        public TaskState mapToTaskState() {
+            return TaskState.HOLD;
+        }
+
+        @Override
+        public String toString() {
+            return "Hold";
+        }
+    },
+    
+    HAULT {
+        @Override
+        public boolean isState(String query) {
+            query = query.toLowerCase().replace(" ", "").replace("_", "");
+            return "hault".equals(query);
+        }
+
+        @Override
+        public boolean isState(ItemState query) {
+            return HAULT == query;
+        }
+
+        @Override
+        public TaskState mapToTaskState() {
+            return TaskState.HAULT;
+        }
+
+        @Override
+        public String toString() {
+            return "Hault";
+        }
     };
     
     

@@ -136,6 +136,50 @@ public enum TaskState implements StateSummaryType {
         public ItemState mapToItemState() {
             return ItemState.DONE;
         }
+    },
+    
+    HOLD {
+        @Override
+        public String toString() {
+            return "Hold";
+        }
+
+        @Override
+        public boolean isState(String query) {
+            return "hold".equals(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isState(TaskState taskState) {
+            return HOLD == taskState;
+        }
+        
+        @Override
+        public ItemState mapToItemState() {
+            return ItemState.HOLD;
+        }
+    },
+    
+    HAULT {
+        @Override
+        public String toString() {
+            return "Hault";
+        }
+
+        @Override
+        public boolean isState(String query) {
+            return "hault".equals(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isState(TaskState taskState) {
+            return HAULT == taskState;
+        }
+        
+        @Override
+        public ItemState mapToItemState() {
+            return ItemState.HAULT;
+        }
     };
 
         
