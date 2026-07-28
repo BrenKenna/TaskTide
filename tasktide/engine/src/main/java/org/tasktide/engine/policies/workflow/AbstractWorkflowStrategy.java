@@ -119,7 +119,7 @@ public abstract class AbstractWorkflowStrategy implements WorkflowAcquisitionStr
         }
         
         // Check if queue is consumed
-        if ( this.activePolicy == null || this.workflow.isEmpty() ) {
+        if ( this.workflow.isEmpty() ) {
             LOGGER.warn("Workflow processing completed");
             return false;
         }
@@ -250,5 +250,21 @@ public abstract class AbstractWorkflowStrategy implements WorkflowAcquisitionStr
         else {
             return true;
         }
+    }
+    
+    
+    /**
+     * Reset queue queue
+     * 
+     */
+    @Override
+    public void resetPolicyQueue() {
+        this.workflow = new ArrayDeque<>();
+            policies
+                .forEach(
+                    elm -> workflow.offerLast(elm)
+        );
+        this.activePolicy = this.workflow.pollFirst();
+        this.counter = 0;
     }
 }

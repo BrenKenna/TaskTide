@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.engine.worker;
+package org.tasktide.engine;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,6 +26,8 @@ import org.tasktide.engine.policies.AcquisitionPolicyMode;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
+import org.tasktide.engine.worker.TaskTideEngineWorker;
+import org.tasktide.engine.worker.TaskTideEngineWorkerTests;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
@@ -163,64 +165,6 @@ public class EngineWorkerTestUtils {
             .withStrategyMode(mode)
             .withStrategyType(strategy)
         .build();
-    }
-    
-    
-    /**
-     * Configure {@link TaskTideEngineWorker} with parallelism
-     *  parameters and iteration limit
-     * 
-     * @param policyMode
-     * @param step
-     * @param strategy
-     * @param mode
-     * @param poolSize
-     * @param windowSize
-     * @param iterationLimit
-     * 
-     * @return {@link TaskTideEngineWorker}
-     */
-    public static TaskTideEngineWorker getEngineWorker(
-        AcquisitionPolicyMode policyMode,
-        String step,
-        WorkflowStrategyType strategy,
-        WorkflowStrategyMode mode,
-        int poolSize,
-        int windowSize,
-        int iterationLimit
-    ) {
-        
-        // Initialize vars
-        WorkerUnitContainer workerUnit;
-        TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
-        
-        // Try configure process executor
-        try {
-            
-            // Configure engine componenets
-            workerUnit = WorkerUnitContainer.getInstance();
-            workerUnit.configureProcessExecutor();
-            workerUnit.configureExecutorServices(poolSize, poolSize);
-            
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
-            workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
-            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
-            
-            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, -1);
-            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
-            
-            // Configures worker
-            acquisitionPolicy = EngineWorkerTestUtils.getAcquisitionPolicy(
-                policyMode, step, strategy, mode,
-                poolSize, windowSize, iterationLimit
-            );
-            return new TaskTideEngineWorker(acquisitionPolicy);
-        }
-        
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
-            return null;
-        }
     }
 
     
@@ -373,6 +317,125 @@ public class EngineWorkerTestUtils {
                 mode, poolSize, windowSize
             );
             return new TaskTideEngineWorker(acquisitionPolicy);
+        }
+        
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
+            return null;
+        }
+    }
+    
+    
+    /**
+     * Configure {@link TaskTideEngineWorker} with parallelism
+     *  parameters and iteration limit
+     * 
+     * @param policyMode
+     * @param step
+     * @param strategy
+     * @param mode
+     * @param poolSize
+     * @param windowSize
+     * @param iterationLimit
+     * 
+     * @return {@link TaskTideEngineWorker}
+     */
+    public static TaskTideEngineWorker getEngineWorker(
+        AcquisitionPolicyMode policyMode,
+        String step,
+        WorkflowStrategyType strategy,
+        WorkflowStrategyMode mode,
+        int poolSize,
+        int windowSize,
+        int iterationLimit
+    ) {
+        
+        // Initialize vars
+        WorkerUnitContainer workerUnit;
+        TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
+        
+        // Try configure process executor
+        try {
+            
+            // Configure engine componenets
+            workerUnit = WorkerUnitContainer.getInstance();
+            workerUnit.configureProcessExecutor();
+            workerUnit.configureExecutorServices(poolSize, poolSize);
+            
+            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
+            workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
+            
+            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, -1);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
+            
+            // Configures worker
+            acquisitionPolicy = EngineWorkerTestUtils.getAcquisitionPolicy(
+                policyMode, step, strategy, mode,
+                poolSize, windowSize, iterationLimit
+            );
+            return new TaskTideEngineWorker(acquisitionPolicy);
+        }
+        
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
+            return null;
+        }
+    }
+    
+    
+    
+    /**
+     * Configure {@link TaskTideEngineWorker} with parallelism
+     *  parameters and iteration limit
+     * 
+     * @param policyMode
+     * @param step
+     * @param strategy
+     * @param mode
+     * @param poolSize
+     * @param windowSize
+     * @param iterationLimit
+     * @param shouldCycle
+     * 
+     * @return {@link TaskTideEngineWorker}
+     */
+    public static TaskTideEngineWorker getEngineWorker(
+        AcquisitionPolicyMode policyMode,
+        String step,
+        WorkflowStrategyType strategy,
+        WorkflowStrategyMode mode,
+        int poolSize,
+        int windowSize,
+        int iterationLimit,
+        boolean shouldCycle
+    ) {
+        
+        // Initialize vars
+        WorkerUnitContainer workerUnit;
+        TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
+        
+        // Try configure process executor
+        try {
+            
+            // Configure engine componenets
+            workerUnit = WorkerUnitContainer.getInstance();
+            workerUnit.configureProcessExecutor();
+            workerUnit.configureExecutorServices(poolSize, poolSize);
+            
+            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
+            workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
+            
+            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, -1);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
+            
+            // Configures worker
+            acquisitionPolicy = EngineWorkerTestUtils.getAcquisitionPolicy(
+                policyMode, step, strategy, mode,
+                poolSize, windowSize, iterationLimit
+            );
+            return new TaskTideEngineWorker(acquisitionPolicy, shouldCycle);
         }
         
         catch ( TaskTideEngineCheckedException ex ) {

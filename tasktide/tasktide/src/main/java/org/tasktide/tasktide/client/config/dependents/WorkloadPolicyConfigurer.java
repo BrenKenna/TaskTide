@@ -47,6 +47,10 @@ public class WorkloadPolicyConfigurer extends AbstractConfig {
     @ConfigProperty(name = "tasktide.engine.policy.acquisition.iteration-limit", defaultValue = "-1")
     int iterationLimit = -1;
     
+    // Iteration limit 
+    @ConfigProperty(name = "tasktide.engine.policy.acquisition.should-cycle", defaultValue = "false")
+    boolean shouldCycle;
+    
     
     /**
      * Defaults {@link ArgumentTree} path to root
@@ -78,6 +82,7 @@ public class WorkloadPolicyConfigurer extends AbstractConfig {
         this.strategyType();
         this.strategyMode();
         this.iterationLimit();
+        this.shouldCycle();
         
          // Put argument map into tree
         if ( this.getPath().isEmpty() ) {
@@ -176,6 +181,30 @@ public class WorkloadPolicyConfigurer extends AbstractConfig {
         
         this.iterationLimit = this.getConfigValue("tasktide.engine.policy.acquisition.iteration-limit", Integer.class, -1);
         arg.setValue(this.iterationLimit);
+        this.getArgumentMap().putArgument(arg);
+    }
+    
+    
+    /**
+     * Configure whether Engine should cycle on workflow policy.
+     *  Resolves edge case where engine is running in Service-Mode, and
+     *  Strategy is Sequential. So that the engine does not
+     *  stay running in a closed unproductive state
+     * 
+     */
+    public void shouldCycle() {
+        Argument<Boolean> arg;
+        arg = this.getArgumentBuilder()
+            .withName("Should Cycle")
+            .withDescription("Configure whether Engine should cycle on workflow policy")
+            .withShortFlag("-sc")
+            .withLongFlag("--should-cycle")
+            .withArgType(ArgumentType.ACTION)
+            .withRefClass(Boolean.class)
+        .build();
+        
+        this.shouldCycle = this.getConfigValue("tasktide.engine.policy.acquisition.should-cycle", Boolean.class, false);
+        arg.setValue(this.shouldCycle);
         this.getArgumentMap().putArgument(arg);
     }
 }

@@ -15,6 +15,7 @@
  */
 package org.tasktide.engine.worker;
 
+import org.tasktide.engine.EngineWorkerTestUtils;
 import jakarta.enterprise.inject.se.SeContainer;
 
 import jakarta.nosql.Template;
@@ -456,7 +457,6 @@ public class EngineWorkerWorkflowAcquisitionTests {
     }
     
     
-    
     /**
      * Tests running engine in batch mode with using the
      *  {@link WorkflowStrategyType.SEQUENTIAL} {@link WorkflowStrategyMode.SCANNER}
@@ -517,5 +517,71 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Log complete
         LOGGER.info("\n\n================ Can Run Parallel Batch Sequential Scanner Workflow Workers =================\n");
+    }
+    
+    
+    
+    /**
+     * Tests running engine in batch mode with using the
+     *  {@link WorkflowStrategyType.SEQUENTIAL} {@link WorkflowStrategyMode.SCANNER}
+     *  of targeted workflow as service. Where workflow cycling should be disabled
+     *  by default
+     * 
+     */
+    @Test
+    @Order(5)
+    public void canRunEngineServiceSequentialScannerMode_Parallel() {
+
+        // Configure test
+        LOGGER.info("\n\n================= Can Run Parallel Service Sequential Scanner Workflow Workers =================\n");
+        TaskTideEngineWorker worker;
+        WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.SERVICE;
+        WorkflowStrategyType stratType = WorkflowStrategyType.SEQUENTIAL;
+        WorkflowStrategyMode stratMode = WorkflowStrategyMode.SCANNER;
+        int ITERATION_LIMIT = 3,
+            RESULT_SET_LIMIT = 1,
+            WINDOW_SIZE = 4,
+        POOL_SIZE = 1;
+        boolean SHOULD_CYCLE_TOGGLE = true;
+        
+        // Import workload
+        LOGGER.info("Importing workload");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        
+        // Fetch engine worker
+        LOGGER.info(
+            "Configuring engine worker for:\t'{}' '{}' mode, with iteration limit",
+            stratType,
+            stratMode
+        );
+        LOGGER.info(
+            "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
+            ITERATION_LIMIT, RESULT_SET_LIMIT
+        );
+        TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
+        worker = EngineWorkerTestUtils.getEngineWorker(
+            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT, SHOULD_CYCLE_TOGGLE
+        );
+        
+        // Run engine
+        LOGGER.info(
+            "Running '{}' '{}' of workflow in '{}' mode",
+            stratType, stratMode, executionPolicy
+        );
+        try {
+            worker.runEngine(executionPolicy);
+        }
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error(
+                "Error running '{}' '{}' of workflow in '{}' mode:\n\n'{}'",
+                stratType, stratMode, executionPolicy, ex
+            );
+        }
+        LOGGER.info("Engine processing completed");
+        
+        // Log complete
+        LOGGER.info("\n\n================ Can Run Parallel Service Sequential Scanner Workflow Workers =================\n");
     }
 }

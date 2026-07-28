@@ -182,7 +182,7 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
                     "Active step in workflow has been consumed '{}', proceeding to the next step '{}'",
                     this.activePolicy.getTarget(), this.workflow.peekFirst()
                 );
-                this.activePolicy = null;
+                this.activePolicy = this.workflow.pollFirst();
                 SequentialWorkflowStrategy.getOrSetCanIncrement(false, true);
                 return Collections.emptyList();
             }
@@ -209,11 +209,12 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
                     "Active step in workflow has been scanned '{}', proceeding to the next step",
                     activePolicy.getTarget()
                 );
-                this.activePolicy = null;
-                
+                this.activePolicy = this.workflow.pollFirst();
             }
             else {
                 LOGGER.info("Worflow scanning complete, triggering completion");
+                this.activePolicy = null;
+                SequentialWorkflowStrategy.getOrSetCanIncrement(false, false);
             }
 
             // Return workload if any tasks available

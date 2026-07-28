@@ -145,4 +145,15 @@ public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
      */
     @Override
     public void incrementWindow() { }
+    
+    
+    /**
+     * Returns false
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean workflowMode() {
+        return false;
+    }
 }

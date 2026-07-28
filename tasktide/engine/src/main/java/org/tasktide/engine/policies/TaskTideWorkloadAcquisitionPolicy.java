@@ -42,6 +42,14 @@ public interface TaskTideWorkloadAcquisitionPolicy {
     
     
     /**
+     * Returns whether the policy is in workflow mode
+     * 
+     * @return boolean
+     */
+    public boolean workflowMode();
+    
+    
+    /**
      * Increment position
      * 
      */

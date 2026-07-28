@@ -41,6 +41,8 @@ import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 import org.tasktide.engine.traversers.TraverserCheckedException;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
+import org.tasktide.engine.policies.WorkflowAcquisitionPolicy;
+import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
 
 
 /**
@@ -64,10 +66,13 @@ public class TaskTideEngineWorker implements Cloneable {
     private final int windowSize, iterationLimit;
     private int iterCounter = 0;
     private String activeStep;
+    private final boolean shouldCycle;
     
     
     /**
-     * Construct with {@link TargetedAcquisitionPolicy}
+     * Construct with {@link TargetedAcquisitionPolicy}. Defaults
+     *  shouldCycle property for WorkflowAcquisitionPolicy-Sequential
+     *  running in Service mode to false.
      * 
      * @param policy 
      */
@@ -77,6 +82,25 @@ public class TaskTideEngineWorker implements Cloneable {
         this.windowSize = this.policy.getWindowSize();
         this.iterationLimit = this.policy.getIterationLimit();
         this.workerPool = this.engineComponents.getThreadPool(WorkerUnitModelType.WORKITEM);
+        this.shouldCycle = false;
+    }
+    
+    
+    /**
+     * Construct with {@link TargetedAcquisitionPolicy}. Supplying
+     *  shouldCycle property for WorkflowAcquisitionPolicy-Sequential
+     *  running in Service mode to false.
+     * 
+     * @param policy 
+     * @param shouldCycle 
+     */
+    public TaskTideEngineWorker(TaskTideWorkloadAcquisitionPolicy policy, boolean shouldCycle) {
+        this.engineComponents = WorkerUnitContainer.getInstance();
+        this.policy = policy;
+        this.windowSize = this.policy.getWindowSize();
+        this.iterationLimit = this.policy.getIterationLimit();
+        this.workerPool = this.engineComponents.getThreadPool(WorkerUnitModelType.WORKITEM);
+        this.shouldCycle = shouldCycle;
     }
     
     
@@ -185,11 +209,58 @@ public class TaskTideEngineWorker implements Cloneable {
     
         // Perhaps allow a queue like a file being written?
         int counter = 0;
-        while ( true ) {
+        boolean shouldRun = true, isWithinIterLimit = true;
+        
+        // Note functional mis-configuration
+        if ( shouldCycle && this.policy.workflowMode() ) {
+            LOGGER.warn("Sequential cycling detected, recommend using Round Robin instead");
+        }
+        
+        // Repeatedly calls fetchAndRun until stopped
+        while ( shouldRun ) {
+            
+            // Run the engine
             this.fetchAndRun();
             TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
             counter++;
+            
+            // Evaluate iteration couter
+            if ( this.iterationLimit > 1 ) {
+                if ( counter > this.iterationLimit ) {
+                    LOGGER.info(
+                        "Service operation detected iteration limit breached, terminating:\t'{}' of '{}'",
+                        counter, this.iterationLimit
+                    );
+                    shouldRun = false;
+                    isWithinIterLimit = false;
+                }
+            }
+            
+            // Handle workflow mode
+            if ( this.policy.workflowMode() ) {
+                WorkflowAcquisitionPolicy pol = (WorkflowAcquisitionPolicy) this.policy;
+                if ( pol.getStrategyType().isWorkflowStrategyType(WorkflowStrategyType.SEQUENTIAL) ) {
+                    LOGGER.info("Handling next iteration of sequential workflow mode");
+                    if ( isWithinIterLimit ) {
+                        if ( this.shouldCycle ) {
+                            LOGGER.info("Sequential cycling enabled, reconfiguring policy queue");
+                            pol.reconfigureQueue();
+                            this.iterCounter = 0;
+                        }
+                        else {
+                            LOGGER.info("Sequential cycling disabled or iteration limit breached, terminating engine");
+                            shouldRun = false;
+                            isWithinIterLimit = false;
+                            this.iterCounter = 0;
+                        }
+                    }
+                }
+            }
         }
+        
+        
+        // Log completion
+        LOGGER.info("Engine processing completed after '{}' iterations", counter);
     }
     
     

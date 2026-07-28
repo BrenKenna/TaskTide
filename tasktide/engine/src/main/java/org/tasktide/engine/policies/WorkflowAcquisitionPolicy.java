@@ -262,4 +262,46 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     public void incrementWindow() {
         this.strategy.incrementWindow();
     }
+    
+    
+    /**
+     * Returns true
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean workflowMode() {
+        return true;
+    }
+    
+    
+    /**
+     * Get {@link WorkflowStrategyType}
+     * 
+     * @return {@link WorkflowStrategyType}
+     */
+    public WorkflowStrategyType getStrategyType() {
+        return this.strategyType;
+    }
+    
+    
+    /**
+     * Get {@link WorkflowStrategyMode}
+     * 
+     * @return {@link WorkflowStrategyMode}
+     */
+    public WorkflowStrategyMode getStrategyMode() {
+        return this.strategy.getStrategyMode();
+    }
+    
+    
+    /**
+     * Reset the {@link WorkflowAcquisitionStrategy}
+     *  {@link TaskTideWorkloadAcquisitionPolicy} policy queue
+     * 
+     */
+    public void reconfigureQueue() {
+        this.strategy.resetPolicyQueue();
+        this.counter = 0;
+    }
 }

@@ -136,4 +136,11 @@ public interface WorkflowAcquisitionStrategy {
      * @return boolean
      */
     public boolean evaluateIterationCounter();
+    
+    
+    /**
+     * Reset policy queue
+     * 
+     */
+    public void resetPolicyQueue();
 }
