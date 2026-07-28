@@ -29,6 +29,7 @@ import org.tasktide.parser.model.ArgumentMap;
 public interface TaskTideConfig {
  
     public void addToTree(ArgumentTree argTree);
+    public void extendPath(ArgumentTree argTree, String path, ArgumentMap map);
     public ArgumentMap getArgumentMap();
     public ArgumentBuilder getArgumentBuilder();
     public String getPath();

@@ -58,7 +58,7 @@ public class JNoSQLConfigurer extends AbstractConfig {
      * Defaults {@link ArgumentTree} path to root
      */
     public JNoSQLConfigurer() {
-        super("tasktide");
+        super("");
     }
     
     
@@ -89,10 +89,10 @@ public class JNoSQLConfigurer extends AbstractConfig {
         
         // Put argument map into tree
         if ( this.getPath().isEmpty() ) {
-            argTree.getTree().getRoot().setData(this.getArgumentMap());
+            this.extendPath(argTree, "", this.getArgumentMap());
         }
         else {
-            argTree.getTree().getRoot().getData().extend(this.getArgumentMap());
+            this.extendPath(argTree, this.getPath(), this.getArgumentMap());
         }
     }
     
@@ -133,7 +133,7 @@ public class JNoSQLConfigurer extends AbstractConfig {
         arg = this.getArgumentBuilder()
             .withName("NoSQL Database Provider")
             .withDescription("Specifies the NoSQL Software Name: Mongo, CouchDB etc")
-            .withShortFlag("-dbt")
+            .withShortFlag("-dbp")
             .withLongFlag("--nosql-database-provider")
             .withArgType(ArgumentType.ACTION)
         .build();

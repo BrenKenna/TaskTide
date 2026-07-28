@@ -33,6 +33,8 @@ import org.tasktide.engine.observer.worker.TimeKeeperObserver;
 import org.tasktide.engine.worker.TaskTideEngineWorker;
 
 import org.tasktide.parser.configuration.AbstractConfig;
+import org.tasktide.tasktide.client.config.dependents.JNoSQLConfigurer;
+import org.tasktide.tasktide.client.config.dependents.WorkloadPolicyConfigurer;
 
 
 /**
@@ -42,6 +44,10 @@ import org.tasktide.parser.configuration.AbstractConfig;
  */
 @ApplicationScoped
 public class EngineConfig extends AbstractConfig {
+    
+    // Dependant configs
+    private final WorkloadPolicyConfigurer policyConf;
+    
     
     /**
      * Task binding
@@ -116,6 +122,7 @@ public class EngineConfig extends AbstractConfig {
      */
     public EngineConfig() {
         super("engine");
+        this.policyConf = new WorkloadPolicyConfigurer("engine");
     }
     
     
@@ -126,6 +133,7 @@ public class EngineConfig extends AbstractConfig {
      */
     public EngineConfig(String path) {
         super(path);
+        this.policyConf = new WorkloadPolicyConfigurer(path);
     }
     
     
@@ -147,7 +155,11 @@ public class EngineConfig extends AbstractConfig {
         this.executionPolicy();
         
         this.processExecutorStreamDirectory();
-        
+
+        this.policyConf.initConfig(argTree);
+        this.getArgumentMap()
+            .extend( this.policyConf.getArgumentMap() );
+
         if ( this.getPath().isEmpty() ) {
             argTree.getTree().getRoot().setData(this.getArgumentMap());
         }

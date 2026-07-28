@@ -19,8 +19,11 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.parser.ArgumentTree;
 
@@ -31,73 +34,150 @@ import org.tasktide.parser.configuration.TaskTideConfig;
  * 
  * @author bkenna
  */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TaskTideConfigurerTests {
     
-    private static final Logger logger = LogManager.getLogger(TaskTideConfigurerTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(TaskTideConfigurerTests.class);
     private static final Jsonb PRETTY_JSON = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
     
     public TaskTideConfigurerTests() {}
     
     @BeforeAll
-    public static void setUpClass() {        
+    public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Configuration Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
     }
     
     @AfterAll
-    public static void tearDownClass() {
+    public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Configuration Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
     }
     
     @BeforeEach
     public void setUp() {
-        logger.info("\n\n================ Initiating Next Test ================\n");
+        LOGGER.info("\n\n================ Initiating Next Test ================\n");
     }
     
     @AfterEach
     public void tearDown() {
-        logger.info("\n\n================ Terminating Test ================\n");
+        LOGGER.info("\n\n================ Terminating Test ================\n");
     }
 
     
-    
+    /**
+     * Tests {@link GlobalConfig} {@link ArgumentTree}
+     * 
+     */
     @Test
     @Order(0)
-    public void canDisplayTree() {
+    public void canDisplayGlobalArgTree() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Displaying TaskTide Config  ================\n");
+        LOGGER.info("\n\n================ Tests Displaying Global Configs  ================\n");
         ArgumentTree argTree;
-        TaskTideConfig engineConfig, globalConfig, managerConfig;
+        TaskTideConfig config;
         boolean assertionState;
         
         // Setup global config
-        logger.info("Configuring TaskTide client");
+        LOGGER.info("Applying global configs for client");
         argTree = new ArgumentTree(" ");
-        globalConfig = new GlobalConfig("");
-        globalConfig.initConfig(argTree);
-        logger.info("Records in tree:\n'{}'", argTree.getTree().size());
-        logger.info("Displaying configured client:\n'{}'", PRETTY_JSON.toJson(argTree.getVerboseHelp()) );
-        
-        // Setup manager config
-        managerConfig = new ManagerConfig("manager");
-        managerConfig.initConfig(argTree);
-        logger.info("Records in tree:\n'{}'", argTree.getTree().size());
-        logger.info("Displaying configured client:\n'{}'", PRETTY_JSON.toJson(argTree.getVerboseHelp()) );
-        
-        // Setup engine config
-        engineConfig = new EngineConfig("engine");
-        engineConfig.initConfig(argTree);
-        logger.info("Records in tree:\n'{}'", argTree.getTree().size());
-        logger.info("Displaying configured client:\n'{}'", PRETTY_JSON.toJson(argTree.getVerboseHelp()) );
-        
-        // Fetch address map
-        logger.info("Displaying Address Data map:\n'{}'", argTree.getTree().toAddressDataMap() );
+        config = new GlobalConfig("");
+        config.initConfig(argTree);
+        LOGGER.info("Records in tree:\n'{}'", argTree.getTree().size());
+        LOGGER.info("Displaying configured client:\n'{}'", PRETTY_JSON.toJson(argTree.getVerboseHelp()) );
         
         // Evaluate test
         assertionState = argTree.getTree().size() > 0;
         assertTrue(assertionState, "Not all records added");
-        logger.info("\n\n================ Tests Displaying TaskTide Config ================\n");
+        LOGGER.info("\n\n================ Tests Displaying Global Configs ================\n");
+    }
+    
+    
+    /**
+     * Tests {@link ManagerConfig} {@link ArgumentTree}
+     * 
+     */
+    @Test
+    @Order(1)
+    public void canDisplayManagerArgTree() {
+    
+        // Initialize data
+        LOGGER.info("\n\n================ Tests Displaying Manager Configs  ================\n");
+        ArgumentTree argTree;
+        TaskTideConfig config;
+        boolean assertionState;
+        
+        // Setup global config
+        LOGGER.info("Applying manager configs for client");
+        argTree = new ArgumentTree(" ");
+        config = new ManagerConfig("");
+        config.initConfig(argTree);
+        LOGGER.info("Records in tree:\n'{}'", argTree.getTree().size());
+        LOGGER.info("Displaying configured client:\n'{}'", PRETTY_JSON.toJson(argTree.getVerboseHelp()) );
+        
+        // Evaluate test
+        assertionState = argTree.getTree().size() > 0;
+        assertTrue(assertionState, "Not all records added");
+        LOGGER.info("\n\n================ Tests Displaying Manager Configs ================\n");
+    }
+    
+    
+    /**
+     * Tests {@link EngineConfig} {@link ArgumentTree}
+     * 
+     */
+    @Test
+    @Order(2)
+    public void canDisplayEngineArgTree() {
+    
+        // Initialize data
+        LOGGER.info("\n\n================ Tests Displaying Engine Configs  ================\n");
+        ArgumentTree argTree;
+        TaskTideConfig config;
+        boolean assertionState;
+        
+        // Setup global config
+        LOGGER.info("Applying engine configs for client");
+        argTree = new ArgumentTree(" ");
+        config = new EngineConfig("");
+        config.initConfig(argTree);
+        LOGGER.info("Records in tree:\n'{}'", argTree.getTree().size());
+        LOGGER.info("Displaying configured client:\n'{}'", PRETTY_JSON.toJson(argTree.getVerboseHelp()) );
+        
+        // Evaluate test
+        assertionState = argTree.getTree().size() > 0;
+        assertTrue(assertionState, "Not all records added");
+        LOGGER.info("\n\n================ Tests Displaying Engine Configs ================\n");
+    }
+    
+    
+    /**
+     * Tests {@link WebApiConfig} {@link ArgumentTree}
+     * 
+     */
+    @Test
+    @Order(3)
+    public void canDisplayApiArgTree() {
+    
+        // Initialize data
+        LOGGER.info("\n\n================ Tests Displaying WebApiConfig Configs  ================\n");
+        ArgumentTree argTree;
+        TaskTideConfig config;
+        boolean assertionState;
+        
+        // Setup global config
+        LOGGER.info("Applying WebApiConfig configs for client");
+        argTree = new ArgumentTree(" ");
+        config = new WebApiConfig("");
+        config.initConfig(argTree);
+        LOGGER.info("Records in tree:\n'{}'", argTree.getTree().size());
+        LOGGER.info("Displaying configured client:\n'{}'", PRETTY_JSON.toJson(argTree.getVerboseHelp()) );
+        
+        // Evaluate test
+        assertionState = argTree.getTree().size() > 0;
+        assertTrue(assertionState, "Not all records added");
+        LOGGER.info("\n\n================ Tests Displaying WebApiConfig Configs ================\n");
     }
 }

@@ -15,7 +15,6 @@
  */
 package org.tasktide.tasktide.client.config.dependents;
 
-import java.util.Random;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
@@ -84,12 +83,12 @@ public class WorkloadPolicyConfigurer extends AbstractConfig {
         this.iterationLimit();
         this.shouldCycle();
         
-         // Put argument map into tree
+        // Put argument map into tree
         if ( this.getPath().isEmpty() ) {
-            argTree.getTree().getRoot().setData(this.getArgumentMap());
+            this.extendPath(argTree, "engine", this.getArgumentMap());
         }
         else {
-            argTree.getTree().getRoot().getData().extend(this.getArgumentMap());
+            this.extendPath(argTree, this.getPath(), this.getArgumentMap());
         }
     }
     

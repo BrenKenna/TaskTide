@@ -20,6 +20,7 @@ import org.eclipse.microprofile.config.ConfigProvider;
 
 import org.tasktide.parser.ArgumentTree;
 import org.tasktide.parser.CliParser;
+import org.tasktide.parser.generic_tree.GenericTreeNode;
 
 import org.tasktide.parser.model.ArgumentBuilder;
 import org.tasktide.parser.model.ArgumentMap;
@@ -61,6 +62,29 @@ public abstract class AbstractConfig implements TaskTideConfig {
     @Override
     public void addToTree(ArgumentTree argTree) {
         argTree.getTree().addChild(path, argMap);
+    }
+    
+    
+    /**
+     * Extend the provided path on the {@link ArgumentTree}
+     *  if present with {@link ArgumentMap}. Otherwise add path
+     * 
+     * @param argTree
+     * @param path
+     * @param map 
+     */
+    @Override
+    public void extendPath(ArgumentTree argTree, String path, ArgumentMap map) {
+        
+        GenericTreeNode<ArgumentMap> node;
+        node = argTree.getTree().findByAddress(this.getPath());
+
+        if ( node.getData() != null ) {
+            node.getData().extend(this.getArgumentMap());
+        }
+        else {
+            argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
+        }
     }
     
     

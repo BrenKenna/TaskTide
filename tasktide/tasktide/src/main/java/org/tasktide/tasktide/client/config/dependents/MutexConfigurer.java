@@ -28,9 +28,7 @@ import org.tasktide.parser.model.ArgumentType;
 
 // For JavaDocs
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
-import org.tasktide.mutex.utils.MutexConstants;
-import org.tasktide.mutex.utils.MutexLabellingUtils;
-import static org.tasktide.mutex.utils.MutexLabellingUtils.getNodeProcId;
+
 
 /**
  * Configure properties for the {@link MutexOrchestrator}
@@ -78,7 +76,7 @@ public class MutexConfigurer extends AbstractConfig {
      * 
      */
     public MutexConfigurer() {
-        super("tasktide");
+        super("");
     }
     
     
@@ -135,7 +133,6 @@ public class MutexConfigurer extends AbstractConfig {
         String tmp;
         Argument<String> arg;
         
-        
         // Build argument
         arg = this.getArgumentBuilder()
             .withName("Mutex Root Directory")
@@ -183,7 +180,7 @@ public class MutexConfigurer extends AbstractConfig {
             .withName("Mutex retry interval")
             .withDescription("Configures retry interval for TaskTide-Mutex")
             .withLongFlag("--retry-interval")
-            .withShortFlag("-rt")
+            .withShortFlag("-ri")
             .withArgType(ArgumentType.ACTION)
         .build();
         arg.setRefClass(Long.class);

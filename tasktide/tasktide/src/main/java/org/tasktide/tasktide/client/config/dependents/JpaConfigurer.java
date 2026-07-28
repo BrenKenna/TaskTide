@@ -64,7 +64,7 @@ public class JpaConfigurer extends AbstractConfig {
      * Defaults {@link ArgumentTree} path to root
      */
     public JpaConfigurer() {
-        super("tasktide");
+        super("");
     }
     
     
@@ -94,14 +94,6 @@ public class JpaConfigurer extends AbstractConfig {
         this.dialectDriver();
         this.ddlUpdate();
         this.showSql();
-        
-        // Put argument map into tree
-        if ( this.getPath().isEmpty() ) {
-            argTree.getTree().getRoot().setData(this.getArgumentMap());
-        }
-        else {
-            argTree.getTree().getRoot().getData().extend(this.getArgumentMap());
-        }
     }
     
     

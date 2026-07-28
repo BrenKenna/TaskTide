@@ -15,14 +15,12 @@
  */
 package org.tasktide.tasktide.client.config;
 
-import org.tasktide.parser.configuration.AbstractConfig;
 import jakarta.enterprise.context.ApplicationScoped;
+import java.util.List;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import org.tasktide.tasktide.client.TaskTideClient;
 
 import org.tasktide.tasktide.client.config.dependents.JNoSQLConfigurer;
 import org.tasktide.tasktide.client.config.dependents.JpaConfigurer;
@@ -31,6 +29,8 @@ import org.tasktide.tasktide.client.config.dependents.MutexConfigurer;
 import org.tasktide.parser.ArgumentTree;
 import org.tasktide.parser.model.Argument;
 import org.tasktide.parser.model.ArgumentType;
+
+import org.tasktide.parser.configuration.AbstractConfig;
 
 
 /**
@@ -136,17 +136,32 @@ public class GlobalConfig extends AbstractConfig {
         this.dateFormat();
         this.tokenExpirationDays();
         
+        // Put argument map into tree
+        argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
+        
         // Configure TaskTide-Mutex
         this.mutexConf.initConfig(argTree);
+        this.getArgumentMap()
+            .extend( this.mutexConf.getArgumentMap() );
         
         // Jakarta NoSQL Parameters
         this.jnosqlConf.initConfig(argTree);
+        this.getArgumentMap()
+            .extend( this.jnosqlConf.getArgumentMap() );
         
         // JPA Config
         this.jpaConf.initConfig(argTree);
+        this.getArgumentMap()
+            .extend( this.jpaConf.getArgumentMap() );
 
-        // Put argument map into tree
-        argTree.getTree().getRoot().getData().extend(this.getArgumentMap());
+        
+        // Apply arguments
+        if ( this.getPath().isEmpty() ) {
+            argTree.getTree().getRoot().setData(this.getArgumentMap());
+        }
+        else {
+            argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
+        }
     }
     
     
