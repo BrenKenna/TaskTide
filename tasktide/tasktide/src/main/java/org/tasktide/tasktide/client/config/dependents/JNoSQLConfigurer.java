@@ -86,14 +86,6 @@ public class JNoSQLConfigurer extends AbstractConfig {
         this.nosqlUser();
         this.nosqlPassword();
         this.nosqlHost();
-        
-        // Put argument map into tree
-        if ( this.getPath().isEmpty() ) {
-            this.extendPath(argTree, "", this.getArgumentMap());
-        }
-        else {
-            this.extendPath(argTree, this.getPath(), this.getArgumentMap());
-        }
     }
     
     

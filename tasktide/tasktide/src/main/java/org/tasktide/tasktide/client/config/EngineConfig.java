@@ -33,7 +33,7 @@ import org.tasktide.engine.observer.worker.TimeKeeperObserver;
 import org.tasktide.engine.worker.TaskTideEngineWorker;
 
 import org.tasktide.parser.configuration.AbstractConfig;
-import org.tasktide.tasktide.client.config.dependents.JNoSQLConfigurer;
+
 import org.tasktide.tasktide.client.config.dependents.WorkloadPolicyConfigurer;
 
 

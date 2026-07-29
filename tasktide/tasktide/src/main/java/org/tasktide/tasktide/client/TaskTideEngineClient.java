@@ -58,7 +58,7 @@ public class TaskTideEngineClient extends TaskTideClient {
     private TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
     private TaskTideEngineWorker worker;
     private int engineWorkerThreads, itemTaskThreads;
-    private final Map<String, Object> acquisitionOpts;
+    boolean shouldCycle = false;
     
     
     /**
@@ -73,13 +73,6 @@ public class TaskTideEngineClient extends TaskTideClient {
         this.engineArgs = this.getArgTree().getTree().getDataForAddress("engine");
         this.globalArgs = this.getArgTree().getTree().getDataForAddress("");
         this.step = (String) globalArgs.getArgument("Step Name").getValue();
-        if ( globalArgs.getArgument("Acquisition Options") == null ) {
-            this.acquisitionOpts = new HashMap<>();
-        }
-        else {
-            Object acqOpts = globalArgs.getArgument("Acquisition Options").getValue();
-            this.acquisitionOpts = (Map<String, Object>) acqOpts;
-        }
     }
     
     
@@ -108,7 +101,10 @@ public class TaskTideEngineClient extends TaskTideClient {
             
             // Configure engine worker
             LOGGER.info("Constructing TaskTide-Engine Worker");
-            this.worker = new TaskTideEngineWorker(this.acquisitionPolicy);
+            this.worker = new TaskTideEngineWorker(
+                this.acquisitionPolicy,
+                this.shouldCycle
+            );
             
             // Return client state
             LOGGER.info("TaskTide-Engine client configured");
@@ -163,9 +159,13 @@ public class TaskTideEngineClient extends TaskTideClient {
         if ( this.step.contains(",") ) {
             
             // Fetch strategy configs
-            LOGGER.info("Configuring Targeted Workload Acquisition:\t'{}'");
             String modeStr = (String) this.engineArgs.getArgument("Acquisition Mode").getValue();
             String typeStr = (String) this.engineArgs.getArgument("Strategy Type").getValue();
+            this.shouldCycle = (boolean) this.engineArgs.getArgument("Should Cycle").getValue();
+            LOGGER.info(
+                "Configuring Workflow Workload Acquisition with '{}' startegy in '{}' mode",
+                typeStr, modeStr
+            );
             
             // Initialize builder
             builder = AcquisitionPolicyMode.WORKFLOW.initBuilder()

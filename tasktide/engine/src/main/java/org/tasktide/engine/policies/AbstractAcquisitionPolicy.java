@@ -57,63 +57,7 @@ public abstract class AbstractAcquisitionPolicy implements TaskTideWorkloadAcqui
         this.policyType = policyType;
         this.id = policyType.toString() + UUID.randomUUID().toString();
     }
-    
-    
-    /**
-     * Construct provided {@link AcquisitionPolicyMode}
-     * 
-     * @param policyType 
-     */
-    AbstractAcquisitionPolicy(
-        AcquisitionPolicyMode policyType,
-        String target
-    ) {
-        this.policyType = policyType;
-        this.id = policyType.toString() + UUID.randomUUID().toString();
-        this.target = target;
-    }
-    
-    
-    /**
-     * Construct provided {@link AcquisitionPolicyMode}
-     * 
-     * @param policyType 
-     */
-    AbstractAcquisitionPolicy(
-        AcquisitionPolicyMode policyType,
-        String target,
-        ItemState state
-    ) {
-        this.policyType = policyType;
-        this.id = policyType.toString() + UUID.randomUUID().toString();
-        
-        this.target = target;
-        this.state = state;
-    }
-    
-    
-    /**
-     * Construct provided {@link AcquisitionPolicyMode}
-     * 
-     * @param policyType 
-     */
-    AbstractAcquisitionPolicy(
-        AcquisitionPolicyMode policyType,
-        String target,
-        ItemState state,
-        int windowSize,
-        int poolSize
-    ) {
-        this.policyType = policyType;
-        this.id = policyType.toString() + UUID.randomUUID().toString();
-        
-        this.target = target;
-        this.state = state;
-        
-        this.windowSize = windowSize;
-        this.poolSize = poolSize;
-    }
-    
+
     
     /**
      * 

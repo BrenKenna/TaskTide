@@ -79,7 +79,7 @@ public abstract class AbstractConfig implements TaskTideConfig {
         GenericTreeNode<ArgumentMap> node;
         node = argTree.getTree().findByAddress(this.getPath());
 
-        if ( node.getData() != null ) {
+        if ( node != null ) {
             node.getData().extend(this.getArgumentMap());
         }
         else {

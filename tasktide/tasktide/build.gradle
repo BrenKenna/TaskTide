@@ -332,6 +332,8 @@ tasks.register('processWorkflow', JavaExec) {
             "--worker-window-size", "1",
             "--item-task-threads", "1",
             "--result-set-size", "2",
-            "--strategy-type", "ROUND_R"
+            "--strategy-type", "ROUND_ROBIN",
+            "--acquisition-mode", "SCANNER",
+            "--iteration-limit", "4"
     ]
 }

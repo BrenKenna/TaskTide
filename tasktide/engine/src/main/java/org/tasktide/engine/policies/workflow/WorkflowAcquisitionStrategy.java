@@ -29,14 +29,7 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
  * @author Bren
  */
 public interface WorkflowAcquisitionStrategy {
-    
-    
-    /**
-     * Increment window on step
-     * 
-     */
-    public void incrementWindow();
-    
+
     
     /**
      * Evaluate retrieved workload
@@ -143,4 +136,28 @@ public interface WorkflowAcquisitionStrategy {
      * 
      */
     public void resetPolicyQueue();
+    
+    
+    /**
+     * Fetch target names from workload queue
+     * 
+     * @return List-String
+     */
+    public List<String> getQueueTargets();
+    
+    
+    /**
+     * Get whether strategy has run
+     * 
+     * @return boolean
+     */
+    public boolean getHasRun();
+    
+    
+    /**
+     * Set whether strategy has run
+     * 
+     * @param val 
+     */
+    public void setHasRun(boolean val);
 }

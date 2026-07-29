@@ -247,22 +247,10 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
         policy.setWindowSize(this.windowSize);
         
         policy.strategy = this.strategy;
-
+        policy.strategy.setHasRun( this.strategy.getHasRun() );
         return policy;
     }
-    
-    
-    /**
-     * Delegates incrementing to the specific
-     *  {@link WorkflowStrategyType} of this
-     *  policy
-     * 
-     */
-    @Override
-    public void incrementWindow() {
-        this.strategy.incrementWindow();
-    }
-    
+
     
     /**
      * Returns true
@@ -303,5 +291,15 @@ public class WorkflowAcquisitionPolicy extends AbstractAcquisitionPolicy {
     public void reconfigureQueue() {
         this.strategy.resetPolicyQueue();
         this.counter = 0;
+    }
+    
+    
+    /**
+     * Get elements still in the queue
+     * 
+     * @return List-String
+     */
+    public List<String> getQueueTargets() {
+        return this.strategy.getQueueTargets();
     }
 }

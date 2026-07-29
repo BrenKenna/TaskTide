@@ -80,40 +80,40 @@ public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
         // Fetch by annotation
         if ( this.isCustomAnnotated() ) {
             if ( this.isTargeted() ) {
-                return TaskTideServiceManager
+                return new ArrayList<>(TaskTideServiceManager
                     .fetchWorkItemService()
                     .getRepo()
                 .findByFieldForGroupWithAnno(
                     "itemState", this.getState(),
                     "stepName", this.getTarget(),
                     this.getAnno()
-                );
+                ));
             }
         }
         
         // Fetch by annotation string
         else if ( this.isStringAnnotated() ) {
             if ( this.isTargeted() ) {
-                return TaskTideServiceManager
+                return new ArrayList<>(TaskTideServiceManager
                     .fetchWorkItemService()
                     .getRepo()
                 .findByFieldForGroupWithAnno(
                     "itemState", this.getState(),
                     "stepName", this.getTarget(),
                     this.getAnnoKey(), this.getAnnoVal()
-                );
+                ));
             }
         }
         
         // Fetch collection
         else {
             if ( this.isTargeted() ) {
-                return TaskTideServiceManager
+                return new ArrayList<>(TaskTideServiceManager
                     .fetchWorkItemService()
                 .viewByFieldForGroup(
                     "itemState", this.getState(),
                     "stepName", this.getTarget()
-                );    
+                ));
             }
         }
         
@@ -137,15 +137,7 @@ public class TargetedAcquisitionPolicy extends AbstractAcquisitionPolicy {
             .withWindowSize(this.windowSize)
         .build();
     }
-    
-    
-    /**
-     * Not implemented
-     * 
-     */
-    @Override
-    public void incrementWindow() { }
-    
+
     
     /**
      * Returns false

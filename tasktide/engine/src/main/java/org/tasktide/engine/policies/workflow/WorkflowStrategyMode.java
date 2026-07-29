@@ -33,12 +33,12 @@ public enum WorkflowStrategyMode {
         }
 
         @Override
-        public boolean isRoundRobinMode(String query) {
+        public boolean isWorkflowStrategyMode(String query) {
             return name().equalsIgnoreCase(query);
         }
 
         @Override
-        public boolean isRoundRobinMode(WorkflowStrategyMode query) {
+        public boolean isWorkflowStrategyMode(WorkflowStrategyMode query) {
             return this == query;
         }
     },
@@ -50,12 +50,12 @@ public enum WorkflowStrategyMode {
         }
 
         @Override
-        public boolean isRoundRobinMode(String query) {
+        public boolean isWorkflowStrategyMode(String query) {
             return name().equalsIgnoreCase(query);
         }
 
         @Override
-        public boolean isRoundRobinMode(WorkflowStrategyMode query) {
+        public boolean isWorkflowStrategyMode(WorkflowStrategyMode query) {
             return this == query;
         }
     };
@@ -67,7 +67,7 @@ public enum WorkflowStrategyMode {
      * @param query
      * @return boolean
      */
-    public abstract boolean isRoundRobinMode(String query);
+    public abstract boolean isWorkflowStrategyMode(String query);
 
 
     /**
@@ -76,7 +76,7 @@ public enum WorkflowStrategyMode {
      * @param query
      * @return boolean
      */
-    public abstract boolean isRoundRobinMode(WorkflowStrategyMode query);
+    public abstract boolean isWorkflowStrategyMode(WorkflowStrategyMode query);
 
 
     /**
@@ -87,7 +87,7 @@ public enum WorkflowStrategyMode {
      */
     public static int indexOf(String query) {
         for (WorkflowStrategyMode elm : values()) {
-            if (elm.isRoundRobinMode(query)) {
+            if (elm.isWorkflowStrategyMode(query)) {
                 return elm.ordinal();
             }
         }
@@ -107,7 +107,7 @@ public enum WorkflowStrategyMode {
         }
 
         for (WorkflowStrategyMode elm : values()) {
-            if (elm.isRoundRobinMode(query)) {
+            if (elm.isWorkflowStrategyMode(query)) {
                 return true;
             }
         }

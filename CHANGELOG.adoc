@@ -4,7 +4,7 @@
 # Notice
 All changes to this project for versions beyond v1.0.0 will be reflected here. For the initial release currently is a checklist, and bug catches + fixes from use cases.
 
-== [0.9.9] - 2025-11-21 -> 22/06/2026
+== [0.9.9] - 2025-11-21 -> 22/06/2026 -> 29/07/2026
 
 
 === 1). Main Checklist
@@ -13,9 +13,9 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 - [X]   2). Draft paper.
 - [X]   4). Drop database files & old workflow engine from repo.
 - [X]   5). Early & Late binding semantics.
-- [/]   6). Docker compose.
-- [/]   7). Version-1 documentation.
-- [/]   0). Version-1 paper.
+- [X]   6). Docker compose.
+- [X]   7). Version-1 documentation.
+- [X]   0). Version-1 paper.
 
 
 === 2). To Do
@@ -59,7 +59,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 
 
-=== 3). Bugs 
+=== 3). Bugs & Development Notes
 
 
 ==== Web API
@@ -68,8 +68,7 @@ All changes to this project for versions beyond v1.0.0 will be reflected here. F
 
 - [] Trial Hateoas resource envelope
 
-- [] Add secure context
-
+- [X] Add secure context?
 
 - [X] Client does not start, referencing missing HttpServletRequest dependency for GraphQL endpoints
 --
@@ -196,6 +195,11 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
 ==== Manager
 
 
+- [X] Result size is configurable, and also adjustable via TaskTideServiceManager.
+- [X] Adds Hault state for when further execution needs to be haulted.
+- [X] Adds Hold state for when a given work element of a Step has dependencies that need to be fullfilled.
+- [X] Explicit manager commands for adding and dropping Workflow, Step.
+- [X] Drops workitem counters, and state from Step.
 - [/] Connection handling -> SqliteItemStore mostly impacted
 +
 --
@@ -213,8 +217,8 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
         - Regardless of the configured backend database.
 --
 
-- []  Builder code clean
-- []  Manager command code clean?
+- [/]  Builder code clean
+- [/]  Manager command code clean?
 - [/] Incorporate host metrics:
 +
 --
@@ -246,11 +250,28 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
 - [X] All clients run
 - [X] Optionally sort/shuffle results config
 - [X] New tasks seen but not processed in service mode
+- [X] Log stream directories are configurable.
+- [X] Mutex parameters are configurable.
+- [X] Workload acquisition policies are configurable.
 
 
 ==== Engine
 
+- [X] Providing comma separated step string, triggers workflow deployment
+- [X] Support different workflow processing strategies with configurable parameters
++
+--
+        - Sequential Scanning & Exhaustion
+        - Round Robin Scanning & Exhaustion
+
+--
++
+
+- Refine WorkloadAcquisition policy to Targeted and Workflow, both resolving to List-WorkItem
+
 - [X] Drops TaskTideProcessor, and TaskTideExecutor.
+
+- [X] Log stream directories are configurable.
 
 - [X] Parallelism & Logging
 +
@@ -304,10 +325,8 @@ org.jboss.weld.exceptions.DeploymentException: WELD-001408: Unsatisfied dependen
 - [/] Verify Command-Line Commands
 +
 --
-        [] Reset all             <- Should add
-        [] Delete all            <- Should add
+
         [/] Delete WorkItem      <- Broke
-        [/] Export Query         <- No records following deletion
         [X] Export               <- No stdout option?
         [X] Import JSON          <- Should consider Collections<TaskTideModel> so upper Ids hold 
         [X] Import single

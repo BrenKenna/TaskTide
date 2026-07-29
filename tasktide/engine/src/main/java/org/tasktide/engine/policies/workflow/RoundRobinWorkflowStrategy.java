@@ -19,7 +19,6 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,7 +37,6 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
 
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(RoundRobinWorkflowStrategy.class);
-    private static AtomicBoolean canIncrement;
     
     
     /**
@@ -50,7 +48,6 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
      */
     RoundRobinWorkflowStrategy(List<TaskTideWorkloadAcquisitionPolicy> policies, WorkflowStrategyMode mode, int limit) {
         super("RoundRobinWorkflowStrategy-" + UUID.randomUUID().toString(), policies, mode, limit);
-        RoundRobinWorkflowStrategy.canIncrement = new AtomicBoolean(false);
     }
     
     
@@ -86,6 +83,7 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
     public List<WorkItem> fetchWorkload() {
         
         // Initialize variables
+        this.hasRun = true;
         List<WorkItem> output;
         if (policies.isEmpty()) {
             LOGGER.warn("No policies configured, passing");
@@ -158,8 +156,6 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
             );
             this.workflow.offerLast(this.activePolicy);
             this.activePolicy = this.workflow.pollFirst();
-            boolean val = RoundRobinWorkflowStrategy.getOrSetCanIncrement(false, true);
-            LOGGER.debug("RoundRobinWorkflowStrategy can now increment is '{}'", val);
             
             LOGGER.info(
                 "Active policy for the next iteration is now:\t'{}'",
@@ -186,7 +182,6 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
             
             // Return next batch of tasks if present
             if ( !workload.isEmpty() ) {
-                RoundRobinWorkflowStrategy.getOrSetCanIncrement(false, false);
                 LOGGER.info(
                     "Providing next batch of n = '{}' tasks",
                     workload.size()
@@ -198,7 +193,6 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
             LOGGER.warn("No tasks detected for active batch. Returning empty list, and enqueing next workflow");
             this.workflow.offerLast(this.activePolicy);
             this.activePolicy = this.workflow.pollFirst();
-            RoundRobinWorkflowStrategy.getOrSetCanIncrement(false, true);
             
             // Return empty list
             return Collections.emptyList();
@@ -235,52 +229,12 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
             return false;
         }
         
-        // Check if has next
+        // Check whether has run
+        if ( !hasRun ) {
+            return true;
+        }
+        
+        // Always has next either for active step, or scanning
         return true;
-    }
-    
-    
-    /**
-     * Set active policy to first element in queue, an
-     *  re-queue
-     * 
-     */
-    @Override
-    public void incrementWindow() {
-        boolean currentVal = RoundRobinWorkflowStrategy.getOrSetCanIncrement(true, true);
-        if ( currentVal ) {
-            this.activePolicy = this.workflow.pollFirst();
-            if ( this.activePolicy == null ) {
-                return;
-            }
-            this.workflow.offerLast(activePolicy);
-            LOGGER.info(
-                "Workflow incremented active policy is now:\t'{}'",
-                this.activePolicy.getTarget()
-            );
-        }
-    }
-    
-    
-    /**
-     * Ensure only one thread can get set value at a time
-     * 
-     * @param flag true=get current value, false = set provided value
-     * @param val 
-     * 
-     * @return boolean
-     */
-    private static synchronized boolean getOrSetCanIncrement(boolean flag, boolean val) {
-        
-        // Get current value
-        if ( flag ) {
-            boolean currentValue = RoundRobinWorkflowStrategy.canIncrement.get();
-            RoundRobinWorkflowStrategy.canIncrement.set(currentValue);
-            return currentValue;
-        }
-        
-        // Otherwise just set
-        RoundRobinWorkflowStrategy.canIncrement = new AtomicBoolean(val);
-        return val;
     }
 }

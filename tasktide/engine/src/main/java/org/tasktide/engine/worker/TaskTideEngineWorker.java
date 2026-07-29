@@ -255,13 +255,27 @@ public class TaskTideEngineWorker implements Cloneable {
                         }
                     }
                 }
+                else if ( pol.getStrategyType().isWorkflowStrategyType(WorkflowStrategyType.ROUND_ROBIN) ) {
+                    LOGGER.info("Handling next run over of round robin workflow mode");
+                    if ( isWithinIterLimit ) {
+                        LOGGER.info("Round Robin cycling enabled, reconfiguring policy queue");
+                        pol.reconfigureQueue();
+                        this.iterCounter = 0;
+                    }
+                    else {
+                        LOGGER.info("Sequential cycling disabled or iteration limit breached, terminating engine");
+                        shouldRun = false;
+                        isWithinIterLimit = false;
+                        this.iterCounter = 0;
+                    }
+                }
             }
         }
-        
         
         // Log completion
         LOGGER.info("Engine processing completed after '{}' iterations", counter);
     }
+
     
     
     /**
@@ -287,6 +301,7 @@ public class TaskTideEngineWorker implements Cloneable {
         // Shuffle workload
         if ( workload.size() > 1 ) {
             LOGGER.info("Shuffling workload before processing");
+            LOGGER.info("Shuffling list of size:\t'{}'", workload.size());
             Collections.shuffle(workload);
         }
         
@@ -339,15 +354,17 @@ public class TaskTideEngineWorker implements Cloneable {
         // Process workload
         try {
             LOGGER.info(
-                "Begining thread '{}' processing sampled '{}'",
+                "Begining thread '{}' processing of sampled '{}' tasks '{}'",
                 Thread.currentThread(),
+                this.activeStep,
                 workload.stream().map(WorkItem::getId).toList()
             );
             traverser.traverse(workload);
             LOGGER.info(
-                "Completed thread '{}' processing sampled '{}'",
-                workload.stream().map(WorkItem::getId).toList(),
-                this.activeStep
+                "Completed thread '{}' processing of sampled '{}' tasks '{}'",
+                Thread.currentThread(),
+                this.activeStep,
+                workload.stream().map(WorkItem::getId).toList()
             );
         }
                 
@@ -369,7 +386,7 @@ public class TaskTideEngineWorker implements Cloneable {
     private boolean processSampling() {
         
         // Process serially
-        if ( this.policy.getPoolSize() < 2 ) {
+        if ( this.policy.getPoolSize() < 1 ) {
             LOGGER.info("Performing serial sample and traverse");
             try {
                 this.sampleAndTraverse();
@@ -385,8 +402,9 @@ public class TaskTideEngineWorker implements Cloneable {
             
             // Submit tasks
             LOGGER.info(
-                "Configured '{}' Parallel EngineWorkers, submitting work",
-                this.policy.getPoolSize()
+                "Configured '{}' Parallel EngineWorkers, submitting work for active step '{}'",
+                this.policy.getPoolSize(),
+                this.policy.getTarget()
             );
             this.tasks = new ArrayList<>();
             for ( int i = 0; i < this.policy.getPoolSize(); i++) {
@@ -406,7 +424,11 @@ public class TaskTideEngineWorker implements Cloneable {
                 LOGGER.info("Engine 'Worker-{}' started", i);
                 TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
             }
-            this.policy.incrementWindow();
+            LOGGER.info(
+                "Step for the next Engine-Worker iteration is '{}'. Queue pre-increment was '{}'",
+                this.policy.getTarget(),
+                ( (WorkflowAcquisitionPolicy) this.policy).getQueueTargets()
+            );
             
             // Wait for them to finish
             LOGGER.info(

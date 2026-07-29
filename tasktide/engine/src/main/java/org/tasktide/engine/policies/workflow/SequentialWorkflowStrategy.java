@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,7 +38,6 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
     
     // Internal attributes
     private final Logger LOGGER = LogManager.getLogger(SequentialWorkflowStrategy.class);
-    private static AtomicBoolean canIncrement;
     
     
     /**
@@ -51,7 +49,6 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
      */
     SequentialWorkflowStrategy(List<TaskTideWorkloadAcquisitionPolicy> policies, WorkflowStrategyMode mode, int limit) {
         super("SequentialWorkflowStrategy-" + UUID.randomUUID().toString(), policies, mode, limit);
-        SequentialWorkflowStrategy.canIncrement = new AtomicBoolean(false);
     }
     
     
@@ -87,6 +84,7 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
     public List<WorkItem> fetchWorkload() {
         
         // Default strategy mode
+        this.hasRun = true;
         this.configureDefaultStrategyMode();
 
         // Check counter is in range
@@ -172,24 +170,23 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
                     "Reterived workload of size '{}' for target '{}'",
                     workload.size(), this.activePolicy.getTarget()
                 );
-                SequentialWorkflowStrategy.getOrSetCanIncrement(false, false);
                 return workload;
             }
 
             // Otherwise let the loop hit the next target
-            if (!this.workflow.isEmpty()) {
+            if ( !this.workflow.isEmpty() ) {
                 LOGGER.info(
                     "Active step in workflow has been consumed '{}', proceeding to the next step '{}'",
-                    this.activePolicy.getTarget(), this.workflow.peekFirst()
+                    this.activePolicy.getTarget(), this.workflow.peekFirst().getTarget()
                 );
                 this.activePolicy = this.workflow.pollFirst();
-                SequentialWorkflowStrategy.getOrSetCanIncrement(false, true);
                 return Collections.emptyList();
             }
             
             else {
                 LOGGER.info("Worflow has been consumed, triggering completion");
-                SequentialWorkflowStrategy.getOrSetCanIncrement(false, true);
+                this.activePolicy = null;
+                this.workflow.clear();
                 return Collections.emptyList();
             }
         }
@@ -199,26 +196,26 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
 
             // Otherwise let the loop hit the next target
             String targetName = this.activePolicy.getTarget();
-            SequentialWorkflowStrategy.getOrSetCanIncrement(false, true);
             LOGGER.info(
                 "Clearing active step '{}' from, and configuring the next step",
                 targetName
             );
-            if (!this.workflow.isEmpty()) {
+            if ( !this.workflow.isEmpty() ) {
                 LOGGER.info(
-                    "Active step in workflow has been scanned '{}', proceeding to the next step",
-                    activePolicy.getTarget()
+                    "Active step in workflow has been scanned '{}', proceeding to the next step '{}'",
+                    activePolicy.getTarget(),
+                    this.workflow.peekFirst().getTarget()
                 );
                 this.activePolicy = this.workflow.pollFirst();
             }
             else {
                 LOGGER.info("Worflow scanning complete, triggering completion");
                 this.activePolicy = null;
-                SequentialWorkflowStrategy.getOrSetCanIncrement(false, false);
+                this.workflow.clear();
             }
 
             // Return workload if any tasks available
-            if (!workload.isEmpty()) {
+            if ( !workload.isEmpty() ) {
                 LOGGER.info(
                     "Reterived workload of size '{}' for target '{}'",
                     workload.size(), targetName
@@ -234,38 +231,63 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
     
     
     /**
-     * Set active policy to first element in queue
-     *  without replacement
+     * Implements own hasNExt logic depending on mode
      * 
+     * @return boolean
      */
     @Override
-    public void incrementWindow() {
-        boolean currentVal = SequentialWorkflowStrategy.getOrSetCanIncrement(true, true);
-        if ( currentVal ) {
-            this.activePolicy = this.workflow.pollFirst();
+    public boolean hasNext() {
+        
+        // Check iteration counter if configured
+        if ( this.limit > 0 ) {
+            if ( this.counter >= this.limit ) {
+                LOGGER.warn(
+                    "Workflow iteration counter breached '{}' limit",
+                    this.limit
+                );
+                return false;
+            }
         }
+        
+        // Check if queue is consumed
+        if ( this.activePolicy == null && this.workflow.isEmpty() ) {
+            LOGGER.warn("Workflow processing completed");
+            return false;
+        }
+        
+        // Check whether has run
+        if ( !hasRun ) {
+            return true;
+        }
+        
+        // Fetch next for scanner
+        if ( this.mode.isWorkflowStrategyMode(WorkflowStrategyMode.SCANNER) ) {
+            LOGGER.info("Sequential scanner polling next step");
+            this.activePolicy = this.workflow.pollFirst();
+            return this.activePolicy != null;
+        }
+        
+        // Fetch for exhaustion, polling 
+        else if ( this.mode.isWorkflowStrategyMode(WorkflowStrategyMode.EXHAUST) ) {
+            LOGGER.info("Sequential exhaustion evaluating");
+            if ( !this.activePolicy.hasNext() ) {
+                LOGGER.info("Sequential exhaustion polling next step");
+                this.activePolicy = this.workflow.pollFirst();
+                return this.activePolicy != null;
+            }
+            LOGGER.info("More work detected in active task");
+            return true;
+        }
+        return true;
     }
     
     
     /**
-     * Ensure only one thread can get set value at a time
+     * Set has run for cloning
      * 
-     * @param flag true=get current value, false = set provided value
      * @param val 
-     * 
-     * @return boolean
      */
-    private static synchronized boolean getOrSetCanIncrement(boolean flag, boolean val) {
-        
-        // Get current value
-        if ( flag ) {
-            boolean currentValue = SequentialWorkflowStrategy.canIncrement.get();
-            SequentialWorkflowStrategy.canIncrement.set(currentValue);
-            return currentValue;
-        }
-        
-        // Otherwise just set
-        SequentialWorkflowStrategy.canIncrement = new AtomicBoolean(val);
-        return val;
+    public void setHasRun(boolean val) {
+        this.hasRun = val;
     }
 }

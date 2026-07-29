@@ -44,6 +44,7 @@ public abstract class AbstractWorkflowStrategy implements WorkflowAcquisitionStr
     protected TaskTideWorkloadAcquisitionPolicy activePolicy;
     protected WorkflowStrategyMode mode = null;
     protected int limit = -1, counter = 0;
+    protected boolean hasRun = false;
 
     
     /**
@@ -266,5 +267,43 @@ public abstract class AbstractWorkflowStrategy implements WorkflowAcquisitionStr
         );
         this.activePolicy = this.workflow.pollFirst();
         this.counter = 0;
+        this.hasRun = false;
+    }
+
+    
+    /**
+     * Get target names from elements still in queue
+     * 
+     * @return List-String
+     */
+    @Override
+    public List<String> getQueueTargets() {
+        List<String> output = new ArrayList<>();
+        for ( TaskTideWorkloadAcquisitionPolicy elm : new ArrayList<>(this.workflow) ) {
+            output.add(elm.getTarget());
+        }
+        return output;
+    }
+    
+    
+    /**
+     * Set has run for cloning
+     * 
+     * @param val 
+     */
+    @Override
+    public void setHasRun(boolean val) {
+        this.hasRun = val;
+    }
+    
+    
+    /**
+     * Get whether strategy has run
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean getHasRun() {
+        return this.hasRun;
     }
 }

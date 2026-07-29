@@ -131,11 +131,11 @@ public class ArgumentBuilder {
     @SuppressWarnings("unchecked")
     public <T> Argument<T> build() {
         if ( this.withValue ) {
-            return new Argument<>((T) value, name, description, shortFlag, longFlag, argType, (Class<T>) refClass);
+            return new Argument<>((T) value, name, description, shortFlag, longFlag, argType, (Class<T>) this.refClass);
         }
         
         else if ( this.refClass != null ) {
-            return new Argument<>(name, description, shortFlag, longFlag, argType);
+            return new Argument<>(name, description, shortFlag, longFlag, argType, (Class<T>) this.refClass);
         }
         return new Argument<>(name, description, shortFlag, longFlag, argType);
     }

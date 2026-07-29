@@ -1,0 +1,491 @@
+2026-07-29 14:51:29.756 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setUpClass ]: 
+
+---------------- Initiating Engine Worker Workflow Tests ----------------
+
+2026-07-29 14:51:29.870 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.<clinit> ]: WELD-000900: 5.1.2 (Final)
+2026-07-29 14:51:29.973 INFO  [ Test worker -> org.jboss.weld.environment.deployment.discovery.DiscoveryStrategyFactory.create ]: WELD-ENV-000020: Using jandex for bean discovery
+2026-07-29 14:51:30.431 INFO  [ Test worker -> org.jboss.weld.bootstrap.WeldStartup.startContainer ]: WELD-000101: Transactional services not available. Injection of @Inject UserTransaction not available. Transactional observers will be invoked synchronously.
+2026-07-29 14:51:30.793 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+Jul 29, 2026 2:51:30 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+INFO: Ignoring because the ColumnManagerSupplier is producing a wrong manager for DOCUMENT type
+Jul 29, 2026 2:51:30 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+INFO: Ignoring because the ColumnManagerSupplier is producing a wrong manager for GRAPH type
+Jul 29, 2026 2:51:30 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+INFO: Found the type COLUMN to metadata COLUMN@
+Jul 29, 2026 2:51:30 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+INFO: Found the type DOCUMENT to metadata DOCUMENT@
+Jul 29, 2026 2:51:30 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+INFO: Ignoring because the DocumentManagerSupplier is producing a wrong manager for GRAPH type
+Jul 29, 2026 2:51:30 P.M. org.eclipse.jnosql.mapping.Databases lambda$addDatabase$1
+INFO: Ignoring because the DocumentManagerSupplier is producing a wrong manager for COLUMN type
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.reflection.ClassGraphClassScanner <init>
+INFO: The following repositories are not supported: []
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+INFO: Processing Key-Value extension: 0 databases crud 0 found
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+INFO: Processing repositories as a Key-Value implementation: []
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.keyvalue.spi.KeyValueExtension onAfterBeanDiscovery
+INFO: Ignoring custom repositories as a Key-Value implementation: []
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.databases.cassandra.mapping.CassandraExtension onAfterBeanDiscovery
+INFO: Starting the onAfterBeanDiscovery with elements number: 0
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.databases.cassandra.mapping.CassandraExtension onAfterBeanDiscovery
+INFO: Finished the onAfterBeanDiscovery
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+INFO: Processing Document extension: 1 databases crud 0 found, custom repositories: 0
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.document.spi.DocumentExtension onAfterBeanDiscovery
+INFO: Processing repositories as a Document implementation: []
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.graph.spi.GraphExtension onAfterBeanDiscovery
+INFO: Processing Graph extension: 0 databases crud 0 found, custom repositories: 0
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.graph.spi.GraphExtension onAfterBeanDiscovery
+INFO: Processing repositories as a Graph implementation: []
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
+INFO: Starting the onAfterBeanDiscovery with elements number: 0
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.databases.couchbase.mapping.CouchbaseExtension onAfterBeanDiscovery
+INFO: Finished the onAfterBeanDiscovery
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.column.spi.ColumnExtension onAfterBeanDiscovery
+INFO: Processing Column extension: 1 databases crud 0 found, custom repositories: 0
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.mapping.column.spi.ColumnExtension onAfterBeanDiscovery
+INFO: Processing repositories as a Column implementation: []
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
+INFO: Starting the onAfterBeanDiscovery with elements number: 0
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.databases.dynamodb.mapping.DynamoDBExtension onAfterBeanDiscovery
+INFO: Finished the onAfterBeanDiscovery
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
+INFO: Starting the onAfterBeanDiscovery with elements number: 0
+Jul 29, 2026 2:51:36 P.M. org.eclipse.jnosql.databases.arangodb.mapping.ArangoDBExtension onAfterBeanDiscovery
+INFO: Finished the onAfterBeanDiscovery
+2026-07-29 14:51:36.628 WARN  [ Test worker -> org.jboss.weld.logging.ValidatorLogger.lambda$static$6 ]: WELD-001478: Interceptor class org.tasktide.core.model.collection.WorkflowLifecycleInterceptor is enabled for the application and for the bean archive /C:/Users/Bren/Documents/GitHub/TaskTide/tasktide/core/build/libs/tasktide-core-0.9.5.jar. It will only be invoked in the @Priority part of the chain.
+2026-07-29 14:51:36.879 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.fireContainerInitializedEvent ]: WELD-ENV-002003: Weld SE container a64cafb4-2e39-4045-872d-db6612325bda initialized
+2026-07-29 14:51:36.947 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Creating workflow:	'EngineWorker Workflow Acquisition Test'
+2026-07-29 14:51:37.094 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Displaying workflow creation cmd:
+
+'{
+    "Command Spec": {
+        "File Path": "src/test/resources/nested-nslookup-tasks.txt",
+        "Options": {
+            "Workflow Name": "EngineWorker Workflow Acquisition Test",
+            "Step Name": "Ping"
+        },
+        "Query String": ""
+    },
+    "Command Type": "CREATE",
+    "Manager Action": "ADD",
+    "Manager Target": "WORKFLOW"
+}'
+2026-07-29 14:51:37.095 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.runCommand ]: Attempting to add Workflow
+2026-07-29 14:51:37.618 WARN  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkflow ]: Workflow already exists for:	'EngineWorker Workflow Acquisition Test'
+2026-07-29 14:51:37.618 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.runCommand ]: Attempting to add Workflow
+2026-07-29 14:51:37.652 WARN  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addWorkflow ]: Workflow already exists for:	'EngineWorker Workflow Acquisition Test'
+2026-07-29 14:51:37.653 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Command result:	'false'
+2026-07-29 14:51:37.653 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Creating step:	'Ping'
+2026-07-29 14:51:37.659 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Displaying step creation cmd:
+
+'{
+    "Command Spec": {
+        "File Path": "src/test/resources/nested-nslookup-tasks.txt",
+        "Options": {
+            "Workflow Name": "EngineWorker Workflow Acquisition Test",
+            "Step Name": "Ping"
+        },
+        "Query String": ""
+    },
+    "Command Type": "CREATE",
+    "Manager Action": "ADD",
+    "Manager Target": "STEP"
+}'
+2026-07-29 14:51:37.660 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.runCommand ]: Attempting to add Step
+2026-07-29 14:51:37.671 WARN  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addStep ]: Step already exists
+2026-07-29 14:51:37.672 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Command result:	'false'
+2026-07-29 14:51:37.672 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Creating step:	'NS Lookups'
+2026-07-29 14:51:37.678 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Displaying workflow creation cmd:
+
+'{
+    "Command Spec": {
+        "File Path": "src/test/resources/nested-nslookup-tasks.txt",
+        "Options": {
+            "Workflow Name": "EngineWorker Workflow Acquisition Test",
+            "Step Name": "NS Lookups"
+        },
+        "Query String": ""
+    },
+    "Command Type": "CREATE",
+    "Manager Action": "ADD",
+    "Manager Target": "STEP"
+}'
+2026-07-29 14:51:37.679 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.runCommand ]: Attempting to add Step
+2026-07-29 14:51:37.691 WARN  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addStep ]: Step already exists
+2026-07-29 14:51:37.691 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.runCommand ]: Attempting to add Step
+2026-07-29 14:51:37.704 WARN  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addStep ]: Step already exists
+2026-07-29 14:51:37.705 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Command result:	'false'
+2026-07-29 14:51:37.705 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Creating step:	'Numero 3'
+2026-07-29 14:51:37.717 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Displaying workflow creation cmd:
+
+'{
+    "Command Spec": {
+        "File Path": "src/test/resources/nested-nslookup-tasks.txt",
+        "Options": {
+            "Workflow Name": "EngineWorker Workflow Acquisition Test",
+            "Step Name": "Numero 3"
+        },
+        "Query String": ""
+    },
+    "Command Type": "CREATE",
+    "Manager Action": "ADD",
+    "Manager Target": "STEP"
+}'
+2026-07-29 14:51:37.718 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.runCommand ]: Attempting to add Step
+2026-07-29 14:51:37.741 WARN  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addStep ]: Step already exists
+2026-07-29 14:51:37.741 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.runCommand ]: Attempting to add Step
+2026-07-29 14:51:37.752 WARN  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.addStep ]: Step already exists
+2026-07-29 14:51:37.753 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setupWorkflow ]: Command result:	'false'
+2026-07-29 14:51:37.759 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.setUp ]: 
+
+================ Initiating Next Test ================
+
+2026-07-29 14:51:37.761 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.canRunEngineServiceSequentialScannerMode_Parallel ]: 
+
+================= Can Run Parallel Service Sequential Scanner Workflow Workers =================
+
+2026-07-29 14:51:37.773 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.canRunEngineServiceSequentialScannerMode_Parallel ]: Importing workload
+2026-07-29 14:51:37.777 INFO  [ Test worker -> org.tasktide.engine.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\engine\\build\\resources\\test\\singleTaskImports-Delim2.txt",
+        "Options": {
+            "Delimiter": ",",
+            "Step Name": "Ping"
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-07-29 14:51:37.778 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ''
+2026-07-29 14:51:37.778 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: No nested delimiter detected, importing as single tasks
+2026-07-29 14:51:37.780 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'Ping'
+2026-07-29 14:51:37.970 INFO  [ Test worker -> org.tasktide.engine.TestUtils.importTestRecords ]: Performing below import command:
+
+'{
+    "Command Spec": {
+        "File Path": "C:\\Users\\Bren\\Documents\\GitHub\\TaskTide\\tasktide\\engine\\build\\resources\\test\\nested-nslookup-tasks.txt",
+        "Options": {
+            "Delimiter": "|",
+            "Step Name": "NS Lookups",
+            "Nested Delimiter": ","
+        }
+    },
+    "Command Type": "BATCH_CREATE",
+    "Manager Action": "IMPORT",
+    "Manager Target": "WORKITEM"
+}'
+2026-07-29 14:51:37.970 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Evaluating nested delimiter of value ','
+2026-07-29 14:51:37.970 INFO  [ Test worker -> org.tasktide.core.manager.command.commands.ImportCommand.importFile ]: Importing using nested delimiter of:	','
+2026-07-29 14:51:37.971 INFO  [ Test worker -> org.tasktide.core.manager.file_handler.ImportCommandRecordProcessor.recordProcessor ]: Fetching StepId for Step Name:	'NS Lookups'
+2026-07-29 14:51:38.054 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.canRunEngineServiceSequentialScannerMode_Parallel ]: Configuring engine worker for:	'SEQUENTIAL' 'SCANNER' mode, with iteration limit
+2026-07-29 14:51:38.055 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.canRunEngineServiceSequentialScannerMode_Parallel ]: Scanner Iteration Limit = '3', TaskTide-Service-Manager Result Set Limit = '1'
+2026-07-29 14:51:38.077 WARN  [ Test worker -> org.tasktide.engine.workerunit.container.WorkerUnitContainer.getStreamPath ]: Warning Stream Path not configured defaulting to current directory:	'C:\Users\Bren\Documents\GitHub\TaskTide\tasktide\engine'
+2026-07-29 14:51:38.243 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.canRunEngineServiceSequentialScannerMode_Parallel ]: Running 'SEQUENTIAL' 'SCANNER' of workflow in 'SERVICE' mode
+2026-07-29 14:51:38.245 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.runEngine ]: Operating in service mode
+2026-07-29 14:51:38.246 WARN  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Sequential cycling detected, recommend using Round Robin instead
+2026-07-29 14:51:38.246 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Processing available tasks iteration:	'0'
+2026-07-29 14:51:38.247 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Configured '1' Parallel EngineWorkers, submitting work for active step 'Ping'
+2026-07-29 14:51:38.247 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Starting engine 'Worker-0'
+2026-07-29 14:51:38.258 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Configuring WorkItem-Traverser
+2026-07-29 14:51:38.259 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.evaluateIterationCounter ]: Checking workflow strategy iteration counter is within range:	'3'
+2026-07-29 14:51:38.259 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.evaluateIterationCounter ]: Incremented workflow iteration counter, value is now:	'1'
+2026-07-29 14:51:38.261 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.fetchWorkload ]: Fetching workflow records for registered targets, queue size is now '2':	'[Ping, NS Lookups, Numero 3]'
+2026-07-29 14:51:38.262 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.fetchWorkload ]: Examing collection 'Ping' in workflow '[Ping, NS Lookups, Numero 3]'
+2026-07-29 14:51:38.262 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Engine 'Worker-0' started
+2026-07-29 14:51:38.275 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Clearing active step 'Ping' from, and configuring the next step
+2026-07-29 14:51:38.275 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Active step in workflow has been scanned 'Ping', proceeding to the next step 'NS Lookups'
+2026-07-29 14:51:38.276 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Reterived workload of size '1' for target 'Ping'
+2026-07-29 14:51:38.276 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Processing workload of size '1'
+2026-07-29 14:51:38.278 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Begining thread 'Thread[pool-3-thread-1,5,main]' processing sampled '[WorkItem-12452785-f1f9-409d-b428-5e423d094b83]'
+2026-07-29 14:51:38.279 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Determining how to process workload
+2026-07-29 14:51:38.279 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Processing workload serially
+2026-07-29 14:51:38.279 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Traversing workload of size '1' serially
+2026-07-29 14:51:38.280 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing element '0' of '1':	'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:38.280 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-3-thread-1' for WorkItem:	'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:38.283 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemTimeKeeper' for task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83' with onTaskStart result 'true'
+2026-07-29 14:51:38.283 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Verifying that task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83' is still available
+2026-07-29 14:51:38.299 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83' is still available
+2026-07-29 14:51:42.413 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemStateObserver' for task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83' with onTaskStart result 'true'
+2026-07-29 14:51:42.415 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemExecutorObserver' for task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83' with onTaskStart result 'true'
+2026-07-29 14:51:42.417 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:42.417 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processTask ]: Proceeding with processing '1' tasks under 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:42.418 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processWorkload ]: Delegating WorkItem processing to ItemTaskTraverser:	'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:42.418 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Determining how to process workload
+2026-07-29 14:51:42.418 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Processing workload serially
+2026-07-29 14:51:42.418 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' with onTaskStart result 'true'
+2026-07-29 14:51:42.419 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' with onTaskStart result 'true'
+2026-07-29 14:51:42.419 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e'
+2026-07-29 14:51:42.419 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' with onTaskProcessing result 'true'
+2026-07-29 14:51:42.522 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' with onTaskProcessing result 'true'
+2026-07-29 14:51:42.522 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':
+'ping dcu.ie'
+2026-07-29 14:51:42.522 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' with onTaskProcessing result 'true'
+2026-07-29 14:51:42.578 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' with onTaskProcessing result 'true'
+2026-07-29 14:51:45.808 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	ping dcu.ie
+2026-07-29 14:51:45.808 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_2' successful on thread 'pool-3-thread-1' with exit code 0
+
+2026-07-29 14:51:45.809 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e'
+2026-07-29 14:51:45.809 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e', global count:	'1'
+2026-07-29 14:51:45.809 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e'
+2026-07-29 14:51:45.809 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' with onTaskEnd result 'true'
+2026-07-29 14:51:45.809 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Performing end task chores for ItemTask:	'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e'
+2026-07-29 14:51:45.810 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Marking ItemTask 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' as completed
+2026-07-29 14:51:45.900 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e' with onTaskEnd result 'true'
+2026-07-29 14:51:45.900 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-0a47413a-d8c4-4586-8745-9ae5e47c483e'
+2026-07-29 14:51:45.902 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processWorkload ]: Execution completed
+2026-07-29 14:51:45.902 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83', global count:	'1'
+2026-07-29 14:51:45.902 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:45.903 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemTimeKeeper' for task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83' with onTaskEnd result 'true'
+2026-07-29 14:51:45.956 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemStateObserver' for task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83' with onTaskEnd result 'true'
+2026-07-29 14:51:45.957 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:45.957 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemExecutorObserver' for task 'WorkItem-12452785-f1f9-409d-b428-5e423d094b83' with onTaskEnd result 'true'
+2026-07-29 14:51:45.958 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:45.958 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed:	'WorkItem-12452785-f1f9-409d-b428-5e423d094b83'
+2026-07-29 14:51:45.958 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed for workload of size '1'
+2026-07-29 14:51:45.959 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Completed thread '[WorkItem-12452785-f1f9-409d-b428-5e423d094b83]' processing sampled 'null'
+2026-07-29 14:51:48.282 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Step for the next Engine-Worker iteration is 'Numero 3'. Queue is now '[]'
+2026-07-29 14:51:48.283 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Waiting on '1' tasks across window sizes of '4'
+2026-07-29 14:51:48.284 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Waiting on task:	'Task-0'
+2026-07-29 14:51:48.286 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Task 'Task-0' completed successfully
+2026-07-29 14:51:48.287 WARN  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Task 'Task-0' failed to cmplete
+2026-07-29 14:51:48.288 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Engine workers completed '1' of '1' successful
+2026-07-29 14:51:48.288 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Iteration '0' completed with state:	'true'
+2026-07-29 14:51:48.288 WARN  [ Test worker -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.hasNext ]: Workflow processing completed
+2026-07-29 14:51:48.289 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: No active tasks, engine worker shutting down after '1' iterations
+2026-07-29 14:51:52.292 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Handling next iteration of sequential workflow mode
+2026-07-29 14:51:52.293 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Sequential cycling enabled, reconfiguring policy queue
+2026-07-29 14:51:52.295 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Processing available tasks iteration:	'0'
+2026-07-29 14:51:52.296 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Configured '1' Parallel EngineWorkers, submitting work for active step 'Ping'
+2026-07-29 14:51:52.296 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Starting engine 'Worker-0'
+2026-07-29 14:51:52.297 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Engine 'Worker-0' started
+2026-07-29 14:51:52.298 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Configuring WorkItem-Traverser
+2026-07-29 14:51:52.300 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.evaluateIterationCounter ]: Checking workflow strategy iteration counter is within range:	'3'
+2026-07-29 14:51:52.300 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.evaluateIterationCounter ]: Incremented workflow iteration counter, value is now:	'1'
+2026-07-29 14:51:52.300 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.fetchWorkload ]: Fetching workflow records for registered targets, queue size is now '2':	'[Ping, NS Lookups, Numero 3]'
+2026-07-29 14:51:52.300 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.fetchWorkload ]: Examing collection 'Ping' in workflow '[Ping, NS Lookups, Numero 3]'
+2026-07-29 14:51:52.349 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Clearing active step 'Ping' from, and configuring the next step
+2026-07-29 14:51:52.350 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Active step in workflow has been scanned 'Ping', proceeding to the next step 'NS Lookups'
+2026-07-29 14:51:52.350 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Reterived workload of size '1' for target 'Ping'
+2026-07-29 14:51:52.350 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Processing workload of size '1'
+2026-07-29 14:51:52.351 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Begining thread 'Thread[pool-3-thread-1,5,main]' processing sampled '[WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44]'
+2026-07-29 14:51:52.351 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Determining how to process workload
+2026-07-29 14:51:52.351 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Processing workload serially
+2026-07-29 14:51:52.352 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Traversing workload of size '1' serially
+2026-07-29 14:51:52.352 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing element '0' of '1':	'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:51:52.352 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-3-thread-1' for WorkItem:	'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:51:52.352 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemTimeKeeper' for task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44' with onTaskStart result 'true'
+2026-07-29 14:51:52.352 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Verifying that task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44' is still available
+2026-07-29 14:51:52.374 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44' is still available
+2026-07-29 14:51:56.489 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemStateObserver' for task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44' with onTaskStart result 'true'
+2026-07-29 14:51:56.489 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemExecutorObserver' for task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44' with onTaskStart result 'true'
+2026-07-29 14:51:56.490 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:51:56.490 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processTask ]: Proceeding with processing '1' tasks under 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:51:56.490 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processWorkload ]: Delegating WorkItem processing to ItemTaskTraverser:	'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:51:56.490 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Determining how to process workload
+2026-07-29 14:51:56.490 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Processing workload serially
+2026-07-29 14:51:56.490 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' with onTaskStart result 'true'
+2026-07-29 14:51:56.490 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' with onTaskStart result 'true'
+2026-07-29 14:51:56.491 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8'
+2026-07-29 14:51:56.491 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' with onTaskProcessing result 'true'
+2026-07-29 14:51:56.582 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' with onTaskProcessing result 'true'
+2026-07-29 14:51:56.582 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':
+'ping google.com'
+2026-07-29 14:51:56.582 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' with onTaskProcessing result 'true'
+2026-07-29 14:51:56.641 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' with onTaskProcessing result 'true'
+2026-07-29 14:51:58.305 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Step for the next Engine-Worker iteration is 'Numero 3'. Queue is now '[]'
+2026-07-29 14:51:58.306 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Waiting on '1' tasks across window sizes of '4'
+2026-07-29 14:51:58.306 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Waiting on task:	'Task-0'
+2026-07-29 14:51:59.894 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	ping google.com
+2026-07-29 14:51:59.895 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_1' successful on thread 'pool-3-thread-1' with exit code 0
+
+2026-07-29 14:51:59.895 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8'
+2026-07-29 14:51:59.896 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8', global count:	'2'
+2026-07-29 14:51:59.896 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8'
+2026-07-29 14:51:59.896 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' with onTaskEnd result 'true'
+2026-07-29 14:51:59.896 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Performing end task chores for ItemTask:	'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8'
+2026-07-29 14:51:59.896 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Marking ItemTask 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' as completed
+2026-07-29 14:52:00.000 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8' with onTaskEnd result 'true'
+2026-07-29 14:52:00.001 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-a5af99b6-28d2-4465-9c99-b14970f150a8'
+2026-07-29 14:52:00.002 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processWorkload ]: Execution completed
+2026-07-29 14:52:00.002 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44', global count:	'2'
+2026-07-29 14:52:00.003 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:52:00.004 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemTimeKeeper' for task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44' with onTaskEnd result 'true'
+2026-07-29 14:52:00.032 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemStateObserver' for task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44' with onTaskEnd result 'true'
+2026-07-29 14:52:00.032 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:52:00.033 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemExecutorObserver' for task 'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44' with onTaskEnd result 'true'
+2026-07-29 14:52:00.034 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:52:00.034 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed:	'WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44'
+2026-07-29 14:52:00.034 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed for workload of size '1'
+2026-07-29 14:52:00.034 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Completed thread '[WorkItem-28214eac-4aeb-4538-95b5-627b725fbb44]' processing sampled 'null'
+2026-07-29 14:52:00.035 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Task 'Task-0' completed successfully
+2026-07-29 14:52:00.035 WARN  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Task 'Task-0' failed to cmplete
+2026-07-29 14:52:00.035 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Engine workers completed '1' of '1' successful
+2026-07-29 14:52:00.035 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Iteration '0' completed with state:	'true'
+2026-07-29 14:52:00.035 WARN  [ Test worker -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.hasNext ]: Workflow processing completed
+2026-07-29 14:52:00.036 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: No active tasks, engine worker shutting down after '1' iterations
+2026-07-29 14:52:09.051 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Handling next iteration of sequential workflow mode
+2026-07-29 14:52:09.052 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Sequential cycling enabled, reconfiguring policy queue
+2026-07-29 14:52:09.052 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Processing available tasks iteration:	'0'
+2026-07-29 14:52:09.053 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Configured '1' Parallel EngineWorkers, submitting work for active step 'Ping'
+2026-07-29 14:52:09.054 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Starting engine 'Worker-0'
+2026-07-29 14:52:09.055 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Engine 'Worker-0' started
+2026-07-29 14:52:09.055 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Configuring WorkItem-Traverser
+2026-07-29 14:52:09.056 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.evaluateIterationCounter ]: Checking workflow strategy iteration counter is within range:	'3'
+2026-07-29 14:52:09.056 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.evaluateIterationCounter ]: Incremented workflow iteration counter, value is now:	'1'
+2026-07-29 14:52:09.057 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.fetchWorkload ]: Fetching workflow records for registered targets, queue size is now '2':	'[Ping, NS Lookups, Numero 3]'
+2026-07-29 14:52:09.057 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.fetchWorkload ]: Examing collection 'Ping' in workflow '[Ping, NS Lookups, Numero 3]'
+2026-07-29 14:52:09.104 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Clearing active step 'Ping' from, and configuring the next step
+2026-07-29 14:52:09.105 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Active step in workflow has been scanned 'Ping', proceeding to the next step 'NS Lookups'
+2026-07-29 14:52:09.105 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Reterived workload of size '1' for target 'Ping'
+2026-07-29 14:52:09.105 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Processing workload of size '1'
+2026-07-29 14:52:09.106 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Begining thread 'Thread[pool-3-thread-1,5,main]' processing sampled '[WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6]'
+2026-07-29 14:52:09.106 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Determining how to process workload
+2026-07-29 14:52:09.106 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Processing workload serially
+2026-07-29 14:52:09.107 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Traversing workload of size '1' serially
+2026-07-29 14:52:09.107 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing element '0' of '1':	'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:09.107 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-3-thread-1' for WorkItem:	'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:09.108 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemTimeKeeper' for task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6' with onTaskStart result 'true'
+2026-07-29 14:52:09.108 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Verifying that task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6' is still available
+2026-07-29 14:52:09.128 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6' is still available
+2026-07-29 14:52:12.255 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemStateObserver' for task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6' with onTaskStart result 'true'
+2026-07-29 14:52:12.256 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemExecutorObserver' for task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6' with onTaskStart result 'true'
+2026-07-29 14:52:12.256 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:12.257 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processTask ]: Proceeding with processing '1' tasks under 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:12.257 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processWorkload ]: Delegating WorkItem processing to ItemTaskTraverser:	'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:12.258 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Determining how to process workload
+2026-07-29 14:52:12.258 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Processing workload serially
+2026-07-29 14:52:12.258 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' with onTaskStart result 'true'
+2026-07-29 14:52:12.259 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' with onTaskStart result 'true'
+2026-07-29 14:52:12.259 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4'
+2026-07-29 14:52:12.259 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' with onTaskProcessing result 'true'
+2026-07-29 14:52:12.345 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' with onTaskProcessing result 'true'
+2026-07-29 14:52:12.345 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':
+'ping tcd.ie'
+2026-07-29 14:52:12.345 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' with onTaskProcessing result 'true'
+2026-07-29 14:52:12.421 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' with onTaskProcessing result 'true'
+2026-07-29 14:52:15.767 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	ping tcd.ie
+2026-07-29 14:52:15.768 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_4' successful on thread 'pool-3-thread-1' with exit code 0
+
+2026-07-29 14:52:15.769 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4'
+2026-07-29 14:52:15.769 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4', global count:	'3'
+2026-07-29 14:52:15.770 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4'
+2026-07-29 14:52:15.770 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' with onTaskEnd result 'true'
+2026-07-29 14:52:15.770 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Performing end task chores for ItemTask:	'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4'
+2026-07-29 14:52:15.771 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Marking ItemTask 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' as completed
+2026-07-29 14:52:15.908 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4' with onTaskEnd result 'true'
+2026-07-29 14:52:15.909 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-28ba7a45-2b9e-4830-b8d5-b4a6003b95b4'
+2026-07-29 14:52:15.909 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processWorkload ]: Execution completed
+2026-07-29 14:52:15.909 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6', global count:	'3'
+2026-07-29 14:52:15.910 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:15.910 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemTimeKeeper' for task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6' with onTaskEnd result 'true'
+2026-07-29 14:52:15.980 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemStateObserver' for task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6' with onTaskEnd result 'true'
+2026-07-29 14:52:15.981 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:15.981 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemExecutorObserver' for task 'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6' with onTaskEnd result 'true'
+2026-07-29 14:52:15.981 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:15.981 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed:	'WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6'
+2026-07-29 14:52:15.982 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed for workload of size '1'
+2026-07-29 14:52:15.982 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Completed thread '[WorkItem-412e0ca4-550b-453e-90d2-c29bb0db3ec6]' processing sampled 'null'
+2026-07-29 14:52:17.068 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Step for the next Engine-Worker iteration is 'Numero 3'. Queue is now '[]'
+2026-07-29 14:52:17.069 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Waiting on '1' tasks across window sizes of '4'
+2026-07-29 14:52:17.069 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Waiting on task:	'Task-0'
+2026-07-29 14:52:17.069 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Task 'Task-0' completed successfully
+2026-07-29 14:52:17.070 WARN  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Task 'Task-0' failed to cmplete
+2026-07-29 14:52:17.071 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Engine workers completed '1' of '1' successful
+2026-07-29 14:52:17.071 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Iteration '0' completed with state:	'true'
+2026-07-29 14:52:17.071 WARN  [ Test worker -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.hasNext ]: Workflow processing completed
+2026-07-29 14:52:17.071 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: No active tasks, engine worker shutting down after '1' iterations
+2026-07-29 14:52:22.077 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Handling next iteration of sequential workflow mode
+2026-07-29 14:52:22.078 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Sequential cycling enabled, reconfiguring policy queue
+2026-07-29 14:52:22.078 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Processing available tasks iteration:	'0'
+2026-07-29 14:52:22.078 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Configured '1' Parallel EngineWorkers, submitting work for active step 'Ping'
+2026-07-29 14:52:22.078 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Starting engine 'Worker-0'
+2026-07-29 14:52:22.079 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Engine 'Worker-0' started
+2026-07-29 14:52:22.079 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Configuring WorkItem-Traverser
+2026-07-29 14:52:22.079 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.evaluateIterationCounter ]: Checking workflow strategy iteration counter is within range:	'3'
+2026-07-29 14:52:22.079 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.evaluateIterationCounter ]: Incremented workflow iteration counter, value is now:	'1'
+2026-07-29 14:52:22.079 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.fetchWorkload ]: Fetching workflow records for registered targets, queue size is now '2':	'[Ping, NS Lookups, Numero 3]'
+2026-07-29 14:52:22.081 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.fetchWorkload ]: Examing collection 'Ping' in workflow '[Ping, NS Lookups, Numero 3]'
+2026-07-29 14:52:22.118 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Clearing active step 'Ping' from, and configuring the next step
+2026-07-29 14:52:22.119 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Active step in workflow has been scanned 'Ping', proceeding to the next step 'NS Lookups'
+2026-07-29 14:52:22.119 INFO  [ pool-3-thread-1 -> org.tasktide.engine.policies.workflow.SequentialWorkflowStrategy.evaluateWorkload ]: Reterived workload of size '1' for target 'Ping'
+2026-07-29 14:52:22.119 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Processing workload of size '1'
+2026-07-29 14:52:22.119 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Begining thread 'Thread[pool-3-thread-1,5,main]' processing sampled '[WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7]'
+2026-07-29 14:52:22.120 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Determining how to process workload
+2026-07-29 14:52:22.121 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.traverse ]: Processing workload serially
+2026-07-29 14:52:22.121 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Traversing workload of size '1' serially
+2026-07-29 14:52:22.121 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing element '0' of '1':	'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:22.121 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Configuring ItemTaskProcessor for Workload of size '1' on thread 'pool-3-thread-1' for WorkItem:	'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:22.122 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemTimeKeeper' for task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7' with onTaskStart result 'true'
+2026-07-29 14:52:22.122 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Verifying that task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7' is still available
+2026-07-29 14:52:22.175 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.WorkItemStateObserver.onTaskStart ]: Task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7' is still available
+2026-07-29 14:52:24.086 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Step for the next Engine-Worker iteration is 'Numero 3'. Queue is now '[]'
+2026-07-29 14:52:24.087 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Waiting on '1' tasks across window sizes of '4'
+2026-07-29 14:52:24.088 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Waiting on task:	'Task-0'
+2026-07-29 14:52:25.291 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemStateObserver' for task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7' with onTaskStart result 'true'
+2026-07-29 14:52:25.293 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'WorkItemExecutorObserver' for task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7' with onTaskStart result 'true'
+2026-07-29 14:52:25.294 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing task:	'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:25.294 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processTask ]: Proceeding with processing '1' tasks under 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:25.294 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processWorkload ]: Delegating WorkItem processing to ItemTaskTraverser:	'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:25.295 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Determining how to process workload
+2026-07-29 14:52:25.295 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.traverse ]: Processing workload serially
+2026-07-29 14:52:25.296 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' with onTaskStart result 'true'
+2026-07-29 14:52:25.296 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskStart ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' with onTaskStart result 'true'
+2026-07-29 14:52:25.297 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing task:	'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387'
+2026-07-29 14:52:25.297 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' with onTaskProcessing result 'true'
+2026-07-29 14:52:25.454 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' with onTaskProcessing result 'true'
+2026-07-29 14:52:25.454 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Executing task on thread 'pool-3-thread-1':
+'ping ucd.ie'
+2026-07-29 14:52:25.454 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' with onTaskProcessing result 'true'
+2026-07-29 14:52:25.538 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskProcessing ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' with onTaskProcessing result 'true'
+2026-07-29 14:52:28.893 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ProcessExecutor.execute ]: Successful execution of task:	ping ucd.ie
+2026-07-29 14:52:28.894 INFO  [ pool-3-thread-1 -> org.tasktide.engine.executor.ItemTaskExecutor.executeTask ]: Task 'Ping_Test_3' successful on thread 'pool-3-thread-1' with exit code 0
+
+2026-07-29 14:52:28.896 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.ItemTaskProcessingStrategy.processTask ]: Processing sucessful for task:	'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387'
+2026-07-29 14:52:28.896 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Completed task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387', global count:	'4'
+2026-07-29 14:52:28.898 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Performing onTaskEnd chores:	'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387'
+2026-07-29 14:52:28.898 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskTimeKeeper' for task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' with onTaskEnd result 'true'
+2026-07-29 14:52:28.898 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Performing end task chores for ItemTask:	'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387'
+2026-07-29 14:52:28.898 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.stateobserver.ItemTaskStateObserver.onTaskEnd ]: Marking ItemTask 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' as completed
+2026-07-29 14:52:29.012 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'ItemTaskStateObserver' for task 'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387' with onTaskEnd result 'true'
+2026-07-29 14:52:29.012 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.ItemTaskTraverser.processElm ]: Processing complete for task:	'ItemTask-a7527e1f-cdce-42df-a59f-d3d8180fc387'
+2026-07-29 14:52:29.013 INFO  [ pool-3-thread-1 -> org.tasktide.engine.processingstrategy.WorkItemProcessingStrategy.processWorkload ]: Execution completed
+2026-07-29 14:52:29.014 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Completed task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7', global count:	'4'
+2026-07-29 14:52:29.014 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Performing onTaskEnd chores:	'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:29.014 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemTimeKeeper' for task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7' with onTaskEnd result 'true'
+2026-07-29 14:52:29.060 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemStateObserver' for task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7' with onTaskEnd result 'true'
+2026-07-29 14:52:29.061 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.worker.executor.WorkItemExecutorObserver.onTaskEnd ]: Unlocked N = '0' sub tasks for WorkItem:	'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:29.062 INFO  [ pool-3-thread-1 -> org.tasktide.engine.observer.ObserverChain.onTaskEnd ]: Evaluating Observer 'WorkItemExecutorObserver' for task 'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7' with onTaskEnd result 'true'
+2026-07-29 14:52:29.062 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.processElm ]: Processing complete for task:	'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:29.062 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed:	'WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7'
+2026-07-29 14:52:29.063 INFO  [ pool-3-thread-1 -> org.tasktide.engine.traversers.WorkItemTraverser.serialSubmit ]: Processing completed for workload of size '1'
+2026-07-29 14:52:29.063 INFO  [ pool-3-thread-1 -> org.tasktide.engine.worker.TaskTideEngineWorker.sampleAndTraverse ]: Completed thread '[WorkItem-75108b6e-0cd1-4bc7-85f1-9c9fdf6948b7]' processing sampled 'null'
+2026-07-29 14:52:29.063 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Task 'Task-0' completed successfully
+2026-07-29 14:52:29.063 WARN  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Task 'Task-0' failed to cmplete
+2026-07-29 14:52:29.064 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.processSampling ]: Engine workers completed '1' of '1' successful
+2026-07-29 14:52:29.065 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: Iteration '0' completed with state:	'true'
+2026-07-29 14:52:29.066 WARN  [ Test worker -> org.tasktide.engine.policies.workflow.AbstractWorkflowStrategy.hasNext ]: Workflow processing completed
+2026-07-29 14:52:29.067 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.fetchAndRun ]: No active tasks, engine worker shutting down after '1' iterations
+2026-07-29 14:52:36.077 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Service operation detected iteration limit breached, terminating:	'4' of '3'
+2026-07-29 14:52:36.077 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Handling next iteration of sequential workflow mode
+2026-07-29 14:52:36.079 INFO  [ Test worker -> org.tasktide.engine.worker.TaskTideEngineWorker.serviceOperation ]: Engine processing completed after '4' iterations
+2026-07-29 14:52:36.080 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.canRunEngineServiceSequentialScannerMode_Parallel ]: Engine processing completed
+2026-07-29 14:52:36.081 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.canRunEngineServiceSequentialScannerMode_Parallel ]: 
+
+================ Can Run Parallel Service Sequential Scanner Workflow Workers =================
+
+2026-07-29 14:52:36.089 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.tearDown ]: 
+
+================ Terminating Test ================
+
+2026-07-29 14:52:36.117 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.tearDownClass ]: 
+
+---------------- Terminating Engine Worker Workflow Tests----------------
+
+2026-07-29 14:52:36.138 INFO  [ Test worker -> org.jboss.weld.environment.se.WeldContainer.shutdown ]: WELD-ENV-002001: Weld SE container a64cafb4-2e39-4045-872d-db6612325bda shut down
+2026-07-29 14:52:36.140 INFO  [ Test worker -> org.tasktide.engine.worker.EngineWorkerWorkflowAcquisitionTests.tearDownClass ]: CDI container shut down
+

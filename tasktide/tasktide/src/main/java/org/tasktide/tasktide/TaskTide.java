@@ -54,7 +54,7 @@ public class TaskTide {
             // Configure provider and argument tree
             TaskTideClientUtility.printSplash();
             LOGGER.info("Configuring the CDI Container Provider");
-            CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, true);
+            CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, false);
 
             // Fetch config map
             LOGGER.info("Fetching TaskTide configs");
@@ -93,9 +93,28 @@ public class TaskTide {
         
         // Otherwise show error
         catch (Exception ex) {
-            LOGGER.fatal("Exiting on fatal error:\t'{}'", ex.toString());
+            LOGGER.fatal(
+                "Exiting on fatal error:\t'{}'",
+                ex.toString()
+            );
             ex.printStackTrace();
             System.exit(1);
         }
+    }
+    
+    
+    
+    /**
+     * Parse stack trace from exception into string
+     * 
+     * @param ex
+     * @return String
+     */
+    private static String parseStackTraceToString(Exception ex) {
+        String output = "";
+        for ( StackTraceElement elm : ex.getStackTrace() ) {
+            output += elm.toString() + "\n";
+        }
+        return output;
     }
 }

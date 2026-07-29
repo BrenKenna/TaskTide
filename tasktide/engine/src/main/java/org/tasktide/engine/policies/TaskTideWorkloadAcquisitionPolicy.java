@@ -50,13 +50,6 @@ public interface TaskTideWorkloadAcquisitionPolicy {
     
     
     /**
-     * Increment position
-     * 
-     */
-    public void incrementWindow();
-    
-    
-    /**
      * Fetch/build {@link TaskTideModel} workload from {@link TaskTideServiceManager}
      *  from built query
      * 

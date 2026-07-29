@@ -36,11 +36,11 @@ public class WorkloadPolicyConfigurer extends AbstractConfig {
 
     // Acquisition mode
     @ConfigProperty(name = "tasktide.engine.policy.acquisition.workflow.mode", defaultValue = "Exhaust")
-    WorkflowStrategyMode strategyMode;
+    String strategyMode;
 
     // Workflow strategy
     @ConfigProperty(name = "tasktide.engine.policy.acquisition.workflow.strategy", defaultValue = "Sequential")
-    WorkflowStrategyType strategyType;
+    String strategyType;
     
     // Iteration limit 
     @ConfigProperty(name = "tasktide.engine.policy.acquisition.iteration-limit", defaultValue = "-1")
@@ -82,14 +82,6 @@ public class WorkloadPolicyConfigurer extends AbstractConfig {
         this.strategyMode();
         this.iterationLimit();
         this.shouldCycle();
-        
-        // Put argument map into tree
-        if ( this.getPath().isEmpty() ) {
-            this.extendPath(argTree, "engine", this.getArgumentMap());
-        }
-        else {
-            this.extendPath(argTree, this.getPath(), this.getArgumentMap());
-        }
     }
     
     
@@ -116,20 +108,20 @@ public class WorkloadPolicyConfigurer extends AbstractConfig {
      * 
      */
     public void strategyMode() {
-        Argument<WorkflowStrategyMode> arg;
+        Argument<String> arg;
         arg = this.getArgumentBuilder()
             .withName("Acquisition Mode")
             .withDescription("Specifies acqusition mode for workflow strategy")
             .withShortFlag("-am")
             .withLongFlag("--acquisition-mode")
             .withArgType(ArgumentType.ACTION)
-            .withRefClass(WorkflowStrategyType.class)
+            .withRefClass(String.class)
         .build();
         
         this.strategyMode = this.getConfigValue(
             "tasktide.engine.policy.acquisition.workflow.mode",
-            WorkflowStrategyMode.class,
-            WorkflowStrategyMode.EXHAUST
+            String.class,
+            WorkflowStrategyMode.EXHAUST.name()
         );
         
         arg.setValue(this.strategyMode);
@@ -142,20 +134,20 @@ public class WorkloadPolicyConfigurer extends AbstractConfig {
      * 
      */
     public void strategyType() {
-        Argument<WorkflowStrategyType> arg;
+        Argument<String> arg;
         arg = this.getArgumentBuilder()
             .withName("Strategy Type")
             .withDescription("Specifies workflow acquisition strategy to use")
             .withShortFlag("-st")
             .withLongFlag("--strategy-type")
             .withArgType(ArgumentType.ACTION)
-            .withRefClass(WorkflowStrategyType.class)
+            .withRefClass(String.class)
         .build();
         
         this.strategyType = this.getConfigValue(
             "tasktide.engine.policy.acquisition.workflow.strategy",
-            WorkflowStrategyType.class,
-            WorkflowStrategyType.SEQUENTIAL
+            String.class,
+            WorkflowStrategyType.SEQUENTIAL.name()
         );
         
         arg.setValue(this.strategyType);
