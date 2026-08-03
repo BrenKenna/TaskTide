@@ -275,7 +275,6 @@ public class TaskTideEngineWorker implements Cloneable {
         // Log completion
         LOGGER.info("Engine processing completed after '{}' iterations", counter);
     }
-
     
     
     /**
