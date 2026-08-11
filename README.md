@@ -16,8 +16,9 @@ By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as
 </p>
 
 <p id="intro-c">
-TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, <strong>configurable</strong> approach for workflow scale-outs that decouples <em>Workflow Orhcestration</em> logic from <em>Infrastructure Specific</em> backends. Supporting <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>daemon-less</strong> databases (<em>SQLite, RocksDB</em>) reflecting its backend-agnostic design.
+TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, <strong>configurable</strong> approach for workflow scale-outs that decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends. Supporting <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>daemon-less</strong> databases (<em>SQLite, RocksDB</em>) reflecting its backend-agnostic design.
 </p>
+<br>
 
 ---
 
@@ -25,11 +26,11 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 
 <p id="features">
 
-- 🛠️ **Pilot Job Execution Model** – Tasks are dynamically scheduled and executed inside long-running jobs.
+- 🛠️ **Pilot Job Execution Model**: Tasks are dynamically scheduled and executed inside long-running jobs.
 - 🔄 **ETL-Friendly**: Tasks are treated as extraction, transformation, or loading scripts/programs.
 - <img src="/tasktide/docs/assets/database.png" alt="Database Icon from 'https://www.flaticon.com/free-icons/database'" width="18"/> **Backend Agnostic** – Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
-- 💻 **Native Task Execution** – Runs any local or system executable/script.
-- 🔀 **Nested Workflow Modeling** – Compose tasks into hierarchical workflows using a flexible domain model.
+- 💻 **Native Task Execution**: Runs any local or system executable/script.
+- 🔀 **Nested Workflow Modeling** : Compose tasks into hierarchical workflows using a flexible domain model.
 - 🧪 **Tested**: Built with CI/CD, Docker support, and integration tests across database types.
 </p>
 <br>
