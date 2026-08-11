@@ -119,7 +119,7 @@ public class RoundRobinWorkflowStrategy extends AbstractWorkflowStrategy {
 
     
     /**
-     * Configure default {@link WorkflowStrategyMode.SCANNER}
+     * Configure default scanning {@link WorkflowStrategyMode}
      *  for {@link WorkflowAcquisitionStrategy}
      * 
      */

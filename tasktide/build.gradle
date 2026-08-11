@@ -5,25 +5,14 @@ plugins {
 description = 'tasktide'
 allprojects {
     group = 'org.tasktide'
-    version = '0.9.5'
+    version = '0.9.9'
     repositories {
         mavenCentral()
     }
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
-
 subprojects {
     apply plugin: 'java'
-
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(17)
-        }
-    }
 
     dependencies {
 

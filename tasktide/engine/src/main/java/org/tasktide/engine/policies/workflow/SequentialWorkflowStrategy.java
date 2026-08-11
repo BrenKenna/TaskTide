@@ -135,7 +135,7 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
     
     
     /**
-     * Configure {@link WorkflowStrategyMode.EXHAUST}
+     * Configure exhaustive {@link WorkflowStrategyMode}
      *  if not mode was not specified on construction
      * 
      */

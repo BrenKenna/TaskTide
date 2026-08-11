@@ -24,3 +24,6 @@ tasktide/use-cases/deployment-use-case/tasktide-service/tasktide_data/
 tasktide/use-cases/deployment-use-case/tasktide-service/mario-data/
 tasktide/use-cases/deployment-use-case/sif/
 *.log
+tasktide/docs/uml/*
+uml/
+tasktide/use-cases/deployment-use-case/mario-results.zip

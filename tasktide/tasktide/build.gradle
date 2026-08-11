@@ -5,12 +5,7 @@ plugins {
 
 description = 'tasktide:tasktide'
 group = 'org.tasktide.tasktide'
-version = '0.9.5'
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-}
+version = '0.9.9'
 
 application {
     mainClass = 'org.tasktide.tasktide.TaskTide'

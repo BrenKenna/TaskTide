@@ -44,7 +44,7 @@ public interface WorkflowAcquisitionStrategy {
     /**
      * Fetches workload from step in provided collection
      * 
-     * @return List-{@link TaskTideWorkloadAcquisitionPolicym}
+     * @return List-{@link TaskTideWorkloadAcquisitionPolicy}
      */
     public List<WorkItem> fetchWorkload();
     
@@ -52,7 +52,7 @@ public interface WorkflowAcquisitionStrategy {
     /**
      * Checks whether there are any available tasks left
      *  in the active step, or throws
-     *  {@link TaskTideEngineUncheckedException} if not yet configured
+     *  TaskTideEngineUncheckedException if not yet configured
      * 
      * @return boolean
      */

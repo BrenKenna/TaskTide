@@ -1,7 +1,8 @@
 org.tasktide.api
+org.tasktide.api.auth
+org.tasktide.api.exceptions
 org.tasktide.api.hateoas.links
 org.tasktide.api.hateoas.resource_map
-org.tasktide.api.jwt
 org.tasktide.api.resources.manager.rest
 org.tasktide.api.resources.services.rest
 org.tasktide.api.security_context.data_models
@@ -10,6 +11,7 @@ org.tasktide.api.security_context.service_hooks.jpa_repositories
 org.tasktide.api.security_context.service_hooks.template_repositories
 org.tasktide.api.utils
 org.tasktide.core
+org.tasktide.core.exceptions
 org.tasktide.core.manager
 org.tasktide.core.manager.command
 org.tasktide.core.manager.command.commands
@@ -41,6 +43,8 @@ org.tasktide.engine.observer.worker.stateobserver
 org.tasktide.engine.observer.worker.timekeeper
 org.tasktide.engine.policies
 org.tasktide.engine.policies.resources
+org.tasktide.engine.policies.workflow
+org.tasktide.engine.processingstrategy
 org.tasktide.engine.trackers
 org.tasktide.engine.traversers
 org.tasktide.engine.worker

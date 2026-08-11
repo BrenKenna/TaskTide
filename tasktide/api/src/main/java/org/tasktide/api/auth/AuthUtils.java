@@ -19,7 +19,7 @@ import jakarta.ws.rs.container.ContainerRequestContext;
 
 
 /**
- * Collection of common authentication &
+ * Collection of common authentication and
  *  authorization methods
  *
  * @author Bren

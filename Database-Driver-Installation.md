@@ -2,10 +2,11 @@
 <p>
 The following relates to NoSQL & Relational Databases only, meaning this can be ignored if either RocksDB/SQLite are being used (both included in TaskTide <a href="https://github.com/BrenKenna/TaskTide/releases">release zips</a>). The JDBC drivers for databases like Postgres, MySQL, MariaDB etc can downloaded from preferred source or from the collection maintained by JetBrains <a  href="https://www.jetbrains.com/datagrip/jdbc-drivers/#">linked here</a>, and an example installaion is <a href="/Database-Driver-Installation.md#1-install-required-relational-database-driver">provided here</a>.
 </p>
-
+<br>
 <p>
 A collection of Jakarta-NoSQL database drivers have been included within TaskTide. These are MongoDB and CouchDB for DocumentTemplate, Cassandra for ColumnTemplate, Redis and DynamoDB for KeyValueTemplate with their use is <a href="/Database-Driver-Installation.md#2-using-pre-packaged-nosql-database-driver">described here</a>. In the event that other database drivers are required see the <a href="/Database-Driver-Installation.md#3-using-another-nosql-database-driver">following guide</a>.
 </p>
+<br>
 
 
 ## 1). Install Required Relational Database Driver
@@ -14,11 +15,12 @@ The following instructions are relative to the root folder of the <a href="https
 </p>
 
 <p>
- 1. Download the required JDBC, if not known they are available from JetBrains at <a href="https://download.jetbrains.com/idea/jdbc-drivers/web/mssql-12.8.1.zip">this link</a> which downloads version 12.8.1. Then place that jar file into the "Tasktide-< VERSION >/lib" folder.
- 2. Optionally remove the unused <i>tasktide-< VERSION >/lib/"mysql-connector-j-8.0.33.jar</i>".
- 3. Optionally, remove the unused JNoSQL JARs from "tasktide-< VERSION >/lib/".
- 4. Adjust Microsoft SQL Server <a href="/tasktide/docs/configs/microsoft-sql-config.properties">template config file</a> according to your deployment.
- </p>
+    1. Download the required JDBC, if not known they are available from JetBrains at <a href="https://download.jetbrains.com/idea/jdbc-drivers/web/mssql-12.8.1.zip">this link</a> which downloads version 12.8.1. Then place that jar file into the "Tasktide-< VERSION >/lib" folder.
+    2. Optionally remove the unused <i>tasktide-< VERSION >/lib/"mysql-connector-j-8.0.33.jar</i>".
+    3. Optionally, remove the unused JNoSQL JARs from "tasktide-< VERSION >/lib/".
+    4. Adjust Microsoft SQL Server <a href="/tasktide/docs/configs/microsoft-sql-config.properties">template config file</a> according to your deployment.
+</p>
+<br>
 
 ## 2). Using Pre-Packaged NoSQL-Database Driver
 <p>
@@ -26,9 +28,10 @@ The pre-packaged NoSQL databases are couchDB, MongoDB, ArangoDB, couchBase, Dyna
 </p>
 
 <p>
-1. Optionally, remove the JNoSQL JARs. Since couchDB uses the <a href="https://github.com/eclipse-jnosql/jnosql-databases?tab=readme-ov-file#couchdb">DocumentTemplate</a>. This would be the Graph, KeyValue and Column jars Communication-Column/Key-Value/Graph.jar, and Mapping JNoSQL JARs.
-2. Then optionally delete the unused JNoSQL Cassandra, ArangoDB, CouchBase, DynamoDB, MongoDB, and JNoSQL JARs.
+    1. Optionally, remove the JNoSQL JARs. Since couchDB uses the <a href="https://github.com/eclipse-jnosql/jnosql-databases?tab=readme-ov-file#couchdb">DocumentTemplate</a>. This would be the Graph, KeyValue and Column jars Communication-Column/Key-Value/Graph.jar, and Mapping JNoSQL JARs.
+    2. Then optionally delete the unused JNoSQL Cassandra, ArangoDB, CouchBase, DynamoDB, MongoDB, and JNoSQL JARs.
 </p>
+<br>
 
 ## 3). Using Another NoSQL-Database Driver
 <p>

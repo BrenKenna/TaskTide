@@ -28,6 +28,7 @@ import org.tasktide.engine.traversers.TraverserCheckedException;
 
 
 /**
+ * Task {@link ProcessingStrategy} implemntation for {@link ItemTask}
  *
  * @author Bren
  */
@@ -53,7 +54,7 @@ public class ItemTaskProcessingStrategy implements ProcessingStrategy<ItemTask> 
     
     /**
      * Processes provided task, entry point for passing to
-     *  {@link ExecutorService}
+     *  ExecutorService
      * 
      * @param elm
      * @return boolean

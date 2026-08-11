@@ -2,10 +2,12 @@
 <p>
 The repository is packaged with a pre-compiled version of TaskTide, and it is highly recommended to use that instead of installing from source. Gradle wrapper scripts have been provided for both Windows & Linux in the event buliding from source is a requirement, or the repoistory is forked for development work.
 </p>
+<br>
+
 
 ---
 
-## Pre-compiled Binary
+## Pre-compiled Application
 <p>
 The <a href="https://github.com/BrenKenna/TaskTide/releases/edit/v0.9.0">release section</a> of this repository contains a zip which contains all TaskTide dependancies, wrapper scripts for running on linux/windows and configuration files which can be adjusted for the "<a href="/Database-Driver-Installation.md">target deployment strategy</a>".
 </p>
@@ -17,6 +19,8 @@ curl -so tasktide.zip https://github.com/BrenKenna/TaskTide/releases/download/v0
 # 2). Unpack
 unzip tasktide.zip && rm -f tasktide.zip
 ```
+<br>
+
 
 ---
 
@@ -30,6 +34,8 @@ To support deployment onto <a href="/tasktide/deployment/Docker/Dockerfile">cont
 docker image build -t latest -f deployment/Docker/Dockerfile .
 
 ```
+<br>
+
 
 ---
 

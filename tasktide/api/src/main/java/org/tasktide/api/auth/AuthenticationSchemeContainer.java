@@ -17,7 +17,7 @@ package org.tasktide.api.auth;
 
 
 /**
- * Container class for {@link Authentication}
+ * Container class for {@link AuthenticationScheme}
  *
  * @author Bren
  */

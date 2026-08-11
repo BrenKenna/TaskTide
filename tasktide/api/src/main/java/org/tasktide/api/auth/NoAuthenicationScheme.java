@@ -58,7 +58,7 @@ public class NoAuthenicationScheme implements AuthenticationScheme {
 
     
     /**
-     * Returns null {@link {@link AuthPrincipal}}
+     * Returns null {@link AuthPrincipal}
      * 
      * @param input
      * @return {@link AuthPrincipal}}

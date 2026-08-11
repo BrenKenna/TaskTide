@@ -47,7 +47,7 @@ public class EmbeddedAuthenicationScheme implements AuthenticationScheme {
     
     
     /**
-     * Use statically configured {@link WenApiUtils}
+     * Use statically configured {@link WebApiUtils}
      * 
      */
     public EmbeddedAuthenicationScheme() {
