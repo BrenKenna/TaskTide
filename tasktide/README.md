@@ -2,7 +2,7 @@
 <p align="center">
   <img src="/tasktide/docs/assets/tasktide-arch.png" alt="TaskTide-Arch"/>
 </p>
-<br><br>
+<br>
 
 
 ## 1). TaskTide-ItemStore Library
