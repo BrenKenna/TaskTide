@@ -10,17 +10,14 @@
 <p id="intro-a">
 <strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for modern <strong>HPC</strong>, <strong>Grid</strong>, <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> collections as tasks.
 </p>
-<br>
 
 <p id="intro-b">
 By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as first-class orchestration entities. TaskTide provides its users with real-time <em>workflow registration</em>, <em>introspection</em>, and <em>lifecycle influence</em> at runtime while task are actively consumed across distributed compute resources.
 </p>
-<br>
 
 <p id="intro-c">
 TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, <strong>configurable</strong> approach for workflow scale-outs that decouples <em>Workflow Orhcestration</em> logic from <em>Infrastructure Specific</em> backends. Supporting <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>daemon-less</strong> databases (<em>SQLite, RocksDB</em>) reflecting its backend-agnostic design.
 </p>
-<br>
 
 ---
 
