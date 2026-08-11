@@ -6,7 +6,7 @@ Provides the transactional processing logic over <a href="/tasktide/core/README.
 
 ## 1). TaskTide Engine Worker
 <p>
-
+Policy driven entrypoint for the Engine library functionalities. Uses workload/workflow acquisition policies to poll available tasks matching constraints in acquisition policy and WorkItem parallelism. Passing these collections to the Workload Traverser interface for triggering task lifecycle event changes, and delegating specific processing to the ProcessExecutor.
 </p>
 
 
