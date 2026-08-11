@@ -8,7 +8,7 @@
 ![license](https://img.shields.io/badge/license-Apache%202.0-blue)  
 
 <p id="intro-a">
-<strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for modern <strong>HPC</strong>, <strong>Grid</strong>, <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> collections as tasks.
+<strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for <strong>Cloud</strong>, <strong>HPC</strong>, <strong>Grid</strong>, and <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> collections as tasks.
 </p>
 
 <p id="intro-b">
