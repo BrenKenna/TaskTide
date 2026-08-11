@@ -41,7 +41,6 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 <p id="getting-started-a">
 An installation guide tailored to variety of use-cases is <a href="/Install.md">provided here</a>. Backend database configurations should follow provider recommendations, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, whose use for TaskTide are <a href="/tasktide/tasktide/README.md#a-global-configurations">documented here</a>.
 </p>
-<br>
 
 ### Running TaskTide
 <p id="getting-started-b">
@@ -55,6 +54,7 @@ How TaskTide should run can be configured based on parameters in a <a href="/tas
 # --- OR ---
 ./tasktide/bin/tasktide <client: Manager | Engine | API> <client args: -h/--help>
 ```
+<br>
 
 ---
 
