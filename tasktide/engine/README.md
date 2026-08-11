@@ -22,9 +22,3 @@ The abstract "<i>StateObserver</i>" decorates the pre, during, and post task pro
 <p>
 It is recommended that tasks are provided as end-user developed ETL scripts sink their logs to a file, and handled separately. This is so that end-users can gauarntee where these task logs are stored, for instance with linux stdout/stderr could be sent to null device if no interested. Or a file, and pushed to S3/AzureBlob, CloudWatch/Azure Monitor. Otherwise these data are stored in an ItemTask property if less than 1MB, or into a zip if greater 1MB and acknowledged on the ItemTask (ie either has the logs, or their full file path). These are logged outputs from ETL script/executable provided, not sub-scripts/programs used by that script. In time, destinations maybe configured but this not a current priority.
 </p>
-
-
-## EngineLib Architecture
-<p align="center">
-  <img src="/tasktide/docs/uml/engine-lib-uml.svg" alt="EngineLib-UML"/>
-</p>

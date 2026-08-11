@@ -34,10 +34,13 @@ The table below maps TaskTide configuration parameters from config file, to comm
 ### a). Global Configurations
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
 |--|--|--|--|--|
-| Client | Defines which client to use | Manager/Engine | tasktide.client | -c/--client
 | Repository Type | Defines which backend repository to use | NoSQL/SQL/RocksDB/SQLite | tasktide.core.repository.type | -rt--repository-type
 | File Path | Used in conjuction with Repository Type for ItemStore databases (RocksDB/SQLite) for directory where data is stored | ~/path/To/My/ItemStore | tasktide.core.repository.file-path | -fp/--file-path
 | Date Format | Format to use for Date strings, defaulted | dd/MM/yy HH:mm:ss | tasktide.utils.date-format | -df/--date-format
+| Workflow Name | Workflow to target | MyWorkflow | tasktide.core.collection.workflow.name | -wn/--workflow-name
+| Step Name | Step to target | MyStep | tasktide.core.collection.step.name | -sn/--step-name
+| WorkItem Name | WorkItem to target | MyWorkItem | tasktide.core.collection.work-item.name | -sn/--work-item-collection-name
+| Result Set Size | Number of records to restrict repository read operatios to | 10 | tasktide.core.results-set-size | -rss/--result-set-size
 
 ---
 
@@ -71,7 +74,6 @@ Relational database management system/SQL support is provided through <a href="h
 | Dialect | SQL-JDBC bridge | org.hibernate.dialect.MariaDBDialect | hibernate.dialect | "<i><b>NA</b></i>" |
 | DDL Auto | Schema generation tool see hibernate documentation <a href="https://docs.jboss.org/hibernate/orm/5.0/manual/en-US/html/ch03.html#configuration-misc-properties">linked here</a> | update | hibernate.hbm2ddl.auto | "<i><b>NA</b></i>" |
 
-
 ---
 
 ### b). Engine Client Configurations
@@ -81,11 +83,20 @@ The engine client brings in parallel task processing over the configured backend
 
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
 |--|--|--|--|--|
-| Step | Defines which Step(s) to process | StepA,ThenStepB,ThenStepC | tasktide.engine.step | -st/--step |
-| WorkItem Threads | Defines the number of threads to recruit for WorkItem processing | 2 | tasktide.engine.worker.processor.threads.workitem | -w/--work-item-threads |
-| WorkItem Threshold | Defines the processing threshold for WorkItem | 2 | tasktide.engine.worker.processor.threshold.workitem | -ws/--work-item-sub-task-threshold |
-| ItemTask Threads | Defines the number of threads to recruit for ItemTask processing | 2 | tasktide.engine.worker.processor.threads.itemtask | -i/--item-task-threads |
-| ItemTask Threshold | Defines the processing threshold for ItemTask | 2 | tasktide.engine.worker.processor.threshold.itemtask | -is/--item-task-sub-task-threshold |
+| Worker Pool Size | Defines the number of engine workers | 2 | tasktide.engine.worker.threads.worker-pool-size | -w/--worker-pool-size |
+| ItemTask Threads | Defines the number of threads to recruit for ItemTask processing | 2 | tasktide.engine.worker.threads.itemTask | -i/--item-task-threads |
+| Worker Window Size | Defines the number of tasks polled from policy results | 10 | tasktide.engine.worker.window-size | -wws/--work-window-size |
+| Lock Wait Time | Configures wait time in seconds for locking an item | 5 | tasktide.engine.worker.lock-wait-time | -l/--lock-wait-time |
+| Process Executor Stream Directory | Log stream directory for Process Executor | ~/ | tasktide.engine.process-executor.stream-directory | -sd/--stream-directory |
+
+| Execution Policy | Engine execution policy | BATCH/SERVICE | tasktide.engine.execution-policy | -ep/--execution-policy |
+| Strategy Type | Specifies workflow acquisition strategy to use | SEQUENTIAL/ROUND ROBIN | tasktide.engine.policy.acquisition.workflow.strategy | -st/--strategy-type |
+| Acquisition Mode | Specifies acqusition mode for workflow strategy | EXHAUST/SCANNER | tasktide.engine.policy.acquisition.workflow.mode | -am/--acquisition-mode |
+
+| Pilot Label Key | CustomAnnotation key on WorkItem for early task binding to pilot job | MyAnnotationKey | tasktide.engine.pilot.label.key | -plk/--pilot-label-key |
+| Pilot Label Value | CustomAnnotation value on WorkItem for early task binding to pilot job | MyAnnotationValue | tasktide.engine.pilot.label.value | -plk/--pilot-label-key |
+| Pilot Label Annotation | JSON formatted CustomAnnotation | '{ "Key": "Anno Key", "Value": "GPU Target" }' | tasktide.engine.pilot.label.annotation | -pa/--pilot-label-annotation |
+
 | TimeKeeper Level | Configures whether TimeKeeper Observer is optional | 1/0 | tasktide.engine.observer.timekeeper | -tk/--time-keeper |
 | TimeKeeper onStart | Configures whether TimeKeeper's onStart method can fail | true/false | tasktide.engine.observer.timekeeper.onStart | -tks/--time-keeper-onStart |
 | TimeKeeper onProcessing | Configures whether TimeKeeper's onProcessing method can fail | true/false | tasktide.engine.observer.timekeeper.onProcessing | -tkp/--time-keeper-onProcessing |
@@ -107,10 +118,35 @@ The manager client brings in task scheduling using the configured backend. Opera
 | Delimiter | Defines field delimiter of the input file | ',' OR '\t' | tasktide.manager.delimiter | -d/--delimiter |
 | Nested Delimiter | Defines delimiter of tasks if provided | ':' OR '/' | tasktide.manager.nestedDelimiter | -nd/--nested-delimiter |
 | Output File | Defines full file path for export JSON formatted | ~/myExport.txt | tasktide.manager.outputFile | -of/--output-file |
+| ItemId | ItemId over which the required ManagerAction is taken | SomeId | tasktide.manager.itemId | -ii/--item-id |
+| Query String | JSON formatted string | '{"Field": "Value"}' | tasktide.manager.queryString | -ii/--item-id |
 
 ---
 
-### 3). Client Arcitecture
-<p align="center">
-  <img src="/tasktide/docs/uml/client-app.svg" alt="ClientApp-UML"/>
+### d). ItemStore Mutex Configuration
+<p id="item-store">
+The <a href="/tasktide/mutex/README.md">Mutex</a> library is used for as de-centralized operation queue for the <a href="/tasktide/itemstore/README.md">ItemStore Repository</a>.
 </p>
+
+| Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
+|--|--|--|--|--|
+| Mutex Root Directory | Configures root directory for mutex | ~/tasktide/mutex | tasktide.mutex.rootDir | -mrd/--mutex-root-dir |
+| Mutex Stale File Threshold | Defines amount of miliseconds active leader is considered stale and deleted | 5 | tasktide.mutex.staleFileThreshold | -sft/--stale-file-threshold |
+| Mutex Retry Interval | Configures retry interval for TaskTide-Mutex | 550 | tasktide.mutex.retryInterval | -ri/--retry-interval |
+| Mutex Start Jitter | Configures minimum milliseconds wait time | 10-300L | tasktide.mutex.startJitter| -sj/--start-jitter |
+| Mutex End Jitter | Configures maximum milliseconds wait time | 301-500L | tasktide.mutex.endJitter| -ej/--end-jitter |
+| Min Random Long | Configures value for maximum random long | 10-300L | tasktide.mutex.minRandomLong | -minri/--min-random-long |
+| Max Random Long | Configures value for maximum random long | 301-500L | tasktide.mutex.maxRandomLong | -maxri/--max-random-long |
+
+---
+
+### e). Web API
+<p id="web-api">
+Configurations for the <a href="/tasktide/api/README.md">RESTful API</a>. Further configurations for jersey, and glassfish can be passed down.
+</p>
+
+| Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
+|--|--|--|--|--|
+| Host | Configures host name of WebServer | http://localhost | tasktide.web-api.server.host | -host/--host |
+| Port | Port that the webserver is to listen on | 8080 | tasktide.web-api.server.port | -port/--port |
+| Base Path | Path that the webserver is mounted onto | tasktide | tasktide.web-api.server.base-path | -bp/--base-path |

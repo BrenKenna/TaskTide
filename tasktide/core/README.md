@@ -28,9 +28,3 @@ The TaskTide repositories were modelled as generic abstract interfaces constrain
 <p>
 A given "<i>TaskTideService</i>" instance (Workflow, Step, WorkItem) is composed with its corresponding "<i>TaskTideRepository</i>" which decouples the repository complexity (backend database) from the implementing class' business logic into a configurable singleton "<i>TaskTideServiceManager</i>" (ie configured once and reused). Which for the TaskTide Engine Client is task processing, and TaskTide Manager Client is task orchestration. The Manager package builds on this logic providing end-user facing interfaces for task import/export through its own "<i>ManagerTask</i>" model, which performs TaskTideModel conversion.
 </p>
-
-
-### CoreLib Architecture
-<p align="center">
-  <img src="/tasktide/docs/uml/core-lib.svg" alt="CoreLib-UML"/>
-</p>
