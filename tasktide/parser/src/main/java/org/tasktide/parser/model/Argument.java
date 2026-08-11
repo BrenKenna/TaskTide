@@ -20,6 +20,7 @@ package org.tasktide.parser.model;
  * Base data model for command-line argument
  * 
  * @author bkenna
+ * @param <T>
  */
 public class Argument<T> {
 
