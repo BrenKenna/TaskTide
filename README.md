@@ -43,8 +43,6 @@ An installation guide tailored to variety of use-cases is <a href="/Install.md">
 </p>
 <br>
 
----
-
 #### Running TaskTide
 <p id="getting-started-b">
 How TaskTide should run can be configured based on parameters in a <a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a>, or command-line arguments. This was to simplify the use case of the Engine and Manager clients, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) <a href="/tasktide/tasktide/README.md#a-global-configurations">described here</a>.
