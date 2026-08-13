@@ -1,7 +1,6 @@
 name: Publish Javadoc
 
 on:
-  push:
   workflow_dispatch:
 
 permissions:
