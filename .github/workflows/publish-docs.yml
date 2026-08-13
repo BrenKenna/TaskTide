@@ -1,0 +1,67 @@
+name: Publish Documentation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install MkDocs
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material
+
+      - name: Prepare documentation
+        run: |
+          # Preserve docs/index.md
+          cp docs/index.md /tmp/tasktide-index.md
+
+          # Recreate the MkDocs source tree
+          rm -rf docs
+          mkdir -p docs
+
+          # Restore landing page
+          cp README.md docs/index.md
+
+          # Root documentation
+          cp Install.md docs/Install.md
+          cp Database-Driver-Installation.md docs/Database-Driver-Installation.md
+          cp FAQ.md docs/FAQ.md
+
+          # Module documentation
+          mkdir -p docs/tasktide
+
+          cp -r tasktide/mutex docs/tasktide/
+          cp -r tasktide/parser docs/tasktide/
+          cp -r tasktide/itemstore docs/tasktide/
+          cp -r tasktide/core docs/tasktide/
+          cp -r tasktide/engine docs/tasktide/
+          cp -r tasktide/api docs/tasktide/
+          cp -r tasktide/tasktide docs/tasktide/
+
+          # Use cases
+          mkdir -p docs/tasktide/use-cases
+          cp -r tasktide/use-cases/* docs/tasktide/use-cases/
+
+          # Assets
+          mkdir -p assets
+          cp -r tasktide/docs/assets/* assets/
+
+      - name: Build documentation
+        run: mkdocs build --strict
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
