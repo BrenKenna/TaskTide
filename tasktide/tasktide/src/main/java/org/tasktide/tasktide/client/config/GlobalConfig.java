@@ -242,7 +242,7 @@ public class GlobalConfig extends AbstractConfig {
             .withRefClass(String.class)
         .build();
         
-        this.workItemName = this.getConfigValue("tasktide.core.collection.workitem.name", String.class, "");
+        this.workItemName = this.getConfigValue("tasktide.core.collection.work-item.name", String.class, "");
         arg.setValue(this.workItemName);
         this.getArgumentMap().putArgument(arg);
     }
@@ -347,7 +347,7 @@ public class GlobalConfig extends AbstractConfig {
             .withRefClass(Integer.class)
         .build();
         
-        this.resultSetSize = this.getConfigValue("tasktide.utils.token-expiration-days", Integer.class, -1);
+        this.resultSetSize = this.getConfigValue("tasktide.core.results-set-size", Integer.class, -1);
         arg.setValue(this.resultSetSize);
         this.getArgumentMap().putArgument(arg);
     }

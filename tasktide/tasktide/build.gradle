@@ -5,7 +5,7 @@ plugins {
 
 description = 'tasktide:tasktide'
 group = 'org.tasktide.tasktide'
-version = '0.9.9'
+version = '1.0.0'
 
 application {
     mainClass = 'org.tasktide.tasktide.TaskTide'
