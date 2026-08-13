@@ -25,10 +25,15 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 ## 🚀 Features
 
 - 🛠️ **Pilot Job Execution Model**: Tasks are dynamically scheduled and executed inside long-running jobs.
+
 - 🔄 **ETL-Friendly**: Tasks are treated as extraction, transformation, or loading scripts/programs.
+
 - <img src="assets/database.png" alt="Database Icon from 'https://www.flaticon.com/free-icons/database'" width="18"/> **Backend Agnostic** – Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
+
 - 💻 **Native Task Execution**: Runs any local or system executable/script.
+
 - 🔀 **Nested Workflow Modeling** : Compose tasks into hierarchical workflows using a flexible domain model.
+
 - 🧪 **Tested**: Built with CI/CD, Docker support, and integration tests across database types.
 <br>
 
@@ -61,11 +66,17 @@ How TaskTide should run can be configured based on parameters in a <a href="http
 ## 🧱 Architecture
 
 - **Core Model**             – Defines the stateful task and workflow data structure, described <a href="tasktide/core/README.md">here</a>.
+
 - **Engine Lib**             – Defines the task processing and tracking logic for WorkItems and their tasks, described <a href="tasktide/engine/README.md">here</a>.
+
 - **Web API**                – Defines Jakarta-WS REST API, and an embedded Jetty-WebServer, described <a href="tasktide/api/README.md">here</a>.
+
 - **Mutex**                  - Defines ItemStore semaphore for acquiring a mutex on the configured RocksDB/SQLite database, described <a href="tasktide/mutex/README.md">here</a>.
+
 - **ItemStore**              - Defines an interface for configuring TaskTide with daemonless databases (RocksDB/SQLite), described <a href="tasktide/itemstore/README.md">here</a>.
+
 - **Parser**                 - Defines a configurable command-line argument tree for TaskTide, described <a href="tasktide/parser/README.md">here</a>.
+
 - **Client Application**     – Provides access and services for workflow deployments and persistence, described <a href="tasktide/tasktide/README.md">here</a>.
 
 <br>
