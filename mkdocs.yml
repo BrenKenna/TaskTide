@@ -56,31 +56,31 @@ plugins:
   - search
 
 nav:
-  - Home:                           index.md
+  - 1). Home:                           index.md
 
-  - Guides:
-    - Installation:                 Install.md
-    - Database Configuration:       Database-Driver-Installation.md
-    - Frequently Asked Questions:   FAQ.md
+  - 2). Guides:
+    - a). Installation:                 Install.md
+    - b). Database Configuration:       Database-Driver-Installation.md
+    - c). Frequently Asked Questions:   FAQ.md
 
-  - Modules:
-      - TaskTide:                   tasktide/README.md
-      - Mutex:                      tasktide/mutex/README.md
-      - Item Store:                 tasktide/itemstore/README.md
-      - Core:                       tasktide/core/README.md
-      - Engine:                     tasktide/engine/README.md
-      - Web API:                    tasktide/api/README.md
-      - Parser:                     tasktide/parser/README.md
-      - Command-Line Client:        tasktide/tasktide/README.md
+  - 3). Modules:
+      - a). TaskTide:                   tasktide/README.md
+      - b). Mutex:                      tasktide/mutex/README.md
+      - c). Item Store:                 tasktide/itemstore/README.md
+      - d). Core:                       tasktide/core/README.md
+      - e). Engine:                     tasktide/engine/README.md
+      - f). Web API:                    tasktide/api/README.md
+      - g). Parser:                     tasktide/parser/README.md
+      - h). Command-Line Client:        tasktide/tasktide/README.md
 
-  - Use Cases:
-      - Introduction:               tasktide/use-cases/README.md
-      - Workflows:                  tasktide/use-cases/workflow-use-case/README.md
-      - Task Binding:               tasktide/use-cases/task-binding-use-case/README.md
-      - AI Deployment:              tasktide/use-cases/deployment-use-case/README.md
+  - 4). Use Cases:
+      - a). Introduction:               tasktide/use-cases/README.md
+      - b). Workflows:                  tasktide/use-cases/workflow-use-case/README.md
+      - c). Task Binding:               tasktide/use-cases/task-binding-use-case/README.md
+      - d). AI Deployment:              tasktide/use-cases/deployment-use-case/README.md
 
-  - API Reference:
-      - JavaDoc:                    javadocs/index.html
+  - 5). API Reference:
+      - a). JavaDoc:                    javadocs/index.html
 
-  - Changelog:
-      - v1.0.0:                     https://github.com/BrenKenna/TaskTide/blob/main/CHANGELOG.adoc
+  - 6). Changelog:
+      - a). v1.0.0:                     https://github.com/BrenKenna/TaskTide/blob/main/CHANGELOG.adoc
