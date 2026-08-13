@@ -6,7 +6,7 @@ on:
       - "mkdocs.yml"
       - "publish-docs.yml"
   
-    workflow_dispatch:
+  workflow_dispatch:
 
 
 permissions:
