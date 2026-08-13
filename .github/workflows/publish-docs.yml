@@ -49,6 +49,7 @@ jobs:
           # Module documentation
           mkdir -p docs/tasktide/mutex docs/tasktide/itemstore docs/tasktide/core docs/tasktide/engine docs/tasktide/api docs/tasktide/parser docs/tasktide/tasktide
 
+          cp tasktide/README.md docs/tasktide/README.md
           cp tasktide/mutex/README.md docs/tasktide/mutex/README.md
           cp tasktide/parser/README.md docs/tasktide/parser/README.md
           cp tasktide/itemstore/README.md docs/tasktide/itemstore/README.md
