@@ -1,6 +1,8 @@
 # TaskTide - ClientApp
 <p id="intro">
 Unified application exposing the TaskTide-Manager, TaskTide-Engine, and embedded TaskTide-WebAPI into a configuarable command-line program. How the program runs is goverened by arguments that are supplied at runtime, or the use of a "<a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Configuration File</a>". This design choice was to allow users of different familiarities to be able to run the program. Though not recommended to use both where not required, command-line arguments overwrite the config file values.
+</p>
+<br>
 
 ---
 
