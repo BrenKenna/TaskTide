@@ -209,7 +209,7 @@ public class MutexConfigurer extends AbstractConfig {
         
         // Build argument
         arg = this.getArgumentBuilder()
-            .withName("Mutex start jitter")
+            .withName("Mutex Start Jitter")
             .withDescription("Configures minimum milliseconds wait time")
             .withLongFlag("--start-jitter")
             .withShortFlag("-sj")
@@ -241,7 +241,7 @@ public class MutexConfigurer extends AbstractConfig {
         
         // Build argument
         arg = this.getArgumentBuilder()
-            .withName("Mutex end jitter")
+            .withName("Mutex End Jitter")
             .withDescription("Configures maximum milliseconds wait time")
             .withLongFlag("--end-jitter")
             .withShortFlag("-ej")

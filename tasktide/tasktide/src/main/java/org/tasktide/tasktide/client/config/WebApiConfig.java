@@ -153,7 +153,7 @@ public class WebApiConfig extends AbstractConfig {
         Argument<Integer> arg;
         arg = this.getArgumentBuilder()
             .withName("Port")
-            .withDescription(" ")
+            .withDescription("Port that the webserver is to listen on")
             .withShortFlag("-port")
             .withLongFlag("--port")
             .withArgType(ArgumentType.ACTION)
