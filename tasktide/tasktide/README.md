@@ -1,6 +1,6 @@
 # TaskTide - ClientApp
 <p id="intro">
-Unified application exposing the TaskTide-Manager, TaskTide-Engine, and embedded TaskTide-WebAPI into a configuarable command-line program. How the program runs is goverened by arguments that are supplied at runtime, or the use of a "<a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Configuration File</a>". This design choice was to allow users of different familiarities to be able to run the program. Though not recommended to use both where not required, command-line arguments overwrite the config file values.
+Unified application exposing the TaskTide-Manager, TaskTide-Engine, and embedded TaskTide-WebAPI into a configuarable command-line program. How the program runs is goverened by arguments that are supplied at runtime, or the use of a "<a href="https://github.com/BrenKenna/TaskTide/blob/main/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Configuration File</a>". This design choice was to allow users of different familiarities to be able to run the program. Though not recommended to use both where not required, command-line arguments overwrite the config file values.
 </p>
 <br>
 
@@ -10,11 +10,11 @@ Unified application exposing the TaskTide-Manager, TaskTide-Engine, and embedded
 
 #### TaskTide Configuration File
 <p id="config-file">
-The complete configuration for TaskTide is <a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">provided here</a>. For clarity this shows all values, but not all of the supplied are required. For instance, if using an RocksDB/SQLite backend then neither, the Relational/SQL/JPA backends, or the NoSQL configurations are not needed. Similarly if using Relational/SQL/JPA backends, no configurations are required for TaskTide-ItemStore/RocksDB/SQLite, or NoSQL etc. Simiarlly, if running the TaskTide-EngineClient is the requirement, then the TaskTide-ManagerClient or WebAPI configs are needed.
+The complete configuration for TaskTide is <a href="https://github.com/BrenKenna/TaskTide/blob/main/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">provided here</a>. For clarity this shows all values, but not all of the supplied are required. For instance, if using an RocksDB/SQLite backend then neither, the Relational/SQL/JPA backends, or the NoSQL configurations are not needed. Similarly if using Relational/SQL/JPA backends, no configurations are required for TaskTide-ItemStore/RocksDB/SQLite, or NoSQL etc. Simiarlly, if running the TaskTide-EngineClient is the requirement, then the TaskTide-ManagerClient or WebAPI configs are needed.
 </p>
 
 <p id="db-config">
-If using an SQL, or NoSQL backend then a microprofile-configuration file like the referenced <a href="/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a>, defined by <a href="https://smallrye.io/smallrye-config/Main/config/getting-started/">SmallRyeConfig</a> must be used. Additionally, SQL databases also require the use of a Java Persistence API XML config like that <a href="/tasktide/tasktide/src/main/resources/META-INF/persistence.xml">linked here</a>. How to configure backend database for TaskTide is <a href="/tasktide/tasktide/README.md#a-global-configurations">described here<a>.
+If using an SQL, or NoSQL backend then a microprofile-configuration file like the referenced <a href="https://github.com/BrenKenna/TaskTide/blob/main/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a>, defined by <a href="https://smallrye.io/smallrye-config/Main/config/getting-started/">SmallRyeConfig</a> must be used. Additionally, SQL databases also require the use of a Java Persistence API XML config like that <a href="/tasktide/tasktide/src/main/resources/META-INF/persistence.xml">linked here</a>. How to configure backend database for TaskTide is <a href="/tasktide/tasktide/README.md#a-global-configurations">described here<a>.
 </p>
 
 ---
