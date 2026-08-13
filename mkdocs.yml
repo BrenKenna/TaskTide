@@ -65,13 +65,13 @@ nav:
 
   - Modules:
       - Modules:                    tasktide/README.md
-      - Mutex:                      tasktide/mutex/mutex.md
-      - Item Store:                 tasktide/itemstore/itemstore.md
-      - Core:                       tasktide/core/core.md
-      - Engine:                     tasktide/engine/engine.md
-      - Web API:                    tasktide/api/api.md
-      - Parser:                     tasktide/parser/parser.md
-      - TaskTide:                   tasktide/tasktide.md
+      - Mutex:                      tasktide/mutex/README.md
+      - Item Store:                 tasktide/itemstore/README.md
+      - Core:                       tasktide/core/README.md
+      - Engine:                     tasktide/engine/README.md
+      - Web API:                    tasktide/api/README.md
+      - Parser:                     tasktide/parser/README.md
+      - TaskTide:                   tasktide/README.md
 
   - Use Cases:
       - Introduction:               tasktide/use-cases/README.md
