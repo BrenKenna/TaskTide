@@ -2,10 +2,6 @@ name: Publish Javadoc
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'tasktide/docs/javadoc/**'
   workflow_dispatch:
 
 permissions:

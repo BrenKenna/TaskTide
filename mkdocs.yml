@@ -80,7 +80,7 @@ nav:
       - AI Deployment:              tasktide/use-cases/deployment-use-case/README.md
 
   - API Reference:
-      - JavaDoc:                    https://api-docs.tasktide.org/
+      - JavaDoc:                    javadocs/index.html
 
   - Changelog:
       - v1.0.0:                     https://github.com/BrenKenna/TaskTide/blob/main/tasktide/CHANGELOG.adoc

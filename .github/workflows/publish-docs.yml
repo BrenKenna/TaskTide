@@ -4,7 +4,8 @@ on:
   push:
     paths:
       - "mkdocs.yml"
-      - "publish-docs.yml"
+      - "tasktide/docs/javadoc/**"
+      - ".github/workflows/publish-docs.yml"
   
   workflow_dispatch:
 
@@ -32,9 +33,6 @@ jobs:
 
       - name: Prepare documentation
         run: |
-          # Preserve docs/index.md
-          cp docs/index.md /tmp/tasktide-index.md
-
           # Recreate the MkDocs source tree
           rm -rf docs
           mkdir -p docs
@@ -64,9 +62,13 @@ jobs:
           cp -r tasktide/use-cases/* docs/tasktide/use-cases/
 
           # Assets
-          mkdir -p assets
-          cp tasktide/docs/assets/*png assets/
-          cp tasktide/docs/assets/*jpg assets/
+          mkdir -p docs/assets
+          cp tasktide/docs/assets/*png docs/assets/
+          cp tasktide/docs/assets/*jpg docs/assets/
+
+          # Java docs
+          mkdir docs/javadocs
+          cp -r tasktide/docs/javadoc/* docs/javadocs/
 
       - name: Build documentation
         run: mkdocs build --strict
