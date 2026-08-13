@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "mkdocs.yml"
+      - "publish-docs.yml"
   
     workflow_dispatch:
 
