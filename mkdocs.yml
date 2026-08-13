@@ -56,7 +56,7 @@ plugins:
   - search
 
 nav:
-  - Home:                           README.md
+  - Home:                           index.md
 
   - Guides:
     - Installation:                 Install.md
@@ -71,7 +71,7 @@ nav:
       - Engine:                     tasktide/engine/README.md
       - Web API:                    tasktide/api/README.md
       - Parser:                     tasktide/parser/README.md
-      - TaskTide:                   tasktide/README.md
+      - TaskTide:                   tasktide/tasktide/README.md
 
   - Use Cases:
       - Introduction:               tasktide/use-cases/README.md

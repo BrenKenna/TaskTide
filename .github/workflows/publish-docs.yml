@@ -47,15 +47,15 @@ jobs:
           cp FAQ.md docs/FAQ.md
 
           # Module documentation
-          mkdir -p docs/tasktide
+          mkdir -p docs/tasktide/mutex docs/tasktide/itemstore docs/tasktide/core docs/tasktide/engine docs/tasktide/api docs/tasktide/parser docs/tasktide/tasktide
 
-          cp -r tasktide/mutex docs/tasktide/
-          cp -r tasktide/parser docs/tasktide/
-          cp -r tasktide/itemstore docs/tasktide/
-          cp -r tasktide/core docs/tasktide/
-          cp -r tasktide/engine docs/tasktide/
-          cp -r tasktide/api docs/tasktide/
-          cp -r tasktide/tasktide docs/tasktide/
+          cp tasktide/mutex/README.md docs/tasktide/mutex/README.md
+          cp tasktide/parser/README.md docs/tasktide/parser/README.md
+          cp tasktide/itemstore/README.md docs/tasktide/itemstore/README.md
+          cp tasktide/core/README.md docs/tasktide/core/README.md
+          cp tasktide/engine/README.md docs/tasktide/engine/README.md
+          cp tasktide/api/README.md docs/tasktide/api/README.md
+          cp tasktide/tasktide/README.md docs/tasktide/tasktide/README.md
 
           # Use cases
           mkdir -p docs/tasktide/use-cases
@@ -63,7 +63,8 @@ jobs:
 
           # Assets
           mkdir -p assets
-          cp -r tasktide/docs/assets/* assets/
+          cp tasktide/docs/assets/*png assets/
+          cp tasktide/docs/assets/*jpg assets/
 
       - name: Build documentation
         run: mkdocs build --strict
