@@ -64,14 +64,14 @@ nav:
     - Frequently Asked Questions:   FAQ.md
 
   - Modules:
-      - Modules:                    tasktide/README.md
+      - TaskTide:                   tasktide/README.md
       - Mutex:                      tasktide/mutex/README.md
       - Item Store:                 tasktide/itemstore/README.md
       - Core:                       tasktide/core/README.md
       - Engine:                     tasktide/engine/README.md
       - Web API:                    tasktide/api/README.md
       - Parser:                     tasktide/parser/README.md
-      - TaskTide:                   tasktide/tasktide/README.md
+      - Command-Line Client:        tasktide/tasktide/README.md
 
   - Use Cases:
       - Introduction:               tasktide/use-cases/README.md
