@@ -4,8 +4,8 @@
 
 # TaskTide
 
-![Documentation](https://img.shields.io/badge/docs-tasktide.org-blue)(https://docs.tasktide.org)
-![API Docs](https://img.shields.io/badge/API-JavaDoc-blue)(https://api-docs.tasktide.org)
+[![Documentation](https://img.shields.io/badge/Documentation-docs.tasktide.org-blue)](https://docs.tasktide.org)
+[![API Reference](https://img.shields.io/badge/API%20Reference-JavaDoc-blue)](https://api-docs.tasktide.org)
 ![build](https://img.shields.io/badge/build-passing-brightgreen)  
 ![license](https://img.shields.io/badge/license-Apache%202.0-blue)
 
