@@ -4,8 +4,11 @@
 
 # TaskTide
 
+![Documentation](https://img.shields.io/badge/docs-tasktide.org-blue)(https://docs.tasktide.org)
+![API Docs](https://img.shields.io/badge/API-JavaDoc-blue)(https://api-docs.tasktide.org)
 ![build](https://img.shields.io/badge/build-passing-brightgreen)  
-![license](https://img.shields.io/badge/license-Apache%202.0-blue)  
+![license](https://img.shields.io/badge/license-Apache%202.0-blue)
+
 
 <p id="intro-a">
 <strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for <strong>Cloud</strong>, <strong>HPC</strong>, <strong>Grid</strong>, and <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> as task collections.
@@ -35,6 +38,22 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 - 🔀 **Nested Workflow Modeling** : Compose tasks into hierarchical workflows using a flexible domain model.
 
 - 🧪 **Tested**: Built with CI/CD, Docker support, and integration tests across database types.
+
+<br>
+
+---
+
+## Documentation
+
+- 📚 **[TaskTide Documentation](https://docs.tasktide.org)**
+  Human-readable guides, configuration, modules, and use cases.
+
+- 🧩 **[Java API Documentation](https://api-docs.tasktide.org)**
+  Generated JavaDoc API reference.
+
+- 🚀 **[Releases](https://github.com/BrenKenna/TaskTide/releases)**
+  Downloadable TaskTide releases.
+
 <br>
 
 ---
