@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo1.jpg" alt="TaskTide Logo" width="300"/>
+  <img src="tasktide/docs/assets/logo1.jpg" alt="TaskTide Logo" width="300"/>
 </p>
 
 # TaskTide
@@ -83,5 +83,5 @@ How TaskTide should run can be configured based on parameters in a <a href="http
 <br>
 
 <p id="arch-b" align="center">
-  <img src="assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
+  <img src="tasktide/docs/assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
 </p>
