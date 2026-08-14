@@ -31,7 +31,7 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 
 - 🔄 **ETL-Friendly**: Tasks are treated as extraction, transformation, or loading scripts/programs.
 
-- <img src="assets/database.png" alt="Database Icon from 'https://www.flaticon.com/free-icons/database'" width="18"/> **Backend Agnostic** – Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
+- <img src="/tasktide/docs/assets/database.png" alt="Database Icon from flaticon" width="18"/> **Backend Agnostic** – Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
 
 - 💻 **Native Task Execution**: Runs any local or system executable/script.
 
