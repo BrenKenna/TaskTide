@@ -83,10 +83,5 @@ How TaskTide should run can be configured based on parameters in a <a href="http
 <br>
 
 <p id="arch-b" align="center">
-<<<<<<< HEAD
   <img src="tasktide/docs/assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
 </p>
-=======
-  <img src="assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
-</p>
->>>>>>> c44507a61e748f6693ce0f2e3aeca1759039b1b0
