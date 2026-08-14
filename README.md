@@ -42,13 +42,13 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 ## 🧑‍💻 Getting Started
 
 <p id="getting-started-a">
-An installation guide tailored to variety of use-cases is <a href="Install.md">provided here</a>. Backend database configurations should follow provider recommendations, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, whose use for TaskTide are <a href="tasktide/tasktide/README.md#a-global-configurations">documented here</a>.
+An installation guide tailored to variety of use-cases is <a href="Install.md">provided here</a>. Backend database configurations should follow provider recommendations, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, whose use for TaskTide are <a href="tasktide/tasktide/#a-global-configurations">documented here</a>.
 </p>
 
 ### 💻 Running TaskTide
 
 <p id="getting-started-b">
-How TaskTide should run can be configured based on parameters in a <a href="https://github.com/BrenKenna/TaskTide/blob/main/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a>, or command-line arguments. This was to simplify the use case of the Engine and Manager clients, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) <a href="tasktide/tasktide/README.md#a-global-configurations">described here</a>.
+How TaskTide should run can be configured based on parameters in a <a href="https://github.com/BrenKenna/TaskTide/blob/main/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a>, or command-line arguments. This was to simplify the use case of the Engine and Manager clients, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) <a href="tasktide/tasktide/#a-global-configurations">described here</a>.
 </p>
 
 ```bash
@@ -65,23 +65,28 @@ How TaskTide should run can be configured based on parameters in a <a href="http
 
 ## 🧱 Architecture
 
-- **Core Model**             – Defines the stateful task and workflow data structure, described <a href="tasktide/core/README.md">here</a>.
+- **Core Model**             – Defines the stateful task and workflow data structure, described <a href="tasktide/core/">here</a>.
 
-- **Engine Lib**             – Defines the task processing and tracking logic for WorkItems and their tasks, described <a href="tasktide/engine/README.md">here</a>.
+- **Engine Lib**             – Defines the task processing and tracking logic for WorkItems and their tasks, described <a href="tasktide/engine/">here</a>.
 
-- **Web API**                – Defines Jakarta-WS REST API, and an embedded Jetty-WebServer, described <a href="tasktide/api/README.md">here</a>.
+- **Web API**                – Defines Jakarta-WS REST API, and an embedded Jetty-WebServer, described <a href="tasktide/api/">here</a>.
 
-- **Mutex**                  - Defines ItemStore semaphore for acquiring a mutex on the configured RocksDB/SQLite database, described <a href="tasktide/mutex/README.md">here</a>.
+- **Mutex**                  - Defines ItemStore semaphore for acquiring a mutex on the configured RocksDB/SQLite database, described <a href="tasktide/mutex/">here</a>.
 
-- **ItemStore**              - Defines an interface for configuring TaskTide with daemonless databases (RocksDB/SQLite), described <a href="tasktide/itemstore/README.md">here</a>.
+- **ItemStore**              - Defines an interface for configuring TaskTide with daemonless databases (RocksDB/SQLite), described <a href="tasktide/itemstore/">here</a>.
 
-- **Parser**                 - Defines a configurable command-line argument tree for TaskTide, described <a href="tasktide/parser/README.md">here</a>.
+- **Parser**                 - Defines a configurable command-line argument tree for TaskTide, described <a href="tasktide/parser/">here</a>.
 
-- **Client Application**     – Provides access and services for workflow deployments and persistence, described <a href="tasktide/tasktide/README.md">here</a>.
+- **Client Application**     – Provides access and services for workflow deployments and persistence, described <a href="tasktide/tasktide/">here</a>.
 
 <br>
 <br>
 
 <p id="arch-b" align="center">
+<<<<<<< HEAD
   <img src="tasktide/docs/assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
 </p>
+=======
+  <img src="assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
+</p>
+>>>>>>> c44507a61e748f6693ce0f2e3aeca1759039b1b0
