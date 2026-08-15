@@ -1,0 +1,25 @@
+name = project.name
+description = "TaskTide ${project.name}"
+url = 'https://github.com/BrenKenna/TaskTide'
+
+licenses {
+    license {
+        name = 'MIT License'
+        url = 'https://opensource.org/licenses/MIT'
+        distribution = 'repo'
+    }
+}
+
+developers {
+    developer {
+        id = 'BrenKenna'
+        name = 'Bren Kenna'
+        url = 'https://github.com/BrenKenna'
+    }
+}
+
+scm {
+    connection = 'scm:git:git://github.com/BrenKenna/TaskTide.git'
+    developerConnection = 'scm:git:ssh://git@github.com/BrenKenna/TaskTide.git'
+    url = 'https://github.com/BrenKenna/TaskTide'
+}

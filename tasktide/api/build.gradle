@@ -4,7 +4,7 @@ plugins {
 
 description = 'tasktide:api'
 group = 'org.tasktide.api'
-version = '1.0.0'
+version = '0.9.0'
 
 dependencies {
 

@@ -1,11 +1,12 @@
 plugins {
     id 'java'
+    id 'org.danilopianini.publish-on-central' version '9.2.8' apply false
 }
 
 description = 'tasktide'
 allprojects {
-    group = 'org.tasktide'
-    version = '1.0.0'
+    group = project.findProperty('group') ?: 'org.tasktide'
+    version = project.findProperty('version') ?: '0.9.0'
     repositories {
         mavenCentral()
     }
@@ -117,6 +118,30 @@ tasks.register('generateAllJavadocs', Javadoc) {
     destinationDir = file("$buildDir/docs/javadoc")
     
     options.addStringOption("Xdoclint:none", "-quiet")
+}
+
+
+// Maven publishing
+def publishedModules = [
+    project(':mutex'),
+    project(':parser'),
+    project(':itemstore'),
+    project(':core'),
+    project(':engine'),
+    project(':api')
+]
+
+def artifactIds = [
+    mutex    : 'tasktide-mutex',
+    parser   : 'tasktide-parser',
+    itemstore: 'tasktide-itemstore',
+    core     : 'tasktide-core',
+    engine   : 'tasktide-engine',
+    api      : 'tasktide-api'
+]
+
+configure(publishedModules) {
+    apply from: "$rootDir/gradle/publishing.gradle"
 }
 
 

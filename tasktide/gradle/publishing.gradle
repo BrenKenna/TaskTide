@@ -1,0 +1,47 @@
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+apply plugin: 'org.danilopianini.publish-on-central'
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+def artifactIds = [
+    mutex    : 'tasktide-mutex',
+    parser   : 'tasktide-parser',
+    itemstore: 'tasktide-itemstore',
+    core     : 'tasktide-core',
+    engine   : 'tasktide-engine',
+    api      : 'tasktide-api'
+]
+
+def artifactId = artifactIds[project.name]
+
+if (artifactId == null) {
+    throw new GradleException(
+        "No Maven artifactId configured for project '${project.name}'"
+    )
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifactId = artifactIds[project.name]
+            pom {
+                apply from: "$rootDir/gradle/pom.gradle"
+            }
+        }
+    }
+}
+
+signing {
+    required {
+        gradle.taskGraph.hasTask('publishToMavenCentral')
+    }
+
+    sign publishing.publications.mavenJava
+}
