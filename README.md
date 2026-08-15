@@ -4,10 +4,11 @@
 
 # TaskTide
 
+[![Website](https://img.shields.io/badge/Website-tasktide.org-blue)](https://docs.tasktide.org)
 [![Documentation](https://img.shields.io/badge/Documentation-docs.tasktide.org-blue)](https://docs.tasktide.org)
 [![API Reference](https://img.shields.io/badge/API%20Reference-JavaDoc-blue)](https://api-docs.tasktide.org)
-![build](https://img.shields.io/badge/build-passing-brightgreen)  
-![license](https://img.shields.io/badge/license-Apache%202.0-blue)
+[![build](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/BrenKenna/TaskTide/actions/workflows/gradle.yml)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](https://github.com/BrenKenna/TaskTide/blob/main/LICENSE)
 
 
 <p id="intro-a">
