@@ -8,16 +8,7 @@ java {
     withJavadocJar()
 }
 
-def artifactIds = [
-    mutex    : 'tasktide-mutex',
-    parser   : 'tasktide-parser',
-    itemstore: 'tasktide-itemstore',
-    core     : 'tasktide-core',
-    engine   : 'tasktide-engine',
-    api      : 'tasktide-api'
-]
-
-def artifactId = artifactIds[project.name]
+def artifactId = taskTideArtifactIds[project.name]
 
 if (artifactId == null) {
     throw new GradleException(
@@ -30,7 +21,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            artifactId = artifactIds[project.name]
+            artifactId = artifactId
             pom {
                 apply from: "$rootDir/gradle/pom.gradle"
             }
@@ -38,10 +29,36 @@ publishing {
     }
 }
 
+
+// GPG Signing
+def signingKeyFile = file(
+    findProperty('signingKeyFile')
+        ?: "$rootDir/.secrets/tasktide-signing-key.asc"
+)
+
+def signingPassword = findProperty('signingPassword')
+
 signing {
     required {
         gradle.taskGraph.hasTask('publishToMavenCentral')
     }
 
+    if (!signingKeyFile.exists()) {
+        throw new GradleException(
+            "GPG signing key not found: $signingKeyFile"
+        )
+    }
+
+    if (!signingPassword) {
+        throw new GradleException(
+            "GPG signing password has not been configured"
+        )
+    }
+
+    useInMemoryPgpKeys(
+        signingKeyFile.text,
+        signingPassword
+    )
+    
     sign publishing.publications.mavenJava
 }

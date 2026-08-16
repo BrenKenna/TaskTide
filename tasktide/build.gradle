@@ -3,6 +3,10 @@ plugins {
     id 'org.danilopianini.publish-on-central' version '9.2.8' apply false
 }
 
+// shared configs
+apply from: "$rootDir/gradle/secrets.gradle"
+apply from: "$rootDir/gradle/artifacts.gradle"
+
 description = 'tasktide'
 allprojects {
     group = project.findProperty('group') ?: 'org.tasktide'
@@ -122,6 +126,8 @@ tasks.register('generateAllJavadocs', Javadoc) {
 
 
 // Maven publishing
+apply from: "$rootDir/gradle/secrets.gradle"
+
 def publishedModules = [
     project(':mutex'),
     project(':parser'),
@@ -131,19 +137,13 @@ def publishedModules = [
     project(':api')
 ]
 
-def artifactIds = [
-    mutex    : 'tasktide-mutex',
-    parser   : 'tasktide-parser',
-    itemstore: 'tasktide-itemstore',
-    core     : 'tasktide-core',
-    engine   : 'tasktide-engine',
-    api      : 'tasktide-api'
-]
-
-configure(publishedModules) {
-    apply from: "$rootDir/gradle/publishing.gradle"
+publishedModules.each { module ->
+    module.apply from: "$rootDir/gradle/publishing.gradle"
 }
 
+
+// Configure aggregated POM
+apply from: 'config-agg-pom.gradle'
 
 project(":mutex") {}
 project(":parser") {}

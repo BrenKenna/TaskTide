@@ -34,13 +34,13 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v6
-        with: 
-          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-          git_user_signingkey: false
-          git_commit_gpgsign: false
+      - name: Configure GPG signing
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        run: |
+          mkdir -p .secrets
+          printf '%s\n' "$GPG_PRIVATE_KEY" > .secrets/tasktide-signing-key.asc
+          chmod 600 .secrets/tasktide-signing-key.asc
 
       - name: Publish to Maven Central
         env:
@@ -48,7 +48,7 @@ jobs:
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
           ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSPHRASE }}
-          ORG_GRADLE_PROJECT_signingSecretKeyRingFile: ${{ runner.temp }}/secring.gpg
+          ORG_GRADLE_PROJECT_signingSecretKeyRingFile: .secrets/tasktide-signing-key.asc
         run: |
           ./gradlew publishToMavenCentral \
             -Pversion="${{ inputs.version }}"

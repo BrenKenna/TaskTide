@@ -1,0 +1,8 @@
+ext.taskTideArtifactIds = [
+    mutex    : 'tasktide-mutex',
+    parser   : 'tasktide-parser',
+    itemstore: 'tasktide-itemstore',
+    core     : 'tasktide-core',
+    engine   : 'tasktide-engine',
+    api      : 'tasktide-api'
+]
