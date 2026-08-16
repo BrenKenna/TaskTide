@@ -39,9 +39,6 @@ def signingKeyFile = file(
 def signingPassword = findProperty('signingPassword')
 
 signing {
-    required {
-        gradle.taskGraph.hasTask('publishToMavenCentral')
-    }
 
     if (!signingKeyFile.exists()) {
         throw new GradleException(
@@ -59,6 +56,6 @@ signing {
         signingKeyFile.text,
         signingPassword
     )
-    
+
     sign publishing.publications.mavenJava
 }

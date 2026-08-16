@@ -141,9 +141,18 @@ publishedModules.each { module ->
     module.apply from: "$rootDir/gradle/publishing.gradle"
 }
 
+project(':tasktide').apply from: "$rootDir/tasktide/config-agg-pom.gradle"
+tasks.register('publishTaskTide') {
+    group = 'publishing'
+    description = 'Publishes all TaskTide libraries and the aggregator POM to Maven Central.'
 
-// Configure aggregated POM
-apply from: 'config-agg-pom.gradle'
+    dependsOn publishedModules.collect {
+        "${it.path}:publishToMavenCentral"
+    }
+
+    dependsOn ':tasktide:publishMavenAggregatorPublicationToMavenCentralRepository'
+}
+
 
 project(":mutex") {}
 project(":parser") {}
