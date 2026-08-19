@@ -1,4 +1,5 @@
 apply plugin: 'maven-publish'
+apply from: "$rootDir/gradle/pom.gradle"
 
 group = 'org.tasktide'
 
@@ -10,7 +11,9 @@ publishing {
                 description = 'TaskTide libraries'
                 packaging = 'pom'
 
-                apply from: "$rootDir/gradle/pom.gradle"
+                configureTaskTidePom.delegate = delegate
+                configureTaskTidePom.resolveStrategy = Closure.DELEGATE_FIRST
+                configureTaskTidePom()
 
                 withXml {
                     def dependenciesNode = asNode().appendNode('dependencies')
@@ -37,6 +40,6 @@ publishing {
                     }
                 }
             }
-        }S
+        }
     }
 }

@@ -1,0 +1,44 @@
+def publishedModules = [
+    project(':mutex'),
+    project(':parser'),
+    project(':itemstore'),
+    project(':core'),
+    project(':engine'),
+    project(':api')
+]
+
+publishedModules.each { module ->
+    module.apply from: "$rootDir/gradle/publishing.gradle"
+}
+
+project(':tasktide').apply from: "$rootDir/tasktide/config-agg-pom.gradle"
+
+
+tasks.named('publishTaskTideLocal') {
+    dependsOn publishedModules.collect {
+        "${it.path}:publishMavenJavaPublicationToProjectLocalRepository"
+    }
+
+    dependsOn ':tasktide:publishMavenAggregatorPublicationToMavenLocal'
+}
+
+
+tasks.named('publishTaskTide') {
+
+    dependsOn publishedModules.collect {
+        "${it.path}:publishAllPublicationsToProjectLocalRepository"
+    }
+
+    dependsOn publishedModules.collect {
+        "${it.path}:zipMavenCentralPortalPublication"
+    }
+
+    dependsOn publishedModules.collect {
+        "${it.path}:validateMavenCentralPortalPublication"
+    }
+}
+
+
+tasks.named('publishTaskTideAggregator') {
+    dependsOn ':tasktide:publishMavenAggregatorPublicationToMavenLocal'
+}

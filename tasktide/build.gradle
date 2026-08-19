@@ -125,33 +125,38 @@ tasks.register('generateAllJavadocs', Javadoc) {
 }
 
 
-// Maven publishing
-apply from: "$rootDir/gradle/secrets.gradle"
-
-def publishedModules = [
-    project(':mutex'),
-    project(':parser'),
-    project(':itemstore'),
-    project(':core'),
-    project(':engine'),
-    project(':api')
-]
-
-publishedModules.each { module ->
-    module.apply from: "$rootDir/gradle/publishing.gradle"
+// Maven publishing modules and aggregated pom
+tasks.register('publishTaskTideLocal') {
+    group = 'publishing'
+    description = 'Publishes TaskTide libraries and aggregator POM to the local Maven repository.'
 }
 
-project(':tasktide').apply from: "$rootDir/tasktide/config-agg-pom.gradle"
+
 tasks.register('publishTaskTide') {
     group = 'publishing'
-    description = 'Publishes all TaskTide libraries and the aggregator POM to Maven Central.'
-
-    dependsOn publishedModules.collect {
-        "${it.path}:publishToMavenCentral"
-    }
-
-    dependsOn ':tasktide:publishMavenAggregatorPublicationToMavenCentralRepository'
+    description = 'Publishes TaskTide to Maven Central.'
 }
+
+
+tasks.register('publishTaskTideAggregator') {
+    group = 'publishing'
+    description = 'Publishes the TaskTide aggregator POM to Maven Central.'
+}
+
+
+def publishingRequested = gradle.startParameter.taskNames.any {
+    it == 'publishTaskTide' ||
+    it.endsWith(':publishTaskTide') ||
+    it == 'publishTaskTideLocal' ||
+    it.endsWith(':publishTaskTideLocal') ||
+    it == 'publishTaskTideAggregator' ||
+    it.endsWith(':publishTaskTideAggregator')
+}
+
+if (publishingRequested) {
+    apply from: "$rootDir/gradle/launch-publish.gradle"
+}
+
 
 
 project(":mutex") {}

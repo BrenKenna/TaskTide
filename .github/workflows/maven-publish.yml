@@ -48,7 +48,6 @@ jobs:
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
           ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSPHRASE }}
-          ORG_GRADLE_PROJECT_signingSecretKeyRingFile: .secrets/tasktide-signing-key.asc
+          ORG_GRADLE_PROJECT_signingSecretKeyFile: .secrets/tasktide-signing-key.asc
         run: |
-          ./gradlew publishToMavenCentral \
-            -Pversion="${{ inputs.version }}"
+          ./gradlew publishTaskTide
