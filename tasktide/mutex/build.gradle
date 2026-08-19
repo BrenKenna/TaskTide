@@ -3,7 +3,7 @@ plugins {
 }
 
 description = 'tasktide:mutex'
-group = 'org.tasktide.mutex'
+group = 'org.tasktide'
 version = '0.9.0'
 
 dependencies { }

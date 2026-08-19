@@ -3,7 +3,7 @@ plugins {
 }
 
 description = 'tasktide:itemstore'
-group = 'org.tasktide.itemstore'
+group = 'org.tasktide'
 version = '0.9.0'
 
 dependencies {

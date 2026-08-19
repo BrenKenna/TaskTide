@@ -7,6 +7,8 @@ plugins {
 apply from: "$rootDir/gradle/secrets.gradle"
 apply from: "$rootDir/gradle/artifacts.gradle"
 
+project(':tasktide').apply from: "$rootDir/tasktide/config-agg-pom.gradle"
+
 description = 'tasktide'
 allprojects {
     group = project.findProperty('group') ?: 'org.tasktide'
@@ -138,9 +140,18 @@ tasks.register('publishTaskTide') {
 }
 
 
+tasks.register('publishLocalTaskTideAggregator') {
+    group = 'publishing'
+    description = 'Publishes the TaskTide aggregator POM locally'
+}
+
 tasks.register('publishTaskTideAggregator') {
     group = 'publishing'
     description = 'Publishes the TaskTide aggregator POM to Maven Central.'
+
+    dependsOn ':tasktide:publishMavenAggregatorPublicationToProjectLocalRepository'
+    dependsOn ':tasktide:zipMavenCentralPortalPublication'
+    dependsOn ':tasktide:validateMavenCentralPortalPublication'
 }
 
 
@@ -151,6 +162,8 @@ def publishingRequested = gradle.startParameter.taskNames.any {
     it.endsWith(':publishTaskTideLocal') ||
     it == 'publishTaskTideAggregator' ||
     it.endsWith(':publishTaskTideAggregator')
+    it == 'publishLocalTaskTideAggregator' ||
+    it.endsWith(':publishLocalTaskTideAggregator')
 }
 
 if (publishingRequested) {

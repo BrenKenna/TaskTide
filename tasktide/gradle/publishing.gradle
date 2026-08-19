@@ -5,6 +5,8 @@ apply plugin: 'org.danilopianini.publish-on-central'
 
 apply from: "$rootDir/gradle/pom.gradle"
 
+group = 'org.tasktide'
+
 publishOnCentral {
     repoOwner = 'TaskTide'
 }
