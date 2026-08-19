@@ -1,7 +1,7 @@
 ext.configureTaskTidePom = {
     name = "TaskTide ${project.name}"
-    description = "TaskTide ${project.name}"
-    url = 'https://github.com/BrenKenna/TaskTide'
+    description = project.description ?: "TaskTide ${project.name} library"
+    url = 'https://tasktide.org'
 
     licenses {
         license {
@@ -15,7 +15,7 @@ ext.configureTaskTidePom = {
         developer {
             id = 'BrendanKenna'
             name = 'Brendan Kenna'
-            url = 'https://github.com/BrenKenna'
+            url = 'https://github.com/BrenKenna/TaskTide'
         }
     }
 

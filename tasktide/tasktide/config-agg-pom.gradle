@@ -1,4 +1,6 @@
 apply plugin: 'maven-publish'
+apply plugin: 'signing'
+apply plugin: 'org.danilopianini.publish-on-central'
 apply from: "$rootDir/gradle/pom.gradle"
 
 group = 'org.tasktide'
@@ -31,7 +33,7 @@ publishing {
                         dependency.appendNode('groupId', dependencyProject.group)
                         dependency.appendNode(
                             'artifactId',
-                            "tasktide-${dependencyProject.name}"
+                            "${dependencyProject.name}"
                         )
                         dependency.appendNode(
                             'version',
@@ -43,3 +45,35 @@ publishing {
         }
     }
 }
+
+
+def signingKeyFile = rootProject.file(
+    findProperty('signingKeyFile')
+)
+
+def signingPassword = findProperty('signingPassword')
+
+if (!signingKeyFile.exists()) {
+    throw new GradleException(
+        "GPG signing key not found: $signingKeyFile"
+    )
+}
+
+if (!signingPassword) {
+    throw new GradleException(
+        "GPG signing password has not been configured"
+    )
+}
+
+def signingExtension = project.extensions.getByType(
+    org.gradle.plugins.signing.SigningExtension
+)
+
+signingExtension.useInMemoryPgpKeys(
+    signingKeyFile.text,
+    signingPassword
+)
+
+signingExtension.sign(
+    publishing.publications.mavenAggregator
+)
