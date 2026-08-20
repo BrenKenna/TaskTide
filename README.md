@@ -24,6 +24,7 @@ By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as
 <p id="intro-c">
 TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, <strong>configurable</strong> approach for workflow orchestration. That decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends. Supporting <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>daemon-less</strong> databases (<em>SQLite, RocksDB</em>) reflecting its backend-agnostic design.
 </p>
+
 <br>
 
 ---
@@ -67,11 +68,13 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 An installation guide tailored to variety of use-cases is <a href="Install.md">provided here</a>. Backend database configurations should follow provider recommendations, since <a href="https://github.com/eclipse-jnosql/jnosql-databases">Jakara NoSQL</a> brings in NoSQL support, and <a href="https://www.baeldung.com/learn-jpa-hibernate">JPA-Hibernate</a> using <a href="https://www.baeldung.com/hikaricp">Hikari Data Source</a> brings in SQL, whose use for TaskTide are <a href="tasktide/tasktide/#a-global-configurations">documented here</a>.
 </p>
 
+
 ### 💻 Running TaskTide
 
 <p id="getting-started-b">
 How TaskTide should run can be configured based on parameters in a <a href="https://github.com/BrenKenna/TaskTide/blob/main/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties">TaskTide Config File</a>, or command-line arguments. This was to simplify the use case of the Engine and Manager clients, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) <a href="tasktide/tasktide/#a-global-configurations">described here</a>.
 </p>
+
 
 ```bash
 # Run using parameters from TaskTide config file
