@@ -21,6 +21,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import java.util.UUID;
 
@@ -144,7 +147,7 @@ public class ProcessExecutor {
      * @throws IOException
      * @throws InterruptedException 
      */
-    public Process executeScript(String script, String label) throws IOException, InterruptedException {
+    public Process executeScript(String script, String label, Map<String, String> vars) throws IOException, InterruptedException {
         
         // Initialize vars
         Process proc;
@@ -159,6 +162,15 @@ public class ProcessExecutor {
         // Build process
         script = script.replace("\"", "");
         procBuild = new ProcessBuilder(script.split(" "));
+        
+        // Apply environment variables
+        if ( !vars.isEmpty() ) {
+            for ( Entry<String, String> elm: vars.entrySet() ) {
+                procBuild.environment().put(elm.getKey(), elm.getValue());
+            }
+        }
+        
+        // Redirect stdout and stderr 
         procBuild.redirectError(stderr);
         procBuild.redirectOutput(stdout);
         
@@ -179,7 +191,7 @@ public class ProcessExecutor {
      * @throws IOException
      * @throws InterruptedException 
      */
-    public TaskLogging execute(String command, String label) throws IOException, InterruptedException {
+    public TaskLogging execute(String command, String label, Map<String, String> vars) throws IOException, InterruptedException {
         
         // Intialize vars
         LOGGER.debug("Beginning execution of task:\t" + command);
@@ -193,7 +205,10 @@ public class ProcessExecutor {
         try {
             
             // Execute and log completion
-            process = this.executeScript(command, label);
+            if ( vars == null ) {
+                vars = new HashMap<>();
+            }
+            process = this.executeScript(command, label, vars);
             LOGGER.debug("Execution complete for task:\t" + command);
             
             // Build process log from logs

@@ -20,6 +20,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import static javax.management.Query.value;
 
 import org.apache.logging.log4j.LogManager;
 import org.tasktide.core.manager.BuilderUtility;
@@ -75,14 +79,29 @@ public class ItemTaskExecutor extends TaskTideExecutor<ItemTask> {
         // Acknowledge task execution
         TaskLogging taskLog;
         LOGGER.info(
-            "Executing task on thread '{}':\n'{}'",
+            "Configuring task execution on thread '{}':\n'{}'",
             Thread.currentThread().getName(),
             task.getTask()
         );
-        //synchronized ( this.observer ) {
-            this.observer.onTaskProcessing(task);
-        //}
-        taskLog = processExecutor.execute(task.getTask(), task.getId());
+        this.observer.onTaskProcessing(task);
+        
+        // Construct environment variable map
+        LOGGER.info("Configuring Environmental Variables for ProcessExecutor");
+        Map<String, String> envVars = new HashMap<>();
+        envVars.put("WORK_ITEM_ITEM_ID", task.getWorkItemId());
+        envVars.put("ITEM_TASK_ID", task.getId());
+        envVars.put("JOB_ENVIRONMENT_ID", task.getJobEnvId());
+        if ( task.getAnnotations() != null ) {
+            if ( !task.getAnnotations().getAnno().isEmpty() ) {
+                for ( Entry<String, Object> elm : task.getAnnotations().getAnno().entrySet() ) {
+                    envVars.put(elm.getKey(), elm.getValue().toString());
+                }
+            }
+        }
+        
+        // Process task
+        LOGGER.info("Commencing ProcessExectuor for task:\t'{}'", task.getId());
+        taskLog = processExecutor.execute(task.getTask(), task.getId(), envVars);
         task.setTaskLog(taskLog);
 
         // Handle logging execution state
