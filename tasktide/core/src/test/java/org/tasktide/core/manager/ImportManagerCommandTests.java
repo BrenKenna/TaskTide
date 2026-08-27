@@ -35,9 +35,12 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
@@ -66,6 +69,8 @@ import org.tasktide.core.repository.JpaRepository;
  * 
  * @author Brendan Kenna
  */
+@Tag("unit-manager")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ImportManagerCommandTests {
     
@@ -108,7 +113,7 @@ public class ImportManagerCommandTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        mariaDB.stop();
+        // mariaDB.stop();
         // couchDB.stop;
     }
     

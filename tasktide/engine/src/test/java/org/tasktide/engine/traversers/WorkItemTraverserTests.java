@@ -33,6 +33,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 
 // import org.junit.Rule;
 // import org.testcontainers.containers.GenericContainer;
@@ -56,8 +57,9 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
  *
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("unit-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemTraverserTests {
     
     private static final Logger LOGGER = LogManager.getLogger(WorkItemTraverserTests.class);

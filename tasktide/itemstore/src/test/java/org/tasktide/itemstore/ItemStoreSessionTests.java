@@ -25,8 +25,11 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.mutex.utils.MutexFilesUtils;
 
@@ -42,6 +45,8 @@ import org.tasktide.itemstore.session.LinkedOperation;
  *
  * @author Brendan Kenna
  */
+@Tag("unit-itemstore")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ItemStoreSessionTests {
     
     private static final Logger LOGGER = LogManager.getLogger(ItemStoreSessionTests.class);

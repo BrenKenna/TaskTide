@@ -33,9 +33,12 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
@@ -64,6 +67,8 @@ import org.tasktide.core.supporting.JsonUtils;
  *
  * @author Brendan Kenna
  */
+@Tag("unit-manager")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AnnotateManagerCommandTests {
     
@@ -79,8 +84,8 @@ public class AnnotateManagerCommandTests {
     //private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     // Backend repo
-    @Rule
-    public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    //@Rule
+    //public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     public AnnotateManagerCommandTests() {
     }
@@ -103,7 +108,7 @@ public class AnnotateManagerCommandTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        mariaDB.stop();
+        // mariaDB.stop();
         // couchDB.stop();
     }
     

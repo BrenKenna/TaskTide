@@ -174,8 +174,10 @@ public abstract class AbstractItemStore implements ItemStore {
         // Return false if directory is not usable
         catch (IOException | SecurityException e) {
             return false;
+        }
     }
-}
+    
+    
     /**
      * Return store name
      * 

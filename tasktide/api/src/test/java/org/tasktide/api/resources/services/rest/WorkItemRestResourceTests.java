@@ -41,6 +41,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -67,8 +68,9 @@ import org.tasktide.api.utils.WebApiUtils;
  *
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("unit-api")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemRestResourceTests extends AbstractBaseJerseyTest {
     
     private final Logger LOGGER = LogManager.getLogger(WorkItemRestResourceTests.class);

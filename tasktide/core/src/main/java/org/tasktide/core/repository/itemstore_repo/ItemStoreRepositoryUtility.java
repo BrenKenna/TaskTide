@@ -163,6 +163,15 @@ public class ItemStoreRepositoryUtility {
     }
     
     
+    /**
+     * Fetch {@link ItemStore} providing flag for leader election
+     * 
+     * @param storeName
+     * @param storeType
+     * @param isElected
+     * 
+     * @return {@link ItemStore}
+     */
     public ItemStore fetchItemStore(String storeName, ItemStoreType storeType, boolean isElected) {
         
         // Resolve store locatoin

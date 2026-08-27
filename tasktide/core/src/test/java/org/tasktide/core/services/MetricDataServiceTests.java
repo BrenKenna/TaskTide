@@ -25,17 +25,20 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.junit.Rule;
-import org.testcontainers.containers.GenericContainer;
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.TestCaseBuilderUtility;
 
 import org.tasktide.TestEnvironment;
@@ -55,6 +58,8 @@ import org.tasktide.core.supporting.JsonUtils;
  *
  * @author Brendan Kenna
  */
+@Tag("unit-repo")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MetricDataServiceTests {
     
@@ -66,11 +71,11 @@ public class MetricDataServiceTests {
     
     
     // Backend repos
-    @Rule
-    private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    // @Rule
+    // private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
-    @Rule
-    private final GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    // @Rule
+    // private final GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     
     public MetricDataServiceTests() {
@@ -95,8 +100,8 @@ public class MetricDataServiceTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        couchDB.stop();
-        mariaDB.stop();
+        // couchDB.stop();
+        // mariaDB.stop();
     }
     
     @BeforeEach

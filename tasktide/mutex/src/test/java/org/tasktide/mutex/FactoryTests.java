@@ -29,8 +29,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
-import org.tasktide.mutex.MutexTestUtils;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.TestMethodOrder;
+
+
 import org.tasktide.mutex.model.HostLock;
 import org.tasktide.mutex.model.HostLockFactory;
 import org.tasktide.mutex.model.Mutex;
@@ -43,6 +47,8 @@ import org.tasktide.mutex.model.MutexFactory;
  * 
  * @author Brendan Kenna
  */
+@Tag("base")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FactoryTests {
     
     // Configure logger

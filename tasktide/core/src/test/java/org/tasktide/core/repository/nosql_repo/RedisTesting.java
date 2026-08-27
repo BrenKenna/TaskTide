@@ -31,7 +31,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.TestEnvironment;
 import org.testcontainers.containers.GenericContainer;
 
@@ -41,6 +44,8 @@ import org.testcontainers.containers.GenericContainer;
  * 
  * @author bkenna
  */
+@Tag("unit-repo-nosql")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RedisTesting {
     

@@ -30,6 +30,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.core.model.builders.BuilderType;
 import org.tasktide.core.model.builders.MetricDataBuilder;
@@ -52,6 +55,8 @@ import org.tasktide.core.model.job_env.metrics.ProfileData;
  * 
  * @author Brendan Kenna
  */
+@Tag("base")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JobEnvBuilderTests {
     

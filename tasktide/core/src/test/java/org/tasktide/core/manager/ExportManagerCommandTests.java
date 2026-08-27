@@ -16,6 +16,7 @@
 package org.tasktide.core.manager;
 
 import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,6 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.junit.Rule;
 import org.testcontainers.containers.GenericContainer;
 
 import org.junit.jupiter.api.AfterEach;
@@ -31,9 +31,12 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
@@ -43,8 +46,10 @@ import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
+import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.command.commands.ExportCommand;
+import org.tasktide.core.repository.JpaRepository;
 
 
 /**
@@ -53,18 +58,22 @@ import org.tasktide.core.manager.command.commands.ExportCommand;
  * 
  * @author Brendan Kenna
  */
+@Tag("unit-manager")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ExportManagerCommandTests {
     
     private static final Logger LOGGER = LogManager.getLogger(ExportManagerCommandTests.class);
     
     // Backend repo
-    @Rule
-    public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    // @Rule
+    // public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     // Container for fetch nosql template
     private SeContainer container;
     private EntityManager entityManager;
+    private Template template;
+    
     
     public ExportManagerCommandTests() {
     }
@@ -75,6 +84,7 @@ public class ExportManagerCommandTests {
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
+        template = TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
     }
     
@@ -86,7 +96,7 @@ public class ExportManagerCommandTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        mariaDB.stop();
+        // mariaDB.stop();
     }
     
     @BeforeEach

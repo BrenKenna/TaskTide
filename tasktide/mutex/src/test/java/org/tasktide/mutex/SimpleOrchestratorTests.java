@@ -37,6 +37,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -59,6 +60,7 @@ import org.tasktide.mutex.actor.MutexActor;
  *
  * @author Brendan Kenna
  */
+@Tag("unit-mutex")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SimpleOrchestratorTests {
     

@@ -34,19 +34,22 @@ import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
-import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestCaseBuilderUtility;
 
-import org.testcontainers.containers.GenericContainer;
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
@@ -72,6 +75,8 @@ import org.tasktide.core.supporting.JsonUtils;
 @EnableAutoWeld
 @AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
 @AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
+@Tag("unit-repo-nosql")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TemplateRepositoryTests {
     
@@ -80,8 +85,8 @@ public class TemplateRepositoryTests {
     
     
     // Backend repo
-    @Rule
-    public GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    // @Rule
+    // public GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     
     // Container for fetch nosql template
@@ -106,7 +111,7 @@ public class TemplateRepositoryTests {
             container.close();
             logger.info("CDI container shut down");
         }
-        couchDB.stop();
+        // couchDB.stop();
     }
     
     @BeforeEach

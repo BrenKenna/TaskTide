@@ -15,7 +15,6 @@
  */
 package org.tasktide.api.resources.services.rest;
 
-
 import jakarta.nosql.Template;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Application;
@@ -39,6 +38,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -64,8 +64,9 @@ import org.tasktide.core.model.collection.Step;
  * 
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("unit-api")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
     
     private final Logger LOGGER = LogManager.getLogger(WorkflowRestResourceTests.class);

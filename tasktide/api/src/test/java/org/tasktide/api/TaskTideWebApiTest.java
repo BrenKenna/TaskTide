@@ -39,6 +39,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -60,8 +61,9 @@ import org.tasktide.core.repository.RepositoryType;
  *
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("unit-api")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TaskTideWebApiTest {
     
     private final Logger LOGGER = LogManager.getLogger(TaskTideWebApiTest.class);

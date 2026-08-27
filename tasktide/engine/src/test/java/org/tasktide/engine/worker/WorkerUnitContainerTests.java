@@ -29,6 +29,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -51,7 +52,6 @@ import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.policies.AcquisitionPolicyMode;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
@@ -63,8 +63,9 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
  *
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("unit-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkerUnitContainerTests {
     
     private static final Logger LOGGER = LogManager.getLogger(WorkerUnitContainerTests.class);

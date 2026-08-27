@@ -33,10 +33,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
+import org.tasktide.core.TaskTideModel;
 
 import org.tasktide.core.TaskTideService;
 
@@ -51,6 +55,7 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.repository.TemplateRepository;
 
 import org.tasktide.core.services.ServiceFactory;
 
@@ -62,6 +67,8 @@ import org.tasktide.core.services.ServiceFactory;
  * 
  * @author Brendan Kenna
  */
+@Tag("base")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PilotLabelAnnotationTemplateTests {
     

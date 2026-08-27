@@ -35,6 +35,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
@@ -53,7 +54,6 @@ import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.engine.policies.AcquisitionPolicyMode;
 
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 
 
 /**
@@ -61,8 +61,9 @@ import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
  *
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("base")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ItemTaskTraverserTests {
     
     private static final Logger LOGGER = LogManager.getLogger(ItemTaskTraverserTests.class);

@@ -28,8 +28,11 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.TestMethodOrder;
 
 
 /**
@@ -37,6 +40,8 @@ import org.junit.jupiter.api.Order;
  * 
  * @author bkenna
  */
+@Tag("base")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AbstractItemStoreTests {
     
     private static final Logger logger = LogManager.getLogger(AbstractItemStoreTests.class);

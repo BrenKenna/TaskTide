@@ -34,6 +34,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.workitem.ItemState;
@@ -45,7 +46,6 @@ import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.policies.AcquisitionPolicyMode;
 
-import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 
 
@@ -54,13 +54,13 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
  *
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Tag("unit-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowAcquisitionStrategyTests {
     
     private static final Logger LOGGER = LogManager.getLogger(WorkflowAcquisitionStrategyTests.class);
     private final String[] STEPS = { "Ping Tests", "Nslookup Tests" };
-    
     
     private SeContainer container;
     private Template template;
