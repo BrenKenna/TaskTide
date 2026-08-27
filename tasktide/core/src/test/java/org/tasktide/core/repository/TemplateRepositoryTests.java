@@ -75,7 +75,7 @@ import org.tasktide.core.supporting.JsonUtils;
 @EnableAutoWeld
 @AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
 @AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
-@Tag("unit-repo-nosql")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TemplateRepositoryTests {

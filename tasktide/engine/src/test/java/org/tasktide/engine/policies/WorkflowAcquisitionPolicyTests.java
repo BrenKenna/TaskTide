@@ -52,7 +52,7 @@ import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
  *
  * @author Bren
  */
-@Tag("unit-engine")
+@Tag("unit-pol")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowAcquisitionPolicyTests {

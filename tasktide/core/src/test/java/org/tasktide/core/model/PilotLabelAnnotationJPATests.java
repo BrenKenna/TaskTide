@@ -65,15 +65,15 @@ import org.tasktide.core.services.ServiceFactory;
  * 
  * @author Brendan Kenna
  */
-@Tag("base")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PilotLabelAnnotationJPATests {
     
     private final Logger LOGGER = LogManager.getLogger(PilotLabelAnnotationJPATests.class);
     
-    @Rule
-    public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    //@Rule
+    //public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     private EntityManager entityManager;
     private SeContainer container;
     
@@ -99,7 +99,7 @@ public class PilotLabelAnnotationJPATests {
             LOGGER.info("CDI container shut down");
         }
         entityManager.close();
-        mariaDB.stop();
+        //mariaDB.stop();
     }
     
     @BeforeEach

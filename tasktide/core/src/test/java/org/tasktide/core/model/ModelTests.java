@@ -257,7 +257,6 @@ public class ModelTests {
     public void testWorkItem() {
     
         // Initialize test
-        boolean assertionState = true;
         logger.info("\n\n================ Work Item Test ================\n");
         
         // Build workload

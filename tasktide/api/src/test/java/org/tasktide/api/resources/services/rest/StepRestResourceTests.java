@@ -62,7 +62,7 @@ import org.tasktide.api.auth.AuthenicationFilter;
  *
  * @author Bren
  */
-@Tag("unit-api")
+@Tag("integration-e2e")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class StepRestResourceTests extends AbstractBaseJerseyTest {

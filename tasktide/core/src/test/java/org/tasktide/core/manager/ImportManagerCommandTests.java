@@ -69,7 +69,7 @@ import org.tasktide.core.repository.JpaRepository;
  * 
  * @author Brendan Kenna
  */
-@Tag("unit-manager")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ImportManagerCommandTests {

@@ -61,7 +61,6 @@ import org.tasktide.core.repository.RepositoryType;
  *
  * @author Bren
  */
-@Tag("unit-api")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TaskTideWebApiTest {
@@ -129,7 +128,8 @@ public class TaskTideWebApiTest {
      */
     @Test
     @Order(0)
-    public void canReadConfigMap() {
+    @Tag("integration-e2e")
+    public void canReadAtLeastOneConfigMap() {
     
         LOGGER.info("\n\n================ Can Read Web API Config ================\n");
         Config config = ConfigProvider.getConfig();
@@ -148,7 +148,7 @@ public class TaskTideWebApiTest {
                 if ( value != null ) { counter++; }
             }
         }
-        Assertions.assertTrue(counter >= 0, "Unable to pull configuration properties");
+        Assertions.assertTrue(counter >= 0, "Unable to pull any configuration properties");
         LOGGER.info("\n\n================ Can Read Web API Config ================\n");
     }
     
@@ -158,6 +158,7 @@ public class TaskTideWebApiTest {
      */
     @Test
     @Order(1)
+    @Tag("integration-e2e")
     public void canStartWebServer() {
     
         LOGGER.info("\n\n================ Can Start Web Server ================\n");
@@ -185,8 +186,10 @@ public class TaskTideWebApiTest {
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(step, MediaType.APPLICATION_JSON));
-        LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
         
+        int statusCode = resp.getStatus();
+        LOGGER.info("Logging response status:\t'{}'", statusCode);
+        Assertions.assertTrue(statusCode == 200, "Unable to add the test step");
         LOGGER.info("\n\n================= Can Start Web Server =================\n");
     }
     
@@ -196,6 +199,7 @@ public class TaskTideWebApiTest {
      */
     @Test
     @Order(2)
+    @Tag("integration-e2e")
     public void webServerPathsArePrevileged() {
     
         LOGGER.info("\n\n================ Web Server Paths Are Previleged ================\n");
@@ -224,8 +228,11 @@ public class TaskTideWebApiTest {
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(step, MediaType.APPLICATION_JSON));
-        LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
         
+        
+        int statusCode = resp.getStatus();
+        LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
+        Assertions.assertTrue(statusCode == 401, "Unable to add the test step");
         LOGGER.info("\n\n================ Web Server Paths Are Previleged ================\n");
     }
     
@@ -236,6 +243,7 @@ public class TaskTideWebApiTest {
      */
     @Test
     @Order(3)
+    @Tag("base")
     public void canStartWebService() {
     
         LOGGER.info("\n\n================ Can Start Web Server ================\n");

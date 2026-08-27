@@ -52,7 +52,7 @@ import org.tasktide.itemstore.ItemStoreType;
  * 
  * @author Brendan Kenna
  */
-@Tag("base")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PilotLabelAnnotationItemStoreTests {

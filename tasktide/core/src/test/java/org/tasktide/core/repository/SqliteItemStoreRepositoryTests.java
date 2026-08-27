@@ -56,7 +56,7 @@ import org.tasktide.itemstore.ItemStoreType;
  * 
  * @author bkenna
  */
-@Tag("unit-repo-itemstore")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class SqliteItemStoreRepositoryTests {

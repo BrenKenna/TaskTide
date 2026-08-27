@@ -33,12 +33,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.TestInstance;
 
-import org.junit.Rule;
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.core.manager.TaskTideServiceManager;
-import org.testcontainers.containers.GenericContainer;
+
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
 
@@ -63,7 +65,7 @@ import org.tasktide.engine.executor.ItemTaskExecutor;
  * 
  * @author bkenna
  */
-@Tag("base")
+@Tag("unit-base")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ExecutorBuilderTests {
@@ -73,8 +75,8 @@ public class ExecutorBuilderTests {
     private Template template;
     
     // CouchDB container
-    @Rule
-    public GenericContainer<?> couchDB = (GenericContainer<?>) TestEnvironment.couchDbContainer("tasktide_database", false);
+    //@Rule
+    //public GenericContainer<?> couchDB = (GenericContainer<?>) TestEnvironment.couchDbContainer("tasktide_database", false);
     
     public ExecutorBuilderTests() {}
     
@@ -96,7 +98,7 @@ public class ExecutorBuilderTests {
             container.close();
             logger.info("CDI container shut down");
         }
-        couchDB.stop();
+        //couchDB.stop();
     }
     
     

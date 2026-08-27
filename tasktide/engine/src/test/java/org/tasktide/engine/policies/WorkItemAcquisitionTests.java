@@ -55,7 +55,7 @@ import org.tasktide.core.repository.RepositoryType;
  * 
  * @author Bren
  */
-@Tag("unit-engine")
+@Tag("unit-pol")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemAcquisitionTests {

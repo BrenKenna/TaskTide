@@ -57,7 +57,7 @@ import org.tasktide.core.manager.command.commands.DeleteCommand;
  *
  * @author Brendan Kenna
  */
-@Tag("unit-manager")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class DeleteManagerCommandTests {

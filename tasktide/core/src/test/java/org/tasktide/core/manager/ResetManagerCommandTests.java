@@ -61,7 +61,7 @@ import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
  * 
  * @author Brendan Kenna
  */
-@Tag("unit-manager")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ResetManagerCommandTests {

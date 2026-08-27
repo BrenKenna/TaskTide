@@ -59,7 +59,7 @@ import org.tasktide.itemstore.ItemStore;
  *
  * @author bkenna
  */
-@Tag("unit-repo")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemServiceTests {

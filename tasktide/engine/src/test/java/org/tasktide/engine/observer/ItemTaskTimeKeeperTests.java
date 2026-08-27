@@ -44,8 +44,7 @@ import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
  * 
  * @author bkenna
  */
-@Deprecated
-@Tag("base-engine")
+@Tag("unit-base")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ItemTaskTimeKeeperTests {
     

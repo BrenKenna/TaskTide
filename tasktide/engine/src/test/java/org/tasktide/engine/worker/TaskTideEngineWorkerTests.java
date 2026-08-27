@@ -42,7 +42,7 @@ import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 import org.tasktide.engine.policies.AcquisitionPolicyMode;
 import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
-import org.tasktide.engine.policies.TargetedAcquisitionPolicy;
+
 import org.tasktide.engine.policies.WorkerExecutionPolicy;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
@@ -54,7 +54,7 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
  *
  * @author Bren
  */
-@Tag("unit-engine")
+@Tag("integration-ops")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TaskTideEngineWorkerTests {

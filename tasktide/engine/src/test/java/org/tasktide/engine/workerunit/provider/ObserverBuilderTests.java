@@ -23,7 +23,9 @@ import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Rule;
+
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -49,7 +51,7 @@ import org.tasktide.engine.TestUtils;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.trackers.TaskTrackers;
-import org.testcontainers.containers.GenericContainer;
+
 
 
 /**
@@ -57,7 +59,7 @@ import org.testcontainers.containers.GenericContainer;
  * 
  * @author bkenna
  */
-@Tag("base")
+@Tag("unit-base")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ObserverBuilderTests {
@@ -67,8 +69,8 @@ public class ObserverBuilderTests {
     private Template template;
     
     // CouchDB container
-    @Rule
-    public GenericContainer<?> couchDB = (GenericContainer<?>) TestEnvironment.couchDbContainer("tasktide_database", false);
+    // @Rule
+    // public GenericContainer<?> couchDB = (GenericContainer<?>) TestEnvironment.couchDbContainer("tasktide_database", false);
     
     public ObserverBuilderTests() {}
     
@@ -91,7 +93,7 @@ public class ObserverBuilderTests {
             container.close();
             logger.info("CDI container shut down");
         }
-        couchDB.stop();
+        // couchDB.stop();
     }
     
     

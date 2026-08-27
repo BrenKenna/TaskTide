@@ -55,7 +55,7 @@ import org.testcontainers.containers.GenericContainer;
  * 
  * @author bkenna
  */
-@Tag("unit-engine")
+@Tag("unit-exec")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ItemTaskExecutorTests {

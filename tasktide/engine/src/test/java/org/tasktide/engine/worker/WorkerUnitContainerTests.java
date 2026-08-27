@@ -63,7 +63,7 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
  *
  * @author Bren
  */
-@Tag("unit-engine")
+@Tag("integration-ops")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkerUnitContainerTests {

@@ -64,7 +64,7 @@ import org.tasktide.core.model.collection.Step;
  * 
  * @author Bren
  */
-@Tag("unit-api")
+@Tag("integration-e2e")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
@@ -94,7 +94,6 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         };
         
         for (Class<?> clazz : this.resources) {
-            //Object instance = container.select(clazz).get();
             config.register(clazz);
         }
         config.register(JsonBindingFeature.class);

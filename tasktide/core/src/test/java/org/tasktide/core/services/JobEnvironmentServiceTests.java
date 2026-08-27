@@ -58,7 +58,7 @@ import org.tasktide.core.supporting.JsonUtils;
  *
  * @author Brendan Kenna
  */
-@Tag("unit-repo")
+@Tag("integration-model")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JobEnvironmentServiceTests {
