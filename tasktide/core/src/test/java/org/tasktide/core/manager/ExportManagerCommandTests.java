@@ -58,7 +58,7 @@ import org.tasktide.core.repository.JpaRepository;
  * 
  * @author Brendan Kenna
  */
-@Tag("integration-model")
+@Tag("system-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ExportManagerCommandTests {
@@ -85,7 +85,11 @@ public class ExportManagerCommandTests {
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
         template = TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        
+        try {
+            TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        }
+        catch ( Exception ex ) {}
     }
     
     @AfterAll

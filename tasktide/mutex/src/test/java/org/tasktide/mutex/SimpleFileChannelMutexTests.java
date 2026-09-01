@@ -43,7 +43,7 @@ import org.tasktide.mutex.utils.MutexLabellingUtils;
  *
  * @author Brendan Kenna
  */
-@Tag("unit-mutex")
+@Tag("integration-mutex")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SimpleFileChannelMutexTests {
     

@@ -38,7 +38,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  * 
  * @author bkenna
  */
-@Tag("unit-itemstore")
+@Tag("integration-itemstore")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SqliteItemStoreTests {
     

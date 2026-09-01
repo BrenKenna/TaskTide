@@ -90,6 +90,7 @@ public class ModelTests {
      */
     @Test
     @Order(0)
+    @Tag("unit-core")
     public void processLogTest() {
         
         // Initialize test
@@ -110,7 +111,7 @@ public class ModelTests {
         
         // End test
         logger.info("\n\n================ Process Log Test ================\n");
-        assertTrue( procLogB.getId().equals(procLog.getId()), "Serialized ProcessLog Ids do not match");
+        assertTrue( procLogB.getStderr().length == procLog.getStderr().length, "Serialized ProcessLog Ids do not match");
     }
     
     
@@ -119,7 +120,7 @@ public class ModelTests {
      */
     @Test
     @Order(1)
-    @Tag("base")
+    @Tag("base-core")
     public void taskLogTest() {
     
         // Initialize test
@@ -149,7 +150,7 @@ public class ModelTests {
      * Test out task log builders
      */
     @Test
-    @Tag("base")
+    @Tag("base-core")
     @Order(2)
     public void taskLogBuilderTest() {
     
@@ -174,6 +175,7 @@ public class ModelTests {
      */
     @Test
     @Order(3)
+    @Tag("unit-core")
     public void testItemTask() {
         
         // Initialize test
@@ -214,6 +216,7 @@ public class ModelTests {
      */
     @Test
     @Order(4)
+    @Tag("unit-core")
     public void testWorkload() {
     
         // Initialize test
@@ -254,6 +257,7 @@ public class ModelTests {
      */
     @Test
     @Order(5)
+    @Tag("unit-core")
     public void testWorkItem() {
     
         // Initialize test

@@ -50,7 +50,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  * 
  * @author Brendan Kenna
  */
-@Tag("unit-itemstore")
+@Tag("experimental-itemstore")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(Lifecycle.PER_CLASS)
 public class ConcurrencyTests {

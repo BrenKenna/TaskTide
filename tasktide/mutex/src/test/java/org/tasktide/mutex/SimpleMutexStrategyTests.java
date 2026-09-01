@@ -47,7 +47,7 @@ import org.tasktide.mutex.utils.MutexLabellingUtils;
  *
  * @author Brendan Kenna
  */
-@Tag("unit-mutex")
+@Tag("system-mutex")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SimpleMutexStrategyTests {
     

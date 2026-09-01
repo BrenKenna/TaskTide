@@ -35,7 +35,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  * 
  * @author bkenna
  */
-@Tag("base")
+@Tag("unit-itemstore")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ItemTests {
     

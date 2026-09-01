@@ -180,7 +180,7 @@ public class GenericTree<T> {
      * @return int
      */
     public synchronized int size() {
-        return sizeRecursive(root);
+        return this.sizeRecursive(root);
     }
     
     
@@ -238,9 +238,15 @@ public class GenericTree<T> {
      * @return int
      */
     private int sizeRecursive(GenericTreeNode<T> current) {
-        if ( current == null ) return 0;
-        int count = 1;
+        int count = 0;
+        if ( current == null ) return count;
+        
+        if ( current.getData() != null ) {
+            count = 1;
+        }
+        
         for ( GenericTreeNode<T> child : current.getChildren().values() ) {
+            // System.out.println("Current count = " + count + ", current element" + child.getAddress() + " is " + child.getData());
             count += sizeRecursive(child);
         }
         return count;

@@ -62,7 +62,7 @@ import org.tasktide.core.supporting.JsonUtils;
  * 
  * @author bkenna
  */
-@Tag("integration-model")
+@Tag("integration-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JpaRepositoryTests {

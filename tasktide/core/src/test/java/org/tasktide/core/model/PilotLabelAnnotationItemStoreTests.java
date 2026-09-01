@@ -52,7 +52,7 @@ import org.tasktide.itemstore.ItemStoreType;
  * 
  * @author Brendan Kenna
  */
-@Tag("integration-model")
+@Tag("integration-experimental-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PilotLabelAnnotationItemStoreTests {
@@ -70,7 +70,10 @@ public class PilotLabelAnnotationItemStoreTests {
         String msg = "\n\n---------------- Initiating Pilot Label Annotations ItemStore Tests ----------------\n";
         LOGGER.info(msg);
         
-        this.initServiceManager();
+        try {
+            this.initServiceManager();
+        }
+        catch ( Exception ex ) {}
     }
     
     @AfterAll

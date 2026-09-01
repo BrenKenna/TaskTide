@@ -27,6 +27,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.core.model.builders.WorkItemBuilder;
@@ -41,6 +42,7 @@ import org.tasktide.TestCaseBuilderUtility;
  * 
  * @author bkenna
  */
+@Tag("unit-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TaskTideModelTests {
     

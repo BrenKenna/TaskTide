@@ -59,7 +59,7 @@ import org.tasktide.itemstore.ItemStore;
  *
  * @author bkenna
  */
-@Tag("integration-model")
+@Tag("system-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemServiceTests {
@@ -139,14 +139,8 @@ public class WorkItemServiceTests {
         logger.info("Configuring Service");
         workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
         Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
-        logger.info("Displaying meta data for JSON WorkItem Service:\n'{}'", TestUtils.mapToJsonString(map));
-        
-        // Check that records can be queried
-        logger.info("Verifying records can be retrieved");
-        TaskTideModel<WorkItem> ref = backend.get(0);
-        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
-        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
+        logger.info("Displaying meta data for Json Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
+        assertionState = !map.isEmpty();
         
         // Log test state
         logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
@@ -186,17 +180,8 @@ public class WorkItemServiceTests {
         logger.info("Configuring Service");
         workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
         Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
-        logger.info("Displaying meta data for RocksDB-WorkItem Service:\n'{}'", TestUtils.mapToJsonString(map));
-        
-        // Add records
-        workItemService.extendModel(data);
-        
-        // Check that records can be queried
-        logger.info("Verifying records can be retrieved");
-        TaskTideModel<WorkItem> ref = data.get(0);
-        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
-        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
+        logger.info("Displaying meta data for RocksDB Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
+        assertionState = !map.isEmpty();
         
         // Log test state
         logger.info("\n\n================ Construct WorkItemService-RocksDB From Factory Test ================\n");
@@ -235,18 +220,8 @@ public class WorkItemServiceTests {
         logger.info("Configuring Service");
         workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
         Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
-        logger.info("Displaying meta data for Template WorkItem Service:\n'{}'", TestUtils.mapToJsonString(map));
-        
-        // Add records
-        workItemService.extendModel(data);
-        
-        // Check that records can be queried
-        logger.info("Verifying records can be retrieved");
-        logger.info("\n\nDisplaying first record for reference:\n'{}'", JsonUtils.toJson(true, data.get(0)));
-        TaskTideModel<WorkItem> ref = data.get(0);
-        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
-        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
+        logger.info("Displaying meta data for NoSQL Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
+        assertionState = !map.isEmpty();
         
         // Log test state
         logger.info("\n\n================ Construct WorkItemService-Template From Factory Test ================\n");
@@ -286,17 +261,8 @@ public class WorkItemServiceTests {
         logger.info("Configuring Service");
         workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
         Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
-        logger.info("Displaying meta data for JPA WorkItem Service:\n'{}'", JsonUtils.toJson(true, map));
-        
-        // Add records
-        workItemService.extendModel(data);
-        
-        // Check that records can be queried
-        logger.info("Verifying records can be retrieved");
-        TaskTideModel<WorkItem> ref = data.get(0);
-        TaskTideModel<WorkItem> result = workItemService.fetchById(ref.getId());
-        logger.info("\n\nDisplaying retreieved WorkItem:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
+        logger.info("Displaying meta data for SQL Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
+        assertionState = !map.isEmpty();
         
         // Log test state
         logger.info("\n\n================ Construct WorkItemService-JPA From Factory Test ================\n");

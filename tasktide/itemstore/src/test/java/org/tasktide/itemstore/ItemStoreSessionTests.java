@@ -45,7 +45,7 @@ import org.tasktide.itemstore.session.LinkedOperation;
  *
  * @author Brendan Kenna
  */
-@Tag("unit-itemstore")
+@Tag("system-itemstore")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ItemStoreSessionTests {
     

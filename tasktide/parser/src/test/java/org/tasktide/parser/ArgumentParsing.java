@@ -44,7 +44,7 @@ import org.tasktide.parser.model.ArgumentType;
  * 
  * @author bkenna
  */
-@Tag("base")
+@Tag("unit-parser")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ArgumentParsing {
     
@@ -137,18 +137,9 @@ public class ArgumentParsing {
         // Check tree after definition
         assertionState = argTree.getTree().size() >= 1;
         if ( assertionState ) {
-            
-            // Print tree
-            /*logger.info(
-          "\n\nDisplaying tree data:\n\n{}\n\n",
-             PRETTY_JSON.toJson(argTree.getTree().toAddressDataMap())
-            );
-            */
-            
-            // Print help
             logger.info(
-          "\n\nDisplaying tree data:\n\n{}\n\n",
-             PRETTY_JSON.toJson(argTree.getVerboseHelp())
+                "\n\nDisplaying tree data:\n\n{}\n\n",
+                PRETTY_JSON.toJson(argTree.getVerboseHelp())
             );
         }
         

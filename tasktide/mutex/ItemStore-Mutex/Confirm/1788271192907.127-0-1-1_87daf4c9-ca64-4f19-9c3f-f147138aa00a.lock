@@ -1,0 +1,13 @@
+{
+    "Election File": "/mnt/c/Users/Bren/Documents/GitHub/TaskTide/tasktide/mutex/ItemStore-Mutex/Queue/1788271189245.127-0-1-1_87daf4c9-ca64-4f19-9c3f-f147138aa00a_e29ba532-65b2-479f-a8c4-6d448ff96571.lock",
+    "End Jitter": "PT0.351S",
+    "Host File": "/mnt/c/Users/Bren/Documents/GitHub/TaskTide/tasktide/mutex/ItemStore-Mutex/Host-Lock/1788271189244.127-0-1-1_87daf4c9-ca64-4f19-9c3f-f147138aa00a.lock",
+    "Id": "e29ba532-65b2-479f-a8c4-6d448ff96571",
+    "Lock Dir": "/mnt/c/Users/Bren/Documents/GitHub/TaskTide/tasktide/mutex/ItemStore-Mutex",
+    "Lock File": "/mnt/c/Users/Bren/Documents/GitHub/TaskTide/tasktide/mutex/ItemStore-Mutex/lock-file.lock",
+    "Mutex State": "HOST_LOCKED",
+    "Retry Interval": "PT0.297S",
+    "Stale File Threshold": "PT10S",
+    "Start Jitter": "PT0.339S",
+    "Timestamp": 1788271189250
+}

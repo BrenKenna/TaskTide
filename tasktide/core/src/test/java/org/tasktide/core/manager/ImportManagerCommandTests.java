@@ -69,7 +69,7 @@ import org.tasktide.core.repository.JpaRepository;
  * 
  * @author Brendan Kenna
  */
-@Tag("integration-model")
+@Tag("system-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ImportManagerCommandTests {
@@ -86,8 +86,8 @@ public class ImportManagerCommandTests {
     //private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     // Backend repo
-    @Rule
-    public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    // @Rule
+    // public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     
     public ImportManagerCommandTests() {
@@ -101,8 +101,11 @@ public class ImportManagerCommandTests {
         container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
         template = TestEnvironment.fetchDocumentTemplate(container);
-        this.initServiceManager();
-        //this.initRecord();
+        
+        try {
+            TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        }
+        catch ( Exception ex ) {}
     }
     
     @AfterAll

@@ -47,7 +47,7 @@ import org.testcontainers.containers.GenericContainer;
  * 
  * @author bkenna
  */
-@Tag("unit-repo-nosql")
+@Tag("base-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CouchDBTesting {

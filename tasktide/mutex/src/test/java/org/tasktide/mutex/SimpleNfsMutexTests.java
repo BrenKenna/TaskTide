@@ -46,7 +46,7 @@ import org.tasktide.mutex.exceptions.MutexCheckedException;
  *
  * @author Brendan Kenna
  */
-@Tag("unit-mutex")
+@Tag("integration-mutex")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SimpleNfsMutexTests {
     

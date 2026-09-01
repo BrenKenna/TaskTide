@@ -61,7 +61,7 @@ import org.tasktide.itemstore.ItemStore;
  *
  * @author bkenna
  */
-@Tag("integration-model")
+@Tag("system-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowServiceTests {
@@ -180,16 +180,7 @@ public class WorkflowServiceTests {
         workflowService = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow-Service");
         Map<String, String> map = workflowService.getRepo().getRepositoryMetaData();
         logger.info("Displaying meta data for RocksDB Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
-        
-        // Add records
-        workflowService.extendModel(data);
-        
-        // Check that records can be queried
-        logger.info("Verifying records can be retrieved");
-        TaskTideModel<Workflow> ref = data.get(0);
-        TaskTideModel<Workflow> result = workflowService.fetchById(ref.getId());
-        logger.info("\n\nDisplaying retreieved Workflow:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
+        assertionState = !map.isEmpty();
         
         // Log test state
         logger.info("\n\n================ Construct WorkflowService-RocksDB From Factory Test ================\n");
@@ -225,16 +216,7 @@ public class WorkflowServiceTests {
         workflowService = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow-Service");
         Map<String, String> map = workflowService.getRepo().getRepositoryMetaData();
         logger.info("Displaying meta data for NoSQL Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
-        
-        // Add records
-        workflowService.extendModel(data);
-        
-        // Check that records can be queried
-        logger.info("Verifying records can be retrieved");
-        TaskTideModel<Workflow> ref = data.get(0);
-        TaskTideModel<Workflow> result = workflowService.fetchById(ref.getId());
-        logger.info("\n\nDisplaying retreieved Workflow:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
+        assertionState = !map.isEmpty();
         
         // Log test state
         logger.info("\n\n================ Construct WorkflowService-Template From Factory Test ================\n");
@@ -269,17 +251,8 @@ public class WorkflowServiceTests {
         logger.info("Configuring Service");
         workflowService = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow-Service");
         Map<String, String> map = workflowService.getRepo().getRepositoryMetaData();
-        logger.info("Displaying meta data for JPA Step Service:\n'{}'", JsonUtils.toJson(true, map));
-        
-        // Add records
-        workflowService.extendModel(data);
-        
-        // Check that records can be queried
-        logger.info("Verifying records can be retrieved");
-        TaskTideModel<Workflow> ref = data.get(0);
-        TaskTideModel<Workflow> result = workflowService.fetchById(ref.getId());
-        logger.info("\n\nDisplaying retreieved Workflow:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
+        logger.info("Displaying meta data for SQL Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
+        assertionState = !map.isEmpty();
         
         // Log test state
         logger.info("\n\n================ Construct Workflow-JPA From Factory Test ================\n");

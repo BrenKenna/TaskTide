@@ -47,7 +47,7 @@ import org.tasktide.mutex.model.MutexFactory;
  * 
  * @author Brendan Kenna
  */
-@Tag("base")
+@Tag("unit-mutex")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FactoryTests {
     

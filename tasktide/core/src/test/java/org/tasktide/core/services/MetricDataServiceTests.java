@@ -58,7 +58,7 @@ import org.tasktide.core.supporting.JsonUtils;
  *
  * @author Brendan Kenna
  */
-@Tag("integration-model")
+@Tag("system-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MetricDataServiceTests {

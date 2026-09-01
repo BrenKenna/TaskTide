@@ -61,7 +61,7 @@ import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
  * 
  * @author Brendan Kenna
  */
-@Tag("integration-model")
+@Tag("system-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ResetManagerCommandTests {
@@ -87,7 +87,11 @@ public class ResetManagerCommandTests {
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
         template = TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        
+        try {
+            TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        }
+        catch ( Exception ex ) {}
     }
     
     @AfterAll

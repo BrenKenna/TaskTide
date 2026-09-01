@@ -21,6 +21,38 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
 }
 
+
+// Define test scopes
+def parserTestTags = [
+    "unit-tests": 'unit-mutex',
+    "integration-tests": 'integration-mutex',
+    "system-tests": 'system-mutex'
+]
+
+
+// Define logging scope for all tests
+tasks.withType(Test).configureEach {
+    testLogging {
+        showStandardStreams = true
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+}
+
+
+// Register test under annotation scheme
+parserTestTags.each { name, tag ->
+    tasks.register(name, Test) {
+        group = 'parser-tests'
+        description = "Run Parser ${name} tests (${tag})"
+
+        useJUnitPlatform {
+            includeTags tag
+        }
+    }
+}
+
+
 jar {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)

@@ -413,6 +413,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param toAdd
      * @return boolean
      */
+    @Transactional
     @Override
     public boolean extendModel(List<T> toAdd) {
         
@@ -429,7 +430,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
             entityManager.persist(elm);
             
             // Flush batch if limit is hit
-            if ( count % batchSize == 0 ) {
+            if ( count > 0 && count % batchSize == 0 ) {
                 entityManager.flush();
                 entityManager.clear();
             }

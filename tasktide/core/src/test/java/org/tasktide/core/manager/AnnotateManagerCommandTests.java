@@ -26,8 +26,6 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.junit.Rule;
-import org.testcontainers.containers.GenericContainer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -42,7 +40,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
-import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
@@ -52,13 +49,10 @@ import org.tasktide.core.manager.command.commands.AnnotateCommand;
 import org.tasktide.core.manager.command.commands.ImportCommand;
 import org.tasktide.core.model.CustomAnnotation;
 
-import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
-
 import org.tasktide.core.repository.RepositoryType;
+
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
-import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
 
 
@@ -67,7 +61,7 @@ import org.tasktide.core.supporting.JsonUtils;
  *
  * @author Brendan Kenna
  */
-@Tag("integration-model")
+@Tag("system-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AnnotateManagerCommandTests {
@@ -97,7 +91,11 @@ public class AnnotateManagerCommandTests {
         container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
         template = TestEnvironment.fetchDocumentTemplate(container);
-        this.initServiceManager();
+        
+        try {
+            TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        }
+        catch ( Exception ex ) {}
     }
     
     @AfterAll
@@ -120,21 +118,6 @@ public class AnnotateManagerCommandTests {
     public void tearDown() {
     }
 
-    
-    /**
-     * Initializes service manager
-     */
-    public void initServiceManager() {
-        
-        // Fetch services
-        RepositoryType repoType = RepositoryType.NOSQL;
-        TaskTideService<Workflow> workflowServ = ServiceFactory.makeWorkflowService(repoType, template, "Workflow");
-        TaskTideService<Step> repoStep = ServiceFactory.makeStepService(repoType, template, "Step");
-        TaskTideService<WorkItem> repoWorkItem = ServiceFactory.makeWorkItemService(repoType, template, "WorkItem");
-        
-        // Initialize service manager with services
-        TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ);
-    }
     
     
     

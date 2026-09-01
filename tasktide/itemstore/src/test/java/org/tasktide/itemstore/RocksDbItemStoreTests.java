@@ -29,6 +29,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestMethodOrder;
 
 
@@ -37,12 +38,13 @@ import org.junit.jupiter.api.TestMethodOrder;
  * 
  * @author bkenna
  */
+@Tag("integration-itemstore")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ItemStoreTests {
+public class RocksDbItemStoreTests {
     
-    private static final Logger logger = LogManager.getLogger(ItemStoreTests.class);
+    private static final Logger logger = LogManager.getLogger(RocksDbItemStoreTests.class);
     
-    public ItemStoreTests() {}
+    public RocksDbItemStoreTests() {}
     
     
     @BeforeAll

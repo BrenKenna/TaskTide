@@ -56,7 +56,7 @@ import org.tasktide.itemstore.ItemStoreType;
  * 
  * @author bkenna
  */
-@Tag("integration-model")
+@Tag("integration-rocksdb-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class RocksDbItemStoreRepositoryTests {

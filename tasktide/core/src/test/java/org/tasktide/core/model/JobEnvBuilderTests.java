@@ -55,6 +55,7 @@ import org.tasktide.core.model.job_env.metrics.ProfileData;
  * 
  * @author Brendan Kenna
  */
+@Tag("base-core")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JobEnvBuilderTests {
@@ -144,7 +145,6 @@ public class JobEnvBuilderTests {
      * Tests building {@link MetricData}
      * 
      */
-    @Tag("base")
     @Test
     @Order(0)
     public void canBuildMetricData() {
@@ -182,7 +182,6 @@ public class JobEnvBuilderTests {
     /**
      * Tests building {@link ProfileData}
      */
-    @Tag("base")
     @Test
     @Order(1)
     public void canBuildProfileData() {
@@ -218,7 +217,6 @@ public class JobEnvBuilderTests {
     /**
      * Tests building {@link MetricProfile}
      */
-    @Tag("base")
     @Test
     @Order(2)
     public void canBuildMetricProfile() {
@@ -260,7 +258,6 @@ public class JobEnvBuilderTests {
      * Tests building {@link Job Environment}
      * 
      */
-    @Tag("base")
     @Test
     @Order(3)
     public void canBuildJobEnvironment() {

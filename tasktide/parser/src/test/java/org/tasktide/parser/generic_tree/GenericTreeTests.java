@@ -34,13 +34,12 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestMethodOrder;
 
 
-
 /**
  * Tests the GenericTree module
  * 
  * @author bkenna
  */
-@Tag("unit-manager")
+@Tag("unit-parser")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class GenericTreeTests {
     
@@ -107,7 +106,8 @@ public class GenericTreeTests {
         
         // Check size
         treeSize = myTree.size();
-        assertionState = treeSize >= 1;
+        assertionState = treeSize == 10;
+        logger.info("Tree size is:\t'{}'", treeSize);
         logger.info("\n\nDisplaying Tree:\n\n{}\n", PRETTY_JSON.toJson(myTree.toAddressDataMap()));
         
         // Evaluate test
@@ -145,8 +145,8 @@ public class GenericTreeTests {
             }
         }
         logger.info(
-      "\n\nDisplaying Tree After Test:\n\n{}\n",
-         PRETTY_JSON.toJson(myTree.toAddressDataMap())
+            "\n\nDisplaying Tree After Test:\n\n{}\n",
+            PRETTY_JSON.toJson(myTree.toAddressDataMap())
         );
         
         // Evaluate test
@@ -162,7 +162,7 @@ public class GenericTreeTests {
      */
     @Test
     @Order(2)
-    public void canAddUnderUnexistingBranch() {
+    public void canAddUnderNonExistingBranch() {
     
         // Initialize test
         logger.info("\n\n================ Can Add Under Unexting Branch Test ================\n");
