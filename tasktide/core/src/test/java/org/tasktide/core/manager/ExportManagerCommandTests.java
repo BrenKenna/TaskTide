@@ -18,6 +18,7 @@ package org.tasktide.core.manager;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,7 +64,7 @@ import org.tasktide.core.repository.JpaRepository;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ExportManagerCommandTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(ExportManagerCommandTests.class);
+    private final Logger LOGGER = LogManager.getLogger(ExportManagerCommandTests.class);
     
     // Backend repo
     // @Rule
@@ -89,7 +90,10 @@ public class ExportManagerCommandTests {
         try {
             TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
         }
-        catch ( Exception ex ) {}
+        catch ( Exception ex ) {
+            LOGGER.error("Failed to initialize ServiceManager", ex);
+            // throw ex;
+        }
     }
     
     @AfterAll
@@ -103,10 +107,19 @@ public class ExportManagerCommandTests {
         // mariaDB.stop();
     }
     
+    
+    /**
+     * Purge table records for each test
+     * 
+     */
     @BeforeEach
     public void setUp() {
         LOGGER.info("\n\n================ Initiating Next Test ================\n");
+        LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
+        TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
+    
     
     @AfterEach
     public void tearDown() {

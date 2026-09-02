@@ -61,7 +61,7 @@ tasks.withType(Test).configureEach {
 // Register test under annotation scheme
 parserTestTags.each { name, tag ->
     tasks.register(name, Test) {
-        group = 'parser-tests'
+        group = 'core-tests'
         description = "Run Parser ${name} tests (${tag})"
 
         useJUnitPlatform {

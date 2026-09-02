@@ -110,16 +110,25 @@ public class AnnotateManagerCommandTests {
         // couchDB.stop();
     }
     
+    
+    /**
+     * Purge table records for each test
+     * 
+     */
     @BeforeEach
     public void setUp() {
+        LOGGER.info("\n\n================ Initiating Next Test ================\n");
+        LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
+        TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
+    
     
     @AfterEach
     public void tearDown() {
+        LOGGER.info("\n\n================ Terminating Test ================\n");
     }
 
-    
-    
     
     /**
      * Fetch path for provided resource, masking error
@@ -185,7 +194,8 @@ public class AnnotateManagerCommandTests {
         CommandSpec cmdSpec;
         AnnotateCommand cmd;
         boolean assertionState;
-        //LOGGER.info("Displaying init record state:\t'{}'", initRecord());
+        
+        LOGGER.info("Displaying init record state:\t'{}'", initRecord());
         
         // Fetching records annotation
         LOGGER.info("Fetching record for annoations");

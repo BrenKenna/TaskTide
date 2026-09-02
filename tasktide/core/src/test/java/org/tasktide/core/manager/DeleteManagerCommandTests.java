@@ -18,6 +18,7 @@ package org.tasktide.core.manager;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
+import java.util.Arrays;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +26,6 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.junit.Rule;
 import org.testcontainers.containers.GenericContainer;
 
 import org.junit.jupiter.api.AfterEach;
@@ -49,11 +49,18 @@ import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
+import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.command.commands.DeleteCommand;
+import org.tasktide.core.repository.JpaRepository;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.ItemStoreType;
 
 
 /**
+ * Tests the {@link DeleteCommand} {@link ManagerCommand} via
+ *  {@link JpaRepository} using {@link GenericContainer}
  *
  * @author Brendan Kenna
  */
@@ -62,16 +69,22 @@ import org.tasktide.core.manager.command.commands.DeleteCommand;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class DeleteManagerCommandTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(DeleteManagerCommandTests.class);
+    private final Logger LOGGER = LogManager.getLogger(DeleteManagerCommandTests.class);
     
     // Backend repo
     //@Rule
     //public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     // Container for fetch template/entity manager
-    private SeContainer container;
+    /**
+     * private SeContainer container;
     private EntityManager entityManager;
     private Template template;
+    **/
+    
+    private final ItemStoreType storeType = ItemStoreType.ROCKSDB;
+    private final String storeName = "TaskTide-Manager/Delete/RocksDB";
+    private ItemStore itemStore;
     
     public DeleteManagerCommandTests() {
     }
@@ -80,7 +93,12 @@ public class DeleteManagerCommandTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Delete Manager Command Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
+        ItemStoreRepositoryUtility.modify(storeType, storeName);
+        itemStore = ItemStoreRepositoryUtility.get().fetchItemStore(storeName, storeType);
+        TestUtils.initServiceManager(RepositoryType.ITEMSTORE, itemStore);
+        
+        /**
+         * container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
         template = TestEnvironment.fetchDocumentTemplate(container);
         
@@ -88,23 +106,33 @@ public class DeleteManagerCommandTests {
             TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
         }
         catch ( Exception ex ) {}
+        **/ 
     }
     
     @AfterAll
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Delete Manager Command Tests ----------------\n";
         LOGGER.info(msg);
-        if (container != null && container.isRunning()) {
-            container.close();
-            LOGGER.info("CDI container shut down");
-        }
+        //if (container != null && container.isRunning()) {
+        //    container.close();
+        //    LOGGER.info("CDI container shut down");
+        //}
         // mariaDB.stop();
     }
     
+    
+    /**
+     * Purge table records for each test
+     * 
+     */
     @BeforeEach
     public void setUp() {
         LOGGER.info("\n\n================ Initiating Next Test ================\n");
+        //LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
+        //TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        //LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
+    
     
     @AfterEach
     public void tearDown() {
@@ -121,7 +149,7 @@ public class DeleteManagerCommandTests {
     
         // Construct work item
         LOGGER.info("\n\n================ Can Delete WorkItem ManagerCommand Test ================\n");
-        String forDeletion = "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811";
+        String forDeletion = "WorkItem-b30dc32b-ca06-48db-af53-d80584evd545";
         ManagerTarget target = ManagerTarget.WORKITEM;
         ManagerAction action = ManagerAction.DELETE;
         CommandSpec cmdSpec;
@@ -130,7 +158,7 @@ public class DeleteManagerCommandTests {
         
         // Import test records
         LOGGER.info("Importing test records");
-        TestUtils.importTestRecords("import-docs.json", "SequenceAlignment", "JSON");
+        TestUtils.importTestRecords("manager-cmds/import-delete-docs.json", "SequenceAlignment", "JSON");
         WorkItem preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(forDeletion);
         LOGGER.info("Displaying WorkItem for deletion:\n'{}'", preCmd.toJsonDoc());
         
@@ -164,10 +192,10 @@ public class DeleteManagerCommandTests {
     
         // Construct work item
         LOGGER.info("\n\n================ Can Delete WorkItem Task ManagerCommand Test ================\n");
-        String itemId = "WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98";
+        String itemId = "WorkItem-df87a3j9-ce6c-456f-bdf2-662i5824d939";
         String taskId = "ItemTask-7f4fa635-17ed-4387-a9d4-0b61f168ee0d";
         String queryStr = 
-            "{\"Item Id\": \"WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98\", \"Task Id\": \"ItemTask-7f4fa635-17ed-4387-a9d4-0b61f168ee0d\"}"
+            "{\"Item Id\": \"WorkItem-df87a3j9-ce6c-456f-bdf2-662i5824d939\", \"Task Id\": \"ItemTask-54384125-c65d-4e74-85fe-cdc0c1ab0hcg\"}"
         ;
         WorkItem deleted;
         ManagerTarget target = ManagerTarget.WORKITEM;
@@ -178,7 +206,7 @@ public class DeleteManagerCommandTests {
         
         // Import test records
         LOGGER.info("Importing test records");
-        TestUtils.importTestRecords("import-docs.json", "SequenceAlignment", "JSON");
+        TestUtils.importTestRecords("manager-cmds/import-delete-docs.json", "SequenceAlignment", "JSON");
         WorkItem preCmd = TaskTideServiceManager.fetchWorkItemService().fetchById(itemId);
         LOGGER.info("Displaying WorkItem for deletion:\n'{}'", preCmd.toJsonDoc());
         
@@ -211,13 +239,11 @@ public class DeleteManagerCommandTests {
     
         // Construct work item
         LOGGER.info("\n\n================ Can Delete List ManagerCommand Test ================\n");
-        String resetList = TestUtils.fetchResourcePath("For-Reset.txt").toString();
-        String[] forUnlock = { 
-            "WorkItem-424bfad0-4041-4b57-ac4b-027507cbd811",
-            "WorkItem-5bf73c7a-5903-4972-88b1-5ff94389ad98",
-            "WorkItem-50a47baf-0ea6-43e8-ae2c-4fcc21f9f6a5",
-            "WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249"
+        String[] forDelete = { 
+            "WorkItem-b30dc32b-ca06-48db-af53-d80584evd545",
+            "WorkItem-cf1ffbbe-4bc3-408f-81zd-139e029ce249"
         };
+        String result = TestUtils.fetchResourcePath("manager-cmds/For-Reset.txt").toString();
         ManagerTarget target = ManagerTarget.WORKITEM;
         ManagerAction action = ManagerAction.DELETE_LIST;
         CommandSpec cmdSpec;
@@ -226,14 +252,14 @@ public class DeleteManagerCommandTests {
         
         // Import test records
         LOGGER.info("Importing test records, displaying WorkItems for unlocking");
-        TestUtils.importTestRecords("import-docs.json", "SequenceAlignment", "JSON");
-        TestUtils.printEach(forUnlock);
+        TestUtils.importTestRecords("manager-cmds/import-delete-docs.json", "SequenceAlignment", "JSON");
+        TestUtils.printEach(forDelete);
         
         // Construct command spec
         LOGGER.info("Constructing command spec");
         Map<String, Object> opts = new HashMap<>();
         opts.put("Delimiter", ",");
-        cmdSpec = new CommandSpec(resetList, null, opts);
+        cmdSpec = new CommandSpec(result, null, opts);
         LOGGER.info("Displaying configured command spec:\n'{}'", cmdSpec.toJsonDoc());
         
         // Create and run command
@@ -245,7 +271,7 @@ public class DeleteManagerCommandTests {
         
         // Evaluate test
         if ( assertionState ) {
-            TestUtils.printEach(forUnlock);
+            LOGGER.info("Records deleted");
         }
         else {
             LOGGER.error("Unable to delete test tokens");

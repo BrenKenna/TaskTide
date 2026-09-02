@@ -245,4 +245,16 @@ public class ItemStoreRepositoryUtility {
         }
         return output;
     }
+    
+    
+    
+    /**
+     * Initialize the utility with the store type and file location
+     * 
+     * @param storeType
+     * @param storeName 
+     */
+    public static void modify(ItemStoreType storeType, String storeName) {
+        INSTANCE = new ItemStoreRepositoryUtility(storeType, storeName);
+    }
 }

@@ -23,7 +23,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
@@ -40,6 +44,7 @@ import org.tasktide.core.model.CustomAnnotation;
 public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
 
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(JpaRepository.class);
     protected final EntityManager entityManager;
     protected final Class<T> COLLECTION_CLASS;
     protected final String collectionName;
@@ -85,6 +90,34 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
     
     
     /**
+     * Method to support encasing methods in transaction
+     * 
+     * @param <R>
+     * @param operation
+     * @return R
+     */
+    private <R> R transaction(Supplier<R> operation) {
+        EntityTransaction tx = this.entityManager.getTransaction();
+        
+        // Try execute operation
+        try {
+            tx.begin();
+            R result = operation.get();
+            tx.commit();
+            return result;
+        }
+        
+        catch ( RuntimeException ex ) {
+            LOGGER.error("Error during database operation", ex);
+            if ( tx.isActive() ) {
+                tx.rollback();
+            }
+            throw ex;
+        }
+    }
+    
+    
+    /**
      * Find the {@link TaskTideModel} having id
      * 
      * @param id
@@ -103,14 +136,13 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param model
      * @return T
      */
-    @Transactional
     @Override
     public T insertModel(T model) {
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        entityManager.persist(model);
-        tx.commit();
-        return entityManager.find(COLLECTION_CLASS, model.getId());
+        return this.transaction( () -> {
+            this.entityManager.persist(model);
+            this.entityManager.flush();
+            return entityManager.find(COLLECTION_CLASS, model.getId());
+        });
     }
 
     
@@ -120,14 +152,12 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param model
      * @return T
      */
-    @Transactional
     @Override
     public T updateModel(T model) {
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        T result = entityManager.merge(model);
-        tx.commit();
-        return result;
+        return this.transaction( () -> {
+            T result = this.entityManager.merge(model);
+            return result;
+        });
     }
 
     
@@ -137,17 +167,18 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param id
      * @return boolean
      */
-    @Transactional
     @Override
     public boolean deleteModel(String id) {
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        Optional<T> result = this.findById(id);
-        result.ifPresent(
-            elm -> entityManager.remove(elm)
-        );
-        tx.commit();
-        return result.isEmpty();
+        return this.transaction( () -> {
+            Optional<T> forDeletion = this.findById(id);
+            forDeletion.ifPresent(
+                elm -> this.entityManager.remove(elm)
+            );
+            entityManager.flush();
+            
+            Optional<T> result = this.findById(id);
+            return result.isEmpty();
+        });
     }
 
     
@@ -169,7 +200,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Parameterize and reduce to result set size
         if ( this.resultSetSize >= 1 ) {
-            return entityManager
+            return this.entityManager
                 .createQuery(query, COLLECTION_CLASS)
                 .setParameter("value", value)
                 .setMaxResults(this.resultSetSize)
@@ -178,7 +209,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Otherwise all
         else {
-            return entityManager
+            return this.entityManager
                 .createQuery(query, COLLECTION_CLASS)
                 .setParameter("value", value)
             .getResultList();
@@ -205,7 +236,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Reduce to result set size
         if ( this.resultSetSize >= 1 ) {
-            return entityManager
+            return this.entityManager
                 .createQuery(query, COLLECTION_CLASS)
                 .setParameter("value", value)
                 .setParameter("groupVal", groupVal)
@@ -215,7 +246,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Otherwise all
         else {
-            return entityManager
+            return this.entityManager
                 .createQuery(query, COLLECTION_CLASS)
                 .setParameter("value", value)
                 .setParameter("groupVal", groupVal)
@@ -347,7 +378,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Reduce to result set size
         if ( this.resultSetSize >= 1 ) {
-            return entityManager
+            return this.entityManager
                 .createQuery(
                     String.format("SELECT e FROM %s e", COLLECTION_CLASS.getSimpleName()),
                         COLLECTION_CLASS
@@ -358,7 +389,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Otherwise all
         else {
-            return entityManager
+            return this.entityManager
                 .createQuery(
                     String.format("SELECT e FROM %s e", COLLECTION_CLASS.getSimpleName()),
                         COLLECTION_CLASS
@@ -375,7 +406,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      */
     @Override
     public int save() {
-        entityManager.flush();
+        this.entityManager.flush();
         return (int) countRecords();
     }
 
@@ -413,37 +444,30 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param toAdd
      * @return boolean
      */
-    @Transactional
     @Override
     public boolean extendModel(List<T> toAdd) {
-        
-        // Initialize vars
-        int count = 0, batchSize = 50;
-        EntityTransaction tx;
-        
-        // Begin transaction
-        tx = entityManager.getTransaction();
-        tx.begin();
-        
-        // Add all records
-        for ( T elm : toAdd ) {
-            entityManager.persist(elm);
+        return this.transaction( () -> {
             
-            // Flush batch if limit is hit
-            if ( count > 0 && count % batchSize == 0 ) {
-                entityManager.flush();
-                entityManager.clear();
+            // Add all records
+            int count = 0, batchSize = 50; // Flush every 50
+            for ( T elm : toAdd ) {
+                entityManager.persist(elm);
+
+                // Flush batch if limit is hit
+                if ( count > 0 && count % batchSize == 0 ) {
+                    entityManager.flush();
+                    entityManager.clear();
+                }
+                count++;
             }
-            count++;
-        }
-        
-        // Commit changes to close transaction
-        entityManager.flush();
-        entityManager.clear();
-        tx.commit();
-        
-        // Return results
-        return count == toAdd.size();
+
+            // Ensure changes are committed
+            entityManager.flush();
+            entityManager.clear();
+
+            // Return results
+            return count == toAdd.size();
+        });
     }
     
     

@@ -38,6 +38,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jakarta.nosql.Template;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
 import org.tasktide.core.TaskTideModel;
@@ -176,7 +178,13 @@ public class TestUtils {
         TaskTideService<JobEnvironment> jobEnvServ = ServiceFactory.makeJobEnvironmentService(repoType, backend, "JobEnvironment");
         
         // Initialize service manager with services
-        TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
+        try {
+            TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
+        }
+        catch ( IllegalStateException ex) {
+            LOGGER.warn("Modifying service manager for provided:\t'{}'", backend);
+            TaskTideServiceManager.modify(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
+        }
     }
     
     
@@ -299,5 +307,35 @@ public class TestUtils {
         SeContainer container;
         container = SeContainerInitializer.newInstance().initialize();
         return container.select(DocumentTemplate.class).get();
+    }
+    
+    
+    /**
+     * Purge test tables
+     * 
+     * @param LOGGER
+     * @param em 
+     */
+    public static void clearTestTables(Logger LOGGER, EntityManager em) {
+        String[] tables = {
+            "MetricData",
+            "MetricProfile",
+            "Step",
+            "JobEnvironment",
+            "Workflow",
+            "WorkItem"
+        };
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        try {
+            for (String entity : tables) {
+                LOGGER.info("Clearing '{}' from test database", entity);
+                em.createQuery("DELETE FROM " + entity).executeUpdate();
+            }
+            em.flush();
+            tx.commit();
+        } finally {
+            em.clear();
+        }
     }
 }

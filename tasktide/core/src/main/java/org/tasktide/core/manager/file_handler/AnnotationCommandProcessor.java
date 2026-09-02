@@ -108,10 +108,15 @@ public class AnnotationCommandProcessor {
                             WorkItem item = TaskTideServiceManager
                                 .fetchWorkItemService()
                                 .fetchById(parts[0]);
-                            item.setAnnotations(anno);
-                            state = TaskTideServiceManager
-                                .fetchWorkItemService()
-                            .updateModel(item) != null;
+                            if ( item != null ) {
+                                item.setAnnotations(anno);
+                                state = TaskTideServiceManager
+                                    .fetchWorkItemService()
+                                .updateModel(item) != null;
+                            }
+                            else {
+                                logger.warn("No record found for WorkItem:\t'{}'", parts[0]);
+                            }
                         }
                         
                         case STEP -> {
@@ -119,10 +124,15 @@ public class AnnotationCommandProcessor {
                             Step item = TaskTideServiceManager
                                 .fetchStepService()
                                 .fetchById(parts[0]);
-                            item.setAnnotations(anno);
-                            state = TaskTideServiceManager
-                                .fetchStepService()
-                            .updateModel(item) != null;
+                            if ( item != null ) {
+                                item.setAnnotations(anno);
+                                state = TaskTideServiceManager
+                                    .fetchStepService()
+                                .updateModel(item) != null;
+                            }
+                            else {
+                                logger.warn("No record found for Step:\t'{}'", parts[0]);
+                            }
                         }
                         
                         case WORKFLOW -> {
@@ -130,23 +140,34 @@ public class AnnotationCommandProcessor {
                             Workflow item = TaskTideServiceManager
                                 .fetchWorkflowService()
                                 .fetchById(parts[0]);
-                            item.setAnnotations(anno);
-                            state = TaskTideServiceManager
-                                .fetchWorkflowService()
-                            .updateModel(item) != null;
+                            if ( item != null ) {
+                                item.setAnnotations(anno);
+                                state = TaskTideServiceManager
+                                    .fetchWorkflowService()
+                                .updateModel(item) != null;
+                            }
+                            else {
+                                logger.warn("No record found for Workflow:\t'{}'", parts[0]);
+                            }
                         }
                     }
                 }
                 case 2 -> {
                     logger.info("Annotating ItemTask");
                     WorkItem item = TaskTideServiceManager
-                            .fetchWorkItemService()
-                            .fetchById(parts[0]);
-                    ItemTask task = item.getWorkload().getById(parts[1]);
-                    task.setAnnotations(anno);
-                    state = TaskTideServiceManager
                         .fetchWorkItemService()
-                    .updateModel(item) != null;
+                    .fetchById(parts[0]);
+                    
+                    if ( item != null ) {
+                        ItemTask task = item.getWorkload().getById(parts[1]);
+                        task.setAnnotations(anno);
+                        state = TaskTideServiceManager
+                            .fetchWorkItemService()
+                        .updateModel(item) != null;
+                    }
+                    else {
+                        logger.warn("No record found for ItemTask:\t'{}'", parts[0]);
+                    }
                 }
                 default -> {
                     logger.error("Error, malformed line");

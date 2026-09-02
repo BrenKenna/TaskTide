@@ -28,7 +28,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.testcontainers.containers.GenericContainer;
-import org.junit.Rule;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -61,6 +60,9 @@ import org.tasktide.core.manager.command.commands.ImportCommand;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.repository.JpaRepository;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.ItemStoreType;
 
 
 /**
@@ -74,12 +76,18 @@ import org.tasktide.core.repository.JpaRepository;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ImportManagerCommandTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(ImportManagerCommandTests.class);
+    private final Logger LOGGER = LogManager.getLogger(ImportManagerCommandTests.class);
     
     // Container for fetch nosql template
     private SeContainer container;
     private EntityManager entityManager;
-    private Template template;
+    //private Template template;
+    
+    // Backend repo
+    // private final ItemStoreType storeType = ItemStoreType.SQLITE;
+    // private final String storeName = "TaskTide-Manager/Import/sqlite";
+    // private ItemStore itemStore;
+    
     
     // Backend repos
     // @Rule
@@ -98,14 +106,21 @@ public class ImportManagerCommandTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Import Manager Command Tests ----------------\n";
         LOGGER.info(msg);
+        // ItemStoreRepositoryUtility.initialize(storeType, storeName);
+        // itemStore = ItemStoreRepositoryUtility.get().fetchItemStore(storeName, storeType);
+        // TestUtils.initServiceManager(RepositoryType.ITEMSTORE, itemStore);
+        
         container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
-        template = TestEnvironment.fetchDocumentTemplate(container);
+        //template = TestEnvironment.fetchDocumentTemplate(container);
         
         try {
             TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
         }
-        catch ( Exception ex ) {}
+        catch ( Exception ex ) {
+            LOGGER.error("Failed to initialize ServiceManager", ex);
+            // throw ex;
+        }
     }
     
     @AfterAll
@@ -120,32 +135,25 @@ public class ImportManagerCommandTests {
         // couchDB.stop;
     }
     
+    
+    /**
+     * Purge table records for each test
+     * 
+     */
     @BeforeEach
     public void setUp() {
         LOGGER.info("\n\n================ Initiating Next Test ================\n");
+        //LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
+        //TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
+    
     
     @AfterEach
     public void tearDown() {
         LOGGER.info("\n\n================ Terminating Test ================\n");
     }
 
-
-    /**
-     * Initializes service manager
-     */
-    public void initServiceManager() {
-        
-        // Fetch services
-        RepositoryType repoType = RepositoryType.NOSQL;
-        TaskTideService<Workflow> workflowServ = ServiceFactory.makeWorkflowService(repoType, template, "Workflow");
-        TaskTideService<Step> repoStep = ServiceFactory.makeStepService(repoType, template, "Step");
-        TaskTideService<WorkItem> repoWorkItem = ServiceFactory.makeWorkItemService(repoType, template, "WorkItem");
-        
-        // Initialize service manager with services
-        TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ);
-    }
-    
     
     /**
      * Fetch path for provided resource, masking error
@@ -159,7 +167,7 @@ public class ImportManagerCommandTests {
             return TestUtils.fetchResource(resource);
         }
         catch (Exception ex) {
-            throw new IllegalArgumentException("Unable to read provided resource;\t" + resource);
+            throw new IllegalArgumentException("Unable to read provided resource:   " + resource);
         }
     }
     
@@ -256,18 +264,45 @@ public class ImportManagerCommandTests {
         // Construct work item
         LOGGER.info("\n\n================ Can Append ManagerCommand Test ================\n");
         ManagerTarget target = ManagerTarget.WORKITEM;
-        ManagerAction action = ManagerAction.APPEND;
+        ManagerAction action = ManagerAction.ADD;
         CommandSpec cmdSpec;
         ImportCommand cmd;
         boolean assertionState;
         
+        
         // Configure command spec
-        WorkItem item = this.initRecord();
+        LOGGER.info("Adding test WorkItem");
         String queryString = String.format(
-           "{\"WorkItemId\": \"%s\", \"Task Name\": \"MyTestTask\", \"Task Script\": \"ping facebook.com\"}",
-           item.getId()
+           "{\"Task Name\": \"MyTestTask-A\", \"Task Script\": \"ping google.com\"}"
         );
         Map<String, Object> opts = new HashMap<>();
+        opts.put("Step Name", "Arbitrary");
+        cmdSpec = new CommandSpec(null, queryString, opts);
+        LOGGER.info("Displaying configured command spec:\n'{}'", cmdSpec.toJsonDoc());
+        
+        // Construct manager command
+        LOGGER.info("Consutrcting ImportCommand for:\t'{}'", action);
+        cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
+        LOGGER.info("Displaying constructed command:\n'{}'", cmd.toJsonDoc());
+        
+        // Perform action
+        LOGGER.info("Executing command");
+        assertionState = (boolean) cmd.runCommand();
+        if (assertionState) {
+            LOGGER.info("Execution successful");
+        }
+        else {
+            LOGGER.error("Execution unsuccessful");
+        }
+        
+        // Configure command spec
+        action = ManagerAction.APPEND;
+        WorkItem item = this.initRecord();
+        queryString = String.format(
+           "{\"WorkItemId\": \"%s\", \"Task Name\": \"MyTestTask-B\", \"Task Script\": \"ping facebook.com\"}",
+           item.getId()
+        );
+        opts = new HashMap<>();
         opts.put("Step Name", "Arbitrary");
         cmdSpec = new CommandSpec(null, queryString, opts);
         LOGGER.info("Displaying configured command spec:\n'{}'", cmdSpec.toJsonDoc());
@@ -310,7 +345,7 @@ public class ImportManagerCommandTests {
         
         // Fetch json document
         LOGGER.info("Fetching json document");
-        Path path = fetchResourcePath("import-docs.json");
+        Path path = fetchResourcePath("manager-cmds/import-manager-docs2.json");
         String targetFile = path.toString();
         
         // Construct command
@@ -359,7 +394,7 @@ public class ImportManagerCommandTests {
         
         // Fetch json document
         LOGGER.info("Fetching single task workload");
-        Path path = fetchResourcePath("singleTaskImports.txt");
+        Path path = fetchResourcePath("singleTaskImports-Seq.txt");
         String targetFile = path.toString();
         
         // Construct command
