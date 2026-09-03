@@ -35,7 +35,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  * 
  * @author bkenna
  */
-@Tag("unit-obs")
+@Tag("unit-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TaskTideWorkerObserverTests {
     

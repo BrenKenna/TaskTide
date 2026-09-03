@@ -44,8 +44,7 @@ import org.tasktide.core.model.task.TaskState;
  *
  * @author bkenna
  */
-@Deprecated
-@Tag("unit-engine")
+@Tag("experiemental-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ConcurrencyTests {
     

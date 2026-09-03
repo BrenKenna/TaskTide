@@ -17,21 +17,16 @@ package org.tasktide.core.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.transaction.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -41,15 +36,11 @@ import org.tasktide.core.model.CustomAnnotation;
  * @author bkenna
  * @param <T> of {@link TaskTideRepository} for {@link TaskTideModel}
  */
-public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
+public abstract class JpaRepository<T extends TaskTideModel<T>> extends AbstractRepository<T> {
 
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(JpaRepository.class);
     protected final EntityManager entityManager;
-    protected final Class<T> COLLECTION_CLASS;
-    protected final String collectionName;
-    protected final RepositoryType repoType;
-    protected int resultSetSize;
 
     
     /**
@@ -60,32 +51,8 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param collectionName
      */
     public JpaRepository(EntityManager entityManager, Class<T> clazz, String collectionName) {
+        super(clazz, collectionName, RepositoryType.SQL);
         this.entityManager = entityManager;
-        this.COLLECTION_CLASS = clazz;
-        this.collectionName = collectionName;
-        this.repoType = RepositoryType.SQL;
-    }
-
-    
-    /**
-     * Provides a map of the reposiotry meta data reference class,
-     *  repository type (NoSQL, JPA etc), and collection name
-     * 
-     * @return Map-String, String
-     */
-    @Override
-    public Map<String, String> getRepositoryMetaData() {
-        
-        // Initialize results
-        Map<String, String> results = new HashMap<>();
-        
-        // Append data
-        results.put("Model Class", this.COLLECTION_CLASS.getSimpleName());
-        results.put("Repository Type", this.repoType.toString());
-        results.put("Collection Name", this.collectionName);
-        
-        // Return results
-        return results;
     }
     
     
@@ -253,119 +220,6 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
             .getResultList();
         }
     }
-
-    
-    /**
-     * Filters records with provided {@link CustomAnnotation}
-     * 
-     * @param anno
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> filterByAnnotation(CustomAnnotation anno) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().queriedFieldsMatch(anno)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Filters records with provided annotation key and value
-     * 
-     * @param key
-     * @param value
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> filterByAnnotation(String key, Object value) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ?elm.getAnnotations().getKey(key).equals(value)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Filter records which have provided annotation key
-     * 
-     * @param key
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> hasAnnotationField(String key) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm -> 
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().hasKey(key)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Extends collection, state query with annotation filtering
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @param annoKey
-     * @param annoValue
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> findByFieldForGroupWithAnno(
-            String field, Object value, String group,
-            Object groupVal, String annoKey, Object annoValue
-    ) {
-        return this.findByFieldForGroup(field, value, group, groupVal)
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null 
-                ? elm.getAnnotations().getKey(annoKey).equals(annoValue)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Extends collection, state query with annotation filtering
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @param anno
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> findByFieldForGroupWithAnno(String field, Object value, String group, Object groupVal, CustomAnnotation anno) {
-        return this.findByFieldForGroup(field, value, group, groupVal)
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().queriedFieldsMatch(anno)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
     
     
     /**
@@ -468,27 +322,5 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
             // Return results
             return count == toAdd.size();
         });
-    }
-    
-    
-    /**
-     * Get results set size
-     * 
-     * @return int
-     */
-    @Override
-    public int getResultSetSize() {
-        return this.resultSetSize;
-    }
-
-    
-    /**
-     * Set results set size
-     * 
-     * @param nRecords 
-     */
-    @Override
-    public void setResultSetSize(int nRecords) {
-        this.resultSetSize = nRecords;
     }
 }

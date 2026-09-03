@@ -49,6 +49,9 @@ import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
+import org.tasktide.core.manager.command.commands.ImportCommand;
+import org.tasktide.core.manager.generator.ExampleGenerators;
+import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.collection.Step;
@@ -57,6 +60,8 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskState;
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
@@ -215,7 +220,12 @@ public class TestUtils {
         TaskTideService<JobEnvironment> jobEnvServ = ServiceFactory.makeJobEnvironmentService(repoType, backend, "JobEnvironment");
         
         // Initialize service manager with services
-        TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
+        try {
+            TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
+        }
+        catch (IllegalStateException ex) {
+            LOGGER.warn("ServiceManager already configured");
+        }
     }
     
     
@@ -338,5 +348,95 @@ public class TestUtils {
         SeContainer container;
         container = SeContainerInitializer.newInstance().initialize();
         return container.select(DocumentTemplate.class).get();
+    }
+    
+    
+    /**
+     * Register new {@link WorkItem} for provided task type with number of tasks
+     * 
+     * @param taskType
+     * @param amount
+     * 
+     * @return {@link WorkItem}
+     */
+    public static WorkItem registerWorkItemTasks(ExampleGenerators taskType, int amount) {
+        WorkItem task;
+        if ( amount > 0 ) {
+            task = TaskGenerator.generateExampleWorkItem(taskType, amount);
+        }
+        else {
+            task = TaskGenerator.generateExampleWorkItem(taskType, 1);
+            task.getWorkload().getTaskMap().clear();
+        }
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+        .appendModel(task);
+    }
+    
+    
+    /**
+     * Register new {@link WorkItem} for provided task type with number of tasks,
+     *  of the provided {@link TaskState}
+     * 
+     * @param taskType
+     * @param amount
+     * @param
+     * 
+     * @return {@link WorkItem}
+     */
+    public static WorkItem registerWorkItemTasks(ExampleGenerators taskType, int amount, TaskState state) {
+        WorkItem task = TaskGenerator.generateExampleWorkItem(taskType, amount);
+        task.setItemState(state.mapToItemState());
+        for ( ItemTask item : task.getWorkload().getTaskMap().values() ) {
+            item.setTaskState(state);
+        }
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+        .appendModel(task);
+    }
+    
+    
+    /**
+     * Register workflow
+     * 
+     * @param workflow
+     * @return {@link ManagerCommand} result
+     */
+    public static Object createWorkflow(String workflow) {
+        ManagerTarget target = ManagerTarget.WORKFLOW;
+        ManagerAction action = ManagerAction.ADD;
+        CommandSpec cmdSpec;
+        ImportCommand cmd;
+        
+        Map<String, Object> opts = new HashMap<>();
+        opts.put("Workflow Name", workflow);
+        
+        cmdSpec = new CommandSpec(null, "", opts);
+        cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
+        
+        return cmd.execute();
+    }
+    
+    
+    /**
+     * Register workflow
+     * 
+     * @param workflow
+     * @return {@link ManagerCommand} result
+     */
+    public static Object createStep(String stepName, String workflowName) {
+        ManagerTarget target = ManagerTarget.STEP;
+        ManagerAction action = ManagerAction.ADD;
+        CommandSpec cmdSpec;
+        ImportCommand cmd;
+        
+        Map<String, Object> opts = new HashMap<>();
+        opts.put("Step Name", stepName);
+        opts.put("Workflow Name", workflowName);
+        
+        cmdSpec = new CommandSpec(null, "", opts);
+        cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
+        
+        return cmd.execute();
     }
 }

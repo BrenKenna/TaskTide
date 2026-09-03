@@ -40,7 +40,7 @@ import org.tasktide.core.model.task.TaskLogging;
  *
  * @author bkenna
  */
-@Tag("unit-base")
+@Tag("unit-engine-active")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProcessExecutorTests {
     
@@ -77,10 +77,10 @@ public class ProcessExecutorTests {
      */
     @Test
     @Order(0)
-    public void canRunPingProcess() {
+    public void canRunNsLookupProcess() {
     
         // Initialize test
-        LOGGER.info("\n\n================ Can Run Ping Test ================\n");
+        LOGGER.info("\n\n================ Can Run NS Lookup Test ================\n");
         ProcessExecutor procExec;
         Process proc;
         String taskScript;
@@ -89,22 +89,21 @@ public class ProcessExecutorTests {
         // Run
         LOGGER.info("Configuring process executor");
         procExec = new ProcessExecutor();
-        taskScript = "ping google.com";
+        taskScript = "nslookup google.com";
         try {
             LOGGER.info("Processing task:\t'{}'", taskScript);
-            proc = procExec.executeScript(taskScript, "ping-task", new HashMap<>());
+            proc = procExec.executeScript(taskScript, "ns-lookup-task", new HashMap<>());
             LOGGER.info("Task processing complete with exit code '{}'", proc.exitValue());
             assertionState = true;
         }
         catch (Exception ex) {
-            LOGGER.error("Unable to process task:\n'{}'", ex.getMessage());
-            ex.printStackTrace();
+            LOGGER.error("Unable to process task:\n'{}'", ex);
             assertionState = false;
         }
         
         // Evaluate test
         assertTrue(assertionState, "Failed to process test task");
-        LOGGER.info("\n\n================ Can Run Ping Test ================\n");
+        LOGGER.info("\n\n================ Can Run NS Lookup Test ================\n");
     }
     
     
@@ -133,8 +132,7 @@ public class ProcessExecutorTests {
             assertionState = true;
         }
         catch (Exception ex) {
-            LOGGER.error("Unable to process task:\n'{}'", ex.getMessage());
-            ex.printStackTrace();
+            LOGGER.error("Unable to process task:\n'{}'", ex);
             assertionState = false;
         }
         
@@ -161,16 +159,15 @@ public class ProcessExecutorTests {
         // Run
         LOGGER.info("Configuring process executor");
         procExec = new ProcessExecutor();
-        taskScript = "ping google.com";
+        taskScript = "nslookup google.com";
         try {
             LOGGER.info("Processing task:\t'{}'", taskScript);
-            taskLog = procExec.execute(taskScript, "ping-task", new HashMap<>());
+            taskLog = procExec.execute(taskScript, "nslookup-task", new HashMap<>());
             LOGGER.info("Task processing complete with exit code '{}'", taskLog.toJsonDoc());
             assertionState = true;
         }
         catch (Exception ex) {
-            LOGGER.error("Unable to process task:\n'{}'", ex.getMessage());
-            ex.printStackTrace();
+            LOGGER.error("Unable to process task:\n'{}'", ex);
             assertionState = false;
         }
         

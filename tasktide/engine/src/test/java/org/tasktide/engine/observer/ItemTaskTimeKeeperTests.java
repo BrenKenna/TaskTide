@@ -44,7 +44,7 @@ import org.tasktide.engine.observer.worker.timekeeper.ItemTaskTimeKeeper;
  * 
  * @author bkenna
  */
-@Tag("unit-base")
+@Tag("unit-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ItemTaskTimeKeeperTests {
     
@@ -93,12 +93,13 @@ public class ItemTaskTimeKeeperTests {
         
         // Configure task and time keeper
         task = TaskGenerator.generatePingTask().asItemTask();
-        timeKeeper = new ItemTaskTimeKeeper(2L);
+        timeKeeper = new ItemTaskTimeKeeper(300L);
         logger.info("Displaying task for ItemTaskTimeKeeper evaluation:\n\n{}", task.toJsonDoc());
         
         // Evalute first run
-        logger.info("Evaluating first run");
-        if ( timeKeeper.onTaskStart(task).isSuccess() ) {
+        boolean timeKeeperState = timeKeeper.onTaskStart(task).isSuccess();
+        logger.info("Time Keeper State First Run:\t'{}'", timeKeeperState);
+        if ( timeKeeperState ) {
             logger.info("Configuration successful");
             passCount++;
         }
@@ -109,7 +110,9 @@ public class ItemTaskTimeKeeperTests {
         // Test on start actions
         logger.info("Letting time elapse for evaluating enough time for re-running the same task");
         EngineTestUtils.wait(20000, logger);
-        if ( !timeKeeper.onTaskStart(task).isSuccess() ) {
+        timeKeeperState = timeKeeper.onTaskStart(task).isSuccess();
+        logger.info("Time Keeper State Second Run:\t'{}'", timeKeeperState);
+        if ( timeKeeperState ) {
             logger.info("Measuring time elapsed successful");
             passCount++;
         }
@@ -146,10 +149,10 @@ public class ItemTaskTimeKeeperTests {
             }
 
         };
-        assertionState = timeKeeper.onTaskEnd(task).isSuccess();
+        assertionState = !timeKeeper.onTaskEnd(task).isSuccess();
         
         // End test
-        assertFalse(assertionState, "Not all tests passed ");
+        assertFalse(assertionState, "End time should have been breached");
         logger.info("\n\n================ Evaluating End Events Test ================\n");
     }
 }

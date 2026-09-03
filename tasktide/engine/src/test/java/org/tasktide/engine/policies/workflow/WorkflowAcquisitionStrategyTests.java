@@ -54,12 +54,13 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
  *
  * @author Bren
  */
-@Tag("unit-pol")
+@Tag("unit-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowAcquisitionStrategyTests {
     
     private static final Logger LOGGER = LogManager.getLogger(WorkflowAcquisitionStrategyTests.class);
+    private final String WORKFLOW = "WorkflowAStrategyTests";
     private final String[] STEPS = { "Ping Tests", "Nslookup Tests" };
     
     private SeContainer container;
@@ -79,6 +80,12 @@ public class WorkflowAcquisitionStrategyTests {
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        
+        TestUtils.createWorkflow(this.WORKFLOW);
+        for ( String elm : this.STEPS ) {
+            TestUtils.createStep(elm, this.WORKFLOW);
+        }
+        
         TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS[0], ",");
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS[1], "|", ",");
     }
@@ -128,6 +135,7 @@ public class WorkflowAcquisitionStrategyTests {
                 .initBuilder()
                 .withItemState(ItemState.TODO)
                 .withWindowSize(100)
+                .withTarget(step)
             .build();
             policies.add(policy);
         }
@@ -137,7 +145,7 @@ public class WorkflowAcquisitionStrategyTests {
         strat = WorkflowStrategyType.SEQUENTIAL
             .initializeStrategyBuilder()
             .withPolicies(policies)
-            .withStrategyMode(WorkflowStrategyMode.EXHAUST)
+            .withStrategyMode(WorkflowStrategyMode.SCANNER)
         .build();
         
         // Fetch workload

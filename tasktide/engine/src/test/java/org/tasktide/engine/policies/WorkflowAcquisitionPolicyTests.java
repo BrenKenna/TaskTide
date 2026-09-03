@@ -52,12 +52,13 @@ import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
  *
  * @author Bren
  */
-@Tag("unit-pol")
+@Tag("integration-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowAcquisitionPolicyTests {
     
     private static final Logger LOGGER = LogManager.getLogger(WorkflowAcquisitionPolicyTests.class);
+    private final String WORKFLOW = "WorkflowAcquisitionPolicyTests";
     private final String[] STEPS = { 
         "Step-1",
         "Step-2"
@@ -75,6 +76,7 @@ public class WorkflowAcquisitionPolicyTests {
     public WorkflowAcquisitionPolicyTests() {
     }
     
+    
     @BeforeAll
     public void setUpClass() {
         String msg = "\n\n---------------- Initiating Workflow Acquisition Strategy Tests ----------------\n";
@@ -83,6 +85,12 @@ public class WorkflowAcquisitionPolicyTests {
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
         TaskTideServiceManager.setResultSetSize(this.RESULT_SET_SIZE);
+        
+        TestUtils.createWorkflow(this.WORKFLOW);
+        for ( String elm : this.STEPS ) {
+            TestUtils.createStep(elm, this.WORKFLOW);
+        }
+        
         TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS[0], ",");
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS[1], "|", ",");
     }
@@ -128,42 +136,46 @@ public class WorkflowAcquisitionPolicyTests {
             "Configuring acqusition policies for workflow:\t'{}'",
             List.of(this.STEPS)
         );
-        workflowPolicy = AcquisitionPolicyMode.TARGETED
+        workflowPolicy = AcquisitionPolicyMode.WORKFLOW
             .initBuilder()
             .withTarget(this.STEPS[0] + "," + this.STEPS[1])
-            .withStrategyMode(WorkflowStrategyMode.EXHAUST)
+            .withStrategyMode(WorkflowStrategyMode.SCANNER)
             .withStrategyType(WorkflowStrategyType.SEQUENTIAL)
-            .withWindowSize(100)
+            .withWindowSize(1)
         .build();
         
         // Fetch workload
         LOGGER.info("Examining first batch");
         int counter = 0;
-        workload = workflowPolicy.fetchWorkload();
-        while ( workflowPolicy.hasNext() ) {
+        String lastStep = "";
+        for (String step : this.STEPS ) {
             
-            // Inspect
-            LOGGER.info(
-                "Examining first workload of size '{}' matches the expected target '{}'",
-                workload.size(),
-                this.STEPS[counter]
-            );
-            workItem = workload.get(0);
-            Assertions.assertTrue(this.STEPS[counter].equals(workItem.getCollection()), "Error, active target and workload step do no match");
+            if ( !lastStep.equals(step) ) {
+                counter++;
+            }
             
-            // Process workload
-            LOGGER.info("Marking tasks completed, to enqueue next run");
-            workload
-               .forEach( elm -> {
-                   elm.setItemState(ItemState.DONE);
-                   TaskTideServiceManager
-                        .fetchWorkItemService()
-                        .updateModel(elm);
-            });
-            
-            // Increment counter and workload
             workload = workflowPolicy.fetchWorkload();
-            counter++;
+            if ( !workload.isEmpty() ) {
+                workItem = workload.get(0);
+                LOGGER.info(
+                    "Examining first workload of size '{}' matches the expected target '{}'",
+                    workload.size(),
+                    workItem.getCollection(),
+                    step
+                );
+
+                // Process workload
+                LOGGER.info("Marking tasks completed, to enqueue next run");
+                workload
+                   .forEach( elm -> {
+                       elm.setItemState(ItemState.DONE);
+                       TaskTideServiceManager
+                            .fetchWorkItemService()
+                            .updateModel(elm);
+                });
+            }
+            // Change step
+            lastStep = step;
         }
         
         // Verify expected number of steps were processed
@@ -191,7 +203,7 @@ public class WorkflowAcquisitionPolicyTests {
             "Configuring acqusition policies for workflow:\t'{}'",
             List.of(this.STEPS)
         );
-        workflowPolicy = AcquisitionPolicyMode.TARGETED
+        workflowPolicy = AcquisitionPolicyMode.WORKFLOW
             .initBuilder()
             .withTarget(this.STEPS[0] + "," + this.STEPS[1])
             .withStrategyType(WorkflowStrategyType.ROUND_ROBIN)

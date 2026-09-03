@@ -20,15 +20,25 @@ import java.util.Map;
 
 
 /**
- *
  * Generating ping tasks
  * 
  * @author bkenna
  */
-public class PingGenerator {
+public class PingGenerator extends ExampleGenerator {
 
+    /**
+     * Constructor
+     * 
+     */
     public PingGenerator() {}
 
+    
+    /**
+     * Generate ping command
+     * 
+     * @return 
+     */
+    @Override
     public Map<String, String> generateCmd() {
         Map<String, String> output = new HashMap<>();
         String host = HostList.getRandomHost();
