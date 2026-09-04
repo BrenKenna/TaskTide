@@ -36,10 +36,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 
-
-import org.tasktide.core.repository.RepositoryType;
-
-import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
@@ -58,7 +54,7 @@ import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
  *
  * @author Bren
  */
-@Tag("experimental-system-engine")
+@Tag("system-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowEngineWorkerTests {
@@ -66,7 +62,7 @@ public class WorkflowEngineWorkerTests {
     private static final Logger LOGGER = LogManager.getLogger(TargetedEngineWorkerTests.class);
     
     private final String WORKFLOW = "EngineWorker Workflow Acquisition Test";
-    private final String STEPS = "Ping,NS Lookups,Numero 3";
+    private final String STEPS = "Dig,NS Lookups,Numero 3";
     
     private final AcquisitionPolicyMode POLICY_MODE = AcquisitionPolicyMode.WORKFLOW;
 
@@ -92,11 +88,6 @@ public class WorkflowEngineWorkerTests {
         for ( String elm : this.STEPS.split(",") ) {
             TestUtils.createStep(elm, this.WORKFLOW);
         }
-        
-        // Import workload
-        LOGGER.info("Import workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
     }
     
     
@@ -139,7 +130,7 @@ public class WorkflowEngineWorkerTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-dig-tasks.txt", this.STEPS.split(",")[0], "|", ",");
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
@@ -197,7 +188,7 @@ public class WorkflowEngineWorkerTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-dig-tasks.txt", this.STEPS.split(",")[0], "|", ",");
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
@@ -258,7 +249,7 @@ public class WorkflowEngineWorkerTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-dig-tasks.txt", this.STEPS.split(",")[0], "|", ",");
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
@@ -322,7 +313,7 @@ public class WorkflowEngineWorkerTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-dig-tasks.txt", this.STEPS.split(",")[0], "|", ",");
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker

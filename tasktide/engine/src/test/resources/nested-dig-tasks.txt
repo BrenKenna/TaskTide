@@ -1,0 +1,5 @@
+Dig_Test_1|dig|lifestylesports.com,easons.com,aerlingus.com
+Dig_Test_2|dig|atu.ie,mtu.ie
+Dig_Test_3|dig|tcd.ie,dcu.ie,tud.ie,ucc.ie
+Dig_Test_4|dig|rte.ie,journal.ie,irishtime.com,independent.ie,irishexaminer.com
+Dig_Test_5|dig|supervalu.ie,dunnestores.com,centra.ie,musgravegroup.com
