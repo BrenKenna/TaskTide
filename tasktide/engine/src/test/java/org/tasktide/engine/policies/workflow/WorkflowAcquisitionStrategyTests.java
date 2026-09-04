@@ -54,7 +54,7 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
  *
  * @author Bren
  */
-@Tag("unit-engine")
+@Tag("experimental-integration-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowAcquisitionStrategyTests {

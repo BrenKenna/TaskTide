@@ -40,7 +40,7 @@ import org.tasktide.core.model.task.TaskLogging;
  *
  * @author bkenna
  */
-@Tag("unit-engine-active")
+@Tag("unit-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProcessExecutorTests {
     

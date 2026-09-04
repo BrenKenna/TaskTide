@@ -56,6 +56,7 @@ import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
 
 
 /**
@@ -63,13 +64,15 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
  *
  * @author Bren
  */
-@Tag("integration-ops")
+@Tag("unit-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkerUnitContainerTests {
     
     private static final Logger LOGGER = LogManager.getLogger(WorkerUnitContainerTests.class);
     
+    
+    private final String WORKFLOW = "Worker Unit Container";
     private final String STEP = "Nested NS Lookups";
     
     private SeContainer container;
@@ -91,12 +94,18 @@ public class WorkerUnitContainerTests {
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
         TestUtils.importTestRecords(
             "nested-nslookup-tasks.txt",
             this.STEP,
             "|",
             ","
         );
+        
+        TaskTideExecutorServiceProvider.reset();
+        WorkerUnitContainer.reset();
     }
     
     
@@ -154,6 +163,7 @@ public class WorkerUnitContainerTests {
         
         // Try configure process executor
         try {
+            TestUtils.resetWorkerContainers();
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
             procExec = workerUnit.getProcessExecutor();
@@ -197,6 +207,7 @@ public class WorkerUnitContainerTests {
         try {
             
             // Configure instance
+            TestUtils.resetWorkerContainers();
             workItemThreads = 3;
             itemTaskThreads = 3;
             workerUnit = WorkerUnitContainer.getInstance();
@@ -240,6 +251,7 @@ public class WorkerUnitContainerTests {
         
         // Try configure process executor
         try {
+            TestUtils.resetWorkerContainers();
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
             workerUnit.configureExecutorServices(3, 3);
@@ -281,6 +293,7 @@ public class WorkerUnitContainerTests {
         
         // Try configure process executor
         try {
+            TestUtils.resetWorkerContainers();
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
             workerUnit.configureExecutorServices(3, 3);
@@ -324,6 +337,7 @@ public class WorkerUnitContainerTests {
         
         // Try configure process executor
         try {
+            TestUtils.resetWorkerContainers();
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
             workerUnit.configureExecutorServices(3, 3);
@@ -368,6 +382,7 @@ public class WorkerUnitContainerTests {
         
         // Try configure process executor
         try {
+            TestUtils.resetWorkerContainers();
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
             workerUnit.configureExecutorServices(3, 3);
@@ -417,7 +432,7 @@ public class WorkerUnitContainerTests {
         
         // Try configure process executor
         try {
-            
+            TestUtils.resetWorkerContainers();
             workerUnit = WorkerUnitContainer.getInstance();
             workerUnit.configureProcessExecutor();
             workerUnit.configureExecutorServices(3, 3);

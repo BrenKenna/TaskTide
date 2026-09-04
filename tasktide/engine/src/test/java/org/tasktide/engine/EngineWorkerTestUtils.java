@@ -27,7 +27,7 @@ import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
 import org.tasktide.engine.worker.TaskTideEngineWorker;
-import org.tasktide.engine.worker.TaskTideEngineWorkerTests;
+import org.tasktide.engine.worker.TargetedEngineWorkerTests;
 
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
@@ -40,7 +40,7 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
  */
 public class EngineWorkerTestUtils {
     
-    private static final Logger LOGGER = LogManager.getLogger(TaskTideEngineWorkerTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(TargetedEngineWorkerTests.class);
     
     
     /**
@@ -186,6 +186,7 @@ public class EngineWorkerTestUtils {
     ) {
         
         // Initialize vars
+        TestUtils.resetWorkerContainers();
         WorkerUnitContainer workerUnit;
         TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
         
@@ -237,6 +238,7 @@ public class EngineWorkerTestUtils {
     ) {
         
         // Initialize vars
+        TestUtils.resetWorkerContainers();
         WorkerUnitContainer workerUnit;
         TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
         
@@ -293,6 +295,7 @@ public class EngineWorkerTestUtils {
     ) {
         
         // Initialize vars
+        TestUtils.resetWorkerContainers();
         WorkerUnitContainer workerUnit;
         TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
         
@@ -351,6 +354,7 @@ public class EngineWorkerTestUtils {
     ) {
         
         // Initialize vars
+        TestUtils.resetWorkerContainers();
         WorkerUnitContainer workerUnit;
         TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
         
@@ -412,6 +416,7 @@ public class EngineWorkerTestUtils {
     ) {
         
         // Initialize vars
+        TestUtils.resetWorkerContainers();
         WorkerUnitContainer workerUnit;
         TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
         

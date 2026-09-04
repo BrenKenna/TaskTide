@@ -54,17 +54,15 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
  *
  * @author Bren
  */
-@Tag("integration-ops")
+@Tag("system-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class TaskTideEngineWorkerTests {
+public class TargetedEngineWorkerTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(TaskTideEngineWorkerTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(TargetedEngineWorkerTests.class);
     
+    private final String WORKFLOW = "Targeted Engine Worker Tests";
     private final String STEP = "Nested NS Lookups";
-    
-    private SeContainer container;
-    private Template template;
     
     
     //private final ItemStoreType storeType = ItemStoreType.SQLITE;
@@ -75,7 +73,7 @@ public class TaskTideEngineWorkerTests {
     // @Rule
     // public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
     
-    public TaskTideEngineWorkerTests() {
+    public TargetedEngineWorkerTests() {
     }
     
     
@@ -83,12 +81,10 @@ public class TaskTideEngineWorkerTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Engine Worker Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        TestUtils.initSeContainer();
         
-        //ItemStoreRepositoryUtility.initialize(storeType, storeName);
-        //ItemStoreRepositoryUtility.get().initServiceManager();
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
         
         TestUtils.importTestRecords(
             "nested-nslookup-tasks.txt",
@@ -103,10 +99,6 @@ public class TaskTideEngineWorkerTests {
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Engine Worker Tests----------------\n";
         LOGGER.info(msg);
-        if (container != null && container.isRunning()) {
-            container.close();
-            LOGGER.info("CDI container shut down");
-        }
         // couchDB.stop();
     }
     
@@ -147,6 +139,7 @@ public class TaskTideEngineWorkerTests {
     public TaskTideEngineWorker getEngineWorker() {
         
         // Initialize vars
+        TestUtils.resetWorkerContainers();
         WorkerUnitContainer workerUnit;
         TaskTideWorkloadAcquisitionPolicy acquisitionPolicy;
         

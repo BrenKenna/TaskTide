@@ -20,9 +20,6 @@ import jakarta.enterprise.inject.se.SeContainer;
 
 import jakarta.nosql.Template;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -39,10 +36,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 
-import org.tasktide.core.manager.command.CommandSpec;
-import org.tasktide.core.manager.command.ManagerAction;
-import org.tasktide.core.manager.command.ManagerCommand;
-import org.tasktide.core.manager.command.ManagerTarget;
 
 import org.tasktide.core.repository.RepositoryType;
 
@@ -65,15 +58,15 @@ import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
  *
  * @author Bren
  */
-@Tag("integration-ops")
+@Tag("experimental-system-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class EngineWorkerWorkflowAcquisitionTests {
+public class ExperimentalWorkflowWorker_SystemTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(TaskTideEngineWorkerTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(TargetedEngineWorkerTests.class);
     
-    private final String WORKFLOW_NAME = "EngineWorker Workflow Acquisition Test";
-    private final String STEP = "Ping,NS Lookups,Numero 3";
+    private final String WORKFLOW = "EngineWorker Workflow Acquisition Test";
+    private final String STEPS = "Ping,NS Lookups,Numero 3";
     private final String FILE_PATH = "src/test/resources/nested-nslookup-tasks.txt";
     
     private final AcquisitionPolicyMode POLICY_MODE = AcquisitionPolicyMode.WORKFLOW;
@@ -89,7 +82,7 @@ public class EngineWorkerWorkflowAcquisitionTests {
     // @Rule
     // public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
     
-    public EngineWorkerWorkflowAcquisitionTests() {
+    public ExperimentalWorkflowWorker_SystemTests() {
     }
     
     
@@ -100,7 +93,16 @@ public class EngineWorkerWorkflowAcquisitionTests {
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = (Template) TestEnvironment.fetchDocumentTemplate(container);
         TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        this.setupWorkflow();
+        
+        TestUtils.createWorkflow(this.WORKFLOW);
+        for ( String elm : this.STEPS.split(",") ) {
+            TestUtils.createStep(elm, this.WORKFLOW);
+        }
+        
+        // Import workload
+        LOGGER.info("Import workload");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
     }
     
     
@@ -128,60 +130,6 @@ public class EngineWorkerWorkflowAcquisitionTests {
 
     
     /**
-     * Setup workflow for testing
-     * 
-     */
-    public void setupWorkflow() {
-
-        // Initialize vars
-        CommandSpec cmdSpec;
-        ManagerCommand cmd;
-        Map<String, Object> opts;
-        
-        // Setup options map
-        opts = new HashMap<>();
-        opts.put("Workflow Name", this.WORKFLOW_NAME);
-        opts.put("Step Name", this.STEP.split(",")[0]);
-        cmdSpec = new CommandSpec(this.FILE_PATH, "", opts);
-        
-        // Create workflow
-        LOGGER.info("Creating workflow:\t'{}'", this.WORKFLOW_NAME);
-        cmd = ManagerAction.ADD.makeCommand(ManagerTarget.WORKFLOW, cmdSpec);
-        LOGGER.info("Displaying workflow creation cmd:\n\n'{}'", cmd.toJsonDoc());
-        cmd.execute();
-        LOGGER.info("Command result:\t'{}'", cmd.execute());
-        
-        // Create first step
-        LOGGER.info("Creating step:\t'{}'", this.STEP.split(",")[0]);
-        cmd = ManagerAction.ADD.makeCommand(ManagerTarget.STEP, cmdSpec);
-        LOGGER.info("Displaying step creation cmd:\n\n'{}'", cmd.toJsonDoc());
-        LOGGER.info("Command result:\t'{}'", cmd.execute());
-        
-        // Create second step
-        LOGGER.info("Creating step:\t'{}'", this.STEP.split(",")[1]);
-        opts = new HashMap<>();
-        opts.put("Workflow Name", this.WORKFLOW_NAME);
-        opts.put("Step Name", this.STEP.split(",")[1]);
-        cmdSpec = new CommandSpec(this.FILE_PATH, "", opts);
-        cmd = ManagerAction.ADD.makeCommand(ManagerTarget.STEP, cmdSpec);
-        LOGGER.info("Displaying workflow creation cmd:\n\n'{}'", cmd.toJsonDoc());
-        cmd.execute();
-        LOGGER.info("Command result:\t'{}'", cmd.execute());
-        
-        // Create third step
-        LOGGER.info("Creating step:\t'{}'", this.STEP.split(",")[2]);
-        opts = new HashMap<>();
-        opts.put("Workflow Name", this.WORKFLOW_NAME);
-        opts.put("Step Name", this.STEP.split(",")[2]);
-        cmdSpec = new CommandSpec(this.FILE_PATH, "", opts);
-        cmd = ManagerAction.ADD.makeCommand(ManagerTarget.STEP, cmdSpec);
-        LOGGER.info("Displaying workflow creation cmd:\n\n'{}'", cmd.toJsonDoc());
-        cmd.execute();
-        LOGGER.info("Command result:\t'{}'", cmd.execute());
-    }
-
-    
-    /**
      * Tests running engine in batch mode with using the
      *  Sequential Exhaustion of targeted workflow
      * 
@@ -196,15 +144,11 @@ public class EngineWorkerWorkflowAcquisitionTests {
         WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
         WorkflowStrategyType stratType = WorkflowStrategyType.SEQUENTIAL;
         WorkflowStrategyMode stratMode = WorkflowStrategyMode.EXHAUST;
-        
-        // Import workload
-        LOGGER.info("Import workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
-        
+
         // Fetch engine worker
         LOGGER.info("Configuring engine worker for:\t'{}' '{}' mode, no iteration limit", stratType, stratMode);
-        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEP, stratType, stratMode);
+        TestUtils.resetWorkerContainers();
+        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEPS, stratType, stratMode);
         
         // Run engine
         LOGGER.info(
@@ -224,120 +168,6 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Log complete
         LOGGER.info("\n\n================ Can Run Batch Sequential Exhaustive Workflow Worker =================\n");
-    }
-    
-
-    /**
-     * Tests running engine in batch mode with using the
-     *  Sequential Scanner of targeted workflow
-     * 
-     */
-    @Test
-    @Order(1)
-    public void canRunEngineBatchSequentialScannerMode() {
-
-        // Configure test
-        LOGGER.info("\n\n================= Can Run Batch Sequential Scanner Workflow Worker =================\n");
-        TaskTideEngineWorker worker;
-        WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
-        WorkflowStrategyType stratType = WorkflowStrategyType.SEQUENTIAL;
-        WorkflowStrategyMode stratMode = WorkflowStrategyMode.SCANNER;
-        int ITERATION_LIMIT = 1;
-        int RESULT_SET_LIMIT = 1;
-        
-        // Import workload
-        LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
-        
-        // Fetch engine worker
-        LOGGER.info(
-            "Configuring engine worker for:\t'{}' '{}' mode, with iteration limit",
-            stratType,
-            stratMode
-        );
-        LOGGER.info(
-            "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
-            ITERATION_LIMIT, RESULT_SET_LIMIT
-        );
-        TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEP, stratType, stratMode, ITERATION_LIMIT);
-        
-        // Run engine
-        LOGGER.info(
-            "Running '{}' '{}' of workflow in '{}' mode",
-            stratType, stratMode, executionPolicy
-        );
-        try {
-            worker.runEngine(executionPolicy);
-        }
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error(
-                "Error running '{}' '{}' of workflow in '{}' mode:\n\n'{}'",
-                stratType, stratMode, executionPolicy, ex
-            );
-        }
-        LOGGER.info("Engine processing completed");
-        
-        // Log complete
-        LOGGER.info("\n\n================ Can Run Batch Sequential Scanner Workflow Worker =================\n");
-    }
-    
-    
-    /**
-     * Tests running engine in batch mode with using the
-     *  Round Robin Scanner of targeted workflow
-     * 
-     */
-    @Test
-    @Order(2)
-    public void canRunEngineBatchRoundRobinScannerMode() {
-
-        // Configure test
-        LOGGER.info("\n\n================= Can Run Batch Round Robin Scanner Workflow Worker =================\n");
-        TaskTideEngineWorker worker;
-        WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
-        WorkflowStrategyType stratType = WorkflowStrategyType.ROUND_ROBIN;
-        WorkflowStrategyMode stratMode = WorkflowStrategyMode.SCANNER;
-        int ITERATION_LIMIT = 4;
-        int RESULT_SET_LIMIT = 1;
-        
-        // Import workload
-        LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
-        
-        // Fetch engine worker
-        LOGGER.info(
-            "Configuring engine worker for:\t'{}' '{}' mode, with iteration limit",
-            stratType,
-            stratMode
-        );
-        LOGGER.info(
-            "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
-            ITERATION_LIMIT, RESULT_SET_LIMIT
-        );
-        TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEP, stratType, stratMode, ITERATION_LIMIT);
-        
-        // Run engine
-        LOGGER.info(
-            "Running '{}' '{}' of workflow in '{}' mode",
-            stratType, stratMode, executionPolicy
-        );
-        try {
-            worker.runEngine(executionPolicy);
-        }
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error(
-                "Error running '{}' '{}' of workflow in '{}' mode:\n\n'{}'",
-                stratType, stratMode, executionPolicy, ex
-            );
-        }
-        LOGGER.info("Engine processing completed");
-        
-        // Log complete
-        LOGGER.info("\n\n================ Can Run Batch Round Robin Scanner Workflow Worker =================\n");
     }
     
     
@@ -361,8 +191,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
         LOGGER.info(
@@ -374,8 +204,9 @@ public class EngineWorkerWorkflowAcquisitionTests {
             "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
+        TestUtils.resetWorkerContainers();
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEP, stratType, stratMode, ITERATION_LIMIT);
+        worker = EngineWorkerTestUtils.getEngineWorker(this.POLICY_MODE, this.STEPS, stratType, stratMode, ITERATION_LIMIT);
         
         // Run engine
         LOGGER.info(
@@ -400,138 +231,13 @@ public class EngineWorkerWorkflowAcquisitionTests {
     
     /**
      * Tests running engine in batch mode with using the
-     *  {@link WorkflowStrategyType.ROUND_ROBIN} {@link WorkflowStrategyMode.SCANNER}
-     *  of targeted workflow
-     * 
-     */
-    @Test
-    @Order(4)
-    public void canRunEngineBatchRoundRobinScannerMode_Parallel() {
-
-        // Configure test
-        LOGGER.info("\n\n================= Can Run Parallel Batch Round Robin Scanner Workflow Workers =================\n");
-        TaskTideEngineWorker worker;
-        WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
-        WorkflowStrategyType stratType = WorkflowStrategyType.ROUND_ROBIN;
-        WorkflowStrategyMode stratMode = WorkflowStrategyMode.SCANNER;
-        int ITERATION_LIMIT = 4,
-            RESULT_SET_LIMIT = 1,
-            WINDOW_SIZE = 4,
-        POOL_SIZE = 2;
-        
-        // Import workload
-        LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
-        
-        // Fetch engine worker
-        LOGGER.info(
-            "Configuring engine worker for:\t'{}' '{}' mode, with iteration limit",
-            stratType,
-            stratMode
-        );
-        LOGGER.info(
-            "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
-            ITERATION_LIMIT, RESULT_SET_LIMIT
-        );
-        TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = EngineWorkerTestUtils.getEngineWorker(
-            this.POLICY_MODE, this.STEP, stratType, stratMode,
-            POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT
-        );
-        
-        // Run engine
-        LOGGER.info(
-            "Running '{}' '{}' of workflow in '{}' mode",
-            stratType, stratMode, executionPolicy
-        );
-        try {
-            worker.runEngine(executionPolicy);
-        }
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error(
-                "Error running '{}' '{}' of workflow in '{}' mode:\n\n'{}'",
-                stratType, stratMode, executionPolicy, ex
-            );
-        }
-        LOGGER.info("Engine processing completed");
-        
-        // Log complete
-        LOGGER.info("\n\n================ Can Run Parallel Batch Round Robin Scanner Workflow Workers =================\n");
-    }
-    
-    
-    /**
-     * Tests running engine in batch mode with using the
-     *  {@link WorkflowStrategyType.SEQUENTIAL} {@link WorkflowStrategyMode.SCANNER}
-     *  of targeted workflow
-     * 
-     */
-    @Test
-    @Order(5)
-    public void canRunEngineBatchSequentialScannerMode_Parallel() {
-
-        // Configure test
-        LOGGER.info("\n\n================= Can Run Parallel Batch Sequential Scanner Workflow Workers =================\n");
-        TaskTideEngineWorker worker;
-        WorkerExecutionPolicy executionPolicy = WorkerExecutionPolicy.BATCH;
-        WorkflowStrategyType stratType = WorkflowStrategyType.SEQUENTIAL;
-        WorkflowStrategyMode stratMode = WorkflowStrategyMode.SCANNER;
-        int ITERATION_LIMIT = 6,
-            RESULT_SET_LIMIT = 1,
-            WINDOW_SIZE = 4,
-        POOL_SIZE = 1;
-        
-        // Import workload
-        LOGGER.info("Importing workload");
-        // TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        // TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
-        
-        // Fetch engine worker
-        LOGGER.info(
-            "Configuring engine worker for:\t'{}' '{}' mode, with iteration limit",
-            stratType,
-            stratMode
-        );
-        LOGGER.info(
-            "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
-            ITERATION_LIMIT, RESULT_SET_LIMIT
-        );
-        TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
-        worker = EngineWorkerTestUtils.getEngineWorker(
-            this.POLICY_MODE, this.STEP, stratType, stratMode,
-            POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT
-        );
-        
-        // Run engine
-        LOGGER.info(
-            "Running '{}' '{}' of workflow in '{}' mode",
-            stratType, stratMode, executionPolicy
-        );
-        try {
-            worker.runEngine(executionPolicy);
-        }
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error(
-                "Error running '{}' '{}' of workflow in '{}' mode:\n\n'{}'",
-                stratType, stratMode, executionPolicy, ex
-            );
-        }
-        LOGGER.info("Engine processing completed");
-        
-        // Log complete
-        LOGGER.info("\n\n================ Can Run Parallel Batch Sequential Scanner Workflow Workers =================\n");
-    }
-    
-    
-    /**
-     * Tests running engine in batch mode with using the
      *  {@link WorkflowStrategyType.SEQUENTIAL} {@link WorkflowStrategyMode.EXHAUST}
      *  of targeted workflow
      * 
      */
     @Test
     @Order(6)
+    @Tag("experiemental-system-engine")
     public void canRunEngineBatchSequentialExhaustMode_Parallel() {
 
         // Configure test
@@ -547,8 +253,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        // TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        // TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
         LOGGER.info(
@@ -560,9 +266,10 @@ public class EngineWorkerWorkflowAcquisitionTests {
             "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
+        TestUtils.resetWorkerContainers();
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
         worker = EngineWorkerTestUtils.getEngineWorker(
-            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            this.POLICY_MODE, this.STEPS, stratType, stratMode,
             POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT
         );
         
@@ -610,8 +317,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        // TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        // TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
         LOGGER.info(
@@ -623,9 +330,10 @@ public class EngineWorkerWorkflowAcquisitionTests {
             "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
+        TestUtils.resetWorkerContainers();
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
         worker = EngineWorkerTestUtils.getEngineWorker(
-            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            this.POLICY_MODE, this.STEPS, stratType, stratMode,
             POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT
         );
         
@@ -674,8 +382,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
         LOGGER.info(
@@ -687,9 +395,10 @@ public class EngineWorkerWorkflowAcquisitionTests {
             "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
+        TestUtils.resetWorkerContainers();
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
         worker = EngineWorkerTestUtils.getEngineWorker(
-            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            this.POLICY_MODE, this.STEPS, stratType, stratMode,
             POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT, SHOULD_CYCLE_TOGGLE
         );
         
@@ -739,8 +448,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
         LOGGER.info(
@@ -752,9 +461,10 @@ public class EngineWorkerWorkflowAcquisitionTests {
             "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
+        TestUtils.resetWorkerContainers();
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
         worker = EngineWorkerTestUtils.getEngineWorker(
-            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            this.POLICY_MODE, this.STEPS, stratType, stratMode,
             POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT, SHOULD_CYCLE_TOGGLE
         );
         
@@ -802,8 +512,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
         LOGGER.info(
@@ -815,9 +525,10 @@ public class EngineWorkerWorkflowAcquisitionTests {
             "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
+        TestUtils.resetWorkerContainers();
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
         worker = EngineWorkerTestUtils.getEngineWorker(
-            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            this.POLICY_MODE, this.STEPS, stratType, stratMode,
             POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT
         );
         
@@ -865,8 +576,8 @@ public class EngineWorkerWorkflowAcquisitionTests {
         
         // Import workload
         LOGGER.info("Importing workload");
-        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP.split(",")[0], ",");
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP.split(",")[1], "|", ",");
+        TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEPS.split(",")[0], ",");
+        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEPS.split(",")[1], "|", ",");
         
         // Fetch engine worker
         LOGGER.info(
@@ -878,9 +589,10 @@ public class EngineWorkerWorkflowAcquisitionTests {
             "Scanner Iteration Limit = '{}', TaskTide-Service-Manager Result Set Limit = '{}'",
             ITERATION_LIMIT, RESULT_SET_LIMIT
         );
+        TestUtils.resetWorkerContainers();
         TaskTideServiceManager.setResultSetSize(RESULT_SET_LIMIT);
         worker = EngineWorkerTestUtils.getEngineWorker(
-            this.POLICY_MODE, this.STEP, stratType, stratMode,
+            this.POLICY_MODE, this.STEPS, stratType, stratMode,
             POOL_SIZE, WINDOW_SIZE, ITERATION_LIMIT
         );
         

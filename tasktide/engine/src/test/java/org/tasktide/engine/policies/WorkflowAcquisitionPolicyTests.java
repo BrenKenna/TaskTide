@@ -52,7 +52,7 @@ import org.tasktide.engine.policies.workflow.WorkflowStrategyType;
  *
  * @author Bren
  */
-@Tag("integration-engine")
+@Tag("experiemental-integration-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowAcquisitionPolicyTests {
@@ -64,9 +64,6 @@ public class WorkflowAcquisitionPolicyTests {
         "Step-2"
     };
     private final int RESULT_SET_SIZE = 2;
-    
-    private SeContainer container;
-    private Template template;
     
     
     // CouchDB container
@@ -81,10 +78,7 @@ public class WorkflowAcquisitionPolicyTests {
     public void setUpClass() {
         String msg = "\n\n---------------- Initiating Workflow Acquisition Strategy Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        TaskTideServiceManager.setResultSetSize(this.RESULT_SET_SIZE);
+        TestUtils.initSeContainer();
         
         TestUtils.createWorkflow(this.WORKFLOW);
         for ( String elm : this.STEPS ) {
@@ -99,10 +93,6 @@ public class WorkflowAcquisitionPolicyTests {
     public void tearDownClass() {
         String msg = "\n\n---------------- Initiating Workflow Acquisition Strategy Tests ----------------\n";
         LOGGER.info(msg);
-        if (container != null && container.isRunning()) {
-            container.close();
-            LOGGER.info("CDI container shut down");
-        }
         // couchDB.stop();
     }
     

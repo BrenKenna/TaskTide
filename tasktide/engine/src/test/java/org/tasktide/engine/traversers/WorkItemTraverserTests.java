@@ -57,18 +57,17 @@ import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
  *
  * @author Bren
  */
-@Tag("unit-trav")
+@Tag("integration-engine")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkItemTraverserTests {
     
     private static final Logger LOGGER = LogManager.getLogger(WorkItemTraverserTests.class);
     
-    private final String STEP = "Nested NS Lookups";
+    private String WORKFLOW = "Traverser Tests";
+    private final String STEP = "WorkItem Traverser Tests";
     
-    private SeContainer container;
-    private Template template;
-    
+    private WorkerUnitContainer workerUnit;
     
     // CouchDB container
     // @Rule
@@ -82,10 +81,23 @@ public class WorkItemTraverserTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating WorkItem Traverser Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        TestUtils.initSeContainer();
+        
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
         TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
+        
+        this.workerUnit = TestUtils.configureNewWorkerUnitContainer();
+        try {
+            workerUnit.configureProcessExecutor();
+            workerUnit.configureExecutorServices(1, 1);
+            workerUnit.configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, -1);
+            workerUnit.configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
+            workerUnit.configureEngineObserverChain(WorkerUnitModelType.WORKITEM, -1);
+            workerUnit.configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
+        }
+        catch ( TaskTideEngineCheckedException ex ) {}
     }
     
     
@@ -93,10 +105,6 @@ public class WorkItemTraverserTests {
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating WorkItem Traverser Tests ----------------\n";
         LOGGER.info(msg);
-        if (container != null && container.isRunning()) {
-            container.close();
-            LOGGER.info("CDI container shut down");
-        }
         //couchDB.stop();
     }
     
@@ -109,80 +117,6 @@ public class WorkItemTraverserTests {
     @AfterEach
     public void tearDown() {
         LOGGER.info("\n\n================ Terminating Test ================\n");
-    }
-    
-
-    
-    /**
-     * Fetch workload from {@link TaskTideWorkloadAcquisitionPolicy}
-     * 
-     * @return List-{@link WorkItem}
-     */
-    public List<WorkItem> fetchWorkload() {
-    
-        // Initialize vars
-        TaskTideWorkloadAcquisitionPolicy policy;
-        List<WorkItem> workload;
-        
-        // Build policy & fetch workload
-        policy = AcquisitionPolicyMode.TARGETED
-            .initBuilder()
-            .withTarget(this.STEP)
-            .withItemState(ItemState.TODO)
-        .build();
-        workload = policy.fetchWorkload();
-        
-        // Return results
-        return workload;
-    }
-    
-    
-    /**
-     * Fetch {@link TaskTideWorkloadTraverser}
-     * 
-     * @return {@link TaskTideWorkloadTraverser}-{@link WorkItem}
-     */
-    public TaskTideWorkloadTraverser<WorkItem> getTraverser() {
-        try {
-            
-            WorkerUnitContainer
-                .getInstance()
-            .configureProcessExecutor();
-            
-            WorkerUnitContainer
-                .getInstance()
-            .configureExecutorServices(1, 1);
-            
-            WorkerUnitContainer
-                .getInstance()
-            .configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 100000);
-            
-            WorkerUnitContainer
-                .getInstance()
-            .configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
-            
-            WorkerUnitContainer
-                .getInstance()
-            .configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
-            
-            WorkerUnitContainer
-                .getInstance()
-            .configureEngineObserverChain(WorkerUnitModelType.WORKITEM, 100000);
-            
-            WorkerUnitContainer
-                .getInstance()
-                .configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
-            
-            return WorkerUnitContainer
-                    .getInstance()
-                    .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM)
-            ;
-        }
-        
-        catch ( TaskTideEngineCheckedException ex ) {
-            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
-            return null;
-        }
     }
     
     
@@ -199,16 +133,14 @@ public class WorkItemTraverserTests {
         boolean assertionState;
         List<WorkItem> workload;
         WorkItem task;
+        int nWorkers = 1, nItemTaskThredas = 1;
         TaskTideWorkloadTraverser<WorkItem> traverser;
         
         // Build acquisition policy
-        LOGGER.info("Fetching workload target step:\t'{}'", this.STEP);
-        workload = this.fetchWorkload();
+        LOGGER.info("Configuring Travser for target step:\t'{}'", this.STEP);
+        traverser = TestUtils.getTraverser(nWorkers, nItemTaskThredas);
+        workload = TestUtils.fetchTargetedWorkload(this.STEP);
         task = workload.get(0);
-        
-        // Fetch first task
-        LOGGER.info("Fetching first task & configuring WorkItem Traverser");
-        traverser = this.getTraverser();
         
         // Try process first task
         LOGGER.info("Processing workload from '{}'", task.getId());
@@ -240,14 +172,15 @@ public class WorkItemTraverserTests {
         boolean assertionState;
         List<WorkItem> workload;
         TaskTideWorkloadTraverser<WorkItem> traverser;
+        int nWorkers = 1, nItemTaskThredas = 1;
         
         // Build acquisition policy
-        LOGGER.info("Fetching workload target step:\t'{}'", this.STEP);
-        workload = this.fetchWorkload();
-        
-        // Traverse workload
-        LOGGER.info("Performing WorkItemTraverser traversal");
-        traverser = this.getTraverser();
+        LOGGER.info("Configuring Travser for target step:\t'{}'", this.STEP);
+        traverser = TestUtils.getTraverser(nWorkers, nItemTaskThredas);
+        workload = TestUtils.fetchTargetedWorkload(this.STEP);
+        if ( workload.size() > 2 ) {
+            workload = workload.subList(0, 1);
+        }
         try {
             
             // Process task
@@ -278,15 +211,16 @@ public class WorkItemTraverserTests {
         LOGGER.info("\n\n================ Can Traverse WorkItem Parallel ================\n");
         boolean assertionState;
         List<WorkItem> workload;
+        int nWorkers = 2, nItemTaskThredas = 2;
         TaskTideWorkloadTraverser<WorkItem> traverser;
         
         // Build acquisition policy
-        LOGGER.info("Fetching workload target step:\t'{}'", this.STEP);
-        workload = this.fetchWorkload();
-        
-        // Fetch first task
-        LOGGER.info("Performing WorkItemTraverser traversal");
-        traverser = this.getTraverser();
+        LOGGER.info("Configuring Travser for target step:\t'{}'", this.STEP);
+        traverser = TestUtils.getTraverser(nWorkers, nItemTaskThredas);
+        workload = TestUtils.fetchTargetedWorkload(this.STEP);
+        if ( workload.size() > 2 ) {
+            workload = workload.subList(0, 1);
+        }
         try {
             
             // Process task

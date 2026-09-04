@@ -35,19 +35,17 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.tasktide.core.manager.TaskTideServiceManager;
 
-import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
-
 import org.tasktide.core.manager.generator.ExampleGenerators;
-import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
+
 import org.tasktide.engine.EngineTestUtils;
 import org.tasktide.engine.TestEnvironment;
 import org.tasktide.engine.TestUtils;
+
 import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
 
 
@@ -62,8 +60,7 @@ import org.tasktide.engine.workerunit.TaskTideWorkerUnit;
 public class ItemTaskExecutorTests {
     
     private static final Logger logger = LogManager.getLogger(ItemTaskExecutorTests.class);
-    private SeContainer container;
-    private Template template;
+
     
     // CouchDB container
     //@Rule
@@ -76,9 +73,7 @@ public class ItemTaskExecutorTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating ItemTask Executor Tests ----------------\n";
         logger.info(msg);
-        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        TestUtils.initSeContainer();
     }
     
     
@@ -86,10 +81,7 @@ public class ItemTaskExecutorTests {
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating ItemTask Executor Tests ----------------\n";
         logger.info(msg);
-        if (container != null && container.isRunning()) {
-            container.close();
-            logger.info("CDI container shut down");
-        }
+
         //couchDB.stop();
     }
     

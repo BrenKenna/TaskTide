@@ -62,10 +62,20 @@ import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
+import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
+import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
+import org.tasktide.engine.worker.TaskTideEngineWorker;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
+import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDbStore;
@@ -79,6 +89,9 @@ import org.tasktide.itemstore.RocksDbStore;
 public class TestUtils {
     
     private static final Logger LOGGER = LogManager.getLogger(TestUtils.class);
+    
+    private static SeContainer container;
+    private static Template template;
     
     
     /**
@@ -438,5 +451,114 @@ public class TestUtils {
         cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
         
         return cmd.execute();
+    }
+    
+    
+    /**
+     * Configure a new {@link WorkerUnitContaier}
+     * 
+     * @return {@link TaskTideEngineWorker}
+     */
+    public static WorkerUnitContainer configureNewWorkerUnitContainer() {
+        
+        // Initialize vars
+        WorkerUnitContainer.reset();
+        TaskTideExecutorServiceProvider.reset();
+        return WorkerUnitContainer.getInstance();
+    }
+    
+    
+    /**
+     * Fetch workload from {@link TaskTideWorkloadAcquisitionPolicy}
+     * 
+     * @return List-{@link WorkItem}
+     */
+    public static List<WorkItem> fetchTargetedWorkload(String step) {
+    
+        // Initialize vars
+        TaskTideWorkloadAcquisitionPolicy policy;
+        List<WorkItem> workload;
+        
+        // Build policy & fetch workload
+        policy = AcquisitionPolicyMode.TARGETED
+            .initBuilder()
+            .withTarget(step)
+            .withItemState(ItemState.TODO)
+        .build();
+        workload = policy.fetchWorkload();
+        
+        // Return results
+        return workload;
+    }
+    
+    
+    
+    /**
+     * Configure new {@link TaskTideWorkloadTraverser} with required parallelism parameters
+     * 
+     * @param nWorkerThreads
+     * @param nItemTaskThreads
+     * @return {@link TaskTideWorkloadTraverser}
+     */
+    public static TaskTideWorkloadTraverser<WorkItem> getTraverser(int nWorkerThreads, int nItemTaskThreads) {
+        WorkerUnitContainer.reset();
+        TaskTideExecutorServiceProvider.reset();
+        
+        try {
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureProcessExecutor();
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureExecutorServices(nWorkerThreads, nItemTaskThreads);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 100000);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineObserverChain(WorkerUnitModelType.WORKITEM, 100000);
+            
+            WorkerUnitContainer
+                .getInstance()
+                .configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
+            
+            return WorkerUnitContainer
+                    .getInstance()
+                    .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM)
+            ;
+        }
+        
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
+            return null;
+        }
+    }
+    
+    
+    public static void resetWorkerContainers() {
+        WorkerUnitContainer.reset();
+        TaskTideExecutorServiceProvider.reset();
+    }
+    
+    
+    
+    public static void initSeContainer() {
+        if ( container == null ) {
+            container = TestEnvironment.startWeldContainer("couchDB-config.properties", TestUtils.class);
+            template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+            TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        }
     }
 }

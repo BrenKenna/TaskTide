@@ -63,10 +63,6 @@ public class WorkItemAcquisitionTests {
     private static final Logger LOGGER = LogManager.getLogger(WorkItemAcquisitionTests.class);
     private final String STEP = "Ping Tests";
     
-    private SeContainer container;
-    private Template template;
-    
-    
     // CouchDB container
     // @Rule
     // public GenericContainer couchDB = (GenericContainer) TestEnvironment.couchDbContainer("tasktide_database", false);
@@ -79,9 +75,7 @@ public class WorkItemAcquisitionTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating WorkItem Acquisition Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        TestUtils.initSeContainer();
         TestUtils.importTestRecords("singleTaskImports-Delim2.txt", this.STEP, ",");
     }
     
@@ -90,10 +84,6 @@ public class WorkItemAcquisitionTests {
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating WorkItem Acquisition Tests ----------------\n";
         LOGGER.info(msg);
-        if (container != null && container.isRunning()) {
-            container.close();
-            LOGGER.info("CDI container shut down");
-        }
         // couchDB.stop();
     }
     

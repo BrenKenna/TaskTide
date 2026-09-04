@@ -52,6 +52,12 @@ def parserTestTags = [
 
 // Define logging scope for all tests
 tasks.withType(Test).configureEach {
+
+    // Ensures that tests operating with shared containers
+    //   do not collide on conflicting config requirements
+    maxParallelForks = 1
+    systemProperty 'junit.jupiter.execution.parallel.enabled', 'false'
+    
     testLogging {
         showStandardStreams = true
         events "passed", "skipped", "failed", "standardOut", "standardError"
