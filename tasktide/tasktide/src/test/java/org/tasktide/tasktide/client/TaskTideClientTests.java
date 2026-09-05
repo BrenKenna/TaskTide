@@ -52,7 +52,7 @@ import org.tasktide.tasktide.containerprovider.CdiProviders;
  *
  * @author bkenna
  */
-@Tag("unit-client")
+@Tag("system-tasktide")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TaskTideClientTests {
     

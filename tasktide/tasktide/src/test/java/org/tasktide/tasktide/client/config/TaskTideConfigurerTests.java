@@ -37,13 +37,14 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.parser.ArgumentTree;
 
 import org.tasktide.parser.configuration.TaskTideConfig;
+import org.tasktide.tasktide.TestUtils;
 
 /**
  * Tests TaskTideConfigurer 
  * 
  * @author bkenna
  */
-@Tag("unit-client")
+@Tag("unit-tasktide")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TaskTideConfigurerTests {
@@ -63,6 +64,7 @@ public class TaskTideConfigurerTests {
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Configuration Tests ----------------\n";
         LOGGER.info(msg);
+        TestUtils.initSeContainer();
     }
     
     @BeforeEach

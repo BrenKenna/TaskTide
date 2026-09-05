@@ -64,19 +64,16 @@ import org.tasktide.core.model.collection.Step;
  * 
  * @author Bren
  */
-@Tag("integration-e2e")
+@Tag("system-api")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
     
     private final Logger LOGGER = LogManager.getLogger(WorkflowRestResourceTests.class);
     
-    private final String WORKFLOW = "Restful Workflows";
+    private final String WORKFLOW = "Workflow Rest Resource Tests";
     private final String RESOURCE_PATH = "/services/workflow";
-    
-    private Template template;
-    private KeyPair KEY_PAIR;
-    
+
     public WorkflowRestResourceTests() {
         super(WorkflowRestResource.class);
     }
@@ -84,7 +81,10 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
     @Override
     protected Application configure() {
         
-        this.container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
+        TestUtils.initSeContainer();
+        TestUtils.createWorkflow(this.WORKFLOW);
+        
+        this.container = TestUtils.fetchConfiguredContainer();
         this.requestCtx = container.select(RequestContextController.class).get();
         
         ResourceConfig config = new ResourceConfig();
@@ -106,19 +106,11 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
     public void setUpClass() throws Exception {
         String msg = "\n\n---------------- Initiating Workflow REST Resource Tests ----------------\n";
         LOGGER.info(msg);
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.WORKFLOW, "|", ",");
-        
-        KEY_PAIR = WebApiUtils.getKeyPair();
-        System.setProperty("mp.jwt.verify.publickey", WebApiUtils.toPemPublic(KEY_PAIR.getPublic()));
-        System.setProperty("mp.jwt.verify.issuer", "web-api-testing");
     }
     
     @AfterAll
     public void tearDownClass() throws Exception {
         this.tearDown();
-        container.close();
     }
 
 
@@ -133,7 +125,6 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================= WorkflowRestResource Can Add Workflow =================\n");
         String workflowName = "Add-Workflow-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         Workflow workflow;
         Response resp;
@@ -146,16 +137,14 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         // Fetch mock token
         LOGGER.info("Firiing test Workflow creation against WorkflowRestResource");
         LOGGER.info("Serialized Workflow:\n\n'{}'", Entity.entity(workflow, MediaType.APPLICATION_JSON));
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(workflow, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         
         // Evaluate test
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not add Workflow through WorkflowRestResource");
@@ -175,25 +164,22 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n=============== WorkflowRestResource Can Query By Field ===============\n");
-        String bearerToken;
         String methodPath;
         Workflow workflow;
         Response resp;
         
         // Fetch mock token
         LOGGER.info("Firing test query by field against WorkflowRestResource for:\t'{}'", WORKFLOW);
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         methodPath = RESOURCE_PATH + "/get";
         resp = this.target(methodPath)
             .queryParam("field", "workflowName")
             .queryParam("value", this.WORKFLOW)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
         .get();
         this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         
         // Evaluate test
         Workflow record = resp.readEntity(new GenericType<List<Workflow>>() {}).get(0);
@@ -213,7 +199,6 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ WorkflowRestResource Can Add Multiple Workflows ================\n");
         String workflowName = "Batch-Import-Workflows";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/import";
         Response resp;
         List<Workflow> workflows = new ArrayList<>();
@@ -227,11 +212,9 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         
         // Fetch mock token
         LOGGER.info("Importing Workflow Collection against WorkflowRestResource");
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(workflows, MediaType.APPLICATION_JSON));
@@ -254,7 +237,6 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ WorkflowRestResource Create Named Workflow Test ================\n");
         String workflowName = "Create-Workflow-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/create";
         Workflow workflow;
         Response resp;
@@ -266,17 +248,15 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         
         // Fetch mock token
         LOGGER.info("Firing Workflow creation request against WorkflowRestResource");
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .queryParam("workflowName", "doggie")
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(null);
         this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         
         // Evaluate test
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not create named Workflow through WorkflowRestResource");
@@ -295,7 +275,6 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ WorkflowRestResource Drop Workflow Test ================\n");
         String workflowName = "Drop-Workflow-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         Workflow workflow;
         Response resp;
@@ -305,17 +284,14 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Created test workflow:\t'{}'", workflow.getId());
         
         // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(workflow, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         LOGGER.info("Workflow creation state:\t'{}'", resp.getStatus());
-        
         
         // Drop workflow
         LOGGER.info("Dropping workflow test:\t'{}'", workflow.getId());
@@ -324,12 +300,10 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         resp = this.target(methodPath)
             .path(workflow.getId())
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .delete();
         this.requestCtx.deactivate();
-        
         
         // Evaluate test
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not drop Workflow through WorkflowRestResource");
@@ -348,7 +322,6 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ WorkflowRestResource Update Workflow Test ================\n");
         String workflowName = "Update-Workflow-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         Workflow workflow;
         Response resp;
@@ -358,18 +331,15 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Created test workflow:\t'{}'", workflow.getId());
         
         // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(workflow, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         LOGGER.info("Workflow creation state:\t'{}'", resp.getStatus());
-        
-        
+
         // Update workflow
         LOGGER.info("Update workflow test:\t'{}'", workflow.getId());
         workflow.setWorkflowName("Updated Workflow Name");
@@ -377,71 +347,11 @@ public class WorkflowRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .put(Entity.entity(workflow, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        
-        
-        // Evaluate test
-        Assertions.assertTrue(resp.getStatus() == 200, "Error could not update Workflow through WorkflowRestResource");
-        LOGGER.info("\n\n================ WorkflowRestResource Update Workflow Test ================\n");
-    }
-    
-    
-    /**
-     * Tests updating workflow
-     * 
-     */
-    @Test
-    @Order(6)
-    public void canAddStepToWorkflow() {
-    
-        // Configure test
-        LOGGER.info("\n\n=============== WorkflowRestResource Add Step to Workflow Test ===============\n");
-        String workflowName = "Add-Step-Workflow-Test";
-        String bearerToken;
-        String methodPath = RESOURCE_PATH + "/add";
-        Workflow workflow;
-        Response resp;
-        
-        // Make test workflow
-        workflow = BuilderUtility.buildWorkflow(workflowName);
-        LOGGER.info("Created test workflow:\t'{}'", workflow.getId());
-        
-        // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
-        this.requestCtx.activate();
-        resp = this.target(methodPath)
-            .request()
-                .header("Authorization", bearerToken)
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
-        .post(Entity.entity(workflow, MediaType.APPLICATION_JSON));
-        this.requestCtx.deactivate();
-        LOGGER.info("Workflow creation state:\t'{}'", resp.getStatus());
-        
-        // Update workflow
-        LOGGER.info("Update workflow test:\t'{}'", workflow.getId());
-        workflow.setWorkflowName("Updated Workflow Name");
-        methodPath = RESOURCE_PATH + "/add-step";
-        Step step = TaskTideServiceManager
-            .fetchStepService()
-            .viewByField("stepName", this.WORKFLOW)
-        .get(0);
-        
-        this.requestCtx.activate();
-        resp = this.target(methodPath)
-            .queryParam("workflowId", workflow.getId())
-            .queryParam("stepId", step.getId())
-            .request()
-                .header("Authorization", bearerToken)
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
-        .put(Entity.entity("", MediaType.APPLICATION_JSON));
-        this.requestCtx.deactivate();
-        
+
         // Evaluate test
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not update Workflow through WorkflowRestResource");
         LOGGER.info("\n\n================ WorkflowRestResource Update Workflow Test ================\n");

@@ -16,21 +16,22 @@
 package org.tasktide.api.resources.services.rest;
 
 import jakarta.enterprise.context.control.RequestContextController;
-import jakarta.nosql.Template;
+
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import java.security.KeyPair;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -40,36 +41,32 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.tasktide.api.AbstractBaseJerseyTest;
-import org.tasktide.api.TestEnvironment;
-import org.tasktide.api.TestUtils;
 
-import org.tasktide.api.auth.AuthenicationFilter;
-import org.tasktide.api.utils.WebApiUtils;
-
-import org.tasktide.core.model.job_env.JobType;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricType;
-import org.tasktide.core.repository.RepositoryType;
 
+import org.tasktide.api.auth.AuthenicationFilter;
+
+import org.tasktide.api.AbstractBaseJerseyTest;
+import org.tasktide.api.TestUtils;
+import org.tasktide.core.supporting.JsonUtils;
 
 
 /**
- *
+ * Suite of tests against {@link MetricDataRestResource}
+ * 
  * @author Bren
  */
-@Tag("integration-e2e")
+@Tag("system-api")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
 
     private final Logger LOGGER = LogManager.getLogger(MetricDataRestResourceTests.class);
     
-    private final String STEP = "Restful MetricDatas";
+    private final String WORKFLOW = "MetricData Tests";
+    private final String STEP = "Restful MetricData";
     private final String RESOURCE_PATH = "/services/metric-data";
-    
-    private Template template;
-    private KeyPair KEY_PAIR;
 
     
     public MetricDataRestResourceTests() {
@@ -79,7 +76,11 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
     @Override
     protected Application configure() {
         
-        this.container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
+        TestUtils.initSeContainer();
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
+        
+        this.container = TestUtils.fetchConfiguredContainer();
         this.requestCtx = container.select(RequestContextController.class).get();
         
         ResourceConfig config = new ResourceConfig();
@@ -102,19 +103,14 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
     public void setUpClass() throws Exception {
         String msg = "\n\n---------------- Initiating MetricData REST Resource Tests ----------------\n";
         LOGGER.info(msg);
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
-        
-        KEY_PAIR = WebApiUtils.getKeyPair();
-        System.setProperty("mp.jwt.verify.publickey", WebApiUtils.toPemPublic(KEY_PAIR.getPublic()));
-        System.setProperty("mp.jwt.verify.issuer", "web-api-testing");
+        TestUtils.initSeContainer();
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
     }
     
     @AfterAll
     public void tearDownClass() throws Exception {
         this.tearDown();
-        container.close();
     }
 
 
@@ -129,7 +125,6 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ MetricDataRestResource Can Add MetricData ================\n");
         String metricDataName = "Add-MetricData-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         MetricData metricData;
         Response resp;
@@ -142,16 +137,14 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         // Fetch mock token
         LOGGER.info("Firiing test MetricData creation against MetricDataRestResource");
         LOGGER.info("Serialized MetricData:\n\n'{}'", Entity.entity(metricData, MediaType.APPLICATION_JSON));
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         
         // Evaluate test
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not add MetricData through MetricDataRestResource");
@@ -169,27 +162,24 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ MetricDataRestResource Can Query By Field ================\n");
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/get";
         Response resp;
         
         // Fetch mock token
-        LOGGER.info("Firing test query by field against MetricDataRestResource for:\t'{}'", JobType.LOCAL);
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
+        LOGGER.info("Firing test query by field against MetricDataRestResource for:\t'{}'", MetricType.CPU);
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .queryParam("field", "Type")
             .queryParam("value", MetricType.CPU)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
         .get();
         this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         
         // Evaluate test
         List<MetricData> records = resp.readEntity(new GenericType<List<MetricData>>() {});
-        LOGGER.info("Displaying retrieved records:\n\n'{}", records);
+        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, records));
         Assertions.assertTrue(resp.getStatus() == 200, "Error could query MetricData field through MetricDataRestResource");
         LOGGER.info("\n\n================ MetricDataRestResource Can Query By Field ================\n");
     }
@@ -205,7 +195,6 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ MetricDataRestResource Can Add Multiple MetricDatas ================\n");
         String metricDataName = "Batch-Import-MetricData";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/import";
         Response resp;
         List<MetricData> metricDatas = new ArrayList<>();
@@ -221,17 +210,15 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         
         // Fetch mock token
         LOGGER.info("Importing MetricData Collection against MetricDataRestResource");
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricDatas, MediaType.APPLICATION_JSON));
         
         // Evaluate test
-        LOGGER.info("Displaying status code:\n\n'{}", resp.getStatus());
+        LOGGER.info("Displaying status code:\t'{}", resp.getStatus());
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not import MetricData collection through MetricDataRestResource");
         LOGGER.info("\n\n================ MetricDataRestResource Can Add Multiple MetricDatas ================\n");
     }
@@ -247,7 +234,6 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ MetricDataRestResource Drop MetricData Test ================\n");
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         MetricData metricData;
         Response resp;
@@ -257,11 +243,9 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Created test metricData:\t'{}'", metricData.getId());
         
         // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
@@ -276,7 +260,6 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         resp = this.target(methodPath)
             .path(metricData.getId())
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .delete();
@@ -300,7 +283,6 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ MetricDataRestResource Update MetricData Test ================\n");
         String metricDataName = "Update-MetricData-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         MetricData metricData;
         Response resp;
@@ -311,11 +293,9 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Created test metricData:\t'{}'", metricData.getId());
 
         // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
@@ -330,7 +310,6 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .put(Entity.entity(metricData, MediaType.APPLICATION_JSON));

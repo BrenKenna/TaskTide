@@ -16,18 +16,15 @@
 package org.tasktide.api.resources.services.rest;
 
 import jakarta.enterprise.context.control.RequestContextController;
-import jakarta.nosql.Template;
+
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-import java.security.KeyPair;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -46,17 +43,13 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.api.AbstractBaseJerseyTest;
 
-import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
 
 import org.tasktide.api.auth.AuthenicationFilter;
 
-import org.tasktide.api.utils.WebApiUtils;
-
-import org.tasktide.core.model.builders.JobEnvironmentBuilder;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.JobType;
-import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.supporting.JsonUtils;
 
 
 /**
@@ -64,30 +57,30 @@ import org.tasktide.core.repository.RepositoryType;
  *
  * @author Bren
  */
-@Tag("integration-e2e")
+@Tag("system-api")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
 
     private final Logger LOGGER = LogManager.getLogger(JobEnvironmentRestResourceTests.class);
     
+    private final String WORKFLOW = "Job Env Tests";
     private final String STEP = "Restful JobEnvironments";
     private final String RESOURCE_PATH = "/services/job-environment";
     
-    private Template template;
-    private KeyPair KEY_PAIR;
-    
-    private final JobEnvironmentBuilder jobEnvBuild;
     
     public JobEnvironmentRestResourceTests() {
         super(JobEnvironmentRestResource.class);
-        this.jobEnvBuild = new JobEnvironmentBuilder();
     }
     
     @Override
     protected Application configure() {
+
+        TestUtils.initSeContainer();
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
         
-        this.container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
+        container = TestUtils.fetchConfiguredContainer();
         this.requestCtx = container.select(RequestContextController.class).get();
         
         ResourceConfig config = new ResourceConfig();
@@ -110,30 +103,16 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
     public void setUpClass() throws Exception {
         String msg = "\n\n---------------- Initiating JobEnvironment REST Resource Tests ----------------\n";
         LOGGER.info(msg);
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
-        
-        KEY_PAIR = WebApiUtils.getKeyPair();
-        System.setProperty("mp.jwt.verify.publickey", WebApiUtils.toPemPublic(KEY_PAIR.getPublic()));
-        System.setProperty("mp.jwt.verify.issuer", "web-api-testing");
+        TestUtils.initSeContainer();
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
     }
     
     @AfterAll
     public void tearDownClass() throws Exception {
         this.tearDown();
-        container.close();
     }
 
-    
-    public JobEnvironment fetchJobEnv() {
-        Optional<JobEnvironment> jobEnv = JobType.fetchJobEnvironment();
-        if ( jobEnv.isPresent() ) {
-            return jobEnv.get();
-        }
-        return null;
-    }
-    
 
     /**
      * Tests adding {@link JobEnvironment}
@@ -145,29 +124,25 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ JobEnvironmentRestResource Can Add JobEnvironment ================\n");
-        String jobEnvironmentName = "Add-JobEnvironment-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         JobEnvironment jobEnvironment;
         Response resp;
         
         // Make test jobEnvironment
-        jobEnvironment = this.fetchJobEnv();
+        jobEnvironment = TestUtils.fetchJobEnv();
         LOGGER.info("Created test jobEnvironment:\n\n'{}'", jobEnvironment.toJsonDoc());
         
         // Fetch mock token
         LOGGER.info("Firiing test JobEnvironment creation against JobEnvironmentRestResource");
         LOGGER.info("Serialized JobEnvironment:\n\n'{}'", Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         
         // Evaluate test
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not add JobEnvironment through JobEnvironmentRestResource");
@@ -185,27 +160,24 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ JobEnvironmentRestResource Can Query By Field ================\n");
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/get";
         Response resp;
         
         // Fetch mock token
-        LOGGER.info("Firiing test query by field against JobEnvironmentRestResource for:\t'{}'", STEP);
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
+        LOGGER.info("Firiing test query by field against JobEnvironmentRestResource for:\t'{}'", JobType.LOCAL);
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .queryParam("field", "JobType")
             .queryParam("value", JobType.LOCAL)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
         .get();
         this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         
         // Evaluate test
         List<JobEnvironment> records = resp.readEntity(new GenericType<List<JobEnvironment>>() {});
-        LOGGER.info("Displaying retrieved records:\n\n'{}", records);
+        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, records));
         Assertions.assertTrue(resp.getStatus() == 200, "Error could query JobEnvironment field through JobEnvironmentRestResource");
         LOGGER.info("\n\n================ JobEnvironmentRestResource Can Query By Field ================\n");
     }
@@ -220,8 +192,6 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ JobEnvironmentRestResource Can Add Multiple JobEnvironments ================\n");
-        String jobEnvironmentName = "Batch-Import-JobEnvironments";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/import";
         Response resp;
         List<JobEnvironment> jobEnvironments = new ArrayList<>();
@@ -229,24 +199,22 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         
         // Create and add jobEnvironment collection
         for ( int i = 0; i < nJobEnvironments; i++ ) {
-            JobEnvironment jobEnvironment = this.fetchJobEnv();
+            JobEnvironment jobEnvironment = TestUtils.fetchJobEnv();
             jobEnvironments.add(jobEnvironment);
             
         }
         
         // Fetch mock token
         LOGGER.info("Importing JobEnvironment Collection against JobEnvironmentRestResource");
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(jobEnvironments, MediaType.APPLICATION_JSON));
         
         // Evaluate test
-        LOGGER.info("Displaying status code:\n\n'{}", resp.getStatus());
+        LOGGER.info("Displaying status code:\t'{}", resp.getStatus());
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not import JobEnvironment collection through JobEnvironmentRestResource");
         LOGGER.info("\n\n================ JobEnvironmentRestResource Can Add Multiple JobEnvironments ================\n");
     }
@@ -262,21 +230,18 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ JobEnvironmentRestResource Drop JobEnvironment Test ================\n");
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         JobEnvironment jobEnvironment;
         Response resp;
         
         // Make test jobEnvironment
-        jobEnvironment = this.fetchJobEnv();
+        jobEnvironment = TestUtils.fetchJobEnv();
         LOGGER.info("Created test jobEnvironment:\t'{}'", jobEnvironment.getId());
         
         // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
@@ -291,7 +256,6 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         resp = this.target(methodPath)
             .path(jobEnvironment.getId())
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .delete();
@@ -314,22 +278,18 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ JobEnvironmentRestResource Update JobEnvironment Test ================\n");
-        String jobEnvironmentName = "Drop-JobEnvironment-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         JobEnvironment jobEnvironment;
         Response resp;
         
         // Make test jobEnvironment
-        jobEnvironment = this.fetchJobEnv();
+        jobEnvironment = TestUtils.fetchJobEnv();
         LOGGER.info("Created test jobEnvironment:\t'{}'", jobEnvironment.getId());
 
         // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));
@@ -344,7 +304,6 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .put(Entity.entity(jobEnvironment, MediaType.APPLICATION_JSON));

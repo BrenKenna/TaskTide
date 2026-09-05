@@ -16,19 +16,22 @@
 package org.tasktide.api.resources.services.rest;
 
 import jakarta.enterprise.context.control.RequestContextController;
-import jakarta.nosql.Template;
+
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import java.security.KeyPair;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -38,14 +41,15 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
+
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
+import org.tasktide.core.model.job_env.metrics.MetricType;
+
+
 import org.tasktide.api.AbstractBaseJerseyTest;
-import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
 import org.tasktide.api.auth.AuthenicationFilter;
-import org.tasktide.api.utils.WebApiUtils;
-import org.tasktide.core.model.job_env.JobType;
-import org.tasktide.core.model.job_env.metrics.MetricProfile;
-import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.supporting.JsonUtils;
 
 
 /**
@@ -53,18 +57,16 @@ import org.tasktide.core.repository.RepositoryType;
  *
  * @author Bren
  */
-@Tag("integration-e2e")
+@Tag("system-api")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
 
     private final Logger LOGGER = LogManager.getLogger(MetricProfileRestResourceTests.class);
     
+    private final String WORKFLOW = "MetricProfile Rest Resource Tests";
     private final String STEP = "Restful MetricProfiles";
     private final String RESOURCE_PATH = "/services/metric-profile";
-    
-    private Template template;
-    private KeyPair KEY_PAIR;
 
     private final int PROFILE_DATA_POINTS;
     
@@ -76,7 +78,11 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
     @Override
     protected Application configure() {
         
-        this.container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
+        TestUtils.initSeContainer();
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
+        
+        this.container = TestUtils.fetchConfiguredContainer();
         this.requestCtx = container.select(RequestContextController.class).get();
         
         ResourceConfig config = new ResourceConfig();
@@ -99,19 +105,11 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
     public void setUpClass() throws Exception {
         String msg = "\n\n---------------- Initiating MetricProfile REST Resource Tests ----------------\n";
         LOGGER.info(msg);
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
-        
-        KEY_PAIR = WebApiUtils.getKeyPair();
-        System.setProperty("mp.jwt.verify.publickey", WebApiUtils.toPemPublic(KEY_PAIR.getPublic()));
-        System.setProperty("mp.jwt.verify.issuer", "web-api-testing");
     }
     
     @AfterAll
     public void tearDownClass() throws Exception {
         this.tearDown();
-        container.close();
     }
 
 
@@ -126,7 +124,6 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ MetricProfileRestResource Can Add MetricProfile ================\n");
         String metricProfileName = "Add-MetricProfile-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         MetricProfile metricProfile;
         Response resp;
@@ -139,11 +136,9 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         // Fetch mock token
         LOGGER.info("Firiing test MetricProfile creation against MetricProfileRestResource");
         LOGGER.info("Serialized MetricProfile:\n\n'{}'", Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
@@ -166,27 +161,25 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ MetricProfileRestResource Can Query By Field ================\n");
-        String bearerToken;
+        MetricType type = MetricType.MEMORY;
         String methodPath = RESOURCE_PATH + "/get";
         Response resp;
         
         // Fetch mock token
-        LOGGER.info("Firing test query by field against MetricProfileRestResource for:\t'{}'", JobType.LOCAL);
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
+        LOGGER.info("Firing test query by field against MetricProfileRestResource for:\t'{}'", type);
         this.requestCtx.activate();
         resp = this.target(methodPath)
-            .queryParam("field", "Label")
-            .queryParam("value", "Add-MetricProfile-Test")
+            .queryParam("field", "MetricType")
+            .queryParam("value", type)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
         .get();
         this.requestCtx.deactivate();
-        LOGGER.info("Displaying resource response:\n\n'{}'", resp);
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         
         // Evaluate test
         List<MetricProfile> records = resp.readEntity(new GenericType<List<MetricProfile>>() {});
-        LOGGER.info("Displaying retrieved records:\n\n'{}", records);
+        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, records));
         Assertions.assertTrue(resp.getStatus() == 200, "Error could query MetricProfile field through MetricProfileRestResource");
         LOGGER.info("\n\n================ MetricProfileRestResource Can Query By Field ================\n");
     }
@@ -202,7 +195,6 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ MetricProfileRestResource Can Add Multiple MetricProfiles ================\n");
         String metricProfileName = "Batch-Import-MetricProfile";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/import";
         Response resp;
         List<MetricProfile> metricProfiles = new ArrayList<>();
@@ -218,17 +210,15 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         
         // Fetch mock token
         LOGGER.info("Importing MetricProfile Collection against MetricProfileRestResource");
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricProfiles, MediaType.APPLICATION_JSON));
         
         // Evaluate test
-        LOGGER.info("Displaying status code:\n\n'{}", resp.getStatus());
+        LOGGER.info("Displaying resource response:\t'{}'", resp);
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not import MetricProfile collection through MetricProfileRestResource");
         LOGGER.info("\n\n================ MetricProfileRestResource Can Add Multiple MetricProfiles ================\n");
     }
@@ -244,7 +234,6 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
     
         // Configure test
         LOGGER.info("\n\n================ MetricProfileRestResource Drop MetricProfile Test ================\n");
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         MetricProfile metricProfile;
         Response resp;
@@ -254,11 +243,9 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Created test metricProfile:\t'{}'", metricProfile.getId());
         
         // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
@@ -273,7 +260,6 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         resp = this.target(methodPath)
             .path(metricProfile.getId())
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .delete();
@@ -296,7 +282,6 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         // Configure test
         LOGGER.info("\n\n================ MetricProfileRestResource Update MetricProfile Test ================\n");
         String metricProfileName = "Update-MetricProfile-Test";
-        String bearerToken;
         String methodPath = RESOURCE_PATH + "/add";
         MetricProfile metricProfile;
         Response resp;
@@ -307,11 +292,9 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Created test metricProfile:\t'{}'", metricProfile.getId());
 
         // Fetch mock token
-        bearerToken = "Bearer " + WebApiUtils.token("johnDoe");
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricProfile, MediaType.APPLICATION_JSON));
@@ -326,7 +309,6 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("Authorization", bearerToken)
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .put(Entity.entity(metricProfile, MediaType.APPLICATION_JSON));

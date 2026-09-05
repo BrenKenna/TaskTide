@@ -161,7 +161,7 @@ public class EngineConfig extends AbstractConfig {
             .extend( this.policyConf.getArgumentMap() );
 
         if ( this.getPath().isEmpty() ) {
-            argTree.getTree().getRoot().setData(this.getArgumentMap());
+            argTree.getTree().addChild(this.getPath(), this.getArgumentMap());
         }
         else {
             argTree.getTree().addChild(this.getPath(), this.getArgumentMap());

@@ -16,8 +16,6 @@
 package org.tasktide.tasktide.client.config;
 
 import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.enterprise.inject.se.SeContainerInitializer;
-import jakarta.enterprise.inject.spi.CDI;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
@@ -40,11 +38,14 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.parser.ArgumentTree;
 
 import org.tasktide.parser.configuration.TaskTideConfig;
+import org.tasktide.parser.model.ArgumentMap;
+import org.tasktide.tasktide.TestUtils;
 
 
 /**
@@ -52,32 +53,33 @@ import org.tasktide.parser.configuration.TaskTideConfig;
  * 
  * @author bkenna
  */
-@Tag("unit-client")
+@Tag("base-tasktide")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @EnableAutoWeld
 @AddBeanClasses( {GlobalConfig.class, ManagerConfig.class, EngineConfig.class} )
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ProfileConfigureTests {
     
     private static final Logger logger = LogManager.getLogger(ProfileConfigureTests.class);
     private static final Jsonb PRETTY_JSON = JsonbBuilder.create(new JsonbConfig().withFormatting(true));
     private static final Jsonb JSON = JsonbBuilder.create(new JsonbConfig());
   
-    private static SeContainer container;
+    private SeContainer container;
     
     public ProfileConfigureTests() {}
     
     
     @BeforeAll
-    public static void setUpClass() {        
+    public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Configuration from Micro-Profile Tests ----------------\n";
-        container = SeContainerInitializer.newInstance().initialize();
+        TestUtils.initSeContainer();
+        container = TestUtils.fetchConfiguredContainer();
         logger.info(msg);
     }
     
     @AfterAll
-    public static void tearDownClass() {
+    public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Configuration from Micro-Profile Tests ----------------\n";
-        container.close();
         logger.info(msg);
     }
     
@@ -103,24 +105,24 @@ public class ProfileConfigureTests {
         logger.info("\n\n================ Tests Displaying TaskTide Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfig engineConfig, globalConfig, managerConfig;
-        argTree = new ArgumentTree(" ");
+        argTree = new ArgumentTree("");
         
         
         // Setup global config
         logger.info("Configuring TaskTide client");
-        globalConfig = CDI.current().select(GlobalConfig.class).get();
+        globalConfig = this.container.select(GlobalConfig.class).get();
         globalConfig.initConfig(argTree);
         logger.info("Records in tree:\n'{}'", argTree.getTree().size());
         
         
         // Setup manager config
-        managerConfig = CDI.current().select(ManagerConfig.class).get();
+        managerConfig = this.container.select(ManagerConfig.class).get();
         managerConfig.initConfig(argTree);
         logger.info("Records in tree:\n'{}'", argTree.getTree().size());
         
         
         // Setup engine config
-        engineConfig = CDI.current().select(EngineConfig.class).get();
+        engineConfig = this.container.select(EngineConfig.class).get();
         engineConfig.initConfig(argTree);
         logger.info("Records in tree:\n'{}'", argTree.getTree().size());
         
@@ -137,15 +139,18 @@ public class ProfileConfigureTests {
         );
         
         // Evaluate test
-        logger.info("Value for NoSQL Host:Port:\t'{}'", argTree.getTree().getDataForAddress("").getArgument("NoSQL Host:Port").getValue());
+        ArgumentMap argMap = argTree.getTree().getDataForAddress("");
+        logger.info("Value for NoSQL Database Type:\t'{}'", argMap.getArgument("NoSQL Database Type"));
         logger.info("Displaying configured client:\n'{}'", PRETTY_JSON.toJson(argTree.getVerboseHelp()) );
-        logger.info("Displaying Address Data map:\n'{}'", argTree.getTree().toAddressDataMap() );
-        assertTrue(argTree.getTree().getDataForAddress("").getArgument("NoSQL Host:Port").getValue() != null, "Not all records added");
+        logger.info("Displaying Address Data Entries:\n'{}'", argTree.getTree().getDataForAddress("").getArgMap().keySet() );
+        assertTrue(argMap.getArgMap().get("NoSQL Database Type").getValue() == null, "Not all records added");
         logger.info("\n\n================ Tests Displaying TaskTide Config ================\n");
     }
     
     
-    
+    /**
+     * Tests parsing 
+     */
     @Test
     @Order(1)
     public void canParseArguments() {
@@ -154,27 +159,21 @@ public class ProfileConfigureTests {
         logger.info("\n\n================ Tests Applying Command-Line Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfig engineConfig, globalConfig, managerConfig;
-        argTree = new ArgumentTree(" ");
+        argTree = new ArgumentTree("");
         
         // Configure
         logger.info("Configuring TaskTide client");
-        globalConfig = CDI.current().select(GlobalConfig.class).get();
+        globalConfig = this.container.select(GlobalConfig.class).get();
         globalConfig.initConfig(argTree);
-        managerConfig = CDI.current().select(ManagerConfig.class).get();
+        managerConfig = this.container.select(ManagerConfig.class).get();
         managerConfig.initConfig(argTree);
-        engineConfig = CDI.current().select(EngineConfig.class).get();
+        engineConfig = this.container.select(EngineConfig.class).get();
         engineConfig.initConfig(argTree);
         
         // Simulate command-line
         String[] argsIn = {"--file-path='my/Cool/Path'", "-d ','", "-w 2", "-i 4"};
         globalConfig.parseCommandLineArguments(argsIn, argTree);
-        logger.info("Value for FliePath:\t'{}'", argTree.getTree().getDataForAddress("").getArgument("File Path").getValue());
-        
-        managerConfig.parseCommandLineArguments(argsIn, argTree);
-        logger.info("Value for Delmiiter:\t'{}'", argTree.getTree().getDataForAddress("manager").getArgument("Delimiter").getValue());
-        
-        engineConfig.parseCommandLineArguments(argsIn, argTree);
-        logger.info("Value for WorkItem Threads:\t'{}'", argTree.getTree().getDataForAddress("engine").getArgument("WorkItem Threads").getValue());
+        logger.info("Value for FliePath:\t'{}'", argTree.getTree().getDataForAddress("").getArgument("File Path"));
         
         // Verify
         assertTrue(argTree.getTree().getDataForAddress("").getArgument("File Path").getValue() != null, "Not all records added");

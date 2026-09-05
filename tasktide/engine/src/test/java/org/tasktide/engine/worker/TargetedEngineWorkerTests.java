@@ -34,9 +34,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
-import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.engine.TestEnvironment;
-
 import org.tasktide.engine.TestUtils;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
@@ -63,8 +60,7 @@ public class TargetedEngineWorkerTests {
     
     private final String WORKFLOW = "Targeted Engine Worker Tests";
     private final String STEP = "Nested NS Lookups";
-    
-    
+
     //private final ItemStoreType storeType = ItemStoreType.SQLITE;
     //private final String storeName = "TaskTideRepo/SQLITE";
     

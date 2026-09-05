@@ -59,6 +59,44 @@ dependencies {
 }
 
 
+// Define test scopes
+def parserTestTags = [
+    "unit-tests": 'unit-api',
+    "integration-tests": 'integration-api',
+    "system-tests": 'system-api'
+]
+
+
+// Define logging scope for all tests
+tasks.withType(Test).configureEach {
+
+    // Ensures that tests operating with shared containers
+    //   do not collide on conflicting config requirements
+    maxParallelForks = 1
+    systemProperty 'junit.jupiter.execution.parallel.enabled', 'false'
+    
+    testLogging {
+        showStandardStreams = true
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+}
+
+
+// Register test under annotation scheme
+parserTestTags.each { name, tag ->
+    tasks.register(name, Test) {
+        group = 'engine-tests'
+        description = "Run Parser ${name} tests (${tag})"
+
+        useJUnitPlatform {
+            includeTags tag
+        }
+    }
+}
+
+
+
 jar {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)

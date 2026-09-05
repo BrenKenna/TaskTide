@@ -52,7 +52,7 @@ import org.tasktide.parser.configuration.TaskTideConfig;
  * 
  * @author bkenna
  */
-@Tag("unit-client")
+@Tag("base-tasktide")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @EnableAutoWeld
 @AddPackages(value = {
