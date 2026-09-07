@@ -71,6 +71,9 @@ import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDbStore;
+import org.tasktide.tasktide.client.TaskTideClientUtility;
+import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
+import org.tasktide.tasktide.containerprovider.CdiProviders;
 
 
 /**
@@ -85,6 +88,7 @@ public class TestUtils {
     
     private static SeContainer container;
     private static Template template;
+    private static CdiContainerProvider provider;
     
     
     /**
@@ -525,5 +529,18 @@ public class TestUtils {
             results.add( TestUtils.registerWorkItemTasks(taskType, stepName, tasksPerWorkItem) );
         }
         return results;
+    }
+    
+    
+    public static void configureCdiContainerProvider() {
+        if ( provider == null ) {
+            provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, true);
+        }
+    }
+    
+    
+    public static CdiContainerProvider fetchCdiProvider() {
+        configureCdiContainerProvider();
+        return provider;
     }
 }

@@ -358,7 +358,6 @@ public class TestUtils {
      * @return {@link Template}
      */
     public static Template fetchTemplate() {
-        SeContainer container;
         container = SeContainerInitializer.newInstance().initialize();
         return container.select(DocumentTemplate.class).get();
     }
@@ -460,8 +459,6 @@ public class TestUtils {
      * @return {@link TaskTideEngineWorker}
      */
     public static WorkerUnitContainer configureNewWorkerUnitContainer() {
-        
-        // Initialize vars
         WorkerUnitContainer.reset();
         TaskTideExecutorServiceProvider.reset();
         return WorkerUnitContainer.getInstance();
