@@ -2,6 +2,7 @@ name: TaskTide-CI Maven Central Publish
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 jobs:
   publish:
