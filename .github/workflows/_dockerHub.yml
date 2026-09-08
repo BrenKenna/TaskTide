@@ -39,5 +39,7 @@ jobs:
       
       - name: Build and Publish Apptainer Image
         run: |
+          cd ./docker
+          ls 
           docker build -t bkenna/tasktide:apptainer -f tasktide-apptainer.Dockerfile .
           docker push bkenna/tasktide:apptainer
