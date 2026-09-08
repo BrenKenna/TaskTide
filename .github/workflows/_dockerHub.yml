@@ -11,7 +11,6 @@ jobs:
 
     permissions:
       contents: read
-      id-token: write
     
     defaults:
       run:
@@ -35,34 +34,14 @@ jobs:
 
 
       - name: Build and Publish Latest Image
-        id: latest
         run: |
           cd ./docker
           docker build -t bkenna/tasktide:latest -f tasktide-latest.Dockerfile .
           docker push bkenna/tasktide:latest
-          digest=$(docker image inspect bkenna/tasktide:latest --format '{{index .RepoDigests 0}}' | cut -d@ -f2)
-          echo "digest=$digest" >> "$GITHUB_OUTPUT"
-
-      - name: Attest latest Docker image with SLSA provenance
-        uses: actions/attest-build-provenance@v3
-        with:
-          subject-name: bkenna/tasktide
-          subject-digest: ${{ steps.latest.outputs.digest }}
-          push-to-registry: true
 
       - name: Build and Publish Apptainer Image
-        id: apptainer
         run: |
           cd ./docker
           ls
           docker build -t bkenna/tasktide:apptainer -f tasktide-apptainer.Dockerfile .
           docker push bkenna/tasktide:apptainer
-          digest=$(docker image inspect bkenna/tasktide:apptainer --format '{{index .RepoDigests 0}}' | cut -d@ -f2)
-          echo "digest=$digest" >> "$GITHUB_OUTPUT"
-
-      - name: Attest Apptainer Docker image with SLSA provenance
-        uses: actions/attest-build-provenance@v3
-        with:
-          subject-name: bkenna/tasktide
-          subject-digest: ${{ steps.apptainer.outputs.digest }}
-          push-to-registry: true
