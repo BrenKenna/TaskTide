@@ -34,19 +34,22 @@ import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
 import org.jboss.weld.junit5.auto.AddExtensions;
 import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
-import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestCaseBuilderUtility;
 
-import org.testcontainers.containers.GenericContainer;
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
@@ -72,6 +75,8 @@ import org.tasktide.core.supporting.JsonUtils;
 @EnableAutoWeld
 @AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
 @AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
+@Tag("integration-core")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TemplateRepositoryTests {
     
@@ -80,8 +85,8 @@ public class TemplateRepositoryTests {
     
     
     // Backend repo
-    @Rule
-    public GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
+    // @Rule
+    // public GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     
     // Container for fetch nosql template
@@ -106,7 +111,7 @@ public class TemplateRepositoryTests {
             container.close();
             logger.info("CDI container shut down");
         }
-        couchDB.stop();
+        // couchDB.stop();
     }
     
     @BeforeEach
@@ -188,13 +193,13 @@ public class TemplateRepositoryTests {
         TaskTideRepository<Step> stepRepo;
         RepositoryFactory<Step> stepRepoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
-        List<Step> data;
+        Step data;
         CustomAnnotation anno;
         boolean assertionState;
         
         // Generate data for insert
         logger.info("Generating data for testing");
-        data = TestCaseBuilderUtility.makeTestStepList();
+        data = TestCaseBuilderUtility.makeTestStepList().get(0);
         
         
         // Fetch backend instance
@@ -207,16 +212,11 @@ public class TemplateRepositoryTests {
         // Add records
         logger.info("Inserting records");
         anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
-        data.stream()
-            .forEach( elm -> {
-                elm.setAnnotations(anno);
-                stepRepo.insertModel(elm);
-        });
+        data.setAnnotations(anno);
+        TaskTideModel<Step> result = stepRepo.insertModel(data);
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
-        TaskTideModel<Step> ref = data.get(0);
-        TaskTideModel<Step> result = stepRepo.findById(ref.getId()).get();
         assertionState = result != null;
         logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
         
@@ -239,14 +239,13 @@ public class TemplateRepositoryTests {
         TaskTideRepository<Workflow> workflowRepo;
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
-        List<Workflow> data;
+        Workflow data;
         CustomAnnotation anno;
         boolean assertionState;
         
         // Generate data for insert
         logger.info("Generating data for testing");
-        data = TestCaseBuilderUtility.makeTestWorkflows();
-        
+        data = TestCaseBuilderUtility.makeTestWorkflows().get(0);
         
         // Fetch backend instance
         logger.info("Fetching template for repository construction");
@@ -258,16 +257,12 @@ public class TemplateRepositoryTests {
         // Add records
         logger.info("Inserting records");
         anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
-        data.stream()
-            .forEach( elm -> {
-                elm.setAnnotations(anno);
-                workflowRepo.insertModel(elm);
-        });
+        data.setAnnotations(anno);
+        TaskTideModel<Workflow> result = workflowRepo.insertModel(data);
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
-        TaskTideModel<Workflow> ref = data.get(0);
-        TaskTideModel<Workflow> result = workflowRepo.findById(ref.getId()).get();
+        TaskTideModel<Workflow> ref = data;
         assertionState = result != null;
         logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
         

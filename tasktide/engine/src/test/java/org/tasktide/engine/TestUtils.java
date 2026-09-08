@@ -49,6 +49,9 @@ import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
+import org.tasktide.core.manager.command.commands.ImportCommand;
+import org.tasktide.core.manager.generator.ExampleGenerators;
+import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.collection.Step;
@@ -57,10 +60,22 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.workitem.ItemState;
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
+import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
+
+import org.tasktide.engine.policies.AcquisitionPolicyMode;
+import org.tasktide.engine.policies.TaskTideWorkloadAcquisitionPolicy;
+import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;
+import org.tasktide.engine.worker.TaskTideEngineWorker;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
+import org.tasktide.engine.workerunit.container.WorkerUnitModelType;
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
 
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.RocksDbStore;
@@ -74,6 +89,9 @@ import org.tasktide.itemstore.RocksDbStore;
 public class TestUtils {
     
     private static final Logger LOGGER = LogManager.getLogger(TestUtils.class);
+    
+    private static SeContainer container;
+    private static Template template;
     
     
     /**
@@ -215,7 +233,12 @@ public class TestUtils {
         TaskTideService<JobEnvironment> jobEnvServ = ServiceFactory.makeJobEnvironmentService(repoType, backend, "JobEnvironment");
         
         // Initialize service manager with services
-        TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
+        try {
+            TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ, jobEnvServ, metricServ, profileServ);
+        }
+        catch (IllegalStateException ex) {
+            LOGGER.warn("ServiceManager already configured");
+        }
     }
     
     
@@ -335,8 +358,204 @@ public class TestUtils {
      * @return {@link Template}
      */
     public static Template fetchTemplate() {
-        SeContainer container;
         container = SeContainerInitializer.newInstance().initialize();
         return container.select(DocumentTemplate.class).get();
+    }
+    
+    
+    /**
+     * Register new {@link WorkItem} for provided task type with number of tasks
+     * 
+     * @param taskType
+     * @param amount
+     * 
+     * @return {@link WorkItem}
+     */
+    public static WorkItem registerWorkItemTasks(ExampleGenerators taskType, int amount) {
+        WorkItem task;
+        if ( amount > 0 ) {
+            task = TaskGenerator.generateExampleWorkItem(taskType, amount);
+        }
+        else {
+            task = TaskGenerator.generateExampleWorkItem(taskType, 1);
+            task.getWorkload().getTaskMap().clear();
+        }
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+        .appendModel(task);
+    }
+    
+    
+    /**
+     * Register new {@link WorkItem} for provided task type with number of tasks,
+     *  of the provided {@link TaskState}
+     * 
+     * @param taskType
+     * @param amount
+     * @param
+     * 
+     * @return {@link WorkItem}
+     */
+    public static WorkItem registerWorkItemTasks(ExampleGenerators taskType, int amount, TaskState state) {
+        WorkItem task = TaskGenerator.generateExampleWorkItem(taskType, amount);
+        task.setItemState(state.mapToItemState());
+        for ( ItemTask item : task.getWorkload().getTaskMap().values() ) {
+            item.setTaskState(state);
+        }
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+        .appendModel(task);
+    }
+    
+    
+    /**
+     * Register workflow
+     * 
+     * @param workflow
+     * @return {@link ManagerCommand} result
+     */
+    public static Object createWorkflow(String workflow) {
+        ManagerTarget target = ManagerTarget.WORKFLOW;
+        ManagerAction action = ManagerAction.ADD;
+        CommandSpec cmdSpec;
+        ImportCommand cmd;
+        
+        Map<String, Object> opts = new HashMap<>();
+        opts.put("Workflow Name", workflow);
+        
+        cmdSpec = new CommandSpec(null, "", opts);
+        cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
+        
+        return cmd.execute();
+    }
+    
+    
+    /**
+     * Register workflow
+     * 
+     * @param workflow
+     * @return {@link ManagerCommand} result
+     */
+    public static Object createStep(String stepName, String workflowName) {
+        ManagerTarget target = ManagerTarget.STEP;
+        ManagerAction action = ManagerAction.ADD;
+        CommandSpec cmdSpec;
+        ImportCommand cmd;
+        
+        Map<String, Object> opts = new HashMap<>();
+        opts.put("Step Name", stepName);
+        opts.put("Workflow Name", workflowName);
+        
+        cmdSpec = new CommandSpec(null, "", opts);
+        cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
+        
+        return cmd.execute();
+    }
+    
+    
+    /**
+     * Configure a new {@link WorkerUnitContaier}
+     * 
+     * @return {@link TaskTideEngineWorker}
+     */
+    public static WorkerUnitContainer configureNewWorkerUnitContainer() {
+        WorkerUnitContainer.reset();
+        TaskTideExecutorServiceProvider.reset();
+        return WorkerUnitContainer.getInstance();
+    }
+    
+    
+    /**
+     * Fetch workload from {@link TaskTideWorkloadAcquisitionPolicy}
+     * 
+     * @return List-{@link WorkItem}
+     */
+    public static List<WorkItem> fetchTargetedWorkload(String step) {
+    
+        // Initialize vars
+        TaskTideWorkloadAcquisitionPolicy policy;
+        List<WorkItem> workload;
+        
+        // Build policy & fetch workload
+        policy = AcquisitionPolicyMode.TARGETED
+            .initBuilder()
+            .withTarget(step)
+            .withItemState(ItemState.TODO)
+        .build();
+        workload = policy.fetchWorkload();
+        
+        // Return results
+        return workload;
+    }
+    
+    
+    
+    /**
+     * Configure new {@link TaskTideWorkloadTraverser} with required parallelism parameters
+     * 
+     * @param nWorkerThreads
+     * @param nItemTaskThreads
+     * @return {@link TaskTideWorkloadTraverser}
+     */
+    public static TaskTideWorkloadTraverser<WorkItem> getTraverser(int nWorkerThreads, int nItemTaskThreads) {
+        WorkerUnitContainer.reset();
+        TaskTideExecutorServiceProvider.reset();
+        
+        try {
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureProcessExecutor();
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureExecutorServices(nWorkerThreads, nItemTaskThreads);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineObserverChain(WorkerUnitModelType.ITEMTASK, 100000);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineExecutor(WorkerUnitModelType.ITEMTASK);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureWorkloadTraverser(WorkerUnitModelType.ITEMTASK);
+            
+            WorkerUnitContainer
+                .getInstance()
+            .configureEngineObserverChain(WorkerUnitModelType.WORKITEM, 100000);
+            
+            WorkerUnitContainer
+                .getInstance()
+                .configureWorkloadTraverser(WorkerUnitModelType.WORKITEM);
+            
+            return WorkerUnitContainer
+                    .getInstance()
+                    .getEngineWorkloadTraverser(WorkerUnitModelType.WORKITEM)
+            ;
+        }
+        
+        catch ( TaskTideEngineCheckedException ex ) {
+            LOGGER.error("Could not instantiate WorkItemTraverser:\n\n{}", ex);
+            return null;
+        }
+    }
+    
+    
+    public static void resetWorkerContainers() {
+        WorkerUnitContainer.reset();
+        TaskTideExecutorServiceProvider.reset();
+    }
+    
+    
+    
+    public static void initSeContainer() {
+        if ( container == null ) {
+            container = TestEnvironment.startWeldContainer("couchDB-config.properties", TestUtils.class);
+            template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+            TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        }
     }
 }

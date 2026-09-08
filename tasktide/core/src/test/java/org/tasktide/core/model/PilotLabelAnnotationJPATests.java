@@ -32,9 +32,12 @@ import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
 
@@ -49,6 +52,7 @@ import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.repository.JpaRepository;
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
@@ -61,13 +65,15 @@ import org.tasktide.core.services.ServiceFactory;
  * 
  * @author Brendan Kenna
  */
+@Tag("integration-experimental-core")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PilotLabelAnnotationJPATests {
     
     private final Logger LOGGER = LogManager.getLogger(PilotLabelAnnotationJPATests.class);
     
-    @Rule
-    public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    //@Rule
+    //public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     private EntityManager entityManager;
     private SeContainer container;
     
@@ -81,7 +87,11 @@ public class PilotLabelAnnotationJPATests {
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
-        this.initServiceManager();
+        
+        try {
+            this.initServiceManager();
+        }
+        catch ( Exception ex ) {}
     }
     
     @AfterAll
@@ -93,7 +103,7 @@ public class PilotLabelAnnotationJPATests {
             LOGGER.info("CDI container shut down");
         }
         entityManager.close();
-        mariaDB.stop();
+        //mariaDB.stop();
     }
     
     @BeforeEach

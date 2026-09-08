@@ -423,11 +423,13 @@ public class TaskTideEngineWorker implements Cloneable {
                 LOGGER.info("Engine 'Worker-{}' started", i);
                 TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
             }
-            LOGGER.info(
-                "Step for the next Engine-Worker iteration is '{}'. Queue pre-increment was '{}'",
-                this.policy.getTarget(),
-                ( (WorkflowAcquisitionPolicy) this.policy).getQueueTargets()
-            );
+            if ( this.policy.workflowMode() ) {
+                LOGGER.info(
+                    "Step for the next Engine-Worker iteration is '{}'. Queue pre-increment was '{}'",
+                    this.policy.getTarget(),
+                    ( (WorkflowAcquisitionPolicy) this.policy).getQueueTargets()
+                );
+            }
             
             // Wait for them to finish
             LOGGER.info(

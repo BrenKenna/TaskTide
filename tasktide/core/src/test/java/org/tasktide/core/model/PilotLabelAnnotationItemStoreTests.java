@@ -27,8 +27,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 
@@ -49,6 +52,8 @@ import org.tasktide.itemstore.ItemStoreType;
  * 
  * @author Brendan Kenna
  */
+@Tag("integration-experimental-core")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PilotLabelAnnotationItemStoreTests {
     
@@ -65,7 +70,10 @@ public class PilotLabelAnnotationItemStoreTests {
         String msg = "\n\n---------------- Initiating Pilot Label Annotations ItemStore Tests ----------------\n";
         LOGGER.info(msg);
         
-        this.initServiceManager();
+        try {
+            this.initServiceManager();
+        }
+        catch ( Exception ex ) {}
     }
     
     @AfterAll

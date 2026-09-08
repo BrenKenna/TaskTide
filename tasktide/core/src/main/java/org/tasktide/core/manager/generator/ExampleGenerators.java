@@ -16,12 +16,9 @@
 package org.tasktide.core.manager.generator;
 
 import org.tasktide.core.manager.ManagerTask;
-import java.util.Map;
-
 
 
 /**
- *
  * Enum of valid task types
  * 
  * @author bkenna
@@ -31,18 +28,32 @@ public enum ExampleGenerators {
     PING {
         @Override
         public ManagerTask createTask() {
-            PingGenerator pingGen = new PingGenerator();
-            Map<String, String> map = pingGen.generateCmd();
-            return new ManagerTask(map.get("Task Name"), map.get("Task Script"));
+            ExampleGenerator pingGen = new PingGenerator();
+            return pingGen.createTask();
         }
     },
     
     SEQ {
         @Override
         public ManagerTask createTask() {
-            SeqGenerator seqGen = new SeqGenerator();
-            Map<String, String> map = seqGen.generateCmd();
-            return new ManagerTask(map.get("Task Name"), map.get("Task Script"));
+            ExampleGenerator seqGen = new SeqGenerator();
+            return seqGen.createTask();
+        }
+    },
+    
+    NSLOOKUPS {
+        @Override
+        public ManagerTask createTask() {
+            ExampleGenerator nsGen = new NsLookupGenerator();
+            return nsGen.createTask();
+        }
+    },
+    
+    HOSTNAME {
+        @Override
+        public ManagerTask createTask() {
+            ExampleGenerator hostnameGen = new HostnameGenerator();
+            return hostnameGen.createTask();
         }
     };
     

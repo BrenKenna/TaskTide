@@ -15,14 +15,15 @@
  */
 package org.tasktide.api;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.nosql.Template;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -39,15 +40,18 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.mockito.Mockito;
 
 import org.tasktide.api.utils.WebApiUtils;
 
 import org.tasktide.core.manager.BuilderUtility;
+import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.repository.RepositoryType;
+import org.tasktide.core.model.workitem.WorkItem;
 
 
 /**
@@ -60,16 +64,14 @@ import org.tasktide.core.repository.RepositoryType;
  *
  * @author Bren
  */
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TaskTideWebApiTest {
     
     private final Logger LOGGER = LogManager.getLogger(TaskTideWebApiTest.class);
     
+    private final String WORKFLOW = "TaskTide Web API Tests";
     private final String STEP = "Nested NS Lookups";
-    
-    private SeContainer container;
-    private Template template;
     
     private final Object webApiLock = new Object();
     private volatile boolean running = true;
@@ -80,25 +82,33 @@ public class TaskTideWebApiTest {
     
     @BeforeAll
     public void setUpClass() {
-        container = TestEnvironment.startWeldContainer("app-props.properties", getClass());
-        template = (Template) TestEnvironment.fetchDocumentTemplate(container);
-        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
-        TestUtils.importTestRecords("nested-nslookup-tasks.txt", this.STEP, "|", ",");
+        String msg = "\n\n---------------- Initiating Engine Worker Workflow Tests ----------------\n";
+        LOGGER.info(msg);
+        
+        TestUtils.initSeContainer();
+        TestUtils.createWorkflow(this.WORKFLOW);
+        TestUtils.createStep(this.STEP, this.WORKFLOW);
+        List<WorkItem> tasks = TestUtils.registerRandomWorkItemCollection(ExampleGenerators.NSLOOKUPS, this.STEP);
+        LOGGER.info("Displaying first registered task:\t'{}'", tasks.get(0).getId());
     }
     
     
     @AfterAll
     public void tearDownClass() {
+        String msg = "\n\n---------------- Terminating Engine Worker Workflow Tests----------------\n";
+        LOGGER.info(msg);
     }
     
     
     @BeforeEach
     public void setUp() {
+        LOGGER.info("\n\n================ Initiating Next Test ================\n");
     }
     
     
     @AfterEach
     public void tearDown() {
+        LOGGER.info("\n\n================ Terminating Test ================\n");
     }
 
     
@@ -127,7 +137,8 @@ public class TaskTideWebApiTest {
      */
     @Test
     @Order(0)
-    public void canReadConfigMap() {
+    @Tag("system-api")
+    public void canReadAtLeastOneConfigMap() {
     
         LOGGER.info("\n\n================ Can Read Web API Config ================\n");
         Config config = ConfigProvider.getConfig();
@@ -146,7 +157,7 @@ public class TaskTideWebApiTest {
                 if ( value != null ) { counter++; }
             }
         }
-        Assertions.assertTrue(counter >= 0, "Unable to pull configuration properties");
+        Assertions.assertTrue(counter >= 0, "Unable to pull any configuration properties");
         LOGGER.info("\n\n================ Can Read Web API Config ================\n");
     }
     
@@ -156,7 +167,8 @@ public class TaskTideWebApiTest {
      */
     @Test
     @Order(1)
-    public void canStartWebServer() {
+    @Tag("system-api")
+    public void canStartWebServerAndAddStep() {
     
         LOGGER.info("\n\n================ Can Start Web Server ================\n");
         
@@ -183,8 +195,10 @@ public class TaskTideWebApiTest {
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(step, MediaType.APPLICATION_JSON));
-        LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
         
+        int statusCode = resp.getStatus();
+        LOGGER.info("Logging response status:\t'{}'", statusCode);
+        Assertions.assertTrue(statusCode == 200, "Unable to add the test step");
         LOGGER.info("\n\n================= Can Start Web Server =================\n");
     }
     
@@ -193,14 +207,40 @@ public class TaskTideWebApiTest {
      * Tests that paths on web service are privileged
      */
     @Test
-    @Order(2)
+    @Order(1)
+    @Tag("system-api-experimental")
     public void webServerPathsArePrevileged() {
     
         LOGGER.info("\n\n================ Web Server Paths Are Previleged ================\n");
         
-        Config config = ConfigProvider.getConfig();
-        TaskTideWebApi webApi = new TaskTideWebApi(config);
+        // Mock web server config
+        Config config = Mockito.mock(Config.class);
+        Map<String, String> props = Map.of(
+            "tasktide.web-api.host", "http://localhost",
+            "tasktide.web-api.port", "8080",
+            "tasktide.web-api.base-path", "/tasktide",
+            "tasktide.web-api.auth-scheme", "embedded"
+        );
+        Mockito
+            .when(
+                config.getOptionalValue(
+                    Mockito.anyString(),
+                    Mockito.eq(String.class)
+                )
+            )
+        .thenAnswer( invok -> {
+            String key = invok.getArgument(0);
+            return Optional.ofNullable(props.get(key));
+        });
+        Mockito
+            .when(
+                config.getOptionalValue("tasktide.web-api.port", Integer.class)
+            )
+        .thenReturn(Optional.of(8080));
         
+        
+        // Build web-api with mocked configs
+        TaskTideWebApi webApi = new TaskTideWebApi(config);
         LOGGER.info("TaskTide web URL:\t'{}'", webApi.getWebUri());
         webApi.configureServer();
         ResourceConfig rc = webApi.getResourceConfig();
@@ -222,8 +262,11 @@ public class TaskTideWebApiTest {
                 .header("User-Agent", "JUnit-Test")
                 .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(step, MediaType.APPLICATION_JSON));
-        LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
         
+        
+        int statusCode = resp.getStatus();
+        LOGGER.info("Logging response status:\t'{}'", resp.getStatus());
+        Assertions.assertTrue(statusCode == 401, "Unable to add the test step");
         LOGGER.info("\n\n================ Web Server Paths Are Previleged ================\n");
     }
     
@@ -233,7 +276,8 @@ public class TaskTideWebApiTest {
      *  cURL requests etc
      */
     @Test
-    @Order(3)
+    @Order(2)
+    @Tag("experimental-api")
     public void canStartWebService() {
     
         LOGGER.info("\n\n================ Can Start Web Server ================\n");

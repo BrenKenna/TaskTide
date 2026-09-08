@@ -36,6 +36,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jakarta.nosql.Template;
+import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Random;
 import org.eclipse.jnosql.mapping.document.DocumentTemplate;
 
@@ -49,6 +51,9 @@ import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
+import org.tasktide.core.manager.command.commands.ImportCommand;
+import org.tasktide.core.manager.generator.ExampleGenerators;
+import org.tasktide.core.manager.generator.TaskGenerator;
 
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.builders.BuilderType;
@@ -59,15 +64,20 @@ import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.JobType;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.core.model.job_env.metrics.ProfileData;
+import org.tasktide.core.model.task.ItemTask;
+import org.tasktide.core.model.task.TaskState;
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.core.supporting.Utils;
+import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
+import org.tasktide.engine.workerunit.provider.TaskTideExecutorServiceProvider;
 
 
 /**
@@ -80,6 +90,9 @@ public class TestUtils {
     private static final Logger LOGGER = LogManager.getLogger(TestUtils.class);
     private static final Random RAND = new Random();
     private static final ModelBuilderProvider BUILDER_PROV = new ModelBuilderProvider();
+    
+    private static SeContainer container;
+    private static Template template;
     
     /**
      * Creates an annotation providing an early-binding
@@ -332,7 +345,7 @@ public class TestUtils {
             .withId( "MetricData-" + Utils.getRandomUUID() )
             .withAnnotation( BuilderUtility.makeEmptyAnnotation() )
             .withLabel("Metric-Data-Label")
-            .withMetricType(MetricType.CPU)
+            .withMetricType(MetricType.MEMORY)
             .withTimestamp(System.currentTimeMillis())
             .withUnits("GB")
             .withTotal(total)
@@ -429,5 +442,201 @@ public class TestUtils {
         .build();
         
         return output;
+    }
+    
+    
+    public static void resetWorkerContainers() {
+        WorkerUnitContainer.reset();
+        TaskTideExecutorServiceProvider.reset();
+    }
+    
+    
+    
+    public static void initSeContainer() {
+        if ( container == null ) {
+            container = TestEnvironment.startWeldContainer("app-props.properties", TestUtils.class);
+            template = (Template) TestEnvironment.fetchDocumentTemplate(container);
+            TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        }
+    }
+    
+    
+    /**
+     * Register workflow
+     * 
+     * @param workflow
+     * @return {@link ManagerCommand} result
+     */
+    public static Object createWorkflow(String workflow) {
+        ManagerTarget target = ManagerTarget.WORKFLOW;
+        ManagerAction action = ManagerAction.ADD;
+        CommandSpec cmdSpec;
+        ImportCommand cmd;
+        
+        Map<String, Object> opts = new HashMap<>();
+        opts.put("Workflow Name", workflow);
+        
+        cmdSpec = new CommandSpec(null, "", opts);
+        cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
+        
+        return cmd.execute();
+    }
+    
+    
+    /**
+     * Register workflow
+     * 
+     * @param workflow
+     * @return {@link ManagerCommand} result
+     */
+    public static Object createStep(String stepName, String workflowName) {
+        ManagerTarget target = ManagerTarget.STEP;
+        ManagerAction action = ManagerAction.ADD;
+        CommandSpec cmdSpec;
+        ImportCommand cmd;
+        
+        Map<String, Object> opts = new HashMap<>();
+        opts.put("Step Name", stepName);
+        opts.put("Workflow Name", workflowName);
+        
+        cmdSpec = new CommandSpec(null, "", opts);
+        cmd = (ImportCommand) action.makeCommand(target, cmdSpec);
+        
+        return cmd.execute();
+    }
+    
+    
+    /**
+     * Register new {@link WorkItem} for provided task type with number of tasks,
+     *  of the provided {@link TaskState}
+     * 
+     * @param taskType
+     * @param amount
+     * @param
+     * 
+     * @return {@link WorkItem}
+     */
+    public static WorkItem registerWorkItemTasks(ExampleGenerators taskType, int amount, TaskState state) {
+        WorkItem task = TaskGenerator.generateExampleWorkItem(taskType, amount);
+        task.setItemState(state.mapToItemState());
+        for ( ItemTask item : task.getWorkload().getTaskMap().values() ) {
+            item.setTaskState(state);
+        }
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+        .appendModel(task);
+    }
+    
+    
+    /**
+     * Register new {@link WorkItem} for provided task type with number of tasks
+     * 
+     * @param taskType
+     * @param amount
+     * 
+     * @return {@link WorkItem}
+     */
+    public static WorkItem registerWorkItemTasks(ExampleGenerators taskType, int amount) {
+        WorkItem task;
+        if ( amount > 0 ) {
+            task = TaskGenerator.generateExampleWorkItem(taskType, amount);
+        }
+        else {
+            task = TaskGenerator.generateExampleWorkItem(taskType, 1);
+            task.getWorkload().getTaskMap().clear();
+        }
+        return TaskTideServiceManager
+            .fetchWorkItemService()
+        .appendModel(task);
+    }
+    
+    
+    /**
+     * Register new {@link WorkItem} for provided task type with number of tasks
+     * 
+     * @param taskType
+     * @param amount
+     * 
+     * @return {@link WorkItem}
+     */
+    public static WorkItem registerWorkItemTasks(ExampleGenerators taskType, String stepName, int amount) {
+        WorkItem task;
+        if ( amount > 0 ) {
+            task = TaskGenerator.generateExampleWorkItem(taskType, amount);
+        }
+        else {
+            task = TaskGenerator.generateExampleWorkItem(taskType, 1);
+            task.getWorkload().getTaskMap().clear();
+        }
+        
+        List<Step> steps = TaskTideServiceManager.fetchStepService().viewByField("stepName", stepName);
+        if ( !steps.isEmpty() ) {
+            Step step = steps.get(0);
+            task.setStepName(stepName);
+            task.setStepId(step.getId());
+            return TaskTideServiceManager
+                .fetchWorkItemService()
+            .appendModel(task);
+        }
+        return null;
+    }
+    
+    
+    /**
+     * Register defined workload
+     * 
+     * @param taskType
+     * @param tasksPerWorkItem
+     * @param nWorkItems
+     * 
+     * @return List-{@link WorkItem}
+     */
+    public static List<WorkItem> registerWorkItemCollection(ExampleGenerators taskType, String stepName, int tasksPerWorkItem, int nWorkItems) {
+        List<WorkItem> results = new ArrayList<>();
+        for ( int i = 0; i < nWorkItems; i++) {
+            results.add( TestUtils.registerWorkItemTasks(taskType, stepName, tasksPerWorkItem) );
+        }
+        return results;
+    }
+    
+    
+    /**
+     * Register
+     * 
+     * @param taskType
+     * @return 
+     */
+    public static List<WorkItem> registerRandomWorkItemCollection(ExampleGenerators taskType, String stepName) {
+        List<WorkItem> results = new ArrayList<>();
+        int tasksPerWorkItem = RAND.nextInt(1, 3);
+        int nWorkItems = RAND.nextInt(1, 10);
+        for (int i = 0; i < nWorkItems; i++) {
+            results.add( TestUtils.registerWorkItemTasks(taskType, stepName, tasksPerWorkItem) );
+        }
+        return results;
+    }
+    
+    
+    /**
+     * Fetch {@link JobEnvironment}
+     * 
+     * @return {@link JobEnvironment}
+     */
+    public static JobEnvironment fetchJobEnv() {
+        Optional<JobEnvironment> jobEnv = JobType.fetchJobEnvironment();
+        if ( jobEnv.isPresent() ) {
+            return jobEnv.get();
+        }
+        return null;
+    }
+    
+    
+    public static SeContainer fetchConfiguredContainer() {
+        return TestUtils.container;
+    }
+    
+    
+    public static Template fetchConfiguredTemplate() {
+        return TestUtils.template;
     }
 }

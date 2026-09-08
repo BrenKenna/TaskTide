@@ -26,20 +26,20 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.junit.Rule;
-import org.testcontainers.containers.GenericContainer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
-import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
@@ -49,13 +49,10 @@ import org.tasktide.core.manager.command.commands.AnnotateCommand;
 import org.tasktide.core.manager.command.commands.ImportCommand;
 import org.tasktide.core.model.CustomAnnotation;
 
-import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
-
 import org.tasktide.core.repository.RepositoryType;
+
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
-import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
 
 
@@ -64,6 +61,8 @@ import org.tasktide.core.supporting.JsonUtils;
  *
  * @author Brendan Kenna
  */
+@Tag("system-core")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AnnotateManagerCommandTests {
     
@@ -79,8 +78,8 @@ public class AnnotateManagerCommandTests {
     //private final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     // Backend repo
-    @Rule
-    public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    //@Rule
+    //public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     public AnnotateManagerCommandTests() {
     }
@@ -92,7 +91,11 @@ public class AnnotateManagerCommandTests {
         container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
         template = TestEnvironment.fetchDocumentTemplate(container);
-        this.initServiceManager();
+        
+        try {
+            TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        }
+        catch ( Exception ex ) {}
     }
     
     @AfterAll
@@ -103,35 +106,29 @@ public class AnnotateManagerCommandTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        mariaDB.stop();
+        // mariaDB.stop();
         // couchDB.stop();
     }
     
+    
+    /**
+     * Purge table records for each test
+     * 
+     */
     @BeforeEach
     public void setUp() {
+        LOGGER.info("\n\n================ Initiating Next Test ================\n");
+        LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
+        TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
+    
     
     @AfterEach
     public void tearDown() {
+        LOGGER.info("\n\n================ Terminating Test ================\n");
     }
 
-    
-    /**
-     * Initializes service manager
-     */
-    public void initServiceManager() {
-        
-        // Fetch services
-        RepositoryType repoType = RepositoryType.NOSQL;
-        TaskTideService<Workflow> workflowServ = ServiceFactory.makeWorkflowService(repoType, template, "Workflow");
-        TaskTideService<Step> repoStep = ServiceFactory.makeStepService(repoType, template, "Step");
-        TaskTideService<WorkItem> repoWorkItem = ServiceFactory.makeWorkItemService(repoType, template, "WorkItem");
-        
-        // Initialize service manager with services
-        TaskTideServiceManager.initialize(repoWorkItem, repoStep, workflowServ);
-    }
-    
-    
     
     /**
      * Fetch path for provided resource, masking error
@@ -197,7 +194,8 @@ public class AnnotateManagerCommandTests {
         CommandSpec cmdSpec;
         AnnotateCommand cmd;
         boolean assertionState;
-        //LOGGER.info("Displaying init record state:\t'{}'", initRecord());
+        
+        LOGGER.info("Displaying init record state:\t'{}'", initRecord());
         
         // Fetching records annotation
         LOGGER.info("Fetching record for annoations");

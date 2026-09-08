@@ -39,7 +39,6 @@ import org.tasktide.core.model.collection.Workflow;
 
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
-import org.tasktide.core.model.task.TaskState;
 
 import org.tasktide.core.supporting.Utils;
 import org.tasktide.core.manager.generator.TaskGenerator;

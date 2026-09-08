@@ -1,0 +1,51 @@
+name: TaskTide CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish"
+        required: true
+        type: string
+
+
+jobs:
+
+  # Build main project
+  build:
+    uses: ./.github/workflows/_build.yml
+
+
+  # Detect libraries to build
+  detect:
+    needs: build
+    uses: ./.github/workflows/_detect.yml
+
+
+  # Build and test library strategy matrix
+  library:
+    needs: detect
+    uses: ./.github/workflows/_library.yml
+    with:
+      library: ${{ matrix.library }}
+    if: needs.detect.outputs.libraries != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        library: ${{ fromJSON(needs.detect.outputs.libraries )}}
+
+
+  # Publish to dockerhub
+  dockerPublish:
+    needs: library
+    if: github.ref == 'refs/tags/for-publish'
+    uses:
+      ./.github/workflows/_dockerHub.yml
+
+
+  # Publish to maven
+  mavenPublish:
+    needs: library
+    if: github.ref == 'refs/tags/for-publish'
+    uses:
+      ./.github/workflows/_maven.yml

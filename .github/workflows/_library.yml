@@ -1,0 +1,108 @@
+name: Performs unit, integration, and system tests for the specified library
+
+on:
+  workflow_call:
+    inputs:
+      library:
+        description: "Library to act on"
+        required: true
+        type: string
+
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to test"
+        required: true
+        type: string
+
+
+jobs:
+  library:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: tasktide
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup gradle
+        uses: gradle/actions/setup-gradle@v4
+      
+      - name: Run unit tests for ${{ inputs.library }}
+        run: |
+
+          # Set test params
+          TEST="unit-tests"
+          LIBRARY=${{ inputs.library }}
+
+          # Starts MariaDB & couchDB containers for test
+          docker container run --rm --name mariadb --detach \
+            -e MARIADB_ROOT_PASSWORD=password \
+            -e MARIADB_DATABASE=tasktide \
+            -p 3306:3306 mariadb:11
+          docker container run --rm --name couchdb --detach \
+            -e COUCHDB_USER=admin \
+            -e COUCHDB_PASSWORD=password \
+            -p 5984:5984 couchdb:3.5
+
+          # Kill containers on error
+          trap 'docker container kill mariadb couchdb 2>/dev/null || true' EXIT
+
+          # Perform required tests
+          ./gradlew :$LIBRARY:$TEST
+      
+
+      - name: Run integration tests for ${{ inputs.library }}
+        run: |
+
+          # Set test params
+          TEST="integration-tests"
+          LIBRARY=${{ inputs.library }}
+
+          # Starts MariaDB & couchDB containers for test
+          docker container run --rm --name mariadb --detach \
+            -e MARIADB_ROOT_PASSWORD=password \
+            -e MARIADB_DATABASE=tasktide \
+            -p 3306:3306 mariadb:11
+          docker container run --rm --name couchdb  --detach \
+            -e COUCHDB_USER=admin \
+            -e COUCHDB_PASSWORD=password \
+            -p 5984:5984 couchdb:3.5
+
+          # Kill containers on error
+          trap 'docker container kill mariadb couchdb 2>/dev/null || true' EXIT
+
+          # Perform required tests
+          ./gradlew :$LIBRARY:$TEST
+
+      - name: Run system tests for ${{ inputs.library }}
+        run: |
+
+          # Set test params
+          TEST="system-tests"
+          LIBRARY=${{ inputs.library }}
+
+          # Starts MariaDB & couchDB containers for test
+          docker container run --rm --name mariadb --detach \
+            -e MARIADB_ROOT_PASSWORD=password \
+            -e MARIADB_DATABASE=tasktide \
+            -p 3306:3306 mariadb:11
+          docker container run --rm --name couchdb  --detach \
+            -e COUCHDB_USER=admin \
+            -e COUCHDB_PASSWORD=password \
+            -p 5984:5984 couchdb:3.5
+
+          # Kill containers on error
+          trap 'docker container kill mariadb couchdb 2>/dev/null || true' EXIT
+
+          # Perform required tests
+          ./gradlew :$LIBRARY:$TEST

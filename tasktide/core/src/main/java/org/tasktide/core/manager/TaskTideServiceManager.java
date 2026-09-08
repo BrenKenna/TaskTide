@@ -323,4 +323,17 @@ public final class TaskTideServiceManager {
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");  
     }
+    
+    
+    
+    public static synchronized void modify(
+        TaskTideService<WorkItem> workItemServ,
+        TaskTideService<Step> stepServ,
+        TaskTideService<Workflow> workflowServ,
+        TaskTideService<JobEnvironment> jobEnvServ,
+        TaskTideService<MetricData> metricDataServ,
+        TaskTideService<MetricProfile> metricProfileServ
+    ) {
+        INSTANCE = new TaskTideServiceManager(workItemServ, stepServ, workflowServ, jobEnvServ, metricDataServ, metricProfileServ);
+    }
 }

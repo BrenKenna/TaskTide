@@ -17,17 +17,16 @@ package org.tasktide.core.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.transaction.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -37,14 +36,11 @@ import org.tasktide.core.model.CustomAnnotation;
  * @author bkenna
  * @param <T> of {@link TaskTideRepository} for {@link TaskTideModel}
  */
-public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
+public abstract class JpaRepository<T extends TaskTideModel<T>> extends AbstractRepository<T> {
 
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(JpaRepository.class);
     protected final EntityManager entityManager;
-    protected final Class<T> COLLECTION_CLASS;
-    protected final String collectionName;
-    protected final RepositoryType repoType;
-    protected int resultSetSize;
 
     
     /**
@@ -55,32 +51,36 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param collectionName
      */
     public JpaRepository(EntityManager entityManager, Class<T> clazz, String collectionName) {
+        super(clazz, collectionName, RepositoryType.SQL);
         this.entityManager = entityManager;
-        this.COLLECTION_CLASS = clazz;
-        this.collectionName = collectionName;
-        this.repoType = RepositoryType.SQL;
     }
-
+    
     
     /**
-     * Provides a map of the reposiotry meta data reference class,
-     *  repository type (NoSQL, JPA etc), and collection name
+     * Method to support encasing methods in transaction
      * 
-     * @return Map-String, String
+     * @param <R>
+     * @param operation
+     * @return R
      */
-    @Override
-    public Map<String, String> getRepositoryMetaData() {
+    private <R> R transaction(Supplier<R> operation) {
+        EntityTransaction tx = this.entityManager.getTransaction();
         
-        // Initialize results
-        Map<String, String> results = new HashMap<>();
+        // Try execute operation
+        try {
+            tx.begin();
+            R result = operation.get();
+            tx.commit();
+            return result;
+        }
         
-        // Append data
-        results.put("Model Class", this.COLLECTION_CLASS.getSimpleName());
-        results.put("Repository Type", this.repoType.toString());
-        results.put("Collection Name", this.collectionName);
-        
-        // Return results
-        return results;
+        catch ( RuntimeException ex ) {
+            LOGGER.error("Error during database operation", ex);
+            if ( tx.isActive() ) {
+                tx.rollback();
+            }
+            throw ex;
+        }
     }
     
     
@@ -103,14 +103,13 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param model
      * @return T
      */
-    @Transactional
     @Override
     public T insertModel(T model) {
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        entityManager.persist(model);
-        tx.commit();
-        return entityManager.find(COLLECTION_CLASS, model.getId());
+        return this.transaction( () -> {
+            this.entityManager.persist(model);
+            this.entityManager.flush();
+            return entityManager.find(COLLECTION_CLASS, model.getId());
+        });
     }
 
     
@@ -120,14 +119,12 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param model
      * @return T
      */
-    @Transactional
     @Override
     public T updateModel(T model) {
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        T result = entityManager.merge(model);
-        tx.commit();
-        return result;
+        return this.transaction( () -> {
+            T result = this.entityManager.merge(model);
+            return result;
+        });
     }
 
     
@@ -137,17 +134,18 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      * @param id
      * @return boolean
      */
-    @Transactional
     @Override
     public boolean deleteModel(String id) {
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        Optional<T> result = this.findById(id);
-        result.ifPresent(
-            elm -> entityManager.remove(elm)
-        );
-        tx.commit();
-        return result.isEmpty();
+        return this.transaction( () -> {
+            Optional<T> forDeletion = this.findById(id);
+            forDeletion.ifPresent(
+                elm -> this.entityManager.remove(elm)
+            );
+            entityManager.flush();
+            
+            Optional<T> result = this.findById(id);
+            return result.isEmpty();
+        });
     }
 
     
@@ -169,7 +167,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Parameterize and reduce to result set size
         if ( this.resultSetSize >= 1 ) {
-            return entityManager
+            return this.entityManager
                 .createQuery(query, COLLECTION_CLASS)
                 .setParameter("value", value)
                 .setMaxResults(this.resultSetSize)
@@ -178,7 +176,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Otherwise all
         else {
-            return entityManager
+            return this.entityManager
                 .createQuery(query, COLLECTION_CLASS)
                 .setParameter("value", value)
             .getResultList();
@@ -205,7 +203,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Reduce to result set size
         if ( this.resultSetSize >= 1 ) {
-            return entityManager
+            return this.entityManager
                 .createQuery(query, COLLECTION_CLASS)
                 .setParameter("value", value)
                 .setParameter("groupVal", groupVal)
@@ -215,125 +213,12 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Otherwise all
         else {
-            return entityManager
+            return this.entityManager
                 .createQuery(query, COLLECTION_CLASS)
                 .setParameter("value", value)
                 .setParameter("groupVal", groupVal)
             .getResultList();
         }
-    }
-
-    
-    /**
-     * Filters records with provided {@link CustomAnnotation}
-     * 
-     * @param anno
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> filterByAnnotation(CustomAnnotation anno) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().queriedFieldsMatch(anno)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Filters records with provided annotation key and value
-     * 
-     * @param key
-     * @param value
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> filterByAnnotation(String key, Object value) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ?elm.getAnnotations().getKey(key).equals(value)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Filter records which have provided annotation key
-     * 
-     * @param key
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> hasAnnotationField(String key) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm -> 
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().hasKey(key)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Extends collection, state query with annotation filtering
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @param annoKey
-     * @param annoValue
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> findByFieldForGroupWithAnno(
-            String field, Object value, String group,
-            Object groupVal, String annoKey, Object annoValue
-    ) {
-        return this.findByFieldForGroup(field, value, group, groupVal)
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null 
-                ? elm.getAnnotations().getKey(annoKey).equals(annoValue)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Extends collection, state query with annotation filtering
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @param anno
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> findByFieldForGroupWithAnno(String field, Object value, String group, Object groupVal, CustomAnnotation anno) {
-        return this.findByFieldForGroup(field, value, group, groupVal)
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().queriedFieldsMatch(anno)
-                : false
-            )
-        .collect(Collectors.toList());
     }
     
     
@@ -347,7 +232,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Reduce to result set size
         if ( this.resultSetSize >= 1 ) {
-            return entityManager
+            return this.entityManager
                 .createQuery(
                     String.format("SELECT e FROM %s e", COLLECTION_CLASS.getSimpleName()),
                         COLLECTION_CLASS
@@ -358,7 +243,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
         
         // Otherwise all
         else {
-            return entityManager
+            return this.entityManager
                 .createQuery(
                     String.format("SELECT e FROM %s e", COLLECTION_CLASS.getSimpleName()),
                         COLLECTION_CLASS
@@ -375,7 +260,7 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      */
     @Override
     public int save() {
-        entityManager.flush();
+        this.entityManager.flush();
         return (int) countRecords();
     }
 
@@ -415,55 +300,27 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> implements TaskT
      */
     @Override
     public boolean extendModel(List<T> toAdd) {
-        
-        // Initialize vars
-        int count = 0, batchSize = 50;
-        EntityTransaction tx;
-        
-        // Begin transaction
-        tx = entityManager.getTransaction();
-        tx.begin();
-        
-        // Add all records
-        for ( T elm : toAdd ) {
-            entityManager.persist(elm);
+        return this.transaction( () -> {
             
-            // Flush batch if limit is hit
-            if ( count % batchSize == 0 ) {
-                entityManager.flush();
-                entityManager.clear();
-            }
-            count++;
-        }
-        
-        // Commit changes to close transaction
-        entityManager.flush();
-        entityManager.clear();
-        tx.commit();
-        
-        // Return results
-        return count == toAdd.size();
-    }
-    
-    
-    /**
-     * Get results set size
-     * 
-     * @return int
-     */
-    @Override
-    public int getResultSetSize() {
-        return this.resultSetSize;
-    }
+            // Add all records
+            int count = 0, batchSize = 50; // Flush every 50
+            for ( T elm : toAdd ) {
+                entityManager.persist(elm);
 
-    
-    /**
-     * Set results set size
-     * 
-     * @param nRecords 
-     */
-    @Override
-    public void setResultSetSize(int nRecords) {
-        this.resultSetSize = nRecords;
+                // Flush batch if limit is hit
+                if ( count > 0 && count % batchSize == 0 ) {
+                    entityManager.flush();
+                    entityManager.clear();
+                }
+                count++;
+            }
+
+            // Ensure changes are committed
+            entityManager.flush();
+            entityManager.clear();
+
+            // Return results
+            return count == toAdd.size();
+        });
     }
 }

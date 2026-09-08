@@ -476,4 +476,13 @@ public class WorkerUnitContainer {
             }
         }
     }
+    
+    
+    /**
+     * Reset the engine worker unit container for testing
+     * 
+     */
+    public static void reset() {
+        INSTANCE = null;
+    }
 }

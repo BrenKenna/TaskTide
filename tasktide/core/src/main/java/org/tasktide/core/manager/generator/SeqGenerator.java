@@ -27,14 +27,22 @@ import org.tasktide.core.supporting.Utils;
  * 
  * @author bkenna
  */
-public class SeqGenerator {
+public class SeqGenerator extends ExampleGenerator {
     
-    private final Utils utils;
-    
+    /**
+     * Construct
+     */
     public SeqGenerator() {
-        utils = new Utils("dd/MM/yy HH:mm:ss", 4);
+        super();
     }
 
+    
+    /**
+     * Generate seq command
+     * 
+     * @return 
+     */
+    @Override
     public Map<String, String> generateCmd() {
         Map<String, String> output = new HashMap<>();
         int limit = utils.getRandInt(100);

@@ -1,5 +1,0 @@
-Ping_Test_1|ping|lifestylesports.com,easons.com,aerlingus.com
-Ping_Test_2|ping|atu.ie,mtu.ie
-Ping_Test_3|ping|tcd.ie,dcu.ie,tud.ie,ucc.ie
-Ping_Test_4|ping|rte.ie,journal.ie,irishtime.com,independent.ie,irishexaminer.com
-Ping_Test_5|ping|supervalu.ie,dunnestores.com,centra.ie,musgravegroup.com

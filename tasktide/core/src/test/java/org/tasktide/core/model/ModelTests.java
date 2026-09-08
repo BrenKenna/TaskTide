@@ -28,15 +28,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.core.model.builders.ItemTaskBuilder;
 import org.tasktide.core.model.builders.WorkItemBuilder;
 import org.tasktide.core.model.builders.WorkloadBuilder;
 
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.task.ProcessLog;
 import org.tasktide.core.model.task.TaskLogging;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -44,12 +46,14 @@ import org.tasktide.core.model.workitem.Workload;
 
 import org.tasktide.TestCaseBuilderUtility;
 
+
 /**
  * 
  * Unit tests of Model classes for Jakarta-NoSQL, and JSONb annotations, and building
  * 
  * @author bkenna
  */
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ModelTests {
     
     private static final Logger logger = LogManager.getLogger(ModelTests.class);
@@ -86,10 +90,10 @@ public class ModelTests {
      */
     @Test
     @Order(0)
+    @Tag("unit-core")
     public void processLogTest() {
         
         // Initialize test
-        boolean assertionState = true;
         logger.info("\n\n================ Process Log Test ================\n");
         
         // Construct process log
@@ -107,7 +111,7 @@ public class ModelTests {
         
         // End test
         logger.info("\n\n================ Process Log Test ================\n");
-        assertTrue(assertionState);
+        assertTrue( procLogB.getStderr().length == procLog.getStderr().length, "Serialized ProcessLog Ids do not match");
     }
     
     
@@ -116,6 +120,7 @@ public class ModelTests {
      */
     @Test
     @Order(1)
+    @Tag("base-core")
     public void taskLogTest() {
     
         // Initialize test
@@ -145,6 +150,7 @@ public class ModelTests {
      * Test out task log builders
      */
     @Test
+    @Tag("base-core")
     @Order(2)
     public void taskLogBuilderTest() {
     
@@ -169,15 +175,14 @@ public class ModelTests {
      */
     @Test
     @Order(3)
+    @Tag("unit-core")
     public void testItemTask() {
         
         // Initialize test
-        boolean assertionState = true;
         logger.info("\n\n================ Item Task Test ================\n");
         
         // Build dependant objects
         logger.info("\n\nAttempting to build Item Task\n");
-        ProcessLog procLog = TestCaseBuilderUtility.makeTestProcessLog();
         TaskLogging taskLog = TestCaseBuilderUtility.makeTestTaskLog();
         
         // Build item task
@@ -202,7 +207,7 @@ public class ModelTests {
         
         // End test
         logger.info("\n\n================ Item Task Test ================\n");
-        assertTrue(assertionState);
+        assertTrue(itemTaskB.getId().equals(itemTask.getId()), "Serialized ItemTask Ids do not match");
     }
     
     
@@ -211,10 +216,10 @@ public class ModelTests {
      */
     @Test
     @Order(4)
+    @Tag("unit-core")
     public void testWorkload() {
     
         // Initialize test
-        boolean assertionState = true;
         logger.info("\n\n================ Workload Test ================\n");
         
         // Build dependant objects
@@ -243,7 +248,7 @@ public class ModelTests {
         
         // End test
         logger.info("\n\n================ Workload Test ================\n");
-        assertTrue(assertionState);
+        assertTrue(workloadB.getId().equals(workload.getId()), "Serialized Workload Ids do not match");
     }
     
     
@@ -252,10 +257,10 @@ public class ModelTests {
      */
     @Test
     @Order(5)
+    @Tag("unit-core")
     public void testWorkItem() {
     
         // Initialize test
-        boolean assertionState = true;
         logger.info("\n\n================ Work Item Test ================\n");
         
         // Build workload
@@ -283,6 +288,6 @@ public class ModelTests {
         
         // End test
         logger.info("\n\n================ Work Item Test ================\n");
-        assertTrue(assertionState);
+        assertTrue(workItemB.getId().equals(workItem.getId()), "Serialized WorkItem Ids do not match");
     }
 }

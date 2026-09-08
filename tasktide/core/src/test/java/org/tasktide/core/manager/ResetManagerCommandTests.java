@@ -15,8 +15,6 @@
  */
 package org.tasktide.core.manager;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.persistence.EntityManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,18 +23,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.testcontainers.containers.GenericContainer;
-import org.junit.Rule;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
-import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 
 import org.tasktide.core.manager.command.CommandSpec;
@@ -48,7 +47,9 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.JpaRepository;
 
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
+import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.ItemStoreType;
 
 
 /**
@@ -57,18 +58,26 @@ import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
  * 
  * @author Brendan Kenna
  */
+@Tag("system-core")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ResetManagerCommandTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(ResetManagerCommandTests.class);
+    private final Logger LOGGER = LogManager.getLogger(ResetManagerCommandTests.class);
+    
     
     // Backend repo
-    @Rule
-    public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    //@Rule
+    //public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     // Container for fetch template/entity manager
-    private SeContainer container;
-    private EntityManager entityManager;
+    // private SeContainer container;
+    // private EntityManager entityManager;
+    // private Template template;
+    
+    private final ItemStoreType storeType = ItemStoreType.ROCKSDB;
+    private final String storeName = "TaskTide-Manager/Reset/RocksDB";
+    private ItemStore itemStore;
     
     public ResetManagerCommandTests() {
     }
@@ -77,26 +86,49 @@ public class ResetManagerCommandTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Reset Manager Command Tests ----------------\n";
         LOGGER.info(msg);
+        ItemStoreRepositoryUtility.modify(storeType, storeName);
+        itemStore = ItemStoreRepositoryUtility.get().fetchItemStore(storeName, storeType);
+        TestUtils.initServiceManager(RepositoryType.ITEMSTORE, itemStore);
+        
+        /**
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
-        TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        template = TestEnvironment.fetchDocumentTemplate(container);
+        
+        try {
+            TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        }
+        catch ( Exception ex ) {
+            LOGGER.error("Failed to initialize ServiceManager", ex);
+            // throw ex;
+        }
+        **/
     }
     
     @AfterAll
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Reset Manager Command Tests ----------------\n";
         LOGGER.info(msg);
-        if (container != null && container.isRunning()) {
-            container.close();
-            LOGGER.info("CDI container shut down");
-        }
-        mariaDB.stop();
+        // if (container != null && container.isRunning()) {
+        //    container.close();
+        //    LOGGER.info("CDI container shut down");
+        // }
+        // mariaDB.stop();
     }
     
+    
+    /**
+     * Purge table records for each test
+     * 
+     */
     @BeforeEach
     public void setUp() {
         LOGGER.info("\n\n================ Initiating Next Test ================\n");
+        // LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
+        // TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        // LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
+    
     
     @AfterEach
     public void tearDown() {

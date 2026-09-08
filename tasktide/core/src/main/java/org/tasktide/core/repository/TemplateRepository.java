@@ -17,14 +17,11 @@ package org.tasktide.core.repository;
 
 import jakarta.nosql.Template;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.CustomAnnotation;
 
 
@@ -34,15 +31,10 @@ import org.tasktide.core.model.CustomAnnotation;
  * @author bkenna
  * @param <T> of {@link TaskTideModel}-WorkItem,Step,Workflow
  */
-// @Dependent 
-public abstract class TemplateRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
+public abstract class TemplateRepository<T extends TaskTideModel<T>> extends AbstractRepository<T> {
     
     // Attributes
     protected final Template template;
-    protected final Class<T> COLLECTION_CLASS;
-    protected final String collectionName;
-    protected final RepositoryType repoType;
-    protected int resultSetSize;
     
     
     /**
@@ -53,34 +45,10 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
      * @param collectionName 
      */
     public TemplateRepository(Template template, Class<T> modelClass, String collectionName) {
+        super(modelClass, collectionName, RepositoryType.NOSQL);
         this.template = template;
-        this.COLLECTION_CLASS = modelClass;
-        this.collectionName = collectionName;
-        this.repoType = RepositoryType.NOSQL;
     }
-    
-    
-    /**
-     * Provide a map of repository meta data reference class,
-     *   repository type (NoSQL, RocksDB etc), collecion name
-     * 
-     * @return Map-String, String
-     */
-    @Override
-    public Map<String, String> getRepositoryMetaData() {
-        
-        // Initialize results
-        Map<String, String> results = new HashMap<>();
-        
-        // Append data
-        results.put("Model Class", this.COLLECTION_CLASS.getSimpleName());
-        results.put("Repository Type", this.repoType.toString());
-        results.put("Collection Name", this.collectionName);
-        
-        // Return results
-        return results;
-    }
-    
+
     
     /**
      * Fetch WorkItem by its Id
@@ -177,119 +145,6 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
 
     
     /**
-     * Filters records with provided {@link CustomAnnotation}
-     * 
-     * @param anno
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> filterByAnnotation(CustomAnnotation anno) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().queriedFieldsMatch(anno)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Filters records with provided annotation key and value
-     * 
-     * @param key
-     * @param value
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> filterByAnnotation(String key, Object value) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().getKey(key).equals(value)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Filter records which have provided annotation key
-     * 
-     * @param key
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> hasAnnotationField(String key) {
-        return this.findAll()
-            .stream()
-            .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().hasKey(key)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Extends collection, state query with annotation filtering
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @param annoKey
-     * @param annoValue
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> findByFieldForGroupWithAnno(
-            String field, Object value, String group,
-            Object groupVal, String annoKey, Object annoValue
-    ) {
-        return this.findByFieldForGroup(field, value, group, groupVal)
-            .stream()
-            .parallel()
-            .filter( elm -> 
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().getKey(annoKey).equals(annoValue)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
-     * Extends collection, state query with annotation filtering
-     * 
-     * @param field
-     * @param value
-     * @param group
-     * @param groupVal
-     * @param anno
-     * @return List-{@link TaskTideModel}
-     */
-    @Override
-    public List<T> findByFieldForGroupWithAnno(String field, Object value, String group, Object groupVal, CustomAnnotation anno) {
-        return this.findByFieldForGroup(field, value, group, groupVal)
-            .stream()
-            .parallel()
-            .filter( elm -> 
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().queriedFieldsMatch(anno)
-                : false
-            )
-        .collect(Collectors.toList());
-    }
-    
-    
-    /**
      * Find {@link TaskTideModel} from backend with field and group
      *  having specified value. Step = Name, State = ToDo
      * 
@@ -356,68 +211,5 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> implements 
     @Override
     public int save() {
         return template.hashCode();
-    }
-    
-    
-    /**
-     * Could paginate here
-     * 
-     * @return List-T
-     */
-    @Override
-    public List<T> load() {
-        return null;
-    }
-
-    
-    /**
-     * Get class of repository
-     * 
-     * @return Class-T
-     */
-    public Class<T> getCollectionClass() {
-        return COLLECTION_CLASS;
-    }
-
-    
-    /**
-     * Get collection name
-     * 
-     * @return String
-     */
-    public String getCollectionName() {
-        return collectionName;
-    }
-
-    
-    /**
-     * Get repository type
-     * 
-     * @return RepositoryType
-     */
-    public RepositoryType getRepoType() {
-        return repoType;
-    }
-
-    
-    /**
-     * Get results set size
-     * 
-     * @return int
-     */
-    @Override
-    public int getResultSetSize() {
-        return this.resultSetSize;
-    }
-
-    
-    /**
-     * Set results set size
-     * 
-     * @param nRecords 
-     */
-    @Override
-    public void setResultSetSize(int nRecords) {
-        this.resultSetSize = nRecords;
     }
 }

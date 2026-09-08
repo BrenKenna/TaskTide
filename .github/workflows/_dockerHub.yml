@@ -1,0 +1,43 @@
+name: Build Containers and Publish to DockerHub
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: tasktide
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+
+      - name: Configure docker build
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: |
+          echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          ./gradlew build -x test
+          mv tasktide/build/distributions/tasktide*.zip docker/tasktide.zip
+
+
+      - name: Build and Publish Latest Image
+        run: |
+          cd ./docker
+          docker build -t tasktide/tasktide:latest -f tasktide-latest.Dockerfile .
+          docker push tasktide/tasktide:latest
+
+      
+      - name: Build and Publish Apptainer Image
+        run: |
+          docker build -t tasktide/tasktide:apptainer -f tasktide-apptainer.Dockerfile .
+          docker push tasktide/tasktide:apptainer

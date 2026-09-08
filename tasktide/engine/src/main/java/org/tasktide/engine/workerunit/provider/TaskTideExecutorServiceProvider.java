@@ -31,7 +31,7 @@ import org.tasktide.core.model.task.ItemTask;
 public class TaskTideExecutorServiceProvider {
  
     // There can be only one
-    private static volatile TaskTideExecutorServiceProvider instance;
+    private static volatile TaskTideExecutorServiceProvider INSTANCE;
     
     
     // Executor services
@@ -61,10 +61,10 @@ public class TaskTideExecutorServiceProvider {
      * @param itemTaskThreads
      */
     public static synchronized void initialize(int engineWorkerThreads, int itemTaskThreads) {
-        if ( instance != null ) {
+        if ( INSTANCE != null ) {
             throw new IllegalStateException("TaskTideExecutorService already initialize");
         }
-        instance = new TaskTideExecutorServiceProvider(engineWorkerThreads, itemTaskThreads);
+        INSTANCE = new TaskTideExecutorServiceProvider(engineWorkerThreads, itemTaskThreads);
     
     }
     
@@ -75,11 +75,11 @@ public class TaskTideExecutorServiceProvider {
      * @return TaskTideExecutorServiceProvider
      */
     public static TaskTideExecutorServiceProvider getInstance() {
-        if ( instance == null ) {
+        if ( INSTANCE == null ) {
             throw new IllegalStateException("TaskTideExecutorService not initialized");
         }
         else {
-            return instance;
+            return INSTANCE;
         }
     }
     
@@ -153,5 +153,14 @@ public class TaskTideExecutorServiceProvider {
      */
     public boolean isParallelized() {
         return this.getItemTaskThreads() > 1 || this.getEngineWorkerThreads() > 1;
+    }
+    
+    
+    /**
+     * Reset the engine worker unit container for testing
+     * 
+     */
+    public static void reset() {
+        INSTANCE = null;
     }
 }

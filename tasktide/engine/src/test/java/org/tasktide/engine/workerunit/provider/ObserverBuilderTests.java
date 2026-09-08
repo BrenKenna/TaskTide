@@ -1,29 +1,43 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ * Copyright 2026 Bren.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.tasktide.engine.workerunit.provider;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
-import org.tasktide.engine.workerunit.provider.WorkItemObserverBuilder;
-import org.tasktide.engine.workerunit.provider.ItemTaskObserverBuilder;
 
 import java.util.List;
 import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Rule;
+
+// import org.junit.Rule;
+// import org.testcontainers.containers.GenericContainer;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.generator.ExampleGenerators;
@@ -37,7 +51,7 @@ import org.tasktide.engine.TestUtils;
 
 import org.tasktide.engine.observer.TaskTideEngineObserver;
 import org.tasktide.engine.trackers.TaskTrackers;
-import org.testcontainers.containers.GenericContainer;
+
 
 
 /**
@@ -45,6 +59,8 @@ import org.testcontainers.containers.GenericContainer;
  * 
  * @author bkenna
  */
+@Tag("unit-base")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ObserverBuilderTests {
     
@@ -53,8 +69,8 @@ public class ObserverBuilderTests {
     private Template template;
     
     // CouchDB container
-    @Rule
-    public GenericContainer<?> couchDB = (GenericContainer<?>) TestEnvironment.couchDbContainer("tasktide_database", false);
+    // @Rule
+    // public GenericContainer<?> couchDB = (GenericContainer<?>) TestEnvironment.couchDbContainer("tasktide_database", false);
     
     public ObserverBuilderTests() {}
     
@@ -77,7 +93,7 @@ public class ObserverBuilderTests {
             container.close();
             logger.info("CDI container shut down");
         }
-        couchDB.stop();
+        // couchDB.stop();
     }
     
     

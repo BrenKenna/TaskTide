@@ -25,11 +25,9 @@ import org.tasktide.core.model.task.ItemTask;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
-import org.tasktide.core.supporting.Utils;
 
 
 /**
- *
  * Generator to support creation of random tasks
  * 
  * @author bkenna
@@ -49,9 +47,9 @@ public class TaskGenerator {
     
     
     /**
-     * Generate random ping task
+     * Generate random {@link PingGenerator} task
      * 
-     * @return Map-String of {@link ManagerTask} Name, String of task
+     * @return {@link ManagerTask}
      */
     public static ManagerTask generatePingTask() {
         return ExampleGenerators.PING.createTask();
@@ -59,12 +57,32 @@ public class TaskGenerator {
     
     
     /**
-     * Generate random seq task
+     * Generate random {@link SeqGenerator} task
      * 
-     * @return Map-String of {@link ManagerTask} Name, String of task
+     * @return {@link ManagerTask}
      */
     public static ManagerTask generateSeqTask() {
         return ExampleGenerators.SEQ.createTask();
+    }
+    
+    
+    /**
+     * Generate random {@link NsLookupGenerator} task
+     * 
+     * @return {@link ManagerTask}
+     */
+    public static ManagerTask generateNsLookupTask() {
+        return ExampleGenerators.NSLOOKUPS.createTask();
+    }
+    
+    
+    /**
+     * Generate random {@link HostnameGenerator} task
+     * 
+     * @return {@link ManagerTask}
+     */
+    public static ManagerTask generateHostnameTask() {
+        return ExampleGenerators.HOSTNAME.createTask();
     }
     
     

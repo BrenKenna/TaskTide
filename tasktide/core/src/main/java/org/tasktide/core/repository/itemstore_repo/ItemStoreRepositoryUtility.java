@@ -163,6 +163,15 @@ public class ItemStoreRepositoryUtility {
     }
     
     
+    /**
+     * Fetch {@link ItemStore} providing flag for leader election
+     * 
+     * @param storeName
+     * @param storeType
+     * @param isElected
+     * 
+     * @return {@link ItemStore}
+     */
     public ItemStore fetchItemStore(String storeName, ItemStoreType storeType, boolean isElected) {
         
         // Resolve store locatoin
@@ -235,5 +244,17 @@ public class ItemStoreRepositoryUtility {
             leader.closeConn(DbTarget.BOTH, true);
         }
         return output;
+    }
+    
+    
+    
+    /**
+     * Initialize the utility with the store type and file location
+     * 
+     * @param storeType
+     * @param storeName 
+     */
+    public static void modify(ItemStoreType storeType, String storeName) {
+        INSTANCE = new ItemStoreRepositoryUtility(storeType, storeName);
     }
 }

@@ -217,11 +217,14 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         return this.findAll()
             .stream()
             .parallel()
-            .filter( elm -> 
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().getKey(key).equals(value)
-                : false
-            )
+            .filter( elm -> {
+                if ( elm.getAnnotations() != null ) {
+                    if ( elm.getAnnotations().hasKey(key) ) {
+                        return elm.getAnnotations().getKey(key).equals(value);
+                    }
+                }
+                return false;
+            })
         .collect(Collectors.toList());
     }
     
@@ -265,11 +268,14 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
         return this.findByFieldForGroup(field, value, group, groupVal)
             .stream()
             .parallel()
-            .filter( elm ->
-                elm.getAnnotations() != null
-                ? elm.getAnnotations().getKey(annoKey).equals(annoValue)
-                : false
-            )
+            .filter( elm -> {
+                if ( elm.getAnnotations() != null ) {
+                    if ( elm.getAnnotations().hasKey(annoKey)) {
+                        return elm.getAnnotations().getKey(annoKey).equals(annoValue);
+                    }
+                }
+                return false;
+            })
         .collect(Collectors.toList());
     }
     

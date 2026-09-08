@@ -16,6 +16,7 @@
 package org.tasktide.core.manager;
 
 import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 
 import java.util.HashMap;
@@ -23,16 +24,26 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.eclipse.jnosql.mapping.core.Converters;
+import org.eclipse.jnosql.mapping.document.DocumentTemplate;
+import org.eclipse.jnosql.mapping.document.spi.DocumentExtension;
+import org.eclipse.jnosql.mapping.reflection.Reflections;
+import org.eclipse.jnosql.mapping.reflection.spi.ReflectionEntityMetadataExtension;
+import org.eclipse.jnosql.mapping.semistructured.EntityConverter;
+import org.jboss.weld.junit5.auto.AddExtensions;
+import org.jboss.weld.junit5.auto.AddPackages;
 
-import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import org.testcontainers.containers.GenericContainer;
 
@@ -59,18 +70,23 @@ import org.tasktide.core.supporting.JsonUtils;
  * 
  * @author Brendan Kenna
  */
+@Tag("system-core")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@AddPackages(value = {Converters.class, Reflections.class, EntityConverter.class, Template.class, DocumentTemplate.class})
+@AddExtensions( {ReflectionEntityMetadataExtension.class, DocumentExtension.class} )
 public class SummarizeManagerCommandTests {
     
-    private static final Logger LOGGER = LogManager.getLogger(SummarizeManagerCommandTests.class);
+    private final Logger LOGGER = LogManager.getLogger(SummarizeManagerCommandTests.class);
     
     // Backend repo
-    @Rule
-    public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+    // @Rule
+    // public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
     
     // Container for fetch nosql template
     private SeContainer container;
-    private EntityManager entityManager;
+    // private EntityManager entityManager;
+    private Template template;
     
     public SummarizeManagerCommandTests() {
     }
@@ -79,9 +95,14 @@ public class SummarizeManagerCommandTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Summarize Manager Command Tests ----------------\n";
         LOGGER.info(msg);
-        container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
-        entityManager = JpaRepositoryUtility.get().fetchEntityManager();
-        TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
+        container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
+        //entityManager = JpaRepositoryUtility.get().fetchEntityManager();
+        template = TestEnvironment.fetchDocumentTemplate(container);
+        
+        TestUtils.initServiceManager(RepositoryType.NOSQL, template);
+        // Import test records
+        LOGGER.info("Importing test records");
+        TestUtils.importTestRecords("singleTaskImports-Seq.txt", "Arbitrary", "|");
     }
     
     @AfterAll
@@ -92,13 +113,22 @@ public class SummarizeManagerCommandTests {
             container.close();
             LOGGER.info("CDI container shut down");
         }
-        mariaDB.stop();
+        // mariaDB.stop();
     }
     
+    
+    /**
+     * Purge table records for each test
+     * 
+     */
     @BeforeEach
     public void setUp() {
         LOGGER.info("\n\n================ Initiating Next Test ================\n");
+        //LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
+        //TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        //LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
+    
     
     @AfterEach
     public void tearDown() {
@@ -111,6 +141,7 @@ public class SummarizeManagerCommandTests {
      */
     @Test
     @Order(0)
+    @SuppressWarnings("unchecked")
     public void canSummarize() {
         
         // Construct work item
@@ -122,11 +153,6 @@ public class SummarizeManagerCommandTests {
         StateSummary<ItemState> results;
         boolean assertionState;
         
-        // Import test records
-        LOGGER.info("Importing test records");
-        TestUtils.importTestRecords("singleTaskImports.txt", "Arbitrary", "|");
-        TestUtils.viewSteps();
-        TestUtils.viewWorkItems();
         
         // Construct command spec
         LOGGER.info("Constructing command spec");
@@ -165,6 +191,7 @@ public class SummarizeManagerCommandTests {
      */
     @Test
     @Order(1)
+    @SuppressWarnings("unchecked")
     public void canSummarizeEach() {
         
         // Construct work item
@@ -175,12 +202,6 @@ public class SummarizeManagerCommandTests {
         SummarizeCommand cmd;
         Map<String, StateSummary<ItemState>> results;
         boolean assertionState;
-        
-        // Import test records
-        LOGGER.info("Importing test records");
-        TestUtils.importTestRecords("singleTaskImports.txt", "Arbitrary", "|");
-        TestUtils.viewSteps();
-        TestUtils.viewWorkItems();
         
         // Construct command spec
         LOGGER.info("Constructing command spec");

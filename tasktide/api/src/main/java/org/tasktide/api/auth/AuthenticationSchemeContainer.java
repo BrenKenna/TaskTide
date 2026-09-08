@@ -34,7 +34,7 @@ public class AuthenticationSchemeContainer {
      * @throws AuthenticationException 
      */
     public static void configureAuthenticationSchemeProvider(AuthenticationScheme authScheme) throws AuthenticationException {
-        if ( AUTH_SCHEME != null ) {
+        if ( AUTH_SCHEME == null ) {
             AUTH_SCHEME = authScheme;
         }
         else {

@@ -15,6 +15,7 @@
  */
 package org.tasktide.tasktide.client.config;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.parser.ArgumentTree;
@@ -30,6 +31,7 @@ import org.tasktide.api.TaskTideWebApi;
  *
  * @author Bren
  */
+@ApplicationScoped
 public class WebApiConfig extends AbstractConfig {
 
     
