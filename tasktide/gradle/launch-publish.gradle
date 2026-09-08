@@ -26,7 +26,7 @@ tasks.named('publishTaskTideLocal') {
 tasks.named('publishTaskTide') {
 
     dependsOn publishedModules.collect {
-        "${it.path}:publishAllPublicationsToProjectLocalRepository"
+        "${it.path}:publishMavenJavaPublicationToProjectLocalRepository"
     }
 
     dependsOn publishedModules.collect {
