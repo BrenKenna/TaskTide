@@ -19,7 +19,8 @@ RUN apt-get update && \
 # Unpack task into working directory
 COPY tasktide.zip /tmp/tasktide.zip
 RUN unzip /tmp/tasktide.zip -d /opt && \
-    mv /opt/tasktide-*/ /opt/tasktide && \
+    mkdir -p /opt/tasktide && \
+    mv /opt/tasktide-*/* /opt/tasktide/ && \
     chmod +x /opt/tasktide/bin/tasktide
 
 
