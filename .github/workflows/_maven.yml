@@ -83,14 +83,10 @@ jobs:
           mkdir -p .secrets
           printf '%s\n' "$GPG_PRIVATE_KEY" > .secrets/tasktide-signing-key.asc
           chmod 600 .secrets/tasktide-signing-key.asc
-          cat >> ".secrets/gradle.properties" <<EOF
-          signingKeyFile=.secrets/tasktide-signing-key.asc
-          signingPassword=${{ secrets.MAVEN_CENTRAL_SIGNING_PASSWORD }}
-          EOF
 
       - name: Publish to Maven Central
         env:
-          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PORTAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           MAVEN_CENTRAL_PORTAL_PASSWORD=: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
           ORG_GRADLE_PROJECT_signingKeyId: ${{ secrets.GPG_KEY_ID }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSPHRASE }}
