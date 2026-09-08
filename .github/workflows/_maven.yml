@@ -16,7 +16,6 @@ jobs:
 
     permissions:
       contents: write
-      id-token: write
 
     defaults:
       run:
@@ -95,8 +94,3 @@ jobs:
         run: |
           ./gradlew publishTaskTide
           ./gradlew publishTaskTideAggregator
-
-      - name: Attest Maven artifacts with SLSA provenance
-        uses: actions/attest-build-provenance@v3
-        with:
-          subject-path: '**/build/libs/*.jar'
