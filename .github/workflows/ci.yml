@@ -8,19 +8,19 @@ jobs:
 
   # Build main project
   build:
-    uses: ./.github/workflows/ci-libs/_build.yml
+    uses: .github/workflows/ci-libs/_build.yml
 
 
   # Detect libraries to build
   detect:
     needs: build
-    uses: ./.github/workflows/ci-libs/_detect.yml
+    uses: .github/workflows/ci-libs/_detect.yml
 
 
   # Build and test library strategy matrix
   library:
     needs: detect
-    uses: ./.github/workflows/ci-libs/_library.yml
+    uses: .github/workflows/ci-libs/_library.yml
     with:
       library: ${{ matrix.library }}
     if: needs.detect.outputs.libraries != '[]'
@@ -35,7 +35,7 @@ jobs:
     needs: library
     if: github.ref == 'refs/tags/for-publish'
     uses:
-      ./.github/workflows/ci-libs/_dockerhub.yml
+      .github/workflows/ci-libs/_dockerhub.yml
 
 
   # Publish to maven
@@ -43,4 +43,4 @@ jobs:
     needs: library
     if: github.ref == 'refs/tags/for-publish'
     uses:
-      ./.github/workflows/ci-libs/_maven.yml
+      .github/workflows/ci-libs/_maven.yml
