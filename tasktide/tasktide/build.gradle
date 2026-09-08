@@ -66,7 +66,47 @@ dependencies {
     implementation      'mysql:mysql-connector-java:8.0.33'
 
     implementation      "jakarta.servlet:jakarta.servlet-api:6.1.0"
+
+    testImplementation      "jakarta.ws.rs:jakarta.ws.rs-api:4.0.0"
 }
+
+
+// Define test scopes
+def testTags = [
+    "unit-tests": 'unit-tasktide',
+    "integration-tests": 'integration-tasktide',
+    "system-tests": 'system-tasktide'
+]
+
+
+// Define logging scope for all tests
+tasks.withType(Test).configureEach {
+
+    // Ensures that tests operating with shared containers
+    //   do not collide on conflicting config requirements
+    maxParallelForks = 1
+    systemProperty 'junit.jupiter.execution.parallel.enabled', 'false'
+
+    testLogging {
+        showStandardStreams = true
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+}
+
+
+// Register test under annotation scheme
+testTags.each { name, tag ->
+    tasks.register(name, Test) {
+        group = 'api-tests'
+        description = "Run Parser ${name} tests (${tag})"
+
+        useJUnitPlatform {
+            includeTags tag
+        }
+    }
+}
+
 
 // Slim jar no dependancies or CDI runtime
 jar {

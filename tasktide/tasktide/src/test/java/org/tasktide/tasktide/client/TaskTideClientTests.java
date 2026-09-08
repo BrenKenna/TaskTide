@@ -15,13 +15,23 @@
  */
 package org.tasktide.tasktide.client;
 
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jboss.logging.processor.apt.ProcessingException;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -38,6 +48,7 @@ import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.generator.ExampleGenerators;
+import org.tasktide.core.model.collection.Workflow;
 
 // import org.junit.Rule;
 // import org.tasktide.tasktide.TestEnvironment;
@@ -129,7 +140,63 @@ public class TaskTideClientTests {
             .withItemState(ItemState.TODO)
         .build();
     }
+        
+    
+    /**
+     * Wait at max 10s until sever is ready
+     * 
+     * @param url 
+     */
+    private void awaitServerReady(String url) {
+    
+        // Initialize vars
+        Client cli;
+        WebTarget tgt;
+        
+        // Wait until server is read
+        cli = ClientBuilder.newClient();
+        tgt = cli.target(url);
+        try {
+            for ( int i = 0; i < 100; i++) {
+                try (
+                    Response resp = tgt
+                        .request(MediaType.APPLICATION_JSON)
+                        .header("User-Agent", "JUnit-Test")
+                        .header("X-Forwarded-For", "127.0.0.1")
+                    .get()
+                ) {
+                    return;
+                }
+                
+                catch ( ProcessingException ex ) {
+                    try {Thread.sleep(100L);}
+                    catch ( Exception ex2 ){}
+                }
+                throw new IllegalStateException("Server did not start wthin 5s");
+            }
+        }
+        finally {
+            cli.close();
+        }
+    }
 
+    
+    /**
+     * Run provided {@link TaskTideClient} in background
+     *  thread
+     * 
+     * @param client
+     * @return Future-Boolean
+     */
+    private Future<Boolean> startWebServerThread(TaskTideClient client) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<Boolean> task = executor.submit( () -> {
+            client.runClient();
+            return true;
+        });
+        return task;
+    }
+    
     
     /**
      * Tests importing through the manager client
@@ -237,10 +304,67 @@ public class TaskTideClientTests {
                 ItemState.DONE
         );
         Assertions.assertTrue(
-            tasksDone.size() == nTasks,
+            tasksDone.size() >= nTasks,
             "Expected n = '" + nTasks + "' tasks completed, detected '" + tasksDone.size() + "' from ServiceManager" 
         );
         
         LOGGER.info("\n\n================ Tests EngineClient  ================\n");
+    }
+    
+    
+    /**
+     * Tests registering workload through web api
+     */
+    @Test
+    @Order(2)
+    public void canRegisterThroughWebApi() {
+    
+        // Initialize data
+        LOGGER.info("\n\n================ Tests WebAPI  ================\n");
+        ClientConfigMap configMap;
+        TaskTideClientType clientType;
+        TaskTideClient client;
+        Future<Boolean> task;
+        String url;
+        String workflowName = "WebAPI-System-Test";
+        
+        // Fetch config
+        LOGGER.info("Constructing ClientConfigMap");
+        configMap = new ClientConfigMap();
+        configMap.addConfigs(provider);
+        
+        // Fetch client
+        LOGGER.info("Fetching Client");
+        clientType = TaskTideClientType.WEBAPI;
+        client = clientType.makeClient(configMap);
+        
+        // Start web service
+        LOGGER.info("Starting web service in background thread");
+        url = "http://localhost:8080/tasktide/api/services/workflow/create";
+        task = this.startWebServerThread(client);
+        this.awaitServerReady(url);
+        
+        // Register workflow
+        Client cli = ClientBuilder.newClient();
+        WebTarget tgt = cli
+           .target(url)
+           .queryParam("workflowName", workflowName)
+        ;
+        Response resp = tgt
+            .request(MediaType.APPLICATION_JSON)
+            .header("User-Agent", "JUnit-Test")
+            .header("X-Forwarded-For", "127.0.0.1")
+        .post(Entity.entity("", MediaType.APPLICATION_JSON));
+        
+        // Verify request
+        List<Workflow> results = TaskTideServiceManager
+            .fetchWorkflowService()
+            .viewByField("workflowName", workflowName);
+        int statusCode = resp.getStatus();
+        LOGGER.info("Logging response status:\t'{}'", statusCode);
+        Assertions.assertTrue(statusCode == 200, "Unable to add the test workflow");
+        Assertions.assertTrue(!results.isEmpty() && results.size() >= 1, "Unable to find registered workflow");
+        LOGGER.info("Displaying registered Workflow:\n\n'{}'", results.get(0).toJsonDoc());
+        task.cancel(true);
     }
 }

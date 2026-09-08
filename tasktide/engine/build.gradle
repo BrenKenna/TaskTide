@@ -43,7 +43,7 @@ dependencies {
 
 
 // Define test scopes
-def parserTestTags = [
+def testTags = [
     "unit-tests": 'unit-engine',
     "integration-tests": 'integration-engine',
     "system-tests": 'system-engine'
@@ -67,7 +67,7 @@ tasks.withType(Test).configureEach {
 
 
 // Register test under annotation scheme
-parserTestTags.each { name, tag ->
+testTags.each { name, tag ->
     tasks.register(name, Test) {
         group = 'engine-tests'
         description = "Run Parser ${name} tests (${tag})"

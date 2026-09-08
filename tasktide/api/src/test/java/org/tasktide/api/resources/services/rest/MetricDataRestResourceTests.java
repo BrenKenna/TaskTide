@@ -140,8 +140,8 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
+            .header("User-Agent", "JUnit-Test")
+            .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         LOGGER.info("Displaying resource response:\t'{}'", resp);
@@ -166,13 +166,13 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         Response resp;
         
         // Fetch mock token
-        LOGGER.info("Firing test query by field against MetricDataRestResource for:\t'{}'", MetricType.CPU);
+        LOGGER.info("Firing test query by field against MetricDataRestResource for:\t'{}'", MetricType.MEMORY);
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .queryParam("field", "Type")
-            .queryParam("value", MetricType.CPU)
+            .queryParam("value", MetricType.MEMORY)
             .request()
-                .header("User-Agent", "JUnit-Test")
+            .header("User-Agent", "JUnit-Test")
         .get();
         this.requestCtx.deactivate();
         LOGGER.info("Displaying resource response:\t'{}'", resp);
@@ -205,7 +205,6 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
             MetricData metricData = TestUtils.fetchRandomCpuMetric();
             metricData.setLabel(metricDataName + "-" + i);
             metricDatas.add(metricData);
-            
         }
         
         // Fetch mock token
@@ -213,8 +212,8 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
+            .header("User-Agent", "JUnit-Test")
+            .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricDatas, MediaType.APPLICATION_JSON));
         
         // Evaluate test
@@ -246,8 +245,8 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
+            .header("User-Agent", "JUnit-Test")
+            .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         LOGGER.info("MetricData creation state:\t'{}'", resp.getStatus());
@@ -260,8 +259,8 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         resp = this.target(methodPath)
             .path(metricData.getId())
             .request()
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
+            .header("User-Agent", "JUnit-Test")
+            .header("X-Forwarded-For", "127.0.0.1")
         .delete();
         this.requestCtx.deactivate();
         
@@ -296,8 +295,8 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
+            .header("User-Agent", "JUnit-Test")
+            .header("X-Forwarded-For", "127.0.0.1")
         .post(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         LOGGER.info("MetricData creation state:\t'{}'", resp.getStatus());
@@ -310,8 +309,8 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .request()
-                .header("User-Agent", "JUnit-Test")
-                .header("X-Forwarded-For", "127.0.0.1")
+            .header("User-Agent", "JUnit-Test")
+            .header("X-Forwarded-For", "127.0.0.1")
         .put(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
         

@@ -186,7 +186,7 @@ public class TaskTideConfigurationTests {
         argTree = new ArgumentTree("");
         globalConfig = this.container.select(GlobalConfig.class).get();
         globalConfig.initConfig(argTree);
-        webApiConfig = this.container.select(WebApiConfig.class).get();
+        webApiConfig = new WebApiConfig();
         webApiConfig.initConfig(argTree);
         
         // Verify

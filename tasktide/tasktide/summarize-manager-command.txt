@@ -1,11 +1,11 @@
 {
     "State Summary": {
-        "HOLD": 0,
-        "DONE": 0,
-        "ERROR": 0,
         "LOCKED": 0,
-        "TODO": 0,
         "FOR_UNLOCK": 0,
+        "DONE": 0,
+        "HOLD": 0,
+        "ERROR": 0,
+        "TODO": 0,
         "HAULT": 0
     }
 }
