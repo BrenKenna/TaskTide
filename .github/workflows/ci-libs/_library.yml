@@ -1,7 +1,7 @@
 name: Performs unit, integration, and system tests for the specified library
 
 on:
-  workflow_calls:
+  workflow_call:
     inputs:
       library:
         description: "Library to act on"

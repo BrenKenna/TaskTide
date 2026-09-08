@@ -1,7 +1,7 @@
 name: Publish to Maven Central
 
 on:
-  workflow_calls
+  workflow_call:
 
 jobs:
   publish:
