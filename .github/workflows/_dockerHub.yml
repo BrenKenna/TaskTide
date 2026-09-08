@@ -33,11 +33,11 @@ jobs:
       - name: Build and Publish Latest Image
         run: |
           cd ./docker
-          docker build -t tasktide/tasktide:latest -f tasktide-latest.Dockerfile .
-          docker push tasktide/tasktide:latest
+          docker build -t bkenna/tasktide:latest -f tasktide-latest.Dockerfile .
+          docker push bkenna/tasktide:latest
 
       
       - name: Build and Publish Apptainer Image
         run: |
-          docker build -t tasktide/tasktide:apptainer -f tasktide-apptainer.Dockerfile .
-          docker push tasktide/tasktide:apptainer
+          docker build -t bkenna/tasktide:apptainer -f tasktide-apptainer.Dockerfile .
+          docker push bkenna/tasktide:apptainer
