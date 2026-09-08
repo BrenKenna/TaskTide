@@ -1,4 +1,4 @@
-name: Detected Updated Libraries
+name: TaskTide-CI Detected Updated Libraries
 
 on:
   workflow_call:

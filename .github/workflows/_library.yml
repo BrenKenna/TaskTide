@@ -1,4 +1,4 @@
-name: TaskTide-CI-Unit, Integration and System Tests
+name: TaskTide-CI Unit, Integration and System Tests
 
 on:
   workflow_call:

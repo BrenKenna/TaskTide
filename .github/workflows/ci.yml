@@ -1,4 +1,4 @@
-name: TaskTide CI
+name: TaskTide CI Workflow
 
 on:
   workflow_dispatch:

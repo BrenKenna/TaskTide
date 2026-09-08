@@ -1,4 +1,4 @@
-name: TaskTide-CI-Maven Central Publish
+name: TaskTide-CI Maven Central Publish
 
 on:
   workflow_call:
