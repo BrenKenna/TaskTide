@@ -21,6 +21,9 @@ jobs:
     name: Detect Updated Libraries
     runs-on: ubuntu-latest
 
+    outputs:
+      libraries: ${{ steps.detect.outputs.libraries }}
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4

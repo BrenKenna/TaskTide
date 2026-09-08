@@ -8,19 +8,19 @@ jobs:
 
   # Build main project
   build:
-    uses: .github/workflows/_build.yml
+    uses: ./.github/workflows/_build.yml
 
 
   # Detect libraries to build
   detect:
     needs: build
-    uses: .github/workflows/_detect.yml
+    uses: ./.github/workflows/_detect.yml
 
 
   # Build and test library strategy matrix
   library:
     needs: detect
-    uses: .github/workflows/_library.yml
+    uses: ./.github/workflows/_library.yml
     with:
       library: ${{ matrix.library }}
     if: needs.detect.outputs.libraries != '[]'
@@ -35,7 +35,7 @@ jobs:
     needs: library
     if: github.ref == 'refs/tags/for-publish'
     uses:
-      .github/workflows/_dockerHub.yml
+      ./.github/workflows/_dockerHub.yml
 
 
   # Publish to maven
@@ -43,4 +43,4 @@ jobs:
     needs: library
     if: github.ref == 'refs/tags/for-publish'
     uses:
-      .github/workflows/_maven.yml
+      ./.github/workflows/_maven.yml
