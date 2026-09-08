@@ -1,7 +1,7 @@
 name: Performs unit, integration, and system tests for the specified library
 
 on:
-  workflow_call:
+  workflow_calls:
     inputs:
       library:
         description: "Library to act on"
@@ -48,18 +48,17 @@ jobs:
           docker container run --rm --name mariadb --detach \
             -e MARIADB_ROOT_PASSWORD=password \
             -e MARIADB_DATABASE=tasktide \
-            -p 3306:3306 mariadb:latest
+            -p 3306:3306 mariadb:11
           docker container run --rm --name couchdb --detach \
             -e COUCHDB_USER=admin \
             -e COUCHDB_PASSWORD=password \
-            -p 5984:5984 couchdb:latest
+            -p 5984:5984 couchdb:3.5
+
+          # Kill containers on error
+          trap 'docker container kill mariadb couchdb 2>/dev/null || true' EXIT
 
           # Perform required tests
           ./gradlew :$LIBRARY:$TEST
-      
-          # Kill containers for next test
-          docker container kill mariadb
-          docker container kill couchdb
       
 
       - name: Run integration tests for ${{ inputs.library }}
@@ -73,19 +72,17 @@ jobs:
           docker container run --rm --name mariadb --detach \
             -e MARIADB_ROOT_PASSWORD=password \
             -e MARIADB_DATABASE=tasktide \
-            -p 3306:3306 mariadb:latest
+            -p 3306:3306 mariadb:11
           docker container run --rm --name couchdb  --detach \
             -e COUCHDB_USER=admin \
             -e COUCHDB_PASSWORD=password \
-            -p 5984:5984 couchdb:latest
+            -p 5984:5984 couchdb:3.5
+
+          # Kill containers on error
+          trap 'docker container kill mariadb couchdb 2>/dev/null || true' EXIT
 
           # Perform required tests
           ./gradlew :$LIBRARY:$TEST
-      
-          # Kill containers for next test
-          docker container kill mariadb
-          docker container kill couchdb
-
 
       - name: Run system tests for ${{ inputs.library }}
         run: |
@@ -104,9 +101,8 @@ jobs:
             -e COUCHDB_PASSWORD=password \
             -p 5984:5984 couchdb:3.5
 
+          # Kill containers on error
+          trap 'docker container kill mariadb couchdb 2>/dev/null || true' EXIT
+
           # Perform required tests
           ./gradlew :$LIBRARY:$TEST
-      
-          # Kill containers for next test
-          docker container kill mariadb
-          docker container kill couchdb

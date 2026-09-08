@@ -1,8 +1,8 @@
 name: Build Containers and Publish to DockerHub
 
 on:
-  workflow_call:
-  workflow_dipspatch:
+  workflow_calls:
+  workflow_dispatch:
 
 
 jobs:

@@ -1,7 +1,7 @@
 name: Detected Updated Libraries
 
 on:
-  workflow_call:
+  workflow_calls:
     outputs:
       libraries:
         description: "List of updated libraries from commit"
@@ -58,7 +58,7 @@ jobs:
         fi
 
         # Set all for manual trigger
-        if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "${{ inputs.all }}" = "true" ]
+        if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]
         then
           libraries="parser mutex itemstore core engine api tasktide"
         fi
