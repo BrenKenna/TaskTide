@@ -84,7 +84,7 @@ jobs:
           printf '%s\n' "$GPG_PRIVATE_KEY" > .secrets/tasktide-signing-key.asc
           chmod 600 .secrets/tasktide-signing-key.asc
           cat >> ".secrets/gradle.properties" <<EOF
-          signingKeyFile=$signing_key
+          signingKeyFile=.secrets/tasktide-signing-key.asc
           signingPassword=${{ secrets.MAVEN_CENTRAL_SIGNING_PASSWORD }}
           EOF
 
