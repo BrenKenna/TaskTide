@@ -7,8 +7,6 @@ plugins {
 apply from: "$rootDir/gradle/secrets.gradle"
 apply from: "$rootDir/gradle/artifacts.gradle"
 
-project(':tasktide').apply from: "$rootDir/tasktide/config-agg-pom.gradle"
-
 description = 'tasktide'
 allprojects {
     group = project.findProperty('group') ?: 'org.tasktide'
