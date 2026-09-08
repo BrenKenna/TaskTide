@@ -1,4 +1,4 @@
-name: Build Containers and Publish to DockerHub
+name: TaskTide-CI-Build Containers and Publish to DockerHub
 
 on:
   workflow_call:

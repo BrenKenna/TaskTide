@@ -1,7 +1,8 @@
-name: Build TaskTide
+name: TaskTide-CI- Build
 
 on:
   workflow_call:
+  workflow_dispatch:
 
 
 jobs:

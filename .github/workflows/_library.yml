@@ -1,4 +1,4 @@
-name: Performs unit, integration, and system tests for the specified library
+name: TaskTide-CI-Unit, Integration and System Tests
 
 on:
   workflow_call:
@@ -10,8 +10,8 @@ on:
 
   workflow_dispatch:
     inputs:
-      version:
-        description: "Version to test"
+      library:
+        description: "Library to act on"
         required: true
         type: string
 
