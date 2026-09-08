@@ -36,7 +36,7 @@ jobs:
           then
             version="$dispatch"
           fi
-          
+
           if [ -z "$version" ]; then
             echo "No version tag points at this commit."
             exit 1
@@ -48,14 +48,15 @@ jobs:
       - name: Verify publish authorization
         run: |
           version_tag="v${{ steps.version.outputs.version }}"
-          publish_sha=$(git rev-parse refs/tags/for-publish)
-          version_sha=$(git rev-parse "refs/tags/$version_tag")
-
           dispatch=${{ inputs.inputVersion }}
+
           if [ ! -z "$dispatch" ]
           then
             publish_sha="yyz"
             version_sha="yyz"
+          else
+            publish_sha=$(git rev-parse refs/tags/for-publish)
+            version_sha=$(git rev-parse "refs/tags/$version_tag")
           fi
 
           if [ "$publish_sha" != "$version_sha" ]; then
