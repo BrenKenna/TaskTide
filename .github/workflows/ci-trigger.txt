@@ -1,0 +1,18 @@
+
+  push:
+    branches:
+      - main
+    
+    tags:
+      - 'v*.*.*'
+
+    paths:
+      - 'tasktide/**'
+      - '.github/workflows/**'
+
+    pull_request:
+      branches:
+        - main
+      paths:
+        - 'tasktide/**'
+        - '.github/workflows/**'

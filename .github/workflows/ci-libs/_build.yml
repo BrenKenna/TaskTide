@@ -1,13 +1,7 @@
-name: Java CI with Gradle
+name: Build TaskTide
 
 on:
-  workflow_dispatch:
-
-  pull_request:
-    branches: [ "main" ]
-
-  release:
-    types: [created]
+  workflow_calls
 
 
 jobs:

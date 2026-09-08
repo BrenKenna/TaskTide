@@ -8,6 +8,14 @@ on:
         required: true
         type: string
 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to test"
+        required: true
+        type: string
+
+
 jobs:
   publish:
     name: Publish libraries
@@ -23,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up JDK
         uses: actions/setup-java@v4

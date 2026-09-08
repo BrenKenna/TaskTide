@@ -1,0 +1,46 @@
+name: TaskTide CI
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+
+  # Build main project
+  build:
+    uses: ./.github/workflows/ci-libs/_build.yml
+
+
+  # Detect libraries to build
+  detect:
+    needs: build
+    uses: ./.github/workflows/ci-libs/_detect.yml
+
+
+  # Build and test library strategy matrix
+  library:
+    needs: detect
+    uses: ./.github/workflows/ci-libs/_library.yml
+    with:
+      library: ${{ matrix.library }}
+    if: needs.detect.outputs.libraries != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        library: ${{ fromJSON(needs.detect.outputs.libraries )}}
+
+
+  # Publish to dockerhub
+  dockerPublish:
+    needs: library
+    if: github.ref == 'refs/tags/for-publish'
+    uses:
+      ./.github/workflows/ci-libs/_dockerhub.yml
+
+
+  # Publish to maven
+  mavenPublish:
+    needs: library
+    if: github.ref == 'refs/tags/for-publish'
+    uses:
+      ./.github/workflows/ci-libs/_maven.yml

@@ -1,0 +1,73 @@
+name: Detected Updated Libraries
+
+on:
+  workflow_call:
+    outputs:
+      libraries:
+        description: "List of updated libraries from commit"
+        value: ${{ jobs.detect.outputs.libraries }}
+  
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Test all libraries"
+        required: true
+        default: true
+        type: boolean
+
+
+jobs:
+  detect:
+    name: Detect Updated Libraries
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Detect updated libraries
+      id: detect
+      env:
+          BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+          HEAD: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+      run: |
+        #!/bin/bash
+        set -euo pipefail
+
+        # Check all libraries to see if they feature in commit
+        libraries=""
+        for library in $(echo "parser mutex itemstore core engine api tasktide")
+        do
+          if ! git diff --quiet "$BASE" "$HEAD" -- "tasktide/$library"
+          then
+            libraries="$libraries $library"
+          fi
+        done
+
+        # Set changes to gradle/workflows as a trigger for all
+        if ! git diff --quiet "$BASE" "$HEAD" -- \
+              "tasktide/build.gradle" \
+              "tasktide/settings.gradle" \
+              "tasktide/gradle" \
+              "tasktide/gradlew" \
+              "tasktide/gradlew.bat" \
+              ".github/workflows"
+        then
+          libraries="parser mutex itemstore core engine api tasktide"
+        fi
+
+        # Set all for manual trigger
+        if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ "${{ inputs.all }}" = "true" ]
+        then
+          libraries="parser mutex itemstore core engine api tasktide"
+        fi
+
+        # Convert to json array format: ["a", "b" ...]
+        if [ -z "$libraries" ]
+        then
+          echo 'libraries=[]' >> "$GITHUB_OUTPUT"
+        else
+          libraries=$(echo "$libraries" | sed 's/^ *//; s/  */","/g; s/^/["/; s/$/"]/')
+          echo "libraries=$libraries" >> "$GITHUB_OUTPUT"
+        fi
