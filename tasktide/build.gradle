@@ -7,10 +7,11 @@ plugins {
 apply from: "$rootDir/gradle/secrets.gradle"
 apply from: "$rootDir/gradle/artifacts.gradle"
 
+
 description = 'tasktide'
 allprojects {
     group = project.findProperty('group') ?: 'org.tasktide'
-    version = project.findProperty('version') ?: '0.9.0'
+    version = '0.9.1'
     repositories {
         mavenCentral()
     }
@@ -159,7 +160,7 @@ def publishingRequested = gradle.startParameter.taskNames.any {
     it == 'publishTaskTideLocal' ||
     it.endsWith(':publishTaskTideLocal') ||
     it == 'publishTaskTideAggregator' ||
-    it.endsWith(':publishTaskTideAggregator')
+    it.endsWith(':publishTaskTideAggregator') ||
     it == 'publishLocalTaskTideAggregator' ||
     it.endsWith(':publishLocalTaskTideAggregator')
 }
@@ -167,7 +168,6 @@ def publishingRequested = gradle.startParameter.taskNames.any {
 if (publishingRequested) {
     apply from: "$rootDir/gradle/launch-publish.gradle"
 }
-
 
 
 project(":mutex") {}
