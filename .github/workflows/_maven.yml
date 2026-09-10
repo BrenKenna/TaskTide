@@ -1,5 +1,9 @@
 name: TaskTide-CI Maven Central Publish
 
+permissions:
+  contents: read
+
+
 on:
   workflow_call:
   workflow_dispatch:
@@ -8,9 +12,6 @@ on:
         description: "Version"
         required: true
         type: string
-
-permissions:
-  contents: read
 
 jobs:
   publish:

@@ -1,5 +1,9 @@
 name: TaskTide-CI Unit, Integration and System Tests
 
+permissions:
+  contents: read
+
+
 on:
   workflow_call:
     inputs:

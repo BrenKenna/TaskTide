@@ -1,5 +1,8 @@
 name: Publish to Maven Central
 
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
     inputs:
@@ -8,8 +11,6 @@ on:
         required: true
         type: string
 
-permissions:
-  contents: read
 
 jobs:
   publish:
