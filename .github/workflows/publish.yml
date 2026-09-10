@@ -14,9 +14,6 @@ jobs:
     name: Publish libraries
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     defaults:
       run:
         working-directory: tasktide

@@ -1,6 +1,6 @@
-Issues
+# Issues
 
-What to Report
+## What to Report
 
 Issues are primarily intended for:
 
@@ -12,7 +12,8 @@ Issues are primarily intended for:
 
 Before opening an issue, please check existing issues and documentation to avoid duplicates.
 
-Feature Requests
+
+## Feature Requests
 
 Feature requests are welcome when they are relevant to the scope and goals of TaskTide.
 
@@ -25,7 +26,8 @@ Please describe:
 
 A feature request is a suggestion, not a commitment. The TaskTide project may decline, defer, or close requests that do not fit its scope, design, priorities, or intended use.
 
-Scope
+
+## Scope
 
 TaskTide is developed according to its own design goals and priorities.
 
@@ -36,6 +38,6 @@ An issue does not create an obligation to:
 - Support a particular use case
 - Accept a proposed design
 - Maintain compatibility with an external project or workflow
-- Resolution SLA
+- A resolution SLA for TaskTide
 
 Discussion is welcome, but final decisions about TaskTide remain with the project maintainers.

@@ -14,9 +14,6 @@ jobs:
     name: Publish TaskTide to Maven Central
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     defaults:
       run:
         working-directory: tasktide

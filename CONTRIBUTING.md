@@ -1,6 +1,6 @@
-Contributing to TaskTide
+#Contributing to TaskTide
 
-Contributions are welcome.
+## Contributions are welcome.
 
 Before Contributing
 
@@ -8,7 +8,7 @@ Please read the project documentation and check existing issues and pull request
 
 For larger changes, opening an issue to discuss the proposed approach first is encouraged. This helps avoid duplicated work and ensures that a contribution is aligned with the direction of TaskTide.
 
-Development
+## Development
 
 Please ensure that your changes:
 
@@ -20,7 +20,8 @@ Please ensure that your changes:
 
 Run the project's test suite before submitting a pull request.
 
-Pull Requests
+
+## Pull Requests
 
 Pull requests should describe:
 
@@ -33,7 +34,8 @@ Keep pull requests focused on a single change where practical.
 
 All pull requests are subject to review. Changes may be requested before a pull request is merged.
 
-Scope and Acceptance
+
+## Scope and Acceptance
 
 Contributions are suggestions to the project, not commitments from the maintainers.
 
@@ -43,10 +45,12 @@ The maintainers may decline, defer, modify, or close contributions that do not f
 
 TaskTide is developed according to the needs and direction of the project. Contributors are welcome to propose changes, but acceptance remains at the discretion of the maintainers.
 
-Code of Conduct
+
+## Code of Conduct
 
 Please keep discussions and contributions respectful and constructive.
 
-Security
 
-Please do not report security vulnerabilities through public issues. See "SECURITY.md" for the appropriate reporting process.
+## Security
+
+Please do not report security vulnerabilities through public issues. See "[SECURITY.md](/SECURITY.md)" for the appropriate reporting process.
