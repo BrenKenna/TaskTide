@@ -1,4 +1,4 @@
-name: TaskTide-CI Build
+name: TaskTide-CI Assemble
 
 permissions:
   contents: read
@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  build:
+  assemble:
 
     runs-on: ubuntu-latest
 
@@ -27,5 +27,5 @@ jobs:
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582
 
     - name: Build TaskTide with Gradle
-      run: gradle build -x test
+      run: gradle assemble
       working-directory: tasktide

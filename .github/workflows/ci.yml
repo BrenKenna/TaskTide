@@ -9,14 +9,14 @@ on:
 
 jobs:
 
-  # Build main project
-  build:
-    uses: ./.github/workflows/_build.yml
+  # Assemble main project
+  assemble:
+    uses: ./.github/workflows/assemble.yml
 
 
-  # Detect libraries to build
+  # Detect libraries to for testing
   detect:
-    needs: build
+    needs: assemble
     uses: ./.github/workflows/_detect.yml
 
 
