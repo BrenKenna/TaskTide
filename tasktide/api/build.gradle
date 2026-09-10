@@ -48,10 +48,10 @@ dependencies {
     implementation      "com.zaxxer:HikariCP:5.1.0"
     implementation      "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:2.19.2"
     implementation      "jakarta.nosql:jakarta.nosql-api:1.0.0"
-    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
-    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.8"
-    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.8"
-    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.8"
+    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.17"
+    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.17"
+    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.17"
+    implementation      "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.17"
 
     // Testing API calls
     implementation      "io.smallrye:smallrye-jwt-build:4.6.3"
