@@ -39,7 +39,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Setup gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v6
       
       - name: Run unit tests for ${{ inputs.library }}
         run: |
