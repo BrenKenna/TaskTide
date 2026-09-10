@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="tasktide/docs/assets/logo1.jpg" alt="TaskTide Logo" width="300"/>
+  <img src="docs/assets/logo1.jpg" alt="TaskTide Logo" width="300"/>
 </p>
 
 # TaskTide
@@ -35,7 +35,7 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 
 - 🔄 **ETL-Friendly**: Tasks are treated as extraction, transformation, or loading scripts/programs.
 
-- <img src="/tasktide/docs/assets/database.png" alt="Database Icon from flaticon" width="18"/> **Backend Agnostic** – Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
+- <img src="/docs/assets/database.png" alt="Database Icon from flaticon" width="18"/> **Backend Agnostic** – Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
 
 - 💻 **Native Task Execution**: Runs any local or system executable/script.
 
@@ -108,5 +108,5 @@ How TaskTide should run can be configured based on parameters in a <a href="http
 <br>
 
 <p id="arch-b" align="center">
-  <img src="tasktide/docs/assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
+  <img src="docs/assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
 </p>

@@ -2,8 +2,9 @@
 
 ## Reporting a Vulnerability
 
-If you believe you have found a security vulnerability in TaskTide,
-please report it privately rather than opening a public issue.
+If you believe you have found a security vulnerability in TaskTide, please report it privately rather than opening a public issue.
+
+Please use GitHub's private vulnerability reporting feature to report a vulnerability. If private reporting is unavailable, contact the project maintainers privately before disclosing the vulnerability publicly.
 
 Please include:
 
@@ -12,14 +13,4 @@ Please include:
 - The affected TaskTide version
 - Any relevant logs, proof-of-concept code, or other technical details
 
-I will review security reports and determine whether the issue affects
-TaskTide and requires a fix or other action.
-
-Please do not disclose vulnerabilities publicly until there has been
-an opportunity to investigate and address them.
-
-## Supported Versions
-
-Security fixes are considered for actively maintained versions of
-TaskTide. There is no commitment to provide security fixes for
-unsupported or obsolete versions.
+We will acknowledge valid reports and work to assess and address the issue as appropriate.

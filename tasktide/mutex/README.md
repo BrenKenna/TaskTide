@@ -8,5 +8,5 @@ The library was developed for <a href="/tasktide/itemstore/README.md">ItemStore<
 <br>
 
 <p align="center">
-  <img src="/tasktide/docs/assets/mutex-workflow.png" alt=""/>
+  <img src="docs/assets/mutex-workflow.png" alt=""/>
 </p>
