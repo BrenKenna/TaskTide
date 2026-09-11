@@ -6,6 +6,25 @@ permissions:
 on:
   workflow_dispatch:
 
+  push:
+    branches:
+      - main
+    
+    tags:
+       - 'v*.*.*'
+
+    paths:
+      - 'tasktide/**'
+      - '.github/workflows/**'
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'tasktide/**'
+      - '.github/workflows/**'
+
+
 jobs:
 
   # Assemble main project
@@ -20,7 +39,7 @@ jobs:
 
 
   # Build and test library strategy matrix
-  library:
+  build:
     needs: detect
     uses: ./.github/workflows/tasktide-ci-test-library.yml
     with:
