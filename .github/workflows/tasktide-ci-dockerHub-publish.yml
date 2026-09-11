@@ -7,8 +7,9 @@ on:
   workflow_call:
   workflow_dispatch:
 
+
 jobs:
-  publish:
+  publishToDockerHub:
     runs-on: ubuntu-latest
 
     defaults:
@@ -33,14 +34,24 @@ jobs:
 
 
       - name: Build and Publish Latest Image
+        env:
+          VERSION_TAG: ${{ github.ref_name }}
         run: |
           cd ./docker
-          docker build -t bkenna/tasktide:latest -f tasktide-latest.Dockerfile .
-          docker push bkenna/tasktide:latest
+          docker build -t bkenna/tasktide-f tasktide-latest.Dockerfile .
+          docker push bkenna/tasktide
+
+          docker tag bkenna/tasktide bkenna/tasktide:${VERSION_TAG}
+          docker push bkenna/tasktide:${VERSION_TAG}
+
+
 
       - name: Build and Publish Apptainer Image
         run: |
           cd ./docker
-          ls
-          docker build -t bkenna/tasktide:apptainer -f tasktide-apptainer.Dockerfile .
-          docker push bkenna/tasktide:apptainer
+          docker build -t bkenna/tasktide_apptainer -f tasktide-apptainer.Dockerfile .
+          docker push bkenna/tasktide_apptainer
+
+          docker tag bkenna/tasktide_apptainer bkenna/tasktide_apptainer:${VERSION_TAG}
+          docker push bkenna/tasktide_apptainer:${VERSION_TAG}
+

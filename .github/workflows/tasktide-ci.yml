@@ -6,25 +6,6 @@ permissions:
 on:
   workflow_dispatch:
 
-  push:
-    branches:
-      - main
-    
-    tags:
-       - 'v*.*.*'
-
-    paths:
-      - 'tasktide/**'
-      - '.github/workflows/**'
-
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'tasktide/**'
-      - '.github/workflows/**'
-
-
 jobs:
 
   # Assemble main project
