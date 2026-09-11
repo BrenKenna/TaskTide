@@ -53,7 +53,7 @@ jobs:
 
   # Publish to dockerhub
   dockerPublish:
-    needs: library
+    needs: build
     if: github.ref == 'refs/tags/for-publish'
     uses:
       ./.github/workflows/tasktide-ci-dockerHub-publish.yml
@@ -61,7 +61,7 @@ jobs:
 
   # Publish to maven
   mavenPublish:
-    needs: library
+    needs: build
     if: github.ref == 'refs/tags/for-publish'
     uses:
       ./.github/workflows/tasktide-ci-maven-publish.yml
