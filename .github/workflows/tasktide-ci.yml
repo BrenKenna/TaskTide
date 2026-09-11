@@ -10,12 +10,12 @@ on:
     branches:
       - main
     
-  tags:
-    - 'v*.*.*'
+    tags:
+       - 'v*.*.*'
 
-  paths:
-    - 'tasktide/**'
-    - '.github/workflows/**'
+    paths:
+      - 'tasktide/**'
+      - '.github/workflows/**'
 
   pull_request:
     branches:
