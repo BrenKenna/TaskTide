@@ -24,10 +24,11 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: |
-          cd tasktide
+          cd ./tasktide
           echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
           ./gradlew build -x test
-          cp tasktide/build/distributions/tasktide*.zip ../docker/tasktide.zip
+          mv tasktide/build/distributions/tasktide*.zip ../docker/tasktide.zip
+
 
 
       - name: Build and Publish Latest Image
