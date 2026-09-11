@@ -1,4 +1,4 @@
-#Contributing to TaskTide
+# Contributing to TaskTide
 
 ## Contributions are welcome.
 
