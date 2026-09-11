@@ -49,6 +49,7 @@ jobs:
           LIBRARY=${{ inputs.library }}
 
           # Starts MariaDB & couchDB containers for test
+          docker container prune -f
           docker container run --rm --name mariadb --detach \
             -e MARIADB_ROOT_PASSWORD=password \
             -e MARIADB_DATABASE=tasktide \
@@ -73,6 +74,7 @@ jobs:
           LIBRARY=${{ inputs.library }}
 
           # Starts MariaDB & couchDB containers for test
+          docker container prune -f
           docker container run --rm --name mariadb --detach \
             -e MARIADB_ROOT_PASSWORD=password \
             -e MARIADB_DATABASE=tasktide \
@@ -96,6 +98,7 @@ jobs:
           LIBRARY=${{ inputs.library }}
 
           # Starts MariaDB & couchDB containers for test
+          docker container prune -f
           docker container run --rm --name mariadb --detach \
             -e MARIADB_ROOT_PASSWORD=password \
             -e MARIADB_DATABASE=tasktide \
