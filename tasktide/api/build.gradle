@@ -3,8 +3,7 @@ plugins {
 }
 
 description = 'tasktide:api'
-group = 'org.tasktide'
-version = '0.9.1'
+version = providers.gradleProperty('apiVersion').get()
 
 dependencies {
 
@@ -13,7 +12,7 @@ dependencies {
     implementation  project(':engine')
 
     // Authentication and Authorization
-    //implementation      "io.smallrye:smallrye-jwt:4.6.3"
+    //implementation    "io.smallrye:smallrye-jwt:4.6.3"
     implementation      "org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:2.1"
     implementation      "com.nimbusds:nimbus-jose-jwt:10.9"
     implementation      "com.nimbusds:oauth2-oidc-sdk:11.37.1"

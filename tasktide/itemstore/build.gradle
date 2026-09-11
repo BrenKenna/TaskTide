@@ -3,8 +3,7 @@ plugins {
 }
 
 description = 'tasktide:itemstore'
-group = 'org.tasktide'
-version = '0.9.1'
+version = providers.gradleProperty('itemstoreVersion').get()
 
 dependencies {
 

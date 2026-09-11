@@ -3,8 +3,7 @@ plugins {
 }
 
 description = 'tasktide:mutex'
-group = 'org.tasktide'
-version = '0.9.1'
+version = providers.gradleProperty('mutexVersion').get()
 
 dependencies { }
 

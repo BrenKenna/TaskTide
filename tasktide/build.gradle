@@ -7,11 +7,9 @@ plugins {
 apply from: "$rootDir/gradle/secrets.gradle"
 apply from: "$rootDir/gradle/artifacts.gradle"
 
-
 description = 'tasktide'
 allprojects {
-    group = project.findProperty('group') ?: 'org.tasktide'
-    version = '0.9.1'
+    group = "org.tasktide"
     repositories {
         mavenCentral()
     }

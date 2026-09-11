@@ -4,8 +4,7 @@ plugins {
 }
 
 description = 'tasktide:tasktide'
-group = 'org.tasktide'
-version = '0.9.1'
+version = providers.gradleProperty('tasktideVersion').get()
 
 application {
     mainClass = 'org.tasktide.tasktide.TaskTide'
