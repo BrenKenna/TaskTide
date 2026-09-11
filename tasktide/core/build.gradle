@@ -19,13 +19,13 @@ dependencies {
     implementation "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.8"
 
     // Jakarta-NoSQL Database Drivers
-    implementation "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.6"
-    implementation "org.eclipse.jnosql.databases:jnosql-couchdb:1.1.6"
-    implementation "org.eclipse.jnosql.databases:jnosql-arangodb:1.1.6"
-    implementation "org.eclipse.jnosql.databases:jnosql-dynamodb:1.1.6"
-    implementation "org.eclipse.jnosql.databases:jnosql-couchbase:1.1.6"
-    implementation "org.eclipse.jnosql.databases:jnosql-redis:1.1.6"
-    implementation "org.eclipse.jnosql.databases:jnosql-cassandra:1.1.6"
+    implementation "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.17"
+    implementation "org.eclipse.jnosql.databases:jnosql-couchdb:1.1.17"
+    implementation "org.eclipse.jnosql.databases:jnosql-arangodb:1.1.17"
+    implementation "org.eclipse.jnosql.databases:jnosql-dynamodb:1.1.17"
+    implementation "org.eclipse.jnosql.databases:jnosql-couchbase:1.1.17"
+    implementation "org.eclipse.jnosql.databases:jnosql-redis:1.1.17"
+    implementation "org.eclipse.jnosql.databases:jnosql-cassandra:1.1.17"
 
     // JPA
     implementation "jakarta.persistence:jakarta.persistence-api:3.1.0"

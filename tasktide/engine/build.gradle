@@ -18,7 +18,7 @@ dependencies {
     // Jakarta-NoSQL
     testImplementation 'jakarta.nosql:jakarta.nosql-api:1.0.0'
     testImplementation "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.8"
-    testImplementation "org.eclipse.jnosql.databases:jnosql-couchdb:1.1.6"
+    testImplementation "org.eclipse.jnosql.databases:jnosql-couchdb:1.1.17"
     testImplementation project(":itemstore")
 }
 
