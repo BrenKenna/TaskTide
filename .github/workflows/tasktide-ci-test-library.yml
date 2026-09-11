@@ -21,7 +21,7 @@ on:
 
 
 jobs:
-  library:
+  tasktideLibraryTests:
     runs-on: ubuntu-latest
 
     defaults:

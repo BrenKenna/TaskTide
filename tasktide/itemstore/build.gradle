@@ -5,6 +5,7 @@ plugins {
 description = 'tasktide:itemstore'
 version = providers.gradleProperty('itemstoreVersion').get()
 
+
 dependencies {
 
     // Mutex sub-project

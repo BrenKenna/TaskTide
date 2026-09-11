@@ -5,6 +5,7 @@ plugins {
 description = 'tasktide:core'
 version = providers.gradleProperty('coreVersion').get()
 
+
 dependencies {
 
     // TaskTide ItemStore Lib

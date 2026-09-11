@@ -5,7 +5,9 @@ plugins {
 description = 'tasktide:mutex'
 version = providers.gradleProperty('mutexVersion').get()
 
-dependencies { }
+dependencies {
+
+}
 
 
 // Define test scopes
