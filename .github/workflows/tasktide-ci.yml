@@ -11,19 +11,19 @@ jobs:
 
   # Assemble main project
   assemble:
-    uses: ./.github/workflows/assemble.yml
+    uses: ./.github/workflows/tasktide-ci-assembly.yml
 
 
   # Detect libraries to for testing
   detect:
     needs: assemble
-    uses: ./.github/workflows/_detect.yml
+    uses: ./.github/workflows/tasktide-ci-detect-updated-module.yml
 
 
   # Build and test library strategy matrix
   library:
     needs: detect
-    uses: ./.github/workflows/_library.yml
+    uses: ./.github/workflows/tasktide-ci-test-library.yml
     with:
       library: ${{ matrix.library }}
     if: needs.detect.outputs.libraries != '[]'
@@ -38,7 +38,7 @@ jobs:
     needs: library
     if: github.ref == 'refs/tags/for-publish'
     uses:
-      ./.github/workflows/_dockerHub.yml
+      ./.github/workflows/tasktide-ci-dockerHub-publish.yml
 
 
   # Publish to maven
@@ -46,4 +46,4 @@ jobs:
     needs: library
     if: github.ref == 'refs/tags/for-publish'
     uses:
-      ./.github/workflows/_maven.yml
+      ./.github/workflows/tasktide-ci-maven-publish.yml
