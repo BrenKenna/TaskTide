@@ -54,7 +54,7 @@ dependencies {
 
     // Testing API calls
     implementation      "io.smallrye:smallrye-jwt-build:4.6.3"
-    testRuntimeOnly     "org.junit.platform:junit-platform-launcher:1.13.4" // Masked somehow?
+    testRuntimeOnly     "org.junit.platform:junit-platform-launcher:6.1.3" // Masked somehow?
 }
 
 
