@@ -71,7 +71,7 @@ For a specific module:
 
 ## Integration and System Tests
 
-Integration and system tests require side-car databases to be provisioned. So it is recommended to [TaskTide CI workflow](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/_library.yml)
+Integration and system tests require side-car databases to be provisioned. So it is recommended to [TaskTide CI workflow](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflowstasktide-ci-test-library.yml)
 
 When running these tests locally, ensure Docker is available before starting the relevant Gradle task.
 The appropriate test task can be run through the Gradle wrapper in the same way as other tests.
