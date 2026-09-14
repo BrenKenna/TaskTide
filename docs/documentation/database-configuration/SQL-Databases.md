@@ -1,23 +1,23 @@
 # Using SQL Databases for TaskTide
 
-The following is a guide for using SQL databases with TaskTide and outlined below. While provisioning RDBMS solutions is out of scope for TaskTide, it suggested to follow [MariaDB Docker Instructions](https://hub.docker.com/_/mariadb). If an SQL backend is being used for TaskTide, then configuration of either [NoSQL backend](NoSQL-Databases.md) or [ItemStore backend](./Embedded.md) is not required.
+The following is a guide for using SQL databases with TaskTide and outlined below. While provisioning RDBMS solutions is out of scope of TaskTide, it is suggested to follow standard [MariaDB Docker Instructions](https://hub.docker.com/_/mariadb). If an SQL backend is being used for TaskTide, then configuration of either [NoSQL backend](./NoSQL-Databases.md) or [ItemStore backend](./Embedded.md) is not required.
 
 While maintenance is outside the scope of TaskTide, one resource for usable SQL database drivers is [JetBrains](https://www.jetbrains.com/datagrip/jdbc-drivers).
 
-Please Note ***It is not recommended to operate multiple database technologies with TaskTide, and provisioning a production SQL database is outside the scope of this document***.
+Please Note ***it is not recommended to operate multiple database technologies with TaskTide***.
 
 The following describes:
 <ul>
-    <li>1). A Database to point TaskTide</li>
-    <li>2). A JDBC implementation for TaskTide to interupt how to interact with RDBMS</li>
-    <li>3). Applying configurations to the TaskTide config file</li>
+    <li>A Database to point TaskTide to</li>
+    <li>A JDBC implementation for TaskTide to interupt how to interact with RDBMS</li>
+    <li>Applying configurations to the TaskTide config file</li>
 </ul>
 
 ---
 
 ## 1). Provision an Ephemeral MariaDB Instance
 
-Provision an ephemeral MariaDB instance using docker image. Please note that the below is a production instance.
+Provision an ephemeral MariaDB instance using docker image.
 
 ```bash
 docker container run --rm \
@@ -32,16 +32,16 @@ docker container run --rm \
 ---
 
 ## 2). Install MariaDB JDBC
-<p>
-The following instructions are relative to the root folder of the [release zip](https://github.com/BrenKenna/TaskTide/releases) which occur "tasktide-< VERSION >". Adjust upper path references according to your installation where appropriate. Since the MySQL driver is provided within the TaskTide release zip, the following details using Microsoft SQL Server. A similar process can be used for other relational databases.
-</p>
 
-<p>
+The following instructions are relative to the root folder of the [release zip](https://github.com/BrenKenna/TaskTide/releases) which occur "tasktide-< VERSION >". Adjust upper path references according to your installation where appropriate. Since the MySQL driver is provided within the TaskTide release zip, the following details using Microsoft SQL Server. A similar process can be used for other relational databases.
+
+
+
     1. Download the required JDBC, if not known they are available from JetBrains at [this link](https://download.jetbrains.com/idea/jdbc-drivers/web/mssql-12.8.1.zip) which downloads version 12.8.1. Then place that jar file into the "Tasktide-< VERSION >/lib" folder.
     2. Optionally remove the unused <i>tasktide-< VERSION >/lib/"mysql-connector-j-8.0.33.jar</i>".
     3. Optionally, remove the unused JNoSQL JARs from "tasktide-< VERSION >/lib/".
     4. Adjust Microsoft SQL Server [template config file](/tasktide/docs/configs/microsoft-sql-config.properties) according to your deployment.
-</p>
+
 
 ---
 
