@@ -45,13 +45,17 @@ The below scheme remains open to support IDEs integration.
 TaskTide is organised as a multi-module Gradle project. A its module tests can be run directly:
 
 ```bash
-./gradlew :<core | engine | api >:<unit-tests | integration-tests | system-tests>
+./gradlew \
+    :<core | engine | api >:\
+    <unit-tests | integration-tests | system-tests>
 ```
 
 For example the below runs the unit-tests for the parser library.
 
 ```bash
 ./gradlew :parser:unit-tests
+./gradlew :parser:integration-tests
+./graldew :parser:system-test
 ```
 
 ---
@@ -85,7 +89,7 @@ docker container kill mariadb couchdb
 ```
 
 
-## 5). CI
+## 5). Continously Integration
 
 [TaskTide's CI](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci.yml) configuration runs the project's automated test suite after assembly is verfied, as part of the normal development workflow.
 
