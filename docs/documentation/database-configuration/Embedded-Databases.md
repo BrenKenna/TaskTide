@@ -8,17 +8,18 @@ Please Note ***It is not recommended to operate multiple database technologies w
 
 The following describes:
 <ul>
-    <li>1). Using the ItemStore backend for TaskTide</li>
-    <li>2). Applying ItemStore configurations for TaskTide</li>
+    <li>Using the ItemStore backend for TaskTide</li>
+    <li>Applying ItemStore configurations for TaskTide</li>
 </ul>
 
 
 # 1). Using the ItemStore backend for TaskTide
 
-Currently [RocksDB](https://rocksdb.org/), and [SQLite](https://sqlite.org/) embedded databases are supported by TaskTide. These APIs in addition to the TaskTide-ManagerAPI are available to users.
+Currently the [RocksDB](https://rocksdb.org/), and [SQLite](https://sqlite.org/) embedded databases are supported by TaskTide. These APIs in addition to the TaskTide-ManagerAPI are available to users.
 
 TaskTide uses a de-centralized semaphore for coordinating distributed read/writes, and separates each "***Workflows***, ***Steps***, and ***WorkItems***" data model to cater for future development. Meaning that core configurations of the ItemStore repository, and Mutex directories are stable, but specifics around them and directory structure is subject to change.
 
+---
 
 # 2). Applying ItemStore configurations for TaskTide
 
