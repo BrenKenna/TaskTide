@@ -2,22 +2,25 @@
 
 The following relates to NoSQL databases supported by [Jakarta-NoSQL Implementations](https://github.com/eclipse-jnosql/jnosql-databases) only, meaning this can be ignored if either RocksDB/SQLite are being used.
 
-A collection of Jakarta-NoSQL database drivers have been included within TaskTide. These are MongoDB and CouchDB for DocumentTemplate, Cassandra for ColumnTemplate, Redis and DynamoDB for KeyValueTemplate with their use is described in this doc.
+A collection of Jakarta-NoSQL database drivers have been included within TaskTide. These are MongoDB and CouchDB for DocumentTemplate, Cassandra for ColumnTemplate, Redis and DynamoDB for KeyValueTemplate.
 
-In the event that other database drivers are required see the there is an 
+In the event that other database drivers are needed, guidance on how they can be used are also described in this document.
 
-Please Note ***It is not recommended to operate multiple database technologies with TaskTide, and provisioning a production NoSQL database is outside the scope of this document***.
+Please Note ***it is not recommended to operate multiple database technologies with TaskTide, and provisioning a production NoSQL database is outside the scope of this document***.
 
 The following describes:
 <ul>
-    <li>1). Provsion an Ephemeral NoSQL backend for TaskTide</li>
-    <li>2). Using a pre-packaged NoSQL backend for TaskTide</li>
-    <li>3). Using a separate NoSQL backend for TaskTide</li>
-    <li>4). Applying configurations to the TaskTide config file</li>
+    <li>Provsion an Ephemeral NoSQL backend for TaskTide</li>
+    <li>Using a pre-packaged NoSQL backend for TaskTide</li>
+    <li>Using a separate NoSQL backend for TaskTide</li>
+    <li>Applying configurations to the TaskTide config file</li>
 </ul>
 
+---
 
 ## 1). Provision an Ephemeral NoSQL Database
+
+The below spins up a temporary couchDB container for using document database backend with Tasktide for exploratory purposes. MongoDB can also be used
 
 ```bash
 docker container run --rm \
@@ -30,22 +33,13 @@ docker container run --rm \
 
 curl -s \
     -X PUT \
-    http://admin:password@localhost:5984/tasktide_database
+http://admin:password@localhost:5984/tasktide_database
 
 ```
----
-
-## 2). Using Pre-Packaged NoSQL-Database Driver
-The pre-packaged NoSQL databases are couchDB, MongoDB, ArangoDB, couchBase, DynamoDB, Cassandra and Redis. The instructions below can adapted for [preferred database](https://github.com/eclipse-jnosql/jnosql-databases).
-
-
--    1. Optionally, remove the JNoSQL JARs. Since couchDB uses the [DocumentTemplate](https://github.com/eclipse-jnosql/jnosql-databases?tab=readme-ov-file#couchdb). This would be the Graph, KeyValue and Column jars Communication-Column/Key-Value/Graph.jar, and Mapping JNoSQL JARs.
-
--    2. Then optionally delete the unused JNoSQL Cassandra, ArangoDB, CouchBase, DynamoDB, MongoDB, and JNoSQL JARs.
 
 ---
 
-## 3). Using Another NoSQL-Database Driver
+## 2). Using Another NoSQL-Database Driver
 
 Although the jnosql-communication, and jnosql-mapping JARs packaged into TaskTide. The required driver must still be installed, as fetching the JAR from [Maven Central](https://mvnrepository.com/artifact/org.eclipse.jnosql.databases/jnosql-mongodb/1.1.6) will not include the dependancies that that driver uses.
 
@@ -70,9 +64,9 @@ curl -so tasktide-0.9.0/lib/jnosql-oracle-nosql-1.1.9.jar \
     https://repo1.maven.org/maven2/org/eclipse/jnosql/databases/jnosql-oracle-nosql/1.1.9/jnosql-oracle-nosql-1.1.9.jar
 ```
 
-## 4). Applying configurations to the TaskTide config file
+## 3). Applying configurations to the TaskTide config file
 
-Database configuration is a ***global setting*** for TaskTide because all of the TaskTides API use it as their coordination layer directly or indirectly. The Manager-API provides the TaskTide repository and CRUD operations against it, that the Engine-API uses for workload acquisition, and registering processing lifecycle events, and the Web-API by exposing the Manager-API through a RESTful interface.
+Database configuration is a ***global setting*** for TaskTide because all of the TaskTide APIs use it as their coordination layer. The Manager-API provides the TaskTide repository and CRUD operations against it, that the Engine-API uses for workload acquisition, and registering processing lifecycle events, and the Web-API by exposing the Manager-API through a RESTful interface.
 
 Note that the following is a minimal example for [couchDB](https://couchdb.apache.org/), should not be considered production, and should not be present in the [TaskTide Config File](/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties) if either an SQL, or ItemStore backend are being used. Full NoSQL configurations can be found at the corresponding project [linked here](https://github.com/eclipse-jnosql/jnosql-databases) and are intentionally not bypassed with TaskTide so that available configurations stay relevant.
 
