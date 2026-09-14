@@ -1,40 +1,48 @@
 # Testing TaskTide
 
-TaskTide uses a layered test taxonomy to exercise the project at different levels.
+TaskTide uses a traditional test taxonomy pyramid to examine the project across different levels of the test suite.
 
 The test suite is organised around:
 
-- Unit tests — test individual components and their behaviour in isolation.
-- Integration tests — exercise interactions between TaskTide components and external infrastructure, including configured database backends.
-- System tests — exercise TaskTide as a running system, covering behaviour across the application boundary.
+    - Unit tests: assess individual components and their behaviour in isolation.
+    - Integration tests: evaluate interactions between TaskTide components and external infrastructure, including configured database backends.
+    - System tests: examine TaskTide as a running system, covering behaviour across the application boundary or library as a functional entrypoint.
+    - Acceptance tests: most informative for feature development and [production behaviours of TaskTide](https://use-cases.tasktide.org).
 
-The different levels complement one another: unit tests provide focused feedback, while integration and system tests exercise the interactions and runtime behaviour that cannot be fully represented by isolated tests.
+The different levels complement one another: unit tests focus on individual components that make up TaskTide, integration tests focus on these components interact and system tests on the interactions and runtime behaviour that cannot be fully represented by isolated tests, and acceptance tests to assess how system usability, feature prioritisation etc.
 
+Please note ***TaskTide's test taxonomy is the formal means of testing TaskTide. The broad build test is retained for IDE compatability***.
 
-## Test Infrastructure
+---
 
-Integration and system tests may require supporting infrastructure such as database services.
+## 1). Test Infrastructure
 
-Where required, this infrastructure is provided through a test-sidecar Docker container. The sidecar exists to provide the external services required by the tests; it is not part of the TaskTide runtime.
+Where required, supporting infrastructure for integration and system test are provided through a test-sidecar container. The sidecar containers exists to provide the external services required by the tests; it is not part of the TaskTide runtime.
 
-Docker should therefore be available when running test suites that require the test-sidecar.
+Docker/apptainer should be available when running test suites that require the test-sidecar.
 
-Running Tests
+---
+
+## 2). Running Tests
 
 The Gradle wrapper is included with the project, so the test suite can be run without requiring a separate Gradle installation.
 
 Running the full test suite is not recommended and will break because of dependency requirements, and intentional retention of experimental tests.
-As well as TaskTide being a multi-module system package, individual test cases can create environmental conflicts. With these an annotation based
-approach is used for conducting production grade testing. But the below scheme remains open to support developmental tests within IDEs like NetBeans.
+
+Additionally TaskTide being a multi-module system package, individual test cases can create environmental conflicts. With these an annotation based
+approach is used for conducting production grade testing.
+
+The below scheme remains open to support IDEs integration.
 
 ```bash
 ./gradlew test
 ```
 
+---
 
-## Running TaskTide Tests
+## 3). Running TaskTide Tests
 
-TaskTide is organised as a multi-module Gradle project. A module's tests can be run directly:
+TaskTide is organised as a multi-module Gradle project. A its module tests can be run directly:
 
 ```bash
 ./gradlew :<core | engine | api >:<unit-tests | integration-tests | system-tests>
@@ -46,32 +54,11 @@ For example the below runs the unit-tests for the parser library.
 ./gradlew :parser:unit-tests
 ```
 
+---
 
-### Run a specific test class
+## 4). Integration and System Tests
 
-Gradle's test filtering can be used when working on a particular test:
-
-```bash
-./gradlew test --tests "fully.qualified.TestClassName"
-```
-
-For a specific module:
-
-```bash
-./gradlew :< LIBRARY >:< TEST > \
-  --tests "fully.qualified.TestClassName"
-```
-
-### Run a specific test method
-
-```bash
-./gradlew test \
-  --tests "fully.qualified.TestClassName.testMethodName"
-```
-
-## Integration and System Tests
-
-Integration and system tests require side-car databases to be provisioned. So it is recommended to [TaskTide CI workflow](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflowstasktide-ci-test-library.yml)
+Integration and system tests require side-car databases to be provisioned. So it is recommended to follow [TaskTide CI workflow](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci-test-library.yml)
 
 When running these tests locally, ensure Docker is available before starting the relevant Gradle task.
 The appropriate test task can be run through the Gradle wrapper in the same way as other tests.
@@ -98,11 +85,11 @@ docker container kill mariadb couchdb
 ```
 
 
-## CI
+## 5). CI
 
-[TaskTide's CI](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/ci.yml) configuration runs the project's automated tests as part of the normal development workflow.
+[TaskTide's CI](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci.yml) configuration runs the project's automated test suite after assembly is verfied, as part of the normal development workflow.
 
 The local Gradle commands above are intended to provide the same basic entry point for running the test suite during development.
 
 When a test depends on Docker-backed infrastructure, the CI environment provides the corresponding test-sidecar services before those tests are executed.
-As shown for [library tests](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/_library.yml).
+As shown for [library tests](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci-test-library.yml).
