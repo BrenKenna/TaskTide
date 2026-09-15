@@ -43,35 +43,29 @@ An installation guide catering for different [provided here](/docs/documentation
 
 How TaskTide should run can be configured based on parameters in a [TaskTide Config File](/docs/configs/microprofile-config.properties), or command-line arguments to simplify the use case of the Engine, Manager, and Web APIs, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) [described here](/tasktide/tasktide/README.md#a-global-configurations).
 
-
 <br>
 
-## 🐳 a). Run the docker image
+---
+
+## 💻 Running TaskTide
 
 ```bash
-# Fetch repo
-docker image pull \
-    bkenna/tasktide:latest
-
-# Run TaskTide
+# Run TaskTide container image
 docker container run --rm \
     bkenna/tasktide:latest \
-        < CLI: manager | engine | web-api > \
+        < CLI: Manager | Engine | Web-Api > \
             < CLI Options: >
-```
 
-<br>
 
-## 💻 b). Or run the installed application
+# ---OR --- Run the required client with provided configs
+tasktide \
+  < CLI: Manager | Engine | API > \
+    < CLI Options: >
 
-```bash
-# Run using parameters from TaskTide config file
+
+# --- OR --- Run using parameters from TaskTide config file
 tasktide
 
-# --- OR ---
-tasktide \
-  <client: Manager | Engine | API> \
-    <client args: -h/--help>
 ```
 
 <br>
