@@ -57,7 +57,7 @@ docker container run --rm \
             < CLI Options: >
 
 
-# ---OR --- Run the required client with provided configs
+# -- OR --- Run the required client with provided configs
 tasktide \
   < CLI: Manager | Engine | API > \
     < CLI Options: >
