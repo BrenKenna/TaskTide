@@ -40,13 +40,10 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 An installation guide catering for different [provided here](/docs/documentation/INSTALL.md). Backend database configurations should follow provider recommendations, since [Jakara NoSQL](https://github.com/eclipse-jnosql/jnosql-databases) brings in NoSQL support, and [JPA-Hibernate](https://www.baeldung.com/learn-jpa-hibernate) using [Hikari Data Source](https://www.baeldung.com/hikaricp) brings in SQL, whose use for TaskTide are documented [here for NoSQL](/docs/documentation/database-configuration/NoSQL-Databases.md), [here for SQL](/docs/documentation/database-configuration/SQL-Databases.md), and [here for ItemStore](/docs/documentation/database-configuration/Embedded-Databases.md) for embedded databases like SQLite. and RocksDB.
 
 
-### 💻 Running TaskTide
-
 How TaskTide should run can be configured based on parameters in a [TaskTide Config File](/docs/configs/microprofile-config.properties), or command-line arguments to simplify the use case of the Engine, Manager, and Web APIs, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) [described here](/tasktide/tasktide/README.md#a-global-configurations).
 
-<br>
 
-#### 🐳 a). Run the docker image
+## 🐳 a). Run the docker image
 
 ```bash
 # Fetch repo
@@ -63,7 +60,7 @@ docker container run --rm \
 
 <br>
 
-#### 💻 b). Or run the installed application
+## 💻 b). Or run the installed application
 
 TaskTide was intentionally designed so that a [config file](/docs/configs/microprofile-config.properties) and command-line arguments can be supplied to dictate how TaskTide should run. The approach allows for running TaskTide with command-line arguments only when ItemStore is used, suitable for environments like HPC. Or a combination of config file and runtime specific arguments to support using a central database, and instance specific arugments targeting a given workflow, step etc supporting service operation [noted here](/docker/tasktide-service/tasktide-deployment.yml).
 
