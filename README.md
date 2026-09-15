@@ -57,7 +57,7 @@ docker image pull \
 docker container run --rm \
     bkenna/tasktide:latest \
         < CLI: manager | engine | web-api > \
-            < CLI Opts: >
+            < CLI Options: >
 ```
 
 <br>
