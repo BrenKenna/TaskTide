@@ -26,11 +26,12 @@ By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as
 TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, <strong>configurable</strong> approach for workflow orchestration. That decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends. Supporting <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>daemon-less</strong> databases (<em>SQLite, RocksDB</em>) reflecting its backend-agnostic design.
 </p>
 
+<br>
+
 <p align="center">
   <img src="/docs/assets/tasktide-ops.png" alt="TaskTide database backed producer-consumer operations"/>
 </p>
 
-<br>
 
 ---
 
