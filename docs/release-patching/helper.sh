@@ -1,15 +1,15 @@
 #!/bin/bash
 
 
-####################################################
-####################################################
+#####################################################
+#####################################################
 ##
 ## 1). Configure Maven Central Release
 ##
 ## e354bbf3c47f28654b80cbc8b85904d1765b9698
 ##
-####################################################
-####################################################
+#####################################################
+#####################################################
 
 
 # Initialize required variables
@@ -40,6 +40,9 @@ cp tasktide/build/resources/main/META-INF/* ../../v0.9.0/
 cd ../
 rm -fr $DATE
 
+cd $VERSION
+gh release upload $VERSION tasktide-0.9.0.zip
+
 '''
 BUILD SUCCESSFUL in 42s
 24 actionable tasks: 24 execute
@@ -47,4 +50,6 @@ BUILD SUCCESSFUL in 42s
 tasktide/build/distributions/tasktide-0.9.0.zip
 
 cc0f9f6243f45e9d1eacdb4405a0eff6 tasktide-0.9.0.zip
+
+Successfully uploaded 1 asset to v0.9.0
 '''
