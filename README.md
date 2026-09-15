@@ -46,7 +46,7 @@ How TaskTide should run can be configured based on parameters in a [TaskTide Con
 
 <br>
 
-#### Run the docker image
+#### 🐳 a). Run the docker image
 
 ```bash
 # Fetch repo
@@ -63,7 +63,7 @@ docker container run --rm \
 
 <br>
 
-#### OR run the installed application
+#### 💻 b). Or run the installed application
 
 TaskTide was intentionally designed so that a [config file](/docs/configs/microprofile-config.properties) and command-line arguments can be supplied to dictate how TaskTide should run. The approach allows for running TaskTide with command-line arguments only when ItemStore is used, suitable for environments like HPC. Or a combination of config file and runtime specific arguments to support using a central database, and instance specific arugments targeting a given workflow, step etc supporting service operation [noted here](/docker/tasktide-service/tasktide-deployment.yml).
 
