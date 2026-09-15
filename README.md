@@ -32,6 +32,7 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
   <img src="/docs/assets/tasktide-ops.png" alt="TaskTide database backed producer-consumer operations"/>
 </p>
 
+<br>
 
 ---
 
