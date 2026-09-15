@@ -72,7 +72,7 @@ tasktide
 
 ---
 
-## TaskTide Resources
+## 🧰 TaskTide Resources
 
 - 🐳 **[Docker ➞](https://docker.tasktide.org)**
   > Official CI verified TaskTide container image
