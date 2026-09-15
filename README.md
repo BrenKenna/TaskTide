@@ -51,8 +51,7 @@ How TaskTide should run can be configured based on parameters in a [TaskTide Con
 ```bash
 # Fetch repo
 docker image pull \
-    -t latest \
-    -f deployment/Docker/Dockerfile .
+    bkenna/tasktide:latest
 
 # Run TaskTide
 docker container run --rm \
