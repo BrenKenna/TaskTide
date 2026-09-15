@@ -38,16 +38,18 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 
 ## 🧑‍💻 Getting Started
 
-An installation guide catering for different [provided here](/docs/documentation/INSTALL.md). Backend database configurations should follow provider recommendations, since [Jakara NoSQL](https://github.com/eclipse-jnosql/jnosql-databases) brings in NoSQL support, and [JPA-Hibernate](https://www.baeldung.com/learn-jpa-hibernate) using [Hikari Data Source](https://www.baeldung.com/hikaricp) brings in SQL, whose use for TaskTide are documented [here for NoSQL](/docs/documentation/database-configuration/NoSQL-Databases.md), [here for SQL](/docs/documentation/database-configuration/SQL-Databases.md), and [here for ItemStore](/docs/documentation/database-configuration/Embedded-Databases.md) for embedded databases like SQLite. and RocksDB.
+An installation guide catering for different uses is [provided here](/docs/documentation/INSTALL.md). Backend database configurations should follow provider recommendations, since [Jakara NoSQL](https://github.com/eclipse-jnosql/jnosql-databases) brings in NoSQL support, and [JPA-Hibernate](https://www.baeldung.com/learn-jpa-hibernate) using [Hikari Connection Pool](https://www.baeldung.com/hikaricp) brings in SQL, whose use for TaskTide are documented [here for NoSQL](/docs/documentation/database-configuration/NoSQL-Databases.md), [here for SQL](/docs/documentation/database-configuration/SQL-Databases.md), and [here for ItemStore](/docs/documentation/database-configuration/Embedded-Databases.md) for embedded databases like SQLite. and RocksDB.
 
 
-How TaskTide should run can be configured based on parameters in a [TaskTide Config File](/docs/configs/microprofile-config.properties), or command-line arguments to simplify the use case of the Engine, Manager, and Web APIs, as they are target orientated. However, when using command-line arguments the target backend parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies (if being used). Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex JNoSQL if JPA etc) [described here](/tasktide/tasktide/README.md#a-global-configurations).
+How TaskTide should run can be configured based on parameters in a [TaskTide configuration file](/docs/configs/microprofile-config.properties), or command-line arguments to simplify the use case of the Engine, Manager, and Web APIs, as their configurations are largely target orientated. However, when using command-line arguments for NoSQL or SQL as the target backend, these parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies. Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex remove JNoSQL if JPA etc) [described here](/tasktide/tasktide/README.md#a-global-configurations).
 
 <br>
 
 ---
 
 ## 💻 Running TaskTide
+
+As a Java application TaskTide requires java+17 whith installation mechanisms are [provided here](https://docs.oracle.com/en/java/javase/).
 
 ```bash
 # Run TaskTide container image
@@ -102,7 +104,7 @@ tasktide
 
 - 🔄 **ETL-Friendly**:                  Tasks are treated as extraction, transformation, or loading scripts/programs.
 
-- <img src="/docs/assets/database.png" alt="Flaticon database" width="18"/> **Backend Agnostic** –        Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
+- <img src="/docs/assets/database.png" alt="Flaticon database" width="18"/> **Backend Agnostic**:       Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
 
 - 💻 **Native Task Execution**:         Runs any local or system executable/script.
 

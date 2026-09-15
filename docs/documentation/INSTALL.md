@@ -7,6 +7,8 @@ The following describes how to:
     <li>Build application from source</li>
 </ul>
 
+As a Java application TaskTide requires java+17 whith installation mechanisms are [provided here](https://docs.oracle.com/en/java/javase/).
+
 ---
 
 ## 1). Pre-compiled Application
