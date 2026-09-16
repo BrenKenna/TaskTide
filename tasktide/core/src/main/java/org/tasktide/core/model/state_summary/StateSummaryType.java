@@ -23,4 +23,10 @@ package org.tasktide.core.model.state_summary;
  */
 public interface StateSummaryType {
     
+    /**
+     * Requires implementing enums to implement name method
+     * 
+     * @return String
+     */
+    public String name();
 }

@@ -15,6 +15,9 @@
  */
 package org.tasktide.core.model.state_summary;
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -64,22 +67,23 @@ public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
 
     
     /**
-     * Get class reference
-     * 
-     * @return 
-     */
-    public Class<T> getClassRef() {
-        return this.classRef;
-    }
-    
-    
-    /**
-     * Get summary map
+     * Get clone of summary map
      * 
      * @return Map-String, Integer
      */
     public Map<String, Integer> getSummaryMap() {
-        return summaryMap;
+        
+        // Intialize output
+        Map<String, Integer> output;
+        output = new HashMap<>();
+        
+        // Populate clone
+        for ( Entry<String, Integer> elm : this.summaryMap.entrySet() ) {
+            output.put(elm.getKey(), elm.getValue());
+        }
+        
+        // Return results
+        return output;
     }
     
     
@@ -103,7 +107,7 @@ public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
      * @return String
      */
     private String toJsonDoc() {
-        return JsonUtils.toJson(true, this.summaryMap);
+        return JsonUtils.toJson(true, this);
     }
     
     
@@ -113,7 +117,30 @@ public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
      * @return String
      */
     private String toJsonString() {
-        return JsonUtils.toJson(false, this.summaryMap);
+        return JsonUtils.toJson(false, this);
+    }
+    
+    
+    /**
+     * Sets the provided key to provided value
+     * 
+     * @param key
+     * @param value 
+     */
+    public void setValueFor(String key, int value) {
+        this.summaryMap.put(key, value);
+    }
+    
+    
+    /**
+     * Sets the provided key to provided value
+     * 
+     * @param query
+     * @param value 
+     */
+    public void setValueFor(T query, int value) {
+        String key = this.mapQueryToStateString(query);
+        this.summaryMap.put(key, value);
     }
     
     

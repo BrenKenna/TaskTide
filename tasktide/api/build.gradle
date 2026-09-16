@@ -105,7 +105,6 @@ testTags.each { name, tag ->
 }
 
 
-
 jar {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)
