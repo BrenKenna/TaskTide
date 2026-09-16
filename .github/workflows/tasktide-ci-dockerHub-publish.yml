@@ -4,8 +4,12 @@ permissions:
   contents: read
 
 on:
-  workflow_call:
   workflow_dispatch:
+    inputs:
+      inputVersion:
+        description: "Version"
+        required: true
+        type: string
 
 
 jobs:
