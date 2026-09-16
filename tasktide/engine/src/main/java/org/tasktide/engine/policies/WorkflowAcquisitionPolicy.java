@@ -22,7 +22,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.policies.workflow.RoundRobinWorkflowStrategy;

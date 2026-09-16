@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.state_summary.TaskState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.traversers.TaskTideWorkloadTraverser;

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
 import org.tasktide.core.model.workitem.Workload;
 

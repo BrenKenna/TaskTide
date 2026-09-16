@@ -16,9 +16,7 @@
 package org.tasktide.core.services;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
@@ -26,8 +24,6 @@ import org.tasktide.core.TaskTideMapper;
 
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.state_summary.StateSummary;
-import org.tasktide.core.model.workitem.ItemState;
 
 
 /**

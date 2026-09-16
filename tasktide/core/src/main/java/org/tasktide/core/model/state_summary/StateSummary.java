@@ -15,135 +15,262 @@
  */
 package org.tasktide.core.model.state_summary;
 
-import jakarta.json.bind.Jsonb;
-import jakarta.json.bind.JsonbBuilder;
-import jakarta.json.bind.JsonbConfig;
-import jakarta.json.bind.annotation.JsonbCreator;
-import jakarta.json.bind.annotation.JsonbProperty;
-
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.Map.Entry;
 
-import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.model.task.TaskState;
-import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.model.task.ItemTask;
+import jakarta.json.bind.annotation.JsonbProperty;
+
+import org.tasktide.core.supporting.JsonUtils;
 
 
 /**
- * Class to (de)serialize work item state summary as JSON.
- * <br><br>
- * Currently constrained to {@link WorkItem WorkItem} and {@link TaskState}
- * implement the {@link StateSummaryType} interface.
+ * JSON-B compatible representation of {@link StateSummaryType}
+ *  maps
+ * 
+ * <br>
+ * Resolves yasson-3.0.>=4 bump where generic key does not seem supported
+ * <br> PR = https://github.com/BrenKenna/TaskTide/pull/15
+ * <br> Commit = https://github.com/BrenKenna/TaskTide/commit/5a4894d3421c9d7a926fa54f7bb9988ef244a60d
+ * <br>
  *
- * @author bkenna
- * @param <T> of {@link StateSummaryType}
+ * @author Bren
  */
-public class StateSummary<T extends StateSummaryType> {
-    
+public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
+
     // Attributes
     @JsonbProperty("State Summary")
-    private Map<T, Integer> counts;
+    protected final Map<String, Integer> summaryMap;
     
     
     /**
-     * Construct with item state counts
+     * Initialize with empty map
      * 
-     * @param counts 
+     * @param type 
      */
-    @JsonbCreator
-    public StateSummary(
-        @JsonbProperty("State Summary") Map<T, Integer> counts
-    ) {
-        this.counts = counts;
+    StateSummary() {
+        this.summaryMap = new HashMap<>();
     }
     
     
     /**
-     * Null constructor
-     */
-    public StateSummary() {
-        this.counts = new HashMap<>();
-    }
-    
-    
-    /**
-     * Get item state counts
+     * Initialize with summary map
      * 
-     * @return Map-State, int
+     * @param summaryMap 
      */
-    public Map<T, Integer> getCounts() {
-        return counts;
-    }
-    
-    
-    /**
-     * Get count for provided state
-     * 
-     * @param state
-     * @return int
-     */
-    public int getCount(T state) {
-        return (int) counts.get(state);
+    public StateSummary(Map<String, Integer> summaryMap) {
+        this.summaryMap = summaryMap;
     }
 
     
     /**
-     * Set item state counts
+     * Get clone of summary map
      * 
-     * @param counts 
+     * @return Map-String, Integer
      */
-    public void setCounts(Map<T, Integer> counts) {
-        this.counts = counts;
+    public Map<String, Integer> getSummaryMap() {
+        
+        // Intialize output
+        Map<String, Integer> output;
+        output = new HashMap<>();
+        
+        // Populate clone
+        for ( Entry<String, Integer> elm : this.summaryMap.entrySet() ) {
+            output.put(elm.getKey(), elm.getValue());
+        }
+        
+        // Return results
+        return output;
     }
     
     
     /**
-     * Set state summary from state map
+     * Represent as either JSON document or string
      * 
-     * @param <E> - of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
-     * @param stateMap 
+     * @param indent
+     * @return String
      */
-    public <E extends TaskTideModel<E>> void setFromStateMap(Map<T, List<E>> stateMap) {
-        counts = new HashMap<>();
-        for ( Entry<T, List<E>> elm : stateMap.entrySet() ) {
-            counts.put(elm.getKey(), elm.getValue().size());
+    public String toJson(boolean indent) {
+        if ( indent ) {
+            return this.toJsonDoc();
+        }
+        return this.toJsonString();
+    }
+    
+    
+    /**
+     * Represent as JSON document
+     * 
+     * @return String
+     */
+    private String toJsonDoc() {
+        return JsonUtils.toJson(true, this);
+    }
+    
+    
+    /**
+     * Represent as JSON String
+     * 
+     * @return String
+     */
+    private String toJsonString() {
+        return JsonUtils.toJson(false, this);
+    }
+    
+    
+    /**
+     * Sets the provided key to provided value
+     * 
+     * @param key
+     * @param value 
+     */
+    public void setValueFor(String key, int value) {
+        this.summaryMap.put(key, value);
+    }
+    
+    
+    /**
+     * Sets the provided key to provided value
+     * 
+     * @param query
+     * @param value 
+     */
+    public void setValueFor(T query, int value) {
+        String key = this.mapQueryToStateString(query);
+        this.summaryMap.put(key, value);
+    }
+    
+    
+    /**
+     * Add summary value for {@link StateSummaryType} instance
+     * 
+     * @param key
+     * @param value 
+     */
+    public void addElement(String key, int value) {
+        if ( !this.summaryMap.containsKey(key) ) {
+            this.summaryMap.put(key, value);
         }
     }
     
     
     /**
-     * Represent item state counts as formatted JSON
+     * Fetch entry for queried key string
      * 
-     * @return String-JSON Doc
+     * @param key
+     * @return Entry-String, Integer
      */
-    public String toJsonDoc() {
-        JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
-        Jsonb json = JsonbBuilder.create(conf);
-        return json.toJson(this);
+    public Entry<String, Integer> getEntry(String key) {
+        for ( Entry<String, Integer> elm : this.summaryMap.entrySet() ) {
+            if ( elm.getKey().equals(key) ) {
+                return elm;
+            }
+        }
+        return null;
     }
     
     
     /**
-     * Represent item state count as JSON string
+     * Get the value for the specified key
      * 
-     * @return String-JSON
+     * @param key
+     * @return int
      */
-    public String toJson() {
-        Jsonb json = JsonbBuilder.create();
-        return json.toJson(this);
+    public int getValueFor(String key) {
+        if ( this.summaryMap.containsKey(key) ) {
+            return this.summaryMap.get(key);
+        }
+        return -1;
     }
+    
+    
+    /**
+     * Check if {@link StateSummary} has provided key
+     * 
+     * @param key
+     * @return boolean
+     */
+    public boolean hasKey(String key) {
+        return this.summaryMap.containsKey(key);
+    }
+    
+    
+    /**
+     * Map queried state to its state string
+     * 
+     * @param query
+     * 
+     * @return String 
+     */
+    public String mapQueryToStateString(T query) {
+        return query.name();
+    }
+    
+
+    /**
+     * Map queried string to state
+     * 
+     * @param query
+     * @return T
+     */
+    public abstract T mapQueryToState(String query);
 
     
     /**
-     * Represent as String
+     * Check whether state map has queried key
+     * 
+     * @param query
+     * @return boolean
+     */
+    public boolean hasKey(T query) {
+        String key = this.mapQueryToStateString(query);
+        return this.hasKey(key);
+    }
+    
+    
+    /**
+     * Adds element to state summary
+     * 
+     * @param key
+     * @param value 
+     */
+    public void addElement(T state, int value) {
+        String key = this.mapQueryToStateString(state);
+        this.addElement(key, value);
+    }
+    
+    
+    /**
+     * Get value for queried state
+     * 
+     * @param query
+     * @return int
+     */
+    public int getValueFor(T query) {
+        String key = this.mapQueryToStateString(query);
+        return this.getValueFor(key);
+    }
+    
+    
+    /**
+     * Get entry for query
+     * 
+     * @param query
+     * @return Entry-String, int
+     */
+    public Entry<String, Integer> getEntry(T query) {
+        String key = this.mapQueryToStateString(query);
+        return this.getEntry(key);
+    }
+    
+    
+    /**
+     * Represent as JSON document
      * 
      * @return String
      */
     @Override
     public String toString() {
-        return "StateSummary{" + "counts=" + counts + '}';
+        return this.toJsonDoc();
     }
 }

@@ -18,7 +18,7 @@ package org.tasktide.engine;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;
 

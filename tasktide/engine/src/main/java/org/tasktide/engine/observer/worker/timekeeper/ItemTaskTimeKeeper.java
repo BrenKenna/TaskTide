@@ -19,7 +19,7 @@ import org.apache.logging.log4j.LogManager;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.state_summary.TaskState;
 
 import org.tasktide.engine.observer.worker.TimeKeeperObserver;
 

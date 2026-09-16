@@ -21,11 +21,13 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.TaskState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.workitem.Workload;
+
 import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.model.state_summary.StateSummaryProvider;
 
 import org.tasktide.engine.observer.ObserverResult;
 import org.tasktide.engine.observer.worker.ExecutorObserver;
@@ -98,7 +100,7 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
         boolean done = false;
         int baseDelaySeconds = 1, counter = 0, expected = task.getTaskCount(), totalTouched;
         long sleepTime;
-        StateSummary<ItemState> stateSummary = new StateSummary<>();
+        StateSummary<ItemState> stateSummary = StateSummaryProvider.makeItemStateSummary();
         
         // Wait until done
         logger.info("Begining state monitoring of WorkItem:\t'{}'", task.getId());
@@ -120,19 +122,19 @@ public class WorkItemExecutorObserver extends ExecutorObserver<WorkItem, ItemTas
             try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
             
             // Fetch summary
-            stateSummary = new StateSummary<>(task.summarizeByState());
+            stateSummary = StateSummaryProvider.convertToItemStateSummary(task.summarizeByState());
             logger.info("Displaying Iter-'{}' StateSummary of WorkItem:\t'{}'\n\n{}\n\n", 
-                counter, task.getId(), stateSummary.toJsonDoc()
+                counter, task.getId(), stateSummary.toString()
             );
             
             // Sum of touched ItemTasks, did any raise TK error, Executor have states?
-            int progress = stateSummary.getCount(ItemState.DONE) + stateSummary.getCount(ItemState.ERROR) ;
+            int progress = stateSummary.getValueFor(ItemState.DONE) + stateSummary.getValueFor(ItemState.ERROR) ;
             counter++;
             done = progress == expected;
         }
         
         // Return whether any changes in states
-        totalTouched = stateSummary.getCount(ItemState.DONE) + stateSummary.getCount(ItemState.ERROR);
+        totalTouched = stateSummary.getValueFor(ItemState.DONE) + stateSummary.getValueFor(ItemState.ERROR);
         logger.info("Completed processing of '{}' WorkItems with '{}'", totalTouched, expected);
         return totalTouched == expected;
     }

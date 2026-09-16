@@ -41,7 +41,7 @@ import org.junit.jupiter.api.Tag;
 import org.tasktide.engine.TestUtils;
 import org.tasktide.engine.TestEnvironment;
 
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.engine.exceptions.TaskTideEngineCheckedException;

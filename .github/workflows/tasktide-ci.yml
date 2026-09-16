@@ -49,17 +49,3 @@ jobs:
       fail-fast: false
       matrix:
         library: ${{ fromJSON(needs.detect.outputs.libraries )}}
-
-
-  # Publish to dockerhub
-  dockerPublish:
-    needs: build
-    uses:
-      ./.github/workflows/tasktide-ci-dockerHub-publish.yml
-
-
-  # Publish to maven
-  mavenPublish:
-    needs: build
-    uses:
-      ./.github/workflows/tasktide-ci-maven-publish.yml

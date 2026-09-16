@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.state_summary.TaskState;
 
 
 /**

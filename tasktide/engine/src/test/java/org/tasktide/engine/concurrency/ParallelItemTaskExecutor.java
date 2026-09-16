@@ -28,7 +28,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.task.TaskLogging;
-import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.state_summary.TaskState;
 
 
 /**

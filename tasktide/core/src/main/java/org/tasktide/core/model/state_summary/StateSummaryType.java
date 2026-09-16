@@ -17,10 +17,16 @@ package org.tasktide.core.model.state_summary;
 
 
 /**
- * Marker interface for {@link StateSummary}
- * 
- * @author bkenna
+ * Referential interface for state summaries
+ *
+ * @author Bren
  */
 public interface StateSummaryType {
     
+    /**
+     * Requires implementing enums to implement name method
+     * 
+     * @return String
+     */
+    public String name();
 }

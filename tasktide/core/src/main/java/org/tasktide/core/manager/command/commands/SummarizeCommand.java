@@ -31,12 +31,13 @@ import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 
 import org.tasktide.core.model.state_summary.StateSummary;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.supporting.FileIO;
 
 // For JavaDocs
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.state_summary.StateSummaryProvider;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 
@@ -208,7 +209,7 @@ public class SummarizeCommand extends AbstractCommand {
         }
         
         // Return results as StateSummary
-        output = new StateSummary<>(stateCount);
+        output = StateSummaryProvider.convertToItemStateSummary(stateCount);
         return output;
     }
     
@@ -237,8 +238,10 @@ public class SummarizeCommand extends AbstractCommand {
             Integer::sum
         ));
         
-        // Provide as hash map
-        output = new StateSummary<>(new HashMap<>(results));
+        // Provide as hash map not coc
+        output = StateSummaryProvider.convertToItemStateSummary(
+            new HashMap<>(results)
+        );
         return output;
     }
     
@@ -257,9 +260,8 @@ public class SummarizeCommand extends AbstractCommand {
             .fetchWorkItemService()
             .viewByField("stepId", this.STEP_ID)
             .parallelStream()
-        .collect(Collectors.toConcurrentMap(
-            elm -> elm.getId(),
-            elm -> new StateSummary<ItemState>(elm.summarizeByState())
+        .collect(Collectors.toConcurrentMap(elm -> elm.getId(),
+            elm -> StateSummaryProvider.convertToItemStateSummary(elm.summarizeByState())
         ));
         
         // Provide as hash map

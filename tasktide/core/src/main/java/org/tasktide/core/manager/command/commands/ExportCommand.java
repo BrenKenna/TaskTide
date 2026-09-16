@@ -25,7 +25,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.supporting.FileIO;

@@ -37,7 +37,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.state_summary.TaskState;
 
 
 /**

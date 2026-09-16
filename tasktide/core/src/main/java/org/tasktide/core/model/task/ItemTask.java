@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.model.task;
 
+import org.tasktide.core.model.state_summary.TaskState;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;

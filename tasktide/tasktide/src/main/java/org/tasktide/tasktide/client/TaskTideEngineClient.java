@@ -21,7 +21,7 @@ import java.util.Map;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.builders.CustomAnnotationBuilder;
 
