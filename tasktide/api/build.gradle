@@ -72,6 +72,11 @@ def testTags = [
 ]
 
 
+tasks.withType(Test).configureEach {
+    maxHeapSize = "4g"
+}
+
+
 // Define logging scope for all tests
 tasks.withType(Test).configureEach {
 
