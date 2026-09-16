@@ -1,149 +1,217 @@
 /*
- * Copyright 2025 Brendan Kenna.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package org.tasktide.core.model.state_summary;
 
-import jakarta.json.bind.Jsonb;
-import jakarta.json.bind.JsonbBuilder;
-import jakarta.json.bind.JsonbConfig;
-import jakarta.json.bind.annotation.JsonbCreator;
-import jakarta.json.bind.annotation.JsonbProperty;
-
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.Map.Entry;
 
-import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.model.task.TaskState;
-import org.tasktide.core.model.workitem.WorkItem;
-import org.tasktide.core.model.task.ItemTask;
+import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 
 /**
- * Class to (de)serialize work item state summary as JSON.
- * <br><br>
- * Currently constrained to {@link WorkItem WorkItem} and {@link TaskState}
- * implement the {@link StateSummaryType} interface.
+ * JSON-B compatible representation of {@link StateSummaryType}
+ *  maps
+ * 
+ * <br>
+ * Resolves yasson-3.0.>=4 bump where generic key does not seem supported
+ * <br>
  *
- * @author bkenna
- * @param <T> of {@link StateSummaryType}
+ * @author Bren
  */
-public class StateSummary<T extends StateSummaryType> {
+public abstract class StateSummary<T extends Enum<T>> {
+
     
     // Attributes
     @JsonbProperty("State Summary")
-    private Map<T, Integer> counts;
+    protected final Map<String, Integer> summaryMap;
     
+    @JsonbProperty("State Type")
+    private final StateSummaryType type;
+    
+    @JsonbTransient
+    private final Class<T> classRef;
+            
     
     /**
-     * Construct with item state counts
+     * Initialize with {@link StateSummaryType}, required 
+     *  class
      * 
-     * @param counts 
+     * @param type 
      */
-    @JsonbCreator
-    public StateSummary(
-        @JsonbProperty("State Summary") Map<T, Integer> counts
-    ) {
-        this.counts = counts;
+    public StateSummary(StateSummaryType type, Class<T> classRef) {
+        this.type = type;
+        this.classRef = classRef;
+        this.summaryMap = new HashMap<>();
     }
     
     
     /**
-     * Null constructor
-     */
-    public StateSummary() {
-        this.counts = new HashMap<>();
-    }
-    
-    
-    /**
-     * Get item state counts
+     * Initialize with {@link StateSummaryType} and summary map
      * 
-     * @return Map-State, int
+     * @param type
+     * @param classRef
+     * @param summaryMap 
      */
-    public Map<T, Integer> getCounts() {
-        return counts;
-    }
-    
-    
-    /**
-     * Get count for provided state
-     * 
-     * @param state
-     * @return int
-     */
-    public int getCount(T state) {
-        return (int) counts.get(state);
+    public StateSummary(StateSummaryType type, Class<T> classRef, Map<String, Integer> summaryMap) {
+        this.type = type;
+        this.classRef = classRef;
+        this.summaryMap = summaryMap;
     }
 
     
     /**
-     * Set item state counts
+     * Get {@link StateSummaryType}
      * 
-     * @param counts 
+     * @return {@link StateSummaryType}
      */
-    public void setCounts(Map<T, Integer> counts) {
-        this.counts = counts;
+    public StateSummaryType getType() {
+        return type;
+    }
+
+    
+    /**
+     * Get class reference
+     * 
+     * @return 
+     */
+    public Class<T> getClassRef() {
+        return this.classRef;
     }
     
     
     /**
-     * Set state summary from state map
+     * Get summary map
      * 
-     * @param <E> - of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
-     * @param stateMap 
+     * @return Map-String, Integer
      */
-    public <E extends TaskTideModel<E>> void setFromStateMap(Map<T, List<E>> stateMap) {
-        counts = new HashMap<>();
-        for ( Entry<T, List<E>> elm : stateMap.entrySet() ) {
-            counts.put(elm.getKey(), elm.getValue().size());
+    public Map<String, Integer> getSummaryMap() {
+        return summaryMap;
+    }
+    
+    
+    /**
+     * Add summary value for {@link StateSummaryType} instance
+     * 
+     * @param key
+     * @param value 
+     */
+    public void addElement(String key, int value) {
+        if ( !this.summaryMap.containsKey(key) ) {
+            this.summaryMap.put(key, value);
         }
     }
     
     
     /**
-     * Represent item state counts as formatted JSON
+     * Fetch entry for queried key string
      * 
-     * @return String-JSON Doc
+     * @param key
+     * @return Entry-String, Integer
      */
-    public String toJsonDoc() {
-        JsonbConfig conf = new JsonbConfig().withFormatting(Boolean.TRUE);
-        Jsonb json = JsonbBuilder.create(conf);
-        return json.toJson(this);
+    public Entry<String, Integer> getEntry(String key) {
+        for ( Entry<String, Integer> elm : this.summaryMap.entrySet() ) {
+            if ( elm.getKey().equals(key) ) {
+                return elm;
+            }
+        }
+        return null;
     }
     
     
     /**
-     * Represent item state count as JSON string
+     * Get the value for the specified key
      * 
-     * @return String-JSON
+     * @param key
+     * @return int
      */
-    public String toJson() {
-        Jsonb json = JsonbBuilder.create();
-        return json.toJson(this);
+    public int getValueFor(String key) {
+        if ( this.summaryMap.containsKey(key) ) {
+            return this.summaryMap.get(key);
+        }
+        return -1;
     }
+    
+    
+    /**
+     * Check if {@link StateSummary} has provided key
+     * 
+     * @param key
+     * @return boolean
+     */
+    public boolean hasKey(String key) {
+        return this.summaryMap.containsKey(key);
+    }
+    
+    
+    /**
+     * Map queried state to its state string
+     * 
+     * @param query
+     * 
+     * @return String 
+     */
+    public String mapQueryToStateString(T query) {
+        return query.name();
+    }
+    
+
+    /**
+     * Map queried string to state
+     * 
+     * @param query
+     * @return T
+     */
+    public abstract T mapQueryToState(String query);
 
     
     /**
-     * Represent as String
+     * Check whether state map has queried key
      * 
-     * @return String
+     * @param query
+     * @return boolean
      */
-    @Override
-    public String toString() {
-        return "StateSummary{" + "counts=" + counts + '}';
+    public boolean hasKey(T query) {
+        String key = this.mapQueryToStateString(query);
+        return this.hasKey(key);
+    }
+    
+    
+    /**
+     * Adds element to state summary
+     * 
+     * @param key
+     * @param value 
+     */
+    public void addElement(T state, int value) {
+        String key = this.mapQueryToStateString(state);
+        this.addElement(key, value);
+    }
+    
+    
+    /**
+     * Get value for queried state
+     * 
+     * @param query
+     * @return int
+     */
+    public int getValueFor(T query) {
+        String key = this.mapQueryToStateString(query);
+        return this.getValueFor(key);
+    }
+    
+    
+    /**
+     * Get entry for query
+     * 
+     * @param query
+     * @return Entry-String, int
+     */
+    public Entry<String, Integer> getEntry(T query) {
+        String key = this.mapQueryToStateString(query);
+        return this.getEntry(key);
     }
 }

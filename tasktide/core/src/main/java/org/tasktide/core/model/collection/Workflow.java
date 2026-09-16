@@ -36,7 +36,7 @@ import java.util.Map.Entry;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.model.state_summary.StateSummaryOld;
 import org.tasktide.core.model.workitem.ItemState;
 
 

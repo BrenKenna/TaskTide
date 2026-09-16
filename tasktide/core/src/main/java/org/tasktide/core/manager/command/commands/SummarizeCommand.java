@@ -30,7 +30,7 @@ import org.tasktide.core.manager.command.CommandType;
 import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 
-import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.model.state_summary.StateSummaryOld;
 import org.tasktide.core.model.workitem.ItemState;
 import org.tasktide.core.supporting.FileIO;
 
@@ -84,7 +84,7 @@ public class SummarizeCommand extends AbstractCommand {
         
             case SUMMARIZE -> {
                 LOGGER.info("Summarizing collection");
-                StateSummary<ItemState> summary = this.summarize();
+                StateSummaryOld<ItemState> summary = this.summarize();
                 
                 if ( !this.directOutput(summary) ) {
                     LOGGER.info("Directing results to stdout");
@@ -97,7 +97,7 @@ public class SummarizeCommand extends AbstractCommand {
             
             case SUMMARIZE_BY_ITEM_TASK -> {
                 LOGGER.info("Summarizing ItemTask state across collection");
-                StateSummary<ItemState> summary = this.summarizeAcrossItemTask();
+                StateSummaryOld<ItemState> summary = this.summarizeAcrossItemTask();
                 
                 if ( !this.directOutput(summary) ) {
                     LOGGER.info("Directing results to stdout");
@@ -110,7 +110,7 @@ public class SummarizeCommand extends AbstractCommand {
             
             case SUMMARIZE_EACH -> {
                 LOGGER.info("Summarizing each element in collection");
-                Map<String, StateSummary<ItemState>> summaries = this.summarizeEach();
+                Map<String, StateSummaryOld<ItemState>> summaries = this.summarizeEach();
                 if ( !this.directOutput(summaries) ) {
                     LOGGER.info("Directing results to stdout");
                     return summaries;
@@ -178,11 +178,11 @@ public class SummarizeCommand extends AbstractCommand {
      * 
      * @return 
      */
-    public StateSummary<ItemState> summarize() {
+    public StateSummaryOld<ItemState> summarize() {
     
         // Initialize vars
         List<WorkItem> workItems;
-        StateSummary<ItemState> output;
+        StateSummaryOld<ItemState> output;
         
         // Fetch work items
         workItems = TaskTideServiceManager
@@ -207,8 +207,8 @@ public class SummarizeCommand extends AbstractCommand {
             }
         }
         
-        // Return results as StateSummary
-        output = new StateSummary<>(stateCount);
+        // Return results as StateSummaryOld
+        output = new StateSummaryOld<>(stateCount);
         return output;
     }
     
@@ -217,12 +217,12 @@ public class SummarizeCommand extends AbstractCommand {
     /**
      * Collapses counts of {@link ItemState} across all collection units
      * 
-     * @return {@link StateSummary} of {@link ItemState}
+     * @return {@link StateSummaryOld} of {@link ItemState}
      */
-    public StateSummary<ItemState> summarizeAcrossItemTask() {
+    public StateSummaryOld<ItemState> summarizeAcrossItemTask() {
         
         // Fetch coordinating arguments
-        StateSummary<ItemState> output;
+        StateSummaryOld<ItemState> output;
         
         // Collect into concurrent map
         Map<ItemState, Integer> results = TaskTideServiceManager
@@ -238,7 +238,7 @@ public class SummarizeCommand extends AbstractCommand {
         ));
         
         // Provide as hash map
-        output = new StateSummary<>(new HashMap<>(results));
+        output = new StateSummaryOld<>(new HashMap<>(results));
         return output;
     }
     
@@ -246,20 +246,19 @@ public class SummarizeCommand extends AbstractCommand {
     /**
      * Fetches count of {@link ItemTask} {@link ItemState} per {@link WorkItem}
      * 
-     * @return Map-String, {@link StateSummary} of {@link ItemState}
+     * @return Map-String, {@link StateSummaryOld} of {@link ItemState}
      */
-    public Map<String, StateSummary<ItemState>> summarizeEach() {
+    public Map<String, StateSummaryOld<ItemState>> summarizeEach() {
 
         // Calculate results
-        Map<String, StateSummary<ItemState>> results;
+        Map<String, StateSummaryOld<ItemState>> results;
         results =
             TaskTideServiceManager
             .fetchWorkItemService()
             .viewByField("stepId", this.STEP_ID)
             .parallelStream()
-        .collect(Collectors.toConcurrentMap(
-            elm -> elm.getId(),
-            elm -> new StateSummary<ItemState>(elm.summarizeByState())
+        .collect(Collectors.toConcurrentMap(elm -> elm.getId(),
+            elm -> new StateSummaryOld<ItemState>(elm.summarizeByState())
         ));
         
         // Provide as hash map

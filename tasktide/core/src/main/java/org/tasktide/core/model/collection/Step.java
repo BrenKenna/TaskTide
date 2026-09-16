@@ -28,7 +28,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.model.state_summary.StateSummaryOld;
 
 import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.ItemState;

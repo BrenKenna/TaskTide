@@ -60,7 +60,7 @@ import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerCommand;
 import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.command.commands.SummarizeCommand;
-import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.model.state_summary.StateSummaryOld;
 import org.tasktide.core.supporting.JsonUtils;
 
 
@@ -137,7 +137,7 @@ public class SummarizeManagerCommandTests {
     
     
     /**
-     * Tests fetching {@link StateSummary} of the 'import-docs.json' workload {@link ItemState}
+     * Tests fetching {@link StateSummaryOld} of the 'import-docs.json' workload {@link ItemState}
      */
     @Test
     @Order(0)
@@ -150,7 +150,7 @@ public class SummarizeManagerCommandTests {
         ManagerAction action = ManagerAction.SUMMARIZE;
         CommandSpec cmdSpec;
         SummarizeCommand cmd;
-        StateSummary<ItemState> results;
+        StateSummaryOld<ItemState> results;
         boolean assertionState;
         
         
@@ -169,7 +169,7 @@ public class SummarizeManagerCommandTests {
         // Display results if retrieved
         if ( output != null ) {
             LOGGER.info("Casting ManagerCommand output to StateSummary-Map");
-            results = (StateSummary<ItemState>) output;
+            results = (StateSummaryOld<ItemState>) output;
             LOGGER.info("Displaying results:\n'{}'", JsonUtils.toJson(true, output));
             assertionState = true;
         }
@@ -187,7 +187,7 @@ public class SummarizeManagerCommandTests {
     
     
     /**
-     * Tests fetching {@link StateSummary} of the 'import-docs.json' workload {@link ItemState}
+     * Tests fetching {@link StateSummaryOld} of the 'import-docs.json' workload {@link ItemState}
      */
     @Test
     @Order(1)
@@ -200,7 +200,7 @@ public class SummarizeManagerCommandTests {
         ManagerAction action = ManagerAction.SUMMARIZE_EACH;
         CommandSpec cmdSpec;
         SummarizeCommand cmd;
-        Map<String, StateSummary<ItemState>> results;
+        Map<String, StateSummaryOld<ItemState>> results;
         boolean assertionState;
         
         // Construct command spec
@@ -218,7 +218,7 @@ public class SummarizeManagerCommandTests {
         // Display results if retrieved
         if ( output != null ) {
             LOGGER.info("Casting ManagerCommand output to StateSummary-Map");
-            results = (Map<String, StateSummary<ItemState>>) output;
+            results = (Map<String, StateSummaryOld<ItemState>>) output;
             LOGGER.info("Displaying results:\n'{}'", JsonUtils.toJson(true, output));
             assertionState = true;
         }
