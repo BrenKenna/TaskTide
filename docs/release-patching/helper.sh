@@ -1,6 +1,11 @@
 #!/bin/bash
 
 
+# Generate passkey
+python passgen.py --password-length 64 --amount 18 | sort -R | cut -f 2
+PASS_KEY=$(cat .secret/passKey)
+
+
 #####################################################
 #####################################################
 ##
@@ -40,8 +45,17 @@ cp tasktide/build/resources/main/META-INF/* ../../v0.9.0/
 cd ../
 rm -fr $DATE
 
+# Sign the fingerprint and push
 cd $VERSION
-gh release upload $VERSION tasktide-0.9.0.zip
+openssl dgst -sha256 tasktide-0.9.0.zip | \
+    awk '{print $2 " tasktide-0.9.0.zip"}' \
+> SHA256SUMS
+
+gpg --detach-sign --output tasktide-0.9.0.zip.sig tasktide-0.9.0.zip
+
+gh release upload $VERSION \
+    SHA256SUMS \
+    tasktide-0.9.0.zip.sig
 
 '''
 BUILD SUCCESSFUL in 42s
@@ -112,6 +126,25 @@ rm -fr $DATE
 
 # Upload artifacts
 cd $VERSION
+
+# Sign the fingerprint and push
+cd $VERSION
+
+rm -f SHA256SUMS && touch SHA256SUMS
+for i in $(ls *gz)
+do
+    HASH=$(openssl dgst -sha256 $i | awk '{print $2}')
+    echo "$HASH $i" >> SHA256SUMS
+    gpg --detach-sign --output $i.sig $i
+done
+
+gh release upload $VERSION \
+    SHA256SUMS \
+    *sig
+
+
+
+
 gh release upload $VERSION $(ls *gz)
 
 '''
