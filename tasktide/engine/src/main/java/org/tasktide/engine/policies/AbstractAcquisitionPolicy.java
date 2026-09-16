@@ -18,7 +18,7 @@ package org.tasktide.engine.policies;
 import java.util.UUID;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 
 import org.tasktide.engine.policies.resources.ResourcePolicyMapper;
 

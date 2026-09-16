@@ -17,7 +17,7 @@ package org.tasktide.engine.policies;
 
 import java.util.List;
 import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.engine.exceptions.TaskTideEngineUncheckedException;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyMode;
 import org.tasktide.engine.policies.workflow.WorkflowStrategyType;

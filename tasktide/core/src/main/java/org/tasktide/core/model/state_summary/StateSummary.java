@@ -1,6 +1,17 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Copyright 2025 Brendan Kenna.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.tasktide.core.model.state_summary;
 
@@ -9,7 +20,8 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import jakarta.json.bind.annotation.JsonbProperty;
-import jakarta.json.bind.annotation.JsonbTransient;
+
+import org.tasktide.core.supporting.JsonUtils;
 
 
 /**
@@ -24,54 +36,30 @@ import jakarta.json.bind.annotation.JsonbTransient;
  *
  * @author Bren
  */
-public abstract class StateSummary<T extends Enum<T>> {
+public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
 
-    
     // Attributes
     @JsonbProperty("State Summary")
     protected final Map<String, Integer> summaryMap;
     
-    @JsonbProperty("State Type")
-    private final StateSummaryType type;
-    
-    @JsonbTransient
-    private final Class<T> classRef;
-            
     
     /**
-     * Initialize with {@link StateSummaryType}, required 
-     *  class
+     * Initialize with empty map
      * 
      * @param type 
      */
-    public StateSummary(StateSummaryType type, Class<T> classRef) {
-        this.type = type;
-        this.classRef = classRef;
+    public StateSummary() {
         this.summaryMap = new HashMap<>();
     }
     
     
     /**
-     * Initialize with {@link StateSummaryType} and summary map
+     * Initialize with summary map
      * 
-     * @param type
-     * @param classRef
      * @param summaryMap 
      */
-    public StateSummary(StateSummaryType type, Class<T> classRef, Map<String, Integer> summaryMap) {
-        this.type = type;
-        this.classRef = classRef;
+    public StateSummary(Map<String, Integer> summaryMap) {
         this.summaryMap = summaryMap;
-    }
-
-    
-    /**
-     * Get {@link StateSummaryType}
-     * 
-     * @return {@link StateSummaryType}
-     */
-    public StateSummaryType getType() {
-        return type;
     }
 
     
@@ -92,6 +80,40 @@ public abstract class StateSummary<T extends Enum<T>> {
      */
     public Map<String, Integer> getSummaryMap() {
         return summaryMap;
+    }
+    
+    
+    /**
+     * Represent as either JSON document or string
+     * 
+     * @param indent
+     * @return String
+     */
+    public String toJson(boolean indent) {
+        if ( indent ) {
+            return this.toJsonDoc();
+        }
+        return this.toJsonString();
+    }
+    
+    
+    /**
+     * Represent as JSON document
+     * 
+     * @return String
+     */
+    private String toJsonDoc() {
+        return JsonUtils.toJson(true, this.summaryMap);
+    }
+    
+    
+    /**
+     * Represent as JSON String
+     * 
+     * @return String
+     */
+    private String toJsonString() {
+        return JsonUtils.toJson(false, this.summaryMap);
     }
     
     
@@ -215,5 +237,16 @@ public abstract class StateSummary<T extends Enum<T>> {
     public Entry<String, Integer> getEntry(T query) {
         String key = this.mapQueryToStateString(query);
         return this.getEntry(key);
+    }
+    
+    
+    /**
+     * Represent as JSON document
+     * 
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return this.toJsonDoc();
     }
 }

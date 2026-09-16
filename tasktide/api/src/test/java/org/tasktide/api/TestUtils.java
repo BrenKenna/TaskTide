@@ -70,7 +70,7 @@ import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.core.model.job_env.metrics.ProfileData;
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.state_summary.TaskState;
 
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;

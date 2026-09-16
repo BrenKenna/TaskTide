@@ -4,6 +4,7 @@
  */
 package org.tasktide.core.model.workitem;
 
+import org.tasktide.core.model.state_summary.ItemState;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;
@@ -21,7 +22,7 @@ import java.util.Map.Entry;
 
 import org.tasktide.core.model.CustomAnnotation;
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
+import org.tasktide.core.model.state_summary.TaskState;
 import org.tasktide.core.TaskTideModel;
 
 // For JavaDocs

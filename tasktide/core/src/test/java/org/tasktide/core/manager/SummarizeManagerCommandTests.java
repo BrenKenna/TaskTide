@@ -50,7 +50,7 @@ import org.testcontainers.containers.GenericContainer;
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.repository.JpaRepository;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;

@@ -13,14 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.model.workitem;
+package org.tasktide.core.model.state_summary;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.tasktide.core.model.state_summary.StateSummaryType;
-import org.tasktide.core.model.task.TaskState;
 
 
 /**

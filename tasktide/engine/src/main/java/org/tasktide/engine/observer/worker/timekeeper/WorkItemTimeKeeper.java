@@ -18,7 +18,7 @@ package org.tasktide.engine.observer.worker.timekeeper;
 import org.apache.logging.log4j.LogManager;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.observer.worker.TimeKeeperObserver;

@@ -23,8 +23,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.model.task.ItemTask;
-import org.tasktide.core.model.task.TaskState;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.TaskState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.engine.trackers.FutureTrackers;

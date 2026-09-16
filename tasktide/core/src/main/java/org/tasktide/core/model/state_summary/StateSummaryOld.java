@@ -27,7 +27,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.model.task.TaskState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.task.ItemTask;
 

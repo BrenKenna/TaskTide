@@ -54,7 +54,7 @@ import org.tasktide.core.model.collection.Workflow;
 // import org.tasktide.tasktide.TestEnvironment;
 // import org.testcontainers.containers.GenericContainer;
 
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.engine.policies.AcquisitionPolicyMode;

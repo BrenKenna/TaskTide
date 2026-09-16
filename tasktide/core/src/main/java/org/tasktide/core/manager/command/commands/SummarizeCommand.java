@@ -31,7 +31,7 @@ import org.tasktide.core.manager.command.ManagerAction;
 import org.tasktide.core.manager.command.ManagerTarget;
 
 import org.tasktide.core.model.state_summary.StateSummaryOld;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.supporting.FileIO;
 
 // For JavaDocs

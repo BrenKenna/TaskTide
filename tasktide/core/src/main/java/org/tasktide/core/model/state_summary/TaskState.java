@@ -13,10 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.model.task;
-
-import org.tasktide.core.model.state_summary.StateSummaryType;
-import org.tasktide.core.model.workitem.ItemState;
+package org.tasktide.core.model.state_summary;
 
 
 /**
@@ -255,5 +252,21 @@ public enum TaskState implements StateSummaryType {
      */
     public static boolean hasType(String query) {
         return indexOf(query) >= 0;
+    }
+    
+    
+    /**
+     * Return {@link TaskState} matching query,
+     *  otherwise null
+     * 
+     * @param query
+     * @return null
+     */
+    public static TaskState get(String query) {
+        int ind = TaskState.indexOf(query);
+        if ( ind > -1 ) {
+            return TaskState.values()[ind];
+        }
+        return null;
     }
 }

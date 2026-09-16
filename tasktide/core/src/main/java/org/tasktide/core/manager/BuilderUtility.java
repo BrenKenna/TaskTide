@@ -37,7 +37,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
 
 import org.tasktide.core.supporting.Utils;

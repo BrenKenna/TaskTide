@@ -22,7 +22,7 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.workitem.ItemState;
+import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.model.state_summary.StateSummaryOld;
