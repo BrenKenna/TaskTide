@@ -26,8 +26,10 @@ import org.tasktide.core.TaskTideMapper;
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Step;
+
 import org.tasktide.core.model.state_summary.ItemState;
-import org.tasktide.core.model.state_summary.StateSummaryOld;
+import org.tasktide.core.model.state_summary.StateSummary;
+import org.tasktide.core.model.state_summary.StateSummaryProvider;
 
 import org.tasktide.core.supporting.Utils;
 
@@ -174,9 +176,9 @@ public class WorkItemService
      * Provide count of collection by their state
      * 
      * @param traceFirst - Update per item task counts before providing
-     * @return {@link StateSummaryOld}
+     * @return {@link StateSummary}
      */
-    public synchronized StateSummaryOld<ItemState> fetchCountByState(boolean traceFirst) {
+    public synchronized StateSummary<ItemState> fetchCountByState(boolean traceFirst) {
         
         // Initialize output
         Map<ItemState, Integer> countMap = new HashMap<>();
@@ -189,7 +191,7 @@ public class WorkItemService
         }
         
         // Return results
-        return new StateSummaryOld<>(countMap);
+        return StateSummaryProvider.convertToItemStateSummary(countMap);
     }
     
     

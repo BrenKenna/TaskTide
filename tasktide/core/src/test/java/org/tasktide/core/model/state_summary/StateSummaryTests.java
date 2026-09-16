@@ -92,7 +92,7 @@ public class StateSummaryTests {
         
         // Initialize
         StateSummary<ItemState> itemStateSummary;
-        itemStateSummary = StateSummaryFactory.makeItemStateSummary();
+        itemStateSummary = StateSummaryProvider.makeItemStateSummary();
         
         // Populate with random values
         for ( ItemState elm : ItemState.values() ) {
@@ -114,7 +114,7 @@ public class StateSummaryTests {
         
         // Initialize
         StateSummary<TaskState> taskStateSummary;
-        taskStateSummary = StateSummaryFactory.makeTaskStateSummary();
+        taskStateSummary = StateSummaryProvider.makeTaskStateSummary();
         
         // Populate with random values
         for ( TaskState elm : TaskState.values() ) {
@@ -166,7 +166,7 @@ public class StateSummaryTests {
         ;
         
         // Make item state summary
-        itemStateSummary = StateSummaryFactory.makeItemStateSummary();
+        itemStateSummary = StateSummaryProvider.makeItemStateSummary();
         nFields = itemStateSummary.summaryMap.size();
         LOGGER.info(
            "Verifying that the number of ItemState fields '{}' is the same as those from created '{}'",

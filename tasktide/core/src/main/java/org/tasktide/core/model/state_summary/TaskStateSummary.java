@@ -34,7 +34,7 @@ public final class TaskStateSummary extends StateSummary<TaskState> {
      * Construct empty {@link TaskState} summary map
      * 
      */
-    public TaskStateSummary() {
+    TaskStateSummary() {
         super();
     }
     

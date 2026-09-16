@@ -22,16 +22,9 @@ import jakarta.json.bind.JsonbConfig;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
-import jakarta.nosql.Column;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.tasktide.core.model.state_summary.StateSummaryOld;
-
-import org.tasktide.core.model.state_summary.TaskState;
-import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.model.CustomAnnotation;
 

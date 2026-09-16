@@ -17,14 +17,16 @@ package org.tasktide.core.model.state_summary;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 
 /**
- * For static initialization of valid {@link StateSummary}
+ * For static initialization of valid {@link StateSummary}. Conversion
+ *  methods are intentionally kept separate for clarity of use
  *
  * @author Bren
  */
-public class StateSummaryFactory {
+public class StateSummaryProvider {
 
     
     /**
@@ -52,6 +54,29 @@ public class StateSummaryFactory {
     
     
     /**
+     * Convert a Map of {@link ItemState} counts, to 
+     *  dedicated {@link ItemStateSummary}
+     * 
+     * @param map
+     * @return {@link StateSummary} of {@link ItemState}
+     */
+    public static StateSummary<ItemState> convertToItemStateSummary(Map<ItemState, Integer> map) {
+        
+        // Initialize output
+        StateSummary<ItemState> output;
+        output = new ItemStateSummary();
+        
+        // Populate map
+        for ( Entry <ItemState, Integer> elm : map.entrySet() ) {
+            output.addElement(elm.getKey(), elm.getValue());
+        }
+        
+        // Return results
+        return output;
+    }
+    
+    
+    /**
      * Make a blank {@link StateSummary} for across {@link TaskState}
      *  instances
      * 
@@ -71,6 +96,29 @@ public class StateSummaryFactory {
         
         // Return results
         output = new TaskStateSummary(dataMap);
+        return output;
+    }
+    
+    
+    /**
+     * Convert a Map of {@link TasState} counts, to 
+     *  dedicated {@link TasStateSummary}
+     * 
+     * @param map
+     * @return {@link StateSummary} of {@link TaskState}
+     */
+    public static StateSummary<TaskState> convertToTaskStateSummary(Map<TaskState, Integer> map) {
+        
+        // Initialize output
+        StateSummary<TaskState> output;
+        output = new TaskStateSummary();
+        
+        // Populate map
+        for ( Entry <TaskState, Integer> elm : map.entrySet() ) {
+            output.addElement(elm.getKey(), elm.getValue());
+        }
+        
+        // Return results
         return output;
     }
 }

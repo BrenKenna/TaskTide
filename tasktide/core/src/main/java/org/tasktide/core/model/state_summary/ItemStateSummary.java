@@ -34,7 +34,7 @@ public final class ItemStateSummary extends StateSummary<ItemState> {
      * Construct empty {@link ItemState} summary map
      * 
      */
-    public ItemStateSummary() {
+    ItemStateSummary() {
         super();
     }
     

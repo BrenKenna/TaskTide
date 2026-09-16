@@ -15,9 +15,6 @@
  */
 package org.tasktide.core.model.state_summary;
 
-import jakarta.json.bind.Jsonb;
-import jakarta.json.bind.JsonbBuilder;
-
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -51,7 +48,7 @@ public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
      * 
      * @param type 
      */
-    public StateSummary() {
+    StateSummary() {
         this.summaryMap = new HashMap<>();
     }
     
