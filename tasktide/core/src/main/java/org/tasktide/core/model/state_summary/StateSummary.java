@@ -18,6 +18,8 @@ import jakarta.json.bind.annotation.JsonbTransient;
  * 
  * <br>
  * Resolves yasson-3.0.>=4 bump where generic key does not seem supported
+ * <br> PR = https://github.com/BrenKenna/TaskTide/pull/15
+ * <br> Commit = https://github.com/BrenKenna/TaskTide/commit/5a4894d3421c9d7a926fa54f7bb9988ef244a60d
  * <br>
  *
  * @author Bren
