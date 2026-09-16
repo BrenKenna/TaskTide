@@ -112,6 +112,9 @@ test {
     }
 }
 
+tasks.withType(Test).configureEach {
+    maxHeapSize = "4g"
+}
 
 // Builds Java doc
 tasks.register('generateAllJavadocs', Javadoc) {

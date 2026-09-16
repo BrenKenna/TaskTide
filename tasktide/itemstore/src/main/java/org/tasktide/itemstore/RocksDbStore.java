@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,8 @@ import java.util.Map.Entry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksIterator;
 import org.rocksdb.Options;
@@ -32,8 +35,7 @@ import org.rocksdb.RocksDBException;
 import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+// Gone with movr to tools.jackson.datatype v3.2.2
 
 import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.ItemStoreSession;
@@ -218,7 +220,9 @@ public class RocksDbStore extends AbstractItemStore {
         try {
             byte[] value = iter.value();
             return MAPPER.readValue(value, Item.class);
-        } catch (IOException ex) {
+        }
+        catch (Exception ex) {
+            LOGGER.error(ex);
             return null;
         }
     }
@@ -255,8 +259,7 @@ public class RocksDbStore extends AbstractItemStore {
             db.put(key, value);
         }
         catch (RocksDBException ex) {
-            LOGGER.error("Unable to insert record into ItemStore: '{}'", db.getName());
-            ex.printStackTrace();
+            LOGGER.error("Unable to insert record into ItemStore:\t'{}'\n", db.getName(), ex);
         }
     }
     
@@ -788,8 +791,8 @@ public class RocksDbStore extends AbstractItemStore {
             try {
                 putItem(this.conn, item.getId().getBytes(), MAPPER.writeValueAsBytes(item));
                 return true;
-            }
-            catch (JsonProcessingException ex) {
+            } catch (JsonProcessingException ex) {
+                LOGGER.error(ex);
                 return false;
             }
         }
@@ -814,8 +817,8 @@ public class RocksDbStore extends AbstractItemStore {
                 return data == null ? null : MAPPER.readValue(data, Item.class);
             }
             
-            catch ( IOException | RocksDBException ex ) {
-                ex.printStackTrace();
+            catch ( Exception ex ) {
+                LOGGER.error(ex);
                 return null;
             }
         }
@@ -890,7 +893,7 @@ public class RocksDbStore extends AbstractItemStore {
                         output.add(item);
                     }
                 }
-                catch ( IOException ex ) { }
+                catch ( Exception ex ) { LOGGER.error(ex);}
             }
 
             // Close iterator & return results
