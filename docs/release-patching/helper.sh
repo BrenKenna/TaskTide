@@ -154,3 +154,34 @@ Successfully uploaded 3 assets to v0.9.1-historical
 Not worried about CI failure with worker hitting OOM, workflow is consistent
 https://github.com/BrenKenna/TaskTide/actions/runs/35018523089/job/104548299555
 '''
+
+
+
+#################################################################
+#################################################################
+##
+## 3). Dependabot Version Bumps + Security Alerts
+##
+## Resolves breaking bump of yasson-3.0.3 to x.x.4 noticed
+##    from jersey-bom-3.1.+8
+##
+## PR = https://github.com/BrenKenna/TaskTide/pull/15
+## Commit = 24211ee
+##
+#################################################################
+#################################################################
+
+
+# Initialize required variables
+REPO="https://github.com/BrenKenna/TaskTide.git"
+COMMIT="24211ee"
+DATE="2026-09-16"
+VERSION="v0.9.2"
+
+
+# Check sums and signs the local test zip
+cd docs/release-patching/
+
+HASH=$(openssl dgst -sha256 local-test-check.zip | awk '{print $2}')
+echo "$HASH local-test-check.zip" >> SHA256SUMS
+gpg --detach-sign --output local-test-check.zip.sig local-test-check.zip

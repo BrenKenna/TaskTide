@@ -27,9 +27,9 @@ dependencies {
 
 // Define test scopes
 def testTags = [
-    "unit-tests": 'unit-mutex',
-    "integration-tests": 'integration-mutex',
-    "system-tests": 'system-mutex'
+    "unit-tests": 'unit-itemstore',
+    "integration-tests": 'integration-itemstore',
+    "system-tests": 'system-itemstore'
 ]
 
 
