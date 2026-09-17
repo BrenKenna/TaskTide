@@ -1,5 +1,5 @@
 # Use Java17 base image installing required software
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:17-jre@sha256:ee489b56e4876e1c5ac5de99b95dc10c318e64b466cd611b1afb29905fa4857c
 
 
 # Configure container
