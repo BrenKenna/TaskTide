@@ -93,6 +93,6 @@ jobs:
             exit 1
           fi
 
-          # Publish TaskTide and agg pom
+          # Publish TaskTide artifacts and agg pom
           ./gradlew publishTaskTide
           ./gradlew publishTaskTideAggregator

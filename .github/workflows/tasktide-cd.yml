@@ -1,4 +1,4 @@
-name: TaskTide CD Workflow - Maven & DockerHub
+name: TaskTide-CD Maven and DockerHub
 
 
 permissions:
