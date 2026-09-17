@@ -1,0 +1,84 @@
+name: TaskTide-CD DockerHub Publish
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  publishToDockerHub:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+
+      - name: Determine release version
+        id: fetchVersion
+        run: |
+
+          # Fetch version from project gradle properties
+          VERSION=$( grep "^tasktideVersion" tasktide/gradle.properties | cut -d \= -f 2 )
+
+          # Verify before proceeding
+          if [ -z "$VERSION" ]
+          then
+            echo "No version tag points at this commit."
+            exit 1
+          else
+            echo -e "Proceeding with TaskTide Version $VERSION"
+          fi
+
+          # Define env var if present
+          echo "VERSION=$VERSION" >> $GITHUB_ENV"
+
+
+      - name: Configure docker build
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        run: |
+          cd ./tasktide
+          echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          ./gradlew assemble
+          mv tasktide/build/distributions/tasktide*.zip ../docker/tasktide.zip
+
+
+      - name: Build and publish latest image
+        run: |
+          # Build container
+          cd ./docker
+          docker image build \
+            -t bkenna/tasktide:${VERSION} \
+            -t bkenna/tasktide:latest \
+            -f tasktide.Dockerfile \
+            .
+
+          # Push images
+          docker image push \
+            bkenna/tasktide:latest
+
+          docker image push \
+            bkenna/tasktide:${VERSION}
+
+
+      - name: Build and publish latest image
+        run: |
+          # Build container
+          cd ./docker
+          docker image build \
+            -t bkenna/tasktide:${VERSION}-apptainer \
+            -t bkenna/tasktide:apptainer \
+            -f tasktide-apptainer.Dockerfile .
+
+          # Push images
+          docker image push \
+            bkenna/tasktide:apptainer
+          
+          docker image push \
+            bkenna/tasktide:${VERSION}-apptainer

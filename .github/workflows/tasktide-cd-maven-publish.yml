@@ -1,20 +1,16 @@
-name: TaskTide-CI Maven Central Publish
+name: TaskTide-CD Maven Central Publish
 
 permissions:
   contents: read
 
-
 on:
   workflow_dispatch:
-    inputs:
-      inputVersion:
-        description: "Version"
-        required: true
-        type: string
+  workflow_call:
+
 
 jobs:
   publishToMavenCentral:
-    name: Publish TaskTide to Maven Central
+
     runs-on: ubuntu-latest
 
     defaults:
@@ -28,43 +24,24 @@ jobs:
           fetch-depth: 0
 
       - name: Determine release version
-        id: version
+        id: fetchVersion
         run: |
-          version=$(git tag --points-at HEAD | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -n 1)
-          dispatch=${{ inputs.inputVersion }}
-          if [ ! -z "$dispatch" ]
-          then
-            version="$dispatch"
-          fi
 
-          if [ -z "$version" ]; then
+          # Fetch version from project gradle properties
+          VERSION=$( grep "^tasktideVersion" ./gradle.properties | cut -d \= -f 2 )
+
+          # Verify before proceeding
+          if [ -z "$VERSION" ]
+          then
             echo "No version tag points at this commit."
             exit 1
-          fi
-
-          echo "version=${version#v}" >> "$GITHUB_OUTPUT"
-
-
-      - name: Verify publish authorization
-        run: |
-          version_tag="v${{ steps.version.outputs.version }}"
-          dispatch=${{ inputs.inputVersion }}
-
-          if [ ! -z "$dispatch" ]
-          then
-            publish_sha="yyz"
-            version_sha="yyz"
           else
-            publish_sha=$(git rev-parse refs/tags/for-publish)
-            version_sha=$(git rev-parse "refs/tags/$version_tag")
+            echo -e "Proceeding with TaskTide Version $VERSION"
           fi
 
-          if [ "$publish_sha" != "$version_sha" ]; then
-            echo "for-publish does not point at $version_tag."
-            exit 1
-          fi
+          # Define env var if present
+          echo "VERSION=$VERSION" >> $GITHUB_ENV"
 
-          echo "Publishing $version_tag from $version_sha"
 
       - name: Set up JDK
         uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
@@ -73,16 +50,19 @@ jobs:
           java-version: '21'
           cache: gradle
 
+
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
 
-      - name: Configure GPG signing
+
+      - name: Configure artifact signing
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         run: |
           mkdir -p .secrets
           printf '%s\n' "$GPG_PRIVATE_KEY" > .secrets/tasktide-signing-key.asc
           chmod 600 .secrets/tasktide-signing-key.asc
+
 
       - name: Publish to Maven Central
         env:
