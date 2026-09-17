@@ -1,5 +1,5 @@
 # Java version
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:17-jdk@sha256:ae2c9bba3a33443eb9e0a6afd8bd67e7c3d4999eb3d838f629178e633bf12a8f
 
 # Initialize env
 RUN apt-get update \
