@@ -14,17 +14,10 @@ jobs:
   # Publish docker image
   dockerHub:
     uses: ./.github/workflows/tasktide-cd-dockerHub-publish.yml
-    secrets:
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+    secrets: inherit
 
 
   # Publish maven artifacts
   mavenCentral:
     uses: ./.github/workflows/tasktide-cd-maven-publish.yml
-    secrets:
-      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-      GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
-      GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-      MAVEN_CENTRAL_PORTAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_PORTAL_USERNAME }}
-      MAVEN_CENTRAL_PORTAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PORTAL_PASSWORD }}
+    secrets: inherit
