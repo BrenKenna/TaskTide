@@ -1,7 +1,9 @@
 name: TaskTide-CD DockerHub Publish
 
+
 permissions:
   contents: read
+
 
 on:
   workflow_dispatch:
@@ -35,7 +37,7 @@ jobs:
           fi
 
           # Define env var if present
-          echo "VERSION=$VERSION" >> $GITHUB_ENV"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
 
 
       - name: Configure docker build
@@ -43,6 +45,21 @@ jobs:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: |
+          # Verify username
+          if [ -z "DOCKERHUB_USERNAME" ]
+          then
+            echo "No DOCKERHUB_USERNAME provided"
+            exit 1
+          fi
+
+          # Verify password
+          if [ -z "$DOCKERHUB_PASSWORD" ]
+          then
+            echo "No DOCKERHUB_PASSWORD provided"
+            exit 1
+          fi
+
+          # Signin to docker hub and assemble TaskTide
           cd ./tasktide
           echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
           ./gradlew assemble
@@ -67,7 +84,7 @@ jobs:
             bkenna/tasktide:${VERSION}
 
 
-      - name: Build and publish latest image
+      - name: Build and publish apptainer image
         run: |
           # Build container
           cd ./docker
