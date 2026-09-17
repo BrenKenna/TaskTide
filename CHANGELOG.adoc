@@ -11,6 +11,27 @@
 
 - Resolves system breaking dependabot PR rasing jersey-bom dump. Which caused a later version +yasson-3.0.3 from +jerseyBom-3.1.8 to pulled down. This yasson version did not support old StateSummer JSON SerDe as generic map. After trialing different versions, refactored the StateStateSummary in to cleaner design. JerseyBOM Bump PR = #15
 
+- WorkItem annotations, and Id fields are passed as environmental variables to ProcessExecutor. So that info is accessible to active task facilitating actions like equeuing a future task or backend DB ops/introspection & coordination.
+
+https://github.com/BrenKenna/TaskTide/commit/4b0e6d4ef72fb8ca92d735ba05403f857dd6feca
+
+- Moves Hateoa to test base. Holding ItemStore-Session because of it's use a inner class. Simiarlly for OIDC on request filter.
+
+- AbstractRepository, and transaction operator for JPA. Noted for competing threads on tatic singleton TaskTideService, non-normal use.
+
+- Centralizes TaskTide versioning
+
+- Formalizes TaskTide test taxonomy 
+
+- Closes unactionable dependabot alerts given versioning bump, and enough were transitive dependencies.
+
+io.netty:netty-codec-http2 < 4.1.132.Final
+
+org.eclipse.jnosql.databases:jnosql-dynamodb 1.1.6
+https://mvnrepository.com/artifact/org.eclipse.jnosql.databases/jnosql-dynamodb/1.1.17/dependencies
+https://mvnrepository.com/artifact/software.amazon.awssdk/dynamodb/2.54.7
+https://github.com/BrenKenna/TaskTide/compare/main...v0.9.2-dev
+
 
 == [v0.9.1-historical]
 
