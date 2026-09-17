@@ -13,6 +13,7 @@ jobs:
   dockerHub:
     uses: ./.github/workflows/tasktide-cd-dockerHub-publish.yml
 
+
   # Publish maven artifacts
   mavenCentral:
-    uses: ./github/workflows/tasktide-cd-maven-publish.yml
+    uses: ./.github/workflows/tasktide-cd-maven-publish.yml
