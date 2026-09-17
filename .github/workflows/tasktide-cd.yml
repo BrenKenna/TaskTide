@@ -18,6 +18,7 @@ jobs:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
 
+
   # Publish maven artifacts
   mavenCentral:
     uses: ./.github/workflows/tasktide-cd-maven-publish.yml
