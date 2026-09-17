@@ -1,7 +1,9 @@
 name: TaskTide-CD Maven Central Publish
 
-permissions:
+
+permission:
   contents: read
+
 
 on:
   workflow_dispatch:
@@ -72,5 +74,25 @@ jobs:
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_PASSPHRASE }}
           ORG_GRADLE_PROJECT_signingKeyFile: .secrets/tasktide-signing-key.asc
         run: |
+
+          # Verify signing password
+          if [ -z "$ORG_GRADLE_PROJECT_signingPassword" ]; then
+            echo "GPG signing password is not configured."
+            exit 1
+          fi
+
+          # Verify signing key Id
+          if [ -z "$ORG_GRADLE_PROJECT_signingKeyId" ]; then
+            echo "GPG signing key ID is not configured."
+            exit 1
+          fi
+
+          # Verify signing key file
+          if [ ! -f "$ORG_GRADLE_PROJECT_signingKeyFile" ]; then
+            echo "GPG signing key file does not exist."
+            exit 1
+          fi
+
+          # Publish TaskTide and agg pom
           ./gradlew publishTaskTide
           ./gradlew publishTaskTideAggregator
