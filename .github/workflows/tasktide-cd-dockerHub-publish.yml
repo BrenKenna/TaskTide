@@ -84,7 +84,7 @@ jobs:
             bkenna/tasktide:${VERSION}
 
 
-      - name: Build and publish latest image
+      - name: Build and publish apptainer image
         run: |
           # Build container
           cd ./docker
