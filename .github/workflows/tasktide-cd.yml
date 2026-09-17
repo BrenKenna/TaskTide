@@ -1,0 +1,18 @@
+name: TaskTide CD Workflow - Maven & DockerHub
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+
+  # Publish docker image
+  dockerHub:
+    uses: ./.github/workflows/tasktide-cd-dockerHub-publish.yml
+
+  # Publish maven artifacts
+  mavenCentral:
+    uses: ./github/workflows/tasktide-cd-maven-publish.yml
