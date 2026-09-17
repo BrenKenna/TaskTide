@@ -3,13 +3,13 @@
 
 == [v0.9.2]
 
-- Organises TaskTide versioning applying and resolving dependabot version bumps and debugs any trailing dockerHub publishing and maven publishing.
+- Official TaskTide CI/CD pipeline operational.
 
-- Official TaskTide CI/CD pipeline operational
+- Organises TaskTide versioning applying and resolving dependabot version bumps and debugs any trailing docker hub or maven central publishing.
 
-- Adds OpenSSF scorecard and pins docker container images for openSSF
+- Adds OpenSSF scorecard and collection of relevant Git Ops standards. Such as commit handing, PR handling, dependency handling, AI supported security updates, operational management of vulnerabilities, release signing etc.
 
-- Resolves system breaking dependabot PR rasing jersey-bom dump. Which caused a later version +yasson-3.0.3 from +jerseyBom-3.1.8 to pulled down. This yasson version did not support old StateSummer JSON SerDe as generic map. After trialing different versions, refactored the StateStateSummary in to cleaner design. JerseyBOM Bump PR = #15
+- Resolves system breaking dependabot PR rasing jersey-bom dump. Which caused a later version +yasson-3.0.3 from +jerseyBom-3.1.8 to pulled down. This yasson version did not support old StateSummary JSON SerDe as map whose key is generic. After trialing different versions to avoid patching. Refactored the StateStateSummary into a much cleaner and test expressive design. JerseyBOM Bump PR = #15
 
 - WorkItem annotations, and Id fields are passed as environmental variables to ProcessExecutor. So that info is accessible to active task facilitating actions like equeuing a future task or backend DB ops/introspection & coordination.
 
