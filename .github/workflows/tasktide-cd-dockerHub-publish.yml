@@ -35,7 +35,7 @@ jobs:
           fi
 
           # Define env var if present
-          echo "VERSION=$VERSION" >> $GITHUB_ENV"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
 
 
       - name: Configure docker build
