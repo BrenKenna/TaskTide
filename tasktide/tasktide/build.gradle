@@ -104,9 +104,10 @@ tasks.withType(Test).configureEach {
 // Register test under annotation scheme
 testTags.each { name, tag ->
     tasks.register(name, Test) {
-        group = 'api-tests'
+        group = 'tasktide-tests'
         description = "Run Parser ${name} tests (${tag})"
-
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
         useJUnitPlatform {
             includeTags tag
         }
