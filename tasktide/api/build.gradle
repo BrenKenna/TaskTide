@@ -40,7 +40,7 @@ dependencies {
     implementation      "org.eclipse.microprofile.graphql:microprofile-graphql-api:2.0"
     implementation      "io.smallrye:smallrye-graphql:2.18.0"
     implementation      "io.smallrye:smallrye-graphql-api:2.18.0"
-    implementation      "io.smallrye:smallrye-graphql-servlet:2.8.6"
+    implementation      "io.smallrye:smallrye-graphql-servlet:2.18.5"
 
     // Persistence
     implementation      "jakarta.nosql:jakarta.nosql-api:1.0.0"
