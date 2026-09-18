@@ -33,7 +33,8 @@ testTags.each { name, tag ->
     tasks.register(name, Test) {
         group = 'mutex-tests'
         description = "Run Parser ${name} tests (${tag})"
-
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
         useJUnitPlatform {
             includeTags tag
         }

@@ -25,52 +25,46 @@ configurations {
 dependencies {
 
     // Project core lib
-    implementation  project(':mutex')
-    implementation  project(':parser')
-    implementation  project(':itemstore')
-    implementation  project(':core')
-    implementation  project(':engine')
-    implementation  project(':api')
-
-    // Command-line argument parser
-    // implementation  'info.picocli:picocli:4.7.7'
+    implementation          project(':mutex')
+    implementation          project(':parser')
+    implementation          project(':itemstore')
+    implementation          project(':core')
+    implementation          project(':engine')
+    implementation          project(':api')
 
     // Jakarta-NoSQL
-    implementation  'jakarta.nosql:jakarta.nosql-api:1.0.1'
-    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.17"
-    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.17"
-    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.17"
-    implementation  "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.17"
+    implementation          'jakarta.nosql:jakarta.nosql-api:1.0.1'
+    implementation          "org.eclipse.jnosql.mapping:jnosql-mapping-document:1.1.17"
+    implementation          "org.eclipse.jnosql.mapping:jnosql-mapping-key-value:1.1.17"
+    implementation          "org.eclipse.jnosql.mapping:jnosql-mapping-column:1.1.17"
+    implementation          "org.eclipse.jnosql.mapping:jnosql-mapping-graph:1.1.17"
 
     // Jakarta-NoSQL Database Drivers
-    implementation "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.17"
-    implementation "org.eclipse.jnosql.databases:jnosql-couchdb:1.1.17"
-    implementation "org.eclipse.jnosql.databases:jnosql-arangodb:1.1.17"
-    implementation "org.eclipse.jnosql.databases:jnosql-dynamodb:1.1.17"
-    implementation "org.eclipse.jnosql.databases:jnosql-couchbase:1.1.17"
-    implementation "org.eclipse.jnosql.databases:jnosql-redis:1.1.17"
-    implementation "org.eclipse.jnosql.databases:jnosql-cassandra:1.1.17"
+    implementation          "org.eclipse.jnosql.databases:jnosql-mongodb:1.1.17"
+    implementation          "org.eclipse.jnosql.databases:jnosql-couchdb:1.1.17"
+    implementation          "org.eclipse.jnosql.databases:jnosql-arangodb:1.1.17"
+    implementation          "org.eclipse.jnosql.databases:jnosql-dynamodb:1.1.17"
+    implementation          "org.eclipse.jnosql.databases:jnosql-couchbase:1.1.17"
+    implementation          "org.eclipse.jnosql.databases:jnosql-redis:1.1.17"
+    implementation          "org.eclipse.jnosql.databases:jnosql-cassandra:1.1.17"
 
     // CDI Provider
-    implementation      'org.jboss.weld.se:weld-se-core:5.1.2.Final'
-    implementation      'org.jboss.logging:jboss-logging:3.6.0.Final'
-    implementation      'io.quarkus.arc:arc:3.11.1'
-    implementation      'io.smallrye.config:smallrye-config:3.18.3'
+    implementation          'org.jboss.weld.se:weld-se-core:5.1.2.Final'
+    implementation          'org.jboss.logging:jboss-logging:3.6.3.Final'
+    implementation          'io.quarkus.arc:arc:3.39.3'
+    implementation          'io.smallrye.config:smallrye-config:3.18.3'
 
     // JPA
-    implementation      "jakarta.persistence:jakarta.persistence-api:3.2.0"
-    implementation      "org.hibernate.orm:hibernate-core:7.1.0.Final"
-    implementation      "com.zaxxer:HikariCP:7.1.0"
-    implementation      'com.mysql:mysql-connector-j:26.7.0'
-    
-    // Moved -> implementation      "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:3.2.2"
-    implementation      platform("com.fasterxml.jackson:jackson-bom:2.22.2") // To resolve Hibernate using this namespace
-    implementation      "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp"
-    //implementation      "tools.jackson.datatype:jackson-datatype-jakarta-jsonp:3.2.2"
+    implementation          "jakarta.persistence:jakarta.persistence-api:3.2.0"
+    implementation          "org.hibernate.orm:hibernate-core:7.1.0.Final"
+    implementation          "com.zaxxer:HikariCP:7.1.0"
+    implementation          'com.mysql:mysql-connector-j:26.7.0'
+    implementation          platform("com.fasterxml.jackson:jackson-bom:2.22.2")
+    implementation          "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp"
 
-    implementation      "jakarta.servlet:jakarta.servlet-api:6.1.0"
-
-    testImplementation  "jakarta.ws.rs:jakarta.ws.rs-api:4.0.0"
+    // REST API
+    implementation          "jakarta.servlet:jakarta.servlet-api:6.1.0"
+    testImplementation      "jakarta.ws.rs:jakarta.ws.rs-api:4.0.0"
 }
 
 
@@ -104,9 +98,10 @@ tasks.withType(Test).configureEach {
 // Register test under annotation scheme
 testTags.each { name, tag ->
     tasks.register(name, Test) {
-        group = 'api-tests'
+        group = 'tasktide-tests'
         description = "Run Parser ${name} tests (${tag})"
-
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
         useJUnitPlatform {
             includeTags tag
         }

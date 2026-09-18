@@ -30,7 +30,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
@@ -56,7 +55,6 @@ public class CouchDBTesting {
     private static final Logger logger = LogManager.getLogger(CouchDBTesting.class);
     
     // CouchDB container
-    @Rule
     public GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
     // Container for fetch nosql template

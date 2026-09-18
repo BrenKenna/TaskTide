@@ -9,19 +9,18 @@ version = providers.gradleProperty('itemstoreVersion').get()
 dependencies {
 
     // Mutex sub-project
-    implementation project(":mutex")
+    implementation          project(":mutex")
 
     // SQLite JDBC driver
-    implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
+    implementation          'org.xerial:sqlite-jdbc:3.49.1.0'
 
     // RocksDB JNI (native bindings)
-    implementation 'org.rocksdb:rocksdbjni:10.10.1.1'
+    implementation          'org.rocksdb:rocksdbjni:10.10.1.1'
 
     // Marshaller
-    // Moved -> implementation      "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp:3.2.2"
-    implementation      platform("com.fasterxml.jackson:jackson-bom:2.22.2") // To resolve Hibernate using this namespace
-    implementation      "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp"
-    //implementation      "tools.jackson.datatype:jackson-datatype-jakarta-jsonp:3.2.2"
+    implementation          platform("com.fasterxml.jackson:jackson-bom:2.22.2")
+    implementation          "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp"
+    //implementation        "tools.jackson.datatype:jackson-datatype-jakarta-jsonp:3.2.2"
 }
 
 
@@ -48,7 +47,8 @@ testTags.each { name, tag ->
     tasks.register(name, Test) {
         group = 'itemstore-tests'
         description = "Run Parser ${name} tests (${tag})"
-
+        testClassesDirs = sourceSets.test.output.classesDirs
+        classpath = sourceSets.test.runtimeClasspath
         useJUnitPlatform {
             includeTags tag
         }

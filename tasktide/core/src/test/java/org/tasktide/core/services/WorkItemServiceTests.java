@@ -18,6 +18,7 @@ package org.tasktide.core.services;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
+
 import java.util.List;
 import java.util.Map;
 
@@ -43,13 +44,12 @@ import org.tasktide.TestCaseBuilderUtility;
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 
-import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideService;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
-import org.tasktide.core.supporting.JsonUtils;
+
 import org.tasktide.itemstore.ItemStore;
 
 

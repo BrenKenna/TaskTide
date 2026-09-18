@@ -29,7 +29,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
@@ -53,7 +52,6 @@ public class RedisTesting {
     private static final Logger logger = LogManager.getLogger(RedisTesting.class);
     
     // Redis container
-    @Rule
     public GenericContainer<?> redis = TestEnvironment.redisContainer();
     
     // Container for fetch nosql template

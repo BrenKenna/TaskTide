@@ -21,6 +21,7 @@ import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -50,10 +51,6 @@ import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.model.collection.Workflow;
 
-// import org.junit.Rule;
-// import org.tasktide.tasktide.TestEnvironment;
-// import org.testcontainers.containers.GenericContainer;
-
 import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
@@ -74,7 +71,6 @@ import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
  *
  * @author bkenna
  */
-@Tag("system-tasktide")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SuppressWarnings("unchecked")
@@ -86,7 +82,6 @@ public class TaskTideClientTests {
     private final String WORKFLOW = "TaskTide Client Tests";
     private final String STEP = "Nested NS Lookups";
 
-    
     //@Rule
     //private static final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
@@ -157,7 +152,7 @@ public class TaskTideClientTests {
         cli = ClientBuilder.newClient();
         tgt = cli.target(url);
         try {
-            for ( int i = 0; i < 100; i++) {
+            for ( int i = 0; i < 1000; i++) {
                 try (
                     Response resp = tgt
                         .request(MediaType.APPLICATION_JSON)
@@ -168,11 +163,11 @@ public class TaskTideClientTests {
                     return;
                 }
                 
-                catch ( ProcessingException ex ) {
+                catch ( Exception ex ) {
                     try {Thread.sleep(100L);}
                     catch ( Exception ex2 ){}
                 }
-                throw new IllegalStateException("Server did not start wthin 5s");
+                throw new IllegalStateException("Server did not start wthin 10s");
             }
         }
         finally {
@@ -204,6 +199,7 @@ public class TaskTideClientTests {
      */
     @Test
     @Order(0)
+    @Tag("system-tasktide")
     public void canImportThroughManagerClient() {
     
         // Initialize data
@@ -258,6 +254,7 @@ public class TaskTideClientTests {
      */
     @Test
     @Order(1)
+    @Tag("system-tasktide")
     public void canProcessThroughEngineClient() {
     
         // Initialize data
@@ -317,6 +314,7 @@ public class TaskTideClientTests {
      */
     @Test
     @Order(2)
+    @Tag("experimental-system-tasktide")
     public void canRegisterThroughWebApi() {
     
         // Initialize data

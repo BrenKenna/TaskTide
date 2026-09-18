@@ -20,6 +20,10 @@ import java.nio.file.Path;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+
+import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee10.servlet.ServletHolder;
+
 import org.eclipse.jetty.server.HttpConfiguration;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.SecureRequestCustomizer;
@@ -27,9 +31,8 @@ import org.eclipse.jetty.server.SecureRequestCustomizer;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.SslConnectionFactory;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
-import org.eclipse.jetty.util.resource.Resource;
+
+import org.eclipse.jetty.util.resource.ResourceFactory;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 
 import org.eclipse.microprofile.config.Config;
@@ -40,7 +43,6 @@ import org.glassfish.jersey.jsonb.JsonBindingFeature;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 import org.tasktide.api.auth.AuthenicationFilter;
-import org.tasktide.api.auth.AuthenticationException;
 import org.tasktide.api.auth.AuthenticationScheme;
 import org.tasktide.api.auth.AuthenticationSchemeContainer;
 import org.tasktide.api.auth.AuthenticationSchemeFactory;
@@ -302,7 +304,8 @@ public class TaskTideWebApi {
         ssl.setKeyStoreProvider("BC");
         ssl.setKeyStoreType("PKCS12");
         ssl.setCertAlias("default");
-        ssl.setKeyStoreResource( Resource.newResource(pemPath) );
+        ResourceFactory resourceFactory = ResourceFactory.of(ssl);
+        ssl.setKeyStoreResource(resourceFactory.newResource(pemPath));
         
         // Config https connector
         HttpConfiguration httpsConfig = new HttpConfiguration();

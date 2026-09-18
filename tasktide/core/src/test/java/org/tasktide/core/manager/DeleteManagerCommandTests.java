@@ -15,11 +15,6 @@
  */
 package org.tasktide.core.manager;
 
-import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.nosql.Template;
-import jakarta.persistence.EntityManager;
-import java.util.Arrays;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,12 +35,10 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;

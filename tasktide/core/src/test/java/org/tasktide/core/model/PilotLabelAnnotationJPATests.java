@@ -24,9 +24,6 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.junit.Rule;
-import org.testcontainers.containers.GenericContainer;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -71,9 +68,7 @@ import org.tasktide.core.services.ServiceFactory;
 public class PilotLabelAnnotationJPATests {
     
     private final Logger LOGGER = LogManager.getLogger(PilotLabelAnnotationJPATests.class);
-    
-    //@Rule
-    //public GenericContainer<?> mariaDB = TestEnvironment.mariaDbContainer("tasktide_database");
+
     private EntityManager entityManager;
     private SeContainer container;
     
