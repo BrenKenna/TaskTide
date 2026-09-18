@@ -51,10 +51,6 @@ import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import org.tasktide.core.model.collection.Workflow;
 
-// import org.junit.Rule;
-// import org.tasktide.tasktide.TestEnvironment;
-// import org.testcontainers.containers.GenericContainer;
-
 import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
@@ -87,7 +83,6 @@ public class TaskTideClientTests {
     private final String WORKFLOW = "TaskTide Client Tests";
     private final String STEP = "Nested NS Lookups";
 
-    
     //@Rule
     //private static final GenericContainer<?> couchDB = TestEnvironment.couchDbContainer("tasktide_database", false);
     
