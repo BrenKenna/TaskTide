@@ -29,7 +29,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Rule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Tag;
@@ -55,7 +54,6 @@ public class MongoDbTesting {
     private static final Logger logger = LogManager.getLogger(MongoDbTesting.class);
     
     // CouchDB container
-    @Rule
     public GenericContainer<?> mongoDB = TestEnvironment.mongoDbContainer("tasktide_database");
     
     // Container for fetch nosql template

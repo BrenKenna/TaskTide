@@ -7,8 +7,7 @@ version = providers.gradleProperty('parserVersion').get()
 
 
 dependencies {
-    // Mutex sub-project
-    implementation project(":mutex")
+    implementation      project(":mutex")
 }
 
 

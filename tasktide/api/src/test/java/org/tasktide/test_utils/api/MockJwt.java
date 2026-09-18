@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import io.smallrye.jwt.build.Jwt;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 
@@ -29,7 +28,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
  */
 public class MockJwt implements JsonWebToken {
     
-    private String name;
+    private final String name;
     private final Map<String, Object> claims;
 
     public MockJwt(String name, Map<String, Object> claims) {
