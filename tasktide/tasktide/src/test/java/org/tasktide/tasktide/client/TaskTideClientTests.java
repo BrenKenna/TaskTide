@@ -164,7 +164,7 @@ public class TaskTideClientTests {
                     return;
                 }
                 
-                catch ( ProcessingException ex ) {
+                catch ( Exception ex ) {
                     try {Thread.sleep(100L);}
                     catch ( Exception ex2 ){}
                 }
