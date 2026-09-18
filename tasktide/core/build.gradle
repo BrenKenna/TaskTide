@@ -38,7 +38,7 @@ dependencies {
     testImplementation 'com.mysql:mysql-connector-j:26.7.0'
     
     // Host metrics
-    implementation "com.github.oshi:oshi-core:6.8.3"
+    implementation "com.github.oshi:oshi-core:7.6.1"
 }
 
 
