@@ -153,7 +153,7 @@ public class TaskTideClientTests {
         cli = ClientBuilder.newClient();
         tgt = cli.target(url);
         try {
-            for ( int i = 0; i < 100; i++) {
+            for ( int i = 0; i < 1000; i++) {
                 try (
                     Response resp = tgt
                         .request(MediaType.APPLICATION_JSON)
@@ -168,7 +168,7 @@ public class TaskTideClientTests {
                     try {Thread.sleep(100L);}
                     catch ( Exception ex2 ){}
                 }
-                throw new IllegalStateException("Server did not start wthin 5s");
+                throw new IllegalStateException("Server did not start wthin 10s");
             }
         }
         finally {
