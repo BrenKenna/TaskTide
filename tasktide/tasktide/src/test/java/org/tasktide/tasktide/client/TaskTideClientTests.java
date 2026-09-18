@@ -71,7 +71,6 @@ import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
  *
  * @author bkenna
  */
-@Tag("system-tasktide")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SuppressWarnings("unchecked")
@@ -200,6 +199,7 @@ public class TaskTideClientTests {
      */
     @Test
     @Order(0)
+    @Tag("system-tasktide")
     public void canImportThroughManagerClient() {
     
         // Initialize data
@@ -254,6 +254,7 @@ public class TaskTideClientTests {
      */
     @Test
     @Order(1)
+    @Tag("system-tasktide")
     public void canProcessThroughEngineClient() {
     
         // Initialize data
@@ -313,6 +314,7 @@ public class TaskTideClientTests {
      */
     @Test
     @Order(2)
+    @Tag("experimental-system-tasktide")
     public void canRegisterThroughWebApi() {
     
         // Initialize data
