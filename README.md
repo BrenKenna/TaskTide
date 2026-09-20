@@ -17,9 +17,9 @@
 <strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for <strong>Containerized</strong>, <strong>Cloud</strong>, <strong>HPC</strong>, <strong>Grid</strong>, and <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> as task collections.
 </p>
 
-By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as first-class orchestration entities. TaskTide provides its users with task <em>registration</em>, real-time <em>workflow introspection</em>, and <em>lifecycle influence</em> as they are actively consumed across distributed compute resources.
+By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as first-class orchestration entities. TaskTide provides its users with task <em>registration</em>, <em>real-time workflow introspection</em>, and <em>lifecycle influence</em> as they are actively consumed across distributed compute resources.
 
-TaskTide ships as a <strong>lightweight</strong>, <strong>configurable</strong> solution for workflow orchestration. That decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends. Supporting its deployment across different infrastructures like HPC, Cloud, and Grid. In additon to <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>Embedded</strong> databases (<em>SQLite, RocksDB</em>). Catering for diverse sets of operational needs for data application deployment.
+TaskTide ships as a <strong>lightweight</strong>, <strong>configurable</strong> solution for workflow orchestration. That decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends. Supporting its deployment across different environments like HPC, Cloud, and Containerized. In additon to <strong>Relational</strong> (ex <em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (ex <em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>Embedded</strong> databases (<em>SQLite, RocksDB</em>). Supporting a diverse sets of operational needs for data application deployment.
 
 <br>
 
@@ -35,7 +35,7 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>configurable</strong> 
 
 An installation guide catering for different uses is [provided here](/docs/documentation/INSTALL.md). Backend database configurations should follow provider recommendations, since [Jakara NoSQL](https://github.com/eclipse-jnosql/jnosql-databases) brings in NoSQL support, and [JPA-Hibernate](https://www.baeldung.com/learn-jpa-hibernate) using [Hikari Connection Pool](https://www.baeldung.com/hikaricp) brings in SQL, whose use for TaskTide are documented [here for NoSQL](/docs/documentation/database-configuration/NoSQL-Databases.md), [here for SQL](/docs/documentation/database-configuration/SQL-Databases.md), and [here for ItemStore](/docs/documentation/database-configuration/Embedded-Databases.md) for embedded databases like SQLite. and RocksDB.
 
-How TaskTide should run can be configured based on parameters in a [TaskTide configuration file](/docs/configs/microprofile-config.properties)
+How TaskTide should run can be configured based on parameters in a [TaskTide configuration file](/docs/configs/microprofile-config.properties) and command-line arguments [described here](/tasktide/tasktide/README.md#a-global-configurations).
 
 <br>
 
@@ -94,7 +94,7 @@ tasktide
 
 ## 🚀 Features
 
-- 🛠️ **Pilot Job Execution Model**:     Tasks are dynamically scheduled and executed inside long-running jobs.
+- 🛠️ **Pilot Job Execution Model**:     Tasks can be dynamically scheduled and executed inside long-running jobs. Providing users fine-grained influence over task lifecycles, introspection, and monitoring in real-time.
 
 - 🔄 **ETL-Friendly**:                  Tasks are treated as extraction, transformation, or loading scripts/programs.
 
@@ -102,9 +102,9 @@ tasktide
 
 - 💻 **Native Task Execution**:         Runs any local or system executable/script.
 
-- 🔀 **Nested Workflow Modeling** :     Compose tasks into hierarchical workflows using a flexible domain model.
+- 🔀 **Nested Workflow Modeling** :     Compose tasks into hierarchical workflows using a flexible domain model. Providing operational structure to data application deployment that is robust and transparent.
 
-- 🐳 **Cloud-native**: Supports execution of containerized workloads.
+- 🐳 **Cloud-native**: Enables execution of containerized workloads to support diverse packaging mechanisms of data applications.
 
 - 🧪 **Tested**:                        Built with CI/CD, Docker support, and integration tests across database types.
 
@@ -114,15 +114,15 @@ tasktide
 
 ## 🧱 Architecture
 
-- **Core Model**             – Defines the stateful task and workflow data structure [described here](/tasktide/core/).
+- **Core Lib**             – Defines the stateful task and workflow data structure [described here](/tasktide/core/).
 
 - **Engine Lib**             – Defines the task processing and tracking logic for WorkItems and their tasks [described here](tasktide/engine/).
 
 - **Web API**                – Defines Jakarta-WS REST API, and an embedded Jetty-WebServer [described here](tasktide/api/).
 
-- **Mutex**                  - Defines ItemStore semaphore for acquiring a mutex on the configured RocksDB/SQLite database [described here](tasktide/mutex/).
+- **Mutex **                  - Defines ItemStore mechanisms for acquiring a mutex on the configured RocksDB/SQLite database [described here](tasktide/mutex/).
 
-- **ItemStore**              - Defines an interface for configuring TaskTide with daemonless databases (RocksDB/SQLite) [described here](tasktide/itemstore/).
+- **ItemStore**              - Defines an interface for configuring TaskTide with embedded databases (RocksDB/SQLite) [described here](tasktide/itemstore/).
 
 - **Parser**                 - Defines a configurable command-line argument tree for TaskTide [described here](tasktide/parser/).
 
