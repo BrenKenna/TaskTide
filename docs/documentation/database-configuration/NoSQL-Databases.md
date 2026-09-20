@@ -65,11 +65,11 @@ curl -so tasktide-0.9.0/lib/jnosql-oracle-nosql-1.1.9.jar \
 
 ## 3). Applying configurations to the TaskTide config file
 
-Database configuration, below table, is a ***global setting*** for TaskTide because all of the TaskTide APIs use it as their coordination layer. The Manager-API provides the TaskTide repository and CRUD operations against it, that the Engine-API uses for workload acquisition, and registering processing lifecycle events, and the Web-API by exposing the Manager-API through a RESTful interface.
+Database configuration, below table, is a ***global setting*** for TaskTide because each TaskTide use it as their persistence layer. The Manager-API provides the TaskTide repository and CRUD operations against it, that the Engine-API uses for workload acquisition, and registering processing lifecycle events, and the Web-API by exposing the Manager-API through a RESTful interface.
 
-Note that the following is a minimal example for [couchDB](https://couchdb.apache.org/), should not be considered production, and should not be present in the [TaskTide Config File](/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties) if either an SQL, or ItemStore backend are being used.
+Note that the following is a minimal example for [couchDB](https://couchdb.apache.org/), and should not be present in the [TaskTide Config File](/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties) if either an SQL, or ItemStore backend are being used.
 
-Full NoSQL configurations can be found at the corresponding project [linked here](https://github.com/eclipse-jnosql/jnosql-databases) and are intentionally not bypassed with TaskTide so that available configurations are still usable.
+Full NoSQL configurations can be found at the corresponding project [linked here](https://github.com/eclipse-jnosql/jnosql-databases) and are intentionally not bypassed with TaskTide so that the available configurations are still usable.
 
 
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
