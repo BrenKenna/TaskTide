@@ -14,7 +14,7 @@
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/BrenKenna/TaskTide/badge)](https://scorecard.dev/viewer/?uri=github.com/BrenKenna/TaskTide)
 
 
-<strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for <strong>Cloud</strong>, <strong>HPC</strong>, <strong>Grid</strong>, and <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> as task collections.
+<strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for <strong>Containerized</strong>, <strong>Cloud</strong>, <strong>HPC</strong>, <strong>Grid</strong>, and <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> as task collections.
 </p>
 
 By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as first-class orchestration entities. TaskTide provides its users with task <em>registration</em>, real-time <em>workflow introspection</em>, and <em>lifecycle influence</em> as they are actively consumed across distributed compute resources.
