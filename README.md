@@ -94,7 +94,7 @@ tasktide
 
 ## 🚀 Features
 
-- 🛠️ **Pilot Job Execution Model**:     Tasks can be dynamically scheduled and executed inside long-running jobs. Providing users fine-grained influence over task lifecycles, introspection, and monitoring in real-time.
+- 🛠️ **Pilot Job Execution Model**:     Tasks can be dynamically scheduled and executed inside long-running jobs. Providing users a set of operational dials for influence over task lifecycles, introspection, and monitoring in real-time.
 
 - 🔄 **ETL-Friendly**:                  Tasks are treated as extraction, transformation, or loading scripts/programs.
 
