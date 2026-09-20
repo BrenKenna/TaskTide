@@ -6,6 +6,8 @@ Provides the transactional processing logic over "[TaskTide Entities](/tasktide/
 
 ---
 
+<br>
+
 ## 1). TaskTide Engine Worker
 
 Policy driven entrypoint for the Engine library functionalities. Uses workload/workflow acquisition policies to poll available tasks matching constraints in acquisition policy and WorkItem parallelism. Passing these collections to the Workload Traverser interface for triggering task lifecycle event changes, and delegating specific processing to the ProcessExecutor.
@@ -14,6 +16,7 @@ Policy driven entrypoint for the Engine library functionalities. Uses workload/w
 
 ---
 
+<br>
 
 ## 2). TaskTide Engine Observer Chain
 
@@ -25,6 +28,7 @@ The abstract "<i>StateObserver</i>" decorates the pre, during, and post task pro
 
 ---
 
+<br>
 
 ## 3). Log Handling
 
