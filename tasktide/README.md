@@ -6,34 +6,41 @@
 
 
 ## 1). TaskTide-ItemStore Library
-<p>
-Documentation for this module can be <a href="/tasktide/itemstore/README.md">found here</a> and dependant <a href="/tasktide/mutex/README.md">Mutex found here</a>
-</p>
+
+Documentation for this module can be "[found here](/tasktide/itemstore/README.md)" and dependant Mutex [found here](/tasktide/mutex/README.md).
+
 <br>
+
+---
 
 
 ## 2). TaskTide-Core Library
-<p>
-Documentation for this module can be <a href="/tasktide/core/README.md">found here</a>
-</p>
+
+Documentation for this module can be <a [found here](/tasktide/core/README.md).
+
 <br>
+
+---
 
 
 ## 3). TaskTide-Engine Library
-<p>
-Documentation for this module can be <a href="/tasktide/engine/README.md">found here</a>
-</p>
+
+Documentation for this module can be [found here](/tasktide/engine/README.md).
+
 <br>
+
+---
 
 
 ## 4). TaskTide Web API
-<p>
-Documentation for this module can be <a href="/tasktide/api/README.md">found here</a> embeds jersey glassfish web server
-</p>
+
+Documentation for this module can be [found here](/tasktide/api/README.md) embeds jersey glassfish web server.
+
 <br>
+
+---
 
 
 ## 5). TaskTide Client Application
-<p>
-Documentation for this module can be <a href="/tasktide/tasktide/README.md">found here</a> and dependant <a href="/tasktide/parser/README.md">Parser found here</a>
-</p>
+
+Documentation for this module can be [found here](/tasktide/tasktide/README.md) and dependant Parser [found here](/tasktide/parser/README.md).
