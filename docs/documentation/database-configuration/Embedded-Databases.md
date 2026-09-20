@@ -1,6 +1,6 @@
 # Using Embedded Databases for TaskTide
 
-Since common RDBMS and NoSQL databases operate as services that expose a port, TaskTide wanted to support use cases where such service is no configurable by the end-user (ex multi-tenant HPC environment).
+Since common RDBMS and NoSQL databases operate as services that expose a port, TaskTide wanted to support use cases where such service is not a configurable option by the end-user (ex multi-tenant HPC environment).
 
 In these instances TaskTide's ItemStore interface was designed and currently supports RocksDB, and SQLite (both drivers are supplied). The ItemStore uses a de-centralized leader election workflow to coordinate read/write operation queue to maintain, so that the end-user is not requried to provision a side-car job to manage this.
 
@@ -15,15 +15,15 @@ The following describes:
 
 # 1). Using the ItemStore backend for TaskTide
 
-Currently the [RocksDB](https://rocksdb.org/), and [SQLite](https://sqlite.org/) embedded databases are supported by TaskTide. These APIs in addition to the TaskTide-ManagerAPI are available to users.
+Currently the [RocksDB](https://rocksdb.org/), and [SQLite](https://sqlite.org/) embedded databases are supported by TaskTide.
 
-TaskTide uses a de-centralized semaphore for coordinating distributed read/writes, and separates each "***Workflows***, ***Steps***, and ***WorkItems***" data model to cater for future development. Meaning that core configurations of the ItemStore repository, and Mutex directories are stable, but specifics around them and directory structure is subject to change.
+TaskTide uses a de-centralized semaphore for coordinating distributed read/writes, and separates each "***Workflows***, ***Steps***, and ***WorkItems***" data model to cater for future development. Meaning that core configurations of the ItemStore repository, and Mutex directories are stable, but specifics around them and directory structure are subject to change and will be clearly documented in release notes.
 
 ---
 
 # 2). Applying ItemStore configurations for TaskTide
 
-Database configuration is a ***global setting*** for TaskTide because all of the TaskTides API use it as their coordination layer directly or indirectly. The Manager-API provides the TaskTide repository and CRUD operations against it, that the Engine-API uses for workload acquisition, and registering processing lifecycle events, and the Web-API by exposing the Manager-API through a RESTful interface.
+Database configuration, listed below, is a ***global setting*** for TaskTide because each TaskTide library use it for persistence. For instance the Manager-API provides the TaskTide repository and CRUD operations against it, that the Engine-API uses for workload acquisition, and registering processing lifecycle events, and the Web-API by exposing the Manager-API functionalities through a RESTful interface.
 
 
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |

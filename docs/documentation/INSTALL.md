@@ -7,12 +7,12 @@ The following describes how to:
     <li>Build application from source</li>
 </ul>
 
-As a Java application TaskTide requires java+17 whith installation mechanisms are [provided here](https://docs.oracle.com/en/java/javase/).
+As a Java application TaskTide requires  [java+17](https://docs.oracle.com/en/java/javase/).
 
 ---
 
 ## 1). Pre-compiled Application
-The [release section](https://github.com/BrenKenna/TaskTide/releases/edit/v0.9.0) of this repository contains a zip which contains all TaskTide dependancies, wrapper scripts for running on linux/windows and configuration files which can be adjusted for the [target deployment strategy] (/docs/documentation/Database-Driver-Installation.md).
+Each [TaskTide release](https://github.com/BrenKenna/TaskTide/releases/edit/v0.9.0) contains a zip og all TaskTide dependancies, wrapper scripts for running on linux/windows and configuration files which can be adjusted for the [target deployment strategy] (/docs/documentation/Database-Driver-Installation.md).
 
 ``` bash
 # 1). Fetch zip
@@ -49,9 +49,11 @@ EOF
 
 ## 2). Run Docker Image
 
-To support deployment onto containerized platforms, a [docker file](/docker/tasktide-latest.Dockerfile) for caching TaskTide in local repository has been provided. A second [docker file](/docker/tasktide-apptainer.Dockerfile) which installs [Apptainer](https://apptainer.org/) is also provided, to support deploying TaskTide in containerized environment and running containerized workloads.
+To support deployment onto containerized platforms, a [docker file](/docker/tasktide-latest.Dockerfile) for caching TaskTide in local repository has been provided.
 
-Since the [public TaskTide images](https://docker.tasktide.org) form a part of TaskTide's CI workflow, it is not recommended to build from source but instead use those images.
+A second [docker file](/docker/tasktide-apptainer.Dockerfile) which installs [Apptainer](https://apptainer.org/) is also provided, to support running containerized workloads within TaskTide.
+
+Since the [public TaskTide images](https://docker.tasktide.org) form a part of TaskTide's CI/CD workflow. It is not recommended to build from source, but instead use those images.
 
 
 ``` bash
@@ -75,7 +77,9 @@ Since the repository is packaged with a pre-compiled version of TaskTide, it is 
 
 Gradle wrapper scripts have been provided for both Windows & Linux in the event buliding from source is a requirement, or the repoistory is forked for development work. The following describes building TaskTide from source using Gradle.
 
-Different gradle installation scripts have been supplied which download and install gradle if necessary. Linux distributions should [run this script](/tasktide/gradlew), and Windows users should [run this script](/tasktide/gradlew.bat). The use grafle build automation would be more for development work with TaskTide using an IDE. These gradlew scripts open all of the build automation tooling such as assembly, testing etc.
+Different gradle installation scripts have been supplied which download and install gradle if necessary. Linux distributions should [run this script](/tasktide/gradlew), and Windows users should [run this script](/tasktide/gradlew.bat).
+
+For context to the reader - The use of gradle build automation is optional, and would be more for development work with TaskTide using an IDE like NetBeans/Eclipse. These gradlew scripts open all of the build automation tooling such as assembly, TaskTide’s test taxonomy, and other build tasks thar supported its development.
 
 ```bash
 # Fetch TaskTide repo
@@ -115,7 +119,7 @@ EOF
 
 ---
 
-Since TaskTide ships with ready to go database drivers, the un-used driver set can be removed. Which TaskTides startup time, and resource utilization of TaskTide. Please note ***this is optional as TaskTide still works without doing this***. Future deployments may optimize this as it is largely from how Jakarta-NoSQL are loaded and is resolvable by clearing libs from classpath.
+Since TaskTide ships with ready to go database drivers, the un-used driver set can be removed. Which also optimizes TaskTides startup time, and resource utilization. Please also note ***this is entirely an optional as TaskTide still works fine without doing this***. Future deployments may optimize this as it is largely from how Jakarta-NoSQL are loaded and is resolvable by clearing libs from classpath.
 
 
 ```bash

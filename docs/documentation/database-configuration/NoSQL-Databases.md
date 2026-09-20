@@ -2,7 +2,7 @@
 
 The following relates to NoSQL databases supported by [Jakarta-NoSQL Implementations](https://github.com/eclipse-jnosql/jnosql-databases) only, meaning this can be ignored if either RocksDB/SQLite are being used.
 
-A collection of Jakarta-NoSQL database drivers have been included within TaskTide. These are MongoDB and CouchDB for DocumentTemplate, Cassandra for ColumnTemplate, Redis and DynamoDB for KeyValueTemplate.
+A collection of Jakarta-NoSQL database drivers has already been included within TaskTide. These are MongoDB and CouchDB for DocumentTemplate, Cassandra for ColumnTemplate, Redis and DynamoDB for KeyValueTemplate.
 
 In the event that other database drivers are needed, guidance on how they can be used are also described in this document.
 
@@ -20,7 +20,7 @@ The following describes:
 
 ## 1). Provision an Ephemeral NoSQL Database
 
-The below spins up a temporary couchDB container for using document database backend with Tasktide for exploratory purposes. MongoDB can also be used
+The below spins up a temporary couchDB document database.
 
 ```bash
 docker container run --rm \
@@ -41,10 +41,9 @@ http://admin:password@localhost:5984/tasktide_database
 
 ## 2). Using Another NoSQL-Database Driver
 
-Although the jnosql-communication, and jnosql-mapping JARs packaged into TaskTide. The required driver must still be installed, as fetching the JAR from [Maven Central](https://mvnrepository.com/artifact/org.eclipse.jnosql.databases/jnosql-mongodb/1.1.6) will not include the dependancies that that driver uses.
+Although the jnosql-communication, and jnosql-mapping JARs are all packaged into TaskTide. The required driver and its dependancies must still be installed, as fetching the JAR from [Maven Central](https://mvnrepository.com/artifact/org.eclipse.jnosql.databases/jnosql-mongodb/1.1.6) will not include the dependancies that that driver uses.
 
-While building from source with Gradle/Maven is outside the scope of this documentation and is not supported. An example is provided for [Oracle NoSQL](https://github.com/eclipse-jnosql/jnosql-databases/tree/main?tab=readme-ov-file#oracle-nosql) to help TaskTide users in this capacity.
-
+While building from source with Gradle/Maven is outside the scope of this documentation. An example for fetching a JNoSQL driver and its dependancies are provided for [Oracle NoSQL](https://github.com/eclipse-jnosql/jnosql-databases/tree/main?tab=readme-ov-file#oracle-nosql) to help TaskTide users in this capacity.
 
 ```bash
 # Fetch the pom.xml
@@ -66,9 +65,11 @@ curl -so tasktide-0.9.0/lib/jnosql-oracle-nosql-1.1.9.jar \
 
 ## 3). Applying configurations to the TaskTide config file
 
-Database configuration is a ***global setting*** for TaskTide because all of the TaskTide APIs use it as their coordination layer. The Manager-API provides the TaskTide repository and CRUD operations against it, that the Engine-API uses for workload acquisition, and registering processing lifecycle events, and the Web-API by exposing the Manager-API through a RESTful interface.
+Database configuration, below table, is a ***global setting*** for TaskTide because each TaskTide use it as their persistence layer. The Manager-API provides the TaskTide repository and CRUD operations against it, that the Engine-API uses for workload acquisition, and registering processing lifecycle events, and the Web-API by exposing the Manager-API through a RESTful interface.
 
-Note that the following is a minimal example for [couchDB](https://couchdb.apache.org/), should not be considered production, and should not be present in the [TaskTide Config File](/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties) if either an SQL, or ItemStore backend are being used. Full NoSQL configurations can be found at the corresponding project [linked here](https://github.com/eclipse-jnosql/jnosql-databases) and are intentionally not bypassed with TaskTide so that available configurations stay relevant.
+Note that the following is a minimal example for [couchDB](https://couchdb.apache.org/), and should not be present in the [TaskTide Config File](/tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties) if either an SQL, or ItemStore backend are being used.
+
+Full NoSQL configurations can be found at the corresponding project [linked here](https://github.com/eclipse-jnosql/jnosql-databases) and are intentionally not bypassed with TaskTide so that the available configurations are still usable.
 
 
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
