@@ -2,14 +2,17 @@
 
 TaskTide uses a traditional test taxonomy pyramid to examine the project across different levels of the test suite.
 
-The test suite is organised around:
+For TaskTide the test suite is organised around:
 
-    - Unit tests: assess individual components and their behaviour in isolation.
-    - Integration tests: evaluate interactions between TaskTide components and external infrastructure, including configured database backends.
-    - System tests: examine TaskTide as a running system, covering behaviour across the application boundary or library as a functional entrypoint.
-    - Acceptance tests: most informative for feature development and [production behaviours of TaskTide](https://use-cases.tasktide.org).
+1). Unit tests assess individual components and their behaviour in isolation like JSON SerDe or parameter configuration.
 
-The different levels complement one another: unit tests focus on individual components that make up TaskTide, integration tests focus on these components interact and system tests on the interactions and runtime behaviour that cannot be fully represented by isolated tests, and acceptance tests to assess how system usability, feature prioritisation etc.
+2). Integration tests evaluate interactions between TaskTide components and external infrastructure. Like read/write operations against configured database via TaskTide service ambassador API.
+
+3). System tests examine TaskTide as a running system, covering behaviour across the application boundary or library as a functional entrypoint. Like registering tasks/workflows through Web-API or processing tasks through the Engine-API.
+
+4). Acceptance tests specifically examine human use of TaskTide, and are most informative for feature development and [production behaviours of TaskTide](https://use-cases.tasktide.org).
+
+These different levels complement one another and together act as a platform to assess & improve runtime behaviour that cannot be fully represented by isolated tests, assess system usability, guide feature prioritisation, or gaps in feature development.
 
 Please note ***TaskTide's test taxonomy is the formal means of testing TaskTide. The broad build test is retained for IDE compatability***.
 
@@ -17,9 +20,7 @@ Please note ***TaskTide's test taxonomy is the formal means of testing TaskTide.
 
 ## 1). Test Infrastructure
 
-Where required, supporting infrastructure for integration and system test are provided through a test-sidecar container. The sidecar containers exists to provide the external services required by the tests; it is not part of the TaskTide runtime.
-
-Docker/apptainer should be available when running test suites that require the test-sidecar.
+Due to the nature of TaskTide, integration and system tests require access to a database. For the purposes of this document test database container are provisioned.
 
 ---
 
@@ -27,12 +28,12 @@ Docker/apptainer should be available when running test suites that require the t
 
 The Gradle wrapper is included with the project, so the test suite can be run without requiring a separate Gradle installation.
 
-Running the full test suite is not recommended and will break because of dependency requirements, and intentional retention of experimental tests.
+Running the full test suite is not recommended and will break because of dependency requirements, and intentional retention of experimental tests that guided TaskTide's test driven development (developed from test code out).
 
-Additionally TaskTide being a multi-module system package, individual test cases can create environmental conflicts. With these an annotation based
+Additionally since TaskTide is a multi-module system. Individual test cases can create environmental conflicts not encountered by, or representational of normal use. With these an annotation based
 approach is used for conducting production grade testing.
 
-The below scheme remains open to support IDEs integration.
+To support development however, the traditional below scheme remains open to support IDE integration.
 
 ```bash
 ./gradlew test
@@ -50,7 +51,7 @@ TaskTide is organised as a multi-module Gradle project. A its module tests can b
     <unit-tests | integration-tests | system-tests>
 ```
 
-For example the below runs the unit-tests for the parser library.
+For example the below runs the complete test suite for the parser library.
 
 ```bash
 ./gradlew :parser:unit-tests
@@ -62,12 +63,10 @@ For example the below runs the unit-tests for the parser library.
 
 ## 4). Integration and System Tests
 
-Integration and system tests require side-car databases to be provisioned. So it is recommended to follow [TaskTide CI workflow](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci-test-library.yml)
+Integration and system tests require access to both NoSQL and SQL databases. So it is recommended to follow [TaskTide CI workflow](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci-test-library.yml) where each are purged between tests.
 
 When running these tests locally, ensure Docker is available before starting the relevant Gradle task.
 The appropriate test task can be run through the Gradle wrapper in the same way as other tests.
-
-Where a particular module or test task is provided, this is especially relevant for core, engine, api, tasktide modules.
 
 ```bash
 # Starts MariaDB & couchDB containers for test
@@ -91,9 +90,9 @@ docker container kill mariadb couchdb
 
 ## 5). Continously Integration
 
-[TaskTide's CI](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci.yml) configuration runs the project's automated test suite after assembly is verfied, as part of the normal development workflow.
+[TaskTide's CI](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci.yml) runs the project's automated test suite after assembly has been verfied, and then verifies that a container image can be built for it and is usable (to pre-assess continous deployment). 
 
 The local Gradle commands above are intended to provide the same basic entry point for running the test suite during development.
 
-When a test depends on Docker-backed infrastructure, the CI environment provides the corresponding test-sidecar services before those tests are executed.
+When a test depends on Docker-backed infrastructure, the CI environment provides the corresponding sidecar services before those tests are executed.
 As shown for [library tests](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci-test-library.yml).
