@@ -1,6 +1,6 @@
 # TaskTide-Mutex Lib
 
-Library for de-centralized file orientated mutex across distributed processes with an NFS mount (shown below).
+Generic library for de-centralized file orientated mutex across distributed processes with an NFS mount (shown below).
   
 The library models each mutex request as a ballot for leader-election across distributed compute resources. Once determined the leader fetches an OS file lock acquired on the target. Precise ordering of read-writes is not as important having them just queued by their epoch time. Bucketing of this algorithm used by has been templated to be further for future versions.
 
