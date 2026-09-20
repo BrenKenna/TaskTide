@@ -4,7 +4,9 @@
 
 If you believe you have found a security vulnerability in TaskTide, please report it privately rather than opening a public issue.
 
-As GitHub has private vulnerability reporting feature to report a vulnerabilit y [described here](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately).
+While SAST tools like Dependabot and CodeQL are used to flag such events, and TaskTide makes every effort to appropriately act on them. These tools may not catch everything, and so TaskTide is grateful for insights provided here, and asks users to follow vulnerability reporting guidelines outlined here.
+
+As GitHub has a feature to report a vulnerabilities [described here](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately). Users should please use that, as the tasktide.org domain is intentionally configured not to send or recieve emails, so there are no "reporting@tasktide.org" or "vulnerability@tasktide.org" email addresses.
 
 In the advent private reporting is unavailable, contact the project maintainers privately before disclosing the vulnerability publicly.
 
