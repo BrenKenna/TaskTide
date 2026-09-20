@@ -123,15 +123,12 @@ The engine client brings in parallel task processing over the configured backend
 | Worker Window Size | Defines the number of tasks polled from policy results | 10 | tasktide.engine.worker.window-size | -wws/--work-window-size |
 | Lock Wait Time | Configures wait time in seconds for locking an item | 5 | tasktide.engine.worker.lock-wait-time | -l/--lock-wait-time |
 | Process Executor Stream Directory | Log stream directory for Process Executor | ~/ | tasktide.engine.process-executor.stream-directory | -sd/--stream-directory |
-
 | Execution Policy | Engine execution policy | BATCH/SERVICE | tasktide.engine.execution-policy | -ep/--execution-policy |
 | Strategy Type | Specifies workflow acquisition strategy to use | SEQUENTIAL/ROUND ROBIN | tasktide.engine.policy.acquisition.workflow.strategy | -st/--strategy-type |
 | Acquisition Mode | Specifies acqusition mode for workflow strategy | EXHAUST/SCANNER | tasktide.engine.policy.acquisition.workflow.mode | -am/--acquisition-mode |
-
 | Pilot Label Key | CustomAnnotation key on WorkItem for early task binding to pilot job | MyAnnotationKey | tasktide.engine.pilot.label.key | -plk/--pilot-label-key |
 | Pilot Label Value | CustomAnnotation value on WorkItem for early task binding to pilot job | MyAnnotationValue | tasktide.engine.pilot.label.value | -plk/--pilot-label-key |
 | Pilot Label Annotation | JSON formatted CustomAnnotation | '{ "Key": "Anno Key", "Value": "GPU Target" }' | tasktide.engine.pilot.label.annotation | -pa/--pilot-label-annotation |
-
 | TimeKeeper Level | Configures whether TimeKeeper Observer is optional | 1/0 | tasktide.engine.observer.timekeeper | -tk/--time-keeper |
 | TimeKeeper onStart | Configures whether TimeKeeper's onStart method can fail | true/false | tasktide.engine.observer.timekeeper.onStart | -tks/--time-keeper-onStart |
 | TimeKeeper onProcessing | Configures whether TimeKeeper's onProcessing method can fail | true/false | tasktide.engine.observer.timekeeper.onProcessing | -tkp/--time-keeper-onProcessing |
