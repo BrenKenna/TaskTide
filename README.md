@@ -19,9 +19,7 @@
 
 By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as first-class orchestration entities. TaskTide provides its users with task <em>registration</em>, real-time <em>workflow introspection</em>, and <em>lifecycle influence</em> as they are actively consumed across distributed compute resources.
 
-TaskTide ships as a <strong>lightweight</strong>, <strong>configurable</strong> solution for workflow orchestration. That decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends.
-
-The approach supports the deployment of TaskTide across different infrastructures like HPC, Cloud, and Grid. In additon to supporting <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>embedded</strong> databases (<em>SQLite, RocksDB</em>).
+TaskTide ships as a <strong>lightweight</strong>, <strong>configurable</strong> solution for workflow orchestration. That decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends. Supporting its deployment across different infrastructures like HPC, Cloud, and Grid. In additon to <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>Embedded</strong> databases (<em>SQLite, RocksDB</em>). Catering for diverse sets of operational needs for data application deployment.
 
 <br>
 
