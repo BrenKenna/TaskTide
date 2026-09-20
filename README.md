@@ -15,7 +15,6 @@
 
 
 <strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for <strong>Containerized</strong>, <strong>Cloud</strong>, <strong>HPC</strong>, <strong>Grid</strong>, and <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> as task collections.
-</p>
 
 By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as first-class orchestration entities. TaskTide provides its users with task <em>registration</em>, <em>real-time workflow introspection</em>, and <em>lifecycle influence</em> as they are actively consumed across distributed compute resources.
 
@@ -102,9 +101,9 @@ tasktide
 
 - 📦 **Flexible Workload Packaging**: Supports containerized workloads alongside native executables and scripts, enabling diverse packaging mechanisms for data applications.
 
-- ⛴️ **Portable Worloads**: As generic orchestration software. TaskTide gives you portability across different environments.
+- ⛴️ **Portable Workloads**: TaskTide gives its users a mechanism for deploying workloads across different environments.
 
-- 🔀 **Nested Workflow Modeling** :     Compose tasks into hierarchical workflows using a flexible domain model. Providing operational structure to data application deployment that is robust and transparent.
+- 🔀 **Nested Workflow Modeling**:     Compose tasks into hierarchical workflows using a flexible domain model. Providing operational structure to data application deployment that is robust and transparent.
 
 - 🧪 **Tested**:                        Built with CI/CD, Docker support, and integration tests across database types.
 
