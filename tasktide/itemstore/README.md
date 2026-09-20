@@ -1,4 +1,5 @@
 # TaskTide - ItemStore
-<p>
-The purpose of this Library is to offer support for File based Databases like SQLite, and RocksDB, locking coordination system so that instances of TaskTide running in distributed environments like NFS and HPC can operate on that backend target serially.
-</p>
+
+The purpose of this Library is to offer support for embedded Databases like SQLite, and RocksDB through a unified interface tailored for TaskTide
+
+The library relies on the [Mutex Lib](/tasktide/mutex) for a de-centralized read/write queue. So that distinct instances of the TaskTide engine running across distributed compute resources of HPC/server. Can operate concurrently without corrupting their shared database file on an NFS mount, without simultaneous write collisions.
