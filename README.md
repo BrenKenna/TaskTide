@@ -120,7 +120,7 @@ tasktide
 
 - **Web API**                – Defines Jakarta-WS REST API, and an embedded Jetty-WebServer [described here](tasktide/api/).
 
-- **Mutex **                  - Defines ItemStore mechanisms for acquiring a mutex on the configured RocksDB/SQLite database [described here](tasktide/mutex/).
+- **Mutex**                  - Defines ItemStore mechanisms for acquiring a mutex on the configured RocksDB/SQLite database [described here](tasktide/mutex/).
 
 - **ItemStore**              - Defines an interface for configuring TaskTide with embedded databases (RocksDB/SQLite) [described here](tasktide/itemstore/).
 
