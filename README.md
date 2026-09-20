@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo1.jpg" alt="TaskTide Logo" width="300"/>
+  <img src="/docs/assets/logo1.jpg" alt="TaskTide Logo" width="300"/>
 </p>
 
 # TaskTide
@@ -14,17 +14,14 @@
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/BrenKenna/TaskTide/badge)](https://scorecard.dev/viewer/?uri=github.com/BrenKenna/TaskTide)
 
 
-<p id="intro-a">
 <strong>TaskTide</strong> is a modular <strong>Workflow Orchestration Engine</strong> designed for <strong>Cloud</strong>, <strong>HPC</strong>, <strong>Grid</strong>, and <strong>Edge Computing</strong> workloads. It enables the execution of <strong>ETL-style workflows</strong> and arbitrary <strong>Data Application</strong> as task collections.
 </p>
 
-<p id="intro-b">
-By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as first-class orchestration entities. TaskTide provides its users with real-time <em>workflow registration</em>, <em>introspection</em>, and <em>lifecycle influence</em> at runtime while task are actively consumed across distributed compute resources.
-</p>
+By modelling <strong>Workflow</strong>, and <strong>Execution States</strong> as first-class orchestration entities. TaskTide provides its users with task <em>registration</em>, real-time <em>workflow introspection</em>, and <em>lifecycle influence</em> as they are actively consumed across distributed compute resources.
 
-<p id="intro-c">
-TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, <strong>configurable</strong> approach for workflow orchestration. That decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends. Supporting <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>daemon-less</strong> databases (<em>SQLite, RocksDB</em>) reflecting its backend-agnostic design.
-</p>
+TaskTide ships as a <strong>lightweight</strong>, <strong>configurable</strong> solution for workflow orchestration. That decouples <strong>Workflow Orhcestration</strong> logic from <strong>Infrastructure Specific</strong> backends.
+
+The approach supports the deployment of TaskTide across different infrastructures like HPC, Cloud, and Grid. In additon to supporting <strong>Relational</strong> (<em>Postgres, Maria, MySQL, Microsoft, Oracle etc</em>), <strong>Non-Relational</strong> (<em>MongoDB, CouchDB, Oracle etc</em>) database management systems, and <strong>embedded</strong> databases (<em>SQLite, RocksDB</em>).
 
 <br>
 
@@ -40,8 +37,7 @@ TaskTide ships as a <strong>lightweight</strong>, <strong>daemon-less</strong>, 
 
 An installation guide catering for different uses is [provided here](/docs/documentation/INSTALL.md). Backend database configurations should follow provider recommendations, since [Jakara NoSQL](https://github.com/eclipse-jnosql/jnosql-databases) brings in NoSQL support, and [JPA-Hibernate](https://www.baeldung.com/learn-jpa-hibernate) using [Hikari Connection Pool](https://www.baeldung.com/hikaricp) brings in SQL, whose use for TaskTide are documented [here for NoSQL](/docs/documentation/database-configuration/NoSQL-Databases.md), [here for SQL](/docs/documentation/database-configuration/SQL-Databases.md), and [here for ItemStore](/docs/documentation/database-configuration/Embedded-Databases.md) for embedded databases like SQLite. and RocksDB.
 
-
-How TaskTide should run can be configured based on parameters in a [TaskTide configuration file](/docs/configs/microprofile-config.properties), or command-line arguments to simplify the use case of the Engine, Manager, and Web APIs, as their configurations are largely target orientated. However, when using command-line arguments for NoSQL or SQL as the target backend, these parameters must be declared in that file as they are set and provided by the Jakarta-NoSQL, and JPA dependancies. Additionally since only one backend database type should be used, application runtime can be optimized by removing unused dependancies (ex remove JNoSQL if JPA etc) [described here](/tasktide/tasktide/README.md#a-global-configurations).
+How TaskTide should run can be configured based on parameters in a [TaskTide configuration file](/docs/configs/microprofile-config.properties)
 
 <br>
 
@@ -49,7 +45,7 @@ How TaskTide should run can be configured based on parameters in a [TaskTide con
 
 ## 💻 Running TaskTide
 
-As a Java application TaskTide requires java+17 whith installation mechanisms are [provided here](https://docs.oracle.com/en/java/javase/).
+As a Java application TaskTide [requires Java+17](https://docs.oracle.com/en/java/javase/).
 
 ```bash
 # Run TaskTide container image
@@ -89,7 +85,7 @@ tasktide
   > Community-centric adoptions of TaskTide
 
 - 🧩 **[Java API Documentation ➞](https://api-docs.tasktide.org)**
-  > Generated JavaDoc API reference
+  > TaskTide JavaDocs site
 
 - 🚀 **[Releases ➞](https://github.tasktide.org/releases)**
   > Downloadable TaskTide releases
@@ -109,6 +105,8 @@ tasktide
 - 💻 **Native Task Execution**:         Runs any local or system executable/script.
 
 - 🔀 **Nested Workflow Modeling** :     Compose tasks into hierarchical workflows using a flexible domain model.
+
+- 🐳 **Cloud-native**: Supports execution of containerized workloads.
 
 - 🧪 **Tested**:                        Built with CI/CD, Docker support, and integration tests across database types.
 
@@ -136,5 +134,5 @@ tasktide
 <br>
 
 <p id="arch-b" align="center">
-  <img src="docs/assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
+  <img src="/docs/assets/tasktide-db-hook.png" alt="TaskTide Architecture"/>
 </p>
