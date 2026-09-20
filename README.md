@@ -92,19 +92,19 @@ tasktide
 
 ---
 
-## 🚀 Features
+## 🚀 TaskTide Features
 
 - 🛠️ **Pilot Job Execution Model**:     Tasks can be dynamically scheduled and executed inside long-running jobs. Providing users a set of operational dials for influence over task lifecycles, introspection, and monitoring in real-time.
 
-- 🔄 **ETL-Friendly**:                  Tasks are treated as extraction, transformation, or loading scripts/programs.
+- 🔄 **ETL-Friendly**:                  Tasks are treated as extraction, transformation, and loading scripts/programs.
 
-- <img src="/docs/assets/database.png" alt="Flaticon database" width="18"/> **Backend Agnostic**:       Works with Document (e.g. MongoDB), Daemon-less (e.g. RocksDB, SQLite), Key-Value (e.g. Redis), and Relational (e.g Postgres) stores.
+- <img src="/docs/assets/database.png" alt="Flaticon database" width="18"/> **Backend Agnostic**:       Works with document (e.g. MongoDB), embedded (e.g. RocksDB, SQLite), key-value (e.g. Redis), and relational (e.g Postgres) stores.
 
-- 💻 **Native Task Execution**:         Runs any local or system executable/script.
+- 📦 **Flexible Workload Packaging**: Supports containerized workloads alongside native executables and scripts, enabling diverse packaging mechanisms for data applications.
+
+- ⛴️ **Portable Worloads**: As generic orchestration software. TaskTide gives you portability across different environments.
 
 - 🔀 **Nested Workflow Modeling** :     Compose tasks into hierarchical workflows using a flexible domain model. Providing operational structure to data application deployment that is robust and transparent.
-
-- 🐳 **Cloud-native**: Enables execution of containerized workloads to support diverse packaging mechanisms of data applications.
 
 - 🧪 **Tested**:                        Built with CI/CD, Docker support, and integration tests across database types.
 
