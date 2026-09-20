@@ -4,7 +4,11 @@
 
 If you believe you have found a security vulnerability in TaskTide, please report it privately rather than opening a public issue.
 
-Please use GitHub's private vulnerability reporting feature to report a vulnerability. If private reporting is unavailable, contact the project maintainers privately before disclosing the vulnerability publicly.
+As GitHub has private vulnerability reporting feature to report a vulnerabilit y [described here](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/report-privately).
+
+In the advent private reporting is unavailable, contact the project maintainers privately before disclosing the vulnerability publicly.
+
+<br>
 
 Please include:
 
