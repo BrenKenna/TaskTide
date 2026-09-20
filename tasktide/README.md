@@ -7,7 +7,7 @@
 
 ## 1). TaskTide-ItemStore Library
 
-Documentation for this module can be "[found here](/tasktide/itemstore/README.md)" and dependant Mutex [found here](/tasktide/mutex/README.md).
+Documentation for this module can be [found here](/tasktide/itemstore/README.md) and dependant Mutex [found here](/tasktide/mutex/README.md).
 
 <br>
 
@@ -16,7 +16,7 @@ Documentation for this module can be "[found here](/tasktide/itemstore/README.md
 
 ## 2). TaskTide-Core Library
 
-Documentation for this module can be <a [found here](/tasktide/core/README.md).
+Documentation for this module can be [found here](/tasktide/core/README.md).
 
 <br>
 
