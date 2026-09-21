@@ -4,13 +4,13 @@
 
 # TaskTide
 
-[![Website](https://img.shields.io/badge/Website-tasktide.org-blue)](https://docs.tasktide.org)
+[![Website](https://img.shields.io/badge/Website-tasktide.org-purple)](https://docs.tasktide.org)
 [![Maven Central](https://img.shields.io/maven-central/v/org.tasktide/tasktide)](https://central.sonatype.com/artifact/org.tasktide/tasktide)
-[![Documentation](https://img.shields.io/badge/Documentation-docs.tasktide.org-blue)](https://docs.tasktide.org)
-[![API Reference](https://img.shields.io/badge/API%20Reference-JavaDoc-blue)](https://api-docs.tasktide.org)
+[![Documentation](https://img.shields.io/badge/Documentation-docs.tasktide.org-violet)](https://docs.tasktide.org)
+[![API Reference](https://img.shields.io/badge/API%20Reference-JavaDoc-brown)](https://api-docs.tasktide.org)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21959893.svg)](https://doi.org/10.5281/zenodo.21959893)
 [![build](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/BrenKenna/TaskTide/actions/workflows/gradle.yml)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](https://github.com/BrenKenna/TaskTide/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-black)](https://github.com/BrenKenna/TaskTide/blob/main/LICENSE)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/BrenKenna/TaskTide/badge)](https://scorecard.dev/viewer/?uri=github.com/BrenKenna/TaskTide)
 
 
@@ -94,19 +94,19 @@ tasktide
 
 ## 🚀 TaskTide Features
 
-- 🛠️ **Pilot Job Execution Model**:     Tasks can be dynamically scheduled and executed inside long-running jobs. Providing users a set of operational dials for influence over task lifecycles, introspection, and monitoring in real-time.
+- 🛠️ **Pilot Job Execution Model**:       Tasks can be dynamically scheduled and executed inside long-running jobs. Providing users a set of operational dials for influence over task lifecycles, introspection, and monitoring in real-time.
 
-- 🔄 **ETL-Friendly**:                  Tasks are treated as extraction, transformation, and loading scripts/programs.
+- 🔄 **ETL-Friendly**:                    Tasks are treated as extraction, transformation, and loading scripts/programs.
 
 - <img src="/docs/assets/database.png" alt="Flaticon database" width="18"/> **Backend Agnostic**:       Works with document (e.g. MongoDB), embedded (e.g. RocksDB, SQLite), key-value (e.g. Redis), and relational (e.g Postgres) stores.
 
-- 📦 **Flexible Workload Packaging**: Supports containerized workloads alongside native executables and scripts, enabling diverse packaging mechanisms for data applications.
+- 📦 **Flexible Workload Packaging**:     Supports containerized workloads alongside native executables and scripts, enabling diverse packaging mechanisms for data applications.
 
-- ⛴️ **Portable Worloads**: As generic orchestration software. TaskTide gives you portability across different environments.
+- ⛴️ **Portable Worloads**:               As generic orchestration software. TaskTide gives you portability across different environments.
 
-- 🔀 **Nested Workflow Modeling** :     Compose tasks into hierarchical workflows using a flexible domain model. Providing operational structure to data application deployment that is robust and transparent.
+- 🔀 **Nested Workflow Modeling** :       Compose tasks into hierarchical workflows using a flexible domain model. Providing operational structure to data application deployment that is robust and transparent.
 
-- 🧪 **Tested**:                        Built with CI/CD, Docker support, and integration tests across database types.
+- 🧪 **Tested**:                          Built with CI/CD, Docker support, and integration tests across database types.
 
 <br>
 

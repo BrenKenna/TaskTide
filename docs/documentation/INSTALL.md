@@ -7,12 +7,16 @@ The following describes how to:
     <li>Build application from source</li>
 </ul>
 
-As a Java application TaskTide requires  [java+17](https://docs.oracle.com/en/java/javase/).
+As a Java application TaskTide requires [java+17](https://docs.oracle.com/en/java/javase/).
+
+<br>
 
 ---
 
+<br>
+
 ## 1). Pre-compiled Application
-Each [TaskTide release](https://github.com/BrenKenna/TaskTide/releases/edit/v0.9.0) contains a zip og all TaskTide dependancies, wrapper scripts for running on linux/windows and configuration files which can be adjusted for the [target deployment strategy] (/docs/documentation/Database-Driver-Installation.md).
+Each [TaskTide release](https://github.com/BrenKenna/TaskTide/releases/v0.9.0) contains a zip of all TaskTide dependancies, wrapper scripts for running on linux/windows and configuration files which can be adjusted for the [target deployment strategy](/docs/documentation/Database-Driver-Installation.md).
 
 ``` bash
 # 1). Fetch zip
@@ -43,9 +47,12 @@ export TASKTIDE_CONFIG_FILE="$TASKTIDE_CONFIGS/META-INF/microprofile-config.prop
 export TASKTIDE_LOGGING="$TASKTIDE_CONFIGS/log4j2.xml"
 EOF
 ```
+
 <br>
 
 ---
+
+<br>
 
 ## 2). Run Docker Image
 
@@ -69,7 +76,11 @@ docker container run --rm \
             < CLI Opts: >
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## 3). Building from Source
 
