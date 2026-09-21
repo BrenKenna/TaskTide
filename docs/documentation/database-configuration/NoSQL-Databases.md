@@ -16,7 +16,11 @@ The following describes:
     <li>Applying configurations to the TaskTide config file</li>
 </ul>
 
+<br>
+
 ---
+
+<br>
 
 ## 1). Provision an Ephemeral NoSQL Database
 
@@ -37,7 +41,11 @@ http://admin:password@localhost:5984/tasktide_database
 
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## 2). Using Another NoSQL-Database Driver
 
@@ -62,6 +70,12 @@ mv ./oracle/*jars tasktide-0.9.0/lib/
 curl -so tasktide-0.9.0/lib/jnosql-oracle-nosql-1.1.9.jar \
     https://repo1.maven.org/maven2/org/eclipse/jnosql/databases/jnosql-oracle-nosql/1.1.9/jnosql-oracle-nosql-1.1.9.jar
 ```
+
+<br>
+
+---
+
+<br>
 
 ## 3). Applying configurations to the TaskTide config file
 

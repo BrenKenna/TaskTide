@@ -28,7 +28,7 @@ import org.tasktide.core.model.task.ItemTask;
  * Observer for the full processing life-cycle of an executor
  * 
  * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
- * @param <U> subunit {@alink ItemTask} for now
+ * @param <U> subunit {@link ItemTask} for now
  * @author bkenna
  */
 public abstract class ExecutorObserver<T extends TaskTideModel<T>, U extends TaskTideModel<U>> implements WorkerObserver<T> {

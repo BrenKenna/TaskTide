@@ -117,7 +117,7 @@ public class ItemTaskBuilder extends ModelBuilder<ItemTask> {
      * Adds {@link CustomAnnotation}
      * 
      * @param anno
-     * @return {@ilnk ItemTaskBuilder}
+     * @return {@link ItemTaskBuilder}
      */
     public ItemTaskBuilder withAnnotation(CustomAnnotation anno) {
         this.anno = anno;

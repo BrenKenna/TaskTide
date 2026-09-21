@@ -42,7 +42,6 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
     /**
      * Construct with target model class, and collection name
      * 
-     * @param template
      * @param modelClass
      * @param collectionName
      * @param repoType

@@ -231,7 +231,7 @@ public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
     /**
      * Adds element to state summary
      * 
-     * @param key
+     * @param state
      * @param value 
      */
     public void addElement(T state, int value) {

@@ -1,28 +1,34 @@
 # Testing TaskTide
 
-TaskTide uses a traditional test taxonomy pyramid to examine the project across different levels of the test suite.
+TaskTide uses a traditional test taxonomy pyramid to examine the project across different levels of the test suite that is organised around:
 
-For TaskTide the test suite is organised around:
+1). Unit tests to assess individual components and their behaviour in isolation like JSON SerDe or parameter configuration.
 
-1). Unit tests assess individual components and their behaviour in isolation like JSON SerDe or parameter configuration.
+2). Integration tests to evaluate interactions between TaskTide components and external infrastructure. Like read/write operations against configured database via TaskTide service ambassador API.
 
-2). Integration tests evaluate interactions between TaskTide components and external infrastructure. Like read/write operations against configured database via TaskTide service ambassador API.
+3). System tests examine to TaskTide as a running system, covering behaviour across the application boundary or library as a functional entrypoint. Like registering tasks/workflows through Web-API or processing tasks through the Engine-API.
 
-3). System tests examine TaskTide as a running system, covering behaviour across the application boundary or library as a functional entrypoint. Like registering tasks/workflows through Web-API or processing tasks through the Engine-API.
+4). Acceptance tests to specifically examine human use of TaskTide, and are most informative for feature development and [production behaviours of TaskTide](https://use-cases.tasktide.org).
 
-4). Acceptance tests specifically examine human use of TaskTide, and are most informative for feature development and [production behaviours of TaskTide](https://use-cases.tasktide.org).
+These different levels complement one another and together act as a platform to assess & improve runtime behaviour, assess system usability, guide feature prioritisation, and find gaps in feature development that cannot be fully represented by isolated tests,
 
-These different levels complement one another and together act as a platform to assess & improve runtime behaviour that cannot be fully represented by isolated tests, assess system usability, guide feature prioritisation, or gaps in feature development.
+Please note ***TaskTides test taxonomy is the formal means of testing TaskTide. The broad build test is retained for IDE compatability***.
 
-Please note ***TaskTide's test taxonomy is the formal means of testing TaskTide. The broad build test is retained for IDE compatability***.
+<br>
 
 ---
+
+<br>
 
 ## 1). Test Infrastructure
 
 Due to the nature of TaskTide, integration and system tests require access to a database. For the purposes of this document test database container are provisioned.
 
+<br>
+
 ---
+
+<br>
 
 ## 2). Running Tests
 
@@ -39,7 +45,11 @@ To support development however, the traditional below scheme remains open to sup
 ./gradlew test
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## 3). Running TaskTide Tests
 
@@ -59,7 +69,11 @@ For example the below runs the complete test suite for the parser library.
 ./graldew :parser:system-test
 ```
 
+<br>
+
 ---
+
+<br>
 
 ## 4). Integration and System Tests
 
@@ -87,6 +101,11 @@ docker container run --rm --name couchdb --detach \
 docker container kill mariadb couchdb
 ```
 
+<br>
+
+---
+
+<br>
 
 ## 5). Continously Integration
 
@@ -94,5 +113,4 @@ docker container kill mariadb couchdb
 
 The local Gradle commands above are intended to provide the same basic entry point for running the test suite during development.
 
-When a test depends on Docker-backed infrastructure, the CI environment provides the corresponding sidecar services before those tests are executed.
-As shown for [library tests](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci-test-library.yml).
+When a test depends on Docker-backed infrastructure, the CI environment provides the corresponding sidecar services before those tests are executed. As shown for [library tests](https://github.com/BrenKenna/TaskTide/blob/main/.github/workflows/tasktide-ci-test-library.yml).

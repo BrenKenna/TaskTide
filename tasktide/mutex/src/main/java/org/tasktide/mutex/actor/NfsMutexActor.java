@@ -84,7 +84,7 @@ public class NfsMutexActor extends InterProcessMutexActor {
      * Acquire lock for provided {@link Mutex}
      * 
      * @param mutex
-     * @returns boolean
+     * @return boolean
      * @throws MutexCheckedException 
      */
     @Override
@@ -123,7 +123,7 @@ public class NfsMutexActor extends InterProcessMutexActor {
      * Release lock on target file
      * 
      * @param targetFile
-     * @returns boolean
+     * @return boolean
      * @throws MutexCheckedException 
      */
     @Override
@@ -179,7 +179,7 @@ public class NfsMutexActor extends InterProcessMutexActor {
     /**
      * Release active {@link Mutex} if present
      * 
-     * @returns boolean
+     * @return boolean
      * @throws MutexCheckedException 
      */
     @Override

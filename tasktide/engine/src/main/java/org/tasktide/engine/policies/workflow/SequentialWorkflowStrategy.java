@@ -152,7 +152,7 @@ public class SequentialWorkflowStrategy extends AbstractWorkflowStrategy {
     
     
     /**
-     * Evaluate workload based on configured {@lnk WorkflowStrategyMode}
+     * Evaluate workload based on configured {@link WorkflowStrategyMode}
      * 
      * @param workload
      * 

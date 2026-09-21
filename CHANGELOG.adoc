@@ -4,7 +4,7 @@
 
 == [v0.9.2]
 
-- Official TaskTide CI/CD pipeline operational.
+- Official TaskTide CI/CD pipeline operational and updates docs.tasktide.org, and api-docs.tasktide.org for v0.9.2
 
 - Organises TaskTide versioning applying and resolving dependabot version bumps and debugs any trailing docker hub or maven central publishing.
 

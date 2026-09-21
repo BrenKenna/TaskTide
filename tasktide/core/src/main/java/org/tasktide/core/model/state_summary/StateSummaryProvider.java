@@ -101,8 +101,8 @@ public class StateSummaryProvider {
     
     
     /**
-     * Convert a Map of {@link TasState} counts, to 
-     *  dedicated {@link TasStateSummary}
+     * Convert a Map of {@link TaskState} counts, to 
+     *  dedicated {@link TaskStateSummary}
      * 
      * @param map
      * @return {@link StateSummary} of {@link TaskState}
