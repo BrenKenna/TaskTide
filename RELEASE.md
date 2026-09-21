@@ -16,6 +16,12 @@
 - <Highlight>
 - <Highlight>
 
+### Notes for next version
+
+- <Note>
+- <Note>
+- <Note>
+
 ---
 
 ## Release Versions
