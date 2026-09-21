@@ -114,7 +114,7 @@ public class FileChannelActor extends IntraProcessActor {
      * Acquire a lock on composed target
      * 
      * @param targetFile
-     * @returns boolean
+     * @return boolean
      * @throws MutexCheckedException 
      */
     @Override
@@ -160,7 +160,7 @@ public class FileChannelActor extends IntraProcessActor {
      * 
      * @param mutex
      * 
-     * @returns boolean
+     * @return boolean
      * @throws MutexCheckedException
      */
     @Override
@@ -188,7 +188,7 @@ public class FileChannelActor extends IntraProcessActor {
      * 
      * @param targetFile
      * 
-     * @returns boolean
+     * @return boolean
      * @throws MutexCheckedException 
      */
     @Override
@@ -210,7 +210,7 @@ public class FileChannelActor extends IntraProcessActor {
     /**
      * Release lock
      * 
-     * @returns boolean
+     * @return boolean
      * @throws MutexCheckedException
      */
     @Override

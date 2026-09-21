@@ -35,13 +35,16 @@ import org.tasktide.core.model.task.TaskLogging;
 
 import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.supporting.DateUtility;
+
 import org.tasktide.engine.executor.streamhandler.StreamHandler;
 import org.tasktide.engine.workerunit.container.WorkerUnitContainer;
 
+// For JavaDocs
+import org.tasktide.core.model.task.ItemTask;
 
 /**
  * 
- * Class responsible for spawning OS process for the command of {@ItemTask}
+ * Class responsible for spawning OS process for the command of {@link ItemTask}
  * 
  * @author bkenna
  */

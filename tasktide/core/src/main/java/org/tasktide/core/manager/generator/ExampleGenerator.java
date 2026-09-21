@@ -44,7 +44,6 @@ public abstract class ExampleGenerator {
     /**
      * Provide {@link ManagerTask}
      * 
-     * @param cmd
      * 
      * @return {@link ManagerTask}
      */

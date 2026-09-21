@@ -35,7 +35,7 @@ import org.tasktide.engine.observer.WorkerObserver;
 /**
  *
  * Time keeper observer for {@link TaskTideWorkerUnit}
- *  processing of {@linkt WorkItem}, and {@link ItemTask}
+ *  processing of {@link WorkItem}, and {@link ItemTask}
  * 
  * @param <T> of {@link TaskTideModel}-{@link WorkItem},{@link ItemTask}
  * @author bkenna

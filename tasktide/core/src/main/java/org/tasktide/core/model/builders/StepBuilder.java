@@ -80,7 +80,7 @@ public class StepBuilder extends ModelBuilder<Step> {
      * Adds {@link CustomAnnotation}
      * 
      * @param anno
-     * @return {@ilnk StepBuilder}
+     * @return {@link StepBuilder}
      */
     public StepBuilder withAnnotation(CustomAnnotation anno) {
         this.anno = anno;
