@@ -26,7 +26,7 @@ If using an SQL, or NoSQL backend then a microprofile-configuration file like th
 
 #### Command-Line Arguments
 
-Command-line arguments are used to configure which TaskTide-Client to run such as the Engine for task processing, the Manager for the registration, and management of tasks, or the WebAPI for service deployment. With this, TaskTide has properties that are configured "<i>globally</i>" like the specific backend to use, that are common for both the Manager, Engine, and WebAPI. In addition to this, each client has their own configuration that specific to it. For instance the Manager client has input/output files to coordinate its import/export operations. Whereas the Engine, has arguments for the number of threads to use for the parallel processing of TaskTide entities. The WebAPI, has arguments for configuring IdP. The complete command-line arguments can be found by running "tasktide --help/-h". The <a>following link</a> directs to table text showing the same.
+Command-line arguments are used to configure which TaskTide-Client to run such as the Engine for task processing, the Manager for the registration, and management of tasks, or the WebAPI for service deployment. With this, TaskTide has properties that are configured "<i>globally</i>" like the specific backend to use, that are common for both the Manager, Engine, and WebAPI. In addition to this, each client has their own configuration that specific to it. For instance the Manager client has input/output files to coordinate its import/export operations. Whereas the Engine, has arguments for the number of threads to use for the parallel processing of TaskTide entities. The complete command-line arguments can be found by running "tasktide --help/-h". The [following link](./README.md#e-web-api) directs to table text showing the same.
 
 <br>
 
@@ -36,15 +36,9 @@ Command-line arguments are used to configure which TaskTide-Client to run such a
 
 ## 2). TaskTide Configurations
 
+### a). Global Configurations
 The table below maps TaskTide configuration parameters from config file, to command-line arguments (where appropriate). Which has been separated into its separate componenets being "<i>1). Global</i>" which defines client, and backend database type to use. "<i>2). Manager</i>" for task scheduling/CRUD, and "<i>3). Engine</i>" for task processing. The global command-line arguments also include documentation on database backend for reference. 
 
-<br>
-
----
-
-<br>
-
-### a). Global Configurations
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
 |--|--|--|--|--|
 | Repository Type | Defines which backend repository to use | NoSQL/SQL/RocksDB/SQLite | tasktide.core.repository.type | -rt--repository-type
@@ -63,7 +57,7 @@ The table below maps TaskTide configuration parameters from config file, to comm
 
 #### i). NoSQL Backend Configurations
 
-Note that the following is a minimal example for "[couchDB](https://couchdb.apache.org)", and should not be present in the "TaskTide Config File](tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties)" if either an SQL, or ItemStore backend are being used. Full NoSQL configurations can be found at the corresponding project [linked here](https://github.com/eclipse-jnosql/jnosql-databases). Lastly, the following guide describes how to incorporate NoSQL database into TaskTide (need a build & install for that GH repo).
+Note that the following is a minimal example for "[couchDB](https://couchdb.apache.org)", and should not be present in the "TaskTide Config File](tasktide/tasktide/src/main/resources/META-INF/microprofile-config.properties)" if either an SQL, or ItemStore backend are being used. Full NoSQL configurations can be found at the corresponding project [linked here](https://github.com/eclipse-jnosql/jnosql-databases). Lastly, the [following guide](/docs/documentation/database-configuration/NoSQL-Databases.md) describes how to incorporate NoSQL database into TaskTide (need a build & install for that GH repo).
 
 <br>
 
@@ -106,15 +100,52 @@ Relational database management system/SQL support is provided through [JPA-Hiber
 
 <br>
 
-### b). Engine Client Configurations
+### b). Manager Client Configurations
 
-The engine client brings in parallel task processing over the configured backend, with real-time updates being applied to throughout the life-cycle of a task. The below parameters can be used to adjust how TaskTide processes these tasks, such as which task collection, level of parallelism, its monitoring componenets etc. The only mandatory property is the Step property, which when a comma separated list is provided processes tasks from those workflow steps.
+The manager client brings in task scheduling using the configured backend. Operations performed the Manager open these CURD actions via the configurable properties described below. While the TaskTide-ManagerClient can be used within ETL scripts to enqueue the next step for an active item, it's recommended to import through the file import ([example provided here](https://github.com/BrenKenna/TaskTide/blob/main/tasktide/core/src/test/resources/nestedTaskImports.txt)).
+
+<br>
+
+| Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
+|--|--|--|--|--|
+| Target | Defines the Target entity for required CRUD operation | Workflow/Step/WorkItem | tasktide.manager.target | -tgt/--target |
+| Target Step | Defines the target step | myStep | tasktide.manager.targetStep | -ts/--target-step |
+| Method | Defines manager method to run | Import/Export | tasktide.method | -m/--method |
+| Input File | Defines the full input file path for import | ~/myData.txt | tasktide.manager.inputFile | -i/--input-file |
+| Delimiter | Defines field delimiter of the input file | ',' OR '\t' | tasktide.manager.delimiter | -d/--delimiter |
+| Nested Delimiter | Defines delimiter of tasks if provided | ':' OR '/' | tasktide.manager.nestedDelimiter | -nd/--nested-delimiter |
+| Output File | Defines full file path for export JSON formatted | ~/myExport.txt | tasktide.manager.outputFile | -of/--output-file |
+| ItemId | ItemId over which the required ManagerAction is taken | SomeId | tasktide.manager.itemId | -ii/--item-id |
+| Query String | JSON formatted string | '{"Field": "Value"}' | tasktide.manager.queryString | -ii/--item-id |
 
 <br>
 
 ---
 
 <br>
+
+### c). ItemStore Mutex Configuration
+
+The [Mutex](/tasktide/mutex/README.md) library is used for as de-centralized operation queue for the [ItemStore Repository](/tasktide/itemstore/README.md).
+
+| Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
+|--|--|--|--|--|
+| Mutex Root Directory | Configures root directory for mutex | ~/tasktide/mutex | tasktide.mutex.rootDir | -mrd/--mutex-root-dir |
+| Mutex Stale File Threshold | Defines amount of miliseconds active leader is considered stale and deleted | 5 | tasktide.mutex.staleFileThreshold | -sft/--stale-file-threshold |
+| Mutex Retry Interval | Configures retry interval for TaskTide-Mutex | 550 | tasktide.mutex.retryInterval | -ri/--retry-interval |
+| Mutex Start Jitter | Configures minimum milliseconds wait time | 10-300L | tasktide.mutex.startJitter| -sj/--start-jitter |
+| Mutex End Jitter | Configures maximum milliseconds wait time | 301-500L | tasktide.mutex.endJitter| -ej/--end-jitter |
+| Min Random Long | Configures value for maximum random long | 10-300L | tasktide.mutex.minRandomLong | -minri/--min-random-long |
+| Max Random Long | Configures value for maximum random long | 301-500L | tasktide.mutex.maxRandomLong | -maxri/--max-random-long |
+
+<br>
+
+---
+
+### d). Engine Client Configurations
+
+The engine client brings in parallel task processing over the configured backend, with real-time updates being applied to throughout the life-cycle of a task. The below parameters can be used to adjust how TaskTide processes these tasks, such as which task collection, level of parallelism, its monitoring componenets etc. The only mandatory property is the Step property, which when a comma separated list is provided processes tasks from those workflow steps.
+
 
 | Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
 |--|--|--|--|--|
@@ -139,45 +170,6 @@ The engine client brings in parallel task processing over the configured backend
 ---
 
 <br>
-
-### c). Manager Client Configurations
-
-The manager client brings in task scheduling using the configured backend. Operations performed the Manager open these CURD actions via the configurable properties described below. While the TaskTide-ManagerClient can be used within ETL scripts to enqueue the next step for an active item, it's recommended to import through the file import ([example provided here](/tasktide/tasktide/src/main/resources/nestedTaskImports.txt)). 
-
-| Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
-|--|--|--|--|--|
-| Target | Defines the Target entity for required CRUD operation | Workflow/Step/WorkItem | tasktide.manager.target | -tgt/--target |
-| Target Step | Defines the target step | myStep | tasktide.manager.targetStep | -ts/--target-step |
-| Method | Defines manager method to run | Import/Export | tasktide.method | -m/--method |
-| Input File | Defines the full input file path for import | ~/myData.txt | tasktide.manager.inputFile | -i/--input-file |
-| Delimiter | Defines field delimiter of the input file | ',' OR '\t' | tasktide.manager.delimiter | -d/--delimiter |
-| Nested Delimiter | Defines delimiter of tasks if provided | ':' OR '/' | tasktide.manager.nestedDelimiter | -nd/--nested-delimiter |
-| Output File | Defines full file path for export JSON formatted | ~/myExport.txt | tasktide.manager.outputFile | -of/--output-file |
-| ItemId | ItemId over which the required ManagerAction is taken | SomeId | tasktide.manager.itemId | -ii/--item-id |
-| Query String | JSON formatted string | '{"Field": "Value"}' | tasktide.manager.queryString | -ii/--item-id |
-
-<br>
-
----
-
-<br>
-
-### d). ItemStore Mutex Configuration
-
-The [Mutex](/tasktide/mutex/README.md) library is used for as de-centralized operation queue for the [ItemStore Repository](/tasktide/itemstore/README.md).
-</p>
-
-| Property | Use | Example Value(s) | Config Parameter | Command-Line Parameter |
-|--|--|--|--|--|
-| Mutex Root Directory | Configures root directory for mutex | ~/tasktide/mutex | tasktide.mutex.rootDir | -mrd/--mutex-root-dir |
-| Mutex Stale File Threshold | Defines amount of miliseconds active leader is considered stale and deleted | 5 | tasktide.mutex.staleFileThreshold | -sft/--stale-file-threshold |
-| Mutex Retry Interval | Configures retry interval for TaskTide-Mutex | 550 | tasktide.mutex.retryInterval | -ri/--retry-interval |
-| Mutex Start Jitter | Configures minimum milliseconds wait time | 10-300L | tasktide.mutex.startJitter| -sj/--start-jitter |
-| Mutex End Jitter | Configures maximum milliseconds wait time | 301-500L | tasktide.mutex.endJitter| -ej/--end-jitter |
-| Min Random Long | Configures value for maximum random long | 10-300L | tasktide.mutex.minRandomLong | -minri/--min-random-long |
-| Max Random Long | Configures value for maximum random long | 301-500L | tasktide.mutex.maxRandomLong | -maxri/--max-random-long |
-
----
 
 ### e). Web API
 

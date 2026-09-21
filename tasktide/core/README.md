@@ -1,6 +1,6 @@
 # TaskTide - CoreLib
 
-Provides the model entities for the "[TaskTide System](/docs/assets/tasktide-arch.png)", and their persistence to configured backend (ie Daemonless RocksDB/SQLite, Relational, NoSQL) through type constrained repository, and service ambassador pattern. The entity classes for TaskTide are summarized below, data model centric approach served to simplify the design of the "[TaskTide Engine Library](/tasktide/engine/README.md)", "[TaskTide WebAPI](/tasktide/api/README.md)", and "[TaskTide Client Appilcation](/tasktide/tasktide/README.md)" views.
+Provides the model entities for the "[TaskTide System](/docs/assets/tasktide-arch.png)", and their persistence to configured backend (ie embedded RocksDB/SQLite, Relational, NoSQL) through type constrained repository, and service ambassador pattern. The entity classes for TaskTide are summarized below, data model centric approach served to simplify the design of the "[TaskTide Engine Library](/tasktide/engine/README.md)", "[TaskTide WebAPI](/tasktide/api/README.md)", and "[TaskTide Client Appilcation](/tasktide/tasktide/README.md)" views.
 
 <br>
 
