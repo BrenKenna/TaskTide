@@ -6,15 +6,21 @@
 **Date:** `<YYYY-MM-DD>`  
 **Release type:** `<feature | bugfix | breaking | maintenance>`
 
+---
+
 ### Summary
 
 <Brief description of what this release accomplishes and why it is being released.>
+
+---
 
 ### Highlights
 
 - <Highlight>
 - <Highlight>
 - <Highlight>
+
+---
 
 ### Notes for next version
 
