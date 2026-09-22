@@ -107,7 +107,6 @@ public class ImportCommand extends AbstractCommand{
                 }
                 catch (IOException ex) {
                     LOGGER.error("Error during importing process, displaying stack trace:\t'{}'", ex);
-                    ex.printStackTrace();
                     return false;
                 }
             }
@@ -336,8 +335,7 @@ public class ImportCommand extends AbstractCommand{
             return output;
         }
         catch ( IOException ex ) {
-            LOGGER.error("Error encountered during read '{}', displaying full stack trace", ex.getMessage());
-            ex.printStackTrace();
+            LOGGER.error("Error encountered during read '{}'\n\n", ex);
             return new ArrayList<>();
         }
     }
@@ -372,8 +370,7 @@ public class ImportCommand extends AbstractCommand{
             return tasks;
         }
         catch ( IOException ex ) {
-            LOGGER.error("Error encountered during reading of '{}', displaying full stack trace", ex);
-            ex.printStackTrace();
+            LOGGER.error("Error encountered during reading of '{}'\n\n", ex);
             return new ArrayList<>();
         }
     }
@@ -410,8 +407,7 @@ public class ImportCommand extends AbstractCommand{
             return tasks;
         }
         catch ( Exception ex ) {
-            LOGGER.error("Error encountered during reading of '{}', displaying full stack trace", ex);
-            ex.printStackTrace();
+            LOGGER.error("Error encountered during reading of '{}'\n\n", ex);
             return new ArrayList<>();
         }
     }

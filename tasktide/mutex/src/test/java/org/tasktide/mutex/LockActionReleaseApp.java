@@ -28,6 +28,7 @@ import java.nio.file.StandardOpenOption;
 import org.tasktide.mutex.exceptions.MutexCheckedException;
 
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
+import org.tasktide.mutex.utils.MutexConstants;
 
 import org.tasktide.mutex.utils.MutexFilesUtils;
 import org.tasktide.mutex.utils.MutexLabellingUtils;
@@ -86,7 +87,7 @@ public class LockActionReleaseApp {
         
         // Acquire lock
         LOGGER.info("APP-Acquring lock");
-        MutexFilesUtils.waitJitterTime();
+        MutexConstants.waitOverJitter();
         try {
             MutexOrchestrator.tryAcquireUntilSuccess();
             
@@ -106,7 +107,7 @@ public class LockActionReleaseApp {
             LOGGER.info("APP-Lock released, test complete");
         }
         catch ( Exception ex ) {
-            LOGGER.error("Unable to acquire lock exiting:\n\n'{}'", ex);
+            LOGGER.error("Unable to acquire lock exiting:\n\n", ex);
         }
     }
 }

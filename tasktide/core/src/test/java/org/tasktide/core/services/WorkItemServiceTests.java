@@ -111,48 +111,11 @@ public class WorkItemServiceTests {
     }
 
     
-    
     /**
      * Test that a work item can be fetched 
      */
     @Test
     @Order(0)
-    public void canConstructWorkItemJsonService() {
-    
-        // Initialize data
-        logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
-        TaskTideService<WorkItem> workItemService;
-        RepositoryType repoType;
-        List<WorkItem> backend;
-        boolean assertionState;
-        
-        // Generate data
-        logger.info("Generating data for testing");
-        repoType = RepositoryType.JSON;
-        backend = List.of(
-            TestCaseBuilderUtility.makeTestWorkItem(),
-            TestCaseBuilderUtility.makeTestWorkItem(),
-            TestCaseBuilderUtility.makeTestWorkItem()
-        );
-        
-        // Setup requirements
-        logger.info("Configuring Service");
-        workItemService = ServiceFactory.makeWorkItemService(repoType, backend, "WorkItem-Service");
-        Map<String, String> map = workItemService.getRepo().getRepositoryMetaData();
-        logger.info("Displaying meta data for Json Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
-        assertionState = !map.isEmpty();
-        
-        // Log test state
-        logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
-        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
-    }
-    
-    
-    /**
-     * Test that a work item can be fetched 
-     */
-    @Test
-    @Order(1)
     public void canConstructWorkItemRocksDbService() {
     
         // Initialize data
@@ -193,7 +156,7 @@ public class WorkItemServiceTests {
      * Test that a work item can be fetched 
      */
     @Test
-    @Order(2)
+    @Order(1)
     public void canConstructWorkItemNoSqlService() {
     
         // Initialize data
@@ -229,12 +192,11 @@ public class WorkItemServiceTests {
     }
     
     
-    
     /**
      * Test that a work item can be fetched 
      */
     @Test
-    @Order(3)
+    @Order(2)
     public void canConstructWorkItemSqlService() {
     
         // Initialize data

@@ -391,7 +391,9 @@ public class MutexConstants {
                 Duration jitter = getRandomJitter();
                 Thread.sleep(jitter.toMillis());
             }
-            catch (Exception ex) {}
+            catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
         }
         else {
             throw new MutexUncheckedException("Durations must be initialized");

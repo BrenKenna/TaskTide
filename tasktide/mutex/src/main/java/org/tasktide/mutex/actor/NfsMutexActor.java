@@ -16,6 +16,7 @@
 package org.tasktide.mutex.actor;
 
 import java.nio.file.Path;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -236,16 +237,5 @@ public class NfsMutexActor extends InterProcessMutexActor {
     @Override
     public Mutex fetchActiveFieldValue() {
         return this.active;
-    }
-    
-    
-    @Override
-    public boolean lockedByActiveHost() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean lockedByActiveProcess() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

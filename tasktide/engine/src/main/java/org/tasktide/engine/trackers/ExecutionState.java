@@ -21,6 +21,7 @@ package org.tasktide.engine.trackers;
  * 
  * @author bkenna
  */
+@Deprecated
 public enum ExecutionState {
     
     QUEUED {

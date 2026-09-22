@@ -167,14 +167,13 @@ public class ComplexMutexOrchestratorTests {
                     "Lock acquired-1:\n'{}'",
                     MutexOrchestrator.fetchActive().toJsonDoc()
                 );
-                MutexFilesUtils.waitJitterTime();
+                MutexConstants.waitOverJitter();
                 LOGGER.info("Waited-1");
                 MutexOrchestrator.releaseLock();
                 LOGGER.info("Released-1");
             }
             catch (Exception ex) {
-                LOGGER.error("1-Error during Lock-Release:\n\n");
-                ex.printStackTrace();
+                LOGGER.error("1-Error during Lock-Release:\n\n", ex);
             }
         });
 
@@ -185,14 +184,13 @@ public class ComplexMutexOrchestratorTests {
                     "Lock acquired-2:\n'{}'",
                     MutexOrchestrator.fetchActive().toJsonDoc()
                 );
-                MutexFilesUtils.waitJitterTime();
+                MutexConstants.waitOverJitter();
                 LOGGER.info("Waited-2");
                 MutexOrchestrator.releaseLock();
                 LOGGER.info("Released-2");
             }
             catch (Exception ex) {
-                LOGGER.error("2-Error during Lock-Release:\n\n");
-                ex.printStackTrace();
+                LOGGER.error("2-Error during Lock-Release:\n\n", ex);
             }
         });
 

@@ -34,6 +34,7 @@ import org.tasktide.core.model.workitem.WorkItem;
  * @param <T> of TaskTideModel 
  * @author bkenna
  */
+@Deprecated
 public class TaskTracker<T extends TaskTideModel<T>> {
     
     // Map of task states

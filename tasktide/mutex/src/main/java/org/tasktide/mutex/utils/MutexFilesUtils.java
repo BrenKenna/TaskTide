@@ -157,7 +157,6 @@ public class MutexFilesUtils {
     /**
      * Enqueue lock request
      * 
-     * 
      * @param mutex
      * @return boolean
      */
@@ -174,8 +173,8 @@ public class MutexFilesUtils {
                 return true;
             }
             
-            catch (Exception ex) {
-                ex.printStackTrace();
+            catch (IOException ex) {
+                LOGGER.warn(ex);
                 return false;
             }
         }
@@ -205,8 +204,8 @@ public class MutexFilesUtils {
             return true;
         }
         
-        catch (Exception ex) {
-            ex.printStackTrace();
+        catch (IOException ex) {
+            LOGGER.warn(ex);
             return false;
         }
     }
@@ -243,53 +242,16 @@ public class MutexFilesUtils {
         
         // Randomly stagger time before removing host file 
         try {
-            Thread.sleep(MutexConstants.getRandomJitter().toMillis());
+            MutexConstants.waitOverJitter();
             Files.deleteIfExists(mutex.getHostFile());
             return true;
         }
 
         // Otherwise false
-        catch (Exception ex) {
+        catch (IOException ex) {
+            LOGGER.warn(ex);
             return false;
         }
-    }
-    
-    
-    /**
-     * Wait for random jitter time
-     * 
-     * @return boolean
-     */
-    public static boolean waitJitterTime() {
-        // long procId = ProcessHandle.current().pid();
-        long value = MutexConstants.getRandomJitter().toMillis();
-        // LOGGER.debug("Process-{} waiting '{}'ms", procId, value);
-        try {
-            TimeUnit.MILLISECONDS.sleep(value);
-            // LOGGER.debug("Process-{} waiting complete '{}'ms", procId, value);
-            return true;
-        }
-        catch (Exception ex) {
-            // LOGGER.debug("Process-{} waiting complete '{}'ms", procId, value);
-            return false;
-        } 
-    }
-    
-    
-    /**
-     * Wait for random jitter time
-     * 
-     * @param time
-     * @return boolean
-     */
-    public static boolean waitJitterTime(long time) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(time);
-            return true;
-        }
-        catch (Exception ex) {
-            return false;
-        } 
     }
     
     
@@ -304,7 +266,7 @@ public class MutexFilesUtils {
             Files.deleteIfExists(target);
             return true;
         }
-        catch (Exception ex) {
+        catch (IOException ex) {
             return false;
         }
     }
@@ -328,8 +290,8 @@ public class MutexFilesUtils {
             return true;
         }
         
-        catch (Exception ex) {
-            ex.printStackTrace();
+        catch (IOException ex) {
+            LOGGER.warn(ex);
             return false;
         }
     }
@@ -458,7 +420,7 @@ public class MutexFilesUtils {
         String nodeProcId = MutexLabellingUtils.getNodeProcId();
             
         // Set election file
-        MutexFilesUtils.waitJitterTime();
+        MutexConstants.waitOverJitter();
         FileUtility.createDirectory(confirmDir);
         Path confirmFile = confirmDir.resolve(
             System.currentTimeMillis() + 
@@ -479,8 +441,8 @@ public class MutexFilesUtils {
             return true;
         }
         
-        catch (Exception ex) {
-            ex.printStackTrace();
+        catch (IOException ex) {
+            LOGGER.warn(ex);
             return false;
         }
     }

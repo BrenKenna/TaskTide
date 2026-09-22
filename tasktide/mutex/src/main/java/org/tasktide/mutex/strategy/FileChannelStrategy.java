@@ -22,6 +22,9 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.file.Path;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.tasktide.mutex.utils.FileUtility;
 
 import org.tasktide.mutex.model.HostLock;
@@ -29,10 +32,10 @@ import org.tasktide.mutex.model.HostLockFactory;
 import org.tasktide.mutex.model.Mutex;
 import org.tasktide.mutex.model.MutexFileType;
 import org.tasktide.mutex.model.MutexState;
-import org.tasktide.mutex.utils.MutexFilesUtils;
 
 // For JavaDoc
 import org.tasktide.mutex.actor.FileChannelActor;
+import org.tasktide.mutex.utils.MutexConstants;
 
 
 /**
@@ -42,6 +45,8 @@ import org.tasktide.mutex.actor.FileChannelActor;
  * @author Brendan Kenna
  */
 public class FileChannelStrategy extends MutexStrategy {
+    
+    private final Logger LOGGER = LogManager.getLogger(FileChannelStrategy.class);
 
     /**
      * Constructs strategy for implementing
@@ -68,7 +73,7 @@ public class FileChannelStrategy extends MutexStrategy {
         }
 
         // Fetch file
-        MutexFilesUtils.waitJitterTime();
+        MutexConstants.waitOverJitter();
         Path targetFile = mutex.getFileForType(MutexFileType.HOST_FILE);
         HostLock hostLock = HostLockFactory.create(targetFile);
         mutex.setHostLock(hostLock);
@@ -86,7 +91,7 @@ public class FileChannelStrategy extends MutexStrategy {
 
             // Return success flag
             mutex.setState(MutexState.LOCKED);
-            MutexFilesUtils.waitJitterTime();
+            MutexConstants.waitOverJitter();
             return true;
         }
         
@@ -123,13 +128,13 @@ public class FileChannelStrategy extends MutexStrategy {
             }
 
             // Return closure state
-            MutexFilesUtils.waitJitterTime();
+            MutexConstants.waitOverJitter();
             FileUtility.dropFile(targetFile);
             return true;
         }
         
         catch (IOException ex) {
-            ex.printStackTrace();
+            LOGGER.warn(ex);
             return false;
         }
     }

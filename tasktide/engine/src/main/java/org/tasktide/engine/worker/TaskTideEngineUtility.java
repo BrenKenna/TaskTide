@@ -37,15 +37,22 @@ import org.tasktide.engine.trackers.FutureTrackers;
  */
 public class TaskTideEngineUtility {
     
+    
     /**
      * Wait required number of seconds
      * 
-     * @param seconds
+     * @param sleepTime
      * @return boolean
      */
-    public static boolean waitSeconds(int seconds) {
-        try {TimeUnit.SECONDS.sleep(seconds); return true;}
-        catch(InterruptedException ex) {return false;}
+    public static boolean wait(TimeUnit units, long sleepTime) {
+        try {
+            units.sleep(sleepTime);
+            return true;
+        }
+        catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+            return false;
+        }
     }
     
 
@@ -55,6 +62,7 @@ public class TaskTideEngineUtility {
      * @param expected
      * @param logger 
      */
+    @Deprecated
     public static void waitOnExecutorTrackerWorkItem(int expected, Logger logger) {
         
         // Initialize vars
@@ -90,7 +98,7 @@ public class TaskTideEngineUtility {
                 "Letting '{}'ms elapse for state monitoring of ExecutorServiceTracker:\tTask count = '{}'", 
                 sleepTime, FutureTrackers.WORK_ITEM_TRACKER.taskCount()
             );
-            try {TimeUnit.MILLISECONDS.sleep(sleepTime);} catch(InterruptedException ex) {Thread.currentThread().interrupt();}
+            TaskTideEngineUtility.wait(TimeUnit.MILLISECONDS, sleepTime);
             
             // Fetch summary
             currentDone = FutureTrackers.WORK_ITEM_TRACKER.countDone();
@@ -119,6 +127,7 @@ public class TaskTideEngineUtility {
      * @param workload
      * @return int
      */
+    @Deprecated
     public static int countNotActiveItemTask(List<ItemTask> workload) {
         return (int) workload.stream()
             .parallel()
@@ -137,13 +146,14 @@ public class TaskTideEngineUtility {
      * @param tasks
      * @return int
      */
+    @Deprecated
     public static int countNotActiveWorkItem(List<WorkItem> tasks) {
         return (int) tasks
             .stream()
             .parallel()
             .mapToInt( elm -> {
-                    Collection<ItemTask> itemTasks = elm.getWorkload().getTaskMap().values();
-                    return countNotActiveItemTask(new ArrayList<>(itemTasks));
+                Collection<ItemTask> itemTasks = elm.getWorkload().getTaskMap().values();
+                return countNotActiveItemTask(new ArrayList<>(itemTasks));
             })
             .sum();
     }
@@ -155,6 +165,7 @@ public class TaskTideEngineUtility {
      * @param workload
      * @param logger 
      */
+    @Deprecated
     public static void fetchExecutionTimesWorkItem(List<WorkItem> workload, Logger logger) {
         for ( WorkItem item : workload ) {
             System.out.println("\n\n========= Analysing WorkItem:\t'" + item.getId() + "'=============\n\n");
@@ -171,6 +182,7 @@ public class TaskTideEngineUtility {
      * @param workload 
      * @param logger  
      */
+    @Deprecated
     public static void fetchExecutionTimes(List<ItemTask> workload, Logger logger) {
         String output = "\n\n";
         for (ItemTask task : workload) {

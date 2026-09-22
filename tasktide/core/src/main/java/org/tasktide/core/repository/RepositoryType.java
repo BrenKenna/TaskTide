@@ -52,10 +52,6 @@ import org.tasktide.core.repository.jpa_repo.JpaJobEnvironmentRepository;
 import org.tasktide.core.repository.jpa_repo.JpaMetricDataRepository;
 import org.tasktide.core.repository.jpa_repo.JpaMetricProfileRepository;
 
-import org.tasktide.core.repository.json_repo.JsonStepRepository;
-import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
-import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
-
 import org.tasktide.core.repository.template_repo.TemplateJobEnvironmentRepository;
 import org.tasktide.core.repository.template_repo.TemplateMetricDataRepository;
 import org.tasktide.core.repository.template_repo.TemplateMetricProfileRepository;
@@ -116,48 +112,6 @@ public enum RepositoryType {
                 return (TemplateRepository<T>) new TemplateJobEnvironmentRepository(template, collectionName);
             } else {
                 throw new IllegalArgumentException("Unsupported model type for Template repository: " + modelType.getSimpleName());
-            }
-        }
-    },
-    
-    JSON {
-        @Override
-        public boolean isRepository(String query) {
-            return "json".equals(query.toLowerCase());
-        }
-
-        @Override
-        public boolean isRepository(RepositoryType query) {
-            return JSON == query;
-        }
-
-        @Override
-        public String toString() {
-            return "JSON";
-        }
-
-        /**
-         * Create targeted {@link TaskTideRepository}-{@link JsonRepository} of
-         * {@link Workflow}, {@link Step}, {@link WorkItem}
-         *
-         * @param <T>
-         * @param modelType
-         * @param backend
-         * @param collectionName
-         *
-         * @return {@link JsonRepository}-{@link TaskTideModel of {@link Workflow}, {@link Step}, {@link WorkItem}
-         */
-        @SuppressWarnings("unchecked")
-        @Override
-        public <T extends TaskTideModel<T>> JsonRepository<T> createRepository(Class<T> modelType, Object backend, String collectionName) {
-            if (modelType.equals(Workflow.class)) {
-                return (JsonRepository<T>) new JsonWorkflowRepository((List<Workflow>) backend, collectionName);
-            } else if (modelType.equals(Step.class)) {
-                return (JsonRepository<T>) new JsonStepRepository((List<Step>) backend, collectionName);
-            } else if (modelType.equals(WorkItem.class)) {
-                return (JsonRepository<T>) new JsonWorkItemRepository((List<WorkItem>) backend, collectionName);
-            } else {
-                throw new IllegalArgumentException("Unsupported model type for JSON repository: " + modelType.getSimpleName());
             }
         }
     },

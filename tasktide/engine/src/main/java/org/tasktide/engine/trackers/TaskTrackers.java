@@ -24,6 +24,7 @@ import org.tasktide.core.model.workitem.WorkItem;
  * 
  * @author bkenna
  */
+@Deprecated
 public final class TaskTrackers {
     
     // Attributes

@@ -79,8 +79,7 @@ public class AnnotationCommandProcessor {
             return lineNumber;
         }
         catch (IOException ex) {
-            LOGGER.error("Error during processing:\t'{}'", ex.getMessage());
-            ex.printStackTrace();
+            LOGGER.error("Error during processing:\t'{}'", ex);
             return -1;
         }
     }

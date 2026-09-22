@@ -94,27 +94,10 @@ public class TaskTide {
         // Otherwise show error
         catch (Exception ex) {
             LOGGER.fatal(
-                "Exiting on fatal error:\t'{}'",
-                ex.toString()
+                "Exiting on fatal error:\n\n'{}'",
+                ex
             );
-            ex.printStackTrace();
             System.exit(1);
         }
-    }
-    
-    
-    
-    /**
-     * Parse stack trace from exception into string
-     * 
-     * @param ex
-     * @return String
-     */
-    private static String parseStackTraceToString(Exception ex) {
-        String output = "";
-        for ( StackTraceElement elm : ex.getStackTrace() ) {
-            output += elm.toString() + "\n";
-        }
-        return output;
     }
 }

@@ -136,7 +136,7 @@ public class SimpleMutexStrategyTests {
         }
         
         // Let time pass then release lock
-        MutexFilesUtils.waitJitterTime();
+        MutexConstants.waitOverJitter();
         if ( ELECTION.release(mutex) ) {
             LOGGER.info(
                 "Lock successfully applied\n'{}'",
@@ -194,7 +194,7 @@ public class SimpleMutexStrategyTests {
         }
         
         // Let time pass then release lock
-        MutexFilesUtils.waitJitterTime();
+        MutexConstants.waitOverJitter();
         if ( FILE_CHANNEL.release(mutex) ) {
             LOGGER.info(
                 "Lock successfully applied\n'{}'",

@@ -41,6 +41,7 @@ import org.tasktide.core.model.task.ItemTask;
  * @param <T> of {@link TaskTideModel} of {@link WorkItem}, {@link ItemTask}
  * @author bkenna
  */
+@Deprecated
 public class ExecutorServiceTracker<T extends TaskTideModel<T>> {
     
     // Attributes

@@ -108,46 +108,13 @@ public class StepServiceTests {
     public void tearDown() {
         logger.info("\n\n================ Terminating Test ================\n");
     }
-
-    
-    
-    /**
-     * Test that a work item can be fetched 
-     */
-    @Test
-    @Order(0)
-    public void canConstructStepJsonService() {
-    
-        // Initialize data
-        logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
-        TaskTideService<Step> stepService;
-        RepositoryType repoType;
-        List<Step> backend;
-        boolean assertionState;
-        
-        // Generate data
-        logger.info("Generating data for testing");
-        repoType = RepositoryType.JSON;
-        backend = TestCaseBuilderUtility.makeTestStepList();
-        
-        // Setup requirements
-        logger.info("Configuring Service");
-        stepService = ServiceFactory.makeStepService(repoType, backend, "Step-Service");
-        Map<String, String> map = stepService.getRepo().getRepositoryMetaData();
-        logger.info("Displaying meta data for Json Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
-        assertionState = !map.isEmpty();
-        
-        // Log test state
-        logger.info("\n\n================ Construct WorkItemService-JSON From Factory Test ================\n");
-        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
-    }
     
     
     /**
      * Test that a step can be fetched 
      */
     @Test
-    @Order(1)
+    @Order(0)
     public void canConstructStepRocksDbService() {
     
         // Initialize data
@@ -184,7 +151,7 @@ public class StepServiceTests {
      * Test that a step can be fetched 
      */
     @Test
-    @Order(2)
+    @Order(1)
     public void canConstructStepNoSqlService() {
     
         // Initialize data
@@ -220,7 +187,7 @@ public class StepServiceTests {
      * Test that a step can be fetched 
      */
     @Test
-    @Order(3)
+    @Order(2)
     public void canConstructStepSqlService() {
     
         // Initialize data

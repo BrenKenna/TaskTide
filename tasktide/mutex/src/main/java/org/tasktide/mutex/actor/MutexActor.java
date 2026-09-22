@@ -111,23 +111,6 @@ public interface MutexActor {
     
     
     /**
-     * Checks whether this host has locked
-     *  
-     * 
-     * @return boolean
-     */
-    public boolean lockedByActiveHost();
-    
-    
-    /**
-     * Checks whether locked by active process
-     * 
-     * @return boolean
-     */
-    public boolean lockedByActiveProcess();
-    
-    
-    /**
      * Return {@link MutexState}
      * 
      * @return {@link MutexState}

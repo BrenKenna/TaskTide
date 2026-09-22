@@ -15,9 +15,6 @@
  */
 package org.tasktide.mutex;
 
-import org.tasktide.mutex.actor.NfsMutexActor;
-import org.tasktide.mutex.actor.FileChannelActor;
-import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -56,6 +53,10 @@ import org.tasktide.mutex.exceptions.MutexCheckedException;
 import org.tasktide.mutex.utils.MutexConstants;
 import org.tasktide.mutex.actor.MutexActor;
 import org.tasktide.mutex.exceptions.MutexUncheckedException;
+
+import org.tasktide.mutex.actor.NfsMutexActor;
+import org.tasktide.mutex.actor.FileChannelActor;
+import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 
 
 /**
@@ -341,14 +342,13 @@ public class SimpleOrchestratorTests {
                     "Lock acquired-1:\n'{}'",
                     MutexOrchestrator.fetchActive().toJsonDoc()
                 );
-                MutexFilesUtils.waitJitterTime();
+                MutexConstants.waitOverJitter();
                 LOGGER.info("Waited-1");
                 MutexOrchestrator.releaseLock();
                 LOGGER.info("Released-1");
             }
-            catch (Exception ex) {
-                LOGGER.error("1-Error during Lock-Release:\n\n");
-                ex.printStackTrace();
+            catch (MutexCheckedException ex) {
+                LOGGER.error("1-Error during Lock-Release:\n\n", ex);
             }
         });
 
@@ -359,14 +359,13 @@ public class SimpleOrchestratorTests {
                     "Lock acquired-2:\n'{}'",
                     MutexOrchestrator.fetchActive().toJsonDoc()
                 );
-                MutexFilesUtils.waitJitterTime();
+                MutexConstants.waitOverJitter();
                 LOGGER.info("Waited-2");
                 MutexOrchestrator.releaseLock();
                 LOGGER.info("Released-2");
             }
-            catch (Exception ex) {
-                LOGGER.error("2-Error during Lock-Release:\n\n");
-                ex.printStackTrace();
+            catch (MutexCheckedException ex) {
+                LOGGER.error("2-Error during Lock-Release:\n\n", ex);
             }
         });
 
@@ -444,8 +443,7 @@ public class SimpleOrchestratorTests {
             verify(spies.getFileChannelMutex(), times(nWorkers)).acquire(any(Mutex.class));
         }
         catch (InterruptedException | ExecutionException | MutexCheckedException ex) {
-            LOGGER.error("Test failed with error");
-            ex.printStackTrace();
+            LOGGER.error("Test failed with error\n\n", ex);
         }
         
         // Log completion
