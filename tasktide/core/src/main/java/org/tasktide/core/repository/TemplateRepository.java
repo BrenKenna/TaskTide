@@ -16,13 +16,12 @@
 package org.tasktide.core.repository;
 
 import jakarta.nosql.Template;
+import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.model.CustomAnnotation;
 
 
 /**
@@ -123,6 +122,11 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> extends Abs
     @Override
     public List<T> findByField(String field, Object value) {
         
+        // Verify field before query
+        if ( !this.validateQueryFieldName(field)) {
+            return new ArrayList<>();
+        }
+        
         // Reduce to result set size
         if ( this.resultSetSize >= 1 ) {
             return template
@@ -156,6 +160,11 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> extends Abs
      */
     @Override
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        
+        // Verify fields before query
+        if ( !this.validateQueryFieldName(field) || !this.validateQueryFieldName(group) ) {
+            return new ArrayList<>();
+        }
         
         // Reduce to result set size
         if ( this.resultSetSize >= 1 ) {

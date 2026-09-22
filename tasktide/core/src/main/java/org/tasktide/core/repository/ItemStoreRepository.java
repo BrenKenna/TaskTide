@@ -17,6 +17,7 @@ package org.tasktide.core.repository;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import java.util.List;
@@ -39,16 +40,11 @@ import org.tasktide.itemstore.DbTarget;
  * @param <T> of {@link TaskTideModel}
  * @author bkenna
  */
-public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
+public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends AbstractRepository<T> {
 
     // Attributes
-    private final String collectionName;
-    private final Class<T> COLLECTION_CLASS;
     private final ItemStore repo;
     private final Jsonb JSON_BUILDER = JsonbBuilder.create();
-    protected final RepositoryType repoType;
-    protected int resultSetSize;
-    
     
     /**
      * Construct with {@link ItemStore}
@@ -58,10 +54,8 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
      * @param collectionName 
      */
     public ItemStoreRepository(ItemStore itemStore, Class<T> modelClass, String collectionName) {
-        this.COLLECTION_CLASS = modelClass;
+        super(modelClass, collectionName, RepositoryType.ITEMSTORE);
         this.repo = itemStore;
-        this.collectionName = collectionName;
-        this.repoType = RepositoryType.ITEMSTORE;
     }
     
     
@@ -331,6 +325,13 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
      */
     @Override
     public List<T> findByField(String field, Object value) {
+        
+        // Verify class field b4 query
+        if ( !this.validateQueryFieldName(field) ) {
+            return new ArrayList<>();
+        }
+        
+        // Query field
         return this.repo.getAll(DbTarget.MASTER)
             .stream()
             .parallel()
@@ -355,6 +356,11 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> implements
      */
     @Override
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        
+        // Verify fields b4 query
+        if ( !this.validateQueryFieldName(field) || !this.validateQueryFieldName(group) ) {
+            return new ArrayList<>();
+        }
         
         // Fetch repo and scan records
         return this.repo.getAll(DbTarget.MASTER)
