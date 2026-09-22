@@ -344,6 +344,7 @@ public class WorkItemRestResource {
      */
     @DELETE
     @Path("/drop/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response dropWorkItem(
         @PathParam("id") String id,
         @Context HttpHeaders reqHeader,

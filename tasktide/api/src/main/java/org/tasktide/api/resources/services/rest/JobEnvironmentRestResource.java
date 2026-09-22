@@ -21,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.ws.rs.Consumes;
 
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -28,11 +29,13 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.Response;
 
 import jakarta.ws.rs.core.HttpHeaders;
+import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.SecurityContext;
 import jakarta.ws.rs.core.UriInfo;
 import org.tasktide.api.utils.WebApiUtils;
@@ -79,6 +82,8 @@ public class JobEnvironmentRestResource {
      */
     @POST
     @Path("/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createJobEnvironment(
         JobEnvironment jobEnvironment,
         @Context HttpHeaders reqHeader,
@@ -128,6 +133,8 @@ public class JobEnvironmentRestResource {
      */
     @POST
     @Path("/import")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createJobEnvironments(
         List<JobEnvironment> jobEnvironments,
         @Context HttpHeaders reqHeader,
@@ -182,6 +189,7 @@ public class JobEnvironmentRestResource {
      */
     @GET
     @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response readJobEnvironment(
         @QueryParam("id") String id,
         @QueryParam("field") String field,
@@ -275,6 +283,7 @@ public class JobEnvironmentRestResource {
      */
     @DELETE
     @Path("/drop/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response dropJobEnvironment(
         @PathParam("id") String id,
         @Context HttpHeaders reqHeader,
@@ -323,6 +332,8 @@ public class JobEnvironmentRestResource {
      */
     @PUT
     @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response updateJobEnvironment(
         JobEnvironment jobEnvironment,
         @Context HttpHeaders reqHeader,

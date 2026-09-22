@@ -282,6 +282,7 @@ public class MetricProfileRestResource {
      */
     @DELETE
     @Path("/drop/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response dropMetricProfile(
         @PathParam("id") String id,
         @Context HttpHeaders reqHeader,
