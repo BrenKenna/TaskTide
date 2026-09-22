@@ -9,8 +9,8 @@
 [![Documentation](https://img.shields.io/badge/Documentation-docs.tasktide.org-violet)](https://docs.tasktide.org)
 [![API Reference](https://img.shields.io/badge/API%20Reference-JavaDoc-brown)](https://api-docs.tasktide.org)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21959893.svg)](https://doi.org/10.5281/zenodo.21959893)
-[![CI](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/BrenKenna/TaskTide/actions/workflows/tasktide-ci.yml)
-[![CD](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/BrenKenna/TaskTide/actions/workflows/tasktide-cd-dockerHub-publish.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/BrenKenna/TaskTide/tasktide-ci.yml?label=TaskTide-CI)](https://github.com/BrenKenna/TaskTide/actions/workflows/tasktide-ci.yml)
+[![CD](https://img.shields.io/github/actions/workflow/status/BrenKenna/TaskTide/tasktide-cd-dockerHub-publish.yml?label=TaskTide-CD)](https://github.com/BrenKenna/TaskTide/actions/workflows/tasktide-cd-dockerHub-publish.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-black)](https://github.com/BrenKenna/TaskTide/blob/main/LICENSE)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/BrenKenna/TaskTide/badge)](https://scorecard.dev/viewer/?uri=github.com/BrenKenna/TaskTide)
 
