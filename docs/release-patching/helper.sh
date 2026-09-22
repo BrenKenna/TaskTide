@@ -174,7 +174,7 @@ https://github.com/BrenKenna/TaskTide/actions/runs/35018523089/job/104548299555
 
 # Initialize required variables
 REPO="https://github.com/BrenKenna/TaskTide.git"
-COMMIT="24211ee"
+COMMIT="b6e4b9e07ff635bc42772098de6fc3fe389f3ee3"
 DATE="2026-09-16"
 VERSION="v0.9.2"
 
@@ -182,6 +182,21 @@ VERSION="v0.9.2"
 # Check sums and signs the local test zip
 cd docs/release-patching/
 
-HASH=$(openssl dgst -sha256 local-test-check.zip | awk '{print $2}')
-echo "$HASH local-test-check.zip" >> SHA256SUMS
-gpg --detach-sign --output local-test-check.zip.sig local-test-check.zip
+openssl dgst -sha256 * | \
+    cut -d \= -f 2,1 | \
+    sed -e 's/SHA2-256//g' -e 's/(//g' -e 's/)//g' -e 's/=//g' | \
+    grep -v "SHA256" \
+> SHA256SUMS
+
+gpg \
+    --detach-sign \
+    --output tasktide-0.9.2.zip.sig \
+    tasktide-0.9.2.zip
+
+
+# Upload release docs
+gh release \
+    upload \
+    $VERSION \
+    *
+
