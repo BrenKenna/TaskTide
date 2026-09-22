@@ -18,3 +18,4 @@ docs/release-patching/202*
 docs/documentation/container-spinup.sh
 tasktide/tasktide/summarize-manager-command.txt
 docker/tasktide.zip
+/docs/release-patching/v0.9.2

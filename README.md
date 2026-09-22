@@ -4,12 +4,13 @@
 
 # TaskTide
 
-[![Website](https://img.shields.io/badge/Website-tasktide.org-purple)](https://docs.tasktide.org)
+[![Website](https://img.shields.io/badge/Website-tasktide.org-purple)](https://tasktide.org)
 [![Maven Central](https://img.shields.io/maven-central/v/org.tasktide/tasktide)](https://central.sonatype.com/artifact/org.tasktide/tasktide)
 [![Documentation](https://img.shields.io/badge/Documentation-docs.tasktide.org-violet)](https://docs.tasktide.org)
 [![API Reference](https://img.shields.io/badge/API%20Reference-JavaDoc-brown)](https://api-docs.tasktide.org)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21959893.svg)](https://doi.org/10.5281/zenodo.21959893)
-[![build](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/BrenKenna/TaskTide/actions/workflows/gradle.yml)
+[![CI](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/BrenKenna/TaskTide/actions/workflows/tasktide-ci.yml)
+[![CD](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/BrenKenna/TaskTide/actions/workflows/tasktide-cd-dockerHub-publish.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-black)](https://github.com/BrenKenna/TaskTide/blob/main/LICENSE)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/BrenKenna/TaskTide/badge)](https://scorecard.dev/viewer/?uri=github.com/BrenKenna/TaskTide)
 
