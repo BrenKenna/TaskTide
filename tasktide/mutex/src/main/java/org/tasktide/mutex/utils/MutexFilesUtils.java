@@ -26,7 +26,6 @@ import java.io.IOException;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import org.apache.logging.log4j.LogManager;
@@ -266,7 +265,7 @@ public class MutexFilesUtils {
             Files.deleteIfExists(target);
             return true;
         }
-        catch (IOException ex) {
+        catch (Exception ex) {
             return false;
         }
     }

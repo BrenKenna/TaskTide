@@ -30,7 +30,6 @@ import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.model.CustomAnnotation;
-import org.tasktide.core.exceptions.TaskTideManagerUncheckedException;
 
 
 /**
@@ -315,20 +314,23 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
         }
 
         // Normalize query for class field comparison
-        // Dropping check because it could pass, fail broader
-        /*
+        // Initially dropped, but each collection is unique so keeping
         String standardQuery = query
             .toLowerCase()
             .replace(" ", "")
             .replace("-", "")
             .replace("-", "")
-            .replace(":", query)
-        .replace("", query);
-        */
+            .replace(":", "")
+        .replace("", "");
 
         // Check if queried field is present
         for ( Field field : this.COLLECTION_CLASS.getDeclaredFields() ) {
-            if ( field.getName().equals(query) ) {
+            String ref = field.getName().toLowerCase();
+            LOGGER.info(
+                "Checking reference '{}', against query '{}'",
+                ref, standardQuery
+            );
+            if ( ref.equals(standardQuery) ) {
                 return true;
             }
         }
