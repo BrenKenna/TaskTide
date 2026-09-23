@@ -1,6 +1,33 @@
 = ChangeLog
 :toc: auto
 
+== [v0.9.5]
+
+- Drops JsonRepository breaking changes.
+- Deprecates the Engine-TaskTracker
+- Explicitly declares JSON as contract for REST resources.
+- Refines and standardizes the use and handling of thread sleep.
+- Sanitizes query by field on AbstractRepository level for use across all instances. Improving security profile of JPA, and SQLite-ItemStore.
+- Tidies up "too broad exception" bugs, and system.out print statements.
+- Adds test code assembly to CI. So that it's included with the already present src assembly. Blocks future issues where test matrix start, but fail because the JsonRepository, or some other removed/adjusted dependency is missed by IDE.
+
+
+1). https://github.com/BrenKenna/TaskTide/security/code-scanning/5
+
+2). https://github.com/BrenKenna/TaskTide/security/code-scanning/4
+
+3). https://github.com/BrenKenna/TaskTide/security/code-scanning/3
+
+4). https://github.com/BrenKenna/TaskTide/security/code-scanning/2
+
+5). https://github.com/BrenKenna/TaskTide/security/code-scanning/1
+
+- Code quality improvements
+1). Improves handling of thread interruptions during sleep and backoff operations.
+2). Improves handling of optional values and cases where null represent legitimate absence.
+3). Improves exception handling and consistency across affected areas.
+
+
 
 == [v0.9.2]
 
