@@ -167,7 +167,7 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         LOGGER.info("Firiing test query by field against JobEnvironmentRestResource for:\t'{}'", JobType.LOCAL);
         this.requestCtx.activate();
         resp = this.target(methodPath)
-            .queryParam("field", "JobType")
+            .queryParam("field", "Job Type")
             .queryParam("value", JobType.LOCAL)
             .request()
                 .header("User-Agent", "JUnit-Test")
