@@ -16,6 +16,7 @@
 package org.tasktide.core.repository.template_repo;
 
 import jakarta.nosql.Template;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.repository.TemplateRepository;
@@ -39,6 +40,6 @@ public class TemplateJobEnvironmentRepository extends TemplateRepository<JobEnvi
         Template template,
         String collectionName
     ) {
-        super(template, JobEnvironment.class, collectionName);
+        super(TaskTideModelType.JOB_ENVIRONMENT, template, JobEnvironment.class, collectionName);
     }
 }

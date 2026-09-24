@@ -20,6 +20,7 @@ import jakarta.nosql.Template;
 import org.tasktide.core.repository.TemplateRepository;
 
 import org.tasktide.api.security_context.data_models.JobEnvironmentResourcePermission;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -40,6 +41,6 @@ public class TemplateJobEnvironmentResourcePermissionRepository extends Template
         Template template,
         String collectionName
     ) {
-        super(template, JobEnvironmentResourcePermission.class, collectionName);
+        super(TaskTideModelType.JOB_ENVIRONMENT, template, JobEnvironmentResourcePermission.class, collectionName);
     }
 }

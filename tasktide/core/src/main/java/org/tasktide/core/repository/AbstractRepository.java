@@ -27,6 +27,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideModelType;
 import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.model.CustomAnnotation;
@@ -44,17 +45,20 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
     protected final Class<T> COLLECTION_CLASS;
     protected final String collectionName;
     protected final RepositoryType repoType;
+    protected final TaskTideModelType modelType;
     protected int resultSetSize;
     
     
     /**
      * Construct with target model class, and collection name
      * 
+     * @param modelType
      * @param modelClass
      * @param collectionName
      * @param repoType
      */
-    public AbstractRepository(Class<T> modelClass, String collectionName, RepositoryType repoType) {
+    public AbstractRepository(TaskTideModelType modelType, Class<T> modelClass, String collectionName, RepositoryType repoType) {
+        this.modelType = modelType;
         this.COLLECTION_CLASS = modelClass;
         this.collectionName = collectionName;
         this.repoType = repoType;
@@ -326,7 +330,7 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
         // Check if queried field is present
         for ( Field field : this.COLLECTION_CLASS.getDeclaredFields() ) {
             String ref = field.getName().toLowerCase();
-            LOGGER.info(
+            LOGGER.debug(
                 "Checking reference '{}', against query '{}'",
                 ref, standardQuery
             );

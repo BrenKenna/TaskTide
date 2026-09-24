@@ -27,6 +27,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideModelType;
 import org.tasktide.core.TaskTideRepository;
 
 
@@ -47,12 +48,13 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> extends Abstract
     /**
      * Construct with target model class, and collection
      * 
+     * @param modelType
      * @param entityManager
      * @param clazz
      * @param collectionName
      */
-    public JpaRepository(EntityManager entityManager, Class<T> clazz, String collectionName) {
-        super(clazz, collectionName, RepositoryType.SQL);
+    public JpaRepository(TaskTideModelType modelType, EntityManager entityManager, Class<T> clazz, String collectionName) {
+        super(modelType, clazz, collectionName, RepositoryType.SQL);
         this.entityManager = entityManager;
     }
     

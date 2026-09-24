@@ -16,6 +16,7 @@
 package org.tasktide.core.repository.jpa_repo;
 
 import jakarta.persistence.EntityManager;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -37,6 +38,6 @@ public class JpaWorkItemRepository extends JpaRepository<WorkItem> {
      * @param collectionName 
      */
     public JpaWorkItemRepository(EntityManager backend, String collectionName) {
-        super(backend, WorkItem.class, collectionName);
+        super(TaskTideModelType.WORKITEM, backend, WorkItem.class, collectionName);
     }
 }

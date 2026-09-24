@@ -16,6 +16,7 @@
 package org.tasktide.core.repository.jpa_repo;
 
 import jakarta.persistence.EntityManager;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
@@ -39,6 +40,6 @@ public class JpaMetricDataRepository extends JpaRepository<MetricData> {
         EntityManager backend,
         String collectionName
     ) {
-        super(backend, MetricData.class, collectionName);
+        super(TaskTideModelType.METRIC_DATA, backend, MetricData.class, collectionName);
     }
 }

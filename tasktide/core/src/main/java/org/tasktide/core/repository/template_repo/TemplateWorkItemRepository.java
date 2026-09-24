@@ -15,9 +15,9 @@
  */
 package org.tasktide.core.repository.template_repo;
 
-import java.util.List;
 
 import jakarta.nosql.Template;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.repository.TemplateRepository;
 import org.tasktide.core.model.workitem.WorkItem;
@@ -40,6 +40,6 @@ public class TemplateWorkItemRepository extends TemplateRepository<WorkItem> {
         Template template,
         String collectionName
     ) {
-        super(template, WorkItem.class, collectionName);
+        super(TaskTideModelType.WORKITEM, template, WorkItem.class, collectionName);
     }
 }

@@ -26,6 +26,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideModelType;
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.CustomAnnotation;
 
@@ -49,12 +50,13 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
     /**
      * Construct with {@link ItemStore}
      * 
+     * @param modelType
      * @param itemStore
      * @param modelClass 
      * @param collectionName 
      */
-    public ItemStoreRepository(ItemStore itemStore, Class<T> modelClass, String collectionName) {
-        super(modelClass, collectionName, RepositoryType.ITEMSTORE);
+    public ItemStoreRepository(TaskTideModelType modelType, ItemStore itemStore, Class<T> modelClass, String collectionName) {
+        super(modelType, modelClass, collectionName, RepositoryType.ITEMSTORE);
         this.repo = itemStore;
     }
     

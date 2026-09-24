@@ -21,6 +21,7 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.JpaRepository;
 
 import org.tasktide.api.security_context.data_models.WorkflowResourcePermission;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -38,6 +39,6 @@ public class JpaWorkflowResourcePermissionRepository extends JpaRepository<Workf
      * @param collectionName 
      */
     public JpaWorkflowResourcePermissionRepository(EntityManager backend, String collectionName) {
-        super(backend, WorkflowResourcePermission.class, collectionName);
+        super(TaskTideModelType.WORKFLOW, backend, WorkflowResourcePermission.class, collectionName);
     }
 }

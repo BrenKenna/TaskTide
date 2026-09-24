@@ -26,6 +26,7 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.repository.TemplateRepository;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -45,7 +46,7 @@ public class TemplateWorkflowRepository extends TemplateRepository<Workflow> {
         Template template,
         String collectionName
     ) {
-        super(template, Workflow.class, collectionName);
+        super(TaskTideModelType.WORKFLOW, template, Workflow.class, collectionName);
     }
     
     

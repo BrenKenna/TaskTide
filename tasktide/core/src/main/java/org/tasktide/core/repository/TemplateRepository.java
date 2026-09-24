@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -39,12 +40,13 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> extends Abs
     /**
      * Construct with target model class, and collection name
      * 
+     * @param modelType
      * @param template
      * @param modelClass
      * @param collectionName 
      */
-    public TemplateRepository(Template template, Class<T> modelClass, String collectionName) {
-        super(modelClass, collectionName, RepositoryType.NOSQL);
+    public TemplateRepository(TaskTideModelType modelType, Template template, Class<T> modelClass, String collectionName) {
+        super(modelType, modelClass, collectionName, RepositoryType.NOSQL);
         this.template = template;
     }
 

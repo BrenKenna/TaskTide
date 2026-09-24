@@ -84,8 +84,8 @@ public class MetricData implements TaskTideModel<MetricData> {
     private String units;
     
     // Type of metric data
-    @jakarta.nosql.Column("Type")
-    @jakarta.persistence.Column(name = "Type")
+    @jakarta.nosql.Column("MetricType")
+    @jakarta.persistence.Column(name = "MetricType")
     @JsonbProperty("Metric Type")
     private MetricType metricType;
     

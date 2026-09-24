@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.repository.itemstore_repo;
 
+import org.tasktide.core.TaskTideModelType;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.itemstore.ItemStore;
@@ -40,6 +41,6 @@ public class ItemStoreMetricDataRepository extends ItemStoreRepository<MetricDat
        ItemStore itemStore,
        String collectionName
     ) {
-        super(itemStore, MetricData.class, collectionName);
+        super(TaskTideModelType.METRIC_DATA, itemStore, MetricData.class, collectionName);
     }
 }
