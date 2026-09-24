@@ -253,7 +253,7 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
     /**
      * Get repository type
      * 
-     * @return RepositoryType
+     * @return {@link RepositoryType}
      */
     public RepositoryType getRepoType() {
         return repoType;
@@ -285,7 +285,7 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
     /**
      * Method to evaluate field members
      * 
-     * @param key
+     * @param query
      * @return boolean
      */
     public boolean validateQueryFieldName(String query) {

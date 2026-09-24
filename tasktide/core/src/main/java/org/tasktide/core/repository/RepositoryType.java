@@ -247,8 +247,7 @@ public enum RepositoryType {
      * Abstract method to allow each enumeration to define how to create
      * targeted {@link TaskTideRepository} of
      * {@link Workflow}, {@link Step}, {@link WorkItem}. For for
-     * {@link TemplateRepository}, {@link ItemStoreRepository}, or
-     * {@link JsonRepository}
+     * {@link TemplateRepository}, {@link ItemStoreRepository}
      *
      * @param <T>
      * @param modelType

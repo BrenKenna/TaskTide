@@ -422,7 +422,7 @@ public class TaskTideEngineWorker implements Cloneable {
                 WorkerTask task = new WorkerTask("Task-" + i, future);
                 this.tasks.add(task);
                 LOGGER.info("Engine 'Worker-{}' started", i);
-                TaskTideEngineUtility.wait(TimeUnit.MINUTES, RAND.nextInt(0, 11));
+                TaskTideEngineUtility.wait(TimeUnit.MILLISECONDS, RAND.nextInt(10, 500));
             }
             if ( this.policy.workflowMode() ) {
                 LOGGER.info(

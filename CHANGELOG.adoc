@@ -1,8 +1,10 @@
 = ChangeLog
 :toc: auto
 
+
 == [v0.9.5]
 
+- Adds TaskTideModelType as an attribute on the AbstractRepository.
 - Drops JsonRepository breaking changes.
 - Deprecates the Engine-TaskTracker
 - Explicitly declares JSON as contract for REST resources.
