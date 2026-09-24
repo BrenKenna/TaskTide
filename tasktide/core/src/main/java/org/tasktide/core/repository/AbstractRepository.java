@@ -330,7 +330,7 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
         // Check if queried field is present
         for ( Field field : this.COLLECTION_CLASS.getDeclaredFields() ) {
             String ref = field.getName().toLowerCase();
-            LOGGER.debug(
+            LOGGER.info(
                 "Checking reference '{}', against query '{}'",
                 ref, standardQuery
             );

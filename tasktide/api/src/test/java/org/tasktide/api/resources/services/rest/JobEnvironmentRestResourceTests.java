@@ -46,6 +46,7 @@ import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestUtils;
 
 import org.tasktide.api.auth.AuthenicationFilter;
+import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.JobType;
@@ -165,9 +166,13 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         
         // Fetch mock token
         LOGGER.info("Firiing test query by field against JobEnvironmentRestResource for:\t'{}'", JobType.LOCAL);
+        JobEnvironment jobEnvironment = TestUtils.fetchJobEnv();
+        TaskTideServiceManager
+            .fetchJobEnvironmentService()
+        .appendModel(jobEnvironment);
         this.requestCtx.activate();
         resp = this.target(methodPath)
-            .queryParam("field", "Job Type")
+            .queryParam("field", "JobType")
             .queryParam("value", JobType.LOCAL)
             .request()
                 .header("User-Agent", "JUnit-Test")
