@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.repository.itemstore_repo;
 
+import org.tasktide.core.TaskTideModelType;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.itemstore.ItemStore;
@@ -41,6 +42,6 @@ public class ItemStoreJobEnvironmentRepository extends ItemStoreRepository<JobEn
        ItemStore itemStore,
        String collectionName
     ) {
-        super(itemStore, JobEnvironment.class, collectionName);
+        super(TaskTideModelType.JOB_ENVIRONMENT, itemStore, JobEnvironment.class, collectionName);
     }
 }

@@ -15,13 +15,21 @@
  */
 package org.tasktide.core.repository;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideModelType;
 import org.tasktide.core.TaskTideRepository;
+
 import org.tasktide.core.model.CustomAnnotation;
 
 
@@ -33,20 +41,24 @@ import org.tasktide.core.model.CustomAnnotation;
 public abstract class AbstractRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
 
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(AbstractRepository.class);
     protected final Class<T> COLLECTION_CLASS;
     protected final String collectionName;
     protected final RepositoryType repoType;
+    protected final TaskTideModelType modelType;
     protected int resultSetSize;
     
     
     /**
      * Construct with target model class, and collection name
      * 
+     * @param modelType
      * @param modelClass
      * @param collectionName
      * @param repoType
      */
-    public AbstractRepository(Class<T> modelClass, String collectionName, RepositoryType repoType) {
+    public AbstractRepository(TaskTideModelType modelType, Class<T> modelClass, String collectionName, RepositoryType repoType) {
+        this.modelType = modelType;
         this.COLLECTION_CLASS = modelClass;
         this.collectionName = collectionName;
         this.repoType = repoType;
@@ -155,6 +167,12 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
             String field, Object value, String group,
             Object groupVal, String annoKey, Object annoValue
     ) {
+        // Verify field before query
+        if ( !this.validateQueryFieldName(field) || !this.validateQueryFieldName(group) ) {
+            return new ArrayList<>();
+        }
+        
+        // Query field
         return this.findByFieldForGroup(field, value, group, groupVal)
             .stream()
             .parallel()
@@ -182,6 +200,13 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
      */
     @Override
     public List<T> findByFieldForGroupWithAnno(String field, Object value, String group, Object groupVal, CustomAnnotation anno) {
+        
+        // Validate fields b4 query
+        if ( !this.validateQueryFieldName(field) || !this.validateQueryFieldName(group) ) {
+            return new ArrayList<>();
+        }
+        
+        // Query field
         return this.findByFieldForGroup(field, value, group, groupVal)
             .stream()
             .parallel()
@@ -228,7 +253,7 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
     /**
      * Get repository type
      * 
-     * @return RepositoryType
+     * @return {@link RepositoryType}
      */
     public RepositoryType getRepoType() {
         return repoType;
@@ -254,5 +279,71 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
     @Override
     public void setResultSetSize(int nRecords) {
         this.resultSetSize = nRecords;
+    }
+    
+    
+    /**
+     * Method to evaluate field members
+     * 
+     * @param query
+     * @return boolean
+     */
+    public boolean validateQueryFieldName(String query) {
+
+        // Checks query field is not empty
+        if ( query == null || query.isBlank() ) {
+            //throw TaskTideManagerUncheckedException("Error, fields cannot be empty strings");
+            LOGGER.warn("Error, fields cannot be empty strings");
+            return false; // so that the server does not crash, but moves to next
+        }
+
+        // Restricts size
+        if ( query.length() > 20 ) {
+            // throw TaskTideManagerUncheckedException("Error, querired field size is longer than TaskTide uses");
+            LOGGER.warn("Error, querired field size is longer than TaskTide uses");
+            return false; // so that the server does not crash, but moves to next
+        }
+
+        // Check suspicous attributes
+        if (
+           query.contains(";") ||
+           query.contains("\n") ||
+           query.contains("<") ||
+           query.contains(">") ||
+           query.contains("\\")
+        ) {
+            // throw TaskTideManagerUncheckedException("Error, suspicous queried field detected");
+            LOGGER.warn("Error, suspicous queried field detected");
+            return false; // so that the server does not crash, but moves to next
+        }
+
+        // Normalize query for class field comparison
+        // Initially dropped, but each collection is unique so keeping
+        String standardQuery = query
+            .toLowerCase()
+            .replace(" ", "")
+            .replace("-", "")
+            .replace("-", "")
+            .replace(":", "")
+        .replace("", "");
+
+        // Check if queried field is present
+        for ( Field field : this.COLLECTION_CLASS.getDeclaredFields() ) {
+            String ref = field.getName().toLowerCase();
+            LOGGER.info(
+                "Checking reference '{}', against query '{}'",
+                ref, standardQuery
+            );
+            if ( ref.equals(standardQuery) ) {
+                return true;
+            }
+        }
+        
+        // Otherwise log failure
+        LOGGER.warn(
+            "Invalid query field '{}' against '{}'",
+            query, this.COLLECTION_CLASS.getName()
+        );
+        return false;
     }
 }

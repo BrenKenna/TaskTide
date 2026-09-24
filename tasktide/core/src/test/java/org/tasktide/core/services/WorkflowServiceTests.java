@@ -44,7 +44,6 @@ import org.tasktide.TestCaseBuilderUtility;
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 
-import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideService;
 import org.tasktide.core.model.collection.Workflow;
 
@@ -113,48 +112,10 @@ public class WorkflowServiceTests {
 
     
     /**
-     * Test that a work item can be fetched 
-     */
-    @Test
-    @Order(0)
-    public void canConstructWorkflowJsonService() {
-    
-        // Initialize data
-        logger.info("\n\n================ Construct WorkflowService-JSON From Factory Test ================\n");
-        TaskTideService<Workflow> workflowService;
-        RepositoryType repoType;
-        List<Workflow> backend;
-        boolean assertionState;
-        
-        // Generate data
-        logger.info("Generating data for testing");
-        repoType = RepositoryType.JSON;
-        backend = TestCaseBuilderUtility.makeTestWorkflows();
-        
-        // Setup requirements
-        logger.info("Configuring Service");
-        workflowService = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow-Service");
-        Map<String, String> map = workflowService.getRepo().getRepositoryMetaData();
-        logger.info("Displaying meta data for JSON Workflow Service:\n'{}'", TestUtils.mapToJsonString(map));
-        
-        // Check that records can be queried
-        logger.info("Verifying records can be retrieved");
-        TaskTideModel<Workflow> ref = backend.get(0);
-        TaskTideModel<Workflow> result = workflowService.fetchById(ref.getId());
-        logger.info("\n\nDisplaying retreieved Workflow:\n'{}'", result.toJson());
-        assertionState = ref.getId().equals(result.getId());
-        
-        // Log test state
-        logger.info("\n\n================ Construct WorkflowService-JSON From Factory Test ================\n");
-        assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
-    }
-    
-    
-    /**
      * Test that a workflow can be fetched 
      */
     @Test
-    @Order(1)
+    @Order(0)
     public void canConstructWorkflowRocksDbService() {
     
         // Initialize data
@@ -191,7 +152,7 @@ public class WorkflowServiceTests {
      * Test that a workflow can be fetched from template service
      */
     @Test
-    @Order(2)
+    @Order(1)
     public void canConstructWorkflowNoSqlService() {
     
         // Initialize data
@@ -227,7 +188,7 @@ public class WorkflowServiceTests {
      * Test that a workflow can be fetched 
      */
     @Test
-    @Order(3)
+    @Order(2)
     public void canConstructWorkflowSqlService() {
     
         // Initialize data

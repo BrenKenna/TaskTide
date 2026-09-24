@@ -35,6 +35,7 @@ import org.tasktide.mutex.utils.MutexFilesUtils;
 import org.tasktide.mutex.utils.MutexLabellingUtils;
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 import org.tasktide.mutex.actor.MutexActor;
+import org.tasktide.mutex.utils.MutexConstants;
 
 
 /**
@@ -117,7 +118,7 @@ public class LockActionReleaseApplication {
         
         // Allow time to pass
         LOGGER.info("Letting time elapse");
-        MutexFilesUtils.waitJitterTime(duration);
+        MutexConstants.waitOverJitter();
 
         // Release lock
         LOGGER.info("Time elapsed, releasing lock");

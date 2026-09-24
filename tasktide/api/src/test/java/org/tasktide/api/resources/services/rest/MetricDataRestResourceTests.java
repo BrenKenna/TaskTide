@@ -49,6 +49,7 @@ import org.tasktide.api.auth.AuthenicationFilter;
 
 import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestUtils;
+import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.supporting.JsonUtils;
 
 
@@ -167,9 +168,14 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
         
         // Fetch mock token
         LOGGER.info("Firing test query by field against MetricDataRestResource for:\t'{}'", MetricType.MEMORY);
+        MetricData metricData = TestUtils.fetchRandomMemoryMetric();
+        TaskTideServiceManager
+            .fetchMetricDataService()
+        .appendModel(metricData);
+        
         this.requestCtx.activate();
         resp = this.target(methodPath)
-            .queryParam("field", "Type")
+            .queryParam("field", "MetricType")
             .queryParam("value", MetricType.MEMORY)
             .request()
             .header("User-Agent", "JUnit-Test")
@@ -313,7 +319,6 @@ public class MetricDataRestResourceTests extends AbstractBaseJerseyTest {
             .header("X-Forwarded-For", "127.0.0.1")
         .put(Entity.entity(metricData, MediaType.APPLICATION_JSON));
         this.requestCtx.deactivate();
-        
         
         // Evaluate test
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not update MetricData through MetricDataRestResource");

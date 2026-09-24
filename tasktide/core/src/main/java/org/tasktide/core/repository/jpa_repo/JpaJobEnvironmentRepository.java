@@ -16,6 +16,7 @@
 package org.tasktide.core.repository.jpa_repo;
 
 import jakarta.persistence.EntityManager;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.repository.JpaRepository;
@@ -38,6 +39,6 @@ public class JpaJobEnvironmentRepository extends JpaRepository<JobEnvironment> {
         EntityManager backend,
         String collectionName
     ) {
-        super(backend, JobEnvironment.class, collectionName);
+        super(TaskTideModelType.JOB_ENVIRONMENT, backend, JobEnvironment.class, collectionName);
     }
 }

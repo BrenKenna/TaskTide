@@ -283,6 +283,7 @@ public class MetricDataRestResource {
      */
     @DELETE
     @Path("/drop/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response dropMetricData(
         @PathParam("id") String id,
         @Context HttpHeaders reqHeader,

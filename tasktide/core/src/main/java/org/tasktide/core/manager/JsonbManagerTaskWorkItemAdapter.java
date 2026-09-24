@@ -16,6 +16,7 @@
 package org.tasktide.core.manager;
 
 import jakarta.json.bind.adapter.JsonbAdapter;
+import org.tasktide.core.exceptions.TaskTideManagerUncheckedException;
 import org.tasktide.core.model.workitem.WorkItem;
 
 
@@ -27,8 +28,8 @@ import org.tasktide.core.model.workitem.WorkItem;
 public class JsonbManagerTaskWorkItemAdapter implements JsonbAdapter<WorkItem, ManagerTask> {
 
     @Override
-    public ManagerTask adaptToJson(WorkItem obj) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ManagerTask adaptToJson(WorkItem obj) throws TaskTideManagerUncheckedException {
+        throw new TaskTideManagerUncheckedException("No valid use case");
     }
     
     @Override

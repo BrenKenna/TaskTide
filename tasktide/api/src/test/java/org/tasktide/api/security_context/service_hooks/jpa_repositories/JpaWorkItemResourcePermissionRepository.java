@@ -21,6 +21,7 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.JpaRepository;
 
 import org.tasktide.api.security_context.data_models.WorkItemResourcePermission;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -38,6 +39,6 @@ public class JpaWorkItemResourcePermissionRepository extends JpaRepository<WorkI
      * @param collectionName 
      */
     public JpaWorkItemResourcePermissionRepository(EntityManager backend, String collectionName) {
-        super(backend, WorkItemResourcePermission.class, collectionName);
+        super(TaskTideModelType.WORKITEM, backend, WorkItemResourcePermission.class, collectionName);
     }
 }

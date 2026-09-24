@@ -16,6 +16,7 @@
 package org.tasktide.core.repository.template_repo;
 
 import jakarta.nosql.Template;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.repository.TemplateRepository;
@@ -37,6 +38,6 @@ public class TemplateStepRepository extends TemplateRepository<Step> {
     public TemplateStepRepository(Template template,
        String collectionName
     ) {
-        super(template, Step.class, collectionName);
+        super(TaskTideModelType.STEP, template, Step.class, collectionName);
     }
 }

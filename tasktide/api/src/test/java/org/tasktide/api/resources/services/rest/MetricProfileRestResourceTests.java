@@ -49,6 +49,7 @@ import org.tasktide.core.model.job_env.metrics.MetricType;
 import org.tasktide.api.AbstractBaseJerseyTest;
 import org.tasktide.api.TestUtils;
 import org.tasktide.api.auth.AuthenicationFilter;
+import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.supporting.JsonUtils;
 
 
@@ -167,6 +168,11 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         
         // Fetch mock token
         LOGGER.info("Firing test query by field against MetricProfileRestResource for:\t'{}'", type);
+        MetricProfile profile = TestUtils.createRandomMemoryMetricProfile(this.PROFILE_DATA_POINTS);
+        TaskTideServiceManager
+            .fetchMetricProfileService()
+        .appendModel(profile);
+        
         this.requestCtx.activate();
         resp = this.target(methodPath)
             .queryParam("field", "MetricType")

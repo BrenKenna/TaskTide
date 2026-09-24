@@ -21,6 +21,7 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.JpaRepository;
 
 import org.tasktide.api.security_context.data_models.JobEnvironmentResourcePermission;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -38,6 +39,6 @@ public class JpaJobEnvironmentResourcePermissionRepository extends JpaRepository
      * @param collectionName 
      */
     public JpaJobEnvironmentResourcePermissionRepository(EntityManager backend, String collectionName) {
-        super(backend, JobEnvironmentResourcePermission.class, collectionName);
+        super(TaskTideModelType.JOB_ENVIRONMENT, backend, JobEnvironmentResourcePermission.class, collectionName);
     }
 }

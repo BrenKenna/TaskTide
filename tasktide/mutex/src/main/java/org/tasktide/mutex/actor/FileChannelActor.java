@@ -27,6 +27,7 @@ import org.tasktide.mutex.utils.MutexFilesUtils;
 import org.tasktide.mutex.exceptions.MutexCheckedException;
 import org.tasktide.mutex.strategy.FileChannelStrategy;
 import org.tasktide.mutex.strategy.MutexStrategy;
+import org.tasktide.mutex.utils.MutexConstants;
 
 
 /**
@@ -77,7 +78,7 @@ public class FileChannelActor extends IntraProcessActor {
         // Wait until acquired
         boolean locked = false;
         while (!locked) {
-            MutexFilesUtils.waitJitterTime();
+            MutexConstants.waitOverJitter();
             locked = FILE_CHANNEL_STRAT.apply(mutex);
         }
     }
@@ -263,16 +264,5 @@ public class FileChannelActor extends IntraProcessActor {
         if ( active != null ) {
             active.setState(newState);
         }
-    }
-    
-    
-    @Override
-    public boolean lockedByActiveHost() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean lockedByActiveProcess() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

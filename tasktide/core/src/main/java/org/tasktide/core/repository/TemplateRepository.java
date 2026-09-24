@@ -16,13 +16,13 @@
 package org.tasktide.core.repository;
 
 import jakarta.nosql.Template;
+import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.tasktide.core.TaskTideModel;
-import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -40,12 +40,13 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> extends Abs
     /**
      * Construct with target model class, and collection name
      * 
+     * @param modelType
      * @param template
      * @param modelClass
      * @param collectionName 
      */
-    public TemplateRepository(Template template, Class<T> modelClass, String collectionName) {
-        super(modelClass, collectionName, RepositoryType.NOSQL);
+    public TemplateRepository(TaskTideModelType modelType, Template template, Class<T> modelClass, String collectionName) {
+        super(modelType, modelClass, collectionName, RepositoryType.NOSQL);
         this.template = template;
     }
 
@@ -123,6 +124,11 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> extends Abs
     @Override
     public List<T> findByField(String field, Object value) {
         
+        // Verify field before query
+        if ( !this.validateQueryFieldName(field)) {
+            return new ArrayList<>();
+        }
+        
         // Reduce to result set size
         if ( this.resultSetSize >= 1 ) {
             return template
@@ -156,6 +162,11 @@ public abstract class TemplateRepository<T extends TaskTideModel<T>> extends Abs
      */
     @Override
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        
+        // Verify fields before query
+        if ( !this.validateQueryFieldName(field) || !this.validateQueryFieldName(group) ) {
+            return new ArrayList<>();
+        }
         
         // Reduce to result set size
         if ( this.resultSetSize >= 1 ) {

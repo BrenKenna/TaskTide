@@ -17,6 +17,7 @@ package org.tasktide.core.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import java.util.ArrayList;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +27,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
+import org.tasktide.core.TaskTideModelType;
 import org.tasktide.core.TaskTideRepository;
 
 
@@ -46,12 +48,13 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> extends Abstract
     /**
      * Construct with target model class, and collection
      * 
+     * @param modelType
      * @param entityManager
      * @param clazz
      * @param collectionName
      */
-    public JpaRepository(EntityManager entityManager, Class<T> clazz, String collectionName) {
-        super(clazz, collectionName, RepositoryType.SQL);
+    public JpaRepository(TaskTideModelType modelType, EntityManager entityManager, Class<T> clazz, String collectionName) {
+        super(modelType, clazz, collectionName, RepositoryType.SQL);
         this.entityManager = entityManager;
     }
     
@@ -159,6 +162,13 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> extends Abstract
     @Override
     public List<T> findByField(String field, Object value) {
         
+        // Verify field before query
+        if ( !this.validateQueryFieldName(field)) {
+            return new ArrayList<>();
+        }
+        
+        // Query field
+        
         // Configure query string
         String query = String.format(
             "SELECT e FROM %s e WHERE e.%s = :value",
@@ -196,6 +206,12 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> extends Abstract
      */
     @Override
     public List<T> findByFieldForGroup(String field, Object value, String group, Object groupVal) {
+        
+        // Verify fields before query
+        if ( !this.validateQueryFieldName(field) || !this.validateQueryFieldName(group) ) {
+            return new ArrayList<>();
+        }
+        
         String query = String.format(
             "SELECT e FROM %s e WHERE e.%s = :value AND e.%s = :groupVal",
             COLLECTION_CLASS.getSimpleName(), field, group

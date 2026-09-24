@@ -197,6 +197,7 @@ public class StepRestResource extends TaskTideRestApi {
      */
     @GET
     @Path("/create")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createNamedStep(
         @QueryParam("stepName") String stepName,
         @Context HttpHeaders reqHeader,
@@ -260,6 +261,7 @@ public class StepRestResource extends TaskTideRestApi {
      */
     @GET
     @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response readStep(
         @QueryParam("id") String id,
         @QueryParam("field") String field,
@@ -355,6 +357,7 @@ public class StepRestResource extends TaskTideRestApi {
      */
     @DELETE
     @Path("/drop/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response dropStep(
         @PathParam("id") String id,
         @Context HttpHeaders reqHeader,

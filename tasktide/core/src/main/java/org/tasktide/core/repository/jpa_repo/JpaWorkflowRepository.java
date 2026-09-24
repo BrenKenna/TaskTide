@@ -16,6 +16,7 @@
 package org.tasktide.core.repository.jpa_repo;
 
 import jakarta.persistence.EntityManager;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.collection.Workflow;
@@ -37,6 +38,6 @@ public class JpaWorkflowRepository extends JpaRepository<Workflow> {
      * @param collectionName 
      */
     public JpaWorkflowRepository(EntityManager backend, String collectionName) {
-        super(backend, Workflow.class, collectionName);
+        super(TaskTideModelType.WORKFLOW, backend, Workflow.class, collectionName);
     }
 }

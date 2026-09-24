@@ -17,6 +17,7 @@ package org.tasktide.core.repository.jpa_repo;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.collection.Step;
@@ -38,7 +39,7 @@ public class JpaStepRepository extends JpaRepository<Step> {
      * @param collectionName 
      */
     public JpaStepRepository(EntityManager backend, String collectionName) {
-        super(backend, Step.class, collectionName);
+        super(TaskTideModelType.STEP, backend, Step.class, collectionName);
     }
     
     

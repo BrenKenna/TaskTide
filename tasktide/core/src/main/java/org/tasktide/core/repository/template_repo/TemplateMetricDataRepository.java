@@ -16,6 +16,7 @@
 package org.tasktide.core.repository.template_repo;
 
 import jakarta.nosql.Template;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.repository.TemplateRepository;
@@ -39,6 +40,6 @@ public class TemplateMetricDataRepository extends TemplateRepository<MetricData>
         Template template,
         String collectionName
     ) {
-        super(template, MetricData.class, collectionName);
+        super(TaskTideModelType.METRIC_DATA, template, MetricData.class, collectionName);
     }
 }

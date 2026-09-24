@@ -15,6 +15,14 @@
  */
 package org.tasktide.core;
 
+import org.tasktide.core.model.workitem.WorkItem;
+import org.tasktide.core.model.collection.Step;
+import org.tasktide.core.model.collection.Workflow;
+
+import org.tasktide.core.model.job_env.JobEnvironment;
+import org.tasktide.core.model.job_env.metrics.MetricData;
+import org.tasktide.core.model.job_env.metrics.MetricProfile;
+
 
 /**
  * Enum of valid model types
@@ -33,6 +41,14 @@ public enum TaskTideModelType {
         public boolean isModel(TaskTideModelType query) {
             return WORKITEM == query;
         }
+        
+        @Override
+        public boolean isClassName(String query) {
+            return WorkItem
+                .class
+                .getSimpleName()
+            .equals(query);
+        }
 
         @Override
         public String toString() {
@@ -49,6 +65,14 @@ public enum TaskTideModelType {
         @Override
         public boolean isModel(TaskTideModelType query) {
             return STEP == query;
+        }
+        
+        @Override
+        public boolean isClassName(String query) {
+            return Step
+                .class
+                .getSimpleName()
+            .equals(query);
         }
 
         @Override
@@ -67,12 +91,105 @@ public enum TaskTideModelType {
         public boolean isModel(TaskTideModelType query) {
             return WORKFLOW == query;
         }
+        
+        @Override
+        public boolean isClassName(String query) {
+            return Workflow
+                .class
+                .getSimpleName()
+            .equals(query);
+        }
 
         @Override
         public String toString() {
             return "Workflow";
         }
+    },
+    
+    JOB_ENVIRONMENT {
+        @Override
+        public boolean isModel(String query) {
+            return "JobEnvironment".equals(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isModel(TaskTideModelType query) {
+            return JOB_ENVIRONMENT == query;
+        }
+        
+        @Override
+        public boolean isClassName(String query) {
+            return JobEnvironment
+                .class
+                .getSimpleName()
+            .equals(query);
+        }
+
+        @Override
+        public String toString() {
+            return "JobEnvironment";
+        }
+    },
+    
+    METRIC_DATA {
+        @Override
+        public boolean isModel(String query) {
+            return "MetricData".equals(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isModel(TaskTideModelType query) {
+            return METRIC_DATA == query;
+        }
+        
+        @Override
+        public boolean isClassName(String query) {
+            return MetricData
+                .class
+                .getSimpleName()
+            .equals(query);
+        }
+
+        @Override
+        public String toString() {
+            return "MetricData";
+        }
+    },
+    
+    METRIC_PROFILE {
+        @Override
+        public boolean isModel(String query) {
+            return "MetricProfile".equals(query.toLowerCase());
+        }
+
+        @Override
+        public boolean isModel(TaskTideModelType query) {
+            return METRIC_PROFILE == query;
+        }
+        
+        @Override
+        public boolean isClassName(String query) {
+            return MetricProfile
+                .class
+                .getSimpleName()
+            .equals(query);
+        }
+
+        @Override
+        public String toString() {
+            return "MetricProfile";
+        }
     };
+    
+    
+    /**
+     * Checks whether queried string matches
+     *  the simple class
+     * 
+     * @param query
+     * @return boolean
+     */
+    public abstract boolean isClassName(String query);
     
     
     /**
@@ -91,7 +208,6 @@ public enum TaskTideModelType {
      * @return boolean
      */
     public abstract boolean isModel(TaskTideModelType query);
-
     
     
     /**

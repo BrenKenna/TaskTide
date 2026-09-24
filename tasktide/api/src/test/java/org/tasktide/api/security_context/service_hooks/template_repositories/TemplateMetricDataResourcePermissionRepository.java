@@ -20,6 +20,7 @@ import jakarta.nosql.Template;
 import org.tasktide.core.repository.TemplateRepository;
 
 import org.tasktide.api.security_context.data_models.MetricDataResourcePermission;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -40,6 +41,6 @@ public class TemplateMetricDataResourcePermissionRepository extends TemplateRepo
         Template template,
         String collectionName
     ) {
-        super(template, MetricDataResourcePermission.class, collectionName);
+        super(TaskTideModelType.METRIC_DATA, template, MetricDataResourcePermission.class, collectionName);
     }
 }

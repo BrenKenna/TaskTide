@@ -302,15 +302,14 @@ class MutexTestUtils {
                     MutexOrchestrator.fetchActive().toJsonDoc()
                );
                logger.info("wairing");
-               MutexFilesUtils.waitJitterTime();
+               MutexConstants.waitOverJitter();
                logger.info("releasing lock");
                MutexOrchestrator.releaseLock();
                logger.info("lock released");
             }
             
             catch (MutexCheckedException ex) {
-                logger.error("Error during processing");
-                ex.printStackTrace();
+                logger.error("Error during processing:\n\n", ex);
             }
         };
     }

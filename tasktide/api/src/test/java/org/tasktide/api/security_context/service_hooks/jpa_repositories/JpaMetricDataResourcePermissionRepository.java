@@ -21,6 +21,7 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.JpaRepository;
 
 import org.tasktide.api.security_context.data_models.MetricDataResourcePermission;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -38,6 +39,6 @@ public class JpaMetricDataResourcePermissionRepository extends JpaRepository<Met
      * @param collectionName 
      */
     public JpaMetricDataResourcePermissionRepository(EntityManager backend, String collectionName) {
-        super(backend, MetricDataResourcePermission.class, collectionName);
+        super(TaskTideModelType.METRIC_DATA, backend, MetricDataResourcePermission.class, collectionName);
     }
 }

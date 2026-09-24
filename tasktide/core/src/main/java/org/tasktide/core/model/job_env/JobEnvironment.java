@@ -54,7 +54,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
     @jakarta.nosql.Column("JobType")
     @jakarta.persistence.Column(name = "JobType")
     @JsonbProperty("Job Type")
-    private JobType type;
+    private JobType jobType;
     
     // Job Id under JobType
     @jakarta.nosql.Column("JobId")
@@ -117,7 +117,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
      */
     public JobEnvironment(String id, JobType type, String jobId, int arrayInd) {
         this.id = id;
-        this.type = type;
+        this.jobType = type;
         this.jobId = jobId;
         this.arrayInd = arrayInd;
         this.anno = new CustomAnnotation();
@@ -147,7 +147,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
         JobState jobState
     ) {
         this.id = id;
-        this.type = type;
+        this.jobType = type;
         this.jobId = jobId;
         this.hostname = hostname;
         this.hostOS = hostOS;
@@ -183,7 +183,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
         CustomAnnotation anno
     ) {
         this.id = id;
-        this.type = type;
+        this.jobType = type;
         this.jobId = jobId;
         this.hostname = hostname;
         this.hostOS = hostOS;
@@ -236,12 +236,12 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
     
     
     /**
-     * Get job type
+     * Get job jobType
      * 
      * @return {@link JobType}
      */
-    public JobType getType() {
-        return type;
+    public JobType getJobType() {
+        return jobType;
     }
 
     
@@ -349,10 +349,10 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
     /**
      * Set {@link JobType}
      * 
-     * @param type 
+     * @param jobType 
      */
-    public void setType(JobType type) {
-        this.type = type;
+    public void setJobType(JobType jobType) {
+        this.jobType = jobType;
     }
 
     
@@ -461,7 +461,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
      */
     @Override
     public String getCollection() {
-        return this.type.name();
+        return this.jobType.name();
     }
 
     
@@ -483,7 +483,7 @@ public class JobEnvironment implements TaskTideModel<JobEnvironment> {
     public String toString() {
         return "JobEnvironment{" +
             "id=" + id +
-            ", type=" + type +
+            ", type=" + jobType +
             ", jobId=" + jobId +
             ", arrayInd=" + arrayInd +
             ", hostname=" + hostname +

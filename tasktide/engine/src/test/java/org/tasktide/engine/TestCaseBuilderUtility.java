@@ -43,11 +43,6 @@ import org.tasktide.core.model.state_summary.TaskState;
 import org.tasktide.core.model.state_summary.ItemState;
 import org.tasktide.core.model.workitem.ItemType;
 
-import org.tasktide.core.TaskTideRepository;
-import org.tasktide.core.repository.json_repo.JsonStepRepository;
-import org.tasktide.core.repository.json_repo.JsonWorkItemRepository;
-import org.tasktide.core.repository.json_repo.JsonWorkflowRepository;
-
 import org.tasktide.core.manager.generator.TaskGenerator;
 import org.tasktide.core.manager.generator.ExampleGenerators;
 import static org.tasktide.core.manager.generator.TaskGenerator.generateSeqTask;
@@ -428,43 +423,5 @@ public class TestCaseBuilderUtility {
      */
     public static List<ManagerTask> getSeqTasks(int nTasks) {
         return TaskGenerator.generateTasks(ExampleGenerators.SEQ, nTasks);
-    }
-    
-    
-    /**
-     * Create testing {@link JsonWorkItemRepository JsonWorkflowRepository}
-     * 
-     * @return {@link TaskTideRepository TaskTideRepository-{@link WorkItem WorkItem}}
-     */
-    public static TaskTideRepository<WorkItem> createWorkItemJsonRepo() {
-    
-        // Generate data
-        List<WorkItem> data = new ArrayList<>();
-        data.add(makeTestWorkItem());
-        data.add(makeTestWorkItem());
-        data.add(makeTestWorkItem());
-        
-        // Return results
-        return new JsonWorkItemRepository(data, "myData");
-    }
-    
-    
-    /**
-     * Create testing {@link JsonStepRepository JsonStepRepository}
-     * 
-     * @return {@link TaskTideRepository TaskTideRepository-{@link Step Step}}
-     */
-    public static TaskTideRepository<Step> createStepJsonRepo() {
-        return new JsonStepRepository(makeTestStepList(), "myData");
-    }
-    
-    
-    /**
-     * Create testing {@link JsonWorkflowRepository JsonWorkflowRepository}
-     * 
-     * @return {@link TaskTideRepository TaskTideRepository-{@link Workflow Workflow}}
-     */
-    public static TaskTideRepository<Workflow> createWorkflowJsonRepo() {
-        return new JsonWorkflowRepository(makeTestWorkflows(), "myData");
     }
 }

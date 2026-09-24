@@ -23,6 +23,7 @@ import java.util.Random;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -221,7 +222,7 @@ public class TaskTideEngineWorker implements Cloneable {
             
             // Run the engine
             this.fetchAndRun();
-            TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
+            TaskTideEngineUtility.wait(TimeUnit.MINUTES, RAND.nextInt(0, 11));
             counter++;
             
             // Evaluate iteration couter
@@ -421,7 +422,7 @@ public class TaskTideEngineWorker implements Cloneable {
                 WorkerTask task = new WorkerTask("Task-" + i, future);
                 this.tasks.add(task);
                 LOGGER.info("Engine 'Worker-{}' started", i);
-                TaskTideEngineUtility.waitSeconds(RAND.nextInt(0, 11));
+                TaskTideEngineUtility.wait(TimeUnit.MILLISECONDS, RAND.nextInt(10, 500));
             }
             if ( this.policy.workflowMode() ) {
                 LOGGER.info(

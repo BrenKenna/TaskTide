@@ -16,13 +16,13 @@
 package org.tasktide.engine.trackers;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -41,6 +41,7 @@ import org.tasktide.engine.worker.TaskTideEngineUtility;
  * @param <T> of {@link TaskTideModel}
  * @author Bren
  */
+@Deprecated
 public class TrackerWaiter<T extends TaskTideModel<T>> {
     
     // Attributes
@@ -86,7 +87,7 @@ public class TrackerWaiter<T extends TaskTideModel<T>> {
 
         while ( this.TASKS_DONE.size() < total && !wereKilled ) {
             wereKilled = this.evaluateWorkload();
-            TaskTideEngineUtility.waitSeconds( rand.nextInt(1, 10) );
+            TaskTideEngineUtility.wait(TimeUnit.SECONDS, rand.nextInt(1, 10));
             this.iterations++;
         }
         

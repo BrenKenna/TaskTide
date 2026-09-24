@@ -90,10 +90,10 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
     private String units;
     
     // Type of metric ie Graphics etc
-    @JsonbProperty("Metric Type")
     @jakarta.nosql.Column("MetricType")
     @jakarta.persistence.Column(name = "MetricType")
-    private MetricType type;
+    @JsonbProperty("Metric Type")
+    private MetricType metricType;
     
     // JobEnvironment from which metric originates
     @JsonbProperty("Job Environment Id")
@@ -153,7 +153,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
         this.meanAvailable = meanAvailable;
         this.meanUsed = meanUsed;
         this.profile = profile;
-        this.type = type;
+        this.metricType = type;
         this.jobEnvId = jobEnvId;
         this.anno = anno;
     }
@@ -235,7 +235,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
      */
     @Override
     public String getCollection() {
-        return this.type.name();
+        return this.metricType.name();
     }
 
     
@@ -397,18 +397,18 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
      * 
      * @return {@link MetricType}
      */
-    public MetricType getType() {
-        return type;
+    public MetricType getMetricType() {
+        return metricType;
     }
 
     
     /**
      * Sets {@link MetricType}
      * 
-     * @param type 
+     * @param metricType 
      */
-    public void setType(MetricType type) {
-        this.type = type;
+    public void setMetricType(MetricType metricType) {
+        this.metricType = metricType;
     }
     
     
@@ -448,7 +448,7 @@ public class MetricProfile implements TaskTideModel<MetricProfile> {
             ", meanUsed=" + meanUsed +
             ", profile=" + profile +
             ", units=" + units +
-            ", type=" + type +
+            ", type=" + metricType +
             ", jobEnvId=" + jobEnvId +
         '}';
     }

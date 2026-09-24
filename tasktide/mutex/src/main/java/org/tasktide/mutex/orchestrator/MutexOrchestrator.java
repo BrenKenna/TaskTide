@@ -17,6 +17,7 @@ package org.tasktide.mutex.orchestrator;
 
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -128,7 +129,7 @@ public class MutexOrchestrator {
         
         // Make mutex
         Mutex mutex;
-        MutexFilesUtils.waitJitterTime();
+        MutexConstants.waitOverJitter();
         mutex = MutexFactory.create();
 
         // Perform locking
@@ -169,7 +170,7 @@ public class MutexOrchestrator {
                     result.getException() != null ? result.getException().getMessage() : "none"
                 );
                 counter++;
-                MutexFilesUtils.waitJitterTime();
+                MutexConstants.waitOverJitter();
             }
         }
         
@@ -303,7 +304,7 @@ public class MutexOrchestrator {
             LOGGER.info("Releasing FileChannel mutex");
             FILE_CHANNEL_MUTEX.release(local);
         }
-        catch (Exception ex) {
+        catch (MutexCheckedException ex) {
             msg = "Unable to release file channel mutex\n\n" + ex;
             fileChannelError = new MutexCheckedException(msg);
         }
@@ -316,7 +317,7 @@ public class MutexOrchestrator {
             );
             NFS_MUTEX.release(local);
         }
-        catch (Exception ex) {
+        catch (MutexCheckedException ex) {
             msg = "Unable to release NFS mutex\n\n" + ex;
             nfsError = new MutexCheckedException(msg);
         }
@@ -367,7 +368,7 @@ public class MutexOrchestrator {
         );
         
         // Verify leadership
-        MutexFilesUtils.waitJitterTime();
+        MutexConstants.waitOverJitter();
         Mutex leaderMut = MutexFilesUtils.readMutexFromFile(leader)
             .orElseThrow( () -> 
                 new ActiveMutexCheckedException("Unable to read elected leader:\t" + mutex.getId())

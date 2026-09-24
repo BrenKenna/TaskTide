@@ -30,6 +30,7 @@ import org.tasktide.mutex.model.MutexState;
 import org.tasktide.mutex.utils.MutexFilesUtils;
 
 import org.tasktide.mutex.exceptions.MutexCheckedException;
+import org.tasktide.mutex.utils.MutexConstants;
 
 
 /**
@@ -132,7 +133,7 @@ public class ElectionStrategy extends MutexStrategy {
     public void initMutex(Mutex mutex) {
     
         // Set state as initialization
-        MutexFilesUtils.waitJitterTime();
+        MutexConstants.waitOverJitter();
         LOGGER.debug("Initializing mutex:\t'{}'", mutex.getId());
         mutex.setState(MutexState.INITIALIZATION);
         FileUtility.makeFile(mutex.getElectionFile());
@@ -329,7 +330,7 @@ public class ElectionStrategy extends MutexStrategy {
         while(!acquired) {
             
             // Wait before evaluating
-            MutexFilesUtils.waitJitterTime();
+            MutexConstants.waitOverJitter();
             LoopDecision loopDecision = evaluateIteration(state, mutex, 10);
             
             // Handle results
@@ -357,7 +358,7 @@ public class ElectionStrategy extends MutexStrategy {
             // Verify leadership: Cover any FS visibility quirks etc
             if ( loopDecision.isLoopDecision(LoopDecision.ACQUIRED) ) {
                 LOGGER.info("Verifying leadership:\t'{}'", mutex.getId());
-                MutexFilesUtils.waitJitterTime();
+                MutexConstants.waitOverJitter();
                 if ( this.inferPosition(mutex) == 0 ) {
                     LOGGER.info("Leadership verified:\t'{}'", mutex.getId());
                     acquired = true;

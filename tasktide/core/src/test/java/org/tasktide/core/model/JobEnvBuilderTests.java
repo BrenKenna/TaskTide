@@ -248,7 +248,7 @@ public class JobEnvBuilderTests {
         
         // Display record for reference
         LOGGER.info("Displaying record for reference:\n'{}'", metricProfile.toJsonDoc());
-        assertionState = metricProfile.getType() == MetricType.MEMORY;
+        assertionState = metricProfile.getMetricType() == MetricType.MEMORY;
         assertTrue(assertionState, "Test failed to build metric data");
         LOGGER.info("Tests building metric profile");
     }
@@ -272,7 +272,7 @@ public class JobEnvBuilderTests {
         
         // Display record for reference
         LOGGER.info("Displaying record for reference:\n'{}'", jobEnv.toJsonDoc());
-        assertionState = jobEnv.getType() == JobType.LOCAL;
+        assertionState = jobEnv.getJobType() == JobType.LOCAL;
         assertTrue(assertionState, "Test failed to build job environment");
         LOGGER.info("Tests building Job Environment");
     }

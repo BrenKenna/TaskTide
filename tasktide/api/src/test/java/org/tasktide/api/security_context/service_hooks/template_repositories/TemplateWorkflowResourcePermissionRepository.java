@@ -20,6 +20,7 @@ import jakarta.nosql.Template;
 import org.tasktide.core.repository.TemplateRepository;
 
 import org.tasktide.api.security_context.data_models.WorkflowResourcePermission;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -40,6 +41,6 @@ public class TemplateWorkflowResourcePermissionRepository extends TemplateReposi
         Template template,
         String collectionName
     ) {
-        super(template, WorkflowResourcePermission.class, collectionName);
+        super(TaskTideModelType.WORKFLOW, template, WorkflowResourcePermission.class, collectionName);
     }
 }

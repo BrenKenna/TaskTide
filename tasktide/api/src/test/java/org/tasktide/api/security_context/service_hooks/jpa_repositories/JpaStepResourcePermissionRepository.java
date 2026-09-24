@@ -21,6 +21,7 @@ import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.repository.JpaRepository;
 
 import org.tasktide.api.security_context.data_models.StepResourcePermission;
+import org.tasktide.core.TaskTideModelType;
 
 
 /**
@@ -38,6 +39,6 @@ public class JpaStepResourcePermissionRepository extends JpaRepository<StepResou
      * @param collectionName 
      */
     public JpaStepResourcePermissionRepository(EntityManager backend, String collectionName) {
-        super(backend, StepResourcePermission.class, collectionName);
+        super(TaskTideModelType.STEP, backend, StepResourcePermission.class, collectionName);
     }
 }

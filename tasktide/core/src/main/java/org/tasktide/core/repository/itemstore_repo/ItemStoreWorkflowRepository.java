@@ -16,6 +16,7 @@
 package org.tasktide.core.repository.itemstore_repo;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.tasktide.core.TaskTideModelType;
 
 import org.tasktide.core.TaskTideRepository;
 import org.tasktide.core.model.collection.Workflow;
@@ -40,6 +41,6 @@ public class ItemStoreWorkflowRepository extends ItemStoreRepository<Workflow> {
        ItemStore itemStore,
        @ConfigProperty(name = "task-tide.core.repository.rocksdb.collection.workflow.name", defaultValue = "Workflow") String collectionName
     ) {
-        super(itemStore, Workflow.class, collectionName);
+        super(TaskTideModelType.WORKFLOW, itemStore, Workflow.class, collectionName);
     }
 }
