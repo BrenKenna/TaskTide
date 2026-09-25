@@ -15,8 +15,8 @@ dependencies {
     implementation      "org.eclipse.microprofile.jwt:microprofile-jwt-auth-api:2.2"
     implementation      "com.nimbusds:nimbus-jose-jwt:10.9.1"
     implementation      "com.nimbusds:oauth2-oidc-sdk:11.38.2"
-    implementation      "io.smallrye:smallrye-jwt-cdi-extension:4.6.3"
-    implementation      "io.smallrye:smallrye-jwt-build:4.6.3"
+    implementation      "io.smallrye:smallrye-jwt-cdi-extension:4.6.4"
+    implementation      "io.smallrye:smallrye-jwt-build:4.6.4"
 
     // Web server: platform("org.glassfish.jersey:jersey-bom:3.1.28")
     implementation      platform("org.glassfish.jersey:jersey-bom:4.0.2")
