@@ -22,7 +22,7 @@ subprojects {
 
         // Jakarta CDI
         implementation          'io.smallrye.config:smallrye-config:3.18.3'
-        implementation          'org.eclipse.microprofile.config:microprofile-config-api:3.1.1'
+        implementation          'org.eclipse.microprofile.config:microprofile-config-api:3.1.2'
         implementation          'jakarta.enterprise:jakarta.enterprise.cdi-api:5.0.0'
         // 4.1.0 Moved to https://mvnrepository.com/artifact/jakarta.cdi/jakarta.cdi-api 
         
