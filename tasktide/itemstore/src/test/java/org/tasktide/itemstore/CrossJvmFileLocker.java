@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.itemstore.types.DbTarget;
 import java.io.IOException;
 import java.nio.file.Path;
 

@@ -15,8 +15,8 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.itemstore.types.DbTarget;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -34,6 +34,8 @@ import org.rocksdb.Options;
 import org.rocksdb.RocksDBException;
 import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
+import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
+
 
 // Gone with movr to tools.jackson.datatype v3.2.2
 
@@ -41,6 +43,7 @@ import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.ItemStoreSession;
 import org.tasktide.itemstore.session.LinkedOperation;
 import org.tasktide.itemstore.session.LinkedOperationMap;
+import org.tasktide.itemstore.strategies.ItemStoreConnectionStrategy;
 
 
 /**
@@ -520,243 +523,128 @@ public class RocksDbStore extends AbstractItemStore {
 
     
     /**
-     * Close master and cache connections
+     * Checks if Master/Prototype are open
      * 
      * @param target
      * @return boolean
      */
     @Override
-    public synchronized boolean closeConn(DbTarget target) {
-        switch (target) {
-            case MASTER -> {
-                this.releaseLock(true);
-                if ( this.master == null ) {
-                    return true;
-                }
-                if ( !this.master.isClosed() ) {
-                    this.master.close();
-                }
+    public boolean isOpen(DbTarget target) {
+        if ( target == DbTarget.MASTER ) {
+            if ( this.master != null ) {
+                return !this.master.isClosed();
+            }
+            return false;
+        }
+    
+        if ( target == DbTarget.PROTOTYPE ) {
+            if ( this.proto != null ) {
+                return !this.proto.isClosed();
+            }
+            return false;
+        }
+        return false;
+    }
+    
+    
+    /**
+     * Checks if Master/Prototype are open
+     * 
+     * @param target
+     * @return boolean
+     */
+    @Override
+    public boolean isClosed(DbTarget target) {
+        if ( target == DbTarget.MASTER ) {
+            if ( this.master == null ) {
                 return true;
             }
-            case PROTOTYPE -> {
-                if ( this.proto == null ) {
-                    return true;
-                }
-                if ( !this.proto.isClosed() ) {
-                    this.proto.close();
-                }
+            return this.master.isClosed();
+        }
+    
+        if ( target == DbTarget.PROTOTYPE ) {
+            if ( this.master == null ) {
                 return true;
             }
-            default -> {
-                this.releaseLock(true);
-                if ( this.master != null ) {
-                    if ( !this.master.isClosed() ) {
-                        this.master.close();
-                    }
-                }
-                
-                if ( this.proto != null ) {
-                    if ( !this.proto.isClosed() ) {
-                        this.proto.close();
-                    }
-                }
-                return true;
-            }
+            return this.master.isClosed();
+        }
+        return false;
+    }
+    
+    
+    /**
+     * Open connection master connection
+     * 
+     * @param target
+     * @return boolean
+     */
+    @Override
+    public boolean openMaster() {
+        try {
+            this.master = RocksDB.open(this.options, this.getMasterFilePath());
+            return true;
+        }
+        catch (RocksDBException ex) {
+            LOGGER.error("Error openning connection to Master DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
     
     
     /**
-     * Close master and cache connections
+     * Closes connection against master DB
      * 
-     * @param target
-     * @param releaseMutex
      * @return boolean
      */
     @Override
-    public synchronized boolean closeConn(DbTarget target, boolean releaseMutex) {
-        switch (target) {
-            case MASTER -> {
-                this.releaseLock(releaseMutex);
-                if ( this.master == null ) {
-                    return true;
-                }
-                if ( !this.master.isClosed() ) {
-                    this.master.close();
-                }
-                return true;
-            }
-            case PROTOTYPE -> {
-                if ( this.proto == null ) {
-                    return true;
-                }
-                if ( !this.proto.isClosed() ) {
-                    this.proto.close();
-                }
-                return true;
-            }
-            default -> {
-                this.releaseLock(releaseMutex);
-                if ( this.master != null ) {
-                    if ( !this.master.isClosed() ) {
-                        this.master.close();
-                    }
-                }
-                
-                if ( this.proto != null ) {
-                    if ( !this.proto.isClosed() ) {
-                        this.proto.close();
-                    }
-                }
-                return true;
-            }
+    public boolean closeMaster() {
+        try {
+            this.master.close();
+            return true;
+        }
+        
+        // This is documentaed as such
+        catch (Exception ex) {
+           LOGGER.error("Error openning connection to Prototype DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
     
     
     /**
-     * Open connection to target database if closed
+     * Open connection prototype connection
      * 
-     * @param target
      * @return boolean
      */
     @Override
-    public synchronized boolean openConn(DbTarget target) {
-        switch (target) {
-            case MASTER -> {
-                try {
-                    this.waitForLock();
-                    if ( this.master == null ) {
-                        this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        return true;
-                    }
-                    if (master.isClosed()) {
-                        this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        return true;
-                    }
-                    return false;
-                }
-                catch (RocksDBException | InterruptedException | IOException ex) {
-                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
-                    ex.printStackTrace();
-                    return false;
-                }
-            }
-            
-            case PROTOTYPE -> {
-                try {
-                    if ( this.proto == null ) {
-                        this.proto = RocksDB.open(this.options, this.getFilePath());
-                        return true;
-                    }
-                    if (proto.isClosed()) {
-                        this.proto = RocksDB.open(options, this.getFilePath());
-                    }
-                    return true;
-                }
-                catch (RocksDBException ex) {
-                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
-                    ex.printStackTrace();
-                    return false;
-                }
-            }
-            
-            default -> {
-                try {
-                    this.waitForLock();
-                    
-                    if ( this.master == null || this.proto == null) {
-                        if ( this.master == null ) {
-                            this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        }
-                        if ( this.proto == null ) {
-                            this.proto = RocksDB.open(this.options, this.getFilePath());
-                        }
-                        return true;
-                    }
-                    
-                    if (master.isClosed()) {
-                        this.master = RocksDB.open(options, this.getMasterFilePath());
-                    }
-                    if (proto.isClosed()) {
-                        this.proto = RocksDB.open(options, this.getFilePath());
-                    }
-                    return true;
-                }
-                
-                catch (RocksDBException | InterruptedException | IOException ex) {
-                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
-                    ex.printStackTrace();
-                    return false;
-                }
-            }
+    public boolean openPrototoype() {
+        try {
+            this.proto = RocksDB.open(this.options, this.getFilePath());
+            return true;
+        }
+        catch (RocksDBException ex) {
+            LOGGER.error("Error closing connection to Master DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
+
+    
+    /**
+     * Closes connection against prototype DB
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean closePrototoype() {
+        try {
+            this.proto.close();
+            return true;
+        }
         
-        
-    public synchronized boolean openConnNoElection(DbTarget target) {
-        switch (target) {
-            case MASTER -> {
-                try {
-                    if (this.master == null) {
-                        this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        return true;
-                    }
-                    if (master.isClosed()) {
-                        this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        return true;
-                    }
-                    return false;
-                } catch (Exception ex) {
-                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
-                    ex.printStackTrace();
-                    return false;
-                }
-            }
-
-            case PROTOTYPE -> {
-                try {
-                    if (this.proto == null) {
-                        this.proto = RocksDB.open(this.options, this.getFilePath());
-                        return true;
-                    }
-                    if (proto.isClosed()) {
-                        this.proto = RocksDB.open(options, this.getFilePath());
-                    }
-                    return true;
-                } catch (RocksDBException ex) {
-                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
-                    ex.printStackTrace();
-                    return false;
-                }
-            }
-
-            default -> {
-                try {
-
-                    if (this.master == null || this.proto == null) {
-                        if (this.master == null) {
-                            this.master = RocksDB.open(this.options, this.getMasterFilePath());
-                        }
-                        if (this.proto == null) {
-                            this.proto = RocksDB.open(this.options, this.getFilePath());
-                        }
-                        return true;
-                    }
-
-                    if (master.isClosed()) {
-                        this.master = RocksDB.open(options, this.getMasterFilePath());
-                    }
-                    if (proto.isClosed()) {
-                        this.proto = RocksDB.open(options, this.getFilePath());
-                    }
-                    return true;
-                } catch (Exception ex) {
-                    LOGGER.error("Error openning connection to DB:\n", ex.getMessage());
-                    ex.printStackTrace();
-                    return false;
-                }
-            }
+        // This is documentaed as such
+        catch (Exception ex) {
+           LOGGER.error("Error closing connection to Prototype DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
     

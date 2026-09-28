@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.itemstore.types.DbTarget;
 import java.util.List;
 import java.util.Map;
 
@@ -256,4 +257,22 @@ public interface ItemStore {
      * @return boolean
      */
     boolean openConn(DbTarget target);
+    
+    
+    /**
+     * Checks whether provided {@link DbTarget} is already opened
+     * 
+     * @param target
+     * @return boolean
+     */
+    public boolean isOpen(DbTarget target);
+    
+    
+    /**
+     * Checks whether provided {@link DbTarget} is already closed
+     * 
+     * @param target
+     * @return boolean
+     */
+    public boolean isClosed(DbTarget target);
 }

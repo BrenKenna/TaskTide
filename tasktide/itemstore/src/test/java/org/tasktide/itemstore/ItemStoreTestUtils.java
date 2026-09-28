@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.itemstore.types.ItemStoreType;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;

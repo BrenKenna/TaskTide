@@ -13,25 +13,71 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore;
+package org.tasktide.itemstore.utils;
 
 import java.io.IOException;
+import java.nio.file.FileAlreadyExistsException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.tasktide.itemstore.Item;
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.types.ItemStoreType;
+
+
 /**
+ * Collection of useful methods supporting the {@link ItemStore}
  *
  * @author Brendan Kenna
  */
 public class ItemStoreUtils {
-    
+
+    // Attributes
     private static final Logger LOGGER = LogManager.getLogger(ItemStoreUtils.class);
+
+    
+    /**
+     * Fetch random label for prototype
+     * 
+     * @return String
+     */
+    public static String fetchNewProtoTypeLabel() {
+        return "Prototype-" + UUID.randomUUID().toString();
+    }
+    
+    
+    /**
+     * Checks whether configured directory is writable
+     * 
+     * @return boolean
+     */
+    public static boolean verifyDirectory(Path dbDirectory) {
+        try {
+
+            // Creates directory if not exists
+            if (!Files.exists(dbDirectory)) {
+                Files.createDirectories(dbDirectory);
+            }
+
+            // Returns whether directory is writable
+            return Files.isDirectory(dbDirectory) && Files.isWritable(dbDirectory);
+        }
+        
+        // Return false if directory is not usable
+        catch (IOException | SecurityException e) {
+            return false;
+        }
+    }
     
     
     /**
@@ -114,5 +160,52 @@ public class ItemStoreUtils {
             output.add(makeMockItem());
         }
         return output;
+    }
+    
+    
+    /**
+     * Recursively delete all contents of folder and it
+     * 
+     * @param path
+     * @throws IOException 
+     */
+    public static void deleteRecursively(Path path) throws IOException {
+        if (Files.exists(path)) {
+            Files.walk(path)
+                .sorted(Comparator.reverseOrder()) // delete children before parents
+                .forEach(p -> {
+                    try {
+                        Files.deleteIfExists(p);
+                    } catch (IOException e) {
+                        throw new RuntimeException("Failed to delete: " + p, e);
+                    }
+                });
+        }
+    }
+    
+    
+    
+    /**
+     * Creates target lock file
+     * 
+     * @return boolean
+     */
+    public static boolean makeTargetLockFile(Path targetLock) {
+        
+        // Create masterDB lock file
+        try {
+            Files.createFile(targetLock);
+            return true;
+        }
+        
+        // Already exists
+        catch (FileAlreadyExistsException e) {
+            return true;
+        }
+        
+        // Creation failed for another reason
+        catch (IOException e) {
+            return false;
+        }
     }
 }

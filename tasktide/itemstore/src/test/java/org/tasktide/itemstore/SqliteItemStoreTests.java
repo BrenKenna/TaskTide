@@ -15,6 +15,8 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.itemstore.types.ItemStoreType;
+import org.tasktide.itemstore.types.DbTarget;
 import java.nio.file.Path;
 import java.util.UUID;
 

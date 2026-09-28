@@ -15,6 +15,7 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.itemstore.types.DbTarget;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -30,6 +31,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
 
 import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.ItemStoreSession;
@@ -618,226 +620,134 @@ public class SqliteStore extends AbstractItemStore {
     
     
     /**
-     * Close master and cache connections
+     * Checks if Master/Prototype are open
      * 
      * @param target
      * @return boolean
      */
     @Override
-    public boolean closeConn(DbTarget target) {
-        switch (target) {
-            case MASTER -> {
-                this.releaseLock(true);
-                try {
-                    if ( !this.master.isClosed() ) {
-                        this.master.close();
-                    }
-                    return true;
+    public boolean isOpen(DbTarget target) {
+        try {
+            if ( target == DbTarget.MASTER ) {
+                if ( this.master == null ) {
+                    return false;
                 }
-                catch (SQLException ex) {return false;}
+                return !this.master.isClosed();
             }
-            case PROTOTYPE -> {
-                try {
-                    if ( !this.proto.isClosed() ) {
-                        this.proto.close();
-                    }
-                    return true;
+            if ( target == DbTarget.PROTOTYPE ) {
+                if ( this.proto == null ) {
+                    return false;
                 }
-                catch (SQLException ex) {return false;}
+                return !this.proto.isClosed();
             }
-            default -> {
-                this.releaseLock(true);
-                try {
-                    if ( !this.master.isClosed() ) {
-                        this.master.close();
-                    }
-                    if ( !this.proto.isClosed() ) {
-                        this.proto.close();
-                    }
-                    return true;
-                }
-                catch (SQLException ex) {return false;}
-            }
+            return false;
         }
-    }
-    
-    /**
-     * Close master and cache connections
-     * 
-     * @param target
-     * @param releaseMutex
-     * @return boolean
-     */
-    @Override
-    public boolean closeConn(DbTarget target, boolean releaseMutex) {
-        switch (target) {
-            case MASTER -> {
-                this.releaseLock(releaseMutex);
-                try {
-                    if ( !this.master.isClosed() ) {
-                        this.master.close();
-                    }
-                    return true;
-                }
-                catch (SQLException ex) {return false;}
-            }
-            case PROTOTYPE -> {
-                try {
-                    if ( !this.proto.isClosed() ) {
-                        this.proto.close();
-                    }
-                    return true;
-                }
-                catch (SQLException ex) {return false;}
-            }
-            default -> {
-                this.releaseLock(releaseMutex);
-                try {
-                    if ( !this.master.isClosed() ) {
-                        this.master.close();
-                    }
-                    if ( !this.proto.isClosed() ) {
-                        this.proto.close();
-                    }
-                    return true;
-                }
-                catch (SQLException ex) {return false;}
-            }
+        catch (SQLException ex) {
+            LOGGER.error("Error openning connection to target DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
     
     
     /**
-     * Open {@link Connection} to target database
+     * Checks if Master/Prototype are open
      * 
      * @param target
      * @return boolean
      */
     @Override
-    public boolean openConn(DbTarget target) {
-        switch (target) {
-            case PROTOTYPE -> {
-                try {
-                    if ( this.proto == null ) {
-                        this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                        return true;
-                    }
-                    if ( this.proto.isClosed() ) {
-                        this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                    }
+    public boolean isClosed(DbTarget target) {
+        try {
+            if ( target == DbTarget.MASTER ) {
+                if ( this.master == null ) {
                     return true;
                 }
-                catch (SQLException ex) {
-                    return false;
-                }
+                return this.master.isClosed();
             }
-            
-            case MASTER -> {
-                try {
-                    this.waitForLock();
-                    if ( this.master == null ) {
-                        this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                        return true;
-                    }
-                    if ( this.master.isClosed() ) {
-                        this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                    }
-                    this.releaseLock(false);
+            if ( target == DbTarget.PROTOTYPE ) {
+                if ( this.proto == null ) {
                     return true;
                 }
-                catch (Exception ex) {
-                    return false;
-                }
+                return this.proto.isClosed();
             }
-            
-            default -> {
-                try {
-                    this.waitForLock();
-                    if ( this.master == null ) {
-                        this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                    }
-                    if ( this.master.isClosed() ) {
-                        this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                    }
-                    this.releaseLock(false);
-                    if ( this.proto == null ) {
-                        this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                    }
-                    if ( this.proto.isClosed() ) {
-                        this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                    }
-                    return true;
-                }
-                catch (Exception ex) {
-                    return false;
-                }
-            }
+            return false;
+        }
+        catch (SQLException ex) {
+            LOGGER.error("Error closing connection to target DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
     
     
     /**
-     * Open {@link Connection} to target database
+     * Open connection master connection
      * 
      * @param target
      * @return boolean
      */
-    public boolean openConnNoElection(DbTarget target) {
-        switch (target) {
-            case PROTOTYPE -> {
-                try {
-                    if ( this.proto == null ) {
-                        this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                        return true;
-                    }
-                    if ( this.proto.isClosed() ) {
-                        this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                    }
-                    return true;
-                }
-                catch (SQLException ex) {
-                    return false;
-                }
-            }
-            
-            case MASTER -> {
-                try {
-                    if ( this.master == null ) {
-                        this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                        return true;
-                    }
-                    if ( this.master.isClosed() ) {
-                        this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                    }
-                    this.releaseLock(false);
-                    return true;
-                }
-                catch (Exception ex) {
-                    return false;
-                }
-            }
-            
-            default -> {
-                try {
-                    if ( this.master == null ) {
-                        this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                    }
-                    if ( this.master.isClosed() ) {
-                        this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
-                    }
-                    this.releaseLock(false);
-                    if ( this.proto == null ) {
-                        this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                    }
-                    if ( this.proto.isClosed() ) {
-                        this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
-                    }
-                    return true;
-                }
-                catch (Exception ex) {
-                    return false;
-                }
-            }
+    @Override
+    public boolean openMaster() {
+        try {
+            this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
+            return true;
+        }
+        catch (SQLException ex) {
+            LOGGER.error("Error openning connection to Master DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
+        }
+    }
+    
+    
+    /**
+     * Closes connection against master DB
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean closeMaster() {
+        try {
+            this.master.close();
+            return true;
+        }
+        catch (SQLException ex) {
+            LOGGER.error("Error openning connection to Prototype DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
+        }
+    }
+    
+    
+    /**
+     * Open connection prototype connection
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean openPrototoype() {
+        try {
+            this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
+            return true;
+        }
+        catch (SQLException ex) {
+            LOGGER.error("Error closing connection to Master DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
+        }
+    }
+
+    
+    /**
+     * Closes connection against prototype DB
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean closePrototoype() {
+        try {
+            this.proto.close();
+            return true;
+        }
+        catch (SQLException ex) {
+           LOGGER.error("Error closing connection to Prototype DB:\n", ex.getMessage());
+            throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
     
