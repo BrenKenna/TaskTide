@@ -125,6 +125,42 @@ public abstract class AbstractItemStore implements ItemStore {
     
     
     /**
+     * Enforces concrete classes to implement
+     *  opening connection against master DB
+     * 
+     * @return boolean
+     */
+    protected abstract boolean openMaster();
+    
+    
+    /**
+     * Enforces concrete classes to implement
+     *  opening connection against prototype DB
+     * 
+     * @return boolean
+     */
+    protected abstract boolean openPrototoype();
+
+    
+    /**
+     * Enforces concrete classes to implement
+     *  closing connection against master DB
+     * 
+     * @return boolean
+     */
+    protected abstract boolean closeMaster();
+    
+    
+    /**
+     * Enforces concrete classes to implement
+     *  closing connection against prototype DB
+     * 
+     * @return boolean
+     */
+    protected abstract boolean closePrototoype();
+    
+    
+    /**
      * Standardizes how concrete {@link ItemStore} open connections,
      *  using the evaluation logic from {@link ItemStoreConnectionStrategy},
      *  and targeted {@link AbstractItemStore} methods. Allowing
@@ -206,42 +242,6 @@ public abstract class AbstractItemStore implements ItemStore {
             }
         }
     }
-    
-    
-    /**
-     * Enforces concrete classes to implement
-     *  opening connection against master DB
-     * 
-     * @return boolean
-     */
-    protected abstract boolean openMaster();
-    
-    
-    /**
-     * Enforces concrete classes to implement
-     *  opening connection against prototype DB
-     * 
-     * @return boolean
-     */
-    protected abstract boolean openPrototoype();
-
-    
-    /**
-     * Enforces concrete classes to implement
-     *  closing connection against master DB
-     * 
-     * @return boolean
-     */
-    protected abstract boolean closeMaster();
-    
-    
-    /**
-     * Enforces concrete classes to implement
-     *  closing connection against prototype DB
-     * 
-     * @return boolean
-     */
-    protected abstract boolean closePrototoype();
 
 
     /**

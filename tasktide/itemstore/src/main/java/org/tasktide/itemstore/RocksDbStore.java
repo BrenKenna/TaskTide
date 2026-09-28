@@ -15,8 +15,6 @@
  */
 package org.tasktide.itemstore;
 
-import org.tasktide.itemstore.types.DbTarget;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -26,6 +24,7 @@ import java.util.Map.Entry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.rocksdb.RocksDB;
@@ -34,16 +33,15 @@ import org.rocksdb.Options;
 import org.rocksdb.RocksDBException;
 import org.rocksdb.WriteBatch;
 import org.rocksdb.WriteOptions;
+
 import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
-
-
-// Gone with movr to tools.jackson.datatype v3.2.2
 
 import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.ItemStoreSession;
 import org.tasktide.itemstore.session.LinkedOperation;
 import org.tasktide.itemstore.session.LinkedOperationMap;
-import org.tasktide.itemstore.strategies.ItemStoreConnectionStrategy;
+
+import org.tasktide.itemstore.types.DbTarget;
 
 
 /**
