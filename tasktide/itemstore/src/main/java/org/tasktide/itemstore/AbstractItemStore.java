@@ -33,6 +33,9 @@ import org.tasktide.itemstore.strategies.ItemStoreLockStrategy;
 import org.tasktide.itemstore.strategies.ItemStoreConnectionStrategy;
 
 import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
+import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
+import org.tasktide.itemstore.operations.ItemStoreOperation;
+import org.tasktide.itemstore.operations.ThrowableItemStoreOperation;
 
 
 /**
@@ -50,7 +53,7 @@ public abstract class AbstractItemStore implements ItemStore {
     private final Path dbDirectory, masterDB, protoDB;
     
     // Owns DB lock lifecycle, and how its done
-    private final ItemStoreLockStrategy lockStrategy;
+    protected final ItemStoreLockStrategy lockStrategy;
 
     /**
      * Construct with all attributes. Throws IllegalArgument
@@ -111,8 +114,8 @@ public abstract class AbstractItemStore implements ItemStore {
             this.masterDB
         );
     }
-    
 
+    
     /**
      * Get connection
      * 
@@ -125,39 +128,73 @@ public abstract class AbstractItemStore implements ItemStore {
     
     
     /**
-     * Enforces concrete classes to implement
-     *  opening connection against master DB
+     * Synchronizes lock and connection lifecycles
+     *  under one operation. Allowing callers to solely
+     *  own the required operation, without having to
+     *  know about these distinct strategies
      * 
-     * @return boolean
+     * @param <R>
+     * @param label
+     * @param target
+     * @param operation
+     * 
+     * @return R Operation Result
+     * 
+     * @throws {@link ItemStoreCheckedException} 
      */
-    protected abstract boolean openMaster();
+    @SuppressWarnings("unchecked")
+    protected synchronized <R> R withLockedConnection(
+        String label,
+        DbTarget target,
+        ThrowableItemStoreOperation operation
+    ) throws ItemStoreCheckedException {
+    
+        return (R) this.lockStrategy.withLock(
+            label,
+            () -> {
+                return ItemStoreConnectionStrategy.connectionOperation(
+                    target,
+                    this,
+                    operation
+                );
+            }
+        );
+    }
     
     
     /**
-     * Enforces concrete classes to implement
-     *  opening connection against prototype DB
+     * Synchronizes lock and connection lifecycles
+     *  under one operation. Allowing callers to solely
+     *  own the required operation, without having to
+     *  know about these distinct strategies
      * 
-     * @return boolean
-     */
-    protected abstract boolean openPrototoype();
-
-    
-    /**
-     * Enforces concrete classes to implement
-     *  closing connection against master DB
+     * @param <R>
+     * @param label
+     * @param target
+     * @param operation
      * 
-     * @return boolean
-     */
-    protected abstract boolean closeMaster();
-    
-    
-    /**
-     * Enforces concrete classes to implement
-     *  closing connection against prototype DB
+     * @return R Operation Result
      * 
-     * @return boolean
+     * @throws {@link ItemStoreUncheckedException} 
      */
-    protected abstract boolean closePrototoype();
+    @SuppressWarnings("unchecked")
+    protected synchronized <R> R withLockedConnectionUnchecked (
+        String label,
+        DbTarget target,
+        ItemStoreOperation operation
+    ) throws ItemStoreUncheckedException {
+    
+        return (R) this.lockStrategy.withLockUnchecked(
+            label,
+            () -> {
+                return ItemStoreConnectionStrategy.connectionOperationUnchecked(
+                    target,
+                    this,
+                    operation
+                );
+            }
+        );
+    }
     
     
     /**
@@ -179,7 +216,7 @@ public abstract class AbstractItemStore implements ItemStore {
                     () -> { return this.openMaster(); }
                 );
             }
-            
+
             case DbTarget.PROTOTYPE -> {
                 return ItemStoreConnectionStrategy.openConnection(
                     target,
@@ -187,7 +224,7 @@ public abstract class AbstractItemStore implements ItemStore {
                     () -> { return this.openPrototoype(); }
                 );
             }
-            
+
             default -> {
                 return ItemStoreConnectionStrategy.openConnection(
                     target,
@@ -221,7 +258,7 @@ public abstract class AbstractItemStore implements ItemStore {
                     () -> { return this.closeMaster(); }
                 );
             }
-            
+
             case DbTarget.PROTOTYPE -> {
                 return ItemStoreConnectionStrategy.closeConnection(
                     target,
@@ -229,7 +266,7 @@ public abstract class AbstractItemStore implements ItemStore {
                     () -> { return this.closePrototoype(); }
                 );
             }
-            
+
             default -> {
                 return ItemStoreConnectionStrategy.closeConnection(
                     target,
@@ -248,24 +285,17 @@ public abstract class AbstractItemStore implements ItemStore {
      * Sync an {@link Item} to the master. Waits for instance to lock, then releases
      * 
      * @param item
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
     public void syncToMaster(Item item) throws ItemStoreCheckedException {
-        try {
-            this.itemStoreTransactionNoReturn("Sync record to Master", () -> {
-                try {
-                    this.saveItem(DbTarget.MASTER, item);
-                }
-                catch (Exception ex) {
-                    //throw new ItemStoreCheckedException("Error syncing to master", ex);
-                }
-            });
-        }
-        
-        catch (Exception ex) {
-            throw new ItemStoreCheckedException("Error syncing record to master", ex);
-        }
+        this.lockStrategy.withLock(
+            "Sync record to Master",
+            () -> {
+                this.saveItem(DbTarget.MASTER, item);
+                return true;
+            }
+        );
     }
     
     
@@ -273,42 +303,35 @@ public abstract class AbstractItemStore implements ItemStore {
      * Syncs Item list to master
      * 
      * @param items
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
     public void syncToMaster(List<Item> items) throws ItemStoreCheckedException {
-        
-        try {
-            this.itemStoreTransactionNoReturn("Sync records to Master", () -> {
-                try {
-                    this.saveItems(DbTarget.MASTER, items);
-                }
-                catch (Exception ex) {
-                    //throw new ItemStoreCheckedException("Error syncing to master", ex);
-                }
-            });
-        }
-        
-        catch (Exception ex) {
-            throw new ItemStoreCheckedException("Error syncing records to master", ex);
-        }
+        this.lockStrategy.withLock(
+            "Sync records to Master",
+            () -> {
+                this.saveItems(DbTarget.MASTER, items);
+                return true;
+            }
+        );
     }
     
     
     /**
      * Sync all records from cache to master
      * 
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
-    public void syncToMaster() throws Exception {
-        try {
-            waitForLock();
-            List<Item> data = this.getAll(DbTarget.MASTER);
-            this.saveItems(DbTarget.MASTER, data);
-        } 
-        catch (InterruptedException ex) {}
-        finally {
-            releaseLock(true);
-        }
+    public void syncToMaster() throws ItemStoreCheckedException {
+        this.lockStrategy.withLock(
+            "Syncing prototype to master",
+            () -> {
+                List<Item> data = this.getAll(DbTarget.PROTOTYPE);
+                this.saveItems(DbTarget.MASTER, data);
+                return true;
+            }
+        );
     }
     
     
@@ -320,7 +343,11 @@ public abstract class AbstractItemStore implements ItemStore {
     @Override
     public boolean cacheMaster() {
         try {
-            Files.copy(this.masterDB, this.protoDB, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(
+                this.masterDB,
+                this.protoDB,
+                StandardCopyOption.REPLACE_EXISTING
+            );
             return true;
         }
         catch (IOException ex) {

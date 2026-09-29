@@ -44,6 +44,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
 
 
 /**
@@ -198,7 +199,12 @@ public class ConcurrencyTests {
         // Wait for tasks
         LOGGER.info("Tasks submitted, waiting for results");
         this.waitFor(this.TASKS);
-        assertionState = SQL_STORE.getAll(DbTarget.MASTER).size() == TOTAL_TASKS;
+        try {
+            assertionState = SQL_STORE.getAll(DbTarget.MASTER).size() == TOTAL_TASKS;
+        }
+        catch (ItemStoreCheckedException ex) {
+            assertionState = false;
+        }
         
         // Evaluate test
         if ( assertionState ) {
@@ -246,7 +252,12 @@ public class ConcurrencyTests {
         // Wait for tasks
         LOGGER.info("Tasks submitted, waiting for results");
         this.waitFor(this.TASKS);
-        assertionState = ROCKS_STORE.getAll(DbTarget.MASTER).size() == TOTAL_TASKS;
+        try {
+            assertionState = ROCKS_STORE.getAll(DbTarget.MASTER).size() == TOTAL_TASKS;
+        }
+        catch (ItemStoreCheckedException ex) {
+            assertionState = false;
+        }
         
         // Evaluate test
         if ( assertionState ) {

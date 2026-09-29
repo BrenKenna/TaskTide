@@ -48,7 +48,7 @@ import org.tasktide.core.manager.command.commands.DeleteCommand;
 import org.tasktide.core.repository.JpaRepository;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.types.ItemStoreType;
 
 
 /**

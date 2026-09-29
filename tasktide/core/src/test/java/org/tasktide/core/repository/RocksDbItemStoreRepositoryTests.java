@@ -47,7 +47,7 @@ import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.types.ItemStoreType;
 
 
 /**

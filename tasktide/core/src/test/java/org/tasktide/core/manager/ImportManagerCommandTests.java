@@ -16,7 +16,6 @@
 package org.tasktide.core.manager;
 
 import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.nosql.Template;
 
 import jakarta.persistence.EntityManager;
 import java.nio.file.Path;
@@ -44,13 +43,9 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
 
-import org.tasktide.core.TaskTideService;
-import org.tasktide.core.model.collection.Step;
-import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
-import org.tasktide.core.services.ServiceFactory;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
@@ -60,9 +55,6 @@ import org.tasktide.core.manager.command.commands.ImportCommand;
 
 import org.tasktide.core.model.task.ItemTask;
 import org.tasktide.core.repository.JpaRepository;
-import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
-import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.ItemStoreType;
 
 
 /**

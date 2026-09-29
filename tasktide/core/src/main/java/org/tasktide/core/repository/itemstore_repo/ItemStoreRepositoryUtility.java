@@ -41,10 +41,10 @@ import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
 import org.tasktide.core.supporting.JsonUtils;
-import org.tasktide.itemstore.DbTarget;
 
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.types.DbTarget;
+import org.tasktide.itemstore.types.ItemStoreType;
 
 
 /**

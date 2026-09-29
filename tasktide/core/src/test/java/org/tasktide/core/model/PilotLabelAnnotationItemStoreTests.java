@@ -43,7 +43,7 @@ import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.repository.ItemStoreRepository;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
-import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.types.ItemStoreType;
 
 
 /**

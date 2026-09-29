@@ -30,8 +30,17 @@ import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.rocksdb.RocksDB;
+import org.rocksdb.RocksDBException;
+import org.rocksdb.WriteBatch;
+import org.rocksdb.WriteOptions;
+
 import org.tasktide.itemstore.Item;
 import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
 import org.tasktide.itemstore.types.ItemStoreType;
 
 
@@ -182,8 +191,7 @@ public class ItemStoreUtils {
                 });
         }
     }
-    
-    
+
     
     /**
      * Creates target lock file
@@ -206,6 +214,121 @@ public class ItemStoreUtils {
         // Creation failed for another reason
         catch (IOException e) {
             return false;
+        }
+    }
+    
+    
+    /**
+     * Serializes {@link Item} to byte array with provided
+     *  ObjectMapper
+     * 
+     * @param MAPPER
+     * @param item
+     * @return
+     * @throws {@link ItemStoreCheckedException} 
+     */
+    public static byte[] serializeItemToByteArray(ObjectMapper MAPPER, Item item) throws ItemStoreCheckedException {
+        try {
+            return MAPPER.writeValueAsBytes(item);
+        }
+        catch ( JsonProcessingException ex ) {
+            String msg = String.format(
+                "Error serializing item '%s' to byte array",
+                item.getId()
+            );
+            LOGGER.error(msg, ex);
+            throw new ItemStoreCheckedException(msg, ex);
+        }
+    }
+    
+    
+    /**
+     * Batch write records
+     * 
+     * @param db
+     * @param batch
+     * @param writeOptions
+     * @throws {@link ItemStoreCheckedException} 
+     */
+    public static void writeBatch(
+        RocksDB db,
+        WriteBatch batch,
+        WriteOptions writeOptions
+    ) throws ItemStoreCheckedException {
+        try {
+            db.write(writeOptions, batch);
+        }
+        catch (RocksDBException ex) {
+            LOGGER.error("Error batch writing records", ex);
+            throw new ItemStoreCheckedException("Error batch writing records", ex);
+        }
+    }
+    
+    
+    /**
+     * Fetch record for Id
+     * 
+     * @param db
+     * @param id
+     * 
+     * @return byte[]
+     * 
+     * @throws {@link ItemStoreCheckedException} 
+     */
+    public static byte[] getId(RocksDB db, String id) throws ItemStoreCheckedException {
+    
+        try {
+            return db.get(id.getBytes());
+        }
+        catch (RocksDBException ex) {
+            String msg = String.format(
+                "Error fetching record for queried '%s'",
+                id
+            );
+            LOGGER.error(msg, ex);
+            throw new ItemStoreCheckedException(msg, ex);
+        }
+    }
+    
+    
+    /**
+     * Marshall {@link Item} from byte array
+     * 
+     * @param mapper
+     * @param data
+     * @return {@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
+     */
+    public static Item marshallItemFromByteArray(ObjectMapper mapper, byte[] data) throws ItemStoreCheckedException {
+        try {
+            return mapper.readValue(data, Item.class);
+        }
+        catch (IOException ex) {
+            LOGGER.error("Error deserializing record", ex);
+            throw new ItemStoreCheckedException("Error deserializing record", ex);
+        }
+    }
+    
+    
+    /**
+     * Delete {@link Item} from RocksDB encasing
+     * 
+     * @param db
+     * @param item
+     * @throws {@link ItemStoreCheckedException} 
+     */
+    public static void delete(RocksDB db, Item item) throws ItemStoreCheckedException {
+        try {
+            db.delete(item.getId().getBytes());
+        }
+        catch (RocksDBException ex) {
+            String msg = String.format(
+                "Error deleting record for queried item '%s'",
+                item.getId()
+            );
+            LOGGER.error(msg, ex);
+            throw new ItemStoreCheckedException(msg, ex);
         }
     }
 }

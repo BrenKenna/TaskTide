@@ -17,28 +17,30 @@ package org.tasktide.itemstore.strategies;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+
+import java.nio.file.Path;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 
-import java.nio.file.Path;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import org.tasktide.itemstore.AbstractItemStore;
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
+import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
+import org.tasktide.itemstore.operations.ItemStoreOperation;
+import org.tasktide.itemstore.operations.ThrowableItemStoreOperation;
 import org.tasktide.itemstore.utils.ItemStoreUtils;
-import org.tasktide.mutex.exceptions.MutexCheckedException;
 
+import org.tasktide.mutex.model.Mutex;
+import org.tasktide.mutex.exceptions.MutexCheckedException;
 import org.tasktide.mutex.exceptions.MutexUncheckedException;
 import org.tasktide.mutex.utils.DefaultMutexPaths;
-
-// For documentation
-import org.tasktide.mutex.model.Mutex;
 import org.tasktide.mutex.orchestrator.MutexOrchestrator;
-import org.tasktide.itemstore.operations.ThrowableItemStoreOperation;
 
 
 /**
@@ -156,7 +158,107 @@ public class ItemStoreLockStrategy {
      * 
      * @throws {@link ItemStoreCheckedException}
      */
-    public <R> R withLock (
+    public synchronized <R> R withLock (
+        String label,
+        ThrowableItemStoreOperation<R> operation
+    ) throws ItemStoreCheckedException {
+        
+        // Try acquire lock on target,
+        //  and perform operation
+        try {
+            this.waitForLock();
+            return operation.execute();
+        }
+        
+        // Otherwise log traceably throw error from mutex lib
+        catch (InterruptedException | IOException ex) {
+            LOGGER.error(ex);
+            String msg = String.format(
+                "Error ecountered obtaining lock for operation '%s':\t'%s'",
+                label, ex.getMessage()
+            );
+            throw new ItemStoreCheckedException(msg, ex);
+        }
+        
+        // Otherwise from the actual operation itself
+        catch ( ItemStoreCheckedException ex ) {
+            LOGGER.error(ex);
+            String msg = String.format(
+                "Error ecountered during operation '%s':\t'%s'",
+                label, ex.getMessage()
+            );
+            throw new ItemStoreCheckedException(msg, ex);
+        }
+        
+        // Release lock on resource
+        finally {
+            this.releaseLock(true);
+        }
+    }
+    
+    
+    /**
+     * Internal {@link ItemStore} method to force database
+     *  operations under standard lock release pipeline
+     * 
+     * @param <R>
+     * @param operation
+     * @param label
+     * @return <R> of operation result
+     * 
+     * @throws {@link ItemStoreCheckedException}
+     */
+    public synchronized <R> R withLockUnchecked (
+        String label,
+        ItemStoreOperation<R> operation
+    ) throws ItemStoreUncheckedException {
+        
+        // Try acquire lock on target,
+        //  and perform operation
+        try {
+            this.waitForLock();
+            return operation.execute();
+        }
+        
+        // Otherwise log traceably throw error from mutex lib
+        catch (InterruptedException | IOException ex) {
+            LOGGER.error(ex);
+            String msg = String.format(
+                "Error ecountered obtaining lock for operation '%s':\t'%s'",
+                label, ex.getMessage()
+            );
+            throw new ItemStoreUncheckedException(msg, ex);
+        }
+        
+        // Otherwise from the actual operation itself
+        catch ( Exception ex ) {
+            LOGGER.error(ex);
+            String msg = String.format(
+                "Error ecountered during operation '%s':\t'%s'",
+                label, ex.getMessage()
+            );
+            throw new ItemStoreUncheckedException(msg, ex);
+        }
+        
+        // Release lock on resource
+        finally {
+            this.releaseLock(true);
+        }
+    }
+    
+    
+    /**
+     * Non-synchronized {@link ItemStore} method to force database
+     *  operations under standard lock release pipeline
+     * 
+     * @param <R>
+     * @param operation
+     * @param label
+     * @return <R> of operation result
+     * 
+     * @throws {@link ItemStoreCheckedException}
+     */
+    public <R> R withLockNonSynced (
         String label,
         ThrowableItemStoreOperation<R> operation
     ) throws ItemStoreCheckedException {

@@ -15,8 +15,6 @@
  */
 package org.tasktide.core.repository;
 
-import java.util.List;
-
 import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 
@@ -56,7 +54,7 @@ import org.tasktide.core.repository.template_repo.TemplateJobEnvironmentReposito
 import org.tasktide.core.repository.template_repo.TemplateMetricDataRepository;
 import org.tasktide.core.repository.template_repo.TemplateMetricProfileRepository;
 
-import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.types.ItemStoreType;
 
 
 /**

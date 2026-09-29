@@ -32,7 +32,7 @@ import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.itemstore.Item;
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.DbTarget;
+import org.tasktide.itemstore.types.DbTarget;
 
 
 /**

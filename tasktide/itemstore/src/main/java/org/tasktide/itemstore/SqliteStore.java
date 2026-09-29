@@ -15,12 +15,8 @@
  */
 package org.tasktide.itemstore;
 
-import org.tasktide.itemstore.types.DbTarget;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,8 +27,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
+import org.tasktide.itemstore.types.DbTarget;
+import static org.tasktide.itemstore.types.DbTarget.*;
+
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
+import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
 import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.ItemStoreSession;
 import org.tasktide.itemstore.session.LinkedOperation;
@@ -51,6 +54,14 @@ public class SqliteStore extends AbstractItemStore {
     private Connection master, proto;
     
     
+    /**
+     * Constructs SQLite {@link ItemStore}
+     * 
+     * @param storeName
+     * @param dbDirectory
+     * @param masterDB
+     * @param protoDB 
+     */
     public SqliteStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
         super(storeName, dbDirectory, masterDB, protoDB);
         this.initItemStore();
@@ -69,125 +80,6 @@ public class SqliteStore extends AbstractItemStore {
     public SqliteStore(String storeName, String dbDirectory, String masterDB, String protoDB, boolean isLinked) {
         super(storeName, dbDirectory, masterDB, protoDB);
         this.initItemStore(isLinked);
-    }
-    
-    
-    /**
-     * Executes a {@link LinkedOperationMap} over an
-     *  {@link ItemStore} map
-     * 
-     * @param <T>
-     * @param target
-     * @param recipients
-     * @param operations
-     * @return T
-     */
-    @Override
-    public synchronized <T> T execute(
-        DbTarget target,
-        Map<String, ItemStore> recipients,
-        LinkedOperationMap<T> operations
-    ) {
-        
-        // Initialize vars
-        Map<String, ItemStoreSession> recipientMap = new HashMap<>();
-        
-        // Open connections
-        try {
-        
-            ItemStoreSession donor;
-            this.openConn(target);
-            for ( Entry<String, ItemStore> elm : recipients.entrySet() ) {
-                String label = elm.getKey();
-                RocksDbStore val = (RocksDbStore) elm.getValue();
-                val.openConnNoElection(target);
-                ItemStoreSession session = new SqliteSession( val.getConnection(target, Connection.class) );
-                recipientMap.put(label, session);
-            }
-        
-            // Perform operation
-            donor = new SqliteSession(this.master);
-            return operations.execute(donor, recipientMap);
-        }
-        
-        // Close connections
-        finally {
-            for ( Entry<String, ItemStore> elm : recipients.entrySet() ) { 
-                elm.getValue().closeConn(target, false);
-            }
-            this.closeConn(target, true);
-        }
-    }
-
-    
-    /**
-     * Performs the {@link LinkedOperation} over two {@link SqliteStore}
-     *  under one connection for both {@link ItemStore}
-     * 
-     * @param <T>
-     * @param target
-     * @param recipientStore
-     * @param operations
-     * @return T
-     */
-    @Override
-    public synchronized <T> T execute(DbTarget target, ItemStore recipientStore, LinkedOperation<T> operations) {
-    
-        // Opens connections
-        ItemStoreSession donor, recipient;
-        this.openConn(target);
-        ( (SqliteStore) recipientStore).openConnNoElection(target);
-        
-        // Execute operation
-        try {
-            switch ( target ) {
-                case MASTER -> {
-                    donor = new SqliteSession(this.master);
-                    recipient = new SqliteSession( ( (AbstractItemStore) recipientStore).getConnection(target, Connection.class) );
-                }
-                default -> {
-                    donor = new SqliteSession(this.proto);
-                    recipient = new SqliteSession( ( (AbstractItemStore) recipientStore).getConnection(target, Connection.class) );
-                }
-            }
-            return operations.execute(donor, recipient);
-        }
-        
-        // Close connections
-        finally {
-            recipientStore.closeConn(target, false);
-            this.closeConn(target, true);
-        }
-    }
-    
-    
-    /**
-     * Performs {@link BulkOperation} over {@link DbTarget}
-     *  under one {@link ItemStoreSession}
-     * 
-     * @param <T>
-     * @param target
-     * @param operations
-     * @return T
-     */
-    @Override
-    public synchronized <T> T execute(DbTarget target, BulkOperation<T> operations) {
-        this.openConn(target);
-        try {
-            ItemStoreSession session;
-            switch ( target ) {
-                case MASTER -> {
-                    session = new SqliteSession(this.master);
-                }
-                default -> {
-                    session = new SqliteSession(this.proto);
-                }
-            }
-            return operations.execute(session);
-        }
-        finally {
-            this.closeConn(target);
-        }
     }
     
     
@@ -216,11 +108,15 @@ public class SqliteStore extends AbstractItemStore {
      *  both the Master & Prototype
      */
     private void initItemStore() {
-        LOGGER.info("Initializing DB");
-        this.openConn(DbTarget.BOTH);
-        this.initDatabase(this.master);
-        this.initDatabase(this.proto);
-        this.closeConn(DbTarget.BOTH);
+        LOGGER.info("Acquiring mutex to intialize DB");
+        this.withLockedConnectionUnchecked(
+            "Initialize DB",
+            DbTarget.MASTER,
+            () -> {
+                this.initDatabase(this.master);
+                this.initDatabase(this.proto);
+                return true;
+        });
     }
     
     
@@ -234,17 +130,15 @@ public class SqliteStore extends AbstractItemStore {
      * @param isLined
      */
     private void initItemStore(boolean isLinked) {
-        LOGGER.info("Initializing DB under active mutex");
         if ( isLinked ) {
-            this.openConnNoElection(DbTarget.BOTH);
+            LOGGER.info("Initializing DB under active mutex");
+            this.openConn(DbTarget.BOTH);
+            this.initDatabase(this.master);
+            this.initDatabase(this.proto);
+            this.closeConn(DbTarget.BOTH);
         }
         else {
-            this.openConn(DbTarget.BOTH);
-        }
-        this.initDatabase(this.master);
-        this.initDatabase(this.proto);
-        if ( !isLinked ) {
-            this.closeConn(DbTarget.BOTH);
+            this.initItemStore();
         }
     }
     
@@ -270,12 +164,30 @@ public class SqliteStore extends AbstractItemStore {
             return stmt.execute(query);
         }
         catch ( SQLException ex) {
-            LOGGER.error("Error initializing ItemStore displaying statck trace", ex);
-            ex.printStackTrace();
-            throw new RuntimeException("Sqlite-ItemStore initialization failed", ex);
+            LOGGER.error("Error initializing ItemStore displaying statck trace\n\n", ex);
+            throw new ItemStoreUncheckedException("Sqlite-ItemStore initialization failed", ex);
         }
     }
 
+    
+    /**
+     * Fetch Connection for {@link DbTarget}
+     * 
+     * @param target
+     * @return Connection
+     */
+    private Connection getFor(DbTarget target) {
+        if ( target == DbTarget.MASTER ) {
+            return this.master;
+        }
+        else if ( target == DbTarget.PROTOTYPE ) {
+            return this.proto;
+        }
+        else {
+            throw new ItemStoreUncheckedException("Target must be one of Master or Prototype");
+        }
+    }
+    
     
     /**
      * Put {@link Item} into target database
@@ -283,8 +195,13 @@ public class SqliteStore extends AbstractItemStore {
      * @param conn
      * @param item
      * @return boolean
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    private boolean putItem(Connection conn, Item item) {
+    private boolean putItem(
+        Connection conn,
+        Item item
+    ) throws ItemStoreCheckedException {
         String query = 
             "INSERT INTO Items (Id, State, Collection, Payload) VALUES (?, ?, ?, ?)"
         ;
@@ -296,8 +213,11 @@ public class SqliteStore extends AbstractItemStore {
             return ps.executeUpdate() > 0;
         }
         catch (SQLException ex) {
-            ex.printStackTrace();
-            return false;
+            LOGGER.error("Error inserting record displaying statck trace\n\n", ex);
+            throw new ItemStoreCheckedException(
+                "Error inserting record displaying statck trace",
+                ex
+            );
         }
     }
     
@@ -328,15 +248,15 @@ public class SqliteStore extends AbstractItemStore {
      * 
      * @param rs
      * @return List-{@link Item}
+     * 
+     * @throws {@link SQLException}
      */
-    private List<Item> consumeResultSet(ResultSet rs) {
+    private List<Item> consumeResultSet(ResultSet rs) throws SQLException {
         List<Item> output = new ArrayList<>();
-        try {
+        try (rs) {
             while ( rs.next() ) {
-                output.add( parseItem(rs) );
+                output.add( this.parseItem(rs) );
             }
-        }
-        finally {
             return output;
         }
     }
@@ -347,8 +267,10 @@ public class SqliteStore extends AbstractItemStore {
      * 
      * @param conn
      * @return List-{@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    private List<Item> selectAll(Connection conn) {
+    private List<Item> selectAll(Connection conn) throws ItemStoreCheckedException {
         String query = 
             "SELECT * FROM Items"
         ;
@@ -357,7 +279,11 @@ public class SqliteStore extends AbstractItemStore {
             return consumeResultSet(rs);
         }
         catch (SQLException ex) {
-            return null;
+            LOGGER.error("Error inserting record displaying statck trace\n\n", ex);
+            throw new ItemStoreCheckedException(
+                "Error inserting record displaying statck trace",
+                ex
+            );
         }
     }
     
@@ -369,15 +295,47 @@ public class SqliteStore extends AbstractItemStore {
      * @param query
      * @param val
      * @return List-{@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    private List<Item> selectQuery(Connection conn, String query, String val) {
+    private List<Item> selectQuery (
+        Connection conn,
+        String query,
+        String val
+    ) throws ItemStoreCheckedException {
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, val);
             ResultSet rs = ps.executeQuery();
             return this.consumeResultSet(rs);
         }
         catch (SQLException ex) {
-            return null;
+            throw new ItemStoreCheckedException("Error performing query\n\n", ex);
+        }
+    }
+    
+    
+    /**
+     * Execute select query
+     * 
+     * @param conn
+     * @param query
+     * @param val
+     * @return List-{@link Item}
+     * 
+     * @throws {@link ItemStoreUncheckedException}
+     */
+    private List<Item> selectQueryUnchecked(
+        Connection conn,
+        String query,
+        String val
+    ) throws ItemStoreUncheckedException{
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, val);
+            ResultSet rs = ps.executeQuery();
+            return this.consumeResultSet(rs);
+        }
+        catch (SQLException ex) {
+            throw new ItemStoreUncheckedException("Error performing query\n\n", ex);
         }
     }
     
@@ -388,8 +346,10 @@ public class SqliteStore extends AbstractItemStore {
      * @param conn
      * @param item
      * @return boolean
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    private boolean deleteItem(Connection conn, Item item) {
+    private boolean deleteItem(Connection conn, Item item) throws ItemStoreCheckedException {
         String query =
             "DELETE FROM Items WHERE Id = ?"
         ;
@@ -398,9 +358,38 @@ public class SqliteStore extends AbstractItemStore {
             return ps.executeUpdate() > 0;
         }
         catch (SQLException ex) {
-            LOGGER.error("Error deleting item displaying statck trace", ex);
-            ex.printStackTrace();
-            return false;
+            LOGGER.error("Error deleting item displaying statck trace\n\n", ex);
+            throw new ItemStoreCheckedException(
+                "Error deleting item displaying statck trace",
+                ex
+            );
+        }
+    }
+    
+    
+    /**
+     * Save element under one commit
+     * 
+     * @param target
+     * @param item
+     * 
+     * @throws {@link ItemStoreCheckedException}
+     */
+    public void saveItemElm(
+        DbTarget target,
+        Item item
+    ) throws ItemStoreCheckedException {
+        switch ( target ) {
+            case PROTOTYPE -> {
+                this.putItem(this.proto, item);
+            }
+            case MASTER -> {
+                this.putItem(this.master, item);
+            }
+            case BOTH -> {
+                this.putItem(this.proto, item);
+                this.putItem(this.master, item);
+            }
         }
     }
     
@@ -410,61 +399,43 @@ public class SqliteStore extends AbstractItemStore {
      * 
      * @param target
      * @param item
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
-    public synchronized void saveItem(DbTarget target, Item item) {
-        this.openConn(target);
-        switch ( target ) {
-            case PROTOTYPE -> {
-                this.putItem(this.proto, item);
-            }
-            case MASTER -> {
-                this.putItem(this.master, item);
-            }
-            case BOTH -> {
-                this.putItem(this.proto, item);
-                this.putItem(this.master, item);
-            }
-        }
-        this.closeConn(target);
+    public void saveItem(
+        DbTarget target,
+        Item item
+    ) throws ItemStoreCheckedException {
+        this.withLockedConnection(
+            "Save Item",
+            target,
+            () -> {
+                this.saveItemElm(target, item);
+                return true;
+        });
     }
 
-    
-    /**
-     * Save element under one commit
-     * 
-     * @param target
-     * @param item 
-     */
-    public synchronized void saveItemElm(DbTarget target, Item item) {
-        switch ( target ) {
-            case PROTOTYPE -> {
-                this.putItem(this.proto, item);
-            }
-            case MASTER -> {
-                this.putItem(this.master, item);
-            }
-            case BOTH -> {
-                this.putItem(this.proto, item);
-                this.putItem(this.master, item);
-            }
-        }
-        
-    }
     
     /**
      * Save all records to target database
      * 
      * @param target
      * @param items
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
-    public synchronized void saveItems(DbTarget target, List<Item> items) {
-        this.openConn(target);
-        for ( Item elm : items ) {
-            this.saveItemElm(target, elm);
-        }
-        this.closeConn(target);
+    public void saveItems(DbTarget target, List<Item> items) throws ItemStoreCheckedException {
+        this.withLockedConnection(
+            "Save Items",
+            target,
+            () -> {
+                for (Item elm: items) {
+                    this.saveItemElm(target, elm);
+                }
+                return true;
+        }); 
     }
     
     
@@ -473,21 +444,24 @@ public class SqliteStore extends AbstractItemStore {
      * 
      * @param target
      * @return List-{@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
-    public synchronized List<Item> getAll(DbTarget target) {
-        List<Item> output;
-        this.openConn(target);
-        switch ( target ) {
-            case PROTOTYPE -> {
-                output = this.selectAll(this.proto);
-            }
-            default -> {
-                output = this.selectAll(this.master);
-            }
-        }
-        this.closeConn(target);
-        return output;
+    public List<Item> getAll(DbTarget target) throws ItemStoreCheckedException {
+        return this.withLockedConnection(
+            "Select All Records",
+            target,
+            () -> {
+                switch ( target ) {
+                    case PROTOTYPE -> {
+                        return this.selectAll(this.proto);
+                    }
+                    default -> {
+                        return this.selectAll(this.master);
+                    }
+                }
+        });
     }
 
     
@@ -497,23 +471,26 @@ public class SqliteStore extends AbstractItemStore {
      * @param target
      * @param id
      * @return {@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
-    public synchronized Item getById(DbTarget target, String id) {
+    public Item getById(DbTarget target, String id) throws ItemStoreCheckedException {
         List<Item> results;
         String query = "SELECT * FROM Items WHERE Id = ?";
-        
-        this.openConn(target);
-        switch (target) {
-            case PROTOTYPE -> {
-                results = this.selectQuery(this.proto, query, id);
+        results = this.withLockedConnection(
+            "Get By Id",
+            target,
+            () -> {
+                switch (target) {
+                    case PROTOTYPE -> {
+                        return this.selectQuery(this.proto, query, id);
+                    }
+                    default -> {
+                        return this.selectQuery(this.master, query, id);
+                    }
             }
-            default -> {
-                results = this.selectQuery(this.master, query, id);
-            }
-        }
-        this.closeConn(target);
-        
+        });
         if ( !results.isEmpty() ) {
             return results.get(0);
         }
@@ -527,23 +504,26 @@ public class SqliteStore extends AbstractItemStore {
      * @param target
      * @param state
      * @return List-{@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
-    public synchronized List<Item> getItemsByState(DbTarget target, String state) {
+    public List<Item> getItemsByState(DbTarget target, String state) throws ItemStoreCheckedException {
         List<Item> results;
         String query = "SELECT * FROM Items WHERE State = ?";
-
-        this.openConn(target);
-        switch (target) {
-            case PROTOTYPE -> {
-                results = this.selectQuery(this.proto, query, state);
+        results = this.withLockedConnection(
+            "Get Items By State",
+            target,
+            () -> {
+                switch (target) {
+                    case PROTOTYPE -> {
+                        return this.selectQuery(this.proto, query, state);
+                    }
+                    default -> {
+                        return this.selectQuery(this.master, query, state);
+                    }
             }
-            default -> {
-                results = this.selectQuery(this.master, query, state);
-            }
-        }
-        this.closeConn(target);
-        
+        });
         return results;
     }
 
@@ -557,7 +537,14 @@ public class SqliteStore extends AbstractItemStore {
      */
     @Override
     public String getPayloadById(DbTarget target, String id) {
-        Item result = this.getById(target, id);
+        Item result;
+        try {
+            result = this.getById(target, id);
+        }
+        catch (ItemStoreCheckedException ex) {
+            result = null;
+        }
+        
         if ( result != null ) {
             return result.getPayload();
         }
@@ -570,34 +557,38 @@ public class SqliteStore extends AbstractItemStore {
      * 
      * @param target
      * @param item
+     * 
      * @return boolean
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
     @Override
-    public synchronized boolean delete(DbTarget target, Item item) {
-        boolean status;
-        this.openConn(target);
-        switch (target) {
-            case PROTOTYPE -> {
-                status = this.deleteItem(this.proto, item);
-            }
-            
-            case MASTER -> {
-                status = this.deleteItem(this.master, item);
-            }
-            
-            case BOTH -> {
-                int counter = 0;
-                if ( this.deleteItem(this.proto, item) ) counter++;
-                if ( this.deleteItem(this.master, item) ) counter++;
-                status = counter == 2;
-            }
-            
-            default -> {
-                status = false;
-            }
-        }
-        this.closeConn(target);
-        return status;
+    public boolean delete(DbTarget target, Item item) throws ItemStoreCheckedException {
+        return this.withLockedConnection(
+            "Delete Item",
+            target,
+            () -> {
+                switch (target) {
+                    case PROTOTYPE -> {
+                        return this.deleteItem(this.proto, item);
+                    }
+
+                    case MASTER -> {
+                        return this.deleteItem(this.master, item);
+                    }
+
+                    case BOTH -> {
+                        int counter = 0;
+                        if ( this.deleteItem(this.proto, item) ) counter++;
+                        if ( this.deleteItem(this.master, item) ) counter++;
+                        return counter == 2;
+                    }
+
+                    default -> {
+                        return false;
+                    }
+                }
+        });
     }
     
     
@@ -609,13 +600,21 @@ public class SqliteStore extends AbstractItemStore {
      * @return boolean
      */
     @Override
-    public synchronized boolean update(DbTarget target, Item item) {
-        try {
-            this.delete(target, item);
-            this.saveItem(target, item);
-            return true;
-        }
-        catch (Exception ex) {return false;}
+    public boolean update(DbTarget target, Item item) throws ItemStoreCheckedException {
+        return this.withLockedConnection(
+            "Update Item",
+            target,
+            () -> {
+                if ( target == DbTarget.BOTH ) {
+                    this.deleteItem(this.proto, item);
+                    this.deleteItem(this.master, item);
+                }
+                else {
+                    this.deleteItem(this.getFor(target), item);
+                }
+                this.saveItem(target, item);
+                return true;
+        });
     }
     
     
@@ -643,7 +642,7 @@ public class SqliteStore extends AbstractItemStore {
             return false;
         }
         catch (SQLException ex) {
-            LOGGER.error("Error openning connection to target DB:\n", ex.getMessage());
+            LOGGER.error("Error checking whether target DB is opened:\n\n", ex);
             throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
@@ -673,7 +672,7 @@ public class SqliteStore extends AbstractItemStore {
             return false;
         }
         catch (SQLException ex) {
-            LOGGER.error("Error closing connection to target DB:\n", ex.getMessage());
+            LOGGER.error("Error checking whether target DB is closed:\n\n", ex);
             throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
@@ -692,7 +691,7 @@ public class SqliteStore extends AbstractItemStore {
             return true;
         }
         catch (SQLException ex) {
-            LOGGER.error("Error openning connection to Master DB:\n", ex.getMessage());
+            LOGGER.error("Error opening connection to Master DB:\n", ex);
             throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
@@ -710,7 +709,7 @@ public class SqliteStore extends AbstractItemStore {
             return true;
         }
         catch (SQLException ex) {
-            LOGGER.error("Error openning connection to Prototype DB:\n", ex.getMessage());
+            LOGGER.error("Error closing connection to Prototype DB:\n", ex);
             throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
@@ -728,7 +727,7 @@ public class SqliteStore extends AbstractItemStore {
             return true;
         }
         catch (SQLException ex) {
-            LOGGER.error("Error closing connection to Master DB:\n", ex.getMessage());
+            LOGGER.error("Error opening connection to prototype DB:\n", ex);
             throw new ItemStoreUncheckedException(ex.getMessage(), ex);
         }
     }
@@ -753,29 +752,221 @@ public class SqliteStore extends AbstractItemStore {
     
     
     /**
+     * Performs a set of operations over an
+     *  {@link ItemStoreSession}
+     * 
+     * @param <T>
+     * @param target
+     * @param ops
+     * 
+     * @return T
+     */
+    @Override
+    public <T> T execute(
+        DbTarget target,
+        BulkOperation<T> operationSet
+    ) throws ItemStoreCheckedException {
+        return this.withLockedConnection(
+            "SQLite Operations Set",
+            target,
+            () -> {
+                ItemStoreSession session;
+                switch (target) {
+                    case PROTOTYPE -> {
+                        session = new SqliteSession(this.proto);
+                    }
+                    default -> {
+                        session = new SqliteSession(this.master);
+                    }
+                }
+                return operationSet.execute(session);
+        });
+    }
+    
+    
+    /**
+     * Performs a set of {@link LinkedOperation}
+     *  over active, and recipient {@link ItemStore}.
+     *  Under the mutex of the calling {@link ItemStore},
+     *   hence provided {@link ItemStore} referred to as
+     *   a recipient of the stores mutex
+     * 
+     * @param <T>
+     * @param target
+     * @param recipientStore
+     * @param linkedOperations
+     * 
+     * @return <T> of T
+     * 
+     * @throws ItemStoreCheckedException 
+     */
+    @Override
+    public <T> T execute(
+        DbTarget target,
+        ItemStore recipientStore,
+        LinkedOperation<T> linkedOperations
+    ) throws ItemStoreCheckedException {
+        return this.withLockedConnection(
+            "Linked SQLite Operation Set",
+            target,
+            () -> {
+                
+                // Configure sessions
+                ItemStoreSession donor, recipient;
+                try {
+                    switch ( target ) {
+                        case PROTOTYPE -> {
+                            recipientStore.openConn(DbTarget.PROTOTYPE);
+                            donor = new SqliteSession(this.proto);
+                            recipient = new SqliteSession(
+                                ( (AbstractItemStore) recipientStore).getConnection(DbTarget.PROTOTYPE, Connection.class)
+                            );
+                        }
+                        default -> {
+                            recipientStore.openConn(DbTarget.MASTER);
+                            donor = new SqliteSession(this.master);
+                            recipient = new SqliteSession(
+                                ( (AbstractItemStore) recipientStore).getConnection(DbTarget.MASTER, Connection.class)
+                            );
+                        }
+                    }
+
+                    // Perform operation
+                    return linkedOperations.execute(donor, recipient);
+                }
+                
+                // Ensures recipient is closed
+                finally {
+                    recipientStore.closeConn(target);
+                }
+        });
+    }
+    
+    
+    /**
+     * Donates active {@link ItemStore} mutex acquisition
+     *  to provided recipients for provided operation
+     *  set
+     * 
+     * @param <T>
+     * @param target
+     * @param recipients
+     * @param operations
+     * 
+     * @return <T> of T
+     * 
+     * @throws {@link ItemStoreCheckedException} 
+     */
+    @Override
+    public <T> T execute(
+        DbTarget target,
+        Map<String, ItemStore> recipients,
+        LinkedOperationMap<T> operations
+    ) throws ItemStoreCheckedException {
+        return this.withLockedConnection(
+            "Map of Linked SQLite Operations",
+            target,
+            () -> {
+                
+                // Try perform operations
+                try {
+                    ItemStoreSession donor;
+                    if ( target == PROTOTYPE ) {
+                        donor = new SqliteSession(this.proto);
+                    }
+                    else {
+                        donor = new SqliteSession(this.master);
+                    }
+
+                    // Handle recipient sessions
+                    Map<String, ItemStoreSession> sessionMap = new HashMap<>();
+                    for ( Entry<String, ItemStore> elm : recipients.entrySet() ) {
+                        String key = elm.getKey();
+                        RocksDbStore val = ( RocksDbStore ) elm.getValue();
+                        val.openConn(target);
+                        ItemStoreSession session = new SqliteSession(val.getConnection(target, Connection.class));
+                        sessionMap.put(key, session);
+                    }
+
+                    // Perform operation
+                    return operations.execute(donor, sessionMap);
+                }
+                
+                // Ensures recipient connections are closed
+                finally {
+                    for ( Entry<String, ItemStore> elm : recipients.entrySet() ) { 
+                        elm.getValue().closeConn(target);
+                    }
+                }
+        });
+    }
+    
+    /**
      * {@link ItemStoreSession} for SQLite {@link Connection}
+     * 
      */
     private class SqliteSession implements ItemStoreSession {
-        
+    
         // Attributes
         private final Connection conn;
-
+        
+        
         /**
-         * Construct with {@link Connection}
+         * Construct {@link ItemStoreSession} for SQLite {@link Connection}
+         * 
          * @param conn 
          */
         SqliteSession(Connection conn) {
             this.conn = conn;
         }
+
         
-        
+        /**
+         * Insert {@link Item}
+         * 
+         * @param item
+         * @return boolean
+         * 
+         * @throws {@link ItemStoreCheckedException} 
+         */
         @Override
-        public boolean insert(Item item) {
+        public boolean insert(Item item) throws ItemStoreCheckedException {
             return putItem(conn, item);
         }
+        
 
+        /**
+         * Import record set
+         * 
+         * @param items
+         * 
+         * @return boolean
+         * 
+         * @throws {@link ItemStoreCheckedException} 
+         */
         @Override
-        public Item getById(String id) {
+        public boolean importItems(List<Item> items) throws ItemStoreCheckedException {
+            int counter = 0;
+            for ( Item elm : items ) {
+                if ( this.insert(elm) ) {
+                    counter++;
+                }
+            }
+            return counter == items.size();
+        }
+
+        
+        /**
+         * Fetch {@link Item} for Id
+         * 
+         * @param id
+         * 
+         * @return {@link Item}
+         * 
+         * @throws {@link ItemStoreCheckedException} 
+         */
+        @Override
+        public Item getById(String id) throws ItemStoreCheckedException {
             List<Item> results;
             String query = "SELECT * FROM Items WHERE Id = ?";
             results = selectQuery(this.conn, query, id);
@@ -785,26 +976,64 @@ public class SqliteStore extends AbstractItemStore {
             return null;
         }
 
+        
+        /**
+         * Drop provided record from {@link ItemStore}
+         * 
+         * @param item
+         * 
+         * @return boolean
+         * 
+         * @throws {@link ItemStoreCheckedException} 
+         */
         @Override
-        public boolean delete(Item item) {
+        public boolean delete(Item item) throws ItemStoreCheckedException {
             return deleteItem(this.conn, item);
         }
+
         
+        /**
+         * Fetch all records from {@link ItemStore}
+         * 
+         * @return List-{@link Item}
+         * 
+         * @throws {@link ItemStoreCheckedException} 
+         */
         @Override
-        public List<Item> getItemsByState(String state) {
+        public List<Item> getAll() throws ItemStoreCheckedException {
+            return selectAll(this.conn);
+        }
+
+        
+        /**
+         * Fetch {@link Item} via collection state
+         * 
+         * @param state
+         * 
+         * @return List-{@link Item}
+         * 
+         * @throws {@link ItemStoreCheckedException} 
+         */
+        @Override
+        public List<Item> getItemsByState(String state) throws ItemStoreCheckedException {
             List<Item> results;
             String query = "SELECT * FROM Items WHERE State = ?";
             results = selectQuery(this.conn, query, state);
             return results;
         }
 
-        @Override
-        public List<Item> getAll() {
-            return selectAll(this.conn);
-        }
         
+        /**
+         * Fetch payload for {@link Item} by its Id
+         * 
+         * @param id
+         * 
+         * @return String
+         * 
+         * @throws {@link ItemStoreCheckedException} 
+         */
         @Override
-        public String getPayloadById(String id) {
+        public String getPayloadById(String id) throws ItemStoreCheckedException {
             Item result = this.getById(id);
             if ( result != null ) {
                 return result.getPayload();
@@ -812,21 +1041,6 @@ public class SqliteStore extends AbstractItemStore {
             else {
                 return null;
             }
-        }
-        
-        @Override
-        public boolean importItems(List<Item> items) {
-            int counter = 0;
-            for ( Item item : items ) {
-                if ( this.insert(item) ) {
-                    counter++;
-                }
-            }
-            LOGGER.debug(
-                "Records inserted = '{}', Expected = '{}'",
-                counter, items.size()
-            );
-            return counter == items.size();
         }
     }
 }

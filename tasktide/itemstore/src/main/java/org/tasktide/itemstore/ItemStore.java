@@ -15,13 +15,16 @@
  */
 package org.tasktide.itemstore;
 
-import org.tasktide.itemstore.types.DbTarget;
 import java.util.List;
 import java.util.Map;
+
+import org.tasktide.itemstore.types.DbTarget;
 
 import org.tasktide.itemstore.session.BulkOperation;
 import org.tasktide.itemstore.session.LinkedOperation;
 import org.tasktide.itemstore.session.LinkedOperationMap;
+
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
 
 
 /**
@@ -35,41 +38,64 @@ public interface ItemStore {
     /**
      * Allows a collection of {@link ItemStore} methods to be
      *  executed across an {@link ItemStore} map under one locked
-     *  {@link LinkedOperation}
+     *  {@link LinkedOperation} whose lifecycle is owned
+     *  ideally by the {@link AbstractItemStore} withLockedConnection
      * 
      * @param <T>
      * @param target
      * @param recipients
      * @param operations
-     * @return T
+     * 
+     * @return <T> T
+     * 
+     * @throws {@link throws ItemStoreCheckedException}
      */
-    <T> T execute(DbTarget target, Map<String, ItemStore> recipients, LinkedOperationMap<T> operations);
+    public <T> T execute(
+        DbTarget target,
+        Map<String, ItemStore> recipients,
+        LinkedOperationMap<T> operations
+    ) throws ItemStoreCheckedException;
     
     
     /**
      * Allows a collection of {@link ItemStore} methods to be
      *  executed across {@link ItemStore} under one locked
-     *  {@link LinkedOperation}
+     *  {@link LinkedOperation} whose lifecycle is owned
+     *  ideally by the {@link AbstractItemStore} withLockedConnection
      * 
      * @param <T>
      * @param target
      * @param itemStore
      * @param operations
-     * @return T
+     * 
+     * @return <T> T
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    <T> T execute(DbTarget target, ItemStore itemStore, LinkedOperation<T> operations);
+    public <T> T execute(
+        DbTarget target,
+        ItemStore itemStore,
+        LinkedOperation<T> operations
+    ) throws ItemStoreCheckedException;
     
     
     /**
      * Allows a collection of {@link ItemStore} methods to be
-     *  executed under the one lock
+     *  executed under the one lock whose lifecycle is owned
+     *  ideally by the {@link AbstractItemStore} withLockedConnection
      * 
      * @param <T>
      * @param target
      * @param work
-     * @return T
+     * 
+     * @return <T> T
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    <T> T execute(DbTarget target, BulkOperation<T> work);
+    public <T> T execute(
+        DbTarget target,
+        BulkOperation<T> work
+    ) throws ItemStoreCheckedException;
     
     
     /**
@@ -109,9 +135,9 @@ public interface ItemStore {
      * 
      * @param target
      * @param item
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException} 
      */
-    void saveItem(DbTarget target, Item item) throws Exception;
+    void saveItem(DbTarget target, Item item) throws ItemStoreCheckedException;
     
     
     /**
@@ -119,9 +145,9 @@ public interface ItemStore {
      * 
      * @param target
      * @param items
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException}
      */
-    void saveItems(DbTarget target, List<Item> items) throws Exception;
+    void saveItems(DbTarget target, List<Item> items) throws ItemStoreCheckedException;
     
     
     /**
@@ -130,7 +156,7 @@ public interface ItemStore {
      * @param target
      * @return List-{@link Item}
      */
-    List<Item> getAll(DbTarget target);
+    List<Item> getAll(DbTarget target) throws ItemStoreCheckedException;
     
     
     /**
@@ -140,9 +166,9 @@ public interface ItemStore {
      * @param id
      * @return {@link Item}
      * 
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException}
      */
-    Item getById(DbTarget target, String id) throws Exception;
+    Item getById(DbTarget target, String id) throws ItemStoreCheckedException;
     
     
     /**
@@ -151,9 +177,9 @@ public interface ItemStore {
      * @param target
      * @param state
      * @return List-{@link Item}
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException}
      */
-    List<Item> getItemsByState(DbTarget target, String state) throws Exception;
+    List<Item> getItemsByState(DbTarget target, String state) throws ItemStoreCheckedException;
     
     
     /**
@@ -174,7 +200,7 @@ public interface ItemStore {
      * @return boolean
      * @throws java.lang.Exception
      */
-    boolean delete(DbTarget target, Item item) throws Exception;
+    boolean delete(DbTarget target, Item item) throws ItemStoreCheckedException;
     
     
     /**
@@ -185,42 +211,42 @@ public interface ItemStore {
      * @return boolean
      * @throws java.lang.Exception
      */
-    boolean update(DbTarget target, Item item) throws Exception;
+    boolean update(DbTarget target, Item item) throws ItemStoreCheckedException;
 
     
     /**
      * Sync {@link ItemStore} cache to main DB
      * 
      * @param item
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException}
      */
-    void syncToMaster(Item item) throws Exception;
+    void syncToMaster(Item item) throws ItemStoreCheckedException;
     
     
     /**
      * Sync list of {@link Item} to master
      * 
      * @param items
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException}
      */
-    void syncToMaster(List<Item> items) throws Exception;
+    void syncToMaster(List<Item> items) throws ItemStoreCheckedException;
     
     
     /**
      * Syncs active cache to master
      * 
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException}
      */
-    void syncToMaster() throws Exception;
+    void syncToMaster() throws ItemStoreCheckedException;
     
     
     /**
      * Copies master DB to a cached DB
      * 
      * @return boolean
-     * @throws Exception 
+     * @throws {@link ItemStoreCheckedException}
      */
-    boolean cacheMaster() throws Exception;
+    boolean cacheMaster() throws ItemStoreCheckedException;
     
     
     /**
@@ -238,16 +264,6 @@ public interface ItemStore {
      * @return boolean
      */
     boolean closeConn(DbTarget target);
-    
-    
-    /**
-     * Close connection to target DB and Mutex
-     * 
-     * @param target
-     * @param releaseMutex
-     * @return boolean
-     */
-    boolean closeConn(DbTarget target, boolean releaseMutex);
     
     
     /**
@@ -275,4 +291,40 @@ public interface ItemStore {
      * @return boolean
      */
     public boolean isClosed(DbTarget target);
+    
+    
+    /**
+     * Enforces concrete classes to implement
+     *  opening connection against master DB
+     * 
+     * @return boolean
+     */
+    public abstract boolean openMaster();
+    
+    
+    /**
+     * Enforces concrete classes to implement
+     *  opening connection against prototype DB
+     * 
+     * @return boolean
+     */
+    public abstract boolean openPrototoype();
+
+    
+    /**
+     * Enforces concrete classes to implement
+     *  closing connection against master DB
+     * 
+     * @return boolean
+     */
+    public abstract boolean closeMaster();
+    
+    
+    /**
+     * Enforces concrete classes to implement
+     *  closing connection against prototype DB
+     * 
+     * @return boolean
+     */
+    public abstract boolean closePrototoype();
 }
