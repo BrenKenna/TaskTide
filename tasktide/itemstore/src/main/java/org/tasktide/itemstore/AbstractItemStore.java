@@ -23,9 +23,6 @@ import java.nio.file.StandardCopyOption;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import org.tasktide.itemstore.types.DbTarget;
 import org.tasktide.itemstore.utils.ItemStoreUtils;
 
@@ -48,7 +45,6 @@ import org.tasktide.itemstore.operations.ThrowableItemStoreOperation;
 public abstract class AbstractItemStore implements ItemStore {
     
     // Attributes
-    private final Logger LOGGER = LogManager.getLogger(AbstractItemStore.class);
     private final String storeName;
     private final Path dbDirectory, masterDB, protoDB;
     
@@ -210,30 +206,27 @@ public abstract class AbstractItemStore implements ItemStore {
     public synchronized boolean openConn(DbTarget target) {
         switch (target) {
             case DbTarget.MASTER -> {
-                return ItemStoreConnectionStrategy.openConnection(
-                    target,
-                    this,
-                    () -> { return this.openMaster(); }
-                );
+                return ItemStoreConnectionStrategy
+                    .openConnection(
+                        DbTarget.MASTER,
+                        this
+                    );
             }
 
             case DbTarget.PROTOTYPE -> {
-                return ItemStoreConnectionStrategy.openConnection(
-                    target,
-                    this,
-                    () -> { return this.openPrototoype(); }
-                );
+                return ItemStoreConnectionStrategy
+                    .openConnection(
+                        DbTarget.PROTOTYPE,
+                        this
+                    );
             }
 
             default -> {
-                return ItemStoreConnectionStrategy.openConnection(
-                    target,
-                    this,
-                    () -> { return
-                        this.openMaster() &&
-                        this.openPrototoype()
-                    ;}
-                );
+                return ItemStoreConnectionStrategy
+                    .openConnection(
+                        DbTarget.BOTH,
+                        this
+                    );
             }
         }
     }
@@ -252,30 +245,27 @@ public abstract class AbstractItemStore implements ItemStore {
     public synchronized boolean closeConn(DbTarget target) {
         switch (target) {
             case DbTarget.MASTER -> {
-                return ItemStoreConnectionStrategy.closeConnection(
-                    target,
-                    this,
-                    () -> { return this.closeMaster(); }
-                );
+                return ItemStoreConnectionStrategy
+                    .closeConnection(
+                        DbTarget.MASTER,
+                        this
+                    );
             }
 
             case DbTarget.PROTOTYPE -> {
-                return ItemStoreConnectionStrategy.closeConnection(
-                    target,
-                    this,
-                    () -> { return this.closePrototoype(); }
-                );
+                return ItemStoreConnectionStrategy
+                    .closeConnection(
+                        DbTarget.PROTOTYPE,
+                        this
+                    );
             }
 
             default -> {
-                return ItemStoreConnectionStrategy.closeConnection(
-                    target,
-                    this,
-                    () -> { return
-                        this.closeMaster() &&
-                        this.closePrototoype()
-                    ;}
-                );
+                return ItemStoreConnectionStrategy
+                    .closeConnection(
+                        DbTarget.BOTH,
+                        this
+                    );
             }
         }
     }

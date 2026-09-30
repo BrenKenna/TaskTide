@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore;
+package org.tasktide.itemstore.utils;
 
 import org.tasktide.itemstore.types.ItemStoreType;
 import jakarta.json.bind.Jsonb;
@@ -38,6 +38,9 @@ import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.tasktide.itemstore.Item;
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.RocksDbStore;
 
 
 /**

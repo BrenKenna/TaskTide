@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore;
+package org.tasktide.itemstore.experimental;
 
 import org.tasktide.itemstore.types.ItemStoreType;
 import org.tasktide.itemstore.types.DbTarget;
@@ -44,6 +44,9 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.tasktide.itemstore.Item;
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.ItemTests;
 import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
 
 

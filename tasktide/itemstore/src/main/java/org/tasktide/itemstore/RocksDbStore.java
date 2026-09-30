@@ -432,8 +432,7 @@ public class RocksDbStore extends AbstractItemStore {
      */
     @Override
     public boolean delete(DbTarget target, Item item) throws ItemStoreCheckedException {
-        boolean status = false;
-        this.withLockedConnection(
+        return this.withLockedConnection(
             "Delete record",
             target,
             () -> {
@@ -451,7 +450,6 @@ public class RocksDbStore extends AbstractItemStore {
                 }
                 return true;
         });
-        return status;
     }
 
     
@@ -496,10 +494,10 @@ public class RocksDbStore extends AbstractItemStore {
         }
     
         if ( target == DbTarget.PROTOTYPE ) {
-            if ( this.master == null ) {
+            if ( this.proto == null ) {
                 return true;
             }
-            return this.master.isClosed();
+            return this.proto.isClosed();
         }
         return false;
     }

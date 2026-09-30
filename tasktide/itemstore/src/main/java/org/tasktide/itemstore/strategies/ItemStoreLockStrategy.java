@@ -398,7 +398,7 @@ public class ItemStoreLockStrategy {
         
         // Try create a lock
         try {
-            releaseLock(false);
+            releaseLock(false); // Does not clear mutex
             this.fileChannel = new RandomAccessFile(
                 this.masterLock.toFile(),
                 "rw"

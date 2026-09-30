@@ -48,15 +48,13 @@ public class ItemStoreConnectionStrategy {
      * @param <R>
      * @param target
      * @param itemStore
-     * @param operation
      * @return boolean
      * 
      * @throws {@link ItemStoreUncheckedException} 
      */
-    public static synchronized <R> boolean openConnection(
+    public static synchronized boolean openConnection(
         DbTarget target,
-        ItemStore itemStore,
-        ItemStoreOperation<R> operation
+        ItemStore itemStore
     ) throws ItemStoreUncheckedException {
         
         // Handles how to initilize connection
@@ -66,8 +64,7 @@ public class ItemStoreConnectionStrategy {
             case DbTarget.MASTER -> {
                 LOGGER.info("Attempting to open connection against master ItemStore");
                 if ( itemStore.isClosed(DbTarget.MASTER) ) {
-                    operation.execute();
-                    return true;
+                    return itemStore.openMaster();
                 }
                 else {
                   return false;  
@@ -78,8 +75,7 @@ public class ItemStoreConnectionStrategy {
             case DbTarget.PROTOTYPE -> {
                 LOGGER.info("Attempting to open connection against prototype ItemStore");
                 if ( itemStore.isClosed(DbTarget.PROTOTYPE) ) {
-                    operation.execute();
-                    return true;
+                    return itemStore.openPrototoype();
                 }
                 else {
                   return false;  
@@ -93,8 +89,9 @@ public class ItemStoreConnectionStrategy {
                    itemStore.isClosed(DbTarget.MASTER) &&
                    itemStore.isClosed(DbTarget.PROTOTYPE)
                 ) {
-                    operation.execute();
-                    return true;
+                    return
+                        itemStore.openMaster() &
+                    itemStore.openPrototoype();
                 }
                 else {
                     return false;
@@ -116,10 +113,9 @@ public class ItemStoreConnectionStrategy {
      * 
      * @throws {@link ItemStoreUncheckedException} 
      */
-    public static synchronized <R> boolean closeConnection(
+    public static synchronized boolean closeConnection(
         DbTarget target,
-        ItemStore itemStore,
-        ItemStoreOperation<R> operation
+        ItemStore itemStore
     ) throws ItemStoreUncheckedException {
     
         // Handles how to initilize connection
@@ -129,8 +125,7 @@ public class ItemStoreConnectionStrategy {
             case DbTarget.MASTER -> {
                 LOGGER.info("Attempting to close connection against master ItemStore");
                 if ( itemStore.isOpen(DbTarget.MASTER) ) {
-                    operation.execute();
-                    return true;
+                    return itemStore.closeMaster();
                 }
                 else {
                   return false;  
@@ -141,8 +136,7 @@ public class ItemStoreConnectionStrategy {
             case DbTarget.PROTOTYPE -> {
                 LOGGER.info("Attempting to close connection against prototype ItemStore");
                 if ( itemStore.isOpen(DbTarget.PROTOTYPE) ) {
-                    operation.execute();
-                    return true;
+                    return itemStore.clearPrototype();
                 }
                 else {
                   return false;  
@@ -156,8 +150,9 @@ public class ItemStoreConnectionStrategy {
                    itemStore.isOpen(DbTarget.MASTER) &&
                    itemStore.isOpen(DbTarget.PROTOTYPE)
                 ) {
-                    operation.execute();
-                    return true;
+                    return
+                        itemStore.closeMaster() &
+                        itemStore.closePrototoype();
                 }
                 else {
                     return false;
