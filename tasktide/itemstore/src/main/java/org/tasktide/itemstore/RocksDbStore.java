@@ -22,6 +22,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -276,13 +277,15 @@ public class RocksDbStore extends AbstractItemStore {
      */
     @Override
     public void saveItems(DbTarget target, List<Item> items) throws ItemStoreCheckedException {
-        try (WriteBatch batch = new WriteBatch() ) {
+        try (
+            WriteBatch batch = new WriteBatch();
+            WriteOptions writeOptions = new WriteOptions();
+        ) {
             for ( Item item : items ) {
                 byte[] key = item.getId().getBytes();
                 byte[] val = ItemStoreUtils.serializeItemToByteArray(MAPPER, item);
                 batch.put(key, val);
             }
-            WriteOptions writeOptions = new WriteOptions();
             writeOptions.setSync(true);
             
             this.withLockedConnection(

@@ -272,20 +272,15 @@ public abstract class AbstractItemStore implements ItemStore {
 
 
     /**
-     * Sync an {@link Item} to the master. Waits for instance to lock, then releases
+     * Sync an {@link Item} to the master. Assumes with lock handle
+     *  by the interface method, to prevent request duplication
      * 
      * @param item
      * @throws {@link ItemStoreCheckedException}
      */
     @Override
     public void syncToMaster(Item item) throws ItemStoreCheckedException {
-        this.lockStrategy.withLock(
-            "Sync record to Master",
-            () -> {
-                this.saveItem(DbTarget.MASTER, item);
-                return true;
-            }
-        );
+        this.saveItem(DbTarget.MASTER, item);
     }
     
     
@@ -297,13 +292,7 @@ public abstract class AbstractItemStore implements ItemStore {
      */
     @Override
     public void syncToMaster(List<Item> items) throws ItemStoreCheckedException {
-        this.lockStrategy.withLock(
-            "Sync records to Master",
-            () -> {
-                this.saveItems(DbTarget.MASTER, items);
-                return true;
-            }
-        );
+        this.saveItems(DbTarget.MASTER, items);
     }
     
     
@@ -314,14 +303,8 @@ public abstract class AbstractItemStore implements ItemStore {
      */
     @Override
     public void syncToMaster() throws ItemStoreCheckedException {
-        this.lockStrategy.withLock(
-            "Syncing prototype to master",
-            () -> {
-                List<Item> data = this.getAll(DbTarget.PROTOTYPE);
-                this.saveItems(DbTarget.MASTER, data);
-                return true;
-            }
-        );
+        List<Item> data = this.getAll(DbTarget.PROTOTYPE);
+        this.saveItems(DbTarget.MASTER, data);
     }
     
     

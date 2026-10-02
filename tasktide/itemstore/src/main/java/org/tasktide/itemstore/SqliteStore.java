@@ -368,6 +368,25 @@ public class SqliteStore extends AbstractItemStore {
     
     
     /**
+     * Update Item, by deleting and adding back in use. Using the
+     *  SQL methods so that {@link ItemStore} interface can run
+     *  this method under locked-connection lifecycle
+     * 
+     * @param conn
+     * @param item
+     * @return boolean
+     * 
+     * @throws {@link ItemStoreCheckedException} 
+     */
+    private boolean updateItem(Connection conn, Item item) throws ItemStoreCheckedException {
+        if ( this.deleteItem(conn, item) ) {
+            return this.putItem(conn, item);
+        }
+        return false;
+    }
+    
+    
+    /**
      * Save element under one commit
      * 
      * @param target
@@ -606,14 +625,14 @@ public class SqliteStore extends AbstractItemStore {
             target,
             () -> {
                 if ( target == DbTarget.BOTH ) {
-                    this.deleteItem(this.proto, item);
-                    this.deleteItem(this.master, item);
+                    return
+                        this.updateItem(this.proto, item) &
+                        this.updateItem(this.master, item);
                 }
                 else {
-                    this.deleteItem(this.getFor(target), item);
+                    Connection conn = this.getFor(target);
+                    return this.updateItem(conn, item);
                 }
-                this.saveItem(target, item);
-                return true;
         });
     }
     
@@ -687,7 +706,10 @@ public class SqliteStore extends AbstractItemStore {
     @Override
     public boolean openMaster() {
         try {
-            this.master = DriverManager.getConnection("jdbc:sqlite:" + this.getMasterFilePath());
+            this.master = DriverManager.getConnection(
+                "jdbc:sqlite:" +
+                this.getMasterFilePath()
+            );
             return true;
         }
         catch (SQLException ex) {
@@ -723,7 +745,10 @@ public class SqliteStore extends AbstractItemStore {
     @Override
     public boolean openPrototoype() {
         try {
-            this.proto = DriverManager.getConnection("jdbc:sqlite:" + this.getFilePath());
+            this.proto = DriverManager.getConnection(
+                "jdbc:sqlite:" +
+                this.getFilePath()
+            );
             return true;
         }
         catch (SQLException ex) {
@@ -901,12 +926,14 @@ public class SqliteStore extends AbstractItemStore {
         });
     }
     
+    
     /**
      * {@link ItemStoreSession} for SQLite {@link Connection}
      * 
      */
     private class SqliteSession implements ItemStoreSession {
     
+        
         // Attributes
         private final Connection conn;
         
