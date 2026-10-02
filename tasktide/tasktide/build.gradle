@@ -13,7 +13,7 @@ application {
 // Embeds Weld and Quarkus runtimes
 configurations.all {
     resolutionStrategy {
-        force 'org.jboss.logging:jboss-logging:3.6.0.Final'
+        force 'org.jboss.logging:jboss-logging:3.6.3.Final'
     }
 }
 
