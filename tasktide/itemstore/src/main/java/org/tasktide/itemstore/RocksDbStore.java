@@ -358,7 +358,6 @@ public class RocksDbStore extends AbstractItemStore {
         DbTarget target,
         String state)
     throws ItemStoreCheckedException {
-        this.openConn(target);
         List<Item> result = new ArrayList<>();
         
         this.withLockedConnection(

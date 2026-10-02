@@ -136,7 +136,7 @@ public class ItemStoreConnectionStrategy {
             case DbTarget.PROTOTYPE -> {
                 LOGGER.info("Attempting to close connection against prototype ItemStore");
                 if ( itemStore.isOpen(DbTarget.PROTOTYPE) ) {
-                    return itemStore.clearPrototype();
+                    return itemStore.closePrototoype();
                 }
                 else {
                   return false;  
