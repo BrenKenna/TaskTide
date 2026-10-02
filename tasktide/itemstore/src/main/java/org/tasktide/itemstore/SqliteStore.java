@@ -111,7 +111,7 @@ public class SqliteStore extends AbstractItemStore {
         LOGGER.info("Acquiring mutex to intialize DB");
         this.withLockedConnectionUnchecked(
             "Initialize DB",
-            DbTarget.MASTER,
+            DbTarget.BOTH,
             () -> {
                 this.initDatabase(this.master);
                 this.initDatabase(this.proto);

@@ -74,6 +74,16 @@ public class SqliteItemStoreTests {
     
     
     /**
+     * Fetches random item
+     * 
+     * @return {@link Item}
+     */
+    public Item fetchRandomItem() {
+        return new Item<String>(UUID.randomUUID().toString(), "State", "Step", UUID.randomUUID().toString());
+    }
+    
+    
+    /**
      * Wrapper method for later tests to fetch ItemStore
      * 
      * @param storeName
@@ -115,17 +125,7 @@ public class SqliteItemStoreTests {
         assertTrue(assertionState, "Error creating ItemStore");
         LOGGER.info("\n\n================ Can make ItemStore Test ================\n");
     }
-    
-    
-    /**
-     * Fetches random item
-     * 
-     * @return {@link Item}
-     */
-    public Item fetchRandomItem() {
-        return new Item<String>(UUID.randomUUID().toString(), "State", "Step", UUID.randomUUID().toString());
-    }
-    
+
     
     /**
      * Tests insertions into item store

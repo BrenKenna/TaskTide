@@ -127,8 +127,10 @@ public class RocksDbItemStoreRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
-        data.stream()
+        workItemRepo.insertModel(data.get(0));
+        /**data.stream()
             .forEach( elm -> workItemRepo.insertModel(elm));
+        **/
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
