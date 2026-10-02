@@ -38,7 +38,7 @@ import org.tasktide.core.repository.jpa_repo.JpaRepositoryUtility;
 import org.tasktide.core.repository.template_repo.TemplateRepositoryUtility;
 
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.types.ItemStoreType;
 import org.tasktide.mutex.utils.MutexConstants;
 import org.tasktide.mutex.utils.MutexLabellingUtils;
 

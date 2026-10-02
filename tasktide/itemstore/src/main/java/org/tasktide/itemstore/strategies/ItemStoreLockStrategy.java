@@ -172,6 +172,9 @@ public class ItemStoreLockStrategy {
         
         // Otherwise log traceably throw error from mutex lib
         catch (InterruptedException | IOException ex) {
+            if (ex instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             LOGGER.error(ex);
             String msg = String.format(
                 "Error ecountered obtaining lock for operation '%s':\t'%s'",
@@ -222,6 +225,9 @@ public class ItemStoreLockStrategy {
         
         // Otherwise log traceably throw error from mutex lib
         catch (InterruptedException | IOException ex) {
+            if (ex instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             LOGGER.error(ex);
             String msg = String.format(
                 "Error ecountered obtaining lock for operation '%s':\t'%s'",
@@ -392,19 +398,27 @@ public class ItemStoreLockStrategy {
         
         // Create masterDB lock file if non-existent
         if ( !this.makeMasterLockFile()) {
-            LOGGER.error("Unable to acquire DB lock");
+            LOGGER.error("Unable to acquire DB lock, releasing mutex");
+            this.releaseMutex();
             return false;
         }
         
         // Try create a lock
         try {
-            releaseLock(false); // Does not clear mutex
+            this.releaseLock(false); // Does not clear mutex
             this.fileChannel = new RandomAccessFile(
                 this.masterLock.toFile(),
                 "rw"
             ).getChannel();
             this.fileLock = fileChannel.tryLock();
-            return fileLock != null;
+            if ( fileLock != null ) {
+                return true;
+            }
+            else {
+                LOGGER.error("Unable to verify master lock, releasing mutex");
+                this.releaseMutex();
+                return false;
+            }
         }
         
         // Lock creation failed

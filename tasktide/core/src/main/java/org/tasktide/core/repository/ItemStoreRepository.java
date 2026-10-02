@@ -17,13 +17,16 @@ package org.tasktide.core.repository;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideModelType;
@@ -32,6 +35,7 @@ import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.itemstore.Item;
 import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
 import org.tasktide.itemstore.types.DbTarget;
 
 
@@ -44,8 +48,10 @@ import org.tasktide.itemstore.types.DbTarget;
 public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends AbstractRepository<T> {
 
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(ItemStoreRepository.class);
     private final ItemStore repo;
     private final Jsonb JSON_BUILDER = JsonbBuilder.create();
+    
     
     /**
      * Construct with {@link ItemStore}
@@ -334,15 +340,24 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
         }
         
         // Query field
-        return this.repo.getAll(DbTarget.MASTER)
-            .stream()
-            .parallel()
-            .map( this::toModel )
-            .filter( elm -> {
-                Object val = elm.getValueFromField(field);
-                return val != null && val.equals(value);
-            })
-        .collect(Collectors.toList());
+        try {
+            return this.repo.getAll(DbTarget.MASTER)
+                .stream()
+                .parallel()
+                .map( this::toModel )
+                .filter( elm -> {
+                    Object val = elm.getValueFromField(field);
+                    return val != null && val.equals(value);
+                })
+            .collect(Collectors.toList());
+        }
+        catch (ItemStoreCheckedException ex) {
+            LOGGER.error(
+                "Error querying ItemStore by field:\n\n",
+                ex
+            );
+            return null;
+        }
     }
 
     
@@ -365,19 +380,28 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
         }
         
         // Fetch repo and scan records
-        return this.repo.getAll(DbTarget.MASTER)
-            .stream()
-            .parallel()
-            .map( this::toModel )
-            .filter( elm -> {
-                Object val = elm.getValueFromField(field);
-                return val != null && val.equals(value);
-            })
-            .filter( elm -> {
-                Object val = elm.getValueFromField(group);
-                return val != null && val.equals(groupVal);
-            })
-        .collect(Collectors.toList());
+        try {
+            return this.repo.getAll(DbTarget.MASTER)
+                .stream()
+                .parallel()
+                .map( this::toModel )
+                .filter( elm -> {
+                    Object val = elm.getValueFromField(field);
+                    return val != null && val.equals(value);
+                })
+                .filter( elm -> {
+                    Object val = elm.getValueFromField(group);
+                    return val != null && val.equals(groupVal);
+                })
+            .collect(Collectors.toList());
+        }
+        catch (ItemStoreCheckedException ex) {
+            LOGGER.error(
+                "Error querying ItemStore by field for group:\n\n",
+                ex
+            );
+            return null;
+        }
     }
     
     
@@ -388,11 +412,20 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
      */
     @Override
     public List<T> findAll() {
-        return this.repo.getAll(DbTarget.MASTER)
-            .stream()
-            .parallel()
-            .map(elm -> this.toModel(elm))
-            .collect(Collectors.toList());
+        try {
+            return this.repo.getAll(DbTarget.MASTER)
+                .stream()
+                .parallel()
+                .map(elm -> this.toModel(elm))
+                .collect(Collectors.toList());
+        }
+        catch (ItemStoreCheckedException ex) {
+            LOGGER.error(
+                "Error retreiving records from ItemStore:\n\n",
+                ex
+            );
+            return null;
+        }
     }
 
     
@@ -459,6 +492,7 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
      * 
      * @return String
      */
+    @Override
     public String getCollectionName() {
         return this.collectionName;
     }

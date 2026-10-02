@@ -85,6 +85,8 @@ public enum ItemStoreType {
     public abstract boolean isItemStoreType(String query);
     public abstract boolean isItemStoreType(ItemStoreType query);
     public abstract ItemStore makeItemStore(String storeName, String dbDirectory, String masterDB, String protoDB);
+    
+    @Deprecated
     public abstract ItemStore makeItemStoreNoElection(String storeName, String dbDirectory, String masterDB, String protoDB);
     
     

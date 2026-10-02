@@ -34,16 +34,18 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.exceptions.TaskTideManagerUncheckedException;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
-import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.types.DbTarget;
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
+import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
+import org.tasktide.itemstore.strategies.ItemStoreLockStrategy;
 import org.tasktide.itemstore.types.ItemStoreType;
 
 
@@ -196,24 +198,9 @@ public class ItemStoreRepositoryUtility {
         else {
             result = storeType.makeItemStoreNoElection(storeName, dbDirectory, masterDB, protoDB);
         }
-        result.closeConn(DbTarget.BOTH, false);
         return result;
     }
-    
-    
-    /**
-     * Closes connections across
-     * 
-     * @param donor
-     * @param recipients 
-     */
-    public void closeConnections(ItemStore donor, Map<String, ItemStore> recipients) {
-        donor.execute(DbTarget.MASTER, recipients, (varA, varB) -> {
-            LOGGER.info("Openning & closing connections across:\n'{}'", JsonUtils.toJson(true, recipients));
-            return null;
-        });
-    }
-    
+
     
     /**
      * Fetch {@link ItemStore} map
@@ -224,29 +211,59 @@ public class ItemStoreRepositoryUtility {
      * @return Map of {@link ManagerTarget}-{@link ItemStore}
      */
     public Map<ManagerTarget, ItemStore> fetchItemStoreMap(ItemStoreType storeType, String storeName) {
-        LOGGER.info("Prcessing ItemStore from under:\t'{}'", storeName);
-        Map<ManagerTarget, ItemStore> output = new HashMap<>();
         
-        boolean isElected = false;
-        ItemStore leader = null;
-        for (ManagerTarget elm : ManagerTarget.withRepositories() ) {
-            ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType, isElected);
-            output.put(elm, store);
-                
-            if ( !isElected ) {
-                    leader = store;
-            }
-            
-            isElected = true;
+        // Initialize required vars
+        Map<ManagerTarget, ItemStore> output;
+        Path storeDir, master;
+        String dbDirectory,
+            masterDB = "master",
+            protoDB = UUID.randomUUID().toString();
+        ItemStoreLockStrategy lockStrat;
+        
+        // Initialize store map
+        LOGGER.info("Prcessing ItemStore from under:\t'{}'", storeName);
+        output = new HashMap<>();
+        
+        // Resolve store locatoin
+        storeDir = Paths.get(storeName);
+        master = storeDir.resolve("master-lock");
+        try {
+            Files.createDirectories(storeDir);
+            Files.createDirectories(master);
+            LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
         }
-     
-        if ( leader != null ) {
-            leader.closeConn(DbTarget.BOTH, true);
+        catch (IOException ex) {
+            LOGGER.error("Unable to create ItemStore under:\t{}\n\n", storeDir.toString(), ex);
+            throw new TaskTideManagerUncheckedException(
+                "Unable to create ItemStore under:\t" + storeDir.toString(),
+                ex
+            );
         }
-        return output;
+        
+        // Acquire mutex and initialize repositories under it
+        lockStrat = new ItemStoreLockStrategy(storeName, storeDir, master);
+        try {
+            lockStrat.withLock(
+            "Initilize ItemStores for each ManagerTarget",
+            () -> {
+                for (ManagerTarget elm : ManagerTarget.withRepositories() ) {
+                    LOGGER.info(
+                        "Attempting to initalize ItemStore for:\t'{}'",
+                        elm
+                    );
+                    ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType);
+                    output.put(elm, store);
+                }
+                return true;
+            });
+            return output;
+        }
+        catch (ItemStoreCheckedException ex) {
+            LOGGER.error("");
+            throw new ItemStoreUncheckedException("Unable to initialize all ItemStores");
+        }
     }
-    
-    
+
     
     /**
      * Initialize the utility with the store type and file location
