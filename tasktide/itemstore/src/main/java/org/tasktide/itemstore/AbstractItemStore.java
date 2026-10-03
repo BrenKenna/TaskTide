@@ -96,13 +96,16 @@ public abstract class AbstractItemStore implements ItemStore {
         this.dbDirectory = Paths.get(dbDirectory);
         this.masterDB = this.dbDirectory.resolve("master");
         
-        if ( !ItemStoreUtils.verifyDirectory(this.dbDirectory) ) {
-            String msg = String.format("Error, cannot write to the configured path:\t%s", this.masterDB);
-            throw new IllegalArgumentException(msg);
-        }
-        
         String prototypeLabel = ItemStoreUtils.fetchNewProtoTypeLabel();
         this.protoDB = this.dbDirectory.resolve(prototypeLabel);
+        
+        if ( !ItemStoreUtils.verifyDirectories(this.dbDirectory, this.masterDB, this.protoDB) ) {
+            String msg = String.format(
+                "Error, cannot write to the configured paths under:\t%s",
+                this.dbDirectory
+            );
+            throw new IllegalArgumentException(msg);
+        }
         
         this.lockStrategy = new ItemStoreLockStrategy(
             this.storeName,

@@ -89,6 +89,13 @@ public class ItemStoreUtils {
     }
     
     
+    public static boolean verifyDirectories(Path dbDirectory, Path masterDB, Path prototype) {
+        return verifyDirectory(dbDirectory) &
+            verifyDirectory(masterDB) &
+        verifyDirectory(prototype);
+    }
+    
+    
     /**
      * Create required {@link ItemStore}
      * 

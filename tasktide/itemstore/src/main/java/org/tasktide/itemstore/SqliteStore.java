@@ -772,7 +772,7 @@ public class SqliteStore extends AbstractItemStore {
         try {
             this.proto = DriverManager.getConnection(
                 "jdbc:sqlite:" +
-                this.protoDB
+                this.protoDB.resolve("prototype.db")
             );
             return true;
         }
