@@ -61,7 +61,7 @@ public class ItemStoreConnectionStrategy {
         switch (target) {
             
             // Operate on master
-            case DbTarget.MASTER -> {
+            case MASTER -> {
                 LOGGER.info("Attempting to open connection against master ItemStore");
                 if ( itemStore.isClosed(DbTarget.MASTER) ) {
                     return itemStore.openMaster();
@@ -72,7 +72,7 @@ public class ItemStoreConnectionStrategy {
             }
         
             // Operate on prototype
-            case DbTarget.PROTOTYPE -> {
+            case PROTOTYPE -> {
                 LOGGER.info("Attempting to open connection against prototype ItemStore");
                 if ( itemStore.isClosed(DbTarget.PROTOTYPE) ) {
                     return itemStore.openPrototoype();
@@ -122,7 +122,7 @@ public class ItemStoreConnectionStrategy {
         switch (target) {
             
             // Operate on master
-            case DbTarget.MASTER -> {
+            case MASTER -> {
                 LOGGER.info("Attempting to close connection against master ItemStore");
                 if ( itemStore.isOpen(DbTarget.MASTER) ) {
                     return itemStore.closeMaster();
@@ -133,7 +133,7 @@ public class ItemStoreConnectionStrategy {
             }
         
             // Operate on prototype
-            case DbTarget.PROTOTYPE -> {
+            case PROTOTYPE -> {
                 LOGGER.info("Attempting to close connection against prototype ItemStore");
                 if ( itemStore.isOpen(DbTarget.PROTOTYPE) ) {
                     return itemStore.closePrototoype();
@@ -185,7 +185,7 @@ public class ItemStoreConnectionStrategy {
         switch (target) {
             
             // Operate on master
-            case DbTarget.MASTER -> {
+            case MASTER -> {
                 LOGGER.info("Attempting operation against Master ItemStore");
                 if ( itemStore.isClosed(DbTarget.MASTER) ) {
                     itemStore.openMaster();
@@ -202,7 +202,7 @@ public class ItemStoreConnectionStrategy {
             }
         
             // Operate on prototype
-            case DbTarget.PROTOTYPE -> {
+            case PROTOTYPE -> {
                 LOGGER.info("Attempting operation against Prototype ItemStore");
                 if ( itemStore.isClosed(DbTarget.PROTOTYPE) ) {
                     itemStore.openPrototoype();
@@ -267,7 +267,7 @@ public class ItemStoreConnectionStrategy {
         switch (target) {
             
             // Operate on master
-            case DbTarget.MASTER -> {
+            case MASTER -> {
                 LOGGER.info("Attempting operation against Master ItemStore");
                 if ( itemStore.isClosed(DbTarget.MASTER) ) {
                     itemStore.openMaster();
@@ -284,7 +284,7 @@ public class ItemStoreConnectionStrategy {
             }
         
             // Operate on prototype
-            case DbTarget.PROTOTYPE -> {
+            case PROTOTYPE -> {
                 LOGGER.info("Attempting operation against Prototype ItemStore");
                 if ( itemStore.isClosed(DbTarget.PROTOTYPE) ) {
                     itemStore.openPrototoype();
