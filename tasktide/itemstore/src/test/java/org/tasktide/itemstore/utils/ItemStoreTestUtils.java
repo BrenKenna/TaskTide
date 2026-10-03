@@ -151,7 +151,7 @@ public class ItemStoreTestUtils {
         String masterDB = "master";
         String protoDB = UUID.randomUUID().toString();
         try {
-            RocksDbStore itemStore = new RocksDbStore(storeName, dbDirectory, masterDB, protoDB);
+            RocksDbStore itemStore = new RocksDbStore(storeName, dbDirectory);
             return itemStore;
         }
         catch (Exception ex) {
@@ -171,7 +171,7 @@ public class ItemStoreTestUtils {
         String flag = "sqlite", proto;
         workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
         proto = UUID.randomUUID().toString();
-        return ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString(), "master", proto);
+        return ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString());
     }
     
     
@@ -186,7 +186,7 @@ public class ItemStoreTestUtils {
         String flag = "sqlite", proto;
         workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
         proto = UUID.randomUUID().toString();
-        return ItemStoreType.SQLITE.makeItemStoreNoElection(storeName, workDir.toString(), "master", proto);
+        return ItemStoreType.SQLITE.makeItemStoreNoElection(storeName, workDir.toString());
     }
     
     
@@ -201,7 +201,7 @@ public class ItemStoreTestUtils {
         String flag = "rocksDB", proto;
         workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
         proto = UUID.randomUUID().toString();
-        return ItemStoreType.ROCKSDB.makeItemStore(storeName, workDir.toString(), "master", proto);
+        return ItemStoreType.ROCKSDB.makeItemStore(storeName, workDir.toString());
     }
     
     

@@ -120,21 +120,58 @@ public class ItemStoreRepositoryUtility {
         TaskTideService<JobEnvironment> jobEnvServ;
         
         // Fetch item store map
-        itemStoreMap = fetchItemStoreMap(this.storeType, this.storeName);
+        itemStoreMap = fetchItemStoreMap(
+            this.storeType,
+            this.storeName
+        );
         
         // Construct services
-        workItemService = ServiceFactory.makeWorkItemService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.WORKITEM), "WorkItem-Service");
-        stepService = ServiceFactory.makeStepService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.STEP), "Step-Service");
-        workflowService = ServiceFactory.makeWorkflowService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.WORKFLOW), "Workflow-Service");
+        workItemService = ServiceFactory.makeWorkItemService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.WORKITEM),
+            "WorkItem-Service"
+        );
+        stepService = ServiceFactory.makeStepService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.STEP),
+            "Step-Service"
+        );
+        workflowService = ServiceFactory.makeWorkflowService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.WORKFLOW),
+            "Workflow-Service"
+        );
         
         // Construct additional services
-        metricServ = ServiceFactory.makeMetricDataService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.METRIC_DATA), "MetricData");
-        profileServ = ServiceFactory.makeMetricProfileService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.METRIC_PROFILE), "MetricProfile");
-        jobEnvServ = ServiceFactory.makeJobEnvironmentService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.JOB_ENVIRONMENT), "JobEnvironment");
+        metricServ = ServiceFactory.makeMetricDataService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.METRIC_DATA),
+            "MetricData"
+        );
+        profileServ = ServiceFactory.makeMetricProfileService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.METRIC_PROFILE),
+            "MetricProfile"
+        );
+        jobEnvServ = ServiceFactory.makeJobEnvironmentService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.JOB_ENVIRONMENT),
+            "JobEnvironment"
+        );
         
         // Initialize service manager with services
-        TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
-        LOGGER.debug("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
+        TaskTideServiceManager.initialize(
+            workItemService,
+            stepService,
+            workflowService,
+            jobEnvServ,
+            metricServ,
+            profileServ
+        );
+        LOGGER.debug(
+            "Displaying configured service manager:\n'{}'",
+            TaskTideServiceManager.toJson()
+        );
     }
     
     
@@ -161,7 +198,7 @@ public class ItemStoreRepositoryUtility {
         String dbDirectory = store.toString();
         String masterDB = "master";
         String protoDB = UUID.randomUUID().toString();
-        return storeType.makeItemStore(storeName, dbDirectory, masterDB, protoDB);
+        return storeType.makeItemStore(storeName, dbDirectory);
     }
     
     
@@ -178,8 +215,10 @@ public class ItemStoreRepositoryUtility {
         
         // Resolve store locatoin
         Path store = Paths.get(storeName);
+        Path master = store.resolve("master");
         try {
             Files.createDirectories(store);
+            Files.createDirectories(master);
             LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
         }
         catch (IOException ex) {
@@ -193,10 +232,10 @@ public class ItemStoreRepositoryUtility {
         
         ItemStore result;
         if ( !isElected ) {
-            result = storeType.makeItemStore(storeName, dbDirectory, masterDB, protoDB);
+            result = storeType.makeItemStore(storeName, dbDirectory);
         }
         else {
-            result = storeType.makeItemStoreNoElection(storeName, dbDirectory, masterDB, protoDB);
+            result = storeType.makeItemStoreNoElection(storeName, dbDirectory);
         }
         return result;
     }
@@ -226,7 +265,7 @@ public class ItemStoreRepositoryUtility {
         
         // Resolve store locatoin
         storeDir = Paths.get(storeName);
-        master = storeDir.resolve("master-lock");
+        master = storeDir.resolve("master");
         try {
             Files.createDirectories(storeDir);
             Files.createDirectories(master);
@@ -241,6 +280,7 @@ public class ItemStoreRepositoryUtility {
         }
         
         // Acquire mutex and initialize repositories under it
+        LOGGER.info("Creating stores");
         lockStrat = new ItemStoreLockStrategy(storeName, storeDir, master);
         try {
             lockStrat.withLock(
@@ -251,7 +291,8 @@ public class ItemStoreRepositoryUtility {
                         "Attempting to initalize ItemStore for:\t'{}'",
                         elm
                     );
-                    ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType);
+                    Path elmPath = storeDir.resolve(elm.toString());
+                    ItemStore store = fetchItemStore(elmPath.toString(), storeType, true);
                     output.put(elm, store);
                 }
                 return true;
@@ -259,7 +300,7 @@ public class ItemStoreRepositoryUtility {
             return output;
         }
         catch (ItemStoreCheckedException ex) {
-            LOGGER.error("");
+            LOGGER.error(ex);
             throw new ItemStoreUncheckedException("Unable to initialize all ItemStores");
         }
     }

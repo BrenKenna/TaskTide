@@ -94,7 +94,7 @@ public class SqliteItemStoreTests {
         String flag = "sqlite", proto;
         workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
         proto = UUID.randomUUID().toString();
-        return ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString(), "master", proto);
+        return ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString());
     }
 
     
@@ -116,7 +116,7 @@ public class SqliteItemStoreTests {
         String flag = "sqlite", storeName = "WorkItem", proto;
         workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
         proto = UUID.randomUUID().toString();
-        itemStore = ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString(), "master", proto);
+        itemStore = ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString());
         LOGGER.info("ItemStore created");
         
         // Evaluate ItemStore

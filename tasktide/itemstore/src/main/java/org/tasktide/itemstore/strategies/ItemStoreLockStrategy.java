@@ -63,7 +63,7 @@ public class ItemStoreLockStrategy {
     // Dynamically lock master once acquired
     private FileChannel fileChannel;
     private FileLock fileLock;
-    
+
     
     /**
      * Targeted constructor using store name under provided
@@ -78,7 +78,7 @@ public class ItemStoreLockStrategy {
         
         // Infer master
         this.masterDB = this.dbDirectory.resolve("master");
-        this.masterLock = this.dbDirectory.resolve(masterDB + ".lock");
+        this.masterLock = this.masterDB.resolve("master.lock");
 
         // Active locks
         this.fileChannel = null;
@@ -90,7 +90,7 @@ public class ItemStoreLockStrategy {
             DefaultMutexPaths.config();
         }
         catch (MutexUncheckedException ex) {
-            LOGGER.warn("Mutex already configured");
+            LOGGER.warn("MutexOrchestrator already configured");
         }
     }
     
@@ -111,7 +111,7 @@ public class ItemStoreLockStrategy {
         this.storeName = storeName;
         this.dbDirectory = dbDirectory;
         this.masterDB = masterDB;
-        this.masterLock = this.dbDirectory.resolve(masterDB + ".lock");
+        this.masterLock = this.masterDB.resolve("master.lock");
         this.RANDOM = new Random();
         
         this.fileChannel = null;
@@ -122,7 +122,7 @@ public class ItemStoreLockStrategy {
             DefaultMutexPaths.config();
         }
         catch (MutexUncheckedException ex) {
-            LOGGER.warn("Mutex already configured");
+            LOGGER.warn("MutexOrchestrator already configured");
         }
     }
 

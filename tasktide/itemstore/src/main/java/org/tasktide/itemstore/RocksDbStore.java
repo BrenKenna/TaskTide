@@ -77,6 +77,19 @@ public class RocksDbStore extends AbstractItemStore {
 
     
     /**
+     * Connect to DB
+     * 
+     * @param storeName
+     * @param dbDirectory
+     */
+    public RocksDbStore(String storeName, String dbDirectory) {
+        super(storeName, dbDirectory);
+        RocksDB.loadLibrary();
+        this.options = new Options().setCreateIfMissing(true);
+    }
+    
+    
+    /**
      * Get {@link RocksDB} get connection
      * 
      * @param target

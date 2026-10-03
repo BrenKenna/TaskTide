@@ -69,6 +69,18 @@ public class SqliteStore extends AbstractItemStore {
     
     
     /**
+     * Constructs SQLite {@link ItemStore}
+     * 
+     * @param storeName
+     * @param dbDirectory
+     */
+    public SqliteStore(String storeName, String dbDirectory) {
+        super(storeName, dbDirectory);
+        this.initItemStore();
+    }
+    
+    
+    /**
      * Construct store with lazy master/proto connection
      * 
      * @param storeName
@@ -79,6 +91,19 @@ public class SqliteStore extends AbstractItemStore {
      */
     public SqliteStore(String storeName, String dbDirectory, String masterDB, String protoDB, boolean isLinked) {
         super(storeName, dbDirectory, masterDB, protoDB);
+        this.initItemStore(isLinked);
+    }
+    
+    
+    /**
+     * Constructs SQLite {@link ItemStore}
+     * 
+     * @param storeName
+     * @param dbDirectory
+     * @param isLinked
+     */
+    public SqliteStore(String storeName, String dbDirectory, boolean isLinked) {
+        super(storeName, dbDirectory);
         this.initItemStore(isLinked);
     }
     
@@ -708,7 +733,7 @@ public class SqliteStore extends AbstractItemStore {
         try {
             this.master = DriverManager.getConnection(
                 "jdbc:sqlite:" +
-                this.getMasterFilePath()
+                this.masterDB.resolve("master.db")
             );
             return true;
         }
@@ -747,7 +772,7 @@ public class SqliteStore extends AbstractItemStore {
         try {
             this.proto = DriverManager.getConnection(
                 "jdbc:sqlite:" +
-                this.getFilePath()
+                this.protoDB
             );
             return true;
         }

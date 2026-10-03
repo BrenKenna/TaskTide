@@ -45,8 +45,8 @@ import org.tasktide.itemstore.operations.ThrowableItemStoreOperation;
 public abstract class AbstractItemStore implements ItemStore {
     
     // Attributes
-    private final String storeName;
-    private final Path dbDirectory, masterDB, protoDB;
+    protected final String storeName;
+    protected final Path dbDirectory, masterDB, protoDB;
     
     // Owns DB lock lifecycle, and how its done
     protected final ItemStoreLockStrategy lockStrategy;

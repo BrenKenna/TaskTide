@@ -113,7 +113,7 @@ public class ItemStoreUtils {
         String dbDirectory = store.toString();
         String masterDB = "master";
         String protoDB = UUID.randomUUID().toString();
-        return storeType.makeItemStore(storeName, dbDirectory, masterDB, protoDB);
+        return storeType.makeItemStore(storeName, dbDirectory);
     }
     
     
@@ -208,11 +208,16 @@ public class ItemStoreUtils {
         
         // Already exists
         catch (FileAlreadyExistsException e) {
+            LOGGER.warn(
+                "Target lock already exists for:\t'{}'",
+                targetLock.toString()
+            );
             return true;
         }
         
         // Creation failed for another reason
-        catch (IOException e) {
+        catch (IOException ex) {
+            LOGGER.error(ex);
             return false;
         }
     }

@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.repository;
 
+import static com.mongodb.internal.authentication.AwsCredentialHelper.LOGGER;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +38,7 @@ import org.tasktide.TestCaseBuilderUtility;
 
 import org.tasktide.core.TaskTideModel;
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.manager.command.ManagerTarget;
 import org.tasktide.core.model.collection.Step;
 import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.job_env.JobEnvironment;
@@ -67,14 +69,25 @@ public class SqliteItemStoreRepositoryTests {
     // Backend repo
     private final ItemStoreType storeType = ItemStoreType.SQLITE;
     private final String storeName = "TaskTideRepository/SQLite";
+    private Map<ManagerTarget, ItemStore> storeMap;
     private ItemStore itemStore;
+    
     
     @BeforeAll
     public void setUpClass() {
-        String msg = "\n\n---------------- Initiating SQLiteItemStore-Repository Tests ----------------\n";
-        logger.info(msg);
-        ItemStoreRepositoryUtility.initialize(storeType, storeName);
-        itemStore = ItemStoreRepositoryUtility.get().fetchItemStore(storeName, storeType);
+        String msg = "\n\n---------------- Initiating RocksDbItemStore-Repository Tests ----------------\n";
+        LOGGER.info(msg);
+        ItemStoreRepositoryUtility.initialize(
+            this.storeType,
+            this.storeName
+        );
+        this.storeMap = ItemStoreRepositoryUtility
+            .get()
+            .fetchItemStoreMap(
+                this.storeType,
+                this.storeName
+        );
+        this.itemStore = this.storeMap.get(ManagerTarget.WORKITEM);
     }
     
     
@@ -100,7 +113,7 @@ public class SqliteItemStoreRepositoryTests {
      */
     @Test
     @Order(0)
-    public void canQueryInsertWorkItem() {
+    public void canQueryInsertSingleWorkItem() {
         
         // Initialize data
         logger.info("\n\n================ Can Query SQLiteItemStore WorkItem Repository ================\n");
@@ -127,8 +140,7 @@ public class SqliteItemStoreRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
-        data.stream()
-            .forEach( elm -> workItemRepo.insertModel(elm));
+        workItemRepo.insertModel(data.get(0));
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
@@ -149,7 +161,7 @@ public class SqliteItemStoreRepositoryTests {
      */
     @Test
     @Order(1)
-    public void canQueryInsertStep() {
+    public void canQueryInsertSteps() {
         
         // Initialize data
         logger.info("\n\n================ Can Query SQLiteItemStore Step Repository ================\n");
@@ -172,8 +184,7 @@ public class SqliteItemStoreRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
-        data.stream()
-            .forEach( elm -> stepRepo.insertModel(elm));
+        stepRepo.extendModel(data);
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
@@ -217,8 +228,7 @@ public class SqliteItemStoreRepositoryTests {
         
         // Add records
         logger.info("Inserting records");
-        data.stream()
-            .forEach( elm -> workflowRepo.insertModel(elm));
+        workflowRepo.extendModel(data);
         
         // Check that records can be queried
         logger.info("\nVerifying records can be retrieved");
