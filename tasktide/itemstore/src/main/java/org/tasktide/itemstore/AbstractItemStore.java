@@ -24,6 +24,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.tasktide.itemstore.types.DbTarget;
+import static org.tasktide.itemstore.types.DbTarget.*;
 import org.tasktide.itemstore.utils.ItemStoreUtils;
 
 import org.tasktide.itemstore.strategies.ItemStoreLockStrategy;
@@ -208,7 +209,7 @@ public abstract class AbstractItemStore implements ItemStore {
     @Override
     public synchronized boolean openConn(DbTarget target) {
         switch (target) {
-            case DbTarget.MASTER -> {
+            case MASTER -> {
                 return ItemStoreConnectionStrategy
                     .openConnection(
                         DbTarget.MASTER,
@@ -216,7 +217,7 @@ public abstract class AbstractItemStore implements ItemStore {
                     );
             }
 
-            case DbTarget.PROTOTYPE -> {
+            case PROTOTYPE -> {
                 return ItemStoreConnectionStrategy
                     .openConnection(
                         DbTarget.PROTOTYPE,
@@ -247,7 +248,7 @@ public abstract class AbstractItemStore implements ItemStore {
     @Override
     public synchronized boolean closeConn(DbTarget target) {
         switch (target) {
-            case DbTarget.MASTER -> {
+            case MASTER -> {
                 return ItemStoreConnectionStrategy
                     .closeConnection(
                         DbTarget.MASTER,
@@ -255,7 +256,7 @@ public abstract class AbstractItemStore implements ItemStore {
                     );
             }
 
-            case DbTarget.PROTOTYPE -> {
+            case PROTOTYPE -> {
                 return ItemStoreConnectionStrategy
                     .closeConnection(
                         DbTarget.PROTOTYPE,

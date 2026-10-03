@@ -240,15 +240,15 @@ public class RocksDbStore extends AbstractItemStore {
             target,
             () -> {
                 switch ( target ) {
-                    case DbTarget.PROTOTYPE -> {
+                    case PROTOTYPE -> {
                         this.putItem(this.proto, key, value);
                         return true;
                     }
-                    case DbTarget.MASTER -> {
+                    case MASTER -> {
                         this.putItem(this.master, key, value);
                         return true;
                     }
-                    case DbTarget.BOTH -> {
+                    case BOTH -> {
                         this.putItem(this.master, key, value);
                         this.putItem(this.proto, key, value);
                         return true;

@@ -2,6 +2,22 @@
 :toc: auto
 
 
+== [v1.0.0]
+
+- Accepts version bumps for Jakarta-NoSQL (v1.18), DaniloPianni Maven Publishing Lib.
+- Broad code clean on exception handling particuarly for the mutex lid. Which were useful at the time for developing algorithm, but maturity requires exception clarity.
+- Normalizes use of common mutex helper methods to utils, improving use of TimeUnit and appropriate interrupted exception.
+- Clears ex.printStackTrace()/System.out.println from production src/main branches, test is fine.
+- Refactors ItemStore packaging structure, and introduces Strategies to better organize responsibilities.
+- Separate ItemStore strategies each now own lock and connection, allowing the AbstractItemStore to simply orchestrate operations through a central locked-connection lifecycle. Greatly improved clarity of the package, and testability for future versions.
+- Normalizes concrete ItemStoreExceptions to ItemStoreChecked/Unchecked exceptions.
+- Cleans and organizes ItemStore directory through the AbstractItemStore construction, deprecating old method.
+- Makes the master/protoDB path fields accessible to children, incombination with clean directory use resolved infinite loop detected in GH-actions tests. As lock fails to create on non-existent thing.
+- SQLiteStore open/close connections define database file under master/protoDB path fields.
+- Organizes use of ItemStoreSession through AbstractItemStore locked-connection lifecycle for further exploration in v2. Which may introduce an intmediary abstract class between AIS and concrete stores, so that the concrete stores are solely a wrapper for reading/writing Items to their DB (which will likely bring a third concrete store for verification/refinement).
+- CoreLib ItemStoreRepository fetch store map uses new refactored, greatly improved ItemStore config and helped debug use of refactored ItemStore design released here for v1.
+
+
 == [v0.9.5]
 
 - Adds TaskTideModelType as an attribute on the AbstractRepository.
