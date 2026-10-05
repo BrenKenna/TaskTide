@@ -38,7 +38,7 @@ public class CliParser {
     private final ArgumentTree argTree;
     private final String[] argsIn;
     private final Map<String, Argument<?>> parsedArgs;
-    private boolean hasHelp;
+    private boolean hasHelp, hasVersion, hasPkgInf;
     
     
     /**
@@ -70,6 +70,21 @@ public class CliParser {
     
     
     /**
+     * Check if version flag was set
+     * 
+     * @return boolean
+     */
+    private boolean scanForVersion() {
+        for ( String elm : this.argsIn ) {
+            if ( elm.equalsIgnoreCase("-v") || elm.equalsIgnoreCase("--version") ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
+    /**
      * Set whether help flag was defined in argument tree
      */
     public void setHasHelp() {
@@ -77,8 +92,23 @@ public class CliParser {
     }
     
     public boolean hasHelp() {
+        this.hasHelp = this.scanForHelp();
         return this.hasHelp;
     }
+    
+    
+    /**
+     * Set whether help flag was defined in argument tree
+     */
+    public void setHasVersion() {
+        this.hasVersion = this.scanForVersion();
+    }
+    
+    public boolean hasVersion() {
+        this.hasVersion = this.scanForVersion();
+        return this.hasVersion;
+    }
+    
     
     /**
      * Parse command-line arguments into {@link ArgumentTree}, and resulting map
