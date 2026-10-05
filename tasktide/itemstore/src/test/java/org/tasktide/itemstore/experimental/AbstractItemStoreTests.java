@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore;
+package org.tasktide.itemstore.experimental;
 
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -33,6 +33,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.tasktide.itemstore.AbstractItemStore;
+import org.tasktide.itemstore.utils.ItemStoreTestUtils;
 
 
 /**

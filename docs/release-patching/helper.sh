@@ -200,3 +200,44 @@ gh release \
     $VERSION \
     *
 
+
+
+#################################################################
+#################################################################
+##
+## 3). ItemStore & TUI Code Clean
+##
+## Commit = 056c0db54e4f044025ccf8d84947117db4f05950
+##
+#################################################################
+#################################################################
+
+
+# Initialize required variables
+REPO="https://github.com/BrenKenna/TaskTide.git"
+COMMIT="056c0db54e4f044025ccf8d84947117db4f05950"
+DATE="2026-10-05"
+VERSION="v1.0.0"
+
+
+# Check sums and signs the local test zip
+cd docs/release-patching/
+
+openssl dgst -sha256 * | \
+    cut -d \= -f 2,1 | \
+    sed -e 's/SHA2-256//g' -e 's/(//g' -e 's/)//g' -e 's/=//g' | \
+    grep -v "SHA256" \
+> SHA256SUMS
+
+gpg \
+    --detach-sign \
+    --output tasktide-1.0.0.zip.sig \
+    tasktide-1.0.0.zip
+
+
+# Upload release docs
+gh release \
+    upload \
+    $VERSION \
+    *
+

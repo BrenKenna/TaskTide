@@ -13,8 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore;
+package org.tasktide.itemstore.experimental;
 
+import org.tasktide.itemstore.types.ItemStoreType;
+import org.tasktide.itemstore.types.DbTarget;
+import org.tasktide.itemstore.utils.ItemStoreUtils;
 import org.tasktide.mutex.utils.FileUtility;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -41,6 +44,10 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.tasktide.itemstore.Item;
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.ItemTests;
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
 
 
 /**
@@ -195,7 +202,12 @@ public class ConcurrencyTests {
         // Wait for tasks
         LOGGER.info("Tasks submitted, waiting for results");
         this.waitFor(this.TASKS);
-        assertionState = SQL_STORE.getAll(DbTarget.MASTER).size() == TOTAL_TASKS;
+        try {
+            assertionState = SQL_STORE.getAll(DbTarget.MASTER).size() == TOTAL_TASKS;
+        }
+        catch (ItemStoreCheckedException ex) {
+            assertionState = false;
+        }
         
         // Evaluate test
         if ( assertionState ) {
@@ -243,7 +255,12 @@ public class ConcurrencyTests {
         // Wait for tasks
         LOGGER.info("Tasks submitted, waiting for results");
         this.waitFor(this.TASKS);
-        assertionState = ROCKS_STORE.getAll(DbTarget.MASTER).size() == TOTAL_TASKS;
+        try {
+            assertionState = ROCKS_STORE.getAll(DbTarget.MASTER).size() == TOTAL_TASKS;
+        }
+        catch (ItemStoreCheckedException ex) {
+            assertionState = false;
+        }
         
         // Evaluate test
         if ( assertionState ) {

@@ -15,6 +15,8 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.itemstore.utils.ItemStoreTestUtils;
+import org.tasktide.itemstore.types.DbTarget;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -96,7 +98,7 @@ public class RocksDbItemStoreTests {
                     logger.info("Savining below record to db\n{" + item + "}");
                     itemStore.saveItem(DbTarget.BOTH, item);
                     logger.info("Item saved, retrieving for referece");
-                    result = itemStore.getById(DbTarget.BOTH, "myId");
+                    result = itemStore.getById(DbTarget.MASTER, "myId");
                     logger.info("Displaying retrieved record below record\n{" + result + "}");
                     assertionState = item.getId().equals( result.getId() );
                 }
@@ -137,7 +139,7 @@ public class RocksDbItemStoreTests {
                 item = new Item<String>("myId-2", "state-2", "step-2", "payload-2");
                 try {
                     itemStore.saveItem(DbTarget.BOTH, item);
-                    results = itemStore.getAll(DbTarget.PROTOTYPE);
+                    results = itemStore.getAll(DbTarget.MASTER);
                     assertionState = results.size() >= nExpected;
                     logger.info("Displaying original & queried Item:\n\n{}\n{}\n", item, results.toArray());
                     logger.info("Prototype deletion state:\t'{}'", itemStore.clearPrototype());

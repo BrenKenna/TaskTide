@@ -15,6 +15,9 @@
  */
 package org.tasktide.itemstore;
 
+import org.tasktide.itemstore.utils.ItemStoreTestUtils;
+import org.tasktide.itemstore.types.ItemStoreType;
+import org.tasktide.itemstore.types.DbTarget;
 import java.nio.file.Path;
 import java.util.UUID;
 
@@ -71,6 +74,16 @@ public class SqliteItemStoreTests {
     
     
     /**
+     * Fetches random item
+     * 
+     * @return {@link Item}
+     */
+    public Item fetchRandomItem() {
+        return new Item<String>(UUID.randomUUID().toString(), "State", "Step", UUID.randomUUID().toString());
+    }
+    
+    
+    /**
      * Wrapper method for later tests to fetch ItemStore
      * 
      * @param storeName
@@ -81,7 +94,7 @@ public class SqliteItemStoreTests {
         String flag = "sqlite", proto;
         workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
         proto = UUID.randomUUID().toString();
-        return ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString(), "master", proto);
+        return ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString());
     }
 
     
@@ -103,7 +116,7 @@ public class SqliteItemStoreTests {
         String flag = "sqlite", storeName = "WorkItem", proto;
         workDir = ItemStoreTestUtils.setWorkingDirectory(flag, storeName);
         proto = UUID.randomUUID().toString();
-        itemStore = ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString(), "master", proto);
+        itemStore = ItemStoreType.SQLITE.makeItemStore(storeName, workDir.toString());
         LOGGER.info("ItemStore created");
         
         // Evaluate ItemStore
@@ -112,17 +125,7 @@ public class SqliteItemStoreTests {
         assertTrue(assertionState, "Error creating ItemStore");
         LOGGER.info("\n\n================ Can make ItemStore Test ================\n");
     }
-    
-    
-    /**
-     * Fetches random item
-     * 
-     * @return {@link Item}
-     */
-    public Item fetchRandomItem() {
-        return new Item<String>(UUID.randomUUID().toString(), "State", "Step", UUID.randomUUID().toString());
-    }
-    
+
     
     /**
      * Tests insertions into item store

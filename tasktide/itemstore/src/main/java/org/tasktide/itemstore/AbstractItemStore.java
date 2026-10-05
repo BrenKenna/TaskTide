@@ -16,34 +16,31 @@
 package org.tasktide.itemstore;
 
 import java.io.IOException;
-import java.io.RandomAccessFile;
-
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-import java.util.Comparator;
-
-import java.util.concurrent.TimeUnit;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import org.tasktide.mutex.exceptions.MutexUncheckedException;
+import org.tasktide.itemstore.types.DbTarget;
+import static org.tasktide.itemstore.types.DbTarget.*;
+import org.tasktide.itemstore.utils.ItemStoreUtils;
 
-import org.tasktide.mutex.orchestrator.MutexOrchestrator;
-import org.tasktide.mutex.utils.DefaultMutexPaths;
+import org.tasktide.itemstore.strategies.ItemStoreLockStrategy;
+import org.tasktide.itemstore.strategies.ItemStoreConnectionStrategy;
+
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
+import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
+import org.tasktide.itemstore.operations.ItemStoreOperation;
+import org.tasktide.itemstore.operations.ThrowableItemStoreOperation;
 
 
 /**
- * Abstract ItemStore to implement getting ItemStore attributes,  
+ * Abstract {@link ItemStore} to implement getting ItemStore attributes,  
  *  handling the locking/releasing of masterDB for updates, and
  *  caching/clearing the master prototype to another file.
  * 
@@ -53,12 +50,13 @@ public abstract class AbstractItemStore implements ItemStore {
     
     // Attributes
     private final Logger LOGGER = LogManager.getLogger(AbstractItemStore.class);
-    private final String storeName;
-    private final Path dbDirectory, masterDB, protoDB, masterLock;
-    private FileChannel fileChannel;
-    private FileLock fileLock;
-    private final Random RANDOM;
+    protected final String storeName;
+    protected final Path dbDirectory, masterDB, protoDB;
     
+    
+    // Owns DB lock lifecycle, and how its done
+    protected final ItemStoreLockStrategy lockStrategy;
+
     
     /**
      * Construct with all attributes. Throws IllegalArgument
@@ -69,6 +67,7 @@ public abstract class AbstractItemStore implements ItemStore {
      * @param masterDB
      * @param protoDB 
      */
+    @Deprecated
     public AbstractItemStore(
         String storeName,
         String dbDirectory,
@@ -79,24 +78,49 @@ public abstract class AbstractItemStore implements ItemStore {
         this.dbDirectory = Paths.get(dbDirectory);
         this.masterDB = this.dbDirectory.resolve(masterDB);
         this.protoDB = this.dbDirectory.resolve(protoDB);
-        this.masterLock = this.dbDirectory.resolve(masterDB + ".lock");
-        this.fileChannel = null;
-        this.fileLock = null;
-        this.RANDOM = new Random();
         
-        if ( !this.verifyDirectory() ) {
+        if ( !ItemStoreUtils.verifyDirectory(this.dbDirectory) ) {
             String msg = String.format("Error, cannot write to the configured path:\t%s", this.masterDB);
             throw new IllegalArgumentException(msg);
         }
         
-        try {
-            DefaultMutexPaths.config();
-        }
-        catch (MutexUncheckedException ex) {
-            LOGGER.warn("Mutex already configured");
-        }
+        this.lockStrategy = new ItemStoreLockStrategy(
+            this.storeName,
+            this.dbDirectory,
+            this.masterDB
+        );
     }
     
+    
+    /**
+     * Preferred constructor moving forward
+     * 
+     * @param storeName
+     * @param dbDirectory 
+     */
+    public AbstractItemStore(String storeName, String dbDirectory) {
+        this.storeName = storeName;
+        this.dbDirectory = Paths.get(dbDirectory);
+        this.masterDB = this.dbDirectory.resolve("master");
+        
+        String prototypeLabel = ItemStoreUtils.fetchNewProtoTypeLabel();
+        this.protoDB = this.dbDirectory.resolve(prototypeLabel);
+        
+        if ( !ItemStoreUtils.verifyDirectories(this.dbDirectory, this.masterDB, this.protoDB) ) {
+            String msg = String.format(
+                "Error, cannot write to the configured paths under:\t%s",
+                this.dbDirectory
+            );
+            throw new IllegalArgumentException(msg);
+        }
+        
+        this.lockStrategy = new ItemStoreLockStrategy(
+            this.storeName,
+            this.dbDirectory,
+            this.masterDB
+        );
+    }
+
     
     /**
      * Get connection
@@ -110,69 +134,224 @@ public abstract class AbstractItemStore implements ItemStore {
     
     
     /**
-     * Wait for mutex to be acquired
+     * Synchronizes lock and connection lifecycles
+     *  under one operation. Allowing callers to solely
+     *  own the required operation, without having to
+     *  know about these distinct strategies
      * 
-     * @return boolean
+     * @param <R>
+     * @param label
+     * @param target
+     * @param operation
+     * 
+     * @return R Operation Result
+     * 
+     * @throws {@link ItemStoreCheckedException} 
      */
-    protected boolean waitForMutex() {
-    
-        try {
-            LOGGER.info("Acquiring mutex");
-            MutexOrchestrator.tryAcquireUntilSuccess();
-            LOGGER.info("Mutex acquired");
-            return true;
-        }
-        catch ( Exception ex ) {
-            LOGGER.warn(
-                "Warning unable to acquire mutex, displaying error:\n'{}'",
-                ex
-            );
-            return false;
-        }
+    @SuppressWarnings("unchecked")
+    protected synchronized <R> R withLockedConnection(
+        String label,
+        DbTarget target,
+        ThrowableItemStoreOperation operation
+    ) throws ItemStoreCheckedException {
+        return (R) this.lockStrategy.withLock(
+            label,
+            () -> {
+                return ItemStoreConnectionStrategy.connectionOperation(
+                    target,
+                    this,
+                    operation
+                );
+            }
+        );
     }
     
     
     /**
-     * Release mutex
+     * Synchronizes lock and connection lifecycles
+     *  under one operation. Allowing callers to solely
+     *  own the required operation, without having to
+     *  know about these distinct strategies
      * 
-     * @return boolean
+     * @param <R>
+     * @param label
+     * @param target
+     * @param operation
+     * 
+     * @return R Operation Result
+     * 
+     * @throws {@link ItemStoreUncheckedException} 
      */
-    protected boolean releaseMutex() {
-        try {
-            LOGGER.info("Releasing mutex");
-            MutexOrchestrator.releaseLock();
-            LOGGER.info("Released mutex");
-            return true;
-        }
-        catch ( Exception ex ) {
-            LOGGER.warn(
-                "Warning unable to release mutex, displaying error:\n",
-                ex
-            );
-            return false;
-        }
+    @SuppressWarnings("unchecked")
+    protected synchronized <R> R withLockedConnectionUnchecked (
+        String label,
+        DbTarget target,
+        ItemStoreOperation operation
+    ) throws ItemStoreUncheckedException {
+        return (R) this.lockStrategy.withLockUnchecked(
+            label,
+            () -> {
+                return ItemStoreConnectionStrategy.connectionOperationUnchecked(
+                    target,
+                    this,
+                    operation
+                );
+            }
+        );
     }
     
     
     /**
-     * Checks whether configured directory is writable
+     * Standardizes how concrete {@link ItemStore} open connections,
+     *  using the evaluation logic from {@link ItemStoreConnectionStrategy},
+     *  and targeted {@link AbstractItemStore} methods. Allowing
+     *  concrete classes to only own opening appropriate {@link DbTarget}
      * 
+     * @param target
      * @return boolean
      */
-    public boolean verifyDirectory() {
-        try {
-
-            // Creates directory if not exists
-            if (!Files.exists(this.dbDirectory)) {
-                Files.createDirectories(this.dbDirectory);
+    @Override
+    public synchronized boolean openConn(DbTarget target) {
+        switch (target) {
+            case MASTER -> {
+                return ItemStoreConnectionStrategy
+                    .openConnection(
+                        DbTarget.MASTER,
+                        this
+                    );
             }
 
-            // Returns whether directory is writable
-            return Files.isDirectory(this.dbDirectory) && Files.isWritable(this.dbDirectory);
+            case PROTOTYPE -> {
+                return ItemStoreConnectionStrategy
+                    .openConnection(
+                        DbTarget.PROTOTYPE,
+                        this
+                    );
+            }
+
+            default -> {
+                return ItemStoreConnectionStrategy
+                    .openConnection(
+                        DbTarget.BOTH,
+                        this
+                    );
+            }
         }
-        
-        // Return false if directory is not usable
-        catch (IOException | SecurityException e) {
+    }
+    
+    
+    /**
+     * Standardizes how concrete {@link ItemStore} close connections,
+     *  using the evaluation logic from {@link ItemStoreConnectionStrategy},
+     *  and targeted {@link AbstractItemStore} methods. Allowing
+     *  concrete classes to only own opening appropriate {@link DbTarget}
+     * 
+     * @param target
+     * @return boolean
+     */
+    @Override
+    public synchronized boolean closeConn(DbTarget target) {
+        switch (target) {
+            case MASTER -> {
+                return ItemStoreConnectionStrategy
+                    .closeConnection(
+                        DbTarget.MASTER,
+                        this
+                    );
+            }
+
+            case PROTOTYPE -> {
+                return ItemStoreConnectionStrategy
+                    .closeConnection(
+                        DbTarget.PROTOTYPE,
+                        this
+                    );
+            }
+
+            default -> {
+                return ItemStoreConnectionStrategy
+                    .closeConnection(
+                        DbTarget.BOTH,
+                        this
+                    );
+            }
+        }
+    }
+
+
+    /**
+     * Sync an {@link Item} to the master. Assumes with lock handle
+     *  by the interface method, to prevent request duplication
+     * 
+     * @param item
+     * @throws {@link ItemStoreCheckedException}
+     */
+    @Override
+    public void syncToMaster(Item item) throws ItemStoreCheckedException {
+        this.saveItem(DbTarget.MASTER, item);
+    }
+    
+    
+    /**
+     * Syncs Item list to master
+     * 
+     * @param items
+     * @throws {@link ItemStoreCheckedException}
+     */
+    @Override
+    public void syncToMaster(List<Item> items) throws ItemStoreCheckedException {
+        this.saveItems(DbTarget.MASTER, items);
+    }
+    
+    
+    /**
+     * Sync all records from cache to master
+     * 
+     * @throws {@link ItemStoreCheckedException}
+     */
+    @Override
+    public void syncToMaster() throws ItemStoreCheckedException {
+        List<Item> data = this.getAll(DbTarget.PROTOTYPE);
+        this.saveItems(DbTarget.MASTER, data);
+    }
+    
+    
+    /**
+     * Cache master DB to prototype
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean cacheMaster() {
+        try {
+            Files.copy(
+                this.masterDB,
+                this.protoDB,
+                StandardCopyOption.REPLACE_EXISTING
+            );
+            return true;
+        }
+        catch (IOException ex) {
+            return false;
+        }
+    }
+    
+    
+    /**
+     * Remove prototypeDB
+     * 
+     * @return boolean
+     */
+    @Override
+    public boolean clearPrototype() {
+        try {
+            ItemStoreUtils.deleteRecursively(this.protoDB);
+            return true;
+        } catch (IOException ex) {
+            LOGGER.error(
+                "Error encountered clearing prototype\n",
+                ex
+            );
             return false;
         }
     }
@@ -219,235 +398,5 @@ public abstract class AbstractItemStore implements ItemStore {
     @Override
     public String getDbDirectory() {
         return this.dbDirectory.toString();
-    }
-
-    
-    /**
-     * Try process lock masterDB file
-     * 
-     * @return boolean
-     * @throws IOException 
-     */
-    private boolean tryLock() throws IOException {
-        
-        // Try acquire lock
-        if ( !this.waitForMutex() ) {
-            LOGGER.error("Unable to acquire mutex for DB lock");
-            return false;
-        }
-        
-        // Create masterDB lock file if non-existent
-        if ( !this.makeMasterLockFile()) {
-            LOGGER.error("Unable to acquire DB lock");
-            return false;
-        }
-        
-        // Try create a lock
-        try {
-            releaseLock(false);
-            this.fileChannel = new RandomAccessFile(this.masterLock.toFile(), "rw").getChannel();
-            this.fileLock = fileChannel.tryLock();
-            return fileLock != null;
-        }
-        
-        // Lock creation failed
-        catch (IOException ex) { releaseLock(true) ; throw ex;}
-    }
-
-    
-    /**
-     * Creates masterDB lock file
-     * 
-     * @return boolean
-     */
-    private boolean makeMasterLockFile() {
-        
-        // Create masterDB lock file
-        try {
-            Files.createFile(masterLock);
-            return true;
-        }
-        
-        // Already exists
-        catch (FileAlreadyExistsException e) {
-            return true;
-        }
-        
-        // Creation failed for another reason
-        catch (IOException e) {
-            return false;
-        }
-    }
-    
-    
-    /**
-     * Waits until master is locked
-     * 
-     * @throws InterruptedException 
-     * @throws java.io.IOException 
-     */
-    protected void waitForLock() throws InterruptedException, IOException {
-        
-        // Initialize variables
-        boolean locked;
-        
-        // Try locking until locked
-        try {
-            
-            // Fetch file lock
-            LOGGER.debug("Waiting for");
-            locked = this.tryLock();
-            
-            // Enter loop if not locked
-            while ( !locked ) {
-                
-                // Wait and try again
-                TimeUnit.MILLISECONDS.sleep( this.RANDOM.nextInt(200, 500) );
-                locked = this.tryLock();
-            }
-        }
-        catch (IOException ex) {throw ex;}
-    }
-    
-    
-    /**
-     * Release lock on master
-     * 
-     * @param releaseMutex
-     * @return boolean
-     */
-    protected boolean releaseLock(boolean releaseMutex) {
-        try {
-            
-            // Clear lock
-            if ( this.fileLock != null && this.fileLock.isValid() ) {
-                fileLock.release();
-            }
-            
-            // Close file channel
-            if ( this.fileChannel != null && this.fileChannel.isOpen() ) {
-                fileChannel.close();
-            }
-            
-            // Release mutex
-            if ( releaseMutex ) {
-                this.releaseMutex();
-            }
-            return true;
-        }
-        
-        catch (IOException ex) {
-            this.releaseMutex();
-            return false;
-        }
-        
-        
-    }
-    
-    
-    /**
-     * Sync an {@link Item} to the master. Waits for instance to lock, then releases
-     * 
-     * @param item
-     * @throws Exception 
-     */
-    @Override
-    public void syncToMaster(Item item) throws Exception {
-        try {
-            waitForLock();
-            this.saveItem(DbTarget.MASTER, item);
-        } 
-        finally {
-            releaseLock(true);
-        }
-    }
-    
-    
-    /**
-     * Syncs Item list to master
-     * 
-     * @param items
-     */
-    @Override
-    public void syncToMaster(List<Item> items) throws Exception {
-        try {
-            waitForLock();
-            this.saveItems(DbTarget.MASTER, items);
-        } 
-        finally {
-            releaseLock(true);
-        }
-    }
-    
-    
-    /**
-     * Sync all records from cache to master
-     * 
-     */
-    @Override
-    public void syncToMaster() throws Exception {
-        try {
-            waitForLock();
-            List<Item> data = this.getAll(DbTarget.MASTER);
-            this.saveItems(DbTarget.MASTER, data);
-        } 
-        catch (InterruptedException ex) {}
-        finally {
-            releaseLock(true);
-        }
-    }
-    
-    
-    /**
-     * Cache master DB to prototype
-     * 
-     * @return boolean
-     */
-    @Override
-    public boolean cacheMaster() {
-        try {
-            Files.copy(this.masterDB, this.protoDB, StandardCopyOption.REPLACE_EXISTING);
-            return true;
-        }
-        catch (IOException ex) {
-            return false;
-        }
-    }
-    
-    
-    /**
-     * Remove prototypeDB
-     * 
-     * @return boolean
-     */
-    @Override
-    public boolean clearPrototype() {
-        try {
-            this.deleteRecursively(this.protoDB);
-            return true;
-        } catch (IOException ex) {
-            return false;
-        }
-    }
-    
-    
-    /**
-     * Recursively delete all contents of folder and it
-     * 
-     * @param path
-     * @throws IOException 
-     */
-    private void deleteRecursively(Path path) throws IOException {
-        if (Files.exists(path)) {
-            Files.walk(path)
-                .sorted(Comparator.reverseOrder()) // delete children before parents
-                .forEach(p -> {
-                    try {
-                        Files.deleteIfExists(p);
-                    } catch (IOException e) {
-                        throw new RuntimeException("Failed to delete: " + p, e);
-                    }
-                });
-        }
     }
 }

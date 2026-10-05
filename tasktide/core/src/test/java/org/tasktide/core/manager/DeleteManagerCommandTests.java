@@ -48,7 +48,7 @@ import org.tasktide.core.manager.command.commands.DeleteCommand;
 import org.tasktide.core.repository.JpaRepository;
 import org.tasktide.core.repository.itemstore_repo.ItemStoreRepositoryUtility;
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.types.ItemStoreType;
 
 
 /**
@@ -77,6 +77,7 @@ public class DeleteManagerCommandTests {
     
     private final ItemStoreType storeType = ItemStoreType.ROCKSDB;
     private final String storeName = "TaskTide-Manager/Delete/RocksDB";
+    private Map<ManagerTarget, ItemStore> storeMap;
     private ItemStore itemStore;
     
     public DeleteManagerCommandTests() {
@@ -86,9 +87,23 @@ public class DeleteManagerCommandTests {
     public void setUpClass() {        
         String msg = "\n\n---------------- Initiating Delete Manager Command Tests ----------------\n";
         LOGGER.info(msg);
-        ItemStoreRepositoryUtility.modify(storeType, storeName);
-        itemStore = ItemStoreRepositoryUtility.get().fetchItemStore(storeName, storeType);
-        TestUtils.initServiceManager(RepositoryType.ITEMSTORE, itemStore);
+        ItemStoreRepositoryUtility.modify(
+            this.storeType,
+            this.storeName
+        );
+        this.storeMap = ItemStoreRepositoryUtility
+            .get()
+            .fetchItemStoreMap(
+                this.storeType,
+                this.storeName
+        );
+        this.itemStore = this
+            .storeMap
+            .get(ManagerTarget.WORKITEM);
+        TestUtils.initServiceManager(
+            RepositoryType.ITEMSTORE,
+            itemStore
+        );
         
         /**
          * container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
@@ -135,6 +150,7 @@ public class DeleteManagerCommandTests {
     
     /**
      * Tests deletion of {@link WorkItem}
+     * 
      */
     @Test
     @Order(0)

@@ -13,7 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.itemstore;
+package org.tasktide.itemstore.types;
+
+import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.RocksDbStore;
+import org.tasktide.itemstore.SqliteStore;
 
 
 /**
@@ -36,13 +40,13 @@ public enum ItemStoreType {
         }
         
         @Override
-        public ItemStore makeItemStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
-            return new RocksDbStore(storeName, dbDirectory, masterDB, protoDB);
+        public ItemStore makeItemStore(String storeName, String dbDirectory) {
+            return new RocksDbStore(storeName, dbDirectory);
         }
         
         @Override
-        public ItemStore makeItemStoreNoElection(String storeName, String dbDirectory, String masterDB, String protoDB) {
-            return makeItemStore(storeName, dbDirectory, masterDB, protoDB);
+        public ItemStore makeItemStoreNoElection(String storeName, String dbDirectory) {
+            return makeItemStore(storeName, dbDirectory);
         }
 
         @Override
@@ -63,13 +67,13 @@ public enum ItemStoreType {
         }
         
         @Override
-        public ItemStore makeItemStore(String storeName, String dbDirectory, String masterDB, String protoDB) {
-            return new SqliteStore(storeName, dbDirectory, masterDB, protoDB);
+        public ItemStore makeItemStore(String storeName, String dbDirectory) {
+            return new SqliteStore(storeName, dbDirectory);
         }
         
         @Override
-        public ItemStore makeItemStoreNoElection(String storeName, String dbDirectory, String masterDB, String protoDB) {
-            return new SqliteStore(storeName, dbDirectory, masterDB, protoDB, true);
+        public ItemStore makeItemStoreNoElection(String storeName, String dbDirectory) {
+            return new SqliteStore(storeName, dbDirectory, true);
         }
 
         @Override
@@ -80,8 +84,9 @@ public enum ItemStoreType {
 
     public abstract boolean isItemStoreType(String query);
     public abstract boolean isItemStoreType(ItemStoreType query);
-    public abstract ItemStore makeItemStore(String storeName, String dbDirectory, String masterDB, String protoDB);
-    public abstract ItemStore makeItemStoreNoElection(String storeName, String dbDirectory, String masterDB, String protoDB);
+    public abstract ItemStore makeItemStore(String storeName, String dbDirectory);
+    
+    public abstract ItemStore makeItemStoreNoElection(String storeName, String dbDirectory);
     
     
     /**

@@ -78,7 +78,10 @@ public abstract class JpaRepository<T extends TaskTideModel<T>> extends Abstract
         }
         
         catch ( RuntimeException ex ) {
-            LOGGER.error("Error during database operation", ex);
+            LOGGER.error(
+                "Error during database operation\n\n",
+                ex
+            );
             if ( tx.isActive() ) {
                 tx.rollback();
             }

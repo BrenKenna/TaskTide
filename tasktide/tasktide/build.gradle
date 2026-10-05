@@ -113,6 +113,15 @@ testTags.each { name, tag ->
 jar {
     archiveBaseName.set("tasktide-${project.name}")
     archiveVersion.set(version)
+
+    manifest {
+        attributes(
+            "Implementation-Title": "TaskTide",
+            "Implementation-Version": project.property("tasktideVersion"),
+            "Implementation-Vendor": "Brendan Kenna",
+            "Implementation-URL": "https://tasktide.org"
+        )
+    }
 }
 
 
@@ -371,5 +380,28 @@ tasks.register('processWorkflow', JavaExec) {
             "--strategy-type", "ROUND_ROBIN",
             "--acquisition-mode", "SCANNER",
             "--iteration-limit", "4"
+    ]
+}
+
+tasks.register('helpMsg', JavaExec) {
+    group = 'application'
+    description = 'TaskTide help message'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+        "--help"
+    ]
+}
+
+
+tasks.register('version', JavaExec) {
+    group = 'application'
+    description = 'TaskTide verion'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass.set('org.tasktide.tasktide.TaskTide')
+    
+    args = [
+        "--version"
     ]
 }

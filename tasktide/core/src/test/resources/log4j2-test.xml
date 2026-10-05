@@ -22,7 +22,7 @@
         </Logger>
         
         <!-- Disable mutex logs -->
-        <Logger name="org.tasktide.mutex" level="off" additivity="false"/>
+        <Logger name="org.tasktide.mutex" level="INFO" additivity="false"/>
         
         <logger name="org.eclipse.jnosql.databases.mongodb" level="DEBUG"/>
 

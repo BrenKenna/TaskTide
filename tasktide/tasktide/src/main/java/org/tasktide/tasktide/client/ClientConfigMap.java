@@ -22,7 +22,6 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 import org.tasktide.tasktide.containerprovider.CdiContainerProvider;
 
 import org.tasktide.parser.ArgumentTree;
@@ -172,5 +171,10 @@ public class ClientConfigMap {
     
     public boolean shouldDisplayHelp() {
         return this.parser.hasHelp();
+    }
+    
+    
+    public boolean shouldDisplayVersion() {
+        return this.parser.hasVersion();
     }
 }

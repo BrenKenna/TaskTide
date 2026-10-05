@@ -20,7 +20,6 @@ import org.apache.logging.log4j.Logger;
 
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.repository.RepositoryType;
-import org.tasktide.core.supporting.JsonUtils;
 
 import org.tasktide.tasktide.client.ClientConfigMap;
 import org.tasktide.tasktide.client.TaskTideClient;
@@ -52,21 +51,53 @@ public class TaskTide {
         try {
             
             // Configure provider and argument tree
-            TaskTideClientUtility.printSplash();
+            // TaskTideClientUtility.printSplash();
+            System.out.println(Splash.render());
             LOGGER.info("Configuring the CDI Container Provider");
-            CdiContainerProvider provider = TaskTideClientUtility.configureCdiInstance(CdiProviders.WELD, false);
+            CdiContainerProvider provider = TaskTideClientUtility
+                .configureCdiInstance(
+                    CdiProviders.WELD,
+                    true
+            );
 
             // Fetch config map
             LOGGER.info("Fetching TaskTide configs");
             ClientConfigMap configMap = new ClientConfigMap();
             configMap.addConfigs(provider);
             configMap.parseCommandLineArguments(args);
+            
+            // Handle help flag
             if ( configMap.shouldDisplayHelp() ) {
-                LOGGER.warn("Help flag detected");
+                LOGGER.debug("Help flag detected");
                 provider.shutdown();
-                LOGGER.warn(JsonUtils.toJson(true, configMap.getArgTree().getVerboseHelp()));
+                LOGGER.info(
+                    "\n{}",
+                    String.join(
+                        System.lineSeparator(),
+                        configMap.getArgTree().getVerboseHelp()
+                    )
+                );
                 System.exit(0);
             }
+            
+            // Handle version
+            if ( configMap.shouldDisplayVersion() ) {
+                LOGGER.debug("Version flag detected");
+                provider.shutdown();
+                String version = TaskTide.class
+                        .getPackage()
+                .getImplementationVersion();
+                if ( version == null ) {
+                    version = "development";
+                }
+                LOGGER.info(
+                    "TaskTide version:\t'{}",
+                    version
+                );
+                System.exit(0);
+            }
+
+            // Handle client
             TaskTideClientType clientType = configMap.whichClient();
             if ( clientType == null ) {
                 LOGGER.fatal("Error, exiting cannot parse provided client. Please check this value matches one of 'Manager, Engine, WebAPI'");
@@ -76,12 +107,24 @@ public class TaskTide {
 
             // Fetch TaskTideServiceManager
             RepositoryType repoType = TaskTideClientUtility.fetchRepoType(configMap);
-            LOGGER.info("Fetching the TaskTideServiceManager for '{}' Repository", repoType);
-            TaskTideClientUtility.initServiceManager(repoType, configMap);
-            LOGGER.info("ServiceManager state is now:\t'{}'", TaskTideServiceManager.isInitialized());
+            LOGGER.info(
+                "Fetching the TaskTideServiceManager for '{}' Repository",
+                repoType
+            );
+            TaskTideClientUtility.initServiceManager(
+                repoType,
+                configMap
+            );
+            LOGGER.info(
+                "ServiceManager state is now:\t'{}'",
+                TaskTideServiceManager.isInitialized()
+            );
 
             // Run client
-            LOGGER.info("Constructing client:\t'{}'", clientType);
+            LOGGER.info(
+                "Constructing client:\t'{}'",
+                clientType
+            );
             TaskTideClient client = clientType.makeClient(configMap);
             client.runClient();
 
@@ -94,7 +137,7 @@ public class TaskTide {
         // Otherwise show error
         catch (Exception ex) {
             LOGGER.fatal(
-                "Exiting on fatal error:\n\n'{}'",
+                "Exiting on fatal error:\n\n",
                 ex
             );
             System.exit(1);

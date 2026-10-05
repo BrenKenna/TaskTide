@@ -34,17 +34,19 @@ import org.tasktide.core.model.collection.Workflow;
 import org.tasktide.core.model.workitem.WorkItem;
 
 import org.tasktide.core.TaskTideRepository;
+import org.tasktide.core.exceptions.TaskTideManagerUncheckedException;
 import org.tasktide.core.manager.TaskTideServiceManager;
 import org.tasktide.core.model.job_env.JobEnvironment;
 import org.tasktide.core.model.job_env.metrics.MetricData;
 import org.tasktide.core.model.job_env.metrics.MetricProfile;
 import org.tasktide.core.repository.RepositoryType;
 import org.tasktide.core.services.ServiceFactory;
-import org.tasktide.core.supporting.JsonUtils;
-import org.tasktide.itemstore.DbTarget;
 
 import org.tasktide.itemstore.ItemStore;
-import org.tasktide.itemstore.ItemStoreType;
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
+import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
+import org.tasktide.itemstore.strategies.ItemStoreLockStrategy;
+import org.tasktide.itemstore.types.ItemStoreType;
 
 
 /**
@@ -118,21 +120,58 @@ public class ItemStoreRepositoryUtility {
         TaskTideService<JobEnvironment> jobEnvServ;
         
         // Fetch item store map
-        itemStoreMap = fetchItemStoreMap(this.storeType, this.storeName);
+        itemStoreMap = fetchItemStoreMap(
+            this.storeType,
+            this.storeName
+        );
         
         // Construct services
-        workItemService = ServiceFactory.makeWorkItemService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.WORKITEM), "WorkItem-Service");
-        stepService = ServiceFactory.makeStepService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.STEP), "Step-Service");
-        workflowService = ServiceFactory.makeWorkflowService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.WORKFLOW), "Workflow-Service");
+        workItemService = ServiceFactory.makeWorkItemService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.WORKITEM),
+            "WorkItem-Service"
+        );
+        stepService = ServiceFactory.makeStepService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.STEP),
+            "Step-Service"
+        );
+        workflowService = ServiceFactory.makeWorkflowService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.WORKFLOW),
+            "Workflow-Service"
+        );
         
         // Construct additional services
-        metricServ = ServiceFactory.makeMetricDataService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.METRIC_DATA), "MetricData");
-        profileServ = ServiceFactory.makeMetricProfileService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.METRIC_PROFILE), "MetricProfile");
-        jobEnvServ = ServiceFactory.makeJobEnvironmentService(RepositoryType.ITEMSTORE, itemStoreMap.get(ManagerTarget.JOB_ENVIRONMENT), "JobEnvironment");
+        metricServ = ServiceFactory.makeMetricDataService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.METRIC_DATA),
+            "MetricData"
+        );
+        profileServ = ServiceFactory.makeMetricProfileService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.METRIC_PROFILE),
+            "MetricProfile"
+        );
+        jobEnvServ = ServiceFactory.makeJobEnvironmentService(
+            RepositoryType.ITEMSTORE,
+            itemStoreMap.get(ManagerTarget.JOB_ENVIRONMENT),
+            "JobEnvironment"
+        );
         
         // Initialize service manager with services
-        TaskTideServiceManager.initialize(workItemService, stepService, workflowService, jobEnvServ, metricServ, profileServ);
-        LOGGER.debug("Displaying configured service manager:\n'{}'", TaskTideServiceManager.toJson());
+        TaskTideServiceManager.initialize(
+            workItemService,
+            stepService,
+            workflowService,
+            jobEnvServ,
+            metricServ,
+            profileServ
+        );
+        LOGGER.debug(
+            "Displaying configured service manager:\n'{}'",
+            TaskTideServiceManager.toJson()
+        );
     }
     
     
@@ -149,17 +188,21 @@ public class ItemStoreRepositoryUtility {
         Path store = Paths.get(storeName);
         try {
             Files.createDirectories(store);
-            LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
+            LOGGER.debug(
+                "ItemStore Directory created under:\t'{}'",
+                storeName
+            );
         }
         catch (IOException ex) {
-            LOGGER.debug("ItemStoreDirectory already exists under:\t'{}'", storeName);
+            LOGGER.error(
+                "Error encountered during ItemStore:\t'{}'\n",
+                storeName, ex
+            );
         }
         
         // Set vars
         String dbDirectory = store.toString();
-        String masterDB = "master";
-        String protoDB = UUID.randomUUID().toString();
-        return storeType.makeItemStore(storeName, dbDirectory, masterDB, protoDB);
+        return storeType.makeItemStore(storeName, dbDirectory);
     }
     
     
@@ -176,44 +219,34 @@ public class ItemStoreRepositoryUtility {
         
         // Resolve store locatoin
         Path store = Paths.get(storeName);
+        Path master = store.resolve("master");
         try {
             Files.createDirectories(store);
-            LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
+            Files.createDirectories(master);
+            LOGGER.debug(
+                "ItemStore Directory created under:\t'{}'",
+                storeName
+            );
         }
         catch (IOException ex) {
-            LOGGER.debug("ItemStoreDirectory already exists under:\t'{}'", storeName);
+            LOGGER.error(
+                "Error encountered during ItemStore:\t'{}'\n",
+                storeName, ex
+            );
         }
         
         // Set vars
-        String dbDirectory = store.toString();
-        String masterDB = "master";
-        String protoDB = UUID.randomUUID().toString();
-        
         ItemStore result;
+        String dbDirectory = store.toString();
         if ( !isElected ) {
-            result = storeType.makeItemStore(storeName, dbDirectory, masterDB, protoDB);
+            result = storeType.makeItemStore(storeName, dbDirectory);
         }
         else {
-            result = storeType.makeItemStoreNoElection(storeName, dbDirectory, masterDB, protoDB);
+            result = storeType.makeItemStoreNoElection(storeName, dbDirectory);
         }
-        result.closeConn(DbTarget.BOTH, false);
         return result;
     }
-    
-    
-    /**
-     * Closes connections across
-     * 
-     * @param donor
-     * @param recipients 
-     */
-    public void closeConnections(ItemStore donor, Map<String, ItemStore> recipients) {
-        donor.execute(DbTarget.MASTER, recipients, (varA, varB) -> {
-            LOGGER.info("Openning & closing connections across:\n'{}'", JsonUtils.toJson(true, recipients));
-            return null;
-        });
-    }
-    
+
     
     /**
      * Fetch {@link ItemStore} map
@@ -224,29 +257,63 @@ public class ItemStoreRepositoryUtility {
      * @return Map of {@link ManagerTarget}-{@link ItemStore}
      */
     public Map<ManagerTarget, ItemStore> fetchItemStoreMap(ItemStoreType storeType, String storeName) {
-        LOGGER.info("Prcessing ItemStore from under:\t'{}'", storeName);
-        Map<ManagerTarget, ItemStore> output = new HashMap<>();
         
-        boolean isElected = false;
-        ItemStore leader = null;
-        for (ManagerTarget elm : ManagerTarget.withRepositories() ) {
-            ItemStore store = fetchItemStore(storeName + "/" + elm.toString(), storeType, isElected);
-            output.put(elm, store);
-                
-            if ( !isElected ) {
-                    leader = store;
-            }
-            
-            isElected = true;
+        // Initialize required vars
+        Map<ManagerTarget, ItemStore> output;
+        Path storeDir, master;
+        ItemStoreLockStrategy lockStrat;
+        
+        // Initialize store map
+        LOGGER.info(
+            "Prcessing ItemStore from under:\t'{}'",
+            storeName
+        );
+        output = new HashMap<>();
+        
+        // Resolve store locatoin
+        storeDir = Paths.get(storeName);
+        master = storeDir.resolve("master");
+        try {
+            Files.createDirectories(storeDir);
+            Files.createDirectories(master);
+            LOGGER.debug(
+                "ItemStore Directory created under:\t'{}'",
+                storeName
+            );
         }
-     
-        if ( leader != null ) {
-            leader.closeConn(DbTarget.BOTH, true);
+        catch (IOException ex) {
+            LOGGER.error(
+                "Error encountered during ItemStore:\t'{}'\n",
+                storeName, ex
+            );
         }
-        return output;
+        
+        // Acquire mutex and initialize repositories under it
+        LOGGER.info("Creating stores");
+        lockStrat = new ItemStoreLockStrategy(storeName, storeDir, master);
+        try {
+            lockStrat.withLock(
+            "Initilize ItemStores for each ManagerTarget",
+            () -> {
+                for (ManagerTarget elm : ManagerTarget.withRepositories() ) {
+                    LOGGER.info(
+                        "Attempting to initalize ItemStore for:\t'{}'",
+                        elm
+                    );
+                    Path elmPath = storeDir.resolve(elm.toString());
+                    ItemStore store = fetchItemStore(elmPath.toString(), storeType, true);
+                    output.put(elm, store);
+                }
+                return true;
+            });
+            return output;
+        }
+        catch (ItemStoreCheckedException ex) {
+            LOGGER.error(ex);
+            throw new ItemStoreUncheckedException("Unable to initialize all ItemStores");
+        }
     }
-    
-    
+
     
     /**
      * Initialize the utility with the store type and file location

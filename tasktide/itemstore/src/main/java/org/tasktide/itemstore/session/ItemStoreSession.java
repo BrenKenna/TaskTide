@@ -18,9 +18,8 @@ package org.tasktide.itemstore.session;
 import java.util.List;
 
 import org.tasktide.itemstore.Item;
-
-// For JavaDocs
 import org.tasktide.itemstore.ItemStore;
+import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
 
 
 /**
@@ -32,13 +31,16 @@ import org.tasktide.itemstore.ItemStore;
  */
 public interface ItemStoreSession {
     
+    
     /**
      * Insert provided {@link Item}
      * 
      * @param item 
      * @return {@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    boolean insert(Item item);
+    boolean insert(Item item) throws ItemStoreCheckedException;
     
     
     /**
@@ -46,8 +48,10 @@ public interface ItemStoreSession {
      * 
      * @param items
      * @return List-{@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    boolean importItems(List<Item> items);
+    boolean importItems(List<Item> items) throws ItemStoreCheckedException;
     
     
     /**
@@ -55,8 +59,10 @@ public interface ItemStoreSession {
      * 
      * @param id
      * @return {@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    Item getById(String id);
+    Item getById(String id) throws ItemStoreCheckedException;
     
     
     /**
@@ -64,16 +70,20 @@ public interface ItemStoreSession {
      * 
      * @param item 
      * @return boolean
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    boolean delete(Item item);
+    boolean delete(Item item) throws ItemStoreCheckedException;
     
     
     /**
      * Fetch all records
      * 
      * @return List-{@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    List<Item> getAll();
+    List<Item> getAll() throws ItemStoreCheckedException;
     
     
     /**
@@ -81,8 +91,10 @@ public interface ItemStoreSession {
      * 
      * @param state
      * @return List-{@link Item}
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    public List<Item> getItemsByState(String state);
+    public List<Item> getItemsByState(String state) throws ItemStoreCheckedException;
     
     
     /**
@@ -90,6 +102,8 @@ public interface ItemStoreSession {
      * 
      * @param id
      * @return String
+     * 
+     * @throws {@link ItemStoreCheckedException}
      */
-    public String getPayloadById(String id);
+    public String getPayloadById(String id) throws ItemStoreCheckedException;
 }
