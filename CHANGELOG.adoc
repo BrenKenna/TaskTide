@@ -16,6 +16,9 @@
 - SQLiteStore open/close connections define database file under master/protoDB path fields.
 - Organizes use of ItemStoreSession through AbstractItemStore locked-connection lifecycle for further exploration in v2. Which may introduce an intmediary abstract class between AIS and concrete stores, so that the concrete stores are solely a wrapper for reading/writing Items to their DB (which will likely bring a third concrete store for verification/refinement).
 - CoreLib ItemStoreRepository fetch store map uses new refactored, greatly improved ItemStore config and helped debug use of refactored ItemStore design released here for v1.
+- Compiles the splash text into terminal UI.
+- Adds version and client info into jar manifest configuration.
+- Cleans the TUI help message
 
 
 == [v0.9.5]
