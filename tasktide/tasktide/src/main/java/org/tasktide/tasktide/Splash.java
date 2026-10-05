@@ -22,15 +22,19 @@ package org.tasktide.tasktide;
  * @author Bren
  */
 public final class Splash {
-
-    private static final
-        Package PKG = Splash.class
-            .getPackage();
     
+    
+    /**
+     * Renders TaskTide with version with implementation
+     *  version configured in gradle build, or defaults
+     *   to development version
+     * 
+     * @return String
+     */
     public static String render() {
         String version = Splash.class
            .getPackage()
-           .getImplementationVersion();
+        .getImplementationVersion();
         if ( version == null ) {
            version = "-development";
         }
@@ -45,6 +49,8 @@ public final class Splash {
 
                 TaskTide-v%s
                 _________________________________________________
-            """, version);
+            """,
+            version
+        );
     }
 }

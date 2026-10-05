@@ -135,6 +135,10 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
         
         // Otherwise empty result
         catch (Exception ex) {
+            LOGGER.warn(
+                "Error encountered during findById, returning null\n\n",
+                ex
+            );
             return Optional.empty();
         }
     }
@@ -157,6 +161,10 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
         }
         
         catch (Exception ex) {
+            LOGGER.warn(
+                "Error encountered during insertModel, returning null\n\n",
+                ex
+            );
             return null;
         }
     }
@@ -182,6 +190,10 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
             return this.findById(model.getId()).get();
         }
         catch ( Exception ex ) {
+            LOGGER.warn(
+                "Error encountered during updateModel, returning null\n\n",
+                ex
+            );
             return null;
         }
     }
@@ -319,6 +331,10 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
             return this.repo.delete(DbTarget.MASTER, item);
         }
         catch (Exception ex) {
+            LOGGER.warn(
+                "Error encountered during deleteModel, returning null\n\n",
+                ex
+            );
             return false;
         }
     }
@@ -441,6 +457,10 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
             return 1;
         }
         catch (Exception ex) {
+            LOGGER.warn(
+                "Error encountered during saving, returning -1\n\n",
+                ex
+            );
             return -1;
         }
     }
@@ -480,8 +500,10 @@ public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends Ab
             return true;
         }
         catch ( Exception ex ) {
-            //System.out.println("Debug >>>\nDisplaying stack trace");
-            //ex.printStackTrace();
+            LOGGER.warn(
+                "Error encountered during extending model, returning false\n\n",
+                ex
+            );
             return false;
         }
     }

@@ -38,7 +38,7 @@ public class CliParser {
     private final ArgumentTree argTree;
     private final String[] argsIn;
     private final Map<String, Argument<?>> parsedArgs;
-    private boolean hasHelp, hasVersion, hasPkgInf;
+    private boolean hasHelp, hasVersion;
     
     
     /**

@@ -22,6 +22,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import org.tasktide.itemstore.types.DbTarget;
 import static org.tasktide.itemstore.types.DbTarget.*;
@@ -46,12 +48,15 @@ import org.tasktide.itemstore.operations.ThrowableItemStoreOperation;
 public abstract class AbstractItemStore implements ItemStore {
     
     // Attributes
+    private final Logger LOGGER = LogManager.getLogger(AbstractItemStore.class);
     protected final String storeName;
     protected final Path dbDirectory, masterDB, protoDB;
+    
     
     // Owns DB lock lifecycle, and how its done
     protected final ItemStoreLockStrategy lockStrategy;
 
+    
     /**
      * Construct with all attributes. Throws IllegalArgument
      *  RunTime exception if not writable. 
@@ -148,7 +153,6 @@ public abstract class AbstractItemStore implements ItemStore {
         DbTarget target,
         ThrowableItemStoreOperation operation
     ) throws ItemStoreCheckedException {
-    
         return (R) this.lockStrategy.withLock(
             label,
             () -> {
@@ -183,7 +187,6 @@ public abstract class AbstractItemStore implements ItemStore {
         DbTarget target,
         ItemStoreOperation operation
     ) throws ItemStoreUncheckedException {
-    
         return (R) this.lockStrategy.withLockUnchecked(
             label,
             () -> {
@@ -344,6 +347,10 @@ public abstract class AbstractItemStore implements ItemStore {
             ItemStoreUtils.deleteRecursively(this.protoDB);
             return true;
         } catch (IOException ex) {
+            LOGGER.error(
+                "Error encountered clearing prototype\n",
+                ex
+            );
             return false;
         }
     }

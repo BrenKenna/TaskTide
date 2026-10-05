@@ -188,16 +188,20 @@ public class ItemStoreRepositoryUtility {
         Path store = Paths.get(storeName);
         try {
             Files.createDirectories(store);
-            LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
+            LOGGER.debug(
+                "ItemStore Directory created under:\t'{}'",
+                storeName
+            );
         }
         catch (IOException ex) {
-            LOGGER.debug("ItemStoreDirectory already exists under:\t'{}'", storeName);
+            LOGGER.error(
+                "Error encountered during ItemStore:\t'{}'\n",
+                storeName, ex
+            );
         }
         
         // Set vars
         String dbDirectory = store.toString();
-        String masterDB = "master";
-        String protoDB = UUID.randomUUID().toString();
         return storeType.makeItemStore(storeName, dbDirectory);
     }
     
@@ -219,18 +223,21 @@ public class ItemStoreRepositoryUtility {
         try {
             Files.createDirectories(store);
             Files.createDirectories(master);
-            LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
+            LOGGER.debug(
+                "ItemStore Directory created under:\t'{}'",
+                storeName
+            );
         }
         catch (IOException ex) {
-            LOGGER.debug("ItemStoreDirectory already exists under:\t'{}'", storeName);
+            LOGGER.error(
+                "Error encountered during ItemStore:\t'{}'\n",
+                storeName, ex
+            );
         }
         
         // Set vars
-        String dbDirectory = store.toString();
-        String masterDB = "master";
-        String protoDB = UUID.randomUUID().toString();
-        
         ItemStore result;
+        String dbDirectory = store.toString();
         if ( !isElected ) {
             result = storeType.makeItemStore(storeName, dbDirectory);
         }
@@ -254,13 +261,13 @@ public class ItemStoreRepositoryUtility {
         // Initialize required vars
         Map<ManagerTarget, ItemStore> output;
         Path storeDir, master;
-        String dbDirectory,
-            masterDB = "master",
-            protoDB = UUID.randomUUID().toString();
         ItemStoreLockStrategy lockStrat;
         
         // Initialize store map
-        LOGGER.info("Prcessing ItemStore from under:\t'{}'", storeName);
+        LOGGER.info(
+            "Prcessing ItemStore from under:\t'{}'",
+            storeName
+        );
         output = new HashMap<>();
         
         // Resolve store locatoin
@@ -269,13 +276,15 @@ public class ItemStoreRepositoryUtility {
         try {
             Files.createDirectories(storeDir);
             Files.createDirectories(master);
-            LOGGER.debug("ItemStore Directory created under:\t'{}'", storeName);
+            LOGGER.debug(
+                "ItemStore Directory created under:\t'{}'",
+                storeName
+            );
         }
         catch (IOException ex) {
-            LOGGER.error("Unable to create ItemStore under:\t{}\n\n", storeDir.toString(), ex);
-            throw new TaskTideManagerUncheckedException(
-                "Unable to create ItemStore under:\t" + storeDir.toString(),
-                ex
+            LOGGER.error(
+                "Error encountered during ItemStore:\t'{}'\n",
+                storeName, ex
             );
         }
         

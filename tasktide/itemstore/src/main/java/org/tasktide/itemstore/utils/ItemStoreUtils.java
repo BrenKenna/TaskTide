@@ -118,8 +118,6 @@ public class ItemStoreUtils {
         
         // Set vars
         String dbDirectory = store.toString();
-        String masterDB = "master";
-        String protoDB = UUID.randomUUID().toString();
         return storeType.makeItemStore(storeName, dbDirectory);
     }
     

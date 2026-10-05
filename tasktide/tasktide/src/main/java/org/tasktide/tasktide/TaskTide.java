@@ -84,12 +84,17 @@ public class TaskTide {
             if ( configMap.shouldDisplayVersion() ) {
                 LOGGER.debug("Version flag detected");
                 provider.shutdown();
+                String version = TaskTide.class
+                        .getPackage()
+                .getImplementationVersion();
+                if ( version == null ) {
+                    version = "development";
+                }
                 LOGGER.info(
                     "TaskTide version:\t'{}",
-                    TaskTide.class
-                        .getPackage()
-                        .getImplementationVersion()
+                    version
                 );
+                System.exit(0);
             }
 
             // Handle client

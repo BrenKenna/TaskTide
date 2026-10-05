@@ -28,19 +28,21 @@ import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.tasktide.mutex.model.Mutex;
+import org.tasktide.mutex.exceptions.MutexCheckedException;
+import org.tasktide.mutex.exceptions.MutexUncheckedException;
+
+import org.tasktide.mutex.utils.DefaultMutexPaths;
+import org.tasktide.mutex.orchestrator.MutexOrchestrator;
+
 import org.tasktide.itemstore.AbstractItemStore;
 import org.tasktide.itemstore.ItemStore;
 import org.tasktide.itemstore.exceptions.ItemStoreCheckedException;
 import org.tasktide.itemstore.exceptions.ItemStoreUncheckedException;
+
 import org.tasktide.itemstore.operations.ItemStoreOperation;
 import org.tasktide.itemstore.operations.ThrowableItemStoreOperation;
 import org.tasktide.itemstore.utils.ItemStoreUtils;
-
-import org.tasktide.mutex.model.Mutex;
-import org.tasktide.mutex.exceptions.MutexCheckedException;
-import org.tasktide.mutex.exceptions.MutexUncheckedException;
-import org.tasktide.mutex.utils.DefaultMutexPaths;
-import org.tasktide.mutex.orchestrator.MutexOrchestrator;
 
 
 /**
@@ -278,6 +280,9 @@ public class ItemStoreLockStrategy {
         
         // Otherwise log traceably throw error from mutex lib
         catch (InterruptedException | IOException ex) {
+            if (ex instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             LOGGER.error(ex);
             String msg = String.format(
                 "Error ecountered obtaining lock for operation '%s':\t'%s'",
