@@ -18,7 +18,7 @@
 - CoreLib ItemStoreRepository fetch store map uses new refactored, greatly improved ItemStore config and helped debug use of refactored ItemStore design released here for v1.
 - Compiles the splash text into terminal UI.
 - Adds version and client info into jar manifest configuration.
-- Cleans the TUI help message
+- Cleans the TUI help message.
 
 
 == [v0.9.5]
