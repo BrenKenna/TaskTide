@@ -521,7 +521,6 @@ public class RocksDbStore extends AbstractItemStore {
     /**
      * Open connection master connection
      * 
-     * @param target
      * @return boolean
      */
     @Override
@@ -601,7 +600,6 @@ public class RocksDbStore extends AbstractItemStore {
      * 
      * @param <T>
      * @param target
-     * @param ops
      * 
      * @return T
      */

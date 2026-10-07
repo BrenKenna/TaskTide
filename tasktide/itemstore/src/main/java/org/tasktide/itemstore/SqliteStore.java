@@ -725,7 +725,6 @@ public class SqliteStore extends AbstractItemStore {
     /**
      * Open connection master connection
      * 
-     * @param target
      * @return boolean
      */
     @Override
@@ -807,7 +806,6 @@ public class SqliteStore extends AbstractItemStore {
      * 
      * @param <T>
      * @param target
-     * @param ops
      * 
      * @return T
      */

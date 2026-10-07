@@ -103,7 +103,6 @@ public class ItemStoreLockStrategy {
      * @param storeName
      * @param dbDirectory
      * @param masterDB
-     * @param protoDB 
      */
     public ItemStoreLockStrategy(
         String storeName,

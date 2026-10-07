@@ -222,7 +222,16 @@ VERSION="v1.0.0"
 
 # Check sums and signs the local test zip
 cd docs/release-patching/
+cd $VERISION
 
+
+# Verify JAR
+unzip tasktide-1.0.0.zip && \
+    cd tasktide-1.0.0
+./bin/tasktide --help
+
+
+# Generate sha-256 sums
 openssl dgst -sha256 * | \
     cut -d \= -f 2,1 | \
     sed -e 's/SHA2-256//g' -e 's/(//g' -e 's/)//g' -e 's/=//g' | \

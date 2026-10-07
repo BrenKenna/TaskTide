@@ -31,7 +31,7 @@ import org.tasktide.itemstore.types.DbTarget;
 /**
  * Strategy to hold evaluation logic around whether or not
  *  to allow the opening/closing of {@link ItemStore} to take
- *  that bloat out these classes using {@link ItemStoreThrowableOperation}
+ *  that bloat out these classes using {@link ThrowableItemStoreOperation}
  *
  * @author Bren
  */
@@ -45,7 +45,6 @@ public class ItemStoreConnectionStrategy {
      * Handle to evaluate opening connection
      *  against configured {@link ItemStore}
      * 
-     * @param <R>
      * @param target
      * @param itemStore
      * @return boolean
@@ -105,10 +104,8 @@ public class ItemStoreConnectionStrategy {
      * Handle to evaluate opening connection
      *  against configured {@link ItemStore}
      * 
-     * @param <R>
      * @param target
      * @param itemStore
-     * @param operation
      * @return boolean
      * 
      * @throws {@link ItemStoreUncheckedException} 
