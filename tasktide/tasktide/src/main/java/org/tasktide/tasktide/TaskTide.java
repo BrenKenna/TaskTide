@@ -57,7 +57,7 @@ public class TaskTide {
             CdiContainerProvider provider = TaskTideClientUtility
                 .configureCdiInstance(
                     CdiProviders.WELD,
-                    true
+                    false
             );
 
             // Fetch config map
