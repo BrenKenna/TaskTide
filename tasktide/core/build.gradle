@@ -33,7 +33,7 @@ dependencies {
     implementation          "org.hibernate.orm:hibernate-core:7.4.8.Final"
     implementation          "com.zaxxer:HikariCP:7.1.0"
     implementation          platform("com.fasterxml.jackson:jackson-bom:2.22.2") // To resolve Hibernate using this namespace
-    implementation          "tools.jackson.datatype:jackson-datatype-jakarta-jsonp:3.2.2"
+    implementation          "tools.jackson.datatype:jackson-datatype-jakarta-jsonp:3.2.3"
     testImplementation      'com.mysql:mysql-connector-j:26.7.0'
     
     // Host metrics
