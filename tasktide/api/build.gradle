@@ -19,7 +19,7 @@ dependencies {
     implementation      "io.smallrye:smallrye-jwt-build:4.6.4"
 
     // Web server: platform("org.glassfish.jersey:jersey-bom:3.1.28")
-    implementation      platform("org.glassfish.jersey:jersey-bom:4.0.2")
+    implementation      platform("org.glassfish.jersey:jersey-bom:4.0.3")
     implementation      "org.glassfish.jersey.inject:jersey-hk2"
     implementation      "org.glassfish.jersey.media:jersey-media-json-binding"
     implementation      "org.glassfish.jersey.containers:jersey-container-servlet"
