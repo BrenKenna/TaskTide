@@ -6,6 +6,17 @@ python passgen.py --password-length 64 --amount 18 | sort -R | cut -f 2
 PASS_KEY=$(cat .secret/passKey)
 
 
+# Check paper
+docker run --rm \
+  --volume "$PWD:/data" \
+  --workdir /data \
+  --user "$(id -u):$(id -g)" \
+  --env JOURNAL=joss \
+  openjournals/inara \
+  -o pdf,html,jats,crossref \
+  paper/paper.md
+  
+
 #####################################################
 #####################################################
 ##

@@ -1,273 +1,254 @@
-# TaskTide: Backend-agnostic workflow orchestration engine
-
-## Summary
-<p id="summary-1">
-TaskTide is a backend agnostic workflow orchestration engine developed to bridge the Orchestration Layer gap between customers Data Application Layer development, and their scalable deployment across heterogeneous Infrastructure Layer. In modern big data platforms, workflows are defined by users but executed on distributed compute platforms. This intrinsic separation of concerns results in workflow orchestration falling outside the responsibility of either layer.
-</p>
-
-<p id="summary-2">
-TaskTide enables its users to register, query, and modify their workflow deployments in real-time, while they are actively running on distributed compute resources. Demonstrated here with use-cases spanning multiple research domains, TaskTide provides a lightweight and flexible solution for scalable workflow orchestration of data-intensive applications without coupling them to specific infrastructure backends.
-</p>
-
+---
+title: "TaskTide: Backend-agnostic workflow orchestration system"
+tags:
+  - workflow orchestration
+  - distributed computing
+  - high-performance computing
+  - data engineering
+  - pilot jobs
+authors:
+  - name: Brendan J. Kenna
+    email: Brendan.Kenna.BK@gmail.com
+    corresponding: true
+    affiliation: "1"
+    orcid: 0000-0001-7591-2221
+affiliations:
+  - name: "University College Dublin, Ireland"
+    index: 1
+date: 9 October 2026
+bibliography: paper.bib
 ---
 
-## Statement of Need
-<p id="son-1">
-The growth of data-intensive research and AI-driven applications increases the demand for workflow orchestration across heterogeneous computing environments (Hop et al., 2024; K. P. Kenna et al., 2016; NHLBI, 2016; Nicolas et al., 2018). Although technologies like Hadoop, SLURM, gLite are the compute scheduling bedrock for modern big data platforms adopted by service providers as their multi-tenant Infrastructure Layer System, ILS (Giri & Sharma, 2022; Salloum et al., 2016; Yoo et al., 2003). The need for Workflow Orchestration System, WOS, arises from the separate concerns of ILS offered by service providers, and Data Application Layer Software, DAS, developed by end-users.
-</p>
+# Summary
 
-<p id="son-2">
-In this context ILS are responsible for their fault-tolerance, resource provisioning, and the execution of scheduled compute jobs. While DAS are developed by end-users to implement domain specific business logic or research workflows. These separate concerns means that the orchestration of data applications across ILS is not owned by either side. Creating a gap between intent and its billable distributed execution. 
-</p>
+TaskTide is a backend-agnostic workflow orchestration system designed to mediate the deployment of user-defined data applications across different computing environments (Figure 1). In data-intensive environments, workflows are defined by users independently from the platform on which they are executed. This separation of concerns creates a natural role for orchestration middleware responsible for coordinating operational elements such as persistent state, execution context, and task lifecycle management.
 
-<p id="son-3">
-The caveat of the OLS gap is that there is no standardized linkage of a given data application to its scale out across distributed compute systems. Leaving the burden of relating job environment, and data application instance associations, and ensuring their correct execution context falls to the end-user to develop. Typically addressed bespoke by infrastructure-specific solutions that are verbose and tightly coupled to execution context. Thereby reducing the portability of Data Application Layer solutions, contradicting the sentiments of FAIR-aligned workflow design.
-</p>
 
-<p id="son-4">
-The OLS gap introduces operational overhead for both end-users and service providers. For the end-users this comes in as development overhead for each workflow. For service providers the OLS gap can blur the boundary between infrastructure support responsibilities, and workflow issues. Collectively complicating user onboarding and support scope. Problems which are amplified by the rapid evolution of both application and infrastructure technologies, where tightly coupled solutions inherit platform-specific obsolescence risks. The complex dynamics of DALS and ILS highlight the need for flexible, backend agnostic workflow orchestration system. Where task scheduling is decoupled from task execution, and the compute infrastructure it is deployed across.
-</p>
+Through its persistent workflow model, TaskTide enables users to register, query, and modify workflow deployments as they are consumed across distributed compute resources. These capabilities provide end users with operational controls that support real-time interaction with workflow state and execution context. As a result, workflows can be deployed across heterogeneous computing environments, including HPC, cloud, and containerized environments, while retaining a unified perspective on workflow state and the execution context of data-application deployments (Figure 4).
 
-<p id="son-5">
-TaskTide is shown here to contribute a fault tolerant distributed workflow orchestration system for scaling DALS, across heterogeneous ILS (HPC, and cloud). It enables its users to register, query, and modify workflow deployments in real-time, while they are executed across distributed compute environments. TaskTide is designed to operate across both relational database management systems (ex Postgres, Oracle, Maria etc), and NoSQL database systems (ex MongoDB, CouchDB, Redis etc) reflecting its backend-agnostic design.
-</p>
+TaskTide treats workflow management, execution-context tracking, runtime introspection, and lifecycle influence as first-class orchestration concerns, while resource scheduling, provisioning, and workload execution remain infrastructural responsibilities. Workflow semantics remain user-defined, either at runtime or within the application itself. This separation allows TaskTide to operate as lightweight orchestration middleware that integrates with diverse computing environments and application domains, as demonstrated through use cases spanning bioinformatics, distributed application execution, and containerized AI workloads (Table 3).
 
----
 
-## Software Design
+# Statement of Need
 
-### a). Introduction
-<p id="software-design-intro">
-TaskTide is a backend-agnostic workflow orchestration system designed to bridge the gap between end-user DALS development and its scalable deployment across heterogeneous ILS (Fig 1). It achieves this through decoupling task scheduling from its execution on Infrastructure Layer, and maintaining associations between workflows and their execution context (Fig 2-3).
-Existing workflow systems (e.g., Snakemake, Cromwell) couple orchestration with workflow definition, while distributed computing platforms (e.g., DIRAC, PiCaS) integrate orchestration within broader infrastructure stacks. TaskTide instead isolates orchestration as a standalone, backend-agnostic layer between application and infrastructure concerns.
-The following describes how TaskTide’s architecture and operational model map to practical values for end-users and service providers as a viable OLS solution (Table-1).
-</p>
+The growth of data-intensive research, services, and AI-driven applications has created new research opportunities for exploring how application execution can be coordinated across heterogeneous computing environments [@hop2024; @hop2026; @kenna2016; @nhlbi2016; @nicolas2018]. Technologies such as Hadoop, SLURM, and Kubernetes provide essential infrastructure-level resource management and job-execution capabilities for modern computing platforms [@burns2016; @giri2022; @salloum2016; @yoo2003]. End users must still deploy and coordinate domain-specific *Data Application Layer Systems* (DALS) across these environments. In this work, the architectural separation between end-user DALS and service-provider *Infrastructure Layer Systems* (ILS) is referred to as the *Orchestration Layer System* (OLS), where workflow intent must be translated into distributed execution [@ramakrishnan2011].
 
----
+As workflow orchestration is not inherently owned by either DALS or ILS (Figure 1), the relationship between application instances and their execution context is often implemented through infrastructure-specific scripts and utilities tightly coupled to a given ILS. This places the burden of developing workflow state management, execution-context mapping, and lifecycle coordination on end users, reducing portability across computing environments. TaskTide addresses these operational concerns through a dedicated orchestration layer that persists workflow state independently of the underlying infrastructure (Figure 2). Beyond reducing workflow portability, the OLS gap introduces operational overhead for both end users and service providers. For end users, this creates development overhead for each workflow they need to deploy. For service providers, the OLS gap can blur the boundary between infrastructure-support responsibilities and workflow issues. These problems are amplified by the rapid evolution of application and infrastructure technologies, where tightly coupled solutions inherit platform-specific obsolescence risks.
 
-### b). TaskTide Data Model
-<p id="software-design-data-model">
-TaskTide defines a standardized data model that enables reproducible and traceable DALS deployments across heterogeneous ILS (ie HPC, VM, containerized). The model was motivated by the Extraction, Transformation, and Loading pattern (Gropp et al., 1996; Singh, 2022; Venkateswarlu & Vasista, 2023). Where a Workflow is a collection of distinct but related operations to be performed (i.e ETL sequence). Each distinct operation of a given Workflow is a Step, and the collection variable inputs for a given Step is a WorkItem. This structure allows workflows to be expressed as scalable units of work.
-</p>
 
-<p id="software-design-data-model-2">
-To support task tracking and monitoring, metadata attributes such as WorkItem state, execution start/end time, standard out/error logs etc are also captured within the data model. In addition to a jobs execution context via metadata (type, job Id, array index etc), and host parameters & metrics (ex hostname, java version, CPU utilization etc). The mappings serve to establish direct linkages between application intent and its execution. Enabling workflow introspection, monitoring, and reproducibility across ILS. The data model is extensible, allowing users to annotate datapoints with additional metadata relevant to operational or domain-specific requirements or identifiers.
-</p>
+These challenges highlight the need for flexible workflow orchestration systems designed to mediate the end-user experience without being tied to a specific backend technology. Such systems should decouple task scheduling from task execution and the underlying ILS, while elevating workflow state and execution context as first-class orchestration concerns that support real-time workflow introspection and lifecycle influence. TaskTide is a lightweight, daemon-less distributed workflow orchestration system for horizontally scaling DALS workloads across heterogeneous ILS. It operates across relational databases, NoSQL databases, and embedded databases. By treating workflow state as a persistent orchestration concern, TaskTide supports real-time workflow introspection and infrastructure-independent recovery. The same persistent state model enables decentralized worker coordination through optimistic task claiming with post-write ownership validation, removing the need for dedicated scheduling infrastructure.
 
----
 
-### c). TaskTide Execution Model
-<p id="software-design-execution-model">
-TaskTide coordinates distributed workflow execution via a database-backed producer-consumer pattern, enabling  scalable and fault-tolerant DALS deployments across ILS (Fig 2-3). It distinguishes itself from similar solutions through its backend agnosticism (B. Kenna, 2025; SURF, 2025). Where multiple backend database technologies are supported, spanning both relational and non-relational SQL semantics (Fig 2-3). The operational value of this backend agnosticism feature is that it allows TaskTide to be run on different Infrastructure Layer solutions (Fig-1). Expanding the service provider space it can be provisioned into (HPC, Grid, Cloud), and brings portability to its user bases DALS, over bespoke solutions per Infrastructure Layer technology.
-</p>
+# State of the Field
 
-<p id="software-design-execution-model-2">
-In this model, workers fetch available WorkItems from a centralized data store, rather than being explicitly assigned tasks (early task binding semantics also supported). The consumer-based execution model allows for horizontal scaling across compute resources and supports dynamic workload distribution without coupling workflows to specific schedulers. For DALS deployment, this means that failures can be recovered by simply resetting/reassigning incomplete work. Enabling fault-tolerance and ensure workflows progress reliably even in the presence of ILS failures.
-</p>
+The separate concerns of DALS and ILS have motivated a rich ecosystem of workflow engines, middleware systems, and pilot-job abstractions, each focusing on different aspects of the OLS boundary. Workflow systems such as Snakemake, Airflow, and Nextflow provide mature frameworks for expressing, scheduling, and executing workload sequences through workflow-specific abstractions [@koster2012; @langer2025; @yasmin2025]. Complementing these systems, pilot-job frameworks such as DIRAC, WORCS, and PiCaS focus on decoupling workload execution from resource provisioning, enabling their use across diverse ILS [@boyer2022; @surf2025; @turilli2019].
 
+With their differing focus, operational concerns such as task-lifecycle influence, execution-context mapping, and persistent workflow-state management are often addressed through combinations of workflow metadata, infrastructure adapters, execution environments, and application-specific utilities. Rather than representing these relationships through a dedicated operational abstraction, their implementation is typically influenced by the requirements of the surrounding workflow or infrastructure ecosystem.
 
-<p id="software-design-execution-model-3">
-These behaviours are implemented to through the Tasktide-Engine, where each EngineWorker instance consumes available tasks for a workflow, and an EngineObserverChain feeds back task updates to the configured backend as tasks progress through their lifecycle (Fig-4).
-</p>
+TaskTide makes these operational concerns explicit through persistent workflow-state management by representing *Workflows*, *Steps*, *WorkItems*, *JobEnvironments*, and runtime metadata as first-class orchestration entities (Figure 3). This allows users to enrich TaskTide's data model with operational or domain-specific metadata while retaining real-time workflow introspection and lifecycle influence. With TaskTide's dynamic *Workflow* definition, execution behaviour, including parallelism and batch or service operation, and task acquisition, including step ordering and sequence flow, can be supplied at runtime. These operational controls provide end users with precise control over deployment behaviour without requiring changes to workflow definitions or underlying infrastructure mechanisms.
 
----
 
-### d). System Interfaces
-<p id="software-design-system-interfaces">
-TaskTide exposes orchestration capabilities through programmatic command-line and web interfaces (Table 2-3). These interfaces allow Tasktide to be deployed as a service within distributed architectures, supporting integrations with external systems, web-based dashboards, and multi-tenant environments. By externalizing orchestration control, TaskTide enables end-user workflows to remain decoupled from the ILS they are deployed across.
-</p>
 
-<p id="software-design-system-interfaces-2">
-The TaskTide Manager API provides configurable mechanisms for registering, querying, and modifying workflows while they are actively running. This enables both automated and interactive control of distributed workflow deployments. Supporting use-cases from batch processing adaptive, long-running computations. The TaskTide Engine API provides configurable mechanisms for processing targeted workflows. Such as validation leniencies, multi-threading, and policy driven execution policies. Execution policies defining specifics for workflow traversals, such as batch or service orientated for automating producer-consumer pipelining.
-</p>
+# Software Design
 
----
+## Introduction
 
-### e). Deployment
-<p id="software-design-deployment">
-TaskTide can be deployed for arbitrary CRUD operations against backend database, engine instances across server farm or as web service. This flexibility in workflow orchestration is achieved through TaskTide’s modular design (ie Manager CQRS from Core Lib, Engine from Engine Lib) and unified client which is configured to run required component.
-</p>
+TaskTide is designed to bridge end-user DALS development and its scalable deployment across heterogeneous ILS (Figure 1). It achieves this by decoupling task scheduling from execution across ILS and maintaining associations between workflow intent and operational context (Figures 2 and 3). The following sections describe how TaskTide's architecture and operational model map to practical value for end users and service providers as an OLS solution (Table 1).
 
-<p id="software-design-deployment-2">
-Externalizing TaskTide’s configuration to command-line, and an application properties file allows TaskTide to be deployed into different environments (HPC, Cloud, Containerized). As well as providing the flexibility to configure additional parameters per instance such as the execution policy of a given engine or enqueuing the next processing step for a task during engine execution. Enabling programmatic automation, in addition to ad hoc and interactive usage.
-</p>
 
-<p id="software-design-deployment-3">
-TaskTide’s unified client simplifies the configuration of TaskTide as a system (Table-2). As only a single configuration source is needed for configuring its components, and passing down dependency configurations directly down those libraries such as Jakarta-NoSQL, Hibernate, and Jetty. Taken with backend-agnosticism these features support the deployment of TaskTide across wider range of service provider environments. For the end-users on DALS side, reduces the need for bespoke orchestration solutions tied to a specific platform.
-</p>
 
----
+## TaskTide Data Model
 
-### f). Relation to Pilot Job Abstraction
-<p id="software-design-pj-absraction">
-TaskTide design was motivated by viewing ETLs as the base unit of work for the Pilot Job abstraction (Fig-2, Fig-5). Coming from the production environment experience, where tracking progress, resource utilization, multi-system deployments, and decorating units of work with internal identifiers were all required (Hop et al., 2024; K. P. Kenna et al., 2016; NHLBI, 2016; Nicolas et al., 2018).
-</p>
+TaskTide defines a standardized data model that enables reproducible and traceable DALS deployments. The model captures workflow intent and execution context through the persistent representation of *Workflows*, *Steps*, *WorkItems*, and *JobEnvironments*, together with their associated metadata (Figure 3). Motivated by the extraction, transformation, and loading pattern, a *Workflow* is a collection of distinct but related operations to be performed, such as an ETL sequence. Each distinct operation of a given *Workflow* is a *Step*, while individual *WorkItems* represent independently executable units of that *Step* [@gropp1996; @singh2022; @venkateswarlu2023]. This structure expresses *Workflows* as referential collections of independently executable *WorkItems*, making workflow distribution and horizontal scaling explicit aspects of the orchestration model. With its persistence model, TaskTide enables workflow state, execution progress, and execution contexts to be managed as first-class orchestration concerns while providing a shared coordination substrate for distributed worker execution.
 
-<p id="software-design-pj-absraction-2">
-The advantage in combining the ETL, and Pilot Job design patterns is that their scaling inherently translates to a distributed divide and conquer approach (Singh, 2022; Turilli et al., 2019). For example, scaling parameters for an ETL include the number of tasks for a Step from practical data slicing, and coherent workflow definitions which also capture relevant data wrangling/cleaning tasks separately. For the pilot job side, scaling parameters adjust the number of tasks that each instance process or optimize resource use ideally per ETL per Workflow. These aspects also creates a communicational bridge between the customers suite of Data Application Layer software, and its scale-out onto service provider Infrastructure Layer. In addition to supporting both early and late task binding semantics.
-</p>
+To support workflow introspection and operational traceability, TaskTide persists task-lifecycle information and execution-context metadata. These include active *WorkItem* state, execution logs, scheduling identifiers, and host-specific parameters that collectively establish direct linkages between an application and its execution environment. Such mappings enable *Workflow* introspection, monitoring, runtime mutability, and reproducibility across heterogeneous ILS while remaining extensible through operational or domain-specific metadata.
 
-<p id="software-design-pj-absraction-3">
-In delegating pilot provisioning to the underlying job scheduler ILS, and workflow enqueuing to DALS. Enables TaskTide to be a backend-agnostic OLS deployable across heterogeneous ILS. While providing similar benefits in terms of scalability, flexibility, real-time introspection and workflow-level control through its data model.
-</p>
 
----
+## TaskTide Persistence and Execution Model
 
-## State of the Field
-<p id="sof">
-TaskTide was developed to address limitations in how workflow orchestration is deployed and implemented across heterogeneous computing environments. Existing workflow systems such as Snakemake and Cromwell provide mature workflow definition and execution frameworks, but tend to couple orchestration closely to workflow specification and execution semantics. Conversely, pilot-job and distributed computing frameworks such as DIRAC, PiCaS, and PyAnamo decouple workload execution from resource provisioning, providing scalable mechanisms for distributed task processing.
-</p>
+TaskTide coordinates workflow execution through a database-backed producer-consumer pattern (Figure 2), in which *EngineWorker* instances poll runnable *WorkItems* from a centralized repository rather than receiving explicit task assignments (Figure 4). Acquisition uses optimistic task claiming with post-write ownership validation, allowing decentralized task discovery without dedicated scheduling infrastructure. This complements TaskTide's backend-agnostic persistence layer, which supports relational and non-relational database systems and persists workflow state, task-lifecycle tracking, and execution metadata across backend technologies (Figure 3).
 
-<p id="sof-2">
-Among these, PiCaS and PyAnamo are most closely aligned with TaskTide due to their database-centred approach to workload coordination. Where task scheduling is separated from pilot provisioning. TaskTide extends this design philosophy through backend-agnostic persistence, support for both relational and NoSQL database systems, and a workflow-centric data model that explicitly captures execution context, observability, and workflow state. Unlike DAG-oriented workflow systems, TaskTide models orchestration through user-defined workflow collections, steps, and work items. Allowing execution policies and infrastructure concerns to remain independent of workflow definition.
-</p>
 
-<p id="sof-3">
-As discussed throughout the Software Design section (Table 1), TaskTide positions orchestration as a standalone Orchestration Layer System (OLS) between Data Application Layer Software (DALS) and Infrastructure Layer Systems (ILS). This enables fault-tolerant, observable, and adaptable workflow deployment while avoiding tight coupling to either application-specific logic or infrastructure-specific technologies.
-</p>
+TaskTide's persisted workflow state enables incomplete *WorkItems* to be identified and reassigned independently of worker failures (Figure 2). Horizontal scaling is supported by deploying additional *EngineWorker* instances to consume available *WorkItems* from the shared repository without requiring workflow redistribution (Table 2). This repository-driven execution model remains independent of infrastructure schedulers and provisioning mechanisms (Figure 1).
 
----
+User-defined execution policies determine how *EngineWorker* instances traverse and poll *WorkItems*, allowing workflows to be processed sequentially, cyclically, or by targeting a *Step* without redefining the *Workflow*. Integrating execution policies with *WorkItem* lifecycle states enables real-time, dependency-aware influence over *Workflow* progression. Lifecycle transitions are coordinated through the *EngineObserverChain*, which validates task progress and relays updates to the repository for real-time monitoring (Figure 4).
 
-## Research Impact Statement
-<p id="ris">
-TaskTide was developed from workflow orchestration approaches used by the author to support large-scale biomedical and data-intensive research projects (Hop et al., 2024; K. P. Kenna et al., 2016; Nicolas et al., 2018). These production environments required scalable workflow deployment, task tracking, execution-context mapping, and coordination across heterogeneous computing infrastructures. TaskTide consolidates and generalizes these operational requirements into a reusable, backend-agnostic workflow orchestration system. By making these capabilities available through a standalone Orchestration Layer System, TaskTide broadens access to workflow orchestration practices that were previously implemented through bespoke or infrastructure-specific solutions.
-</p>
 
----
+## Deployment
 
-## AI Usage Disclosure
-<p id="aiud">
-The design, architecture, implementation, evaluation, and scientific claims of TaskTide were developed by the author. AI tools were not used to design the TaskTide system itself, or to generate its core workflow orchestration mechanisms.
-</p>
+TaskTide supports deployment across heterogeneous ILS environments, including HPC, cloud, containerized, and distributed-service configurations. Its modular architecture separates workflow orchestration from execution infrastructure, allowing the *Manager* and *Engine* components to be deployed independently according to the requirements of a service environment (Table 1). A unified client provides a common mechanism for configuring these components, while backend-agnostic dependencies enable operation across diverse database and infrastructure environments (Table 2).
 
-<p id="aiud-2">
-ChatGPT and GitHub Copilot were used as assistive tools during manuscript preparation to improve readability, phrasing, and clarity of the text. They were also used to explore implementation patterns and software engineering practices (e.g., testing strategies, REST API testing approaches, and integration patterns such as embedded Jetty and Jersey HTTP test harnesses), which informed but did not define the design or implementation of TaskTide.
-</p>
 
-<p id="aiud-3">
-ChatGPT was additionally used to generate auxiliary demonstration code for non-core use cases presented in this work. These were image analysis scripts and a Super Mario reinforcement learning workload, because they served as illustrative examples of TaskTide’s applicability beyond its primary bioinformatics-oriented motivation. These components, however, are not part of TaskTide’s core architecture or contribution.
-</p>
+Deployment-specific configuration is externalized through command-line options and conventional application-properties files. Execution policies, workflow sequences, and batch or service operations can therefore be adapted per instance while coordinating through a centralized persistence layer (Figure 2). The same configuration model supports standalone batch execution, service operation across server farms, or web-service deployment. By separating workflow definition, orchestration, and infrastructure concerns, TaskTide reduces platform-specific integration and the need for bespoke orchestration solutions while improving workflow portability across heterogeneous ILS.
 
 
-## Figures and Tables
+## Relation to the Pilot-Job Abstraction
 
-### Figure 1: High Level Layered Architecture
+TaskTide's design was motivated by treating an ETL as the base unit of work for the pilot-job abstraction (Figures 2 and 5). The combination provides a natural separation between what is executed and how it is scaled: ETL workflows encapsulate data processing, while pilots provide execution capacity. Within TaskTide, these patterns are represented as persistent operational elements. ETL elements are captured through actionable data models, namely *Workflows*, *Steps*, and *WorkItems*, while pilot-job execution fleets are represented through *JobEnvironments* and associated metadata.
 
-| Figure |
-|--------|
-| ![Figure 1](/paper/tables-figs/figure1.png) |
 
-<p id="fig-1">
-Figure 1: Shows the positioning of TaskTide as the Orchestration Layer which addresses the gap between customer Data Application Layer development, and its session-less scale-out across heterogeneous Infrastructure Layer as demonstrated by the “Use Cases” section.
-</p>
+TaskTide persists actionable ETL elements within a centralized repository, from which they are consumed by *TaskTide-Engine* instances deployed across pilot-job fleets. This separation expresses workload scaling through a common operational model while resource provisioning remains the responsibility of the underlying ILS (Figure 5). Scheduler-specific provisioning mechanisms can be represented through TaskTide configurations and delegated to the native scheduling interfaces of the lower ILS (Table 2). Workload dispatch is coordinated by the *TaskTide-Repository*, while execution is performed by *TaskTide-Engine* instances deployed within provisioned ILS jobs (Figure 2). This separates workflow-state management and execution-context tracking from resource scheduling and provisioning, which remain responsibilities of the lower ILS (Figures 1 and 5).
 
----
+In TaskTide, *EngineWorkers* select tasks rather than receiving explicit assignments. Workers independently attempt ownership of runnable tasks. After persisting a unique lock identifier, a worker re-polls the task and proceeds only when the persisted ownership record matches its claim. This decentralized protocol allows concurrent task discovery, avoids dedicated scheduling infrastructure, and ensures that only successfully validated owners execute claimed *WorkItems*. TaskTide does not claim global exactly-once processing semantics; it instead relies on the ownership protocol and workflow design to maintain execution correctness.
 
-### Figure 2: TaskTide Operating Principle
+The ETL and pilot-job patterns provide complementary forms of scaling. At the ETL level, the number of tasks within a *Step* can reflect practical data-slicing requirements, while workflow definitions retain related data-wrangling and cleaning tasks as explicit operational stages. At the pilot-job level, execution capacity can be adjusted according to the number of tasks processed by each instance and the desired degree of serial or parallel execution. Together, these scaling dimensions provide a common operational model between DALS applications and their deployment across service-provider ILS environments. By separating workflow definition, pilot provisioning, and workflow processing, TaskTide remains backend-agnostic while retaining the scalability, flexibility, real-time introspection, and workflow-level influence associated with the combined ETL and pilot-job model.
 
-| Figure |
-|--------|
-| ![Figure 2](/paper/tables-figs/figure2.png) |
 
-<p id="fig-2">
-Figure 2: Shows the Producer-Consumer operating principle of the TaskTide workflow engine. 1). The TaskTide Manager command-line client is the interface where users register and query their tasks across user-defined workflows. 2). The TaskTide Repository is the ambassador interface which manages the storage/retrieval of tasks and persists its data to the configured backend database (NoSQL, or SQL). 3). The TaskTide Engine command-line client consumes the required task set, or task sets.
-</p>
+# Research Impact Statement
 
----
+TaskTide originated from workflow-orchestration requirements encountered during data-engineering work supporting large-scale biomedical research projects [@hop2024; @hop2026; @kenna2016; @nicolas2018]. The author contributed to these projects as a data engineer, where recurring requirements included workflow-state management, execution-context tracking, lifecycle coordination, and deployment across heterogeneous computing resources. These projects are cited as provenance for the system's requirements rather than as evidence of TaskTide usage.
 
-### Figure 3: TaskTide Architecture
+TaskTide is distributed with source code, packages, container images, deployment documentation, API references, and representative use cases spanning bioinformatics, distributed execution, and containerized AI workloads (Table 3), supporting independent evaluation, reuse, and adoption.
 
-| Figure |
-|--------|
-| ![Figure 3](/paper/tables-figs/figure3.png) |
 
-<p id="fig-3">
-Figure 3: Shows the architecture of the TaskTide Workflow Orchestration Engine.
-</p>
+# AI Usage Disclosure
 
----
+The design, architecture, implementation, evaluation, and scientific claims of TaskTide were developed by the author. AI tools were not used to design the TaskTide workflow-orchestration model, scheduling approach, state-management mechanism, or system architecture. ChatGPT and Microsoft Copilot were used during manuscript preparation to improve readability and presentation. AI-generated outputs were reviewed and adapted by the author before inclusion. Auxiliary demonstration code was generated for selected non-core example workloads.
 
-### Figure 4: TaskTide WorkItem Lifecycle
 
-| Figure |
-|--------|
-| ![Figure 4](/paper/tables-figs/figure4.png) |
+\clearpage
+# Figures and Tables
 
-<p id="fig-4">
-Figure 4: Shows the lifecycle of tasks registered in TaskTide (6-a) which is enacted by the TaskTide-Engine (6-b). 1). The TaskTide-Engine fetches the configured workload from TaskTide Repository. 2). The TaskTide Engine Worker distributes available tasks across configured thread pools for parallel processing. 3). The TaskTide Engine Executor instances spawn OS processes for task execution. 4). The TaskTide Engine Observer Chain performs task validation subscriptions (onTaskStart, onTaskProcessing, onTaskEnd) as tasks transition through their lifecycle (6-a).
-</p>
+## Figure 1: High-Level Layered Architecture
 
----
+<table style="border: 1px solid #555; border-collapse: collapse;">
+<tr>
+<td>
+<br>
+![](tables-and-figures/fig-1.png)
+<br>
+</td>
+</tr>
+</table>
 
-### Figure 5: Mapping TaskTide to Pilot Job Abstraction
+**Figure 1:** Shows the positioning of the **TaskTide Orchestration Layer System**. This middleware sits between customer **Data Application Layer** development and **Infrastructure Layer** execution, mediating the sessionless scale-out of DALS instances across heterogeneous infrastructure layers, as demonstrated by selected use cases at `tasktide.org/use-cases`.
 
-| Figure |
-|--------|
-| ![Figure 5](/paper/tables-figs/figure5.png) |
 
-<p id="fig-5">
-Figure 5: Shows how TaskTide’s session less internals map to the pilot-job abstraction. 1). Pilot Provisioning is delegated to the underline platform as task tracking is more relevant for TaskTide than a given job. 2). Workload Management is implemented by the TaskTide Repository where the configured database acts as the single source of truth for task lifecycle management and where binding semantics are expressed. 3). Task Execution is performed by the TaskTide Engine client where the engine pulls available tasks from configured/arbitrary collections, executes their units of work, feeding back updates observed across the execution process in real-time (ex logs, current and completed state).
-</p>
+\clearpage
+## Figure 2: TaskTide Operating Principle
 
----
+<table>
+<tr>
+<td>
+<br>
+![](tables-and-figures/fig-2.png)
+<br>
+</td>
+</tr>
+</table>
 
-### Figure 6: high Level Development Approach
+**Figure 2:** Shows the **producer-consumer** operating principle of the TaskTide workflow engine. **1) The TaskTide Manager** command-line client is the interface through which users register and query tasks across user-defined workflows. **2) The TaskTide Repository** is the ambassador interface that manages task storage and retrieval and persists its data to the configured backend database, whether NoSQL or SQL. **3) The TaskTide Engine** command-line client consumes the required task set or sets of tasks.
 
-| Figure |
-|--------|
-| ![Figure 6](/paper/tables-figs/figure6.png) |
 
-<p id="fig-6">
-Figure 6: Iterative and incremental development approach of TaskTide. Each stage had key deliverables which were supported by their use-case implementation. 1). Workflow Orchestration was verified using bioinformatic pipelines. 2). Task Binding Semantics were explicitly verified using a serialized Julia function runner for early task binding, and SparkR image analysis application for late task binding. 3). Containerized Deployment was verified using an AI play time optimizer Python application.
-</p>
+\clearpage
+## Figure 3: TaskTide Architecture
 
----
+<table>
+<tr>
+<td>
+<br>
+![](tables-and-figures/fig-3.png)
+<br>
+</td>
+</tr>
+</table>
 
-### Table 1: TaskTide Feature Summary
+**Figure 3:** Shows the architecture of the **TaskTide Workflow Orchestration Engine**.
 
-| Table |
-|--------|
-| ![Table 1](/paper/tables-figs/table-1.png) |
 
-<p id="table-1">
-Table 1: Summaries the feature contributions of TaskTide’s modules and translates these features to their operational value.
-</p>
+\clearpage
+## Figure 4: TaskTide WorkItem Lifecycle
 
----
+<table>
+<tr>
+<td>
+<br>
+![](tables-and-figures/fig-4.png)
+<br>
+</td>
+</tr>
+</table>
 
-### Table 2: TaskTide Configurations
+**Figure 4:** Shows the persistent lifecycle of tasks registered in TaskTide (**6-a**), which is enacted by the TaskTide Engine (**6-b**). **1) The TaskTide Engine** fetches the configured workload from the TaskTide Repository. **2) The TaskTide Engine Worker** distributes available tasks across configured thread pools for parallel processing. **3) TaskTide Engine Executor** instances spawn operating-system processes for task execution and expose data-model identifiers as environmental variables for tasks to use. **4) The TaskTide Engine Observer Chain** subscribes to key lifecycle transition points, namely `onTaskStart`, `onTaskProcessing`, and `onTaskEnd`, and performs related task validation (**6-a**).
 
-| Table |
-|--------|
-| ![Table 2](/paper/tables-figs/table-2.png) |
 
-<p id="table-2">
-Table 2: Example set of configuration properties for each TaskTide client.
-</p>
+\clearpage
+## Figure 5: Mapping TaskTide to the Pilot-Job Abstraction
 
----
+<table>
+<tr>
+<td>
+<br>
+![](tables-and-figures/fig-5.png)
+<br>
+</td>
+</tr>
+</table>
 
-### Table 3: TaskTide API Endpoints
+**Figure 5:** Shows how TaskTide's sessionless internals map to the pilot-job abstraction. **1) Pilot provisioning** is delegated to the underlying platform, as task tracking is more relevant to TaskTide as DALS intent than a given job as an ILS concern. **2) Workload management** is implemented by the TaskTide Repository, where the configured database acts as the single source of truth for **task lifecycle management** and where **binding semantics** are expressed. **3) Task execution** is performed by instances or fleets of the TaskTide Engine client. The engine **polls available tasks** from configured or arbitrary collections, executes their units of work, and feeds back updates observed across the execution process in real time, including logs and current and completed state.
 
-| Table |
-|--------|
-| ![Table 2](/paper/tables-figs/table-3.png) |
 
-<p id="table-3">
-Table 3: Command Query Responsibility Segregation (CQRS) design of TaskTide-Web API. The RESTful API “/service/” resources exposes CRUD, and command orientated “/manager/” resources for frontend and client operations.
-</p>
+\clearpage
+## Figure 6: High-Level Development Approach
 
----
+<table>
+<tr>
+<td>
+<br>
+![](tables-and-figures/fig-6.png)
+<br>
+</td>
+</tr>
+</table>
 
+**Figure 6:** Shows the **iterative and incremental** development approach used for TaskTide. Each stage had key deliverables supported by a use-case implementation. **1) Workflow orchestration** was verified using bioinformatics pipelines. **2) Task binding semantics** were explicitly verified using a serialized Julia function runner for early task binding and a SparkR image-analysis application for late task binding. **3) Containerized deployment** was verified using an AI play-time optimizer Python application.
 
 
-## References
+\clearpage
+## Table 1: TaskTide Feature Summary
 
+<table>
+<tr>
+<td>
+<br>
+![](tables-and-figures/table-1.png)
+<br>
+</td>
+</tr>
+</table>
 
+**Table 1:** Summarizes the **feature contributions** of TaskTide's modules and translates these features into their **operational value**.
 
 
+\clearpage
+## Table 2: TaskTide Configurations
 
+<table>
+<tr>
+<td>
+<br>
+![](tables-and-figures/table-2.png)
+<br>
+</td>
+</tr>
+</table>
 
-<p id="">
+**Table 2:** Shows an example set of **TaskTide Client Configuration** properties.
 
-</p>
+
+\clearpage
+## Table 3: TaskTide Resources
+
+<table>
+<tr>
+<td>
+<br>
+![](tables-and-figures/table-3.png)
+<br>
+</td>
+</tr>
+</table>
+
+**Table 3:** Summarizes the primary **TaskTide resources**. High-level resources provide project overviews and representative use cases for prospective users, while technical resources provide source code, package dependencies, implementation guidance, deployment documentation, and API references for software developers and service providers.
+
+\clearpage
