@@ -28,7 +28,7 @@ subprojects {
         
         // JSON-B (de)Serialization
         implementation          'org.eclipse.yasson:yasson:3.0.5'
-        implementation          'jakarta.json.bind:jakarta.json.bind-api:3.0.3'
+        implementation          'jakarta.json.bind:jakarta.json.bind-api:3.0.4'
 
         // Log4J
         implementation          platform("org.apache.logging.log4j:log4j-bom:2.26.1")
