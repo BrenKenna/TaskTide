@@ -18,7 +18,7 @@ dependencies {
     implementation          'org.rocksdb:rocksdbjni:10.10.1.1'
 
     // Marshaller
-    implementation          platform("com.fasterxml.jackson:jackson-bom:2.22.2")
+    implementation          platform("com.fasterxml.jackson:jackson-bom:2.22.4")
     implementation          "com.fasterxml.jackson.datatype:jackson-datatype-jakarta-jsonp"
     //implementation        "tools.jackson.datatype:jackson-datatype-jakarta-jsonp:3.2.2"
 }
