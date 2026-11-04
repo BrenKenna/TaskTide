@@ -10,6 +10,7 @@ docker container run --rm \
     -p 3306:3306 \
     mariadb:11
 
+
 docker container run --rm \
     --name couchdb \
     --detach \
@@ -20,4 +21,6 @@ docker container run --rm \
 
 docker container run --rm -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password -p 5984:5984 couchdb:3.5
 
-curl -u "admin:password" -X PUT http://localhost:5984/tasktide_database
+curl -s \
+     -X PUT http://localhost:5984/tasktide_database \
+     -u "admin:password"

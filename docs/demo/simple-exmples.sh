@@ -426,7 +426,7 @@ sacct -j $JOB_ID --format=JobID,JobName,State,Elapsed,AllocCPUS,ReqMem,MaxRSS,Av
 
 
 # Configure workload
-tasktide \
+./bin/tasktide \
     manager \
         --repository-type "nosql" \
         --nosql-database-type "document" \
@@ -435,7 +435,8 @@ tasktide \
         --workflow-name "Simple Examples" \
         --target "STEP"
 
-tasktide \
+
+./bin/tasktide \
     manager \
         --repository-type "nosql" \
         --nosql-database-type "document" \
@@ -443,6 +444,7 @@ tasktide \
         --step-name "SleepJobs" \
         --workflow-name "Simple Examples" \
         --target "STEP"
+
 
 
 # Import R version jobs
