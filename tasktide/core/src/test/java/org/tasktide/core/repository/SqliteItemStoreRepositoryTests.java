@@ -15,7 +15,6 @@
  */
 package org.tasktide.core.repository;
 
-import static com.mongodb.internal.authentication.AwsCredentialHelper.LOGGER;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +23,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -76,7 +76,7 @@ public class SqliteItemStoreRepositoryTests {
     @BeforeAll
     public void setUpClass() {
         String msg = "\n\n---------------- Initiating RocksDbItemStore-Repository Tests ----------------\n";
-        LOGGER.info(msg);
+        logger.info(msg);
         ItemStoreRepositoryUtility.initialize(
             this.storeType,
             this.storeName
@@ -109,10 +109,70 @@ public class SqliteItemStoreRepositoryTests {
 
     
     /**
-     * Tests query & retrieval WorkItem from SQLiteItemStore WorkItem Repository
+     * Tests that the {@link ItemStore} can be represented as meta data
      */
     @Test
     @Order(0)
+    public void canSerializeToJson() {
+        
+        // Initialize data
+        logger.info("\n\n================ Can Serialize ItemStore-SQLite Repository to JSON ================\n");
+        String metadata;
+        boolean assertionState;
+        TaskTideRepository<WorkItem> workItemRepo;
+        RepositoryFactory<WorkItem> workItemRepoFactory;
+        RepositoryType repoType = RepositoryType.ITEMSTORE;
+        
+        // Request ItemStore repository
+        logger.info("Requesting ItemStore for repository");
+        workItemRepoFactory = new RepositoryFactory<>(
+            "WorkItem", WorkItem.class,
+            this.itemStore, repoType
+        );
+        workItemRepo = workItemRepoFactory.make();
+        
+        // Try serialize to json
+        logger.info("Attempting to serialize ItemStore Repository to JSON document");
+        try {
+            metadata = workItemRepo.toJson(true);
+            if ( metadata != null ) {
+                assertionState = true;
+                logger.info(
+                    "Successfully serialized ItemStore-SQLite repository, displaying below:\n\n'{}'",
+                    metadata
+                );
+            }
+            else {
+                assertionState = false;
+                logger.warn("Unable to serialize ItemStore repository");
+            }
+        }
+        
+        // Catch any exception which maybe introduced by separate 
+        //  SDLC of dependency
+        catch ( Exception ex ) {
+            logger.error(
+                "Error serializing ItemStore repository:\t'{}'\n\n",
+                ex.getMessage(),
+                ex
+            );
+            assertionState = false;
+        }
+        
+        // Evaluate and log completion
+        Assertions.assertTrue(
+            assertionState,
+            "Unable to serialize ItemStore Repository to JSON document"
+        );
+        logger.info("\n\n================ Can Serialize ItemStore-SQLite Repository to JSON ================\n");
+    }
+    
+    
+    /**
+     * Tests query & retrieval WorkItem from SQLiteItemStore WorkItem Repository
+     */
+    @Test
+    @Order(1)
     public void canQueryInsertSingleWorkItem() {
         
         // Initialize data
@@ -160,7 +220,7 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(1)
+    @Order(2)
     public void canQueryInsertSteps() {
         
         // Initialize data
@@ -204,7 +264,7 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(2)
+    @Order(3)
     public void canQueryInsertWorkflow() {
         
         // Initialize data
@@ -249,7 +309,7 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(3)
+    @Order(4)
     public void canQueryInsertedMetricData() {
     
         // Initialize data
@@ -298,7 +358,7 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(4)
+    @Order(5)
     public void canQueryInsertedMetricProfile() {
     
         // Initialize data
@@ -347,7 +407,7 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(5)
+    @Order(6)
     public void canQueryInsertedJobEnvironment() {
     
         // Initialize data

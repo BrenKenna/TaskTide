@@ -119,7 +119,7 @@ public class AnnotateManagerCommandTests {
     public void setUp() {
         LOGGER.info("\n\n================ Initiating Next Test ================\n");
         LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
-        TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        //TestUtils.clearTestTables(this.LOGGER, this.entityManager);
         LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
     
