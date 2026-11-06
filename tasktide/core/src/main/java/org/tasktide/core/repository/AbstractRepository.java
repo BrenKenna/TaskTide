@@ -15,6 +15,8 @@
  */
 package org.tasktide.core.repository;
 
+import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
@@ -31,6 +33,7 @@ import org.tasktide.core.TaskTideModelType;
 import org.tasktide.core.TaskTideRepository;
 
 import org.tasktide.core.model.CustomAnnotation;
+import org.tasktide.core.supporting.JsonUtils;
 
 
 /**
@@ -41,11 +44,22 @@ import org.tasktide.core.model.CustomAnnotation;
 public abstract class AbstractRepository<T extends TaskTideModel<T>> implements TaskTideRepository<T> {
 
     // Attributes
+    @JsonbTransient
     private final Logger LOGGER = LogManager.getLogger(AbstractRepository.class);
+    
+    @JsonbTransient
     protected final Class<T> COLLECTION_CLASS;
+    
+    @JsonbProperty("Collection Name")
     protected final String collectionName;
+    
+    @JsonbProperty("Repository Type")
     protected final RepositoryType repoType;
+    
+    @JsonbProperty("TaskTide Model Type")
     protected final TaskTideModelType modelType;
+    
+    @JsonbProperty("Result Set Size")
     protected int resultSetSize;
     
     
@@ -81,9 +95,24 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
         results.put("Model Class", this.COLLECTION_CLASS.getSimpleName());
         results.put("Repository Type", this.repoType.toString());
         results.put("Collection Name", this.collectionName);
+        results.put("Repository Type", this.repoType.name());
+        results.put("Model Type", this.modelType.name());
         
         // Return results
         return results;
+    }
+    
+    
+    /**
+     * Represent as JSON document or string
+     * 
+     * @param indent
+     * 
+     * @return String
+     */
+    @Override
+    public String toJson(boolean indent) {
+        return JsonUtils.toJson(indent, this.getRepositoryMetaData());
     }
     
     
@@ -346,4 +375,7 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
         );
         return false;
     }
+    
+    
+    
 }

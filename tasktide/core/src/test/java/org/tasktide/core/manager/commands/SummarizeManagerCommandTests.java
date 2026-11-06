@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.manager;
+package org.tasktide.core.manager.commands;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;

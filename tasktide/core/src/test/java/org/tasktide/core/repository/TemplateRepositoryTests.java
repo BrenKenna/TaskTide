@@ -36,6 +36,7 @@ import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -124,6 +125,66 @@ public class TemplateRepositoryTests {
         logger.info("\n\n================ Terminating Test ================\n");
     }
 
+    
+    /**
+     * Tests that the {@link Template} can be represented as meta data
+     */
+    @Test
+    @Order(0)
+    public void canSerializeToJson() {
+        
+        // Initialize data
+        logger.info("\n\n================ Can Serialize Template Repository to JSON ================\n");
+        String metadata;
+        boolean assertionState;
+        TaskTideRepository<WorkItem> workItemRepo;
+        RepositoryFactory<WorkItem> workItemRepoFactory;
+        RepositoryType repoType = RepositoryType.NOSQL;
+        
+        // Request Template repository
+        logger.info("Requesting Template for repository");
+        workItemRepoFactory = new RepositoryFactory<>(
+            "WorkItem", WorkItem.class,
+            this.template, repoType
+        );
+        workItemRepo = workItemRepoFactory.make();
+        
+        // Try serialize to json
+        logger.info("Attempting to serialize Template Repository to JSON document");
+        try {
+            metadata = workItemRepo.toJson(true);
+            if ( metadata != null ) {
+                assertionState = true;
+                logger.info(
+                    "Successfully serialized Template repository, displaying below:\n\n'{}'",
+                    metadata
+                );
+            }
+            else {
+                assertionState = false;
+                logger.warn("Unable to serialize Template repository");
+            }
+        }
+        
+        // Catch any exception which maybe introduced by separate 
+        //  SDLC of dependency
+        catch ( Exception ex ) {
+            logger.error(
+                "Error serializing Template repository:\t'{}'\n\n",
+                ex.getMessage(),
+                ex
+            );
+            assertionState = false;
+        }
+        
+        // Evaluate and log completion
+        Assertions.assertTrue(
+            assertionState,
+            "Unable to serialize Template Repository to JSON document"
+        );
+        logger.info("\n\n================ Can Serialize Template Repository to JSON ================\n");
+    }
+    
     
     /**
      * Tests query & retrieval WorkItem from Template WorkItem Repository

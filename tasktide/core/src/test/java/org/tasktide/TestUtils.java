@@ -166,7 +166,7 @@ public class TestUtils {
      * @param backend 
      */
     public static void initServiceManager(RepositoryType repoType, Object backend) {
-        
+
         // Fetch services
         TaskTideService<Workflow> workflowServ = ServiceFactory.makeWorkflowService(repoType, backend, "Workflow");
         TaskTideService<Step> repoStep = ServiceFactory.makeStepService(repoType, backend, "Step");

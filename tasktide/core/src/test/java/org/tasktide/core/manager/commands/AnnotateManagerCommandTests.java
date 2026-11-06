@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.manager;
+package org.tasktide.core.manager.commands;
 
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.nosql.Template;
@@ -40,6 +40,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
+import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
@@ -119,7 +120,7 @@ public class AnnotateManagerCommandTests {
     public void setUp() {
         LOGGER.info("\n\n================ Initiating Next Test ================\n");
         LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
-        TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        //TestUtils.clearTestTables(this.LOGGER, this.entityManager);
         LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
     

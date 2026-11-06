@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.repository;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.nosql.Template;
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ import org.tasktide.core.TaskTideModelType;
 public abstract class TemplateRepository<T extends TaskTideModel<T>> extends AbstractRepository<T> {
     
     // Attributes
+    @JsonbTransient
     protected final Template template;
     
     

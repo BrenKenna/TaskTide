@@ -109,10 +109,70 @@ public class RocksDbItemStoreRepositoryTests {
 
     
     /**
-     * Tests query & retrieval WorkItem from RocksDbItemStore WorkItem Repository
+     * Tests that the {@link ItemStore} can be represented as meta data
      */
     @Test
     @Order(0)
+    public void canSerializeToJson() {
+        
+        // Initialize data
+        LOGGER.info("\n\n================ Can Serialize ItemStore-RocksDB Repository to JSON ================\n");
+        String metadata;
+        boolean assertionState;
+        TaskTideRepository<WorkItem> workItemRepo;
+        RepositoryFactory<WorkItem> workItemRepoFactory;
+        RepositoryType repoType = RepositoryType.ITEMSTORE;
+        
+        // Request ItemStore repository
+        LOGGER.info("Requesting RocksDB for repository");
+        workItemRepoFactory = new RepositoryFactory<>(
+            "WorkItem", WorkItem.class,
+            this.itemStore, repoType
+        );
+        workItemRepo = workItemRepoFactory.make();
+        
+        // Try serialize to json
+        LOGGER.info("Attempting to serialize ItemStore Repository to JSON document");
+        try {
+            metadata = workItemRepo.toJson(true);
+            if ( metadata != null ) {
+                assertionState = true;
+                LOGGER.info(
+                    "Successfully serialized ItemStore-RocksDB repository, displaying below:\n\n'{}'",
+                    metadata
+                );
+            }
+            else {
+                assertionState = false;
+                LOGGER.warn("Unable to serialize ItemStore repository");
+            }
+        }
+        
+        // Catch any exception which maybe introduced by separate 
+        //  SDLC of dependency
+        catch ( Exception ex ) {
+            LOGGER.error(
+                "Error serializing ItemStore repository:\t'{}'\n\n",
+                ex.getMessage(),
+                ex
+            );
+            assertionState = false;
+        }
+        
+        // Evaluate and log completion
+        Assertions.assertTrue(
+            assertionState,
+            "Unable to serialize ItemStore Repository to JSON document"
+        );
+        LOGGER.info("\n\n================ Can Serialize ItemStore-RocksDB Repository to JSON ================\n");
+    }
+    
+    
+    /**
+     * Tests query & retrieval WorkItem from RocksDbItemStore WorkItem Repository
+     */
+    @Test
+    @Order(1)
     public void canQueryInsertWorkItems() {
         
         // Initialize data
@@ -160,7 +220,7 @@ public class RocksDbItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(1)
+    @Order(2)
     public void canQueryInsertSingleStep() {
         
         // Initialize data
@@ -204,7 +264,7 @@ public class RocksDbItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(2)
+    @Order(3)
     public void canQueryInsertWorkflow() {
         
         // Initialize data
@@ -249,7 +309,7 @@ public class RocksDbItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(3)
+    @Order(4)
     public void canQueryInsertedMetricData() {
     
         // Initialize data
@@ -298,7 +358,7 @@ public class RocksDbItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(4)
+    @Order(5)
     public void canQueryInsertedMetricProfile() {
     
         // Initialize data
@@ -347,7 +407,7 @@ public class RocksDbItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(5)
+    @Order(6)
     public void canQueryInsertedJobEnvironment() {
     
         // Initialize data

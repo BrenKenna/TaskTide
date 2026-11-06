@@ -26,6 +26,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -113,10 +114,70 @@ public class JpaRepositoryTests {
 
     
     /**
-     * Tests query & retrieval WorkItem from JPA WorkItem Repository
+     * Tests that the {@link JpaRepository} can be represented as meta data
      */
     @Test
     @Order(0)
+    public void canSerializeToJson() {
+        
+        // Initialize data
+        logger.info("\n\n================ Can Serialize JPA Repository to JSON ================\n");
+        String metadata;
+        boolean assertionState;
+        TaskTideRepository<WorkItem> workItemRepo;
+        RepositoryFactory<WorkItem> workItemRepoFactory;
+        RepositoryType repoType = RepositoryType.SQL;
+        
+        // Request JPA repository
+        logger.info("Requesting JPA for repository");
+        workItemRepoFactory = new RepositoryFactory<>(
+            "WorkItem", WorkItem.class,
+            this.entityManager, repoType
+        );
+        workItemRepo = workItemRepoFactory.make();
+        
+        // Try serialize to json
+        logger.info("Attempting to serialize JPA Repository to JSON document");
+        try {
+            metadata = workItemRepo.toJson(true);
+            if ( metadata != null ) {
+                assertionState = true;
+                logger.info(
+                    "Successfully serialized JPA repository, displaying below:\n\n'{}'",
+                    metadata
+                );
+            }
+            else {
+                assertionState = false;
+                logger.warn("Unable to serialize JPA repository");
+            }
+        }
+        
+        // Catch any exception which maybe introduced by separate 
+        //  SDLC of dependency
+        catch ( Exception ex ) {
+            logger.error(
+                "Error serializing JPA repository:\t'{}'\n\n",
+                ex.getMessage(),
+                ex
+            );
+            assertionState = false;
+        }
+        
+        // Evaluate and log completion
+        Assertions.assertTrue(
+            assertionState,
+            "Unable to serialize JPA Repository to JSON document"
+        );
+        logger.info("\n\n================ Can Serialize JPA Repository to JSON ================\n");
+    }
+    
+    
+    /**
+     * Tests query & retrieval WorkItem from JPA WorkItem Repository
+     */
+    @Test
+    @Order(1)
     public void canQueryInsertWorkItem() {
         
         // Initialize data
@@ -170,7 +231,7 @@ public class JpaRepositoryTests {
      * 
      */
     @Test
-    @Order(1)
+    @Order(2)
     public void canQueryInsertStep() {
         
         // Initialize data
@@ -220,7 +281,7 @@ public class JpaRepositoryTests {
      * 
      */
     @Test
-    @Order(2)
+    @Order(3)
     public void canQueryInsertWorkflow() {
         
         // Initialize data
@@ -271,7 +332,7 @@ public class JpaRepositoryTests {
      * 
      */
     @Test
-    @Order(3)
+    @Order(4)
     public void canQueryInsertedMetricData() {
     
         // Initialize data
@@ -320,7 +381,7 @@ public class JpaRepositoryTests {
      * 
      */
     @Test
-    @Order(4)
+    @Order(5)
     public void canQueryInsertedMetricProfile() {
     
         // Initialize data
@@ -369,7 +430,7 @@ public class JpaRepositoryTests {
      * 
      */
     @Test
-    @Order(5)
+    @Order(6)
     public void canQueryInsertedJobEnvironment() {
     
         // Initialize data
