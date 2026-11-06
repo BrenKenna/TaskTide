@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.manager;
 
+import jakarta.json.JsonObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -291,11 +292,11 @@ public final class TaskTideServiceManager {
         if ( INSTANCE != null ) {
             
             // Fetch metadata for each service as json document
-            Map<String, String> metadata = new HashMap<>();
+            Map<String, JsonObject> metadata = new HashMap<>();
             for ( Entry<ManagerTarget, TaskTideService> elm : INSTANCE.serviceMap.entrySet() ) {
                 metadata.put(
                     elm.getKey().name(),
-                    elm.getValue().toJson(true)
+                    JsonUtils.asJson(true, elm.getValue())
                 );
             }
             

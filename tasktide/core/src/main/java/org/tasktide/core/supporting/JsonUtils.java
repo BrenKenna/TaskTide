@@ -44,15 +44,34 @@ public class JsonUtils {
     
     
     /**
+     * Parse provided JSON doc into formatted JSON doc
+     * 
+     * @param jsonDoc
+     * @return String
+     */
+    public static String toJson(String jsonDoc) {
+        JsonObject json = Json
+            .createReader(
+                new StringReader(jsonDoc)
+            )
+        .readObject();
+        return PRETTY_JSON.toJson(json);
+    }
+    
+    
+    
+    /**
      * Serialize to JSON string
      * 
      * @param indent
      * @param input
+     * 
      * @return String
      */
     public static String toJson(boolean indent, Object input) {
         if (indent) {
-            return PRETTY_JSON.toJson(input);
+            String doc = PRETTY_JSON.toJson(input);
+            return JsonUtils.toJson(doc);
         }
         return JSON.toJson(input);
     }
@@ -143,5 +162,33 @@ public class JsonUtils {
         field = field.toLowerCase().trim().replace(" ", "");
         field = field.replace("-", "").replace("_", "");
         return data.get(field);
+    }
+    
+    
+    /**
+     * Represent provided JSON string as {@link JsonObject}
+     * 
+     * @param jsonString
+     * 
+     * @return {@link JsonObject}
+     */
+    private static JsonObject asJson(String jsonString) {
+        return Json.createReader(
+            new StringReader(jsonString)
+        ).readObject();
+    }
+    
+    
+    /**
+     * Represent provided object as {@link JsonObject}
+     * 
+     * @param indent
+     * @param input
+     * 
+     * @return {@link JsonObject} 
+     */
+    public static JsonObject asJson(boolean indent, Object input) {
+        String jsonString = JsonUtils.toJson(indent, input);
+        return JsonUtils.asJson(jsonString);
     }
 }
