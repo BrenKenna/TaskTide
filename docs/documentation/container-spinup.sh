@@ -23,4 +23,5 @@ docker container run --rm -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password -p 
 
 curl -s \
      -X PUT http://localhost:5984/tasktide_database \
-     -u "admin:password"
+     -u "admin:password" \
+ | jq 
