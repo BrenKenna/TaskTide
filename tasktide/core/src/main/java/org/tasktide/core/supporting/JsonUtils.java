@@ -282,4 +282,20 @@ public class JsonUtils {
         // Return resulting json object
         return builder.build();
     }
+    
+    
+    /**
+     * Wrapper method for callers to represent the provided value data
+     *  under provided key. Boolean flag for JSON string/document
+     * 
+     * @param indent
+     * @param key
+     * @param value
+     * 
+     * @return String
+     */
+    public static String toJson(boolean indent, String key, Object value) {
+        JsonObject jsonData = JsonUtils.asJson(key, value);
+        return JsonUtils.toJson(indent, jsonData);
+    }
 }
