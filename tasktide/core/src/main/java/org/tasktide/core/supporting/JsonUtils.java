@@ -17,6 +17,7 @@ package org.tasktide.core.supporting;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
+import jakarta.json.JsonObjectBuilder;
 import jakarta.json.JsonReader;
 import jakarta.json.JsonValue;
 
@@ -27,8 +28,11 @@ import jakarta.json.bind.JsonbConfig;
 import java.io.StringReader;
 
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -38,6 +42,7 @@ import java.util.Map;
  */
 public class JsonUtils {
     
+    private static final Logger LOGGER = LogManager.getLogger(JsonUtils.class);
     private static final JsonbConfig PRETTY_CONFIG = new JsonbConfig().withFormatting(true);
     private static final Jsonb PRETTY_JSON = JsonbBuilder.create(PRETTY_CONFIG);
     private static final Jsonb JSON = JsonbBuilder.create();
@@ -172,10 +177,24 @@ public class JsonUtils {
      * 
      * @return {@link JsonObject}
      */
-    private static JsonObject asJson(String jsonString) {
+    public static JsonObject asJson(String jsonString) {
         return Json.createReader(
             new StringReader(jsonString)
         ).readObject();
+    }
+    
+    
+    /**
+     * Parse data as JsonValue
+     * 
+     * @param value
+     * 
+     * @return JsonValue
+     */
+    public static JsonValue asJsonValue(Object value) {
+        return Json.createReader(
+            new StringReader(JSON.toJson(value))
+        ).readValue();
     }
     
     
@@ -190,5 +209,77 @@ public class JsonUtils {
     public static JsonObject asJson(boolean indent, Object input) {
         String jsonString = JsonUtils.toJson(indent, input);
         return JsonUtils.asJson(jsonString);
+    }
+    
+    
+    /**
+     * Detects whether provided data is JSON formatted
+     * 
+     * @param value
+     * 
+     * @return boolean
+     * 
+     * @throws IllegalStateException
+     */
+    public static boolean detectFormat(Object value) {
+    
+        // Try parse
+        try {
+            String parsed = JsonUtils.toJson(true, value);
+            if ( parsed != null ) {
+                LOGGER.info("Detected provided data as a JSON Object");
+                return true;
+            }
+            else {
+                LOGGER.warn("Unable to parse provided data as JSON object");
+                throw new IllegalStateException("Unable to parse provided data as JSON object");
+            }
+        }
+        
+        // Otherwise any exception forces a false
+        catch (Exception ex) {
+            LOGGER.debug(
+                "Unable to parse provided data as JSON object, falling back to value\n\n",
+                ex
+            );
+            return false;
+        }
+    
+    }
+    
+    
+    /**
+     * Represent provided value under provided key as JSON object
+     * 
+     * @param key
+     * @param value
+     * @return JsonObject
+     */
+    public static JsonObject asJson(String key, Object value) {
+        
+        // Initialize required variables
+        boolean isJson;
+        JsonObjectBuilder builder;
+        
+        // Configure builder
+        builder = Json.createObjectBuilder();
+        
+        // Determine value state
+        isJson = JsonUtils.detectFormat(value);
+        
+        // Parse the provided json object
+        if ( isJson ) {
+            JsonObject jsonValue = JsonUtils.asJson(true, value);
+            builder.add(key, jsonValue);
+        }
+        
+        // Otherwise parse value
+        else {
+            JsonValue jsonVal = JsonUtils.asJsonValue(value);
+            builder.add(key, jsonVal);
+        }
+        
+        // Return resulting json object
+        return builder.build();
     }
 }

@@ -489,3 +489,52 @@ tasktide \
         --iteration-limit 4
 
 
+
+
+
+######################################################
+######################################################
+## 
+## d). Workflow Mode
+## 
+######################################################
+######################################################
+
+
+# Configure workload
+./bin/tasktide \
+    manager \
+        --method "Add" \
+        --step-name "SeqJobs" \
+        --workflow-name "Simple Examples" \
+        --target "STEP"
+
+
+./bin/tasktide \
+    manager \
+        --method "Add" \
+        --step-name "SleepJobs" \
+        --workflow-name "Simple Examples" \
+        --target "STEP"
+
+
+# Long running sleep jobs
+rm -f "tasks.txt" && touch "tasks.txt"
+for i in {1..10}
+do
+    NUM=$(( RANDOM % 10 + 1 ))
+    echo -e "SeqJob-$i|seq $NUM" >> "tasks.txt"
+done
+
+
+
+# Import and measure baseline
+tasktide \
+     manager \
+        --repository-type "sql" \
+        --method "Import" \
+        --delimiter "|" \
+        --target "WORKITEM" \
+        --step-name "SeqJobs" \
+        --target-file "tasks.txt"
+
