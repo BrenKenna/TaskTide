@@ -467,8 +467,8 @@ public class ImportCommand extends AbstractCommand{
         // Commit changes
         LOGGER.info("Committing Step & Workflow updates");
         if (
-            TaskTideServiceManager.fetchWorkflowService().updateModel(workflow) != null
-            && TaskTideServiceManager.fetchStepService().appendModel(output) != null
+            TaskTideServiceManager.fetchStepService().appendModel(output) != null 
+            && TaskTideServiceManager.fetchWorkflowService().updateModel(workflow) != null
         ) {
             LOGGER.info("Successfully added '{}' to '{}'", output.getId(), workflow.getId());
             return output;
