@@ -530,12 +530,52 @@ done
 
 
 # Import and measure baseline
-tasktide \
+./bin/tasktide \
      manager \
-        --repository-type "sql" \
         --method "Import" \
         --delimiter "|" \
         --target "WORKITEM" \
         --step-name "SeqJobs" \
         --target-file "tasks.txt"
 
+
+
+# Process tasks
+./bin/tasktide \
+    engine \
+        --target "WORKITEM" \
+        --step-name "SeqJobs" \
+        --execution-policy "BATCH" \
+        --worker-pool-size "4" \
+        --worker-window-size "1" \
+        --item-task-threads "4" \
+        --result-set-size "4"
+
+
+# Summarize workload
+./bin/tasktide \
+    manager \
+        --method "Summarize" \
+        --target "WORKITEM" \
+        --step-name "SeqJobs"
+
+
+'''
+
+2026-11-18 21:11:29 INFO  [ main -> org.tasktide.tasktide.client.TaskTideManagerClient.performClientTask ]: Displaying results:
+
+{
+    "MANAGER Results": {
+        "State Summary": {
+            "TODO": 0,
+            "HAULT": 0,
+            "DONE": 10,
+            "LOCKED": 0,
+            "FOR_UNLOCK": 0,
+            "ERROR": 0,
+            "HOLD": 0
+        }
+    }
+}
+
+'''
