@@ -28,9 +28,9 @@ import jakarta.json.bind.JsonbConfig;
 import java.io.StringReader;
 
 import java.lang.reflect.Type;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -54,6 +54,7 @@ public class JsonUtils {
      * @param jsonDoc
      * @return String
      */
+    @Deprecated
     public static String toJson(String jsonDoc) {
         JsonObject json = Json
             .createReader(
@@ -73,6 +74,7 @@ public class JsonUtils {
      * 
      * @return String
      */
+    @Deprecated
     public static String toJson(boolean indent, Object input) {
         if (indent) {
             String doc = PRETTY_JSON.toJson(input);
@@ -296,6 +298,9 @@ public class JsonUtils {
      */
     public static String toJson(boolean indent, String key, Object value) {
         JsonObject jsonData = JsonUtils.asJson(key, value);
-        return JsonUtils.toJson(indent, jsonData);
+        if (indent) {
+            return PRETTY_JSON.toJson(jsonData);
+        }
+        return JSON.toJson(jsonData);
     }
 }
