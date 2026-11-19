@@ -54,7 +54,6 @@ public class JsonUtils {
      * @param jsonDoc
      * @return String
      */
-    @Deprecated
     public static String toJson(String jsonDoc) {
         JsonObject json = Json
             .createReader(
@@ -63,8 +62,7 @@ public class JsonUtils {
         .readObject();
         return PRETTY_JSON.toJson(json);
     }
-    
-    
+
     
     /**
      * Serialize to JSON string
@@ -74,7 +72,6 @@ public class JsonUtils {
      * 
      * @return String
      */
-    @Deprecated
     public static String toJson(boolean indent, Object input) {
         if (indent) {
             String doc = PRETTY_JSON.toJson(input);

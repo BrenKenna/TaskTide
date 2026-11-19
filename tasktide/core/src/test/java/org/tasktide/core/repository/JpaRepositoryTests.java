@@ -69,7 +69,7 @@ import org.tasktide.core.supporting.JsonUtils;
 public class JpaRepositoryTests {
     
     // Logger for tests
-    private static final Logger logger = LogManager.getLogger(JpaRepositoryTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(JpaRepositoryTests.class);
     
     
     // Backend repo
@@ -85,7 +85,7 @@ public class JpaRepositoryTests {
     @BeforeAll
     public void setUpClass() {
         String msg = "\n\n---------------- Initiating JPA-Repository Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
     }
@@ -94,22 +94,22 @@ public class JpaRepositoryTests {
     @AfterAll
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating JPA-Repository Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
         if (container != null && container.isRunning()) {
             container.close();
-            logger.info("CDI container shut down");
+            LOGGER.info("CDI container shut down");
         }
         // mariaDB.stop();
     }
     
     @BeforeEach
     public void setUp() {
-        logger.info("\n\n================ Initiating Next Test ================\n");
+        LOGGER.info("\n\n================ Initiating Next Test ================\n");
     }
     
     @AfterEach
     public void tearDown() {
-        logger.info("\n\n================ Terminating Test ================\n");
+        LOGGER.info("\n\n================ Terminating Test ================\n");
     }
 
     
@@ -121,7 +121,7 @@ public class JpaRepositoryTests {
     public void canSerializeToJson() {
         
         // Initialize data
-        logger.info("\n\n================ Can Serialize JPA Repository to JSON ================\n");
+        LOGGER.info("\n\n================ Can Serialize JPA Repository to JSON ================\n");
         String metadata;
         boolean assertionState;
         TaskTideRepository<WorkItem> workItemRepo;
@@ -129,7 +129,7 @@ public class JpaRepositoryTests {
         RepositoryType repoType = RepositoryType.SQL;
         
         // Request JPA repository
-        logger.info("Requesting JPA for repository");
+        LOGGER.info("Requesting JPA for repository");
         workItemRepoFactory = new RepositoryFactory<>(
             "WorkItem", WorkItem.class,
             this.entityManager, repoType
@@ -137,26 +137,26 @@ public class JpaRepositoryTests {
         workItemRepo = workItemRepoFactory.make();
         
         // Try serialize to json
-        logger.info("Attempting to serialize JPA Repository to JSON document");
+        LOGGER.info("Attempting to serialize JPA Repository to JSON document");
         try {
             metadata = workItemRepo.toJson(true);
             if ( metadata != null ) {
                 assertionState = true;
-                logger.info(
+                LOGGER.info(
                     "Successfully serialized JPA repository, displaying below:\n\n'{}'",
                     metadata
                 );
             }
             else {
                 assertionState = false;
-                logger.warn("Unable to serialize JPA repository");
+                LOGGER.warn("Unable to serialize JPA repository");
             }
         }
         
         // Catch any exception which maybe introduced by separate 
         //  SDLC of dependency
         catch ( Exception ex ) {
-            logger.error(
+            LOGGER.error(
                 "Error serializing JPA repository:\t'{}'\n\n",
                 ex.getMessage(),
                 ex
@@ -169,7 +169,7 @@ public class JpaRepositoryTests {
             assertionState,
             "Unable to serialize JPA Repository to JSON document"
         );
-        logger.info("\n\n================ Can Serialize JPA Repository to JSON ================\n");
+        LOGGER.info("\n\n================ Can Serialize JPA Repository to JSON ================\n");
     }
     
     
@@ -181,7 +181,7 @@ public class JpaRepositoryTests {
     public void canQueryInsertWorkItem() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query JPA WorkItem Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA WorkItem Repository ================\n");
         TaskTideRepository<WorkItem> workItemRepo;
         RepositoryFactory<WorkItem> workItemRepoFactory;
         RepositoryType repoType = RepositoryType.SQL;
@@ -190,7 +190,7 @@ public class JpaRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestWorkItem(),
             TestCaseBuilderUtility.makeTestWorkItem(),
@@ -198,14 +198,14 @@ public class JpaRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching JPA for repository construction");
+        LOGGER.info("Fetching JPA for repository construction");
         workItemRepoFactory = new RepositoryFactory<>("WorkItem", WorkItem.class, entityManager, repoType);
         workItemRepo = workItemRepoFactory.make();
         Map<String, String> map = workItemRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for WorkItemRepository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info("\nDisplaying meta data for WorkItemRepository:\n'{}'", JsonUtils.toJson(true, "WorkItem Repository", map));
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         anno = TestUtils.makeAnnotation("SomePilotJobLabel", "JpaRepository-UnitTests");
         data.stream()
             .forEach( elm -> {
@@ -214,14 +214,14 @@ public class JpaRepositoryTests {
         });
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<WorkItem> ref = data.get(0);
         TaskTideModel<WorkItem> result = workItemRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Record", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query JPA WorkItem Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA WorkItem Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -235,7 +235,7 @@ public class JpaRepositoryTests {
     public void canQueryInsertStep() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query JPA Step Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA Step Repository ================\n");
         TaskTideRepository<Step> stepRepo;
         RepositoryFactory<Step> stepRepoFactory;
         RepositoryType repoType = RepositoryType.SQL;
@@ -244,18 +244,18 @@ public class JpaRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = TestCaseBuilderUtility.makeTestStepList();
         
         // Fetch backend instance
-        logger.info("Fetching JPA for repository construction");
+        LOGGER.info("Fetching JPA for repository construction");
         stepRepoFactory = new RepositoryFactory<>("Step", Step.class, entityManager, repoType);
         stepRepo = stepRepoFactory.make();
         Map<String, String> map = stepRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for StepRepository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info("\nDisplaying meta data for StepRepository:\n'{}'", JsonUtils.toJson(true, "Step Repository", map));
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         anno = TestUtils.makeAnnotation("SomePilotJobLabel", "JpaRepository-UnitTests");
         data.stream()
             .forEach( elm -> {
@@ -264,14 +264,14 @@ public class JpaRepositoryTests {
         });
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<Step> ref = data.get(0);
         TaskTideModel<Step> result = stepRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query JPA Step Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA Step Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -285,7 +285,7 @@ public class JpaRepositoryTests {
     public void canQueryInsertWorkflow() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query JPA Workflow Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA Workflow Repository ================\n");
         TaskTideRepository<Workflow> workflowRepo;
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType = RepositoryType.SQL;
@@ -294,18 +294,21 @@ public class JpaRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = TestCaseBuilderUtility.makeTestWorkflows();
         
         // Fetch backend instance
-        logger.info("Fetching JPA for repository construction");
+        LOGGER.info("Fetching JPA for repository construction");
         workflowRepoFactory = new RepositoryFactory<>("Workflow", Workflow.class, entityManager, repoType);
         workflowRepo = workflowRepoFactory.make();
         Map<String, String> map = workflowRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for Workflow Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for Workflow Repository:\n'{}'",
+            JsonUtils.toJson(true, "Workflow Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         anno = TestUtils.makeAnnotation("SomePilotJobLabel", "JpaRepository-UnitTests");
         data.stream()
             .forEach( elm -> {
@@ -314,14 +317,14 @@ public class JpaRepositoryTests {
         });
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<Workflow> ref = data.get(0);
         TaskTideModel<Workflow> result = workflowRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query JPA Workflow Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA Workflow Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -336,7 +339,7 @@ public class JpaRepositoryTests {
     public void canQueryInsertedMetricData() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query JPA MetricData Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA MetricData Repository ================\n");
         TaskTideRepository<MetricData> repo;
         RepositoryFactory<MetricData> repoFactory;
         RepositoryType repoType = RepositoryType.SQL;
@@ -344,7 +347,7 @@ public class JpaRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestMetricData(),
             TestCaseBuilderUtility.makeTestMetricData(),
@@ -352,25 +355,28 @@ public class JpaRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching JPA for repository construction");
+        LOGGER.info("Fetching JPA for repository construction");
         repoFactory = new RepositoryFactory<>("MetricData", MetricData.class, entityManager, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricData Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricData Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<MetricData> ref = data.get(0);
         TaskTideModel<MetricData> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query JPA MetricData Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA MetricData Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -385,7 +391,7 @@ public class JpaRepositoryTests {
     public void canQueryInsertedMetricProfile() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query JPA MetricProfile Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA MetricProfile Repository ================\n");
         TaskTideRepository<MetricProfile> repo;
         RepositoryFactory<MetricProfile> repoFactory;
         RepositoryType repoType = RepositoryType.SQL;
@@ -393,7 +399,7 @@ public class JpaRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestMetricProfile(),
             TestCaseBuilderUtility.makeTestMetricProfile(),
@@ -401,25 +407,28 @@ public class JpaRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching JPA for repository construction");
+        LOGGER.info("Fetching JPA for repository construction");
         repoFactory = new RepositoryFactory<>("MetricProfile", MetricProfile.class, entityManager, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricData Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricData Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<MetricProfile> ref = data.get(0);
         TaskTideModel<MetricProfile> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query JPA MetricProfile Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA MetricProfile Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -434,7 +443,7 @@ public class JpaRepositoryTests {
     public void canQueryInsertedJobEnvironment() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query JPA JobEnvironment Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA JobEnvironment Repository ================\n");
         TaskTideRepository<JobEnvironment> repo;
         RepositoryFactory<JobEnvironment> repoFactory;
         RepositoryType repoType = RepositoryType.SQL;
@@ -442,7 +451,7 @@ public class JpaRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestJobEnvironment(),
             TestCaseBuilderUtility.makeTestJobEnvironment(),
@@ -450,25 +459,28 @@ public class JpaRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching JPA for repository construction");
+        LOGGER.info("Fetching JPA for repository construction");
         repoFactory = new RepositoryFactory<>("JobEnvironment", JobEnvironment.class, entityManager, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricData Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricData Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<JobEnvironment> ref = data.get(0);
         TaskTideModel<JobEnvironment> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query JPA JobEnvironment Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA JobEnvironment Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

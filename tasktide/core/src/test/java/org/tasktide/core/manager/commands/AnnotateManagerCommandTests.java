@@ -226,7 +226,7 @@ public class AnnotateManagerCommandTests {
             LOGGER.info("Execution successful, N annotated = '{}'", nRecords);
             LOGGER.info(
                 "Displaying records for reference:\n'{}'",
-                JsonUtils.toJson(true, TaskTideServiceManager.fetchWorkItemService().fetchById("WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249"))
+                JsonUtils.toJson(true, "Records", TaskTideServiceManager.fetchWorkItemService().fetchById("WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249"))
             );
         }
         else {

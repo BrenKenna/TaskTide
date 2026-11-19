@@ -303,6 +303,7 @@ public final class TaskTideServiceManager {
             // Represent results as json document
             return JsonUtils.toJson(
                 true,
+                "Service Manager MetaData",
                 metadata
             );
         }

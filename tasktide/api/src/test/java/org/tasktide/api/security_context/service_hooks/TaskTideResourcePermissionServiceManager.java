@@ -277,7 +277,7 @@ public final class TaskTideResourcePermissionServiceManager {
      */
     public static String toJson() {
         if ( INSTANCE != null ) {
-             return JsonUtils.toJson(true, INSTANCE.serviceMap);
+             return JsonUtils.toJson(true, "Service Map", INSTANCE.serviceMap);
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");  
     }

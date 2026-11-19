@@ -196,7 +196,10 @@ public class RocksDbItemStoreRepositoryTests {
         workItemRepoFactory = new RepositoryFactory<>("WorkItem", WorkItem.class, itemStore, repoType);
         workItemRepo = workItemRepoFactory.make();
         Map<String, String> map = workItemRepo.getRepositoryMetaData();
-        LOGGER.info("\nDisplaying meta data for WorkItemRepository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for WorkItem Repository:\n'{}'",
+            JsonUtils.toJson(true, "WorkItem Repository", map)
+        );
         
         // Add records
         LOGGER.info("Inserting records");
@@ -207,7 +210,7 @@ public class RocksDbItemStoreRepositoryTests {
         TaskTideModel<WorkItem> ref = data.get(0);
         TaskTideModel<WorkItem> result = workItemRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
         LOGGER.info("\n\n================ Can Query RocksDbItemStore WorkItem Repository ================\n");
@@ -240,7 +243,10 @@ public class RocksDbItemStoreRepositoryTests {
         stepRepoFactory = new RepositoryFactory<>("Step", Step.class, itemStore, repoType);
         stepRepo = stepRepoFactory.make();
         Map<String, String> map = stepRepo.getRepositoryMetaData();
-        LOGGER.info("\nDisplaying meta data for StepRepository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for Step Repository:\n'{}'",
+            JsonUtils.toJson(true, "Step Repository", map)
+        );
         
         // Add records
         LOGGER.info("Inserting records");
@@ -251,7 +257,7 @@ public class RocksDbItemStoreRepositoryTests {
         TaskTideModel<Step> ref = data.get(0);
         TaskTideModel<Step> result = stepRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
         LOGGER.info("\n\n================ Can Query RocksDbItemStore Step Repository ================\n");
@@ -284,7 +290,10 @@ public class RocksDbItemStoreRepositoryTests {
         workflowRepoFactory = new RepositoryFactory<>("Workflow", Workflow.class, itemStore, repoType);
         workflowRepo = workflowRepoFactory.make();
         Map<String, String> map = workflowRepo.getRepositoryMetaData();
-        LOGGER.info("\nDisplaying meta data for Workflow Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for Workflow Repository:\n'{}'",
+            JsonUtils.toJson(true, "Workflow Repository", map)
+        );
         
         // Add records
         LOGGER.info("Inserting records");
@@ -295,7 +304,7 @@ public class RocksDbItemStoreRepositoryTests {
         TaskTideModel<Workflow> ref = data.get(0);
         TaskTideModel<Workflow> result = workflowRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
         LOGGER.info("\n\n================ Can Query RocksDbItemStore Workflow Repository ================\n");
@@ -333,7 +342,10 @@ public class RocksDbItemStoreRepositoryTests {
         repoFactory = new RepositoryFactory<>("MetricData", MetricData.class, itemStore, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        LOGGER.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricData Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricData Repository", map)
+        );
         
         // Add records
         LOGGER.info("Inserting records");
@@ -344,7 +356,7 @@ public class RocksDbItemStoreRepositoryTests {
         TaskTideModel<MetricData> ref = data.get(0);
         TaskTideModel<MetricData> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
         LOGGER.info("\n\n================ Can Query ItemStore MetricData Repository ================\n");
@@ -382,7 +394,10 @@ public class RocksDbItemStoreRepositoryTests {
         repoFactory = new RepositoryFactory<>("MetricProfile", MetricProfile.class, itemStore, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        LOGGER.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricProfile Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricProfile Repository", map)
+        );
         
         // Add records
         LOGGER.info("Inserting records");
@@ -393,7 +408,7 @@ public class RocksDbItemStoreRepositoryTests {
         TaskTideModel<MetricProfile> ref = data.get(0);
         TaskTideModel<MetricProfile> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
         LOGGER.info("\n\n================ Can Query ItemStore MetricProfile Repository ================\n");
@@ -431,7 +446,10 @@ public class RocksDbItemStoreRepositoryTests {
         repoFactory = new RepositoryFactory<>("JobEnvironment", JobEnvironment.class, itemStore, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        LOGGER.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for JobEnvironment Repository:\n'{}'",
+            JsonUtils.toJson(true, "JobEnvironment Repository", map)
+        );
         
         // Add records
         LOGGER.info("Inserting records");
@@ -442,7 +460,7 @@ public class RocksDbItemStoreRepositoryTests {
         TaskTideModel<JobEnvironment> ref = data.get(0);
         TaskTideModel<JobEnvironment> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
         LOGGER.info("\n\n================ Can Query ItemStore JobEnvironment Repository ================\n");

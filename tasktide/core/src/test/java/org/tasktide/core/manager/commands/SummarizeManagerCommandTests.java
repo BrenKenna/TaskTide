@@ -170,7 +170,7 @@ public class SummarizeManagerCommandTests {
         if ( output != null ) {
             LOGGER.info("Casting ManagerCommand output to StateSummary-Map");
             results = (StateSummary<ItemState>) output;
-            LOGGER.info("Displaying results:\n'{}'", JsonUtils.toJson(true, output));
+            LOGGER.info("Displaying results:\n'{}'", JsonUtils.toJson(true, "State-Summary", output));
             assertionState = true;
         }
         
@@ -219,7 +219,7 @@ public class SummarizeManagerCommandTests {
         if ( output != null ) {
             LOGGER.info("Casting ManagerCommand output to StateSummary-Map");
             results = (Map<String, StateSummary<ItemState>>) output;
-            LOGGER.info("Displaying results:\n'{}'", JsonUtils.toJson(true, output));
+            LOGGER.info("Displaying results:\n'{}'", JsonUtils.toJson(true, "State Summary Map", output));
             assertionState = true;
         }
         

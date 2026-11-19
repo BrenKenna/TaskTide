@@ -109,7 +109,7 @@ public class TaskTideManagerClient extends TaskTideClient {
         cmd = this.getManagerCommand();
         
         // Run command
-        LOGGER.info("Executing ManagerCommand:\n'{}'", JsonUtils.toJson(true, cmd));
+        LOGGER.info("Executing ManagerCommand:\n'{}'", JsonUtils.toJson(true, "Command", cmd));
         result = cmd.execute();
         
         // Handle logging based on action

@@ -184,7 +184,7 @@ public class WorkItemRestResourceTests extends AbstractBaseJerseyTest {
         
         // Evaluate test
         List<WorkItem> records = resp.readEntity(new GenericType<List<WorkItem>>() {});
-        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, records));
+        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, "Records", records));
         Assertions.assertTrue(resp.getStatus() == 200, "Error could not query WorkItem field through WorkItemRestResource");
         LOGGER.info("\n\n================ WorkItemRestResource Can Query By Field ================\n");
     }

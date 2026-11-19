@@ -182,7 +182,7 @@ public class JobEnvironmentRestResourceTests extends AbstractBaseJerseyTest {
         
         // Evaluate test
         List<JobEnvironment> records = resp.readEntity(new GenericType<List<JobEnvironment>>() {});
-        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, records));
+        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, "Records", records));
         Assertions.assertTrue(resp.getStatus() == 200, "Error could query JobEnvironment field through JobEnvironmentRestResource");
         LOGGER.info("\n\n================ JobEnvironmentRestResource Can Query By Field ================\n");
     }

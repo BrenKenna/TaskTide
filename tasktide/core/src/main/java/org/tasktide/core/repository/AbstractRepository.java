@@ -112,7 +112,7 @@ public abstract class AbstractRepository<T extends TaskTideModel<T>> implements 
      */
     @Override
     public String toJson(boolean indent) {
-        return JsonUtils.toJson(indent, this.getRepositoryMetaData());
+        return JsonUtils.toJson(indent, "Repository Metadata", this.getRepositoryMetaData());
     }
     
     

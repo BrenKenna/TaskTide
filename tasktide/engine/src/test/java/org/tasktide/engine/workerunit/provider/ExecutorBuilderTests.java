@@ -135,7 +135,7 @@ public class ExecutorBuilderTests {
         execBuilder = new ItemTaskExecutorBuilder();
         task = TaskGenerator.generateExampleWorkItem(ExampleGenerators.PING, 2);
         workload = new ArrayList<>(task.getWorkload().getTaskMap().values());
-        logger.info("Displaying reference record:\n'{}'", JsonUtils.toJson(true, task));
+        logger.info("Displaying reference record:\n'{}'", JsonUtils.toJson(true, "Ping Task", task));
         TaskTideServiceManager.fetchWorkItemService().appendModel(task);
         
         // Build Observer

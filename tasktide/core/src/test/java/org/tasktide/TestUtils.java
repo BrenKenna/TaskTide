@@ -112,16 +112,17 @@ public class TestUtils {
      */
     public static void viewSteps() {
         List<Step> steps = TaskTideServiceManager.fetchStepService().viewAll();
-        LOGGER.info("Displaying Steps:\t'{}'", JsonUtils.toJson(true, steps));
+        LOGGER.info("Displaying Steps:\n\n'{}'", JsonUtils.toJson(true, "Steps", steps));
     }
     
     
     /**
      * Displays all {@link WorkItem} through Logger
+     * 
      */
     public static void viewWorkItems() {
         List<WorkItem> items = TaskTideServiceManager.fetchWorkItemService().viewAll();
-        LOGGER.info("Displaying WorkItems:\t'{}'", JsonUtils.toJson(true, items));
+        LOGGER.info("Displaying WorkItems:\n\n'{}'", JsonUtils.toJson(true, "WorkItems", items));
     }
     
     

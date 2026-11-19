@@ -143,7 +143,7 @@ public class MetricProfileServiceTests {
         LOGGER.info("Configuring Service");
         service = ServiceFactory.makeMetricProfileService(repoType, template, "MetricProfile-Template");
         Map<String, String> map = service.getRepo().getRepositoryMetaData();
-        LOGGER.info("Displaying meta data for NoSQL MetricProfile Service:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info("Displaying meta data for NoSQL MetricProfile Service:\n'{}'", JsonUtils.toJson(true, "Service Map", map));
         
         // Add records
         service.extendModel(data);
@@ -189,7 +189,7 @@ public class MetricProfileServiceTests {
         LOGGER.info("Configuring Service");
         service = ServiceFactory.makeMetricProfileService(repoType, entityManager, "MetricProfile-JpaRepository");
         Map<String, String> map = service.getRepo().getRepositoryMetaData();
-        LOGGER.info("Displaying meta data for SQL MetricProfile Service:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info("Displaying meta data for SQL MetricProfile Service:\n'{}'", JsonUtils.toJson(true, "Service Map", map));
         
         // Add records
         service.extendModel(data);
