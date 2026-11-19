@@ -32,8 +32,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import org.tasktide.core.supporting.JsonUtils;
 import org.tasktide.parser.ArgumentTree;
+import org.tasktide.parser.HelpMessageType;
 import org.tasktide.parser.configuration.TaskTideConfig;
 import org.tasktide.tasktide.TestUtils;
 
@@ -49,7 +49,7 @@ import org.tasktide.tasktide.TestUtils;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class TaskTideConfigurationTests {
     
-    private static final Logger logger = LogManager.getLogger(TaskTideConfigurationTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(TaskTideConfigurationTests.class);
   
     private SeContainer container;
     
@@ -61,14 +61,14 @@ public class TaskTideConfigurationTests {
         String msg = "\n\n---------------- Initiating Configuration from TaskTide-Config Tests ----------------\n";
         TestUtils.initSeContainer();
         this.container = TestUtils.fetchConfiguredContainer();
-        logger.info(msg);
+        LOGGER.info(msg);
     }
     
     
     @AfterAll
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Configuration from TaskTide-Config Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
     }
     
     
@@ -90,22 +90,22 @@ public class TaskTideConfigurationTests {
     public void canConfigureGlobalClient() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Configuring Global Client Through Config  ================\n");
+        LOGGER.info("\n\n================ Tests Configuring Global Client Through Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfig globalConfig;
         
         // Configure client parameters
-        argTree = new ArgumentTree("");
+        argTree = new ArgumentTree("tasktide");
         globalConfig = this.container.select(GlobalConfig.class).get();
         globalConfig.initConfig(argTree);
         
         // Verify
         Assertions.assertTrue(globalConfig.getArgumentMap() != null, "Argument map should not be null");
         Assertions.assertTrue(globalConfig.getArgumentMap().getArgMap().size() >= 1, "Argument map should contain more than one parameter");
-        logger.info("Displaying configured client:\n'{}'", globalConfig.getArgumentMap());
+        LOGGER.info("Displaying configured client:\n'{}'", globalConfig.getArgumentMap());
         Assertions.assertTrue(argTree.getVerboseHelp() != null, "Verbose help should not be null");
-        logger.info("Displaying verbose help:\n'{}'", JsonUtils.toJson(true, argTree.getVerboseHelp()));
-        logger.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
+        LOGGER.info("Displaying verbose help:\n'{}'", argTree.getFormattedHelp(HelpMessageType.GLOBAL));
+        LOGGER.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
     }
     
     
@@ -118,12 +118,12 @@ public class TaskTideConfigurationTests {
     public void canConfigureEngineClient() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
+        LOGGER.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfig globalConfig, engineConfig;
         
         // Configure client parameters
-        argTree = new ArgumentTree("");
+        argTree = new ArgumentTree("tasktide");
         globalConfig = this.container.select(GlobalConfig.class).get();
         globalConfig.initConfig(argTree);
         engineConfig = this.container.select(EngineConfig.class).get();
@@ -132,10 +132,10 @@ public class TaskTideConfigurationTests {
         // Verify
         Assertions.assertTrue(engineConfig.getArgumentMap() != null, "Argument map should not be null");
         Assertions.assertTrue(engineConfig.getArgumentMap().getArgMap().size() >= 1, "Argument map should contain more than one parameter");
-        logger.info("Displaying configured client:\n'{}'", engineConfig.getArgumentMap());
+        LOGGER.info("Displaying configured client:\n'{}'", engineConfig.getArgumentMap());
         Assertions.assertTrue(argTree.getVerboseHelp() != null, "Verbose help should not be null");
-        logger.info("Displaying verbose help:\n'{}'", JsonUtils.toJson(true, argTree.getVerboseHelp()));
-        logger.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
+        LOGGER.info("Displaying verbose help:\n'{}'", argTree.getFormattedHelp(HelpMessageType.VERBOSE));
+        LOGGER.info("\n\n================ Tests Running EngineClient Through Config  ================\n");
     }
     
     
@@ -148,12 +148,12 @@ public class TaskTideConfigurationTests {
     public void canConfigureManagerClient() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Configuring Manager Client Through Config  ================\n");
+        LOGGER.info("\n\n================ Tests Configuring Manager Client Through Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfig globalConfig, managerConfig;
         
         // Configure client parameters
-        argTree = new ArgumentTree("");
+        argTree = new ArgumentTree("tasktide");
         globalConfig = this.container.select(GlobalConfig.class).get();
         globalConfig.initConfig(argTree);
         managerConfig = this.container.select(EngineConfig.class).get();
@@ -162,10 +162,10 @@ public class TaskTideConfigurationTests {
         // Verify
         Assertions.assertTrue(managerConfig.getArgumentMap() != null, "Argument map should not be null");
         Assertions.assertTrue(managerConfig.getArgumentMap().getArgMap().size() >= 1, "Argument map should contain more than one parameter");
-        logger.info("Displaying configured client:\n'{}'", managerConfig.getArgumentMap());
+        LOGGER.info("Displaying configured client:\n'{}'", managerConfig.getArgumentMap());
         Assertions.assertTrue(argTree.getVerboseHelp() != null, "Verbose help should not be null");
-        logger.info("Displaying verbose help:\n'{}'", JsonUtils.toJson(true, argTree.getVerboseHelp()));
-        logger.info("\n\n================ Tests Running Manager Client Through Config  ================\n");
+        LOGGER.info("Displaying verbose help:\n'{}'", argTree.getFormattedHelp(HelpMessageType.VERBOSE));
+        LOGGER.info("\n\n================ Tests Running Manager Client Through Config  ================\n");
     }
     
     
@@ -178,12 +178,12 @@ public class TaskTideConfigurationTests {
     public void canConfigureWebApi() {
     
         // Initialize data
-        logger.info("\n\n================ Tests Configuring Web API Through Config  ================\n");
+        LOGGER.info("\n\n================ Tests Configuring Web API Through Config  ================\n");
         ArgumentTree argTree;
         TaskTideConfig globalConfig, webApiConfig;
         
         // Configure client parameters
-        argTree = new ArgumentTree("");
+        argTree = new ArgumentTree("tasktide");
         globalConfig = this.container.select(GlobalConfig.class).get();
         globalConfig.initConfig(argTree);
         webApiConfig = new WebApiConfig();
@@ -192,9 +192,9 @@ public class TaskTideConfigurationTests {
         // Verify
         Assertions.assertTrue(webApiConfig.getArgumentMap() != null, "Argument map should not be null");
         Assertions.assertTrue(webApiConfig.getArgumentMap().getArgMap().size() >= 1, "Argument map should contain more than one parameter");
-        logger.info("Displaying configured client:\n'{}'", webApiConfig.getArgumentMap());
+        LOGGER.info("Displaying configured client:\n'{}'", webApiConfig.getArgumentMap());
         Assertions.assertTrue(argTree.getVerboseHelp() != null, "Verbose help should not be null");
-        logger.info("Displaying verbose help:\n'{}'", JsonUtils.toJson(true, argTree.getVerboseHelp()));
-        logger.info("\n\n================ Tests Running Web API Through Config  ================\n");
+        LOGGER.info("Displaying verbose help:\n\n'{}'", argTree.getFormattedHelp(HelpMessageType.VERBOSE));
+        LOGGER.info("\n\n================ Tests Running Web API Through Config  ================\n");
     }
 }
