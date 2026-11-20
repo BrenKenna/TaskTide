@@ -238,8 +238,8 @@ public class JsonUtils {
         // Otherwise any exception forces a false
         catch (Exception ex) {
             LOGGER.debug(
-                "Unable to parse provided data as JSON object, falling back to value\n\n",
-                ex
+                "Unable to parse provided data as JSON object, falling back to value. Displaying error message for reference\n\n'{}'",
+                ex.getMessage()
             );
             return false;
         }

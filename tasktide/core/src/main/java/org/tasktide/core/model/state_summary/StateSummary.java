@@ -104,7 +104,7 @@ public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
      * @return String
      */
     private String toJsonDoc() {
-        return JsonUtils.toJson(true, "State Summary", this);
+        return JsonUtils.toJson(true, this);
     }
     
     
@@ -114,7 +114,7 @@ public abstract class StateSummary<T extends Enum<T> & StateSummaryType> {
      * @return String
      */
     private String toJsonString() {
-        return JsonUtils.toJson(false, "State Summary", this);
+        return JsonUtils.toJson(false, this);
     }
     
     
