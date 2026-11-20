@@ -136,18 +136,7 @@ public class StateSummaryTests {
     private String fetchItemStateSummaryDoc() {
         return this.fetchRandomItemStateSummary().toJson(true);
     }
-    
-    
-    /**
-     * Fetches a randomly generated {@link TaskStateSummary}
-     *  JSON doc
-     * 
-     * @return String
-     */
-    private String fetchTaskStateSummaryDoc() {
-        return this.fetchRandomTaskStateSummary().toJson(true);
-    }
-    
+
     
     /**
      * Tests using {@link StateSummary}
@@ -254,7 +243,7 @@ public class StateSummaryTests {
         catch (JsonbException ex) {
             LOGGER.error("JSON Serialization unsuccessful:\n\n", ex);
         }
-        Assertions.assertTrue( itemStateSummary.summaryMap != null, "Unable to deerialize StateSummary from JSON document");
+        Assertions.assertTrue( itemStateSummary != null, "Unable to deerialize StateSummary from JSON document");
         LOGGER.info("\n\n================ Can Deserializing to State Summary from JSON Doc ================\n");
     }
 }

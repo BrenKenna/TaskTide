@@ -106,7 +106,9 @@ public class Workflow implements TaskTideModel<Workflow> {
         this.workflowId = workflowId;
         this.workflowName = workflowName;
         this.workflowSteps = workflowSteps;
-        this.anno = anno;
+        this.anno = anno != null ?
+            anno : new CustomAnnotation()
+        ;
     }
 
     
@@ -122,7 +124,9 @@ public class Workflow implements TaskTideModel<Workflow> {
         this.workflowId = workflowId;
         this.workflowName = workflowName;
         this.workflowSteps = WorkflowStepConverter.convertToEntityAttribute(stepIds);
-        this.anno = anno;
+        this.anno = anno != null ?
+            anno : new CustomAnnotation()
+        ;
     }
     
     

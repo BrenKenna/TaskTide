@@ -16,7 +16,6 @@
 package org.tasktide.core.manager.commands;
 
 import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 
 import java.nio.file.Path;
@@ -72,7 +71,6 @@ public class AnnotateManagerCommandTests {
     // Container for fetch nosql template
     private SeContainer container;
     private EntityManager entityManager;
-    private Template template;
     
     // Backend repos
     // @Rule
@@ -91,7 +89,6 @@ public class AnnotateManagerCommandTests {
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
-        template = TestEnvironment.fetchDocumentTemplate(container);
         
         try {
             TestUtils.initServiceManager(RepositoryType.SQL, entityManager);

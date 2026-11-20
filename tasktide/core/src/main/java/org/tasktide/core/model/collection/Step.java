@@ -116,7 +116,9 @@ public class Step implements TaskTideModel<Step> {
         this.stepId = stepId;
         this.stepName = stepName;
         this.workflowId = workflowId;
-        this.anno = anno;
+        this.anno = anno != null ?
+            anno : new CustomAnnotation()
+        ;
     }
 
     

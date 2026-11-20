@@ -85,8 +85,8 @@ public class RocksDbItemStoreRepositoryTests {
         }
         catch (IllegalStateException ex) {
             LOGGER.warn(
-                "Proceeding as ItemStoreRepositoryUtility is already initialized. Displaying error for reference\n\n",
-                ex
+                "Proceeding as ItemStoreRepositoryUtility is already initialized. Displaying error for reference\n\n'{}'",
+                ex.getMessage()
             );
         }
         this.storeMap = ItemStoreRepositoryUtility
