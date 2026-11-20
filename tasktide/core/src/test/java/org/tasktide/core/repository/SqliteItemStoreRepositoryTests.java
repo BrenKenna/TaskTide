@@ -75,12 +75,20 @@ public class SqliteItemStoreRepositoryTests {
     
     @BeforeAll
     public void setUpClass() {
-        String msg = "\n\n---------------- Initiating RocksDbItemStore-Repository Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating SQLiteItemStore-Repository Tests ----------------\n";
         LOGGER.info(msg);
-        ItemStoreRepositoryUtility.initialize(
-            this.storeType,
-            this.storeName
-        );
+        try {
+            ItemStoreRepositoryUtility.initialize(
+                this.storeType,
+                this.storeName
+            );
+        }
+        catch(IllegalStateException ex) {
+            LOGGER.warn(
+                "Proceeding as ItemStoreRepositoryUtility is already initialized. Displaying error for reference\n\n",
+                ex
+            );
+        }
         this.storeMap = ItemStoreRepositoryUtility
             .get()
             .fetchItemStoreMap(
