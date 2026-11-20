@@ -78,7 +78,9 @@ public class CustomAnnotation implements TaskTideModel<CustomAnnotation> {
        @JsonbProperty("Annotation Map") Map<String, Object> anno
     ) {
         this.annoId = annoId;
-        this.anno = anno;
+        this.anno = anno !=null ?
+            anno : new HashMap<>()
+        ;
     }
 
     

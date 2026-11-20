@@ -15,6 +15,10 @@
  */
 package org.tasktide.core.manager;
 
+import jakarta.json.JsonObject;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.tasktide.core.TaskTideModel;
@@ -286,7 +290,22 @@ public final class TaskTideServiceManager {
      */
     public static String toJson() {
         if ( INSTANCE != null ) {
-             return JsonUtils.toJson(true, INSTANCE.serviceMap);
+            
+            // Fetch metadata for each service as json document
+            Map<String, JsonObject> metadata = new HashMap<>();
+            for ( Entry<ManagerTarget, TaskTideService> elm : INSTANCE.serviceMap.entrySet() ) {
+                metadata.put(
+                    elm.getKey().name(),
+                    JsonUtils.asJson(true, elm.getValue())
+                );
+            }
+            
+            // Represent results as json document
+            return JsonUtils.toJson(
+                true,
+                "Service Manager MetaData",
+                metadata
+            );
         }
         throw new IllegalStateException("TaskTideServiceManager must be initialized first");  
     }

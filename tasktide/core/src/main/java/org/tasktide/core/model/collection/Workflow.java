@@ -23,7 +23,7 @@ import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 
 import java.util.List;
@@ -65,7 +65,10 @@ public class Workflow implements TaskTideModel<Workflow> {
     @jakarta.nosql.Column("StepIds")
     private List<String> stepIds;
     
-    @OneToMany(mappedBy = "workflow", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+       mappedBy = "workflow",
+       fetch = FetchType.LAZY
+    )
     private final List<Step> stepList = new ArrayList<>();
 
     
@@ -103,7 +106,9 @@ public class Workflow implements TaskTideModel<Workflow> {
         this.workflowId = workflowId;
         this.workflowName = workflowName;
         this.workflowSteps = workflowSteps;
-        this.anno = anno;
+        this.anno = anno != null ?
+            anno : new CustomAnnotation()
+        ;
     }
 
     
@@ -119,7 +124,9 @@ public class Workflow implements TaskTideModel<Workflow> {
         this.workflowId = workflowId;
         this.workflowName = workflowName;
         this.workflowSteps = WorkflowStepConverter.convertToEntityAttribute(stepIds);
-        this.anno = anno;
+        this.anno = anno != null ?
+            anno : new CustomAnnotation()
+        ;
     }
     
     
@@ -167,7 +174,10 @@ public class Workflow implements TaskTideModel<Workflow> {
             return false;
         }
         this.workflowSteps.put(step.getId(), step);
-        this.stepIds.add(step.getId());
+        if ( this.stepIds == null ) {
+            this.stepIds = new ArrayList<>();
+            this.stepIds.add(step.getId());
+        }
         this.stepList.add(step);
         return true;
     }
@@ -310,6 +320,7 @@ public class Workflow implements TaskTideModel<Workflow> {
     public void hydrateSteps() {
         if ( this.stepIds == null ) {
             this.workflowSteps = new LinkedHashMap<>();
+            this.stepIds = new ArrayList<>();
             return;
         }
         

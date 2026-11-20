@@ -231,15 +231,88 @@ DATE="2026-10-05"
 VERSION="v1.0.0"
 
 
+# Assemble TaskTide
+cd tasktide
+./gradlew assemble && \
+    ls -lht tasktide/build/distributions/tasktide-1.0.0.zip
+cd ../
+
+
 # Check sums and signs the local test zip
-cd docs/release-patching/
-cd $VERISION
+mkdir -p docs/release-patching/$VERSION/resources
+cp \
+    ./tasktide/tasktide/build/distributions/tasktide-1.0.0.zip \
+    ./docs/release-patching/$VERSION/
+
+mv \
+    ./tasktide/tasktide/build/resources/main/* \
+    ./docs/release-patching/$VERSION/resources/
+
+cd docs/release-patching/$VERSION/
 
 
 # Verify JAR
 unzip tasktide-1.0.0.zip && \
     cd tasktide-1.0.0
 ./bin/tasktide --help
+
+
+
+# Sanity check with simple examples
+./bin/tasktide \
+    manager \
+        --method "Add" \
+        --step-name "ShortRunningJobs" \
+        --workflow-name "Simple Examples" \
+        --target "STEP"
+
+./bin/tasktide \
+    manager \
+        --method "Add" \
+        --step-name "SleepJobs" \
+        --workflow-name "Simple Examples" \
+        --target "STEP"
+
+
+# Configure workload
+rm -f \
+    ./short-running-nested-tasks.txt && \
+    touch \
+        ./short-running-nested-tasks.txt
+
+for i in $( echo -e "2 4 6 8 10 12" )
+do
+    echo -e \
+        "ShortRunningJobs-$i|/usr/bin/time -v seq|$i,$i" \
+    >> ./short-running-nested-tasks.txt
+done
+
+./bin/tasktide \
+    manager \
+        --method "Import" \
+        --delimiter "|" \
+        --nested-delimiter "," \
+        --target "WORKITEM" \
+        --step-name "ShortRunningJobs" \
+        --target-file ./short-running-nested-tasks.txt
+
+
+# Verify that tasks are processable
+./bin/tasktide \
+    engine \
+        --target "WORKITEM" \
+        --step-name "ShortRunningJobs" \
+        --execution-policy "BATCH" \
+        --worker-pool-size "2" \
+        --worker-window-size "5" \
+        --item-task-threads "2" \
+        --result-set-size "5" \
+
+
+
+# Package resources
+cd ./config/
+tar -czvf ../../tasktide-resources.tar.gz ./*
 
 
 # Generate sha-256 sums
@@ -249,10 +322,17 @@ openssl dgst -sha256 * | \
     grep -v "SHA256" \
 > SHA256SUMS
 
+
+# Sign resources & zip
 gpg \
     --detach-sign \
     --output tasktide-1.0.0.zip.sig \
     tasktide-1.0.0.zip
+
+gpg \
+    --detach-sign \
+    --output tasktide-resources.tar.gz.sig \
+    tasktide-resources.tar.gz
 
 
 # Upload release docs

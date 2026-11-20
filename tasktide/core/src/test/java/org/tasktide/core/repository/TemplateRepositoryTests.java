@@ -36,6 +36,7 @@ import org.jboss.weld.junit5.auto.AddPackages;
 import org.jboss.weld.junit5.auto.EnableAutoWeld;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -81,7 +82,7 @@ import org.tasktide.core.supporting.JsonUtils;
 public class TemplateRepositoryTests {
     
     // Logger for tests
-    private static final Logger logger = LogManager.getLogger(TemplateRepositoryTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(TemplateRepositoryTests.class);
     
     
     // Backend repo
@@ -97,7 +98,7 @@ public class TemplateRepositoryTests {
     @BeforeAll
     public void setUpClass() {
         String msg = "\n\n---------------- Initiating Template-Repository Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("couchDB-config.properties", getClass());
         template = TestEnvironment.fetchDocumentTemplate(container);
     }
@@ -106,24 +107,84 @@ public class TemplateRepositoryTests {
     @AfterAll
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating Template-Repository Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
         if (container != null && container.isRunning()) {
             container.close();
-            logger.info("CDI container shut down");
+            LOGGER.info("CDI container shut down");
         }
         // couchDB.stop();
     }
     
     @BeforeEach
     public void setUp() {
-        logger.info("\n\n================ Initiating Next Test ================\n");
+        LOGGER.info("\n\n================ Initiating Next Test ================\n");
     }
     
     @AfterEach
     public void tearDown() {
-        logger.info("\n\n================ Terminating Test ================\n");
+        LOGGER.info("\n\n================ Terminating Test ================\n");
     }
 
+    
+    /**
+     * Tests that the {@link Template} can be represented as meta data
+     */
+    @Test
+    @Order(0)
+    public void canSerializeToJson() {
+        
+        // Initialize data
+        LOGGER.info("\n\n================ Can Serialize Template Repository to JSON ================\n");
+        String metadata;
+        boolean assertionState;
+        TaskTideRepository<WorkItem> workItemRepo;
+        RepositoryFactory<WorkItem> workItemRepoFactory;
+        RepositoryType repoType = RepositoryType.NOSQL;
+        
+        // Request Template repository
+        LOGGER.info("Requesting Template for repository");
+        workItemRepoFactory = new RepositoryFactory<>(
+            "WorkItem", WorkItem.class,
+            this.template, repoType
+        );
+        workItemRepo = workItemRepoFactory.make();
+        
+        // Try serialize to json
+        LOGGER.info("Attempting to serialize Template Repository to JSON document");
+        try {
+            metadata = workItemRepo.toJson(true);
+            if ( metadata != null ) {
+                assertionState = true;
+                LOGGER.info(
+                    "Successfully serialized Template repository, displaying below:\n\n'{}'",
+                    metadata
+                );
+            }
+            else {
+                assertionState = false;
+                LOGGER.warn("Unable to serialize Template repository");
+            }
+        }
+        
+        // Catch any exception which maybe introduced by separate 
+        //  SDLC of dependency
+        catch ( Exception ex ) {
+            LOGGER.error(
+                "Error serializing Template repository:\t'{}'\n\n",
+                ex.getMessage(),
+                ex
+            );
+            assertionState = false;
+        }
+        
+        // Evaluate and log completion
+        Assertions.assertTrue(
+            assertionState,
+            "Unable to serialize Template Repository to JSON document"
+        );
+        LOGGER.info("\n\n================ Can Serialize Template Repository to JSON ================\n");
+    }
+    
     
     /**
      * Tests query & retrieval WorkItem from Template WorkItem Repository
@@ -133,7 +194,7 @@ public class TemplateRepositoryTests {
     public void canQueryInsertWorkItem() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query Template WorkItem Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template WorkItem Repository ================\n");
         TaskTideRepository<WorkItem> workItemRepo;
         RepositoryFactory<WorkItem> workItemRepoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
@@ -142,7 +203,7 @@ public class TemplateRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestWorkItem(),
             TestCaseBuilderUtility.makeTestWorkItem(),
@@ -151,14 +212,17 @@ public class TemplateRepositoryTests {
         
         
         // Fetch backend instance
-        logger.info("Fetching template for repository construction");
+        LOGGER.info("Fetching template for repository construction");
         workItemRepoFactory = new RepositoryFactory<>("WorkItem", WorkItem.class, template, repoType);
         workItemRepo = workItemRepoFactory.make();
         Map<String, String> map = workItemRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for WorkItemRepository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for WorkItemRepository:\n'{}'",
+            JsonUtils.toJson(true, "WorkItem Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         data.stream()
             .forEach( elm -> {
@@ -167,15 +231,15 @@ public class TemplateRepositoryTests {
         });
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<WorkItem> ref = data.get(0);
-        logger.info("\nDisplaying first record:\n'{}'\n'{}'", JsonUtils.toJson(true, ref), ref.toString());
+        LOGGER.info("\nDisplaying first record:\n'{}'\n'{}'", JsonUtils.toJson(true, "First Record", ref), ref.toString());
         TaskTideModel<WorkItem> result = workItemRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Retrieved Record", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query Template WorkItem Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template WorkItem Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -189,7 +253,7 @@ public class TemplateRepositoryTests {
     public void canQueryInsertStep() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query Template Step Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template Step Repository ================\n");
         TaskTideRepository<Step> stepRepo;
         RepositoryFactory<Step> stepRepoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
@@ -198,30 +262,33 @@ public class TemplateRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = TestCaseBuilderUtility.makeTestStepList().get(0);
         
         
         // Fetch backend instance
-        logger.info("Fetching template for repository construction");
+        LOGGER.info("Fetching template for repository construction");
         stepRepoFactory = new RepositoryFactory<>("Step", Step.class, template, repoType);
         stepRepo = stepRepoFactory.make();
         Map<String, String> map = stepRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for StepRepository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for StepRepository:\n'{}'",
+            JsonUtils.toJson(true, "Step Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         data.setAnnotations(anno);
         TaskTideModel<Step> result = stepRepo.insertModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Record", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query Template Step Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template Step Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -235,7 +302,7 @@ public class TemplateRepositoryTests {
     public void canQueryInsertWorkflow() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query Template Workflow Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template Workflow Repository ================\n");
         TaskTideRepository<Workflow> workflowRepo;
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
@@ -244,30 +311,33 @@ public class TemplateRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = TestCaseBuilderUtility.makeTestWorkflows().get(0);
         
         // Fetch backend instance
-        logger.info("Fetching template for repository construction");
+        LOGGER.info("Fetching template for repository construction");
         workflowRepoFactory = new RepositoryFactory<>("Workflow", Workflow.class, template, repoType);
         workflowRepo = workflowRepoFactory.make();
         Map<String, String> map = workflowRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for Workflow Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for Workflow Repository:\n'{}'",
+            JsonUtils.toJson(true, "Workflow Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         anno = TestUtils.makeAnnotation("SomePilotJobLabel", "TemplateRepository-UnitTests");
         data.setAnnotations(anno);
         TaskTideModel<Workflow> result = workflowRepo.insertModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<Workflow> ref = data;
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Record", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query Template Workflow Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template Workflow Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -282,7 +352,7 @@ public class TemplateRepositoryTests {
     public void canQueryInsertedMetricData() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query Template MetricData Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template MetricData Repository ================\n");
         TaskTideRepository<MetricData> repo;
         RepositoryFactory<MetricData> repoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
@@ -290,7 +360,7 @@ public class TemplateRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestMetricData(),
             TestCaseBuilderUtility.makeTestMetricData(),
@@ -298,25 +368,28 @@ public class TemplateRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching template for repository construction");
+        LOGGER.info("Fetching template for repository construction");
         repoFactory = new RepositoryFactory<>("MetricData", MetricData.class, template, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricData Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricData Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<MetricData> ref = data.get(0);
         TaskTideModel<MetricData> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query Template MetricData Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template MetricData Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -331,7 +404,7 @@ public class TemplateRepositoryTests {
     public void canQueryInsertedMetricProfile() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query Template MetricProfile Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template MetricProfile Repository ================\n");
         TaskTideRepository<MetricProfile> repo;
         RepositoryFactory<MetricProfile> repoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
@@ -339,7 +412,7 @@ public class TemplateRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestMetricProfile(),
             TestCaseBuilderUtility.makeTestMetricProfile(),
@@ -347,25 +420,28 @@ public class TemplateRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching template for repository construction");
+        LOGGER.info("Fetching template for repository construction");
         repoFactory = new RepositoryFactory<>("MetricProfile", MetricProfile.class, template, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricProfile Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricProfile Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<MetricProfile> ref = data.get(0);
         TaskTideModel<MetricProfile> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query Template MetricProfile Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template MetricProfile Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -380,7 +456,7 @@ public class TemplateRepositoryTests {
     public void canQueryInsertedJobEnvironment() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query Template JobEnvironment Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template JobEnvironment Repository ================\n");
         TaskTideRepository<JobEnvironment> repo;
         RepositoryFactory<JobEnvironment> repoFactory;
         RepositoryType repoType = RepositoryType.NOSQL;
@@ -388,7 +464,7 @@ public class TemplateRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestJobEnvironment(),
             TestCaseBuilderUtility.makeTestJobEnvironment(),
@@ -396,25 +472,28 @@ public class TemplateRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching template for repository construction");
+        LOGGER.info("Fetching template for repository construction");
         repoFactory = new RepositoryFactory<>("JobEnvironment", JobEnvironment.class, template, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for JobEnvironment Repository:\n'{}'",
+            JsonUtils.toJson(true, "JobEnvironment", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<JobEnvironment> ref = data.get(0);
         TaskTideModel<JobEnvironment> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query Template JobEnvironment Repository ================\n");
+        LOGGER.info("\n\n================ Can Query Template JobEnvironment Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

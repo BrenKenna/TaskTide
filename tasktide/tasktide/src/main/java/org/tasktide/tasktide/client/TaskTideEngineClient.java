@@ -50,6 +50,7 @@ import org.tasktide.parser.model.ArgumentMap;
 public class TaskTideEngineClient extends TaskTideClient {
     
     // Attributes
+    private final TaskTideClientType CLIENT_TYPE = TaskTideClientType.ENGINE;
     private final Logger LOGGER = LogManager.getLogger(TaskTideEngineClient.class);
     private final String step;
     private final WorkerUnitContainer workerContainer;

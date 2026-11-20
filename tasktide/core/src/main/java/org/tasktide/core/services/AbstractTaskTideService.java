@@ -15,7 +15,10 @@
  */
 package org.tasktide.core.services;
 
+import jakarta.json.bind.annotation.JsonbTransient;
+
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -37,8 +40,12 @@ public class AbstractTaskTideService<T extends TaskTideModel<T>>
 {
     
     // Attributes
+    @JsonbTransient
     protected final TaskTideRepository<T> repo;
+    
+    @JsonbTransient
     protected int resultSetSize;
+    
     
     /**
      * Construct {@link TaskTideService} with {@link TaskTideRepository}
@@ -48,7 +55,7 @@ public class AbstractTaskTideService<T extends TaskTideModel<T>>
     public AbstractTaskTideService(TaskTideRepository<T> repo) {
         this.repo = repo;
     }
-    
+
     
     /**
      * Construct {@link TaskTideService} with {@link TaskTideRepository}
@@ -61,6 +68,29 @@ public class AbstractTaskTideService<T extends TaskTideModel<T>>
         this.resultSetSize = resultSetSize;
     }
 
+    
+    /**
+     * Delegates call to the {@link TaskTideRepository}
+     * 
+     * @return Map-String, String
+     */
+    @Override
+    public Map<String, String> getServiceMetaData() {
+        return this.repo.getRepositoryMetaData();
+    }
+
+    
+    /**
+     * Delegates call to the {@link TaskTideRepository}
+     * 
+     * @param indent
+     * @return String
+     */
+    @Override
+    public String toJson(boolean indent) {
+        return this.repo.toJson(indent);
+    }
+    
     
     /**
      * Checks that the {@link TaskTideRepository} property
@@ -213,6 +243,7 @@ public class AbstractTaskTideService<T extends TaskTideModel<T>>
      * 
      * @return {@link TaskTideRepository}-{@link TaskTideModel}
      */
+    @JsonbTransient
     @Override
     public TaskTideRepository<T> getRepo() {
         return this.repo;

@@ -103,6 +103,20 @@ public class TaskTideClientUtility {
     
     
     /**
+     * Format help message to string
+     * 
+     * @param configMap
+     * @return String
+     */
+    public static String formatHelpMessage(ClientConfigMap configMap) {
+        return String.join(
+            System.lineSeparator(),
+            configMap.getArgTree().getVerboseHelp()
+        );
+    }
+    
+    
+    /**
      * Configures {@link CdiContainerProvider} for provided {@link CdiProviders} type
      * 
      * @param cdiProvider

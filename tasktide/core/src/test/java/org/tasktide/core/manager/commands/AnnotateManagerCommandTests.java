@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.manager;
+package org.tasktide.core.manager.commands;
 
 import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 
 import java.nio.file.Path;
@@ -40,6 +39,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestEnvironment;
 import org.tasktide.TestUtils;
+import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;
@@ -71,7 +71,6 @@ public class AnnotateManagerCommandTests {
     // Container for fetch nosql template
     private SeContainer container;
     private EntityManager entityManager;
-    private Template template;
     
     // Backend repos
     // @Rule
@@ -90,7 +89,6 @@ public class AnnotateManagerCommandTests {
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-template.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
-        template = TestEnvironment.fetchDocumentTemplate(container);
         
         try {
             TestUtils.initServiceManager(RepositoryType.SQL, entityManager);
@@ -119,7 +117,7 @@ public class AnnotateManagerCommandTests {
     public void setUp() {
         LOGGER.info("\n\n================ Initiating Next Test ================\n");
         LOGGER.info("\n\n================ Purging Records For Active Tests ================\n");
-        TestUtils.clearTestTables(this.LOGGER, this.entityManager);
+        //TestUtils.clearTestTables(this.LOGGER, this.entityManager);
         LOGGER.info("\n\n================ Records Purged For Active Tests ================\n");
     }
     
@@ -225,7 +223,7 @@ public class AnnotateManagerCommandTests {
             LOGGER.info("Execution successful, N annotated = '{}'", nRecords);
             LOGGER.info(
                 "Displaying records for reference:\n'{}'",
-                JsonUtils.toJson(true, TaskTideServiceManager.fetchWorkItemService().fetchById("WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249"))
+                JsonUtils.toJson(true, "Records", TaskTideServiceManager.fetchWorkItemService().fetchById("WorkItem-cf1ffbbe-4bc3-408f-81ed-139e029ce249"))
             );
         }
         else {

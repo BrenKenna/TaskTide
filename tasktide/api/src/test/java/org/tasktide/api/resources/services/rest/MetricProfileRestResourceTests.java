@@ -185,7 +185,7 @@ public class MetricProfileRestResourceTests extends AbstractBaseJerseyTest {
         
         // Evaluate test
         List<MetricProfile> records = resp.readEntity(new GenericType<List<MetricProfile>>() {});
-        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, records));
+        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, "Records", records));
         Assertions.assertTrue(resp.getStatus() == 200, "Error could query MetricProfile field through MetricProfileRestResource");
         LOGGER.info("\n\n================ MetricProfileRestResource Can Query By Field ================\n");
     }

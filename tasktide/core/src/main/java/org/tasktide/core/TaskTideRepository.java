@@ -18,6 +18,7 @@ package org.tasktide.core;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
 import org.tasktide.core.model.CustomAnnotation;
 
 import org.tasktide.core.model.collection.Step;
@@ -215,4 +216,14 @@ public interface TaskTideRepository<T extends TaskTideModel<T>> {
      * @return Map-String, String
      */
     public Map<String, String> getRepositoryMetaData();
+    
+    
+    /**
+     * Represent as Json string or document
+     * 
+     * @param indent
+     * 
+     * @return String
+     */
+    public String toJson(boolean indent);
 }

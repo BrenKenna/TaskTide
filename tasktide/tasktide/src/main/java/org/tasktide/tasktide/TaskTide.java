@@ -72,10 +72,7 @@ public class TaskTide {
                 provider.shutdown();
                 LOGGER.info(
                     "\n{}",
-                    String.join(
-                        System.lineSeparator(),
-                        configMap.getArgTree().getVerboseHelp()
-                    )
+                    TaskTideClientUtility.formatHelpMessage(configMap)
                 );
                 System.exit(0);
             }

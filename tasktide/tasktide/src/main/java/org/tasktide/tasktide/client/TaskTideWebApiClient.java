@@ -33,6 +33,7 @@ import org.tasktide.parser.model.ArgumentMap;
 public class TaskTideWebApiClient extends TaskTideClient {
 
     // Attributes
+    private final TaskTideClientType CLIENT_TYPE = TaskTideClientType.WEBAPI;
     private final Logger LOGGER = LogManager.getLogger(TaskTideWebApiClient.class);
     private final ArgumentMap webApiArgs;
     private final ArgumentMap globalArgs;

@@ -203,11 +203,14 @@ public class ItemTaskTraverserTests {
             
             // Process task
             traverser.traverse(tasks);
-            resultMap = JsonUtils.toJson(true, task.getWorkload().summarizeWorkload());
-            LOGGER.info("Traversal complete");
+            resultMap = JsonUtils.toJson(
+                true,
+                "Workload Summary - " + task.getId(),
+                task.getWorkload().summarizeWorkload()
+            );
             
             // Check workload
-            LOGGER.info("Evaluating workload status:\t'{}'\n\n'{}'", task.getId(), resultMap);
+            LOGGER.info("Traversal oompleted, evaluating workload status:\t'{}'\n\n'{}'", task.getId(), resultMap);
             int tasksDone = task.getWorkload().summarizeWorkload().get(TaskState.COMPLETE);
             if ( tasksDone == task.getTaskCount() ) {
                 LOGGER.info("ItemTask Traversal completed successfully");
@@ -278,11 +281,14 @@ public class ItemTaskTraverserTests {
         // Process tasks
         try {
             traverser.traverse(tasks);
-            resultMap = JsonUtils.toJson(true, task.getWorkload().summarizeWorkload());
-            LOGGER.info("Traversal complete");
+            resultMap = JsonUtils.toJson(
+                true,
+                "Workload Summary - " + task.getId(),
+                task.getWorkload().summarizeWorkload()
+            );
             
             // Check workload
-            LOGGER.info("Evaluating workload status:\t'{}'\n\n'{}'", task.getId(), resultMap);
+            LOGGER.info("Traversal complete, evaluating workload status:\t'{}'\n\n'{}'", task.getId(), resultMap);
             Map<TaskState, Integer> taskSummary = task.getWorkload().summarizeWorkload();
             int inActive = taskSummary.get(TaskState.ACTIVE) + taskSummary.get(TaskState.PENDING);
             if ( inActive == 0 ) {

@@ -17,6 +17,7 @@ package org.tasktide.core.repository;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.annotation.JsonbTransient;
 
 import java.util.List;
 import java.util.Map;
@@ -48,8 +49,13 @@ import org.tasktide.itemstore.types.DbTarget;
 public abstract class ItemStoreRepository<T extends TaskTideModel<T>> extends AbstractRepository<T> {
 
     // Attributes
+    @JsonbTransient
     private final Logger LOGGER = LogManager.getLogger(ItemStoreRepository.class);
+    
+    @JsonbTransient
     private final ItemStore repo;
+    
+    @JsonbTransient
     private final Jsonb JSON_BUILDER = JsonbBuilder.create();
     
     

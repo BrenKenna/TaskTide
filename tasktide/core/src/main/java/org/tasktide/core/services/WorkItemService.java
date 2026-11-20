@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.services;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -210,6 +211,8 @@ public class WorkItemService
      * 
      * @return {@link TaskTideRepository} of -{@link WorkItem}
      */
+    @Deprecated
+    @JsonbTransient
     @Override
     public synchronized TaskTideRepository<WorkItem> getRepo() {
         return this.repo;
