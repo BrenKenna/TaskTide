@@ -37,6 +37,8 @@
 
 - Stablizes JSON SerDe through JsonB-Yasson.
 
+- Resolves ManagerCommand not evaluating ManagerTask as command path, from improvements on the ImportCommand.validateCommand initially just returning true. Then ManagerTarget path examination coming in July/2026 during refinements being made to the TaskTide-Engine, EngineWorker-Acquisition tests 'https://github.com/BrenKenna/TaskTide/commit/3c758ac16cc3c1b5bd68ee939eb9fa801158eecc'.
+
 - TaskTideService and TaskTideRepository JSON serialization is explictly defined to metadata, and blocks hidden attribute leakages.
 
 
