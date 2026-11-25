@@ -2,6 +2,55 @@
 :toc: auto
 
 
+== [v1.1.0]
+
+
+=== [General Comments]
+
+- Moving towards PR-Issues forward development approach. As project matures the rational for certain things can no longer be
+  buried in commit messages. Having tickets with contextual evidence like logs, error messages becomes more valuable.
+
+- Structured increases on code coverage by tests (unit, integration, system) improving general stability.
+
+- Resolving various Yasson-JsonB stability issues merits version increment, all in CoreLib.
+
+- Tidying up logging and messages, refining as the project develops.
+
+
+=== [Test Cases]
+
+- Adds TaskTideServiceManager tests for supported backends (JPA, Template, and ItemStore) to examine initialization and serialization.
+
+- Adjusts test cases to use the new JsonUtils SerDe operations.
+
+- Not incrementing versions for these updates.
+
+
+
+=== [Parser Lib]
+
+- Adds HelpMessageType for aiding how the ArgumentTree formats its message.
+
+
+
+=== [Core Lib]
+
+- Stablizes JSON SerDe through JsonB-Yasson.
+
+- TaskTideService and TaskTideRepository JSON serialization is explictly defined to metadata, and blocks hidden attribute leakages.
+
+
+
+=== [TaskTide Application]
+
+- Adds the TaskTideClientType to concrete TaskTideClient classes.
+
+- Application uses client utility to formate help message.
+
+- Adds formatHelpMessage to TaskTideClientUtility.
+
+
+
 == [v1.0.0]
 
 - Accepts version bumps for Jakarta-NoSQL (v1.18), DaniloPianni Maven Publishing Lib.

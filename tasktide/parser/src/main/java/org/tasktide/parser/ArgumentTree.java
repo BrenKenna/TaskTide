@@ -227,7 +227,7 @@ public class ArgumentTree {
     
     /**
      * Fetch formatted help message for required {@link HelpMessageType}
-     *  from configured {@link ArgymentTree}
+     *  from configured {@link ArgumentTree}
      * 
      * @param argType
      * @return String
