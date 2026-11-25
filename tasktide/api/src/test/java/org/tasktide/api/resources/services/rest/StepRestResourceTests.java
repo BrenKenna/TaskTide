@@ -176,7 +176,7 @@ public class StepRestResourceTests extends AbstractBaseJerseyTest {
         
         // Evaluate test
         List<Step> records = resp.readEntity(new GenericType<List<Step>>() {});
-        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, records));
+        LOGGER.info("Displaying retrieved records:\n\n'{}", JsonUtils.toJson(true, "Records", records));
         Assertions.assertTrue(resp.getStatus() == 200, "Error could query Step field through StepRestResource");
         LOGGER.info("\n\n================ StepRestResource Can Query By Field ================\n");
     }

@@ -159,19 +159,29 @@ public class ItemStoreRepositoryUtility {
             "JobEnvironment"
         );
         
+        
         // Initialize service manager with services
-        TaskTideServiceManager.initialize(
-            workItemService,
-            stepService,
-            workflowService,
-            jobEnvServ,
-            metricServ,
-            profileServ
-        );
-        LOGGER.debug(
-            "Displaying configured service manager:\n'{}'",
-            TaskTideServiceManager.toJson()
-        );
+        try {
+            TaskTideServiceManager.initialize(
+                workItemService,
+                stepService,
+                workflowService,
+                jobEnvServ,
+                metricServ,
+                profileServ
+            );
+        }
+        catch ( IllegalStateException ex) {
+            LOGGER.warn("Modifying service manager for provided:\t'{}'", this.storeName);
+            TaskTideServiceManager.modify(
+                workItemService,
+                stepService,
+                workflowService,
+                jobEnvServ,
+                metricServ,
+                profileServ
+            );
+        }
     }
     
     

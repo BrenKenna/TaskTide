@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.manager;
+package org.tasktide.core.manager.commands;
 
 import jakarta.enterprise.inject.se.SeContainer;
-import jakarta.nosql.Template;
 import jakarta.persistence.EntityManager;
 
 import java.util.HashMap;
@@ -73,7 +72,6 @@ public class ExportManagerCommandTests {
     // Container for fetch nosql template
     private SeContainer container;
     private EntityManager entityManager;
-    private Template template;
     
     
     public ExportManagerCommandTests() {
@@ -85,7 +83,6 @@ public class ExportManagerCommandTests {
         LOGGER.info(msg);
         container = TestEnvironment.startWeldContainer("jpa-config.properties", getClass());
         entityManager = JpaRepositoryUtility.get().fetchEntityManager();
-        template = TestEnvironment.fetchDocumentTemplate(container);
         
         try {
             TestUtils.initServiceManager(RepositoryType.SQL, entityManager);

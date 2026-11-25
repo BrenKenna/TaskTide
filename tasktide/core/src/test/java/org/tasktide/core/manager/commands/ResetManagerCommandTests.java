@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.tasktide.core.manager;
+package org.tasktide.core.manager.commands;
 
 
 import java.util.HashMap;
@@ -37,6 +37,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.TestUtils;
+import org.tasktide.core.manager.TaskTideServiceManager;
 
 import org.tasktide.core.manager.command.CommandSpec;
 import org.tasktide.core.manager.command.ManagerAction;

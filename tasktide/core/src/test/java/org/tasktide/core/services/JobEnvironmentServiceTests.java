@@ -143,7 +143,10 @@ public class JobEnvironmentServiceTests {
         LOGGER.info("Configuring Service");
         service = ServiceFactory.makeJobEnvironmentService(repoType, template, "JobEnvironment-Template");
         Map<String, String> map = service.getRepo().getRepositoryMetaData();
-        LOGGER.info("Displaying meta data for NoSQL JobEnvironment Service:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "Displaying meta data for NoSQL JobEnvironment Service:\n'{}'",
+            JsonUtils.toJson(true, "Service Map", map)
+        );
         
         // Add records
         service.extendModel(data);
@@ -189,7 +192,7 @@ public class JobEnvironmentServiceTests {
         LOGGER.info("Configuring Service");
         service = ServiceFactory.makeJobEnvironmentService(repoType, entityManager, "JobEnvironment-JpaRepository");
         Map<String, String> map = service.getRepo().getRepositoryMetaData();
-        LOGGER.info("Displaying meta data for SQL JobEnvironment Service:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info("Displaying meta data for SQL JobEnvironment Service:\n'{}'", JsonUtils.toJson(true, "SQL Service Map", map));
         
         // Add records
         service.extendModel(data);

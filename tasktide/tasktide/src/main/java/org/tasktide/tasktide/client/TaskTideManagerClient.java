@@ -41,7 +41,9 @@ import org.tasktide.parser.model.ArgumentMap;
 public class TaskTideManagerClient extends TaskTideClient {
     
     // Attributes
+    private final TaskTideClientType CLIENT_TYPE = TaskTideClientType.MANAGER;
     private final Logger LOGGER = LogManager.getLogger(TaskTideManagerClient.class);
+    
     private final ArgumentMap managerArgs;
     private final ArgumentMap globalArgs;
     private ManagerTarget target;
@@ -107,11 +109,15 @@ public class TaskTideManagerClient extends TaskTideClient {
         cmd = this.getManagerCommand();
         
         // Run command
-        LOGGER.info("Executing ManagerCommand:\n'{}'", JsonUtils.toJson(true, cmd));
+        LOGGER.info("Executing ManagerCommand:\n'{}'", JsonUtils.toJson(true, "Command", cmd));
         result = cmd.execute();
         
         // Handle logging based on action
-        LOGGER.info("Displaying results:\t'{}'", JsonUtils.toJson(true, result));
+        String resultsKey = this.CLIENT_TYPE.name() + " Results";
+        LOGGER.info(
+            "Displaying results:\n\n'{}'",
+            JsonUtils.toJson(true, resultsKey, result)
+        );
     }
     
     

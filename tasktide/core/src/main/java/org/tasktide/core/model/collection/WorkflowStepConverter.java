@@ -17,8 +17,6 @@ package org.tasktide.core.model.collection;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
-import jakarta.nosql.AttributeConverter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

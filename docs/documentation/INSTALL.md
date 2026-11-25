@@ -140,19 +140,21 @@ cd $TASKTIDE_INSTALL
 mkdir -p jnosql-libs
 
 # Aggregate jnosql-libs
-mv lib/jnosql-arangodb-1.1.6.jar jnosql-libs/
-mv lib/jnosql-cassandra-1.1.6.jar jnosql-libs/
-mv lib/jnosql-couchbase-1.1.6.jar jnosql-libs/
-mv lib/jnosql-dynamodb-1.1.6.jar jnosql-libs/
-mv lib/jnosql-mongodb-1.1.6.jar jnosql-libs/
-mv lib/jnosql-redis-1.1.6.jar jnosql-libs/
-mv lib/jnosql-couchdb-1.1.6.jar jnosql-libs/
-mv lib/jnosql-mapping-graph-1.1.8.jar jnosql-libs/
-mv lib/jnosql-mapping-key-value-1.1.8.jar jnosql-libs/
-mv lib/jnosql-mapping-column-1.1.8.jar jnosql-libs/
+mv lib/jnosql-arangodb*jar jnosql-libs/
+mv lib/jnosql-cassandra*jar jnosql-libs/
+mv lib/jnosql-couchbase*jar jnosql-libs/
+mv lib/jnosql-dynamodb*jar jnosql-libs/
+mv lib/jnosql-mongodb*jar jnosql-libs/
+mv lib/jnosql-redis*jar jnosql-libs/
+mv lib/jnosql-couchdb*jar jnosql-libs/
+mv lib/jnosql-mapping-graph*jar jnosql-libs/
+mv lib/jnosql-mapping-key-value*jar jnosql-libs/
+mv lib/jnosql-mapping-column*jar jnosql-libs/
+
 
 # Package into tarball for future reference
 tar -czf jnosql-libs.tar.gz jnosql-libs/
+
 
 # Clear libaries from class path
 rm -fr jnosql-libs/

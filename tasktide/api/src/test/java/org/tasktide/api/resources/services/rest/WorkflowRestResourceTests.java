@@ -15,13 +15,11 @@
  */
 package org.tasktide.api.resources.services.rest;
 
-import jakarta.nosql.Template;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import java.security.KeyPair;
 import jakarta.enterprise.context.control.RequestContextController;
 
 import java.util.ArrayList;
@@ -45,17 +43,11 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import org.tasktide.core.manager.BuilderUtility;
 import org.tasktide.core.model.collection.Workflow;
-import org.tasktide.core.repository.RepositoryType;
 
 import org.tasktide.api.AbstractBaseJerseyTest;
-import org.tasktide.api.TestEnvironment;
 import org.tasktide.api.TestUtils;
 
 import org.tasktide.api.auth.AuthenicationFilter;
-
-import org.tasktide.api.utils.WebApiUtils;
-import org.tasktide.core.manager.TaskTideServiceManager;
-import org.tasktide.core.model.collection.Step;
 
 
 /**

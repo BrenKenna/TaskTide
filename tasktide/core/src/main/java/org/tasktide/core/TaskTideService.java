@@ -16,6 +16,7 @@
 package org.tasktide.core;
 
 import java.util.List;
+import java.util.Map;
 
 import org.tasktide.core.model.workitem.WorkItem;
 import org.tasktide.core.model.collection.Step;
@@ -155,4 +156,22 @@ public interface TaskTideService<T extends TaskTideModel<T>> {
      * @return {@link TaskTideRepository} of {@link Workflow},{@link Step},{@link WorkItem}
      */
     public TaskTideRepository<T> getRepo();
+    
+    
+    /**
+     * Return a map of the service metadata
+     * 
+     * @return Map-String, String
+     */
+    public Map<String, String> getServiceMetaData();
+    
+    
+    /**
+     * Represent as Json string or document
+     * 
+     * @param indent
+     * 
+     * @return String
+     */
+    public String toJson(boolean indent);
 }

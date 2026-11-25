@@ -254,21 +254,42 @@ public class ImportCommand extends AbstractCommand{
     @Override
     public boolean validateCommand() {
         
+        // Initalize target list and examine WorkItem
+        ArrayList<ManagerTarget> list = new ArrayList<>();
         if ( this.target == ManagerTarget.WORKITEM ) {
             if ( this.cmdSpec.getFilePath().isEmpty() ) {
                 return false;
             }
             return !this.cmdSpec.getOptionsKey("Delimiter").isEmpty();
         }
+        list.add(ManagerTarget.WORKITEM);
         
+        // Otherwise ManagerTask
+        if ( this.target == ManagerTarget.MANAGERTASK ) {
+            if ( this.cmdSpec.getFilePath().isEmpty() ) {
+                return false;
+            }
+            return !this.cmdSpec.getOptionsKey("Delimiter").isEmpty();
+        }
+        list.add(ManagerTarget.MANAGERTASK);
+        
+        // Otherwise Step
         if ( this.target == ManagerTarget.STEP ) {
             return !cmdSpec.getOptionsKey("Step Name").isEmpty();
         }
+        list.add(ManagerTarget.STEP);
         
+        // Otherwise Workflow
         if ( this.target == ManagerTarget.WORKFLOW ) {
             return !cmdSpec.getOptionsKey("Workflow Name").isEmpty();
         }
+        list.add(ManagerTarget.WORKFLOW);
         
+        // Log validation failure, and ManagerTargets examined
+        LOGGER.error(
+            "ImportCommand Valdation failed could not detect ManagerTarget:\t'{}'",
+            list
+        );
         return false;
     }
     
@@ -294,6 +315,7 @@ public class ImportCommand extends AbstractCommand{
                 return this.importWorkItemFromManagerTaskJson(file);
             }
             else {
+                LOGGER.info("Importing as WorkItem collection");
                 return this.importJson(file);
             }
         }
@@ -467,8 +489,8 @@ public class ImportCommand extends AbstractCommand{
         // Commit changes
         LOGGER.info("Committing Step & Workflow updates");
         if (
-            TaskTideServiceManager.fetchWorkflowService().updateModel(workflow) != null
-            && TaskTideServiceManager.fetchStepService().appendModel(output) != null
+            TaskTideServiceManager.fetchStepService().appendModel(output) != null 
+            && TaskTideServiceManager.fetchWorkflowService().updateModel(workflow) != null
         ) {
             LOGGER.info("Successfully added '{}' to '{}'", output.getId(), workflow.getId());
             return output;

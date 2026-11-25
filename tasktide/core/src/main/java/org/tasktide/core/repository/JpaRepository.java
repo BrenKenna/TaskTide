@@ -15,6 +15,7 @@
  */
 package org.tasktide.core.repository;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import java.util.ArrayList;
@@ -41,7 +42,10 @@ import org.tasktide.core.TaskTideRepository;
 public abstract class JpaRepository<T extends TaskTideModel<T>> extends AbstractRepository<T> {
 
     // Attributes
+    @JsonbTransient
     private final Logger LOGGER = LogManager.getLogger(JpaRepository.class);
+    
+    @JsonbTransient
     protected final EntityManager entityManager;
 
     

@@ -55,7 +55,12 @@ public class Step implements TaskTideModel<Step> {
     private String workflowId;
     
     @jakarta.persistence.ManyToOne(fetch = jakarta.persistence.FetchType.LAZY)
-    @jakarta.persistence.JoinColumn(name = "MemberId", referencedColumnName = "workflowId", insertable = false, updatable = false)
+    @jakarta.persistence.JoinColumn(
+        name = "MemberId",
+        referencedColumnName = "workflowId",
+        insertable = false,
+        updatable = false
+    )
     @JsonbTransient
     private Workflow workflow;
     
@@ -111,7 +116,9 @@ public class Step implements TaskTideModel<Step> {
         this.stepId = stepId;
         this.stepName = stepName;
         this.workflowId = workflowId;
-        this.anno = anno;
+        this.anno = anno != null ?
+            anno : new CustomAnnotation()
+        ;
     }
 
     
@@ -202,6 +209,7 @@ public class Step implements TaskTideModel<Step> {
      */
     public void setWorkflowId(Workflow workflow) {
         this.workflow = workflow;
+        this.workflowId = this.workflow.getId();
     }
     
     

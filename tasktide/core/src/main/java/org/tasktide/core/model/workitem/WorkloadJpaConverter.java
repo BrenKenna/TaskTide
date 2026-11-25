@@ -43,6 +43,9 @@ public class WorkloadJpaConverter implements AttributeConverter<Map<String, Item
      */
     @Override
     public String convertToDatabaseColumn(Map<String, ItemTask> attribute) {
+        if ( attribute == null ) {
+            attribute = new HashMap<>();
+        }
         return JsonUtils.toJson(true, attribute);
     }
 

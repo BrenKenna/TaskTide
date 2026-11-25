@@ -41,6 +41,9 @@ public class CustomAnnotationJpaConverter implements AttributeConverter<Map<Stri
      */
     @Override
     public String convertToDatabaseColumn(Map<String, Object> attribute) {
+        if ( attribute == null ) {
+            attribute = new HashMap<>();
+        }
         return JsonUtils.toJson(true, attribute);
     }
 

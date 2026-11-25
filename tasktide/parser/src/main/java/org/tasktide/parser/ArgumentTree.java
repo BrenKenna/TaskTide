@@ -223,4 +223,44 @@ public class ArgumentTree {
             arg.getDescription()
         );
     }
+    
+    
+    /**
+     * Fetch formatted help message for required {@link HelpMessageType}
+     *  from configured {@link ArgumentTree}
+     * 
+     * @param argType
+     * @return String
+     */
+    public String getFormattedHelp(HelpMessageType argType) {
+        switch ( argType ) {
+            case ACTION -> {
+                return String.join(
+                    System.lineSeparator(),
+                    this.getActionHelp()
+                );
+            }
+            
+            case GLOBAL -> {
+                return String.join(
+                    System.lineSeparator(),
+                    this.getGlobalHelp()
+                );
+            }
+            
+            case VERBOSE -> {
+                return String.join(
+                    System.lineSeparator(),
+                    this.getVerboseHelp()
+                );
+            }
+            
+            default -> {
+                return String.join(
+                    System.lineSeparator(),
+                    this.getVerboseHelp()
+                );
+            }
+        }
+    }
 }

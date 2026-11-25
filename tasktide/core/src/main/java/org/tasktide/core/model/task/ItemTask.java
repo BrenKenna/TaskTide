@@ -146,7 +146,9 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskState = taskState;
         this.taskLog = taskLog;
         this.task = task;
-        this.anno = anno;
+        this.anno = anno != null ?
+            anno : new CustomAnnotation()
+        ;
     }
     
     
@@ -180,7 +182,9 @@ public class ItemTask implements TaskTideModel<ItemTask> {
         this.taskLog = taskLog;
         this.workItemId = workItemId;
         this.jobEnvId = jobEnvId;
-        this.anno = anno;
+        this.anno = anno != null ?
+            anno : new CustomAnnotation()
+        ;
     }
 
     

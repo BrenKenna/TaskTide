@@ -15,7 +15,6 @@
  */
 package org.tasktide.core.repository;
 
-import static com.mongodb.internal.authentication.AwsCredentialHelper.LOGGER;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +23,7 @@ import org.apache.logging.log4j.Logger;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -64,7 +64,7 @@ import org.tasktide.itemstore.types.ItemStoreType;
 public class SqliteItemStoreRepositoryTests {
     
     // Logger for tests
-    private static final Logger logger = LogManager.getLogger(SqliteItemStoreRepositoryTests.class);
+    private static final Logger LOGGER = LogManager.getLogger(SqliteItemStoreRepositoryTests.class);
 
     // Backend repo
     private final ItemStoreType storeType = ItemStoreType.SQLITE;
@@ -75,12 +75,20 @@ public class SqliteItemStoreRepositoryTests {
     
     @BeforeAll
     public void setUpClass() {
-        String msg = "\n\n---------------- Initiating RocksDbItemStore-Repository Tests ----------------\n";
+        String msg = "\n\n---------------- Initiating SQLiteItemStore-Repository Tests ----------------\n";
         LOGGER.info(msg);
-        ItemStoreRepositoryUtility.initialize(
-            this.storeType,
-            this.storeName
-        );
+        try {
+            ItemStoreRepositoryUtility.initialize(
+                this.storeType,
+                this.storeName
+            );
+        }
+        catch(IllegalStateException ex) {
+            LOGGER.warn(
+                "Proceeding as ItemStoreRepositoryUtility is already initialized. Displaying error for reference\n\n'{}'",
+                ex.getMessage()
+            );
+        }
         this.storeMap = ItemStoreRepositoryUtility
             .get()
             .fetchItemStoreMap(
@@ -94,29 +102,89 @@ public class SqliteItemStoreRepositoryTests {
     @AfterAll
     public void tearDownClass() {
         String msg = "\n\n---------------- Terminating SQLiteItemStore-Repository Tests ----------------\n";
-        logger.info(msg);
+        LOGGER.info(msg);
     }
     
     @BeforeEach
     public void setUp() {
-        logger.info("\n\n================ Initiating Next Test ================\n");
+        LOGGER.info("\n\n================ Initiating Next Test ================\n");
     }
     
     @AfterEach
     public void tearDown() {
-        logger.info("\n\n================ Terminating Test ================\n");
+        LOGGER.info("\n\n================ Terminating Test ================\n");
     }
 
+    
+    /**
+     * Tests that the {@link ItemStore} can be represented as meta data
+     */
+    @Test
+    @Order(0)
+    public void canSerializeToJson() {
+        
+        // Initialize data
+        LOGGER.info("\n\n================ Can Serialize ItemStore-SQLite Repository to JSON ================\n");
+        String metadata;
+        boolean assertionState;
+        TaskTideRepository<WorkItem> workItemRepo;
+        RepositoryFactory<WorkItem> workItemRepoFactory;
+        RepositoryType repoType = RepositoryType.ITEMSTORE;
+        
+        // Request ItemStore repository
+        LOGGER.info("Requesting ItemStore for repository");
+        workItemRepoFactory = new RepositoryFactory<>(
+            "WorkItem", WorkItem.class,
+            this.itemStore, repoType
+        );
+        workItemRepo = workItemRepoFactory.make();
+        
+        // Try serialize to json
+        LOGGER.info("Attempting to serialize ItemStore Repository to JSON document");
+        try {
+            metadata = workItemRepo.toJson(true);
+            if ( metadata != null ) {
+                assertionState = true;
+                LOGGER.info(
+                    "Successfully serialized ItemStore-SQLite repository, displaying below:\n\n'{}'",
+                    metadata
+                );
+            }
+            else {
+                assertionState = false;
+                LOGGER.warn("Unable to serialize ItemStore repository");
+            }
+        }
+        
+        // Catch any exception which maybe introduced by separate 
+        //  SDLC of dependency
+        catch ( Exception ex ) {
+            LOGGER.error(
+                "Error serializing ItemStore repository:\t'{}'\n\n",
+                ex.getMessage(),
+                ex
+            );
+            assertionState = false;
+        }
+        
+        // Evaluate and log completion
+        Assertions.assertTrue(
+            assertionState,
+            "Unable to serialize ItemStore Repository to JSON document"
+        );
+        LOGGER.info("\n\n================ Can Serialize ItemStore-SQLite Repository to JSON ================\n");
+    }
+    
     
     /**
      * Tests query & retrieval WorkItem from SQLiteItemStore WorkItem Repository
      */
     @Test
-    @Order(0)
+    @Order(1)
     public void canQueryInsertSingleWorkItem() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query SQLiteItemStore WorkItem Repository ================\n");
+        LOGGER.info("\n\n================ Can Query SQLiteItemStore WorkItem Repository ================\n");
         TaskTideRepository<WorkItem> workItemRepo;
         RepositoryFactory<WorkItem> workItemRepoFactory;
         RepositoryType repoType = RepositoryType.ITEMSTORE;
@@ -124,7 +192,7 @@ public class SqliteItemStoreRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestWorkItem(),
             TestCaseBuilderUtility.makeTestWorkItem(),
@@ -132,25 +200,28 @@ public class SqliteItemStoreRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching SQLiteItemStore for repository construction");
+        LOGGER.info("Fetching SQLiteItemStore for repository construction");
         workItemRepoFactory = new RepositoryFactory<>("WorkItem", WorkItem.class, itemStore, repoType);
         workItemRepo = workItemRepoFactory.make();
         Map<String, String> map = workItemRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for WorkItemRepository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for WorkItemRepository:\n'{}'",
+            JsonUtils.toJson(true, "WorkItemRepository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         workItemRepo.insertModel(data.get(0));
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<WorkItem> ref = data.get(0);
         TaskTideModel<WorkItem> result = workItemRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query SQLiteItemStore WorkItem Repository ================\n");
+        LOGGER.info("\n\n================ Can Query SQLiteItemStore WorkItem Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -160,11 +231,11 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(1)
+    @Order(2)
     public void canQueryInsertSteps() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query SQLiteItemStore Step Repository ================\n");
+        LOGGER.info("\n\n================ Can Query SQLiteItemStore Step Repository ================\n");
         TaskTideRepository<Step> stepRepo;
         RepositoryFactory<Step> stepRepoFactory;
         RepositoryType repoType = RepositoryType.ITEMSTORE;
@@ -172,29 +243,32 @@ public class SqliteItemStoreRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = TestCaseBuilderUtility.makeTestStepList();
         
         // Fetch backend instance
-        logger.info("Fetching SQLiteItemStore for repository construction");
+        LOGGER.info("Fetching SQLiteItemStore for repository construction");
         stepRepoFactory = new RepositoryFactory<>("Step", Step.class, itemStore, repoType);
         stepRepo = stepRepoFactory.make();
         Map<String, String> map = stepRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for StepRepository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for Step Repository:\n'{}'",
+            JsonUtils.toJson(true, "Step Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         stepRepo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<Step> ref = data.get(0);
         TaskTideModel<Step> result = stepRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query SQLiteItemStore Step Repository ================\n");
+        LOGGER.info("\n\n================ Can Query SQLite-ItemStore Step Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -204,11 +278,11 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(2)
+    @Order(3)
     public void canQueryInsertWorkflow() {
         
         // Initialize data
-        logger.info("\n\n================ Can Query SQLiteItemStore Workflow Repository ================\n");
+        LOGGER.info("\n\n================ Can Query SQLiteItemStore Workflow Repository ================\n");
         TaskTideRepository<Workflow> workflowRepo;
         RepositoryFactory<Workflow> workflowRepoFactory;
         RepositoryType repoType = RepositoryType.ITEMSTORE;
@@ -216,29 +290,32 @@ public class SqliteItemStoreRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = TestCaseBuilderUtility.makeTestWorkflows();
         
         // Fetch backend instance
-        logger.info("Fetching SQLiteItemStore for repository construction");
+        LOGGER.info("Fetching SQLiteItemStore for repository construction");
         workflowRepoFactory = new RepositoryFactory<>("Workflow", Workflow.class, itemStore, repoType);
         workflowRepo = workflowRepoFactory.make();
         Map<String, String> map = workflowRepo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for Workflow Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for Workflow Repository:\n'{}'",
+            JsonUtils.toJson(true, "Workflow Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         workflowRepo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<Workflow> ref = data.get(0);
         TaskTideModel<Workflow> result = workflowRepo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query SQLiteItemStore Workflow Repository ================\n");
+        LOGGER.info("\n\n================ Can Query SQLiteItemStore Workflow Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -249,11 +326,11 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(3)
+    @Order(4)
     public void canQueryInsertedMetricData() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query JPA MetricData Repository ================\n");
+        LOGGER.info("\n\n================ Can Query JPA MetricData Repository ================\n");
         TaskTideRepository<MetricData> repo;
         RepositoryFactory<MetricData> repoFactory;
         RepositoryType repoType = RepositoryType.ITEMSTORE;
@@ -261,7 +338,7 @@ public class SqliteItemStoreRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestMetricData(),
             TestCaseBuilderUtility.makeTestMetricData(),
@@ -269,25 +346,28 @@ public class SqliteItemStoreRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching ItemStore for repository construction");
+        LOGGER.info("Fetching ItemStore for repository construction");
         repoFactory = new RepositoryFactory<>("MetricData", MetricData.class, itemStore, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricData Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricData Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<MetricData> ref = data.get(0);
         TaskTideModel<MetricData> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query ItemStore MetricData Repository ================\n");
+        LOGGER.info("\n\n================ Can Query ItemStore MetricData Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -298,11 +378,11 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(4)
+    @Order(5)
     public void canQueryInsertedMetricProfile() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query ItemStore MetricProfile Repository ================\n");
+        LOGGER.info("\n\n================ Can Query ItemStore MetricProfile Repository ================\n");
         TaskTideRepository<MetricProfile> repo;
         RepositoryFactory<MetricProfile> repoFactory;
         RepositoryType repoType = RepositoryType.ITEMSTORE;
@@ -310,7 +390,7 @@ public class SqliteItemStoreRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestMetricProfile(),
             TestCaseBuilderUtility.makeTestMetricProfile(),
@@ -318,25 +398,28 @@ public class SqliteItemStoreRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching ItemStore for repository construction");
+        LOGGER.info("Fetching ItemStore for repository construction");
         repoFactory = new RepositoryFactory<>("MetricProfile", MetricProfile.class, itemStore, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for MetricProfile Repository:\n'{}'",
+            JsonUtils.toJson(true, "MetricProfile Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<MetricProfile> ref = data.get(0);
         TaskTideModel<MetricProfile> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query ItemStore MetricProfile Repository ================\n");
+        LOGGER.info("\n\n================ Can Query ItemStore MetricProfile Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
     
@@ -347,11 +430,11 @@ public class SqliteItemStoreRepositoryTests {
      * 
      */
     @Test
-    @Order(5)
+    @Order(6)
     public void canQueryInsertedJobEnvironment() {
     
         // Initialize data
-        logger.info("\n\n================ Can Query ItemStore JobEnvironment Repository ================\n");
+        LOGGER.info("\n\n================ Can Query ItemStore JobEnvironment Repository ================\n");
         TaskTideRepository<JobEnvironment> repo;
         RepositoryFactory<JobEnvironment> repoFactory;
         RepositoryType repoType = RepositoryType.ITEMSTORE;
@@ -359,7 +442,7 @@ public class SqliteItemStoreRepositoryTests {
         boolean assertionState;
         
         // Generate data for insert
-        logger.info("Generating data for testing");
+        LOGGER.info("Generating data for testing");
         data = List.of(
             TestCaseBuilderUtility.makeTestJobEnvironment(),
             TestCaseBuilderUtility.makeTestJobEnvironment(),
@@ -367,25 +450,28 @@ public class SqliteItemStoreRepositoryTests {
         );
         
         // Fetch backend instance
-        logger.info("Fetching ItemStore for repository construction");
+        LOGGER.info("Fetching ItemStore for repository construction");
         repoFactory = new RepositoryFactory<>("JobEnvironment", JobEnvironment.class, itemStore, repoType);
         repo = repoFactory.make();
         Map<String, String> map = repo.getRepositoryMetaData();
-        logger.info("\nDisplaying meta data for MetricData Repository:\n'{}'", JsonUtils.toJson(true, map));
+        LOGGER.info(
+            "\nDisplaying meta data for JobEnvironment Repository:\n'{}'",
+            JsonUtils.toJson(true, "JobEnvironment Repository", map)
+        );
         
         // Add records
-        logger.info("Inserting records");
+        LOGGER.info("Inserting records");
         repo.extendModel(data);
         
         // Check that records can be queried
-        logger.info("\nVerifying records can be retrieved");
+        LOGGER.info("\nVerifying records can be retrieved");
         TaskTideModel<JobEnvironment> ref = data.get(0);
         TaskTideModel<JobEnvironment> result = repo.findById(ref.getId()).get();
         assertionState = result != null;
-        logger.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, result));
+        LOGGER.info("\nDisplayling retrieved record:\n\n{}", JsonUtils.toJson(true, "Records", result));
         
         // Evaluate
-        logger.info("\n\n================ Can Query ItemStore JobEnvironment Repository ================\n");
+        LOGGER.info("\n\n================ Can Query ItemStore JobEnvironment Repository ================\n");
         assertTrue(assertionState, "Reference record could not be retrieved from backend repository");
     }
 }

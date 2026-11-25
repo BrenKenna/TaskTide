@@ -210,7 +210,7 @@ public class Workload {
             this.workloadType = ItemType.NESTED;
         }
         else {
-            this.workloadType = ItemType.NESTED;
+            this.workloadType = ItemType.SINGLE;
         }
         
         // Return flag
